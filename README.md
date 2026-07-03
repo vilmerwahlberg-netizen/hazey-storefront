@@ -12,7 +12,7 @@ JS field in admin — this repo is the source of truth for what goes in them.
 | `hazey.html` | JS **source** (readable, one `<script>`) | edit this |
 | `hazey.min.js` | Minified JS bundle (built from `hazey.html`) | **hosted via jsDelivr** |
 | `hazey.min.html` | `hazey.min.js` wrapped in `<script>` | legacy inline paste (superseded by `loader.html`) |
-| `loader.html` | Tiny loader that pulls `hazey.min.js` from jsDelivr | Nyehandel ▸ global JS field |
+| `loader.html` | Tiny loader that pulls `hazey.min.js` from jsDelivr | Nyehandel ▸ custom code in **`<head>`** (not the footer/body slot) |
 | `*.html` (blocks) | Content blocks for html-editor blocks | pasted per-page in admin |
 
 ## Why external hosting

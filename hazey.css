@@ -8872,3 +8872,187 @@ body.checkout-page .checkout-items-summary .item .content {
     right: 8px !important;
   }
 }
+
+/* =====================================================================
+   PDP-POLISH v2 (2026-07-03) — feedback: beskrivnings-/recensions-accordion +
+   relaterade kategorier, lager-ikon, NYHET-badge, och "Senast besökta
+   produkter"-korten (som saknade grid/equal-height). Appended → vinner på
+   källordning mot tidigare regler med samma selektor.
+   ===================================================================== */
+
+/* --- 1a. Beskrivning/Recensioner-accordion → definierade premium-paneler.
+   Behåller creme-bakgrunden (plattformens VISA MER-uttoning är bunden till den)
+   men lyfter med ram + skugga + starkare rubrik + grönad toggle. --- */
+#product-page .accordion {
+  margin-top: 8px !important;
+}
+#product-page .accordion-item {
+  background-color: #efe9e3 !important;
+  border: 1px solid rgba(48, 62, 37, 0.16) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 20px rgba(48, 62, 37, 0.07) !important;
+  margin-bottom: 14px !important;
+  overflow: hidden !important;
+}
+#product-page .accordion-button {
+  padding: 17px 22px !important;
+  font-size: 1.12rem !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  background: transparent !important;
+}
+#product-page .accordion-button .accordion-title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  letter-spacing: 0.01em !important;
+}
+#product-page .accordion-button:hover {
+  background: rgba(48, 62, 37, 0.03) !important;
+}
+/* Toggle +/- glyf → grön; aktiv får en ljusgrön platta bakom */
+#product-page .accordion-button .icon {
+  color: #323d25 !important;
+  font-size: 1.15rem !important;
+  border-radius: 50% !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+#product-page .accordion-button.active .icon {
+  color: #2f7a16 !important;
+}
+
+/* --- 1b. Relaterade kategorier → tydligare, klickbara pills --- */
+#product-page .related-categories {
+  margin-top: 10px !important;
+}
+#product-page .related-categories h3 {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  margin: 0 0 12px !important;
+}
+#product-page .related-categories .tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 9px !important;
+}
+#product-page .related-categories .tag {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(48, 62, 37, 0.18) !important;
+  border-radius: 999px !important;
+  padding: 0 !important;
+  height: auto !important;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease !important;
+}
+#product-page .related-categories .tag:hover {
+  border-color: #323d25 !important;
+  background: #f4f9ee !important;
+  transform: translateY(-1px) !important;
+}
+#product-page .related-categories .tag a {
+  color: #323d25 !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 8px 16px !important;
+  display: block !important;
+  line-height: 1.1 !important;
+}
+
+/* --- 2. Lager-status → ren grön "i lager"-pill med pulsprick (bort med kub-ikon) --- */
+#product-page #stock.stock-info {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  background: rgba(79, 170, 37, 0.12) !important;
+  color: #2f7a16 !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+}
+#product-page #stock .icon {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+#product-page #stock .icon i {
+  display: none !important;
+}
+#product-page #stock .icon::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  background: #4faa25 !important;
+  box-shadow: 0 0 0 3px rgba(79, 170, 37, 0.25) !important;
+}
+
+/* --- 3. NYHET-badge på produktbilden → grön pill med djup, neat inset --- */
+#product-page .product-detail__media .ribbons {
+  top: 14px !important;
+  left: 14px !important;
+  z-index: 4 !important;
+}
+#product-page .product-detail__media .ribbons .ribbon.news,
+#product-page .ribbons .ribbon.news,
+#product-page .ribbon.news {
+  background: #cdfc9f !important;
+  color: #26331a !important;
+  border-radius: 999px !important;
+  padding: 6px 14px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(48, 62, 37, 0.2) !important;
+}
+
+/* --- 4. "Senast besökta produkter": samma .product-list som "Liknande" MEN
+   plattformen renderar korten UTAN .products-wrappern (bara .container > div)
+   → grid/equal-height-reglerna (som är scopade till `.product-list .products`)
+   missar dem och korten kollapsar. Spegla grid + equal-height klass-agnostiskt.
+   `:not(.product-card)` hindrar att display:contents äter själva kort-boxen. --- */
+#product-page .product-page-lists__recently-visited-products {
+  padding-top: 18px !important;
+}
+#product-page .product-page-lists__recently-visited-products .container > div {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+#product-page .product-page-lists__recently-visited-products .container > div > div:not(.product-card),
+#product-page .product-page-lists__recently-visited-products .container > div > div > div:not(.product-card) {
+  display: contents !important;
+}
+#product-page .product-page-lists__recently-visited-products div.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  height: 100% !important;
+}
+#product-page .product-page-lists__recently-visited-products .product-card .details-wrapper {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#product-page .product-page-lists__recently-visited-products .nh-card-buy {
+  margin-top: auto !important;
+}
+
+@media (max-width: 900px) {
+  #product-page .product-page-lists__recently-visited-products .container > div {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 520px) {
+  #product-page .product-page-lists__recently-visited-products .container > div {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+}

@@ -1,8 +1,9 @@
 <!-- ============================================================================
      HAZEY FACELIFT — LOADER
-     Klistra in HELA denna snutt i Nyehandel-admin ▸ global JS-kod (ersätter den
-     tidigare inklistrade hazey.min-koden). Den laddar hazey.min.js externt från
-     jsDelivr (GitHub-pinnad tagg) → ingen 64 KB-gräns, ingen mangling.
+     Klistra in HELA denna snutt i Nyehandel-admin ▸ anpassad kod i <HEAD>
+     (INTE footer/body-sloten — där körs den för sent och footer m.m. tappas).
+     Den laddar hazey.min.js externt från jsDelivr (GitHub-pinnad tagg) → ingen
+     64 KB-gräns, ingen mangling. Ersätter den tidigare inklistrade hazey.min-koden.
 
      SLÄPP EN NY VERSION:
        1. Ändra i hazey.html/hazey.css → bygg om hazey.min.js
@@ -13,10 +14,9 @@
 <script>
 (function () {
   var s = document.createElement("script");
-  s.src = "https://cdn.jsdelivr.net/gh/Oliverforss8/hazey-storefront@v1.0.0/hazey.min.js";
-  s.defer = true;
+  s.src = "https://cdn.jsdelivr.net/gh/Oliverforss8/hazey-storefront@v1.0.1/hazey.min.js";
   s.crossOrigin = "anonymous";
-  s.integrity = "sha384-oaVKT8cTPiOJaAXN9uYGUwCBj4rwQ6cJFXVl+I/ZZlgKR1I4vLxuh3OPYL1JmrsJ";
+  s.integrity = "sha384-wMRwmlwy9K7AOhmvi+JDYCMFY9g0dicmBD0sS/vtl5kJvFI6ngtU8CGXWaHsZo4r";
   document.head.appendChild(s);
 })();
 </script>
