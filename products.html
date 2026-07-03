@@ -1,0 +1,165 @@
+<section class="nh-pl-section" id="nh-pl-section">
+
+  <div class="nh-pl-header">
+    <h2 class="nh-pl-title">Alla produkter</h2>
+    <div class="nh-pl-filters" id="nh-pl-filters">
+      <button class="nh-pl-filter is-active" data-filter="all">Alla</button>
+      <button class="nh-pl-filter" data-filter="news">Nyheter</button>
+      <button class="nh-pl-filter" data-filter="sale">Rea</button>
+    </div>
+  </div>
+
+  <div class="pl-list">
+    <div class="products has-4" id="nh-pl-grid">
+      <div class="nh-pl-loading">Laddar produkter…</div>
+    </div>
+  </div>
+
+  <div class="nh-pl-footer" id="nh-pl-footer" style="display:none">
+    <p class="nh-pl-count" id="nh-pl-count"></p>
+    <button class="nh-pl-more" id="nh-pl-more">Visa fler</button>
+  </div>
+
+</section>
+
+<script>
+  (function () {
+    var PER_PAGE = 10;
+    var allCards = [], filtered = [], shown = 0;
+
+    var grid    = document.getElementById("nh-pl-grid");
+    var footer  = document.getElementById("nh-pl-footer");
+    var countEl = document.getElementById("nh-pl-count");
+    var moreBtn = document.getElementById("nh-pl-more");
+    var btns    = document.querySelectorAll("#nh-pl-filters .nh-pl-filter");
+
+    // Build a product card DOM element from a plain JS object (JSON API response)
+    function cardFromProduct(p) {
+      var url   = p.url || ("/sv/products/" + (p.slug || p.id || ""));
+      var name  = p.name || p.title || "";
+      var price = p.price_formatted || (p.price != null ? p.price + " kr" : "");
+      var img   = p.image_url || p.image || p.thumbnail || "";
+      var isNew = !!(p.is_new || p.labels && p.labels.indexOf("news") > -1);
+      var isSale= !!(p.on_sale|| p.labels && p.labels.indexOf("sale") > -1);
+
+      var el = document.createElement("div");
+      el.className = "product-card";
+      el.innerHTML =
+        '<a class="product-card__image" href="' + url + '">' +
+          (isNew  ? '<span class="ribbon news">Nyhet</span>' : "") +
+          (isSale ? '<span class="ribbon sale">Rea</span>'   : "") +
+          (img    ? '<img src="' + img + '" alt="' + name + '" loading="lazy">' : "") +
+        "</a>" +
+        '<div class="details-wrapper"><div class="details">' +
+          '<a href="' + url + '"><span class="name">' + name + "</span></a>" +
+          '<div class="offer"><div class="price"><ins>' + price + "</ins></div></div>" +
+        "</div></div>";
+      return el;
+    }
+
+    function cardsFromJson(data) {
+      var arr = Array.isArray(data) ? data
+              : data.products || data.data || data.items || [];
+      return arr.map(cardFromProduct);
+    }
+
+    function paint() {
+      grid.innerHTML = "";
+      var slice = filtered.slice(0, shown);
+      if (!slice.length) {
+        grid.innerHTML = '<div class="nh-pl-empty">Inga produkter hittades.</div>';
+        footer.style.display = "none";
+        return;
+      }
+      slice.forEach(function (c) { grid.appendChild(c.cloneNode(true)); });
+      if (window.nhInitCards) window.nhInitCards();
+
+      var rem = filtered.length - shown;
+      footer.style.display = "";
+      countEl.textContent = rem > 0
+        ? "Visar " + shown + " av " + filtered.length + " produkter"
+        : "Visar alla " + filtered.length + " produkter";
+      moreBtn.style.display = rem > 0 ? "" : "none";
+      if (rem > 0) moreBtn.textContent = "Visa fler (" + Math.min(rem, PER_PAGE) + " till)";
+    }
+
+    function setFilter(f) {
+      shown = PER_PAGE;
+      filtered = f === "all" ? allCards.slice() : allCards.filter(function (c) {
+        return c.querySelector(".ribbon." + f);
+      });
+      paint();
+    }
+
+    btns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        btns.forEach(function (b) { b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        setFilter(btn.getAttribute("data-filter"));
+      });
+    });
+
+    moreBtn.addEventListener("click", function () {
+      shown = Math.min(shown + PER_PAGE, filtered.length);
+      paint();
+    });
+
+    function done(cards) {
+      if (!cards.length) {
+        grid.innerHTML =
+          '<div class="nh-pl-empty">Inga produkter hittades. ' +
+          '<a href="/sv/categories/alla-produkter" style="color:#D2691E">Visa alla produkter →</a></div>';
+        return;
+      }
+      allCards = cards;
+      setFilter("all");
+    }
+
+    function fail() {
+      grid.innerHTML =
+        '<div class="nh-pl-empty">Kunde inte ladda produkter. ' +
+        '<a href="/sv/categories/alla-produkter" style="color:#D2691E">Visa alla produkter →</a></div>';
+    }
+
+    var apiHeaders = {
+      "Accept": "application/json",
+      "X-Requested-With": "XMLHttpRequest"
+    };
+
+    // Strategy 1 — frontend-api JSON (most likely)
+    function tryJsonApi(url) {
+      return fetch(url, { credentials: "same-origin", headers: apiHeaders })
+        .then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          console.log("[NH Products] API OK:", url, data);
+          var cards = cardsFromJson(data);
+          if (!cards.length) throw new Error("empty");
+          return cards;
+        });
+    }
+
+    // Strategy 2 — scrape HTML (works if Nyehandel uses SSR)
+    function tryHtmlScrape() {
+      return fetch("/sv/categories/alla-produkter", { credentials: "same-origin" })
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          var doc = new DOMParser().parseFromString(html, "text/html");
+          var cards = Array.from(doc.querySelectorAll("#category-products .product-card"));
+          if (!cards.length) cards = Array.from(doc.querySelectorAll(".product-card"));
+          console.log("[NH Products] HTML scrape:", cards.length, "cards");
+          return cards;
+        });
+    }
+
+    // Try JSON endpoints in sequence, fall back to HTML scrape
+    tryJsonApi("/frontend-api/products?per_page=100")
+      .catch(function () { return tryJsonApi("/frontend-api/products?category_slug=alla-produkter&per_page=100"); })
+      .catch(function () { return tryJsonApi("/frontend-api/products"); })
+      .catch(function () { return tryHtmlScrape(); })
+      .then(done)
+      .catch(fail);
+  })();
+</script>

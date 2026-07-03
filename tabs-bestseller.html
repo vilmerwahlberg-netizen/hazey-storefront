@@ -1,0 +1,28 @@
+<!-- PRODUKTSEKTION 1 — filterflikar: Bästsäljare / Nyheter / Kampanjer.
+     Flikarna byter gridet utan omladdning (initTabs i hazey.html), och
+     "Till butiken"-knappen länkar till aktiv flik. Ersätter de gamla
+     statiska Bästsäljare- och Kampanjer-sektionerna. -->
+<div class="template-components__product-list">
+  <section class="section">
+    <div class="container pl-list">
+      <div class="nh-tabs" data-nh-tabs>
+        <button type="button" class="nh-tab is-active" data-cat="alla-produkter">Bästsäljare</button>
+        <button type="button" class="nh-tab" data-cat="__news">Nyheter</button>
+        <button type="button" class="nh-tab" data-cat="__sale">Kampanjer</button>
+      </div>
+      <div class="products has-4" data-nh-tabgrid data-nh-limit="8">
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+      </div>
+      <div class="nh-btn-bar">
+        <a class="nh-btn-bar__btn" data-nh-tabcta href="/sv/categories/alla-produkter">Till butiken</a>
+      </div>
+    </div>
+  </section>
+</div>

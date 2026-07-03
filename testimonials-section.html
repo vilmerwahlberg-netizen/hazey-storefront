@@ -1,0 +1,40 @@
+<!-- ============================================================
+     KUNDCITAT — OFFICIELL TRUSTPILOT REVIEW CAROUSEL
+     Längst ner på startsidan (sista html-blocket, ovanför footern).
+
+     • Hämtar RIKTIGA omdömen automatiskt från ert Trustpilot-konto
+       (businessunit hazey.se) — inget att fylla i, alltid uppdaterat, lagligt.
+     • Ser ut exakt som Trustpilot (grön logga, stjärnor, "Verifierad").
+     • Stil + rendering finns redan: hazey.css (.nh-testimonials) + initTrustpilot
+       i hazey.html laddar Trustpilot-scriptet och ritar widgeten.
+
+     OBS: i bott/preview-läge visar Trustpilot bara loggan (de blockerar
+     automatiserade besök). För riktiga besökare fylls korten med era omdömen.
+     Filtret data-stars="4,5" visar 4–5★. Ta bort data-stars / data-review-
+     languages om du vill visa fler. Höjd justeras via data-style-height.
+     ============================================================ -->
+
+<section class="nh-testimonials">
+  <div class="nh-testimonials__inner">
+
+    <div class="nh-testimonials__head">
+      <h2 class="nh-testimonials__title">Vad våra kunder säger</h2>
+    </div>
+
+    <!-- TrustBox: Review Carousel -->
+    <div class="trustpilot-widget"
+         data-locale="sv-SE"
+         data-template-id="53aa8912dec7e10d38f59f36"
+         data-businessunit-id="6513e1a93f98d9001a6cb9b0"
+         data-style-height="240px"
+         data-style-width="100%"
+         data-theme="light"
+         data-stars="4,5"
+         data-review-languages="sv">
+      <a href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">Läs alla omdömen på Trustpilot</a>
+    </div>
+
+    <a class="nh-testimonials__cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">Läs alla omdömen på Trustpilot →</a>
+
+  </div>
+</section>

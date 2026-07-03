@@ -1,0 +1,43 @@
+<!--
+==============================================
+  HAZEY — HERO (roterande budskap, statiska knappar + bakgrund)
+  Title + undertext roterar var 5:e sekund (Tershine-stil).
+  Logiken bor i hazey.html (initHeroRotator) — html-editor strippar
+  <script> i block, så meddelandena ligger som en dold <ul> nedan.
+
+  • Byt bakgrund → ändra url(...) i style nedan
+  • Lägg till/ändra budskap → redigera <li data-title="..." data-sub="...">
+    (första raden bör matcha den synliga texten i .nh-hero__rotor)
+  • Knapparna är statiska — ändra text/länk direkt i <a>-taggarna
+==============================================
+-->
+
+<section class="nh-hero" id="nh-hero-root"
+  style="background-image: linear-gradient(180deg, rgba(255,255,255,0.40) 0%, rgba(237,233,232,0.75) 87%, #e4d1bf 100%), url('https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/thca-landscape-laglig-cannabis-sverige-2279bbe7.webp');">
+  <div class="nh-hero__inner">
+
+    <!-- Roterar (title + sub). Buttons + bakgrund nedanför rör sig inte. -->
+    <div class="nh-hero__rotor">
+      <h2 class="nh-hero__title">Sveriges #1 för lagliga cannabinoider</h2>
+      <p class="nh-hero__sub">Noggrant testade, juridiskt verifierade och alltid 100&nbsp;% lagligt.<br>Din trygghet först.</p>
+    </div>
+
+    <!-- Statiska knappar -->
+    <div class="nh-hero__actions">
+      <a class="nh-hero__btn nh-hero__btn--outline" href="/sv/categories/thca">THCA</a>
+      <a class="nh-hero__btn nh-hero__btn--fill" href="/sv/page/vara-bastsaljare">BÄSTSÄLJARE</a>
+    </div>
+  </div>
+
+  <!-- Roterande budskap (läses av initHeroRotator). Första raden = startläget ovan. -->
+  <ul class="nh-hero__messages" hidden>
+    <li data-title="Sveriges #1 för lagliga cannabinoider"
+        data-sub="Noggrant testade, juridiskt verifierade och alltid 100&nbsp;% lagligt.<br>Din trygghet först."></li>
+    <li data-title="Fri frakt över 499 kr – diskret hela vägen"
+        data-sub="Snabb leverans från Sverige i alltid neutralt, omärkt paket."></li>
+    <li data-title="Lagligt på riktigt – under 0,3&nbsp;% THC"
+        data-sub="Tredjepartstestade produkter du kan känna dig trygg med."></li>
+    <li data-title="Hela sortimentet på ett ställe"
+        data-sub="Vapes, buds, carts, hasch &amp; tillbehör – Sveriges bredaste utbud."></li>
+  </ul>
+</section>

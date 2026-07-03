@@ -1,0 +1,104 @@
+<!-- KONTAKT PAGE — paste into the /sv/page/kontakt html-editor block.
+     Styling lives in hazey.css (.nh-contact*). The forms submit via mailto:
+     (no backend / no JS needed) so they work straight away — change the
+     addresses (hej@hazey.se / butik@hazey.se) if your support inbox differs.
+     The quick-contact cards are plain mailto links and always work. -->
+
+<section class="nh-contact">
+
+  <!-- Hero -->
+  <div class="nh-contact__hero">
+    <div class="nh-contact__hero-inner">
+      <h1>Kontakta oss</h1>
+      <p>Här nedan har du allt du behöver för att komma i kontakt med oss.</p>
+    </div>
+  </div>
+
+  <div class="nh-contact__inner">
+
+    <!-- Info notice -->
+    <div class="nh-contact__note">
+      <p>📩 Hittar du inte ditt bekräftelsemail? Kika gärna i skräpposten – ibland hamnar det där. Om Swish-rutan fortsätter snurra efter att pengarna dragits så har din beställning mest troligt tagits emot korrekt hos oss, och vi behandlar din order så fort vi kan. Har du fortfarande frågor – använd kontaktformuläret nedan.</p>
+    </div>
+
+    <!-- Quick contact cards -->
+    <div class="nh-contact__info">
+      <a class="nh-contact__info-card" href="mailto:hej@hazey.se">
+        <span class="nh-contact__info-ic">✉️</span>
+        <span class="nh-contact__info-label">Mail</span>
+        <span class="nh-contact__info-val">hej@hazey.se</span>
+      </a>
+      <a class="nh-contact__info-card" href="mailto:butik@hazey.se">
+        <span class="nh-contact__info-ic">🤝</span>
+        <span class="nh-contact__info-label">Återförsäljare</span>
+        <span class="nh-contact__info-val">butik@hazey.se</span>
+      </a>
+      <div class="nh-contact__info-card nh-contact__info-card--static">
+        <span class="nh-contact__info-ic">📍</span>
+        <span class="nh-contact__info-label">Adress</span>
+        <span class="nh-contact__info-val">Stockholm, Sverige</span>
+      </div>
+    </div>
+
+    <!-- Form + newsletter -->
+    <div class="nh-contact__grid">
+
+      <div class="nh-contact__card">
+        <h2>Skicka ett meddelande</h2>
+        <p>Fyll i formuläret så återkommer vi så snart vi kan.</p>
+        <form class="nh-form" action="mailto:hej@hazey.se" method="post" enctype="text/plain">
+          <div class="nh-form__row">
+            <label class="nh-form__field">
+              <span>Namn</span>
+              <input type="text" name="Namn" placeholder="Ditt namn" required>
+            </label>
+            <label class="nh-form__field">
+              <span>E-postadress</span>
+              <input type="email" name="E-post" placeholder="namn@exempel.se" required>
+            </label>
+          </div>
+          <label class="nh-form__field">
+            <span>Vad vill du fråga oss?</span>
+            <textarea name="Meddelande" rows="6" placeholder="Skriv ditt meddelande här…" required></textarea>
+          </label>
+          <button type="submit" class="nh-form__btn">Skicka</button>
+        </form>
+      </div>
+
+      <div class="nh-contact__card nh-contact__card--alt">
+        <h2>Nyhetsbrev</h2>
+        <p>Skriv upp dig för att få mail när vi fyller på med nytt sortiment och har erbjudanden. Du får dessutom en <strong>rabattkod på 10 %</strong> på ditt nästa köp.</p>
+        <form class="nh-form" action="mailto:hej@hazey.se?subject=Nyhetsbrev" method="post" enctype="text/plain">
+          <label class="nh-form__field">
+            <span>Förnamn</span>
+            <input type="text" name="Förnamn" placeholder="Ditt förnamn">
+          </label>
+          <label class="nh-form__field">
+            <span>E-post</span>
+            <input type="email" name="E-post" placeholder="namn@exempel.se" required>
+          </label>
+          <button type="submit" class="nh-form__btn nh-form__btn--light">Skriv upp mig</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Reseller -->
+    <div class="nh-contact__card nh-contact__reseller">
+      <h2>Vill du bli återförsäljare?</h2>
+      <p>Fyll i dina uppgifter så kontaktar vi dig så fort som möjligt.</p>
+      <form class="nh-form" action="mailto:butik@hazey.se?subject=Återförsäljare" method="post" enctype="text/plain">
+        <div class="nh-form__row">
+          <label class="nh-form__field"><span>Företagets namn</span><input type="text" name="Företag" placeholder="Företagsnamn" required></label>
+          <label class="nh-form__field"><span>E-postadress</span><input type="email" name="E-post" placeholder="namn@exempel.se" required></label>
+        </div>
+        <div class="nh-form__row">
+          <label class="nh-form__field"><span>Telefonnummer</span><input type="tel" name="Telefon" placeholder="07X-XXX XX XX"></label>
+          <label class="nh-form__field"><span>Kort beskrivning</span><input type="text" name="Beskrivning" placeholder="Berätta kort om er"></label>
+        </div>
+        <button type="submit" class="nh-form__btn">Skicka</button>
+      </form>
+    </div>
+
+  </div>
+</section>

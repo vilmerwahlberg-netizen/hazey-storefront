@@ -1,0 +1,68 @@
+<!-- ============================================================
+     KAMPANJER — KOMPLETT SIDA (allt i EN fil)
+     1. Gå till Kampanjer-sidan i admin (/sv/page/kampanjer).
+     2. RADERA ev. befintliga html-block på sidan.
+     3. Klistra in HELA denna fil i ETT (1) html-block. Klart.
+     Ren HTML, ingen JS → kan inte manglas. All stil finns redan i hazey.css.
+     Produktraderna fylls automatiskt av din JS:
+       • "Just nu på kampanj" = rabatterade produkter (initProductSections, filter=discounted)
+       • "Bästsäljare" = utvalda produkter (initProductSections)
+     ============================================================ -->
+
+<!-- ===== 1. HERO ===== -->
+<section class="nh-bs-hero" style="--bs-hero-img:url('https://www.hazey.se/wp-content/uploads/2025/04/Billig-laglig-cannabis-vapes-i-sverige.jpg')">
+  <div class="nh-bs-hero__inner">
+    <h1 class="nh-bs-hero__title">Kampanjer</h1>
+    <span class="nh-bs-hero__sub">Sänkta priser · utvalda favoriter</span>
+    <div class="nh-bs-hero__box">
+      <p class="nh-bs-hero__lead">Just nu hittar du sänkta priser på utvalda THCA, vapes, buds och mer. Fri frakt från 499 kr — alltid labbtestat och diskret skickat från Sverige.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. USP-band (fylls + stylas av initUspBars) ===== -->
+<div data-nh-usp></div>
+
+<!-- ===== 3. JUST NU PÅ KAMPANJ (rabatterade produkter, fylls automatiskt) ===== -->
+<div class="template-components__product-list">
+  <section class="section">
+    <div class="container pl-list">
+      <h2 class="has-text-centered">Just nu på kampanj</h2>
+      <div class="products has-4" data-nh-source="/sv/categories/alla-produkter" data-nh-filter="discounted" data-nh-limit="16">
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+      </div>
+      <div class="nh-btn-bar">
+        <a class="nh-btn-bar__btn" href="/sv/categories/alla-produkter">Visa alla produkter</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== 4. BÄSTSÄLJARE (cross-sell, fylls automatiskt) ===== -->
+<div class="template-components__product-list">
+  <section class="section">
+    <div class="container pl-list">
+      <h2 class="has-text-centered">Bästsäljare</h2>
+      <div class="products has-4" data-nh-source="/sv/categories/alla-produkter" data-nh-limit="8" data-nh-order="fixed">
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+        <div><div><div class="nh-skel"><div class="nh-skel__img"></div><div class="nh-skel__line"></div><div class="nh-skel__line short"></div></div></div></div>
+      </div>
+      <div class="nh-btn-bar">
+        <a class="nh-btn-bar__btn" href="/sv/page/vara-bastsaljare">Visa alla bästsäljare</a>
+      </div>
+    </div>
+  </section>
+</div>

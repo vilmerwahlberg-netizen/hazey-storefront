@@ -1,0 +1,65 @@
+<section class="nh-camp">
+  <div class="nh-camp__inner">
+
+    <div class="nh-camp__head">
+      <h6>Kampanjer</h6>
+    </div>
+
+    <div class="pl-list">
+      <div class="products has-4" id="nh-camp-grid">
+        <div class="nh-pl-loading">Laddar kampanjer…</div>
+      </div>
+    </div>
+
+    <div class="nh-camp__footer">
+      <a class="nh-camp__btn" href="/sv/categories/alla-produkter">Alla kampanjer</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var grid = document.getElementById('nh-camp-grid');
+
+    function paint(cards) {
+      grid.innerHTML = '';
+      if (!cards.length) {
+        grid.innerHTML = '<div class="nh-pl-empty">Inga kampanjer just nu. <a href="/sv/categories/alla-produkter" style="color:#D2691E">Visa alla →</a></div>';
+        return;
+      }
+      cards.slice(0, 4).forEach(function (c) {
+        grid.appendChild(c.cloneNode(true));
+      });
+      if (window.nhInitCards) window.nhInitCards();
+    }
+
+    function scrape(url) {
+      return fetch(url, { credentials: 'same-origin' })
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var cards = Array.from(doc.querySelectorAll('#category-products .product-card'));
+          if (!cards.length) cards = Array.from(doc.querySelectorAll('.product-card'));
+          return cards;
+        });
+    }
+
+    // Try /rea category first, fallback to main category filtered by sale ribbon
+    scrape('/sv/categories/rea')
+      .then(function (cards) {
+        if (!cards.length) throw new Error('empty');
+        return cards;
+      })
+      .catch(function () {
+        return scrape('/sv/categories/alla-produkter').then(function (cards) {
+          var sale = cards.filter(function (c) { return c.querySelector('.ribbon.sale'); });
+          return sale.length ? sale : cards;
+        });
+      })
+      .then(paint)
+      .catch(function () {
+        grid.innerHTML = '<div class="nh-pl-empty">Kunde inte ladda kampanjer. <a href="/sv/categories/alla-produkter" style="color:#D2691E">Visa alla →</a></div>';
+      });
+  })();
+</script>

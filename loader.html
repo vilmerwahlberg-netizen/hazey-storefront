@@ -1,0 +1,22 @@
+<!-- ============================================================================
+     HAZEY FACELIFT — LOADER
+     Klistra in HELA denna snutt i Nyehandel-admin ▸ global JS-kod (ersätter den
+     tidigare inklistrade hazey.min-koden). Den laddar hazey.min.js externt från
+     jsDelivr (GitHub-pinnad tagg) → ingen 64 KB-gräns, ingen mangling.
+
+     SLÄPP EN NY VERSION:
+       1. Ändra i hazey.html/hazey.css → bygg om hazey.min.js
+       2. git commit + git tag vX.Y.Z + git push --tags
+       3. Byt vX.Y.Z + integrity-hashen nedan (hash = ny release)
+          integrity: sha384-$(openssl dgst -sha384 -binary hazey.min.js | openssl base64 -A)
+     ============================================================================ -->
+<script>
+(function () {
+  var s = document.createElement("script");
+  s.src = "https://cdn.jsdelivr.net/gh/Oliverforss8/hazey-storefront@v1.0.0/hazey.min.js";
+  s.defer = true;
+  s.crossOrigin = "anonymous";
+  s.integrity = "sha384-oaVKT8cTPiOJaAXN9uYGUwCBj4rwQ6cJFXVl+I/ZZlgKR1I4vLxuh3OPYL1JmrsJ";
+  document.head.appendChild(s);
+})();
+</script>
