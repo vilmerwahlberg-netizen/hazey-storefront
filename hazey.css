@@ -9422,3 +9422,60 @@ body.checkout-page .checkout-items-summary .item .content {
     align-items: start !important;
   }
 }
+
+/* =====================================================================
+   PDP-POLISH v3 (2026-07-06) — feedback (produktsidans nedre del):
+   (a) Beskrivnings-accordion hade DUBBEL ram: plattformens grå .accordion-ram
+       (1px #dfdfdf) UTANPÅ våra bordered item-kort. + ett fult ljust "fade-band"
+       bakom sista textraden = plattformens .readmore__toggle::before-gradient
+       (vi dödar den redan på .category-description men inte på PDP:n).
+   (b) "Köp mer - Betala mindre"-badgen på korten var en loud orange bar som
+       dominerade → subtil mörk translucent pill med ljusgrön tag-ikon.
+   Appended → vinner på källordning.
+   ===================================================================== */
+
+/* (a1) Bort med plattformens yttre grå .accordion-ram → bara våra item-kort */
+#product-page .accordion {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+#product-page .accordion-item {
+  box-shadow: 0 4px 16px rgba(48, 62, 37, 0.06) !important;
+}
+
+/* (a2) Döda read-more-fade-bandet på PDP (samma fix som .category-description
+   redan har). Det är .readmore__toggle::before-gradienten som låg som ett
+   ljust band över sista raden. Trunkeringen + VISA MER behålls oförändrade. */
+#product-page .readmore__toggle::before,
+#product-page .accordion .readmore__toggle::before {
+  display: none !important;
+  background: none !important;
+  content: none !important;
+}
+
+/* (b) "Köp mer - Betala mindre"-badge → subtil mörk translucent pill.
+   Position/fit-content/bottom-left ärvs från v2-blocket ovan; här mörkas
+   bara ytan + krymps texten så den inte skriker. */
+.product-card__image .buy-more-pay-less {
+  background: rgba(35, 35, 29, 0.8) !important;
+  color: #eee7e1 !important;
+  font-size: 0.5rem !important;
+  padding: 4px 10px !important;
+  gap: 5px !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+  -webkit-backdrop-filter: blur(2px) !important;
+  backdrop-filter: blur(2px) !important;
+}
+.product-card__image .buy-more-pay-less::before {
+  background-color: #cdfc9f !important;
+  width: 11px !important;
+  height: 11px !important;
+}
+@media (max-width: 600px) {
+  .product-card__image .buy-more-pay-less {
+    font-size: 0.46rem !important;
+    padding: 3px 8px !important;
+  }
+}
