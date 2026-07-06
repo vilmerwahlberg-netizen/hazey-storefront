@@ -8563,7 +8563,7 @@ body.checkout-page .checkout-items-summary .item .content {
   align-items: center !important;
   justify-content: space-between !important;
   gap: 12px !important;
-  margin: 18px 0 4px !important;
+  margin: 18px 0 40px !important;
   padding: 16px 18px !important;
   background: #eee7e1 !important;
   border: 1px solid rgba(48, 62, 37, 0.12) !important;
@@ -9011,23 +9011,38 @@ body.checkout-page .checkout-items-summary .item .content {
   box-shadow: 0 4px 12px rgba(48, 62, 37, 0.2) !important;
 }
 
-/* --- 4. "Senast besökta produkter": samma .product-list som "Liknande" MEN
-   plattformen renderar korten UTAN .products-wrappern (bara .container > div)
-   → grid/equal-height-reglerna (som är scopade till `.product-list .products`)
-   missar dem och korten kollapsar. Spegla grid + equal-height klass-agnostiskt.
+/* --- 4. "Senast besökta produkter": plattformen renderar korten I EN
+   `.recently-visited-products.products`-wrapper (inte "bara .container > div"
+   som tidigare antogs). Den gamla regeln la därför gridet på `.container > div`
+   — som innehåller BÅDE <h2> OCH produkt-wrappern → rubriken blev kolumn 1 och
+   alla kort trängdes ihop i kolumn 2 ("kort bredvid texten"). FIX: wrappern =
+   block (rubrik ovanför), gridet läggs på själva `.products`-wrappern.
    `:not(.product-card)` hindrar att display:contents äter själva kort-boxen. --- */
 #product-page .product-page-lists__recently-visited-products {
   padding-top: 18px !important;
 }
+/* Wrapper (h2 + produkter) → block, så rubriken sitter OVANFÖR gridet */
 #product-page .product-page-lists__recently-visited-products .container > div {
+  display: block !important;
+  width: 100% !important;
+}
+#product-page .product-page-lists__recently-visited-products h2,
+#product-page .product-page-lists__recently-visited-products h2.small {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 16px !important;
+}
+/* Gridet ligger på själva produkt-wrappern */
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 16px !important;
   width: 100% !important;
   align-items: stretch !important;
 }
-#product-page .product-page-lists__recently-visited-products .container > div > div:not(.product-card),
-#product-page .product-page-lists__recently-visited-products .container > div > div > div:not(.product-card) {
+/* Mellanliggande wrappers → contents, men ALDRIG själva kortet */
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products > div:not(.product-card),
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products > div > div:not(.product-card) {
   display: contents !important;
 }
 #product-page .product-page-lists__recently-visited-products div.product-card {
@@ -9046,12 +9061,12 @@ body.checkout-page .checkout-items-summary .item .content {
 }
 
 @media (max-width: 900px) {
-  #product-page .product-page-lists__recently-visited-products .container > div {
+  #product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 @media (max-width: 520px) {
-  #product-page .product-page-lists__recently-visited-products .container > div {
+  #product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
   }
