@@ -1502,49 +1502,55 @@
         "<p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p>" +
         "</div>" +
         '<div class="nh-footer__inner">' +
-        '<div class="nh-footer__brand">' +
+        '<div class="nh-footer__grid">' +
+        '<div class="nh-footer__brand-col">' +
         '<img class="nh-footer__logo" src="https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/mini-header-hazey-49d6a763.webp" alt="Hazey">' +
         '<p class="nh-footer__tagline">Lagliga cannabinoider — labbtestat, diskret skickat från Sverige.</p>' +
         "</div>" +
-        '<div class="nh-footer__cols">' +
         '<div class="nh-footer__col">' +
-        "<h3>Meny</h3>" +
+        "<h3>Kundservice</h3>" +
+        "<ul>" +
+        '<li><a href="/sv/page/kontakt">Kontakta oss</a></li>' +
+        '<li><a href="/sv/page/faq">Vanliga frågor</a></li>' +
+        '<li><a href="/sv/page/kop-och-leveransvillkor">Köp &amp; Leveransvillkor</a></li>' +
+        '<li><a href="/sv/page/integritetspolicy">Integritets- &amp; cookiepolicy</a></li>' +
+        '<li><a href="/sv/page/kontakt">Bli återförsäljare</a></li>' +
+        "</ul>" +
+        "</div>" +
+        '<div class="nh-footer__col">' +
+        "<h3>Utforska</h3>" +
         "<ul>" +
         '<li><a href="/sv/categories/alla-produkter">Butik</a></li>' +
-        '<li><a href="/sv/categories/alla-produkter">Artiklar</a></li>' +
-        '<li><a href="/sv/page/kontakt">Kontakta oss</a></li>' +
-        '<li><a href="/sv/page/kontakt">Återförsäljare?</a></li>' +
+        '<li><a href="/sv/page/vara-bastsaljare">Bästsäljare</a></li>' +
+        '<li><a href="/sv/page/kampanjer">Kampanjer</a></li>' +
+        '<li><a href="/sv/categories/alla-produkter">Alla produkter</a></li>' +
+        '<li><a href="/sv/page/kontakt">Kontakt</a></li>' +
         "</ul>" +
         "</div>" +
         '<div class="nh-footer__col">' +
-        "<h3>Kontaktinformation</h3>" +
-        '<p>Mail: <a href="mailto:Hej@hazey.se">Hej@hazey.se</a></p>' +
-        '<p>Återförsäljare: <a href="mailto:Butik@hazey.se">Butik@hazey.se</a></p>' +
-        "</div>" +
-        '<div class="nh-footer__col">' +
-        "<h3>Företagsadress</h3>" +
-        "<p>Stockholm, Sweden</p>" +
-        "</div>" +
-        '<div class="nh-footer__col">' +
-        "<h3>Villkor</h3>" +
+        "<h3>Populära kategorier</h3>" +
         "<ul>" +
-        '<li><a href="/sv/page/kop-och-leveransvillkor">Köp &amp; Leveransvillkor</a></li>' +
-        '<li><a href="/sv/page/integritetspolicy">Integritets och cookiepolicy</a></li>' +
-        '<li><a href="/sv/page/faq">FAQ</a></li>' +
+        '<li><a href="/sv/categories/thca">THCA</a></li>' +
+        '<li><a href="/sv/categories/alla-vapes">Vapes</a></li>' +
+        '<li><a href="/sv/categories/blommor-buds">Buds</a></li>' +
+        '<li><a href="/sv/categories/hasch">Hasch</a></li>' +
+        '<li><a href="/sv/categories/cbd-group">CBD</a></li>' +
+        '<li><a href="/sv/categories/magic-sauce">Magic Sauce</a></li>' +
         "</ul>" +
         "</div>" +
-        "</div>" +
-        '<div class="nh-footer__newsletter">' +
-        '<div class="nh-footer__nl-text">' +
-        "<h3>Alltid ett steg före.</h3>" +
-        "<p>Få mail när vi fyller på lager och lanserar nytt. Du får <strong>10%</strong> på ditt nästa köp.</p>" +
-        "</div>" +
+        '<div class="nh-footer__nl-col">' +
+        "<h3>Nyhetsbrev</h3>" +
+        "<p>Få <strong>10%</strong> på ditt första köp — plus drops, nyheter och exklusiva erbjudanden.</p>" +
         '<form class="nh-footer__nl-form" id="nh-nl-form">' +
-        '<input type="text" placeholder="Förnamn" name="firstname" autocomplete="given-name">' +
-        '<input type="email" placeholder="E-post" name="email" autocomplete="email">' +
-        '<button type="submit">Skriv upp mig</button>' +
-        '<p class="nh-footer__nl-ok" id="nh-nl-ok" style="display:none">Välkommen! Din rabattkod är: <strong>testahazey10</strong></p>' +
+        '<input type="email" placeholder="Din e-post" name="email" autocomplete="email" required>' +
+        '<button type="submit" aria-label="Prenumerera">→</button>' +
         "</form>" +
+        '<p class="nh-footer__nl-ok" id="nh-nl-ok" style="display:none">Välkommen! Din rabattkod: <strong>testahazey10</strong></p>' +
+        '<div class="nh-footer__contact">' +
+        '<a href="mailto:Hej@hazey.se">Hej@hazey.se</a>' +
+        '<a href="mailto:Butik@hazey.se">Butik@hazey.se</a>' +
+        "</div>" +
+        "</div>" +
         "</div>" +
         '<div class="nh-footer__trust">' +
         '<span class="nh-footer__trust-item">Säker betalning</span>' +
@@ -1553,15 +1559,13 @@
         '<span class="nh-footer__trust-item">Labbtestade produkter</span>' +
         '<span class="nh-footer__trust-item">18+ åldersgräns</span>' +
         "</div>" +
-        '<div class="nh-footer__pay">' +
-        '<span class="nh-footer__pay-label">Trygga betalningar</span>' +
-        '<div class="nh-footer__pay-row">' +
-        '<span class="nh-footer__pay-chip nh-footer__pay-chip--logo"><img src="https://www.hazey.se/wp-content/uploads/2023/04/Swish-Logo-Secondary-Light-BG.png" alt="Swish" loading="lazy"></span>' +
-        "</div>" +
-        "</div>" +
         "</div>" +
         '<div class="nh-footer__bottom">' +
-        "<p>Copyright: Hazey.se 2026</p>" +
+        '<div class="nh-footer__pay">' +
+        '<span class="nh-footer__pay-label">Trygg betalning</span>' +
+        '<span class="nh-footer__pay-chip nh-footer__pay-chip--logo"><img src="https://www.hazey.se/wp-content/uploads/2023/04/Swish-Logo-Secondary-Light-BG.png" alt="Swish" loading="lazy"></span>' +
+        "</div>" +
+        '<p class="nh-footer__copy">© Hazey.se 2026 · Stockholm, Sweden</p>' +
         "</div>";
 
       existing.parentNode.insertBefore(footer, existing);

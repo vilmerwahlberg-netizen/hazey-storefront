@@ -9056,3 +9056,288 @@ body.checkout-page .checkout-items-summary .item .content {
     gap: 10px !important;
   }
 }
+
+/* =====================================================================
+   FOOTER v2 (2026-07-06) — MMSports-layout (5 kolumner + botten-rad) i
+   Hazeys mörka stuk. Kolumner: Varumärke · Kundservice · Utforska ·
+   Populära kategorier · Nyhetsbrev (kompakt pill). Ersätter den gamla
+   .nh-footer__cols / .nh-footer__newsletter-strukturen. Appended → vinner.
+   ===================================================================== */
+.nh-footer__inner {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 32px !important;
+}
+.nh-footer__grid {
+  display: grid !important;
+  grid-template-columns: 1.5fr 1fr 1fr 1.1fr 1.65fr !important;
+  gap: 34px 34px !important;
+  padding: 52px 0 40px !important;
+}
+/* Neutralisera den GAMLA 4-kolumns-footerns nth-child-regler (text-align:right
+   på kol 2/4 + 28px letter-spaced h3 på kol 1/4) som annars stör de nya
+   kolumnerna. Samma specificitet (0,2,x) → vinner på källordning. */
+.nh-footer__grid .nh-footer__brand-col,
+.nh-footer__grid .nh-footer__col,
+.nh-footer__grid .nh-footer__nl-col {
+  text-align: left !important;
+}
+.nh-footer__grid .nh-footer__col h3,
+.nh-footer__grid .nh-footer__nl-col h3 {
+  font-size: 14px !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Varumärkeskolumn */
+.nh-footer__brand-col {
+  text-align: left !important;
+  margin: 0 !important;
+}
+.nh-footer__brand-col .nh-footer__logo {
+  height: 38px !important;
+  width: auto !important;
+  display: inline-block !important;
+  margin: 0 0 16px !important;
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.95 !important;
+}
+.nh-footer__brand-col .nh-footer__tagline {
+  max-width: 250px !important;
+  margin: 0 !important;
+  color: rgba(223, 232, 231, 0.62) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Länkkolumner */
+.nh-footer__col h3,
+.nh-footer__nl-col h3 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin: 2px 0 16px !important;
+}
+.nh-footer__col ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.nh-footer__col li {
+  margin: 0 !important;
+}
+.nh-footer__col a {
+  display: inline-block !important;
+  color: rgba(223, 232, 231, 0.72) !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  padding: 5px 0 !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease !important;
+}
+.nh-footer__col a:hover {
+  color: #bce691 !important;
+}
+
+/* Nyhetsbrevskolumn — kompakt pill (MMSports-stil) */
+.nh-footer__nl-col > p {
+  max-width: 330px !important;
+  margin: 0 0 16px !important;
+  color: rgba(223, 232, 231, 0.62) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+.nh-footer__nl-col > p strong {
+  color: #cdfc9f !important;
+}
+.nh-footer__nl-form {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  max-width: 340px !important;
+  background: #ede9e8 !important;
+  border-radius: 999px !important;
+  padding: 5px 5px 5px 4px !important;
+}
+.nh-footer__nl-form input {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  width: auto !important;
+  height: 44px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 14px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 15px !important;
+  color: #23231d !important;
+}
+.nh-footer__nl-form input::placeholder {
+  color: rgba(35, 35, 29, 0.5) !important;
+  letter-spacing: 0 !important;
+}
+.nh-footer__nl-form button {
+  flex: 0 0 auto !important;
+  width: 44px !important;
+  height: 44px !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.15s ease !important;
+}
+.nh-footer__nl-form button:hover:not(:disabled) {
+  background: #253019 !important;
+}
+.nh-footer__nl-form button:disabled {
+  opacity: 0.55 !important;
+  cursor: default !important;
+}
+.nh-footer__nl-col .nh-footer__nl-ok {
+  color: #cdfc9f !important;
+  font-size: 13px !important;
+  margin: 12px 0 0 !important;
+}
+.nh-footer__nl-col .nh-footer__nl-ok strong {
+  color: #cdfc9f !important;
+}
+.nh-footer__contact {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  margin-top: 20px !important;
+}
+.nh-footer__contact a {
+  color: #4faa25 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease !important;
+}
+.nh-footer__contact a:hover {
+  color: #bce691 !important;
+}
+
+/* Trust-rad (Hazeys trygghetsbadges) — subtil, ovanför botten-raden */
+.nh-footer__trust {
+  border-top: 1px solid rgba(223, 232, 231, 0.12) !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 22px 0 !important;
+  justify-content: center !important;
+}
+
+/* Botten-rad: betalning vänster, copyright höger */
+.nh-footer__bottom {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 20px 32px 30px !important;
+  border-top: 1px solid rgba(223, 232, 231, 0.12) !important;
+}
+.nh-footer__bottom .nh-footer__pay {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+.nh-footer__bottom .nh-footer__pay-label {
+  margin: 0 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(223, 232, 231, 0.5) !important;
+}
+.nh-footer__copy {
+  margin: 0 !important;
+  color: rgba(223, 232, 231, 0.55) !important;
+  font-size: 13px !important;
+  text-align: right !important;
+}
+
+/* Tablet: 2 kolumner, varumärke + nyhetsbrev spänner hela bredden */
+@media (max-width: 1080px) {
+  .nh-footer__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+    padding: 44px 0 36px !important;
+  }
+  .nh-footer__brand-col,
+  .nh-footer__nl-col {
+    grid-column: 1 / -1 !important;
+  }
+  .nh-footer__nl-form {
+    max-width: 440px !important;
+  }
+}
+
+/* Mobil: en kolumn, vänsterställt grid-innehåll (renare för länklistor);
+   trust + botten-rad centrerade. */
+@media (max-width: 560px) {
+  .nh-footer__inner {
+    padding: 0 20px !important;
+  }
+  .nh-footer__grid,
+  .nh-footer__grid .nh-footer__brand-col,
+  .nh-footer__grid .nh-footer__col,
+  .nh-footer__grid .nh-footer__nl-col {
+    text-align: left !important;
+  }
+  .nh-footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    padding: 34px 0 30px !important;
+  }
+  .nh-footer__brand-col .nh-footer__tagline {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .nh-footer__col a {
+    padding: 8px 0 !important;
+  }
+  .nh-footer__nl-col > p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  .nh-footer__nl-form {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .nh-footer__contact {
+    align-items: flex-start !important;
+  }
+  .nh-footer__bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 20px 28px !important;
+  }
+  .nh-footer__bottom .nh-footer__pay {
+    justify-content: center !important;
+  }
+  .nh-footer__copy {
+    text-align: center !important;
+  }
+}
