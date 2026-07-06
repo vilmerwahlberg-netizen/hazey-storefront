@@ -1068,6 +1068,46 @@
       host.insertBefore(box, anchor.nextSibling);
     }
 
+    // PDP: gör den långa "short-description" till en kort teaser + "Läs mer".
+    // Plattformen dumpar HELA sammanfattningen (rubrik + stycken + spec-lista +
+    // en inbäddad #product-information-länk) i köp-kolumnen → alldeles för lång.
+    // Vi wrappar innehållet i .nh-sd-body, klampar det (fade + max-height) och
+    // lägger en toggle som fäller ut in-place. Den fulla "Beskrivning"-accordionen
+    // finns kvar nedanför. Idempotent (guard: .nh-sd-body finns redan) + själv-
+    // läkande vid Vue-omrender (ny node saknar wrappern → wrappas om).
+    function initPdpShortDesc() {
+      var pp = document.getElementById("product-page");
+      if (!pp) return;
+      var sd = pp.querySelector(".short-description");
+      if (!sd) return;
+      if (sd.querySelector(".nh-sd-body")) return; // redan wrappad
+      // Klampa bara när det finns mer än en teaser att vinna på (annars lämna).
+      if (sd.scrollHeight < 280) return;
+
+      // Wrappa allt innehåll i en klamp-body så toggeln kan ligga UTANFÖR
+      // overflow:hidden och alltid synas.
+      var body = document.createElement("div");
+      body.className = "nh-sd-body nh-sd-clamped";
+      while (sd.firstChild) body.appendChild(sd.firstChild);
+      sd.appendChild(body);
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "nh-sd-toggle";
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = "Läs mer";
+      sd.appendChild(btn);
+
+      btn.addEventListener("click", function () {
+        var clamped = body.classList.toggle("nh-sd-clamped");
+        btn.setAttribute("aria-expanded", clamped ? "false" : "true");
+        btn.textContent = clamped ? "Läs mer" : "Visa mindre";
+        if (clamped) {
+          try { sd.scrollIntoView({ block: "nearest" }); } catch (e) {}
+        }
+      });
+    }
+
     // PDP: MÄNGDRABATT-visning i köp-boxen. Det RIKTIGA avdraget sätts i
     // Nyehandel-admin (kvantitetsrabatt per produkt); det här visar bara
     // erbjudandet + pris/styck och lyfter aktiv nivå när antalet ändras.
@@ -1395,6 +1435,7 @@
     initVariantBoxes = nhSafe(initVariantBoxes);
     initPdpRating = nhSafe(initPdpRating);
     initPdpReviewCta = nhSafe(initPdpReviewCta);
+    initPdpShortDesc = nhSafe(initPdpShortDesc);
     initBulkPricing = nhSafe(initBulkPricing);
     initCheckout = nhSafe(initCheckout);
     initCartSwish = nhSafe(initCartSwish);
@@ -1423,6 +1464,7 @@
       initVariantBoxes();
       initPdpRating();
       initPdpReviewCta();
+      initPdpShortDesc();
       initBulkPricing();
       initCheckout();
       initCartSwish();
@@ -1471,6 +1513,7 @@
       initVariantBoxes();
       initPdpRating();
       initPdpReviewCta();
+      initPdpShortDesc();
       initBulkPricing();
       initCheckout();
       initCartSwish();
@@ -1484,6 +1527,7 @@
       initVariantBoxes();
       initPdpRating();
       initPdpReviewCta();
+      initPdpShortDesc();
       initBulkPricing();
       initCheckout();
       initCartSwish();
