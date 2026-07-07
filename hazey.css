@@ -9582,3 +9582,36 @@ body.checkout-page .checkout-items-summary .item .content {
     max-height: 156px !important;
   }
 }
+
+/* =====================================================================
+   "KÖP MER - BETALA MINDRE" badge — MOBIL-FIX (2026-07-07)
+   På telefon är korten bara ~166px → den orange dealen OCH "Finns i flera
+   varianter" trängdes sida-vid-sida och BÅDA klipptes av med ellipsis
+   ("KÖP MER - BETALA MIND…" + "FLE…") = såg trasig ut. Desktop är oförändrat.
+   Fix: dealen tar HELA kortbredden, centrerad, läsbar, ingen avklippning;
+   den sekundära variant-badgen döljs på telefon (varianter syns på PDP:n).
+   ===================================================================== */
+@media (max-width: 600px) {
+  .product-card__image .buy-more-pay-less,
+  .product-card__image:has(.has-variants) .buy-more-pay-less {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    width: auto !important;
+    max-width: calc(100% - 16px) !important;
+    justify-content: center !important;
+    font-size: 0.52rem !important;
+    padding: 5px 10px !important;
+    letter-spacing: 0.03em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  /* sekundär badge bort på telefon → dealen får full, ren bredd */
+  #category-products .product-card__image .has-variants,
+  .pl-list .product-card__image .has-variants,
+  #product-page .product-card__image .has-variants,
+  .product-card__image .has-variants {
+    display: none !important;
+  }
+}
