@@ -1,0 +1,271 @@
+/* =============================================
+   FOOTER — Swish/betal-loggor (initFooter payment row)
+   Mörk footer → loggor i ljusa "chips" så de syns. Visa = blå kort-svg,
+   Mastercard = ringmärket, Swish = hazey-PNG på vit chip, Klarna = rosa chip.
+   ============================================= */
+.nh-footer__pay {
+  text-align: center !important;
+  padding: 6px 24px 2px !important;
+  margin-top: 4px !important;
+}
+.nh-footer__pay-label {
+  display: block !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(223, 232, 231, 0.55) !important;
+  margin: 0 0 12px !important;
+}
+.nh-footer__pay-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+.nh-footer__pay-chip {
+  height: 32px !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 9px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22) !important;
+}
+.nh-footer__pay-chip svg {
+  height: 20px !important;
+  width: auto !important;
+  display: block !important;
+}
+.nh-footer__pay-chip img {
+  height: 18px !important;
+  width: auto !important;
+  display: block !important;
+}
+/* Visa = full-bleed colour card → svg fills the chip edge-to-edge */
+.nh-footer__pay-chip--card {
+  padding: 0 !important;
+}
+.nh-footer__pay-chip--card svg {
+  height: 100% !important;
+  width: auto !important;
+}
+/* Klarna = signature pink badge with wordmark */
+.nh-footer__pay-chip--klarna {
+  background: #ffb3c7 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  letter-spacing: 0.01em !important;
+  color: #17120f !important;
+  padding: 0 14px !important;
+}
+
+/* =============================================
+   FOOTER — komplett trust-signalering (logga + tagline + trygghetsbadges)
+   Logga = butikens cloudfront-webp, vänd vit på den mörka footern så den
+   alltid syns. Trygghetsbadges = SANNA signaler (svensk butik, labbtestat,
+   diskret frakt, 18+) med grön bock som matchar USP-banden. Sociala medier +
+   ev. Trygg e-handel-certifikat läggs till när vi har riktiga länkar/cert.
+   ============================================= */
+.nh-footer__brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.nh-footer__logo {
+  height: 42px !important;
+  width: auto !important;
+  display: inline-block !important;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+.nh-footer__tagline {
+  max-width: 540px;
+  margin: 14px auto 0 !important;
+  color: rgba(223, 232, 231, 0.7) !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.nh-footer__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 24px;
+  max-width: 1100px;
+  margin: 4px auto 0;
+  padding: 20px 24px 6px;
+  border-top: 1px solid rgba(223, 232, 231, 0.12);
+}
+.nh-footer__trust-item {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  color: rgba(223, 232, 231, 0.82) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+}
+.nh-footer__trust-item::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background-color: #cdfc9f;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>')
+    center / contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>')
+    center / contain no-repeat;
+}
+
+@media (max-width: 600px) {
+  .nh-footer__logo {
+    height: 34px !important;
+  }
+  .nh-footer__tagline {
+    font-size: 14px !important;
+  }
+  .nh-footer__trust {
+    gap: 8px 16px;
+    padding: 16px 16px 4px;
+  }
+  .nh-footer__trust-item {
+    font-size: 12px !important;
+  }
+}
+
+/* =============================================
+   BUTIK — "Alla kollektioner" katalog (butik-grid.html)
+   Samlar ALLA kategorier grupperade (Cannabinoider / Serier / Buds / Vapes /
+   Carts / Hasch / Tillbehör) som rena länk-chips under bild-rutnätet.
+   ============================================= */
+.nh-cat-dir {
+  background: #e4d1bf;
+  padding: 8px 0 48px;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+}
+.nh-cat-dir__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.nh-cat-dir__title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  text-align: center !important;
+  margin: 0 0 28px !important;
+}
+.nh-cat-dir__group {
+  margin-bottom: 24px;
+}
+.nh-cat-dir__group h3 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(48, 62, 37, 0.7) !important;
+  margin: 0 0 12px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(48, 62, 37, 0.15) !important;
+}
+.nh-cat-dir__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.nh-cat-dir__chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 9px 16px !important;
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.14) !important;
+  border-radius: 8px !important;
+  color: #323d25 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  line-height: 1.2 !important;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease !important;
+}
+.nh-cat-dir__chip:hover {
+  background: #323d25 !important;
+  color: #eee7e1 !important;
+  border-color: #323d25 !important;
+}
+@media (max-width: 560px) {
+  .nh-cat-dir {
+    padding: 4px 0 40px;
+  }
+  .nh-cat-dir__inner {
+    padding: 0 16px;
+  }
+  .nh-cat-dir__title {
+    font-size: 24px !important;
+    margin-bottom: 22px !important;
+  }
+  .nh-cat-dir__chip {
+    padding: 8px 13px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* =============================================
+   REVIEW-STJÄRNOR på produktkort (initCardRatings fyller .rating)
+   Plattformens tomma .rating-div fylls med stjärnor + antal för produkter
+   som har omdömen (datan hämtas lazy från produktsidans aggregateRating).
+   ============================================= */
+/* Dölj kortets rating-div som standard (plattformen lämnar den tom = lucka).
+   Visas bara när initCardRatings lagt in stjärnor (.nh-rating-shown). Den
+   3-klassiga selektorn slår hide-regeln på specificitet. Scopad till kort så
+   PDP:ns egen recensionssektion (.rating) inte döljs. */
+.product-card .rating {
+  display: none !important;
+}
+.product-card .rating.nh-rating-shown {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  margin: 2px 0 4px !important;
+  line-height: 1 !important;
+  min-height: 0 !important;
+}
+.nh-stars {
+  display: inline-flex !important;
+  gap: 1px !important;
+  letter-spacing: 0 !important;
+}
+.nh-star {
+  color: rgba(48, 62, 37, 0.22) !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+}
+.nh-star.is-on {
+  color: #f5a623 !important;
+}
+.nh-stars__count {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: rgba(48, 62, 37, 0.55) !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+/* ===================================================================
+   ===================================================================
+   HAZEY PDP FACELIFT — synthesized fix (append at end of hazey.css)
+   All rules #product-page-scoped + !important per file convention.
+   Five dimensions merged, deduped, conflict-free. Wins on source order.
+   =================================================================== */
+

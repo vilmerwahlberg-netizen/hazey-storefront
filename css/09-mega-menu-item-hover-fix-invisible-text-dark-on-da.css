@@ -1,0 +1,195 @@
+/* =============================================
+   MEGA-MENU ITEM HOVER — fix invisible text (dark-on-dark)
+   The sub-item colour rule (…submenu …submenu …submenu-item > a, 1-3-1)
+   out-specified the hover rule, so text stayed dark green on the dark-green
+   hover pill. These high-specificity rules force readable cream text and
+   keep the <li> transparent (no white square behind the pill).
+   ============================================= */
+
+#store-header
+  .index-menu-section
+  > .index-menu__submenu
+  > .index-menu__submenu-item
+  > a:hover,
+#store-header
+  .index-menu__submenu
+  .index-menu__submenu
+  .index-menu__submenu-item
+  > a:hover,
+#store-header .index-menu .index-menu__submenu-item > a:hover {
+  background: #323d25 !important;
+  color: #eee7e1 !important;
+}
+
+#store-header .index-menu .index-menu__submenu-item:hover,
+#store-header .index-menu li.index-menu__submenu-item:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* =============================================
+   HERO — button restyle + rotating message carousel (Tershine-style)
+   Title + subtext rotate every 5s; buttons & background stay static.
+   ============================================= */
+
+/* THCA — true outline: transparent bg, green border + text */
+.nh-hero__btn--outline {
+  background: transparent !important;
+  color: #323d25 !important;
+  border: 2px solid #323d25 !important;
+}
+.nh-hero__btn--outline:hover {
+  background: #323d25 !important;
+  color: #ede9e8 !important;
+  border-color: #323d25 !important;
+}
+
+/* BÄSTSÄLJARE — solid orange, cream text */
+.nh-hero__btn--fill {
+  background: #d2691e !important;
+  color: #ede9e8 !important;
+  border: 2px solid #d2691e !important;
+}
+.nh-hero__btn--fill:hover {
+  background: #b8561a !important;
+  color: #ede9e8 !important;
+  border-color: #b8561a !important;
+}
+
+/* Rotator — only the title+sub fade/swap; min-height keeps buttons static */
+.nh-hero__rotor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 168px;
+  transition: opacity 0.5s ease;
+  will-change: opacity;
+}
+.nh-hero__rotor.is-fading {
+  opacity: 0;
+}
+
+/* Messages source list (read by initHeroRotator) — never shown */
+.nh-hero__messages {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .nh-hero__rotor {
+    min-height: 150px;
+  }
+}
+@media (max-width: 480px) {
+  .nh-hero__rotor {
+    min-height: 170px;
+  }
+}
+
+/* =============================================
+   SLIDESHOW — 2 buttons per slide (injected by initSlideshowButtons)
+   The native slideshow ships one .action button; we render two branded
+   ones (reusing .nh-hero__btn styles) in a centered row.
+   ============================================= */
+
+.template-components__slideshow .action {
+  display: flex !important;
+  gap: 14px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  margin-top: 12px !important;
+}
+
+/* Slightly tighter buttons inside the slideshow */
+.template-components__slideshow .action .nh-hero__btn {
+  padding: 13px 34px !important;
+}
+
+@media (max-width: 600px) {
+  .template-components__slideshow .action {
+    gap: 10px !important;
+  }
+  .template-components__slideshow .action .nh-hero__btn {
+    padding: 11px 22px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* =============================================
+   SLIDESHOW — hero look (dark text, light overlay, hero-size buttons)
+   Matches the .nh-hero styling: light gradient over the image, dark
+   #23231d title/subtext (set inline by initSlideshow too), hero-size
+   buttons with a clear gap. Overrides the dark-overlay block at the top.
+   ============================================= */
+
+.template-components__slideshow .slideshow__slides__slide::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(237, 233, 232, 0.72) 86%,
+    #e4d1bf 100%
+  ) !important;
+}
+
+.template-components__slideshow .slideshow__slides__slide__content__title h2 {
+  color: #23231d !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 54px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: none !important;
+}
+
+.template-components__slideshow .slideshow__slides__slide__content p {
+  color: #23231d !important;
+  font-size: 22px !important;
+  line-height: 1.75 !important;
+  text-shadow: none !important;
+}
+
+/* Two buttons — hero size + clear gap */
+.template-components__slideshow .action {
+  gap: 20px !important;
+  margin-top: 28px !important;
+}
+.template-components__slideshow .action .nh-hero__btn {
+  padding: 14px 38px !important;
+  font-size: 17px !important;
+}
+
+@media (max-width: 1200px) {
+  .template-components__slideshow .slideshow__slides__slide__content__title h2 {
+    font-size: 2.8rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .template-components__slideshow .slideshow__slides__slide__content__title h2 {
+    font-size: 2.2rem !important;
+  }
+  .template-components__slideshow .slideshow__slides__slide__content p {
+    font-size: 1rem !important;
+  }
+  .template-components__slideshow .action .nh-hero__btn {
+    padding: 12px 28px !important;
+    font-size: 0.85rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .template-components__slideshow .slideshow__slides__slide__content__title h2 {
+    font-size: 1.7rem !important;
+  }
+}
+
+/* =============================================
+   NEWSLETTER button — brand dark green (was light green)
+   ============================================= */
+.nh-footer__nl-form button {
+  background: #323d25 !important;
+  color: #ede9e8 !important;
+  border: 1px solid #323d25 !important;
+}
+.nh-footer__nl-form button:hover:not(:disabled) {
+  background: #253019 !important;
+}
+

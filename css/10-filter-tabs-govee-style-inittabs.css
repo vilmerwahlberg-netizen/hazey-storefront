@@ -1,0 +1,533 @@
+/* =============================================
+   FILTER TABS (Govee-style) — initTabs()
+   Active = filled #323d25, inactive = outline. Sits under the section,
+   above the grid; swaps the grid without a reload.
+   ============================================= */
+
+.nh-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 2px 0 30px;
+}
+
+.nh-tab {
+  padding: 9px 24px !important;
+  background: transparent !important;
+  border: 1.5px solid #323d25 !important;
+  border-radius: 999px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #323d25 !important;
+  cursor: pointer !important;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease !important;
+}
+
+.nh-tab:hover {
+  background: rgba(50, 61, 37, 0.08) !important;
+}
+
+.nh-tab.is-active {
+  background: #323d25 !important;
+  border-color: #323d25 !important;
+  color: #ede9e8 !important;
+}
+
+@media (max-width: 600px) {
+  .nh-tabs {
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .nh-tab {
+    padding: 8px 16px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* =============================================
+   FAQ ACCORDION — faq.html (native <details>, JSON-LD via initFaq)
+   ============================================= */
+
+.nh-faq {
+  background: #e4d1bf;
+  padding: 56px 24px 64px;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+}
+
+.nh-faq__inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.nh-faq__title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  text-align: center !important;
+  margin: 0 0 28px !important;
+  line-height: 1.1 !important;
+  position: relative !important;
+  padding-bottom: 14px !important;
+}
+
+.nh-faq__title::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  transform: translateX(-50%) !important;
+  width: 64px !important;
+  height: 3px !important;
+  background: #d2691e !important;
+  border-radius: 2px !important;
+}
+
+.nh-faq__item {
+  background: #eee7e1;
+  border: 1px solid rgba(48, 62, 37, 0.12);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.nh-faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 22px;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #323d25;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: background 0.15s ease;
+}
+
+.nh-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.nh-faq__item summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #4faa25;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nh-faq__item[open] summary::after {
+  content: "−";
+}
+
+.nh-faq__item summary:hover {
+  background: rgba(48, 62, 37, 0.04);
+}
+
+.nh-faq__a {
+  padding: 0 22px 20px;
+  color: rgba(48, 62, 37, 0.85);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.nh-faq__a a {
+  color: #2f7a16;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .nh-faq {
+    padding: 40px 16px 52px;
+  }
+  .nh-faq__title {
+    font-size: 28px !important;
+  }
+  .nh-faq__item summary {
+    font-size: 0.92rem;
+    padding: 15px 18px;
+  }
+}
+
+/* =============================================
+   PRODUCT CARD — MM Sports-style (price hierarchy + buy button)
+   Two spaced badges already handled by .nh-ribbon-row. Here: big price,
+   red campaign price + small struck original, and a persistent
+   Köp / Välj alternativ button (added by initCard).
+   ============================================= */
+
+/* Hide the old hover "Lägg i varukorg" image overlay — replaced by the
+   persistent button under the details. */
+.pl-list .product-card__image::after,
+#category-products .product-card__image::after {
+  display: none !important;
+}
+
+/* Price block: campaign price on top (big), struck original below (small) */
+.pl-list .price,
+#category-products .price {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: flex-start !important;
+}
+
+.pl-list .price ins,
+#category-products .price ins {
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  color: #323d25 !important;
+  text-decoration: none !important;
+  line-height: 1.1 !important;
+}
+
+/* Campaign (sale) price → red */
+.pl-list .price.has-comparison ins,
+#category-products .price.has-comparison ins {
+  color: #f03322 !important;
+}
+
+/* Original price → small, muted grey, struck, slight gap above */
+.pl-list .price del.comparison,
+.pl-list .price.has-comparison del.comparison,
+#category-products .price del.comparison,
+#category-products .price.has-comparison del.comparison {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: #888888 !important;
+  text-decoration: line-through !important;
+  margin: 4px 0 0 0 !important;
+}
+
+/* Persistent buy / choose-variant button */
+.nh-card-buy {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 14px !important;
+  padding: 12px 14px !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+}
+
+.nh-card-buy:hover {
+  background: #253019 !important;
+}
+
+/* Two badges already spaced via .nh-ribbon-row (Nyhet left, deal right);
+   ensure a little breathing room even at the edges */
+.pl-list .nh-ribbon-row,
+#category-products .nh-ribbon-row {
+  gap: 10px !important;
+}
+
+@media (max-width: 600px) {
+  .pl-list .price ins,
+  #category-products .price ins {
+    font-size: 1.1rem !important;
+  }
+  .nh-card-buy {
+    font-size: 0.72rem !important;
+    padding: 11px 10px !important;
+    letter-spacing: 0.05em !important;
+  }
+}
+
+/* =============================================
+   TYPOGRAFI — sync across all pages
+   ============================================= */
+
+/* Brödtext: Nunito 16px / 1.6 / 500 / 0.02em (overrides the 0.9rem base) */
+body,
+p,
+li,
+span,
+input,
+button,
+label,
+td,
+a {
+  font-size: 16px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Hero H1: Roboto 700, letter-spacing 1.62px, line-height 64.8px */
+.template-components__slideshow .slideshow__slides__slide__content__title h2,
+.nh-hero__title,
+.nh-bs-hero__title,
+.nh-contact__hero h1 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.62px !important;
+}
+@media (min-width: 769px) {
+  .template-components__slideshow .slideshow__slides__slide__content__title h2,
+  .nh-hero__title,
+  .nh-bs-hero__title,
+  .nh-contact__hero h1 {
+    line-height: 64.8px !important;
+  }
+}
+
+/* Section headings (Bästsäljare, Nyheter …): Roboto 36px / 700 */
+.pl-list > h2,
+.nh-pl-title,
+.nh-faq__title {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+/* =============================================
+   PRODUKTSIDAN (PDP)
+   ============================================= */
+
+/* White surfaces → cream #ede9e8 */
+#product-page,
+#product-page article.section,
+#product-page .section,
+#product-page .container,
+#product-page .accordion-item {
+  background-color: #ede9e8 !important;
+}
+
+/* Remove the white <hr> streaks (incl. the one above "Liknande produkter") */
+#product-page hr {
+  display: none !important;
+}
+
+/* Close (×) button — branded */
+#product-page .product-close-button button {
+  background: #eee7e1 !important;
+  color: #323d25 !important;
+  border: 1px solid rgba(48, 62, 37, 0.2) !important;
+  border-radius: 50% !important;
+}
+#product-page .product-close-button i {
+  color: #323d25 !important;
+}
+
+/* Image frame */
+#product-page .product-image-slider__main {
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(48, 62, 37, 0.1) !important;
+}
+
+/* NYHET badge on the product image: #000 → light green */
+#product-page .ribbons .ribbon.news,
+#product-page .ribbon.news {
+  background: #cdfc9f !important;
+  color: #323d25 !important;
+  border-radius: 999px !important;
+  padding: 5px 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+/* Rea-procent badge */
+#product-page .ribbon.sale {
+  background: #d2691e !important;
+  color: #ede9e8 !important;
+  border-radius: 999px !important;
+  padding: 5px 12px !important;
+}
+
+/* Title */
+#product-page .product-title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+}
+
+/* Price — big dark green; sale red + struck #888 */
+#product-page .stock-price .price {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+#product-page .stock-price .price ins {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #323d25 !important;
+  text-decoration: none !important;
+  line-height: 1.1 !important;
+}
+#product-page .stock-price .price del.comparison:empty {
+  display: none !important;
+}
+#product-page .stock-price .price:has(del.comparison:not(:empty)) ins {
+  color: #f03322 !important;
+}
+#product-page .stock-price .price del.comparison {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: #888888 !important;
+  text-decoration: line-through !important;
+}
+
+/* Stock status */
+#product-page #stock.stock-info {
+  color: #2f7a16 !important;
+  font-weight: 600 !important;
+}
+#product-page #stock .icon {
+  color: #4faa25 !important;
+}
+#product-page #product-sku {
+  color: rgba(48, 62, 37, 0.5) !important;
+}
+
+/* Amount stepper */
+#product-page .amount-input {
+  border: 1px solid rgba(48, 62, 37, 0.25) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+}
+#product-page .amount-input .button {
+  background: #ffffff !important;
+  border: none !important;
+  color: #323d25 !important;
+}
+#product-page .amount-input .input {
+  background: #ffffff !important;
+  color: #323d25 !important;
+  border: none !important;
+}
+
+/* LÄGG I VARUKORGEN — #4ade80 → #323d25 / white */
+#product-page .buy-controls .button.buy,
+#product-page .button.buy {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  min-height: 52px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+#product-page .buy-controls .button.buy:hover,
+#product-page .button.buy:hover {
+  background: #253019 !important;
+}
+
+/* USP list */
+#product-page .product-usp {
+  list-style: none !important;
+  margin: 18px 0 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px 20px !important;
+}
+#product-page .product-usp li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: #323d25 !important;
+  font-weight: 600 !important;
+}
+#product-page .product-usp li::before {
+  content: "✓";
+  color: #4faa25;
+  font-weight: 800;
+}
+
+/* Short description + accordion text */
+#product-page .short-description {
+  color: rgba(48, 62, 37, 0.85) !important;
+  line-height: 1.7 !important;
+}
+#product-page .short-description h1 {
+  font-size: 1.05rem !important;
+  color: #323d25 !important;
+  line-height: 1.35 !important;
+}
+#product-page .short-description a,
+#product-page .product-description a {
+  color: #2f7a16 !important;
+  text-decoration: underline !important;
+}
+
+#product-page .accordion-item {
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 10px !important;
+  margin-bottom: 12px !important;
+  overflow: hidden !important;
+}
+#product-page .accordion-button {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  background: transparent !important;
+}
+#product-page .product-description,
+#product-page .readmore__content {
+  color: rgba(48, 62, 37, 0.85) !important;
+  line-height: 1.7 !important;
+}
+#product-page .product-description h1,
+#product-page .product-description h2,
+#product-page .product-description h3,
+#product-page .product-description h4 {
+  color: #323d25 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+}
+#product-page .readmore__toggle button {
+  color: #d2691e !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+/* Related-category tags → branded pills */
+#product-page .related-categories h3 {
+  color: #323d25 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+}
+#product-page .related-categories .tag {
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.2) !important;
+  border-radius: 999px !important;
+}
+#product-page .related-categories .tag a {
+  color: #323d25 !important;
+}
+
+/* "Liknande produkter" heading */
+#product-page .product-page-lists__similar-products h2,
+#product-page .product-list h2 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  text-align: center !important;
+}
+

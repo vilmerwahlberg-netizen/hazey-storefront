@@ -1,0 +1,441 @@
+/* ===================================================================
+   [DIM 1] PDP TOP RATING WIDGET (.price-features .rating)
+   Fixes 0%-stars bug + mobile invisibility. Platform markup:
+   .rating > a > .stars-outer > .stars-inner[width:0%] + .count.is-hidden-mobile.
+   We colour the native stars amber (via direct color AND ::before, so it
+   works whether the glyphs are text or Font-Awesome pseudo content), make
+   the empty track light-grey, force the count visible on mobile, and size
+   our injected nh-stars markup. CANONICAL amber stars-inner rule for the
+   top widget lives here (DIM 2 owns the review-list one).
+   =================================================================== */
+#product-page .price-features .rating {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 4px 0 8px !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+}
+#product-page .price-features .rating a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+/* Native platform widget: light-grey empty track, amber fill, ~18px */
+#product-page .price-features .rating .stars-outer {
+  position: relative !important;
+  display: inline-block !important;
+  color: rgba(48, 62, 37, 0.22) !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+#product-page .price-features .rating .stars-outer::before {
+  color: rgba(48, 62, 37, 0.22) !important;
+}
+#product-page .price-features .rating .stars-inner {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  color: #f5a623 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+#product-page .price-features .rating .stars-inner::before {
+  color: #f5a623 !important;
+}
+/* Our injected nh-stars markup in the top widget — larger than on cards */
+#product-page .price-features .rating .nh-stars {
+  vertical-align: middle !important;
+}
+#product-page .price-features .rating .nh-star {
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+#product-page .price-features .rating .nh-stars__count {
+  font-size: 14px !important;
+  vertical-align: middle !important;
+}
+/* Count: always visible (platform hides it on mobile with is-hidden-mobile,
+   which made the whole rating invisible on phones). */
+#product-page .price-features .rating .count {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: rgba(48, 62, 37, 0.7) !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+#product-page .price-features .rating .count.is-hidden-mobile {
+  display: inline-block !important;
+}
+@media (max-width: 768px) {
+  #product-page .price-features .rating .count,
+  #product-page .price-features .rating .count.is-hidden-mobile {
+    display: inline-block !important;
+  }
+}
+
+/* ===================================================================
+   [DIM 2] REVIEW LIST (.product-reviews) — card styling
+   Platform markup: .product-reviews > ul > li > [div(>h4(name + span date) + p)
+   + div.rating(.stars-outer > .stars-inner[width%])]. li is flex by default,
+   which shoves the rating to the far-right edge. We make each li a stacked
+   white card and move .rating UP (order:1) so amber stars sit above the name.
+   CANONICAL amber stars-inner rule for the review list lives here.
+   =================================================================== */
+#product-page .product-reviews {
+  margin-top: 8px !important;
+}
+#product-page .product-reviews ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+#product-page .product-reviews li {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 16px 18px !important;
+  box-shadow: none !important;
+  list-style: none !important;
+  color: rgba(48, 62, 37, 0.85) !important;
+}
+/* Text block (unclassed first div: h4 + p) -> below the stars */
+#product-page .product-reviews li > div:first-child {
+  order: 2 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+/* Rating block: pulled to the top of the card, left-aligned (not floated) */
+#product-page .product-reviews li > .rating,
+#product-page .product-reviews li .rating {
+  order: 1 !important;
+  width: auto !important;
+  margin: 0 !important;
+  float: none !important;
+  flex: 0 0 auto !important;
+  align-self: flex-start !important;
+  text-align: left !important;
+}
+/* Reviewer name (h4): dark green, bold; keep name + date on one row */
+#product-page .product-reviews li h4 {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  margin: 2px 0 4px !important;
+  padding: 0 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: #323d25 !important;
+}
+/* Date span lives INSIDE h4 -> reset inherited size/weight/colour */
+#product-page .product-reviews li h4 span {
+  display: inline !important;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
+  color: rgba(48, 62, 37, 0.5) !important;
+}
+/* Review body text */
+#product-page .product-reviews li p {
+  margin: 0 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  color: rgba(48, 62, 37, 0.85) !important;
+}
+/* Stars: amber filled, light-grey empty track (preserve width% overlay) */
+#product-page .product-reviews .stars-outer {
+  position: relative !important;
+  display: inline-block !important;
+  color: #d9d4cd !important;
+}
+#product-page .product-reviews .stars-outer::before {
+  color: #d9d4cd !important;
+}
+#product-page .product-reviews .stars-inner {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  color: #f5a623 !important;
+}
+#product-page .product-reviews .stars-inner::before {
+  color: #f5a623 !important;
+}
+@media (max-width: 768px) {
+  #product-page .product-reviews ul {
+    gap: 12px !important;
+  }
+  #product-page .product-reviews li {
+    padding: 14px 14px !important;
+  }
+  #product-page .product-reviews li h4 {
+    font-size: 0.95rem !important;
+  }
+  #product-page .product-reviews li p {
+    font-size: 0.92rem !important;
+  }
+}
+
+/* ===================================================================
+   [DIM 3] BUY BOX INTERNALS (.meta-usp-buy-container)
+   Hide duplicate SKU, clean single stock band, polish variant select +
+   USP checklist, even inner band rhythm. The buy-box card is the creme
+   #eee7e1 tile (FAQ-style override earlier in file); divider colour
+   rgba(48,62,37,0.10) is tuned for that creme background. Only additive
+   polish + the SKU hide here (card/stepper/select-sizing exist earlier).
+   =================================================================== */
+/* 1) Hide the grey duplicate SKU (just repeats the H1) */
+#product-page #product-sku {
+  display: none !important;
+}
+/* 2) Stock band: only #stock remains; kill flex-with-pipe separators */
+#product-page .product-meta.flex-with-pipe,
+#product-page .product-meta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid rgba(48, 62, 37, 0.1) !important;
+}
+#product-page .product-meta::before,
+#product-page .product-meta::after,
+#product-page .product-meta > *::before,
+#product-page .product-meta > *::after {
+  content: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+}
+#product-page #stock.stock-info {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.01em !important;
+  margin: 0 !important;
+}
+/* 3) Variant group: own band, divider, Roboto, hover state */
+#product-page .meta-usp-buy-container .variants {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid rgba(48, 62, 37, 0.1) !important;
+}
+#product-page .meta-usp-buy-container .variants label {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: rgba(48, 62, 37, 0.72) !important;
+  margin: 0 0 7px !important;
+}
+#product-page .meta-usp-buy-container .variants label::first-letter {
+  text-transform: uppercase !important;
+}
+#product-page .meta-usp-buy-container .variants .select select {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 500 !important;
+  color: #323d25 !important;
+  cursor: pointer !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease !important;
+}
+#product-page .meta-usp-buy-container .variants .select select:hover {
+  border-color: rgba(50, 61, 37, 0.55) !important;
+}
+/* 4) Buy controls: next band, no top divider (button is the strong element) */
+#product-page .meta-usp-buy-container .buy-controls {
+  margin: 0 !important;
+}
+/* 5) USP checklist: unified closing band */
+#product-page .meta-usp-buy-container .product-usp {
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(48, 62, 37, 0.1) !important;
+  gap: 9px !important;
+}
+#product-page .meta-usp-buy-container .product-usp li {
+  align-items: flex-start !important;
+  gap: 9px !important;
+  font-weight: 500 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.4 !important;
+  color: rgba(48, 62, 37, 0.9) !important;
+}
+#product-page .meta-usp-buy-container .product-usp li::before {
+  content: "✓" !important;
+  color: #4faa25 !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  flex: 0 0 auto !important;
+}
+
+/* ===================================================================
+   [DIM 4] DESCRIPTION TYPOGRAPHY
+   Cap the giant h1/h2 inside the accordion body + short description,
+   readable spec lists, tighten stray <br> gaps. Colour/font-family/
+   links/toggle already set earlier — only size/weight/margin/list/br
+   added here. No max-height/overflow/display changes (read-more safe).
+   =================================================================== */
+#product-page .product-description h1 {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 18px 0 8px !important;
+}
+#product-page .product-description h2 {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 16px 0 6px !important;
+}
+#product-page .product-description h3 {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 14px 0 6px !important;
+}
+#product-page .product-description h4,
+#product-page .product-description h5,
+#product-page .product-description h6 {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 12px 0 4px !important;
+}
+#product-page .product-description > h1:first-child,
+#product-page .product-description > h2:first-child,
+#product-page .product-description .content > h1:first-child,
+#product-page .product-description .content > h2:first-child {
+  margin-top: 0 !important;
+}
+#product-page .product-description ul {
+  list-style: disc !important;
+  padding-left: 1.35em !important;
+  margin: 8px 0 12px !important;
+}
+#product-page .product-description ol {
+  list-style: decimal !important;
+  padding-left: 1.5em !important;
+  margin: 8px 0 12px !important;
+}
+#product-page .product-description li {
+  line-height: 1.6 !important;
+  margin: 0 0 4px !important;
+  padding-left: 2px !important;
+}
+#product-page .product-description li::marker {
+  color: #4faa25 !important;
+}
+#product-page .product-description p {
+  margin: 0 0 10px !important;
+}
+#product-page .product-description li br {
+  display: none !important;
+}
+#product-page .product-description br {
+  line-height: 1.2 !important;
+}
+/* Short description: cap lesser headings (h1 already 1.05rem) + lists */
+#product-page .short-description h2 {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  line-height: 1.3 !important;
+  margin: 14px 0 6px !important;
+}
+#product-page .short-description h3 {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  line-height: 1.3 !important;
+  margin: 12px 0 4px !important;
+}
+#product-page .short-description ul {
+  list-style: disc !important;
+  padding-left: 1.35em !important;
+  margin: 8px 0 12px !important;
+}
+#product-page .short-description ol {
+  list-style: decimal !important;
+  padding-left: 1.5em !important;
+  margin: 8px 0 12px !important;
+}
+#product-page .short-description li {
+  line-height: 1.6 !important;
+  margin: 0 0 4px !important;
+  padding-left: 2px !important;
+}
+#product-page .short-description li::marker {
+  color: #4faa25 !important;
+}
+#product-page .short-description li br {
+  display: none !important;
+}
+#product-page .short-description br {
+  line-height: 1.2 !important;
+}
+
+/* ===================================================================
+   [DIM 5] LAYOUT BALANCE + MOBILE
+   Desktop: minor column-gap tightening only (sticky two-column kept;
+   description can't flow full-width without breaking order:1-5; image
+   slider uses transforms so its height can't be safely capped).
+   Mobile (<=769px): single-column stack + tightened rhythm. Complements
+   the existing 900px stack and 480px buy-row wrap (not redefined here).
+   =================================================================== */
+#product-page .product-detail {
+  gap: 40px !important;
+}
+@media (max-width: 769px) {
+  #product-page .product-detail {
+    gap: 22px !important;
+    padding: 20px 16px 36px !important;
+  }
+  #product-page .product-detail__media,
+  #product-page .product-detail__information {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+    position: static !important;
+    top: auto !important;
+  }
+  #product-page .product-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin: 4px 0 8px !important;
+  }
+  #product-page .price-features {
+    margin: 0 0 6px !important;
+    row-gap: 4px !important;
+  }
+  #product-page .price-features .stock-price .price ins {
+    font-size: 1.7rem !important;
+  }
+  #product-page .meta-usp-buy-container {
+    padding: 16px !important;
+    margin: 12px 0 4px !important;
+  }
+  #product-page .meta-usp-buy-container .product-usp {
+    margin-top: 14px !important;
+    padding-top: 14px !important;
+  }
+  #product-page .short-description {
+    margin-top: 18px !important;
+    padding: 18px !important;
+  }
+}
+

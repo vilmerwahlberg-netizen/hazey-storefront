@@ -1,0 +1,464 @@
+/* =====================================================================
+   MOBIL-PASS (2026-06-29) — THCA SEO-text, #Banner, mobilnav
+   ===================================================================== */
+
+/* (A) THCA-textblocket (.template-components__text-editor): et_pb_text_10/_11
+   har INLINE width:700px / max-width:600px → texten klipptes av till höger på
+   telefon. Tvinga full bredd + radbrytning + sidpadding (slår inline utan
+   !important via vår !important). Rubriken nedskalad på små skärmar. */
+@media (max-width: 768px) {
+  .template-components__text-editor .et_pb_text_10,
+  .template-components__text-editor .et_pb_text_11,
+  .template-components__text-editor .et_pb_text_inner {
+    width: auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .template-components__text-editor .te-content {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    box-sizing: border-box !important;
+  }
+  .template-components__text-editor .et_pb_text_10 h1 {
+    font-size: 1.7rem !important;
+    line-height: 1.2 !important;
+  }
+  .template-components__text-editor .et_pb_text_11 p,
+  .template-components__text-editor .et_pb_text_11 .et_pb_text_inner {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* (B) #Banner — var kant-i-kant på mobil. Runda hörn + sidluft + mjuk skugga
+   så bannern blir en polerad kort-yta istället för att nudda skärmkanten. */
+.template-components__columns:has(#Banner) > .container {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+#Banner .image-component img,
+#Banner img {
+  border-radius: 12px !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  box-shadow: 0 8px 22px rgba(48, 62, 37, 0.16) !important;
+}
+@media (max-width: 768px) {
+  .template-components__columns:has(#Banner) {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+  #Banner .image-component img,
+  #Banner img {
+    border-radius: 10px !important;
+  }
+}
+
+/* (C) MOBILNAV (#mobile-side-nav) — puts: enhetlig beige topbar (vit aktiv-tab
+   bröt mot temat), och ta bort tomma kantlinjer/rader längst ner (tomma li:n
+   och locale-tabben visade ramar utan innehåll). */
+#mobile-side-nav .tab-controls,
+#mobile-side-nav #mobile-tabs li a,
+#mobile-side-nav #mobile-tabs li.is-active a {
+  background: #eee7e1 !important;
+}
+/* sista menyraden + tomma li:n → ingen kantlinje (slutar rent) */
+#mobile-side-nav .mobile-navigation-menu > li:last-child {
+  border-bottom: none !important;
+}
+#mobile-side-nav .mobile-navigation-menu li:empty,
+#mobile-side-nav .mobile-navigation-menu li:not(:has(a)) {
+  display: none !important;
+  border: none !important;
+}
+/* locale-tabben (språkval) får inte ärva menyradernas ramar */
+#mobile-side-nav [data-tab="locale"] li,
+#mobile-side-nav [data-tab="locale"] {
+  border: none !important;
+}
+
+/* =====================================================================
+   KUNDCITAT / TESTIMONIALS (testimonials-section.html) — startsidans botten
+   Återanvänder .nh-stars / .nh-star.is-on (amber). Creme-kort på #ede9e8.
+   ===================================================================== */
+.nh-testimonials {
+  background: #e4d1bf;
+  padding: 56px 24px 64px;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+}
+.nh-testimonials__inner { max-width: 1200px; margin: 0 auto; }
+.nh-testimonials__head { text-align: center; margin-bottom: 32px; }
+.nh-testimonials__title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  margin: 0 0 14px !important;
+  line-height: 1.1 !important;
+}
+.nh-testimonials__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #323d25;
+  color: #eee7e1;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+.nh-testimonials__badge .nh-tp-star { color: #f5a623; font-size: 14px; line-height: 1; }
+.nh-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.nh-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(48, 62, 37, 0.1);
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  margin: 0;
+  box-shadow: 0 6px 18px rgba(48, 62, 37, 0.06);
+}
+.nh-testimonial__stars { gap: 2px !important; }
+.nh-testimonial__stars .nh-star { font-size: 15px !important; }
+.nh-testimonial__quote {
+  margin: 0;
+  color: #323d25;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 500;
+  flex: 1;
+}
+.nh-testimonial__author {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #323d25;
+}
+.nh-testimonial__author span {
+  display: block;
+  margin-top: 2px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: rgba(48, 62, 37, 0.55);
+}
+.nh-testimonials__cta {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  color: #2f7a16 !important;
+  font-weight: 700;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1024px) { .nh-testimonials__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .nh-testimonials { padding: 40px 16px 48px; }
+  .nh-testimonials__grid { grid-template-columns: 1fr; gap: 12px; }
+  .nh-testimonials__title { font-size: 28px !important; }
+}
+
+/* =====================================================================
+   SWISH i slide-out-varukorgen (#cartAside) — under kassaknappen (initCartSwish)
+   ===================================================================== */
+#cartAside .nh-cart-swish {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  margin-top: 12px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(48, 62, 37, 0.1) !important;
+}
+#cartAside .nh-cart-swish__txt {
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: rgba(48, 62, 37, 0.6) !important;
+}
+#cartAside .nh-cart-swish__chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12) !important;
+}
+#cartAside .nh-cart-swish__chip img {
+  height: 18px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* =====================================================================
+   CHECKOUT-UPSELLING ("Du kanske också gillar") — .upselling-swipern var
+   helt ostylad. Branda kort + pris-hierarki + pilar + prickar. !important
+   genomgående (plattformens egna stilar är aggressiva i kassan).
+   ===================================================================== */
+.upselling { background: transparent !important; margin: 0 auto 34px !important; max-width: 1200px !important; }
+.upselling > h2 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  text-align: center !important;
+  margin: 0 0 22px !important;
+}
+.upselling .product-list-swiper { position: relative !important; padding: 0 6px !important; }
+/* product card */
+.upselling_products__item {
+  display: flex !important;
+  flex-direction: column !important;
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.1) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  margin: 0 8px !important;
+}
+.upselling_products__item__image {
+  background: #d9c3ae !important;
+  aspect-ratio: 1 / 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+.upselling_products__item__image img {
+  width: 82% !important;
+  height: 82% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+.upselling_products__item__content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 9px !important;
+  padding: 14px 14px 16px !important;
+  flex: 1 !important;
+}
+.upselling_products__item__content > div:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  flex: 1 !important;
+}
+.upselling_products__item .title {
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  color: #323d25 !important;
+  line-height: 1.35 !important;
+  text-decoration: none !important;
+}
+.upselling_products__item .price {
+  display: flex !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: #323d25 !important;
+  line-height: 1.1 !important;
+}
+/* struck "before" price = the inner <span> */
+.upselling_products__item .price span {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: #888888 !important;
+  text-decoration: line-through !important;
+}
+/* on sale (has a struck span) → current price red */
+.upselling_products__item .price:has(span) { color: #f03322 !important; }
+/* buy button (kan vara <button> eller <a>) */
+.upselling_products__item .button.buy {
+  display: block !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 11px 12px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease !important;
+}
+.upselling_products__item .button.buy:hover { background: #253019 !important; }
+/* prev/next arrows */
+.upselling .proximo-arrow-button {
+  position: absolute !important;
+  top: 40% !important;
+  transform: translateY(-50%) !important;
+  z-index: 5 !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(48, 62, 37, 0.18) !important;
+  color: #323d25 !important;
+  box-shadow: 0 2px 10px rgba(48, 62, 37, 0.14) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+}
+.upselling .proximo-arrow-button.left { left: -6px !important; }
+.upselling .proximo-arrow-button.right { right: -6px !important; }
+.upselling .proximo-arrow-button:hover { background: #323d25 !important; color: #eee7e1 !important; }
+/* dots */
+.upselling .slider-dots { display: flex !important; justify-content: center !important; gap: 8px !important; margin-top: 16px !important; }
+.upselling .slider-dots__dot {
+  width: 8px !important; height: 8px !important; border-radius: 999px !important;
+  background: rgba(48, 62, 37, 0.25) !important; cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.upselling .slider-dots__dot.active { background: #323d25 !important; transform: scale(1.25) !important; }
+@media (max-width: 768px) {
+  .upselling > h2 { font-size: 1.2rem !important; }
+  .upselling .proximo-arrow-button { width: 32px !important; height: 32px !important; }
+}
+
+/* =====================================================================
+   FEEDBACK-FIX (2026-06-29) — lika höga produktkort, mobil-footer,
+   recensions-CTA. Allt i vårt CSS/JS-lager.
+   ===================================================================== */
+
+/* ---- 1) LIKA HÖGA PRODUKTKORT (enkel & tät) ----
+   Korten görs lika höga via grid-stretch. Namnet klamras till MAX 2 rader så
+   ett långt namn inte spräcker layouten. INGA höjd-reservationer (de sköt
+   isär pris/namn och gjorde knappen konstig) — priset sitter tätt under
+   namnet och köpknappen ett litet fast avstånd (14px) under priset. */
+.pl-list .products,
+#category-products,
+#product-page .product-list .products {
+  align-items: stretch !important;
+}
+.pl-list .product-card,
+#category-products .product-card,
+#product-page .product-list .product-card {
+  height: 100% !important;
+}
+.pl-list .details-wrapper,
+#category-products .details-wrapper,
+#product-page .product-card .details-wrapper {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+/* Namn: max 2 rader (ellipsis vid längre) — ingen min-höjd, priset följer tätt */
+.pl-list .details .name,
+#category-products .details .name,
+#product-page .product-card .details .name {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+/* Köpknapp pinnas i BOTTEN (margin-top:auto) → alla knappar ligger på samma
+   bottenlinje. Kort UTAN betyg får då automatiskt extra luft under priset så
+   knappen hamnar i linje med korten SOM har betyg. Priset sitter kvar tätt
+   under namnet (auto-luften hamnar mellan pris och knapp, inte vid namnet). */
+.pl-list .nh-card-buy,
+#category-products .nh-card-buy,
+#product-page .nh-card-buy {
+  margin-top: auto !important;
+}
+/* Garanterad minsta lucka pris→knapp (auto kan bli 0 på radens högsta kort,
+   annars skulle priset nudda knappen där). Ligger UNDER priset, rör ej namnet. */
+.pl-list .details,
+#category-products .details,
+#product-page .product-card .details {
+  margin-bottom: 16px !important;
+}
+
+/* ---- 2) MOBIL-FOOTER: centrera kolumnerna ----
+   Kolumnerna var det ENDA vänsterställda blocket medan allt annat i
+   footern (logga, tagline, trygghetsbadges, betalning, copyright) är
+   centrerat → bröt symmetrin och såg sparsam ut. Centrera dem på mobil. */
+@media (max-width: 480px) {
+  .nh-footer__cols {
+    text-align: center !important;
+    gap: 22px !important;
+  }
+  .nh-footer__col,
+  .nh-footer__col:nth-child(1),
+  .nh-footer__col:nth-child(2),
+  .nh-footer__col:nth-child(3),
+  .nh-footer__col:nth-child(4) {
+    text-align: center !important;
+  }
+  /* Nyhetsbrevs-texten centreras med, så kortet matchar */
+  .nh-footer__nl-text {
+    text-align: center !important;
+  }
+}
+
+/* ---- 3) RECENSIONS-CTA på PDP (injiceras av initPdpReviewCta) ----
+   "Man kan se men inte lämna omdömen": plattformens per-produkt-skrivsystem
+   är backend-låst. Vi ger en riktig väg att lämna omdöme via Trustpilot. */
+.nh-review-cta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin: 18px 0 40px !important;
+  padding: 16px 18px !important;
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 12px !important;
+}
+.nh-review-cta__txt {
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  color: #323d25 !important;
+}
+.nh-review-cta__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  padding: 11px 22px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease !important;
+}
+.nh-review-cta__btn:hover {
+  background: #253019 !important;
+  color: #ffffff !important;
+}
+@media (max-width: 560px) {
+  .nh-review-cta {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: center !important;
+  }
+  .nh-review-cta__btn {
+    justify-content: center !important;
+  }
+}
+

@@ -1,0 +1,176 @@
+/* =============================================
+   KASSAN — vänsterkolumn: ta bort den stela VITA panelen + branda
+   frakt/betalnings-korten. Hela .checkout-information var en vit ruta på
+   creme-sidan ("konstiga vita ramar"); gör den transparent så den matchar
+   sammanfattningen, och ge Fraktsätt/Betalning rena kort med grön ram.
+   (Mejladress/Postnummer/Fortsätt/Betala köp nedanför ligger i Kustom-
+   iframen och kan inte färgsättas härifrån.)
+   ============================================= */
+
+body.checkout-page .checkout-information {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Frakt- + betalnings-alternativ → rena vita kort med subtil grön ram */
+body.checkout-page .checkout-information .shipping .options li,
+body.checkout-page .checkout-information .payment .options li {
+  background: #ffffff !important;
+  border: 1px solid rgba(48, 62, 37, 0.14) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin-bottom: 10px !important;
+}
+/* valt alternativ → tydlig grön ram */
+body.checkout-page .checkout-information .shipping .options li.is-selected,
+body.checkout-page .checkout-information .payment .options li.is-selected {
+  border-color: #323d25 !important;
+  box-shadow: inset 0 0 0 1px #323d25 !important;
+}
+/* neutralisera ev. inre ramar/bakgrunder så bara kortet syns */
+body.checkout-page .checkout-information .shipping .options li > div,
+body.checkout-page .checkout-information .payment .options li > div {
+  background: transparent !important;
+  border: none !important;
+}
+/* rubriker + pris i korten → brand-grön */
+body.checkout-page .checkout-information .shipping h2,
+body.checkout-page .checkout-information .payment h2 {
+  color: #323d25 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+}
+body.checkout-page .checkout-information .shipping .options .description h4,
+body.checkout-page .checkout-information .shipping .options .price {
+  color: #323d25 !important;
+}
+/* radio/checkbox → grön accent (var blå) */
+body.checkout-page .checkout-information input[type="radio"],
+body.checkout-page .checkout-information input[type="checkbox"] {
+  accent-color: #323d25 !important;
+}
+/* landsväljarna: lite tydligare grön ram så de inte ser ut som lösa vita rutor */
+body.checkout-page .checkout-information .country-select .select select,
+body.checkout-page .checkout-information .customer-type .select select {
+  border: 1px solid rgba(48, 62, 37, 0.22) !important;
+  background-color: #ffffff !important;
+}
+
+/* =============================================
+   KASSAN — produktminiatyr i sammanfattningen: beige bild-tile (var vit)
+   Matchar produktkortens bild-bakgrund (#d9c3ae) istället för stark vit ruta.
+   ============================================= */
+/* Square beige tile that CENTERS the thumbnail (was top-aligned/off) */
+body.checkout-page .checkout-items-summary .item figure.media {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 80px !important;
+  height: 80px !important;
+  flex: 0 0 80px !important;
+  margin: 0 !important;
+  padding: 6px !important;
+  background-color: #d9c3ae !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+body.checkout-page .checkout-items-summary .item figure.media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* =============================================
+   JUSTERINGAR — "Visa fler" grön, filter-toolbar ej vit, PDP beige
+   ============================================= */
+
+/* "Visa fler" / load-more → fylld grön istället för vit outline */
+.nh-pl-more,
+.load-more-products > .button {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-color: #323d25 !important;
+}
+.nh-pl-more:hover,
+.load-more-products > .button:hover {
+  background: #253019 !important;
+  color: #ffffff !important;
+  border-color: #253019 !important;
+}
+
+/* Kategori filter/sort-toolbar → creme istället för stark vit ruta */
+.category-sort {
+  background: #eee7e1 !important;
+}
+
+/* PRODUKTSIDAN → BEIGE som startsidan (#e4d1bf), var gråvit #ede9e8 */
+#product-page,
+#product-page article.section,
+#product-page .section,
+#product-page .container,
+#product-page .accordion-item {
+  background-color: #e4d1bf !important;
+}
+
+/* =============================================
+   PDP KORT = FAQ-kort (creme #eee7e1, ej vita) + produktbild = beige tile
+   (#d9c3ae) med contain-bild & luft runtom — samma logik som produktkorten.
+   ============================================= */
+
+/* Köp-box + beskrivning → samma creme-kort som FAQ (.nh-faq__item) */
+#product-page .meta-usp-buy-container,
+#product-page .short-description {
+  background: #eee7e1 !important;
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+/* Produktbild-ramen → beige tile (samma som .product-card__image) */
+#product-page .product-image-slider__main {
+  background: #d9c3ae !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+/* Bilden contain + luft runtom (~86% som korten) → beige syns som tile */
+#product-page .product-image-slider__slide a.product-lightbox,
+#product-page .product-image-slider__slide .product-lightbox {
+  padding: 7% !important;
+  box-sizing: border-box !important;
+}
+#product-page .product-image-slider__main img {
+  object-fit: contain !important;
+  background: transparent !important;
+}
+
+/* Thumbnails → samma beige tile-look */
+#product-page .product-image-slider__thumbnails .thumbnail,
+#product-page .product-image-slider__thumbnails img {
+  background: #d9c3ae !important;
+  border-radius: 6px !important;
+}
+
+/* =============================================
+   SLIDESHOW — progress-tracker brand-grön (var vit)
+   ============================================= */
+.nh-progress-bar {
+  background: #323d25 !important;
+}
+
+/* Orange hero-/slideshow-knapp (BÄSTSÄLJARE) → tydlig grön ram runtom,
+   så den matchar outline-knappen (THCA) bredvid. */
+.nh-hero__btn--fill,
+.template-components__slideshow .button.is-primary {
+  border: 2px solid #323d25 !important;
+}
+.nh-hero__btn--fill:hover,
+.template-components__slideshow .button.is-primary:hover {
+  border-color: #323d25 !important;
+}
+

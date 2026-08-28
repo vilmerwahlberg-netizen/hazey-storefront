@@ -1,0 +1,631 @@
+/* =============================================
+   BÄSTSÄLJARE — filter chips row (centered, sits under the h2)
+   Chips reuse .nh-pl-filter styling; initBsListing() handles clicks.
+   ============================================= */
+
+.nh-bs-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 30px;
+}
+
+/* The shared chip is defined under "CUSTOM PRODUCT LISTING" — here we only
+   make sure the active chip uses the brand dark green (not lime). */
+.nh-bs-filters .nh-pl-filter.is-active {
+  background: #323d25 !important;
+  border-color: #323d25 !important;
+  color: #ffffff !important;
+}
+
+/* Footer: button first, count under it */
+.template-components__product-list .pl-list .nh-pl-footer {
+  padding-top: 36px;
+}
+
+@media (max-width: 600px) {
+  .nh-bs-filters {
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+}
+
+/* =============================================
+   KONTAKT PAGE — kontakt.html
+   Hero + info notice + quick-contact cards + mailto forms.
+   ============================================= */
+
+.nh-contact {
+  background: #e4d1bf;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+  padding-bottom: 60px;
+}
+
+/* Hero */
+.nh-contact__hero {
+  background: linear-gradient(160deg, #3b4b2d 0%, #323d25 55%, #273218 100%);
+  padding: 64px 24px 60px;
+  text-align: center;
+}
+
+.nh-contact__hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.nh-contact__hero h1 {
+  display: inline-block !important;
+  position: relative !important;
+  color: #ffffff !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 16px !important;
+  padding-bottom: 14px !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+.nh-contact__hero h1::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  transform: translateX(-50%) !important;
+  width: 64px !important;
+  height: 3px !important;
+  background: #cdfc9f !important;
+  border-radius: 2px !important;
+}
+
+.nh-contact__hero p {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.nh-contact__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Info notice — overlaps the hero a touch */
+.nh-contact__note {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: -30px auto 28px;
+  background: #eee7e1;
+  border-left: 4px solid #4faa25;
+  border-radius: 10px;
+  padding: 18px 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.nh-contact__note p {
+  margin: 0 !important;
+  color: #323d25 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Quick contact cards */
+.nh-contact__info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.nh-contact__info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  background: #323d25;
+  border-radius: 12px;
+  padding: 22px 16px;
+  text-decoration: none !important;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.nh-contact__info-card:not(.nh-contact__info-card--static):hover {
+  transform: translateY(-2px);
+  background: #253019;
+}
+
+.nh-contact__info-ic {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.nh-contact__info-label {
+  color: #cdfc9f !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.nh-contact__info-val {
+  color: #eee7e1 !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+}
+
+/* Form + newsletter grid */
+.nh-contact__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.nh-contact__card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px 30px;
+  box-shadow: 0 10px 30px rgba(48, 62, 37, 0.12);
+}
+
+.nh-contact__card--alt {
+  background: #eee7e1;
+}
+
+.nh-contact__card h2 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: #323d25 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 6px !important;
+}
+
+.nh-contact__card > p {
+  color: rgba(48, 62, 37, 0.78) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  margin: 0 0 4px !important;
+}
+
+.nh-contact__card strong {
+  color: #323d25 !important;
+}
+
+/* Forms */
+.nh-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.nh-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.nh-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nh-form__field > span {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: rgba(48, 62, 37, 0.7) !important;
+}
+
+.nh-form input,
+.nh-form textarea {
+  width: 100% !important;
+  background: #f7f3ee !important;
+  border: 1px solid rgba(48, 62, 37, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  color: #23231d !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease !important;
+}
+
+.nh-form input::placeholder,
+.nh-form textarea::placeholder {
+  color: rgba(48, 62, 37, 0.4) !important;
+}
+
+.nh-form input:focus,
+.nh-form textarea:focus {
+  border-color: #4faa25 !important;
+  background: #ffffff !important;
+}
+
+.nh-form textarea {
+  resize: vertical !important;
+  min-height: 130px !important;
+  line-height: 1.6 !important;
+}
+
+.nh-form__btn {
+  align-self: flex-start;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #323d25 !important;
+  border-radius: 6px !important;
+  padding: 13px 40px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease !important;
+}
+
+.nh-form__btn:hover {
+  background: #253019 !important;
+  border-color: #253019 !important;
+}
+
+.nh-form__btn--light {
+  background: #bce691 !important;
+  color: #323d25 !important;
+  border-color: #323d25 !important;
+}
+
+.nh-form__btn--light:hover {
+  background: #a9da78 !important;
+  border-color: #323d25 !important;
+}
+
+.nh-contact__reseller {
+  margin-top: 0;
+}
+
+@media (max-width: 860px) {
+  .nh-contact__hero h1 {
+    font-size: 2.2rem !important;
+  }
+  .nh-contact__grid {
+    grid-template-columns: 1fr;
+  }
+  .nh-contact__info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .nh-contact__inner {
+    padding: 0 16px;
+  }
+  .nh-contact__card {
+    padding: 22px 20px;
+  }
+  .nh-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   MOBILE FIXES — section gutters + topbar fit
+   On phones/tablets the Bulma .container is full-bleed and our product-list
+   .section padding is 0 horizontally, so the grids touched the screen edges
+   ("not following grid"). Restore consistent side gutters + let the topbar
+   grow so its USP items stop being clipped.
+   ============================================= */
+
+@media (max-width: 1023px) {
+  .template-components__product-list .pl-list {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .template-components__product-list .pl-list {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* Topbar USP strip — was clipped by a fixed height when items wrapped */
+@media (max-width: 600px) {
+  #store-header .topbar {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  #store-header .topbar .usp {
+    gap: 1px 12px !important;
+    padding: 6px 10px !important;
+  }
+  #store-header .topbar .usp li {
+    font-size: 10.5px !important;
+    gap: 4px !important;
+  }
+}
+
+/* =============================================
+   MOBILE SIDE NAV (#mobile-side-nav) + SEARCH — brand re-skin (phone)
+   Platform defaults were black-on-white with a solid-black category
+   sub-header and a blue search focus ring. Re-skin to beige surface,
+   dark-green text/arrows, green accents — and brand the search field.
+   ============================================= */
+
+/* Surface */
+#mobile-side-nav,
+#mobile-side-nav.aside,
+#mobile-tab-content,
+#mobile-tab-content > div {
+  background: #eee7e1 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+/* Top tab + close row */
+#mobile-side-nav .tab-controls {
+  background: #eee7e1 !important;
+  border-bottom: 1px solid rgba(48, 62, 37, 0.12) !important;
+}
+
+#mobile-side-nav #mobile-tabs,
+#mobile-side-nav #mobile-tabs ul {
+  border: none !important;
+}
+
+#mobile-side-nav #mobile-tabs li a {
+  color: #323d25 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+}
+
+#mobile-side-nav #mobile-tabs li.is-active a {
+  color: #323d25 !important;
+  border-bottom-color: #4faa25 !important;
+}
+
+#mobile-side-nav .close-mobile-nav,
+#mobile-side-nav .close-mobile-nav .icon,
+#mobile-side-nav .close-mobile-nav i {
+  color: #323d25 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Menu list */
+#mobile-side-nav .mobile-navigation-menu,
+#mobile-side-nav .mobile-navigation-menu ul.children {
+  background: #eee7e1 !important;
+}
+
+#mobile-side-nav .mobile-navigation-menu li {
+  border-bottom: 1px solid rgba(48, 62, 37, 0.1) !important;
+}
+
+#mobile-side-nav .mobile-navigation-menu a {
+  color: #323d25 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 14px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+#mobile-side-nav .mobile-navigation-menu a:hover,
+#mobile-side-nav .mobile-navigation-menu a:active {
+  background: rgba(48, 62, 37, 0.07) !important;
+  color: #253019 !important;
+}
+
+/* Forward arrows — were big & black */
+#mobile-side-nav .next-arrow {
+  width: 13px !important;
+  height: 13px !important;
+  flex-shrink: 0 !important;
+  margin-left: 12px !important;
+}
+
+#mobile-side-nav .next-arrow path {
+  fill: rgba(48, 62, 37, 0.55) !important;
+}
+
+/* Sub-panel: back button + show-all strip */
+#mobile-side-nav .sub-info {
+  background: #e4d1bf !important;
+  border: none !important;
+}
+
+#mobile-side-nav .sub-header {
+  background: transparent !important;
+}
+
+#mobile-side-nav .mobile-menu-back-button {
+  color: #323d25 !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+}
+
+#mobile-side-nav .mobile-menu-back-button svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+#mobile-side-nav .mobile-menu-back-button svg path {
+  fill: #323d25 !important;
+}
+
+/* Category sub-title — was a solid BLACK bar */
+#mobile-side-nav .sub-title {
+  background: #323d25 !important;
+  color: #eee7e1 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  padding: 12px 18px !important;
+  border-radius: 8px !important;
+  margin: 8px 0 !important;
+}
+
+/* "Visa alla i …" link */
+#mobile-side-nav .sub-show-all .show-all {
+  color: #2f7a16 !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+#mobile-side-nav .sub-show-all .show-all span {
+  color: #323d25 !important;
+}
+
+/* Language select (locale tab) */
+#mobile-side-nav .country-select .select select {
+  background: #ffffff !important;
+  border: 1px solid rgba(48, 62, 37, 0.25) !important;
+  color: #323d25 !important;
+  border-radius: 6px !important;
+}
+
+/* ── SEARCH — kill the blue focus ring, brand the field + dropdown ── */
+.store-search .input:focus,
+#search-input:focus,
+#store-header .store-search .input:focus,
+#store-header #search-input:focus {
+  border-color: #4faa25 !important;
+  box-shadow: 0 0 0 3px rgba(79, 170, 37, 0.18) !important;
+  outline: none !important;
+}
+
+.store-search .search-field i.fa-search,
+#store-header .store-search .fa-search {
+  color: #323d25 !important;
+}
+
+.store-search__dropdown {
+  background: #eee7e1 !important;
+  border-top: 1px solid rgba(48, 62, 37, 0.12) !important;
+}
+
+.store-search__dropdown a,
+.store-search .view-all {
+  color: #323d25 !important;
+}
+
+.store-search .view-all {
+  font-weight: 700 !important;
+}
+
+.store-search .view-all-arrow path {
+  fill: #323d25 !important;
+}
+
+.store-search .close-button,
+.store-search .close-button .icon svg {
+  color: #323d25 !important;
+}
+
+/* =============================================
+   HEADER & NAV — checklist tweaks
+   ============================================= */
+
+/* 1) "Alla produkter" caret — give the arrow room AFTER the text.
+   High specificity to beat `.navbar-menu .navbar-item > a { padding }`. */
+#store-header .navbar-menu .navbar-item.has-dropdown > a.navbar-link,
+#store-header .navbar-menu .navbar-item > a.navbar-link:not(.is-arrowless) {
+  padding-right: 36px !important;
+}
+#store-header .navbar-link:not(.is-arrowless)::after {
+  right: 16px !important;
+}
+
+/* 2) Mega-menu / dropdown surface: #ffffff → #ede9e8 */
+#store-header .navbar-dropdown,
+#store-header .index-menu,
+#store-header .index-menu.navbar-dropdown {
+  background: #ede9e8 !important;
+}
+
+/* 3) Search field: #ffffff → #ede9e8 */
+#store-header .store-search .input,
+#store-header #search-input,
+.store-search .input {
+  background: #ede9e8 !important;
+}
+#store-header .store-search .input:focus,
+#store-header #search-input:focus,
+.store-search .input:focus {
+  background: #ede9e8 !important;
+}
+
+/* 4) Nav-button hover — drop the white square, soft green tint instead */
+#store-header .navbar-item > a:hover,
+#store-header .navbar-link:hover,
+#store-header .navbar-item.is-hoverable:hover > .navbar-link {
+  color: #323d25 !important;
+  background: rgba(50, 61, 37, 0.08) !important;
+}
+
+/* Action icon buttons (search / account / cart / hamburger) */
+#store-header .actions .button:hover,
+#store-header .actions .button:focus,
+#store-header .basket-icon .button:hover,
+#store-header .cart-button:hover {
+  background: rgba(50, 61, 37, 0.08) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 5) Header hide-on-scroll-down / show-on-scroll-up (toggled by initHeaderScroll) */
+#store-header {
+  transition: transform 0.3s ease !important;
+  will-change: transform;
+}
+#store-header.nh-header-hidden {
+  transform: translateY(-100%) !important;
+}
+
+/* 4b) The white square was the <li class="navbar-item"> turning white on
+   hover/active (Bulma). The tint lives on the inner <a>; keep the <li>
+   transparent so only the soft green pill shows. */
+#store-header .navbar-menu .navbar-item:hover,
+#store-header .navbar-menu .navbar-item.is-active,
+#store-header .navbar-menu .navbar-item.is-hoverable:hover,
+#store-header .navbar-menu li.navbar-item:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+

@@ -1,0 +1,429 @@
+/* =============================================
+   BANNER SECTION (#Banner) — top/bottom padding
+   ============================================= */
+
+.template-components__columns:has(#Banner) {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+@media (max-width: 768px) {
+  .template-components__columns:has(#Banner) {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+}
+
+/* =============================================
+   PROMOBAR — playful upgrade (shine sweep + emoji + hover)
+   ============================================= */
+
+.nh-promobar {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* keep the content above the shine */
+.nh-promobar .container {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* animated light streak sweeping across the green */
+.nh-promobar::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 40% !important;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  ) !important;
+  transform: translateX(-150%) skewX(-18deg) !important;
+  animation: nh-promobar-shine 5.5s ease-in-out infinite !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+@keyframes nh-promobar-shine {
+  0% {
+    transform: translateX(-150%) skewX(-18deg);
+  }
+  60%,
+  100% {
+    transform: translateX(350%) skewX(-18deg);
+  }
+}
+
+/* emojis now live inline in the markup (promobar.html) */
+
+/* hover pop */
+.nh-promobar__item {
+  transition:
+    transform 0.15s ease,
+    color 0.15s ease !important;
+}
+.nh-promobar__item:hover {
+  color: #cdfc9f !important;
+  transform: translateY(-1px) !important;
+}
+
+/* respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .nh-promobar::after {
+    display: none !important;
+  }
+}
+
+/* =============================================
+   PRODUCT CARD POLISH — bigger image, badge pills (no black)
+   ============================================= */
+
+/* Bigger product image */
+.pl-list .product-card__image img,
+#category-products .product-card__image img {
+  width: 86% !important;
+  height: 86% !important;
+}
+
+/* Name & price → dark green, not near-black */
+.pl-list .details .name,
+#category-products .details .name {
+  color: #323d25 !important;
+}
+
+.pl-list .details a:hover .name,
+#category-products .details a:hover .name {
+  color: rgba(48, 62, 37, 0.6) !important;
+}
+
+.pl-list .price ins,
+#category-products .price ins {
+  color: #323d25 !important;
+  font-size: 1rem !important;
+}
+
+#category-products .price.has-comparison del.comparison {
+  color: rgba(48, 62, 37, 0.5) !important;
+}
+
+/* Badges → rounded pills that shrink to content.
+   The platform sets .ribbon { left:0!important; right:0!important } which
+   stretches them full-width — reset width + anchor each to one side. */
+.pl-list .ribbon,
+#category-products .ribbon {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  max-width: calc(100% - 20px) !important;
+  border-radius: 999px !important;
+  padding: 5px 11px !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1 !important;
+  box-shadow: 0 2px 6px rgba(48, 62, 37, 0.18) !important;
+}
+
+/* "Nyhet" → fresh light-green pill, top-LEFT */
+.pl-list .ribbon.news,
+#category-products .ribbon.news {
+  left: 10px !important;
+  right: auto !important;
+  background: #cdfc9f !important;
+  color: #323d25 !important;
+}
+
+/* "Rea" / "-%" → warm deal pill, top-RIGHT (beside Nyhet) */
+.pl-list .ribbon.sale,
+#category-products .ribbon.sale {
+  left: auto !important;
+  right: 10px !important;
+  background: #d2691e !important;
+  color: #ffffff !important;
+}
+
+/* Ribbons grouped into one row: Nyhet left, deal right (justify-between).
+   Added by wrapRibbons() in hazey.html. */
+.pl-list .nh-ribbon-row,
+#category-products .nh-ribbon-row {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  right: 10px !important;
+  z-index: 6 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+  pointer-events: none !important;
+}
+
+.pl-list .nh-ribbon-row .ribbon,
+#category-products .nh-ribbon-row .ribbon,
+.pl-list .nh-ribbon-row .ribbon.news,
+.pl-list .nh-ribbon-row .ribbon.sale,
+#category-products .nh-ribbon-row .ribbon.news,
+#category-products .nh-ribbon-row .ribbon.sale {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 768px) {
+  .pl-list .product-card__image img,
+  #category-products .product-card__image img {
+    width: 88% !important;
+    height: 88% !important;
+  }
+}
+
+/* Sale "before" price inside .pl-list (used by the custom Kampanjer section) */
+.pl-list .price.has-comparison del.comparison {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: rgba(48, 62, 37, 0.5) !important;
+  text-decoration: line-through !important;
+  margin-right: 4px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+/* Loading / empty state must span the grid despite the display:contents rule */
+.pl-list .products > .nh-pl-loading,
+.pl-list .products > .nh-pl-empty {
+  display: block !important;
+  grid-column: 1 / -1 !important;
+}
+
+/* Skeleton loader — shows while the Kampanjer section fetches (no "Laddar…" text) */
+.pl-list .nh-skel__img {
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(48, 62, 37, 0.06) 25%,
+    rgba(48, 62, 37, 0.13) 37%,
+    rgba(48, 62, 37, 0.06) 63%
+  );
+  background-size: 400% 100%;
+  animation: nh-skel-shimmer 1.4s ease infinite;
+}
+
+.pl-list .nh-skel__line {
+  height: 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background: rgba(48, 62, 37, 0.1);
+}
+
+.pl-list .nh-skel__line.short {
+  width: 45%;
+}
+
+@keyframes nh-skel-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-list .nh-skel__img {
+    animation: none;
+  }
+}
+
+/* Button bar sitting inside a product-list section (e.g. Kampanjer) */
+.pl-list .nh-btn-bar {
+  background: transparent !important;
+  padding: 36px 0 4px !important;
+}
+
+/* =============================================
+   CATEGORY PAGE — remove the (empty) "Senast besökta" sidebar,
+   let products use the full width, 4 columns on desktop
+   ============================================= */
+
+.main-container.category.has-sidebar .aside {
+  display: none !important;
+}
+
+.main-container.category.has-sidebar {
+  gap: 0 !important;
+}
+
+.main-container.category.has-sidebar .main-content {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1201px) {
+  #category-products.has-3 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  #category-products.has-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* =============================================
+   CATEGORY HERO — richer header band (.category-description)
+   ============================================= */
+
+.category-description {
+  background: linear-gradient(
+    160deg,
+    #3b4b2d 0%,
+    #323d25 55%,
+    #273218 100%
+  ) !important;
+  padding: 60px 24px 52px !important;
+  text-align: center !important;
+}
+
+.category-description::before {
+  opacity: 0.05 !important;
+}
+
+.category-description > .container {
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
+}
+
+.category-description h1.title {
+  color: #ffffff !important;
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 18px !important;
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 14px !important;
+}
+
+.category-description h1.title::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  transform: translateX(-50%) !important;
+  width: 64px !important;
+  height: 3px !important;
+  background: #cdfc9f !important;
+  border-radius: 2px !important;
+}
+
+/* Text content sits in a clean cream card ("box") on the green band */
+.category-description .nh-cat-box {
+  max-width: 720px !important;
+  margin: 4px auto 0 !important;
+  background: #eee7e1 !important;
+  border-radius: 14px !important;
+  padding: 22px 26px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22) !important;
+  text-align: left !important;
+}
+
+/* Lead line — the always-visible teaser inside the box */
+.category-description .nh-cat-lead {
+  color: #323d25 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  margin: 0 0 2px !important;
+  text-align: center !important;
+}
+
+/* Full article — hidden until "Läs mer", left-aligned for readability */
+.category-description #read-more-content {
+  color: rgba(48, 62, 37, 0.82) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.75 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  transition: max-height 0.35s ease !important;
+}
+
+.category-description #read-more-content h1,
+.category-description #read-more-content h2,
+.category-description #read-more-content h3 {
+  color: #323d25 !important;
+  font-size: 1rem !important;
+  margin: 14px 0 6px !important;
+}
+
+.category-description #read-more-content h1:first-child {
+  margin-top: 12px !important;
+}
+
+.category-description .readmore__toggle {
+  text-align: center !important;
+  margin-top: 14px !important;
+}
+
+/* "Läs mer" — same button styling as the rest of the site (nh-btn-bar / nh-info) */
+.category-description .readmore__toggle button {
+  display: inline-block !important;
+  padding: 13px 36px !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  border: 1.5px solid #323d25 !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease !important;
+}
+
+.category-description .readmore__toggle button:hover {
+  background: #253019 !important;
+  border-color: #253019 !important;
+  color: #ffffff !important;
+}
+
+/* Kill the platform's read-more fade gradient (the ugly white strip over the lead) */
+.category-description .readmore__toggle::before {
+  display: none !important;
+  background: none !important;
+}
+
+.category-description .readmore__toggle {
+  text-align: center !important;
+  margin-top: 10px !important;
+}
+
+.category-description .readmore__toggle button {
+  color: #cdfc9f !important;
+}
+
+.category-description .readmore__toggle button:hover {
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .category-description {
+    padding: 40px 18px 32px !important;
+  }
+
+  .category-description h1.title {
+    font-size: 1.9rem !important;
+  }
+}
+

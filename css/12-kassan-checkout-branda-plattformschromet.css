@@ -1,0 +1,428 @@
+/* =============================================
+   KASSAN (checkout) — branda plattformschromet
+   Hostat Vue-checkout. Headern var SVART (rgb 21,21,21). Vi brandar header,
+   bakgrund, rubriker och kort-ytor. Knappar/fält redan gröna via
+   .button.is-primary / .input globalt. (SPA:n laddar ej i headless, så
+   summary-/kort-reglerna är färg-only och bryter ingen layout.)
+   ============================================= */
+
+body.checkout-page {
+  background: #ede9e8 !important;
+}
+
+/* Black checkout header → cream surface, green logo/links/icons */
+header.checkout {
+  background: #eee7e1 !important;
+  border-bottom: 1px solid rgba(48, 62, 37, 0.12) !important;
+  box-shadow: none !important;
+}
+header.checkout,
+header.checkout a,
+header.checkout span,
+header.checkout p,
+header.checkout .icon {
+  color: #323d25 !important;
+}
+header.checkout svg path {
+  fill: #323d25 !important;
+}
+header.checkout svg[fill="none"] path {
+  fill: none !important;
+  stroke: #323d25 !important;
+}
+
+/* Checkout headings → Roboto dark green */
+main.checkout h1,
+main.checkout h2,
+main.checkout h3,
+.checkout-page h1,
+.checkout-page h2,
+.checkout-page h3,
+.checkout .title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: #323d25 !important;
+}
+
+/* Checkout summary/section surfaces → NO white card frame. The white box +
+   border here was the "konstiga vita ramar" the user flagged (around the
+   .summary totals). They sit on the cream page like the rest now. */
+main.checkout .box,
+main.checkout .card,
+.checkout__summary,
+.checkout-summary,
+.order-summary,
+.checkout .summary,
+.checkout-section {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Selected delivery / payment option → green highlight */
+.checkout .is-selected,
+.checkout .selected,
+.checkout [aria-selected="true"],
+.checkout-page .is-selected {
+  border-color: #323d25 !important;
+}
+
+/* Checkout links (terms, edit) → brand green */
+main.checkout a,
+.checkout-page main a {
+  color: #2f7a16 !important;
+}
+
+/* =============================================
+   PDP LOWER SECTION FIX — the platform renders "Liknande produkter" and
+   the "Beskrivning"/Relaterade-kategorier in a cramped 2-COLUMN layout
+   (description floated to the right half at x:660, overlapping the grid).
+   Flatten that whole lower container to a single full-width column, stacked.
+   ============================================= */
+
+#product-page article.section > .container:not(.product-detail) {
+  display: block !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+/* level-1 wrapper(s) + level-2 columns → block, full width, no float/flex */
+#product-page article.section > .container:not(.product-detail) > *,
+#product-page article.section > .container:not(.product-detail) > * > * {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  flex: none !important;
+}
+/* Re-assert the similar-products grid (don't let the flatten kill it).
+   minmax(0,1fr) → equal columns even when a product name is long. */
+#product-page article.section .product-list .products {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  #product-page article.section .product-list .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 768px) {
+  #product-page article.section .product-list .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Description accordion + related categories: full-width cards below products */
+#product-page .accordion,
+#product-page .related-categories {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  margin-left: 0 !important;
+}
+#product-page .related-categories {
+  margin-top: 22px !important;
+}
+
+/* Spacing between the stacked lower blocks */
+#product-page article.section > .container:not(.product-detail) .product-list {
+  margin-bottom: 36px !important;
+}
+
+/* ---- Orphaned ribbon badges: force EVERY product card to be the positioning
+   context so the absolute .nh-ribbon-row always sits on its own image, never
+   floating next to a section heading. ---- */
+.product-card {
+  position: relative !important;
+}
+/* Belt-and-suspenders: a ribbon-row whose card somehow isn't positioned
+   stays clipped to the card image area, never overflowing to the section. */
+#product-page .product-card .nh-ribbon-row,
+.recently-visited-products .product-card .nh-ribbon-row {
+  position: absolute !important;
+}
+
+/* ---- PDP similar/recently-visited cards: the `.products > div > div {
+   display:contents }` grid-flatten rule OVER-MATCHES the card here (it sits one
+   wrapper shallower than homepage cards), making `.product-card` display:contents
+   → it has no box → its absolute ribbon-row escapes to the section heading.
+   Force the card back to a real flex box (beats the contents rule on specificity). ---- */
+#product-page .product-list .products div.product-card,
+#product-page .product-list .products .product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+}
+
+/* =============================================
+   PDP — variant selector moved INTO the buy box (initPdpVariant)
+   Sits between stock and the qty/add row: stock → DOFT → antal+köp → USP.
+   ============================================= */
+
+#product-page .meta-usp-buy-container .variants,
+#product-page .meta-usp-buy-container .nh-in-buybox {
+  width: 100% !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+}
+#product-page .meta-usp-buy-container .variants .field {
+  margin: 0 0 10px !important;
+}
+#product-page .meta-usp-buy-container .variants .field:last-child {
+  margin-bottom: 0 !important;
+}
+/* Label (DOFT / STRAIN …) → small uppercase green heading */
+#product-page .meta-usp-buy-container .variants label {
+  display: block !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: rgba(48, 62, 37, 0.7) !important;
+  margin: 0 0 6px !important;
+}
+/* The Bulma select → full-width branded field */
+#product-page .meta-usp-buy-container .variants .control,
+#product-page .meta-usp-buy-container .variants .select {
+  display: block !important;
+  width: 100% !important;
+}
+#product-page .meta-usp-buy-container .variants .select select {
+  width: 100% !important;
+  height: 48px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(50, 61, 37, 0.25) !important;
+  border-radius: 8px !important;
+  color: #23231d !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding: 0 14px !important;
+}
+#product-page .meta-usp-buy-container .variants .select select:focus {
+  border-color: #4faa25 !important;
+  box-shadow: 0 0 0 3px rgba(79, 170, 37, 0.18) !important;
+}
+/* Keep Bulma's caret visible on the right */
+#product-page
+  .meta-usp-buy-container
+  .variants
+  .select:not(.is-multiple)::after {
+  border-color: #323d25 !important;
+  right: 14px !important;
+}
+
+/* =============================================
+   KASSAN — qty-steppers + diskret rabattknapp (chrome som syns i översikten)
+   "Fortsätt"/svarta knappar grön-färgas av initCheckout() (JS, klassoberoende).
+   Här brandar vi antal-stegarna i ordersammanfattningen + rabattkods-knappen.
+   ============================================= */
+
+body.checkout-page .amount-input {
+  border: 1px solid rgba(48, 62, 37, 0.25) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+}
+body.checkout-page .amount-input .button {
+  background: #ffffff !important;
+  border: none !important;
+  color: #323d25 !important;
+}
+body.checkout-page .amount-input .button:hover {
+  background: #cdfc9f !important;
+  color: #323d25 !important;
+}
+body.checkout-page .amount-input .input {
+  background: #ffffff !important;
+  color: #323d25 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove (trash) icon → green, red on hover */
+body.checkout-page button:has(.fa-trash),
+body.checkout-page button:has(.fa-trash-alt),
+body.checkout-page .remove-item {
+  background: transparent !important;
+  color: #323d25 !important;
+  border: none !important;
+}
+body.checkout-page button:has(.fa-trash):hover,
+body.checkout-page button:has(.fa-trash-alt):hover,
+body.checkout-page .remove-item:hover {
+  color: #c0392b !important;
+}
+
+/* Discount-code "Lägg till" → branded green when enabled.
+   SCOPED to .coupon-code only — the earlier `.field.has-addons .button`
+   selector also matched the qty steppers (.amount-input IS .field.has-addons)
+   and painted every -/+/trash solid green. Keep it on the coupon button. */
+body.checkout-page .coupon-code .button.is-primary:not(:disabled),
+body.checkout-page .coupon-code__row .button:not(:disabled) {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-color: #323d25 !important;
+}
+
+/* ---- Compact, subtle qty stepper in the order summary (was a wide solid-green
+   block stretching the full row). White controls, green glyphs, fit-content. ---- */
+body.checkout-page .checkout-items-summary .amount-input {
+  display: inline-flex !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  align-items: stretch !important;
+  border: 1px solid rgba(48, 62, 37, 0.25) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+}
+body.checkout-page .checkout-items-summary .amount-input .control {
+  margin: 0 !important;
+}
+/* High specificity (…item .item-amount .amount-input .control button.button) —
+   the store's primary color paints these via a platform rule that out-ranks a
+   plain `.amount-input .button`; this deeper chain wins so they go white. */
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control
+  button.button {
+  background-color: #ffffff !important;
+  border: none !important;
+  color: #323d25 !important;
+  width: 34px !important;
+  height: 36px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control
+  button.button:hover {
+  background-color: #cdfc9f !important;
+  color: #323d25 !important;
+}
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control
+  input.input {
+  width: 38px !important;
+  height: 36px !important;
+  border: none !important;
+  text-align: center !important;
+  background-color: #ffffff !important;
+  color: #323d25 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+/* Separate the remove (trash) control from the +/- stepper so it reads as
+   its own subtle action, not part of the green block. */
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control:last-child {
+  border-left: 1px solid rgba(48, 62, 37, 0.15) !important;
+}
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control:last-child
+  button.button {
+  color: rgba(48, 62, 37, 0.55) !important;
+}
+body.checkout-page
+  .checkout-items-summary
+  .item
+  .item-amount
+  .amount-input
+  .control:last-child
+  button.button:hover {
+  background-color: transparent !important;
+  color: #c0392b !important;
+}
+/* Item row tidy-up */
+body.checkout-page .checkout-items-summary .item .item-amount {
+  margin-top: 8px !important;
+}
+body.checkout-page .checkout-items-summary .item .content strong {
+  color: #323d25 !important;
+}
+
+/* =============================================
+   KASSAN — ordersammanfattningens FÄRGER matchar resten av sajten.
+   Plattformen använde nästan-svart (#171717/#23231d) för priser/totaler/
+   rubriker och ljusgrön länk (#2f7a16) på produktnamn. Vi enar mot brand:
+   namn/priser/totaler = #323d25, sekundärtext muted-grön, divider grön.
+   ============================================= */
+
+/* Produktnamn (länk + strong) → brand dark green (ej ljusgrön länkfärg) */
+body.checkout-page .checkout-items-summary .item .content a,
+body.checkout-page .checkout-items-summary .item .content a strong,
+body.checkout-page .checkout-items-summary .item .content strong {
+  color: #323d25 !important;
+  font-weight: 700 !important;
+}
+/* "385 kr / Styck" + ev. variant/doft-rad → dämpad grön */
+body.checkout-page .checkout-items-summary .item .price,
+body.checkout-page .checkout-items-summary .item .content .option,
+body.checkout-page .checkout-items-summary .item .doft {
+  color: rgba(48, 62, 37, 0.65) !important;
+}
+/* Radtotal (t.ex. 385 kr) → brand dark green, fet */
+body.checkout-page .checkout-items-summary .item .total {
+  color: #323d25 !important;
+  font-weight: 700 !important;
+}
+/* Summering: Delsumma / Frakt / Totalsumma + belopp → brand dark green */
+body.checkout-page .checkout-items-summary .summary,
+body.checkout-page .checkout-items-summary .summary .row,
+body.checkout-page .checkout-items-summary .summary .row span,
+body.checkout-page .checkout-items-summary .summary .total-sum span,
+body.checkout-page .checkout-items-summary .summary .checkout-total {
+  color: #323d25 !important;
+}
+body.checkout-page .checkout-items-summary .summary .total-sum span:first-child,
+body.checkout-page .checkout-items-summary .summary .checkout-total {
+  font-weight: 700 !important;
+}
+/* "Inkl.moms: …" → dämpad */
+body.checkout-page .checkout-items-summary .summary .inc-vat {
+  color: rgba(48, 62, 37, 0.6) !important;
+  font-weight: 500 !important;
+}
+/* Rabattkod-rubrik → Roboto brand green (var nästan-svart) */
+body.checkout-page .checkout-items-summary .coupon-code h4,
+body.checkout-page .checkout-items-summary .coupon-code__toggle {
+  color: #323d25 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+}
+/* Nyhetsbrev-checkbox-label + landsväljare → brand green */
+body.checkout-page .checkout-items-summary .newsletter-subscription label,
+body.checkout-page .checkout-items-summary .country-select,
+body.checkout-page .checkout-items-summary .customer-type {
+  color: #323d25 !important;
+}
+/* Avdelare → subtil grön (var ljusgrå #f5f5f5) */
+body.checkout-page .checkout-items-summary hr {
+  background-color: rgba(48, 62, 37, 0.14) !important;
+  border: none !important;
+  height: 1px !important;
+}
+

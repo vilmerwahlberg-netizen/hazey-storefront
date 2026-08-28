@@ -1,0 +1,466 @@
+/* =====================================================================
+   MÄNGDRABATT-VISNING på PDP (initBulkPricing). Det RIKTIGA avdraget sätts
+   i Nyehandel-admin (kvantitetsrabatt per produkt); detta visar bara
+   erbjudandet + pris/styck och lyfter aktiv nivå när antalet ändras.
+   ===================================================================== */
+.nh-bulk {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+.nh-bulk__head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #323d25 !important;
+  margin: 0 0 8px !important;
+}
+.nh-bulk__head::before {
+  content: "" !important;
+  width: 15px !important;
+  height: 15px !important;
+  flex-shrink: 0 !important;
+  background-color: #d2691e !important;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg>')
+    center / contain no-repeat !important;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg>')
+    center / contain no-repeat !important;
+}
+.nh-bulk__row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 7px 9px !important;
+  border-radius: 7px !important;
+  font-size: 0.9rem !important;
+  color: #323d25 !important;
+  transition: background 0.15s ease !important;
+}
+.nh-bulk__row + .nh-bulk__row {
+  margin-top: 3px !important;
+}
+.nh-bulk__qty {
+  font-weight: 700 !important;
+  min-width: 46px !important;
+}
+.nh-bulk__pct {
+  font-weight: 800 !important;
+  color: #d2691e !important;
+}
+.nh-bulk__unit {
+  margin-left: auto !important;
+  font-weight: 600 !important;
+  color: rgba(48, 62, 37, 0.72) !important;
+}
+/* aktiv nivå (nuvarande antal når den) → tydlig ljusgrön highlight */
+.nh-bulk__row.is-active {
+  background: #cdfc9f !important;
+}
+.nh-bulk__row.is-active .nh-bulk__pct {
+  color: #2f7a16 !important;
+}
+.nh-bulk__row.is-active .nh-bulk__unit {
+  color: #323d25 !important;
+}
+
+/* =====================================================================
+   MÄNGDRABATT som valbara ANTAL-RUTOR (initBulkPricing → .nh-tier) —
+   MMSports-stilen ("1 st / 3 st −15% / 5 st −20%"), hazey-färgat. Klick
+   sätter antalet via stegaren. Aktiv nivå = grön ram + ljusgrön ton.
+   ===================================================================== */
+#product-page .nh-tier-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+#product-page .nh-tier {
+  position: relative !important;
+  flex: 1 1 84px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  min-height: 62px !important;
+  padding: 11px 8px 9px !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(50, 61, 37, 0.2) !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease,
+    background 0.15s ease !important;
+}
+#product-page .nh-tier:hover {
+  border-color: rgba(50, 61, 37, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+#product-page .nh-tier.is-active {
+  border-color: #323d25 !important;
+  box-shadow: inset 0 0 0 1px #323d25 !important;
+  background: #f4f9ee !important;
+}
+#product-page .nh-tier__qty {
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  color: #323d25 !important;
+  line-height: 1.1 !important;
+}
+#product-page .nh-tier__price {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  color: rgba(48, 62, 37, 0.6) !important;
+  line-height: 1.1 !important;
+}
+#product-page .nh-tier.is-active .nh-tier__price {
+  color: #323d25 !important;
+}
+#product-page .nh-tier__badge {
+  position: absolute !important;
+  top: -9px !important;
+  right: -6px !important;
+  background: #d2691e !important;
+  color: #ffffff !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.64rem !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1 !important;
+  padding: 3px 7px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 6px rgba(210, 105, 30, 0.35) !important;
+  white-space: nowrap !important;
+}
+
+/* =====================================================================
+   VARIANTER som valbara RUTOR (initVariantBoxes → .nh-vbox). Den riktiga
+   <select> döljs (nh-has-vbox) men hålls i synk av Vue; rutorna speglar val.
+   ===================================================================== */
+#product-page #product-variants.nh-has-vbox .control {
+  display: none !important;
+}
+#product-page .meta-usp-buy-container .nh-vbox-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 2px !important;
+}
+#product-page .nh-vbox {
+  min-width: 60px !important;
+  padding: 9px 16px !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(50, 61, 37, 0.22) !important;
+  border-radius: 9px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  color: #323d25 !important;
+  cursor: pointer !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease !important;
+}
+#product-page .nh-vbox:hover {
+  border-color: rgba(50, 61, 37, 0.5) !important;
+}
+#product-page .nh-vbox.is-active {
+  border-color: #323d25 !important;
+  box-shadow: inset 0 0 0 1px #323d25 !important;
+  background: #f4f9ee !important;
+}
+#product-page .nh-vbox[disabled] {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  text-decoration: line-through !important;
+}
+
+/* =====================================================================
+   "KÖP MER - BETALA MINDRE" badge på produktkort (.buy-more-pay-less)
+   Plattformen lägger den automatiskt på produkter med prisnivå/mängdrabatt
+   (vår bulk-rabatt 3→15% / 5→20%). Var oformaterad → snygg orange deal-pill
+   nere till vänster på bild-tilen. "Finns i flera varianter" flyttas till
+   nere till höger så de två inte krockar.
+   ===================================================================== */
+.product-card__image .buy-more-pay-less {
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 10px !important;
+  right: auto !important;
+  z-index: 6 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  max-width: calc(100% - 20px) !important;
+  padding: 5px 11px !important;
+  background: #d2691e !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.58rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-shadow: 0 2px 7px rgba(48, 62, 37, 0.22) !important;
+  pointer-events: none !important;
+}
+.product-card__image .buy-more-pay-less::before {
+  content: "" !important;
+  width: 12px !important;
+  height: 12px !important;
+  flex-shrink: 0 !important;
+  background-color: #ffffff !important;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg>')
+    center / contain no-repeat !important;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9a2 2 0 0 0 2.82 0l7-7a2 2 0 0 0 0-2.84zM6.5 8A1.5 1.5 0 1 1 8 6.5 1.5 1.5 0 0 1 6.5 8z"/></svg>')
+    center / contain no-repeat !important;
+}
+/* "Finns i flera varianter" → nere till höger, subtil mörk pill (var centrerad 52px upp) */
+#category-products .product-card__image .has-variants,
+.pl-list .product-card__image .has-variants,
+.product-card__image .has-variants {
+  bottom: 10px !important;
+  left: auto !important;
+  right: 10px !important;
+  transform: none !important;
+  max-width: calc(60% - 12px) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+/* Om båda badges finns: "Köp mer" tar vänster halvan så de inte överlappar */
+.product-card__image:has(.has-variants) .buy-more-pay-less {
+  max-width: calc(58% - 12px) !important;
+}
+@media (max-width: 600px) {
+  .product-card__image .buy-more-pay-less {
+    font-size: 0.52rem !important;
+    padding: 4px 8px !important;
+    bottom: 8px !important;
+    left: 8px !important;
+  }
+  #category-products .product-card__image .has-variants,
+  .pl-list .product-card__image .has-variants,
+  .product-card__image .has-variants {
+    bottom: 8px !important;
+    right: 8px !important;
+  }
+}
+
+/* =====================================================================
+   PDP-POLISH v2 (2026-07-03) — feedback: beskrivnings-/recensions-accordion +
+   relaterade kategorier, lager-ikon, NYHET-badge, och "Senast besökta
+   produkter"-korten (som saknade grid/equal-height). Appended → vinner på
+   källordning mot tidigare regler med samma selektor.
+   ===================================================================== */
+
+/* --- 1a. Beskrivning/Recensioner-accordion → definierade premium-paneler.
+   Behåller creme-bakgrunden (plattformens VISA MER-uttoning är bunden till den)
+   men lyfter med ram + skugga + starkare rubrik + grönad toggle. --- */
+#product-page .accordion {
+  margin-top: 8px !important;
+}
+#product-page .accordion-item {
+  background-color: #efe9e3 !important;
+  border: 1px solid rgba(48, 62, 37, 0.16) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 20px rgba(48, 62, 37, 0.07) !important;
+  margin-bottom: 14px !important;
+  overflow: hidden !important;
+}
+#product-page .accordion-button {
+  padding: 17px 22px !important;
+  font-size: 1.12rem !important;
+  font-weight: 700 !important;
+  color: #323d25 !important;
+  background: transparent !important;
+}
+#product-page .accordion-button .accordion-title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  letter-spacing: 0.01em !important;
+}
+#product-page .accordion-button:hover {
+  background: rgba(48, 62, 37, 0.03) !important;
+}
+/* Toggle +/- glyf → grön; aktiv får en ljusgrön platta bakom */
+#product-page .accordion-button .icon {
+  color: #323d25 !important;
+  font-size: 1.15rem !important;
+  border-radius: 50% !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+#product-page .accordion-button.active .icon {
+  color: #2f7a16 !important;
+}
+
+/* --- 1b. Relaterade kategorier → tydligare, klickbara pills --- */
+#product-page .related-categories {
+  margin-top: 10px !important;
+}
+#product-page .related-categories h3 {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  margin: 0 0 12px !important;
+}
+#product-page .related-categories .tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 9px !important;
+}
+#product-page .related-categories .tag {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(48, 62, 37, 0.18) !important;
+  border-radius: 999px !important;
+  padding: 0 !important;
+  height: auto !important;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease !important;
+}
+#product-page .related-categories .tag:hover {
+  border-color: #323d25 !important;
+  background: #f4f9ee !important;
+  transform: translateY(-1px) !important;
+}
+#product-page .related-categories .tag a {
+  color: #323d25 !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 8px 16px !important;
+  display: block !important;
+  line-height: 1.1 !important;
+}
+
+/* --- 2. Lager-status → ren grön "i lager"-pill med pulsprick (bort med kub-ikon) --- */
+#product-page #stock.stock-info {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  background: rgba(79, 170, 37, 0.12) !important;
+  color: #2f7a16 !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+}
+#product-page #stock .icon {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+#product-page #stock .icon i {
+  display: none !important;
+}
+#product-page #stock .icon::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  background: #4faa25 !important;
+  box-shadow: 0 0 0 3px rgba(79, 170, 37, 0.25) !important;
+}
+
+/* --- 3. NYHET-badge på produktbilden → grön pill med djup, neat inset --- */
+#product-page .product-detail__media .ribbons {
+  top: 14px !important;
+  left: 14px !important;
+  z-index: 4 !important;
+}
+#product-page .product-detail__media .ribbons .ribbon.news,
+#product-page .ribbons .ribbon.news,
+#product-page .ribbon.news {
+  background: #cdfc9f !important;
+  color: #26331a !important;
+  border-radius: 999px !important;
+  padding: 6px 14px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(48, 62, 37, 0.2) !important;
+}
+
+/* --- 4. "Senast besökta produkter": plattformen renderar korten I EN
+   `.recently-visited-products.products`-wrapper (inte "bara .container > div"
+   som tidigare antogs). Den gamla regeln la därför gridet på `.container > div`
+   — som innehåller BÅDE <h2> OCH produkt-wrappern → rubriken blev kolumn 1 och
+   alla kort trängdes ihop i kolumn 2 ("kort bredvid texten"). FIX: wrappern =
+   block (rubrik ovanför), gridet läggs på själva `.products`-wrappern.
+   `:not(.product-card)` hindrar att display:contents äter själva kort-boxen. --- */
+#product-page .product-page-lists__recently-visited-products {
+  padding-top: 18px !important;
+}
+/* Wrapper (h2 + produkter) → block, så rubriken sitter OVANFÖR gridet */
+#product-page .product-page-lists__recently-visited-products .container > div {
+  display: block !important;
+  width: 100% !important;
+}
+#product-page .product-page-lists__recently-visited-products h2,
+#product-page .product-page-lists__recently-visited-products h2.small {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 16px !important;
+}
+/* Gridet ligger på själva produkt-wrappern */
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+/* Mellanliggande wrappers → contents, men ALDRIG själva kortet */
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products > div:not(.product-card),
+#product-page .product-page-lists__recently-visited-products .recently-visited-products.products > div > div:not(.product-card) {
+  display: contents !important;
+}
+#product-page .product-page-lists__recently-visited-products div.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  height: 100% !important;
+}
+#product-page .product-page-lists__recently-visited-products .product-card .details-wrapper {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#product-page .product-page-lists__recently-visited-products .nh-card-buy {
+  margin-top: auto !important;
+}
+
+@media (max-width: 900px) {
+  #product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 520px) {
+  #product-page .product-page-lists__recently-visited-products .recently-visited-products.products {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+}
+

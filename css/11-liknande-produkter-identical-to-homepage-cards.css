@@ -1,0 +1,510 @@
+/* =============================================
+   LIKNANDE PRODUKTER — identical to homepage cards
+   ============================================= */
+
+#product-page .product-list .products {
+  display: grid !important;
+  gap: 16px !important;
+  width: 100% !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+#product-page .product-list .products > div,
+#product-page .product-list .products > div > div {
+  display: contents !important;
+}
+
+#product-page .product-card {
+  position: relative !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  cursor: pointer !important;
+}
+#product-page .product-card__image {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #d9c3ae !important;
+  aspect-ratio: 4 / 5 !important;
+  overflow: hidden !important;
+  border-radius: 4px !important;
+}
+#product-page .product-card__image img {
+  width: 86% !important;
+  height: 86% !important;
+  object-fit: contain !important;
+}
+#product-page .product-card .details-wrapper {
+  padding: 12px 2px 2px !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#product-page .product-card .brand {
+  display: none !important;
+}
+#product-page .product-card .details .name {
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: #323d25 !important;
+  line-height: 1.4 !important;
+}
+#product-page .product-card .price ins {
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  color: #323d25 !important;
+  text-decoration: none !important;
+}
+/* Ribbons → pills in a top row (wrapRibbons adds .nh-ribbon-row) */
+#product-page .product-card .ribbon {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: fit-content !important;
+  border-radius: 999px !important;
+  padding: 5px 11px !important;
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  box-shadow: 0 2px 6px rgba(48, 62, 37, 0.18) !important;
+}
+#product-page .product-card .ribbon.news {
+  background: #cdfc9f !important;
+  color: #323d25 !important;
+}
+#product-page .product-card .ribbon.sale {
+  background: #d2691e !important;
+  color: #ffffff !important;
+}
+#product-page .product-card .nh-ribbon-row {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  right: 10px !important;
+  z-index: 6 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  pointer-events: none !important;
+}
+#product-page .product-card .nh-ribbon-row .ribbon {
+  position: static !important;
+  pointer-events: auto !important;
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  #product-page .product-list .products {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 768px) {
+  #product-page .product-list .products {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  #product-page .product-title {
+    font-size: 1.6rem !important;
+  }
+  #product-page .stock-price .price ins {
+    font-size: 1.6rem !important;
+  }
+}
+
+/* =============================================
+   PDP LAYOUT FIX — proper hierarchy + buy box
+   Reorder the info column (title → price → buy box → description),
+   sticky image, and group price/stock/qty/button/USP into one card.
+   ============================================= */
+
+#product-page .product-detail {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 48px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 40px 24px 56px !important;
+}
+
+#product-page .product-detail__media {
+  flex: 0 0 46% !important;
+  max-width: 46% !important;
+  position: sticky !important;
+  top: 96px !important;
+}
+
+#product-page .product-detail__information {
+  flex: 1 1 54% !important;
+  max-width: 54% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Reorder: title, price, (variants), buy box, description, rest */
+#product-page .product-detail__information > * {
+  order: 6;
+  margin-bottom: 0;
+}
+#product-page .product-title {
+  order: 1 !important;
+  margin: 0 0 10px !important;
+}
+#product-page .price-features {
+  order: 2 !important;
+  margin: 0 0 6px !important;
+}
+#product-page .product-detail__information > div:has(.product-form-fields) {
+  order: 3 !important;
+}
+#product-page .meta-usp-buy-container {
+  order: 4 !important;
+}
+#product-page .short-description {
+  order: 5 !important;
+  margin-top: 26px !important;
+}
+
+/* Price size in the header area */
+#product-page .price-features .stock-price .price ins {
+  font-size: 2.1rem !important;
+}
+
+/* Buy box card */
+#product-page .meta-usp-buy-container {
+  background: #ffffff !important;
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 14px !important;
+  padding: 20px 22px !important;
+  margin: 14px 0 4px !important;
+  box-shadow: 0 8px 24px rgba(48, 62, 37, 0.08) !important;
+}
+
+#product-page .product-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 14px !important;
+}
+
+/* Quantity stepper + add button on one row */
+#product-page .buy-controls {
+  margin-top: 0 !important;
+}
+#product-page .buy-form__controls {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+}
+#product-page .buy-form__controls .amount-input {
+  flex: 0 0 auto !important;
+}
+#product-page .buy-form__controls .amount-input .button {
+  width: 40px !important;
+  height: 100% !important;
+  min-height: 52px !important;
+  font-size: 18px !important;
+}
+#product-page .buy-form__controls .amount-input .input {
+  width: 46px !important;
+  height: 100% !important;
+  font-size: 16px !important;
+}
+#product-page .buy-form__controls .action {
+  flex: 1 1 auto !important;
+  display: flex !important;
+}
+#product-page .buy-form__controls .action .button.buy {
+  width: 100% !important;
+}
+
+/* USP inside the buy box */
+#product-page .meta-usp-buy-container .product-usp {
+  margin: 16px 0 0 !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(48, 62, 37, 0.1) !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Description block readability */
+#product-page .short-description {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 22px 24px !important;
+  border: 1px solid rgba(48, 62, 37, 0.1) !important;
+}
+#product-page .short-description > h1:first-child,
+#product-page .short-description h1 {
+  margin-top: 0 !important;
+}
+
+/* Tablet / mobile: stack, drop sticky */
+@media (max-width: 900px) {
+  #product-page .product-detail {
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 24px 16px 40px !important;
+  }
+  #product-page .product-detail__media,
+  #product-page .product-detail__information {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+  }
+}
+
+/* =============================================
+   FÄRGKORRIGERINGAR — gäller alla sidor (samlad checklista)
+   Global brand-green #303e25 → #323d25 redan utfört (sökersätt).
+   Här: footer-länkar, rea-badge-text, varukorgs-CTA, sektionsstreck.
+   ============================================= */
+
+/* Sektionsrubrik-streck (::after): #d2691e → rgba(50,61,37,0.55) */
+.et_pb_text_12 h6::after,
+.pl-list > h2::after,
+.nh-camp__head h6::after,
+.nh-faq__title::after {
+  background: rgba(50, 61, 37, 0.55) !important;
+}
+
+/* Footer-länkfärg (text): grön → cream #ede9e8 (hover behåller ljusgrön) */
+.nh-footer__col a,
+.nh-footer__col p a {
+  color: #ede9e8 !important;
+}
+.nh-footer__col a:hover,
+.nh-footer__col p a:hover {
+  color: #bce691 !important;
+}
+
+/* Rea-badge (–%) text: → #ede9e8 (bakgrund redan #d2691e) */
+.pl-list .ribbon.sale,
+#category-products .ribbon.sale,
+#product-page .ribbon.sale,
+#product-page .product-card .ribbon.sale,
+.nh-ribbon-row .ribbon.sale {
+  color: #ede9e8 !important;
+}
+
+/* NYHET-badge text: säkerställ #323d25 (bakgrund #cdfc9f) */
+.pl-list .ribbon.news,
+#category-products .ribbon.news,
+#product-page .ribbon.news,
+#product-page .product-card .ribbon.news,
+.nh-ribbon-row .ribbon.news {
+  color: #323d25 !important;
+}
+
+/* Varukorg "BÖRJA HANDLA" / primär CTA: platform-grön #4ade80 → #323d25 / vit */
+#cartAside .button.is-primary,
+#cartAside .empty-cart .button,
+#cartAside .empty .button,
+#cartAside a.button.is-primary,
+.cart-empty .button.is-primary,
+#emptyCart .button.is-primary {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-color: #323d25 !important;
+}
+
+/* =============================================
+   PLATTFORMS-NORMALISERING — alla sidor (konto, kassa, sök, filter,
+   "lägg i varukorg"-popup, cookie-ruta). Nyehandels default-knapp
+   (.button.is-primary) är nästan svart (rgb 7,7,7) — detta var orsaken
+   till svarta knappar på konto-/popup-/cookie-ytor. Vi grön-brandar dem
+   globalt + brandar formulärfält och de vita plattformsytorna.
+   ============================================= */
+
+/* --- Platform primary buttons → dark green (catches login/register/forgot,
+       upsell "Till varukorg", checkout, m.m. i ett svep) --- */
+.button.is-primary,
+button.is-primary,
+.button.is-black,
+button.is-black,
+a.button.is-primary {
+  background-color: #323d25 !important;
+  border-color: #323d25 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+.button.is-primary:hover,
+button.is-primary:hover,
+.button.is-black:hover,
+a.button.is-primary:hover {
+  background-color: #253019 !important;
+  border-color: #253019 !important;
+  color: #ffffff !important;
+}
+
+/* --- Platform secondary buttons → outline green (kill white/near-black) --- */
+.button.is-secondary,
+button.is-secondary {
+  background-color: transparent !important;
+  border: 1.5px solid #323d25 !important;
+  color: #323d25 !important;
+}
+.button.is-secondary:hover,
+button.is-secondary:hover {
+  background-color: rgba(50, 61, 37, 0.08) !important;
+  color: #323d25 !important;
+}
+
+/* --- Platform form fields (Bulma .input/.select/.textarea) — brand site-wide,
+       kill black/grey borders. Scoped custom fields (header/footer/contact/cart)
+       have higher specificity and keep their own look. --- */
+.input,
+.textarea,
+.select select {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(50, 61, 37, 0.25) !important;
+  border-radius: 8px !important;
+  color: #23231d !important;
+  box-shadow: none !important;
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(50, 61, 37, 0.45) !important;
+}
+.input:focus,
+.textarea:focus,
+.select select:focus {
+  border-color: #4faa25 !important;
+  box-shadow: 0 0 0 3px rgba(79, 170, 37, 0.18) !important;
+}
+
+/* --- "Tillagd i varukorgen" upsell-sidebar (#upsellingSidebar) — cream surface --- */
+#upsellingSidebar,
+.upselling-sidebar__container,
+.upselling-sidebar__wrap {
+  background: #ede9e8 !important;
+}
+.upselling-sidebar__header h3,
+.upselling-sidebar__items h3 {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: #303e25 !important;
+}
+.upselling-sidebar__header button svg path {
+  stroke: #303e25 !important;
+}
+.upselling-sidebar__footer--continue {
+  background: transparent !important;
+  border: 1.5px solid #323d25 !important;
+  color: #323d25 !important;
+}
+.upselling-sidebar__footer--cart {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-color: #323d25 !important;
+}
+
+/* --- Konto-sidor (logga in / registrera / glömt lösenord) — branda kortet --- */
+.auth-box {
+  background: #ffffff !important;
+  border: 1px solid rgba(48, 62, 37, 0.12) !important;
+  border-radius: 14px !important;
+  padding: 30px 32px !important;
+  max-width: 460px !important;
+  margin: 12px auto 0 !important;
+  box-shadow: 0 10px 30px rgba(48, 62, 37, 0.1) !important;
+}
+.auth-box h1,
+.auth-box h2,
+.auth-box .title {
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: #303e25 !important;
+}
+.auth-box a {
+  color: #2f7a16 !important;
+}
+/* Secondary auth button (e.g. "Registrera" on login) → clear outline green */
+.auth-box .button:not(.is-primary) {
+  background: transparent !important;
+  border: 1.5px solid #323d25 !important;
+  color: #323d25 !important;
+}
+.auth-box .button:not(.is-primary):hover {
+  background: rgba(50, 61, 37, 0.08) !important;
+  color: #323d25 !important;
+}
+
+/* --- Cookie-ruta (vanilla-cookieconsent v2: #cm / .c-bn) — branda, inga svarta --- */
+#cm,
+#s-inr,
+#s-bl,
+.cc_div #cm,
+div#cm.box {
+  background: #ede9e8 !important;
+  color: #303e25 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22) !important;
+}
+#c-ttl,
+#s-ttl,
+#c-txt,
+#cm .title {
+  color: #303e25 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+/* Accept-all / primary cookie button → dark green */
+.c-bn.cc-primary,
+#c-p-bn,
+#s-all-bn {
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #323d25 !important;
+}
+.c-bn.cc-primary:hover,
+#c-p-bn:hover,
+#s-all-bn:hover {
+  background: #253019 !important;
+}
+/* Secondary cookie buttons (Inställningar / Neka) → outline green */
+.c-bn:not(.cc-primary),
+#c-s-bn,
+#s-rall-bn {
+  background: transparent !important;
+  color: #323d25 !important;
+  border: 1.5px solid #323d25 !important;
+}
+.c-bn:not(.cc-primary):hover {
+  background: rgba(50, 61, 37, 0.08) !important;
+}
+
+/* --- Kassan (separat plattformsflöde) — ljus brand-bakgrund + gröna primärknappar
+       (knappar redan via .button.is-primary ovan; här bara ytan) --- */
+body.checkout-page {
+  background: #ede9e8 !important;
+}
+
+/* --- Filter-drawer / vänster-sidebar som ibland renderas vit --- */
+.sidebar.is-left,
+.filters .box,
+.product-filter .dropdown-menu {
+  background: #ede9e8 !important;
+}
+
+/* =============================================
+   PDP STICKY FIX + checkout chrome + small PDP color fixes
+   ============================================= */
+
+/* Sticky left image broke because #store-main (overflow:hidden) and
+   #store-instance (overflow-x:auto) clip it. Make them visible ONLY on the
+   product page (scoped via :has) so the media column can stick. Verified:
+   no horizontal scrollbar introduced. */
+body:has(#product-page) #store-main,
+body:has(#product-page) #store-instance {
+  overflow: visible !important;
+}
+
+/* Related-category tags had WHITE text on cream (invisible) → dark green */
+#product-page .related-categories .tag,
+#product-page .related-categories .tag a,
+#product-page .related-categories .tag span {
+  color: #323d25 !important;
+}
+

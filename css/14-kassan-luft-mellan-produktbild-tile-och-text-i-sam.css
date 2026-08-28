@@ -1,0 +1,388 @@
+/* =============================================
+   KASSAN — luft mellan produktbild (tile) och text i sammanfattningen
+   ============================================= */
+body.checkout-page .checkout-items-summary .item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+}
+body.checkout-page .checkout-items-summary .item figure.media {
+  margin-right: 0 !important;
+}
+body.checkout-page .checkout-items-summary .item .content {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+/* =====================================================================
+   MOBILE REVIEW — consolidated pass (appended)
+   Scope: phones only unless a rule must be global to kill overflow.
+   Priorities: (1) PDP horizontal scroll, (2) 44px tap targets,
+   (3) legibility of sub-11px text, (4) spacing/cramping.
+   Brand tokens: #323d25 #4faa25 #cdfc9f #e4d1bf #eee7e1 #d9c3ae #d2691e
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   (1) PDP HORIZONTAL SCROLL — primary fix
+   Two reported causes: the buy row (stepper + LÄGG I VARUKORGEN) and the
+   related-category pills both push doc width past the viewport at 390px.
+   Belt-and-braces: clamp the page itself (global, harmless on desktop
+   since the page is already within bounds there).
+   --------------------------------------------------------------------- */
+#product-page {
+  overflow-x: clip !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 480px) {
+  /* Buy row: stepper stays compact, add-to-cart drops to its own full row.
+     Targets both the live DOM (.buy-form__controls / .action) and the
+     finding's alias selectors. min-width:0 lets flex children shrink. */
+  #product-page .buy-controls,
+  #product-page .buy-form__controls {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #product-page .buy-controls .amount-input,
+  #product-page .buy-form__controls .amount-input {
+    flex: 0 0 auto !important;
+  }
+  #product-page .buy-form__controls .action,
+  #product-page .buy-controls .action {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+  #product-page .buy-controls .button.buy,
+  #product-page .buy-form__controls .action .button.buy,
+  #product-page .button.buy {
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.03em !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Related-category pills: wrap and never exceed the viewport. Long labels
+     ellipsis instead of stretching doc width. */
+  #product-page .related-categories ul,
+  #product-page .related-categories .tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+  #product-page .related-categories li,
+  #product-page .related-categories .tag {
+    max-width: 100% !important;
+  }
+  #product-page .related-categories .tag a {
+    display: flex !important;
+    align-items: center !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   (2) TAP TARGETS — primary controls to >=44px
+   --------------------------------------------------------------------- */
+
+/* Bestseller / category filter chips (BÄSTSÄLJARE / NYHETER / KAMPANJER).
+   Overrides the earlier 480px rule that shrank these to ~30px. */
+@media (max-width: 480px) {
+  .nh-pl-filter,
+  .nh-tab {
+    min-height: 44px !important;
+    padding: 11px 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Category filter sidebar checkboxes + rows */
+  .product-filter-item {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 6px 4px !important;
+  }
+  .product-filter-item input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+    flex: 0 0 22px !important;
+    margin-right: 10px !important;
+    accent-color: #4faa25 !important;
+  }
+  .product-filter-item label {
+    line-height: 1.3 !important;
+  }
+
+  /* Sort dropdown + filter buttons */
+  .product-sorting .button,
+  .product-filter .button {
+    min-height: 44px !important;
+    padding: 11px 16px !important;
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Header action icons + hamburger (menu / search / account / cart) */
+  #store-header .actions .button,
+  #store-header .cart-button,
+  #store-header .basket-icon .button,
+  #store-header .navbar-burger {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Cart drawer close control */
+  #cartAside .close-cart {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: -10px -10px -10px 0 !important;
+  }
+  #cartAside .close-cart i {
+    font-size: 20px !important;
+  }
+
+  /* Related-category pills on PDP — comfortable touch height */
+  #product-page .related-categories .tag {
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  #product-page .related-categories .tag a {
+    min-height: 40px !important;
+    padding: 6px 14px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Footer nav links — roomier vertical hit area on the single-column footer */
+@media (max-width: 480px) {
+  .nh-footer__col ul li {
+    margin-bottom: 2px !important;
+  }
+  .nh-footer__col a {
+    display: inline-block !important;
+    padding: 9px 0 !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   (3) LEGIBILITY — lift sub-11px text that matters
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Product NYHET / sale ribbons (home, category, PDP "Liknande produkter").
+     Was ~9.9px (0.58rem) → legible. One rule covers all three contexts. */
+  .pl-list .ribbon,
+  #category-products .ribbon,
+  .product-card .ribbon {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    padding: 4px 8px !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* Variant-count badge over the image (was ~9.3px) */
+  .pl-list .product-card__image .has-variants,
+  #category-products .product-card__image .has-variants {
+    font-size: 11.5px !important;
+    padding: 3px 8px !important;
+  }
+
+  /* Topbar USP strip (Fri frakt / Snabb leverans / Diskreta paket) */
+  #store-header .topbar .usp li {
+    font-size: 11.5px !important;
+  }
+  #store-header .topbar .usp {
+    gap: 6px 16px !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   (4) SPACING / CRAMPING
+   --------------------------------------------------------------------- */
+
+/* Divi trust USP row → 3 balanced columns (no orphaned third item / gappy band) */
+@media (max-width: 600px) {
+  .et_pb_section_1 .et_pb_row {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+  .et_pb_section_1 .et_pb_column {
+    width: 33.333% !important;
+    margin: 0 !important;
+    float: left !important;
+  }
+  .et_pb_section_1 .et_pb_text_inner p {
+    font-size: 14px !important;
+  }
+}
+
+/* Product-card ribbon vs attribute/spec line — stop the badge band from
+   overlapping the spec text; give the spec breathing room. */
+@media (max-width: 480px) {
+  .product-card .ribbon-wrap,
+  .product-card .product-badges {
+    position: relative !important;
+    margin-bottom: 6px !important;
+  }
+  .product-card .product-attributes,
+  .product-card .product-spec {
+    margin-top: 8px !important;
+    background: transparent !important;
+    clear: both !important;
+  }
+}
+
+/* =============================================
+   MOBILE REVIEW — follow-up corrections (selector fixes)
+   The consolidated pass used a couple of selectors that don't match the
+   live DOM; these target the real elements.
+   ============================================= */
+
+/* Category sort + filter controls → 44px tap target (real selectors:
+   .category-sort .product-filter-button / .sort-button.dropdown .button /
+   the in-drawer "Visa produkter" button). */
+@media (max-width: 768px) {
+  .category-sort .product-filter-button.button,
+  #sidebar .product-filter-button.button,
+  .sidebar__action .product-filter-button.button,
+  .sort-button.dropdown .button {
+    min-height: 44px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
+
+/* PDP "Liknande produkter" ribbon legibility — id-scoped to beat the
+   existing #product-page .product-card .ribbon { 0.62rem } rule. */
+@media (max-width: 480px) {
+  #product-page .product-card .ribbon {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+}
+
+/* =============================================
+   MOBILE — breadcrumb: long product name overflowed one line (was clipped).
+   Let the trail wrap and ellipsis-truncate the active crumb so nothing is
+   cut off and the page never exceeds the viewport.
+   ============================================= */
+@media (max-width: 768px) {
+  nav#main-breadcrumb .breadcrumb ul,
+  nav#main-breadcrumb ul {
+    flex-wrap: wrap !important;
+  }
+  nav#main-breadcrumb li.is-active {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  nav#main-breadcrumb li.is-active a,
+  nav#main-breadcrumb li.is-active span {
+    display: inline-block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* =====================================================================
+   LEVERANS-PASS (UX/Trust/Konv-dokument v3.1) — CSS-bara delen
+   Allt nedan ligger i facelift-lagret. Backend-punkter (bulk-priser,
+   recensionssystem, NYHET-30dagarslogik, /kampanjer-routing) kan EJ
+   lösas härifrån — se analysen.
+   ===================================================================== */
+
+/* (5) Trust-topbar: byt emoji (🚚⚡🤫) → rena gröna checkmarks (SVG-mask),
+   konsekvent med ikonraden, inga emoji-glitchar på Android. */
+#store-header .topbar .usp li:nth-child(1)::before,
+#store-header .topbar .usp li:nth-child(2)::before,
+#store-header .topbar .usp li:nth-child(3)::before,
+#store-header .topbar .usp li::before {
+  content: "" !important;
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
+  background-color: #cdfc9f !important;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>')
+    center / contain no-repeat !important;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>')
+    center / contain no-repeat !important;
+}
+
+/* (13) Filterknappar/-chips → samma radie som CTA ("Lägg i varukorgen" = 6-8px),
+   inte pill. Konsekvent formspråk. */
+.nh-pl-filter,
+.nh-tab,
+.nh-bs-filters .nh-pl-filter,
+.nh-pl-filter.is-active,
+.nh-tab.is-active {
+  border-radius: 6px !important;
+}
+
+/* (17) Luft mellan sektionsrubrik och produktkort ("Liknande produkter" /
+   "Senast besökta"). */
+#product-page .product-list h2,
+#product-page .product-page-lists__similar-products h2 {
+  margin-bottom: 24px !important;
+}
+.recently-visited-products h2,
+.recently-visited-products h2.small {
+  margin-bottom: 16px !important;
+}
+
+/* ---------- MOBIL ---------- */
+@media (max-width: 768px) {
+  /* (14) THCA SEO-text: padding mot kanten + centrerad (var kantnära). */
+  .te-content.has-text-centered,
+  .template-components__text .te-content {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* (15) "Hazey tjejen"/fabriksbild — dölj på mobil (tar plats utan värde). */
+  .image-component:has(img[src*="hazey-i-hazeys-fabrik"]),
+  .component-columns__column:has(img[src*="hazey-i-hazeys-fabrik"]) {
+    display: none !important;
+  }
+
+  /* (16) Breadcrumb mindre på mobil (dominerade över produkttiteln). */
+  nav#main-breadcrumb,
+  nav#main-breadcrumb a,
+  nav#main-breadcrumb li,
+  nav#main-breadcrumb span {
+    font-size: 12px !important;
+  }
+}
+
+/* (15b) "Hazey tjejen" sitter i #test-bildkolumnen; id-scopad selektor krävs
+   för att slå #test … .image-component { display:flex !important }. */
+@media (max-width: 768px) {
+  #test .component-columns__column:has(img[src*="hazey-i-hazeys-fabrik"]) {
+    display: none !important;
+  }
+}
+

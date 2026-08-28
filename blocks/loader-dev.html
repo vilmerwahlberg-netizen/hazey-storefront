@@ -1,0 +1,23 @@
+<!-- ============================================================================
+     HAZEY FACELIFT — DEV/PREVIEW-LOADER (klistras ENDAST in i Nyehandels
+     Kodläge-fält för preview, ALDRIG i det skarpa <head>-fältet)
+
+     Läser hazey.min.js direkt från "dev"-branchen på GitHub via raw.githack.com
+     (dev-läge = okachad, uppdateras inom sekunder efter varje push). Skiljer sig
+     från loader.html (produktion) som pekar mot en fast, evigt cachad jsDelivr-
+     tagg. Ingen integrity-hash här eftersom filen ändras hela tiden under
+     utveckling — en pinnad hash skulle bryta laddningen vid varje ny commit.
+
+     Arbetsflöde:
+       1. Redigera filer i css/ eller js/ lokalt
+       2. node build.js  (bygger hazey.css + hazey.min.js på nytt)
+       3. git add -A && git commit -m "..." && git push origin dev
+       4. Ladda om previewfliken i nyehandel — klart, ingen ny inklistring behövs
+     ============================================================================ -->
+<script>
+(function () {
+  var s = document.createElement("script");
+  s.src = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/hazey.min.js";
+  document.head.appendChild(s);
+})();
+</script>

@@ -1,0 +1,440 @@
+/* =============================================
+   CATEGORY PAGE — Header
+   ============================================= */
+
+.category-description {
+  position: relative;
+  background: #e4d1bf;
+  padding: 40px 24px 28px;
+  overflow: hidden;
+}
+
+.category-description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--cat-bg-img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.category-description h1.title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
+  color: #323d25 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  margin-bottom: 14px !important;
+}
+
+#read-more-content {
+  overflow: hidden !important;
+  transition: max-height 0.35s ease;
+  color: #555 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.7 !important;
+}
+
+#read-more-content img {
+  display: none !important;
+}
+
+#read-more-content h1,
+#read-more-content h2,
+#read-more-content h3 {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #323d25 !important;
+  margin: 10px 0 4px !important;
+}
+
+.readmore__toggle {
+  margin-top: 6px;
+}
+
+.readmore__toggle button {
+  background: none !important;
+  border: none !important;
+  color: #d2691e !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  padding: 4px 0 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.15s ease !important;
+}
+
+.readmore__toggle button:hover {
+  color: #b8561a !important;
+}
+
+/* =============================================
+   CATEGORY PAGE — Layout
+   ============================================= */
+
+.main-container.category.has-sidebar {
+  display: flex !important;
+  gap: 36px !important;
+  align-items: flex-start !important;
+  padding: 32px 24px !important;
+}
+
+.main-container.category.has-sidebar .aside {
+  width: 210px !important;
+  flex-shrink: 0 !important;
+}
+
+.main-container.category.has-sidebar .main-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* =============================================
+   CATEGORY PAGE — Sidebar recently visited
+   ============================================= */
+
+.recently-visited-products h2.small {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(50, 61, 37, 0.6) !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  margin-bottom: 10px !important;
+}
+
+.recently-visited-products .visited {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: flex-start !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid rgba(50, 61, 37, 0.1) !important;
+}
+
+.recently-visited-products .visited:last-child {
+  border-bottom: none !important;
+}
+
+.recently-visited-products .visited .image {
+  width: 52px !important;
+  height: 52px !important;
+  flex-shrink: 0 !important;
+  background: #d9c3ae !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.recently-visited-products .visited .image a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.recently-visited-products .visited .image img {
+  width: 80% !important;
+  height: 80% !important;
+  object-fit: contain !important;
+}
+
+.recently-visited-products .visited .information .name a {
+  font-size: 0.74rem !important;
+  font-weight: 500 !important;
+  color: #323d25 !important;
+  line-height: 1.35 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  display: block !important;
+  text-decoration: none !important;
+}
+
+.recently-visited-products .visited .information .name a:hover {
+  color: #d2691e !important;
+}
+
+.recently-visited-products .visited .information .price {
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #111 !important;
+  margin-top: 3px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+/* =============================================
+   CATEGORY PAGE — Sort / filter bar
+   ============================================= */
+
+.category-sort {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+  flex-wrap: wrap !important;
+}
+
+#products_count,
+.filters__counter {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  color: rgba(50, 61, 37, 0.55) !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+.sort-control {
+  margin-left: auto !important;
+}
+
+.sort-button.dropdown .button {
+  background: #ffffff !important;
+  border: 1px solid rgba(50, 61, 37, 0.22) !important;
+  border-radius: 4px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #323d25 !important;
+  padding: 7px 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  cursor: pointer !important;
+}
+
+.sort-button.dropdown .dropdown-menu {
+  border: 1px solid rgba(50, 61, 37, 0.15) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+.sort-button.dropdown .dropdown-item {
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.82rem !important;
+  color: #323d25 !important;
+  padding: 9px 16px !important;
+}
+
+.sort-button.dropdown .dropdown-item:hover {
+  background: #e4d1bf !important;
+  color: #323d25 !important;
+}
+
+.product-filter-button.button.is-primary {
+  background: #323d25 !important;
+  border-color: #323d25 !important;
+  border-radius: 4px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  padding: 8px 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* =============================================
+   CATEGORY PAGE — Product grid
+   ============================================= */
+
+#category-products {
+  display: grid !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+#category-products.has-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+#category-products > div,
+#category-products > div > div {
+  display: contents !important;
+}
+
+#category-products .product-card {
+  position: relative !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  cursor: pointer !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#category-products .product-card:hover {
+  z-index: 2 !important;
+}
+
+#category-products .product-card__image {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #d9c3ae !important;
+  aspect-ratio: 4 / 5 !important;
+  overflow: hidden !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+}
+
+#category-products .product-card__image img {
+  width: 68% !important;
+  height: 68% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+#category-products .product-card__image .has-variants,
+.pl-list .product-card__image .has-variants {
+  position: absolute !important;
+  bottom: 52px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  white-space: nowrap !important;
+  font-size: 0.58rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(32, 40, 22, 0.5) !important;
+  border-radius: 3px !important;
+  padding: 3px 8px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+#category-products .product-card__image::after {
+  content: "Lägg i varukorg" !important;
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  right: 12px !important;
+  z-index: 20 !important;
+  display: block !important;
+  text-align: center !important;
+  background: #323d25 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+  opacity: 0 !important;
+  transform: translateY(8px) !important;
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s cubic-bezier(0.34, 1.1, 0.64, 1) !important;
+  pointer-events: none !important;
+}
+
+#category-products .product-card:hover .product-card__image::after {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+#category-products .details-wrapper {
+  padding: 12px 2px 0 !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#category-products .details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+#category-products .brand {
+  display: none !important;
+}
+
+#category-products .details a {
+  text-decoration: none !important;
+}
+
+#category-products .details .name {
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: #111111 !important;
+  line-height: 1.4 !important;
+  display: block !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+#category-products .details a:hover .name {
+  color: #555 !important;
+}
+
+#category-products .offer {
+  margin-top: 3px !important;
+}
+
+#category-products .price ins {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  text-decoration: none !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+#category-products .price.has-comparison del.comparison {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: #999 !important;
+  text-decoration: line-through !important;
+  margin-right: 4px !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+#category-products .ribbon {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  z-index: 5 !important;
+  font-size: 0.58rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 4px 8px !important;
+  border-radius: 3px !important;
+  line-height: 1.5 !important;
+  font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
+}
+
+#category-products .ribbon.news {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+#category-products .ribbon.sale {
+  background: #c0392b !important;
+  color: #ffffff !important;
+}
+
+/* Push sale ribbon below news when both present */
+#category-products .ribbon.news + .ribbon.sale,
+.pl-list .ribbon.news + .ribbon.sale {
+  top: 36px !important;
+}
+
