@@ -1211,3 +1211,49 @@ ingetdera var del av denna omgångs uttryckliga instruktionslista.
 `tests/parity-sections.mjs`, `tests/home-parity.spec.mjs`,
 `tests/blueprints/mobile-hero-port.md`, `STATUS.md`). Inget pushat
 eller deployat.**
+
+## Mobil hero GODKÄND (2026-09-02) — tre manuella granskningsrundor efter första implementationen
+
+Tre uppföljande, manuellt begärda korrigeringar efter det första
+implementationspasset ovan, var och en snävt scopad:
+
+1. **Fel heroasset** — produktionskällan föll tillbaka till
+   `nativeHeroImgUrl` (nyehandels egen konfigurerade bild, en
+   cannabisplanta), inte facitens `hero-westcoast-v4.jpg`. Löst genom
+   att spåra in exakt samma bytes i repot (`assets/hero-westcoast-v4.jpg`,
+   verifierat med `md5`, inte regenererad) och en konfigurerbar
+   `NH_ASSET_BASE` i `js/18b-homepage-v2.js` (default: samma jsDelivr/
+   GitHub-hosting som `hazey.css`/`hazey.min.js` redan använder — INGEN
+   `localhost`-sträng i produktionskällan). `preview.mjs` (det lokala
+   previewflödet) uppdaterat att sätta `window.NH_ASSET_BASE =
+   "http://127.0.0.1:8767/"` innan `hazey.min.js` körs — verifierat mot
+   den redan körande lokala previewservern (`/tmp/cors_server.py`, port
+   8767, servar redan `hero-westcoast-v4.jpg` från sin rot — INTE under
+   `/assets`, kontrollerat med `curl` innan värdet sattes).
+2. **Hero-kortets bredd** — mätt facit vs impl vid 390px: facit har
+   24px sidoinset (342px brett kort), impl hade bara 10px (370px brett)
+   — en verklig 14px/sida-avvikelse, inte en beskärningsartefakt. Rättad
+   direkt på `.nh-hero-v2`s egen margin (`10px 24px 18px`), INTE på
+   `#store-main` (delad med header/mikrotrust/Populära serier, orörd).
+   Verifierat: bredd/position nu exakt 342px/24px/366px, matchar facit.
+3. **Overlayns färgton** — `.nh-qfind-hero::before` använde fortfarande
+   en gammal, övergiven reskin-gradient (enhetlig mörkgrön vertikal ton)
+   som gjorde fotot mörkt/mjölkigt. Ersatt, scopat till samma mobila
+   `@media`-block, med facitens exakta uppmätta mobila overlay (svag
+   varm 0deg-ton + textsides-koncentrerad 90deg-gradient som lämnar
+   högra ~24% av fotot synligt) — bildfiltret (`saturate/brightness/
+   sepia`, redan korrekt) orört.
+
+**Vilmers slutgiltiga bedömning:** hero godkänd som den är. En
+kvarvarande, känd skillnad (textkolumnens exakta höjd mot facit)
+medvetet INTE jagad vidare — hero-text och CTA-knappar byts ut i ett
+senare skede ändå, så vidare pixel-matchning av just den delen är inte
+värdefull tid just nu.
+
+## Nästa: Populära serier och nedåt (2026-09-02)
+
+Vilmer: fortsätt bygga från "Populära serier" och nedåt enligt facit
+(`index.html`), samma extrahera-inte-tolka-metod (mät/läs facits
+riktiga källa och DOM, gissa inte) och samma visuella iterationsloop
+(blueprint/mätning → implementation → skärmdumpsjämförelse → korrigera)
+som header och hero redan gått igenom.

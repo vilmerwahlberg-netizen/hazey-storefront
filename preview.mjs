@@ -34,6 +34,18 @@ await page.waitForTimeout(1500);
 await acceptCookies(page);
 await page.waitForTimeout(500);
 
+// Lokal QA-asset-bas: pekar mot den redan körande lokala previewservern
+// (samma cors_server.py på port 8767 som redan servar prototypens egna
+// assets-mapp direkt från sin rot — verifierat 2026-09-01 med curl att
+// /hero-westcoast-v4.jpg -> 200, /assets/hero-westcoast-v4.jpg -> 404,
+// alltså INGET /assets-suffix här). Sätts INNAN hazey.min.js körs, så att
+// nhHeroQfindHtml() läser window.NH_ASSET_BASE i stället för att falla
+// tillbaka till produktionens jsDelivr-URL. Rör INTE produktionsvärdet i
+// js/18b-homepage-v2.js — bara denna lokala previewkörning.
+await page.evaluate(() => {
+  window.NH_ASSET_BASE = "http://127.0.0.1:8767/";
+});
+
 await page.addStyleTag({ content: css });
 await page.addScriptTag({ content: js });
 await page.waitForTimeout(800);

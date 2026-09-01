@@ -35,7 +35,16 @@
 }
 @media (max-width: 860px) {
   .nh-hero-v2 {
-    margin: 10px 10px 18px !important;
+    /* KORRIGERING (manuell granskning, 2026-09-01): mätt facit vs impl
+       vid samma viewport (390px) — facit .hero left/right-inset är
+       24px (390-342=48, /2=24), inte 10px. Vår sida-marginal på 10px
+       stämde mot facits TOTALA margin-siffra i källkoden, men missade
+       att facits container SJÄLV har en extra 14px sidopadding
+       (#mVp .body-wrap) utöver hero:ns egen 10px-marginal — 10+14=24.
+       Rättat direkt på hero:n (inte #store-main, som delas med header/
+       mikrotrust/Populära serier och INTE ska ändras denna omgång).
+       Topp/botten-marginalen (10px/18px, redan exakt matchande) orörd. */
+    margin: 10px 24px 18px !important;
     border-radius: 22px !important;
     overflow: hidden !important;
     min-height: 238px;
@@ -634,7 +643,26 @@
     filter: saturate(1.06) brightness(1.12) sepia(.045);
     z-index: 0;
   }
-  .nh-qfind-hero::before { z-index: 1; }
+  /* KORRIGERING (manuell granskning, 2026-09-02): ::before använde
+     fortfarande den gamla, övergivna reskin-gradienten (enhetlig
+     mörkgrön vertikal ton, `linear-gradient(180deg, rgba(44,54,32,.55)
+     0%, rgba(30,39,22,.88) 100%)`) — den bas-regeln (rad ~466, delad
+     med desktop, INTE rörd här) färgade hela fotot mörkgrönt/mjölkigt
+     i stället för facits faktiska mobila overlay: en svag varm vertikal
+     ton (0deg) plus en textsides-koncentrerad 90deg-gradient som bara
+     mörklägger vänstra ~76% (textsidan) och lämnar högra ~24% av fotot
+     synligt. Facits exakta, uppmätta värden (index.html rad ~1928-1934),
+     inte gissade. Scopat hit (samma @media max-width:860px som resten
+     av denna omgångs mobila fixar) så desktop:s ::before förblir
+     oförändrad. */
+  .nh-qfind-hero::before {
+    z-index: 1;
+    background:
+      linear-gradient(0deg, rgba(119,68,26,.11), rgba(119,68,26,0) 46%),
+      linear-gradient(90deg,
+        rgba(34,41,19,.52) 0%, rgba(39,43,21,.31) 42%,
+        rgba(69,51,26,.09) 61%, rgba(112,70,31,0) 76%);
+  }
 
   /* §D/§F.5 — "Hjälp mig →" var en enkel understruken textlänk, en
      kvarleva från ett tidigare, övergivet reskin-försök mot nyehandels

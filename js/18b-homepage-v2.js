@@ -30,20 +30,22 @@
 
        Bildkälla (rättad 2026-09-01, se tests/blueprints/
        mobile-hero-port.md §G/STATUS.md): facitens EGNA bild
-       (hero-westcoast-v4.jpg) finns bara lokalt på disk
-       (tests/parity-sections.mjs PROTO_ASSETS_DIR) och används redan för
-       PIXELEXAKT QA via `lockImplImages`/LOCKED_IMAGES — den läser filen
-       direkt från disk och inline:ar den som en data:-URL EFTER sidladdning,
-       oberoende av vad denna funktion sätter som src. QA-mekanismen kräver
-       alltså INGEN nätverks-URL alls, bara att `data-hero-src` finns som
-       hook (behålls nedan). Produktionskällan är därför den RIKTIGA,
-       redan konfigurerade nyehandel-bilden (`nativeHeroImgUrl`, plockad ur
-       den nativa karusellens första slide) direkt — ingen
-       localhost-URL någonsin i den byggda `hazey.min.js`, ingen
-       ladda-och-fall-tillbaka-komplexitet. `hero-westcoast-v4.jpg` är
-       filen som behöver stabil, riktig HTTPS-hosting den dag Vilmer vill
-       ha facitens EGEN bild (inte bara den nativa) live i produktion —
-       inte beslutat/löst här, bara dokumenterat. */
+       (hero-westcoast-v4.jpg) ligger nu SPÅRAD i det här repot
+       (assets/hero-westcoast-v4.jpg, samma bytes som prototypens fil,
+       inte regenererad) och hostas via SAMMA jsDelivr GitHub-mekanism
+       som hazey.css/hazey.min.js (se blocks/loader.html/loader-dev.html)
+       — inte längre den nativa nyehandel-bilden, som visade fel motiv
+       (en cannabisplanta i stället för facitens västkust-lifestyle-foto).
+       `NH_ASSET_BASE` är konfigurerbar (window.NH_ASSET_BASE) i stället
+       för hårdkodad — produktion faller tillbaka till jsDelivr@dev om
+       inget annat satts. INGEN localhost-URL i källkoden. QA/parity-
+       testet överskriver ändå bilden med en pixelexakt data:-URL läst
+       direkt från disk (`lockImplImages`/LOCKED_IMAGES) — opåverkat av
+       vilken bas som används här. */
+    var NH_ASSET_BASE =
+      (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
+      "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@dev/assets/";
+
     function nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
       var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
@@ -51,12 +53,11 @@
       var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
 
-      // data-hero-src: bara en QA-selektorkrok för lockImplImages (se
-      // ovan) — värdet spelar ingen roll för testresultatet, bara att
-      // attributet finns. Sätts till samma URL som faktiskt visas.
-      var bg = nativeHeroImgUrl
-        ? ' style="background-image:url(\'' + nativeHeroImgUrl.replace(/'/g, "\\'") + '\')" data-hero-src="' + nativeHeroImgUrl.replace(/"/g, "&quot;") + '"'
-        : ' data-hero-src=""';
+      var heroSrc = NH_ASSET_BASE + "hero-westcoast-v4.jpg";
+      // data-hero-src: en QA-selektorkrok för lockImplImages (se ovan) —
+      // värdet spelar ingen roll för testresultatet (skrivs över), bara
+      // att attributet finns. Sätts till samma URL som faktiskt visas.
+      var bg = ' style="background-image:url(\'' + heroSrc.replace(/'/g, "\\'") + '\')" data-hero-src="' + heroSrc.replace(/"/g, "&quot;") + '"';
 
       return '<section class="nh-hero-v2 nh-qfind-hero"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'

@@ -668,3 +668,14 @@ längre): `PACKAGE_GEOMETRY_SELECTORS`/`measurePackageGeometry` i
 (`tests/golden/header-package-geometry.json`).
 
 **`node build.js` kört. Inget pushat eller deployat.**
+
+### GODKÄND (2026-09-02)
+
+Tre uppföljande manuella korrigeringar efter ovanstående (fel
+heroasset → konfigurerbar `NH_ASSET_BASE`; kortets bredd/marginal
+14px/sida för smal → rättad på `.nh-hero-v2` direkt; overlayns färgton
+→ facitens exakta mobila gradient) — full logg i STATUS.md "Mobil hero
+GODKÄND". Vilmer godkände resultatet som det är; textkolumnens exakta
+höjd mot facit medvetet lämnad (hero-text/CTA byts ut senare, inte
+värt vidare pixel-jakt nu). Mobil hero betraktas som LÅST baseline
+härefter, samma status som header.
