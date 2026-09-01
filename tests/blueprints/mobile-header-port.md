@@ -797,6 +797,23 @@ tag-name-kollision för `<a>`). Ingen ändring behövs i
 
 ---
 
+## AMENDMENT (2026-09-01): Trustpilot-stjärnan, 11px→13px
+
+Fristående, minimal korrigering av den redan låsta baselinen
+(commit `f9e9854`), begärd separat av Vilmer. Grundorsaken var redan
+dokumenterad i STATUS.md ("Mobilheader LÅST"-posten) innan denna
+amendment gjordes — inget nytt rotorsaksarbete här, bara
+implementation av den redan identifierade fixen: `.nh-mobile-trust
+.tp-star svg`s egen `width:11px;height:11px` togs bort (behåller bara
+`color`), så den mobil-specifika `.nh-mt-item svg{width:13px;
+height:13px}`-regeln (rad 477) blir ensam avgörande — replikerar
+facits verkliga specificitetsrelation (`.mt-mobile .mt-item svg`, 2
+klasser, alltid vinner över `.tp-star svg`s 1 klass, oavsett
+källordning) exakt. Se STATUS.md "Mobilheader: fristående amendment"
+för fullständig verifieringslogg. Ingen annan del av headern rörd.
+
+---
+
 ## Öppna frågor (inte beslutade av denna spec)
 
 1. Ny CSS-variabel för facits breakpoint-specifika sökfälts-ton

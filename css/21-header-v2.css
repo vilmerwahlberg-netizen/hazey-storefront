@@ -514,7 +514,8 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   letter-spacing: inherit !important;
 }
 /* Facit .tp-star: grön Trustpilot-badge (rad ~1155 i facit-källan) —
-   15×15 bas, 14×14 mobil-override, vit stjärna 11×11 på #00b67a. */
+   15×15 bas, 14×14 mobil-override, vit stjärna 11×11 på #00b67a (den
+   BAS-nivå, INTE mobilspecifika, storleken — se rättelse nedan). */
 .nh-mobile-trust .tp-star {
   width: 14px;
   height: 14px;
@@ -525,7 +526,25 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   border-radius: 2px;
   flex: none;
 }
-.nh-mobile-trust .tp-star svg { width: 11px; height: 11px; color: #fff; }
+/* KORRIGERAT (fristående amendment, 2026-09-01, verifierat med
+   tests/typography-icon-checks.mjs measureIcon/diffIcon): stjärnan
+   renderade 11×11 här mot facits faktiska 13×13. Rotorsak, bekräftad
+   via CDP getMatchedStylesForNode — INTE en gissad kompensation:
+   facits egen, obetingade `.tp-star svg{width:11px;height:11px}` (bas,
+   1 klass) skrivs alltid över av den SENARE, mer specifika mobila
+   2×2-regeln `.mt-mobile .mt-item svg{width:13px;height:13px}` (2
+   klasser: .mt-mobile+.mt-item) — den vinner OAVSETT källordning
+   eftersom den har högre specificitet, inte bara källordningstur. Vår
+   motsvarande bas-regel (raden ovan) hade av misstag SAMMA scopade
+   2-klass-specificitet (`.nh-mobile-trust .tp-star svg`) som
+   item-svg-regeln på rad 477 (`.nh-mobile-trust .nh-mt-item svg`) —
+   en oavsiktlig specificitets-oavgjord där källordning (tp-star-
+   regeln kom sist) fällde avgörandet fel väg. Tar bort denna regels
+   egen width/height helt (behåller bara färgen) så den mobil-
+   specifika item-svg-regeln (rad 477, redan `13px`) blir den enda
+   som avgör storleken — replikerar facits verkliga specificitets-
+   relation exakt, inte en ompaketerad gissning. */
+.nh-mobile-trust .tp-star svg { color: #fff; }
 
 /* Mobilmenyns 18+-fotnot (juridiskt krav, flyttad hit från den dolda topbaren). */
 .nh-mm-foot {

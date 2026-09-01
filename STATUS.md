@@ -1100,3 +1100,35 @@ overflow, home/kategori/produkt-regression, desktop orört — se
 blueprintens §I för detaljer.
 
 **Ingenting implementerat. Inget pushat eller deployat.**
+
+## Mobilheader: fristående amendment — Trustpilot-stjärnan 11px→13px (2026-09-01)
+
+Separat, minimal korrigering av den låsta headerbaselinen (`f9e9854`),
+begärd explicit av Vilmer utifrån den redan verifierade avvikelsen som
+`tests/typography-icon-checks.mjs` hittade i förra omgången (se
+"Mobilheader LÅST"-posten ovan). Rörde INGET annat i headern.
+
+**Fix:** `.nh-mobile-trust .tp-star svg` hade en egen `width:11px;
+height:11px` som (via en oavsiktlig specificitets-oavgjord — se CSS-
+kommentaren i `css/21-header-v2.css`) vann över den mobil-specifika
+`.nh-mobile-trust .nh-mt-item svg{width:13px;height:13px}`-regeln,
+trots att facits motsvarande högre-specificitetsregel (`.mt-mobile
+.mt-item svg`, 2 klasser mot `.tp-star svg`s 1 klass) alltid vinner i
+facit oavsett källordning. Tog bort tp-star-regelns egen width/height
+helt (behåller bara `color:#fff`) så item-svg-regeln blir ensam
+avgörande — replikerar facits verkliga specificitetsrelation exakt,
+ingen ny gissad kompensation.
+
+**Verifiering:** `measureIcon`/`diffIcon` bekräftar EXAKT 13×13px på
+båda sidor (`diff: []`). `npm run parity`: Header PASS (122px=122px,
+1,21%), Sökfält PASS (53px=53px, 0%), Mikrotrust PASS (52px=52px,
+9,67%, marginellt förbättrad från 9,68%), sektionsordning PASS, ingen
+overflow PASS, paketgeometri (390/430/600px) PASS. Manuellt verifierat
+på start-/kategori-/produktsida (390px, `m-s-buds`,
+`hash-magic-sauce-50-charas-5-gram`) — stjärnan 13×13px överallt,
+headerhöjd oförändrad (122px). Desktop 1440px oförändrad (175px,
+mikrotrust `display:none` som avsett).
+
+**Headerbaseline LÅST IGEN** efter denna commit — mobilheader/sökfält/
+övre mikrotrust produktions-CSS/JS ska inte ändras utan en ny, explicit
+instruktion.
