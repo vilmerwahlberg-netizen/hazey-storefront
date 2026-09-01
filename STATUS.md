@@ -1,0 +1,652 @@
+Klart:
+- HANDOFF-CLAUDE-CODE.md uppdelad i CLAUDE.md (permanent kontext) + STATUS.md (denna fil), originalfilen raderad.
+- Header v2 och startsida v2 BYGGDA och verifierade visuellt (skärmdumpar i `preview/`, se nedan) — inte bara planerade.
+  Nya filer: `css/21-header-v2.css`, `css/22-homepage-v2.css`, `js/18a-header-v2.js`, `js/18b-homepage-v2.js`,
+  + boot-anrop tillagt i `js/19-core-close.js`. `node build.js` kört, inga fel.
+- Ny devDependency: `playwright` (för `hdr_inspect2.mjs` och `preview.mjs`, se nedan) — kräver riktig Chrome installerad, laddar inga egna browser-binärer.
+
+## Hur headern faktiskt fungerar (viktigt att förstå innan ni ändrar den)
+
+Nyehandel renderar redan en RIKTIG nav-meny (en enda platt "Alla produkter"-megameny,
+`.navbar-item.has-dropdown.is-mega` under `nav.navbar .navbar-menu`, med alla ~40
+kategorier nästlade). `js/18a-header-v2.js` läser den listan LIVE ur DOM:en varje
+sidladdning (inget hårdkodat kategori-facit), klassificerar varje länk med reglerna
+nedan, och bygger om presentationen till separata dropdowns (`.nh-cat-row`) som
+döljer (inte tar bort) den nativa menyn. Samma sak för mobil — EN datakälla
+(`nhBuildNavData`) renderar både desktop-dropdowns och mobilmenyn.
+
+**Klassificeringsregler** (i `js/18a-header-v2.js`, konstanter högst upp i filen):
+- Format härleds ur sluggens suffix (`-vapes/-vape/-carts` → vape, `-blommor/-buds` → blomma, `-hasch/-hash` → hash).
+- Cannabinoid härleds ur sluggens prefix, bara för de sex Vilmer godkänt 2026-08-28: THCA, THCB, THCV, CBN, H4CBD, CBD.
+- **Pausade cannabinoider (HHCPM, THCNM, 10-OH-THC) filtreras bort helt** — syns ingenstans i den nya navigationen. Juridik ej klar (cannabinoidlagstiftning ändrades 2025-12-10), Vilmer beslut 2026-08-28. Ligger kvar som riktiga kategorisidor på sajten, bara inte länkade från den nya headern.
+- Serier (Magic Sauce, Nano-11, Faraoh, Tatra Hemp, Magic Farmers, Hero) är explicit listade i `NH_SERIE_OVERRIDES` eftersom namnen inte går att gissa ur sluggen.
+- **CBD Group** (cannabinoid utan formatuppdelning) hamnar varken i toppnav eller dropdowns per Vilmers beslut 2026-08-28 (egen landningssida, inte topnav) — och behöver INGEN ny footer-länk: `js/08-footer.js` rad ~168 länkar redan till `/sv/categories/cbd-group` som "CBD". Upptäckt under arbetet, inget nytt att göra där.
+
+## Beslut jag tog själv under bygget (ny arbetsmodell, se memory: feedback-ux-autonomy)
+
+- **Ingen fjärde topnav-flik för cannabinoid.** Eftersom oljor/kapslar inte finns i sortimentet (bekräftat av Vilmer) är cannabinoid inte ett eget format hos er — det blev ett filter INNE i Vapes/Blommor/Hash-dropdownarna istället för en egen kolumn. Bekräftat med Vilmer i chatten innan bygge.
+- **"Fler i vapes/blommor/hash"-listan i varje dropdown är begränsad till 6 länkar** (först-i-DOM-ordning, inte prioriterat). Vissa cannabinoid-varianter (t.ex. THCV Vapes, CBN Vapes, H4CBD Vape) kan hamna utanför de 6 om ett format har många undersidor. **Öppen fråga:** vill du att listan ska vara längre, eller grupperad per cannabinoid istället för en platt lista?
+- **Faraoh och Hero Vapes klassade som vape-serier** (ingen synlig formatuppdelning i nativ-menyn, så gissat utifrån namnen/tidigare kontext). **Verifiera gärna** att det stämmer.
+- **Tatra Hemp och Magic Farmers har inget känt format** — visas just nu i ALLA tre dropdowns (Vape/Blomma/Hash) hellre än att gissa fel. **Öppen fråga:** vilket/vilka format hör de till?
+- **Hero-sektionen reskinnas i nyehandels EGEN native slideshow-komponent** (`.template-components__slideshow .slideshow`), inte `blocks/hero.html` — den senare visade sig INTE ligga live vid kontroll 2026-08-28 (troligen en äldre/oanvänd variant). Vi rör bara typografi/färg på den riktiga karusellen, inte dess rotation/JS.
+- **Aura byggs som dold platshållare** (`#aura-guiden[hidden]`), helt tom — ingen text skriven, per Vilmers beslut (juridik + terminologi olöst).
+- **"Hitta rätt"-guidens steg 2 är cannabinoid (inte känsla/aura)** — matchar varumärkesröst-regeln (aldrig fråga om effekt).
+- La till en "18+"-badge i topbaren (ren UI-text, juridiskt krav) — fanns inte i dagens USP-lista.
+
+## Fel som hittades och fixades under visuell testning
+
+- CSS-quirk: `overflow-x: auto` på nav-raden tvingade `overflow-y` att också klippa, vilket gömde alla dropdown-paneler. Fixat (bytte till `flex-wrap`).
+- "Hitta rätt"-panelen visades öppen redan vid sidladdning — `hidden`-attributet sattes bara i HTML-strängen, inte explicit i JS. Fixat + en CSS-failsafe (`[hidden]{display:none!important}`) tillagd.
+- Mobilmenyn och "Hitta rätt" var monterade inuti `#store-header`, som (får) en `transform` vid scroll (`js/14-header-scroll.js`) — det skapar ett nytt containing block för `position:fixed`-barn, så panelerna klämdes ihop till headerns egen låga höjd istället för att täcka hela skärmen. Fixat genom att montera dem på `<body>` istället.
+- Upptäckt (INTE åtgärdat, hör inte till detta jobb): en av de 4 slidesen i den riktiga hero-karusellen har rubriktexten **"Text nmr 2"** — ser ut som en glömd platshållartext i nyehandel-admin, inte skapad av mig. Värt att byta ut i admin när ni ändå är inne där.
+
+## Hur jag testade (säkert, skrivskyddat)
+
+`preview.mjs` (kräver `playwright`, redan installerat): besöker hazeyse.nyehandel.se
+som en vanlig besökare (ingen inloggning, rör aldrig Kodläge/admin) och injicerar vår
+lokalt byggda `hazey.css`+`hazey.min.js` klient-sidan i en Playwright-styrd
+Chrome-flik — motsvarar att klistra in samma kod i webbläsarens devtools-konsol.
+Inget sparas till nyehandel. Kör med `node preview.mjs` → skärmdumpar hamnar i
+`preview/*.png` (6 st: desktop header+hero, populära vägar, nav-dropdown öppen,
+Hitta rätt öppen, mobil header+hero, mobilmeny öppen). Sätt `NH_KEEP_OPEN=1` för att
+lämna Chrome-fönstret öppet efter körning (annars stängs det automatiskt — vi har
+bara 8 GB RAM att jobba med, se till att inte hopa upp flera körningar utan att stänga).
+
+`hdr_inspect2.mjs` — samma skrivskyddade metod, används för att slå upp riktig DOM/CSS-struktur på sajten (skriver ingenting, bara `console.log`).
+
+**🚩 Nav/mega-meny: för många val, otydlig presentation, kräver omdesign — Vilmer återkommer med riktning.**
+(Beslutat 2026-08-28. RÖR INTE `.nh-cat-row`/`.ddrop`/dropdown-innehållet eller mobilmenyns
+struktur förrän Vilmer gett ny riktning — `js/18a-header-v2.js`s klassificeringslogik och
+`nhBuildNavData`/`nhFormatDropdownHtml`/`nhBuildMobileMenuHtml` ligger orörda som de är.)
+
+## Visuell polish-omgång (2026-08-28, efter nav-flaggan ovan)
+
+Läste prototypens `<style>`-block noggrant (färgtoken, radier, skuggor, spacing,
+knappstilar, hero-layout, kortstilar) för att matcha KÄNSLAN, inte bara IA:t.
+Rörde INTE `.nh-cat-row`/`.ddrop`/`.mm-*` (nav/mobilmeny) — se flaggan ovan.
+
+- Topbar: gradient (green-deep → green → #3b4728), inte flat färg — matchar prototypens `.trust-bar`.
+- Main-row: gradient sand→cream bakgrund, sök-fält pill-form med terra-fokusring, konto/varukorg-ikoner fått rätt radie/hover (sand-bg + terra-deep vid hover).
+- "Hitta rätt" byggd om till ett FLYTANDE KORT förankrat nedre högra hörnet (`right:24px;bottom:24px`, rundade hörn runt om) istället för en kant-till-kant-drawer — matchar prototypens `.hr-drawer` exakt. Bakgrundsscrimet tonar nu in/ut mjukt.
+- "Populära vägar": kort fick ikon-cirklar (sand-bg, olivgrön ikon, en enkel linje-SVG per format/serie), mindre sec-head-rubrik (19px serif, matchar prototypens mått), hover lyfter kortet -4px med mjuk grön-tonad skugga.
+- Ny reveal-on-scroll-animation (`.nh-reveal`, i `css/22-homepage-v2.css`): translateY(24px)→0, cubic-bezier(.25,.46,.45,.94), 0.62s, 90ms stegring (max 4 steg) — de uppmätta värdena i CLAUDE.md, som INTE fanns i prototypfilen själv (de kom från extern benchmark mot tershine.com/dadgrass.com) så byggda från grunden här. Respekterar `prefers-reduced-motion`. Kör via en enkel `IntersectionObserver` i `js/18b-homepage-v2.js` (`nhInitReveal`).
+- Nya CSS-tokens tillagda i `css/21-header-v2.css` (radier r-sm/r/r-lg, skuggor shadow-soft/shadow-lift med grön ton `rgba(44,54,32,...)` istället för svart, `--nh-t` transition-timing) — hämtade rakt av från prototypens `:root`, inte gissade.
+- **Bugg hittad och fixad:** nyehandels egen temafärg-inställning injicerar en bred `#store-header ... span/a/li { color: ... }`-regel som vann mot flera av mina textfärger (osynligt för konto/varukorg-ikonerna eftersom deras nativa mörkgröna råkar vara nästan identisk med min — men gjorde 18+-badgen helt osynlig, ljus text på ljus text). Löst med riktade `!important` på de element vi medvetet färgsätter. Värt att komma ihåg: ALLA nya textfärger på element inuti `#store-header` behöver troligen samma `!important`-behandling.
+
+## Helsides-omgång (2026-08-29) — "det gick inte att bedöma delar för sig"
+
+Vilmer påpekade rätt: header+hero+populära vägar isolerat, ovanpå en i övrigt
+oförändrad startsida, gick inte att bedöma — det ser splittrat ut oavsett hur
+bra delarna är var för sig. Utökade därför reskinnet till HELA startsidans
+flöde nedanför "Populära vägar", inte bara toppen. Full-sides skärmdumpar:
+`preview/FULLPAGE-desktop.png` och `preview/FULLPAGE-mobile.png`.
+
+Det som reskinnades (alla är EGNA, tidigare byggda komponenter — `nh-trust`,
+`nh-tabs`/`nh-tab`, `nh-faq` — inte rå nyehandel-native markup, så säkra att
+byta färg/typsnitt/radie på utan att röra funktionalitet):
+- **Trust-ikonraden** (100% lagligt osv.): sand-bakgrund, systemfont istället för Nunito.
+- **Bästsäljare/Nyheter/Kampanjer-tabsen**: pill-knappar utan versaler, grön aktiv-state — matchar nya knappstilen istället för gamla Roboto-versal-stilen.
+- **FAQ-sektionen**: sand-bakgrund, seriftitel (matchar "Populära vägar"), vita rundade kort istället för platta.
+
+**Medvetet INTE rört** (flaggar detta öppet, inte bara tyst hoppat över):
+- **Produktkorten** (`.product-card`/`.pl-list`) i Bästsäljare/Nyheter/Kampanjer-gridden — dessa återanvänds sitewide på kategori-/produktsidor, utanför uppdragets scope ("header + startsida"), och är redan rätt vitt/rent i grunden. Rör man dem händer det på ALLA sidor, inte bara startsidan — vill du att jag utökar scopet dit?
+- **"THCA med flera"-textblocket, kampanjbannern (bilden) och "Hazey"-talespersonsektionen** — dessa ser ut att vara råa innehållsblock (generiska klassnamn, ingen egen `nh-`-komponent att haka i säkert utan risk att träffa andra sidor). Typografin där (rubriker/brödtext) matchar fortfarande INTE det nya designspråket. **Öppen fråga:** vill du att jag identifierar och stylar dessa specifikt, eller ska de bytas ut/skrivas om senare som eget jobb?
+
+**Bugg #2 hittad och fixad (allvarligare än badge-buggen):** nyehandels tema-CSS
+återinjicerar sin egen `<style>`-tagg (samma `!important`-regler) EN GÅNG TILL
+efter att vår kod körts — så vanlig `!important` + normal specificitet räckte
+inte, eftersom bägge sidor har `!important` och då avgör DOM-ordning, och
+temats tagg dyker upp sist. Löst med dubblerade klass-selektorer (`.x.x`) för
+garanterat högre specificitet oavsett ordning. **Kom ihåg det här mönstret
+för allt framtida override-CSS mot befintliga `nh-*`-komponenter.**
+
+## Responsivitetstest (2026-08-29) — 10 bredder, 360–1920px
+
+Vilmer frågade om vi bygger för mobil OCH alla mellanlägen, inte bara de två
+breddar vi råkat skärmdumpa (1400/390). Ärligt svar: nej, det hade vi inte
+testat. Körde nu en sweep (`preview/responsive/w*.png`): 360, 414, 640, 768,
+834, 1024, 1180, 1280, 1440, 1920px.
+
+**Hittade och fixade en lucka:** mellan 601–880px (surfplattbredd) radbröts
+den statiska topbar-USP-listan till klumpiga 2 rader — den befintliga
+scroll-marquee-lösningen (`css/15-...`) aktiverades bara under 600px. Vår
+egen nya brytpunkt för nav-raden ligger vid 880px (dropdown→hamburger), så
+vi drog samma linje för marquee-växlingen istället för att lämna en 280px
+bred lucka mitt i. Fixat i `css/21-header-v2.css` (ny `@media` som återskapar
+marquee-reglerna upp till 880px — glömde `__item`-paddningen/checkmark-ikonen
+första försöket, texten flöt ihop utan mellanrum, fixat i samma veva).
+
+Övriga 9 bredder (inkl. mycket liten 360px och mycket stor 1920px) höll utan
+problem — ingen text kapad, inga överlappande element, nav-brytpunkten (880px)
+fungerar rent åt båda hållen.
+
+**Obs, viktigt att komma ihåg:** hero-BILDEN/rotationen är fortfarande helt
+orörd i alla dessa test — vi har bara stylat text/knappar ovanpå, inte bytt
+bilder eller byggt om själva karusellogiken (se tidigare anteckning om
+`.template-components__slideshow`).
+
+## Uppdrags-scope UTÖKAT (2026-08-29/31) — läs detta innan ni undrar varför nav-flaggan känns inaktuell
+
+Vilmer: migreringen har urartat till att i praktiken skriva om nästan hela
+frontend (design + navigation) mot nyehandel, inte bara "header + startsida"
+som HANDOFF ursprungligen sa. **Enda uttalade undantagen: produktsidan (PDP)
+och blogginlägg** — de rörs inte. Allt annat (nav/mega-meny, kategorisidor,
+minicart) är nu i scope.
+
+Vilmer har också bekräftat att nav-flaggan från 2026-08-28 inte längre betyder
+"vänta på mig" — han hinner inte tänka igenom den själv, så **jag löser
+mega-menyns struktur själv näst**, enligt hans egen stående regel (se memory
+`feedback-ux-autonomy`: ta struktur-/UX-beslut utan att vänta på hans ja).
+
+**Ordning Vilmer bad om (2026-08-31): startsidan färdig FÖRST**, innan nav
+görs om eller kategorisidor byggs. Det är alltså vad omgången nedan gör.
+
+## Startsidan KLAR-omgång (2026-08-31) — de sista två luckorna städade
+
+Tog tag i de två öppna frågorna från förra omgången (ovan) direkt, eftersom
+scopet ändå är utökat nu — inget att vänta på:
+
+- **Produktkorten** (`.pl-list .product-card`): rundade hörn (14px), subtil
+  border, lyft-hover med grön skugga — matchar nu "Populära vägar"/resten.
+  Systemfont på produktnamn istället för gamla Nunito.
+- **De råa innehållsblocken** ("THCA med flera"-texten, "Vad är THCA/THCNM/
+  Magic Sauce"-Q&A:n): hittade deras riktiga nyehandel-komponentnamn via
+  DOM-inspektion — `.store-startpage .template-components__text-editor` och
+  `.store-startpage .template-components__columns`. Scopat till
+  `.store-startpage` (nyehandels egen klass för just startsidan) så det
+  ALDRIG kan läcka till andra sidor. Bara rubriker/text/länkar fått ny
+  typografi (serif-rubriker, rätt färger) — bilderna (kampanjbannern,
+  Hazey-talespersonbilden) är helt orörda, inget innehåll borttaget.
+
+Helsidesskärmdumpar uppdaterade (`preview/FULLPAGE-desktop.png` +
+`-mobile.png`) — hela startsidan hänger nu ihop visuellt topp till botten,
+inklusive de bitar som tidigare stack ut.
+
+**Startsidan bedöms som funktionellt klar** för den här omgången (väntar på
+Vilmers slutgranskning innan den stämplas helt godkänd).
+
+## Mobil-fidelitetskoll (2026-08-31) — "prototypen såg helt annorlunda ut i mobil"
+
+Vilmer misstänkte att jag missat/glömt mobilversionen av prototypen (som har
+en egen `mVp`-DOM/CSS-gren, ganska olik `dVp`). Verifierade: samma fil
+(`ny-header-child.html`, oförändrad sen 2026-08-11 — inte en gammal kopia),
+och jag hade läst `mVp` från början. Men jag hade byggt en FÖRENKLAD mobil-
+upplevelse (samma innehåll omflutet till smalt läge) snarare än att aktivt
+spegla `mVp`:s egna, mer genomtänkta layoutval — vilket är precis vad
+CLAUDE.md sa att INTE göra (porta två-träds-uppdelningen), men jag hade nog
+tolkat det för bokstavligt och missat att ändå MATCHA känslan i det enskilda
+mobilflödet, inte bara strukturen.
+
+Konkret åtgärdat: **"Populära vägar" på mobil** använde tidigare exakt samma
+enkolumns-liknande flytande rutnät som desktop. Prototypens `mVp` har ett
+tydligt 2-kolumners rutnät med större kort (`.m-routes-grid`). Vårt rutnät
+gav redan 2 kolumner på normal telefonbredd (auto-fit räknar ut det), men
+låste det nu explicit under 480px så det aldrig glider till 1 kolumn.
+
+**Sidospår, hittat och åtgärdat under tiden:** provade att återanvända
+hazey.se:s riktiga kategorifoton (`Kop-cannabis-Vapes-sverige.jpg` m.fl.,
+redan i bruk i `blocks/butik-grid.html`) som kortbakgrund för att matcha
+prototypens fotokort. Upptäckte att de bilderna har TEXT INBAKAD I BILDEN
+("Vapes" osv) — med vår egen rubrik ovanpå blev det dubbel/krockande text.
+Rullade tillbaka till ikon-korten (som redan var rena och fungerade).
+**Öppen fråga:** vill du ha rena, textfria kategorifoton tagna/beskurna för
+det här ändamålet? Annars är ikon-korten den säkra vägen.
+
+Övrigt jag kollade men INTE ändrat (native, redan fungerar rimligt):
+mobilens sök-overlay (`#mobile-search-trigger`) och "Hitta rätt"-kortets
+positionering på mobil (redan `left/right:10px;bottom:10px` under 640px,
+matchar prototypens egen mobil-brytpunkt).
+
+## 🚨 FEL PROTOTYPFIL användes hela tiden fram till 2026-08-31 — läs innan du bygger vidare
+
+Allt ovanpå den här sektionen (header, hero, "Populära vägar", "Hitta rätt",
+klassificeringsreglerna, designvärdena) byggdes mot
+`HZY/hemsidor/header-startsida/ny-header-child.html` (11 aug). Vilmer
+bekräftade 2026-08-31 att det var fel/gammal fil — den RÄTTA, senaste
+prototypen är:
+
+```
+HZY/chatgpt-claude-handover/CLAUDE-HANDOFF-2026-08-17/prototyp/index.html
+```
+(uppdaterad 2026-08-24, se fullständig research-logg i CLAUDE.md — sökväg,
+radmarkeringar och konkreta skillnader står där, upprepas inte här).
+
+**Vad som fortfarande stämmer** (verifierat identiskt mellan filerna):
+designvärdena (`:root`-token: färger, radier, skuggor, `--font-display`
+Iowan Old Style) — det arbetet i `css/21`/`css/22` är INTE bortkastat.
+
+**Vad som INTE stämmer och behöver göras om** (skillnader hittade
+2026-08-31, se skärmdumpar Vilmer skickade + min läsning av rätt fil):
+- Mobil header-layout: hamburgare vänster + centrerad logga + konto/varukorg
+  höger, ALLTID synligt sökfält direkt under headern (inte dolt bakom en
+  ikon som nativ nyehandel gör det).
+- Hero: ett inramat/rundat kort med luft runt om — INTE kant-till-kant som
+  nyehandels nativa slideshow vi reskinnat.
+- Helt ny sektion **"Populära serier"** (rund logotyp/avatar-rad, byggd
+  datadrivet via `data-pser-row` i prototypen — motsvarande finns inte i
+  vårt bygge alls än).
+- "Populära vägar": rätt fil har riktiga fotokort utan inbakad text (till
+  skillnad från de hazey.se-bilder vi provade och rullade tillbaka från).
+- Terminologi-datapunkt (ej beslut): rätt fil använder "Semisyntetiskt" för
+  framställningsaxeln (inte "Modifierat") — fortfarande markerat obeslutat
+  i filens egna öppna frågor, gissa inte att det är slutgiltigt.
+- **Trust-siffror** ("8 000+ kunder", "4,7/5 Trustpilot", grundandeår) finns
+  i rätt fils "Om Hazey"-sida, men filen kommenterar själv att de "ska
+  verifieras eller hämtas dynamiskt före publicering" — använd ALDRIG
+  dessa tal rakt av, fråga Vilmer om de är godkända riktiga tal.
+
+**Detta betyder i praktiken:** header-nav (redan flaggad), hero och
+"Populära vägar" behöver byggas om (ny IA/komposition, samma design-tokens),
+och en ny "Populära serier"-sektion behöver läggas till. Väntar på Vilmers
+go innan det görs — se "Näst" nedan.
+
+## Ombygge mot RÄTT fil (2026-08-31) — header-layout + hero-kort + Populära serier
+
+Vilmer sa "börja bygga", så kört direkt. Konkret gjort:
+
+- **Mobil header omstrukturerad** till prototypens riktiga layout: hamburgare
+  flyttad till att vara EGET first-child i `.main` (inte längre inuti
+  `.right`), `.main` blir en `1fr auto 1fr`-grid på mobil så loggan blir
+  SANT centrerad oavsett hur breda flankerna är (konto+varukorg väger mer än
+  en ensam hamburgare). Nativ sök (`.center`) döljs ur main-raden på mobil.
+- **Ny alltid synlig mobil-sökrad** (`.nh-mobile-searchbar`) direkt under
+  headern — bara en trigger-knapp som klickar den RIKTIGA nativa
+  `#mobile-search-trigger`-knappen, ingen egen söklogik/dubblettdata. Den
+  nativa sök-ikonen i `.right` döljs på mobil (skulle annars synts två
+  gånger — dubblett, fixad i samma veva).
+- **Hero omstylad till inramat/rundat kort** (`margin` + `border-radius` +
+  `box-shadow` runt den redan befintliga nativa slideshow-komponenten) —
+  matchar rätt fils "kort med luft runt om"-känsla, INTE kant-till-kant.
+  Fortfarande bara CSS-yta, rör inte rotation/bilder/JS.
+- **Ny sektion "Populära serier"** tillagd (`js/18b-homepage-v2.js`,
+  `nhPopularaSerierHtml`) — en horisontellt scrollbar rad med runda
+  avatar-ikoner (INTE foton — vi har inga riktiga fristående serie-porträtt,
+  bara hela produktbilder, så en ikon-avatar är den ärliga vägen tills
+  Vilmer ev. tar fram riktiga porträttfoton). Ingen produkträkning
+  hårdkodad — nyehandels nativa meny exponerar inga sådana. Data kommer
+  från samma `navData` som headern (Magic Sauce, Nano-11, Faraoh, Tatra
+  Hemp, Magic Farmers, Hero — alla 6 kända serier).
+
+Testat visuellt (desktop + mobil, se `preview/`) — allt renderar korrekt.
+
+## Ärlig sida-vid-sida-jämförelse (2026-08-31) — Vilmer ifrågasatte, med rätta
+
+Vilmer: "tror du den ser identisk ut visuellt nu?" — nej, och jag hade
+överdrivit i förra sammanfattningen. Tog faktiska skärmdumpar av RÄTT
+prototyp (`preview/PROTOTYPE-mobile-top.png`, via den lokala servern) och
+mitt bygge (`preview/MINE-mobile-top.png`) i EXAKT samma bredd (390px) och
+jämförde på riktigt. Konkreta skillnader som hittades och åtgärdades samma
+omgång:
+
+1. **Topbaren var helt fel struktur på mobil** — prototypen har ingen mörk
+   kryss-rad alls där, bara en ljus 2×2 trust-ruta direkt under sökfältet.
+   Åtgärdat: `.topbar` döljs på mobil (`@media max-width:880px`), ersatt av
+   en ny `.nh-mobile-trust`-rad.
+2. **Trust-siffrorna är nu RIKTIGA, bekräftade av Vilmer 2026-08-31**:
+   "4,7/5 på Trustpilot" (länkad till `trustpilot.com/review/hazey.se`,
+   samma URL som redan används i `blocks/testimonials-section.html`) och
+   "8 000+ ordrar" (INTE "kunder" — Vilmer påpekade skillnaden; talet rör
+   sig mot 9000 så det MÅSTE uppdateras manuellt då och då, kommentar om
+   det ligger i koden). Leverans-/diskretionstexten återanvänds LIVE ur den
+   redan riktiga topbar-USP-listan, ingen ny hårdkodad kopia.
+3. **18+-kravet flyttat** till mobilmenyns fot (`.nh-mm-foot`) eftersom
+   topbaren (där det låg) nu är dold på mobil — annars hade det juridiska
+   kravet tappats bort, inte bara flyttats.
+4. **Hero-texten var centrerad, ska vara vänsterställd** (rätt prototyp har
+   text i övre vänstra området, inte mitten). Fixat genom att skriva om
+   `align-items`/`justify-content`/`text-align` på nyehandels egna
+   `.slideshow__slides__slide__content`-flexbox (native, inspekterad live).
+5. **"Populära serier" visade tomma ikoner — prototypen visar RIKTIGA
+   produktfoton.** Löst RIKTIGT, inte bara kopierat prototypens fejkbilder:
+   ny funktion `nhEnhanceWithRealPhotos()` hämtar varje series riktiga
+   kategorisida (samma beprövade mönster som `js/10-product-sections.js`)
+   och plockar en äkta produktbild att visa i avataren. Progressiv
+   förbättring — ikon visas direkt, byts tyst mot foto när det laddats.
+6. **Samma tekniken applicerad på "Populära vägar"-korten** (Vapes/Blommor/
+   Hash) — de visar nu RIKTIGA produktfoton hämtade live, med prototypens
+   mörka gradient-overlay för läsbar vit text. Löser den öppna frågan från
+   förra omgången (de fejkade hazey.se-marknadsföringsfotona med inbakad
+   text) på ett sätt som är både äkta OCH matchar layouten.
+
+**Kvarstående kända gap (inte åtgärdade, för tidsskäl — inte falskt
+markerade som klara):**
+- Varukorgsbadgen (röd "0"-cirkel på varukorgsikonen) saknas fortfarande.
+- Ingen produkträkning ("17 produkter" etc.) i "Populära serier" — skulle
+  gå att räkna fram med samma scrape-teknik, men inte gjort än.
+- Ingen pixel-för-pixel-genomgång av typografi/spacing/skuggor gjord —
+  bara de STORA strukturella skillnaderna som syntes tydligt på
+  skärmdumparna är åtgärdade. Kan finnas fler mindre avvikelser.
+- Headerns totala höjd på mobil är nu större (hamburgerrad + sökrad +
+  trust-rad, allt i den fixed-positionerade headern) — den befintliga
+  scroll-hide-logiken (`js/14-header-scroll.js`) döljer hela headern vid
+  nedåtscroll så det är inte permanent skärmyta som tas, men det är inte
+  samma mer förfinade "krymp bara trust-raden"-beteende som prototypen har
+  (`.hz-header.is-shrunk .trust-bar{max-height:0}`). Inte byggt om det.
+
+## Exakt uppmätt omgång (2026-08-31) — "inte alls 1:1", med rätta
+
+Vilmer, med rätta: strukturell likhet räcker inte, det ska vara 1:1. Slutade
+gissa/uppskatta — hämtade EXAKTA värden med `getComputedStyle` direkt ur
+rätt prototyp, på BÅDA breddpunkter (`#mVp` 390px, `#dVp` 1400px), och
+applicerade dem precist. Stora, konkreta rättelser:
+
+- **Hero är INTE ett kort på desktop** — det hade jag fel på. Mätning visade
+  `margin:-26px -24px 0, border-radius:0` på desktop (kant-till-kant) men
+  `margin:10px 10px 18px, border-radius:22px, min-height:238px` på mobil
+  (@media max-width:860px, samma brytpunkt som prototypen själv använder).
+  Kort-känslan är en RENODLAT MOBIL behandling. Rättat i CSS per breddpunkt.
+- Hero-rubrik: 57px/vänsterställd (desktop), 26px (mobil) — exakt uppmätt,
+  inte gissat. Skuggan är varm brun (`rgba(82,49,20,...)`/`rgba(92,57,24,...)`),
+  inte grön som jag använt innan.
+- **Trust-raden var HELT fel stil** — jag hade gjort kort med border/bakgrund;
+  rätt prototyp har RENA textrader utan kort alls (bara ikon + text, 9.7px,
+  färg `rgb(101,89,70)`). Rättat exakt.
+- **"Populära serier"-avatarer var för små och saknade rätt behandling** —
+  uppmätt 83px (mobil, vit kant, namn UNDER i mörk text) vs 186px (desktop,
+  halvtransparent kant, namnet LIGGER PÅ fotot i vitt med gradient-overlay)
+  — två genuint olika behandlingar per breddpunkt, inte samma skalat. Rättat.
+- **"Populära vägar" innehöll seriekort av misstag** (dubblerade "Populära
+  serier") — rätt prototyp har BARA format där. Tog bort seriekorten.
+  Uppmätta mått applicerade: mobil 2 kolumner/112px min-höjd/16px radie,
+  desktop 3 kolumner (vi har bara 3 riktiga format, prototypens fiktiva 4:e
+  "CBD"-kort hoppas över eftersom vi redan beslutat att cannabinoid inte är
+  ett eget format hos oss)/300px min-höjd/29px rubrik.
+
+Jämförelsebilder sida vid sida: `preview/CMP-mine-*.png` vs `preview/CMP-proto-*.png` (mobile-top, mobile-serier, desktop-top, desktop-serier).
+
+**Fortfarande INTE 100% pixel-identiskt** — kvarstår bl.a.: varukorgsbadge,
+produkträkningar i Populära serier, en fullständig genomgång av ALLA
+mellanliggande brytpunkter (bara 390/1400 exakt uppmätta hittills, 768/1024
+etc. ärvda proportionellt men inte verifierade lika noggrant), och innehållet
+i mitten av sidan (produkttabs/FAQ/textblock) är inte ommätt den här
+omgången. Säger det rakt ut istället för att låtsas klart.
+
+Näst:
+1. Vilmer granskar det nya bygget (skärmdumpar/live Chrome) — säger till om header-layouten/hero-textens position/serie-fotona känns rätt nu, och om de kvarstående gapen ovan är värda att åtgärda.
+2. Därefter, i ordning: (a) mega-meny/nav löses av mig, (b) kategori-/listningssidor med riktig filtrering, (c) minicart-reskin. PDP och blogg rörs inte.
+3. Gamla öppna frågor om Faraoh/Hero/Tatra Hemp/Magic Farmers-format och dropdown-listlängd tas upp igen när nav görs om.
+4. Inget är committat än — allt ligger som ospårade/ändrade filer på `dev`-branchen, redo att granskas innan commit.
+5. Lokal statisk server körs på `http://localhost:8765` mot rätt prototypfil (för att Vilmer själv ska kunna bläddra i den) — stäng med `pkill -f "http.server 8765"` när den inte behövs mer.
+
+Öppna frågor (oförändrade sen tidigare):
+- Terminologi "naturidentiskt/semisyntetiskt" vs "fullt naturliga/halvsyntetiska" — obesvarad.
+- `dev`-branchen: fanns redan på GitHub (samma commit som main), bytte till den lokalt 2026-08-28 — inget kvarstående problem.
+- Exakt klassnamn i topbaren: verifierat 2026-08-28 — det är `.topbar-usp > .usp`, båda finns (uppdaterat i CLAUDE.md).
+
+## Systematisk bakgrunds-/struktur-omgång (2026-08-31) — "ruggit mycket som diffar"
+
+Vilmer, med rätta igen: pekade ut att bakgrundsfärger och "hela headern"
+kändes fel, och ifrågasatte varför jag inte bara "adapterar koden och
+skickar över" istället för att mäta enskilda element. Svar: jag kan inte
+bokstavligen klistra in prototypens CSS-fil (fel elementnamn mot nyehandels
+riktiga DOM), men jag KAN och ska hämta VARJE relevant värde systematiskt
+i en genomgång — inte reaktivt, en grej i taget. Gjorde det nu:
+
+- **Sidbakgrund var fel token**: startsidan använde `--nh-beige` (#e4d1bf)
+  av misstag. Rätt uppmätt värde är `#efe9df`. OBS: `#e4d1bf` är INTE fel i
+  sig — det är sajtens redan etablerade bakgrundsfärg på andra sidor
+  (kategori-/kassa-/footer-sidor, se css/01–18, kontraktorns egna filer) —
+  så fixen är SKOPAD till `.store-startpage` (bara startsidan), rör inte
+  resten av sajten.
+- **"Populära serier" saknade en mörkgrön full-bleed-panel på desktop**
+  (uppmätt `rgb(30,39,22)`, padding 54px 26px) — trodde det var samma ljusa
+  bakgrund som resten av sidan. Fixat med viewport-bredd-full-bleed-tricket
+  (robust oavsett verklig container-padding, säkrare än att kopiera
+  prototypens egen -24px som gällde DESS specifika container).
+- **"Populära serier" och "Populära vägar" hade fel INBÖRDES ORDNING** —
+  uppmätt/bekräftad genuin skillnad: mobil = serier FÖRE vägar, desktop =
+  vägar FÖRE serier. Löst med en ny flex-wrapper (`.nh-startpage-flex`) +
+  CSS `order` per brytpunkt (ren CSS `order` fungerar bara om föräldern är
+  flex/grid, så sektionerna slogs in i en egen wrapper för det).
+
+**Medvetet INTE tillagt än** (flaggar öppet, inte tyst hoppat över):
+- **"Vad söker du?"-chipsraden** (qfind) direkt under hero på desktop i
+  rätt prototyp — inte byggd än.
+- **Framställningskort (Naturidentiskt/Semisyntetiskt)** i "Populära
+  vägar" — rätt prototyp har dem, men de skulle länka till
+  `?frame=nat`/`?frame=mod`-filter som INTE finns riktigt implementerat än
+  (ingen kategorisida stödjer det filtret på riktigt ännu), OCH
+  terminologin är fortfarande uttryckligen obeslutad. Att bygga in länkar
+  som ser ut att filtrera men inte gör det vore vilseledande — det är
+  därför de inte är med, inte glömska. **Väntar på: (a) Vilmers
+  terminologibeslut, (b) att riktig framställningsfiltrering byggs på
+  kategorisidorna** (kommer när kategorisidorna byggs, se tidigare punkt
+  om nav/kategorisidor).
+
+Jämförelsebilder: `preview/CMP2-mine-*.png`.
+
+## Allvarlig layoutbugg hittad och fixad (2026-08-31) — text läckte ut ovanför hero
+
+Vilmer skickade skärmdump: text från hero-sektionen renderades OVANFÖR
+hero-kortet, överlappande trust-raden — "riktigt fult". Grundorsak
+verifierad (inte gissad): `#store-main` har en NATIV, statisk
+`padding-top:100px` som matchar den GAMLA (kortare) mobil-headern. Vi
+gjorde headern högre (ny sökrad + trust-rad) utan att synka det värdet —
+sidans riktiga innehåll (hero) renderades då delvis UNDER den nu högre
+fasta headern, vilket visuellt såg ut som text som "läckte uppåt".
+
+Fixat i `js/18a-header-v2.js` (`nhSyncMainOffset`): mäter headerns
+FAKTISKA höjd (`scrollHeight`, inte `getBoundingClientRect().height` —
+den senare gav fel svar eftersom `#store-header` har en egen fast
+CSS-höjd som inte räknar med överskjutande innehåll) och sätter
+`#store-main`s padding-top därefter. Körs vid boot + på resize (eftersom
+sökrad/trust-rad bara visas under 880px, så headerns höjd ändras vid
+brytpunkten).
+
+**Lade också till framställnings-korten** (Naturidentiskt/Semisyntetiskt)
+i "Populära vägar" som saknades helt — en riktig, synlig lucka mot rätt
+prototyp. Länkar till `/sv/categories/alla-produkter` tills vidare (inget
+riktigt framställnings-filter finns byggt på kategorisidor än — de är
+inte byggda alls än). Terminologin ("Semisyntetiskt") är tagen rakt av
+från prototypen, INTE ett beslut jag tagit — fortfarande en öppen fråga
+till Vilmer, se tidigare anteckning.
+
+**Metodlärdom:** tog en fullständig, orerad screenshot av HELA prototypens
+startsida (`preview/FULL-proto-mobile.png`) och jämförde mot en lika
+fullständig screenshot av mitt eget bygge (`preview/FULL-mine-mobile.png`)
+— det avslöjade både den här buggen OCH att prototypens startsida faktiskt
+är KORT (bara header+hero+serier+vägar, sen tomt, sen footer) — de
+mellanliggande sektionerna på skarpa sajten (produkttabs/textblock/FAQ)
+finns inte i prototypens scope alls, så de kan rimligen inte bedömas mot
+"1:1"-måttstocken. Det här är en bättre metod än att mäta enskilda
+element reaktivt — gör helsides-screenshot-jämförelser som förstahandsval
+framöver, inte som sista utväg.
+
+## A-listan genomförd (2026-08-31) — hela ombygget mot rätt prototyp
+
+Vilmer gav en fullständig punktlista (A–I) efter att ha läst prototypen
+(`chatgpt-claude-handover/.../prototyp/index.html`) själv, delade upp
+skillnaderna i "fixbart i repot" vs "kräver riktig data", och svarade på
+mina öppna frågor. Kört igenom hela A-listan i ett svep, verifierat med
+RIKTIG stegvis scroll (`preview/STEP-mobile-*.png` 390px,
+`preview/STEPD-desktop-*.png` 1440px) — inte fullPage, exakt som
+efterfrågat, för att inte råka missbedöma reveal-animerat innehåll igen.
+
+**Byggt (fullständig omskrivning av `js/18b-homepage-v2.js`):**
+- **Hero ersatt**: nyehandels nativa bildkarusell döljs (inte tas bort),
+  ersatt av ett qfind-format mörkgrönt kort — rätt copy ("Hitta rätt utan
+  att kunna allt", "Sveriges bredaste cannabinoidsortiment" som eyebrow,
+  inte "Sveriges #1"), riktig hero-bild återanvänd (samma URL som redan
+  var konfigurerad, plockad ur den nativa karusellens första slide innan
+  den döljs — ingen ny bild uppfunnen), 5 kategori-genvägar, två CTA:er.
+- **Ny qfind-chipsrad** ("Vad söker du?") direkt under hero:n.
+- **"Populära vägar" fick ett 4:e kort** (CBD, CBG & CBN → cbd-group,
+  Vilmer godkände specifikt detta 2026-08-31) + underrubriker på alla 4.
+- **Framställnings-segment** (Naturidentiskt/Semisyntetiskt) — redan byggt
+  förra omgången, bara osynligt pga reveal-buggen.
+- **Trust konsoliderat**: gamla dubblerade ikonraden (`.nh-trust`) dold,
+  ersatt av ETT rikare 2×2/4-kolumners block med Trustpilot/Leveransgaranti
+  (bekräftad riktig policy)/Diskret & spårbart/Sedan 2020. INGEN
+  "analys på X %"-siffra — ingen tillförlitlig datakälla hittad i
+  produktkortens DOM, utelämnad enligt regel, inte gissad.
+- **"Fortsätt där du slutade"**: byggd DOLD (kräver besökardata som inte
+  finns än — produktsida/konto inte byggda), precis som prototypen själv
+  gör det.
+- **"Bästsäljare i lager"**: riktiga produkter, samma beprövade
+  kategori-skrap-mönster som `js/12-bestsellers-listing.js`.
+- **"Snabb koll: vad är vad?"**: FLYTTAD (inte kopierad) från det
+  befintliga SEO-textblocket — hittade och döljer nu originalrubrik+stycke
+  där de extraherades ifrån, så texten inte visas två gånger. THCNM
+  medvetet EJ flyttad (kvar orört på sin plats) — juridiskt pausad
+  cannabinoid, görs inte mer framträdande. Bonusfynd: den befintliga,
+  redan publicerade texten säger själv "THCNM från HERO har vi valt att
+  sluta sälja" — stärker att pausen var rätt beslut.
+- **"Verifierade omdömen"**: bara riktigt betyg (4,7/5) + ärlig länk till
+  Trustpilot. INGA påhittade citat — se öppen fråga nedan om huruvida en
+  riktig recensions-widget kan kopplas in istället.
+- **Nyhetsbrev (mitt på sidan)**: icke-kopplad platshållare, precis som
+  prototypens egen (`onsubmit="return false"` där också). Flaggat: behöver
+  RIKTIGT verktyg kopplat innan lansering.
+- **Gamla flik-sektionen** (Bästsäljare/Nyheter/Kampanjer + produktgrid)
+  DOLD — blev redundant mot "Bästsäljare i lager", visade annars samma
+  produkter två gånger på samma sida.
+- **Reveal-buggen** fixad ordentligt: stort `rootMargin` + tvingad
+  2-sekunders-timeout-fallback. Verifierat att den INTE var hela
+  förklaringen till alla rapporterade problem (Vilmer hade rätt) — flera
+  av punkterna (hero, dubblerad trust, 3 vs 4 kort, SEO-textväggen) var
+  riktiga strukturella luckor, nu åtgärdade separat.
+
+**Två buggar hittade och fixade under verifieringen:**
+- `nhInitReveal`-funktionen saknades helt efter en omskrivning (kopieringsmisstag) — gav ett JS-fel som troligen tystade en del av sidan. Fixat.
+- "Fortsätt där du slutade" visades trots `hidden`-attribut (samma typ av CSS-override som 18+-badgen tidigare) — fixat med samma `!important`-mönster.
+
+**Inte gjort den här omgången** (medvetet, inte glömska):
+- Footer-omstrukturering till prototypens exakta kolumnindelning (Handla/
+  Hjälp&Leverans/Hazey/Villkor) — nuvarande footer har redan riktiga
+  länkar, bara annan gruppering. Lägre prioritet, se öppen fråga.
+
+## Samlade datafrågor till Vilmer (EN lista, enligt begäran)
+
+1. **Trustpilot business-unit-id stämmer inte överens** mellan två
+   befintliga block: `blocks/trust-section-block.html` använder
+   `6479dc28f0b041b3c79af588`, `blocks/testimonials-section.html` använder
+   `6513e1a93f98d9001a6cb9b0`. Vilket är rätt/aktuellt (t.ex. om ett är
+   kvarlämning från "Måbroberg"-namnet före "Hazey"-lanseringen 2023)?
+2. **Finns en riktig Trustpilot-widgetmall som visar enskilda
+   recensionscitat** (inte bara betyg)? Om ja: vilket `data-template-id`
+   och vilket av business-unit-id:na ovan ska användas? Byggde "Verifierade
+   omdömen" utan citat tills detta är klart (bara betyg + länk).
+3. **"Analys på X %" (certifikattäckning)**: ingen tillförlitlig datakälla
+   hittad i produktkortens DOM (inget data-lab-liknande attribut). Antingen
+   ger du mig det riktiga talet manuellt (uppdateras då sällan/manuellt,
+   inte live), eller så behöver produktdata få en verklig markör att räkna
+   på. Utelämnad tills vidare.
+4. **Nyhetsbrevet** (både mitt-på-sidan och i footern) är fortsatt inte
+   kopplat till något riktigt verktyg — bekräftat okej för nu, men måste
+   lösas innan lansering.
+5. **Footer-omstrukturering**: några av prototypens footer-länkar
+   (t.ex. en dedikerad "Om Hazey"/"Transparens"-sida) hittades inte som
+   riktiga sidor i nuvarande footer-länkar — finns de, eller ska footern
+   byggas om utan dem tills de finns?
+6. Övriga sen tidigare oförändrade: terminologi naturidentiskt/
+   semisyntetiskt, samt Faraoh/Hero/Tatra Hemp/Magic Farmers-format i
+   mega-menyn (väntar ändå på nav-omtaget).
+
+## Ytterligare två hero-buggar hittade (2026-08-31, samma dag)
+
+Vilmer jämförde skärmdumpar sida vid sida igen och hittade två konkreta
+kvarvarande fel i hero:n:
+1. **Kategori-genvägsraden (Vapes/Blommor/Hash/CBD/Kampanjer) visades på
+   BÅDA breddpunkter** — rätt fil har den bara på desktop (dVp), mVp
+   saknar den helt. Fixat: `.nh-hero-v2__cats` dold under 861px.
+2. **Fel copy på mobil** — mVp har KORTARE text än dVp för underrubrik
+   ("Sök direkt eller jämför på innehåll och framställning." vs desktops
+   längre "...produkter på innehåll, framställning och publicerat
+   analyscertifikat.") och CTA-knappen ("Hjälp mig →" vs "Hjälp mig hitta
+   rätt →"). Jag hade använt desktop-texten på båda. Fixat med två
+   textvarianter som togglas via CSS-brytpunkt (samma mönster som
+   Populära serier/vägar-ordningen).
+
+Kvarstår oförändrat, medvetet: hero-BILDEN skiljer sig mot prototypen
+(vi återanvänder er riktiga, redan konfigurerade bild — inte prototypens
+egen demo-bild) — det är avsiktligt enligt regeln att aldrig kopiera/hitta
+på bilder, inte en bugg att fixa.
+
+## Slutuppgift-omgång 2026-09-01: mätt facit på riktigt, fixat konkreta avvikelser
+
+Efter Vilmers underkännande av föregående omgång ("egen tolkning, inte
+1:1") mättes RÄTT facit-fil (`.../CLAUDE-HANDOFF-2026-08-17/prototyp/
+index.html`) på riktigt via Playwright `getComputedStyle`/bounding boxes
+vid 390px — se `PROTOTYP-INVENTERING.md` för alla uppmätta värden och
+`LEGACY-SEO-INNEHALL.md` för det äldre SEO-innehållets status. Följande
+konkreta avvikelser hittades och fixades i `js/18b-homepage-v2.js` och
+`css/22-homepage-v2.css` (inga nya "fix-lager", allt direkt i de
+befintliga 4 filerna):
+
+1. **Hero-eyebrow**: universell text ("Sveriges bredaste
+   cannabinoidsortiment") ersatt med två varianter — mobil = "Brett
+   sortiment · öppen information" (uppmätt ur facit), desktop behåller
+   den tidigare, av Vilmer bekräftade "störst i Sverige"-texten.
+2. **Hero mobiltext**: saknade ordet "format" — rättat till "Sök direkt
+   eller jämför på innehåll, format och framställning." (exakt facit).
+3. **Hero-bild**: bytt källa till prototypens EGEN bild
+   (`hero-westcoast-v4.jpg`), servad lokalt (localhost:8767, se
+   `NH_PROTO_ASSETS` i js/18b) för visuell 1:1-QA — enligt uttrycklig,
+   upprepad instruktion i slutuppgiften. Med säker reservbild: om
+   facit-bilden misslyckas ladda (se buggpunkt nedan) faller den tyst
+   tillbaka till er riktiga, redan konfigurerade nyehandel-bild
+   (`nhInitHeroImageFallback`) — hero är ALDRIG blank/trasig.
+4. **`.nh-qfind`** ("Vad söker du?"-chipsraden) fanns bara i facitens
+   `#dVp`, inte `#mVp` alls (verifierat: `document.querySelector("#mVp
+   .qfind")` → null). Döljs nu helt under 861px.
+5. **Populära vägar, underrubriker** rättade till exakt facit-text:
+   Blommor "Filtrerbar lista" (var "Flower & buds"), Hash "Piatella &
+   mousse" (var "Pressad & mousse"), CBD "Egen ingång" (var "Även THCV").
+6. **Framställningssegment (`.seg-btn`)**: stil rättad till uppmätta
+   värden — `border-radius:12px`, `padding:8px 11px`,
+   `background:rgba(255,249,238,.86)`, `border:1px solid
+   rgb(227,205,176)` (var generisk vit kortstil).
+7. **Sektionsordning**: trust-block/"transparens" låg FÖRE Bästsäljare
+   i lager — uppmätt ordning är tvärtom (Bästsäljare → trust-block).
+   Rättat i `initHomepageV2()`.
+8. **Populära serier**: lade till RIKTIGT produktantal (räknas fram live
+   per serie, samma beprövade fetch-mönster som bästsäljarlistan) i
+   stället för att bara visa namn+foto. En serie utan produkter döljs
+   automatiskt (`[hidden]`-failsafe tillagd).
+9. **Populära vägar, desktop-grid**: 3 kolumner → 4 (fjärde CBD-kortet
+   fanns redan i datan men grid:et var inte uppdaterat).
+10. **"Snabb koll: vad är vad?"-korten** var "för höga/smala" (riktig,
+    lång SEO-brödtext direkt i korten) — löst med visuell
+    `-webkit-line-clamp:5` (texten TAS INTE BORT ur DOM:en, bara klippt
+    visuellt) så korten blir kompakta och balanserade som i facit.
+11. **Header-logga**: den lilla rastrerade "Hazey.se"-bildloggan visades
+    fortfarande på mobil — facit har ett typografiskt kursivt
+    "hazey"-ordmärke. Bilden döljs nu och ersätts med text via CSS
+    (`::after` på loggans länk, `href="/"` orört) — bara på mobil, inte
+    en förändring av desktop-loggan.
+12. **"Verifierade omdömen"**: facit har tre separata citat-kort, men
+    ingen verifierad recensionscitat-källa finns (öppen datafråga #2
+    ovan, olöst). Byggde en dold, förberedd `.nh-reviews-grid`-shell
+    (samma mönster som "Fortsätt där du slutade") redo att kopplas in
+    den dagen en riktig källa bekräftas — visar INTE påhittade citat.
+
+**Ny bugg hittad under verifiering mot den RIKTIGA sajten (inte facit):**
+när hazey.css/hazey.min.js injiceras i `https://hazeyse.nyehandel.se/`
+(riktig QA-metod, se preview.mjs) blockerar Chrome bilden från
+`http://localhost:8767` — dels som "mixed content" (https-sida hämtar
+http-resurs), dels med Private Network Access-policyn ("blocked by CORS
+policy: Permission was denied for this request to access the `loopback`
+address space"). Detta är en webbläsarsäkerhetsspärr, inte en kodbugg —
+den uppstår ENDAST när man testar mot den riktiga live-sajten (https) med
+en lokal http-bild; testar man facit-sidan direkt (localhost→localhost)
+fungerar bilden felfritt. Löst med reservbild (punkt 3 ovan) så QA aldrig
+visar en trasig hero. **Kvarstår som ett riktigt produktionsbehov**: för
+att verkligen se facit-bilden i en fullständig QA-runda mot den riktiga
+sajten (eller i produktion) måste bilden hostas på en riktig HTTPS-adress
+(CDN/nyehandel-mediabibliotek), inte localhost.
+
+**Verifiering**: `node build.js` OK. Stegvis scroll-skärmdumpar (INTE
+fullPage) tagna vid 390/430/600px för både facit och vår version, se
+`preview/parity/`. Sidhöjden skiljer sig kraftigt (facit ~4100–4300px,
+vår ~6800–8000px) — verifierat att det INTE är en bugg utan förväntat:
+vår sida har RIKTIGT innehåll facit-mockupen saknar helt (äldre SEO-text
+om THCA/THCNM/Magic Sauce, en "Alla artiklar"/"Vanliga frågor"-sektion,
+en fullständig footer med riktiga länkar) — inget av det ska tas bort
+utan beslut (se `LEGACY-SEO-INNEHALL.md`).
+
+**Inte verifierat pixel-för-pixel i denna omgång** (tidsprioritering,
+flaggat, inte bortglömt): footerns exakta kolumnindelning/rubriktext mot
+facit (footern är redan omgjord i en tidigare omgång — "footer v2.1" —
+med riktiga länkar, men inte re-verifierad mot den NYA rätta facit-filen
+i just denna runda). Samt: fullständig 360/768/1024/1440/1920px-regression
+utöver 390/430/600px har inte körts i denna omgång.

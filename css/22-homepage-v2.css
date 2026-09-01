@@ -1,0 +1,681 @@
+/* ============================================================
+   STARTSIDA v2 — hero-omdesign + "Populära vägar", enligt Vilmers
+   prototyp. Se js/18b-homepage-v2.js för markupen. Design-tokens från
+   CLAUDE.md (samma som header-v2, upprepade här för att hålla filen
+   fristående om header-v2.css någonsin tas bort separat).
+   ============================================================ */
+
+/* Sidbakgrund uppmätt mot rätt prototyp: #efe9df (rgb 239,233,223) — INTE
+   samma som --nh-beige (#e4d1bf) som redan används brett över resten av
+   sajten (kategorisidor, kassan, footer — se css/01–18, det är sajtens
+   egna etablerade bakgrundsfärg där, ändras INTE globalt för att inte
+   riskera regressioner på andra sidor). Skopat till bara startsidan. */
+.store-startpage { background: #efe9df !important; }
+.nh-startpage-flex { display: flex; flex-direction: column; }
+
+/* Reskin av nyehandels RIKTIGA, redan konfigurerade slideshow-hero
+   (".template-components__slideshow .slideshow", se js/01-slideshow.js).
+   Vi rör bara typografi/färg/layout-RAM här — rotation/dots/bildinnehåll/JS
+   är nativ funktionalitet och lämnas orörd.
+
+   EXAKT UPPMÄTT mot RÄTT prototyp 2026-08-31 (getComputedStyle, inte
+   uppskattat) på BÅDA breddpunkter — och de skiljer sig åt STRUKTURELLT,
+   inte bara i storlek:
+   - Desktop (#dVp, 1400px): kant-till-kant (margin -26px -24px 0,
+     border-radius:0, min-height ~560-720px). INGET kort på desktop.
+   - Mobil (#mVp, 390px, @media max-width:860px i prototypen): ETT
+     inramat runt kort (margin 10px 10px 18px, radius 22px, min-height
+     238px, varm brun skugga). Kortkänslan är EN MOBILSPECIFIK behandling,
+     inte en generell "hero som kort"-regel — det hade jag fel på innan. */
+.nh-hero-v2 .slideshow__slides__slide h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  font-size: 57px !important;
+  line-height: 1.03 !important;
+}
+.nh-hero-v2 .slideshow__slides__slide .button.is-primary {
+  border-radius: 999px !important;
+  font-weight: 650 !important;
+  transition: background-color .2s cubic-bezier(.22,.61,.36,1) !important;
+}
+.nh-hero-v2 .slideshow__slides__slide__content {
+  align-items: flex-start !important;
+  justify-content: center !important;
+  text-align: left !important;
+}
+.nh-hero-v2 .slideshow__slides__slide__content > div {
+  text-align: left !important;
+  max-width: 478px;
+}
+.nh-hero-v2 .slideshow__slides__slide .action {
+  justify-content: flex-start !important;
+}
+.nh-hero-v2 {
+  box-shadow: 0 22px 48px -34px rgba(82,49,20,.42);
+}
+@media (max-width: 860px) {
+  .nh-hero-v2 {
+    margin: 10px 10px 18px !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+    min-height: 238px;
+    box-shadow: 0 17px 34px -24px rgba(92,57,24,.72) !important;
+  }
+  .nh-hero-v2 .slideshow__slides__slide h2 { font-size: 26px !important; line-height: 1.01 !important; }
+}
+
+/* ── Populära serier (ny sektion, se js/18b-homepage-v2.js) ──
+   Mobil: avatar 83px, vit kant, namn UNDER (mörk text). Desktop: avatar
+   186px, halvtransparent beige kant, namn LIGGER PÅ fotot (vit text +
+   gradient) — två genuint olika behandlingar per breddpunkt, uppmätt. */
+.nh-pser.section-gap {
+  padding: 28px 24px 8px;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* Ordning: "Populära serier" kommer FÖRE "Populära vägar" på mobil (se
+     nedan för att desktop har omvänd ordning — uppmätt/bekräftad mot rätt
+     prototyp 2026-08-31, en genuin skillnad, inte samma innehåll skalat). */
+  order: 1;
+}
+.nh-pser .sec-head h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #2c3620;
+  margin: 0 0 14px;
+}
+/* Desktop: uppmätt mörkgrön full-bleed-panel (rgb(30,39,22), padding
+   54px 26px) — INTE samma ljusa bakgrund som resten av sidan. Fullbredd
+   via viewport-bredd-tricket (robust oavsett faktisk container-padding på
+   riktiga sidan, säkrare än att kopiera prototypens egen -24px-marginal
+   som gällde DESS container). */
+@media (min-width: 861px) {
+  .nh-pser.section-gap {
+    order: 2;
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: rgb(30,39,22);
+    padding: 54px 26px;
+  }
+  .nh-pser .sec-head h2,
+  .nh-pser .sec-head p { color: #fffdf8; }
+  .nh-pser .sec-head .more { color: #e4d1bf; }
+  .nh-pser .sec-head,
+  .nh-pser .pser-row { max-width: 1100px; margin-left: auto; margin-right: auto; }
+}
+.nh-pser .pser-row {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.nh-pser .pser-row::-webkit-scrollbar { display: none; }
+.nh-pser .pser-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex: 0 0 auto;
+  width: 83px;
+  text-decoration: none;
+}
+.nh-pser .pser-avatar {
+  width: 83px; height: 83px;
+  border-radius: 50%;
+  background: #faf3e9;
+  border: 2px solid #fff;
+  color: #6f7a52;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  transition: border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-pser .pser-avatar svg { width: 28px; height: 28px; }
+.nh-pser .pser-item:hover .pser-avatar { border-color: #b8865a; }
+.nh-pser .pser-avatar.has-photo { background-size: cover; background-position: center; }
+.nh-pser .pser-avatar.has-photo svg { display: none; }
+.nh-pser .pser-name {
+  display: block;
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: #342f27;
+  text-align: center;
+  line-height: 1.3;
+}
+@media (min-width: 861px) {
+  .nh-pser .pser-row { gap: 24px; }
+  .nh-pser .pser-item { width: 186px; }
+  .nh-pser .pser-avatar { width: 186px; height: 186px; border: 3px solid rgba(244,233,220,.22); position: relative; }
+  .nh-pser .pser-avatar.has-photo::after {
+    content: "";
+    position: absolute; inset: 0; border-radius: 50%;
+    background: linear-gradient(0deg, rgba(30,39,22,.75), rgba(30,39,22,0) 55%);
+  }
+  .nh-pser .pser-name {
+    position: absolute; left: 8px; right: 8px; bottom: 16px; margin-top: 0;
+    font-size: 15px; color: #fffdf8; z-index: 1;
+  }
+  .nh-pser .pser-item:not(:has(.pser-avatar.has-photo)) .pser-name {
+    position: static; color: #342f27; margin-top: 15px;
+  }
+}
+
+/* ── Populära vägar — ENDAST format (Vapes/Blommor/Hash), inte serier
+   (de flyttade till "Populära serier" ovan för att undvika dubblettvisning,
+   se STATUS.md). Uppmätta mått: mobil 176.5px-kolumner/112px min-höjd/
+   16px radie/12px padding; desktop 326px-kolumner/26px padding, h3 29px. */
+.nh-routes.section-gap {
+  padding: 40px 24px 34px;
+  max-width: 1100px;
+  margin: 0 auto;
+  order: 2; /* mobil: efter Populära serier, se .nh-pser order:1 ovan */
+}
+@media (min-width: 861px) {
+  .nh-routes.section-gap { order: 1; } /* desktop: FÖRE Populära serier, uppmätt */
+}
+.nh-routes .sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.nh-routes .sec-head h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #2c3620;
+  margin: 0;
+}
+.nh-routes .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; max-width: 480px; line-height: 1.5; }
+.nh-routes .sec-head .more { font-size: 12.5px; font-weight: 650; color: #96683f; text-decoration: none; white-space: nowrap; }
+
+.nh-routes .routes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.nh-routes .route {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 112px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #ebe1d1;
+  text-decoration: none;
+  transition: transform 200ms cubic-bezier(.22,.61,.36,1), box-shadow 200ms cubic-bezier(.22,.61,.36,1), border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-routes .route:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px -10px rgba(44,54,32,.18);
+  border-color: #e4d1bf;
+}
+.nh-routes .route-icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: #faf3e9; color: #6f7a52;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: auto;
+}
+.nh-routes .route-icon svg { width: 19px; height: 19px; }
+.nh-routes .route-kicker {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #96683f;
+  font-weight: 700;
+  margin: 12px 0 4px;
+}
+.nh-routes .route h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2c3620;
+  margin: 0;
+}
+
+/* Fotokort — riktig produktbild hämtad live från kategorisidan (se
+   nhEnhanceWithRealPhotos), matchar prototypens .route.visual mörka
+   gradient-overlay för läsbar text. */
+.nh-routes .route.visual {
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  justify-content: flex-end;
+}
+.nh-routes .route.visual.has-photo .route-icon { display: none; }
+.nh-routes .route.visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(0deg, rgba(30,39,22,.82), rgba(30,39,22,.05) 68%);
+}
+.nh-routes .route.visual > * { position: relative; z-index: 1; }
+.nh-routes .route.visual .route-kicker { color: #fff; margin-top: 0; }
+.nh-routes .route.visual h3 { color: #fff; }
+
+@media (min-width: 861px) {
+  /* 4 kort (Vapes/Blommor/Hash/CBD,CBG&CBN) — inte 3, se
+     PROTOTYP-INVENTERING.md. Jämn rad istället för 3+1-överhäng. */
+  .nh-routes .routes-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .nh-routes .route { min-height: 220px; padding: 22px; border-radius: 18px; }
+  .nh-routes .route h3 { font-size: 22px; }
+}
+
+/* Framställnings-segment (Naturidentiskt/Semisyntetiskt) under formatkorten
+   — se js/18b-homepage-v2.js för varför länken bara går till alla-produkter
+   tills vidare (inget riktigt filter byggt än). */
+.nh-routes .seg-note { font-size: 12px; color: #9a9280; margin: 16px 0 8px; }
+.nh-routes .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.nh-routes .seg-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 11px; border-radius: 12px;
+  background: rgba(255,249,238,.86); border: 1px solid rgb(227,205,176);
+  text-decoration: none;
+  transition: border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-routes .seg-btn:hover { border-color: #b8865a; }
+.nh-routes .seg-ico {
+  width: 32px; height: 32px; border-radius: 10px; flex: none;
+  background: #faf3e9; color: #6f7a52;
+  display: flex; align-items: center; justify-content: center;
+}
+.nh-routes .seg-ico svg { width: 16px; height: 16px; }
+.nh-routes .seg-t { display: block; font-size: 13px; font-weight: 650; color: #2c3620; }
+.nh-routes .seg-s { display: block; font-size: 11px; color: #9a9280; margin-top: 1px; }
+
+/* ── Reveal-on-scroll (mätt mot tershine.com/dadgrass.com, se CLAUDE.md) ──
+   translateY(24px)→0, ease-out-quad, 0.62s, 90ms stegring (max 4 steg).
+   Respekterar prefers-reduced-motion (samma princip som prototypens :root). */
+.nh-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .62s cubic-bezier(.25,.46,.45,.94), transform .62s cubic-bezier(.25,.46,.45,.94);
+}
+.nh-reveal.is-in { opacity: 1; transform: translateY(0); }
+.nh-reveal:nth-child(1) { transition-delay: 0ms; }
+.nh-reveal:nth-child(2) { transition-delay: 90ms; }
+.nh-reveal:nth-child(3) { transition-delay: 180ms; }
+.nh-reveal:nth-child(4),
+.nh-reveal:nth-child(n+4) { transition-delay: 270ms; }
+@media (prefers-reduced-motion: reduce) {
+  .nh-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Aura-guiden: platshållare, avstängd tills juridik/terminologi är klar
+   (Vilmer, 2026-08-28). Håll dold även om [hidden] någonsin skulle
+   overridas av annan CSS. */
+.nh-aura-guide[hidden],
+.nh-continue[hidden],
+.pser-item[hidden],
+.nh-reviews-grid[hidden] { display: none !important; }
+
+/* ============================================================
+   Resten av startsidan — reskin av EXISTERANDE, redan byggda komponenter
+   (nh-trust/nh-tabs/nh-faq, från tidigare css/js-omgångar) så att HELA
+   sidan hänger ihop visuellt, inte bara headern/hero/populära vägar.
+   Vilmer bad om detta 2026-08-28: en delvis omgjord sida gick inte att
+   bedöma. Original-reglerna (css/01, css/10) ligger kvar orörda — det
+   här är en override-lager sist i cascaden, samma teknik som resten av
+   header/homepage-v2. Produktkort (.product-card/.pl-list) rörs INTE
+   här — de används sitewide (kategori-/produktsidor), utanför uppdragets
+   scope ("header + startsida"), se STATUS.md. */
+
+/* OBS: nyehandels egen temastil injicerar (och återinjicerar dynamiskt,
+   verifierat 2026-08-28 — dyker upp EN GÅNG TILL efter vår <style>, så
+   ordning räddar oss inte) breda !important-regler på dessa exakta
+   klasser. Vanlig !important + normal specificitet räcker inte eftersom
+   den nativa regeln också är !important och kan hamna sist i DOM-ordning.
+   Lösning: dubblerade klass-selektorer (`.x.x`) för garanterat högre
+   specificitet, oavsett i vilken ordning stilarna faktiskt hamnar. */
+
+.nh-trust.nh-trust {
+  background: var(--nh-sand, #faf3e9) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+.nh-trust__label.nh-trust__label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 650 !important;
+  color: #2c3620 !important;
+}
+.nh-trust__icon.nh-trust__icon { color: #6f7a52 !important; }
+
+.nh-tab.nh-tab {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 650 !important;
+  border-color: #2c3620 !important;
+  color: #2c3620 !important;
+  transition: background-color 200ms cubic-bezier(.22,.61,.36,1), color 200ms cubic-bezier(.22,.61,.36,1) !important;
+}
+.nh-tab.nh-tab:hover { background: #faf3e9 !important; }
+.nh-tab.is-active.is-active {
+  background: #2c3620 !important;
+  border-color: #2c3620 !important;
+  color: #fffdf8 !important;
+}
+
+.nh-faq.nh-faq {
+  background: var(--nh-sand, #faf3e9) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+.nh-faq__title.nh-faq__title {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 28px !important;
+  color: #2c3620 !important;
+  text-transform: none !important;
+}
+.nh-faq__title.nh-faq__title::after { background: #d9782f !important; }
+.nh-faq__item.nh-faq__item {
+  background: #fff !important;
+  border: 1px solid #ebe1d1 !important;
+  border-radius: 14px !important;
+}
+.nh-faq__item.nh-faq__item summary {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-weight: 650 !important;
+  color: #2c3620 !important;
+}
+.nh-faq__item.nh-faq__item summary::after { color: #96683f !important; }
+.nh-faq__a.nh-faq__a { color: #5f5c50 !important; }
+.nh-faq__a.nh-faq__a a { color: #96683f !important; }
+
+/* ============================================================
+   Resten av startsidan, omgång 2 (2026-08-31) — Vilmer: "startsidan är
+   fortfarande inte klar, vi börjar där" innan nav/kategorisidor. Städar de
+   sista två flaggade luckorna från förra omgången.
+   ============================================================ */
+
+/* Produktkorten (Bästsäljare/Nyheter/Kampanjer-gridden). Nu i scope —
+   uppdraget är utökat till "typ ish allt" (Vilmer, 2026-08-29), så det
+   här är inte längre "utanför header+startsida". Rör bara yta
+   (radie/skugga/färg), inte produktkortets struktur/funktion. */
+.pl-list .product-card.product-card {
+  border-radius: 14px !important;
+  border: 1px solid #ebe1d1 !important;
+  transition: transform 200ms cubic-bezier(.22,.61,.36,1), box-shadow 200ms cubic-bezier(.22,.61,.36,1) !important;
+}
+.pl-list .product-card.product-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px -10px rgba(44,54,32,.18) !important;
+}
+.pl-list .details.details .name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: #2c3620 !important;
+}
+.pl-list .price.price ins {
+  color: #2c3620 !important;
+}
+
+/* Startsidans "råa" innehållsblock (nyehandels egna native
+   template-components__text-editor / __columns — text/bild-block utan
+   egen nh-komponent). Scopat till .store-startpage så det ALDRIG läcker
+   till andra sidor (kategori-/produktsidor har inte den klassen). Rör
+   bara typografi, inte bilder/layout/innehåll. */
+.store-startpage .template-components__text-editor h1,
+.store-startpage .template-components__text-editor h2,
+.store-startpage .template-components__text-editor h3,
+.store-startpage .template-components__columns h1,
+.store-startpage .template-components__columns h2,
+.store-startpage .template-components__columns h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important;
+  color: #2c3620 !important;
+}
+.store-startpage .template-components__text-editor p,
+.store-startpage .template-components__columns p {
+  color: #5f5c50 !important;
+  line-height: 1.6 !important;
+}
+.store-startpage .template-components__text-editor a,
+.store-startpage .template-components__columns a {
+  color: #96683f !important;
+}
+.store-startpage .template-components__text-editor .button,
+.store-startpage .template-components__columns .button {
+  border-radius: 999px !important;
+  font-weight: 650 !important;
+}
+
+/* ============================================================
+   Ombygge mot RÄTT prototyp, omgång 2 (2026-08-31) — Vilmers A-lista.
+   Se js/18b-homepage-v2.js för markupen. Döljer den nativa hero-karusellen
+   (ersatt av qfind-hero-kortet) och den gamla dubblerade trust-ikonraden
+   (ersatt av .nh-trustblock).
+   ============================================================ */
+
+/* Nativ hero-karusell döljs (INTE tas bort) — ersatt av .nh-qfind-hero. */
+.template-components__slideshow.nh-native-hero-hidden { display: none !important; }
+
+/* Gamla trust-ikonraden (nh-trust, byggd i en tidigare omgång) är nu
+   överflödig — .nh-trustblock ersätter den med rikare, konsoliderad copy. */
+.nh-trust.nh-trust { display: none !important; }
+
+/* ── Hero (qfind-stil) — ersätter nyehandels nativa karusell. Mörkgrön,
+   kompakt, vänsterställd text. Återanvänder den RIKTIGA hero-bilden (se
+   heroImgUrl i JS) med en mörk gradient-overlay, inte en ny bild. ── */
+.nh-qfind-hero {
+  position: relative;
+  background-color: #2c3620;
+  background-size: cover;
+  background-position: center;
+  color: #fffdf8;
+  margin: 10px 10px 18px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 17px 34px -24px rgba(92,57,24,.72);
+}
+.nh-qfind-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(44,54,32,.55) 0%, rgba(30,39,22,.88) 100%);
+}
+.nh-qfind-hero__inner,
+.nh-hero-v2__inner { position: relative; z-index: 1; padding: 28px 22px 24px; max-width: 520px; }
+.nh-hero-v2__eyebrow {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: #f4d8b1; margin-bottom: 9px;
+}
+/* Två olika eyebrow-texter per breddpunkt — se js/18b-homepage-v2.js. */
+.nh-hero-v2__eyebrow--desktop { display: none; }
+@media (min-width: 861px) {
+  .nh-hero-v2__eyebrow--mobile { display: none; }
+  .nh-hero-v2__eyebrow--desktop { display: block; }
+}
+.nh-qfind-hero h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 26px; line-height: 1.05; margin: 0 0 10px; color: #fffdf8;
+}
+.nh-qfind-hero p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.88); margin: 0 0 16px; }
+
+/* Två textvarianter per breddpunkt (uppmätt, INTE samma text skalad) —
+   se js/18b-homepage-v2.js. Mobil (mVp) saknar kategori-genvägsraden
+   HELT — den finns bara på desktop (dVp). */
+.nh-hero-v2__p--desktop,
+.nh-hero-v2__btn--desktop,
+.nh-hero-v2__cats { display: none; }
+.nh-hero-v2__p--mobile,
+.nh-hero-v2__btn--mobile { display: inline; }
+@media (min-width: 861px) {
+  .nh-hero-v2__p--mobile,
+  .nh-hero-v2__btn--mobile { display: none; }
+  .nh-hero-v2__p--desktop { display: block; }
+  .nh-hero-v2__btn--desktop { display: inline; }
+  .nh-hero-v2__cats { display: flex; }
+}
+
+.nh-hero-v2__cats { flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.nh-hero-v2__cats a {
+  font-size: 11.5px; font-weight: 650; color: #fffdf8;
+  border: 1px solid rgba(255,253,248,.35); border-radius: 999px; padding: 5px 11px;
+  text-decoration: none;
+}
+.nh-hero-v2__cats a:hover { background: rgba(255,253,248,.14); }
+.nh-hero-v2__cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.nh-qfind-hero .btn-solid {
+  display: inline-flex; align-items: center; background: #d9782f; color: #fff;
+  border: 1.5px solid #d9782f; border-radius: 999px; padding: 12px 20px;
+  font-size: 13px; font-weight: 650; text-decoration: none;
+}
+.nh-qfind-hero .btn-solid:hover { background: #c96a26; border-color: #c96a26; }
+.nh-qfind-hero .hero-link {
+  background: none; border: none; color: #fffdf8; font-size: 13px; font-weight: 650; cursor: pointer;
+  border-bottom: 1.5px solid rgba(255,253,248,.4); padding-bottom: 1px;
+}
+.nh-qfind-hero .hero-link:hover { border-color: #fffdf8; }
+@media (min-width: 861px) {
+  .nh-qfind-hero { margin: 20px 26px 0; min-height: 420px; display: flex; align-items: flex-end; }
+  .nh-hero-v2__inner { padding: 40px; max-width: 620px; }
+  .nh-qfind-hero h1 { font-size: 44px; }
+  .nh-qfind-hero p { font-size: 15px; }
+}
+
+/* ── qfind — "Vad söker du?"-chipsraden direkt under hero:n. Förenklad mot
+   prototypens desktop-variant (som blur:ar hero-bilden i bakgrunden) — vi
+   använder en plattare mörkgrön gradient istället, samma tonalitet.
+   UPPMÄTT 2026-09-01: finns ENDAST i facitens #dVp — #mVp .qfind hittas
+   inte alls i renderad DOM. Döljs därför helt under 861px. ── */
+.nh-qfind { display: none; }
+@media (min-width: 861px) {
+.nh-qfind {
+  display: block;
+  background: linear-gradient(168deg, #38452a 0%, #2c3620 60%, #1e2716 100%);
+  padding: 16px;
+  margin: 0 10px 18px;
+  border-radius: 18px;
+}
+}
+.nh-qfind__inner { display: flex; flex-direction: column; gap: 10px; }
+.nh-qfind__lbl { color: #fffdf8; font-size: 13px; font-weight: 650; }
+.nh-qfind__lbl span { display: block; font-size: 11px; font-weight: 500; color: rgba(255,253,248,.62); margin-top: 2px; }
+.nh-qfind__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.nh-qfc {
+  background: rgba(255,253,248,.08); color: #fffdf8; border: 1px solid rgba(255,253,248,.24);
+  border-radius: 999px; padding: 8px 14px; font-size: 12.5px; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+}
+.nh-qfc:hover { background: #fff; color: #2c3620; }
+.nh-qfc--pri { background: #d9782f; border-color: #d9782f; }
+.nh-qfc--pri:hover { background: #c96a26; color: #fff; }
+@media (min-width: 861px) {
+  .nh-qfind { margin: 0 26px 0; padding: 22px 26px; display: flex; align-items: center; }
+  .nh-qfind__inner { flex-direction: row; align-items: center; gap: 22px; }
+}
+
+/* Underrubrik på Populära vägar-korten (nytt sen förra omgången). */
+.nh-routes .route-sub { font-size: 11px; color: rgba(255,255,255,.82); margin: 3px 0 0; }
+.nh-routes .route:not(.has-photo) .route-sub { color: #9a9280; }
+
+/* ── Konsoliderat trust-block (ersätter gamla dubblerade ikonraden) ── */
+.nh-trustblock.section-gap { padding: 24px; max-width: 1100px; margin: 0 auto; }
+.nh-tb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (min-width: 861px) { .nh-tb-grid { grid-template-columns: repeat(4, 1fr); } }
+.nh-tb-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 14px; border: 1px solid #ebe1d1; border-radius: 14px; background: #fff;
+  text-decoration: none; transition: border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-tb-item:hover { border-color: #b8865a; }
+.nh-tb-item svg { width: 20px; height: 20px; flex: none; color: #96683f; margin-top: 1px; }
+.nh-tb-item b { display: block; font-size: 13px; color: #2c3620; }
+.nh-tb-item span span { display: block; font-size: 11px; color: #9a9280; margin-top: 2px; }
+
+/* ── "Snabb koll: vad är vad?" — .guide/.guide-grid/.g-card (samma
+   komponent som Aura-guiden delar när den ev. slås på), .guide-dark är en
+   egen modifierare, ändrar INTE basklassen. ── */
+.nh-kunskap.section-gap { padding: 12px 16px 28px; max-width: 1100px; margin: 0 auto; }
+.guide {
+  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
+  border: 1px solid #ebe1d1; border-radius: 18px; padding: 20px 20px 18px;
+}
+.guide-top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.guide h2, .guide-top h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 19px; margin: 0; color: #2c3620; font-weight: 600;
+}
+.guide .skip { font-size: 12px; color: #9a9280; }
+.guide .skip a { color: #96683f; font-weight: 650; }
+.guide .lede { font-size: 12.5px; color: #5f5c50; line-height: 1.55; max-width: 600px; margin: 0 0 16px; }
+.guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+@media (min-width: 861px) { .guide-grid { grid-template-columns: repeat(4, 1fr); } }
+.g-card {
+  display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 12px;
+  padding: 13px 13px 12px; transition: transform 200ms cubic-bezier(.22,.61,.36,1), box-shadow 200ms cubic-bezier(.22,.61,.36,1), border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.g-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px -10px rgba(44,54,32,.18); border-color: #e4d1bf; }
+.g-card .g-name { font-size: 13.5px; font-weight: 700; color: #2c3620; display: block; }
+/* Riktig SEO-text (se LEGACY-SEO-INNEHALL.md) är längre än facitens korta
+   mockstycken — texten tas INTE bort/förkortas i DOM:en, bara visuellt
+   klippt till samma kompakta höjd som facit uppmätt hade ("för höga kort"
+   var den ursprungliga bugrapporten). */
+.g-card p {
+  margin: 7px 0 0; font-size: 11.5px; line-height: 1.5; color: #5f5c50;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.guide.guide-dark {
+  background: radial-gradient(105% 130% at 84% 4%, rgba(231,174,99,.15), transparent 56%), linear-gradient(168deg, #38452a 0%, #2c3620 46%, #1e2716 100%);
+  border-color: rgba(228,209,191,.16);
+  box-shadow: inset 0 1px 0 rgba(255,253,248,.10), 0 20px 44px -26px rgba(30,39,22,.5);
+}
+.guide.guide-dark .guide-top h2 { color: #fffdf8; }
+.guide.guide-dark .lede { color: rgba(244,233,220,.74); }
+.guide.guide-dark .skip { color: rgba(244,233,220,.6); }
+.guide.guide-dark .skip a { color: #e4d1bf; }
+.guide.guide-dark .g-card { border-color: rgba(228,209,191,.2); }
+.guide.guide-dark .g-card:hover { border-color: #e4d1bf; }
+
+/* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
+   STATUS.md om varför inga citat är med. ── */
+.nh-reviews.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
+.nh-reviews-cta {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid #ebe1d1; border-radius: 14px; padding: 16px 20px;
+  text-decoration: none; color: #2c3620; font-weight: 650; font-size: 14px;
+}
+.nh-reviews-cta .stars { color: #b8865a; font-size: 15px; letter-spacing: 1px; }
+.nh-reviews-cta:hover { border-color: #b8865a; }
+
+/* ── Nyhetsbrev, mitt på sidan (icke-kopplad platshållare, se JS) ── */
+.nh-signup.section-gap { padding: 12px 24px 34px; max-width: 1100px; margin: 0 auto; }
+.nh-signup-block {
+  background: #2c3620; color: #fffdf8; border-radius: 18px; padding: 26px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 20px; margin: 0 0 4px; }
+.nh-signup-block p { margin: 0; font-size: 12.5px; color: rgba(244,233,220,.8); }
+.nh-signup-form { display: flex; gap: 8px; flex-wrap: wrap; }
+.nh-signup-form input {
+  flex: 1 1 200px; padding: 11px 14px; border-radius: 999px; border: 1px solid rgba(255,253,248,.3);
+  background: rgba(255,253,248,.08); color: #fffdf8; font-size: 13px;
+}
+.nh-signup-form input::placeholder { color: rgba(255,253,248,.55); }
+.nh-signup-form button {
+  padding: 11px 20px; border-radius: 999px; border: none; background: #d9782f; color: #fff;
+  font-weight: 650; font-size: 13px; cursor: pointer;
+}
+.nh-signup-form button:hover { background: #c96a26; }
+.nh-signup-note { font-size: 11px; color: rgba(244,233,220,.6); }
+@media (min-width: 861px) {
+  .nh-signup-block { flex-direction: row; align-items: center; justify-content: space-between; }
+  .nh-signup-form { flex-wrap: nowrap; }
+}
+
+/* ── "Bästsäljare i lager" — återanvänder .product-card från riktiga
+   kategorisidor (samma CSS-reskin som gäller där, se css/22 tidigare
+   avsnitt om .pl-list .product-card). ── */
+.nh-featured.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
+.nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
+.nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }

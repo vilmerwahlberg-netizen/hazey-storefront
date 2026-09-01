@@ -1,0 +1,428 @@
+/* ============================================================
+   HEADER v2 — reskin av #store-header enligt Vilmers prototyp
+   (../header-startsida/ny-header-child.html), mot nyehandels riktiga DOM.
+   Se js/18a-header-v2.js för markupen detta stylar, och CLAUDE.md för
+   designvärdena (färger/typsnitt/animation) som används här.
+   ============================================================ */
+
+#store-header.nh-header-v2 {
+  --nh-green: #2c3620;
+  --nh-green-deep: #1e2716;
+  --nh-beige: #e4d1bf;
+  --nh-sand: #faf3e9;
+  --nh-beige-light: #f4e9dc;
+  --nh-cream: #fffdf8;
+  --nh-line: #ebe1d1;
+  --nh-line-soft: #f3ece0;
+  --nh-terra: #b8865a;
+  --nh-terra-deep: #96683f;
+  --nh-olive: #6f7a52;
+  --nh-cta: #d9782f;
+  --nh-r-sm: 8px;
+  --nh-r: 12px;
+  --nh-r-lg: 18px;
+  --nh-t: 200ms cubic-bezier(.22,.61,.36,1);
+  --nh-shadow-soft: 0 8px 24px -10px rgba(44,54,32,.18);
+  --nh-shadow-lift: 0 20px 44px -16px rgba(44,54,32,.30);
+  --nh-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+#store-header.nh-header-v2 h1,
+#store-header.nh-header-v2 h2,
+#store-header.nh-header-v2 h3 {
+  font-family: "Iowan Old Style", Georgia, serif;
+}
+
+/* ── Topbar ── */
+#store-header.nh-header-v2 .topbar {
+  background: linear-gradient(96deg, var(--nh-green-deep) 0%, var(--nh-green) 48%, #3b4728 100%);
+  color: var(--nh-beige-light);
+}
+#store-header.nh-header-v2 .topbar .usp li {
+  color: var(--nh-beige-light) !important;
+  opacity: .95;
+}
+#store-header.nh-header-v2 .topbar .nh-topbar-marquee__item {
+  color: var(--nh-beige-light) !important;
+}
+#store-header.nh-header-v2 .nh-age-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--nh-beige-light) !important;
+  background: none;
+  border: 1px solid rgba(228,209,191,.35);
+  border-radius: 20px;
+  padding: 1px 8px;
+  margin-left: 12px;
+  flex: none;
+}
+
+/* ── Main row ── */
+#store-header.nh-header-v2 .main {
+  background: linear-gradient(180deg, var(--nh-sand) 0%, var(--nh-cream) 100%);
+  border-bottom: 1px solid var(--nh-line-soft);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+#store-header.nh-header-v2 .main .brand img { height: 28px; width: auto; }
+
+#store-header.nh-header-v2 .main .center .store-search .input {
+  border: 1.5px solid var(--nh-line);
+  border-radius: 32px;
+  background: #fff;
+  font-size: 15px;
+  box-shadow: inset 0 1px 2px rgba(44,54,32,.04);
+  transition: border-color var(--nh-t), box-shadow var(--nh-t);
+}
+#store-header.nh-header-v2 .main .center .store-search .input:focus {
+  border-color: var(--nh-terra);
+  box-shadow: 0 0 0 4px rgba(184,134,90,.13);
+  outline: none;
+}
+#store-header.nh-header-v2 .main .center .store-search__dropdown {
+  border: 1px solid var(--nh-line);
+  border-radius: var(--nh-r-lg);
+  background: var(--nh-cream);
+  box-shadow: var(--nh-shadow-lift);
+}
+#store-header.nh-header-v2 .main .center .dropdown-view-all .view-all {
+  color: var(--nh-terra-deep);
+  font-weight: 650;
+}
+
+#store-header.nh-header-v2 .main .right .account-button,
+#store-header.nh-header-v2 .main .right .cart-button,
+#store-header.nh-header-v2 .nh-burger {
+  color: var(--nh-green) !important;
+  border-radius: var(--nh-r);
+  transition: color var(--nh-t), background-color var(--nh-t);
+}
+#store-header.nh-header-v2 .main .right .account-button:hover,
+#store-header.nh-header-v2 .main .right .cart-button:hover,
+#store-header.nh-header-v2 .nh-burger:hover {
+  background: var(--nh-sand);
+  color: var(--nh-terra-deep) !important;
+}
+#store-header.nh-header-v2 .nh-burger {
+  display: none;
+  border: none;
+  background: none;
+  width: 40px; height: 40px;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+#store-header.nh-header-v2 .nh-burger svg { width: 22px; height: 22px; }
+/* Nativ hamburgare ersätts visuellt av vår egen (samma Vue-bindning rörs inte). */
+#store-header.nh-header-v2 #mobile-nav-menu { display: none !important; }
+
+/* ── Ny kategorirad (nh-cat-row) — döljer nativ platt megameny ── */
+#store-header.nh-header-v2 nav.navbar .navbar-menu.nh-native-nav-hidden { display: none !important; }
+
+#store-header.nh-header-v2 .nh-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--nh-cream);
+  border-bottom: 1px solid var(--nh-line);
+  padding: 0 16px;
+  flex-wrap: wrap;
+}
+#store-header.nh-header-v2 .cat-item { position: relative; flex: none; }
+#store-header.nh-header-v2 .cat-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--nh-green);
+  white-space: nowrap;
+  text-decoration: none;
+}
+#store-header.nh-header-v2 .cat-link .chev { width: 10px; height: 10px; transition: transform .15s ease; }
+#store-header.nh-header-v2 .cat-item:hover .cat-link .chev,
+#store-header.nh-header-v2 .cat-item:focus-within .cat-link .chev { transform: rotate(180deg); }
+#store-header.nh-header-v2 .cat-link.campaign { color: var(--nh-cta); }
+#store-header.nh-header-v2 .cat-link.find { color: var(--nh-terra-deep); }
+#store-header.nh-header-v2 .cat-link.find svg { width: 15px; height: 15px; }
+
+#store-header.nh-header-v2 .ddrop.cat-panel {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  min-width: 280px;
+  max-width: 340px;
+  background: var(--nh-cream);
+  border: 1px solid var(--nh-line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(44, 54, 32, .14);
+  padding: 14px;
+  z-index: 40;
+}
+#store-header.nh-header-v2 .cat-item:hover .ddrop.cat-panel,
+#store-header.nh-header-v2 .cat-item:focus-within .ddrop.cat-panel { display: block; }
+#store-header.nh-header-v2 .dd-all {
+  display: block;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--nh-green);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--nh-line);
+}
+#store-header.nh-header-v2 .dd-sub { margin-bottom: 10px; }
+#store-header.nh-header-v2 .dd-sub h5 {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--nh-olive);
+  margin: 0 0 4px;
+}
+#store-header.nh-header-v2 .dd-line { display: block; font-size: 13.5px; color: var(--nh-green); padding: 3px 0; text-decoration: none; }
+#store-header.nh-header-v2 .dd-line:hover { color: var(--nh-terra-deep); }
+#store-header.nh-header-v2 .dd-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+#store-header.nh-header-v2 .chip {
+  font-size: 11.5px; font-weight: 600;
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--nh-beige-light); color: var(--nh-terra-deep);
+  text-decoration: none;
+}
+#store-header.nh-header-v2 .dd-find {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12.5px; color: var(--nh-terra-deep); font-weight: 600;
+  border-top: 1px solid var(--nh-line); padding-top: 8px; margin-top: 4px;
+  text-decoration: none;
+}
+#store-header.nh-header-v2 .dd-find svg { width: 10px; height: 10px; }
+
+/* ── Mobilmeny (egen, ersätter native visuellt) ── */
+.nh-mobile-menu-scrim {
+  position: fixed; inset: 0; background: rgba(44,54,32,.4); z-index: 90;
+}
+.nh-mobile-menu {
+  position: fixed; top: 0; left: 0; bottom: 0; width: min(340px, 86vw);
+  background: #fffdf8; z-index: 91; overflow-y: auto;
+  transform: translateX(0);
+  box-shadow: 8px 0 32px rgba(0,0,0,.18);
+}
+.nh-mobile-menu .mm-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px; border-bottom: 1px solid #ebe1d1;
+  font-family: "Iowan Old Style", Georgia, serif; font-size: 19px; color: #2c3620;
+}
+.nh-mobile-menu .ms-close { border: none; background: none; font-size: 22px; line-height: 1; cursor: pointer; color: #2c3620; }
+.nh-mobile-menu .mm-cats { list-style: none; margin: 0; padding: 8px 0; }
+.nh-mobile-menu .mm-flat, .nh-mobile-menu .mm-top {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  padding: 13px 16px; font-size: 14.5px; font-weight: 600; color: #2c3620;
+  text-decoration: none; background: none; border: none; text-align: left; cursor: pointer;
+}
+.nh-mobile-menu .mm-flat.campaign { color: #d9782f; }
+.nh-mobile-menu .mm-flat.find { color: #96683f; }
+.nh-mobile-menu .mm-top .chev { width: 10px; height: 10px; transition: transform .15s ease; }
+.nh-mobile-menu .mm-cat.is-open .mm-top .chev { transform: rotate(180deg); }
+.nh-mobile-menu .mm-sub { display: none; padding: 0 16px 12px 16px; }
+.nh-mobile-menu .mm-cat.is-open .mm-sub { display: block; }
+.nh-mobile-menu .mm-sub-h { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: #6f7a52; margin: 8px 0 4px; }
+.nh-mobile-menu .mm-viewall, .nh-mobile-menu .mm-sub-link { display: block; font-size: 13.5px; color: #2c3620; padding: 4px 0; text-decoration: none; }
+.nh-mobile-menu .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.nh-mobile-menu .chips .chip { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: #f4e9dc; color: #96683f; }
+
+/* ── "Hitta rätt" — flytande kort, förankrat nedre högra hörnet (matchar
+   prototypens .hr-drawer, inte en kant-till-kant-drawer). Scrimen tonas in/ut
+   (samma mönster som prototypens .hr-scrim.is-open), kortet snäpper
+   in/ut via [hidden] precis som i prototypen (den animerar inte kortet). ── */
+.nh-hr-root .hr-drawer[hidden],
+.nh-mobile-menu[hidden],
+.nh-mobile-menu-scrim[hidden] { display: none !important; }
+.nh-hr-root .hr-scrim {
+  position: fixed; inset: 0; background: rgba(30,39,22,.35); z-index: 95;
+  opacity: 0; visibility: hidden; transition: opacity var(--nh-t, 200ms ease);
+}
+.nh-hr-root .hr-scrim.is-open { opacity: 1; visibility: visible; }
+.nh-hr-root .hr-drawer {
+  position: fixed; right: 24px; bottom: 24px; z-index: 96;
+  width: min(400px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+  overflow-y: auto; background: #fff; border: 1px solid #ebe1d1;
+  border-radius: 18px; padding: 22px;
+  box-shadow: 0 20px 44px -16px rgba(44,54,32,.30);
+}
+@media (max-width: 640px) {
+  .nh-hr-root .hr-drawer { left: 10px; right: 10px; bottom: 10px; width: auto; max-height: 80vh; }
+}
+.nh-hr-root .hr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
+.nh-hr-root .hr-head h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-weight: 600; font-size: 21px; color: #2c3620; margin: 0; }
+.nh-hr-root .hr-close { border: none; background: none; font-size: 21px; line-height: 1; cursor: pointer; color: #9a9280; padding: 2px 4px; }
+.nh-hr-root .hr-intro { font-size: 12.5px; color: #5f5c50; line-height: 1.5; margin: 0 0 4px; }
+.nh-hr-root .hr-step { padding: 13px 0; border-top: 1px solid #f3ece0; margin: 0; }
+.nh-hr-root .hr-step:first-of-type { border-top: none; }
+.nh-hr-root .hr-step b { display: block; font-size: 12px; font-weight: 700; color: #26261f; margin-bottom: 9px; }
+.nh-hr-root .hr-opts { display: flex; flex-wrap: wrap; gap: 7px; }
+.nh-hr-root .hr-opt {
+  display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 24px;
+  border: 1.5px solid #ebe1d1; background: none; color: #26261f;
+  font-size: 13px; font-weight: 650; text-decoration: none; cursor: pointer;
+  transition: background var(--nh-t, 200ms ease), border-color var(--nh-t, 200ms ease), color var(--nh-t, 200ms ease);
+}
+.nh-hr-root a.hr-opt:hover { border-color: #2c3620; background: #2c3620; color: #fff; }
+.nh-hr-root .hr-opt--info { cursor: default; border-color: #f3ece0; background: #faf3e9; color: #5f5c50; }
+.nh-hr-root .hr-note { font-size: 11.5px; color: #9a9280; margin: 8px 0 0; }
+.nh-hr-root .hr-result {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px 18px; margin-top: 6px;
+  background: #2c3620; border: 1.5px solid #2c3620; color: #fff; border-radius: 24px;
+  font-weight: 650; font-size: 13px; text-decoration: none;
+  transition: background var(--nh-t, 200ms ease), border-color var(--nh-t, 200ms ease);
+}
+.nh-hr-root .hr-result:hover { background: #96683f; border-color: #96683f; }
+.nh-hr-root .hr-result svg { width: 14px; height: 14px; }
+
+/* ── Responsive: dropdown-rad bara på desktop, hamburger bara på mobil ── */
+@media (max-width: 880px) {
+  #store-header.nh-header-v2 .nh-cat-row { display: none; }
+  #store-header.nh-header-v2 .nh-burger { display: inline-flex; }
+
+  /* Mobil main-row: [hamburgare] [centrerad logga] [konto+varukorg] —
+     rätt prototyp (mVp-header), inte nyehandels nativa logga-vänster-läge.
+     Grid med 1fr/auto/1fr ger sann centrering oavsett flankernas bredd. */
+  #store-header.nh-header-v2 .main {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  #store-header.nh-header-v2 .nh-burger { grid-column: 1; justify-self: start; }
+  #store-header.nh-header-v2 .main .left { grid-column: 2; justify-self: center; }
+  #store-header.nh-header-v2 .main .right { grid-column: 3; justify-self: end; }
+  /* Rätt prototyp (mVp .m-logo): typografiskt "hazey"-ordmärke, kursiv
+     serif — INTE nyehandels lilla rastrerade "Hazey.se"-logga. Döljer
+     bilden, sätter texten via ::after på länken (behåller href="/"
+     och tillgänglig alt-text via bilden, som fortfarande finns i DOM:en). */
+  #store-header.nh-header-v2 .main .left .brand img { display: none; }
+  #store-header.nh-header-v2 .main .left .brand a { position: relative; display: inline-block; }
+  #store-header.nh-header-v2 .main .left .brand a::after {
+    content: "hazey";
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 23px;
+    color: var(--nh-green, #2c3620);
+    white-space: nowrap;
+  }
+  /* Riktiga sökkomponenten döljs ur main-raden på mobil (ersätts av
+     .nh-mobile-searchbar nedan, som bara TRIGGAR samma riktiga sök). */
+  #store-header.nh-header-v2 .main .center { display: none !important; }
+  /* Den nativa sök-ikon-triggern i .right är nu överflödig — vår egen
+     alltid synliga sökrad gör samma sak, dubblett annars. */
+  #store-header.nh-header-v2 .main .right #mobile-search-trigger { display: none !important; }
+  /* Mörkgröna topbaren (kryss-USP + 18+) döljs på mobil — ersätts av
+     .nh-mobile-trust nedan (matchar rätt prototyp: ingen mörk topbar på
+     mobil där). 18+-kravet flyttas till mobilmenyns fot (.nh-mm-foot). */
+  #store-header.nh-header-v2 .topbar { display: none !important; }
+}
+@media (min-width: 881px) {
+  .nh-mobile-menu, .nh-mobile-menu-scrim { display: none !important; }
+  .nh-mobile-searchbar { display: none !important; }
+  .nh-mobile-trust { display: none !important; }
+}
+
+/* Kompakt 2×2 trust-rad, mobil — riktiga värden, se js/18a-header-v2.js.
+   EXAKT UPPMÄTT mot rätt prototyp (#mVp .mt-mobile-inner) 2026-08-31: rena
+   textrader utan kort/border/bakgrund — INTE boxar (det hade jag fel på
+   först). display:grid två 1fr-kolumner, gap 6px 14px, item font-size
+   9.7px, textfärg rgb(101,89,70), ikon-gap 7px. */
+.nh-mobile-trust {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 14px;
+  padding: 9px 16px 12px;
+  background: var(--nh-cream, #fffdf8);
+}
+.nh-mobile-trust .nh-mt-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9.7px;
+  color: rgb(101,89,70);
+  text-decoration: none;
+  line-height: 1.25;
+}
+.nh-mobile-trust .nh-mt-item svg { width: 14px; height: 14px; flex: none; color: var(--nh-terra-deep, #96683f); }
+.nh-mobile-trust .nh-mt-item b { color: var(--nh-green, #2c3620); font-weight: 700; }
+a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
+
+/* Mobilmenyns 18+-fotnot (juridiskt krav, flyttad hit från den dolda topbaren). */
+.nh-mm-foot {
+  padding: 14px 16px;
+  border-top: 1px solid #ebe1d1;
+  font-size: 11px;
+  color: #9a9280;
+  text-align: center;
+}
+
+/* Alltid synlig mobil-sökrad, direkt under headerns main-row (matchar
+   prototypens .m-searchbar) — bara en trigger-knapp, ingen egen söklogik. */
+.nh-mobile-searchbar {
+  padding: 0 16px 10px;
+  background: var(--nh-cream, #fffdf8);
+}
+.nh-mobile-searchbar button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--nh-line, #ebe1d1);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--nh-ink-faint, #9a9280);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+.nh-mobile-searchbar svg { width: 18px; height: 18px; flex: none; color: var(--nh-green, #2c3620); }
+
+/* Topbar-USP:n (befintlig, css/15) växlar bara till scrollande marquee
+   under 600px — mellan 601–880px radbryts den statiska listan till 2 rader
+   (upptäckt vid responsivitetstest 2026-08-29, se STATUS.md). Vi har redan
+   en "kompakt header"-brytpunkt vid 880px (hamburger-bytet ovan), så vi drar
+   samma linje här istället för att lämna en klumpig lucka i mitten. */
+@media (max-width: 880px) and (min-width: 601px) {
+  #store-header.nh-header-v2 .topbar .usp { display: none !important; }
+  #store-header.nh-header-v2 .topbar .nh-topbar-marquee {
+    display: block !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    padding: 8px 0 !important;
+    -webkit-mask: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  #store-header.nh-header-v2 .topbar .nh-topbar-marquee__track {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    animation: nh-topbar-scroll 16s linear infinite;
+  }
+  #store-header.nh-header-v2 .topbar .nh-topbar-marquee__item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: var(--nh-beige-light) !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: .02em !important;
+    padding: 0 20px !important;
+    line-height: 1.2 !important;
+  }
+  #store-header.nh-header-v2 .topbar .nh-topbar-marquee__item::before {
+    content: "" !important;
+    width: 13px !important; height: 13px !important;
+    flex-shrink: 0 !important;
+    background-color: #cdfc9f !important;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') center / contain no-repeat !important;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') center / contain no-repeat !important;
+  }
+}

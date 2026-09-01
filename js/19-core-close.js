@@ -10,6 +10,8 @@
     initTabs();
     initFaq();
     initTrustpilot();
+    initHeaderV2();
+    initHomepageV2();
   }
 
   if (document.readyState === "loading") {
