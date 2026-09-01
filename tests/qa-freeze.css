@@ -1,0 +1,31 @@
+/* QA-freeze — TEST ONLY, injected client-side by tests/parity-sections.mjs.
+   Never pasted into Nyehandel admin, never referenced by css/ or js/.
+   Kills every source of frame-to-frame nondeterminism (animation,
+   transition, reveal-on-scroll, caret, scrollbar width) so two screenshots
+   of the same DOM state are pixel-identical run to run. */
+
+*, *::before, *::after {
+  animation-duration: 0s !important;
+  animation-delay: -0.0001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+  caret-color: transparent !important;
+}
+
+/* nh-reveal (css/22-homepage-v2.css) animates opacity/transform on scroll —
+   force the settled end-state so section screenshots never catch a
+   half-revealed frame regardless of IntersectionObserver timing. */
+.nh-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html {
+  scrollbar-width: none !important;
+}
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
