@@ -84,7 +84,7 @@ sajten, verifiera detaljer mot dagens live-DOM innan större CSS-arbete):
 ```
 CSS/JS ska re-skinna DESSA element, inte ersätta hela DOM-strukturen.
 
-## Uppdraget: header + startsida — NY implementation, INTE kodportering
+## Uppdraget: header + startsida — mot nyehandels riktiga DOM (selektiv kodportering tillåten, se princip nedan)
 
 Vilmer är inte nöjd med nuvarande header/startsida (byggd av
 kontraktorn/Oliver). Han har en egen prototyp som visar hur det ska se ut och
@@ -112,25 +112,49 @@ det arbetet var inte bortkastat — men IA/layout/komposition måste läsas om
 från den RÄTTA filen innan nåt mer byggs. Se STATUS.md för vad som konkret
 behöver göras om.**
 
-**Vad som ÄR portabelt från prototypen:**
-1. De uppmätta designvärdena (se nedan).
-2. Informationsarkitekturen — vilka element headern innehåller, hur
-   navigationen är strukturerad, vilka sektioner startsidan har.
-3. Copy/text — rubriker, mikrotexter, CTA-formuleringar (med reservation för
-   varumärkesröst-regeln nedan).
+**Portningsprincip (uppdaterad 2026-09-01 — ersätter den tidigare absoluta
+"skriv allt om från grunden"-regeln):**
 
-**Vad som INTE ska portas/kopieras:** prototypens KOD — CSS, scroll-
-animationer, header-logik, den enfilade JS-routern, `Overlay`-managern. Skriv
-NY kod mot nyehandels riktiga DOM, informerad av prototypen, kopiera inte
-CSS/JS rakt av. Prototypfilen är referens/facit för HUR DET SKA SE UT OCH
-KÄNNAS, inte ett bibliotek att klippa ur. Prototypens `dVp`/`mVp`-uppdelning
-(två separata DOM-träd, växlade med media queries) är en demo-lösning — den
-riktiga implementationen ska vara ETT responsivt träd. Sök-autocomplete,
+> Visuell komponentmarkup, komponentstruktur, relevanta CSS-regler,
+> designvärden och media-query-beteenden från den godkända prototypen får
+> återanvändas selektivt när det är det säkraste sättet att uppnå
+> verifierad visuell paritet.
+>
+> Prototypens router, mockdata, falska räknare, appövergripande JavaScript,
+> overlay-manager, demo-navigation och två fullständiga parallella
+> desktop-/mobilträd får inte kopieras in som ny produktionsarkitektur.
+>
+> Den portade visuella implementationen ska använda Nyehandels riktiga
+> länkar, data, sökfunktion, konto, varukorg och DOM-integrationspunkter.
+> Ett responsivt produktionsträd ska användas där det är praktiskt.
+> Resultatet ska verifieras med parity-systemet.
+
+Konkret: prototypfilen är fortfarande INTE ett bibliotek att klippa rakt ur
+rakt av (rätt selektorer/CSS-variabler måste översättas mot nyehandels
+riktiga DOM, inte klistras in oöversatta) — men till skillnad från den
+tidigare regeln är det numera uttryckligen okej att låta portad CSS/markup
+vara identisk eller nästan identisk med prototypens egen, när det är vad
+som krävs för att `npm run parity` faktiskt ska bli grönt. Se
+`tests/blueprints/` för konkreta, elementvisa portningsspecifikationer som
+tillämpar principen (varje blueprint dokumenterar facitselektor →
+implementationselektor, vad som är markup-portabelt kontra CSS-endast, och
+vilken riktig nyehandel-funktionalitet som måste bevaras).
+
+Fortfarande gäller oförändrat: `dVp`/`mVp`-uppdelningen (två separata
+DOM-träd, växlade med media queries) är en demo-lösning — den riktiga
+implementationen ska vara ETT responsivt träd. Sök-autocomplete,
 varukorgsräknare OCH trust-siffror (kundantal, Trustpilot-betyg) i
 prototypen är antingen hårdkodad mock-data eller uttryckligen markerade i
 filens egna kommentarer som "ska verifieras/hämtas dynamiskt före
 publicering" (sök t.ex. "8 000+", "KRÄVER RIKTIG KÄLLA" i filen) — i riktig
 kod kopplas allt mot nyehandels egen data eller lämnas tomt, ALDRIG fejkat.
+
+**Vad som fortfarande alltid är portabelt** (oförändrat sen tidigare):
+1. De uppmätta designvärdena (se nedan).
+2. Informationsarkitekturen — vilka element headern innehåller, hur
+   navigationen är strukturerad, vilka sektioner startsidan har.
+3. Copy/text — rubriker, mikrotexter, CTA-formuleringar (med reservation för
+   varumärkesröst-regeln nedan).
 
 Prototypfilen (~7740 rader) — grova landmärken, verifiera radnummer på nytt
 om filen uppdateras igen:

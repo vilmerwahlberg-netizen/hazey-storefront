@@ -650,3 +650,19 @@ facit (footern är redan omgjord i en tidigare omgång — "footer v2.1" —
 med riktiga länkar, men inte re-verifierad mot den NYA rätta facit-filen
 i just denna runda). Samt: fullständig 360/768/1024/1440/1920px-regression
 utöver 390/430/600px har inte körts i denna omgång.
+
+## Portningsprincip ändrad (2026-09-01)
+
+Vilmer bytte ut den tidigare absoluta "skriv allt om från grunden,
+kopiera aldrig prototypens CSS/JS"-regeln i CLAUDE.md mot en tydligare,
+mer nyanserad princip: visuell komponentmarkup/CSS/designvärden/
+media-query-beteenden FÅR återanvändas selektivt när det är säkraste
+vägen till verifierad visuell paritet — men prototypens router, mockdata,
+overlay-manager, demo-navigation och dVp/mVp-tvådelningen får fortfarande
+inte kopieras in som produktionsarkitektur, och den portade koden ska
+alltid gå mot nyehandels riktiga länkar/data/sök/konto/varukorg och
+verifieras med parity-systemet. Fullständig ordalydelse i CLAUDE.md,
+avsnittet "Portningsprincip". Se `tests/blueprints/` för konkreta,
+elementvisa portningsspecifikationer som tillämpar principen — första är
+`mobile-header-port.md` (mobilheader + sökfält + mikrotrust, hero ingår
+INTE ännu).
