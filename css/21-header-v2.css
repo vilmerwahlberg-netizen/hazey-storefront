@@ -324,19 +324,40 @@
   /* Mobil main-row: [hamburgare] [centrerad logga] [konto+varukorg] —
      rätt prototyp (mVp-header), inte nyehandels nativa logga-vänster-läge.
      Grid med 1fr/auto/1fr ger sann centrering oavsett flankernas bredd.
-     KORRIGERAT (implementationspass 1): blueprintens "12px runt om"
-     (facit .m-row) INTE portad hit — facits rad har ingen native
-     wrapper, vår .main .container gör (nyehandels egen markup, ~60px
-     hög oavsett .main-padding), så samma 12px-värde blåste upp
-     .main från ~69px till 85px istället för att matcha. Ursprunglig
-     padding-top/bottom:4px (bas-regeln ovan, ej mobil-scopad) mätt och
-     bekräftad ge närmast korrekt totalhöjd mot facits 69px givet VÅR
-     faktiska DOM — lämnad orörd här. Se STATUS.md/rapport för mätningen. */
+     PADDING — historik (läs i ordning, undvik att återinföra samma fel):
+     1) Blueprinten mätte facits .m-row-padding till 12px och den
+        porterades hit rakt av — men gav 85px istället för 69px, för att
+        .main då fortfarande wrappade sitt innehåll i .container (nativ
+        nyehandel-markup, ~60px hög oavsett padding).
+     2) Det felet fick padding reverteras till 4px (närmast rätt GIVET
+        det då okorrigerade grid-buget) — men det var fel diagnos: det
+        var STRUKTUREN (se .container-regeln nedan), inte padding-
+        värdet, som var trasig.
+     3) KORRIGERAT (root-cause-omgång): sedan .container gjorts
+        display:contents (se nedan) är .main's verkliga innehållshöjd
+        44px (max av hamburgare/logga/konto+varukorg), exakt som facit
+        förutsätter. Facits 12px-värde är alltså KORREKT igen —
+        återinfört. 44+12+12=68≈facits uppmätta 69px. */
   #store-header.nh-header-v2 .main {
     display: grid !important;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    padding: 12px;
   }
+  /* KORRIGERAT (root-cause-omgång): .nh-burger och .container är .main's
+     ENDA riktiga grid-items — .left/.center/.right är GRANDCHILDREN
+     (barn till .container, en nativ nyehandel-wrapper), inte barn till
+     .main. Deras grid-column/justify-self-regler nedan var därför verkningslösa
+     (grid-column har bara effekt på faktiska grid items) — .container
+     auto-placerades som ETT enda item i mittkolumnen, och högerkolumnen
+     (1fr) stod tom, vilket gav det stora tomrummet till höger. Verifierat
+     live: getBoundingClientRect() på #store-header .main visade exakt
+     2 barn (.nh-burger, .container), inte 3. Fix: gör .container
+     osynligt för layouten (display:contents) så dess barn blir RIKTIGA
+     grid-items av .main — då tar de befintliga grid-column/justify-self-
+     reglerna nedan äntligen effekt. Scopat till mobil (denna @media) —
+     rör inte desktop, där .container kan ha egen nödvändig layoutroll. */
+  #store-header.nh-header-v2 .main > .container { display: contents; }
   /* Facit #mVp .hz-header: #fbf1e1 — bara mobil, se blueprint §B. */
   #store-header.nh-header-v2 { background: #fbf1e1; }
   #store-header.nh-header-v2 .nh-burger { grid-column: 1; justify-self: start; }
@@ -411,6 +432,37 @@
 .nh-mobile-trust .nh-mt-item svg { width: 13px; height: 13px; flex: none; color: var(--nh-terra-deep, #96683f); }
 .nh-mobile-trust .nh-mt-item b { color: var(--nh-green, #2c3620); font-weight: 700; }
 a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
+/* KORRIGERAT (root-cause-omgång): !important på .nh-mt-item räckte inte —
+   Nyehandels "body,p,li,span,input,button,label,td{font-size:0.9rem
+   !important;line-height:1.6!important}"-reset matchar <span> DIREKT
+   (span står med i selektorlistan), så en direkt !important-träff på
+   BARNET vinner alltid över förälderns computed värde, oavsett vad
+   .nh-mt-item själv sätts till. Verifierat live: span computed
+   font-size var 16px/line-height 25.6px trots att .nh-mt-item redan var
+   9.7px/1.2 — <b> ärvde i sin tur 16px från sin <span>-förälder (<b> har
+   ingen egen nativ regel). Detta var den dominerande orsaken till
+   mikrotrustens ~105px höjd (facit: ~52px). Fix: tvinga span/b att ärva
+   FÖRÄLDERNS (redan korrekta) typografi istället för att läsa av den
+   nativa listan. */
+.nh-mobile-trust .nh-mt-item span,
+.nh-mobile-trust .nh-mt-item b {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+}
+/* Facit .tp-star: grön Trustpilot-badge (rad ~1155 i facit-källan) —
+   15×15 bas, 14×14 mobil-override, vit stjärna 11×11 på #00b67a. */
+.nh-mobile-trust .tp-star {
+  width: 14px;
+  height: 14px;
+  background: #00b67a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex: none;
+}
+.nh-mobile-trust .tp-star svg { width: 11px; height: 11px; color: #fff; }
 
 /* Mobilmenyns 18+-fotnot (juridiskt krav, flyttad hit från den dolda topbaren). */
 .nh-mm-foot {
@@ -442,16 +494,23 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   background: rgba(255,252,246,.88);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
   color: var(--nh-ink-faint, #9a9280);
-  /* !important (implementationspass 2, mätt orsak): samma nativa reset
-     som redan dokumenterad för .nh-mt-item — button är listad i
-     Nyehandels "body,p,li,span,input,button,label,td{font-size:16px
+  /* !important (mätt orsak): samma nativa reset som redan dokumenterad
+     för .nh-mt-item — button är listad i Nyehandels "body,p,li,span,
+     input,button,label,td{font-size:0.9rem!important;line-height:1.6
      !important}" — utan !important blev computed font-size 16px (inte
-     14px), vilket via native line-height:1.6!important gav en
-     line-height på 25.6px och blåste upp knapphöjden till ~49.6px
-     (facit: 41px). Native line-height är en enhetslös multiplikator
-     (1.6× elementets EGNA font-size) och räknas om automatiskt när
-     font-size vinner här — ingen egen line-height-regel behövs. */
+     14px), vilket blåste upp knapphöjden.
+     KORRIGERAT (root-cause-omgång): font-size:14px!important ENSAMT
+     räckte inte — line-height:1.6 är en enhetslös multiplikator som
+     räknas om mot ELEMENTETS EGNA font-size (14px×1.6=22.4px), inte mot
+     något fast tal, så den fortsatte blåsa upp knappen (46.4px) trots
+     att font-size nu var rätt. Facit sätter INGEN egen line-height på
+     sin knapp alls (bara padding 11px 16px, verifierat: 41px totalhöjd
+     − 22px padding − 2px border = 17px innehållshöjd, dvs ren
+     webbläsar-default för 14px text, inte 1.6×). Motsvarande fix här:
+     tvinga tillbaka till normal (webbläsarens standardvärde), inte ett
+     gissat kompensationstal. */
   font-size: 14px !important;
+  line-height: normal !important;
   text-align: left;
   cursor: pointer;
 }

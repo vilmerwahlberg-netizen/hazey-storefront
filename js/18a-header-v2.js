@@ -319,15 +319,17 @@
         });
         mainRow.parentNode.insertBefore(mobileSearchBar, mainRow.nextSibling);
 
-        // Mikrotrust-raden. RIKTIGA värden, bekräftade av Vilmer 2026-08-31:
-        //   - Trustpilot 4,7/5, länkad till den riktiga recensionssidan
+        // Mikrotrust-raden. RIKTIGA, av Vilmer bekräftade/fastställda korta
+        // texter (2026-09-01 rättningsomgång — ersätter tidigare live-
+        // extraktion ur topbar-USP:n, som gav längre, radbrytande text):
+        //   - "4,7/5 på Trustpilot", länkad till den riktiga recensionssidan
         //     (samma URL som redan används i blocks/testimonials-section.html).
-        //   - "8 000+ ordrar" (INTE "kunder" — Vilmer påpekade skillnaden;
-        //     ordersiffran rör sig uppåt mot 9000, så det här talet MÅSTE
-        //     uppdateras manuellt då och då — sätt inte och glöm).
-        //   - Leverans/diskretion-texten återanvänds LIVE ur den redan
-        //     riktiga topbar-USP-listan (ingen ny hårdkodad kopia av samma
-        //     fakta två gånger).
+        //   - "8 000+ ordrar · sedan 2020" (INTE "kunder" — Vilmer påpekade
+        //     skillnaden; ordersiffran rör sig uppåt mot 9000, så det här
+        //     talet MÅSTE uppdateras manuellt då och då — sätt inte och glöm).
+        //   - "Normalt 1–2 vardagar" / "Diskret & spårbart" — facitens egna
+        //     korta texter, fasta (inte längre live ur topbar-USP:n, som gav
+        //     "Skickas 1-2 vardagar" — längre och radbröt i 172px-kolumnen).
         //
         // MONTERINGSPUNKT (blueprint §E, korrigerad 2026-09-01): facit har
         // mikrotrusten som ETT SYSKON till headern, inte ett barn — den
@@ -338,24 +340,19 @@
         // gör att den (a) INTE räknas in i #store-headers egen scrollHeight/
         // autohöjd, och (b) aldrig kan påverkas av js/14-header-scroll.js
         // headroom-transform (som bara riktar sig mot #store-header).
-        var uspTexts = Array.prototype.slice.call(sh.querySelectorAll(".topbar .usp li"))
-          .map(function (li) { return li.textContent.trim(); });
-        var leveransText = uspTexts.filter(function (t) { return /vardag|leverans|skicka/i.test(t); })[0] || "Snabb leverans";
-        var diskretText = uspTexts.filter(function (t) { return /diskret/i.test(t); })[0] || "Diskreta paket";
-
         if (storeMain && !storeMain.querySelector(".nh-mobile-trust")) {
           var trustRow = document.createElement("div");
           trustRow.className = "nh-mobile-trust";
           trustRow.innerHTML = ''
             + '<a class="nh-mt-item" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-            + '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.9L18 22l-6-3.9L6 22l1.4-7.5L2 9.6l7.1-.7L12 2z"/></svg>'
+            + '<span class="tp-star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.9L18 22l-6-3.9L6 22l1.4-7.5L2 9.6l7.1-.7L12 2z"/></svg></span>'
             + '<span><b>4,7/5</b> på Trustpilot</span></a>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 7.3c-.4-.2-.9-.1-1.2.2l-3.4 3.4-2.9-5.1c-.2-.4-.6-.6-1-.6s-.8.2-1 .6l-2.9 5.1-3.4-3.4c-.3-.3-.8-.4-1.2-.2s-.6.6-.5 1l1.9 9.8c.1.5.5.9 1 .9h12.4c.5 0 .9-.4 1-.9l1.9-9.8c.1-.4-.1-.8-.5-1z"/></svg>'
-            + '<span><b>8 000+</b> ordrar</span></div>'
+            + '<span><b>8 000+</b> ordrar · sedan 2020</span></div>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="15" height="12" rx="1.5"/><path d="M16 10h3.5l2.5 3v5h-6z"/><circle cx="6" cy="19.5" r="1.6"/><circle cx="17.5" cy="19.5" r="1.6"/></svg>'
-            + '<span>' + leveransText + '</span></div>'
+            + '<span>Normalt 1–2 vardagar</span></div>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5V11c0 5-3.4 8.7-8 9.9C7.4 19.7 4 16 4 11V5.5L12 2z"/></svg>'
-            + '<span>' + diskretText + '</span></div>';
+            + '<span>Diskret &amp; spårbart</span></div>';
           storeMain.insertBefore(trustRow, storeMain.firstChild);
         }
       }

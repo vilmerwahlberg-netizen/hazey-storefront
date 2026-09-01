@@ -768,3 +768,85 @@ oförändrad (header 175px mot native 180px utan vår CSS — 5px, osynlig
 skillnad, ingen synlig regression).
 
 **Hero och alla sektioner efter mikrotrust rörda INTE.**
+
+## Mobilheader: rotorsaksomgång efter underkänt PASS (2026-09-01)
+
+Vilmer underkände det tidigare automatiska PASS:et — 12%-tröskeln
+passerades men skärmdumpen visade en tydlig strukturell bugg (logga/
+konto/varukorg klumpade ihop långt åt vänster, stort tomrum till höger)
+som talet inte fångade. Krävde read-only rotorsaksanalys FÖRE kodändring
+— alla tre orsaker bekräftade live innan fix, ingen gissad.
+
+**1. Fel layoutförälder (strukturbugg, huvudorsaken bakom underkännandet):**
+`#store-header .main` har bara TVÅ riktiga barn: `.nh-burger` (vår egen,
+`grid-column:1`) och nyehandels nativa `.container` (auto-placerad, ETT
+enda grid-item). `.left`/`.center`/`.right` är GRANDCHILDREN (barn till
+`.container`), inte `.main`s egna barn — deras `grid-column`/
+`justify-self`-regler var alltså verkningslösa (gäller bara riktiga grid-
+items), och högerkolumnen (`1fr`) stod tom. Fix: `#store-header.nh-
+header-v2 .main > .container { display: contents; }` (mobil-scopad) gör
+`.container` osynligt för layouten så dess barn blir RIKTIGA grid-items
+— de redan korrekt författade `grid-column`/`justify-self`-reglerna
+fungerar då direkt. Verifierat: loggans centrum = viewportens centrum
+inom 0,01px vid 390/430/600px, på startsida/kategori/produkt (9/9
+kombinationer).
+
+**2. Mikrotrustens inre `<span>`/`<b>` — INTE bara text som orsak.**
+Vilmer hade rätt att ifrågasätta "längre text"-förklaringen. Verifierat
+via CDP `getMatchedStylesForNode`: Nyehandels globala `body,p,li,span,
+input,button,label,td{font-size:0.9rem!important;line-height:1.6
+!important}`-reset matchar `<span>` DIREKT (span står i listan) — en
+direkt `!important`-träff på barnet vinner alltid över förälderns
+computed värde, oavsett vad `.nh-mt-item` sattes till. Span visade
+computed `font-size:16px`/`line-height:25.6px` trots att `.nh-mt-item`
+redan var `9.7px`/`1.2`. `<b>` ärvde i sin tur 16px från sin span-
+förälder. Fix: `.nh-mobile-trust .nh-mt-item span, ...b { font-size:
+inherit!important; line-height:inherit!important; margin:0!important }`
+— tvingar dem att ärva förälderns redan korrekta typografi istället för
+att läsa av den nativa listan. Detta var den DOMINERANDE orsaken till
+mikrotrustens höjd (105px→55px i ett enda steg, av facits 52px).
+
+**3. Sökfältets knapp — samma mekanism som ovan, en gång till.**
+`button` står också i samma native-lista. `font-size:14px!important`
+(tidigare fix) vann över font-size, MEN `line-height:1.6` är en
+enhetslös multiplikator som räknas om mot elementets EGNA (nu korrekta)
+font-size — `1.6×14=22.4px`, fortfarande fel. Facit sätter ingen egen
+line-height alls (41px totalhöjd − 22px padding − 2px border = 17px
+innehåll, ren webbläsar-default för 14px text). Fix: `line-height:
+normal!important` — motsvarar facits IMPLICITA default, inte ett gissat
+kompensationstal.
+
+**Ny copy och Trustpilot-ikon** (Vilmers exakta, godkända korta texter,
+ersätter tidigare live-extraktion ur topbar-USP:n som gav längre,
+radbrytande text): "4,7/5 på Trustpilot", "8 000+ ordrar · sedan 2020"
+(INTE "kunder"), "Normalt 1–2 vardagar", "Diskret & spårbart". Facitens
+gröna `.tp-star`-badge (14×14, `#00b67a`, vit stjärna 11×11) återskapad
+istället för den tidigare enkla kontur-ikonen.
+
+**Två implementationspass (av max 2 tillåtna denna omgång):**
+- Pass 1 (alla tre rotorsaker ovan i ett svep): Header 128px→109px
+  (diff 11,4%→19,6%, TILLFÄLLIGT SÄMRE — se nedan), **Sökfält 57px→54px
+  (diff 15,7%→7,8%, PASS)**, **Mikrotrust 105px→55px (diff 56,3%→15,4%,
+  nära men fortfarande FAIL)**.
+- Pass 2 (en enda, tydligt identifierad kvarvarande orsak): headerns
+  regression i Pass 1 var FÖRVÄNTAD, inte en bugg — `display:contents`
+  tog bort `.container`s tidigare höjd-bidrag (~60px), så `.main`s
+  verkliga innehållshöjd blev 44px (facits egen), vilket gjorde att
+  blueprintens ursprungliga `12px`-padding (som avfärdades i förra
+  omgången på fel grund) nu äntligen stämde. Återinförd. **Header
+  109px→125px (diff 19,6%→6,3%, PASS).**
+
+**Slutresultat, 390px:** Header PASS (6,3%), Sökfält PASS (7,8%),
+Mikrotrust FAIL men kraftigt förbättrad (15,4%, mot facits 52px vs våra
+55px — bara 3px kvar). Pass-budgeten (2) förbrukad denna omgång, ingen
+tredje gissning gjord på mikrotrustens sista 3px.
+
+**Regression verifierad** (skrivskyddat, 390/430/600px × start/kategori/
+produkt = 9 kombinationer + 1440px desktop): ingen horisontell overflow
+någonstans, loggcentrering inom 0,01px överallt, mikrotrust scrollar
+bort separat (bekräftat: `trustTop` −351px vid scroll 500px, alltså
+normalt dokumentflöde, inte fixed), headerns scroll-döljning fungerar
+(header till `top:-125px` vid scroll, tillbaka till `0` vid topp), meny/
+konto/varukorg fungerar (`aria-expanded` växlar, riktig Vue cart-state),
+desktop 1440px pixel-identisk med föregående omgång (header 175px,
+oförändrat — alla fixar är mobil-scopade).
