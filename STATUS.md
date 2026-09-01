@@ -1036,3 +1036,67 @@ ovanstående. `PLATFORM_MANAGED_SELECTORS` i samma modul listar de kända
 Vue-ägda DOM-regionerna (kontoikon, varukorgsikon+badge, `#cartAside`)
 som tidigare header-rundor redan identifierat men inte skrev ner
 maskinläsbart förrän nu.
+
+## Mobil hero — lässkyddad blueprint klar (2026-09-01)
+
+Nästa komponent efter det låsta headerpaketet. `tests/blueprints/
+mobile-hero-port.md` skapad — LIVE uppmätt (Playwright + `getComputedStyle`/
+CDP) mot facit vid 390/430/600px, INGEN produktionsfil ändrad
+(`css/22-homepage-v2.css`/`js/18b-homepage-v2.js` orörda).
+
+**Viktig skillnad mot header:** mobil hero är INTE oimplementerad —
+`.nh-hero-v2`/`.nh-qfind-hero` finns redan (byggt 2026-08-31), och
+DOM-strukturen är i grunden rätt. Det som saknas är i praktiken samma
+felmönster header-kalibreringen redan löste en gång:
+
+1. Redan skrivna text-CSS-regler (eyebrow/h1/p/knappar) saknar
+   `!important` och förlorar tyst mot Nyehandels nativa
+   `h1{font-family:Roboto!important}`/`body,p,...{font-family:Nunito!
+   important}`-resets — bekräftat via CDP, exakt samma mönster som
+   header §F.1.
+2. `h1{max-width}` saknas helt — H1:an ("Hitta rätt utan att kunna
+   allt.") radbryter till EN rad i stället för facits avsiktliga TVÅ.
+3. `.nh-hero-v2__inner` är `display:block;max-width:520px` (fast) i
+   stället för facits `display:flex;flex-direction:column;
+   justify-content:flex-end;width:76%` (relativt, botten-förankrat) —
+   förklarar även varför fotots högra sida syns mindre i impl.
+4. Bildfilter (`saturate(1.06) brightness(1.12) sepia(.045)`) saknas
+   helt; overlay-gradienten finns (`::before`, tidigare felaktigt läst
+   som "saknas" innan källkoden lästes om) men är enhetligt vertikal i
+   stället för facits asymmetriska, textsides-koncentrerade form.
+5. **Störst enskild visuell skillnad:** "Hjälp mig →" är en vanlig
+   understruken textlänk i impl, en kvarleva från ett tidigare,
+   övergivet reskin-försök mot nyehandels native slideshow-DOM
+   (`.slideshow__slides__slide`-CSS, rad 1-53 i `css/22-homepage-v2.css`,
+   matchar numera ingenting i den faktiska markupen) — facit stylar
+   samma knapp som en fylld piller-knapp.
+
+**Redan korrekt, ingen åtgärd behövs:** hero-kortets höjd/position/
+marginal/border-radius/overflow/box-shadow (alla exakt matchande),
+gapet hero→"Populära serier" (~18px på båda sidor, redan nära exakt),
+båda CTA-länkarnas FUNKTION (verifierat i kod — "Utforska sortimentet"
+scrollar till en riktig, om än annorlunda namngiven, "Populära
+vägar"-sektion på båda sidor; "Hjälp mig →" öppnar redan en riktig
+"Hitta rätt"-låda via en global `[data-open-hr]`-delegat i
+`js/18a-header-v2.js`, ingen stubb). Den tidigare oro att en extra
+"qfind"-chipsrad renderades mellan hero och Populära serier på mobil
+visade sig vara fel — koden döljer redan `.nh-qfind` helt under 861px
+(kommentar i koden bekräftar detta uppmättes 2026-09-01), bekräftat av
+denna omgångs egen geometrimätning.
+
+**Öppna frågor till Vilmer, inte gissade:** var ska hero-bilden hostas
+i produktion (idag `http://localhost:8767/`, redan flaggat i kodens
+egna kommentarer som pre-launch-blockerande); ska den döda
+`.slideshow__slides__slide`-CSS:en tas bort. En detalj (facits
+`.btn-solid` är 8px lägre vid 600px än vid 390/430px) är inte
+fullständigt rotorsakad denna omgång — flaggad för uppföljning, inte
+gissad.
+
+Testplan (skriven, INTE implementerad i `tests/parity-sections.mjs`/
+`tests/home-parity.spec.mjs`) för: isolerad hero-pixelparitet (redan
+skaffoldad, väntar på implementation), paketgeometri utökad med
+mikrotrust→hero→Populära serier, funktionella CTA-länkar, ingen
+overflow, home/kategori/produkt-regression, desktop orört — se
+blueprintens §I för detaljer.
+
+**Ingenting implementerat. Inget pushat eller deployat.**
