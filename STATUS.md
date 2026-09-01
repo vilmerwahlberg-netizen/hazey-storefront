@@ -666,3 +666,22 @@ avsnittet "Portningsprincip". Se `tests/blueprints/` för konkreta,
 elementvisa portningsspecifikationer som tillämpar principen — första är
 `mobile-header-port.md` (mobilheader + sökfält + mikrotrust, hero ingår
 INTE ännu).
+
+## Korrigering i mobile-header-port.md (2026-09-01)
+
+Granskning hittade en verklig strukturell motsägelse i blueprintens
+första utkast: den föreslog `#store-header{height:auto!important}` som
+hela lösningen på header-höjdsavvikelsen (122px facit mot 100px
+implementation), men missade att facitets `.mt-mobile` (mikrotrust) ligger
+UTANFÖR `#mHeader` som eget syskon-element i DOM:et, medan
+implementationens `.nh-mobile-trust` idag monteras SOM BARN till
+`#store-header` (`js/18a-header-v2.js` rad 332–344). En ren
+`height:auto`-fix hade därför gjort hela headern ~174px+ hög och
+permanent fixed, istället för att bara headern (122px) är fixed och
+mikrotrusten scrollar bort separat som i facit. Blueprinten är nu
+korrigerad med en ny sektion F ("Strukturell lösning:
+mikrotrust-monteringspunkt") som dokumenterar rätt lösning: flytta
+`.nh-mobile-trust` till att bli första barnet i `#store-main` (verifierat
+identisk DOM-relation mellan `#store-header`/`#store-main` på startsida,
+kategori och produktsida), verifierat mot hur `nhSyncMainOffset` redan
+fungerar. Ingen produktionskod ändrad — fortfarande bara spec.

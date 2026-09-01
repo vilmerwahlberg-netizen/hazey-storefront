@@ -22,21 +22,69 @@ för samma selektor förekommer på facit-sidan) är det alltid det
 
 ---
 
+## KORRIGERING (2026-09-01): mikrotrust låg på fel DOM-nivå i förra utkastet
+
+Granskningen hittade en verklig strukturell motsägelse i förra versionen
+av den här specen, verifierad och nu åtgärdad här. Sammanfattning av
+felet, utredningen och den korrigerade planen — se detaljerna inne i
+respektive sektion (DOM-mappning rad 10, §D, §F) för de fullständiga
+konsekvenserna.
+
+**Vad som var fel:** Föregående utkast föreslog `#store-header.nh-
+header-v2 { height:auto !important; }` som HELA lösningen på header-
+höjdsavvikelsen (122px facit mot 100px implementation). Det var
+ofullständigt eftersom det inte tog hänsyn till att `.nh-mobile-trust`
+idag monteras SOM BARN till `#store-header` i implementationen —
+verifierat i `js/18a-header-v2.js` rad 332–344
+(`mobileSearchBar.parentNode.insertBefore(trustRow, ...)`, där
+`mobileSearchBar.parentNode` är `sh` = `#store-header` självt). En ren
+`height:auto`-fix hade därför låtit mikrotrustens ~52–104px räknas in i
+headerns egen autohöjd och gjort HELA headern (inkl. trustraden)
+permanent fixed/synlig under scroll — cirka 174px hög, aldrig
+bortscrollbar.
+
+**Verifierat i facit-källan** (`prototyp/index.html` rad 4105–4131):
+```html
+<header class="hz-header" id="mHeader">
+  <div class="m-row">...</div>
+  <div class="m-searchbar">...</div>
+</header>                                 <!-- #mHeader STÄNGS här -->
+<div class="mt-mobile">...</div>          <!-- SYSKON till #mHeader, INTE barn -->
+```
+`.mt-mobile` har ingen egen `position`-regel (defaultar till `static`) —
+den ligger i normalt dokumentflöde direkt under den `position:sticky`
+headern och scrollar bort med resten av sidan när användaren scrollar
+ned. Det är precis det beteendet implementationen måste reproducera.
+
+**Den korrigerade planen** (fullständigt motiverad i den nya sektionen
+"E. Strukturell lösning: mikrotrust-monteringspunkt" nedan): flytta
+`.nh-mobile-trust` ut ur `#store-header` och montera den som FÖRSTA
+riktiga barnet i `#store-main` (verifierat: `#store-header` och
+`#store-main` är syskon under `#store-instance` på samtliga tre
+sidtyper som testades — startsida, kategori, produkt — och `#store-
+main` har redan en nativ `padding-top` som `nhSyncMainOffset` justerar
+dynamiskt). `height:auto !important`-regeln på `#store-header` behövs
+FORTFARANDE (headern är fortfarande högre än den nativa 100px-taket när
+den bara innehåller main-rad + sökrad, se §F), men den räcker inte
+ensam — DOM-flytten är den del som faktiskt löser motsägelsen.
+
+---
+
 ## A. DOM-mappning
 
 | # | Element | Facitselektor | Implementationselektor | Markup portabel? | Riktig nyehandel-funktion som måste bevaras |
 |---|---|---|---|---|---|
 | 1 | Header-rot | `#mHeader` (`.hz-header`) | `#store-header` (`.nh-header-v2`) | Nej — native element, CSS-endast | `position:fixed`, headroom-slide vid scroll (`js/14-header-scroll.js`), nativ `var(--header-height*)` som andra teman-regler kan referera |
 | 2 | Main-rad | `.m-row` | `.main` | Nej — CSS-endast (grid `1fr auto 1fr` redan portad) | native `.left`/`.center`/`.right`-containrar, Vue-bindningar däri |
-| 3 | Hamburgare | `#mMenuBtn` (`.m-icon`) | `.nh-burger` | Ja — ikon-`<svg>`-mönstret är identiskt (3 linjer, `stroke-width:2`), kan återanvändas rakt av | `#mobile-nav-menu` (nativ Vue-hamburgare) hålls dold, vår egen mobilmeny-öppna/stäng-JS |
-| 4 | Ordmärke | `.m-logo` (textlänk) | `.main .brand a::after` | **Redan korrekt portad** (se §E) | `href="/"`, `<img alt>` kvar i DOM (dold, tillgänglighet) |
-| 5 | Kontoikon | `a.m-icon[aria-label="Konto"]` | `.main .right .account-button` | Ja — samma ikonmönster (cirkel+axlar-SVG), CSS redan nästan identisk | riktig `/sv/account`-länk |
-| 6 | Varukorgsikon | `#mCartBtn` | `.main .right .cart-button` | Ja — samma ikonmönster | riktig `#cart-button`, Vue `aria-controls="cart-side-wrap"`, `cart/addVariant` (CLAUDE.md) |
-| 7 | Varukorgsbadge | `#mCartCount` (`.m-cart-count`) | **Finns inte än** | Ja, som NY komponent — markup+CSS från facit är säker att kopiera rakt av | måste bindas mot riktigt cart-count (samma mönster som `js/00-core-open.js` cart-state), se öppen fråga i §D |
+| 3 | Hamburgare | `#mMenuBtn` (`.m-icon`) | `.nh-burger` | **Delvis** — samma stil (3 raka linjer, `stroke-width:2`, `viewBox="0 0 24 24"`) men INTE identisk path: facit `M4 7h16M4 12h16M4 17h16` mot vår `M4 6h16M4 12h16M4 18h16` (linje 1/3 ligger 1px närmare mitten hos oss). Vår path kommer från `js/18a-header-v2.js` rad 296 (egen, inte kopierad). Byt till facits exakta `d`-attribut för sann 1:1 | `#mobile-nav-menu` (nativ Vue-hamburgare) hålls dold, vår egen mobilmeny-öppna/stäng-JS |
+| 4 | Ordmärke | `.m-logo` (textlänk) | `.main .brand a::after` | **Redan korrekt portad** (se §F) | `href="/"`, `<img alt>` kvar i DOM (dold, tillgänglighet) |
+| 5 | Kontoikon | `a.m-icon[aria-label="Konto"]` | `.main .right .account-button` | **Nej, HELT olika SVG-stil** — facit: enkel stroke-ikon (`stroke-width:1.7`, `fill:none`, cirkel r=3.6 + öppen axel-path). Implementation: nativ nyehandel-ikon, `fill`-baserad (solid path-former, ingen `stroke`) — inte vår markup, ligger i plattformens egen Vue-render. Att göra identisk kräver att ERSÄTTA den nativa `<svg>`-innehållet med facits (markup-swap, inte bara CSS) — se §D, öppen fråga | riktig `/sv/account`-länk (native `<a>`, rörs inte) |
+| 6 | Varukorgsikon | `#mCartBtn` | `.main .right .cart-button` | **Nej, samma sak som konto** — nativ `fill`-baserad ikon (kundvagn+2 cirklar som solida path-former), inte facits stroke-baserade linje-ikon. Samma markup-swap-fråga som rad 5 | riktig `#cart-button`, Vue `aria-controls="cart-side-wrap"`, `cart/addVariant` (CLAUDE.md) |
+| 7 | Varukorgsbadge | `#mCartCount` (`.m-cart-count`) | **Finns redan nativt, bara ostylad för mobilheadern** — verifierat: `#store-header .cart-button .badge` (Vue-villkorlig, renderas som `<!---->`-platshållare tills korgen har ≥1 vara) har redan EN CSS-regel sen tidigare kontraktörspass (`css/05-info-section-info-html-ersatter-test.css` rad 641–647: `background:#cdfc9f!important;color:#23231d!important;border:none!important` — bara färg, ingen position/storlek). CSS-endast: lägg till position/mått i `css/21`, INGEN ny markup, INGEN hårdkodad nolla | Vue-drivet native `.badge`-element, `cart/addVariant`-reaktivt (CLAUDE.md) — rör aldrig dess rendering-logik, bara dess CSS-position/mått |
 | 8 | Sökrad | `.m-searchbar` | `.nh-mobile-searchbar` | Nej — knappen finns redan, CSS-endast | riktig `#mobile-search-trigger`-klick-genom (redan kopplat) |
 | 9 | Sökknapp | `#mSearchBtn` | `.nh-mobile-searchbar button` | Nej — CSS-endast | samma som ovan |
-| 10 | Mikrotrust-rad | `.mt-mobile` → `.mt-mobile-inner` | `.nh-mobile-trust` | Delvis — grid/gap/padding för containern är REDAN portad nästan exakt (se §E), item-nivån saknar en `!important` | statiskt innehåll, ingen live-integration |
-| 11 | Trust-item 1 (Trustpilot) | `a.mt-item:nth-child(1)` | `a.nh-mt-item:nth-child(1)` | CSS-endast, kräver `!important`-fix (§E) | riktig `trustpilot.com/review/hazey.se`-länk |
+| 10 | Mikrotrust-rad | `.mt-mobile` → `.mt-mobile-inner` (SYSKON till `#mHeader`, se korrigeringen ovan) | `.nh-mobile-trust` (idag BARN till `#store-header` — måste flyttas, se §E) | Containerns grid/gap/padding är REDAN portad nästan exakt (se §F); item-nivån saknar en `!important`. **Kräver också en DOM-monteringsändring i JS, inte bara CSS** — se §E | statiskt innehåll, ingen live-integration; monteringspunkten måste dock respektera `#store-main`s nativa `padding-top`/`nhSyncMainOffset` (se §E) |
+| 11 | Trust-item 1 (Trustpilot) | `a.mt-item:nth-child(1)` | `a.nh-mt-item:nth-child(1)` | CSS-endast, kräver `!important`-fix (§F) | riktig `trustpilot.com/review/hazey.se`-länk |
 | 12 | Trust-item 2–4 | `.mt-item` (`<div>`) | `.nh-mt-item` (`<div>`) | CSS-endast | statisk copy |
 
 ---
@@ -49,7 +97,7 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 
 | Egenskap | Facit (`#mHeader`) | Implementation (`#store-header`) |
 |---|---|---|
-| Total höjd | **122px** (auto, `.m-row` 69px + `.m-searchbar` 53px, inget mer i headern) | **100px** — men detta är en **CSS-höjdcap**, inte innehållets faktiska höjd (se §E) |
+| Total höjd | **122px** (auto, `.m-row` 69px + `.m-searchbar` 53px, inget mer i headern) | **100px** — men detta är en **CSS-höjdcap**, inte innehållets faktiska höjd (se §F) |
 | `position` | `sticky` | `fixed` (redan medvetet val i befintlig kod, se CLAUDE.md) |
 | `display` | `block` | `flex; flex-direction:column` |
 | Bredd | 390px | 390px |
@@ -62,7 +110,7 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 |---|---|---|
 | Höjd | 69px | 69px ✅ redan identisk |
 | `min-height` | 60px (`#mVp .m-row{min-height:60px}`, rad 2082) | ej satt explicit, resulterar ändå i 69px |
-| Padding | `12px` runt om | `4px 0` (native, se §E) |
+| Padding | `12px` runt om | `4px 0` (native, se §F) |
 | Gap | 6px | n/a (grid, ej flex-gap) |
 | Grid | n/a (flex) | `110px auto 110px` (dvs `1fr auto 1fr`, redan portad korrekt) |
 
@@ -75,15 +123,19 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 | Varukorg (`#mCartBtn`) | 44×44px | `.cart-button` 44×44px | ✅ matchar |
 | Ikon-`<svg>` | 22×22px | konto/varukorg: nativ SVG storlek (`.account-button svg`/`.cart-button svg`, ej explicit satt i css/21 — native default) | ej jämfört, lägre prioritet |
 
-### Varukorgsbadge (facit facit, finns ej i impl än)
+### Varukorgsbadge (facit `.m-cart-count` mot impl `.cart-button .badge`, native — se DOM-mappning rad 7)
 
-| Egenskap | Facit `.m-cart-count` |
-|---|---|
-| Position | `absolute; top:2px; right:2px` (relativt `.m-icon`, som är `position:relative`) |
-| Mått | `min-width:15px; height:15px; padding:0 3px` |
-| `border-radius` | 20px (pillform) |
-| Bakgrund | `var(--status-campaign)` = `#c96a26` |
-| Text | `#fff`, `9px`, `700` |
+| Egenskap | Facit `.m-cart-count` | Implementation `.badge` idag |
+|---|---|---|
+| Position | `absolute; top:2px; right:2px` (relativt `.m-icon`, som är `position:relative`) | ej satt (bara färg, se `css/05` rad 641–647) — ska bli `absolute; top/right` relativt `.cart-button` |
+| Mått | `min-width:15px; height:15px; padding:0 3px` | ej satt |
+| `border-radius` | 20px (pillform) | ej satt |
+| Bakgrund | `var(--status-campaign)` = `#c96a26` | `#cdfc9f` (ljusgrön, äldre kontraktörsval) |
+| Text | `#fff`, `9px`, `700` | `#23231d` (mörk text, äldre kontraktörsval) |
+
+Facits orange (`#c96a26`) mot den redan satta ljusgröna (`#cdfc9f`) är en
+FÄRGSKILLNAD som kräver ett medvetet beslut, inte bara en saknad regel —
+se öppen fråga i §D punkt 8/öppna frågor.
 
 ### Sökrad
 
@@ -94,9 +146,11 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 | Knapphöjd (`#mSearchBtn` / `button`) | **41px** | **49.59px** (**+8.6px**) |
 | Knapp-padding | `11px 16px` | `11px 16px` ✅ identisk |
 | `border-radius` | **26px** | **999px** (helt annan avrundning — pill istället för mjukt rundade hörn) |
-| `border` | `1px solid #dfc9aa` (facit-övre override, se §E) | `1px solid rgb(235,225,209)` = `#ebe1d1` (bas-token, INTE facits override, se §E) |
+| `border-width` | **`1px` (renderat/computed)** — käll-CSS säger `1.5px` (`.m-searchbar button{border:1.5px solid var(--line)}`, rad 367), men `getComputedStyle` mäter `1px` konsekvent vid dSF:1 (Chrome "snappar" icke-heltaliga border-width till hela enhetspixlar vid rendering/beräknat värde — bekräftat, ingen ytterligare override-regel hittad för bredden). **Portera `1px`, inte `1.5px`** — det är det som faktiskt renderas. | `1px solid rgb(235,225,209)` |
+| `border-color` | `#dfc9aa` (facit-övre override, se §F) | `#ebe1d1` (bas-token, INTE facits override, se §F) |
 | Bakgrund | `rgba(255,252,246,.88)` (halvtransparent varm cream) | `rgb(255,255,255)` (helt opak vit) |
-| Ikon-`<svg>` | 16×16px | ospårat, lägre prioritet |
+| `box-shadow` | `inset 0 1px 0 rgba(255,255,255,.9)` (facit-övre override, rad 1883) | `none` |
+| Ikon-`<svg>` | **16×16px** (`.m-searchbar svg{width:16px;height:16px}`, rad 370) | ospårat i denna körning, lägre prioritet men bör verifieras vid implementation |
 | Gap (ikon→text) | 9px | 10px |
 
 ### Övre mikrotrust
@@ -108,9 +162,9 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 | `gap` | `6px 14px` | `6px 14px` ✅ identisk |
 | Padding | `9px 16px` (symmetrisk, inget extra i botten) | `9px 16px 12px` (**+3px padding-bottom** utöver containern, försumbart mot huvudorsaken) |
 | Item 1 höjd (Trustpilot, `<a>`) | ~13px | **25.59px** |
-| Item 2 höjd (`<div>`) | ~13px | **25.59px** (stretchad av item 1, se §E) |
+| Item 2 höjd (`<div>`) | ~13px | **25.59px** (stretchad av item 1, se §F) |
 | Item 3–4 höjd (`<div>`) | ~13px | **51.19px** |
-| Item font-size | **9.7px** (vinnande facit-regel, rad 1896–1899) | Item 2–4: `9.7px` ✅. **Item 1 (`<a>`): tvingas till nativt basvärde** (se §E) — inte 9.7px trots samma `.nh-mt-item`-klass |
+| Item font-size | **9.7px** (vinnande facit-regel, rad 1896–1899) | Item 2–4: `9.7px` ✅. **Item 1 (`<a>`): tvingas till nativt basvärde** (se §F) — inte 9.7px trots samma `.nh-mt-item`-klass |
 | Item `line-height` | 1.2 (facit-override) resp. 1.25 (bas) | 1.25 |
 | Item textfärg | `#655946` = `rgb(101,89,70)` | `rgb(101,89,70)` ✅ identisk |
 | Ikon-`<svg>` (item) | 13×13px (facit slutlig override, rad 1655) | 14×14px |
@@ -128,10 +182,12 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 | | `color` | `var(--green)` = `#2c3620` | `var(--nh-green)` = `#2c3620` | ✅ |
 | Sökknapp-text | `font-size` | 14px | 14px | ✅ |
 | | `color` (placeholder) | `rgb(154,146,128)` = `#9a9280` | `rgb(154,146,128)` | ✅ |
-| | `border-radius` | 26px | 999px | ❌ (se B/E) |
-| | `background` | `rgba(255,252,246,.88)` | `rgb(255,255,255)` | ❌ (se B/E) |
-| | `border-color` | `#dfc9aa` | `#ebe1d1` | ❌ (se B/E) |
-| Mikrotrust-item | `font-size` | 9.7px | 9.7px (div) / native-tvingat (`<a>`) | ❌ för `<a>`-varianten (se E) |
+| | `border-radius` | 26px | 999px | ❌ (se B/F) |
+| | `background` | `rgba(255,252,246,.88)` | `rgb(255,255,255)` | ❌ (se B/F) |
+| | `border-color` | `#dfc9aa` | `#ebe1d1` | ❌ (se B/F) |
+| | `border-width` (renderat) | `1px` (se B — käll-CSS säger 1.5px, renderat värde är 1px) | `1px` | ✅ redan rätt (bara färgen skiljer) |
+| | `box-shadow` | `inset 0 1px 0 rgba(255,255,255,.9)` | `none` | ❌ saknas helt |
+| Mikrotrust-item | `font-size` | 9.7px | 9.7px (div) / native-tvingat (`<a>`) | ❌ för `<a>`-varianten (se F) |
 | | `color` | `rgb(101,89,70)` | `rgb(101,89,70)` | ✅ |
 | | `font-family` | system-sans (arv) | `Nunito, Helvetica, Arial, Lucida, sans-serif` (native) | ⚠️ ej verifierat om avsiktligt — item-textens font ärvs från `body` i båda fallen, olika bas-fontstack per sajt, inte en portningsfråga |
 | Header bakgrund | `background` | `#fbf1e1` | `#eee7e1` (native) | ❌ headerns EGEN bakgrund är inte porterad (main-radens gradient är dock redan porterad separat, se CLAUDE.md) |
@@ -142,77 +198,260 @@ Alla mått `getBoundingClientRect()` vid 390px viewport, dSF 1.
 ## D. Kodportningsplan
 
 **Kan flyttas/efterliknas direkt (markup+CSS, ingen översättning behövs):**
-- Hamburgar-, konto- och varukorgs-SVG:erna — identiska ikonmönster
-  (linjer/cirklar/koordinater), bara CSS-storlek skiljer.
-- `.m-cart-count`-badgen som HELT NY komponent: mått, `border-radius`,
-  bakgrund (`var(--status-campaign)`→`#c96a26`), textfärg/storlek kan
-  kopieras rakt av till en ny `.nh-cart-count`-regel i `css/21`. Ren CSS,
-  ingen prototyp-JS.
+- Hamburgarens `<svg>` — samma stil, bara `d`-attributet behöver bytas
+  till facits exakta path (`M4 7h16M4 12h16M4 17h16`, se DOM-mappning
+  rad 3). Vår egen `d="M4 6h16M4 12h16M4 18h16"` (`js/18a-header-v2.js`
+  rad 296) är INTE facits, bara stilmässigt lik.
+- **Konto-/varukorgsikonerna är INTE portabla rakt av** — de är nativa
+  nyehandel-`fill`-ikoner, en helt annan SVG-stil än facits
+  `stroke`-ikoner (se DOM-mappning rad 5–6). Att göra dem identiska
+  kräver att BYTA UT den nativa `<svg>`-markupen mot facits — en
+  markup-swap på ett nativt element, större risk än en CSS-ändring.
+  **Öppen fråga, inte beslutad av denna spec**: är ikonbytet värt att
+  göra (påverkar bara utseende, inte funktion), eller accepteras den
+  stilistiska skillnaden på just dessa två ikoner tills vidare?
 
 **CSS-regler som kan porteras (värden, inte hela regelblocket rakt av —
 selektorer måste översättas):**
-1. `#mHeader{}` har INGEN egen höjd-regel i facit (auto) — det är
-   `#store-header`'s NATIVA `height:var(--header-height-touch)` som
-   begränsar. Motsvarande fix: lägg till `height:auto !important;
-   min-height:0` på `#store-header.nh-header-v2` (se §E för varför).
-2. `.m-searchbar button` (facit rad 1880–1884, "WARM WEST COAST PASS"):
-   `background:rgba(255,252,246,.88); border-color:#dfc9aa;
-   border-radius:26px; box-shadow:inset 0 1px 0 rgba(255,255,255,.9)` →
-   ersätt motsvarande fyra deklarationer i `.nh-mobile-searchbar button`
-   (`css/21-header-v2.css` rad ~372–385).
-3. `.mt-mobile .mt-item{font-size:9.7px; line-height:1.2}` (facit rad
-   1896–1899) — värdena är REDAN portade, men behöver `!important` i
-   implementationen specifikt för `<a>`-varianten (se punkt nedan).
-4. `.nh-burger{width:44px;height:44px}` (upp från 40px) för att matcha
-   facits egen 44×44-tillgänglighetsregel (rad 1681) och de andra två
-   ikonknapparna som redan är 44×44.
+1. **Header-höjd**: `#mHeader{}` har ingen egen höjd-regel i facit
+   (auto) — det är `#store-header`s NATIVA `height:var(--header-height-
+   touch)` som begränsar (se §F). Lägg till `height:auto !important;
+   min-height:0` på `#store-header.nh-header-v2`. **Förutsätter att
+   mikrotrust redan flyttats ut ur headern (§E) — annars blir autohöjden
+   ~174px+ istället för ~122px.**
+2. **Header-bakgrund**: `#fbf1e1` (facit `#mVp .hz-header{background:
+   #fbf1e1}`, rad 1960) → ny deklaration på `#store-header.nh-header-v2`
+   (idag `#eee7e1`, native, oporterad).
+3. **`.m-row`-padding**: `12px` runt om (facit rad 344–347, bas-regel,
+   ingen override hittad som ändrar den vid 390px) → `.main` har idag
+   `4px 0` (native `#store-header.nh-header-v2 .main{padding-top:4px;
+   padding-bottom:4px}`, se `css/21` rad ~65–70). Byt till `12px` runt om
+   — **verifiera** att detta inte krockar med den redan portade
+   `grid-template-columns:1fr auto 1fr` (padding och grid-kolumner är
+   oberoende, bör vara säkert, men kolla synligt resultat).
+4. **Sökfältsknapp** (facit rad 1880–1884, "WARM WEST COAST PASS" +
+   bas-regel rad 365–370): `background:rgba(255,252,246,.88);
+   border:1px solid #dfc9aa; border-radius:26px; box-shadow:inset 0 1px
+   0 rgba(255,255,255,.9); gap:9px` (ikon-`<svg>` 16×16px) → ersätt
+   motsvarande deklarationer i `.nh-mobile-searchbar button`
+   (`css/21-header-v2.css` rad ~372–385). Bredd: portera `1px`
+   (renderat/computed värde), inte källkodens bokstavliga `1.5px` — se
+   §B för varför de skiljer.
+5. **Sökfälts-container**: padding `0 12px 11px` (facit rad 358) →
+   ersätt `.nh-mobile-searchbar`s nuvarande `0 16px 10px`.
+6. **Mikrotrust-item**: `font-size:9.7px !important; line-height:1.2
+   !important` (facit rad 1896–1899, värdena redan portade men saknar
+   `!important` — se §F för varför `!important` krävs). Ikon-`<svg>`
+   13×13px (facit slutlig override rad 1655, idag 14×14px hos oss).
+7. **`.nh-burger{width:44px;height:44px}`** (upp från 40px) för att
+   matcha facits egen 44×44-tillgänglighetsregel (rad 1681) och de andra
+   två ikonknapparna som redan är 44×44.
+8. **Varukorgsbadge, positionering** (facit `.m-cart-count`, rad 356):
+   `position:absolute; top:2px; right:2px; min-width:15px; height:15px;
+   padding:0 3px; border-radius:20px; background:#c96a26; color:#fff;
+   font-size:9px; font-weight:700` → NY regel `#store-header.nh-header-
+   v2 .cart-button .badge{...}` i `css/21`, som KOMPLETTERAR (inte
+   ersätter) den befintliga färgregeln i `css/05-info-section-info-html-
+   ersatter-test.css` rad 641–647 (den sätter redan `background`/`color`/
+   `border` med `!important` — antingen låt `css/21` vinna på
+   specificitet+ordning för position/mått, eller uppdatera `css/05`s
+   regel direkt; avgörs vid implementation, inte här). **Ingen ny
+   markup, ingen hårdkodad siffra** — `.badge` är redan Vue-drivet.
 
 **Selektorer som måste översättas (inte kopieras rakt av):**
 - `#mHeader` → `#store-header.nh-header-v2` (specificitet krävs för att
   vinna över native temaregler, redan etablerat mönster i filen).
-- `.m-searchbar button` → `.nh-mobile-searchbar button`.
-- `.mt-mobile .mt-item` → `.nh-mobile-trust .nh-mt-item` (redan gjort,
-  bara `!important`-nivån saknas).
+- `.m-searchbar` / `.m-searchbar button` → `.nh-mobile-searchbar` /
+  `.nh-mobile-searchbar button`.
+- `.mt-mobile .mt-item` → `.nh-mobile-trust .nh-mt-item` (värdena redan
+  portade, bara `!important`-nivån saknas).
+- `.m-cart-count` → `.cart-button .badge` (se punkt 8 ovan — INTE samma
+  klassnamn, native Vue-markup styr namnet).
 - `var(--line)`/`var(--green)` etc. → motsvarande `var(--nh-line)`/
   `var(--nh-green)` (redan definierade i `css/21`s egen `:root`-liknande
   block på `#store-header.nh-header-v2`) — **eller** hårdkoda facits
   exakta override-hex (`#dfc9aa`) om den INTE redan finns som en egen
   CSS-variabel (den gör inte det idag — `--nh-line` pekar på bas-tonen
   `#ebe1d1`, inte facits breakpoint-specifika `#dfc9aa`). Ny variabel
-  rekommenderas, se öppen fråga nedan.
+  rekommenderas, se öppna frågor.
 
 **Gammal implementation som bör ersättas:**
 - `.nh-mobile-searchbar button`s nuvarande `border-radius:999px` +
   opak vit bakgrund + bas-`--nh-line`-border (`css/21` rad 372–385)
-  ersätts av punkt 2 ovan.
+  ersätts av punkt 4 ovan.
 - `.nh-burger`s `40px`-mått (`css/21` rad ~111–115) ersätts av `44px`.
+- `#store-header.nh-header-v2 .main{padding-top:4px;padding-bottom:4px}`
+  ersätts av symmetrisk `12px`.
+- **DOM-monteringen av `.nh-mobile-trust`** i `js/18a-header-v2.js`
+  rad 332–344 (`mobileSearchBar.parentNode.insertBefore(trustRow,
+  mobileSearchBar.nextSibling)`, som monterar den INUTI `#store-header`)
+  ersätts av monteringen i §E (`#store-main`, första barnet).
 
 **Regler som INTE längre behövs efter portningen:**
-- Inga regler identifierade som blir överflödiga — allt som ändras är
-  värde-justeringar på befintliga, redan nödvändiga selektorer. Inget att
-  ta bort.
+- Inga CSS-regler blir överflödiga — allt är värde-/target-justeringar
+  på redan nödvändiga selektorer.
+- I JS: när `.nh-mobile-trust` flyttas till `#store-main` (§E) blir
+  `nhSyncMainOffset`s nuvarande kommentar-motivering ("scrollHeight,
+  INTE getBoundingClientRect... eftersom vår sökrad/trust-rad
+  överskrider den") delvis inaktuell — trust-raden bidrar inte längre
+  till `#store-header`s scrollHeight. Själva `scrollHeight`-mätningen
+  ska ANDÅ behållas (sökraden ensam kan fortfarande göra att headerns
+  riktiga höjd skiljer sig från `--header-height-touch`), men
+  kommentaren bör uppdateras vid implementation så den inte pekar på
+  trust-raden som en orsak längre.
 
 **Hur Nyehandels riktiga funktionalitet bevaras:**
 - Header förblir `position:fixed` med `js/14-header-scroll.js`s
-  headroom-slide orörd — endast `height`/bakgrund justeras, ingen
-  scroll-logik ändras (matchar CLAUDE.md-regeln: aldrig en ny
-  scroll-hanterare).
+  headroom-slide orörd — den scriptet läser bara `#store-header` (rad 7),
+  och `.nh-mobile-trust` lämnar det elementet helt vid flytten till
+  `#store-main` (§E), så headroom-transformen kan aldrig påverka
+  trust-raden efter ändringen.
 - `#mobile-nav-menu` (nativ Vue-hamburgare), `#mobile-search-trigger`
   (nativ sök-trigger) och `.topbar` förblir dolda men OBORTTAGNA i DOM:en
   — samma "dölj, radera aldrig nativt"-mönster som redan används
   (bekräftat i befintlig `css/21`, rad 320–324).
-- Varukorgsbadgen (ny) måste bindas mot RIKTIG cart-state — se CLAUDE.md
-  "Cart-state nås via nyehandels egen Vuex-store" — inte hårdkodas till
-  `0`. **Öppen fråga, inte löst av denna spec**: exakt vilken
-  DOM-observationspunkt (`js/00-core-open.js`s cart-helpers) som ska
-  driva badgens siffra live — nästa implementationsomgång behöver besluta
-  det, denna blueprint dokumenterar bara VAR badgen ska sitta visuellt.
+- Varukorgsbadgen är redan Vue-drivet nativt (`.cart-button .badge`) —
+  denna spec ändrar bara position/mått via CSS, rör aldrig dess
+  rendering-villkor eller data.
 - Kontolänken (`/sv/account`) och varukorgsknappens `aria-controls`/Vue-
-  bindning rörs inte — endast omkringliggande CSS (redan fallet idag).
+  bindning rörs inte — endast SVG-innehåll (öppen fråga) och
+  omkringliggande CSS.
+- `#store-main`s nativa `padding-top` och `nhSyncMainOffset`s
+  resize-lyssnare rörs inte i sin mekanik — bara VAD som mäts (headerns
+  scrollHeight, nu utan trust-raden) och VAR trust-raden monteras
+  relativt den (§E).
 
 ---
 
-## E. Grundorsaker (inte bara symptom)
+## E. Strukturell lösning: mikrotrust-monteringspunkt
+
+Detta avsnitt löser motsägelsen från korrigeringsnoten högst upp i
+dokumentet. Verifierat live (Playwright, skrivskyddat) mot samtliga tre
+sidtyper: startsida (`https://hazeyse.nyehandel.se/`), kategori
+(`/sv/categories/alla-produkter`), produkt
+(`/sv/products/ccell-m4-vape-batteri-510`).
+
+### Var trustfältet ska monteras
+
+**Verifierad, identisk DOM-struktur på alla tre sidtyper:**
+```
+<div id="store-instance">
+  <header id="store-header" class="nh-header-v2">...</header>
+  <main id="store-main" class="store-main">...</main>
+</div>
+```
+`#store-header` och `#store-main` är SYSKON, direkta barn av
+`#store-instance` — bekräftat identiskt på startsida, kategori och
+produkt (samma `shNextSibling`/`smPrevSibling`-relation uppmätt på alla
+tre). `#store-main` har en nativ `padding-top:100px` på alla tre
+sidtyper (identiskt tal, oavsett sidtyp), och dess första barn idag är
+en generisk, sidtyp-specifik wrapper-`<div>` (startsidans
+`.store-startpage`, kategorins produktgrid-wrapper, produktsidans
+PDP-wrapper — olika INNEHÅLL men samma STRUKTURELLA position).
+
+**Lösning:** montera `.nh-mobile-trust` som FÖRSTA barnet i `#store-
+main`, FÖRE den befintliga sidtyp-specifika wrappern — inte inuti
+`#store-header`. I `js/18a-header-v2.js` betyder det att rad 344
+(`mobileSearchBar.parentNode.insertBefore(trustRow,
+mobileSearchBar.nextSibling)`, som idag monterar `trustRow` som syskon
+till `mobileSearchBar` INUTI `sh`/`#store-header`) ska bytas mot att
+montera `trustRow` som `storeMain.insertBefore(trustRow,
+storeMain.firstChild)` istället — samma mönster som redan används för
+`nh-hr-root`/mobilmenyn (`document.body.appendChild(...)`, fast här
+`#store-main` istället för `<body>`, eftersom trustraden SKA vara en del
+av det normala, scrollande sidflödet, till skillnad från overlays som
+medvetet monteras på `<body>` för att undvika `#store-header`s
+transform-containing-block-problem, se befintlig kommentar rad 278–282).
+
+Eftersom detta är en JS-DOM-ändring, inte bara CSS, ligger den KVAR som
+en dokumenterad, obeslutad ändring i `js/18a-header-v2.js` för nästa
+implementationsomgång — inte gjord av denna spec.
+
+### Hur `nhSyncMainOffset` påverkas
+
+`nhSyncMainOffset` (rad 377–386) mäter idag `sh.scrollHeight` (hela
+`#store-header`, som just nu INKLUDERAR trust-raden) och sätter
+`#store-main`s `padding-top` till det värdet. Två saker förändras när
+trust-raden flyttas ut:
+
+1. **`sh.scrollHeight` blir automatiskt mindre** — utan ändring av
+   funktionens egen kod — eftersom trust-radens ~52–104px inte längre
+   är ett barn till `sh`. Headerns uppmätta höjd blir då `.main` (69px)
+   + `.nh-mobile-searchbar` (efter §D:s fixar, ~53px) ≈ **122px**,
+   matchande facit nästan exakt. Ingen kodändring behövs i själva
+   mät-/sättlogiken.
+2. **Ingen "dubbel luft"**: eftersom `padding-top` sätts till exakt
+   `sh.scrollHeight` (den NYA, mindre headerhöjden) och trustraden
+   monteras som `#store-main`s FÖRSTA barn (dvs. direkt vid den nya,
+   mindre `padding-top`-kanten), uppstår inget extra mellanrum — trust-
+   raden hamnar visuellt precis där headern slutar, exakt som i facit.
+   Detta gäller AUTOMATISKT så länge (a) trustraden flyttas till att
+   vara `#store-main`s första barn och (b) `nhSyncMainOffset` fortsätter
+   köras efter DOM-ändringen (ingen ändring behövs där, den körs redan
+   vid `initHeaderV2()` och vid `resize`).
+3. **Kommentaren i koden bör uppdateras** (redan noterat i §D) — den
+   pekar idag på "vår sökrad/trust-rad" som orsak till att `scrollHeight`
+   behövs; efter flytten är det bara sökraden som kan göra det.
+
+### Vilket slutmått headern får
+
+Med BÅDA fixarna (§D punkt 1: `height:auto!important` + denna
+DOM-flytt): `#store-header`s totala höjd = `.main` (69px, oförändrad) +
+`.nh-mobile-searchbar` (53px efter §D:s sökfälts-fixar) = **≈122px**,
+i linje med facits uppmätta `122px`. Utan DOM-flytten hade
+`height:auto` ensam gett ~174–230px (main + sökrad + trustrad) — det
+felaktiga scenariot korrigeringsnoten flaggar.
+
+### Vilket y-läge trustfältet får
+
+Facit: `.mt-mobile` renderas vid `y=122px` (uppmätt direkt under sitt
+`122px` höga `#mHeader`, se §B). Med denna lösning: `.nh-mobile-trust`
+blir `#store-main`s första barn, och `#store-main`s `padding-top`
+synkas (via `nhSyncMainOffset`) till exakt headerns nya `~122px`-höjd —
+trustraden hamnar därför också vid **`y≈122px`**, dvs. samma relativa
+position som facit, fast uppnått strukturellt (normal dokumentplacering
+efter en offset) snarare än genom att vara ett fysiskt barn till
+headern.
+
+### Hur det fungerar på startsida, kategori och produktsida
+
+Eftersom `#store-header`/`#store-main`-relationen och den nativa
+`padding-top:100px` är IDENTISKA på alla tre uppmätta sidtyper, och
+`initHeaderV2()` (som bygger sökrad/trustrad) körs oavsett sidtyp
+(bekräftat: sökrad+trustrad syns redan idag på alla tre sidtyper i
+implementationen, det är just DÄR de monteras som är fel, inte NÄR),
+gäller lösningen enhetligt utan sidtyp-specifik kod. Trustraden hamnar
+före `.store-startpage`/kategorigridet/PDP-wrappern i respektive fall —
+exakt samma strukturella position (`#store-main`s första barn) oavsett
+sidans eget innehåll.
+
+### Hur desktop förblir orörd
+
+`.nh-mobile-searchbar`/`.nh-mobile-trust` skapas idag oavsett
+viewport-bredd (koden är inte breddvillkorad) men GÖMS på desktop via
+`@media (min-width:881px){.nh-mobile-searchbar{display:none!important}
+.nh-mobile-trust{display:none!important}}` (`css/21` rad 326–330). Ett
+`display:none`-element upptar ingen plats oavsett VAR i DOM:et det
+sitter — att flytta `.nh-mobile-trust` till `#store-main` ändrar därför
+INGET visuellt på desktop, samma dölj-regel gäller oförändrad. Desktop-
+headerns egen höjd påverkas inte heller av `height:auto!important` på
+`#store-header`, eftersom `--header-height`-varianten (utan `-touch`,
+gäller `min-width` över `1023px`-brytpunkten) redan idag styr en annan,
+troligen redan tillräcklig höjd för desktop-headerns FAKTISKA innehåll
+(desktop har ingen sökrad/trustrad synlig i headern att svälla av) —
+detta bör ändå verifieras visuellt vid implementation, inte bara antas.
+
+### Kvarstående öppen fråga från denna sektion
+
+Bekräfta vid implementation att `.nh-mobile-trust` INTE av misstag
+hamnar ovanför något nativt Vue-styrt "loading skeleton" eller liknande
+som `#store-main`s riktiga första barn ibland kan vara innan sidans
+huvuddata laddat klart — den här specen har bara verifierat DOM:et efter
+`networkidle`, inte under den allra första renderingen.
+
+---
+
+## F. Grundorsaker (inte bara symptom)
 
 ### Header: 122px facit mot 100px implementation
 
@@ -239,22 +478,41 @@ missvisning som redan dokumenterad och kringgången i STATUS.md,
 `getBoundingClientRect().height`").
 
 Facits `.hz-header` har DÄREMOT ingen höjd-regel alls (`height:auto`,
-växer fritt med sitt innehåll — därför exakt `122px = 69+53`).
+växer fritt med sitt innehåll — därför exakt `122px = 69+53`, dvs.
+`.m-row`+`.m-searchbar` — `.mt-mobile` räknas INTE in, den är ett syskon
+till `#mHeader`, inte ett barn, se korrigeringsnoten högst upp och §E).
 
-**Källregel att ändra:** ingen befintlig `css/21`-regel orsakar detta —
-regeln som "vinner" är plattformens egen `header{height:var(...)}`. Fixen
-är att LÄGGA TILL en ny, mer specifik regel i `css/21-header-v2.css`:
-`#store-header.nh-header-v2 { height: auto !important; min-height: 0; }`
-— samma `!important`-mönster som redan används överallt annars i filen
-för att slå ut nativa temaregler (dokumenterat i STATUS.md: "ALLA nya
-textfärger på element inuti `#store-header` behöver troligen samma
-`!important`-behandling", nu bekräftat gälla `height` också).
+**⚠️ Korrigerat 2026-09-01 (se korrigeringsnoten högst upp): `height:
+auto!important` är NÖDVÄNDIGT men INTE TILLRÄCKLIGT ensamt.** Så länge
+`.nh-mobile-trust` fortfarande monteras som barn till `#store-header`
+(dagens faktiska DOM, se §E) skulle en ren `height:auto`-fix låta
+trust-radens ~52–104px räknas in i headerns autohöjd och göra HELA
+headern (inkl. trustraden) permanent fixed — cirka 174px+, aldrig
+bortscrollbar, olikt facit där bara `122px` är fixed/sticky och
+mikrotrusten scrollar bort separat. **Rätt ordning: flytta först
+`.nh-mobile-trust` ut ur `#store-header` till `#store-main` (§E), lägg
+sedan till `height:auto!important` på den nu mindre headern** (main-rad
++ sökrad ≈122px, se §E "Vilket slutmått headern får").
+
+**Källregel att ändra:** ingen befintlig `css/21`-regel orsakar
+100px-taket — regeln som "vinner" är plattformens egen
+`header{height:var(...)}`. Fixen är att LÄGGA TILL en ny, mer specifik
+regel i `css/21-header-v2.css`: `#store-header.nh-header-v2 { height:
+auto !important; min-height: 0; }` — samma `!important`-mönster som
+redan används överallt annars i filen för att slå ut nativa temaregler
+(dokumenterat i STATUS.md: "ALLA nya textfärger på element inuti
+`#store-header` behöver troligen samma `!important`-behandling", nu
+bekräftat gälla `height` också) — **men bara EFTER §E:s DOM-flytt är
+gjord, inte före eller istället för den.**
 **Riskflagga:** `var(--header-height)`/`--header-height-touch` kan
 användas av ANDRA temaregler (t.ex. `scroll-padding-top`, andra sidors
 sticky-offsets) — en `height:auto`-override på just detta element bör
 vara säker (påverkar bara detta elements egen box), men bör verifieras
 mot en icke-startsida (kategori/produkt) innan release, eftersom
-`#store-header` är delad DOM över hela sajten.
+`#store-header` är delad DOM över hela sajten (se §E, redan verifierat
+att `#store-header`/`#store-main`-relationen är identisk på alla tre
+sidtyper — bara den visuella `height:auto`-effekten återstår att
+verifiera visuellt vid implementation).
 
 ### Sökfält: 17,6 % pixelavvikelse
 
@@ -343,9 +601,34 @@ tag-name-kollision för `<a>`). Ingen ändring behövs i
    `.nh-mobile-searchbar button`? Påverkar bara detta ställe idag, men om
    fler element senare ska matcha samma "WARM WEST COAST"-ton är en
    variabel bättre. Nästa implementationsomgång avgör.
-2. Varukorgsbadgens riktiga datakälla (vilken exakt cart-state-hook i
-   `js/00-core-open.js` som ska driva siffran) — dokumenterat som ett
-   VAR, inte ett HUR, i denna spec.
-3. `#store-header{height:auto!important}`-fixen bör testas mot minst en
-   kategori-/produktsida (inte bara startsidan) innan release, eftersom
-   `--header-height-touch` är en delad, sajtomfattande native-variabel.
+2. **Ny, efter granskningen**: ska konto-/varukorgsikonernas nativa
+   `fill`-baserade SVG:er BYTAS UT mot facits `stroke`-baserade
+   linjeikoner för sann 1:1 (se DOM-mappning rad 5–6, §D)? Det är en
+   markup-swap på ett nativt element (fortfarande bara ikoninnehållet,
+   inte länken/knappens funktion), inte en ren CSS-fix — större
+   avvägning än övriga punkter i denna spec. Inte beslutad här.
+3. **Ny, efter granskningen**: varukorgsbadgens position/mått-regel
+   (§D punkt 8) måste samexistera med `css/05-info-section-info-html-
+   ersatter-test.css`s befintliga färg-regel (rad 641–647, `!important`)
+   för samma `.badge`-element. Vinner den nya regeln på specificitet
+   (`#store-header.nh-header-v2 .cart-button .badge` mot `#store-header
+   .cart-button .badge`) utan att själv behöva `!important`, eller
+   behöver den det också? Verifiera vid implementation, inte antaget här.
+3b. **Ny, efter granskningen**: badgens FÄRG är redan medvetet satt en
+   gång tidigare (`css/05`, ljusgrön `#cdfc9f`/mörk text — kommentaren
+   säger "light green (Figma), dark text — no black/red", dvs ett
+   tidigare, dokumenterat designval). Facit använder orange `#c96a26`.
+   Ska den äldre gröna färgen behållas (kan vara ett fortfarande giltigt
+   Figma-beslut) eller bytas mot facits orange för 1:1? Inte avgjort av
+   denna spec — fråga Vilmer innan implementation.
+4. `#store-header{height:auto!important}`-fixen (§F, förutsätter §E:s
+   DOM-flytt gjord FÖRST) bör testas mot minst en kategori-/produktsida
+   (inte bara startsidan) innan release, eftersom `--header-height-touch`
+   är en delad, sajtomfattande native-variabel.
+5. §E:s öppna fråga om ett eventuellt nativt loading-skeleton som
+   `#store-main`s riktiga första barn innan sidans data laddat klart —
+   inte verifierat i denna omgång.
+6. `.m-row`→`.main`-paddingändringen (`4px 0` → `12px` runt om, §D
+   punkt 3) bör stämmas av visuellt mot den redan portade
+   `grid-template-columns:1fr auto 1fr` innan den låses — ingen känd
+   konflikt, men inte visuellt verifierad i denna spec.
