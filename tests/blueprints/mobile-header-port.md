@@ -70,6 +70,103 @@ ensam — DOM-flytten är den del som faktiskt löser motsägelsen.
 
 ---
 
+## KORRIGERING 2 (2026-09-01): manuell visuell granskning underkände det automatiska PASS:et
+
+Det automatiska PASS:et (§F, `header 6,3%`/`sökfält 7,8%`) höll sig under
+12%-tröskeln men var INTE 1:1 vid manuell sida-vid-sida-granskning mot en
+riktig facit-skärmdump. Fyra separata, oberoende rotorsaker — alla
+verifierade LIVE (`getComputedStyle` + CDP `getMatchedStylesForNode`)
+INNAN någon kod ändrades, ingen gissad:
+
+**1. Headerns/main-radens bakgrund var native grårosa (`#eee7e1`), inte
+varm creme.** CDP visade en NATIV Nyehandel-temaregel:
+```css
+#store-header, #store-header .main, #store-header .navbar {
+  background: #eee7e1 !important;
+}
+```
+— samma tema-injektionsmönster som redan dokumenterat i STATUS.md för
+textfärger, nu bekräftat gälla `background` också, och den träffar
+`#store-header`/`.main` DIREKT (inte bara ett generellt element). Våra
+egna bakgrundsregler saknade `!important` och förlorade. Källa: facit
+`#mVp .m-row` (samma "WARM WEST COAST PASS"-block som redan portats för
+höjd/padding, index.html rad 1872-1875): `linear-gradient(180deg,
+#fffaf0 0%, #fbf1e1 100%)`, `border-bottom-color:#eadbc5`. Header-
+elementets egen bakgrund (`#mVp .hz-header`, rad 1960): `#fbf1e1`.
+
+**2. Sökfältsområdets bakgrund var fel TOKEN, inte en specificitets-
+fråga.** `.nh-mobile-searchbar` ligger visserligen kvar inuti
+`#store-header`, men träffas INTE av ovanstående native regel (den
+listar bara `#store-header`/`.main`/`.navbar` specifikt) — vår egen
+`background: var(--nh-cream, #fffdf8)` (nästan vit) vann redan, men det
+var fel VÄRDE. Facit `#mVp .m-searchbar` (samma block, rad 1876-1878):
+`background:#fbf1e1` (samma varma ton som headern — INTE en ljusare
+ton), `border-bottom-color:#e5d3b8` (saknades helt hos oss).
+
+**3. Den ~26px höga gråbeige remsan mellan sökfält och mikrotrust.**
+Verifierat live, INNAN någon av våra CSS/JS-injektioner körs: `#store-
+main` självt (`getBoundingClientRect().top`) börjar vid y≈25,6px, INTE
+vid dokumentets y=0. Orsak: `<body>` innehåller en lös, bokstavlig
+`&gt;`-textnod direkt före `#store-instance` (synlig i native
+`outerHTML`, oberoende av vår kod) — en redan existerande Nyehandel-
+mall-artefakt (troligen en läckt `{% if %}`-liknande template-rest).
+Den renderar som en textrad vid `<body>`s standard `line-height`
+(`16px×1,6=25,6px`, samma multiplikator som redan två gånger tidigare
+identifierad som orsak till andra buggar i denna spec). `nhSyncMainOffset`
+(`js/18a-header-v2.js`) satte tidigare `#store-main`s `padding-top` till
+ENBART headerns egen höjd, utan att känna till att `#store-main` redan
+började 25,6px längre ned — nettoresultatet blev att mikrotrusten
+hamnade headerns-höjd + 25,6px från toppen istället för bara headerns
+höjd. **Detta är INTE något vår kod orsakat och INTE något vi kan/ska ta
+bort** (det ligger i Nyehandels egen server-renderade HTML, utanför det
+här repots rådighet) — men vi KAN och ska kompensera för det i vår egen
+padding-beräkning, vilket är en ren layout-korrigering inom
+mikrotrust-komponentens ansvarsområde.
+
+**4. Mikrotrustens ikoner matchade inte facit — läst fel källa
+tidigare, inte en textlängdsfråga.** Facitens riktiga `ICON`-objekt
+(index.html rad 6705-6710) och `trustpilotHtml()` (rad 6714) användes
+INTE korrekt i tidigare omgångar — tre av fyra ikoner (Trustpilot-
+stjärnan, "ordrar"-ikonen, "Diskret & spårbart"-ikonen) var egna
+approximationer med fel path-data, och alla tre ikonerna med
+`stroke`-attribut hade `stroke-width:1,8` istället för facitens
+`stroke-width:2`. Exakta facit-paths:
+```js
+ICON.shield: '<path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+ICON.truck:  '<path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/>'
+ICON.box:    '<path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/>'
+tpMark:      '<path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.3 6.5L12 16.8 6.1 20l1.3-6.5L2.5 9l6.6-.7z"/>' (fill, ingen stroke)
+```
+`ICON.shield` hör till "kunder/ordrar"-raden (var av misstag en
+krona-liknande path), `ICON.truck` till leveransraden (rätt IKON sedan
+tidigare men fel path-koordinater — rundad rect istället för skarp
+path), `ICON.box` till "Diskret & spårbart" (var av misstag en
+shield-path, inte en box).
+
+**Fem, INTE ändrad — dokumenterad, inte gissad:** konto-/varukorgs-
+ikonernas nativa `fill`-stil (redan flaggat §D/öppna frågor) och
+varukorgsbadgens `0`-visning vid tom kundvagn (redan §A rad 7 — riktigt
+Vue-state, `.badge` renderas bara villkorligt, ingen hårdkodad nolla)
+kvarstår MEDVETET oförändrade. Att mutera SVG-innehåll eller badge-
+villkor inuti samma Vue-hanterade `.icon`-span som badgens egna
+conditional render riskerar att Vue tyst skriver över ändringen vid
+nästa re-render (t.ex. varje varukorgsuppdatering) — risken är
+dokumenterad här och i STATUS.md, inte otestad eller obeaktad.
+
+**Ny testinfrastruktur som föranleddes av detta:** de tre isolerade
+komponenttesterna (header/sökfält/mikrotrust, §F) kunde alla PASSA
+samtidigt som gap-buggen i punkt 3 ovan förblev osynlig, eftersom de
+bara jämför BESKURNA elementbilder, inte hela paketets sammanhängande
+dokumentgeometri. Ny testsvit `tests/parity-sections.mjs`
+(`PACKAGE_GEOMETRY_*`) + nya test i `tests/home-parity.spec.mjs` mäter
+nu header/sökfält/mikrotrust/hero-position i EN sammanhängande batch,
+vid 390/430/600px, och jämför IMPLEMENTATIONENS mellanrum
+(sökfält→mikrotrust, mikrotrust→hero) mot FACITS egna, låsta
+motsvarande mellanrum — ett tomt mellanrum som inte finns i facit gör nu
+detta test rött oavsett vad de separata komponenttesterna visar.
+
+---
+
 ## A. DOM-mappning
 
 | # | Element | Facitselektor | Implementationselektor | Markup portabel? | Riktig nyehandel-funktion som måste bevaras |

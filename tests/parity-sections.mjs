@@ -511,6 +511,69 @@ export async function hasHorizontalOverflow(page) {
   });
 }
 
+/**
+ * Header-paket-geometri — den absoluta dokumentkontroll som saknades
+ * innan 2026-09-01: tidigare jämförde parity bara beskurna, isolerade
+ * komponentbilder (header/sökfält/mikrotrust var för sig), vilket kunde
+ * ge tre individuella PASS samtidigt som ett osynligt tomrum mellan
+ * sökfält och mikrotrust (ett verkligt, av Vilmer synligt fel — se
+ * STATUS.md) aldrig fångades av något test. Detta mäter hela paketets
+ * sammanhängande layout i DOKUMENTETS egna koordinater (inte beskurna
+ * elementbilder) — header topp/botten, sökfält topp/botten, mikrotrust
+ * topp/botten, mellanrummet dem emellan, samt var hero börjar.
+ */
+export const PACKAGE_GEOMETRY_SELECTORS = {
+  facit: { header: "#mHeader", search: ".m-searchbar", trust: ".mt-mobile", hero: "#mVp .hero" },
+  impl: { header: "#store-header", search: ".nh-mobile-searchbar", trust: ".nh-mobile-trust", hero: ".nh-hero-v2" },
+};
+
+// Breddpunkter geometrikontrollen körs vid — Vilmers explicita krav
+// (390/430/600px), inte bara defaultbredden 390px som resten av
+// sviten kör.
+export const PACKAGE_GEOMETRY_WIDTHS = [390, 430, 600];
+
+// Tolerans i px för gap-jämförelser (implementation mot facit). Ett
+// "tomt mellanrum" (se buggen som föranledde detta test) var ~26px —
+// tolerensen måste vara betydligt mindre än det för att fånga
+// motsvarande regression, men inte så stram att den bryter på normal
+// sub-pixel-avrundning mellan två olika DOM-implementationer.
+export const PACKAGE_GEOMETRY_GAP_TOLERANCE_PX = 10;
+
+export function packageGeometryGoldenPath() {
+  return path.join(GOLDEN_DIR, "header-package-geometry.json");
+}
+
+/**
+ * Mäter header/sökfält/mikrotrust/hero i EN sammanhängande, dokument-
+ * absolut batch (inte beskurna elementbilder) på den redan navigerade
+ * `page` (måste redan ha rätt viewport-bredd satt och facit/impl-CSS/JS
+ * injicerat av anroparen). `side` väljer rätt selektor-uppsättning.
+ */
+export async function measurePackageGeometry(page, side) {
+  const sel = PACKAGE_GEOMETRY_SELECTORS[side];
+  return page.evaluate((sel) => {
+    function box(s) {
+      const el = document.querySelector(s);
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { top: r.top + window.scrollY, bottom: r.bottom + window.scrollY };
+    }
+    const header = box(sel.header);
+    const search = box(sel.search);
+    const trust = box(sel.trust);
+    const hero = box(sel.hero);
+    return {
+      header,
+      search,
+      trust,
+      hero,
+      gapSearchTrust: search && trust ? trust.top - search.bottom : null,
+      gapTrustHero: trust && hero ? hero.top - trust.bottom : null,
+      totalToHero: hero ? hero.top : null,
+    };
+  }, sel);
+}
+
 export function goldenPngPath(key) {
   return path.join(GOLDEN_DIR, `${key}.png`);
 }

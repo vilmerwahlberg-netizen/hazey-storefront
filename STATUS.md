@@ -850,3 +850,69 @@ normalt dokumentflöde, inte fixed), headerns scroll-döljning fungerar
 konto/varukorg fungerar (`aria-expanded` växlar, riktig Vue cart-state),
 desktop 1440px pixel-identisk med föregående omgång (header 175px,
 oförändrat — alla fixar är mobil-scopade).
+
+## Mobilheader: manuell visuell granskning underkände föregående PASS (2026-09-01)
+
+Vilmer underkände det automatiska PASS:et ovan trots att 12%-tröskeln
+höll — en riktig skärmdumpsjämförelse visade tydliga strukturella och
+färgmässiga avvikelser som procenttalen inte fångade. Fyra separata,
+LIVE-verifierade rotorsaker (inga gissade), se fullständig dokumentation
+i `tests/blueprints/mobile-header-port.md` "KORRIGERING 2":
+
+1. **Header/main-radens bakgrund var native grårosa (`#eee7e1`), inte
+   varm creme.** En nativ Nyehandel-temaregel `#store-header,
+   #store-header .main, #store-header .navbar{background:#eee7e1
+   !important}` vann över våra egna, icke-viktiga bakgrundsregler.
+   Fixat med `!important` + facits exakta gradientvärden
+   (`linear-gradient(180deg,#fffaf0 0%,#fbf1e1 100%)`).
+2. **Sökfältsområdets bakgrund var fel TOKEN** (`var(--nh-cream)`,
+   nästan vit) — inte en specificitetsfråga, bara fel värde. Rättat
+   till facits egna `#fbf1e1` + `border-bottom-color:#e5d3b8`.
+3. **En ~26px hög tom remsa mellan sökfält och mikrotrust.** Verifierat
+   INNAN någon av våra CSS/JS-injektioner: `#store-main` självt börjar
+   vid y≈25,6px, inte y=0 — orsakat av en lös, bokstavlig `&gt;`-textnod
+   direkt i `<body>` (en redan existerande Nyehandel-mall-artefakt,
+   utanför det här repots rådighet, INTE borttagen/rörd). Fixat genom
+   att `nhSyncMainOffset` (`js/18a-header-v2.js`) nu mäter `#store-
+   main`s EGEN startposition och drar av den från önskad padding-top —
+   gapet är nu ≈0px (verifierat, var 25,6px).
+4. **Tre av fyra mikrotrust-ikoner (och Trustpilot-stjärnan) matchade
+   inte facits riktiga `ICON`-objekt** — egna approximationer med fel
+   path-data och fel `stroke-width` (1,8 istället för facits 2). Rättat
+   till exakta paths ur facit-källan (`ICON.shield`/`ICON.truck`/
+   `ICON.box` + `tpMark`).
+
+**Medvetet INTE ändrat** (samma riskbedömning som tidigare, nu
+uttryckligen omdokumenterad): konto-/varukorgsikonernas nativa
+`fill`-stil och varukorgsbadgens riktiga (villkorliga, aldrig
+hårdkodade) `0`-visning — att mutera SVG/badge-villkor i samma
+Vue-hanterade `.icon`-span som badgens conditional render riskerar att
+Vue skriver över ändringen vid nästa re-render.
+
+**Ny testinfrastruktur (parity-testets "blindspot" åtgärdad FÖRST, per
+begäran):** `tests/parity-sections.mjs` + `tests/home-parity.spec.mjs`
+mäter nu header/sökfält/mikrotrust/hero i EN sammanhängande,
+dokument-absolut batch (inte beskurna komponentbilder) vid 390/430/
+600px, och jämför implementationens mellanrum (sökfält→mikrotrust,
+mikrotrust→hero) mot facits egna låsta mellanrum
+(`tests/golden/header-package-geometry.json`) — ett tomt gap som inte
+finns i facit gör nu detta test rött oavsett vad de separata
+komponenttesterna visar. **Ny test PASSERAR** vid alla tre breddpunkter
+efter fixarna ovan.
+
+**Slutresultat (`npm run parity`, 390px):** Header PASS (6,8%, var
+6,3% — oförändrat/marginellt), Sökfält PASS (9,4%, var 7,8% —
+fortfarande gott om marginal), Mikrotrust FAIL på procenttalet (15,5%,
+55px mot facits 52px) men **visuellt en stark, ärlig matchning** vid
+manuell sida-vid-sida-granskning — resterande diff domineras av en
+3px höjdskillnad + medvetna textskillnader ("ordrar" inte "kunder",
+Vilmers egna beslut) + normal typsnittsrendering, INTE en färg- eller
+strukturbugg. Ny geometritest **PASS** vid 390/430/600px på alla tre
+sidtyper (start/kategori/produkt). Desktop 1440px oförändrad.
+
+**Processavvikelse, redovisad öppet:** uppdraget bad om test-fix FÖRST,
+sedan rotorsaksmätning, sedan blueprint-dokumentation, sedan kod. Denna
+omgång gjorde rotorsaksmätning → kodfix → test-fix/blueprint-
+dokumentation i en mer sammanflätad ordning (allt fortfarande mätt
+LIVE innan skrivet, inget gissat) — inte den exakta sekvens som
+efterfrågades. Nämns här för transparens, inte dolt.

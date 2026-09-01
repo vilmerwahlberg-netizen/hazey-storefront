@@ -331,6 +331,15 @@
         //     korta texter, fasta (inte längre live ur topbar-USP:n, som gav
         //     "Skickas 1-2 vardagar" — längre och radbröt i 172px-kolumnen).
         //
+        // IKONER (korrigerade, visuell granskningsomgång): tidigare paths var
+        // egna approximationer, inte facitens — läst rakt av ur facitens
+        // ICON-objekt (index.html rad 6705-6710) och trustpilotHtml() (rad
+        // 6714): ICON.shield (kunder/ordrar-raden), ICON.truck (leverans,
+        // redan nästan rätt men fel path-koordinater + fel stroke-width),
+        // ICON.box (diskret — var av misstag en shield-path, inte en box),
+        // samt tpMark:s exakta stjärn-path. stroke-width:2 på alla tre
+        // (facitens ICON-objekt, inte 1.8 som användes innan).
+        //
         // MONTERINGSPUNKT (blueprint §E, korrigerad 2026-09-01): facit har
         // mikrotrusten som ETT SYSKON till headern, inte ett barn — den
         // scrollar bort som normalt innehåll under en sticky/kompakt header.
@@ -345,13 +354,13 @@
           trustRow.className = "nh-mobile-trust";
           trustRow.innerHTML = ''
             + '<a class="nh-mt-item" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-            + '<span class="tp-star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.9L18 22l-6-3.9L6 22l1.4-7.5L2 9.6l7.1-.7L12 2z"/></svg></span>'
+            + '<span class="tp-star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.3 6.5L12 16.8 6.1 20l1.3-6.5L2.5 9l6.6-.7z"/></svg></span>'
             + '<span><b>4,7/5</b> på Trustpilot</span></a>'
-            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 7.3c-.4-.2-.9-.1-1.2.2l-3.4 3.4-2.9-5.1c-.2-.4-.6-.6-1-.6s-.8.2-1 .6l-2.9 5.1-3.4-3.4c-.3-.3-.8-.4-1.2-.2s-.6.6-.5 1l1.9 9.8c.1.5.5.9 1 .9h12.4c.5 0 .9-.4 1-.9l1.9-9.8c.1-.4-.1-.8-.5-1z"/></svg>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'
             + '<span><b>8 000+</b> ordrar · sedan 2020</span></div>'
-            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="15" height="12" rx="1.5"/><path d="M16 10h3.5l2.5 3v5h-6z"/><circle cx="6" cy="19.5" r="1.6"/><circle cx="17.5" cy="19.5" r="1.6"/></svg>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>'
             + '<span>Normalt 1–2 vardagar</span></div>'
-            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5V11c0 5-3.4 8.7-8 9.9C7.4 19.7 4 16 4 11V5.5L12 2z"/></svg>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>'
             + '<span>Diskret &amp; spårbart</span></div>';
           storeMain.insertBefore(trustRow, storeMain.firstChild);
         }
@@ -389,6 +398,25 @@
       // (`storeMain` deklarerad högre upp, återanvänds här — mikrotrusten
       // monteras numera i #store-main, inte i #store-header, se ovan, så
       // den bidrar inte längre till nedanstående scrollHeight-mätning.)
+      //
+      // KORRIGERAT (visuell granskningsomgång, ~26px gap upptäckt mellan
+      // sökfält och mikrotrust): #store-main självt börjar INTE vid
+      // dokumentets y=0. Verifierat live, INNAN någon av våra CSS/JS-
+      // injektioner: <body> innehåller en lös bokstavlig "&gt;"-textnod
+      // direkt före #store-instance (synlig i native outerHTML), som
+      // renderar som en rad text vid body:s standard line-height
+      // (~25,6px = 16px×1.6) och skjuter allt efter den — inklusive
+      // #store-instance/#store-main — nedåt i normalt dokumentflöde. Det
+      // är en redan existerande Nyehandel-artefakt, inget vi orsakat och
+      // inget vi rör/tar bort här (utanför detta repos rådighet). Utan
+      // att kompensera för den adderades den OVANPÅ vår egen padding-top,
+      // och mikrotrusten (#store-mains första barn) hamnade ~26px för
+      // långt ned — synligt som ett tomt gap mellan sökfält och
+      // mikrotrust. Fix: mät #store-mains EGEN top-position (oberoende av
+      // dess egen padding, som bara påverkar barnens position, inte dess
+      // egen boxs plats) och dra av den från önskad padding-top, så att
+      // mikrotrusten hamnar exakt vid headerns nedre kant oavsett var
+      // #store-main själv råkar börja.
       function nhSyncMainOffset() {
         if (!storeMain) return;
         // scrollHeight, INTE getBoundingClientRect().height — #store-header
@@ -396,8 +424,10 @@
         // rapporteras fel om innehållet (vår sökrad) överskrider den —
         // scrollHeight räknar med det överskjutande innehållet.
         var headerH = Math.round(sh.scrollHeight);
+        var ownTop = storeMain.getBoundingClientRect().top + window.scrollY;
+        var desired = Math.max(0, Math.round(headerH - ownTop));
         var current = parseInt(getComputedStyle(storeMain).paddingTop, 10) || 0;
-        if (headerH !== current) storeMain.style.paddingTop = headerH + "px";
+        if (desired !== current) storeMain.style.paddingTop = desired + "px";
       }
       nhSyncMainOffset();
       window.addEventListener("resize", nhSyncMainOffset);

@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-09-01T13:04:46.510Z",
+  "widths": {
+    "390": {
+      "header": {
+        "top": 0,
+        "bottom": 122
+      },
+      "search": {
+        "top": 69,
+        "bottom": 122
+      },
+      "trust": {
+        "top": 122,
+        "bottom": 174
+      },
+      "hero": {
+        "top": 192,
+        "bottom": 430
+      },
+      "gapSearchTrust": 0,
+      "gapTrustHero": 18,
+      "totalToHero": 192
+    },
+    "430": {
+      "header": {
+        "top": 0,
+        "bottom": 122
+      },
+      "search": {
+        "top": 69,
+        "bottom": 122
+      },
+      "trust": {
+        "top": 122,
+        "bottom": 174
+      },
+      "hero": {
+        "top": 192,
+        "bottom": 430
+      },
+      "gapSearchTrust": 0,
+      "gapTrustHero": 18,
+      "totalToHero": 192
+    },
+    "600": {
+      "header": {
+        "top": 0,
+        "bottom": 122
+      },
+      "search": {
+        "top": 69,
+        "bottom": 122
+      },
+      "trust": {
+        "top": 122,
+        "bottom": 174
+      },
+      "hero": {
+        "top": 192,
+        "bottom": 430
+      },
+      "gapSearchTrust": 0,
+      "gapTrustHero": 18,
+      "totalToHero": 192
+    }
+  }
+}

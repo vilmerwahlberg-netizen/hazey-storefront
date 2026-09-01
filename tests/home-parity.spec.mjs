@@ -25,6 +25,10 @@ import {
   goldenPngPath,
   goldenMetaPath,
   resultDir,
+  PACKAGE_GEOMETRY_WIDTHS,
+  PACKAGE_GEOMETRY_GAP_TOLERANCE_PX,
+  measurePackageGeometry,
+  packageGeometryGoldenPath,
 } from "./parity-sections.mjs";
 import { diffPngBuffers, writePngFile, readPng } from "./pixel-diff.mjs";
 
@@ -104,6 +108,34 @@ if (MODE === "update") {
     const overflow = await hasHorizontalOverflow(freshPage);
     await freshPage.close();
     expect(overflow).toBe(false);
+  });
+
+  // Header-paketets SAMMANHÄNGANDE dokumentgeometri — se
+  // parity-sections.mjs "PACKAGE_GEOMETRY_SELECTORS" för motiveringen:
+  // tidigare kunde header/sökfält/mikrotrust alla PASSA var för sig
+  // (beskurna komponentbilder) samtidigt som ett ~26px tomt gap mellan
+  // sökfält och mikrotrust aldrig upptäcktes av något test (upptäcktes
+  // bara av Vilmers manuella granskning, 2026-09-01). Det här mäter
+  // facits EGNA mellanrum vid 390/430/600px och låser dem — jämförs mot
+  // implementationen i compare-läget nedan.
+  test("facit: header-paketets sammanhängande geometri (390/430/600px)", async ({ browser }) => {
+    fs.mkdirSync(GOLDEN_DIR, { recursive: true });
+    const results = {};
+    for (const w of PACKAGE_GEOMETRY_WIDTHS) {
+      const freshPage = await browser.newPage({ viewport: { width: w, height: 844 }, deviceScaleFactor: DEVICE_SCALE_FACTOR });
+      await gotoFacit(freshPage);
+      const geo = await measurePackageGeometry(freshPage, "facit");
+      await freshPage.close();
+      results[w] = geo;
+      expect(geo.header, `Facit header-selektor saknas vid ${w}px`).not.toBeNull();
+      expect(geo.search, `Facit sökfälts-selektor saknas vid ${w}px`).not.toBeNull();
+      expect(geo.trust, `Facit mikrotrust-selektor saknas vid ${w}px`).not.toBeNull();
+      expect(geo.hero, `Facit hero-selektor saknas vid ${w}px`).not.toBeNull();
+    }
+    fs.writeFileSync(
+      packageGeometryGoldenPath(),
+      JSON.stringify({ capturedAt: new Date().toISOString(), widths: results }, null, 2)
+    );
   });
 } else {
   for (const section of SECTIONS) {
@@ -197,5 +229,53 @@ if (MODE === "update") {
     const overflow = await hasHorizontalOverflow(freshPage);
     await freshPage.close();
     expect(overflow, "document.documentElement.scrollWidth > clientWidth — horisontell overflow på 390px").toBe(false);
+  });
+
+  // Header-paketets SAMMANHÄNGANDE dokumentgeometri mot facit, vid
+  // 390/430/600px. Detta är testet som fångar ett tomt mellanrum mellan
+  // två annars individuellt godkända komponenter (se motivering i
+  // update-grenen ovan och parity-sections.mjs) — jämför IMPLEMENTATIONENS
+  // egna gap (sökfält→mikrotrust, mikrotrust→hero) mot facits LÅSTA,
+  // motsvarande gap, inte bara ett absolut tröskelvärde, eftersom facit
+  // själv kan ha ett litet, avsiktligt mellanrum som inte ska tolkas som
+  // ett fel.
+  test("implementation: header-paketets sammanhängande geometri (390/430/600px) — inget dolt gap", async ({ browser }) => {
+    const goldenPath = packageGeometryGoldenPath();
+    if (!fs.existsSync(goldenPath)) {
+      throw new Error('Ingen låst header-paket-geometri. Kör "npm run parity:update" först.');
+    }
+    const golden = JSON.parse(fs.readFileSync(goldenPath, "utf8"));
+    const failures = [];
+    const summary = {};
+    for (const w of PACKAGE_GEOMETRY_WIDTHS) {
+      const freshPage = await browser.newPage({ viewport: { width: w, height: 844 }, deviceScaleFactor: DEVICE_SCALE_FACTOR });
+      await gotoImpl(freshPage);
+      const geo = await measurePackageGeometry(freshPage, "impl");
+      await freshPage.close();
+      const facitGeo = golden.widths[String(w)];
+      summary[w] = { facit: facitGeo, impl: geo };
+
+      if (!geo.header || !geo.search || !geo.trust || !geo.hero) {
+        failures.push(
+          `${w}px: en eller flera selektorer saknas (header=${!!geo.header}, search=${!!geo.search}, trust=${!!geo.trust}, hero=${!!geo.hero})`
+        );
+        continue;
+      }
+      const gapDiffSearchTrust = Math.abs(geo.gapSearchTrust - facitGeo.gapSearchTrust);
+      const gapDiffTrustHero = Math.abs(geo.gapTrustHero - facitGeo.gapTrustHero);
+      if (gapDiffSearchTrust > PACKAGE_GEOMETRY_GAP_TOLERANCE_PX) {
+        failures.push(
+          `${w}px: gap sökfält→mikrotrust ${geo.gapSearchTrust.toFixed(1)}px, facit ${facitGeo.gapSearchTrust.toFixed(1)}px (diff ${gapDiffSearchTrust.toFixed(1)}px > tolerans ${PACKAGE_GEOMETRY_GAP_TOLERANCE_PX}px)`
+        );
+      }
+      if (gapDiffTrustHero > PACKAGE_GEOMETRY_GAP_TOLERANCE_PX) {
+        failures.push(
+          `${w}px: gap mikrotrust→hero ${geo.gapTrustHero.toFixed(1)}px, facit ${facitGeo.gapTrustHero.toFixed(1)}px (diff ${gapDiffTrustHero.toFixed(1)}px > tolerans ${PACKAGE_GEOMETRY_GAP_TOLERANCE_PX}px)`
+        );
+      }
+    }
+    console.log("[parity] header-package-geometry:", JSON.stringify(summary));
+    await test.info().attach("header-package-geometry.json", { body: JSON.stringify(summary, null, 2), contentType: "application/json" });
+    expect(failures, failures.join("; ")).toEqual([]);
   });
 }

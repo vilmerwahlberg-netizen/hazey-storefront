@@ -343,6 +343,18 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 12px;
+    /* KORRIGERAT (visuell granskningsomgång): en nativ Nyehandel-
+       temaregel — #store-header, #store-header .main, #store-header
+       .navbar { background:#eee7e1!important } (verifierat via CDP
+       getMatchedStylesForNode, samma tema-injektions-mönster som redan
+       dokumenterat för textfärger i STATUS.md) — vann över både denna
+       regel och headerns egen bakgrund (nedan) eftersom den har
+       !important och vår hade det inte. Facit .m-row (samma "WARM WEST
+       COAST PASS"-block som redan portats för höjd/padding, index.html
+       rad 1872-1875): linear-gradient(180deg,#fffaf0 0%,#fbf1e1 100%),
+       border-bottom-color #eadbc5. */
+    background: linear-gradient(180deg, #fffaf0 0%, #fbf1e1 100%) !important;
+    border-bottom-color: #eadbc5 !important;
   }
   /* KORRIGERAT (root-cause-omgång): .nh-burger och .container är .main's
      ENDA riktiga grid-items — .left/.center/.right är GRANDCHILDREN
@@ -358,8 +370,11 @@
      reglerna nedan äntligen effekt. Scopat till mobil (denna @media) —
      rör inte desktop, där .container kan ha egen nödvändig layoutroll. */
   #store-header.nh-header-v2 .main > .container { display: contents; }
-  /* Facit #mVp .hz-header: #fbf1e1 — bara mobil, se blueprint §B. */
-  #store-header.nh-header-v2 { background: #fbf1e1; }
+  /* Facit #mVp .hz-header: #fbf1e1 — bara mobil, se blueprint §B.
+     !important tillagt (visuell granskningsomgång) — samma native
+     #store-header{background:#eee7e1!important}-regel som ovan träffar
+     #store-header direkt också, inte bara .main. */
+  #store-header.nh-header-v2 { background: #fbf1e1 !important; }
   #store-header.nh-header-v2 .nh-burger { grid-column: 1; justify-self: start; }
   #store-header.nh-header-v2 .main .left { grid-column: 2; justify-self: center; }
   #store-header.nh-header-v2 .main .right { grid-column: 3; justify-self: end; }
@@ -477,7 +492,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
    prototypens .m-searchbar) — bara en trigger-knapp, ingen egen söklogik. */
 .nh-mobile-searchbar {
   padding: 0 12px 11px; /* facit .m-searchbar, blueprint §D punkt 5 */
-  background: var(--nh-cream, #fffdf8);
+  /* KORRIGERAT (visuell granskningsomgång): var --nh-cream/#fffdf8 (nästan
+     vit) — fel token. Facit .m-searchbar (samma "WARM WEST COAST PASS"-
+     block, index.html rad 1876-1878): background:#fbf1e1 (samma varma
+     ton som headern/main-raden, INTE en ljusare/vitare ton), border-
+     bottom-color:#e5d3b8. .nh-mobile-searchbar ligger fortfarande inuti
+     #store-header men träffas INTE av dess breda native !important-regel
+     (den listar bara #store-header/.main/.navbar specifikt) — ingen
+     !important behövdes här, verifierat efter fix. */
+  background: #fbf1e1;
+  border-bottom: 1px solid #e5d3b8;
 }
 .nh-mobile-searchbar button {
   display: flex;
