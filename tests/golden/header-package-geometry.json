@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-09-01T13:04:46.510Z",
+  "capturedAt": "2026-09-01T21:00:17.629Z",
   "widths": {
     "390": {
       "header": {
@@ -18,9 +18,15 @@
         "top": 192,
         "bottom": 430
       },
+      "series": {
+        "top": 448,
+        "bottom": 601
+      },
       "gapSearchTrust": 0,
       "gapTrustHero": 18,
-      "totalToHero": 192
+      "gapHeroSeries": 18,
+      "totalToHero": 192,
+      "totalToSeries": 448
     },
     "430": {
       "header": {
@@ -39,9 +45,15 @@
         "top": 192,
         "bottom": 430
       },
+      "series": {
+        "top": 448,
+        "bottom": 606
+      },
       "gapSearchTrust": 0,
       "gapTrustHero": 18,
-      "totalToHero": 192
+      "gapHeroSeries": 18,
+      "totalToHero": 192,
+      "totalToSeries": 448
     },
     "600": {
       "header": {
@@ -60,9 +72,15 @@
         "top": 192,
         "bottom": 430
       },
+      "series": {
+        "top": 448,
+        "bottom": 606
+      },
       "gapSearchTrust": 0,
       "gapTrustHero": 18,
-      "totalToHero": 192
+      "gapHeroSeries": 18,
+      "totalToHero": 192,
+      "totalToSeries": 448
     }
   }
 }

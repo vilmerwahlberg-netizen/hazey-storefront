@@ -131,6 +131,7 @@ if (MODE === "update") {
       expect(geo.search, `Facit sökfälts-selektor saknas vid ${w}px`).not.toBeNull();
       expect(geo.trust, `Facit mikrotrust-selektor saknas vid ${w}px`).not.toBeNull();
       expect(geo.hero, `Facit hero-selektor saknas vid ${w}px`).not.toBeNull();
+      expect(geo.series, `Facit "Populära serier"-selektor saknas vid ${w}px`).not.toBeNull();
     }
     fs.writeFileSync(
       packageGeometryGoldenPath(),
@@ -255,14 +256,15 @@ if (MODE === "update") {
       const facitGeo = golden.widths[String(w)];
       summary[w] = { facit: facitGeo, impl: geo };
 
-      if (!geo.header || !geo.search || !geo.trust || !geo.hero) {
+      if (!geo.header || !geo.search || !geo.trust || !geo.hero || !geo.series) {
         failures.push(
-          `${w}px: en eller flera selektorer saknas (header=${!!geo.header}, search=${!!geo.search}, trust=${!!geo.trust}, hero=${!!geo.hero})`
+          `${w}px: en eller flera selektorer saknas (header=${!!geo.header}, search=${!!geo.search}, trust=${!!geo.trust}, hero=${!!geo.hero}, series=${!!geo.series})`
         );
         continue;
       }
       const gapDiffSearchTrust = Math.abs(geo.gapSearchTrust - facitGeo.gapSearchTrust);
       const gapDiffTrustHero = Math.abs(geo.gapTrustHero - facitGeo.gapTrustHero);
+      const gapDiffHeroSeries = Math.abs(geo.gapHeroSeries - facitGeo.gapHeroSeries);
       if (gapDiffSearchTrust > PACKAGE_GEOMETRY_GAP_TOLERANCE_PX) {
         failures.push(
           `${w}px: gap sökfält→mikrotrust ${geo.gapSearchTrust.toFixed(1)}px, facit ${facitGeo.gapSearchTrust.toFixed(1)}px (diff ${gapDiffSearchTrust.toFixed(1)}px > tolerans ${PACKAGE_GEOMETRY_GAP_TOLERANCE_PX}px)`
@@ -271,6 +273,11 @@ if (MODE === "update") {
       if (gapDiffTrustHero > PACKAGE_GEOMETRY_GAP_TOLERANCE_PX) {
         failures.push(
           `${w}px: gap mikrotrust→hero ${geo.gapTrustHero.toFixed(1)}px, facit ${facitGeo.gapTrustHero.toFixed(1)}px (diff ${gapDiffTrustHero.toFixed(1)}px > tolerans ${PACKAGE_GEOMETRY_GAP_TOLERANCE_PX}px)`
+        );
+      }
+      if (gapDiffHeroSeries > PACKAGE_GEOMETRY_GAP_TOLERANCE_PX) {
+        failures.push(
+          `${w}px: gap hero→"Populära serier" ${geo.gapHeroSeries.toFixed(1)}px, facit ${facitGeo.gapHeroSeries.toFixed(1)}px (diff ${gapDiffHeroSeries.toFixed(1)}px > tolerans ${PACKAGE_GEOMETRY_GAP_TOLERANCE_PX}px)`
         );
       }
     }

@@ -1,9 +1,13 @@
 # Portningsspecifikation: Mobil hero (+ direkt anslutande qfind-chips)
 
-**Status: LÄSSKYDDAD RESEARCH — inte implementerad.** Ingen produktionsfil
-(`css/22-homepage-v2.css`, `js/18b-homepage-v2.js`, eller någon
-headerfil) är ändrad för att ta fram den här blueprinten. Alla siffror
-nedan är LIVE uppmätta (Playwright + `getComputedStyle`/CDP
+**Status: IMPLEMENTERAD (2026-09-01).** Se "IMPLEMENTATION" längst ned
+för resultat, öppna-frågor-beslut och kvarvarande, medvetet
+dokumenterade avvikelser. Ursprungstexten nedan är oförändrad — den var
+lässkyddad research vid tillkomsttillfället; siffrorna i §A–§I beskriver
+alltjämt facit korrekt, men implementationens FAKTISKA nuläge (efter
+korrigeringar) står i "IMPLEMENTATION"-avsnittet, inte i löptexten här.
+
+Alla siffror nedan är LIVE uppmätta (Playwright + `getComputedStyle`/CDP
 `getMatchedStylesForNode`), inte lästa/gissade ur källkod, och
 verifierade vid samtliga tre breddpunkter Vilmer begärde: **390/430/
 600px**. Facit: `http://localhost:8765/index.html#/`. Implementation:
@@ -471,3 +475,196 @@ ej fullständigt rotorsakad detalj (knapphöjd vid 600px) som inte
 gissas här utan flaggas för uppföljning.
 
 **Ingenting implementerat. Inget pushat eller deployat.**
+
+---
+
+## IMPLEMENTATION (2026-09-01)
+
+Blueprintens fem verifierade rotorsaker implementerade i
+`css/22-homepage-v2.css` (strikt mobil-scopat, `@media(max-width:860px)`,
+egen ny blockering placerad efter desktop-blocket så desktop aldrig
+träffas) + `js/18b-homepage-v2.js` (bildkälla, inga markup-ändringar
+behövdes — bekräftar §H:s förhandsantagande).
+
+### Öppna frågor — beslut från Vilmer, genomförda
+
+1. **Heroasset:** `NH_PROTO_ASSETS`/`http://localhost:8767` togs bort
+   HELT ur `js/18b-homepage-v2.js` — ingen localhost-URL finns längre
+   någonstans i den byggda `hazey.min.js`. QA/parity-testning påverkas
+   INTE: `tests/parity-sections.mjs`s `lockImplImages` läser redan
+   `hero-westcoast-v4.jpg` direkt från disk och inline:ar den som en
+   data:-URL EFTER sidladdning, oberoende av vilken URL produktions-
+   koden sätter som `background-image` — verifierat, testerna passerar
+   oförändrat. Produktionskällan är nu `nativeHeroImgUrl` (den redan
+   konfigurerade, riktiga nyehandel-bilden) direkt, ingen fall-tillbaka-
+   komplexitet kvar (`nhInitHeroImageFallback` borttagen, var död kod
+   efter ändringen). **Fil som behöver stabil HTTPS-hosting den dag
+   Vilmer vill ha facitens EGEN bild (inte bara den nativa) live:
+   `hero-westcoast-v4.jpg`** (i dag bara på disk i
+   `chatgpt-claude-handover/.../prototyp/assets/`).
+2. **Övergiven hero-CSS:** sökt igenom hela repot
+   (`grep -rn "slideshow__slides__slide"`) och renderad DOM (`document.
+   querySelectorAll` för alla fem berörda selektorer, `0` träffar
+   överallt; bekräftat att `.nh-hero-v2` och `.template-components__
+   slideshow` är SYSKON i DOM:et, aldrig förälder/barn — selektorerna
+   `.nh-hero-v2 .slideshow__slides__slide*` kan därför strukturellt
+   ALDRIG matcha något). Blocket var bevisligen dött — borttaget exakt
+   (`css/22-homepage-v2.css`, de fem `.nh-hero-v2 .slideshow__slides__
+   slide*`-reglerna). De ANDRA `.slideshow__slides__slide`-reglerna i
+   `css/01`/`css/09`/`css/10` (utan `.nh-hero-v2`-prefix) rör den
+   nativa karusellen på andra ställen/tillstånd — INTE rörda, utanför
+   scope och bevisligen fortfarande potentiellt levande. De bara
+   `.nh-hero-v2`-scopade, EJ-slideshow-relaterade reglerna
+   (box-shadow/margin/border-radius/overflow/min-height) behölls
+   oförändrade — de var redan korrekta (se §B).
+
+### Fem rotorsaker — implementerade
+
+1. **Typografi + specificitet** (§F.1): `!important` tillagt på
+   font-family/size/weight/line-height/letter-spacing för eyebrow/h1/p/
+   btn-solid/hero-link, mobil-scopat. Verifierat med
+   `measureTypography`/`diffTypography`: **tomt diff på alla fem noder,
+   alla tre breddpunkter** (enda kvarvarande skillnad: h1:s färg,
+   `#fffdf8` mot facits rena vitt `#ffffff` — inte en flaggad rotorsak,
+   lämnad).
+2. **H1 max-width/radbrytning** (§F.2): `max-width:9.5em` tillagt.
+   Verifierat: H1 radbryter nu till **exakt två rader vid alla tre
+   breddpunkter**, matchar facit exakt (mätt via `Range.getClientRects()
+   .length`, inte gissat ur en skärmdump).
+3. **76%-kolumn** (§F.3): `.nh-hero-v2__inner` omskriven till
+   `display:flex;flex-direction:column;justify-content:flex-end;
+   width:76%`. Facits uppmätta padding (`16px 17px 17px`, redan
+   dokumenterad i §A men av misstag utelämnad i första
+   implementationspasset) tillagd i samma veva — se korrigeringspass
+   nedan.
+4. **Bildgradering** (§F.4/§E): bilden målas som `background-image`
+   direkt på `.nh-hero-v2` (samma element som texten), så ett filter på
+   sektionen hade även färgat om texten. Löst med ett dedikerat
+   `::after`-pseudo-lager (`background-image:inherit`, eget z-index
+   under scrim och textlager) som bär `filter:saturate(1.06)
+   brightness(1.12) sepia(.045)` — verifierat live, texten opåverkad.
+   Scrim-gradientens ASYMMETRISKA form (§E:s andra fynd) var INTE del
+   av Vilmers uttryckliga lista denna omgång ("korrekt bildgradering"
+   tolkat som filtret) — kvarstår som en dokumenterad, ej fixad
+   avvikelse, se klassificering nedan.
+5. **Sekundär CTA som piller-knapp** (§D/§F.5): `.hero-link` omskriven
+   till facits fyllda piller-formspråk (border/bakgrund/padding/
+   border-radius/min-height, `white-space:nowrap` tillagt — se
+   korrigeringspass). Båda CTA-länkarnas destinationer och
+   funktionalitet OFÖRÄNDRADE och verifierade RIKTIGA (inte bara
+   markup): klick på "Utforska sortimentet" scrollar `#populara-vagar`
+   in i vy; klick på "Hjälp mig →" sätter `#hrDrawer.hidden = false`
+   (en riktig, redan fungerande `[data-open-hr]`-delegat i
+   `js/18a-header-v2.js`, ingen stubb).
+
+### Korrigeringspass (1 av max 2 tillåtna använt)
+
+Ett sammanhållet pass, utlöst av EN identifierad rotorsak
+(CTA-radens felaktiga wrap-beteende), med fyra samverkande delfynd
+som alla krävdes för att lösa den:
+
+- **btn-solid:s gamla padding** (`12px 20px`, osynlig innan
+  76%-fixen) blev en verklig regression så fort inner smalnade —
+  rättad till facits uppmätta `9px 14px` (+ `min-height:42px`,
+  `border-color`, `box-shadow`, textfärg — alla redan uppmätta i §D,
+  inte nya gissningar).
+- **`.nh-hero-v2__cta` saknade `flex-wrap:nowrap`** — facits egna,
+  redan uppmätta `#mVp .page-home .hero-cta{flex-wrap:nowrap}`
+  (dokumenterad i denna sessions researchfas, men inte förd vidare
+  till första implementationspasset). Med `nowrap` kan raden aldrig
+  flytta en knapp till en ny rad — knapparna TVINGAS i stället krympa
+  och låta sin EGEN text radbryta internt, exakt vad facit gör
+  (verifierat: facits "Utforska sortimentet" radbryter till två rader
+  vid 390/430px, en rad vid 600px — samma mönster återskapat, inte
+  bara kopierat blint).
+- **`.hero-link` fick `white-space:nowrap`** — utan den låg dess
+  tilldelade bredd (flex-shrink-matematik) ~0,1px under vad "Hjälp mig
+  →" behöver på en rad (uppmätt via canvas `measureText`, inte gissat)
+  — ett rent sub-pixel-utfall, inte en verklig breddbrist. `nowrap`
+  bara på DENNA korta, pil-avslutade knapptext (inte btn-solid, som
+  ska fortsätta radbryta som facit) garanterar en rad oavsett
+  avrundning.
+- **`.nh-hero-v2__inner`s padding** (se rotorsak 3 ovan) var av
+  misstag kvar på den gamla `28px 22px 24px` — rättad till facits
+  `16px 17px 17px`.
+
+**Resultat av passet:** hero-kortets totalhöjd gick från en regression
+(297px vid 390px, uppstod EFTER 76%-fixen, innan padding var
+avsiktligt) till **exakt 238px vid samtliga tre breddpunkter** —
+identiskt med facit, identiskt med det redan korrekta värdet som
+gällde INNAN denna omgångs kalibrering. Inget andra korrigeringspass
+behövdes.
+
+### Verifiering
+
+- **Typografi/ikonkontroll** (`tests/typography-icon-checks.mjs`, från
+  `c78c3cd`): tomt diff på eyebrow/p/btn-solid/hero-link vid 390/430/
+  600px; h1 tomt diff utom färg (ej flaggad rotorsak).
+- **H1-radbrytning:** 2/2 rader (facit/impl) vid alla tre bredder.
+- **Absolut paketgeometri mikrotrust→hero→"Populära serier"**
+  (`PACKAGE_GEOMETRY_SELECTORS` utökad med en `series`-nyckel denna
+  omgång, se §I): **PASS** vid 390/430/600px, inget dolt gap.
+- **Isolerad hero-pixeldiff** (`npm run parity`): storlek OK (238=238
+  höjd exakt; 370 vs 342 bredd, inom tolerans ±40px), men diffRatio
+  49,8% (tröskel 35%) → **FAIL på procenttalet**. Manuellt granskad
+  (`tests/results/hero/{actual,expected,diff}.png`): diff-bilden visar
+  ett klassiskt dubbelexponerings-mönster (text/knappar "spökar" i två
+  positioner) — signaturen för en BREDDFÖRSKJUTNING i jämförelsen
+  (actual 370px, expected 342px, exakt de 28px som §B redan
+  dokumenterade som en känd, hero-oberoende `#store-main`/body-wrap-
+  sidopaddingsskillnad, utanför denna blueprints scope). Vid manuell
+  sida-vid-sida-granskning (inte bara diff-bilden) är layout, radbrytning,
+  typografi, knappformspråk och färgsättning i praktiken identiska —
+  klassificerat som **korrigerbar implementation, men uttryckligen
+  utanför denna omgångs scope** (samma `#store-main`-fråga som redan
+  flaggad i §B, påverkar hela sidan, inte hero-specifik), inte som ett
+  verkligt visuellt fel.
+- **CTA-funktion:** båda verifierade fungerande (se ovan).
+- **Ingen overflow:** PASS (automatiskt test + manuell kontroll på
+  kategori-/produktsida).
+- **Startsida/kategori/produkt:** kategori-/produktsidor har korrekt
+  INGEN hero (`.nh-hero-v2` finns bara på startsidan), ingen overflow,
+  header oförändrad (122px mobil).
+- **Desktop 1440px:** bekräftat HELT oförändrat — `margin`,
+  `border-radius`, `min-height`, `filter:none`, inner
+  `display:block;width/max-width:620px;padding:40px`,
+  `.hero-cta{flex-wrap:wrap}`, h1 36px/Roboto (samma FÖREXISTERANDE
+  native-override-bugg som §B/§F.1 redan dokumenterat för mobil, men
+  INTE i denna omgångs scope att fixa på desktop), btn-solid
+  Nunito/16px, hero-link fortfarande textlänk — alla mätt och
+  jämförda mot ett referenstagande FÖRE denna omgångs ändringar,
+  identiska. Skärmdump: `tests/results/_hero-blueprint/
+  desktop-final-check.png`.
+
+### Klassificering av kvarvarande avvikelser (se CLAUDE.md)
+
+1. **Korrigerbar implementation, men uttryckligen utanför scope:**
+   28px breddskillnad (`#store-main`/body-wrap-sidopaddning) som
+   driver hero:s isolerade pixeldiff över tröskeln — påverkar hela
+   sidan, inte hero-specifik, redan dokumenterad i §B innan
+   implementation.
+2. **Medvetet produktbeslut (denna omgångs explicita instruktion):**
+   `NH_PROTO_ASSETS`/localhost borttaget ur produktionskod; QA behåller
+   samma pixelexakta lokala asset via `lockImplImages`.
+3. **Plattformshanterad funktion:** ingen ny denna omgång (hero har
+   inga Vue-styrda ikoner/badges att undvika).
+4. **Webbläsarens textrendering:** h1:s färgskillnad (#fffdf8 vs
+   #ffffff) — identiska typografiegenskaper i övrigt, inte jagad med
+   filter/text-shadow.
+5. **Dynamiskt innehåll:** ej tillämpligt denna omgång (samma låsta
+   bild på båda sidor via `lockImplImages`/`lockFacitHeroImage`).
+
+**Ej fixat, medvetet:** scrim-gradientens asymmetriska form (§E) och
+facits btn-solid-höjdskillnad vid 600px (§B, fortfarande inte
+fullständigt rotorsakad) — ingetdera var del av denna omgångs
+uttryckliga instruktionslista, flaggas för en eventuell framtida
+granskningsrunda, inte gissat/chansat på här.
+
+**Testinfrastruktur permanent utökad** (inte bara blueprint-plan
+längre): `PACKAGE_GEOMETRY_SELECTORS`/`measurePackageGeometry` i
+`tests/parity-sections.mjs` samt motsvarande assertions i
+`tests/home-parity.spec.mjs` har nu en `series`-nyckel
+(mikrotrust→hero→"Populära serier"), golden regenererad
+(`tests/golden/header-package-geometry.json`).
+
+**`node build.js` kört. Inget pushat eller deployat.**

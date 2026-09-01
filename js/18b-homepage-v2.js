@@ -20,21 +20,30 @@
       return hit ? hit.href : null;
     }
 
-    // Prototypens egna originalbilder, servade LOKALT (localhost:8767) för
-    // visuell 1:1-QA — se PROTOTYP-INVENTERING.md, avsnittet "Assets".
-    // ALDRIG i produktionskod (får inte peka hit när koden klistras in i
-    // nyehandel). Måste bytas mot riktiga, produktionshostade foton innan
-    // lansering — se listan i turnens sammanfattning/STATUS.md.
-    var NH_PROTO_ASSETS = "http://localhost:8767/";
-
     /* ── Hero + qfind — ERSÄTTER nyehandels nativa bildkarusell på
        startsidan (döljs, INTE tas bort — samma "dölj, radera aldrig
-       nativt"-mönster som resten av bygget). Copy och bild är prototypens
-       EGNA, uttryckligen begärda av Vilmer 2026-09-01 för exakt visuell
-       paritet (se PROTOTYP-INVENTERING.md) — ersätter tidigare val att
-       återanvända en riktig men annan hero-bild. Två textvarianter per
-       breddpunkt (mVp/dVp har olika ingress/knapptext, uppmätt, inte
-       samma text skalad). ── */
+       nativt"-mönster som resten av bygget). Copy är prototypens egen,
+       uttryckligen begärd av Vilmer 2026-09-01 för exakt visuell paritet
+       (se PROTOTYP-INVENTERING.md). Två textvarianter per breddpunkt
+       (mVp/dVp har olika ingress/knapptext, uppmätt, inte samma text
+       skalad). ──
+
+       Bildkälla (rättad 2026-09-01, se tests/blueprints/
+       mobile-hero-port.md §G/STATUS.md): facitens EGNA bild
+       (hero-westcoast-v4.jpg) finns bara lokalt på disk
+       (tests/parity-sections.mjs PROTO_ASSETS_DIR) och används redan för
+       PIXELEXAKT QA via `lockImplImages`/LOCKED_IMAGES — den läser filen
+       direkt från disk och inline:ar den som en data:-URL EFTER sidladdning,
+       oberoende av vad denna funktion sätter som src. QA-mekanismen kräver
+       alltså INGEN nätverks-URL alls, bara att `data-hero-src` finns som
+       hook (behålls nedan). Produktionskällan är därför den RIKTIGA,
+       redan konfigurerade nyehandel-bilden (`nativeHeroImgUrl`, plockad ur
+       den nativa karusellens första slide) direkt — ingen
+       localhost-URL någonsin i den byggda `hazey.min.js`, ingen
+       ladda-och-fall-tillbaka-komplexitet. `hero-westcoast-v4.jpg` är
+       filen som behöver stabil, riktig HTTPS-hosting den dag Vilmer vill
+       ha facitens EGEN bild (inte bara den nativa) live i produktion —
+       inte beslutat/löst här, bara dokumenterat. */
     function nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
       var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
@@ -42,14 +51,12 @@
       var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
 
-      var heroSrc = NH_PROTO_ASSETS + "hero-westcoast-v4.jpg";
-      // data-hero-fallback: den riktiga, redan konfigurerade nyehandel-
-      // bilden. Används ENDAST om facit-bilden misslyckas ladda (t.ex.
-      // Chromes Private Network Access blockerar https-sida→localhost-bild
-      // i automatiserad QA mot den riktiga sajten — se nhInitHeroImageFallback
-      // och STATUS.md). Aldrig fejkbild, aldrig blank hero.
-      var fb = nativeHeroImgUrl ? ' data-hero-fallback="' + nativeHeroImgUrl.replace(/"/g, "&quot;") + '"' : "";
-      var bg = ' style="background-image:url(\'' + heroSrc + '\')" data-hero-src="' + heroSrc + '"' + fb;
+      // data-hero-src: bara en QA-selektorkrok för lockImplImages (se
+      // ovan) — värdet spelar ingen roll för testresultatet, bara att
+      // attributet finns. Sätts till samma URL som faktiskt visas.
+      var bg = nativeHeroImgUrl
+        ? ' style="background-image:url(\'' + nativeHeroImgUrl.replace(/'/g, "\\'") + '\')" data-hero-src="' + nativeHeroImgUrl.replace(/"/g, "&quot;") + '"'
+        : ' data-hero-src=""';
 
       return '<section class="nh-hero-v2 nh-qfind-hero"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
@@ -442,23 +449,6 @@
       setTimeout(revealAll, 2000);
     }
 
-    // Testar tyst om facit-hero-bilden (lokal QA-asset) faktiskt gick att
-    // ladda; om inte (nätverksfel/PNA-block i webbläsaren) byts den mot den
-    // riktiga, redan konfigurerade nyehandel-bilden i data-hero-fallback —
-    // aldrig en tom/trasig hero. Se PROTOTYP-INVENTERING.md/STATUS.md.
-    function nhInitHeroImageFallback(root) {
-      var hero = root.querySelector(".nh-qfind-hero[data-hero-src]");
-      if (!hero) return;
-      var src = hero.getAttribute("data-hero-src");
-      var fallback = hero.getAttribute("data-hero-fallback");
-      if (!fallback) return;
-      var probe = new Image();
-      probe.onerror = function () {
-        hero.style.backgroundImage = "url('" + fallback + "')";
-      };
-      probe.src = src;
-    }
-
     function initHomepageV2() {
       var slideRoot = document.querySelector(".template-components__slideshow");
       var slideshow = slideRoot ? slideRoot.querySelector(".slideshow") : null;
@@ -470,9 +460,8 @@
       var navData = nhBuildNavData(mega);
       var kampanjerHref = "/sv/page/kampanjer";
 
-      // Riktig, redan konfigurerad hero-bild — sparas ENDAST som reservbild
-      // (data-hero-fallback) om facit-assetet inte går att ladda, se
-      // nhInitHeroImageFallback.
+      // Riktig, redan konfigurerad hero-bild — den enda produktionskällan
+      // (se nhHeroQfindHtml ovan för hela resonemanget).
       var firstSlide = slideshow.querySelector(".slideshow__slides__slide");
       var nativeHeroImgUrl = null;
       if (firstSlide) {
@@ -481,8 +470,7 @@
       }
 
       // Döljer den nativa karusellen (rör den inte, bara CSS display:none)
-      // och ersätter med det nya qfind-hero-kortet. Hero-bilden hämtas i
-      // första hand från prototypens egna asset (se NH_PROTO_ASSETS).
+      // och ersätter med det nya qfind-hero-kortet.
       slideRoot.classList.add("nh-native-hero-hidden");
 
       var heroWrap = document.createElement("div");
@@ -519,7 +507,6 @@
       while (restWrap.firstChild) slideRoot.parentNode.insertBefore(restWrap.firstChild, anchor);
 
       nhInitReveal(document);
-      nhInitHeroImageFallback(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
       nhInitPlaceholderForms(document);

@@ -13,10 +13,13 @@
 .store-startpage { background: #efe9df !important; }
 .nh-startpage-flex { display: flex; flex-direction: column; }
 
-/* Reskin av nyehandels RIKTIGA, redan konfigurerade slideshow-hero
-   (".template-components__slideshow .slideshow", se js/01-slideshow.js).
-   Vi rör bara typografi/färg/layout-RAM här — rotation/dots/bildinnehåll/JS
-   är nativ funktionalitet och lämnas orörd.
+/* Hero-kortets yttre ram (`.nh-hero-v2`, se js/18b-homepage-v2.js
+   `nhHeroQfindHtml`). Nyehandels nativa slideshow-hero
+   (".template-components__slideshow .slideshow") döljs helt
+   (`.nh-native-hero-hidden`, initHomepageV2) och ersätts av det här
+   egna, hand-byggda kortet — INTE ett reskin av slideshow-DOM:en i
+   läge (den tidigare planen; se borttaget dött CSS-block nedan för
+   historiken).
 
    EXAKT UPPMÄTT mot RÄTT prototyp 2026-08-31 (getComputedStyle, inte
    uppskattat) på BÅDA breddpunkter — och de skiljer sig åt STRUKTURELLT,
@@ -27,30 +30,6 @@
      inramat runt kort (margin 10px 10px 18px, radius 22px, min-height
      238px, varm brun skugga). Kortkänslan är EN MOBILSPECIFIK behandling,
      inte en generell "hero som kort"-regel — det hade jag fel på innan. */
-.nh-hero-v2 .slideshow__slides__slide h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
-  font-weight: 600 !important;
-  letter-spacing: 0 !important;
-  font-size: 57px !important;
-  line-height: 1.03 !important;
-}
-.nh-hero-v2 .slideshow__slides__slide .button.is-primary {
-  border-radius: 999px !important;
-  font-weight: 650 !important;
-  transition: background-color .2s cubic-bezier(.22,.61,.36,1) !important;
-}
-.nh-hero-v2 .slideshow__slides__slide__content {
-  align-items: flex-start !important;
-  justify-content: center !important;
-  text-align: left !important;
-}
-.nh-hero-v2 .slideshow__slides__slide__content > div {
-  text-align: left !important;
-  max-width: 478px;
-}
-.nh-hero-v2 .slideshow__slides__slide .action {
-  justify-content: flex-start !important;
-}
 .nh-hero-v2 {
   box-shadow: 0 22px 48px -34px rgba(82,49,20,.42);
 }
@@ -62,7 +41,6 @@
     min-height: 238px;
     box-shadow: 0 17px 34px -24px rgba(92,57,24,.72) !important;
   }
-  .nh-hero-v2 .slideshow__slides__slide h2 { font-size: 26px !important; line-height: 1.01 !important; }
 }
 
 /* ── Populära serier (ny sektion, se js/18b-homepage-v2.js) ──
@@ -539,6 +517,156 @@
   .nh-hero-v2__inner { padding: 40px; max-width: 620px; }
   .nh-qfind-hero h1 { font-size: 44px; }
   .nh-qfind-hero p { font-size: 15px; }
+}
+
+/* ── Mobil hero-kalibrering (2026-09-01, tests/blueprints/
+   mobile-hero-port.md) — root-orsakade LIVE mot facit, samma mönster
+   som header-kalibreringen (CLAUDE.md "Parity-workflow"). Allt i denna
+   @media-block är STRIKT mobil-scopat (matchar facits egen
+   max-width:860px-brytpunkt) så desktop-herons regler ovan
+   (min-width:861px) förblir helt orörda. ── */
+@media (max-width: 860px) {
+  /* §F.1 — samma native-override-mönster som header: Nyehandels
+     h1,h2,...{font-family:Roboto!important} och
+     body,p,li,span,input,button,label,td,a{font-size:16px!important;
+     font-family:"Nunito"!important} vinner annars tyst över dessa
+     redan skrivna, icke-!important-märkta textregler. Facit-uppmätta
+     värden, inte gissade. */
+  .nh-hero-v2__eyebrow--mobile {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 9px !important;
+    line-height: normal !important;
+    letter-spacing: .13em !important;
+  }
+  .nh-qfind-hero h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 26px !important;
+    line-height: 1.01 !important;
+    letter-spacing: -.012em !important;
+    /* §F.2 — max-width saknades helt, INTE bara en prioritetsfråga:
+       utan den radbryter H1:an till en rad i stället för facits
+       avsiktliga två ("Hitta rätt utan att / kunna allt."). */
+    max-width: 9.5em !important;
+    text-shadow: 0 2px 16px rgba(0,0,0,.28) !important;
+  }
+  .nh-hero-v2__p--mobile {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.38 !important;
+    letter-spacing: normal !important;
+  }
+  .nh-qfind-hero .btn-solid {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 650 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    /* KORRIGERING (pass 1, upptäckt under verifiering, inte i den
+       ursprungliga blueprint-checklistan): btn-solid behöll sin gamla
+       padding:12px 20px, bredare än facits uppmätta 9px 14px — osynligt
+       innan §F.3-fixen (inner var full bredd) men blev en RIKTIG
+       regression så fort inner smalnade till 76%. Facits mått (redan
+       uppmätta i blueprintens §D, inte gissade nu). */
+    padding: 9px 14px !important;
+    min-height: 42px !important;
+    border-color: #2c3620 !important;
+    box-shadow: 0 8px 20px -12px rgba(77,35,10,.8) !important;
+    color: #fffaf2 !important;
+  }
+  /* KORRIGERING (pass 1, samma regression som ovan): den verkliga
+     grundorsaken till att hero-kortet blåstes upp till 297px var INTE
+     bara btn-solid:s padding — facits `#mVp .page-home .hero-cta` sätter
+     `flex-wrap:nowrap` (redan uppmätt i denna sessions research-fas,
+     men inte förd vidare till implementationen). Med `nowrap` kan raden
+     ALDRIG flytta en knapp till en ny rad; i stället TVINGAS knapparna
+     krympa (flex-shrink:1, min-width:auto → min-content) och låter sin
+     EGEN text radbryta internt i stället ("Utforska" / "sortimentet"
+     på två rader i en smal kolumn) — precis vad facit faktiskt gör
+     (verifierat: facits btn-solid-text radbryter till 2 rader vid
+     390/430px, 1 rad vid 600px där kolumnen är bredare nog). Vår
+     tidigare `flex-wrap:wrap` lät i stället HELA RADEN flytta ner
+     hero-link till en ny rad, vilket är fel typ av radbrytning och
+     roten till höjd-regressionen. */
+  .nh-hero-v2__cta {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+
+  /* §F.3 — .nh-hero-v2__inner var display:block + fast max-width:520px
+     (i praktiken verkningslöst vid mobila bredder, se blueprinten) i
+     stället för facits relativa, botten-förankrade 76%-kolumn. Detta
+     förklarar samtidigt varför eyebrow inte radbröt (gott om plats)
+     och varför fotots högra sida syntes mindre (texten låg över hela
+     bredden). */
+  .nh-hero-v2__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    width: 76% !important;
+    max-width: none !important;
+    /* Facits uppmätta värde (redan dokumenterat i blueprintens §A,
+       ofrivilligt utelämnat i första implementationspasset) — den gamla
+       28px/22px/24px-paddingen var skriven för en helt annan, bredare
+       box-modell och gav ~19px extra höjd (12px topp + 7px botten) som
+       förklarade den sista kvarvarande höjdavvikelsen vid 390px. */
+    padding: 16px 17px 17px !important;
+    z-index: 2;
+  }
+
+  /* §E/§F.4 — bildens varma färggradering saknades helt. Bilden målas
+     som background-image direkt på .nh-hero-v2 (samma element som
+     texten), så ett filter på SJÄLVA sektionen skulle även färga om
+     texten. Facits egen strategi (filter bara på <img>-lagret)
+     återskapas här med ett dedikerat pseudo-element som bara bär en
+     kopia av bakgrundsbilden (background-image:inherit) UNDER den
+     befintliga scrim-gradienten (::before) och textlagret (inner,
+     z-index:2 ovan) — texten påverkas alltså inte av filtret. */
+  .nh-hero-v2 { position: relative; }
+  .nh-hero-v2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    filter: saturate(1.06) brightness(1.12) sepia(.045);
+    z-index: 0;
+  }
+  .nh-qfind-hero::before { z-index: 1; }
+
+  /* §D/§F.5 — "Hjälp mig →" var en enkel understruken textlänk, en
+     kvarleva från ett tidigare, övergivet reskin-försök mot nyehandels
+     native slideshow-DOM (död CSS, borttagen ovan). Facit stylar samma
+     knapp som en fylld piller-knapp — sekundär variant av .btn-solid. */
+  .nh-qfind-hero .hero-link {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 650 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    /* KORRIGERING (pass 1): med flex-wrap:nowrap på .nh-hero-v2__cta
+       (ovan) delar btn-solid/hero-link den kvarvarande radbredden via
+       flex-shrink — vid 390px landar hero-link:s tilldelade bredd bara
+       ~0,1px under vad "Hjälp mig →" behöver på en rad (uppmätt via
+       canvas measureText, inte gissat), ett rent sub-pixel-utfall av
+       flex-matematiken, inte en verklig breddbrist. white-space:nowrap
+       här (bara på denna korta, pil-avslutade knapptext — INTE på
+       btn-solid, som ska fortsätta radbryta som facit) garanterar en
+       rad oavsett avrundning. */
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    padding: 0 11px !important;
+    border: 1px solid rgba(255,242,221,.7) !important;
+    border-radius: 22px !important;
+    background: rgba(45,49,24,.14) !important;
+    color: #fff8ed !important;
+  }
+  .nh-qfind-hero .hero-link:hover { border-color: #fffdf8 !important; }
 }
 
 /* ── qfind — "Vad söker du?"-chipsraden direkt under hero:n. Förenklad mot

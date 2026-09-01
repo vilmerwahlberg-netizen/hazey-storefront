@@ -1132,3 +1132,82 @@ mikrotrust `display:none` som avsett).
 **Headerbaseline LÅST IGEN** efter denna commit — mobilheader/sökfält/
 övre mikrotrust produktions-CSS/JS ska inte ändras utan en ny, explicit
 instruktion.
+
+## Mobil hero IMPLEMENTERAD (2026-09-01)
+
+Blueprintens (`tests/blueprints/mobile-hero-port.md`) fem verifierade
+rotorsaker genomförda i `css/22-homepage-v2.css` (strikt mobil-scopat,
+`@media(max-width:860px)`) + `js/18b-homepage-v2.js` (bildkälla).
+Fullständig implementations-/verifieringslogg i blueprinten själv
+("IMPLEMENTATION"-avsnittet) — sammanfattat här:
+
+**Öppna frågors beslut, genomförda:**
+1. **Heroasset:** `http://localhost:8767`-referensen borttagen HELT ur
+   produktionskoden. QA opåverkad — `lockImplImages` läser redan
+   `hero-westcoast-v4.jpg` direkt från disk (data:-URL), oberoende av
+   produktionens egen URL. Produktion visar nu den riktiga, redan
+   konfigurerade nyehandel-bilden direkt. **`hero-westcoast-v4.jpg` är
+   filen som behöver stabil HTTPS-hosting** den dag facitens EGEN bild
+   (inte bara den nativa) ska synas i produktion — inte löst, bara
+   dokumenterat.
+2. **Övergiven hero-CSS:** sökt igenom repo + renderad DOM (alla fem
+   `.nh-hero-v2 .slideshow__slides__slide*`-selektorer gav 0 träffar,
+   `.nh-hero-v2`/`.template-components__slideshow` bekräftat syskon i
+   DOM:et, aldrig förälder/barn — blocket kan strukturellt aldrig
+   matcha något). Bevisligen dött, borttaget exakt. Andra
+   slideshow-relaterade regler (css/01, css/09, css/10, utan
+   `.nh-hero-v2`-prefix) rör den nativa karusellen på andra ställen —
+   INTE rörda.
+
+**Fem rotorsaker implementerade:** typografi + `!important`-specificitet
+(eyebrow/h1/p/btn-solid/hero-link — tomt diff efter fix, alla tre
+breddpunkter); H1 `max-width:9.5em` (radbryter nu 2/2 rader som facit,
+alla tre bredder); `.nh-hero-v2__inner` omskriven till 76%-bred,
+botten-förankrad flex-kolumn (var fast `max-width:520px`); bildfilter
+(`saturate(1.06) brightness(1.12) sepia(.045)`) via ett dedikerat
+`::after`-pseudo-lager (så bara bilden filtreras, inte texten som
+delar samma element); "Hjälp mig →" omskriven till facits fyllda
+piller-knapp (var en enkel textlänk, kvarleva från ett övergivet
+reskin-försök mot native slideshow-DOM).
+
+**Ett korrigeringspass (av max 2) användes**, utlöst av EN identifierad
+rotorsak (CTA-radens felaktiga wrap): btn-solid:s gamla padding
+(`12px 20px`→facits `9px 14px`+border/shadow/färg), `.nh-hero-v2__cta`
+saknade facits egna `flex-wrap:nowrap` (gör att knappar krymper och
+radbryter sin EGEN text i stället för att flytta ner till en ny rad —
+exakt facits beteende, verifierat: "Utforska sortimentet" radbryter
+till 2 rader vid 390/430px precis som facit), hero-link behövde
+`white-space:nowrap` (annars ~0,1px kort på en rad, ett sub-pixel-
+utfall av flex-matematiken, inte en verklig breddbrist), och
+`.nh-hero-v2__inner`s padding (redan uppmätt i blueprinten men av
+misstag utelämnad först). Resultat: hero-höjden gick från en
+regression (297px vid 390px) till **exakt 238px vid alla tre
+breddpunkter**, identiskt med facit.
+
+**Verifiering:** paketgeometri mikrotrust→hero→"Populära serier" PASS
+(390/430/600px, `PACKAGE_GEOMETRY_SELECTORS` permanent utökad med en
+`series`-nyckel, golden regenererad); typografi-/ikonkontroll tomt
+diff (utom h1:s färg, ej flaggad rotorsak); båda CTA-länkarna
+verifierat FUNKTIONELLA (klick, inte bara markup — scrollar till
+`#populara-vagar` respektive öppnar `#hrDrawer`); ingen overflow;
+kategori-/produktsida korrekt utan hero, header oförändrad; desktop
+1440px HELT oförändrat (inkl. en förexisterande, ej denna omgångs
+scope, native h1-färgbugg som redan fanns innan och lämnas orörd på
+desktop). Isolerad hero-pixeldiff (`npm run parity`) visar FAIL på
+procenttalet (49,8%, tröskel 35%) — manuellt granskat och
+klassificerat som en KÄND, redan §B-dokumenterad 28px `#store-main`-
+breddskillnad (sitewide, inte hero-specifik, utanför denna omgångs
+scope) som ger ett dubbelexponerings-mönster i diff-verktyget, inte
+ett verkligt visuellt fel — layout/radbrytning/typografi/knappar är i
+praktiken identiska vid manuell sida-vid-sida-granskning.
+
+**Ej fixat, medvetet flaggat, inte gissat:** scrim-gradientens
+asymmetriska form (facit mörklägger bara textsidan, vår version en
+enhetlig vertikal ton) och facits btn-solid-höjdskillnad vid 600px —
+ingetdera var del av denna omgångs uttryckliga instruktionslista.
+
+**`node build.js` kört. Commit väntar på explicit pathspec (endast
+`css/22-homepage-v2.css`, `js/18b-homepage-v2.js`,
+`tests/parity-sections.mjs`, `tests/home-parity.spec.mjs`,
+`tests/blueprints/mobile-hero-port.md`, `STATUS.md`). Inget pushat
+eller deployat.**

@@ -520,11 +520,14 @@ export async function hasHorizontalOverflow(page) {
  * STATUS.md) aldrig fångades av något test. Detta mäter hela paketets
  * sammanhängande layout i DOKUMENTETS egna koordinater (inte beskurna
  * elementbilder) — header topp/botten, sökfält topp/botten, mikrotrust
- * topp/botten, mellanrummet dem emellan, samt var hero börjar.
+ * topp/botten, hero topp/botten, "Populära serier"-topp, och alla
+ * mellanrum dem emellan. `series`-nyckeln tillagd 2026-09-01 i samma
+ * omgång som mobil hero implementerades (se tests/blueprints/
+ * mobile-hero-port.md §I) — samma mönster som header-paketet.
  */
 export const PACKAGE_GEOMETRY_SELECTORS = {
-  facit: { header: "#mHeader", search: ".m-searchbar", trust: ".mt-mobile", hero: "#mVp .hero" },
-  impl: { header: "#store-header", search: ".nh-mobile-searchbar", trust: ".nh-mobile-trust", hero: ".nh-hero-v2" },
+  facit: { header: "#mHeader", search: ".m-searchbar", trust: ".mt-mobile", hero: "#mVp .hero", series: "#m-populara-serier" },
+  impl: { header: "#store-header", search: ".nh-mobile-searchbar", trust: ".nh-mobile-trust", hero: ".nh-hero-v2", series: "#populara-serier" },
 };
 
 // Breddpunkter geometrikontrollen körs vid — Vilmers explicita krav
@@ -562,14 +565,18 @@ export async function measurePackageGeometry(page, side) {
     const search = box(sel.search);
     const trust = box(sel.trust);
     const hero = box(sel.hero);
+    const series = box(sel.series);
     return {
       header,
       search,
       trust,
       hero,
+      series,
       gapSearchTrust: search && trust ? trust.top - search.bottom : null,
       gapTrustHero: trust && hero ? hero.top - trust.bottom : null,
+      gapHeroSeries: hero && series ? series.top - hero.bottom : null,
       totalToHero: hero ? hero.top : null,
+      totalToSeries: series ? series.top : null,
     };
   }, sel);
 }
