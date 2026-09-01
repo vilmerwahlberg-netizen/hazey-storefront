@@ -359,7 +359,7 @@
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'
             + '<span><b>8 000+</b> ordrar · sedan 2020</span></div>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>'
-            + '<span>Normalt 1–2 vardagar</span></div>'
+            + '<span>Normalt <b>1–2 vardagar</b></span></div>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>'
             + '<span>Diskret &amp; spårbart</span></div>';
           storeMain.insertBefore(trustRow, storeMain.firstChild);

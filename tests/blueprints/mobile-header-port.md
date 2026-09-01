@@ -167,6 +167,113 @@ detta test rött oavsett vad de separata komponenttesterna visar.
 
 ---
 
+## KORRIGERING 3 (2026-09-01): sista strikta kalibreringsomgången — "betydligt bättre men ännu inte manuellt godkänt"
+
+Efter KORRIGERING 2 passerade alla tre isolerade komponenttester (header/
+sökfält/mikrotrust) samt det nya paket-geometritestet, men manuell
+granskning fann fortfarande fem konkreta, mätbara avvikelser. Alla fem
+root-orsakades via live `getComputedStyle`/CDP `getMatchedStylesForNode`-
+inspektion av facit (`localhost:8765`) mot implementationen
+(`hazeyse.nyehandel.se` + injicerad `hazey.css`/`hazey.min.js`) — inga
+värden gissades ur skärmdumpar.
+
+1. **Mikrotrust "1–2 vardagar" saknade `<b>`.** `js/18a-header-v2.js`s
+   `trustRow.innerHTML`-mall byggde `<span>Normalt 1–2 vardagar</span>`
+   utan bold-taggning. Facits källkod (index.html, `deliveryText`) bygger
+   `'Normalt <b>' + TRUST.delivery.normal + '</b>'`. Fixat genom att lägga
+   till `<b>`-taggen i mallsträngen. Punkterna "4,7/5" och "8 000+" hade
+   redan `<b>` sedan tidigare rundor.
+
+2. **Mikrotrust + sökfältsknappen ärvde fel font-family/vikt/spårning
+   från nyehandels nativa temareset.** Samma mönster som tidigare rundors
+   font-size/line-height-buggar (se §F): den globala
+   `body,p,li,span,input,button,label,td{font-family:"Nunito",...
+   !important;font-weight:500!important}` + `...,a{letter-spacing:
+   0.02em!important}`-regeln vann över våra icke-`!important`-märkta
+   textregler i `.nh-mt-item` och `.nh-mobile-searchbar button`. Detta var
+   den verkliga orsaken till att sökfältet "kändes vitare/mindre skarpt"
+   — inte en färgfråga. Fixat med explicita `!important`
+   `font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue",
+   Arial, sans-serif`, `font-weight: 400`, `letter-spacing: normal` på
+   båda selektorerna (uppmätta facit-värden, inte gissade), plus
+   utökning av `span, b { ... inherit !important }`-blocket i mikrotrust
+   till att även täcka font-family/letter-spacing. Sökfältsknappens höjd
+   (43px→41px) rättade sig SJÄLV av samma fix, utan någon separat
+   höjdregel — bekräftar att font-metrik-skillnaden var hela orsaken.
+
+3. **Mikrotrust→hero-gappet var fortfarande 10px, inte 18px, trots ett
+   tidigare `margin-bottom:8px`-försök.** Grundorsak: CSS-marginalkollaps
+   — angränsande syskonmarginaler i normalt flöde kollapsar till MAX-
+   värdet, inte summan. `.nh-mobile-trust{margin-bottom:8px}` +
+   `.nh-hero-v2{margin-top:10px}` gav `max(8,10)=10`, oförändrat. Rättat
+   till `margin-bottom:18px` så `max(18,10)=18`, verifierat live mot
+   facits uppmätta 18px.
+
+4. **Remsan mellan mikrotrust och hero hade fel färgton.** Identifierat
+   via `document.elementFromPoint(x,y)` att `#store-main` SJÄLVT (inte
+   någon wrapper eller ett negativt-margin-hack) ritar den ytan — elementet
+   är genomskinligt (`background-color:rgba(0,0,0,0)`) så sajtens
+   generella bakgrund (`rgb(228,209,191)`) syntes igenom istället för
+   facits varma ton. Facits exakta rendrade färg pixel-uppmätt (4
+   samplingspunkter, ej gissad ur gradientstoppen i källkoden) till
+   `rgb(254,246,233)`. Satt direkt på `#store-main` som `background`,
+   scopat till `@media(max-width:880px)`.
+
+5. **Mikrotrustboxen var 3px för hög (55px mot facits 52px), vilket gav
+   ett falskt förhöjt pixel-diff (14,8%) trots att alla ovanstående var
+   fixade.** Rotorsakat genom att jämföra fullständig box-modell för
+   `.mt-mobile-inner` i facitkällkoden (rad 1887–1891:
+   `padding:9px 16px; gap:6px 14px;` — symmetrisk padding, INTE
+   `9px 16px 12px`) mot implementationens `.nh-mobile-trust{padding:9px
+   16px 12px}` (asymmetrisk, 12px nederkant istället för 9px — en kvarleva
+   från en tidigare, ej korrekt uppmätt gissning). `12−9=3px`, exakt
+   avvikelsen. Rättat till `padding:9px 16px` (symmetrisk, matchar facit
+   exakt). Efter fix: `wrapHeight` mätt live till EXAKT 52px på båda
+   sidor.
+
+6. **Headern var 2px för hög (124px mot facits 122px) trots att
+   sökfältets egen höjd redan var en exakt 53px=53px-matchning.**
+   Root-orsakat via CDP `getMatchedStylesForNode`: `#store-header` ärver
+   en NATIV Nyehandel-plattformsregel, `header{border-bottom:var(
+   --header-border-bottom-touch)}` (inte satt av oss någonstans i repot),
+   som renderar en 2px grå linje (`rgb(223,223,223)`) under headern.
+   Facits `#mHeader` har ingen sådan kantlinje (0px). Detta är en synlig,
+   mätbar avvikelse mot facit — inte en "Vue-relaterad" eller dynamisk
+   platshållare — så den nollställdes med `border-bottom:0 !important`,
+   scopat till `#store-header.nh-header-v2` inom mobil-media-queryn.
+
+**Kvarvarande, medvetet ej korrigerade avvikelser efter denna omgång**
+(alla verifierade som antingen explicit instruerade undantag eller
+verklig text-rendering, inte layoutfel):
+
+- **Tom varukorgs `0`-badge** (header, punkt 5 i föregående granskning,
+  återbekräftat denna omgång): facit visar en hårdkodad `0`, den riktiga
+  implementationen har INGEN badge vid tom kundvagn eftersom Vue-statets
+  villkorliga render korrekt döljer den. Detta är rätt beteende, inte en
+  bugg — en hårdkodad nolla skulle vara precis den typen av fejkad
+  trust-/kunddata som CLAUDE.md förbjuder.
+- **"8 000+ ordrar · sedan 2020" vs facits "8 000+ kunder · sedan
+  2020"**: explicit instruerat att behålla "ordrar", inte porta facits
+  "kunder"-ord. Orsakar en stor del av mikrotrustens kvarvarande
+  pixel-diff (9,68% efter alla ovanstående fixar) eftersom ordbytet
+  förskjuter resten av textraden — detta är en AVSIKTLIG textskillnad,
+  inte ett layout- eller typografifel.
+- **Logotypens kursiva serif-rendering ("hazey")** och mindre kant-
+  antialiasing kring konto-/varukorgsikonerna i header-diffen: verifierat
+  att font-family, storlek, vikt och färg matchar exakt (`getComputedStyle`
+  identisk på båda sidor) — kvarvarande pixelskillnad är webbläsarens
+  egen sub-pixel-antialiasing av kursiv text vid rendering, inte en
+  CSS-egenskap som skiljer. Ingen `filter`/`opacity`/`text-shadow` har
+  lagts på för att maskera detta, i linje med instruktionen.
+
+**Resultat efter denna omgång** (se STATUS.md för fullständig
+testkörningslogg): Header PASS (122px=122px exakt, diffRatio 1,21%),
+Sökfält PASS (53px=53px exakt, diffRatio 0% — pixelperfekt), Mikrotrust
+PASS (52px=52px exakt, diffRatio 9,68% — förklarad ovan), paket-
+geometritestet (390/430/600px, inget dolt gap) PASS.
+
+---
+
 ## A. DOM-mappning
 
 | # | Element | Facitselektor | Implementationselektor | Markup portabel? | Riktig nyehandel-funktion som måste bevaras |

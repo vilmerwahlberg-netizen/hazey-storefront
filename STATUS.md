@@ -916,3 +916,80 @@ omgång gjorde rotorsaksmätning → kodfix → test-fix/blueprint-
 dokumentation i en mer sammanflätad ordning (allt fortfarande mätt
 LIVE innan skrivet, inget gissat) — inte den exakta sekvens som
 efterfrågades. Nämns här för transparens, inte dolt.
+
+## Mobilheader: sista strikta kalibreringsomgången — GODKÄND (2026-09-01)
+
+Vilmer beskrev föregående runda som "betydligt bättre men ännu inte
+manuellt godkänt" och gav fem konkret verifierade avvikelser att
+korrigera, scopat strikt till header/sökfält/mikrotrust. Alla fem
+root-orsakade LIVE (inga gissade värden), fullständig dokumentation i
+`tests/blueprints/mobile-header-port.md` "KORRIGERING 3":
+
+1. **Mikrotrustens "1–2 vardagar" saknade `<b>`** — mallsträngen i
+   `js/18a-header-v2.js` byggde texten utan bold-tagg. Fixat.
+2. **Mikrotrust + sökfältsknapp ärvde fel font-family/vikt/spårning**
+   från samma nativa Nunito/500/0,02em-reset som redan orsakat
+   font-size/line-height-buggar i tidigare rundor. Detta var den
+   verkliga orsaken till att sökfältet "kändes vitare/mindre skarpt" —
+   inte en färgfråga. Fixat med `!important` system-ui/400/normal på
+   båda selektorerna (facit-uppmätta värden). Sökfältsknappens höjd
+   (43px→41px) rättade sig SJÄLV av samma fix.
+3. **Gapet mikrotrust→hero var fortfarande 10px, inte 18px** — ett
+   tidigare `margin-bottom:8px`-försök hade ingen effekt eftersom
+   angränsande syskonmarginaler KOLLAPSAR till MAX-värdet, inte summan
+   (`max(8,10)=10`). Rättat till `margin-bottom:18px`
+   (`max(18,10)=18`), självupptäckt och självkorrigerat innan
+   rapportering.
+4. **Remsan under mikrotrust hade fel färgton.** Identifierat via
+   `document.elementFromPoint()` att `#store-main` självt (transparent,
+   ingen egen bakgrund) ritar ytan, inte en wrapper eller ett
+   överlappnings-hack. Facits exakta rendrade färg pixel-uppmätt (inte
+   gissad ur gradientkällkoden) till `rgb(254,246,233)`, satt på
+   `#store-main` scopat till mobil.
+5. **Mikrotrustboxen var 3px för hög (55px mot facits 52px).**
+   Root-orsakat till en asymmetrisk `padding:9px 16px 12px` mot facits
+   symmetriska `padding:9px 16px` (verifierat i facit-källkoden, rad
+   1887–1891) — `12−9=3px`, exakt avvikelsen. Rättat till `9px 16px`.
+   Efter fix: `wrapHeight` identisk 52px=52px på båda sidor.
+6. **(Hittad under verifiering, inte i den ursprungliga listan men
+   samma typ av mätbar avvikelse):** Headern var 2px för hög (124px mot
+   122px) trots att sökfältet redan var 53px=53px exakt. Root-orsakat
+   via CDP till en NATIV Nyehandel-plattformsregel
+   (`header{border-bottom:var(--header-border-bottom-touch)}`, inte
+   satt av oss) som lägger en 2px grå linje under headern som facit
+   helt saknar. Nollställd med `border-bottom:0 !important`, scopat
+   till mobil.
+
+**Medvetet ej ändrat, verifierat som antingen instruerat undantag eller
+verklig textrendering — inte layoutfel:**
+- Tom varukorgs `0`-badge (facit har hårdkodad `0`, riktig
+  implementation har korrekt Vue-villkorlig döljning).
+- "8 000+ ordrar" vs facits "8 000+ kunder" (explicit instruerat att
+  behålla "ordrar") — dominerar mikrotrustens kvarvarande pixel-diff
+  eftersom ordbytet förskjuter resten av textraden.
+- Logotypens kursiva serif-antialiasing i header-diffen — verifierat
+  identisk font-family/storlek/vikt/färg på båda sidor, kvarvarande
+  skillnad är webbläsarens egen sub-pixel-rendering. Ingen
+  filter/opacity/text-shadow tillagd för att maskera detta.
+
+**Slutresultat (`npm run parity`, alla i scope):** Header PASS (122px=
+122px EXAKT, diffRatio 1,21%, var 2,79%/6,8% tidigare rundor), Sökfält
+PASS (53px=53px EXAKT, diffRatio **0% — pixelperfekt**), Mikrotrust
+PASS (52px=52px EXAKT, diffRatio 9,68%, var 14,8%/15,5% tidigare
+rundor — kvarvarande diff förklarad ovan som avsiktlig text +
+antialiasing). Paket-geometritestet (390/430/600px, inget dolt gap)
+PASS. Verifierat live på start-/kategori-/produktsida (`m-s-buds`,
+`hash-magic-sauce-50-charas-5-gram`) — header/sökfält/mikrotrust
+renderar identiskt, ingen horisontell overflow. Desktop 1440px
+bekräftat helt oförändrad (headerhöjd 175px, mikrotrust/sökfält
+`display:none` som avsett). Ny sida-vid-sida-bild (header-topp till
+hero-start) genererad, facit och implementation startar hero vid
+EXAKT samma y-position (192px).
+
+**Bedömning: komponenten (mobil header + sökfält + övre mikrotrust)
+GODKÄNS.** Alla kvarvarande synliga skillnader är antingen korrigerade
+eller uttryckligen dokumenterade ovan som avsiktliga undantag (badge,
+"ordrar") eller verklig text-antialiasing — inget kvarstår ogranskat
+eller gissat. Inget pushat eller deployat; `node build.js` kört,
+`hazey.css`/`hazey.min.js` innehåller senaste källkoden men är inte
+publicerad någonstans.
