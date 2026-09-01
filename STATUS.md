@@ -685,3 +685,86 @@ mikrotrust-monteringspunkt") som dokumenterar rätt lösning: flytta
 identisk DOM-relation mellan `#store-header`/`#store-main` på startsida,
 kategori och produktsida), verifierat mot hur `nhSyncMainOffset` redan
 fungerar. Ingen produktionskod ändrad — fortfarande bara spec.
+
+## Mobilheader/sökfält/mikrotrust IMPLEMENTERAD (2026-09-01)
+
+Blueprintens plan (`tests/blueprints/mobile-header-port.md`) genomförd i
+`css/21-header-v2.css` + `js/18a-header-v2.js`. Tre implementationspass
+(1 samlad + 2 tillåtna korrigeringar, gränsen nådd — inga fler pass
+gjorda på dessa tre sektioner).
+
+**Parity-resultat (`npm run parity`, 390px):**
+| Sektion | Höjd före | Höjd efter | Facit | Diff % före | Diff % efter | Verdict |
+|---|---|---|---|---|---|---|
+| Header | 100px | 128.4px | 122px | 22.8% | **11.4%** | **PASS** (var FAIL) |
+| Sökfält | 59.6px | 57.4px | 53px | 17.6% | 15.7% | FAIL (förbättrad) |
+| Mikrotrust | 103.8px | 104.8px | 52px | 74.4% | 56.3% | FAIL (förbättrad) |
+
+**Strukturellt** (huvudsyftet): `.nh-mobile-trust` monteras nu som första
+barnet i `#store-main` (inte längre barn till `#store-header`) —
+verifierat live på startsida/kategori/produktsida: rätt föräldraelement,
+scrollar bort separat vid scroll (headroom-transformen i
+`js/14-header-scroll.js` rör bara `#store-header`, aldrig trust-raden),
+ingen dubbel top-padding (`#store-main`s `padding-top` är den enda
+källan till trust-radens y-position, matematiskt bekräftat).
+
+**Två korrigeringspass, båda mätbara förbättringar:**
+1. Blueprintens "12px padding runt om" för `.main` (facit `.m-row`)
+   visade sig INTE transferera 1:1 — vår `.main` wrappar sitt innehåll i
+   ett nativt `<div class="container">` (nyehandel-markup, inte vårt)
+   som självt renderar ~60px högt oavsett `.main`s padding, medan facits
+   `.m-row` saknar en sådan wrapper. Att kopiera facits 12px blåste upp
+   `.main` till 85px istället för att matcha 69px. Återställd till
+   ursprunglig `padding-top/bottom:4px` (redan närmast rätt för VÅR
+   faktiska DOM). Header: 147.6px→131.6px, diff 23.2%→13.6%.
+2. Upptäckt UNDER implementationen (inte fångad av blueprinten):
+   `.nh-mobile-searchbar button`s `font-size:14px` (utan `!important`)
+   förlorade mot samma nativa `body,p,li,span,input,button,label,td,a
+   {font-size:16px!important}`-reset som redan var känd och fixad för
+   `.nh-mt-item` — computed font-size var faktiskt 16px, vilket via
+   native `line-height:1.6!important` (enhetslös multiplikator) blåste
+   upp knapphöjden till 49.6px. Fixat med `!important`. Header:
+   131.6px→128.4px (PASS), Sökfält: 60.6px→57.4px.
+
+**Kvarstående, medvetna gap (inte chansade på fler pass):**
+- Sökfält (57.4px mot facit 53px): återstående ~4px inte grundorsaks-
+  spårat vidare — pass-budgeten (2) var förbrukad.
+- Mikrotrust (104.8px mot facit 52px): dominerande orsak är att
+  leverans-textens rad ("Skickas 1-2 vardagar", hämtad LIVE ur riktiga
+  topbar-USP:n per redan etablerad regel — INTE hårdkodad) radbryts till
+  2 rader i 172px-kolumnen, medan facits egen (kortare) demotext får
+  plats på en rad. Inte en CSS-bugg — en verklig text-längdsskillnad
+  mellan riktig copy och facits fasta exempeltext. Löses inte genom att
+  ändra CSS utan genom att korta USP-texten (utanför scope) eller
+  acceptera avvikelsen.
+- Konto-/varukorgsikonernas SVG (nativa `fill`-ikoner vs facits
+  `stroke`-ikoner): INTE bytt — bedömdes för riskabelt att mutera SVG-
+  innehåll inuti samma Vue-hanterade `.icon`-span som varukorgsbadgens
+  villkorliga rendering (risk att Vue skriver över bytet vid nästa
+  re-render, t.ex. varje gång korgen uppdateras). Uppfyller inte
+  uppdragets villkor "om detta kan göras utan att... bryta de nativa
+  knapparna" med tillräcklig säkerhet — avstod hellre än att gissa.
+- Varukorgsbadge: CSS (position/mått/färg/radie, orange `#c96a26`) på
+  plats och riktad mot det REDAN nativa Vue-styrda `.cart-button .badge`
+  — inget nytt hårdkodat. Kunde INTE visuellt bekräfta en verklig
+  nollskild siffra utan att faktiskt lägga en produkt i en riktig
+  varukorg på skarpa sajten, vilket är en stateful skarp-sajt-åtgärd
+  utanför vad ett skrivskyddat regressionstest ska göra.
+- Native sökfälts-klick-genom (`#mobile-search-trigger`): koden är
+  oförändrad sen tidigare (redan verifierad fungera i tidigare session,
+  se äldre STATUS.md-anteckning "redan fungerar rimligt"). Ett headless
+  Playwright-klick i denna regressionsrunda kunde inte visuellt bekräfta
+  att den nativa sök-overlayn öppnas — inga JS-fel kastades, men troligen
+  en headless/automations-begränsning snarare än en regression, eftersom
+  klick-handlern är exakt oförändrad.
+
+**Regression verifierad** (390px start/kategori/produkt + 1440px
+startsida, skrivskyddat mot skarpa sajten): ingen horisontell overflow
+någonstans, ingen dubbel top-padding, headerns scroll-döljning fungerar
+och rör bara headern, mikrotrust scrollar bort separat, mobilmenyn
+öppnar/stänger, kontolänken pekar rätt, varukorgen öppnas (riktig
+Vue-state, `aria-expanded` växlar), desktop 1440px visuellt granskad och
+oförändrad (header 175px mot native 180px utan vår CSS — 5px, osynlig
+skillnad, ingen synlig regression).
+
+**Hero och alla sektioner efter mikrotrust rörda INTE.**

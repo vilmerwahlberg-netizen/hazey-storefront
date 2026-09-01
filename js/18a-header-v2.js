@@ -290,10 +290,15 @@
       // prototyp (chatgpt-claude-handover/.../prototyp/index.html, mVp-header:
       // hamburgare vänster + centrerad logga + konto/varukorg höger).
       var mainRow = sh.querySelector(".main");
+      // #store-main: normal (icke-fixed) scrollande syskon till #store-header,
+      // se blueprint tests/blueprints/mobile-header-port.md §E — mikrotrust
+      // monteras här (inte i #store-header) längre ned.
+      var storeMain = document.getElementById("store-main");
       var newBurger = document.createElement("button");
       newBurger.className = "nh-burger";
       newBurger.setAttribute("aria-label", "Öppna meny");
-      newBurger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+      // Exakt facit-path (prototyp/index.html #mMenuBtn), se blueprint §A rad 3.
+      newBurger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
       if (mainRow) mainRow.insertBefore(newBurger, mainRow.firstChild);
 
       // Mobil sökrad: nyehandels riktiga sök ligger dold bakom en ikon i
@@ -314,8 +319,7 @@
         });
         mainRow.parentNode.insertBefore(mobileSearchBar, mainRow.nextSibling);
 
-        // Kompakt trust-rad (2×2) direkt under sökfältet, matchar rätt
-        // prototyp. RIKTIGA värden, bekräftade av Vilmer 2026-08-31:
+        // Mikrotrust-raden. RIKTIGA värden, bekräftade av Vilmer 2026-08-31:
         //   - Trustpilot 4,7/5, länkad till den riktiga recensionssidan
         //     (samma URL som redan används i blocks/testimonials-section.html).
         //   - "8 000+ ordrar" (INTE "kunder" — Vilmer påpekade skillnaden;
@@ -324,24 +328,36 @@
         //   - Leverans/diskretion-texten återanvänds LIVE ur den redan
         //     riktiga topbar-USP-listan (ingen ny hårdkodad kopia av samma
         //     fakta två gånger).
+        //
+        // MONTERINGSPUNKT (blueprint §E, korrigerad 2026-09-01): facit har
+        // mikrotrusten som ETT SYSKON till headern, inte ett barn — den
+        // scrollar bort som normalt innehåll under en sticky/kompakt header.
+        // Monteras därför i #store-main (INTE i #store-header som tidigare):
+        // första riktiga barnet, direkt vid #store-mains padding-top-kant,
+        // så den hamnar visuellt precis under headern utan dubbel luft. Det
+        // gör att den (a) INTE räknas in i #store-headers egen scrollHeight/
+        // autohöjd, och (b) aldrig kan påverkas av js/14-header-scroll.js
+        // headroom-transform (som bara riktar sig mot #store-header).
         var uspTexts = Array.prototype.slice.call(sh.querySelectorAll(".topbar .usp li"))
           .map(function (li) { return li.textContent.trim(); });
         var leveransText = uspTexts.filter(function (t) { return /vardag|leverans|skicka/i.test(t); })[0] || "Snabb leverans";
         var diskretText = uspTexts.filter(function (t) { return /diskret/i.test(t); })[0] || "Diskreta paket";
 
-        var trustRow = document.createElement("div");
-        trustRow.className = "nh-mobile-trust";
-        trustRow.innerHTML = ''
-          + '<a class="nh-mt-item" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-          + '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.9L18 22l-6-3.9L6 22l1.4-7.5L2 9.6l7.1-.7L12 2z"/></svg>'
-          + '<span><b>4,7/5</b> på Trustpilot</span></a>'
-          + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 7.3c-.4-.2-.9-.1-1.2.2l-3.4 3.4-2.9-5.1c-.2-.4-.6-.6-1-.6s-.8.2-1 .6l-2.9 5.1-3.4-3.4c-.3-.3-.8-.4-1.2-.2s-.6.6-.5 1l1.9 9.8c.1.5.5.9 1 .9h12.4c.5 0 .9-.4 1-.9l1.9-9.8c.1-.4-.1-.8-.5-1z"/></svg>'
-          + '<span><b>8 000+</b> ordrar</span></div>'
-          + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="15" height="12" rx="1.5"/><path d="M16 10h3.5l2.5 3v5h-6z"/><circle cx="6" cy="19.5" r="1.6"/><circle cx="17.5" cy="19.5" r="1.6"/></svg>'
-          + '<span>' + leveransText + '</span></div>'
-          + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5V11c0 5-3.4 8.7-8 9.9C7.4 19.7 4 16 4 11V5.5L12 2z"/></svg>'
-          + '<span>' + diskretText + '</span></div>';
-        mobileSearchBar.parentNode.insertBefore(trustRow, mobileSearchBar.nextSibling);
+        if (storeMain && !storeMain.querySelector(".nh-mobile-trust")) {
+          var trustRow = document.createElement("div");
+          trustRow.className = "nh-mobile-trust";
+          trustRow.innerHTML = ''
+            + '<a class="nh-mt-item" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+            + '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.4 4.9L18 22l-6-3.9L6 22l1.4-7.5L2 9.6l7.1-.7L12 2z"/></svg>'
+            + '<span><b>4,7/5</b> på Trustpilot</span></a>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 7.3c-.4-.2-.9-.1-1.2.2l-3.4 3.4-2.9-5.1c-.2-.4-.6-.6-1-.6s-.8.2-1 .6l-2.9 5.1-3.4-3.4c-.3-.3-.8-.4-1.2-.2s-.6.6-.5 1l1.9 9.8c.1.5.5.9 1 .9h12.4c.5 0 .9-.4 1-.9l1.9-9.8c.1-.4-.1-.8-.5-1z"/></svg>'
+            + '<span><b>8 000+</b> ordrar</span></div>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="15" height="12" rx="1.5"/><path d="M16 10h3.5l2.5 3v5h-6z"/><circle cx="6" cy="19.5" r="1.6"/><circle cx="17.5" cy="19.5" r="1.6"/></svg>'
+            + '<span>' + leveransText + '</span></div>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3.5V11c0 5-3.4 8.7-8 9.9C7.4 19.7 4 16 4 11V5.5L12 2z"/></svg>'
+            + '<span>' + diskretText + '</span></div>';
+          storeMain.insertBefore(trustRow, storeMain.firstChild);
+        }
       }
 
       function openMobile() { mobileMenu.hidden = false; mobileScrim.hidden = false; document.body.classList.add("nh-mm-open"); }
@@ -367,19 +383,21 @@
 
       // BUGGFIX 2026-08-31: #store-main har en statisk, nativ
       // padding-top:100px som matchar den GAMLA (kortare) headern. Vi gjorde
-      // mobil-headern högre (sökrad + trust-rad) utan att synka det värdet
-      // — sidans riktiga innehåll (hero m.m.) gled in UNDER den nu högre
-      // fasta headern. Mäter headerns faktiska höjd och sätter #store-main
+      // mobil-headern högre (sökraden) utan att synka det värdet — sidans
+      // riktiga innehåll (hero m.m.) gled in UNDER den nu högre fasta
+      // headern. Mäter headerns faktiska höjd och sätter #store-main
       // padding-top därefter, om och bara om den behöver ökas (rör inte
       // desktop där headerns höjd inte ändrats). Körs igen vid resize
-      // eftersom sökrad/trust-rad bara visas under 880px.
-      var storeMain = document.getElementById("store-main");
+      // eftersom sökraden bara visas under 880px.
+      // (`storeMain` deklarerad högre upp, återanvänds här — mikrotrusten
+      // monteras numera i #store-main, inte i #store-header, se ovan, så
+      // den bidrar inte längre till nedanstående scrollHeight-mätning.)
       function nhSyncMainOffset() {
         if (!storeMain) return;
         // scrollHeight, INTE getBoundingClientRect().height — #store-header
         // har en egen fast CSS-höjd (native), så dess "riktiga" höjd
-        // rapporteras fel om innehållet (vår sökrad/trust-rad) överskrider
-        // den — scrollHeight räknar med det överskjutande innehållet.
+        // rapporteras fel om innehållet (vår sökrad) överskrider den —
+        // scrollHeight räknar med det överskjutande innehållet.
         var headerH = Math.round(sh.scrollHeight);
         var current = parseInt(getComputedStyle(storeMain).paddingTop, 10) || 0;
         if (headerH !== current) storeMain.style.paddingTop = headerH + "px";
