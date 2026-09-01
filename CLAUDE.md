@@ -232,6 +232,64 @@ görs om överhuvudtaget.
   korta pitchar, inte långa textväggar. Visa hellre en konkret diff/skiss och
   fråga "blev det så här?" än att beskriva planen i löpande text.
 
+## Parity-workflow: typografi/ikonkontroll och klassificering av avvikelser
+
+Tillagt 2026-09-01 efter mobilheader-kalibreringen (se STATUS.md) — varje
+verklig avvikelse den omgången hittade spårades till en av två upprepade
+felklasser: (1) Nyehandels egna, `!important`-märkta tag-nivå-resets
+(`font-family`/`size`/`weight`/`line-height`/`letter-spacing` på
+`body,p,li,span,input,button,label,td,a`) som tyst vann över våra egna
+icke-viktiga textregler, osynligt i en ren pixel-diff tills man faktiskt
+läser `getComputedStyle` på båda sidor; och (2) handkopierade SVG-ikon-
+paths/`stroke-width` som aldrig diffades mot facits riktiga `<path d>`-
+data.
+
+**Återanvändbara kontroller:** `tests/typography-icon-checks.mjs`
+exporterar:
+- `measureTypography(page, selector, childSelectors)` /
+  `diffTypography(facit, impl)` — läser font-family/size/weight/
+  line-height/letter-spacing/text-transform/color/opacity via
+  `getComputedStyle` (aldrig gissat), på både elementet och namngivna
+  barn (t.ex. en `<b>` inuti en textrad), returnerar en lista med exakt
+  vilken nod och egenskap som skiljer.
+- `measureIcon(page, selector)` / `diffIcon(facit, impl, opts)` — läser
+  SVG `viewBox`, bredd/höjd (attribut + renderad), `fill`/`stroke`/
+  `stroke-width`, alla `<path d>`/`<circle>`/etc-koordinater (när
+  markupen är vår egen — se `comparePathData`), samt ikonens vertikala
+  placering relativt sin förälder (baseline-proxy).
+- `PLATFORM_MANAGED_SELECTORS` / `isPlatformManaged(selector)` — kända
+  DOM-regioner som ägs av Nyehandels egen Vue-app (kontoikon,
+  varukorgsikon+badge, `#cartAside`) och därför INTE ska muteras för
+  pixelparitet — Vues eget re-render skriver annars tyst över ändringen.
+  Utöka listan när en ny blueprint hittar fler sådana regioner.
+
+**Varje kvarstående blueprint-/kalibreringsomgång ska köra dessa mot
+alla nya text-/ikonelement INNAN produktionskod skrivs**, samma ordning
+som header-arbetet: mät facit, mät implementation, diffa, rotorsaka
+(inte gissa ett nytt värde), sedan skriv koden.
+
+**Klassificering av kvarvarande avvikelser (obligatorisk innan en
+komponent godkänns):** varje synlig skillnad som återstår när en
+komponent ska godkännas MÅSTE sorteras i exakt en av fem klasser
+(`DEVIATION_CLASSES` i samma fil) — ett grönt procenttest räcker aldrig
+ensamt:
+1. **Korrigerbar implementation** — en riktig bugg i vår CSS/JS, ska
+   fixas innan godkännande.
+2. **Dynamiskt innehåll** — skillnaden beror på att sidorna visar olika
+   verklig data (t.ex. riktiga produktbilder/priser) som förväntas
+   variera, inte ett layout-/typografifel.
+3. **Plattformshanterad funktion** — ligger i en
+   `PLATFORM_MANAGED_SELECTORS`-region, medvetet inte muterad (se ovan).
+4. **Webbläsarens textrendering** — verifierat identiska CSS-egenskaper
+   på båda sidor (typografikontrollen ovan visar tomt diff); kvarvarande
+   pixelskillnad är ren sub-pixel-antialiasing. Lägg ALDRIG på
+   `filter`/`opacity`/`text-shadow` för att maskera detta.
+5. **Medvetet produktbeslut** — en avsiktlig, av Vilmer instruerad
+   textskillnad mot facit (t.ex. "ordrar" i stället för facits "kunder").
+
+Se `tests/blueprints/mobile-header-port.md` "KORRIGERING 3" för ett
+fullständigt genomarbetat exempel på alla fem klasserna i praktiken.
+
 ## KRITISKT — säkerhet mot skarpa sajten
 
 nyehandels Kodläge (Layout → Hantera → `</>`-ikonen i admin) har **ingen

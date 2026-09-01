@@ -993,3 +993,46 @@ eller uttryckligen dokumenterade ovan som avsiktliga undantag (badge,
 eller gissat. Inget pushat eller deployat; `node build.js` kört,
 `hazey.css`/`hazey.min.js` innehåller senaste källkoden men är inte
 publicerad någonstans.
+
+## Mobilheader LÅST (commit f9e9854) + permanent workflow-förbättring (2026-09-01)
+
+Vilmer bekräftade `f9e9854` som manuellt godkänd baseline — mobilheader/
+sökfält/övre mikrotrust produktions-CSS/JS ska inte ändras utan en ny,
+explicit instruktion. Inga produktionsfiler rörda i denna omgång.
+
+Två permanenta tillägg till migreringsworkflowet, destillerade ur
+header-kalibreringens upprepade felmönster (se CLAUDE.md "Parity-
+workflow: typografi/ikonkontroll och klassificering av avvikelser" för
+den fullständiga regeln):
+
+1. **`tests/typography-icon-checks.mjs`** (ny, återanvändbar) —
+   `measureTypography`/`diffTypography` (font-family/size/weight/
+   line-height/letter-spacing/text-transform/color/opacity, element +
+   namngivna barn) och `measureIcon`/`diffIcon` (SVG viewBox/bredd/höjd/
+   fill/stroke/stroke-width/path-data/baseline-placering). Validerad
+   direkt mot det redan godkända headerpaketet: typografidiffen på
+   sökfältsknappen kom tillbaka TOM (bekräftar ett känt godkänt värde),
+   och ikonverktyget hittade omedelbart en verklig, tidigare oupptäckt
+   2px-skillnad på mikrotrustens Trustpilot-stjärna (facit 13×13px,
+   implementation 11×11px — en CSS-specificitets-tie-break där
+   `.tp-star svg`-regeln råkar komma efter `.nh-mt-item svg`-regeln i
+   källordning i vår CSS, jämfört med facit där `.mt-mobile .mt-item
+   svg` har en extra klass och därför alltid vinner oavsett ordning).
+   **Denna avvikelse är MEDVETET INTE fixad denna omgång** — headern är
+   låst baseline, ändras inte utan ny instruktion. Flaggas här som en
+   känd, verifierad, liten kvarvarande avvikelse för framtida
+   prioritering, inte som en dold bugg.
+2. **Klassificeringsprincipen** — varje kvarvarande visuell avvikelse
+   inför ett komponentgodkännande måste sorteras i exakt en av fem
+   klasser (korrigerbar implementation / dynamiskt innehåll /
+   plattformshanterad funktion / webbläsarens textrendering / medvetet
+   produktbeslut) innan komponenten föreslås godkänd — kodifierar det
+   Vilmer redan krävde manuellt i header-rundorna
+   ("Ett grönt procenttest räcker inte ensamt").
+
+Ny `tests/README.md` samlar arbetsordningen (blueprint → mät →
+implementera → verifiera → klassificera → godkänn) och pekar till båda
+ovanstående. `PLATFORM_MANAGED_SELECTORS` i samma modul listar de kända
+Vue-ägda DOM-regionerna (kontoikon, varukorgsikon+badge, `#cartAside`)
+som tidigare header-rundor redan identifierat men inte skrev ner
+maskinläsbart förrän nu.
