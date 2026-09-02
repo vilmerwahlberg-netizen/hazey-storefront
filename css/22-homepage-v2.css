@@ -401,6 +401,44 @@
 .nh-routes .seg-t { display: block; font-size: 13px; font-weight: 650; color: #2c3620; }
 .nh-routes .seg-s { display: block; font-size: 11px; color: #9a9280; margin-top: 1px; }
 
+/* PAKET A (2026-09-02): mobil kalibrering mot facits index.html rad
+   1972-1997 (#m-populara-vagar, ID-scopad, den faktiskt vinnande mobila
+   regeln) + rad 1057-1069/1085 (@media max-width:860px). Extraherat
+   direkt ur källan, inte gissat. Scopat till @media max-width:860px så
+   desktop (min-width:861px-blocket ovan, redan uppmätt/godkänt) förblir
+   orört. */
+@media (max-width: 860px) {
+  /* Facit: #mVp .sec-head p{display:none} — beskrivningen visas bara
+     på desktop. Ingen ".more"/"Se allt"-länk finns alls i facits
+     mobila markup för denna sektion (bara <h2>). Data/länkar orörda,
+     bara visuellt dolda på mobil. */
+  .nh-routes .sec-head { margin-bottom: 10px; }
+  .nh-routes .sec-head p,
+  .nh-routes .sec-head .more { display: none; }
+  .nh-routes .route {
+    border-color: rgba(177,125,70,.26);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.20),
+      0 10px 22px -16px rgba(92,55,25,.48);
+  }
+  .nh-routes .route:not(.visual) {
+    background: linear-gradient(145deg,#f4ead7,#fffaf0 76%);
+  }
+  .nh-routes .route h3 { line-height: 1.08; }
+  .nh-routes .route-sub { font-size: 10px; }
+  .nh-routes .route.visual::before {
+    background: linear-gradient(0deg,
+      rgba(35,37,19,.72) 0%, rgba(47,42,22,.25) 46%, rgba(94,60,27,.01) 78%);
+  }
+  /* Facit: .seg-note{display:none} på mobil — rubriken bär hela
+     beslutet, ingen extra fråga-text. */
+  .nh-routes .seg-note { display: none; }
+  .nh-routes .seg { margin-top: 9px; }
+  .nh-routes .seg-btn { min-height: 48px; padding: 6px 10px; border-radius: 24px; gap: 8px; }
+  .nh-routes .seg-ico { width: 24px; height: 24px; border-radius: 50%; background: #f2dfc4; color: #8b673d; }
+  .nh-routes .seg-ico svg { width: 13px; height: 13px; }
+}
+
 /* ── Reveal-on-scroll (mätt mot tershine.com/dadgrass.com, se CLAUDE.md) ──
    translateY(24px)→0, ease-out-quad, 0.62s, 90ms stegring (max 4 steg).
    Respekterar prefers-reduced-motion (samma princip som prototypens :root). */

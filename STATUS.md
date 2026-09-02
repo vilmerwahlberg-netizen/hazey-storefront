@@ -1277,3 +1277,46 @@ hero-buggar: `.nh-hero-v2` saknade `display:flex;align-items:stretch`
 native `span{font-size:16px!important}`-reset som redan lösts på andra
 ställen. Alla fynd live-verifierade (getBoundingClientRect +
 getComputedStyle), inga gissade värden.
+
+## Mobil startsida-sprint (2026-09-02) — Paket A klart, Paket B/C BLOCKERADE (facit saknar innehållet)
+
+Vilmer bad om tre komponentpaket i en sammanhållen sprint: (A) Populära
+vägar + framställningsval, (B) Bästsäljare + transparensblock, (C)
+Snabb koll/omdömen/nyhetsbrev. Startade med en checkpoint-commit av den
+redan godkända Populära serier-kalibreringen (commit `c50f727`).
+
+**Paket A — KLART.** Kalibrerat direkt mot facits källa (index.html rad
+272-402, 1057-1069, 1972-1997 — den vinnande `#m-populara-vagar`-ID-
+scopade mobilregeln): dolde `.sec-head p`/`.more` på mobil (facit:
+`#mVp .sec-head p{display:none}`, ingen "Se allt"-länk finns alls i
+facits mobila markup för sektionen), dolde `.seg-note` helt på mobil
+(facit: `display:none`), rättade route-kortens border-color/box-shadow/
+bakgrund (icke-foto-kort)/gradient (foto-kort)/route-sub-storlek till
+facits exakta mobilvärden, rättade seg-btn till piller-form (24px
+radie, inte 12px) och seg-ico till cirkel (50%, inte 10px radie).
+Verifierat: ingen overflow vid 390/430/600px, 2×2-rutnät håller,
+riktiga länkar/data orörda, hela kortet klickbart (redan `<a>`-taggar).
+
+**Paket B och C — BLOCKERADE, inte implementerade.** Verifierat
+DEFINITIVT (inte antaget) genom att läsa facits råkälla direkt: `#mVp
+.page-home`s `</div>` stängs OMEDELBART efter Aura-guidens `</section>`
+(rad 4347-4348), och nästa element i källan är `<section
+id="m-alla-produkter" class="page-catalog is-hidden-page">` — en HELT
+ANNAN sida/rutt i samma SPA, inte startsidan. **Facits startsida har
+ingen "Bästsäljare i lager", inget transparensblock/"Så arbetar Hazey
+med innehåll och ursprung" (den texten finns bara på "Om Hazey"-sidan,
+rad 4557), inget "Snabb koll: vad är vad?", inga "Verifierade omdömen",
+inget nyhetsbrev.** Detta bekräftar och skärper ett redan tidigare
+dokumenterat fynd ("Exakt uppmätt omgång", 2026-08-31: "prototypens
+startsida är KORT... sen tomt, sen footer").
+
+Eftersom uppdraget uttryckligen bad om att KALIBRERA dessa paket MOT
+facit, och facit inte har något att kalibrera mot, stannade arbetet
+här i stället för att gissa design-/layoutvärden utan källa — samma
+"gissa aldrig, fråga"-princip som gäller genomgående i det här
+projektet. Vilmer behöver ge riktning: antingen (a) dessa sektioner
+behandlas som egna, redan tidigare godkända tillägg (byggda i en
+tidigare omgång, INTE del av "portning från facit") och kalibreras
+mot något annat facit (t.ex. "Om Hazey"-sidan för transparensblocket),
+eller (b) de lämnas som de är tills en riktig källa finns, eller (c)
+någon annan riktning.
