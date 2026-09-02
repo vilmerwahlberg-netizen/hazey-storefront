@@ -1257,3 +1257,23 @@ Vilmer: fortsätt bygga från "Populära serier" och nedåt enligt facit
 riktiga källa och DOM, gissa inte) och samma visuella iterationsloop
 (blueprint/mätning → implementation → skärmdumpsjämförelse → korrigera)
 som header och hero redan gått igenom.
+
+## Mobil Populära serier GODKÄND (2026-09-02)
+
+Kalibrerad mot facit i flera snabba rundor: byggd om till en CSS-driven
+swipe-karusell (facit hade bara 4 mockserier på en rad, vi har 6 riktiga
+— fast 83px/kort, `scroll-snap`, ingen flex-krympning); rätt vänsterkant
+(14px, inte 24px — sektionen hade fel enskild paddingvärde, inte dubbel
+padding); borttaget påhittat `padding-top:28px` (facits `.section-gap`
+sätter bara `margin-bottom`, aldrig `padding-top` — gapet till hero kom
+redan korrekt från heroens egen `margin-bottom:18px`); rubrikens
+typsnitt (`h2` saknade `!important`, föll till native Roboto);
+serienamn/produktantal fick korrekt `!important`-skyddad typografi
+(system-ui, rätt storlek/vikt/line-height, `-webkit-line-clamp:2` utan
+konstlad `min-height`). Samma runda fixade även två kvarvarande
+hero-buggar: `.nh-hero-v2` saknade `display:flex;align-items:stretch`
+(gjorde att hero-inner inte fyllde kortets fulla höjd, texten hamnade
+~25px för högt), och "Hjälp mig →"s inre `<span>` fångades av samma
+native `span{font-size:16px!important}`-reset som redan lösts på andra
+ställen. Alla fynd live-verifierade (getBoundingClientRect +
+getComputedStyle), inga gissade värden.

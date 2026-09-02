@@ -64,6 +64,17 @@
      nedan för att desktop har omvänd ordning — uppmätt/bekräftad mot rätt
      prototyp 2026-08-31, en genuin skillnad, inte samma innehåll skalat). */
   order: 1;
+  /* KORRIGERING (facit-kalibrering, 2026-09-02): sektionen är ett
+     flex-item i .nh-startpage-flex (column-riktning) och ärver default
+     min-width:auto — våra RIKTIGA serienamn ("Tatra Hemp", "Magic
+     Farmers") är längre än facits mockdata, och .pser-name har
+     white-space:nowrap (för ellipsis) vars min-content-bredd är HELA
+     textraden. Utan min-width:0 vägrade sektionen krympa under den
+     summan (mätt 542px vid 390px viewport, hela sektionen bredare än
+     skärmen) — klassiskt nested-flex-overflow, inte en radbrytnings-
+     eller layoutbugg i sig. */
+  min-width: 0;
+  width: 100%;
 }
 .nh-pser .sec-head h2 {
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -71,6 +82,43 @@
   font-size: 19px;
   color: #2c3620;
   margin: 0 0 14px;
+}
+@media (max-width: 860px) {
+  /* Facit: #mVp .sec-head{margin-bottom:8px} (bas är 14px, mobil
+     komprimerar den) — vi sätter marginalen på h2 i stället för på
+     .sec-head-wrappern, samma effekt, facits mobila värde. */
+  .nh-pser .sec-head h2 { margin-bottom: 8px; }
+  /* KORRIGERING 6 (2026-09-02): rubriken "Populära serier" saknade
+     !important — samma native h1,h2,...{font-family:Roboto!important;
+     line-height:1.2!important} + h2{font-size:...!important}-mönster
+     som redan lösts för hero/header slog ut basregeln helt (Roboto
+     20,8px i stället för Iowan Old Style 19px). Aldrig upptäckt
+     tidigare eftersom tidigare granskningsrundor fokuserade på
+     kort-layouten, inte rubriktypsnittet. */
+  .nh-pser .sec-head h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 19px !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+  }
+  /* KORRIGERING 4 (2026-09-02): mätt vänsterkant för rubrik/första
+     seriekort/karusellrad mot sidans vänsterkant — facit 14px, impl
+     24px (samma sidopadding som hero, fel för DENNA sektion). Ingen
+     verklig dubbelpaddning (bara #store-main självt saknar egen
+     padding, redan känt), bara ett fel enskilt värde. Rättat på
+     sektionens egen padding, inte #store-main (delas med andra
+     sektioner). */
+  .nh-pser.section-gap { padding-left: 14px !important; padding-right: 14px !important; }
+  /* KORRIGERING 5 (2026-09-02): facits egen .section-gap-klass (index.html
+     rad 454/1053/1670) sätter ENDAST margin-bottom (mellanrum EFTER en
+     sektion) — ingen padding-top alls. Vår .nh-pser återanvänder samma
+     klassnamn men gav den en helt annan betydelse (padding:28px 24px 8px,
+     alla sidor). Gapet mellan hero och rubriken kommer redan korrekt från
+     heroens egen margin-bottom:18px (uppmätt identiskt med facit, 18px
+     båda) — den extra padding-top:28px var en påhittad siffra utan
+     motsvarighet i facit, inte en verklig marginal att bevara. */
+  .nh-pser.section-gap { padding-top: 0 !important; }
 }
 /* Desktop: uppmätt mörkgrön full-bleed-panel (rgb(30,39,22), padding
    54px 26px) — INTE samma ljusa bakgrund som resten av sidan. Fullbredd
@@ -133,6 +181,80 @@
   color: #342f27;
   text-align: center;
   line-height: 1.3;
+}
+/* KORRIGERING 2 (2026-09-02): föregående omgångs flex:1 1 0-krympning
+   (ovan i historiken, nu ersatt) skalade inte till riktig produktions-
+   data — facits fyra mockserier fick plats krympta på en rad, men våra
+   SEX riktiga, dynamiskt upptäckta serier klämdes ihop orimligt smått
+   och trunkerade aggressivt. Byggd om till en lätt CSS-driven
+   swipe-karusell i stället: fast ~facit-bredd (83px) per kort, ingen
+   flex-shrink, scroll-snap, dold scrollbar — samma mönster som
+   `-webkit-line-clamp` redan används på andra kort i denna fil.
+   Ordning/urval av serier orört, all riktig data (namn, produktantal)
+   orörd — bara CSS. `.nh-pser.section-gap{min-width:0;width:100%}`
+   (ovan, orörd) behålls så att KAROUSELLENS scroll håller sig innanför
+   viewporten i stället för att sektionen själv puttar ut den. */
+@media (max-width: 860px) {
+  .nh-pser .pser-row {
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nh-pser .pser-item {
+    flex: 0 0 83px;
+    width: 83px;
+    min-width: 83px;
+    scroll-snap-align: start;
+  }
+  .nh-pser .pser-avatar {
+    width: 83px;
+    height: 83px;
+    max-width: none;
+    aspect-ratio: auto;
+    margin: 0 auto;
+  }
+  /* KORRIGERING 3 (2026-09-02): rotorsak verifierad — Nyehandels
+     globala `span{font-size:16px!important;line-height:1.6!important}`
+     (samma native-mönster som redan dokumenterat för header/mikrotrust/
+     hero, se CLAUDE.md "Parity-workflow") slog ut dessa <span>-taggars
+     typografi eftersom våra regler saknade !important. Facits
+     font-family (system-ui-stacken, samma redan uppmätta värde som
+     resten av mobilkalibreringen) tillagd explicit — ingen egen regel
+     satte den innan, så den ärvdes tyst av sidans Nunito-standard. */
+  .nh-pser .pser-name {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 650 !important;
+    /* 1.2 (inte 1.3): facits rendrade enradshöjd mätt till exakt 15px
+       vid 12.5px font (15/12.5=1.2) — "normal" beräknas till detta i
+       facits egen miljö, inte 1.3 som antogs i föregående omgång. */
+    line-height: 1.2 !important;
+    letter-spacing: normal !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal;
+    /* KORRIGERING 4: min-height:32.5px reserverade tvårads-höjd även
+       för namn som ryms på en rad — konstlat mellanrum före
+       produktantalet. Namnet får fortfarande max 2 rader
+       (-webkit-line-clamp ovan), men höjden följer nu bara den
+       FAKTISKA texten; pser-n:s befintliga margin-top:1px (nedan,
+       redan facits uppmätta värde) räcker som avstånd. */
+    max-width: 100%;
+  }
+  .nh-pser .pser-n {
+    display: block;
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    letter-spacing: normal !important;
+    white-space: nowrap;
+    color: #9a9280;
+    margin-top: 1px;
+  }
 }
 @media (min-width: 861px) {
   .nh-pser .pser-row { gap: 24px; }
@@ -632,7 +754,15 @@
      kopia av bakgrundsbilden (background-image:inherit) UNDER den
      befintliga scrim-gradienten (::before) och textlagret (inner,
      z-index:2 ovan) — texten påverkas alltså inte av filtret. */
-  .nh-hero-v2 { position: relative; }
+  /* KORRIGERING 4 (2026-09-02): rotorsak verifierad live — facits
+     .hero är display:flex;align-items:stretch (outer), vilket gör att
+     .hero-inner STRÄCKS till kortets fulla höjd (236px av 238px) innan
+     dess egen justify-content:flex-end bottentänker innehållet. Vår
+     .nh-hero-v2 var display:block, så .nh-hero-v2__inner fick bara sin
+     EGEN innehållshöjd (223,6px) — ~14px kortare än kortet — och
+     bottentänkningen skedde alltså mot en för kort box, vilket flyttade
+     hero-texten och CTA-raden ~25px för högt upp i kortet. */
+  .nh-hero-v2 { display: flex !important; align-items: stretch !important; position: relative; }
   .nh-hero-v2::after {
     content: "";
     position: absolute;
@@ -695,6 +825,19 @@
     color: #fff8ed !important;
   }
   .nh-qfind-hero .hero-link:hover { border-color: #fffdf8 !important; }
+  /* KORRIGERING 4: rotorsak verifierad — .hero-link:s TEXT ligger i ett
+     inre <span> (.nh-hero-v2__btn--mobile, för mobil/desktop-text-togglen)
+     som Nyehandels globala span{font-size:16px!important;line-height:
+     1.6!important} träffar direkt, oavsett att knappens EGEN font-size
+     redan var korrekt 13px — barnet ärver inte förälderns typografi
+     automatiskt när ett natívt !important-träffar barnet direkt. Samma
+     mönster som redan löst för mikrotrust/seriefigurerna. */
+  .nh-qfind-hero .hero-link span {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+  }
 }
 
 /* ── qfind — "Vad söker du?"-chipsraden direkt under hero:n. Förenklad mot
