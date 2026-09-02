@@ -1320,3 +1320,70 @@ tidigare omgång, INTE del av "portning från facit") och kalibreras
 mot något annat facit (t.ex. "Om Hazey"-sidan för transparensblocket),
 eller (b) de lämnas som de är tills en riktig källa finns, eller (c)
 någon annan riktning.
+
+## RÄTTELSE: Paket B/C slutsats ovan var felaktig — sektionerna finns i facit (2026-09-02)
+
+Vilmer korrigerade: de återstående sektionerna ligger som DELADE
+`.page-home.home-extra`-sektioner i facits källa (index.html rad
+4482-4657, kommentar "Startsida — delade extra-sektioner" direkt efter
+`#mVp` stängs) — UTANFÖR både `#dVp` och `#mVp`, styrda av samma
+`.page-home`/`is-hidden-page`-logik, delade mellan desktop/mobil via
+responsiv CSS. Min tidigare sökning (bara innanför `#mVp .page-home`)
+missade dem helt. Verifierat nu: `#featuredProductsSection` (rad
+4508), `.trust-block`/"Så arbetar Hazey..." (rad 4554), `#kunskap` (rad
+4588), `.reviews-row`/"Verifierade omdömen" (rad 4623), `.signup-block`
+(rad 4644) finns alla, med egna mobila CSS-regler (rad 633-679 bas,
+1052-1080 `@media max-width:860px`).
+
+**Paket B och C genomförda.** Två systemfel hittade i SAMTLIGA fem
+sektioner, extraherat direkt ur facits källa:
+
+1. **Rubrikerna saknade `!important`** — samma native
+   `h1,h2,...{font-family:Roboto!important}`-mönster som redan lösts
+   överallt annars. Uppmätt: Roboto 20,8px/färg rgb(23,23,23) på alla
+   fyra `<h2>` (Bästsäljare/Kunskap/Omdömen/Nyhetsbrev — trustblock har
+   ingen egen rubrikkomponent, se nedan) i stället för Iowan Old Style
+   19px/grön. Rättat med `!important` på font-family/vikt/storlek/
+   line-height/letter-spacing/färg, samma facit-uppmätta värden som
+   används överallt annars i denna sprint.
+2. **ALLA FEM sektionsövergångar mätte exakt 0px** (inte bara
+   CSS-`gap` — `getBoundingClientRect()`), trots att varje sektion har
+   klassen `.section-gap`: ingen delad basregel för `.section-gap`
+   fanns någonsin i vår CSS, och varje sektions egen `margin:0 auto`
+   (för horisontell centrering) nollställde margin-bottom helt. Facit:
+   `.section-gap{margin-bottom:34px}` (bas), `{margin-bottom:22px}`
+   (mobil ≤860px, rad 1053) — mobilvärdet tillagt på `.nh-routes`
+   (Populära vägar, den enda ändringen i redan committade Paket A —
+   bara dess EGEN bottenmarginal, inget annat rört) +
+   `.nh-featured`/`.nh-trustblock`/`.nh-kunskap`/`.nh-reviews`/
+   `.nh-signup`. Verifierat: samtliga fem övergångar (Populära vägar→
+   Bästsäljare→transparens→kunskap→omdömen→nyhetsbrev) 22px, matchar
+   facit exakt.
+3. **`.home-extra .hx-head p{display:none}`** (facit, mobil) — dolde
+   underrubrikerna för Bästsäljare/Omdömen (som använder sec-head-
+   mönstret) på mobil. Kunskap/trustblock/signup har egna, INTE
+   hx-head-baserade brödtexter (facits `.lede`/`certClaim`/`p`) som
+   INTE döljs — substantiellt innehåll, inte en decorativ underrubrik.
+
+**Redan korrekt, ingen kod rörd:** Bästsäljare använder redan riktiga
+Nyehandel-produkter/priser/lagerstatus/länkar/köpknappar (verifierat
+med oskrivskyddad injektion mot skarpa sajten — CCELL M4, Canapuff CBN
+m.fl. riktiga produkter, inte facits demoprodukter). Recensioner
+använder redan bara det riktiga 4,7/5 Trustpilot-betyget + länk, ingen
+fabricerad citat-text — en dold, förberedd `.nh-reviews-grid` väntar på
+en riktig citat-källa (`data-status="ingen-verifierad-
+recensionskalla-an"`, dokumenterat gap, inte gissat). Nyhetsbrevs-
+formuläret är redan en uttryckligen dokumenterad platshållare
+(`data-nh-placeholder-form`, `preventDefault()`, ingen skenfunktion) —
+samma mönster som facits egen `onsubmit="return false"`.
+
+**`.nh-trustblock` är MEDVETET INTE facits "Så arbetar Hazey med
+innehåll och ursprung"-innehåll** — det är en tidigare, av Vilmer
+uttryckligen godkänd (2026-08-31) egen komponent (Trustpilot-betyg/
+Leveransgaranti/Diskret & spårbart/Sedan 2020, ett 2×2-ikonrutnät) på
+SAMMA POSITION i flödet som facits trust-block, men med annat innehåll
+— ett medvetet produktbeslut, inte en lucka. Endast dess
+sektionsmarginal (gap-fixen ovan) rörd, inget annat.
+
+Verifierat: ingen horisontell overflow (390px), desktop 1440px inte
+rört (alla fixar `@media max-width:860px`-scopade).

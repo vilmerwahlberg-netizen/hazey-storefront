@@ -1016,3 +1016,61 @@
 .nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
 .nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }
+
+/* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem
+   home-extra-sektioner (Bästsäljare/transparens/kunskap/omdömen/
+   nyhetsbrev), extraherat mot facits index.html rad 633-679/1052-1080
+   (delade .home-extra-sektioner, se STATUS.md för den tidigare
+   felaktiga slutsatsen att dessa saknades i facit — de ligger DELADE
+   utanför #dVp/#mVp, inte som barn till #mVp .page-home).
+   1) Rubrikerna (h2) saknade !important — samma native
+      h1,h2,...{font-family:Roboto!important}-mönster som redan lösts
+      överallt annars, uppmätt Roboto 20,8px i stället för Iowan Old
+      Style 19px på ALLA fyra rubriker (featured/kunskap/reviews/
+      signup — trustblock har ingen egen h2-rubrik, annan komponent).
+   2) .xxx.section-gap{margin:0 auto} nollställde margin-bottom helt
+      (ingen delad bas-regel för .section-gap fanns någonsin) — alla
+      fem sektionsövergångar mätte EXAKT 0px mellanrum
+      (getBoundingClientRect, inte bara CSS-gap). Facit: `.section-gap
+      {margin-bottom:34px}` (bas), `{margin-bottom:22px}` (mobil
+      ≤860px, rad 1053) — mobilvärdet tillagt här. */
+@media (max-width: 860px) {
+  .nh-featured .sec-head h2,
+  .nh-kunskap .guide-top h2,
+  .nh-reviews .sec-head h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 19px !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    color: #2c3620 !important;
+  }
+  .nh-signup-block h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 19px !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+  }
+  /* Facit: .home-extra .hx-head p{display:none} på mobil — beskrivningen
+     under rubriken visas bara på desktop. Gäller de sektioner som
+     använder sec-head-mönstret (featured/reviews); kunskap/trustblock/
+     signup har egna, INTE hx-head-baserade brödtexter (facits .lede/
+     certClaim/p) som INTE döljs — de är substantiellt innehåll, inte
+     en decorativ underrubrik. */
+  .nh-featured .sec-head p,
+  .nh-reviews .sec-head p {
+    display: none;
+  }
+  /* .nh-routes ingår här bara för att stänga SISTA kvarvarande 0px-gapet
+     (Populära vägar → Bästsäljare, en av de uttryckligen efterfrågade
+     övergångarna) — INGEN annan ändring av det redan godkända Paket A. */
+  .nh-routes.section-gap,
+  .nh-featured.section-gap,
+  .nh-trustblock.section-gap,
+  .nh-kunskap.section-gap,
+  .nh-reviews.section-gap,
+  .nh-signup.section-gap {
+    margin-bottom: 22px !important;
+  }
+}
