@@ -914,19 +914,45 @@
 .nh-routes .route-sub { font-size: 11px; color: rgba(255,255,255,.82); margin: 3px 0 0; }
 .nh-routes .route:not(.has-photo) .route-sub { color: #9a9280; }
 
-/* ── Konsoliderat trust-block (ersätter gamla dubblerade ikonraden) ── */
+/* ── Trust-block, PAKET B (2026-09-02) — portat mot facits riktiga
+   .trust-block-struktur (index.html rad 658-664): enkolumns kort,
+   rubrik+ingress överst, en bock-lista under. Ersätter den tidigare
+   2×2-ikonrutan (samma information, ny layout — se js/18b-
+   homepage-v2.js nhTrustBlockHtml för rotorsak/motivering). ── */
 .nh-trustblock.section-gap { padding: 24px; max-width: 1100px; margin: 0 auto; }
-.nh-tb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (min-width: 861px) { .nh-tb-grid { grid-template-columns: repeat(4, 1fr); } }
-.nh-tb-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 14px; border: 1px solid #ebe1d1; border-radius: 14px; background: #fff;
-  text-decoration: none; transition: border-color 200ms cubic-bezier(.22,.61,.36,1);
+.nh-tb-inner {
+  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
+  border: 1px solid #ebe1d1; border-radius: 18px; padding: 20px;
 }
-.nh-tb-item:hover { border-color: #b8865a; }
-.nh-tb-item svg { width: 20px; height: 20px; flex: none; color: #96683f; margin-top: 1px; }
-.nh-tb-item b { display: block; font-size: 13px; color: #2c3620; }
-.nh-tb-item span span { display: block; font-size: 11px; color: #9a9280; margin-top: 2px; }
+.nh-tb-inner h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important; font-size: 19px !important; line-height: normal !important;
+  letter-spacing: normal !important; color: #2c3620 !important; margin: 0 0 8px;
+}
+.nh-tb-inner > p {
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12.5px !important; font-weight: 400 !important; line-height: 1.5 !important;
+  letter-spacing: normal !important; color: #6b6355; margin: 0 0 14px; max-width: 480px;
+}
+.nh-tb-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12.5px !important; font-weight: 650 !important; letter-spacing: normal !important;
+  color: #96683f; text-decoration: none;
+  margin-bottom: 16px;
+}
+.nh-tb-link svg { width: 16px; height: 16px; flex: none; }
+.nh-tb-link:hover { color: #b8865a; }
+.nh-tb-points { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 861px) { .nh-tb-points { grid-template-columns: 1fr 1fr; } }
+.nh-tb-points li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12.5px !important; font-weight: 400 !important; letter-spacing: normal !important;
+  color: #342f27; background: #fff;
+  border: 1px solid #ebe1d1; border-radius: 10px; padding: 10px 12px;
+}
+.nh-tb-points svg { width: 15px; height: 15px; flex: none; color: #6f7a52; margin-top: 1px; }
 
 /* ── "Snabb koll: vad är vad?" — .guide/.guide-grid/.g-card (samma
    komponent som Aura-guiden delar när den ev. slås på), .guide-dark är en
@@ -1016,6 +1042,33 @@
 .nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
 .nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }
+/* PAKET B (2026-09-02, andra försöket): facit visar Bästsäljare som en
+   VÅGRÄT SVEPBAR KARUSELL på mobil (index.html .hx-scroll, rad
+   647-649: display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+   card flex:0 0 210px) — inte ett fast 2×2-rutnät. Konverterat till
+   samma mönster, kortbredd kalibrerad så ~2 riktiga produktkort syns
+   plus en skymt av nästa (uppmätt mot 390px, inte facits 210px rakt av
+   eftersom våra riktiga .product-card har annan proportion än facits
+   demokort). Riktiga produktkort/priser/lagerstatus/köpknappar
+   (.product-card, redan kopplat mot Nyehandels data) helt orörda —
+   bara layoutet av wrapper-diven ändrat. */
+@media (max-width: 860px) {
+  .nh-featured-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nh-featured-row::-webkit-scrollbar { display: none; }
+  .nh-featured-row > div {
+    flex: 0 0 46%;
+    min-width: 158px;
+    scroll-snap-align: start;
+  }
+}
 
 /* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem
    home-extra-sektioner (Bästsäljare/transparens/kunskap/omdömen/

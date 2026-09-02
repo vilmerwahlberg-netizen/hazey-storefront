@@ -242,21 +242,34 @@
        tillförlitlig datakälla finns i produktkortens DOM för att räkna fram
        certifikattäckning (ingen data-lab-liknande attribut hittad). Skrivs
        inte in för hand — se öppen datafråga i STATUS.md. ── */
+    /* PAKET B (2026-09-02, andra försöket): facits .trust-block är INTE
+       en 2×2-ikonruta (det var vår tidigare, av Vilmer godkända EGNA
+       tolkning 2026-08-31) — facit har en enkolumns struktur: rubrik +
+       ingress + en 4-radig bock-lista (index.html rad 4554-4571).
+       Portat till facits LAYOUT, men med VÅRA redan godkända, riktiga
+       fakta (Trustpilot-betyg/leveransgaranti/diskretion/grundår) i
+       stället för facits egna påståenden om batch-certifikat och
+       "certifikattäckning just nu: X%" — den senare siffran är redan
+       tidigare konstaterad OMÖJLIG att bakas med riktig data (ingen
+       tillförlitlig källa i produktkortens DOM, se STATUS.md/CLAUDE.md)
+       och skrivs därför INTE in, varken gissad eller fabricerad.
+       Trustpilot-länken (redan riktig, redan använd) ersätter facits
+       egen /transparens-länk eftersom ingen sådan sida finns riktigt
+       byggd än — hittar aldrig på en URL. */
     function nhTrustBlockHtml() {
       return '<section class="nh-trustblock section-gap">'
-        + '  <div class="nh-tb-grid">'
-        + '    <a class="nh-tb-item nh-reveal" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-        + '      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.8 5.7 6.3.9-4.6 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L2.9 9.1l6.3-.9L12 2.5z"/></svg>'
-        + '      <span><b>4,7/5 på Trustpilot</b><span>Läs verifierade omdömen</span></span></a>'
-        + '    <a class="nh-tb-item nh-reveal" href="/sv/page/kop-och-leveransvillkor">'
-        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg>'
-        + '      <span><b>Leveransgaranti</b><span>Försvinner paketet skickar vi ett nytt</span></span></a>'
-        + '    <a class="nh-tb-item nh-reveal" href="/sv/page/kop-och-leveransvillkor">'
-        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3 20 6v6c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V6l8-3z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>'
-        + '      <span><b>Diskret &amp; spårbart</b><span>Neutral avsändare, spårbar leverans</span></span></a>'
-        + '    <a class="nh-tb-item nh-reveal" href="/sv/page/kontakt">'
-        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg>'
-        + '      <span><b>Sedan 2020</b><span>Svenskt bolag, skickas från Sverige</span></span></a>'
+        + '  <div class="nh-tb-inner">'
+        + '    <h2>Så arbetar Hazey med innehåll och ursprung</h2>'
+        + '    <p>Vi är öppna med vad som finns i våra produkter och var de kommer ifrån — inga effektlöften, bara verifierbara fakta.</p>'
+        + '    <a class="nh-tb-link" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
+        + '      4,7/5 på Trustpilot — läs verifierade omdömen</a>'
+        + '    <ul class="nh-tb-points">'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Spårbar leverans från Sverige</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Svenskt bolag, sedan 2020</li>'
+        + '    </ul>'
         + '  </div>'
         + '</section>';
     }

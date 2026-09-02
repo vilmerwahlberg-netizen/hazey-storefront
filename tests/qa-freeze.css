@@ -22,6 +22,21 @@
   transform: none !important;
 }
 
+/* facit's OWN equivalent (index.html .pre-reveal, opacity:0 until
+   IntersectionObserver adds .in-view) was missing here entirely — this
+   left every .page-home.home-extra section (Bästsäljare, trust-block,
+   kunskap, omdömen, nyhetsbrev) invisible (opacity:0) in every facit
+   capture this test harness ever took, even though the DOM/layout was
+   present and a real scrolling user sees them normally. Confirmed
+   2026-09-02: loading facit directly (no injectFreeze) shows these
+   sections with class "pre-reveal" but NOT "in-view", opacity:0 by
+   default per facit's own CSS (index.html rad 2778-2783). Same
+   settled-end-state fix as .nh-reveal above. */
+.pre-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 html {
   scrollbar-width: none !important;
 }

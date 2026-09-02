@@ -1387,3 +1387,59 @@ sektionsmarginal (gap-fixen ovan) rörd, inget annat.
 
 Verifierat: ingen horisontell overflow (390px), desktop 1440px inte
 rört (alla fixar `@media max-width:860px`-scopade).
+
+## RÄTTELSE 2: rapporten "genomförda" ovan var för tidig — facit-fånget var trasigt (2026-09-02)
+
+Vilmer: jämförelsen som ledde till förra postens slutsats använde ett
+facit-läge där `.page-home.home-extra` var osynligt (`opacity:0`),
+inte dolt av routing. Verifierat konkret: facits egen `.pre-reveal`-
+klass (`index.html` rad 2778-2783, `opacity:0` tills en
+IntersectionObserver lägger till `.in-view`) hade INGEN motsvarighet i
+`tests/qa-freeze.css` — den filen frös bara VÅR EGEN `.nh-reveal`, inte
+facits `.pre-reveal`. Varje facit-skärmdump den här sessionen tagit har
+alltså visat sektionerna osynliga trots att de renderas normalt för en
+riktig scrollande användare. Fixat: `.pre-reveal{opacity:1!important;
+transform:none!important}` tillagt i `qa-freeze.css` (test-only-fil,
+aldrig klistrad in i produktion). Verifierat efteråt: samtliga fem
+sektioner `opacity:1` i en färsk facit-capture.
+
+**Med korrekt facit synligt genomfördes Paket B/C på riktigt** (inte
+bara typografi/gap som förra, otillräckliga passet):
+
+- **Bästsäljare i lager**: facit är en VÅGRÄT SVEPBAR KARUSELL
+  (`.hx-scroll`, index.html rad 647-649), inte ett fast rutnät. Vårt
+  `.nh-featured-row` var `display:grid`. Konverterat till
+  `display:flex;overflow-x:auto;scroll-snap-type:x proximity` med
+  kortbredd kalibrerad (46%/min 158px) så ~2 riktiga produktkort syns
+  plus en skymt av nästa — mätt, `scrollWidth 668 > clientWidth 342`,
+  bekräftat svepbar. Riktiga produktkort/priser/lagerstatus/köpknappar
+  (`.product-card`, redan Nyehandel-data) helt orörda.
+- **"Så arbetar Hazey med innehåll och ursprung"**: den gamla
+  `.nh-tb-grid`-ikonrutan (2×2, en tidigare egen tolkning) ersatt med
+  facits riktiga enkolumns-struktur (rubrik+ingress+länk+4-radig
+  bocklista, index.html rad 658-664). Innehållet är INTE facits egna
+  påståenden om batch-certifikat/"certifikattäckning X%" (redan
+  konstaterat sakna en tillförlitlig datakälla, se CLAUDE.md/
+  STATUS.md) — i stället våra redan Vilmer-godkända riktiga fakta
+  (Trustpilot 4,7/5 länkat, leveransgaranti, diskretion, grundår 2020)
+  i facits layout. Ingen fabricerad procentsats, ingen gissad
+  transparens-URL (behöll den riktiga Trustpilot-länken i stället för
+  en påhittad `/transparens`-sida som inte finns byggd).
+- **Kunskap/Reviews/Newsletter**: redan korrekta sen förra passet
+  (mörk 2×2-guide-grid, enbart riktigt 4,7/5-betyg utan fabricerade
+  citat, dokumenterad nyhetsbrevs-platshållare) — oförändrade,
+  verifierade fortsatt korrekta.
+
+**Verifierat:** alla fyra sektionsövergångar (Bästsäljare→transparens→
+kunskap→omdömen→nyhetsbrev) fortsatt 22px (facits mobila
+`.section-gap`-värde, från förra passet, opåverkat av denna omgångs
+strukturella ändringar). Ingen horisontell overflow. Inga
+dubbletter (varje sektion `document.querySelectorAll` = 1).
+
+**Kunde inte visuellt jämföra mot den användarbifogade referensbilden**
+(`~/Downloads/localhost_8765_...png`) — filsystemsbehörighet nekade
+läsning av den katalogen i denna session. Verifieringen bygger i
+stället på en egen, nyligen genererad, bekräftat korrekt facit-capture
+(`tests/results/_hero-blueprint/sprint-facit-390-full-FIXED.png`,
+samtliga fem sektioner `opacity:1` bekräftat via `getComputedStyle`)
+plus källkodsextraktion, inte gissning.
