@@ -1443,3 +1443,67 @@ stället på en egen, nyligen genererad, bekräftat korrekt facit-capture
 (`tests/results/_hero-blueprint/sprint-facit-390-full-FIXED.png`,
 samtliga fem sektioner `opacity:1` bekräftat via `getComputedStyle`)
 plus källkodsextraktion, inte gissning.
+
+## Sista mobilpasset: Bästsäljare → sidans slut (2026-09-03)
+
+**1. Systemfel hittat och rättat:** samtliga fem home-extra-sektioner
+(Bästsäljare/trust-block/kunskap/reviews/signup) hade `padding:...24px`
+(kunskap: 16px) sido-padding, oskopat delat med desktop. Facits riktiga
+mobila sidoinset är **14px**, uppmätt live på `.trust-block` (left
+14px, width 362px vid 390px) — samma värde som redan etablerat för
+Populära serier/vägar. Detta var den konkreta förklaringen till att
+transparensblocket satt fel: 24px i stället för 14px. Rättat på alla
+fem, mobil-scopat, desktop orört.
+
+**2. "Snabb koll: vad är vad?" — rotorsakat, INTE en bugg.**
+`nhBuildKunskapFromRealContent()` läser riktiga `<h2>`-rubriker som
+matchar `/^vad är/i` ur den riktiga sidans befintliga SEO-textblock.
+Verifierat direkt mot skarpa sajten: endast TRE sådana rubriker finns
+där i verkligheten — "Vad är THCA?", "Vad är THCNM?" (medvetet
+uteslutet, juridik ej klar) och "Vad är Magic Sauce?". **"Vad är
+THCB/THCBA?" och "Vad är Nano-11?" existerar inte som riktigt innehåll
+på sajten ännu** — facits fjärde/fjärde kort är dess egen mockdata.
+Klassificerat som **dynamiskt innehåll/verklig databegränsning**, inte
+fyllt med påhittad text. 2×2-rutnätet (`grid-template-columns:1fr 1fr`)
+renderar redan korrekt med 2 verkliga kort (fyller översta raden helt,
+ingen trasig/tom rutnätslucka).
+
+**3. Bästsäljare-karusellen** verifierad mot kraven: `#nh-featured-row`
+computed `display:flex` ✓, `scrollWidth 668 > clientWidth 342` ✓
+(svepbar), riktiga produktkort/priser/köpknappar helt orörda. Facits
+egna kort är 210px breda (1,7 synliga vid 390px); vårt kort är 158px
+(≈2,2 synliga) — en medveten, redan tidigare vald kalibrering (våra
+riktiga produktkort har annan naturlig proportion än facits demokort),
+inte ändrad denna omgång.
+
+**4. Reviews/Newsletter:** redan korrekt kalibrerade (vit kort/grön
+kort, facits färgtoken `#2c3620` exakt, radie/padding i linje med
+facits `var(--r-lg)`/28px). Ingen kodändring.
+
+**5. Verifierat:** alla fyra sektionsövergångar fortsatt 22px, ingen
+overflow, inga dubbletter (`querySelectorAll` = 1 för alla fyra nya
+sektionerna).
+
+**6. SEO-inventering (skrivskyddad, inget flyttat/dolt/omskrivet):**
+sju block hittade direkt efter newsletter-kortet i den riktiga,
+orörda DOM:en, alla i normalt dokumentflöde (ingen lazy-load, ingen
+klick-krävande visning):
+
+| # | Komponent (stabil selector) | Rubrik/ämne | Interna länkar | Dublett/unikt | Rekommendation |
+|---|---|---|---|---|---|
+| 1 | `.template-components__html-editor` (1:a) | Kort textsnutt (60 tecken, ej läst i detalj denna omgång) | — | Okänt, ej granskat | Granska i separat SEO-pass |
+| 2 | `.template-components__html-editor` (2:a) | "Köp mer – Betala mindre"-kampanjbanner | 5+ riktiga produktlänkar (CCELL M4, Canapuff CBN m.fl.) | Verkar unikt, korsförsäljning | Behåll på startsidan (redan fungerande cross-sell) |
+| 3 | `.template-components__text-editor` | "THCA med flera – Svenska lagliga cannabinoider" | — | Käll-block för Kunskap-kortens THCA-text (delvis flyttat/dolt, se `nhBuildKunskapFromRealContent`) | Flytta till landningssida i SEO-migreringen — huvudartikeltext |
+| 4 | `.template-components__columns` (1:a) | Dekorativt/bild, tom text | 1 `javascript:void(0)`-länk (sannolikt UI-widget, ej riktig destination) | — | Granska separat |
+| 5 | `.template-components__columns` (2:a) | "Vad är THCA?"/"Vad är THCNM?"/"Vad är Magic Sauce?" (THCA+Magic Sauce redan `display:none`, flyttade till Kunskap-korten) | "Alla artiklar" → `/sv/categories/alla-produkter` | THCNM-delen ENDA kvarvarande synliga — juridiskt pausad, rörs inte | Behåll tills SEO-migrering; THCNM-delen kräver särskild juridisk hantering |
+| 6 | `.template-components__html-editor` (3:e) | "Till Butiken"-knapp | → `/bestsellers` | — | Behåll |
+| 7 | `.template-components__html-editor` (4:e) | "Vanliga frågor" (1177 tecken, FAQ-liknande innehåll) | Ej granskat om strukturerad FAQ-data (schema.org) finns | Sannolikt unikt | Kandidat för tillgängligt accordion i SEO-migreringen — inte gjort nu |
+
+**Ej hunnet inom tidsbudgeten:** fullständig footer-kalibrering (visuell
+finjustering mot facits mobila footersystem) — footerns POSITION är
+korrekt (efter allt SEO-innehåll, oförändrad ordning, inget flyttat),
+men dess DETALJERADE visuella kalibrering (rubriker/länkar/kolumner/
+mellanrum mot facits exakta mått) är INTE gjord denna omgång, flaggas
+för en separat, kommande runda. Block #1/#4 i SEO-inventeringen ovan
+är bara ytligt granskade (komponentnamn/textlängd), inte djupanalyserade
+(sökintention/strukturerad data) — flaggat, inte gissat.

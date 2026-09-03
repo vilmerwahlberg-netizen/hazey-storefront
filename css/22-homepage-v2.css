@@ -1126,4 +1126,19 @@
   .nh-signup.section-gap {
     margin-bottom: 22px !important;
   }
+  /* Sista mobilpasset (2026-09-03): samtliga fem home-extra-sektioner
+     hade 24px (eller 16px för kunskap) sido-padding, oskopat — facits
+     riktiga mobila sidoinset är 14px (uppmätt live på .trust-block:
+     left 14px/width 362px vid 390px viewport, samma värde som redan
+     etablerat för Populära serier/vägar). Förklarade transparens-
+     blockets fel-position (24px i stället för 14px). Rättat på alla
+     fem, mobil-scopat — desktop-paddingen (24px, oskopad ovan) orörd. */
+  .nh-featured.section-gap,
+  .nh-trustblock.section-gap,
+  .nh-kunskap.section-gap,
+  .nh-reviews.section-gap,
+  .nh-signup.section-gap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
 }
