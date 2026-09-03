@@ -1508,6 +1508,68 @@ för en separat, kommande runda. Block #1/#4 i SEO-inventeringen ovan
 är bara ytligt granskade (komponentnamn/textlängd), inte djupanalyserade
 (sökintention/strukturerad data) — flaggat, inte gissat.
 
+## Footer mobilpass — GENOMFÖRT och verifierat (2026-09-03, uppföljningsomgång)
+
+Färdigställde det som lämnades öppet i föregående runda (nedan), utan ny
+research — samma facit-underlag återanvändes direkt.
+
+**Klart denna omgång** (`js/08-footer.js` + `css/20-footer-v2...`, allt
+mobil-scopat `@media max-width:860px`, desktop helt orört):
+- Trust-/leveransraden: ny `.nh-footer__proof-row` (2×2 ikon-kort, samma
+  SVG-path-data som header-mikrotrusten) infogad direkt efter disclaimern,
+  ANVÄNDER footerns egna redan befintliga 5 riktiga påståenden (Säker
+  betalning/Diskret frakt/Skickas från Sverige/Labbtestade produkter,
+  18+ utelämnad — redan täckt av disclaimern ovanför) i stället för att
+  duplicera transparensblockets Trustpilot-/leveransgaranti-fakta. Den
+  gamla platta `.nh-footer__trust`-raden döljs på mobil men behålls
+  oförändrad och synlig på desktop (samma DOM-nod, ingen borttagning).
+- Huvudfooterns bakgrund: facits uppmätta `radial-gradient(...) +
+  linear-gradient(145deg,#27331e,#1e2716,#303b24)` i stället för den
+  gamla platta `rgb(35,35,29)`.
+- Kolumnrubriker `#f1bf87`/10.5px versal, länkar `rgba(255,255,255,.88)`/
+  11.5px, tagline `rgba(248,237,223,.72)`/12.5px — facits mobila värden.
+- Nyhetsbrevsfältet omstylat till facits tvådelade rundade rektangel
+  (ljus input + orange "Skriv upp mig"-knapp) i stället för den runda
+  pill+ikon-knappen. **Formulärets funktion (`preventDefault`,
+  testahazey10-meddelandet) helt orörd** — bara utseende.
+- Botten-raden: facits `rgba(244,233,220,.12)` border / `.55` text,
+  kolumn-stack på mobil.
+- 600px-lucka rättad: grid-mallen tvingas till en enda kolumn för HELA
+  390-860px-spannet (den gamla `@media max-width:560px`-brytpunkten
+  lämnade 600px i en tvåkolumns tablet-layout mitt i mobilspannet).
+- Länkkolumnernas 2×2-parning (facit) implementerades INTE — vår
+  3-kolumns-stack (Kundservice/Utforska/Populära kategorier) behölls,
+  samma redan godkända princip som tidigare ("annat men funktionellt
+  innehållsupplägg, inga länkar tas bort").
+- `#cdfc9f` (nyhetsbrevets "10%"-badge) lämnades **oförändrad** — det är
+  ett genuint sitewide brand-token (se `css/14`s kommentar "Brand
+  tokens: #323d25 #4faa25 #cdfc9f..."), inte en MMSports-krock som
+  disclaimer-/kontaktlänksfärgerna i förra omgången.
+
+**Viktig sidoupptäckt under felsökning (inte en kodbugg i det här
+repot):** `hazeyse.nyehandel.se`s Kodläge-Head-fält innehåller redan en
+STOR, direkt inklistrad, INAKTUELL kopia av hazey.css+js (en `<style>`
+på ~265 KB, ingen `proof-row` i den) — separat från `blocks/loader.html`s
+jsDelivr-pekare (`Oliverforss8/hazey-storefront@v1.0.3`). Den skapar en
+egen gammal `.nh-footer` INNAN någon testinjicerad kod hinner köra, vilket
+gjorde tidiga skärmdumpar i den här omgången missvisande (verktygets
+`initFooter()`-guard `if (document.querySelector(".nh-footer")) return`
+såg den gamla noden och avbröt). Alla slutgiltiga skärmdumpar i den här
+omgången tar bort den gamla inklistrade `<style>`+`.nh-footer` INNANFÖR
+testfliken innan ny kod injiceras (rör ingenting på skarpa sajten). Värt
+att Vilmer känner till att Head-fältet har gammalt inklistrat innehåll
+liggande — se `CLAUDE.md`s säkerhetsavsnitt om Kodläge.
+
+**Verifierat:** 390/430/600/1440px, 0px horisontell overflow på alla,
+18 footer-länkar oförändrade (ingen borttagen), newsletter-formulärets
+DOM/handler orörd, desktop 1440px pixelidentisk med före ändringen,
+footerns position (efter SEO-innehållet) och kategori-/produktsidornas
+footer opåverkade.
+
+---
+
+### (Föregående, nu inaktuell delrapport, bevarad som historik)
+
 ## Footer mobilpass — DELVIS genomfört, tidsbudget nådd (2026-09-03)
 
 **Konkret bugg hittat och fixat:** den övre disclaimer-remsan

@@ -568,3 +568,184 @@
     color: #f8eddf !important;
   }
 }
+
+/* ===== Footer mobilpass, fortsättning (2026-09-03) — trust-rad, ===== */
+/* ===== huvudfooter, botten. Allt scopat till @media max-width:860px ===== */
+/* ===== (samma brytpunkt som resten av mobilkalibreringen den här   ===== */
+/* ===== sessionen), så 390/430/600px alla får samma behandling och  ===== */
+/* ===== desktop (oskopade regler ovan i denna fil + css/05/css/16)  ===== */
+/* ===== förblir helt orörd.                                         ===== */
+
+/* .nh-footer__proof-row (nytt, mobil 2×2-kort) döljs som DEFAULT (ingen
+   media-query — gäller alltid om inget annat säger emot) så att den
+   aldrig syns på desktop, som fortsatt visar den ursprungliga
+   .nh-footer__trust-raden i botten helt oförändrad. */
+.nh-footer__proof-row { display: none; }
+
+@media (max-width: 860px) {
+  /* Facit: .footer-trust ligger ÖVERST i footern, 2×2-grid, ikon-kort
+     (index.html rad 692-700/742). Ersätter den gamla platta
+     .nh-footer__trust-raden i botten PÅ MOBIL — den finns kvar i
+     DOM:en och visas på desktop precis som förut. */
+  .nh-footer__proof-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px 10px;
+    padding: 15px 16px;
+    border-bottom: 1px solid rgba(244,233,220,.12);
+  }
+  .nh-footer__trust { display: none !important; }
+
+  .nh-footer__proof {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    min-width: 0;
+  }
+  .nh-footer__proof svg {
+    width: 18px; height: 18px; flex: 0 0 auto;
+    color: #e9a258; margin-top: 1px;
+  }
+  .nh-footer__proof b {
+    display: block; color: #fff; font-size: 11.5px; line-height: 1.25;
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 700 !important;
+  }
+  .nh-footer__proof span span {
+    display: block; margin-top: 2px; color: rgba(248,237,223,.68);
+    font-size: 9.5px; line-height: 1.4;
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 400 !important;
+  }
+
+  /* Huvudfooterns mörkt olivgröna gradient (facit, index.html rad
+     686-690) — vår footer visade en flat nästan-svart ton
+     (rgb(35,35,29), css/16) i stället. */
+  .nh-footer {
+    margin-top: 28px !important;
+    background:
+      radial-gradient(circle at 82% 12%, rgba(184,134,90,.18), transparent 27%),
+      linear-gradient(145deg, #27331e 0%, #1e2716 58%, #303b24 100%) !important;
+    border-top: 1px solid rgba(184,134,90,.34) !important;
+  }
+
+  .nh-footer__inner { padding: 0 16px !important; }
+  /* Facit: .footer-main{padding:27px 16px 22px;gap:26px} mobil — vårt
+     grid (redan enkolumnigt ≤560px) tvingas till samma brytpunkt hela
+     mobil-intervallet (390-860px, inte bara ≤560px) så 600px inte
+     visar en tvåkolumns tablet-layout mitt i mobilspannet. */
+  .nh-footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    padding: 27px 0 22px !important;
+    text-align: left !important;
+  }
+  .nh-footer__brand-col,
+  .nh-footer__nl-col {
+    grid-column: auto !important;
+  }
+
+  /* Logo/ingress — facit .footer-brand>p: 12.5px/1.65/rgba(248,237,223,.72). */
+  .nh-footer__brand-col .nh-footer__tagline {
+    max-width: 100% !important;
+    margin: 11px 0 0 !important;
+    font-size: 12.5px !important;
+    line-height: 1.65 !important;
+    color: rgba(248,237,223,.72) !important;
+  }
+
+  /* Kolumnrubriker — facit .footer-col h2: 10.5px versal, spårad,
+     #f1bf87, margin-bottom 10px (mobil). */
+  .nh-footer__col h3,
+  .nh-footer__nl-col h3 {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: .11em !important;
+    text-transform: uppercase !important;
+    color: #f1bf87 !important;
+    margin: 2px 0 10px !important;
+  }
+  /* Länkar — facit .footer-col a: 11,5px (mobil)/1.35/rgba(255,255,255,.88). */
+  .nh-footer__col a {
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+    color: rgba(255,255,255,.88) !important;
+    padding: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .nh-footer__col a:hover {
+    color: #f2a459 !important;
+  }
+  /* OBS: facit parar länkkolumnerna 2x2 (.footer-links{grid-template-
+     columns:repeat(2,...)}) — vår footer behåller sin egna, redan
+     godkända 3-kolumns-stack (Kundservice/Utforska/Populära kategorier
+     i separata rader) i stället för att replikera facits exakta
+     kolumnparning. Accepterad strukturskillnad (samma princip som i
+     tidigare omgångar: annat men funktionellt innehållsupplägg,
+     inga länkar tas bort). */
+
+  /* Nyhetsbrev — facit .footer-signup: tvådelad rundad rektangel
+     (input rundad vänster, knapp rundad höger), inte en enda pill med
+     en cirkulär ikonknapp. Formulärets FUNKTION (preventDefault +
+     testahazey10-meddelandet) rörs inte, bara utseendet. */
+  .nh-footer__nl-col > p {
+    font-size: 12.5px !important;
+    line-height: 1.6 !important;
+    color: rgba(248,237,223,.72) !important;
+    max-width: 100% !important;
+  }
+  .nh-footer__nl-form {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    gap: 0 !important;
+  }
+  .nh-footer__nl-form input {
+    min-height: 46px !important;
+    height: 46px !important;
+    padding: 0 14px !important;
+    font-size: 13px !important;
+    color: #23231d !important;
+    background: #fffaf2 !important;
+    border: 1px solid rgba(228,209,191,.42) !important;
+    border-right: 0 !important;
+    border-radius: 10px 0 0 10px !important;
+  }
+  .nh-footer__nl-form button {
+    width: auto !important;
+    min-height: 46px !important;
+    height: 46px !important;
+    padding: 0 17px !important;
+    border-radius: 0 10px 10px 0 !important;
+    background: #d97425 !important;
+    font-size: 0 !important;
+  }
+  .nh-footer__nl-form button::after {
+    content: "Skriv upp mig";
+    font-size: 12.5px;
+    font-weight: 800;
+  }
+  .nh-footer__nl-form button:hover:not(:disabled) {
+    background: #e98229 !important;
+  }
+
+  /* Botten-rad — facit .footer-bottom: kolumn-stack, border-top,
+     rgba(244,233,220,.55) text, 10.5px (redan flex-direction:column
+     via css/20 ≤560px-blocket, men här säkrat för hela 390-860px och
+     med facits exakta text-/border-toner). */
+  .nh-footer__bottom {
+    border-top: 1px solid rgba(244,233,220,.12) !important;
+    padding: 16px 16px calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .nh-footer__bottom .nh-footer__pay-label,
+  .nh-footer__copy {
+    color: rgba(248,237,223,.55) !important;
+    font-size: 10.5px !important;
+    text-align: left !important;
+  }
+}

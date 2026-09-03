@@ -132,6 +132,25 @@
         '<div class="nh-footer__disclaimer">' +
         "<p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p>" +
         "</div>" +
+        /* Mobil trust-/leveransrad (facits .footer-trust, index.html rad
+           5222-5240 — 2×2 ikon-kort). ANVÄNDER DE REDAN BEFINTLIGA fem
+           riktiga påståendena nedanför (samma text som .nh-footer__trust
+           tidigare visade som platta etiketter i botten) — INTE en kopia
+           av transparensblockets Trustpilot/leveransgaranti-fakta (skulle
+           dubblera samma data på två ställen i footern). 18+ utelämnad
+           här (redan täckt av disclaimer-remsan ovan, ingen anledning att
+           upprepa den). Ikonerna återanvänder EXAKT samma path-data som
+           redan används i header-mikrotrusten (js/18a-header-v2.js) för
+           visuell konsekvens — inte nya, gissade ikoner. Bara mobil-
+           scopad CSS (se css/20-footer-v2...) flyttar/omformar denna
+           befintliga nod — desktop-layouten (`.nh-footer__trust` i botten,
+           oförändrad markup-position) rörs inte. */
+        '<div class="nh-footer__proof-row">' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span><b>Säker betalning</b><span>Kort, Swish och faktura</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg><span><b>Diskret frakt</b><span>Neutral avsändare</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><span><b>Skickas från Sverige</b><span>Svenskt bolag, sedan 2020</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Labbtestade produkter</b><span>Analyscertifikat där de finns</span></span></div>' +
+        "</div>" +
         '<div class="nh-footer__inner">' +
         '<div class="nh-footer__grid">' +
         '<div class="nh-footer__brand-col">' +
