@@ -1508,6 +1508,131 @@ för en separat, kommande runda. Block #1/#4 i SEO-inventeringen ovan
 är bara ytligt granskade (komponentnamn/textlängd), inte djupanalyserade
 (sökintention/strukturerad data) — flaggat, inte gissat.
 
+## Footer mobil-CSS — arkitektur-/cleanup-runda (2026-09-03, ren refaktor)
+
+Rent arkitektur-/städarbete på `css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`,
+ingen ny design. Utgångspunkt: commit `2957073` (mobilfootern klar,
+se rapporten strax nedan). Mål: ta bort beroendet av två sent
+tillagda, till filens slut tillhängda override-block (181+24 rader)
+genom att integrera deras regler i komponentens befintliga struktur,
+utan att ändra något renderat resultat.
+
+**Metod:** en getComputedStyle-baserad före/efter-diff (temporärt
+skript, ej committat) mätte ~28 selektorer × upp till 10 egenskaper
+vardera vid 390/430/600/1440px, både före och efter refaktorn, mot den
+riktiga skarpa sajten (med den redan kända gamla inklistrade
+Head-fält-koden borttagen ur testfliken innan varje mätning — se
+föregående rapport). Alla avvikelser undersöktes tills 0 kvarstod,
+förutom två som visade sig vara ren mätbrus (samma exakta två
+egenskaper skilde sig även mellan två körningar av EXAKT samma,
+orörda kod — sannolikt en font-swap-timingrace på den skarpa sidan,
+inte en regression).
+
+**Kartläggning fann tre redan existerande, tidigare odokumenterade
+döda/motstridiga deklarationer** (fanns redan i den skeppade koden i
+`2957073`, inte introducerade denna runda — upptäckta för att
+mobilblockets getComputedStyle-facit avslöjade att flera av mina egna
+"kalibrerade" värden aldrig faktiskt vann):
+1. `.nh-footer__col h3`/`.nh-footer__nl-col h3` mobil font-size/
+   letter-spacing har ALDRIG vunnit — den äldre "neutralisera 4-kolumns-
+   footern"-regeln `.nh-footer__grid .nh-footer__col h3{font-size:14px
+   !important}` (rad 26-30, specificitet 0,2,1) är starkare än
+   mobilregelns 0,1,1, oavsett källordning. Rubrikerna renderas alltså
+   14px (inte 10.5px) på mobil — och har gjort det sedan `2957073`.
+   Döda deklarationer borttagna (färg/margin, som FAKTISKT vinner,
+   ligger kvar).
+2. `.nh-footer__proof-row span span` (trust-radens brödtext) fick
+   ALDRIG font-size:9.5px/line-height:1.4 — Nyehandels egna
+   span-taggnivå-reset (`font-size:16px!important` osv, samma
+   mönster som redan dokumenterat i "Parity-workflow" i `CLAUDE.md`)
+   vinner eftersom mina deklarationer saknade `!important`. Text visas
+   alltså 16px, inte 9.5px, sedan `2957073`. Döda rader borttagna.
+3. `.nh-footer__copy` (copyright-raden) har ALDRIG kunnat styras av
+   NÅGON av css/20:s regler för den — varken den gamla basregeln, det
+   gamla ≤560px-blocket eller mitt nya ≤860px-block. En kvarlevande
+   selektor i `css/05` (`.nh-footer__bottom p{text-align:center
+   !important;font-size:18px!important}`, specificitet 0,1,1) från
+   den ÄLDRE 4-kolumns-footern matchar fortfarande vårt `<p
+   class="nh-footer__copy">` och vinner på ren specificitet. Detta
+   gäller BÅDE mobil och desktop — inte en mobil-specifik bugg. `css/05`
+   rördes inte (utanför denna omgångs filomfång, skulle även ändra
+   desktop) — `.nh-footer__copy` behöver en mer specifik selektor (eller
+   att css/05:s legacy-regel äntligen tas bort) i en framtida, egen
+   omgång om den ska gå att styra. Dokumenterat i en kodkommentar på
+   plats i `css/20...` samt här.
+
+**Genomfört:**
+- De två sent tillagda ≤860px-blocken (från förra rapporten) och det
+  gamla ≤560px-blocket slogs samman till EN plats direkt efter
+  tablet-blocket (≤1080px), i komponentens naturliga ordning
+  (yttre ram → disclaimer → trust/proof-rad → inner/grid → varumärke →
+  länkkolumner → nyhetsbrev → kontakt → botten-rad) — inte längre
+  utspritt efter orelaterat PDP-innehåll i filens slut.
+- Två äkta ≤560px-specifika egenskaper (`.nh-footer__contact{align-
+  items:flex-start}` och `.nh-footer__bottom .nh-footer__pay
+  {justify-content:center}` — verifierat att de skiljer sig mellan
+  430px och 600px i den redan skeppade koden) fick ett eget litet
+  ≤560px-block i stället för att felaktigt breddas till 860px, vilket
+  hade ändrat det renderade resultatet vid 600px.
+- Under arbetet upptäcktes och rättades två egna nya buggar innan
+  commit: en glömd oskopad `.nh-footer__proof-row{display:none}`-
+  grundregel (utan den läckte trust-raden igenom som ett trasigt
+  fullbredds-block på DESKTOP) och en av misstag borttagen `!important`
+  på nyhetsbrevfältets `border-radius` (kolliderade med en
+  `!important`-märkt legacy-regel i `css/05`). Båda fångades av
+  före/efter-diffen innan commit, inga syns i slutresultatet.
+
+**Rader i filen:** 751 → 729 (netto -22 rader; borttaget var betydligt
+mer än så, men konsolideringen lade till förklarande kommentarer om de
+tre nyupptäckta döda/motstridiga fallen ovan).
+
+**`!important` i mobilfooterblocket:** 90 → 59 (-31, -34%). Kvarvarande
+59 är samtliga verifierade via getComputedStyle/CSSOM-regelträff mot
+konkreta, konkurrerande `!important`-regler som annars vinner:
+- css/20:s EGNA oskopade basregler (padding/grid-template-columns/
+  font-size/color m.fl. på `.nh-footer__inner`, `.nh-footer__grid`,
+  `.nh-footer__brand-col .nh-footer__tagline`, `.nh-footer__col h3`,
+  `.nh-footer__col a(:hover)`, `.nh-footer__nl-col > p`, `.nh-footer__
+  nl-form(+input+button)`, `.nh-footer__contact a(:hover)`, `.nh-footer
+  __bottom`, `.nh-footer__bottom .nh-footer__pay-label`) — alla dessa
+  satte samma egenskap med `!important` redan innan denna omgång.
+- css/20:s tablet-block (`@media max-width:1080px`, `!important` på
+  `.nh-footer__grid`/`.nh-footer__brand-col,.nh-footer__nl-col{grid-
+  column}`/`.nh-footer__nl-form{max-width}`).
+- `css/05`:s kvarlevande 4-kolumns-footer-selektorer (`!important` på
+  `.nh-footer__disclaimer p`, `.nh-footer__nl-form input{border-radius}`
+  — den senare upptäcktes just genom att jag av misstag tog bort dess
+  `!important` och diff-verktyget slog larm).
+- Nyehandels egna tagg-nivå-resets (span/p font-family/weight, se
+  `CLAUDE.md`s "Parity-workflow").
+
+Borttaget `!important` (31 st) satt på egenskaper utan NÅGON
+konkurrerande deklaration vid någon specificitet i css/05, css/16
+eller css/20 (verifierat, inte gissat) — bl.a. `.nh-footer__grid`:s nu
+borttagna `text-align:left` (redundant, ärvs redan oskopat från rad
+21-25), `.nh-footer__nl-form{margin}`, flera nya `.nh-footer__nl-form
+input/button`-egenskaper (`min-height` m.fl.), `.nh-footer__bottom
+{flex-direction/text-align}`, `.nh-footer__bottom .nh-footer__pay-
+label{text-align}`, samt de två ≤560px-egenskaperna.
+
+**Filer ändrade:** endast `css/20-footer-v2-2026-07-06-mmsports-
+layout-5-kolumner-bo.css` (och detta STATUS.md-avsnitt). `js/08-
+footer.js` rördes inte (redan korrekt separerad komponent). `css/05`/
+`css/16` lästes fullständigt men rördes inte (skulle påverkat desktop
+och/eller andra sidor utanför omfång).
+
+**Verifiering:** getComputedStyle-diff (~28 selektorer) vid 390/430/
+600/1440px = 0 verkliga skillnader (2 kvarvarande är bevisad mätbrus,
+se metod ovan). 0px horisontell overflow vid alla fyra bredder. 18
+footer-länkar oförändrade. Nyhetsbrevsformulärets DOM/id/submit-
+handler orörd. Desktop 1440px visuellt identisk (skärmdump jämförd).
+Kategori-/produktsidornas footer opåverkade (ingen ändring utanför
+css/20). Facitens 2×2-länkkolumnpar är fortsatt en dokumenterad,
+INTE dold eller självständigt godkänd, kvarvarande avvikelse — footern
+kallas alltså fortfarande inte 1:1 mot facit.
+
+---
+
 ## Footer mobilpass — GENOMFÖRT och verifierat (2026-09-03, uppföljningsomgång)
 
 Färdigställde det som lämnades öppet i föregående runda (nedan), utan ny
