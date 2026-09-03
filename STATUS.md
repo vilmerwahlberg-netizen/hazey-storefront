@@ -1507,3 +1507,46 @@ mellanrum mot facits exakta mått) är INTE gjord denna omgång, flaggas
 för en separat, kommande runda. Block #1/#4 i SEO-inventeringen ovan
 är bara ytligt granskade (komponentnamn/textlängd), inte djupanalyserade
 (sökintention/strukturerad data) — flaggat, inte gissat.
+
+## Footer mobilpass — DELVIS genomfört, tidsbudget nådd (2026-09-03)
+
+**Konkret bugg hittat och fixat:** den övre disclaimer-remsan
+(`.nh-footer__disclaimer`, "Du måste vara minst 18 år...") hade
+`background:#bce691` — en ljus limegrön MMSports-arvsfärg (`css/05`)
+som krockade rakt av mot facits varma mörkolivgröna footerpalett.
+Facit har INGEN separat ljus disclaimer-remsa alls — motsvarande
+18+-text sitter i botten-radens redan mörka ton (`.footer-bottom`,
+index.html rad 5291-5294). Rättat mobil-scopat (`css/20-footer-v2...`,
+nytt `@media max-width:860px`-block längst ner i filen): mörk
+bakgrund + ljus text i stället för limegrönt. Kontaktlänkarnas
+(Hej@/Butik@hazey.se) matchande limegröna färg (`#4faa25`) rättad till
+facits varma terrakotta (`#f2a459`, redan använd i kolumnlänkarnas
+hover-ton). Desktop-reglerna i `css/05` orörda (ny override bara i
+mobil-media-queryn).
+
+**INTE hunnet inom 25-minutersbudgeten** (huvuddelen av tiden gick åt
+att extrahera facits fullständiga footer-CSS/markup — 5 kolumn-
+grupper, trust-rad, botten-rad, uppmätta mobila värden vid rad
+685-760/5222-5296 i index.html — samt diagnosticera den nuvarande
+footerns struktur, byggd av en ÄLDRE fil `js/08-footer.js` +
+`css/20-footer-v2...` med ett annat kolumnupplägg än facit, redan
+tidigare konstaterat okej att behålla strukturellt annorlunda):
+- Trust-/leveransraden (facit: 4 länkade proof-cards överst, ikon+
+  rubrik+text) — vår nuvarande `.nh-footer__trust` (enkla textlabels,
+  placerad i BOTTEN i stället för TOPPEN) är INTE omkalibrerad denna
+  omgång.
+- Huvudfooterns exakta bakgrundsgradient (facit: `radial-gradient(...)
+  ,linear-gradient(145deg,#27331e,#1e2716,#303b24)`) — vår
+  `rgb(35,35,29)` är en nära men INTE identisk mörk ton, inte bytt.
+  Verifierat "nära nog" via skärmdump, inte pixel-mätt mot facit.
+  Newsletter-input/knapp, kolumnrubrikers exakta typsnitt/spacing,
+  botten-radens layout — INGET av detta mätt eller kalibrerat denna
+  omgång.
+
+**Ingen länk togs bort, ingen ny destination hittades på, newsletter-
+formulärets nuvarande (icke-riktigt-kopplade) status orörd, footerns
+position (efter SEO-innehållet) och kategori-/produktsidornas footer
+opåverkade.** Rekommenderar en egen, fullständig footer-runda med hela
+tidsbudgeten dedikerad dit — denna omgångs research (facits fullständiga
+mobila CSS/markup, redan extraherad och citerad ovan) återanvänds direkt
+utan att behöva göras om.

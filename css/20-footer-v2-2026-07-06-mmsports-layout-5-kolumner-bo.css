@@ -541,3 +541,30 @@
     display: none !important;
   }
 }
+
+/* ===== Sista mobilpasset (2026-09-03): footer-kalibrering mot facit ===== */
+@media (max-width: 860px) {
+  /* Rotorsak: css/05 sätter .nh-footer__disclaimer{background:#bce691}
+     (ljus lime-grön) — facit har INGEN separat ljus disclaimer-remsa,
+     den juridiska 18+-texten sitter i botten-radens mörka ton
+     (.footer-bottom, index.html rad 5291-5294). Mobil-scopad rättning:
+     samma mörka bas-ton som resten av footern i stället för att
+     krocka mot facits varma olivgröna palett. Desktop (css/05, oskopad)
+     helt orörd. */
+  .nh-footer__disclaimer {
+    background: #1e2716 !important;
+  }
+  .nh-footer__disclaimer p {
+    color: rgba(248,237,223,.72) !important;
+  }
+  /* Kontaktlänkarna (Hej@/Butik@hazey.se) använde samma klargröna
+     MMSports-palett (#4faa25) som disclaimer-remsan — facits
+     motsvarande länkfärg är den varma terrakottan (#f2a459/#e9a258,
+     redan använd i footer-kolumnernas hover-ton). */
+  .nh-footer__contact a {
+    color: #f2a459 !important;
+  }
+  .nh-footer__contact a:hover {
+    color: #f8eddf !important;
+  }
+}
