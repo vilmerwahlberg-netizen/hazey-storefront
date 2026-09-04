@@ -16,6 +16,17 @@
      tagg. Ingen integrity-hash här eftersom filen ändras hela tiden under
      utveckling — en pinnad hash skulle bryta laddningen vid varje ny commit.
 
+     Sätter ÄVEN `window.NH_ASSET_BASE` mot samma `dev`-gren via samma
+     ocachade raw.githack.com, explicit, innan hazey.min.js laddar — annars
+     faller js/18b-homepage-v2.js tillbaka till produktionens PINNADE
+     release-tagg för bilder (t.ex. hero-fotot) via jsDelivr, vilket skulle
+     blanda en okachad dev-kodversion med en gammal, cachad release-bild.
+     Medvetet SAMMA värdtjänst (raw.githack.com, inte jsDelivr@dev) som
+     scriptet ovan — jsDelivrs branch-referenser cachar fortfarande upp
+     till ett antal timmar, vilket skulle motverka hela poängen med denna
+     dev-loader. Håll den här raden i synk med URL:en nedan (samma gren,
+     `dev`), inte med produktionens pinnade tagg i loader.html.
+
      Arbetsflöde:
        1. Redigera filer i css/ eller js/ lokalt
        2. node build.js  (bygger hazey.css + hazey.min.js på nytt)
@@ -24,6 +35,7 @@
      ============================================================================ -->
 <script>
 (function () {
+  window.NH_ASSET_BASE = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/assets/";
   var s = document.createElement("script");
   s.src = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/hazey.min.js";
   document.head.appendChild(s);

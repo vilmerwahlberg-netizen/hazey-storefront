@@ -37,14 +37,23 @@
        — inte längre den nativa nyehandel-bilden, som visade fel motiv
        (en cannabisplanta i stället för facitens västkust-lifestyle-foto).
        `NH_ASSET_BASE` är konfigurerbar (window.NH_ASSET_BASE) i stället
-       för hårdkodad — produktion faller tillbaka till jsDelivr@dev om
-       inget annat satts. INGEN localhost-URL i källkoden. QA/parity-
-       testet överskriver ändå bilden med en pixelexakt data:-URL läst
-       direkt från disk (`lockImplImages`/LOCKED_IMAGES) — opåverkat av
-       vilken bas som används här. */
+       för hårdkodad. Produktionsfallbacken pekar på SAMMA pinnade,
+       evigt cachade jsDelivr-tagg som produktionsloadern
+       (`blocks/loader.html`) — inte den ocachade `@dev`-grenen, som
+       tidigare gjorde assets och kod versionsosynkade sinsemellan (JS/
+       CSS pinnat vid en tagg, bilden alltid "senaste dev" — kunde tysta
+       driva isär vid en framtida dev-ändring). Byt versionen HÄR
+       tillsammans med `blocks/loader.html`s tagg vid varje release,
+       aldrig ensam. `blocks/loader-dev.html` (dev/preview, pekar
+       uttryckligen mot `@dev`) sätter i stället `window.NH_ASSET_BASE`
+       explicit innan den här filen laddar — se den filens egen kommentar
+       — så denna fallback används bara i produktion. INGEN localhost-URL
+       i källkoden. QA/parity-testet överskriver ändå bilden med en
+       pixelexakt data:-URL läst direkt från disk (`lockImplImages`/
+       LOCKED_IMAGES) — opåverkat av vilken bas som används här. */
     var NH_ASSET_BASE =
       (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
-      "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@dev/assets/";
+      "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
 
     function nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";

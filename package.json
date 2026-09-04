@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node build.js",
     "parity:update": "PARITY_MODE=update playwright test",
+    "parity:update-impl": "PARITY_MODE=update-impl playwright test",
     "parity": "playwright test",
     "parity:report": "playwright show-report tests/results/html-report"
   },

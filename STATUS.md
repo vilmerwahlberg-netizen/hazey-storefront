@@ -5,6 +5,143 @@ Klart:
   + boot-anrop tillagt i `js/19-core-close.js`. `node build.js` kört, inga fel.
 - Ny devDependency: `playwright` (för `hdr_inspect2.mjs` och `preview.mjs`, se nedan) — kräver riktig Chrome installerad, laddar inga egna browser-binärer.
 
+## Release candidate-förberedelse — de 8 fallerande parity-testerna utredda (2026-09-04)
+
+Uppdrag: utred `npm run parity`s 8 underkända sektionstester individuellt
+inför en release candidate till Nyehandels inaktiva tema 6, utan att göra
+designändringar eller skriva över facit blint.
+
+### Testinfrastrukturbugg hittad och fixad (påverkade FÖRE detta INTE footer korrekt)
+
+`tests/parity-sections.mjs`s `gotoImpl()` injicerade aldrig något
+motmedel mot den redan kända, tidigare dokumenterade stale-Head-content-
+buggen (se tidigare footer-omgångars rapport ovan) — en gammal, direkt
+inklistrad hazey.css/js-ögonblicksbild i Nyehandels Head-fält skapar sin
+EGEN `.nh-footer` innan testets färska build hinner köra, vilket gör att
+`js/08-footer.js`s `initFooter()`-guard (`if
+(document.querySelector(".nh-footer")) return;`) ser en redan existerande
+footer och hoppar över HELA footer-uppbygget. Footer-testet mätte alltså
+en helt föråldrad, orelaterad footer (390×1781px, före denna fix) som
+inte har något med det faktiska, granskade footer-arbetet att göra.
+Bekräftat via en riktad diagnostik (`hasNhFooterAlready:true` innan
+scriptet ens körs). De ÖVRIGA 11 sektionerna byggs via
+`initHomepageV2()`, som använder en annan skyddsmekanism (en
+JS-egenskap på det NATIVA slideshow-elementet, inte ett `document.
+querySelector`-DOM-test) som INTE var förbelagd av den gamla
+ögonblicksbilden (`slideshowMarkerAlready:false`, bekräftat) — deras
+testresultat var redan korrekta.
+
+**Fixat** (`tests/parity-sections.mjs`, `gotoImpl()`): samma
+skrivskyddade städning som redan användes i footer-omgångarnas manuella
+testskript (tar bort en existerande `.nh-footer`, återställer
+`.page-footer`s synlighet, tar bort `<style>`-taggar som innehåller
+"nh-footer"/"--primary-color", blockerar den gamla Oliverforss8-
+jsDelivr-routen) läggs nu in INNAN varje testkörnings egen `addStyleTag`/
+`addScriptTag`. Ingenting skrivs till Nyehandel — allt sker inuti
+testflikens egen, engångs-sida. Efter fixen: footer 390×1518px (inte
+längre 1781px) — en verklig, väsentlig skillnad som bevisar att testet
+tidigare mätte fel sak.
+
+### Klassificering, sektion för sektion
+
+Alla facit-goldens är från EN batch (2026-09-01 20:59) — facit-filen
+(statisk prototyp) har inte ändrats sen dess, så goldens representerar
+fortfarande korrekt facit. Skillnaden mot implementationen beror i
+samtliga 8 fall på GRANSKAT OCH GODKÄNT omdesign-arbete gjort EFTER
+2026-09-01, inte på att facit själv förändrats.
+
+1. **Populära serier** (diff 36%, storlek OK): matchar den godkända
+   swep-karusellen (`STATUS.md` "Mobil Populära serier GODKÄND
+   2026-09-02"). Enda strukturella skillnaden mot facit: produktantalet
+   under varje serienamn (".pser-n") är TOMT i testet — inte en bugg,
+   utan en direkt konsekvens av att `freezeLiveCategoryFetches()`
+   medvetet blockerar den fetch som annars fyller i antalet (samma typ
+   av live-datafetch-determinism-åtgärd som redan finns för Bästsäljare,
+   bara utan en motsvarande normaliseringsfixtur här). **Klass: redan
+   godkänd redesign, plus en separat testmetodslucka** (saknad
+   `.pser-n`-normalisering) — inte en implementationsregression.
+2. **Populära vägar** (diff 87%, höjd +137px över facits tolerans):
+   matchar Paket A (`STATUS.md` "redan tidigare godkända tillägg").
+   Strukturen (4 formatkort + Naturidentiskt/Semisyntetiskt) är i det
+   närmaste pixel-identisk med facit vid visuell granskning — höjd-
+   skillnaden kommer från kumulativ padding/typografi över 6 kort, inte
+   ett enskilt fel. **Klass: redan godkänd redesign.**
+3. **Bästsäljare i lager** (diff 44%, storlek OK): matchar den godkända
+   karusellkonverteringen (`STATUS.md` "RÄTTELSE 2" — `.hx-scroll`-
+   motsvarighet, `display:flex;overflow-x:auto`). QA-normaliserat
+   innehåll (`QA_PRODUCT`) renderas korrekt. Kvarvarande diff är en äkta,
+   redan dokumenterad skillnad mellan facits `.card`- och vår riktiga
+   `.product-card`-komponent (se kommentaren i `SECTIONS`). **Klass:
+   redan godkänd redesign.**
+4. **Transparens/trustblock** (diff 20%, bredd +28px över tolerans):
+   matchar exakt det Vilmer-godkända (2026-08-31) innehållet (Trustpilot
+   4,7/5, Leveransgaranti, Diskret paket, Spårbar leverans, Sedan 2020)
+   — uttryckligen dokumenterat som "medvetet produktbeslut, inte en
+   lucka" i `STATUS.md`. **Klass: redan godkänd redesign.**
+5. **Snabb koll: vad är vad?** (diff 56%, höjd -135px under facits
+   tolerans): visar de 2 verkliga ämnena (THCA, Magic Sauce) — matchar
+   det tidigare root-orsakade fyndet att bara 2 riktiga "Vad är X?"-
+   rubriker finns i verkligt innehåll (THCB/THCBA/Nano-11 existerar inte
+   som riktigt innehåll). **Klass: redan godkänd redesign (dynamiskt
+   innehåll/verklig databegränsning, inte en design att korrigera).**
+6. **Verifierade omdömen** (diff 57%, höjd -243px under facits
+   tolerans): visar bara det riktiga 4,7/5 Trustpilot-betyget + länk,
+   INGA fabricerade citat — matchar ordagrant kommentaren i `SECTIONS`
+   (`parity-sections.mjs`): "real, documented, currently-expected
+   divergence". Toleransen (`maxDiffRatio:0.3`) räckte ändå inte för den
+   faktiska (57%) avvikelsen — se rekommendation nedan. **Klass: redan
+   godkänd redesign, tolerans i `SECTIONS` är inte kalibrerad för den.**
+7. **Nyhetsbrev** (diff 60%, höjd +144px över facits tolerans): innehåll
+   och platshållarfunktion matchar dokumentationen exakt (`data-nh-
+   placeholder-form`), MEN layouten (fält+knapp staplade vertikalt i
+   stället för facits sida-vid-sida-rad) hittades INTE uttryckligen
+   godkänd i `STATUS.md` — trolig orsak: `.nh-signup-form input{flex:1 1
+   200px}` + knappens bredd får inte plats inom 390px tillgänglig
+   bredd, tvingar `flex-wrap:wrap` att stapla. **Klass: varken
+   regression (inget har blivit sämre) eller föråldrad baseline (facit
+   oförändrad) — en tidigare obehandlad, aldrig explicit granskad
+   implementationsdetalj. Inte rättad denna omgång (designändring, utanför
+   uppdraget) — flaggad för en framtida, egen granskningsrunda.**
+8. **Truststrip och footer** (diff efter fix fortsatt stort, höjd
+   +579px över facits tolerans EFTER testinfrastrukturfixen ovan):
+   footerns extra höjd förklaras av det redan dokumenterade, medvetna
+   beslutet att BEHÅLLA en 3-kolumners länkstapel i stället för att
+   replikera facits 2×2-parning (se `css/20-footer-v2...css`s kommentar
+   "OBS: facit parar länkkolumnerna 2×2... Accepterad strukturskillnad").
+   Tre staplade grupper à 5-6 länkar var tar naturligt mycket mer
+   vertikalt utrymme än facits två rader om två. **Klass: redan godkänd
+   redesign** (efter att testinfrastrukturbuggen ovan rättades — före
+   rättningen var resultatet obrukbart/missvisande, inte en äkta
+   klassificeringsfråga).
+
+**Slutsats:** samtliga 8 är REDAN GODKÄND REDESIGN (medvetna produkt-
+/databeslut, inte föråldrade goldens och inte regressioner) — förutom
+Nyhetsbrevets stapel-layout (#7) som är en genuint obehandlad, aldrig
+granskad detalj (varken godkänd eller en regression), och Populära
+serier (#1) som delvis beror på en separat testmetodslucka (saknad
+produktantal-normalisering). `tests/golden/` (facit) är INTE föråldrad
+i sig — facit-filen är oförändrad — men facit-parity är, efter dessa
+granskade beslut, inte längre rätt mätsticka för dessa 8 sektioner.
+
+### Ny, separat implementation-regression-baseline
+
+Facit-materialet i `tests/golden/` är HELT oförändrat — inget skrivet
+över. En ny, tydligt separat baseline tillagd i stället:
+`tests/golden-impl/` (samma PNG+JSON-struktur, men ett låst ögonblick av
+den NU GRANSKADE, GODKÄNDA implementationen — inte facit). Nytt
+`PARITY_MODE=update-impl`-läge (`npm run parity:update-impl`) skriver
+den, körs bara manuellt efter en uttrycklig granskning (aldrig
+automatiskt). `npm run parity` (compare-läge) kör nu BÅDA
+jämförelserna sida vid sida: den befintliga facit-parity-loopen
+(oförändrad, förväntas fortsatt legitimt faila för de sektioner som
+listas ovan) OCH en ny, snäv implementation-regression-loop (tolerans
+6px/10px, max 3% pixelavvikelse — SKA alltid vara grönt; ett fail där
+är en riktig regression sedan senaste `update-impl`, oavsett vad facit-
+jämförelsen visar). Se `tests/README.md` "Två separata baselines" för
+den fullständiga förklaringen av varför de två aldrig ska blandas ihop.
+
+---
+
 ## Hur headern faktiskt fungerar (viktigt att förstå innan ni ändrar den)
 
 Nyehandel renderar redan en RIKTIG nav-meny (en enda platt "Alla produkter"-megameny,

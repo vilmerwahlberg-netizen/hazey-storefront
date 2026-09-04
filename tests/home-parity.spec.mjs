@@ -3,13 +3,29 @@
 // hazey.min.js, skrivskyddad, samma metod som preview.mjs). Sparar
 // ingenting till Nyehandel admin.
 //
-// Två lägen, styrda av PARITY_MODE:
+// TRE lägen, styrda av PARITY_MODE:
 //   PARITY_MODE=update  -> npm run parity:update
-//     Besöker ENDAST facit, skriver/uppdaterar tests/golden/<key>.png + .json.
-//     Kräver att den lokala facit-servern (localhost:8765) körs.
+//     Besöker ENDAST facit, skriver/uppdaterar tests/golden/<key>.png + .json
+//     ("facit-parity"-facit — hur nära är implementationen facit). Kräver
+//     att den lokala facit-servern (localhost:8765) körs.
+//   PARITY_MODE=update-impl  -> npm run parity:update-impl
+//     Besöker ENDAST implementationen, skriver/uppdaterar
+//     tests/golden-impl/<key>.png + .json ("implementation-regression"-
+//     facit — ett låst ögonblick av den NU GRANSKADE/GODKÄNDA
+//     implementationen, oberoende av hur nära den är facit). Körs manuellt
+//     efter att en sektions redesign uttryckligen godkänts (se STATUS.md),
+//     ALDRIG per automatik/blint — det här är den fil man medvetet
+//     "stämplar" som det nya normala, inte något ett test skriver över åt
+//     dig. Kräver INTE facit-servern.
 //   PARITY_MODE=compare (default) -> npm run parity
-//     Besöker ENDAST implementationen, jämför varje sektion mot det LÅSTA
-//     facit i tests/golden/. Kräver INTE att facit-servern körs.
+//     Besöker ENDAST implementationen, kör BÅDA jämförelserna: varje
+//     sektion mot facit (tests/golden/, samma som förut — förväntas
+//     legitimt FAILA för sektioner med ett dokumenterat, godkänt
+//     produktbeslut att avvika från facit, se SECTIONS i
+//     parity-sections.mjs) OCH mot implementationens egen låsta baseline
+//     (tests/golden-impl/, snäv tolerans — SKA alltid vara grönt; ett FAIL
+//     här är en riktig regression sedan senaste godkända läge, oavsett vad
+//     facit-jämförelsen säger). Kräver INTE att facit-servern körs.
 import { test, expect } from "@playwright/test";
 import fs from "fs";
 import path from "path";
@@ -18,12 +34,15 @@ import {
   VIEWPORT,
   DEVICE_SCALE_FACTOR,
   GOLDEN_DIR,
+  GOLDEN_IMPL_DIR,
   gotoFacit,
   gotoImpl,
   hasHorizontalOverflow,
   measureTops,
   goldenPngPath,
   goldenMetaPath,
+  implGoldenPngPath,
+  implGoldenMetaPath,
   resultDir,
   PACKAGE_GEOMETRY_WIDTHS,
   PACKAGE_GEOMETRY_GAP_TOLERANCE_PX,
@@ -32,7 +51,21 @@ import {
 } from "./parity-sections.mjs";
 import { diffPngBuffers, writePngFile, readPng } from "./pixel-diff.mjs";
 
-const MODE = process.env.PARITY_MODE === "update" ? "update" : "compare";
+const MODE =
+  process.env.PARITY_MODE === "update"
+    ? "update"
+    : process.env.PARITY_MODE === "update-impl"
+      ? "update-impl"
+      : "compare";
+
+// Implementation-regression tolerance — deliberately tight. This compares
+// the live implementation against ITS OWN last-locked-approved state, not
+// against facit, so there's no legitimate reason for a big gap: a real
+// content/layout change since the lock IS the thing this test exists to
+// catch. Small allowance only for sub-pixel/font-rendering/live-data-
+// timing jitter, not for design drift.
+const IMPL_REGRESSION_SIZE_TOLERANCE_PX = { w: 6, h: 10 };
+const IMPL_REGRESSION_MAX_DIFF_RATIO = 0.03;
 
 // Deliberately NOT test.describe.configure({mode:"serial"}) — serial mode
 // skips every remaining test after the first failure, which would hide the
@@ -138,7 +171,48 @@ if (MODE === "update") {
       JSON.stringify({ capturedAt: new Date().toISOString(), widths: results }, null, 2)
     );
   });
+} else if (MODE === "update-impl") {
+  // Locks the CURRENT, reviewed/approved implementation state as the new
+  // "did anything change" reference — see the PARITY_MODE docstring at the
+  // top of this file. Only ever run this deliberately, after a section's
+  // divergence from facit has been explicitly reviewed (STATUS.md entry),
+  // never as a reflexive "make the test pass" action.
+  fs.mkdirSync(GOLDEN_IMPL_DIR, { recursive: true });
+
+  for (const section of SECTIONS) {
+    test(`impl-baseline: ${section.order}. ${section.label}`, async () => {
+      const loc = page.locator(section.implSelector);
+      await expect(loc, `Implementation-selektorn "${section.implSelector}" för "${section.label}" saknas`).toHaveCount(1);
+
+      const box = await loc.boundingBox();
+      const buf = await loc.screenshot();
+      writePngFile(readPng(buf), implGoldenPngPath(section.key));
+      fs.writeFileSync(
+        implGoldenMetaPath(section.key),
+        JSON.stringify(
+          {
+            key: section.key,
+            label: section.label,
+            implSelector: section.implSelector,
+            width: box.width,
+            height: box.height,
+            top: box.y,
+            capturedAt: new Date().toISOString(),
+          },
+          null,
+          2
+        )
+      );
+      await test.info().attach(`${section.key}-impl-baseline.png`, { body: buf, contentType: "image/png" });
+    });
+  }
 } else {
+  // --- A) facit-parity: implementation vs. tests/golden/ (facit) ---
+  // Legitimately expected to FAIL for any section with a documented,
+  // approved product decision to diverge from facit (real data instead of
+  // facit's mock content, a deliberately different component — see the
+  // per-section comments in SECTIONS, parity-sections.mjs). A fail here
+  // alone is NOT a regression signal; cross-check the B) block below.
   for (const section of SECTIONS) {
     test(`${section.order}. ${section.label}`, async () => {
       const loc = page.locator(section.implSelector);
@@ -210,6 +284,73 @@ if (MODE === "update") {
       if (section.pixelDiff !== false) {
         expect(diffOk, `Pixelavvikelse ${(diffRatio * 100).toFixed(1)}% överskrider tröskeln ${(section.maxDiffRatio * 100).toFixed(0)}%`).toBe(true);
       }
+    });
+  }
+
+  // --- B) implementation-regression: live implementation vs.
+  // tests/golden-impl/ (the implementation's OWN last-locked-approved
+  // state). This is the test that SHOULD always be green — a fail here
+  // means something changed since the last "npm run parity:update-impl",
+  // independent of whether that section matches facit at all. Skips
+  // cleanly (does not fail the suite) for any section that has no
+  // golden-impl baseline yet — that's a "not yet locked" state, not a
+  // regression, and is reported as such rather than silently passing.
+  for (const section of SECTIONS) {
+    test(`regression: ${section.order}. ${section.label}`, async () => {
+      const loc = page.locator(section.implSelector);
+      await expect(loc, `Implementation-selektorn "${section.implSelector}" för "${section.label}" saknas`).toHaveCount(1);
+
+      const metaPath = implGoldenMetaPath(section.key);
+      const goldenPath = implGoldenPngPath(section.key);
+      test.skip(
+        !fs.existsSync(metaPath) || !fs.existsSync(goldenPath),
+        `Ingen implementation-baseline låst än för "${section.label}" (${section.key}) — kör "npm run parity:update-impl" efter granskning, inte per automatik.`
+      );
+
+      const golden = JSON.parse(fs.readFileSync(metaPath, "utf8"));
+      const goldenBuf = fs.readFileSync(goldenPath);
+
+      const box = await loc.boundingBox();
+      const actualBuf = await loc.screenshot();
+
+      const dir = resultDir(`${section.key}-regression`);
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(path.join(dir, "expected.png"), goldenBuf);
+      fs.writeFileSync(path.join(dir, "actual.png"), actualBuf);
+
+      const widthDiff = Math.abs(box.width - golden.width);
+      const heightDiff = Math.abs(box.height - golden.height);
+      const sizeOk =
+        widthDiff <= IMPL_REGRESSION_SIZE_TOLERANCE_PX.w && heightDiff <= IMPL_REGRESSION_SIZE_TOLERANCE_PX.h;
+
+      const diff = diffPngBuffers(goldenBuf, actualBuf, { threshold: 0.1 });
+      const diffOk = diff.diffRatio <= IMPL_REGRESSION_MAX_DIFF_RATIO;
+      writePngFile(diff.diffPng, path.join(dir, "diff.png"));
+
+      const summary = {
+        key: section.key,
+        label: section.label,
+        expected: { width: golden.width, height: golden.height },
+        actual: { width: box.width, height: box.height },
+        sizeTolerancePx: IMPL_REGRESSION_SIZE_TOLERANCE_PX,
+        sizeOk,
+        diffRatio: diff.diffRatio,
+        maxDiffRatio: IMPL_REGRESSION_MAX_DIFF_RATIO,
+        diffOk,
+        verdict: sizeOk && diffOk ? "PASS" : "FAIL",
+      };
+      fs.writeFileSync(path.join(dir, "summary.json"), JSON.stringify(summary, null, 2));
+
+      console.log(
+        `[regression] ${summary.verdict} ${section.key} — expected ${golden.width.toFixed(0)}x${golden.height.toFixed(0)} ` +
+          `actual ${box.width.toFixed(0)}x${box.height.toFixed(0)} (tol w:${IMPL_REGRESSION_SIZE_TOLERANCE_PX.w} h:${IMPL_REGRESSION_SIZE_TOLERANCE_PX.h}) ` +
+          `diff ${(diff.diffRatio * 100).toFixed(1)}% (max ${(IMPL_REGRESSION_MAX_DIFF_RATIO * 100).toFixed(0)}%)`
+      );
+
+      await test.info().attach(`${section.key}-regression-summary.json`, { body: JSON.stringify(summary, null, 2), contentType: "application/json" });
+
+      expect(sizeOk, `REGRESSION mot senast godkända läge: förväntad ${golden.width.toFixed(0)}x${golden.height.toFixed(0)}, faktisk ${box.width.toFixed(0)}x${box.height.toFixed(0)} (tolerans w:${IMPL_REGRESSION_SIZE_TOLERANCE_PX.w}px h:${IMPL_REGRESSION_SIZE_TOLERANCE_PX.h}px)`).toBe(true);
+      expect(diffOk, `REGRESSION mot senast godkända läge: pixelavvikelse ${(diff.diffRatio * 100).toFixed(1)}% överskrider tröskeln ${(IMPL_REGRESSION_MAX_DIFF_RATIO * 100).toFixed(0)}%`).toBe(true);
     });
   }
 

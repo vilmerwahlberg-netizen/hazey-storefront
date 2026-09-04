@@ -1545,6 +1545,25 @@
         '<div class="nh-footer__disclaimer">' +
         "<p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p>" +
         "</div>" +
+        /* Mobil trust-/leveransrad (facits .footer-trust, index.html rad
+           5222-5240 — 2×2 ikon-kort). ANVÄNDER DE REDAN BEFINTLIGA fem
+           riktiga påståendena nedanför (samma text som .nh-footer__trust
+           tidigare visade som platta etiketter i botten) — INTE en kopia
+           av transparensblockets Trustpilot/leveransgaranti-fakta (skulle
+           dubblera samma data på två ställen i footern). 18+ utelämnad
+           här (redan täckt av disclaimer-remsan ovan, ingen anledning att
+           upprepa den). Ikonerna återanvänder EXAKT samma path-data som
+           redan används i header-mikrotrusten (js/18a-header-v2.js) för
+           visuell konsekvens — inte nya, gissade ikoner. Bara mobil-
+           scopad CSS (se css/20-footer-v2...) flyttar/omformar denna
+           befintliga nod — desktop-layouten (`.nh-footer__trust` i botten,
+           oförändrad markup-position) rörs inte. */
+        '<div class="nh-footer__proof-row">' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span><b>Säker betalning</b><span>Kort, Swish och faktura</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg><span><b>Diskret frakt</b><span>Neutral avsändare</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><span><b>Skickas från Sverige</b><span>Svenskt bolag, sedan 2020</span></span></div>' +
+        '<div class="nh-footer__proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Labbtestade produkter</b><span>Analyscertifikat där de finns</span></span></div>' +
+        "</div>" +
         '<div class="nh-footer__inner">' +
         '<div class="nh-footer__grid">' +
         '<div class="nh-footer__brand-col">' +
@@ -2314,6 +2333,977 @@
       document.head.appendChild(s);
     }
 
+
+    /* ============================================================
+       HEADER v2 — ny header enligt Vilmers prototyp (../header-startsida/
+       ny-header-child.html), byggd mot nyehandels RIKTIGA DOM (#store-header),
+       INTE en port av prototypens kod. Se CLAUDE.md ("Uppdraget") och
+       STATUS.md (arbetsloggen/besluten bakom klassificeringen nedan).
+
+       Arkitektur: nyehandel renderar redan en ÄKTA nav-meny server/Vue-sidan
+       (en enda platt "Alla produkter"-megameny med alla riktiga kategorier
+       nästlade i den). Vi läser den listan LIVE ur DOM:en (aldrig hårdkodad),
+       klassificerar varje länk mot fyraxel-principen med reglerna nedan, och
+       bygger om presentationen till separata lätta dropdowns per format.
+       Riktiga fält vi ALDRIG rör (Vue-bundna, återanvänds rakt av, bara
+       omstylade via CSS): #search-container (nativ sök), .account-button,
+       #cart-button. Se CLAUDE.md för varför.
+       ============================================================ */
+
+    // Cannabinoider som redan är juridiskt klara att visa (Vilmer, 2026-08-28).
+    var NH_ACTIVE_CANNABINOIDS = ["thca", "thcb", "thcv", "cbn", "h4cbd", "cbd"];
+
+    // PAUSADE — juridik ej klar (flera cannabinoidvarianter blev olagliga i
+    // Sverige från 2025-12-10; Vilmer kollar status per variant). Dessa ska
+    // ALDRIG synas i navigationen, inte ens med platshållarnamn, förrän han
+    // säger till. Prefix-matchning (täcker t.ex. "thcnm-hash" också).
+    var NH_PAUSED_PREFIXES = ["hhcpm", "thcnm", "10-oh-thc"];
+
+    // Kända serier/varumärken (namnen finns inte i kategori-sluggen på ett
+    // gissningsbart sätt, så de listas explicit). Källa: riktiga nav-länkar
+    // verifierade mot hazeyse.nyehandel.se 2026-08-28.
+    var NH_SERIE_OVERRIDES = {
+      "magic-sauce": "Magic Sauce", "m-s-vapes": "Magic Sauce", "m-s-buds": "Magic Sauce",
+      "nano-11": "Nano-11", "nano11-blommor": "Nano-11",
+      "faraoh": "Faraoh", "hero-vapes": "Hero",
+      "tatra-hemp": "Tatra Hemp", "magic-farmers": "Magic Farmers"
+    };
+    // Format kan oftast härledas ur sluggens suffix (se nhClassify). Dessa två
+    // saknar ett format-suffix men är kända vapes-serier (se STATUS.md för
+    // resonemang — VERIFIERA med Vilmer, osäker klassificering).
+    var NH_FORMAT_OVERRIDES = { "hero-vapes": "vape", "faraoh": "vape" };
+
+    // Serier utan känt/säkert format (Tatra Hemp, Magic Farmers) hamnar här
+    // och visas i alla tre format-dropdowns hellre än att gissa fel format —
+    // se STATUS.md, flaggat för Vilmer att bekräfta.
+    var NH_UNCERTAIN_FORMAT_SERIES = ["Tatra Hemp", "Magic Farmers"];
+
+    function nhSlugFromHref(href) {
+      try {
+        return (href || "").replace(/^https?:\/\/[^/]+/, "").replace(/\/$/, "").split("/").pop().split("?")[0];
+      } catch (e) { return ""; }
+    }
+
+    function nhClassify(slug) {
+      if (NH_PAUSED_PREFIXES.some(function (p) { return slug === p || slug.indexOf(p + "-") === 0; })) {
+        return { paused: true };
+      }
+      var format = NH_FORMAT_OVERRIDES[slug] || null;
+      if (!format) {
+        if (/(^|-)(vapes?|carts?|cartridges)$/.test(slug) || slug === "pennor") format = "vape";
+        else if (/(^|-)(blommor|buds)$/.test(slug)) format = "blomma";
+        else if (/(^|-)(hasch?|hash)$/.test(slug)) format = "hash";
+      }
+      var cannabinoid = null;
+      var prefix = slug.split("-")[0];
+      if (NH_ACTIVE_CANNABINOIDS.indexOf(prefix) > -1) cannabinoid = prefix.toUpperCase();
+      else if (slug === "cbd-group") cannabinoid = "CBD";
+      var serie = NH_SERIE_OVERRIDES[slug] || null;
+      return { format: format, cannabinoid: cannabinoid, serie: serie };
+    }
+
+    // Läser den riktiga, redan renderade nav-menyn en gång och bygger
+    // format-grupperad data. Ingen räkning/inga produkter hårdkodas — allt
+    // kommer från de faktiska <a>-länkarna nyehandel redan la i DOM:en.
+    function nhBuildNavData(navMenuEl) {
+      var groups = { vape: { label: "Vapes & carts", items: [], cannabinoids: {}, series: {} },
+                     blomma: { label: "Blommor", items: [], cannabinoids: {}, series: {} },
+                     hash: { label: "Hash", items: [], cannabinoids: {}, series: {} } };
+      var flatExtra = []; // t.ex. Merch — hör inte till nåt format
+      var footerLinks = []; // t.ex. CBD Group — egen landningssida, länkas i footer/trust, inte i topnav
+
+      var links = Array.prototype.slice.call(navMenuEl.querySelectorAll(".index-menu a[href]"));
+      links.forEach(function (a) {
+        var slug = nhSlugFromHref(a.getAttribute("href"));
+        if (!slug || slug === "alla-produkter") return;
+        var c = nhClassify(slug);
+        if (c.paused) return; // juridik ej klar — dölj helt
+
+        var entry = { label: a.textContent.trim().replace(/\s+/g, " "), href: a.getAttribute("href"), slug: slug };
+
+        if (c.format && groups[c.format]) {
+          groups[c.format].items.push(entry);
+          if (c.cannabinoid) groups[c.format].cannabinoids[c.cannabinoid] = entry.href;
+          if (c.serie) groups[c.format].series[c.serie] = entry.href;
+        } else if (c.cannabinoid && !c.format) {
+          // Cannabinoid-katalog utan formatuppdelning (t.ex. "CBD Group") —
+          // egen landningssida, se STATUS.md/Vilmers beslut 2026-08-28.
+          footerLinks.push(entry);
+        } else if (c.serie && !c.format) {
+          // Serie utan säkert format — visa i alla tre dropdowns hellre än
+          // att gissa fel (flaggat i STATUS.md för Vilmer att bekräfta).
+          Object.keys(groups).forEach(function (k) { groups[k].series[c.serie] = entry.href; });
+        } else {
+          flatExtra.push(entry);
+        }
+      });
+      return { groups: groups, flatExtra: flatExtra, footerLinks: footerLinks };
+    }
+
+    function nhFormatDropdownHtml(key, group) {
+      var subLinks = group.items.filter(function (it) {
+        // "Viktiga underformat"-listan: länkar som inte redan räknas som en
+        // serie (annars dubbleras Magic Sauce/Nano-11 i båda listorna).
+        return !Object.keys(group.series).some(function (s) { return group.series[s] === it.href; })
+          && it.slug.indexOf("alla-") !== 0;
+      }).slice(0, 6);
+      var serieKeys = Object.keys(group.series);
+      var cannaKeys = Object.keys(group.cannabinoids);
+      var allHref = group.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0];
+
+      var html = '<div class="cat-item" data-nh-cat="' + key + '">'
+        + '<a class="cat-link" href="' + (allHref ? allHref.href : "#") + '" aria-expanded="false">' + group.label
+        + ' <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>'
+        + '<div class="ddrop cat-panel">'
+        + (allHref ? '<a class="dd-all" href="' + allHref.href + '">Visa alla ' + group.label.toLowerCase() + '</a>' : "");
+
+      if (subLinks.length) {
+        html += '<div class="dd-sub"><h5>Fler i ' + group.label.toLowerCase() + '</h5>'
+          + subLinks.map(function (it) { return '<a class="dd-line" href="' + it.href + '">' + it.label + '</a>'; }).join("")
+          + '</div>';
+      }
+      if (serieKeys.length) {
+        html += '<div class="dd-sub"><h5>Populära serier</h5>'
+          + serieKeys.map(function (s) { return '<a class="dd-line" href="' + group.series[s] + '">' + s + '</a>'; }).join("")
+          + '</div>';
+      }
+      if (cannaKeys.length) {
+        html += '<div class="dd-chips">'
+          + cannaKeys.map(function (c) { return '<a class="chip" href="' + group.cannabinoids[c] + '">' + c + '</a>'; }).join("")
+          + '</div>';
+      }
+      html += '<a class="dd-find" href="#hitta-ratt" data-open-hr="1">Osäker på skillnaden? Öppna Hitta rätt '
+        + '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 4.5L6 8l3.5-3.5" transform="rotate(-90 6 6)"/></svg></a>';
+      html += "</div></div>";
+      return html;
+    }
+
+    function nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref) {
+      var order = ["vape", "blomma", "hash"];
+      var html = '<div class="cat-item"><a class="cat-link" href="' + allProdukterHref + '">Alla produkter</a></div>'
+        + order.map(function (k) { return nhFormatDropdownHtml(k, navData.groups[k]); }).join("")
+        + '<div class="cat-item"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
+        + navData.flatExtra.map(function (it) { return '<div class="cat-item"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
+        + '<div class="cat-item"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Hitta rätt</a></div>';
+      return html;
+    }
+
+    function nhBuildMobileMenuHtml(navData, allProdukterHref, kampanjerHref) {
+      var order = ["vape", "blomma", "hash"];
+      function section(key, group) {
+        var serieKeys = Object.keys(group.series);
+        var cannaKeys = Object.keys(group.cannabinoids);
+        var allHref = group.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0];
+        var subLinks = group.items.filter(function (it) {
+          return !Object.keys(group.series).some(function (s) { return group.series[s] === it.href; }) && it.slug.indexOf("alla-") !== 0;
+        }).slice(0, 6);
+        return '<li class="mm-cat"><button class="mm-top" aria-expanded="false">' + group.label
+          + '<span class="r"><svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></span></button>'
+          + '<div class="mm-sub">'
+          + (allHref ? '<a class="mm-viewall" href="' + allHref.href + '">Visa alla ' + group.label.toLowerCase() + ' <span>→</span></a>' : "")
+          + (subLinks.length ? '<p class="mm-sub-h">Fler i ' + group.label.toLowerCase() + '</p>'
+              + subLinks.map(function (it) { return '<a class="mm-sub-link"><span class="t">' + it.label + '</span></a>'.replace("<a class", '<a href="' + it.href + '" class'); }).join("") : "")
+          + (serieKeys.length ? '<p class="mm-sub-h">Populära serier</p>'
+              + serieKeys.map(function (s) { return '<a class="mm-sub-link" href="' + group.series[s] + '"><span class="t">' + s + '</span></a>'; }).join("") : "")
+          + (cannaKeys.length ? '<div class="chips">' + cannaKeys.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join("") + '</div>' : "")
+          + '</div></li>';
+      }
+      return '<ul class="mm-cats">'
+        + '<li class="mm-cat"><a class="mm-flat" href="' + allProdukterHref + '">Alla produkter <span>→</span></a></li>'
+        + order.map(function (k) { return section(k, navData.groups[k]); }).join("")
+        + '<li class="mm-cat"><a class="mm-flat campaign" href="' + kampanjerHref + '">Kampanjer</a></li>'
+        + navData.flatExtra.map(function (it) { return '<li class="mm-cat"><a class="mm-flat" href="' + it.href + '">' + it.label + '</a></li>'; }).join("")
+        + '<li class="mm-cat"><a class="mm-flat find" href="#hitta-ratt" data-open-hr="1">Hitta rätt</a></li>'
+        + '</ul>';
+    }
+
+    /* ── "Hitta rätt" — delad 3-stegs guide (format → cannabinoid → vad ska
+       jämföras). Helt ny komponent, inte kopplad till nativ DOM, så säker att
+       bygga fritt. Tredje steget är AVSIKTLIGT inte känsla/effekt (juridiskt
+       krav, se CLAUDE.md varumärkesröst). */
+    function nhBuildHittaRattHtml(navData) {
+      var vapeHref = (navData.groups.vape.items.filter(function(it){return it.slug==="alla-vapes";})[0]||{}).href || "/sv/categories/alla-vapes";
+      var blommaHref = (navData.groups.blomma.items.filter(function(it){return it.slug==="blommor-buds";})[0]||{}).href || "/sv/categories/blommor-buds";
+      var hashHref = (navData.groups.hash.items.filter(function(it){return it.slug==="hasch";})[0]||{}).href || "/sv/categories/hasch";
+      return ''
+        + '<div class="hr-scrim" id="hrScrim"></div>'
+        + '<aside class="hr-drawer" id="hrDrawer" aria-label="Hitta rätt" role="dialog" aria-modal="true" hidden>'
+        + '  <div class="hr-head"><h2>Hitta rätt på tre val</h2><button class="hr-close" id="hrClose" aria-label="Stäng">×</button></div>'
+        + '  <p class="hr-intro">Guiden frågar efter produktens egenskaper — inte efter medicinska behov eller effekt.</p>'
+        + '  <div class="hr-step"><b>1. Vilket format?</b><div class="hr-opts" data-step="format">'
+        + '    <a class="hr-opt" href="' + vapeHref + '">Vape</a>'
+        + '    <a class="hr-opt" href="' + blommaHref + '">Blomma</a>'
+        + '    <a class="hr-opt" href="' + hashHref + '">Hash</a>'
+        + '  </div></div>'
+        + '  <div class="hr-step"><b>2. Vilken cannabinoid?</b><div class="hr-opts" data-step="cannabinoid">'
+        + NH_ACTIVE_CANNABINOIDS.map(function (c) { return '<span class="hr-opt hr-opt--info">' + c.toUpperCase() + '</span>'; }).join("")
+        + '  </div><p class="hr-note">Välj format ovan för att se just den cannabinoidens produkter.</p></div>'
+        + '  <a class="hr-result" href="/sv/categories/alla-produkter">Visa alla produkter '
+        + '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 4.5L6 8l3.5-3.5" transform="rotate(-90 6 6)"/></svg></a>'
+        + '</aside>';
+    }
+
+    function nhInitHittaRatt(root) {
+      var scrim = root.querySelector("#hrScrim"), drawer = root.querySelector("#hrDrawer"), close = root.querySelector("#hrClose");
+      // Scrimet tonas via klass (mjuk fade), kortet snäpper in/ut via [hidden]
+      // — samma uppdelning som prototypens .hr-scrim/.hr-drawer.
+      function open() { drawer.hidden = false; scrim.classList.add("is-open"); document.body.classList.add("nh-hr-open"); }
+      function shut() { drawer.hidden = true; scrim.classList.remove("is-open"); document.body.classList.remove("nh-hr-open"); }
+      drawer.hidden = true;
+      document.addEventListener("click", function (e) {
+        var trigger = e.target.closest && e.target.closest("[data-open-hr]");
+        if (trigger) { e.preventDefault(); open(); }
+      });
+      close.addEventListener("click", shut);
+      scrim.addEventListener("click", shut);
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !drawer.hidden) shut(); });
+    }
+
+    function initHeaderV2() {
+      var sh = document.getElementById("store-header");
+      if (!sh || sh.__nhHeaderV2) return;
+      sh.__nhHeaderV2 = true;
+      sh.classList.add("nh-header-v2");
+
+      // 18+ — juridiskt krav, saknas i dagens topbar-USP-lista. Ren UI-text,
+      // ingen påhittad trust-data.
+      var topbarInner = sh.querySelector(".topbar .container");
+      if (topbarInner && !topbarInner.querySelector(".nh-age-badge")) {
+        var age = document.createElement("span");
+        age.className = "nh-age-badge";
+        age.textContent = "18+";
+        topbarInner.appendChild(age);
+      }
+
+      var navMenu = sh.querySelector("nav.navbar .navbar-menu");
+      var mega = navMenu ? navMenu.querySelector(".navbar-item.has-dropdown.is-mega") : null;
+      if (!navMenu || !mega) return; // okänd DOM — avbryt hellre än att gissa
+
+      var allProdukterHref = (mega.querySelector(".navbar-link") || {}).getAttribute
+        ? mega.querySelector(".navbar-link").getAttribute("href") : "/sv/categories/alla-produkter";
+      var kampanjerHref = "/sv/page/kampanjer"; // verifierad riktig sida, se blocks/kampanjer-page.html
+
+      var navData = nhBuildNavData(mega);
+
+      // Bygg NY nav bredvid den nativa (som vi döljer via CSS, inte tar
+      // bort — bevarar den som fallback/länk-källa om något går fel).
+      var newNav = document.createElement("div");
+      newNav.className = "nh-cat-row";
+      newNav.innerHTML = nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref);
+      navMenu.parentNode.insertBefore(newNav, navMenu);
+      navMenu.classList.add("nh-native-nav-hidden");
+
+      // Ny mobilmeny (samma navData — EN datakälla för både desktop- och
+      // mobilmarkup, se CLAUDE.md om varför inte två separata träd).
+      var mobileMenu = document.createElement("div");
+      mobileMenu.className = "nh-mobile-menu";
+      mobileMenu.id = "nhMobileMenu";
+      mobileMenu.hidden = true;
+      // Fotnot med 18+-kravet (juridiskt krav — flyttas hit på mobil eftersom
+      // den mörkgröna topbaren döljs där, se CSS). Läggs till UTANFÖR
+      // nhBuildMobileMenuHtml (den funktionen rörs inte — nav-innehållet är
+      // flaggat, se STATUS.md).
+      mobileMenu.innerHTML = '<div class="mm-head"><span>hazey</span><button class="ms-close" id="nhMobileMenuClose" aria-label="Stäng">×</button></div>'
+        + nhBuildMobileMenuHtml(navData, allProdukterHref, kampanjerHref)
+        + '<div class="nh-mm-foot">Fri frakt över 499 kr · 18+ krävs vid köp</div>';
+      var mobileScrim = document.createElement("div");
+      mobileScrim.className = "nh-mobile-menu-scrim";
+      mobileScrim.hidden = true;
+      // Monteras på <body>, INTE i #store-header: headern har (eller får)
+      // en transform vid scroll (se js/14-header-scroll.js), vilket skapar
+      // ett nytt containing block för position:fixed-barn och skulle klämma
+      // ihop den här panelen till headerns egen låga höjd. Samma anledning
+      // gäller nh-hr-root nedan.
+      document.body.appendChild(mobileScrim);
+      document.body.appendChild(mobileMenu);
+
+      // Egen hamburger-knapp (döljer nativ visuellt via CSS men rör inte dess
+      // Vue-bindning — se CLAUDE.md: rör aldrig nativa interaktiva element).
+      // Monteras som EGEN, FÖRSTA barn i .main (inte inuti .right) — på mobil
+      // ska den sitta längst till vänster med loggan centrerad, enligt rätt
+      // prototyp (chatgpt-claude-handover/.../prototyp/index.html, mVp-header:
+      // hamburgare vänster + centrerad logga + konto/varukorg höger).
+      var mainRow = sh.querySelector(".main");
+      // #store-main: normal (icke-fixed) scrollande syskon till #store-header,
+      // se blueprint tests/blueprints/mobile-header-port.md §E — mikrotrust
+      // monteras här (inte i #store-header) längre ned.
+      var storeMain = document.getElementById("store-main");
+      var newBurger = document.createElement("button");
+      newBurger.className = "nh-burger";
+      newBurger.setAttribute("aria-label", "Öppna meny");
+      // Exakt facit-path (prototyp/index.html #mMenuBtn), se blueprint §A rad 3.
+      newBurger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+      if (mainRow) mainRow.insertBefore(newBurger, mainRow.firstChild);
+
+      // Mobil sökrad: nyehandels riktiga sök ligger dold bakom en ikon i
+      // .right på mobil. Prototypens mVp har istället ett alltid synligt
+      // sökfält direkt under headern. Vi bygger en egen, alltid synlig
+      // "fejk-input" som bara TRIGGAR den riktiga sökfunktionen (klickar på
+      // den nativa #mobile-search-trigger-knappen) — ingen egen söklogik,
+      // ingen dubblettdata.
+      var nativeSearchTrigger = sh.querySelector("#mobile-search-trigger");
+      if (nativeSearchTrigger && mainRow && !sh.querySelector(".nh-mobile-searchbar")) {
+        var mobileSearchBar = document.createElement("div");
+        mobileSearchBar.className = "nh-mobile-searchbar";
+        mobileSearchBar.innerHTML = '<button type="button" aria-label="Öppna produktsökning">'
+          + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+          + 'Sök produkt, serie eller cannabinoid…</button>';
+        mobileSearchBar.querySelector("button").addEventListener("click", function () {
+          nativeSearchTrigger.click();
+        });
+        mainRow.parentNode.insertBefore(mobileSearchBar, mainRow.nextSibling);
+
+        // Mikrotrust-raden. RIKTIGA, av Vilmer bekräftade/fastställda korta
+        // texter (2026-09-01 rättningsomgång — ersätter tidigare live-
+        // extraktion ur topbar-USP:n, som gav längre, radbrytande text):
+        //   - "4,7/5 på Trustpilot", länkad till den riktiga recensionssidan
+        //     (samma URL som redan används i blocks/testimonials-section.html).
+        //   - "8 000+ ordrar · sedan 2020" (INTE "kunder" — Vilmer påpekade
+        //     skillnaden; ordersiffran rör sig uppåt mot 9000, så det här
+        //     talet MÅSTE uppdateras manuellt då och då — sätt inte och glöm).
+        //   - "Normalt 1–2 vardagar" / "Diskret & spårbart" — facitens egna
+        //     korta texter, fasta (inte längre live ur topbar-USP:n, som gav
+        //     "Skickas 1-2 vardagar" — längre och radbröt i 172px-kolumnen).
+        //
+        // IKONER (korrigerade, visuell granskningsomgång): tidigare paths var
+        // egna approximationer, inte facitens — läst rakt av ur facitens
+        // ICON-objekt (index.html rad 6705-6710) och trustpilotHtml() (rad
+        // 6714): ICON.shield (kunder/ordrar-raden), ICON.truck (leverans,
+        // redan nästan rätt men fel path-koordinater + fel stroke-width),
+        // ICON.box (diskret — var av misstag en shield-path, inte en box),
+        // samt tpMark:s exakta stjärn-path. stroke-width:2 på alla tre
+        // (facitens ICON-objekt, inte 1.8 som användes innan).
+        //
+        // MONTERINGSPUNKT (blueprint §E, korrigerad 2026-09-01): facit har
+        // mikrotrusten som ETT SYSKON till headern, inte ett barn — den
+        // scrollar bort som normalt innehåll under en sticky/kompakt header.
+        // Monteras därför i #store-main (INTE i #store-header som tidigare):
+        // första riktiga barnet, direkt vid #store-mains padding-top-kant,
+        // så den hamnar visuellt precis under headern utan dubbel luft. Det
+        // gör att den (a) INTE räknas in i #store-headers egen scrollHeight/
+        // autohöjd, och (b) aldrig kan påverkas av js/14-header-scroll.js
+        // headroom-transform (som bara riktar sig mot #store-header).
+        if (storeMain && !storeMain.querySelector(".nh-mobile-trust")) {
+          var trustRow = document.createElement("div");
+          trustRow.className = "nh-mobile-trust";
+          trustRow.innerHTML = ''
+            + '<a class="nh-mt-item" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+            + '<span class="tp-star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.5 1.3 6.5L12 16.8 6.1 20l1.3-6.5L2.5 9l6.6-.7z"/></svg></span>'
+            + '<span><b>4,7/5</b> på Trustpilot</span></a>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'
+            + '<span><b>8 000+</b> ordrar · sedan 2020</span></div>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>'
+            + '<span>Normalt <b>1–2 vardagar</b></span></div>'
+            + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>'
+            + '<span>Diskret &amp; spårbart</span></div>';
+          storeMain.insertBefore(trustRow, storeMain.firstChild);
+        }
+      }
+
+      function openMobile() { mobileMenu.hidden = false; mobileScrim.hidden = false; document.body.classList.add("nh-mm-open"); }
+      function shutMobile() { mobileMenu.hidden = true; mobileScrim.hidden = true; document.body.classList.remove("nh-mm-open"); }
+      newBurger.addEventListener("click", openMobile);
+      mobileScrim.addEventListener("click", shutMobile);
+      mobileMenu.querySelector("#nhMobileMenuClose").addEventListener("click", shutMobile);
+      mobileMenu.addEventListener("click", function (e) {
+        var top = e.target.closest && e.target.closest(".mm-top");
+        if (!top) return;
+        var open = top.getAttribute("aria-expanded") === "true";
+        top.setAttribute("aria-expanded", open ? "false" : "true");
+        top.parentNode.classList.toggle("is-open", !open);
+      });
+
+      // "Hitta rätt" — egen overlay. Monteras på <body>, se motivering ovan
+      // vid mobilmenyn (containing-block för position:fixed).
+      var hrRoot = document.createElement("div");
+      hrRoot.className = "nh-hr-root";
+      hrRoot.innerHTML = nhBuildHittaRattHtml(navData);
+      document.body.appendChild(hrRoot);
+      nhInitHittaRatt(hrRoot);
+
+      // BUGGFIX 2026-08-31: #store-main har en statisk, nativ
+      // padding-top:100px som matchar den GAMLA (kortare) headern. Vi gjorde
+      // mobil-headern högre (sökraden) utan att synka det värdet — sidans
+      // riktiga innehåll (hero m.m.) gled in UNDER den nu högre fasta
+      // headern. Mäter headerns faktiska höjd och sätter #store-main
+      // padding-top därefter, om och bara om den behöver ökas (rör inte
+      // desktop där headerns höjd inte ändrats). Körs igen vid resize
+      // eftersom sökraden bara visas under 880px.
+      // (`storeMain` deklarerad högre upp, återanvänds här — mikrotrusten
+      // monteras numera i #store-main, inte i #store-header, se ovan, så
+      // den bidrar inte längre till nedanstående scrollHeight-mätning.)
+      //
+      // KORRIGERAT (visuell granskningsomgång, ~26px gap upptäckt mellan
+      // sökfält och mikrotrust): #store-main självt börjar INTE vid
+      // dokumentets y=0. Verifierat live, INNAN någon av våra CSS/JS-
+      // injektioner: <body> innehåller en lös bokstavlig "&gt;"-textnod
+      // direkt före #store-instance (synlig i native outerHTML), som
+      // renderar som en rad text vid body:s standard line-height
+      // (~25,6px = 16px×1.6) och skjuter allt efter den — inklusive
+      // #store-instance/#store-main — nedåt i normalt dokumentflöde. Det
+      // är en redan existerande Nyehandel-artefakt, inget vi orsakat och
+      // inget vi rör/tar bort här (utanför detta repos rådighet). Utan
+      // att kompensera för den adderades den OVANPÅ vår egen padding-top,
+      // och mikrotrusten (#store-mains första barn) hamnade ~26px för
+      // långt ned — synligt som ett tomt gap mellan sökfält och
+      // mikrotrust. Fix: mät #store-mains EGEN top-position (oberoende av
+      // dess egen padding, som bara påverkar barnens position, inte dess
+      // egen boxs plats) och dra av den från önskad padding-top, så att
+      // mikrotrusten hamnar exakt vid headerns nedre kant oavsett var
+      // #store-main själv råkar börja.
+      function nhSyncMainOffset() {
+        if (!storeMain) return;
+        // scrollHeight, INTE getBoundingClientRect().height — #store-header
+        // har en egen fast CSS-höjd (native), så dess "riktiga" höjd
+        // rapporteras fel om innehållet (vår sökrad) överskrider den —
+        // scrollHeight räknar med det överskjutande innehållet.
+        var headerH = Math.round(sh.scrollHeight);
+        var ownTop = storeMain.getBoundingClientRect().top + window.scrollY;
+        var desired = Math.max(0, Math.round(headerH - ownTop));
+        var current = parseInt(getComputedStyle(storeMain).paddingTop, 10) || 0;
+        if (desired !== current) storeMain.style.paddingTop = desired + "px";
+      }
+      nhSyncMainOffset();
+      window.addEventListener("resize", nhSyncMainOffset);
+    }
+
+    /* ============================================================
+       STARTSIDA v2 — enligt RÄTT prototyp (se CLAUDE.md för sökväg och
+       forskningslogg). Fullständig ombyggnad 2026-08-31 efter Vilmers
+       punktlista (A-I). navData kommer från js/18a-header-v2.js (samma
+       datakälla, körs innan denna fil i 19-core-close.js).
+       ============================================================ */
+
+    // Enkla linjeikoner — dekoration, ingen produktdata, ofarligt att hårdkoda.
+    var NH_ROUTE_ICONS = {
+      vape: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><rect x="7" y="2" width="10" height="7" rx="2"/><path d="M9 9v3a3 3 0 003 3 3 3 0 003-3V9M12 15v6M9 21h6"/></svg>',
+      blomma: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M4 20c7-1 13-6 15-15-9 1-14 6-15 15z"/><path d="M6 18c3-3 6-6 12-13"/></svg>',
+      hash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+      cbd: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M4 20c7-1 13-6 15-15-9 1-14 6-15 15z"/><path d="M6 18c3-3 6-6 12-13"/></svg>',
+      serie: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/><circle cx="12" cy="19" r="2"/><path d="M12 7v5m-5.5-2.5L12 12m5.5-2.5L12 12m0 2v3"/></svg>'
+    };
+
+    function nhFirstHref(group, prefix) {
+      var hit = group.items.filter(function (it) { return it.slug.indexOf(prefix) === 0 || it.slug === prefix; })[0];
+      return hit ? hit.href : null;
+    }
+
+    /* ── Hero + qfind — ERSÄTTER nyehandels nativa bildkarusell på
+       startsidan (döljs, INTE tas bort — samma "dölj, radera aldrig
+       nativt"-mönster som resten av bygget). Copy är prototypens egen,
+       uttryckligen begärd av Vilmer 2026-09-01 för exakt visuell paritet
+       (se PROTOTYP-INVENTERING.md). Två textvarianter per breddpunkt
+       (mVp/dVp har olika ingress/knapptext, uppmätt, inte samma text
+       skalad). ──
+
+       Bildkälla (rättad 2026-09-01, se tests/blueprints/
+       mobile-hero-port.md §G/STATUS.md): facitens EGNA bild
+       (hero-westcoast-v4.jpg) ligger nu SPÅRAD i det här repot
+       (assets/hero-westcoast-v4.jpg, samma bytes som prototypens fil,
+       inte regenererad) och hostas via SAMMA jsDelivr GitHub-mekanism
+       som hazey.css/hazey.min.js (se blocks/loader.html/loader-dev.html)
+       — inte längre den nativa nyehandel-bilden, som visade fel motiv
+       (en cannabisplanta i stället för facitens västkust-lifestyle-foto).
+       `NH_ASSET_BASE` är konfigurerbar (window.NH_ASSET_BASE) i stället
+       för hårdkodad. Produktionsfallbacken pekar på SAMMA pinnade,
+       evigt cachade jsDelivr-tagg som produktionsloadern
+       (`blocks/loader.html`) — inte den ocachade `@dev`-grenen, som
+       tidigare gjorde assets och kod versionsosynkade sinsemellan (JS/
+       CSS pinnat vid en tagg, bilden alltid "senaste dev" — kunde tysta
+       driva isär vid en framtida dev-ändring). Byt versionen HÄR
+       tillsammans med `blocks/loader.html`s tagg vid varje release,
+       aldrig ensam. `blocks/loader-dev.html` (dev/preview, pekar
+       uttryckligen mot `@dev`) sätter i stället `window.NH_ASSET_BASE`
+       explicit innan den här filen laddar — se den filens egen kommentar
+       — så denna fallback används bara i produktion. INGEN localhost-URL
+       i källkoden. QA/parity-testet överskriver ändå bilden med en
+       pixelexakt data:-URL läst direkt från disk (`lockImplImages`/
+       LOCKED_IMAGES) — opåverkat av vilken bas som används här. */
+    var NH_ASSET_BASE =
+      (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
+      "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
+
+    function nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl) {
+      var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
+      var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
+      var hashHref = nhFirstHref(navData.groups.hash, "hasch") || "/sv/categories/hasch";
+      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
+      var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
+
+      var heroSrc = NH_ASSET_BASE + "hero-westcoast-v4.jpg";
+      // data-hero-src: en QA-selektorkrok för lockImplImages (se ovan) —
+      // värdet spelar ingen roll för testresultatet (skrivs över), bara
+      // att attributet finns. Sätts till samma URL som faktiskt visas.
+      var bg = ' style="background-image:url(\'' + heroSrc.replace(/'/g, "\\'") + '\')" data-hero-src="' + heroSrc.replace(/"/g, "&quot;") + '"';
+
+      return '<section class="nh-hero-v2 nh-qfind-hero"' + bg + '>'
+        + '  <div class="nh-hero-v2__inner">'
+        // Två olika eyebrow-texter per breddpunkt (uppmätt ur facit — INTE
+        // samma text skalad): mVp = "Brett sortiment · öppen information";
+        // dVp behåller den tidigare, av Vilmer bekräftade "störst i Sverige"-
+        // texten (2026-08-31: "vi är ju störst i Sverige och bredast utbud"),
+        // men visas nu BARA på desktop i stället för universellt.
+        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">Brett sortiment · öppen information</div>'
+        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">Sveriges bredaste cannabinoidsortiment</div>'
+        + '    <h1>Hitta rätt utan att kunna allt.</h1>'
+        // Två olika underrubriker per breddpunkt (uppmätt, INTE samma text
+        // skalad) — togglas med CSS, se .nh-hero-v2__p--mobile/desktop.
+        + '    <p class="nh-hero-v2__p--mobile">Sök direkt eller jämför på innehåll, format och framställning.</p>'
+        + '    <p class="nh-hero-v2__p--desktop">Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.</p>'
+        // Kategori-genvägsraden finns BARA på desktop i rätt fil (dVp),
+        // inte i mVp — döljs på mobil via CSS.
+        + '    <div class="nh-hero-v2__cats">'
+        + '      <a href="' + vapeHref + '">Vapes &amp; carts</a>'
+        + '      <a href="' + blommaHref + '">Blommor</a>'
+        + '      <a href="' + hashHref + '">Hash</a>'
+        + '      <a href="' + cbdHref + '">CBD, CBG &amp; CBN</a>'
+        + '      <a href="' + kampanjerHref + '">Kampanjer</a>'
+        + '    </div>'
+        + '    <div class="nh-hero-v2__cta">'
+        + '      <a class="btn-solid" href="#populara-vagar">Utforska sortimentet</a>'
+        + '      <button type="button" class="hero-link" data-open-hr="1"><span class="nh-hero-v2__btn--mobile">Hjälp mig →</span><span class="nh-hero-v2__btn--desktop">Hjälp mig hitta rätt →</span></button>'
+        + '    </div>'
+        + '  </div>'
+        + '</section>'
+        // qfind — "Vad söker du?"-chipsraden direkt under hero:n. OBS:
+        // Naturidentiskt/Semisyntetiskt-chippen använder samma ej-beslutade
+        // terminologi som segmentet i "Populära vägar" (se den kommentaren)
+        // — flaggat, inte ett nytt beslut.
+        + '<section class="nh-qfind" aria-label="Snabbval">'
+        + '  <div class="nh-qfind__inner">'
+        + '    <div class="nh-qfind__lbl">Vad söker du?<span>Ett klick — inget quiz.</span></div>'
+        + '    <div class="nh-qfind__chips">'
+        + '      <button type="button" class="nh-qfc nh-qfc--pri" data-open-hr="1">Jag är nybörjare</button>'
+        + '      <a class="nh-qfc" href="' + vapeHref + '">Vapes &amp; carts</a>'
+        + '      <a class="nh-qfc" href="' + blommaHref + '">Blommor</a>'
+        + '      <a class="nh-qfc" href="/sv/categories/alla-produkter">Naturidentiskt</a>'
+        + '      <a class="nh-qfc" href="/sv/categories/alla-produkter">Semisyntetiskt</a>'
+        + '      <a class="nh-qfc" href="' + kampanjerHref + '">Kampanjer</a>'
+        + '    </div>'
+        + '  </div>'
+        + '</section>';
+    }
+
+    /* ── "Populära serier" ── */
+    function nhPopularaSerierHtml(navData) {
+      var seen = {};
+      var series = [];
+      ["vape", "blomma", "hash"].forEach(function (g) {
+        var group = navData.groups[g];
+        Object.keys(group.series).forEach(function (name) {
+          if (seen[name]) return;
+          seen[name] = true;
+          series.push({ label: name, href: group.series[name] });
+        });
+      });
+      if (!series.length) return "";
+      return '<section class="nh-pser section-gap" id="populara-serier">'
+        + '  <div class="sec-head"><h2>Populära serier</h2></div>'
+        + '  <div class="pser-row">'
+        + series.map(function (s) {
+            return '<a class="pser-item nh-reveal" href="' + s.href + '" data-count-href="' + s.href + '">'
+              + '<span class="pser-avatar" data-photo-href="' + s.href + '">' + NH_ROUTE_ICONS.serie + '</span>'
+              + '<span class="pser-name">' + s.label + '</span>'
+              + '<span class="pser-n"></span></a>';
+          }).join("")
+        + '  </div>'
+        + '</section>';
+    }
+
+    /* Hämtar en riktig kategori-/serie-sida och plockar ut FÖRSTA riktiga
+       produktbilden — samma beprövade mönster som js/10-product-sections.js.
+       Progressiv förbättring: ikon visas direkt, byts tyst mot äkta foto.
+       Samma fetch återanvänds för att räkna fram RIKTIGT produktantal till
+       ".pser-n" (inga hårdkodade mocktal) — en serie utan produkter döljs. */
+    function nhEnhanceWithRealPhotos(root) {
+      var targets = root.querySelectorAll("[data-photo-href]");
+      var countTargets = root.querySelectorAll("[data-count-href]");
+      if (!targets.length && !countTargets.length) return;
+      var cache = {};
+      function fetchPage(href) {
+        if (cache[href]) return cache[href];
+        cache[href] = fetch(href, { credentials: "same-origin" })
+          .then(function (r) { return r.ok ? r.text() : ""; })
+          .then(function (html) { return html ? new DOMParser().parseFromString(html, "text/html") : null; })
+          .catch(function () { return null; });
+        return cache[href];
+      }
+      targets.forEach(function (el) {
+        fetchPage(el.getAttribute("data-photo-href")).then(function (doc) {
+          if (!doc) return;
+          var img = doc.querySelector(".product-card__image img, .product-card img");
+          var src = img ? (img.getAttribute("src") || img.getAttribute("data-src")) : null;
+          if (!src) return;
+          if (el.classList.contains("route-icon")) {
+            el.parentNode.style.backgroundImage = "url('" + src + "')";
+            el.parentNode.classList.add("visual", "has-photo");
+            return;
+          }
+          el.style.backgroundImage = "url('" + src + "')";
+          el.classList.add("has-photo");
+        });
+      });
+      countTargets.forEach(function (el) {
+        fetchPage(el.getAttribute("data-count-href")).then(function (doc) {
+          var n = doc ? doc.querySelectorAll(".product-card").length : 0;
+          if (!n) { el.hidden = true; return; }
+          var nEl = el.querySelector(".pser-n");
+          if (nEl) nEl.textContent = n + (n === 1 ? " produkt" : " produkter");
+        });
+      });
+    }
+
+    /* ── "Populära vägar" — FORMAT (inte serier, de är i egen sektion).
+       4 kort: Vapes/Blommor/Hash + CBD,CBG&CBN (Vilmer 2026-08-31: ett
+       vägkort som länkar till CBD-landningssidan är okej, skiljer sig från
+       beslutet om ingen egen cannabinoid-FLIK i toppnav). Plus
+       framställnings-segment (se flagga i koden). ── */
+    function nhPopularaVagarHtml(navData) {
+      var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
+      var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
+      var hashHref = nhFirstHref(navData.groups.hash, "hasch") || "/sv/categories/hasch";
+      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
+      var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
+
+      var cards = [
+        { kicker: "Format", label: "Vapes & carts", sub: "Engångsvapes & carts", href: vapeHref, icon: "vape" },
+        { kicker: "Format", label: "Blommor", sub: "Filtrerbar lista", href: blommaHref, icon: "blomma" },
+        { kicker: "Format", label: "Hash", sub: "Piatella & mousse", href: hashHref, icon: "hash" },
+        { kicker: "Format", label: "CBD, CBG & CBN", sub: "Egen ingång", href: cbdHref, icon: "cbd" }
+      ];
+
+      // Framställning (Naturidentiskt/Semisyntetiskt) — terminologin är
+      // tagen rakt av från prototypen, INTE ett beslut vi tagit här. Se
+      // CLAUDE.md/STATUS.md, fortfarande obesvarad fråga till Vilmer.
+      // Länkar till alla-produkter tills vidare — inget riktigt
+      // framställnings-filter finns byggt på kategorisidor än.
+      var framHref = "/sv/categories/alla-produkter";
+      var framCards = [
+        { label: "Naturidentiskt", sub: "Finns i plantan",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M8 15h8"/></svg>' },
+        { label: "Semisyntetiskt", sub: "Vidarebearbetad",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/><circle cx="12" cy="19" r="2"/><path d="M12 7v5m-5.5-2.5L12 12m5.5-2.5L12 12m0 2v3"/></svg>' }
+      ];
+
+      return '<section class="nh-routes section-gap" id="populara-vagar">'
+        + '  <div class="sec-head"><div><h2>Populära vägar</h2>'
+        + '  <p>Format för den som redan vet vad den vill ha.</p></div>'
+        + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
+        + '  <div class="routes-grid">'
+        + cards.map(function (c) {
+            return '<a class="route nh-reveal" href="' + c.href + '">'
+              + '<div class="route-icon" data-photo-href="' + c.href + '">' + NH_ROUTE_ICONS[c.icon] + '</div>'
+              + '<div class="route-kicker">' + c.kicker + '</div><h3>' + c.label + '</h3>'
+              + '<p class="route-sub">' + c.sub + '</p></a>';
+          }).join("")
+        + '  </div>'
+        + '  <p class="seg-note nh-reveal">Vill du hellre utgå från hur produkten är framställd?</p>'
+        + '  <div class="seg">'
+        + framCards.map(function (c) {
+            return '<a class="seg-btn nh-reveal" href="' + framHref + '">'
+              + '<span class="seg-ico">' + c.icon + '</span>'
+              + '<span><span class="seg-t">' + c.label + '</span><span class="seg-s">' + c.sub + '</span></span></a>';
+          }).join("")
+        + '  </div>'
+        + '</section>';
+    }
+
+    /* ── Trust-block, KONSOLIDERAD (ersätter det gamla, duplicerade
+       ikon-raden — se STATUS.md om dubblettbuggen). Alla värden RIKTIGA,
+       bekräftade av Vilmer 2026-08-31:
+       - Trustpilot 4,7/5 — riktig, länkad till er faktiska recensionssida.
+       - "Sedan 2020" — bolaget registrerades 2020, bekräftat.
+       - "Leveransgaranti" — riktig policy, bekräftat att den får skrivas
+         som fakta.
+       "Analys på X %" är INTE med — verifierat att ingen riktig,
+       tillförlitlig datakälla finns i produktkortens DOM för att räkna fram
+       certifikattäckning (ingen data-lab-liknande attribut hittad). Skrivs
+       inte in för hand — se öppen datafråga i STATUS.md. ── */
+    /* PAKET B (2026-09-02, andra försöket): facits .trust-block är INTE
+       en 2×2-ikonruta (det var vår tidigare, av Vilmer godkända EGNA
+       tolkning 2026-08-31) — facit har en enkolumns struktur: rubrik +
+       ingress + en 4-radig bock-lista (index.html rad 4554-4571).
+       Portat till facits LAYOUT, men med VÅRA redan godkända, riktiga
+       fakta (Trustpilot-betyg/leveransgaranti/diskretion/grundår) i
+       stället för facits egna påståenden om batch-certifikat och
+       "certifikattäckning just nu: X%" — den senare siffran är redan
+       tidigare konstaterad OMÖJLIG att bakas med riktig data (ingen
+       tillförlitlig källa i produktkortens DOM, se STATUS.md/CLAUDE.md)
+       och skrivs därför INTE in, varken gissad eller fabricerad.
+       Trustpilot-länken (redan riktig, redan använd) ersätter facits
+       egen /transparens-länk eftersom ingen sådan sida finns riktigt
+       byggd än — hittar aldrig på en URL. */
+    function nhTrustBlockHtml() {
+      return '<section class="nh-trustblock section-gap">'
+        + '  <div class="nh-tb-inner">'
+        + '    <h2>Så arbetar Hazey med innehåll och ursprung</h2>'
+        + '    <p>Vi är öppna med vad som finns i våra produkter och var de kommer ifrån — inga effektlöften, bara verifierbara fakta.</p>'
+        + '    <a class="nh-tb-link" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
+        + '      4,7/5 på Trustpilot — läs verifierade omdömen</a>'
+        + '    <ul class="nh-tb-points">'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Spårbar leverans från Sverige</li>'
+        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Svenskt bolag, sedan 2020</li>'
+        + '    </ul>'
+        + '  </div>'
+        + '</section>';
+    }
+
+    /* ── "Fortsätt där du slutade" — HELT DOLD tills det finns riktig
+       besökardata (senast visad/favorit/köpt). Kräver spårningsfunktion
+       som inte finns byggd än (produktsida/konto). Bygger bara skalet,
+       precis som prototypen själv gör (sektionen är `hidden` där också). ── */
+    function nhContinueShellHtml() {
+      return '<section class="nh-continue section-gap" id="nh-continue" hidden data-status="ingen-besokardata-an">'
+        + '  <div class="sec-head"><div><h2>Fortsätt där du slutade</h2>'
+        + '  <p>Visas bara när det finns riktig data — senast visade, favoriter eller ett tidigare köp.</p></div></div>'
+        + '  <div class="nh-continue-row"></div>'
+        + '</section>';
+    }
+
+    /* ── "Bästsäljare i lager" — återanvänder EXAKT samma beprövade
+       kategori-skrap-mönster som js/12-bestsellers-listing.js redan
+       använder på riktiga sidor (fetch /sv/categories/alla-produkter,
+       plocka riktiga .product-card). "Bästsäljare" på den här sajten är
+       redan definierat som alla-produkter-kategorin (samma som
+       Bästsäljare-fliken i den befintliga tab-sektionen) — inte en
+       uppfunnen algoritm. ── */
+    function nhBestsellersHtml() {
+      return '<section class="nh-featured section-gap" id="nh-featured">'
+        + '  <div class="sec-head"><div><h2>Bästsäljare i lager</h2>'
+        + '  <p>Snabbval för produkter utan variantval.</p></div>'
+        + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
+        + '  <div class="nh-featured-row" id="nhFeaturedRow"><div class="nh-featured-empty">Laddar…</div></div>'
+        + '</section>';
+    }
+    function nhInitBestsellers(root) {
+      var rowEl = root.querySelector("#nhFeaturedRow");
+      if (!rowEl) return;
+      fetch("/sv/categories/alla-produkter?sort=in-stock", { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.text() : ""; })
+        .then(function (html) {
+          if (!html) throw new Error("no html");
+          var doc = new DOMParser().parseFromString(html, "text/html");
+          var cards = Array.prototype.slice.call(doc.querySelectorAll(".product-card")).slice(0, 4);
+          if (!cards.length) throw new Error("no cards");
+          rowEl.innerHTML = "";
+          cards.forEach(function (c) {
+            var outer = document.createElement("div");
+            var inner = document.createElement("div");
+            inner.appendChild(c.cloneNode(true));
+            outer.appendChild(inner);
+            rowEl.appendChild(outer);
+          });
+          if (window.nhInitCards) window.nhInitCards();
+        })
+        .catch(function () {
+          rowEl.parentNode.parentNode.hidden = true; // dölj hela sektionen, visa inget trasigt
+        });
+    }
+
+    /* ── "Snabb koll: vad är vad?" — FLYTTAR och FORMATERAR OM befintlig,
+       redan publicerad text (tar INTE bort innehåll, se regel i CLAUDE.md)
+       från "THCA med flera"-textblocket till kortformat. THCNM är
+       medvetet UTESLUTET ur den nya, mer synliga kort-sektionen —
+       cannabinoiden är juridiskt pausad (se STATUS.md, "juridik ej klar"),
+       så vi gör den INTE mer framträdande. Paragrafen ligger kvar orörd
+       där den redan var, bara inte kopierad hit. ── */
+    function nhBuildKunskapFromRealContent() {
+      var blocks = document.querySelectorAll(
+        ".store-startpage .template-components__text-editor, .store-startpage .template-components__columns"
+      );
+      var cards = [];
+      blocks.forEach(function (block) {
+        block.querySelectorAll("h1,h2,h3,h4").forEach(function (h) {
+          var title = h.textContent.trim();
+          if (!/^vad är/i.test(title)) return;
+          if (/thcnm/i.test(title)) return; // juridik ej klar, se ovan — lämnas SYNLIG i original-läget
+          var p = h.nextElementSibling;
+          while (p && p.tagName !== "P") p = p.nextElementSibling;
+          if (!p) return;
+          cards.push({ title: title, text: p.textContent.trim() });
+          // FLYTTAT, inte kopierat: original-rubriken/stycket döljs här så
+          // samma text inte visas två gånger på sidan (Vilmer 2026-08-31:
+          // "flytta och formatera om", inte duplicera).
+          h.style.display = "none";
+          p.style.display = "none";
+        });
+      });
+      return cards;
+    }
+
+    /* Den GAMLA flik-sektionen (Bästsäljare/Nyheter/Kampanjer + produktgrid,
+       byggd i en tidigare omgång) blir redundant mot de nya
+       home-extra-sektionerna ("Bästsäljare i lager" täcker samma behov).
+       Döljs (INTE tas bort ur koden) för att undvika att samma produkter
+       visas två gånger på samma sida — se Vilmers punkt F, 2026-08-31. */
+    function nhHideSupersededTabsSection() {
+      var tabs = document.querySelector(".nh-tabs");
+      if (!tabs) return;
+      var section = tabs.closest(".template-components__html-editor") || tabs.closest("section") || tabs.parentElement;
+      if (section) section.style.display = "none";
+    }
+    function nhKunskapHtml(cards) {
+      if (!cards.length) return "";
+      return '<section class="nh-kunskap section-gap">'
+        + '  <div class="guide guide-dark">'
+        + '    <div class="guide-top"><h2>Snabb koll: vad är vad?</h2>'
+        + '    <span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
+        + '    <p class="lede">Korta förklaringar av det som frågas mest om. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
+        + '    <div class="guide-grid">'
+        + cards.map(function (c) {
+            return '<div class="g-card nh-reveal"><span class="g-name">' + c.title + '</span><p>' + c.text + '</p></div>';
+          }).join("")
+        + '    </div>'
+        + '  </div>'
+        + '</section>';
+    }
+
+    /* ── "Verifierade omdömen" — ENDAST det riktiga, redan inkopplade
+       Trustpilot-betyget + en ärlig länk. INGA påhittade citat: verifierat
+       (2026-08-31) att vi inte har en bekräftad Trustpilot-widgetmall som
+       visar enskilda recensioner (två olika business-unit-id hittades i
+       koden, se öppen datafråga i STATUS.md) — så vi bygger INTE ett
+       citat-baserat kort tills det är utrett. ── */
+    /* Facit visar TRE separata recensionskort (stjärnor/verifierad-etikett/
+       citat/kund-metadata). Vi har INGEN verifierad källa för enskilda
+       recensionscitat att koppla (öppen datafråga, se STATUS.md — Trustpilot
+       widget-mallen för citat är oklar, två olika business-unit-id hittade
+       i koden). Att hitta på tre kundcitat vore fejkdata, uttryckligen
+       förbjudet. Lösning: den ÄKTA, verifierbara raden (4,7/5 + länk) visas
+       alltid; kort-layouten byggs som en FÖRBERED men dold platshållar-shell
+       (samma "hidden shell tills riktig data finns"-mönster som
+       nhContinueShellHtml) — redo att kopplas in den dagen en riktig
+       recensions-källa (widget eller API) med citat är bekräftad. ── */
+    function nhReviewsHtml() {
+      return '<section class="nh-reviews section-gap">'
+        + '  <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
+        + '  <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
+        + '  <a class="nh-reviews-cta nh-reveal" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '    <span class="stars">★★★★★</span><span>4,7/5 på Trustpilot — läs alla omdömen →</span>'
+        + '  </a>'
+        + '  <div class="nh-reviews-grid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
+        + '</section>';
+    }
+
+    /* ── Nyhetsbrev, mitt på sidan (prototypen har ett HÄR + ett i
+       footern). Icke-kopplad platshållare — precis som prototypens EGEN
+       formulär (`onsubmit="return false"` där också). Vilmer 2026-08-31:
+       inget verktyg kopplat än, flaggat i STATUS.md att det behöver
+       kopplas innan lansering. ── */
+    function nhNewsletterHtml() {
+      return '<section class="nh-signup section-gap">'
+        + '  <div class="nh-signup-block">'
+        + '    <div><h2>Håll dig uppdaterad</h2>'
+        + '    <p>Lagerpåfyllning, nya serier och viktiga juridiska uppdateringar — inget annat.</p></div>'
+        + '    <form class="nh-signup-form" data-nh-placeholder-form="1">'
+        + '      <input type="email" placeholder="Din e-postadress" aria-label="E-postadress" required>'
+        + '      <button type="submit">Prenumerera</button>'
+        + '    </form>'
+        + '    <span class="nh-signup-note">Du kan avsluta prenumerationen när du vill.</span>'
+        + '  </div>'
+        + '</section>';
+    }
+    function nhInitPlaceholderForms(root) {
+      root.querySelectorAll("[data-nh-placeholder-form]").forEach(function (f) {
+        f.addEventListener("submit", function (e) { e.preventDefault(); });
+      });
+    }
+
+    // Reveal-on-scroll (se css/22-homepage-v2.css .nh-reveal) — lägger bara
+    // till/tar bort en klass, ingen layoutlogik.
+    //
+    // BUGGFIX 2026-08-31: stort rootMargin (element räknas som "synligt" långt
+    // innan det faktiskt är i vy) + en hård tidsgräns som tvingar fram ALLT
+    // dolt innehåll oavsett, efter 2 sekunder. Orsak: verifierat att
+    // sidfulls-skärmdumpsverktyg (Chromes "Capture full size screenshot",
+    // Playwrights fullPage-screenshot) inte alltid hinner trigga
+    // IntersectionObserver innan bilden tas.
+    function nhInitReveal(root) {
+      var els = root.querySelectorAll(".nh-reveal");
+      if (!els.length) return;
+      function revealAll() {
+        els.forEach(function (el) { el.classList.add("is-in"); });
+      }
+      if (!("IntersectionObserver" in window)) { revealAll(); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: "600px 0px 600px 0px" });
+      els.forEach(function (el) { io.observe(el); });
+      setTimeout(revealAll, 2000);
+    }
+
+    function initHomepageV2() {
+      var slideRoot = document.querySelector(".template-components__slideshow");
+      var slideshow = slideRoot ? slideRoot.querySelector(".slideshow") : null;
+      if (!slideshow || slideshow.__nhHomepageV2) return; // ingen hero-slideshow på den här sidan = inte startsidan
+      slideshow.__nhHomepageV2 = true;
+
+      var mega = document.querySelector("#store-header nav.navbar .navbar-item.has-dropdown.is-mega");
+      if (!mega) return;
+      var navData = nhBuildNavData(mega);
+      var kampanjerHref = "/sv/page/kampanjer";
+
+      // Riktig, redan konfigurerad hero-bild — den enda produktionskällan
+      // (se nhHeroQfindHtml ovan för hela resonemanget).
+      var firstSlide = slideshow.querySelector(".slideshow__slides__slide");
+      var nativeHeroImgUrl = null;
+      if (firstSlide) {
+        var m = (firstSlide.getAttribute("style") || "").match(/url\((?:"|')?(.*?)(?:"|')?\)/);
+        if (m) nativeHeroImgUrl = m[1];
+      }
+
+      // Döljer den nativa karusellen (rör den inte, bara CSS display:none)
+      // och ersätter med det nya qfind-hero-kortet.
+      slideRoot.classList.add("nh-native-hero-hidden");
+
+      var heroWrap = document.createElement("div");
+      heroWrap.innerHTML = nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl);
+      slideRoot.parentNode.insertBefore(heroWrap, slideRoot);
+      while (heroWrap.firstChild) slideRoot.parentNode.insertBefore(heroWrap.firstChild, slideRoot);
+      heroWrap.remove();
+
+      // "Populära serier"/"Populära vägar" byts i INBÖRDES ORDNING mellan
+      // mobil (serier→vägar) och desktop (vägar→serier) — uppmätt, se
+      // STATUS.md. Kräver en flex-wrapper för att CSS `order` ska funka.
+      var flexWrap = document.createElement("div");
+      flexWrap.className = "nh-startpage-flex";
+      flexWrap.innerHTML = nhPopularaSerierHtml(navData) + nhPopularaVagarHtml(navData);
+
+      // Övriga home-extra-sektioner, ordning enligt facit (uppmätt
+      // 2026-09-01, se PROTOTYP-INVENTERING.md): aura (befintlig, dold) →
+      // fortsätt där du slutade (dold) → bästsäljare → trust-block/
+      // "transparens" → kunskap → omdömen → nyhetsbrev. Trust-blocket låg
+      // FÖRE bästsäljare i föregående bygge — det var fel ordning.
+      var kunskapCards = nhBuildKunskapFromRealContent();
+      var restWrap = document.createElement("div");
+      restWrap.innerHTML = ''
+        + '<section class="nh-aura-guide" id="aura-guiden" hidden data-status="juridik-ej-klar"></section>'
+        + nhContinueShellHtml()
+        + nhBestsellersHtml()
+        + nhTrustBlockHtml()
+        + nhKunskapHtml(kunskapCards)
+        + nhReviewsHtml()
+        + nhNewsletterHtml();
+
+      var anchor = slideRoot.nextSibling;
+      slideRoot.parentNode.insertBefore(flexWrap, anchor);
+      while (restWrap.firstChild) slideRoot.parentNode.insertBefore(restWrap.firstChild, anchor);
+
+      nhInitReveal(document);
+      nhEnhanceWithRealPhotos(document);
+      nhInitBestsellers(document);
+      nhInitPlaceholderForms(document);
+      nhHideSupersededTabsSection();
+    }
     initFooter();
     initKampanjer();
     initProductSections();
@@ -2326,6 +3316,8 @@
     initTabs();
     initFaq();
     initTrustpilot();
+    initHeaderV2();
+    initHomepageV2();
   }
 
   if (document.readyState === "loading") {

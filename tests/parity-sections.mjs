@@ -19,6 +19,22 @@ export const DEVICE_SCALE_FACTOR = 1;
 export const GOLDEN_DIR = path.join(ROOT, "tests/golden");
 export const RESULTS_DIR = path.join(ROOT, "tests/results");
 
+// Separate, deliberately-distinct baseline: a locked snapshot of the
+// IMPLEMENTATION itself (not facit), captured once a section's redesign is
+// reviewed/approved (see STATUS.md entries per section). `tests/golden/`
+// answers "how close is the implementation to facit" — many sections are
+// EXPECTED to diverge from facit by explicit, documented product decisions
+// (real data instead of facit's mock content, a deliberately different
+// component, etc., see SECTIONS below), so a facit-parity failure there is
+// not automatically a bug. `tests/golden-impl/` answers a different
+// question entirely: "did the approved implementation change AT ALL since
+// it was last locked" — tight tolerances, meant to always be green, and a
+// failure here IS a real regression signal regardless of what facit-parity
+// says. Never conflate the two: a facit-parity FAIL + implementation-
+// regression PASS means "known, already-approved divergence from facit,
+// nothing new broke" — not a silently-green false pass.
+export const GOLDEN_IMPL_DIR = path.join(ROOT, "tests/golden-impl");
+
 const QA_FREEZE_CSS = fs.readFileSync(path.join(__dirname, "qa-freeze.css"), "utf8");
 
 // The facit prototype's own asset folder — the single real source for every
@@ -455,14 +471,44 @@ export async function gotoFacit(page) {
   await page.waitForTimeout(200); // let the hero's background-image data: URL decode+paint (not covered by img.complete)
 }
 
+/**
+ * hazeyse.nyehandel.se already carries a stale, directly-pasted snapshot of
+ * an OLDER hazey.css/js baked straight into Nyehandel's Kodläge Head field
+ * (a large inline <style> + matching inline logic, independent of the
+ * jsDelivr loader — confirmed live 2026-09-03/04, see STATUS.md "Viktig
+ * sidoupptäckt"), plus the previous contractor's Oliverforss8 loader
+ * script tag. Both run BEFORE this test's own addStyleTag/addScriptTag,
+ * and the stale snapshot's inline logic already builds its own `.nh-footer`
+ * — which makes js/08-footer.js's OWN initFooter() guard
+ * (`if (document.querySelector(".nh-footer")) return;`) see a footer
+ * already exists and skip entirely, leaving the WHOLE footer section
+ * testing 100% stale content with zero relation to the current repo.
+ * Stripped here, inside this throwaway test page only — nothing is written
+ * back to Nyehandel, and this has no effect on any other section (their
+ * init functions don't share that create-if-missing guard pattern).
+ */
+async function stripStaleInjectedContent(page) {
+  await page.route("**/cdn.jsdelivr.net/gh/Oliverforss8/**", (route) => route.abort());
+  await page.evaluate(() => {
+    document.querySelectorAll(".nh-footer").forEach((el) => el.remove());
+    const pf = document.querySelector(".page-footer");
+    if (pf) pf.style.display = "";
+    document.querySelectorAll("style").forEach((el) => {
+      if (el.textContent.includes("nh-footer") || el.textContent.includes("--primary-color")) el.remove();
+    });
+  });
+}
+
 export async function gotoImpl(page) {
   await freezeLiveCategoryFetches(page);
   page.on("pageerror", (err) => console.log("[impl pageerror]", err.message));
   const css = fs.readFileSync(path.join(ROOT, "hazey.css"), "utf8");
   const js = fs.readFileSync(path.join(ROOT, "hazey.min.js"), "utf8");
+  await page.route("**/cdn.jsdelivr.net/gh/Oliverforss8/**", (route) => route.abort());
   await page.goto(IMPL_URL, { waitUntil: "networkidle", timeout: 45000 });
   await page.waitForTimeout(1000);
   await acceptCookies(page);
+  await stripStaleInjectedContent(page);
   await page.addStyleTag({ content: css });
   await page.addScriptTag({ content: js });
   await page.waitForTimeout(900);
@@ -586,6 +632,12 @@ export function goldenPngPath(key) {
 }
 export function goldenMetaPath(key) {
   return path.join(GOLDEN_DIR, `${key}.json`);
+}
+export function implGoldenPngPath(key) {
+  return path.join(GOLDEN_IMPL_DIR, `${key}.png`);
+}
+export function implGoldenMetaPath(key) {
+  return path.join(GOLDEN_IMPL_DIR, `${key}.json`);
 }
 export function resultDir(key) {
   return path.join(RESULTS_DIR, key);
