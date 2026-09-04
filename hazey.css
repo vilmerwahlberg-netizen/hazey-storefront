@@ -3663,7 +3663,7 @@ body:has(.nh-footer) .page-footer {
 }
 
 .category-description .readmore__toggle button {
-  color: #cdfc9f !important;
+  color: #ffffff !important;
 }
 
 .category-description .readmore__toggle button:hover {
@@ -5484,11 +5484,9 @@ a {
   border: none !important;
 }
 
-/* LÄGG I VARUKORGEN — #4ade80 → #323d25 / white */
+/* LÄGG I VARUKORGEN — layout/typografi, INTE färg (se not nedan) */
 #product-page .buy-controls .button.buy,
 #product-page .button.buy {
-  background: #323d25 !important;
-  color: #ffffff !important;
   border: none !important;
   border-radius: 8px !important;
   min-height: 52px !important;
@@ -5497,6 +5495,17 @@ a {
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
 }
+/* background:#323d25 + color:#ffffff borttagna 2026-09-04 — verifierat
+   redundanta via en riktig computed-style-jämförelse på tema 6 (samma
+   #323d25/vitt kommer nu redan från Nyehandels egna, sedan tidigare
+   ändrade tema-inställningar, utan denna regel; ursprungligen skrev den
+   över plattformens gamla #4ade80, se den borttagna kommentaren ovan).
+   Resten av regeln (border/border-radius/min-height/font-family/
+   font-weight/letter-spacing/text-transform) är fortsatt verifierat
+   NÖDVÄNDIG — plattformens egna värden skiljer sig fortfarande
+   (Nunito/500 i stället för Roboto/700, 0px border-radius, synlig
+   1px-ram, kortare höjd). Hover-nyansen (#253019) INTE verifierad mot
+   plattformens egen hover-färg denna omgång — lämnad orörd. */
 #product-page .buy-controls .button.buy:hover,
 #product-page .button.buy:hover {
   background: #253019 !important;
