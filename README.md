@@ -96,8 +96,11 @@ hard-to-diagnose test session — see `STATUS.md`).
 node build.js                 # -> hazey.css, hazey.html, hazey.min.js, hazey.min.html
 
 # 2. release
-git add -A && git commit -m "js: <what changed>"
-git tag v1.0.4                # bump the version
+# Stage only the built release files explicitly -- never `git add -A`,
+# which can accidentally sweep up unrelated scratch/test/user files.
+git add hazey.css hazey.html hazey.min.html hazey.min.js
+git commit -m "js: <what changed>"
+git tag -a v1.0.4 -m "v1.0.4"  # bump the version
 git push && git push --tags
 
 # 3. point the production loader at the new tag + hash

@@ -30,7 +30,11 @@
      Arbetsflöde:
        1. Redigera filer i css/ eller js/ lokalt
        2. node build.js  (bygger hazey.css + hazey.min.js på nytt)
-       3. git add -A && git commit -m "..." && git push origin dev
+       3. Stagea ENDAST de byggda filerna explicit — ALDRIG `git add -A`,
+          som riskerar att av misstag dra in orelaterade scratch-/test-/
+          användarfiler:
+          git add hazey.css hazey.html hazey.min.html hazey.min.js
+          git commit -m "..." && git push origin dev
        4. Ladda om previewfliken i nyehandel — klart, ingen ny inklistring behövs
      ============================================================================ -->
 <script>
