@@ -3,6 +3,13 @@
    Mörk footer → loggor i ljusa "chips" så de syns. Visa = blå kort-svg,
    Mastercard = ringmärket, Swish = hazey-PNG på vit chip, Klarna = rosa chip.
    ============================================= */
+
+/* 2026-09-04 strukturrunda: 4 orphanade regelblock borttagna (0 DOM-
+   träffar någonstans i repot: .nh-footer__pay-row, .nh-footer__pay-
+   chip svg, .nh-footer__pay-chip--card(+svg), .nh-footer__pay-chip--
+   klarna). Footerns betal-rad har bara .nh-footer__pay-chip--logo
+   (Swish, <img>) i verklig markup, se js/08-footer.js initFooter().
+   Ingen visuell/funktionell ändring: reglerna träffade inga element. */
 .nh-footer__pay {
   text-align: center !important;
   padding: 6px 24px 2px !important;
@@ -18,13 +25,6 @@
   color: rgba(223, 232, 231, 0.55) !important;
   margin: 0 0 12px !important;
 }
-.nh-footer__pay-row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-}
 .nh-footer__pay-chip {
   height: 32px !important;
   border-radius: 5px !important;
@@ -37,33 +37,10 @@
   box-sizing: border-box !important;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22) !important;
 }
-.nh-footer__pay-chip svg {
-  height: 20px !important;
-  width: auto !important;
-  display: block !important;
-}
 .nh-footer__pay-chip img {
   height: 18px !important;
   width: auto !important;
   display: block !important;
-}
-/* Visa = full-bleed colour card → svg fills the chip edge-to-edge */
-.nh-footer__pay-chip--card {
-  padding: 0 !important;
-}
-.nh-footer__pay-chip--card svg {
-  height: 100% !important;
-  width: auto !important;
-}
-/* Klarna = signature pink badge with wordmark */
-.nh-footer__pay-chip--klarna {
-  background: #ffb3c7 !important;
-  font-family: "Roboto", Helvetica, Arial, Lucida, sans-serif !important;
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  letter-spacing: 0.01em !important;
-  color: #17120f !important;
-  padding: 0 14px !important;
 }
 
 /* =============================================
@@ -73,10 +50,6 @@
    diskret frakt, 18+) med grön bock som matchar USP-banden. Sociala medier +
    ev. Trygg e-handel-certifikat läggs till när vi har riktiga länkar/cert.
    ============================================= */
-.nh-footer__brand {
-  text-align: center;
-  margin-bottom: 30px;
-}
 .nh-footer__logo {
   height: 42px !important;
   width: auto !important;
