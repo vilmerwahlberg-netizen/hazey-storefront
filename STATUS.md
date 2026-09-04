@@ -1508,6 +1508,102 @@ för en separat, kommande runda. Block #1/#4 i SEO-inventeringen ovan
 är bara ytligt granskade (komponentnamn/textlängd), inte djupanalyserade
 (sökintention/strukturerad data) — flaggat, inte gissat.
 
+## Strukturrunda — build-verifiering, testsvit, loader-fält (2026-09-04)
+
+Uppföljning efter `ea20789`, ren verifierings-/dokumentationsomgång, inga
+visuella ändringar.
+
+**`node build.js`:** kört från `dev`. Deterministiskt (två körningar i rad
+gav identiska filhash för `hazey.css`/`hazey.html`/`hazey.min.html`/
+`hazey.min.js`). Byggd `hazey.css` bekräftat konsekvent med källan efter
+`ea20789`: `.nh-footer__brand` (0 träffar), `.nh-footer__brand-col` intakt
+(7 träffar). OBS: `hazey.css`/`hazey.html`/`hazey.min.*` har INTE
+committats på flera veckor (samma etablerade mönster som tidigare
+omgångar — dessa filer exkluderas medvetet ur varje delrundas commit,
+regenereras lokalt för test) — `git diff` mot senaste commit av dem visar
+därför en stor, FÖRVÄNTAD eftersläpning, inte ett fel.
+
+**`npm run parity` (Playwright, compare-läge mot låst `tests/golden/`):**
+7 av 15 tester godkända. Godkända: 1. Header, 2. Sökfält, 3. Övre
+mikrotrust, 4. Hero, samt de tre strukturella kontrollerna
+(sektionsordning, ingen horisontell overflow, header-paketets geometri
+390/430/600px). Underkända: 5–12 (Populära serier, Populära vägar,
+Bästsäljare, Transparens/trustblock, Snabb koll, Verifierade omdömen,
+Nyhetsbrev, Truststrip/footer) — samtliga underkänns ENDAST på
+storlekstolerans (`golden`-bilden är mycket mindre än det faktiska,
+uppdaterade innehållet, t.ex. footer 390×939 facit mot 390×1781 faktiskt).
+Detta är FÖRVÄNTAT: `tests/golden/` fångades innan hela den här
+sprintens hero-/serier-/vägar-/Bästsäljare-/trustblock-/footer-arbete,
+och har aldrig körts om i `PARITY_MODE=update` sedan dess — inte en ny
+regression. Ingen `golden`-uppdatering gjord denna runda (skulle kräva
+ett medvetet godkännande av hela startsidans nuvarande utseende som ny
+baseline, ett designbeslut, inte en strukturuppgift).
+
+**Manuell smoke-test** (skrivskyddad injektion mot skarpa sajten, samma
+metod som `preview.mjs`, temporärt skript, ej committat):
+- Startsida: 0px overflow vid 390/430/600/1440, inga sid-JS-fel, hero +
+  footer renderas.
+- Kategori (`/sv/categories/alla-produkter`): 0px overflow, 25 produktkort.
+- Produkt (PDP, verklig produkt): 0px overflow vid alla fyra bredder,
+  inga sid-JS-fel.
+- Sökning: sökfältet hittas, en resultat-dropdown visas vid inmatning.
+- Meny (mobil hamburgare): öppnas och stängs korrekt.
+- Konto: kontolänken hittas, pekar mot `/sv/account`.
+- Varukorg: verklig "Lägg i varukorgen"-knapp klickad på en riktig PDP →
+  `#cartAside` öppnas med rätt produkt, pris, antal-kontroller och
+  totalsumma.
+- Konsolfel: enbart två upprepade `net::ERR_FAILED` från det medvetet
+  blockerade gamla `Oliverforss8`-scriptet (testmetodens egen
+  route-blockering, inte ett verkligt sidfel) — bekräftat via
+  `requestfailed`-loggning, ingenting annat.
+
+**Loader-fältfel rättat (dokumentation, ingen Nyehandel-ändring):**
+`blocks/loader.html`, `blocks/loader-dev.html`, `README.md` och
+`CLAUDE.md` sa tidigare (felaktigt) att produktionsloadern ska klistras
+in i Nyehandels Head-fält. Rättat till: loadern hör hemma i Nyehandels
+SEPARATA JavaScript-fält, Head äger bara Google Fonts + Trustpilot och
+ska aldrig bära en Hazey-loader, och vid migration ska ett ev. befintligt
+gammalt loader-innehåll i JavaScript-fältet ERSÄTTAS, inte kompletteras.
+Detta hänger direkt ihop med den tidigare upptäckta stale-Head-content-
+buggen (se tidigare footer-omgångars rapport) — skarpa sajten hade vid
+kontroll BÅDE en gammal inklistrad hazey.css/js-ögonblicksbild i Head OCH
+den gamla kontraktorns loader i JavaScript-fältet samtidigt, vilket gav
+missvisande testresultat innan rotorsaken hittades. Nyehandel-admin rördes
+INTE denna runda — bara repo-dokumentationen.
+
+---
+
+## Uppföljning på commit `ea20789` — `.nh-footer__brand` (2026-09-04)
+
+Granskade `ea20789` ("structure: remove 4 orphaned rule blocks from css/16
+footer payment CSS") efter en fråga om huruvida borttagningen av
+`.nh-footer__brand{text-align:center;margin-bottom:30px}` var avsiktlig —
+commit-meddelandet listar uttryckligen bara FYRA borttagna block
+(`.nh-footer__pay-row`, `.nh-footer__pay-chip svg`, `.nh-footer__pay-chip
+--card`(+svg), `.nh-footer__pay-chip--klarna`), men diffen tar bort en
+FEMTE regel (`.nh-footer__brand`) som inte nämns i meddelandet.
+
+**Verifierat repo-brett:** `.nh-footer__brand` (utan `-col`-suffix) matchas
+av noll DOM-noder — `js/08-footer.js`s `initFooter()` är den enda kod i
+hela repot som bygger `.nh-footer`s DOM, och dess markup-sträng innehåller
+bara `class="nh-footer__brand-col"` (en annan, aktivt använd klass), aldrig
+bara `nh-footer__brand`. Grep över `js/*.js`, `blocks/*.html`, `css/*.css`
+och den byggda `hazey.html` bekräftar samma sak. Föregående sessions egen,
+icke-committade `scratchpad/verify.mjs` hade dessutom redan `.nh-footer__
+brand` med i sin lista av selektorer som kontrollerades mot DOM-antal
+live på skarpa sajten innan borttagningen — regeln var alltså avsiktligt
+kontrollerad, bara felaktigt utelämnad ur commit-meddelandets sammanfattning.
+
+**Slutsats:** borttagningen är korrekt (bevisligen dödkod, ingen risk för
+regression) — bara commit-meddelandet är missvisande/ofullständigt om
+VILKA fem regler som togs bort. Ingen kodåterställning gjord. `node
+build.js` + en fullständig getComputedStyle-fri repo-sökning användes för
+verifieringen, ingen webbläsarkörning behövdes eftersom `.nh-footer__brand`
+bevisligen aldrig kan matcha någon riktig DOM-nod (markup-källan är känd
+till 100%, inte stickprovskontrollerad).
+
+---
+
 ## Footer mobil-CSS — arkitektur-/cleanup-runda (2026-09-03, ren refaktor)
 
 Rent arkitektur-/städarbete på `css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`,

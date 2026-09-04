@@ -1,10 +1,14 @@
 # Hazey storefront facelift
 
 CSS + injected JavaScript that re-skins the Hazey.se store running on **Nyehandel**
-(`hazeyse.nyehandel.se`). The platform only exposes a global CSS field, a global
-JS field, and a custom-code-in-`<head>` field in admin — the *built* files in
-this repo (`hazey.css`, `hazey.min.js`) are what goes in them. The source of
-truth for editing is the `css/` and `js/` folders below, never the built files.
+(`hazeyse.nyehandel.se`). The platform exposes three separate admin fields with
+non-overlapping jobs: a global CSS field, a separate JavaScript field, and a
+custom-code-in-`<head>` field. Only the JavaScript field ever holds the Hazey
+loader (see "Two loaders" below) — the `<head>` field is reserved for Google
+Fonts and the Trustpilot widget and must never also contain a Hazey loader.
+The *built* files in this repo (`hazey.css`, `hazey.min.js`) are what goes in
+the CSS field and (via the loader) the JavaScript field. The source of truth
+for editing is the `css/` and `js/` folders below, never the built files.
 
 ## Structure
 
@@ -51,23 +55,39 @@ feature gets its own new file; it just needs an explicit call added to
 
 ## Why external hosting (JS)
 
-The global JS field **truncates at ~64 KB** and **mangles** pasted JS (it
-CSS-beautifies selectors, collapses `-`/`:` spacing, strips descendant spaces).
-Hosting `hazey.min.js` on a CDN and loading it via a `<script src>` loader in
-`<head>` removes both the size limit and the mangling.
+The global JavaScript field **truncates at ~64 KB** and **mangles** pasted JS
+(it CSS-beautifies selectors, collapses `-`/`:` spacing, strips descendant
+spaces). Hosting `hazey.min.js` on a CDN and pasting a small `<script>` loader
+(below) into that same JavaScript field instead — which then programmatically
+appends a real `<script src>` tag to the page's `document.head` at runtime —
+removes both the size limit and the mangling. That runtime DOM insertion is
+unrelated to Nyehandel's admin-side `<head>` custom-code field; the loader
+snippet itself never goes there.
 
 ## Two loaders — production vs. dev preview
 
-- **`blocks/loader.html`** — pasted into nyehandel's real `<head>` custom-code
-  field. Points at a version-pinned jsDelivr tag (`@vX.Y.Z`), which jsDelivr
-  serves **immutably and permanently cached**. This is what real visitors get.
-  Changing it is a deliberate release (see below).
-- **`blocks/loader-dev.html`** — pasted **once** into nyehandel's `?preview=`
-  code field, never into the live `<head>` field. Points at the `dev` branch
-  via `raw.githack.com` (uncached, updates within seconds of a `git push`).
-  After that one-time paste, iterating is just: edit `css/`/`js/` → `node
-  build.js` → commit + push to `dev` → reload the preview tab. No repeated
-  copy-paste into nyehandel.
+Both loaders go in the **same place**: nyehandel's separate **JavaScript**
+field (Layout ▸ Manage ▸ "JavaScript"), never the `<head>` custom-code field
+(that field is reserved for Google Fonts + Trustpilot and must never also
+carry a Hazey loader) and never the footer/body slot (runs too late, footer
+etc. get dropped). Exactly **one** Hazey loader belongs in the JavaScript
+field at a time. If migrating a new theme instance that already has an older
+loader there (e.g. the previous contractor's `Oliverforss8/hazey-storefront`
+pointer), **replace** its entire contents with the new loader — do not paste
+alongside it. Two loaders running simultaneously fire two competing
+`initX()` passes against the same DOM (confirmed root cause of a confusing,
+hard-to-diagnose test session — see `STATUS.md`).
+
+- **`blocks/loader.html`** — production. Points at a version-pinned jsDelivr
+  tag (`@vX.Y.Z`), which jsDelivr serves **immutably and permanently
+  cached**. This is what real visitors get. Changing it is a deliberate
+  release (see below).
+- **`blocks/loader-dev.html`** — dev preview only, pasted into an **inactive**
+  theme instance's JavaScript field, never into the live theme's. Points at
+  the `dev` branch via `raw.githack.com` (uncached, updates within seconds of
+  a `git push`). After that one-time paste, iterating is just: edit
+  `css/`/`js/` → `node build.js` → commit + push to `dev` → reload the
+  preview tab. No repeated copy-paste into nyehandel.
 
 ## Deploy a new JS/CSS version (production)
 
@@ -83,7 +103,9 @@ git push && git push --tags
 # 3. point the production loader at the new tag + hash
 openssl dgst -sha384 -binary hazey.min.js | openssl base64 -A
 #    - edit blocks/loader.html: @v1.0.4 + integrity="sha384-<hash>"
-#    - paste blocks/loader.html into Nyehandel's <head> custom-code field
+#    - paste blocks/loader.html into Nyehandel's separate JavaScript field
+#      (Layout > Manage > "JavaScript" — NOT the <head> custom-code field),
+#      replacing whatever loader content was there before, not alongside it
 ```
 
 Pinned tags (`@vX.Y.Z`) are served **immutably and permanently cached** by jsDelivr —

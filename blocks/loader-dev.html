@@ -1,6 +1,14 @@
 <!-- ============================================================================
-     HAZEY FACELIFT — DEV/PREVIEW-LOADER (klistras ENDAST in i Nyehandels
-     Kodläge-fält för preview, ALDRIG i det skarpa <head>-fältet)
+     HAZEY FACELIFT — DEV/PREVIEW-LOADER
+
+     RÄTT FÄLT: samma SEPARATA JavaScript-fält som loader.html (produktion)
+     använder — ALDRIG Head-fältet (Google Fonts + Trustpilot bor där,
+     ingen Hazey-loader hör hemma i Head). Klistras in i en inaktiv
+     tema-instans/preview-miljö för utvecklingstestning, ALDRIG i det
+     skarpa temats JavaScript-fält (det fältet ska ha produktions-loadern,
+     `loader.html`, pekande mot en pinnad version-tagg — inte `dev`-grenen).
+     Ersätter, kompletterar inte, ett ev. befintligt gammalt loader-
+     innehåll i det fält den klistras in i.
 
      Läser hazey.min.js direkt från "dev"-branchen på GitHub via raw.githack.com
      (dev-läge = okachad, uppdateras inom sekunder efter varje push). Skiljer sig

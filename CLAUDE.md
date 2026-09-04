@@ -8,11 +8,13 @@ klart, vad som är näst, öppna frågor) står i `STATUS.md` — kolla den ocks
 
 Hazey.se's butik körs på plattformen **nyehandel** (hazeyse.nyehandel.se), en
 Vue/Vuex-app. Plattformen exponerar bara ett globalt CSS-fält, ett globalt
-JS-fält och ett `<head>`-custom-code-fält i sin admin — det här repot är
-källkoden som byggs ihop och klistras in där. Det är en CSS/JS-reskin ovanpå
-plattformens egen HTML/Vue-DOM, INTE plattformens eget mallsystem
-(`[#slot]`-variabler finns men används inte just nu — se referens nedan om det
-någonsin blir aktuellt).
+JS-fält och ett `<head>`-custom-code-fält i sin admin, med separata, icke
+överlappande ansvar — det här repots byggda CSS/loader klistras in i CSS-
+respektive JS-fältet, ALDRIG i Head (Head äger Google Fonts + Trustpilot,
+se "KRITISKT"-avsnittet nedan för den fullständiga regeln). Det är en
+CSS/JS-reskin ovanpå plattformens egen HTML/Vue-DOM, INTE plattformens eget
+mallsystem (`[#slot]`-variabler finns men används inte just nu — se
+referens nedan om det någonsin blir aktuellt).
 
 Repot forkades 2026-08-28 från en tidigare kontraktors (`Oliverforss8`) konto
 till Vilmers eget GitHub (`vilmerwahlberg-netizen`), för att sluta bero på hans
@@ -308,6 +310,21 @@ Produktionsloadern (`blocks/loader.html`) pekar på en pinnad jsDelivr-tagg —
 INGET härifrån är live förrän någon medvetet klistrar in nytt innehåll i
 nyehandel-admin och sparar. Det är alltså säkert att jobba fritt i det här
 repot.
+
+**Loadern hör hemma i Nyehandels SEPARATA JavaScript-fält, aldrig i
+Head-fältet** (Head äger Google Fonts + Trustpilot-widgeten och ska aldrig
+också bära en Hazey-loader — de två fälten har separata, icke överlappande
+ansvar). Exakt EN Hazey-loader ska finnas i JavaScript-fältet åt gången.
+Vid en framtida migration till en ny tema-instans: om JavaScript-fältet
+redan innehåller en äldre loader (t.ex. den tidigare kontraktorns
+`Oliverforss8/hazey-storefront`-pekare) ska hela det gamla innehållet TAS
+BORT och ERSÄTTAS — inte kompletteras. Se `blocks/loader.html` och
+`README.md` ("Two loaders") för den fullständiga instruktionen. Bakgrund:
+en tidigare testomgång (2026-09-03/04) visade att skarpa sajten redan hade
+BÅDE en gammal, direkt inklistrad hazey.css/js-ögonblicksbild i Head-fältet
+OCH den gamla kontraktorns loader i JavaScript-fältet samtidigt — två
+konkurrerande `initX()`-pass mot samma DOM, som gjorde flera tidiga
+testkörningar missvisande innan rotorsaken hittades (se STATUS.md).
 
 ## Git
 

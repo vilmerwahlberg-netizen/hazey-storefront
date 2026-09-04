@@ -1,7 +1,22 @@
 <!-- ============================================================================
-     HAZEY FACELIFT — LOADER
-     Klistra in HELA denna snutt i Nyehandel-admin ▸ anpassad kod i <HEAD>
-     (INTE footer/body-sloten — där körs den för sent och footer m.m. tappas).
+     HAZEY FACELIFT — LOADER (PRODUKTION)
+
+     RÄTT FÄLT: Nyehandel-admins SEPARATA JavaScript-fält (Layout ▸ Hantera ▸
+     "JavaScript" — INTE Kodläge-modalens <HEAD>-flik, INTE footer/body-sloten).
+     Head-fältet äger Google Fonts + Trustpilot-widgeten och ska ALDRIG
+     innehålla en Hazey-loader — de två fälten har separata, icke
+     överlappande ansvar. JavaScript-fältet ska bara innehålla DENNA
+     loader, ingenting annat.
+
+     VID MIGRATION TILL EN NY TEMA-INSTANS: om JavaScript-fältet redan
+     innehåller en äldre loader (t.ex. den tidigare kontraktorns
+     `Oliverforss8/hazey-storefront`-pekare) ska HELA det gamla innehållet
+     TAS BORT och ERSÄTTAS av den här snutten — inte kompletteras. Två
+     samtidiga loaders i samma fält kör två separata, konkurrerande
+     `initFooter()`/`initX()`-pass mot samma DOM (bekräftat orsak till
+     tidigare förvirrande testresultat, se STATUS.md "Viktig sidoupptäckt").
+     En instans = exakt en Hazey-loader i JavaScript-fältet, aldrig fler.
+
      Den laddar hazey.min.js externt från jsDelivr (GitHub-pinnad tagg) → ingen
      64 KB-gräns, ingen mangling. Ersätter den tidigare inklistrade hazey.min-koden.
 
@@ -10,6 +25,8 @@
        2. git commit + git tag vX.Y.Z + git push --tags
        3. Byt vX.Y.Z + integrity-hashen nedan (hash = ny release)
           integrity: sha384-$(openssl dgst -sha384 -binary hazey.min.js | openssl base64 -A)
+       4. Klistra in HELA denna uppdaterade fil i JavaScript-fältet igen
+          (ersätter den föregående versionen av loadern, inte Head-fältet)
      ============================================================================ -->
 <script>
 (function () {
