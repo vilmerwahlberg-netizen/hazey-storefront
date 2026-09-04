@@ -80,14 +80,24 @@ hard-to-diagnose test session — see `STATUS.md`).
 
 - **`blocks/loader.html`** — production. Points at a version-pinned jsDelivr
   tag (`@vX.Y.Z`), which jsDelivr serves **immutably and permanently
-  cached**. This is what real visitors get. Changing it is a deliberate
-  release (see below).
+  cached**. This is what real visitors get. Only loads JS — `hazey.css`
+  is still pasted directly into the CSS field (see "Deploy CSS" below).
+  Changing it is a deliberate release (see below).
 - **`blocks/loader-dev.html`** — dev preview only, pasted into an **inactive**
-  theme instance's JavaScript field, never into the live theme's. Points at
-  the `dev` branch via `raw.githack.com` (uncached, updates within seconds of
-  a `git push`). After that one-time paste, iterating is just: edit
-  `css/`/`js/` → `node build.js` → commit + push to `dev` → reload the
-  preview tab. No repeated copy-paste into nyehandel.
+  theme instance's JavaScript field (e.g. tema 6), never into the live
+  theme's. Loads BOTH `hazey.css` and `hazey.min.js` from the `dev` branch
+  via `raw.githack.com` — no manual CSS paste needed in dev, unlike
+  production. Each file's URL carries a `?t=<timestamp>` cache-busting
+  query, unique per page load, so a plain browser reload always fetches the
+  latest pushed version rather than a stale cached copy. `hazey.min.js`
+  measures real layout, so it only starts loading once `hazey.css` has
+  finished (via the stylesheet's own `onload`) — never in parallel. The
+  loader is idempotent (guards on a `data-nh-dev-css`/`data-nh-dev-js`
+  marker), so pasting or executing it more than once on the same page
+  never creates duplicate `<link>`/`<script>` elements. After the
+  one-time paste into tema 6, iterating is just: edit `css/`/`js/` →
+  `node build.js` → explicit `git add` (never `-A`) + commit → `git push
+  origin dev` → reload tema 6. No repeated copy-paste into nyehandel.
 
 ## Deploy a new JS/CSS version (production)
 
@@ -118,6 +128,9 @@ no cache purge needed, and the SRI hash makes the file tamper-proof.
 
 `hazey.css` is still pasted directly into the Nyehandel global CSS field (no size
 limit there). Just copy the built file's contents over after running `node build.js`.
+This manual paste is production-only — `blocks/loader-dev.html` loads
+`hazey.css` automatically from the `dev` branch, so tema 6/dev preview
+never needs it.
 
 ## Verify
 

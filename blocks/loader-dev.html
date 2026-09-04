@@ -3,45 +3,99 @@
 
      RÄTT FÄLT: samma SEPARATA JavaScript-fält som loader.html (produktion)
      använder — ALDRIG Head-fältet (Google Fonts + Trustpilot bor där,
-     ingen Hazey-loader hör hemma i Head). Klistras in i en inaktiv
-     tema-instans/preview-miljö för utvecklingstestning, ALDRIG i det
+     ingen Hazey-loader hör hemma i Head). Klistras in i en INAKTIV
+     tema-instans (t.ex. tema 6) för utvecklingstestning, ALDRIG i det
      skarpa temats JavaScript-fält (det fältet ska ha produktions-loadern,
-     `loader.html`, pekande mot en pinnad version-tagg — inte `dev`-grenen).
-     Ersätter, kompletterar inte, ett ev. befintligt gammalt loader-
-     innehåll i det fält den klistras in i.
+     `loader.html`, pekande mot en pinnad version-tagg som `v1.1.0-rc1` —
+     inte `dev`-grenen). Ersätter, kompletterar inte, ett ev. befintligt
+     gammalt loader-innehåll i det fält den klistras in i.
 
-     Läser hazey.min.js direkt från "dev"-branchen på GitHub via raw.githack.com
-     (dev-läge = okachad, uppdateras inom sekunder efter varje push). Skiljer sig
-     från loader.html (produktion) som pekar mot en fast, evigt cachad jsDelivr-
-     tagg. Ingen integrity-hash här eftersom filen ändras hela tiden under
-     utveckling — en pinnad hash skulle bryta laddningen vid varje ny commit.
+     Laddar BÅDE hazey.css OCH hazey.min.js direkt från "dev"-branchen på
+     GitHub via raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/
+     (dev-läge = i princip okachad server-sida, uppdateras inom sekunder
+     efter varje push) — till skillnad från loader.html (produktion), som
+     bara laddar JS mot en fast, evigt cachad jsDelivr-tagg och förutsätter
+     att hazey.css klistras in manuellt i Nyehandels globala CSS-fält (se
+     README.md "Deploy CSS"). Den manuella CSS-inklistringen behövs alltså
+     INTE i tema 6 — den här loadern sköter både CSS och JS automatiskt vid
+     varje sidladdning. Ingen integrity-hash här eftersom filerna ändras
+     hela tiden under utveckling — en pinnad hash skulle bryta laddningen
+     vid varje ny commit.
 
-     Sätter ÄVEN `window.NH_ASSET_BASE` mot samma `dev`-gren via samma
-     ocachade raw.githack.com, explicit, innan hazey.min.js laddar — annars
-     faller js/18b-homepage-v2.js tillbaka till produktionens PINNADE
-     release-tagg för bilder (t.ex. hero-fotot) via jsDelivr, vilket skulle
-     blanda en okachad dev-kodversion med en gammal, cachad release-bild.
-     Medvetet SAMMA värdtjänst (raw.githack.com, inte jsDelivr@dev) som
-     scriptet ovan — jsDelivrs branch-referenser cachar fortfarande upp
-     till ett antal timmar, vilket skulle motverka hela poängen med denna
-     dev-loader. Håll den här raden i synk med URL:en nedan (samma gren,
-     `dev`), inte med produktionens pinnade tagg i loader.html.
+     Cache-busting: en `?t=<tidsstämpel>`-querysträng läggs till på BÅDA
+     URL:erna, unik per sidladdning — annars kan besökarens EGEN
+     webbläsarcache (inte bara raw.githack.com:s servercache) visa en
+     gammal version efter en vanlig omladdning, trots att servern redan har
+     den senaste committade koden.
 
-     Arbetsflöde:
-       1. Redigera filer i css/ eller js/ lokalt
+     Laddningsordning (medvetet, se kravet i STATUS.md): hazey.css laddas
+     FÖRST via en <link>, och hazey.min.js skapas/körs bara i dess
+     onload/onerror-callback — INTE parallellt. hazey.min.js mäter
+     verklig layout (getBoundingClientRect m.fl., se t.ex.
+     js/18b-homepage-v2.js/js/18a-header-v2.js) och måste alltså köra EFTER
+     att stilarna redan är på plats, annars mäter det en ostylad sida.
+
+     Idempotent: en dataattribut-markering (`data-nh-dev-css`/
+     `data-nh-dev-js`) kollas innan något skapas — om den här snutten av
+     misstag klistras in eller körs mer än en gång på samma sida (två
+     separata loader-block i samma fält, ett dubbelklistrat stycke, etc.)
+     skapas ALDRIG dubbla <link>- eller <script>-element.
+
+     Sätter `window.NH_ASSET_BASE` mot SAMMA `dev`-gren via SAMMA
+     raw.githack.com (inte jsDelivr@dev — jsDelivrs branch-referenser
+     cachar fortfarande upp till ett antal timmar, vilket skulle motverka
+     hela poängen med denna dev-loader), satt synkront innan CSS/JS ens
+     börjar laddas, så js/18b-homepage-v2.js alltid ser rätt värde. Håll
+     den här raden i synk med bas-URL:en nedan (samma gren, `dev`), inte
+     med produktionens pinnade tagg i loader.html.
+
+     Arbetsflöde (uppdaterat — inget manuellt CSS-klistrande längre):
+       1. Ändra källkod i css/ eller js/ lokalt
        2. node build.js  (bygger hazey.css + hazey.min.js på nytt)
        3. Stagea ENDAST de byggda filerna explicit — ALDRIG `git add -A`,
           som riskerar att av misstag dra in orelaterade scratch-/test-/
           användarfiler:
           git add hazey.css hazey.html hazey.min.html hazey.min.js
           git commit -m "..." && git push origin dev
-       4. Ladda om previewfliken i nyehandel — klart, ingen ny inklistring behövs
+       4. Ladda om tema 6 (eller previewfliken) — cache-bustingen ovan
+          garanterar att omladdningen hämtar den nyss pushade versionen,
+          ingen ny inklistring behövs
      ============================================================================ -->
 <script>
 (function () {
-  window.NH_ASSET_BASE = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/assets/";
-  var s = document.createElement("script");
-  s.src = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/hazey.min.js";
-  document.head.appendChild(s);
+  var BASE = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/";
+  var BUST = "?t=" + Date.now();
+
+  // Sätts synkront, före CSS/JS-laddningen påbörjas — js/18b-homepage-v2.js
+  // läser detta värde direkt vid sin egen körning.
+  window.NH_ASSET_BASE = BASE + "assets/";
+
+  // Idempotens: hoppa över helt om den här loadern redan kört på sidan.
+  if (document.querySelector("[data-nh-dev-css]") || document.querySelector("[data-nh-dev-js]")) {
+    return;
+  }
+
+  function loadScript() {
+    if (document.querySelector("[data-nh-dev-js]")) return;
+    var s = document.createElement("script");
+    s.setAttribute("data-nh-dev-js", "1");
+    s.src = BASE + "hazey.min.js" + BUST;
+    document.head.appendChild(s);
+  }
+
+  var link = document.createElement("link");
+  link.setAttribute("data-nh-dev-css", "1");
+  link.rel = "stylesheet";
+  link.href = BASE + "hazey.css" + BUST;
+  // hazey.min.js mäter riktig layout — måste köra EFTER att CSS:en är
+  // laddad, inte parallellt. onerror faller ändå igenom till JS (en trasig
+  // dev-preview med fel stilar är mer användbar än en helt tom sida) men
+  // loggar felet tydligt så det inte upptäcks av misstag.
+  link.onload = loadScript;
+  link.onerror = function () {
+    console.error("[hazey dev-loader] kunde inte ladda " + link.href + " — kör hazey.min.js ändå, men sidan saknar Hazey-stilarna.");
+    loadScript();
+  };
+  document.head.appendChild(link);
 })();
 </script>

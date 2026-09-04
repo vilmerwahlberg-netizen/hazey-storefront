@@ -37,8 +37,14 @@ Fullständiga build-instruktioner står i `README.md` — läs den för
   se `build.js`s egen kommentar) + ett nytt anrop i `19-core-close.js`s
   boot-lista.
 - `blocks/` — innehållsblock som klistras in per sida i nyehandel-admin,
-  inkl. `loader.html` (produktion, jsDelivr-tagg) och `loader-dev.html`
-  (lokal/dev-testning, ej i produktion).
+  inkl. `loader.html` (produktion, jsDelivr-tagg, endast JS — `hazey.css`
+  klistras in separat) och `loader-dev.html` (dev-testning i en INAKTIV
+  tema-instans som tema 6, aldrig produktion — laddar både `hazey.css`
+  och `hazey.min.js` automatiskt från `dev`-grenen via raw.githack.com,
+  med cache-busting och CSS-före-JS-ordning inbyggd). Se README.md "Two
+  loaders" för hela flödet: ändra källkod → `node build.js` → explicit
+  `git add` (aldrig `-A`) + commit → `git push origin dev` → ladda om
+  tema 6, ingen manuell inklistring efter den första gången.
 - `build.js` — `node build.js` slår ihop css/js till `hazey.css` /
   `hazey.html` / `hazey.min.js`. Redigera ALDRIG de genererade filerna
   direkt.
