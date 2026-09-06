@@ -10,23 +10,32 @@
      inte `dev`-grenen). Ersätter, kompletterar inte, ett ev. befintligt
      gammalt loader-innehåll i det fält den klistras in i.
 
-     Laddar BÅDE hazey.css OCH hazey.min.js direkt från "dev"-branchen på
-     GitHub via raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/
-     (dev-läge = i princip okachad server-sida, uppdateras inom sekunder
-     efter varje push) — till skillnad från loader.html (produktion), som
-     bara laddar JS mot en fast, evigt cachad jsDelivr-tagg och förutsätter
-     att hazey.css klistras in manuellt i Nyehandels globala CSS-fält (se
-     README.md "Deploy CSS"). Den manuella CSS-inklistringen behövs alltså
-     INTE i tema 6 — den här loadern sköter både CSS och JS automatiskt vid
-     varje sidladdning. Ingen integrity-hash här eftersom filerna ändras
-     hela tiden under utveckling — en pinnad hash skulle bryta laddningen
-     vid varje ny commit.
+     Laddar BÅDE hazey.css OCH hazey.min.js från detta repots egen GitHub
+     Pages-deployment (https://vilmerwahlberg-netizen.github.io/hazey-storefront/)
+     i stället för den tidigare raw.githack.com-baserade dev-branchen.
+     Bytt 2026-09-06 (se STATUS.md) — raw.githack.com visade sig ha en
+     opålitlig, ibland >20 minuter lång fördröjning innan en ny push
+     faktiskt speglades, vilket gjorde dev-loopen otillförlitlig.
+     GitHub Pages-sidan byggs och publiceras i stället av en dedikerad
+     GitHub Actions-workflow (.github/workflows/pages-dev.yml) vid varje
+     push till `dev` — en kontrollerad deployment, inte en direkt proxy
+     mot repots råa filinnehåll. Publicerar ENDAST det tema 6:s dev-loader
+     faktiskt behöver (byggd hazey.css/hazey.min.js + assets/*) — ingen
+     dokumentation, inga tester, ingen Git-historik.
+
+     Skiljer sig fortfarande från loader.html (produktion), som laddar JS
+     mot en fast, evigt cachad jsDelivr-tagg och förutsätter att hazey.css
+     klistras in manuellt i Nyehandels globala CSS-fält (se README.md
+     "Deploy CSS"). Den manuella CSS-inklistringen behövs INTE i tema 6 —
+     den här loadern sköter både CSS och JS automatiskt vid varje
+     sidladdning. Ingen integrity-hash här eftersom filerna ändras hela
+     tiden under utveckling — en pinnad hash skulle bryta laddningen vid
+     varje ny commit.
 
      Cache-busting: en `?t=<tidsstämpel>`-querysträng läggs till på BÅDA
      URL:erna, unik per sidladdning — annars kan besökarens EGEN
-     webbläsarcache (inte bara raw.githack.com:s servercache) visa en
-     gammal version efter en vanlig omladdning, trots att servern redan har
-     den senaste committade koden.
+     webbläsarcache visa en gammal version efter en vanlig omladdning,
+     trots att GitHub Pages redan har den senaste deploymenten.
 
      Laddningsordning (medvetet, se kravet i STATUS.md): hazey.css laddas
      FÖRST via en <link>, och hazey.min.js skapas/körs bara i dess
@@ -41,15 +50,15 @@
      separata loader-block i samma fält, ett dubbelklistrat stycke, etc.)
      skapas ALDRIG dubbla <link>- eller <script>-element.
 
-     Sätter `window.NH_ASSET_BASE` mot SAMMA `dev`-gren via SAMMA
-     raw.githack.com (inte jsDelivr@dev — jsDelivrs branch-referenser
-     cachar fortfarande upp till ett antal timmar, vilket skulle motverka
-     hela poängen med denna dev-loader), satt synkront innan CSS/JS ens
-     börjar laddas, så js/18b-homepage-v2.js alltid ser rätt värde. Håll
-     den här raden i synk med bas-URL:en nedan (samma gren, `dev`), inte
-     med produktionens pinnade tagg i loader.html.
+     Sätter `window.NH_ASSET_BASE` mot SAMMA GitHub Pages-rot (samma
+     arkitektur som redan fanns — js/18b-homepage-v2.js läser bara
+     `window.NH_ASSET_BASE` om den är satt, ingen ny parallell URL-mekanism
+     tillagd), satt synkront innan CSS/JS ens börjar laddas, så
+     js/18b-homepage-v2.js alltid ser rätt värde. Håll den här raden i
+     synk med bas-URL:en nedan.
 
-     Arbetsflöde (uppdaterat — inget manuellt CSS-klistrande längre):
+     Arbetsflöde (uppdaterat — inget manuellt CSS-klistrande, ingen
+     raw.githack-väntan):
        1. Ändra källkod i css/ eller js/ lokalt
        2. node build.js  (bygger hazey.css + hazey.min.js på nytt)
        3. Stagea ENDAST de byggda filerna explicit — ALDRIG `git add -A`,
@@ -57,13 +66,16 @@
           användarfiler:
           git add hazey.css hazey.html hazey.min.html hazey.min.js
           git commit -m "..." && git push origin dev
-       4. Ladda om tema 6 (eller previewfliken) — cache-bustingen ovan
-          garanterar att omladdningen hämtar den nyss pushade versionen,
-          ingen ny inklistring behövs
+       4. GitHub Actions bygger och publicerar automatiskt till GitHub
+          Pages (se .github/workflows/pages-dev.yml — kör "Actions"-
+          fliken på GitHub för att se status/loggar).
+       5. Ladda om tema 6 (eller previewfliken) — cache-bustingen ovan
+          garanterar att omladdningen hämtar den nyss publicerade
+          versionen, ingen ny inklistring behövs.
      ============================================================================ -->
 <script>
 (function () {
-  var BASE = "https://raw.githack.com/vilmerwahlberg-netizen/hazey-storefront/dev/";
+  var BASE = "https://vilmerwahlberg-netizen.github.io/hazey-storefront/";
   var BUST = "?t=" + Date.now();
 
   // Sätts synkront, före CSS/JS-laddningen påbörjas — js/18b-homepage-v2.js

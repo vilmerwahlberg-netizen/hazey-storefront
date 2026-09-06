@@ -85,11 +85,20 @@ hard-to-diagnose test session — see `STATUS.md`).
   Changing it is a deliberate release (see below).
 - **`blocks/loader-dev.html`** — dev preview only, pasted into an **inactive**
   theme instance's JavaScript field (e.g. tema 6), never into the live
-  theme's. Loads BOTH `hazey.css` and `hazey.min.js` from the `dev` branch
-  via `raw.githack.com` — no manual CSS paste needed in dev, unlike
-  production. Each file's URL carries a `?t=<timestamp>` cache-busting
+  theme's. Loads BOTH `hazey.css` and `hazey.min.js` from this repo's own
+  **GitHub Pages** deployment
+  (`https://vilmerwahlberg-netizen.github.io/hazey-storefront/`) — no
+  manual CSS paste needed in dev, unlike production. A dedicated GitHub
+  Actions workflow (`.github/workflows/pages-dev.yml`) builds and
+  publishes that Pages site automatically on every push to `dev` (or a
+  manual run from the Actions tab); it publishes ONLY the built dev
+  assets tema 6 actually needs (`hazey.css`, `hazey.min.js`, `assets/*`) —
+  no docs, tests or git history. (Replaces an earlier `raw.githack.com`-
+  based version of this loader, dropped 2026-09-06 — githack's CDN could
+  take 20+ minutes to reflect a new push, making the dev loop unreliable;
+  see `STATUS.md`.) Each file's URL carries a `?t=<timestamp>` cache-busting
   query, unique per page load, so a plain browser reload always fetches the
-  latest pushed version rather than a stale cached copy. `hazey.min.js`
+  latest published version rather than a stale cached copy. `hazey.min.js`
   measures real layout, so it only starts loading once `hazey.css` has
   finished (via the stylesheet's own `onload`) — never in parallel. The
   loader is idempotent (guards on a `data-nh-dev-css`/`data-nh-dev-js`
@@ -97,7 +106,8 @@ hard-to-diagnose test session — see `STATUS.md`).
   never creates duplicate `<link>`/`<script>` elements. After the
   one-time paste into tema 6, iterating is just: edit `css/`/`js/` →
   `node build.js` → explicit `git add` (never `-A`) + commit → `git push
-  origin dev` → reload tema 6. No repeated copy-paste into nyehandel.
+  origin dev` → wait for the Pages workflow to go green (Actions tab) →
+  reload tema 6. No repeated copy-paste into nyehandel.
 
 ## Deploy a new JS/CSS version (production)
 

@@ -1,0 +1,120 @@
+name: Deploy tema 6 dev preview to GitHub Pages
+
+# Publishes ONLY the built dev-preview assets that tema 6's dev-loader
+# (blocks/loader-dev.html) needs — hazey.css, hazey.min.js and assets/*.
+# This is a REPLACEMENT for the previous raw.githack.com-based dev flow
+# (blocks/loader-dev.html), NOT a change to the production release flow
+# (blocks/loader.html, the pinned jsDelivr tag, v1.1.0-rc1) — that stays
+# completely untouched. Live tema 3, tema 5 and any Nyehandel admin
+# setting are not affected by this workflow in any way; it only writes to
+# this repo's own GitHub Pages site.
+#
+# Triggers: every push to `dev`, or a manual run from the Actions tab
+# (workflow_dispatch) — e.g. to redeploy without a new commit.
+#
+# One-time prerequisite (cannot be done from a workflow file): this
+# repo's Pages source must be set to "GitHub Actions" under
+# Settings > Pages > Build and deployment > Source, before the first run
+# can succeed.
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+# Minimal permissions this workflow needs: read the repo, and the two
+# Pages-specific permissions actions/deploy-pages requires (write access
+# to Pages, and an OIDC token to authenticate the deployment). Nothing
+# else — no write access to repo contents, issues, PRs, etc.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Official recommended pattern for Pages deploys: avoid two concurrent
+# deployments racing each other, but let an in-flight one finish rather
+# than cancelling it outright.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # No explicit `ref:` needed — actions/checkout defaults to
+      # `github.sha`, i.e. exactly the commit that triggered this push
+      # (or, for a manual run, the tip of the branch the run was started
+      # from). That already satisfies "check out exactly the pushed dev
+      # commit".
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Reproducible install from the committed package-lock.json.
+      # PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD skips downloading Playwright's
+      # browser binaries (only build.js's own dependency, terser, is
+      # actually needed to build hazey.css/hazey.min.js — Playwright is a
+      # local/test-only devDependency, irrelevant to this workflow, and
+      # its browser download would just slow the job down for nothing).
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+      - name: Build hazey.css / hazey.min.js
+        run: npm run build
+
+      # build.js's own terser step already exits non-zero (failing this
+      # step, and the whole job) on a real minification error. This is an
+      # extra, explicit safety net: fail loudly if the build somehow
+      # produced empty/missing output instead of silently publishing a
+      # broken dev preview. The full Playwright parity/tema6-smoke suites
+      # are NOT run here deliberately — they depend on infrastructure this
+      # runner doesn't have (a local facit server on localhost:8765, and
+      # live network access to the real hazeyse.nyehandel.se storefront),
+      # so they're a local/manual verification step, not a CI gate.
+      - name: Verify build output
+        run: |
+          test -s hazey.css
+          test -s hazey.min.js
+          echo "hazey.css and hazey.min.js exist and are non-empty."
+
+      # Assemble ONLY what tema 6's dev-loader actually needs into a
+      # clean, throwaway directory — never the repo root. This keeps
+      # documentation (README/CLAUDE/STATUS.md), tests/, git history and
+      # every other repo-internal file out of the published site.
+      - name: Assemble Pages site (dev-preview assets only)
+        run: |
+          rm -rf _site
+          mkdir -p _site/assets
+          cp hazey.css _site/
+          cp hazey.min.js _site/
+          cp assets/*.jpg _site/assets/ 2>/dev/null || true
+          cp assets/*.jpeg _site/assets/ 2>/dev/null || true
+          cp assets/*.png _site/assets/ 2>/dev/null || true
+          cp assets/*.webp _site/assets/ 2>/dev/null || true
+          cp assets/*.svg _site/assets/ 2>/dev/null || true
+          echo "Published site contents:"
+          find _site -type f | sort
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
