@@ -9344,6 +9344,17 @@ body.checkout-page .checkout-items-summary .item .content {
     gap: 13px 10px;
     padding: 15px 16px;
     border-bottom: 1px solid rgba(244, 233, 220, 0.12);
+    /* Facit-kalibrering 2026-09-06: .nh-footer själv har padding:0 16px
+       (oskopat, gäller hela footern) -- staplat med denna radens EGNA
+       16px padding gav ett dubbelt 32px inset (kolumnerna mätte 159.5px
+       i stället för facits 175.5px, som bara har ETT lager 16px).
+       Facits .footer-trust ligger kant-i-kant med footerns ytterkant och
+       får HELA sin inset från sin egen padding -- ingen extra förälder-
+       padding där. Negativ marginal kompenserar bort den yttre 16px:en
+       utan att röra .nh-footer:s delade padding (som andra footer-
+       element fortfarande behöver). */
+    margin-left: -16px;
+    margin-right: -16px;
   }
   .nh-footer__trust {
     display: none;
@@ -9446,9 +9457,17 @@ body.checkout-page .checkout-items-summary .item .content {
     font-size: 10.5px !important;
     letter-spacing: 0.11em !important;
   }
+  /* Facit-kalibrering 2026-09-06: font-family/vikt saknades här (bara
+     size/line-height/färg var satta) -- Nyehandels tag-nivå-reset
+     (samma dokumenterade mönster) lät a-taggen ärva Nunito/500 i
+     stället för facits system-font/400. font-size justerat 11.5->12px
+     (facits uppmätta värde, index.html rad 108/motsvarande) samtidigt. */
   .nh-footer__col a {
-    font-size: 11.5px !important;
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
     line-height: 1.35 !important;
+    letter-spacing: normal !important;
     color: rgba(255, 255, 255, 0.88) !important;
     padding: 0 !important;
     margin-bottom: 8px;
