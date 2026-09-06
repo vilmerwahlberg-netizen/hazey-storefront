@@ -2183,3 +2183,128 @@ till /sv och bevarar aktuell preview-parameter").
 
 **Commit (pushad till `dev`, ren fast-forward, ingen tagg, ingen
 Nyehandel-ändring):** `3f6cb77`.
+
+## Sökoverlayn — isolerad 1:1-kalibrering mot facit (2026-09-06)
+
+Uppföljning på ovanstående (funktionaliteten var redan reparerad) —
+detta var en ren visuell/interaktiv portning av det ÖPPNA mobila
+sökläget mot facit (`#mSearchOverlay`/`.ms-top`/`.ac-*`), mätt live vid
+390/430/600px med sökfrasen "thca" mot både facit och tema 6. Nyehandels
+riktiga sökmotor, resultatdata, länkar och eventhantering rörda inte —
+ingen egen sökfunktion byggd, inga fabricerade resultat.
+
+**Före:** en klippt, ~16-166px hög "auto"-ruta där resultatlistan
+antingen var helt osynlig (ursprungsbuggen, redan fixad ovan) eller (när
+synlig) visuellt bröt ut som overflow utan bakgrund, lät hero-sektionen
+lysa igenom, hade nativ 4px-radie/klargrön fokusglöd på fältet, en
+SVG-bakåtpil i stället för en textknapp, produktnamn som tvingade hela
+raden bredare än viewporten, och pris staplat under namnet i stället för
+sida vid sida.
+
+**Rotorsaker, samtliga verifierade live (inte gissade) och fixade i
+`css/21-header-v2.css` (allt `@media max-width:880px`, `js/18a-header-
+v2.js` för Escape-fixen):**
+1. `#search-container` hade en nativ, explicit 166px-höjd (oavsett
+   innehåll), och dess mellanwrapper `.store-search` var `position:
+   fixed` + `overflow:visible` — hela resultatlistan (1600+ px)
+   renderade som ren visuell overflow utanför sin egen låda, utan
+   bakgrund. Fixat: `#search-container` blir en riktig helskärms-
+   overlay (`fixed;inset:0;height:100dvh`, vit bakgrund, `overflow-y:
+   auto` — matchar facits `.m-overlay` exakt); `.store-search` satt till
+   `position:static;height:auto` så den kan växa med sitt riktiga
+   innehåll.
+2. Nativ `<ul>` var `display:grid` utan `grid-template-columns` — det
+   enda implicita kolumnspåret storleksattes efter produktnamnets
+   `white-space:nowrap`-bredd (min-content), inte efter behållarens
+   egen bredd (`<li>` mätte 476px vid en 390px viewport). Fixat:
+   `display:block`.
+3. `min-width:auto` (default) på `.dropdown-left`/`.dropdown-right`,
+   flex-barn till `.inner-dropdown`, lät samma nowrap-bredd bubbla upp
+   och tvinga hela raden bredare än viewporten. Fixat med
+   `min-width:0;width:100%`.
+4. Priset låg staplat under namnet — en annan nativ, oidentifierad
+   `flex-direction:column`-regel vann tyst över min `display:flex`-regel
+   (som aldrig själv satte `flex-direction`, och ärvde alltså inte
+   `row` som jag antog). Fixat med explicit `flex-direction:row`.
+5. Nyehandels tag-nivå-reset (samma mönster som redan dokumenterat i
+   CLAUDE.md "Parity-workflow") läckte igenom `font-family`/`font-
+   weight`/`line-height`/`letter-spacing` på flera nya element (stäng-
+   knapp, fält, chip, namn, pris, "visa alla") — upptäckt via
+   `tests/typography-icon-checks.mjs`s `diffTypography`, alla nu
+   explicit `!important`-skyddade.
+6. Native "grönt fokusutseende" (`#4faa25`-kant + grön glöd, `css/08`,
+   oskopad — gäller fortsatt OFÖRÄNDRAT på desktop) ersatt HÄR, bara i
+   mobilsöket, med facits egna terrafärgade fokusring (samma
+   opacitet/bredd som facits `:focus-visible`-regel).
+7. Stäng-knappen bytt från nativ SVG-bakåtpil till facits textknapp
+   ("Stäng") — samma `::after`-textknep som redan används för
+   mobilloggans ordmärke och footerns nyhetsbrevsknapp ("Skriv upp
+   mig"). Click-handlern rörs inte, bara det visuella innehållet.
+8. **Escape stängde tidigare INTE sökningen** (verifierat live — en
+   riktig funktionsskillnad mot facit, inte bara visuell). Fixat med en
+   `keydown`-lyssnare som programmatiskt klickar den RIKTIGA
+   stäng-knappen (samma "skjut upp till en ny event-loop-tick"-mönster
+   som redan används för att öppna sökningen, se föregående avsnitt).
+9. Kategorilänkar omstylade till facits chip-rad (flex/wrap/pill-
+   knappar) — riktiga href/text orörda. En tunn avdelare tillagd mellan
+   kategori- och produktsektionen (facits `.ac-div` saknar en nativ
+   motsvarande DOM-nod hos oss, så delaren lades på `.dropdown-left`
+   i stället för att lägga till ett nytt element).
+
+**Metod-fallgrop värd att komma ihåg:** `.store-search__dropdown` bär
+BÅDA klasserna `store-search__dropdown` OCH `dropdown-right` samtidigt
+(en namnkrock) — flera tidiga CSS-selektorer (`.dropdown-right ...`)
+matchade av misstag BÅDA den yttre wrappern och den äkta inre
+produktkolumnen. Löst genomgående med `.inner-dropdown > .dropdown-right`
+för att disambiguera till den äkta inre kolumnen.
+
+**Kvarvarande, klassificerade avvikelser (inga bugg, inte dolda):**
+- Färg: `.ac-name`/`.ac-close` m.fl. i facit är `rgb(38,38,31)`/
+  `rgb(0,0,0)` (facits egen svarta/mörkbruna bläckton), vår
+  implementation använder sitewide `--nh-green:#2c3620` konsekvent
+  (samma redan etablerade, medvetna princip som resten av projektet
+  — se t.ex. footerns stäng-knappsfärg-beslut i tidigare omgångar).
+  **Klass: medvetet produktbeslut.**
+- Rubriktext: native säger "Kategorier"/"Produkter", facit säger "Gå
+  direkt till"/"Sökresultat" (+ ett sekundärt antal/kind-label facit
+  visar men native-datan saknar helt). Riktig plattformstext, ändras
+  inte. **Klass: dynamiskt innehåll / plattformshanterad funktion.**
+- Produktmeta: facit visar en extra "I lager"-rad under namnet; native
+  quick-search-datan innehåller ingen sådan textrad att visa (ingen
+  fabricerad ersättning). **Klass: dynamiskt innehåll.**
+- `font-family`-fallbackkedjan skiljer sig i sista länken (`"Helvetica
+  Neue", Arial` mot `Roboto`) — samma första font (`-apple-system`)
+  vinner i praktiken på alla riktiga enheter, ingen synlig skillnad.
+  **Klass: webbläsarens textrendering.**
+
+**Verifiering:** öppna/stäng via bakåtknapp OCH Escape — båda fungerar.
+Skriva och radera söktext — fältet töms, sökningen förblir öppen (matchar
+facit). Riktiga kategori- och produktklick navigerar till äkta
+`hazeyse.nyehandel.se`-sidor (verifierat via faktisk navigation, inte
+bara href-läsning). z-index/backdrop: elementet direkt bakom overlayn
+(där hero tidigare lyste igenom) är nu korrekt vår egen overlay på
+samtliga testade punkter; sidscroll bakom overlayn redan nativt låst
+(`html`/`body` overflow hidden, oförändrat av oss). Kategori- OCH
+produktsida: sökningen öppnas identiskt där, 0px overflow, inga
+konsolfel. Loggalänken oförändrad (fortsatt `/sv?preview=<token>`).
+Desktop 1440px: `npm run parity -- --grep "regression:"` 12/12 gröna,
+0,0% diff på samtliga tolv sektioner — bekräftar noll oavsiktlig visuell
+sidoeffekt. `tests/typography-icon-checks.mjs`s `diffTypography` kört
+mot fält/stäng-knapp/rubrik/chip/namn/pris/"visa alla" — endast de
+klassificerade avvikelserna ovan kvarstår.
+
+**Metodanteckning (samma som föregående omgång):** `raw.githack.com`
+hade >20 minuter efter push fortfarande inte reflekterat den nya koden
+— samma kända, tidigare dokumenterade CDN-fördröjning. All verifiering
+ovan skedde via direktinjektion av den lokalt byggda `hazey.css`/
+`hazey.min.js` rakt mot tema 6:s riktiga DOM (kringgår githacks cache,
+samma metod som `gotoImpl()`) — verifierar kodkorrekthet identiskt, men
+täcker inte dev-loaderns egen fetch-kedja. En riktig `npm run test:tema6`
+mot det pushade innehållet rekommenderas köras separat senare.
+
+**Filer ändrade:** `css/21-header-v2.css` (hela sökoverlay-reskinnet),
+`js/18a-header-v2.js` (Escape-fixen), `hazey.css`/`hazey.html`/
+`hazey.min.html`/`hazey.min.js` (byggda).
+
+**Commit (pushad till `dev`, ren fast-forward, ingen tagg, ingen
+Nyehandel-ändring):** `5a1326b`.
