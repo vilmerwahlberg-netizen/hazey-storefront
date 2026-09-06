@@ -2308,3 +2308,132 @@ mot det pushade innehållet rekommenderas köras separat senare.
 
 **Commit (pushad till `dev`, ren fast-forward, ingen tagg, ingen
 Nyehandel-ändring):** `5a1326b`.
+
+## raw.githack ersatt med GitHub Pages-deployment för dev-loadern (2026-09-06)
+
+`raw.githack.com` visade sig, över flera omgångar denna session, ha en
+opålitlig fördröjning (>20 minuter uppmätt, ibland längre) innan en
+push faktiskt speglades — verifierat gång på gång genom att jämföra
+`raw.githubusercontent.com` (alltid färskt) mot `raw.githack.com`
+(ihållande gammalt innehåll långt efter push). Detta gjorde
+dev-loopen mot tema 6 otillförlitlig. Ersatt med en kontrollerad
+GitHub Actions-deployment till repots egen GitHub Pages-sida.
+
+**Byggt:**
+- `.github/workflows/pages-dev.yml` (ny): triggas vid push till `dev`
+  och manuellt (`workflow_dispatch`). Checkar ut den exakta pushade
+  committen (default `actions/checkout`-beteende), `npm ci`
+  (reproducerbart via `package-lock.json`, hoppar över Playwrights
+  onödiga webbläsarnedladdning), kör `node build.js`, failar explicit
+  om `hazey.css`/`hazey.min.js` saknas eller är tomma, samlar sedan
+  ENDAST `hazey.css` + `hazey.min.js` + `assets/*` i en engångskatalog
+  och publicerar den via GitHubs officiella
+  `actions/upload-pages-artifact` + `actions/deploy-pages`. Minimala
+  permissions (`contents:read`, `pages:write`, `id-token:write`). De
+  fulla Playwright-svitérna körs INTE i workflowet (kräver lokal
+  facit-server + live nätverksåtkomst mot hazeyse.nyehandel.se —
+  infrastruktur GitHubs runner inte har) — kvarstår som ett manuellt/
+  lokalt verifieringssteg, dokumenterat i workflowets egen kommentar.
+- `blocks/loader-dev.html`: BASE-URL:en pekar nu mot
+  `https://vilmerwahlberg-netizen.github.io/hazey-storefront/` i
+  stället för `raw.githack.com/.../dev/`. `window.NH_ASSET_BASE` sätts
+  via SAMMA redan befintliga arkitektur (`js/18b-homepage-v2.js` läser
+  bara `window.NH_ASSET_BASE` om satt) — ingen ny parallell
+  URL-mekanism. Cache-busting (`?t=<timestamp>`), laddningsordning
+  (CSS före JS via `onload`) och idempotens-vakterna (`data-nh-dev-css`/
+  `data-nh-dev-js`) oförändrade.
+- `README.md` ("Two loaders") och `.gitignore` (`_site/`, workflowets
+  lokala byggkatalog om den körs manuellt) uppdaterade i samma veva.
+
+**Två separata, sekventiella one-time-hinder hittade och lösta (ingen
+kunde kringgås programmatiskt — mitt push-tokens behörighet räckte
+uttryckligen inte för någon av dem, verifierat via 403-svar från
+GitHub API, inte gissat):**
+1. GitHub Pages var inte aktiverat alls (`GET .../pages` → 404).
+   Vilmer aktiverade det manuellt (Settings → Pages → Source →
+   "GitHub Actions").
+2. Första push av workflowfilen avvisades: `refusing to allow a
+   Personal Access Token to create or update workflow
+   ".github/workflows/pages-dev.yml" without workflow scope`. Vilmer
+   la till `workflow`-scope (senare granulärt: "Workflows: Read and
+   write") på samma token.
+3. Efter en lyckad push körde workflowets `build`-jobb helt grönt, men
+   `deploy`-jobbet failade omedelbart (0 steg loggade, <1 sekund) —
+   rotorsakat via `GET .../environments/github-pages/deployment-
+   branch-policies`: GitHubs auto-skapade `github-pages`-miljö hade en
+   branch-policy som bara tillät `main`, inte `dev` (ett känt, ofta
+   överraskande default-beteende när Pages först aktiveras med
+   Actions-källa). Vilmer la till en `dev`-branchregel manuellt
+   (Settings → Environments → github-pages → "Add deployment branch or
+   tag rule" → Branch → `dev`).
+4. Omkörning av det failade jobbet krävde också manuellt jobb (mitt
+   tokens behörighet räckte inte för `rerun-failed-jobs` eller
+   `workflows/.../dispatches` heller, båda gav 403) — Vilmer klickade
+   "Re-run failed jobs" i Actions-fliken själv.
+
+Efter fix 3+4: **run 34038425078, attempt 2 — status `completed`,
+conclusion `success`** (både `build`- och `deploy`-jobben gröna).
+
+**Den enda varningen i körningen** (samma text i både build- och
+deploy-jobbet): `Node.js 20 is deprecated. The following actions
+target Node.js 20 but are being forced to run on Node.js 24:
+actions/checkout@v4, actions/setup-node@v4, actions/upload-
+artifact@v4/actions/deploy-pages@v4`. Detta är GitHubs egen,
+generella infrastruktur-varning om att dessa actions internt är byggda
+mot Node 20 men körs (transparent, automatiskt) på Node 24 av
+runnern — HELT oberoende av `node-version:"20"` jag själv satte åt
+`build.js`s körning (den styr bara vilken Node-version som kör vårt
+EGET byggsteg, inte actionens egen interna runtime). Ren, framåtblickande
+deprecation-notis om själva action-versionerna — påverkar inte dagens
+körning, ingen åtgärd krävs nu. Blir relevant den dagen GitHub slutar
+stödja Node 20-baserade actions helt — då behöver `actions/checkout`,
+`actions/setup-node`, `actions/upload-pages-artifact` och
+`actions/deploy-pages` bumpas till sina nästa majorversioner, men
+inget datum för det är känt idag.
+
+**Fullständig verifiering efter grön deployment:**
+- `GET https://vilmerwahlberg-netizen.github.io/hazey-storefront/hazey.css`
+  → 200, `content-type: text/css; charset=utf-8`.
+- `GET .../hazey.min.js` → 200, `content-type: application/javascript;
+  charset=utf-8`.
+- `GET .../assets/hero-westcoast-v4.jpg` → 200, `content-type:
+  image/jpeg`.
+- Innehåll BYTE-FÖR-BYTE identiskt mot `git show HEAD:hazey.css` /
+  `hazey.min.js` / `assets/hero-westcoast-v4.jpg` vid commit `2e76c19`
+  — inte bara "svarar 200", verifierat att det verkligen ÄR den
+  pushade committens kod.
+- Pages-roten exponerar INGET annat: `README.md`, `STATUS.md`,
+  `package.json`, `.git/config`, `tests/tema6-smoke.spec.mjs` gav alla
+  404 där.
+- Inga kvarvarande `raw.githack`/`Oliverforss8`-referenser i den
+  faktiska publicerade koden (`hazey.css`/`hazey.min.js`) eller i
+  `blocks/loader-dev.html`s KÖRBARA logik — de enda träffarna är i
+  filens egen historik-/dokumentationskommentar som uttryckligen
+  FÖRKLARAR migreringen bort från raw.githack, inte en kvarleva.
+- `blocks/loader.html` (produktion): senast ändrad commit `2335573`
+  (v1.1.0-rc1-förberedelsen, långt före denna session) — helt orörd.
+- Hela `loader-dev.html`-skriptet kört live mot en tom sida (samma
+  metod som vid raw.githack-loaderns ursprungliga verifiering, se
+  tidigare i denna fil): `window.NH_ASSET_BASE` sätts korrekt mot
+  Pages-roten, `<link>` faktiskt färdigladdad (`sheet !== null`),
+  `<script src>` pekar rätt, inga konsolfel, körd två gånger utan att
+  skapa dubbla element (idempotens bekräftad).
+
+**Kvarstående, medvetet ORÖRT av mig (inte en lucka, ett gränsvillkor):**
+tema 6:s Nyehandel JavaScript-fält har fortfarande den GAMLA,
+`raw.githack`-baserade `loader-dev.html`-texten inklistrad sedan en
+tidigare omgång — jag rör aldrig Nyehandel-admin. **Vilmer behöver
+själv klistra in den UPPDATERADE `blocks/loader-dev.html` i tema 6:s
+JavaScript-fält** (samma fält, ersätter hela det gamla innehållet, inte
+kompletterar) för att tema 6 faktiskt ska börja använda GitHub
+Pages-flödet i stället för raw.githack. Detta är ETT nytt, kortare
+manuellt steg (utöver de fyra one-time-inställningarna ovan, som redan
+är klara) — inte en upprepning av dem.
+
+**Inte rört:** `blocks/loader.html`, `v1.1.0-rc1`, live tema 3, tema 5,
+någon Nyehandel-inställning, någon visuell CSS/komponentdesign, eller
+sökimplementationen från föregående omgång.
+
+**Commits (pushade till `dev`, fast-forward, ingen tagg, ingen
+Nyehandel-ändring):** `2e76c19` (workflow + loader-dev.html + README +
+.gitignore).
