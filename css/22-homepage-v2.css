@@ -1164,6 +1164,37 @@
 .nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
 .nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }
+/* Facit-kalibrering 2026-09-06 (näst avgränsade paket, se STATUS.md):
+   sektionsrubrikraden ("Bästsäljare i lager" + "Se allt →") saknade
+   layout helt -- `.sec-head` har ingen delad bas-regel (se kommentaren
+   vid `.nh-routes .sec-head` ovan), så "Se allt" föll ner på en egen
+   rad i stället för att ligga till höger om rubriken (facit:
+   `.hx-head{display:flex;align-items:baseline;justify-content:space-
+   between;gap:14px;flex-wrap:wrap}`, uppmätt). Samma mönster som redan
+   finns för `.nh-routes .sec-head`, bara applicerat på denna sektion
+   också -- ingen ny komponent. Uppdraget denna omgång är avgränsat till
+   mobil ("rör inte desktopdesign"), så till skillnad från den redan
+   obundna `.nh-routes .sec-head`-regeln (tidigare omgång, oförändrad)
+   scopas den HÄR nya regeln uttryckligen till mobil i stället för att
+   gälla brett -- desktop-huvudet (>860px) lämnas precis som det var. */
+@media (max-width: 860px) {
+  .nh-featured .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    /* Facit: .home-extra .hx-head{margin-bottom:8px} på mobil. */
+    margin-bottom: 8px;
+  }
+  .nh-featured .sec-head .more {
+    font-size: 12.5px;
+    font-weight: 650;
+    color: #96683f;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}
 /* PAKET B (2026-09-02, andra försöket): facit visar Bästsäljare som en
    VÅGRÄT SVEPBAR KARUSELL på mobil (index.html .hx-scroll, rad
    647-649: display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
@@ -1190,6 +1221,18 @@
     min-width: 158px;
     scroll-snap-align: start;
   }
+  /* "Kortens konsekventa bottenlinje" -- `.details-wrapper` (redan
+     display:flex;flex-direction:column;flex:1, se .pl-list-avsnittet
+     ovan) stretchar hela kortet till radens högsta kort, men `.details`
+     (rating+namn+pris) och köpknappen `.nh-card-buy` packar bara uppåt
+     (ingen har flex-grow) -- ett kort med ett kortare produktnamn
+     (färre radbrytningar) skulle då få tomt utrymme EFTER knappen i
+     stället för att knappen ligger i linje med grannkortens. Scopat
+     till just denna rad OCH mobil (INTE `.pl-list .details` globalt --
+     kategorisidornas rutnät och desktop-vyn ligger utanför detta
+     uppdrags scope) så `.details` fyller det extra utrymmet och knappen
+     alltid hamnar precis vid kortets nedre kant, oavsett namnlängd. */
+  .nh-featured-row .details { flex: 1; }
 }
 
 /* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem

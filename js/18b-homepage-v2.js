@@ -117,41 +117,43 @@
     }
 
     /* ── "Populära serier" ──
-       Facit-kalibrering 2026-09-06 (se STATUS.md): facits fyra synliga
-       serier ("Magic Sauce", "Nano-11", "THC-X", "THCbA") är INTE
-       hårdkodade i facit heller -- utrett i facits egen källa
-       (index.html, familySynonyms/quickAxis-datan) att "THC-X" där
-       betyder Hero Core/HighLife/El Gringo (våra riktiga "Hero"-serie)
-       och "THCbA" betyder Faraoh (den enskilda produktbilden är
-       bokstavligen en "Faraoh Vapes"-förpackning) -- alltså fyra av
-       våra SEX redan verkliga, live-hämtade serier, bara i en annan
-       ordning och med andra visningsnamn för just de två sista. Vi
-       behåller VÅRA riktiga, redan etablerade namn (Hero/Faraoh, samma
-       som resten av navigationen/footern använder) i stället för
-       facits interna cannabinoid-kodnamn -- annat skulle bli
-       inkonsekvent med hur samma serier redan heter på sajten.
-       NH_PSER_PRIORITY styr bara ORDNINGEN (riktig data/länkar/antal
-       oförändrat, inget hårdkodat produktinnehåll); serier som inte
-       finns med i listan hamnar kvar efteråt i sin naturliga ordning
-       (t.ex. Tatra Hemp, Magic Farmers -- fortfarande riktiga, fortfarande
-       synliga via scroll, INGET innehåll borttaget). */
-    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11", "Hero", "Faraoh"];
-    // Facits egna, verifierat KORREKTA seriebilder för just Hero/Faraoh
-    // (kat-thcx.jpg visar faktiskt Hero-varumärkets HighLife/El Gringo-
-    // undermärken; vape-blueberry.jpg är bokstavligen en Faraoh Vapes-ask
-    // -- båda kontrollerade bild-för-bild innan de kopierades in, se
-    // STATUS.md). Facits MOTSVARANDE filer för Magic Sauce/Nano-11
-    // (kat-magicsauce.jpg/kat-nano11.jpg) visar däremot HELT ANDRA,
-    // orelaterade varumärken (bl.a. "Donny Burger"/"Tinky Wink" resp.
-    // "Tatra Hemp" -- en annan riktig egen serie!) och skulle alltså
-    // MISSVISA om de användes -- de två seriernas egna riktiga,
-    // live-hämtade produktfoton (nhEnhanceWithRealPhotos, oförändrat)
-    // används därför fortfarande i stället. Flaggat som öppen fråga till
-    // Vilmer i slutrapporten, inte tyst gissat.
-    var NH_PSER_STATIC_IMG = {
-      "Hero": "series/hero.jpg",
-      "Faraoh": "series/faraoh.jpg"
-    };
+       Facit-kalibrering 2026-09-06, ANDRA omgången (ersätter föregående
+       omgångs felaktiga slutsats, se STATUS.md): föregående omgång antog
+       att facits "THC-X"/"THCbA"-etiketter var interna kodnamn för våra
+       riktiga "Hero"/"Faraoh"-serier och bytte BARA bilderna, men behöll
+       namnen/länkarna Hero/Faraoh -- det gav en synlig etikett-mismatch
+       mot facit (facit säger "THC-X", vi sa "Hero") och är INTE
+       godkänt som 1:1.
+
+       Verifierat på nytt, denna gång mot den RIKTIGA, live nav-menyn på
+       hazeyse.nyehandel.se (2026-09-06, alla ~48 kategorislugs lästa och
+       klassificerade): det finns INGEN kategori, cannabinoidgrupp eller
+       serie med sluggen "thcx"/"thc-x" eller "thcba"/"thc-ba" någonstans
+       på skarpa sajten. Närmaste RIKTIGA cannabinoidkategorier är
+       thca/thcb/thcv (juridiskt aktiva, NH_ACTIVE_CANNABINOIDS i
+       js/18a-header-v2.js) samt thcnm/10-oh-thc/hhcpm (medvetet PAUSADE,
+       juridik ej klar -- får inte visas, se samma fil) -- ingen av dessa
+       är samma sträng som "THC-X"/"THCbA", och att anta att de menar
+       samma sak vore att gissa en identitet ingen kan verifiera.
+
+       Beslut: bygg INGEN "THC-X"/"THCbA"-platshållare med ett gissat
+       eller lånat länkmål (uttryckligen förbjudet i uppdraget). Rader 3
+       och 4 visar i stället helt enkelt näst mest relevanta RIKTIGA
+       serierna i sin egen, riktiga, redan etablerade namn (Hero/Faraoh)
+       -- vilket för övrigt redan är exakt var de hamnar helt UTAN någon
+       priority-styrning alls (verifierat: series-arrayen byggs i nav-
+       menyns egen DOM-ordning, och Hero/Faraoh råkar redan ligga direkt
+       efter Magic Sauce/Nano-11 där). NH_PSER_PRIORITY pinnar därför
+       bara de två FAKTISKT verifierade positionerna (Magic Sauce/Nano-11,
+       som matchar facits egen ordning); allt annat (Hero, Faraoh, Tatra
+       Hemp, Magic Farmers) behåller sin naturliga nav-ordning oförändrat.
+       Riktig data/länkar/antal påverkas inte alls av detta.
+
+       Öppen fråga till Vilmer (se slutrapport): motsvarar facits
+       "THC-X"/"THCbA" något som ÄNNU INTE finns i nav-menyn (en planerad
+       serie), eller ska de bytas mot riktiga namn i facit-prototypen? Vi
+       gissar inte svaret här. */
+    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11"];
     function nhPopularaSerierHtml(navData) {
       var seen = {};
       var series = [];
@@ -176,14 +178,12 @@
         + '  <div class="sec-head"><h2>Populära serier</h2></div>'
         + '  <div class="pser-row">'
         + series.map(function (s) {
-            var staticImg = NH_PSER_STATIC_IMG[s.label];
-            var avatarAttrs = staticImg
-              ? ' data-static-photo="1" style="background-image:url(\'' + NH_ASSET_BASE + staticImg + '\')"'
-              : ' data-photo-href="' + s.href + '"';
-            var avatarInner = staticImg ? "" : NH_ROUTE_ICONS.serie;
-            var avatarClass = staticImg ? "pser-avatar has-photo" : "pser-avatar";
+            // Alla serier (inkl. Hero/Faraoh) använder samma riktiga,
+            // live-hämtade produktfoto-mekanism (nhEnhanceWithRealPhotos)
+            // -- ingen serie får längre en facit-lånad platshållarbild,
+            // se kommentaren ovan NH_PSER_PRIORITY.
             return '<a class="pser-item nh-reveal" href="' + s.href + '" data-count-href="' + s.href + '">'
-              + '<span class="' + avatarClass + '"' + avatarAttrs + '>' + avatarInner + '</span>'
+              + '<span class="pser-avatar" data-photo-href="' + s.href + '">' + NH_ROUTE_ICONS.serie + '</span>'
               + '<span class="pser-name">' + s.label + '</span>'
               + '<span class="pser-n"></span></a>';
           }).join("")
@@ -350,13 +350,25 @@
        plocka riktiga .product-card). "Bästsäljare" på den här sajten är
        redan definierat som alla-produkter-kategorin (samma som
        Bästsäljare-fliken i den befintliga tab-sektionen) — inte en
-       uppfunnen algoritm. ── */
+       uppfunnen algoritm.
+
+       Facit-kalibrering 2026-09-06 (se STATUS.md): den STÖRSTA synliga
+       avvikelsen var att korten renderades små/hoptryckta jämfört med
+       facits två stora premiumkort. Rotorsak: `#nhFeaturedRow` klonar
+       riktiga `.product-card`-element men saknade den klassen
+       (`.pl-list`) som redan äger ALL premiumkort-styling någon annan-
+       stans på sajten (radie/skugga/bildyta/pris/köpknapp, se
+       css/02-divi-.../css/03-category-page-header.css m.fl.) — korten
+       föll alltså tillbaka på nyehandels helt oskinnnade nativa stil.
+       Lösning: återanvänd den befintliga klassen (`pl-list` på raden)
+       i stället för att bygga en ny parallell kortstil — exakt samma
+       premiumkort som redan finns, bara i en ny container. ── */
     function nhBestsellersHtml() {
       return '<section class="nh-featured section-gap" id="nh-featured">'
         + '  <div class="sec-head"><div><h2>Bästsäljare i lager</h2>'
         + '  <p>Snabbval för produkter utan variantval.</p></div>'
         + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
-        + '  <div class="nh-featured-row" id="nhFeaturedRow"><div class="nh-featured-empty">Laddar…</div></div>'
+        + '  <div class="nh-featured-row pl-list" id="nhFeaturedRow"><div class="nh-featured-empty">Laddar…</div></div>'
         + '</section>';
     }
     function nhInitBestsellers(root) {
