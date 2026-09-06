@@ -347,6 +347,23 @@
         });
         mainRow.parentNode.insertBefore(mobileSearchBar, mainRow.nextSibling);
 
+        // Facit stänger sökoverlayn på Escape (Overlay.close-mönstret i
+        // prototypens JS); Nyehandels egen #search-container gör INTE det
+        // (verifierat live: "active" kvarstår efter ett Escape-tryck) --
+        // en riktig, kvarvarande funktionsskillnad, inte bara visuell.
+        // Klickar den RIKTIGA close-knappen programmatiskt (samma
+        // native stängningsväg som en användare själv skulle klicka,
+        // ingen egen stängningslogik byggd) -- deferred av samma
+        // bubbling-skäl som öppningsklicket ovan.
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Escape") return;
+          var sc = document.getElementById("search-container");
+          var closeBtn = sc ? sc.querySelector(".close-button") : null;
+          if (sc && closeBtn && sc.classList.contains("active")) {
+            setTimeout(function () { closeBtn.click(); }, 0);
+          }
+        });
+
         // Mikrotrust-raden. RIKTIGA, av Vilmer bekräftade/fastställda korta
         // texter (2026-09-01 rättningsomgång — ersätter tidigare live-
         // extraktion ur topbar-USP:n, som gav längre, radbrytande text):

@@ -10241,6 +10241,311 @@ body.checkout-page .checkout-items-summary .item .content {
      .nh-mobile-trust nedan (matchar rätt prototyp: ingen mörk topbar på
      mobil där). 18+-kravet flyttas till mobilmenyns fot (.nh-mm-foot). */
   #store-header.nh-header-v2 .topbar { display: none !important; }
+
+  /* =====================================================================
+     SÖKOVERLAY — 1:1-portning mot facit (#mSearchOverlay/.ms-top/.ac-*,
+     index.html rad 374-384/202-221/4133-4172), uppmätt live 2026-09-06.
+     Nyehandels riktiga #search-container/.store-search__dropdown-struktur
+     (sökmotor, resultatdata, länkar, eventhantering) rörs INTE — vi
+     re-skinnar bara position/storlek/typografi/spacing på plats, exakt
+     samma princip som resten av headern (se filens topkommentar:
+     "#search-container... ALDRIG rör, bara omstylade via CSS").
+
+     Containing-block-anteckning: #search-container ligger djupt nästlat
+     i #store-header, som FÅR en transform vid scroll (js/14-header-
+     scroll.js) — en transform på en förälder klipper annars position:
+     fixed-barn till förälderns egen box (samma gotcha som redan
+     dokumenterad för mobilmenyn/Hitta rätt, som därför flyttades till
+     <body>). Kan INTE göra samma sak här (#search-container är Vue-bundet,
+     får aldrig flyttas i DOM:en, se filens topkommentar). Verifierat
+     däremot att detta i praktiken aldrig blir ett problem: #store-header
+     har transform:none i vila och får bara en transform UNDER en aktiv
+     scroll-händelse — och bakgrundssidans scroll är redan LÅST (native,
+     html får overflow:hidden) hela tiden #search-container.active är
+     satt, så ingen scrollhändelse kan trigga en ny transform medan
+     sökoverlayn är öppen. Triggerknappen (.nh-mobile-searchbar) sitter
+     dessutom i samma fixed-positionerade header och är alltså bara
+     klickbar när headern redan står i vila (transform:none) — det är
+     omöjligt att öppna sökningen medan headern har en transform. */
+  #store-header.nh-header-v2 #search-container {
+    position: fixed !important;
+    inset: 0 !important;
+    height: 100dvh !important;
+    z-index: 97 !important; /* över mobilmenyns 90/91 och Hitta rätt-lådans 95/96 */
+    background: #fff !important;
+    padding: calc(14px + env(safe-area-inset-top, 0px)) 14px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-height: 100dvh !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    display: none !important;
+  }
+  #store-header.nh-header-v2 #search-container.active { display: block !important; }
+  /* .store-search (Nyehandels egen mellanwrapper) har en nativ, egen
+     position:fixed + explicit height (uppmätt 166px, oavsett riktigt
+     innehåll — troligen tänkt för desktopens kompakta, absolut-
+     positionerade dropdown, INTE en helskärmskontext). Utan denna fix
+     klipptes/spillde hela resultatlistan visuellt UTANFÖR sin egen låda
+     (overflow:visible, ingen egen bakgrund) och lät startsidans hero
+     lysa igenom — en riktig, live-verifierad bugg, inte en gissning. */
+  #store-header.nh-header-v2 .store-search {
+    position: static !important;
+    height: auto !important;
+  }
+
+  /* Toppfält (facit .ms-top): flex-rad, fältet FÖRE knappen (native har
+     motsatt DOM-ordning — close-button FÖRE input-fältet — löst med
+     flex `order` i stället för att röra markupen). */
+  #store-header.nh-header-v2 .store-search__header {
+    display: flex !important;
+    gap: 10px !important;
+    align-items: center !important;
+    margin-bottom: 6px !important;
+    padding: 0 !important;
+  }
+  #store-header.nh-header-v2 .search-input-container { order: 1 !important; flex: 1 1 auto !important; }
+  #store-header.nh-header-v2 .close-button { order: 2 !important; }
+
+  /* Stäng-knappen: facit är en TEXTKNAPP ("Stäng"), inte en ikon. Samma
+     ::after-textknep som redan används för mobilloggan (css/21, "hazey"-
+     ordmärket) och footerns nyhetsbrevsknapp ("Skriv upp mig") — döljer
+     bara den nativa SVG:n visuellt, rör inte knappens click-handler. */
+  #store-header.nh-header-v2 .close-button {
+    border: none !important;
+    background: none !important;
+    color: var(--nh-green) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 650 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 11px !important;
+    padding: 1px 6px !important;
+  }
+  #store-header.nh-header-v2 .close-button .icon { display: none !important; }
+  #store-header.nh-header-v2 .close-button::after { content: "Stäng"; }
+
+  /* Fältet: facits pill (radie 26px, terra-kant) i stället för nativ
+     4px-radie + klargrön kant/glöd. Höger-padding för sökikonen (som
+     döljs nedan, facit har ingen) tas bort. */
+  #store-header.nh-header-v2 .search-input-container .input,
+  #store-header.nh-header-v2 #search-input {
+    border-radius: 26px !important;
+    border: 1px solid var(--nh-terra) !important;
+    background: #fff !important;
+    padding: 12px 16px !important;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+  }
+  /* Native "grönt fokusutseende" (css/08, oskopad, gäller fortsatt
+     desktop oförändrat) ersätts HÄR, bara i mobilsöket, med facits egen
+     terrafärgade glöd (index.html :focus-visible-regeln, rad 2115-2117,
+     samma opacitet/bredd) i stället för det klarröna #4faa25-skenet. */
+  #store-header.nh-header-v2 .search-input-container .input:focus,
+  #store-header.nh-header-v2 #search-input:focus {
+    border-color: var(--nh-terra) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(184, 134, 90, .45) !important;
+  }
+  #store-header.nh-header-v2 .search-field .fa-search { display: none !important; }
+
+  /* Resultatpanelen: från en klippt, 116px hög "auto"-ruta (native
+     .store-search__dropdown var egen position:fixed + overflow:auto,
+     omöjlig att se mer än halva "Kategorier"-rubriken utan att den
+     redan var visuellt trasig) till att flöda naturligt inuti det nu
+     helskärms-fixade #search-container ovan — SAMMA enda scrollområde
+     som facit (en enda scrollbar overlay, ingen nästlad delscroll). */
+  #store-header.nh-header-v2 .store-search__dropdown {
+    position: static !important;
+    top: auto !important; left: auto !important; right: auto !important;
+    z-index: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-top: none !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  #store-header.nh-header-v2 .dropdown-scrollable { overflow: visible !important; height: auto !important; max-height: none !important; }
+  #store-header.nh-header-v2 .dropdown-view-all { order: 3 !important; }
+  /* Facit har en tunn avdelare (.ac-div) mellan chip-raden och
+     resultatlistan — nativ markup saknar en motsvarande nod, så
+     divideraren läggs på .dropdown-left (kategorisektionen) i stället
+     för att lägga till ett eget element. */
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-left {
+    border-bottom: 1px solid var(--nh-line-soft) !important;
+    padding-bottom: 2px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Rubriker ("Kategorier"/"Produkter" — riktig platformstext, ordagrant
+     bevarad, inte facits "Gå direkt till"/"Sökresultat") i facits
+     .ac-head-stil: liten versal etikett, INTE seriffen filens egen
+     h1/h2/h3-regel (rad 30-34 ovan) annars skulle sätta. */
+  #store-header.nh-header-v2 .dropdown-left h3,
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    text-transform: uppercase !important;
+    letter-spacing: .07em !important;
+    color: var(--nh-ink-faint, #9a9280) !important;
+    margin: 0 !important;
+    padding: 9px 2px 6px !important;
+  }
+
+  /* Kategorilistan → facits chip-rad (.ac-chips/.ac-chip). Riktiga
+     länkar/href/text orörda, bara den visuella arrangemangen (ul/li/a)
+     ändras, samma "grid→flex"-CSS-enda-teknik som redan används för
+     Bästsäljare-karusellen. */
+  #store-header.nh-header-v2 .dropdown-left .listable-section ul {
+    display: flex !important; flex-wrap: wrap !important; gap: 7px !important;
+    list-style: none !important; margin: 2px 0 10px !important; padding: 0 !important;
+  }
+  #store-header.nh-header-v2 .dropdown-left .listable-section li { margin: 0 !important; }
+  #store-header.nh-header-v2 .dropdown-left .listable-section li a {
+    display: inline-flex !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    padding: 6px 13px !important;
+    border-radius: 20px !important;
+    background: var(--nh-sand) !important;
+    border: 1px solid var(--nh-line) !important;
+    color: var(--nh-green) !important;
+    text-decoration: none !important;
+  }
+  #store-header.nh-header-v2 .dropdown-left .listable-section li a em { font-style: normal !important; font-weight: 700 !important; }
+
+  /* Produktlistan → facits .ac-row (thumb/namn/pris i en rad).
+     min-width:0 krävs på BÅDA flex-barnen (dropdown-left/-right, barn
+     till .inner-dropdowns column-flex) — annars bubblar produktnamnets
+     white-space:nowrap-bredd (min-content) upp genom hela kedjan och
+     tvingar raden bredare än viewporten (uppmätt 477px vid 390px
+     viewport innan denna fix), eftersom flex-items default är
+     min-width:auto, inte 0. */
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-left,
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  /* Native ul är display:grid utan explicit grid-template-columns — det
+     enda implicita kolumnspåret storleksätts efter INNEHÅLLETS max-
+     content (produktnamnets white-space:nowrap-bredd), inte efter
+     grid-behållarens egen 356px — <li> mätte 476px, bredare än sin egen
+     förälder, uppmätt live. display:block tar bort grid-auto-sizingen
+     helt, en enkel vertikal lista räcker (samma som facit). */
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable ul {
+    display: block !important;
+    list-style: none !important; margin: 0 !important; padding: 0 !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 13px !important;
+    padding: 9px 11px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a:hover { background: var(--nh-sand) !important; }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a .image {
+    display: block !important;
+    width: 48px !important; height: 48px !important;
+    flex: 0 0 auto !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background: var(--nh-beige-light) !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a .image img {
+    width: 100% !important; height: 100% !important; object-fit: cover !important;
+  }
+  /* Facit (.ac-row): thumb | namn (flex:1, ellipsis) | pris (egen kolumn,
+     högerställd) — INTE staplat namn-ovanpå-pris. Nativ markup wrap:ar
+     båda i samma <div>, så den divven görs till en flex-rad för att
+     återskapa facits layout utan att röra DOM:en. */
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a > div > span:first-child {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 650 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: var(--nh-green) !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a .price {
+    display: block !important;
+    flex: 0 0 auto !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    color: var(--nh-green) !important;
+    white-space: nowrap !important;
+    text-align: right !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a .price .comparison {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: var(--nh-ink-faint, #9a9280) !important;
+    text-decoration: line-through !important;
+  }
+  #store-header.nh-header-v2 .inner-dropdown > .dropdown-right .dropdown-scrollable li a em { font-style: normal !important; font-weight: 700 !important; }
+
+  /* Facits .ac-foot: divider + länk, samma placering som facits sista
+     rad i overlayen. Nativ pil-SVG (redan befintlig, css/08) behålls,
+     bara färgen samordnas med resten av terra-tonerna. */
+  #store-header.nh-header-v2 .dropdown-view-all {
+    margin-top: 4px !important;
+    border-top: 1px solid var(--nh-line-soft) !important;
+    padding: 11px 2px 5px !important;
+  }
+  #store-header.nh-header-v2 .dropdown-view-all a.view-all {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 650 !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    color: var(--nh-terra-deep) !important;
+  }
+  #store-header.nh-header-v2 .dropdown-view-all .view-all-arrow { width: 16px !important; height: 16px !important; }
+  #store-header.nh-header-v2 .dropdown-view-all .view-all-arrow path { fill: var(--nh-terra-deep) !important; }
 }
 @media (min-width: 881px) {
   .nh-mobile-menu, .nh-mobile-menu-scrim { display: none !important; }
