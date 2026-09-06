@@ -407,6 +407,15 @@
             + '<span>Normalt <b>1–2 vardagar</b></span></div>'
             + '<div class="nh-mt-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>'
             + '<span>Diskret &amp; spårbart</span></div>';
+          // OBS (2026-09-06, facit-kalibrering): facits egen JS genererar EN
+          // femte mt-item ("Analyscertifikat där det publicerats", länkad
+          // #/transparens) för mobil, men facits egen CSS sätter den till
+          // display:none (verifierat live: getComputedStyle → "none") — den
+          // dokumenterade avsikten är uttryckligen "exakt fyra rutor i 2×2,
+          // allt synligt utan swipe" (facits egen kodkommentar). Fyra synliga
+          // items är alltså redan korrekt 1:1 — en femte skulle vara en
+          // REGRESSION, inte en fix. Fick provköra och rulla tillbaka detta
+          // innan commit, dokumenterat här så nästa runda inte upprepar det.
           storeMain.insertBefore(trustRow, storeMain.firstChild);
         }
       }

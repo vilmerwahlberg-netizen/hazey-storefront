@@ -743,6 +743,12 @@
     border-color: #2c3620 !important;
     box-shadow: 0 8px 20px -12px rgba(77,35,10,.8) !important;
     color: #fffaf2 !important;
+    /* Facit-kalibrering 2026-09-06: desktopregelns border-radius:999px
+       (rad ~675 ovan) ärvdes oförändrad hit — facit har 22px på mobil
+       (uppmätt live, index.html rad 1949), synligt skarpare hörn på en
+       50px hög knapp (999px ≈ helt rundad piller-form, 22px är mindre
+       än halva höjden). Endast mobil-scopat, desktopreglens 999px orört. */
+    border-radius: 22px !important;
   }
   /* KORRIGERING (pass 1, samma regression som ovan): den verkliga
      grundorsaken till att hero-kortet blåstes upp till 297px var INTE

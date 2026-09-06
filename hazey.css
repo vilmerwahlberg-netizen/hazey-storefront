@@ -10127,6 +10127,16 @@ body.checkout-page .checkout-items-summary .item .content {
   #store-header.nh-header-v2 .nh-cat-row { display: none; }
   #store-header.nh-header-v2 .nh-burger { display: inline-flex; }
 
+  /* Facit-kalibrering 2026-09-06: facits #mVp .hz-header har en subtil
+     botten-hårlinje (box-shadow, inte border — verifierat: border-bottom
+     är 0px på båda sidor redan, skillnaden satt via box-shadow) som
+     saknades helt hos oss (uppmätt: "none"). index.html rad 2077-2078,
+     samma breddpunkt-avsikt som denna fil (860px där, 880px här — vår
+     egen redan etablerade brytpunkt, oförändrad). */
+  #store-header.nh-header-v2 {
+    box-shadow: 0 1px 0 rgba(114, 82, 47, .08);
+  }
+
   /* Mobil main-row: [hamburgare] [centrerad logga] [konto+varukorg] —
      rätt prototyp (mVp-header), inte nyehandels nativa logga-vänster-läge.
      Grid med 1fr/auto/1fr ger sann centrering oavsett flankernas bredd.
@@ -11530,6 +11540,12 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     border-color: #2c3620 !important;
     box-shadow: 0 8px 20px -12px rgba(77,35,10,.8) !important;
     color: #fffaf2 !important;
+    /* Facit-kalibrering 2026-09-06: desktopregelns border-radius:999px
+       (rad ~675 ovan) ärvdes oförändrad hit — facit har 22px på mobil
+       (uppmätt live, index.html rad 1949), synligt skarpare hörn på en
+       50px hög knapp (999px ≈ helt rundad piller-form, 22px är mindre
+       än halva höjden). Endast mobil-scopat, desktopreglens 999px orört. */
+    border-radius: 22px !important;
   }
   /* KORRIGERING (pass 1, samma regression som ovan): den verkliga
      grundorsaken till att hero-kortet blåstes upp till 297px var INTE
