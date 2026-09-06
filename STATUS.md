@@ -2605,3 +2605,171 @@ denna STATUS.md-post).
 **Inte rört:** `blocks/loader.html`, live tema 3, tema 5, någon
 Nyehandel-inställning, PUBLICERA aldrig klickad, desktop-CSS (ingen
 regel utanför `@media(max-width:860/880px)` ändrad).
+
+## 2026-09-06 — Nästa avgränsade mobilpaket: Populära serier (rättad identitet) + Bästsäljare i lager
+
+Avgränsat till exakt dessa två komponenter. Header, sök, hero, Populära
+vägar, framställningsval, transparensblock, Snabb koll, omdömen,
+nyhetsbrev, SEO/artikel, FAQ, footer, desktop och Nyehandel-admin
+uttryckligen INTE rörda -- verifierat efteråt (se "Test" nedan).
+
+### A. Populära serier -- rättad serie-identitet
+
+Föregående omgångs slutsats var FEL och ersätts här: facits "THC-X"/
+"THCbA" antogs vara interna kodnamn för våra riktiga "Hero"/"Faraoh"-
+serier (bilderna byttes, men etiketterna "Hero"/"Faraoh" behölls) --
+det gav en synlig mismatch mot facit och godkändes inte som 1:1.
+
+Verifierat på nytt, denna gång mot HELA den riktiga live-nav-menyn på
+hazeyse.nyehandel.se (alla ~48 kategorislugs hämtade och klassificerade
+2026-09-06): det finns INGEN kategori, cannabinoidgrupp eller serie med
+sluggen "thcx"/"thc-x" eller "thcba"/"thc-ba" någonstans på skarpa
+sajten. Närmaste riktiga cannabinoidkategorier är thca/thcb/thcv
+(juridiskt aktiva) samt thcnm/10-oh-thc/hhcpm (medvetet PAUSADE, juridik
+ej klar -- får aldrig visas). Ingen av dessa är samma sträng som "THC-X"/
+"THCbA", och att gissa att de menar samma sak vore precis den typen av
+ogrundad identitetsgissning uppdraget uttryckligen förbjöd.
+
+**Beslut:** ingen "THC-X"/"THCbA"-platshållare byggd med ett gissat
+länkmål. Rad 3/4 visar i stället de två näst mest relevanta RIKTIGA
+serierna (Hero, Faraoh) under sina egna, redan etablerade, riktiga namn
+och länkar -- vilket dessutom redan är exakt var de hamnar HELT UTAN
+någon priority-styrning (verifierat: series-arrayen byggs i nav-menyns
+egen DOM-ordning, Hero/Faraoh ligger redan naturligt efter Magic Sauce/
+Nano-11 där). `NH_PSER_PRIORITY` i `js/18b-homepage-v2.js` krympt till
+`["Magic Sauce", "Nano-11"]` -- de två FAKTISKT verifierade, matchande
+positionerna; Hero/Faraoh/Tatra Hemp/Magic Farmers behåller sin
+naturliga ordning oförändrat, ingen gissning kvar i koden.
+
+**Bildbyten:** `NH_PSER_STATIC_IMG`-mekanismen (facit-lånade bilder för
+Hero/Faraoh) borttagen helt. Alla sex serier (inkl. Hero/Faraoh) använder
+nu samma riktiga, live-hämtade produktfoto-mekanism
+(`nhEnhanceWithRealPhotos`, `data-photo-href`) som Magic Sauce/Nano-11
+redan gjorde -- verifierat live: Hero visar nu sitt eget riktiga
+HighLife-foto, Faraoh sitt eget riktiga Faraoh-foto, inga längre
+beroende av en extern, facit-lånad bild. De felnamngivna kopiorna
+`assets/series/hero.jpg` (i själva verket facits `kat-thcx.jpg`) och
+`assets/series/faraoh.jpg` (facits `vape-blueberry.jpg`) verifierades
+helt orefererade efter ändringen och togs bort (`git rm`) i stället för
+att döpas om -- ingen konsument (ingen "THC-X"/"THCbA"-platshållare)
+finns kvar som skulle referera dem.
+
+**Öppen fråga till Vilmer (ej gissad):** motsvarar facits "THC-X"/
+"THCbA" en planerad, ännu inte lanserad serie, eller ska de bytas mot
+riktiga namn i facit-prototypen? Ingen kodgissning gjord.
+
+**Serieordning/länkar/antal (verifierat live):** Magic Sauce (2
+produkter, `/sv/categories/m-s-vapes`), Nano-11 (8, `/nano-11`), Hero (8,
+`/hero-vapes`), Faraoh (8, `/faraoh`), Tatra Hemp (16, `/tatra-hemp`),
+Magic Farmers (18, `/magic-farmers`) -- allt dynamiskt, inget hårdkodat.
+Geometri (cirkeldiameter 83px, gap 10px, kant 2px vit, skugga, namn-
+typografi 12.5px/650, antal 10px) redan korrekt kalibrerad från en
+tidigare omgång, omätt och bekräftad oförändrad denna gång -- ingen
+kodändring behövdes där.
+
+### B. Bästsäljare i lager -- största synliga avvikelsen
+
+**Rotorsak (verifierat, inte gissat):** `#nhFeaturedRow` klonar riktiga
+`.product-card`-element från `/sv/categories/alla-produkter?sort=in-
+stock`, men saknade klassen `.pl-list` -- den klass som redan äger ALL
+premiumkort-styling (radie 14px, kant #ebe1d1, bildyta med beige
+padding-bakgrund 4:5-format, badge, köpknapp) på skarpa kategorisidor
+(`css/02-divi-...css`, `css/03-category-page-header.css` m.fl., en
+tidigare omgångs redan godkända arbete, 2026-08-31). Utan klassen föll
+korten tillbaka på nyehandels helt oskinnnade nativa stil: 0px radie,
+genomskinlig kant, kvadratiskt (inte 4:5) bildformat utan padding-
+bakgrund -- exakt den "hoptryckta små kort"-känsla Vilmer flaggade.
+
+**Fix:** lade till `class="pl-list"` på `#nhFeaturedRow`
+(`js/18b-homepage-v2.js`, `nhBestsellersHtml()`) -- återanvänder den
+BEFINTLIGA, redan godkända kortstilen i en ny container. Ingen ny
+parallell komponent, ingen kopierad CSS.
+
+**Ytterligare två verifierade avvikelser, korrigerade i den befintliga
+ägarfilen (`css/22-homepage-v2.css`), båda mobil-scopade
+(`@media(max-width:860px)`, desktop uttryckligen orört -- verifierat
+1440px identiskt före/efter):**
+1. **Rubrikradens alignment:** `.sec-head` har ingen delad bas-regel
+   (samma lucka som redan löstes för `.nh-routes .sec-head` i en
+   tidigare omgång, aldrig applicerad här) -- "Se allt →" föll ner på
+   en egen rad i stället för att ligga till höger om rubriken. Facit:
+   `.hx-head{display:flex;align-items:baseline;justify-content:space-
+   between;gap:14px;flex-wrap:wrap}` + mobil `margin-bottom:8px` --
+   samma värden tillagda scopat till `.nh-featured .sec-head`. "Se
+   allt"-länken saknade även all typografi (visades som 16px osylad
+   standardlänk) -- tillagd `.nh-featured .sec-head .more{font-
+   size:12.5px;font-weight:650;color:#96683f}`, samma mönster/färg som
+   redan används för `.nh-routes .sec-head .more`.
+2. **Kortens konsekventa bottenlinje:** `.details-wrapper` stretchar
+   redan hela kortet till radens högsta kort, men varken `.details`
+   (rating+namn+pris) eller köpknappen har `flex-grow` -- ett kort med
+   kortare produktnamn (färre radbrytningar) fick tomt utrymme EFTER
+   knappen i stället för att knappen låg i linje med grannkortens.
+   Verifierat med två RIKTIGA produktnamn av extremt olika längd (28
+   respektive 70 tecken, hämtade live, inte fabricerade) -- innan
+   fixen hade det gett synligt omisspassade knappar; efter fixen
+   (`.nh-featured-row .details{flex:1}`, scopat till just denna rad +
+   mobil, INTE `.pl-list .details` globalt) mätte båda korten EXAKT
+   samma höjd (342.1px) och EXAKT samma knapp-y-position (1428.6px),
+   0px avvikelse.
+
+**Data/funktion (verifierat live, inget fabricerat):** rating/stjärnor
+är nyehandels egen riktiga data (visas bara när den finns); pris, namn,
+lagerbadge ("Köp mer - betala mindre"), varianttagg allt nativ Nyehandel-
+data. Verifierat: horisontell swipe-scroll fungerar (scrollLeft 0→179px
+på tryck), klick på kort öppnar riktig produktsida
+(`/sv/products/ccell-m4-vape-batteri-510`), köpknapp öppnar riktig
+`#cartAside` med produkten tillagd.
+
+**Före/efter-mått (393px, `.nh-featured-row` head + första kortet):**
+head-höjd 59.6px → 34px (rubrik+länk nu på en rad); "Se allt"-typografi
+16px/osylad → 12.5px/650/#96683f; kortradie 0px → 14px (delad platform-
+värde, inte ändrad här); bildyta 165.9×165.9px kvadrat utan padding-
+bakgrund → 165.9×207.4px (4:5, samma delade platformsvärde) med beige
+padding-bakgrund; knapp-position-konsekvens: inte tidigare verifierad →
+0px avvikelse verifierad med två extremfall.
+
+### Regressionstest
+
+`npx playwright test tests/home-parity.spec.mjs --grep "regression:"`:
+3 av 12 slog om (granskade en och en, alla tre avsiktliga):
+1. **Populära serier** (8.3% pixel-diff, samma storlek) -- omordnad
+   bild-källa för Hero/Faraoh (riktigt foto i st.f. facit-lånad bild).
+2. **Bästsäljare i lager** (390×414→390×424px, 20.9% pixel-diff) --
+   direkt konsekvens av pl-list-fixen (radie/bildformat/badge-styling).
+3. **"Snabb koll: vad är vad?"** (identisk 390×491-storlek, 3.5%
+   pixel-diff, tröskel 3%) -- INTE en kodändring i den sektionen.
+   Samma mönster som föregående omgång: `getComputedStyle` för alla
+   barn-noder i `.nh-kunskap` bekräftat BYTE-FÖR-BYTE identiska
+   före/efter denna omgång, enda skillnaden är sektionens absoluta
+   y-position (10.3px uppåt, eftersom Bästsäljare-rubrikraden blev
+   kortare ovanför) -- ren scroll-position-beroende sub-pixel-
+   antialiasing (klass 4), inte en regression. Ny golden-impl-baslinje
+   låst efter granskning (`npm run parity:update-impl`).
+
+`tests/tema6-smoke.spec.mjs`: 14/14 gröna (meny/konto/varukorg/sök
+mobil+desktop/kategori/produkt/logga/0px overflow vid 390/430/600/
+1440px) -- inga funktionsregressioner.
+
+Desktop (1440px) explicit verifierat oförändrat: `.sec-head` fortfarande
+`display:block` (ingen ny regel läcker ut till desktop), grid fortfarande
+4 kolumner à 254px, 0px overflow.
+
+**Kvarvarande, klassificerade avvikelser:**
+- Facits "THC-X"/"THCbA"-etiketter saknar verifierbart riktigt länkmål
+  -- öppen produktfråga till Vilmer, ingen gissning gjord.
+  (medvetet produktbeslut, obesvarad fråga)
+- Kortradie (14px mot facits ~12px) -- delat platformsvärde använt
+  brett på sajten, oförändrat denna omgång (plattformshanterad, redan
+  godkänd i en tidigare omgång).
+- Produktantal/produktnamn skiljer sig från facits statiska
+  skärmdumpsdata -- dynamiskt innehåll, förväntat.
+
+**Commits:** källkodsändringar (js/18b-homepage-v2.js,
+css/22-homepage-v2.css, borttagna assets/series/hero.jpg+faraoh.jpg) +
+golden-impl-uppdatering/denna STATUS.md-post, pushade till `dev`.
+
+**Inte rört:** header, sök, hero, Populära vägar, framställningsval,
+transparensblock, Snabb koll, omdömen, nyhetsbrev, SEO/artikel, FAQ,
+footer, desktop-CSS (verifierat 1440px oförändrat), live tema 3/tema 5,
+Nyehandel-admin, PUBLICERA aldrig klickad.
