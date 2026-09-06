@@ -1019,19 +1019,30 @@
 .nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 20px; margin: 0 0 4px; }
 .nh-signup-block p { margin: 0; font-size: 12.5px; color: rgba(244,233,220,.8); }
 .nh-signup-form { display: flex; gap: 8px; flex-wrap: wrap; }
+/* Nyhetsbrevets stapel-lucka, rotorsakad i tre lager (2026-09-06,
+   korrigeringspass 1+2 — se STATUS.md "Nyhetsbrev (#7)"):
+   1) flex-basis 200px→160px (facit-uppmätt) var nödvändig men inte
+      tillräcklig ensam.
+   2) Nyehandels egna, !important-märkta tag-nivå-reset på input/button
+      (samma mönster som CLAUDE.md "Parity-workflow" redan dokumenterar
+      för body/p/li/span/input/button/label/td/a) vann tyst över våra
+      icke-!important font-size/font-weight/font-family — knappen
+      renderade 16px/500-vikt i stället för våra tänkta 13px/650, vilket
+      gjorde "Prenumerera" bred nog att ändå tvinga radbrytning trots
+      fixen i (1). Verifierat via getComputedStyle på en riktig
+      tema 6-injektion, inte gissat.
+   Alla tre är nu !important-skyddade nedan. */
 .nh-signup-form input {
-  /* flex-basis 160px (facit: .signup-form input, uppmätt live 2026-09-06 —
-     facit är ALDRIG staplad vid 390/430/600px). 200px var för brett för att
-     få plats bredvid knappen inom tillgänglig bredd vid 390px, vilket
-     tvingade flex-wrap:wrap att stapla fältet ovanpå knappen — roten till
-     avvikelsen flaggad i STATUS.md "Nyhetsbrev (#7)". */
-  flex: 1 1 160px; padding: 11px 14px; border-radius: 999px; border: 1px solid rgba(255,253,248,.3);
-  background: rgba(255,253,248,.08); color: #fffdf8; font-size: 13px;
+  flex: 1 1 160px; padding: 10px 12px; border-radius: 999px; border: 1px solid rgba(255,253,248,.3);
+  background: rgba(255,253,248,.08); color: #fffdf8;
+  font-size: 13px !important; font-weight: 400 !important; letter-spacing: normal !important;
 }
 .nh-signup-form input::placeholder { color: rgba(255,253,248,.55); }
 .nh-signup-form button {
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
   padding: 11px 20px; border-radius: 999px; border: none; background: #d9782f; color: #fff;
-  font-weight: 650; font-size: 13px; cursor: pointer;
+  cursor: pointer;
+  font-weight: 650 !important; font-size: 13px !important; letter-spacing: normal !important;
 }
 .nh-signup-form button:hover { background: #c96a26; }
 .nh-signup-note { font-size: 11px; color: rgba(244,233,220,.6); }
