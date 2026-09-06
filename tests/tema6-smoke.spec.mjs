@@ -163,8 +163,15 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     expect(info.jsCount, "förväntade exakt ett hazey.min.js").toBe(1);
     expect(info.devCssMarker, "förväntade exakt en data-nh-dev-css-markering").toBe(1);
     expect(info.devJsMarker, "förväntade exakt en data-nh-dev-js-markering").toBe(1);
-    expect(info.cssHref, "hazey.css laddades inte från dev-grenen").toContain("/dev/hazey.css");
-    expect(info.jsSrc, "hazey.min.js laddades inte från dev-grenen").toContain("/dev/hazey.min.js");
+    // Sen 2026-09-06 (commit 2e76c19) laddas dev-preview från GitHub Pages
+    // (vilmerwahlberg-netizen.github.io/hazey-storefront/), inte längre från
+    // raw.githack.com/.../dev/ -- se README.md "Two loaders" och STATUS.md.
+    expect(info.cssHref, "hazey.css laddades inte från GitHub Pages").toContain(
+      "vilmerwahlberg-netizen.github.io/hazey-storefront/hazey.css"
+    );
+    expect(info.jsSrc, "hazey.min.js laddades inte från GitHub Pages").toContain(
+      "vilmerwahlberg-netizen.github.io/hazey-storefront/hazey.min.js"
+    );
     expect(info.cssActuallyLoaded, "hazey.css-taggen finns i DOM men stilarket är inte faktiskt laddat (link.sheet är null/disabled)").toBe(true);
     expect(info.jsActuallyRan, "hazey.min.js-taggen finns i DOM men inget av vårt JS har faktiskt körts (varken .nh-burger eller .nh-mobile-searchbar skapades)").toBe(true);
   });
