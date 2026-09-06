@@ -2773,3 +2773,164 @@ golden-impl-uppdatering/denna STATUS.md-post, pushade till `dev`.
 transparensblock, Snabb koll, omdömen, nyhetsbrev, SEO/artikel, FAQ,
 footer, desktop-CSS (verifierat 1440px oförändrat), live tema 3/tema 5,
 Nyehandel-admin, PUBLICERA aldrig klickad.
+
+## 2026-09-06 — Nästa avgränsade mobilpaket 3: Trustblock ("Så arbetar Hazey...") + Snabb koll
+
+### A. Trustblock/transparens
+
+**Rotorsak-fynd (samtliga mätta mot facits körda DOM vid 393px, inte
+gissade från skärmdumpen):**
+1. h2 19px i st.f. facits 20px; p 12.5px/1.5/#6b6355 i st.f. facits
+   13px/1.6/#5f5c50; `.nh-tb-points li` radie 10px/kant #ebe1d1/text
+   #342f27 i st.f. facits 12px/#f3ece0/#26261f.
+2. CTA-länken återanvände "4,7/5 på Trustpilot" — VERIFIERAT att exakt
+   samma länk/text redan är den avsedda, riktiga CTA:n i "Verifierade
+   omdömen" (`nhReviewsHtml`, rad 477-478) — en tyst dubblett, precis
+   det uppdraget varnade för. Ingen riktig transparens-/labbrapportsida
+   finns (verifierat 404: transparens/analyscertifikat/labbrapport/
+   certifikat/coa/analys). En ANNAN riktig sida med relevant innehåll
+   hittades i stället: `/sv/page/kop-och-leveransvillkor` (verifierat
+   200, täcker leveransgaranti/villkor — direkt relevant för punkterna
+   i listan). CTA:n byttes till denna, med ny, ärlig text ("Läs våra
+   köp- och leveransvillkor") i stället för att duplicera Trustpilot.
+3. Certifikattäckningsrad ("X av Y produkter, Z%"): omprövat på nytt,
+   samma slutsats som tidigare — verifierat att INGEN `data-lab`-
+   liknande attribut eller motsvarande fält finns på riktiga
+   `.product-card`-element (`Object.keys(card.dataset)` tom). Byggs
+   INTE, varken gissad eller fabricerad — kvarstående, verifierad
+   databegränsning.
+4. De fyra trygghetspunkterna (leveransgaranti/diskretion/spårbarhet/
+   grundår) behölls OFÖRÄNDRADE (redan verifierade, redan godkända) —
+   bara omstylade till facits "radkort"-layout (vit bakgrund, egen
+   border/radie/padding per rad) i stället för en oformaterad lista.
+
+**Ändringar (`css/22-homepage-v2.css`, mobil-scopat `@media(max-width:
+860px)` — bas-reglerna utanför media-queryn lämnades OFÖRÄNDRADE så
+desktop förblir bit-för-bit identiskt, verifierat 1440px):** h2 20px,
+p 13px/1.6/#5f5c50, `.nh-tb-points li` radie 12px/kant #f3ece0/text
+#26261f. **Ändring (`js/18b-homepage-v2.js`):** CTA-länkens href/text.
+
+### B. Snabb koll: vad är vad?
+
+**Störst fynd: h2-kontrastbuggen.** Rotorsak identifierad exakt via
+computed styles: en DELAD mobilregel (`.nh-featured .sec-head h2,
+.nh-kunskap .guide-top h2, .nh-reviews .sec-head h2 {...color:
+#2c3620!important}`, tillagd i en tidigare omgång för Bästsäljare/
+omdömen som BÅDA sitter på LJUS bakgrund) tvingade samma mörkgröna
+text på `.nh-kunskap`, som är den ENDA av de tre som sitter på MÖRKGRÖN
+bakgrund (`.guide-dark`) — en redan existerande, korrekt,
+icke-`!important`-regel (`.guide.guide-dark .guide-top h2{color:
+#fffdf8}`) fanns redan men förlorade mot den delade `!important`-
+regeln. **Fix:** bröt ut `color` ur den delade listan (font-family/
+vikt/storlek/line-height/letter-spacing förblir delade, samma
+uppmätta facit-värde för alla tre) — ingen ny `!important` behövdes,
+den redan existerande, korrekta regeln vinner nu naturligt.
+
+**Grid-bugg:** `.guide-grid{grid-template-columns:1fr 1fr}` gav OLIKA
+kolumnbredder (201.7px/153.8px) så fort korten hade olika lång text,
+eftersom grid-items default har `min-width:auto` (kan inte krympa
+under sitt innehålls min-content-bredd). Facits EGEN mobilregel
+(index.html rad 997) är just `repeat(2,minmax(0,1fr))` — samma fix
+tillämpad, gav exakt 156px/156px (facits egna uppmätta värde).
+
+**Typografibugg (samma native-reset-mönster som redan dokumenterat i
+CLAUDE.md):** `.g-name`/`.g-card p` (span/p) saknade `!important` —
+16px/500/Nunito i st.f. facits 13.5px/700/system-ui; 16px/25.6 i
+st.f. 11.5px/17.25. Fixat, mobil-scopat. Samma bugg finns även på
+desktop (oförändrat denna omgång, mobil-avgränsat uppdrag — flaggat
+för en framtida desktop-omgång).
+
+**Fyra kort → fortfarande TVÅ, verifierat INTE gissat:** uttömmande
+sökning genom HELA den riktiga sajten (startsidans textblock +
+samtliga ~32 riktiga kategorisidor) efter varje publicerat "Vad är X?"-
+textblock: endast THCA, THCNM (juridiskt pausad, utesluten oförändrat)
+och Magic Sauce existerar. Ingen sådan text finns NÅGONSTANS för
+Nano-11 eller THCB/THCBA. Ett fjärde kandidat-textblock hittades på
+CBN-kategorisidan men innehåller uttryckliga hälso-/effektpåståenden
+("sömnfrämjande", "hälsofördelar", "minska stress och ångest") —
+använda det hade varit precis den typen av "starkare påstående än
+facit" uppdraget förbjöd (facit gör aldrig effektpåståenden i denna
+sektion). Kvarstår alltså vid 2 kort, en verifierad äkta
+innehållsbegränsning, inte fabricerad.
+
+**Korten är nu RIKTIGA länkar:** `<div class="g-card">` → `<a
+class="g-card" href="...">`. Länkmål härleds datadrivet (`nhKunskapHref`,
+matchar kortets rubrik mot `navData.footerLinks`/`groups[*].series`,
+samma mekanism som redan används för Populära serier/vägar — inget
+hårdkodat per kort). Verifierat: "Vad är THCA?" →
+`/sv/categories/thca` (riktig, 200), "Vad är Magic Sauce?" →
+`/sv/categories/m-s-vapes` (riktig, 200, samma etablerade href som
+Populära serier redan använder). Fallback till en oklickbar `<div>`
+(INTE `href="#"`) om inget riktigt mål hittas — ej aktuellt just nu,
+men återanvänds automatiskt om ett framtida kort saknar länkmål.
+Fokusstate: nativ webbläsar-outline (samma, oformaterade mönster som
+redan gäller för alla andra `<a>`-kort i denna fil).
+
+**Lede-text uppdaterad** till facits exakta ordalydelse (nämner
+uttryckligen aktuell laglighet i Sverige — stämmer för våra egna kort).
+**"Hela FAQ:n →"** länkade redan korrekt till den riktiga FAQ-sidan
+(`/sv/page/faq`, verifierat 200) — ingen ändring behövdes där.
+**Nedersta CTA** ("Se lagliga alternativ till THCA" i facit): byggdes
+INTE — facits hela premiss (att THCA skulle vara förbjudet/utgånget)
+är FAKTISKT FALSK för vår riktiga sajt (THCA är en verifierat aktiv,
+väl lagerförd, laglig kategori hos oss, med egna riktiga produkter
+redan synliga i t.ex. Bästsäljare) — att kopiera den CTA-texten hade
+inneburit att publicera en sakligt felaktig påstående om vårt eget
+sortiment. Ingen ärlig motsvarighet hittades att bygga i stället.
+Flaggat som öppen fråga: **Vilmer behöver ta ställning till om facit-
+prototypens THCA/HHC-kort ska uppdateras** (dess grundpremiss stämmer
+inte längre mot verkligheten).
+
+**Subpixel-scroll-artefakt, undersökt med reproducerbara mätningar:**
+0px verklig overflow (`document.documentElement.scrollWidth -
+clientWidth`) på sid-, sektions- och `.guide`-nivå vid 393px. Enda
+"overflow" som hittades var på kortens egen `<p>` (5px
+`scrollWidth-clientWidth`, `overflow:hidden`) — det är
+`-webkit-line-clamp`-mekanismens egen, avsiktliga textklippning
+(samma redan etablerade "för höga kort"-lösning som fanns innan denna
+omgång), INTE en läckande scrollbar eller synlig klippning. Ingen
+`overflow:hidden` maskering lades till — den som redan fanns var
+korrekt och avsiktlig. Slutsats: INGEN verklig overflow, INGEN
+scrollbar — föregående omgångars rapporterade "artefakt" var alltid en
+ren regressionstest-skärmdumps-sub-pixel-position-effekt (sektionen
+flyttar sig marginellt när en sektion ovanför byter höjd), inte ett
+fel i den faktiska sidan.
+
+### Regressionstest
+
+2 av 12 slog om (granskade, båda avsiktliga): Transparens/trustblock
+(390×468→390×478, 10.5% diff — CTA-textbyte + typografifix) och Snabb
+koll (390×491→390×430, 28.6% diff — kompaktare korrekt typografi +
+korrekt 2-kolumnsgrid). Alla övriga 10 sektioner 0-1.7% diff (under
+3%-tröskeln), INGEN regression i header/sök/hero/Populära
+serier/Populära vägar/Bästsäljare/omdömen/nyhetsbrev/footer. Ny
+golden-impl-baslinje låst efter granskning.
+
+`tests/tema6-smoke.spec.mjs`: 14/14 gröna. 0px overflow vid 390/393/
+430/600/1440px. Trust-block-länk verifierad (navigerar till riktig
+`/sv/page/kop-och-leveransvillkor`, 200). Kunskapskort-länk verifierad
+(navigerar till riktig `/sv/categories/thca`, 200).
+
+Desktop (1440px) explicit verifierat BIT-FÖR-BIT IDENTISKT
+före/efter denna omgång (h2 19px/#6b6355/10px-radie/Nunito-bugg allt
+oförändrat) — samtliga fixar mobil-scopade `@media(max-width:860px)`.
+
+**Kvarvarande, klassificerade avvikelser:**
+- Certifikattäckningsraden kan inte byggas — ingen verklig datakälla
+  (verifierad databegränsning, inte gissad).
+- Endast 2 av 4 möjliga Snabb koll-kort — verifierad äkta
+  innehållsbegränsning (se ovan), inte fabricerad.
+- Facits THCA/HHC-kort och "lagliga alternativ"-CTA bygger på en
+  premiss (THCA förbjudet) som är FALSK för vår riktiga sajt — öppen
+  fråga till Vilmer, ingen kod skriven för den.
+- g-name/g-card p-typografibuggen finns även på desktop, oförändrad
+  denna mobil-avgränsade omgång.
+
+**Commits:** källkodsändringar (css/22-homepage-v2.css,
+js/18b-homepage-v2.js) + golden-impl-uppdatering/denna STATUS.md-post,
+pushade till `dev`.
+
+**Inte rört:** header, sök, hero, Populära serier, Populära vägar,
+Bästsäljare, omdömen, nyhetsbrev, SEO/artikel, FAQ, footer, desktop-CSS
+(verifierat 1440px bit-för-bit identiskt), live tema 3/tema 5,
+Nyehandel-admin, PUBLICERA aldrig klickad.
