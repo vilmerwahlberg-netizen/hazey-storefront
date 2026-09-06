@@ -1970,3 +1970,109 @@ opåverkade.** Rekommenderar en egen, fullständig footer-runda med hela
 tidsbudgeten dedikerad dit — denna omgångs research (facits fullständiga
 mobila CSS/markup, redan extraherad och citerad ovan) återanvänds direkt
 utan att behöva göras om.
+
+## Nyhetsbrev-stapling + footer-parning + h3-storleksfix (2026-09-06)
+
+Paketet "Verifierade omdömen" / "Håll dig uppdaterad" / mobil footer,
+mätt mot facit (`http://localhost:8765/index.html?v=20260901-0045#/`,
+samma fil som tidigare omgångar — mtime 2026-09-01, oförändrad sen dess)
+och riktig implementation (Nyehandels inaktiva tema 6 via
+`NH_TEMA6_URL`), 390/430/600px.
+
+**Verifierade omdömen: ingen kodändring, redan korrekt.** Facit visar tre
+fabricerade citat-kort (`.reviews-row`, 3× `.review-card`); vi visar bara
+det riktiga 4,7/5 Trustpilot-betyget + länk (`.nh-reviews-cta`) — samma,
+tidigare uttryckligen godkända beslut (STATUS.md "Slutuppgift-omgång
+2026-09-01" punkt 12, öppen datafråga #2). Omätt i denna omgång fanns
+ingen ny facit-ändring att kalibrera mot. **Klass: medvetet produktbeslut
+(citat) + dynamiskt innehåll (verklig betygskälla saknar citat-widget).**
+
+**Nyhetsbrev: rotorsakat i två lager, båda fixade.**
+1. `.nh-signup-form input{flex:1 1 200px}` (`css/22`) var bredare än
+   facits egen `.signup-form input{flex:1 1 160px}` — vid 390px fick
+   fältet+knappen inte plats bredvid varandra, `flex-wrap:wrap` staplade
+   dem. Fixat: basis 200→160px, `.nh-signup-block`s mobilpadding 26→20px
+   (facit: `.signup-block{padding:20px}` vid ≤860px).
+2. Detta räckte INTE ensam (verifierat via en riktig injektion mot
+   tema 6, se metodanteckning nedan) — Nyehandels egna tag-nivå-reset
+   (samma `!important`-mönster som redan dokumenterat i CLAUDE.md
+   "Parity-workflow" för `body,p,li,span,input,button,label,td,a`) vann
+   tyst över `font-size`/`font-weight`/`letter-spacing` på både input och
+   knapp: knappen renderade 16px/500-vikt i stället för våra tänkta
+   13px/650, vilket gjorde "Prenumerera" bred nog (137px) att ändå
+   tvinga radbrytning trots fix (1). Fixat med `!important` på samtliga
+   tre egenskaper på båda elementen.
+   Resultat, verifierat mot tema 6 vid 390/430/600px: `signupStacked:
+   false` på alla tre (var `true` vid 390px innan), knapp 123px (facit
+   124px), fält 191px (facit 190px) — matchar facit inom 1px.
+   **Klass: korrigerbar implementation, fixad.**
+
+**Footer: två fixar, en kvarvarande klassificerad avvikelse.**
+1. `.nh-footer__col h3`s mobila `font-size`/`letter-spacing`-override
+   (`css/20`) hade ALDRIG vunnit sen `2957073` (redan dokumenterat i
+   "Footer mobil-CSS — arkitektur-/cleanup-runda", punkt 1 — själva
+   deklarationerna togs bort då eftersom de aldrig vann, i stället för
+   att fixas). Rotorsak: fel specificitet — `.nh-footer__col h3` (0,1,1)
+   kan aldrig slå `.nh-footer__grid .nh-footer__col h3` (0,2,1). Fixat
+   genom att lägga mobilregeln på samma selektor-prefix. Nu 10.5px/
+   0.11em, matchar facit exakt (facit uppmätt: 10.5px/1.155px).
+2. Mobilfooterns 3 riktiga länkkolumner (Kundservice/Utforska/Populära
+   kategorier) staplades tidigare var för sig i en enda kolumn — facit
+   parar sina 4 riktiga länkkolumner 2×2. Fixat: `.nh-footer__grid` är
+   nu `repeat(2,1fr)` på mobil, länkkolumnerna flödar 2 per rad;
+   varumärkes- och nyhetsbrevskolumnen behåller full radbredd (matchar
+   facits egen struktur, där nyhetsbrevsformuläret sitter i
+   brand-kolumnen, inte i länknätet). Footerhöjd 390×1518→390×1294px.
+   **Klass: korrigerbar implementation, båda fixade.**
+3. **Kvarvarande, INTE fixad:** vårt innehåll har 3 riktiga länkkolumner
+   med andra namn/länkar än facits 4 (Handla/Hjälp&leverans/Hazey/
+   Villkor mot vårt Kundservice/Utforska/Populära kategorier) — samma,
+   tidigare godkända princip ("annat men funktionellt innehållsupplägg,
+   inga länkar tagna bort"). **Klass: medvetet produktbeslut** (inte en
+   implementationslucka — footern kan ändå inte kallas 1:1 mot facit på
+   just denna punkt, men avvikelsen är klassificerad, inte gömd).
+
+**Metodanteckning — raw.githack.com-fördröjning:** `raw.githack.com`
+(dev-loaderns källa) visade sig INTE reflektera en färsk push omedelbart
+trots cache-busting-query-param — verifierat att `raw.githubusercontent.
+com` hade den nya koden direkt, men `raw.githack.com` fortfarande
+serverade den gamla flera minuter senare. Kringgicks genom att blockera
+`raw.githack.com`-routen i testfliken och i stället injicera den lokalt
+byggda `hazey.css`/`hazey.min.js` direkt (samma metod som `gotoImpl()`),
+vilket gjorde det möjligt att verifiera kodkorrekthet mot tema 6:s
+riktiga DOM omedelbart efter varje `node build.js`, utan att vänta på
+githacks cache. Värt att komma ihåg för framtida snabba
+korrigeringsrundor mot tema 6.
+
+**Verifiering:** `node build.js` (två gånger, en per korrigeringspass).
+`npm run test:tema6`: 12/12 gröna. `npm run parity -- --grep
+"regression:"`: 10/12 gröna direkt, 2 förväntade "regressioner"
+(nyhetsbrev/footer — de AVSEDDA storleksminskningarna från fixarna
+ovan), granskade och låsta som ny bas via `npm run parity:update-impl`
+(övriga 10 sektioners bredd/höjd oförändrade, endast `capturedAt`
+skiljer — verifierat). Desktop 1440px: `flex-direction:row` (oförändrat,
+oskopat), `.nh-signup-block`-padding 26px (oskopat), footer-grid
+fortsatt 5 kolumner, `h3` fortsatt 14px/1.12em — allt oberört, alla
+ändringar var `@media max-width:860px`-scopade. 0px horisontell overflow
+vid alla testade bredder (390/430/600/1440).
+
+**Filer ändrade:** `css/22-homepage-v2.css` (nyhetsbrev), `css/20-footer-
+v2-2026-07-06-mmsports-layout-5-kolumner-bo.css` (footer), `hazey.css`
+(byggd), `tests/golden-impl/*` (ny låst bas för de 2 ändrade + 10
+oförändrade sektionerna).
+
+**Commits (pushade till `dev`, ren fast-forward, ingen tagg, ingen
+Nyehandel-ändring):** `5d11c2b` (pass 1: flex-basis + 2-kolumnsparning +
+h3-fix), `54aee3c` (korrigeringspass 2: den faktiska `!important`-
+rotorsaken till kvarvarande stapling), `dd6b171` (parity: lås ny
+implementation-baseline efter granskning).
+
+**Godkännandebedömning:** Nyhetsbrev och footerns typografi/parning kan
+godkännas som 1:1-korrigerade (verifierat via facit-mätning, inte bara
+grönt test). Footern som HELHET kan fortfarande inte kallas 1:1 — den
+kvarvarande kolumninnehålls-/namnskillnaden (punkt 3 ovan) är
+klassificerad som ett medvetet produktbeslut, inte en bugg, men är en
+verklig, synlig, kvarvarande avvikelse mot facit som Vilmer bör vara
+medveten om, inte något som tyst godkänts som "klart". Verifierade
+omdömen kräver ingen ytterligare granskning denna omgång (oförändrad,
+redan tidigare godkänd).
