@@ -415,6 +415,19 @@
   /* Riktiga sökkomponenten döljs ur main-raden på mobil (ersätts av
      .nh-mobile-searchbar nedan, som bara TRIGGAR samma riktiga sök). */
   #store-header.nh-header-v2 .main .center { display: none !important; }
+  /* Rotorsakad 2026-09-06 (se STATUS.md): #search-container — nyehandels
+     RIKTIGA sökfält/resultat-UI — bor INUTI .center, inte bredvid det.
+     Regeln ovan gömde alltså sökrutan permanent även när användaren
+     lyckades öppna den (triggerns egna klasslogik lade till "active" på
+     #search-container helt korrekt, men förälderns display:none gömde
+     resultatet ändå) — mobil sökning kunde aldrig visuellt fungera.
+     Nyehandels egen CSS positionerar redan #search-container.active rätt
+     som en fullbredds-overlay när .center är synlig (verifierat live,
+     inget eget positioneringsarbete behövs) — undantaget här behöver
+     bara låta .center synas i just det läget. */
+  #store-header.nh-header-v2 .main .center:has(#search-container.active) {
+    display: flex !important;
+  }
   /* Den nativa sök-ikon-triggern i .right är nu överflödig — vår egen
      alltid synliga sökrad gör samma sak, dubblett annars. */
   #store-header.nh-header-v2 .main .right #mobile-search-trigger { display: none !important; }

@@ -2566,6 +2566,24 @@
       sh.__nhHeaderV2 = true;
       sh.classList.add("nh-header-v2");
 
+      // Loggan länkar nativt (nyehandels egen hårdkodade href, inte satt av
+      // oss) till "/" — inte den riktiga svenska startsidan "/sv", och i en
+      // tema-preview tappar den dessutom ?preview=-token:en, vilket gör att
+      // ett klick lämnar tema 6 helt och hamnar på tema 3:s nativa (icke
+      // reskinnade) rendering av "/" (samma rotorsak som redan dokumenterat
+      // i CLAUDE.md för hazeyse.nyehandel.se utan ?preview=). Verifierat:
+      // det är en vanlig <a>-navigering (ingen Vue-router-interception,
+      // page.url() blir exakt href-värdet efter klick) — säkert att bara
+      // sätta rätt href-attribut. Bevarar aktuell preview-parameter
+      // DYNAMISKT ur location.search — hårdkodar ALDRIG token:en, så
+      // fixen fungerar identiskt i produktion (ingen preview-param finns
+      // då, länken blir bara "/sv").
+      var brandLink = sh.querySelector(".main .left .brand a");
+      if (brandLink) {
+        var nhPreviewToken = new URLSearchParams(location.search).get("preview");
+        brandLink.setAttribute("href", nhPreviewToken ? "/sv?preview=" + encodeURIComponent(nhPreviewToken) : "/sv");
+      }
+
       // 18+ — juridiskt krav, saknas i dagens topbar-USP-lista. Ren UI-text,
       // ingen påhittad trust-data.
       var topbarInner = sh.querySelector(".topbar .container");
@@ -2650,7 +2668,17 @@
           + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
           + 'Sök produkt, serie eller cannabinoid…</button>';
         mobileSearchBar.querySelector("button").addEventListener("click", function () {
-          nativeSearchTrigger.click();
+          // Rotorsakad 2026-09-06 (se STATUS.md): ett synkront
+          // nativeSearchTrigger.click() här öppnar #search-container
+          // korrekt (klassen "active" läggs till), men SAMMA klickhändelse
+          // fortsätter bubbla upp till nyehandels egen "klick utanför
+          // stänger sökrutan"-lyssnare (den ser vår knapp, utanför
+          // #search-container, som ett "utanför"-klick) — nettoresultatet
+          // blev öppna+stäng inom loggat 0.1ms av varandra, sökrutan
+          // förblev alltid stängd. Fix: skjut upp anropet till en NY
+          // event-loop-tick (setTimeout 0) så vårt klicks bubbling-fas
+          // hinner färdigt innan triggern faktiskt klickas.
+          setTimeout(function () { nativeSearchTrigger.click(); }, 0);
         });
         mainRow.parentNode.insertBefore(mobileSearchBar, mainRow.nextSibling);
 

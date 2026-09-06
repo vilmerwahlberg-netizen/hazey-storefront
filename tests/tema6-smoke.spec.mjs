@@ -192,6 +192,19 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     expect(info.footer, "footer saknas").toBe(true);
   });
 
+  test("logga: länkar till /sv och bevarar aktuell preview-parameter", async ({ page }) => {
+    // Rotorsakad och fixad 2026-09-06 (se STATUS.md): nyehandels egen,
+    // hårdkodade href="/" tappade både /sv-prefixet och ?preview=-token:en
+    // -- ett klick lämnade tema 6 helt. js/18a-header-v2.js sätter nu
+    // href dynamiskt ur location.search, aldrig ett hårdkodat token.
+    await gotoTema6(page);
+    const href = await page.evaluate(
+      () => document.querySelector("#store-header .main .left .brand a").getAttribute("href")
+    );
+    const previewToken = new URL(TEMA6_URL).searchParams.get("preview");
+    expect(href, "loggans href").toBe("/sv?preview=" + previewToken);
+  });
+
   test("kategori (mobil 390px): produktkort renderas, ingen overflow", async ({ page }) => {
     const { consoleErrors } = await gotoTema6(page, "/sv/categories/alla-produkter");
     await page.setViewportSize({ width: 390, height: 900 });
@@ -222,22 +235,44 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     expect(realErrors(consoleErrors), "konsolfel på PDP").toEqual([]);
   });
 
-  test("sökning: dropdown visas vid inmatning", async ({ page }) => {
-    // Desktop-bredd medvetet: på mobil (denna filens standardviewport,
-    // 390px) ligger Nyehandels riktiga sökfält bakom en platthanterad
-    // native modal/trigger (#mobile-search-trigger) som inte renderar
-    // konsekvent i en headless testkontext -- verifierat live (elementets
-    // egen bounding box är null även efter klick). Vår EGNA mobila
-    // "fejk-sökrad" (.nh-mobile-searchbar, js/18a-header-v2.js) triggar
-    // uttryckligen samma nativa modal och innehåller ingen egen input att
-    // testa mot (se den filens kommentar: "ingen egen söklogik"). På
-    // desktop är det riktiga sökfältet direkt synligt och testbart utan
-    // någon modal-interaktion, så funktionen verifieras här i stället.
+  test("sökning (mobil 390px): fejk-sökraden öppnar riktig sök, text går att skriva, riktiga resultat visas", async ({ page }) => {
+    // Rotorsakad och fixad 2026-09-06 (se STATUS.md) -- tidigare öppnade
+    // .nh-mobile-searchbar aldrig något synligt på mobil, av två skäl:
+    // (1) #search-container (nyehandels riktiga sök-UI) bor INUTI .center,
+    // som vi gömde ovillkorligt -- fixat med ett CSS-undantag när
+    // #search-container har klassen "active" (css/21-header-v2.css).
+    // (2) nativeSearchTrigger.click() öppnade sökrutan korrekt, men SAMMA
+    // klickhändelse bubblade vidare till nyehandels egen "klick utanför
+    // stänger sökrutan"-lyssnare och stängde den igen inom loggat 0.1ms --
+    // fixat genom att skjuta upp klicket till en ny event-loop-tick
+    // (setTimeout 0, js/18a-header-v2.js). Testar den RIKTIGA
+    // produktionsflödet (klick på vår egen knapp, ingen genväg rakt mot
+    // #mobile-search-trigger) för att verkligen täcka regressionen.
+    const { consoleErrors } = await gotoTema6(page);
+    await page.click(".nh-mobile-searchbar button");
+    await page.waitForTimeout(600);
+    const searchContainer = await page.$("#search-container.active");
+    expect(searchContainer, "sökrutan öppnades inte på mobil -- se rotorsak ovan").not.toBeNull();
+    const input = await page.$("#search-container input");
+    expect(input, "sökfältet inuti #search-container saknas efter öppning").not.toBeNull();
+    await input.type("vape", { delay: 30 });
+    await page.waitForTimeout(1200);
+    const hasRealResults = await page.evaluate(() => {
+      const sc = document.querySelector("#search-container");
+      return Array.from(sc.querySelectorAll("a")).some((a) => a.href.includes("nyehandel.se"));
+    });
+    expect(hasRealResults, "inga riktiga sökresultat (nyehandel.se-länkar) visades på mobil").toBe(true);
+    expect(realErrors(consoleErrors), "konsolfel under mobil sökning").toEqual([]);
+  });
+
+  test("sökning (desktop 1440px): riktiga sökfältet direkt synligt, oförändrat av mobilfixen", async ({ page }) => {
+    // Desktop har inget kollapsat/dolt sökfält -- #search-container ligger
+    // alltid synligt i .center där, och mobilfixen ovan är scopad till
+    // @media (max-width:880px), så det här verifierar uttryckligen att
+    // desktop-sökningen inte påverkades av dagens ändring.
     await page.setViewportSize({ width: 1440, height: 900 });
     await gotoTema6(page);
     const input = await page.$('input[placeholder*="ök" i], input[type="search"]');
-    // Ett saknat sökfält är en riktig regression, inte ett förbigångsvärt
-    // testförutsättningsproblem -- faila hårt, hoppa inte över.
     expect(input, "sökfältet saknas -- borde alltid finnas på desktop").not.toBeNull();
     await input.click();
     await input.type("vape", { delay: 30 });
