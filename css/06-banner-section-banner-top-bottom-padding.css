@@ -367,9 +367,14 @@
   margin-top: 12px !important;
 }
 
+/* Konsoliderad 2026-09-06 — fanns tidigare som två separata regelpar
+   (samma selektorer upprepade längre ner i filen). margin-top:10px och
+   color:#ffffff är de värden som redan vann/renderades (senare regel i
+   källordningen, samma specificitet+!important) innan konsolideringen —
+   pixelidentiskt resultat, bara döda dubbletter borttagna. */
 .category-description .readmore__toggle {
   text-align: center !important;
-  margin-top: 14px !important;
+  margin-top: 10px !important;
 }
 
 /* "Läs mer" — same button styling as the rest of the site (nh-btn-bar / nh-info) */
@@ -402,19 +407,6 @@
 .category-description .readmore__toggle::before {
   display: none !important;
   background: none !important;
-}
-
-.category-description .readmore__toggle {
-  text-align: center !important;
-  margin-top: 10px !important;
-}
-
-.category-description .readmore__toggle button {
-  color: #ffffff !important;
-}
-
-.category-description .readmore__toggle button:hover {
-  color: #ffffff !important;
 }
 
 @media (max-width: 768px) {

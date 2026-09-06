@@ -300,17 +300,38 @@ fullständigt genomarbetat exempel på alla fem klasserna i praktiken.
 
 ## KRITISKT — säkerhet mot skarpa sajten
 
-nyehandels Kodläge (Layout → Hantera → `</>`-ikonen i admin) har **ingen
-säker draft/sandbox-status**. Verifierat konkret: en testrad sparad i
-Head-fältet låg LIVE på skarpa sajten (hazeyse.nyehandel.se, utan
-preview-parameter) omedelbart efter klick på Spara i Kodläge-modalen.
-`?preview=`-länken är INTE en isolerad förhandsvisning — den visar bara samma
-aktiva tema som redan är publicerat.
+**Uppdaterad 2026-09-06 — ersätter den tidigare, mer alarmerande
+formuleringen nedan (bevarad historiskt i Git om den behövs).** Den
+ursprungliga observationen ("en testrad i Head-fältet låg LIVE utan
+preview-parameter") gällde en TIDIGARE kontosituation innan separata,
+namngivna tema-instanser (tema 3/5/6) fanns tillgängliga — den beskrev
+alltså inte hur plattformen fungerar idag.
 
-Konsekvens: gör ALDRIG experimentella ändringar direkt i nyehandel-admin. All
-utveckling sker lokalt i det här repot. Om något någonsin behöver verifieras
-mot den riktiga sajten: fråga Vilmer först, gör det så kort som möjligt och
-återställ omedelbart.
+**Nu verifierad verklighet** (bekräftad genom upprepad, omfattande
+testning över flera sessioner — `blocks/loader-dev.html` har varit
+inklistrad i tema 6:s eget JavaScript-fält sedan flera omgångar tillbaka,
+och `https://hazeyse.nyehandel.se/` **utan** `?preview=`-parameter har
+konsekvent visat NATIV, oreskinnad rendering under hela den tiden — inga
+spår av vår CSS/JS, verifierat om och om igen via
+computed-style-jämförelser mot tema 6:s reskinnade rendering):
+
+- Ett tema-instans (t.ex. tema 6) egna sparade inställningar och egen
+  kod (dess CSS-fält, JavaScript-fält, Head-fält) påverkar ENDAST den
+  temainstansen.
+- Den LIVE sajten (tema 3, `hazeyse.nyehandel.se` utan `?preview=`)
+  påverkas FÖRST om man antingen (a) redigerar tema 3:s egna fält
+  direkt, eller (b) medvetet publicerar/aktiverar ett annat tema så det
+  blir det nya live-temat.
+- `?preview=<token>`-länken visar alltså en GENUINT separat, isolerad
+  tema-instans — inte bara samma publicerade tema som redan är live
+  (vilket den äldre formuleringen påstod).
+
+**Detta ändrar INTE arbetsreglerna:** experiment ska ALDRIG göras direkt
+i tema 3 (live). All utveckling sker lokalt i det här repot; tema 6 (den
+inaktiva instansen) är den enda plattformsmiljö som får användas för
+verifiering, och även där gäller samma försiktighet som tidigare — gör
+det kort, fråga Vilmer först om något är osäkert, och publicera aldrig
+tema 6 som live utan explicit godkännande.
 
 Produktionsloadern (`blocks/loader.html`) pekar på en pinnad jsDelivr-tagg —
 INGET härifrån är live förrän någon medvetet klistrar in nytt innehåll i

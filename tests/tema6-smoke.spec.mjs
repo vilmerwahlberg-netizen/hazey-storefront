@@ -87,15 +87,21 @@ async function gotoTema6(page, path) {
   return { consoleErrors, pageErrors };
 }
 
-// Ignore known third-party noise unrelated to our own code.
-// ERR_ADDRESS_UNREACHABLE specifically (not a generic "Failed to load
-// resource", which would also catch a real broken URL/404 in our own
-// code) -- hazeyse.nyehandel.se has shown intermittent connectivity blips
-// unrelated to this repo (independently confirmed via curl: other hosts
-// stay reachable throughout). This only suppresses that exact transient
-// DNS/connection-level failure class, nothing else.
+// Ignore ONLY known, always-present third-party noise that is genuinely
+// unrelated to whether our own CSS/JS/assets loaded correctly (Google's
+// reCAPTCHA background beacon; ERR_BLOCKED_BY_CLIENT, which indicates a
+// browser-level block unrelated to our code). Deliberately does NOT
+// filter ERR_ADDRESS_UNREACHABLE (or any other network-failure class) --
+// that would silently hide a real failure to load our own CSS/JS/assets
+// behind "it's just network noise". Bounded retry for genuine transient
+// host flakiness already happens once, at the page-navigation level in
+// gotoTema6() (including an explicit check that hazey.min.js actually
+// landed in the DOM) -- by the time a test body runs, gotoTema6() already
+// succeeded or the whole test has failed outright. Any resource-load
+// error that still shows up in the console AFTER that point is real and
+// must fail the test, not be waved away as noise (never a false green).
 function realErrors(errors) {
-  return errors.filter((e) => !/recaptcha|ERR_BLOCKED_BY_CLIENT|ERR_ADDRESS_UNREACHABLE/i.test(e));
+  return errors.filter((e) => !/recaptcha|ERR_BLOCKED_BY_CLIENT/i.test(e));
 }
 
 async function findProductHref(page) {
@@ -113,20 +119,44 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     );
   });
 
-  test("dev-loadern laddar exakt EN hazey.css och ETT hazey.min.js", async ({ page }) => {
+  test("dev-loadern laddar exakt EN hazey.css och ETT hazey.min.js (bekräftat färdigladdade)", async ({ page }) => {
     await gotoTema6(page);
     const info = await page.evaluate(() => {
       const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).filter((l) =>
         l.href.includes("hazey.css")
       );
       const scripts = Array.from(document.scripts).filter((s) => s.src.includes("hazey.min.js"));
+
+      // Ett <link>/<script> KAN finnas i DOM:en även om nedladdningen
+      // fortfarande väntar eller misslyckades -- kolla att stilarket
+      // faktiskt är laddat OCH att vårt JS faktiskt kört klart, inte bara
+      // att taggarna existerar.
+      //
+      // CSS: `link.sheet` är null tills stilarket verkligen är laddat och
+      // associerat (spec-definierat beteende, verifierat live: en trasig
+      // URL ger sheet=null/onerror, en riktig laddad länk ger ett riktigt
+      // CSSStyleSheet-objekt). `.cssRules` går INTE att läsa här (raw.
+      // githack.com skickar inga CORS-headers för JS-introspektion av
+      // korsursprungsstilark, verifierat live -- SecurityError), så
+      // `.sheet`/`.disabled` är den pålitliga, CORS-säkra kontrollen.
+      const cssLink = links[0];
+      const cssActuallyLoaded = !!cssLink && cssLink.sheet !== null && cssLink.sheet.disabled === false;
+
+      // JS: ett konkret DOM-element som BARA vår kod skapar (inte
+      // plattformens egna element) -- bevisar att hazey.min.js faktiskt
+      // kördes klart förbi initHeaderV2(), inte bara att <script>-taggen
+      // hann laddas.
+      const jsActuallyRan = !!document.querySelector(".nh-burger") || !!document.querySelector(".nh-mobile-searchbar");
+
       return {
         cssCount: links.length,
         jsCount: scripts.length,
-        cssHref: links[0] ? links[0].href : null,
+        cssHref: cssLink ? cssLink.href : null,
         jsSrc: scripts[0] ? scripts[0].src : null,
         devCssMarker: document.querySelectorAll("[data-nh-dev-css]").length,
         devJsMarker: document.querySelectorAll("[data-nh-dev-js]").length,
+        cssActuallyLoaded,
+        jsActuallyRan,
       };
     });
     expect(info.cssCount, "förväntade exakt en hazey.css").toBe(1);
@@ -135,6 +165,8 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     expect(info.devJsMarker, "förväntade exakt en data-nh-dev-js-markering").toBe(1);
     expect(info.cssHref, "hazey.css laddades inte från dev-grenen").toContain("/dev/hazey.css");
     expect(info.jsSrc, "hazey.min.js laddades inte från dev-grenen").toContain("/dev/hazey.min.js");
+    expect(info.cssActuallyLoaded, "hazey.css-taggen finns i DOM men stilarket är inte faktiskt laddat (link.sheet är null/disabled)").toBe(true);
+    expect(info.jsActuallyRan, "hazey.min.js-taggen finns i DOM men inget av vårt JS har faktiskt körts (varken .nh-burger eller .nh-mobile-searchbar skapades)").toBe(true);
   });
 
   for (const w of WIDTHS) {
@@ -204,7 +236,9 @@ test.describe("Tema 6 (inaktiv Nyehandel-preview) — dev-loader + smoke", () =>
     await page.setViewportSize({ width: 1440, height: 900 });
     await gotoTema6(page);
     const input = await page.$('input[placeholder*="ök" i], input[type="search"]');
-    test.skip(!input, "inget sökfält hittades");
+    // Ett saknat sökfält är en riktig regression, inte ett förbigångsvärt
+    // testförutsättningsproblem -- faila hårt, hoppa inte över.
+    expect(input, "sökfältet saknas -- borde alltid finnas på desktop").not.toBeNull();
     await input.click();
     await input.type("vape", { delay: 30 });
     await page.waitForTimeout(1200);
