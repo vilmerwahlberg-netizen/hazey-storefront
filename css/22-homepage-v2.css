@@ -1255,6 +1255,15 @@
   .nh-signup.section-gap {
     margin-bottom: 22px !important;
   }
+  /* Facit-kalibrering 2026-09-06: .nh-pser.section-gap (Populära serier)
+     saknades i listan ovan -- fick alltså ALDRIG någon margin-bottom på
+     mobil, gapet till Populära vägar mätte 0px. Facits egen
+     #m-populara-serier{margin:0 0 15px} (index.html) är dessutom ett
+     ANNAT värde än de övriga sektionernas 22px, inte samma tal -- egen
+     regel i stället för att slås ihop med listan ovan. */
+  .nh-pser.section-gap {
+    margin-bottom: 15px !important;
+  }
   /* Sista mobilpasset (2026-09-03): samtliga fem home-extra-sektioner
      hade 24px (eller 16px för kunskap) sido-padding, oskopat — facits
      riktiga mobila sidoinset är 14px (uppmätt live på .trust-block:
