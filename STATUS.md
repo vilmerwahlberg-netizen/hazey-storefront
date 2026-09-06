@@ -2437,3 +2437,171 @@ sökimplementationen från föregående omgång.
 **Commits (pushade till `dev`, fast-forward, ingen tagg, ingen
 Nyehandel-ändring):** `2e76c19` (workflow + loader-dev.html + README +
 .gitignore).
+
+## 2026-09-06 — Mobil 1:1-kalibrering av startsidan (Paket A–D + rytmfix)
+
+Uppdrag: kalibrera de SJU komponenter som finns i BÅDE facit och tema 6
+(header, stängt sökfält, mikrotrust-rad, hero, Populära serier, Populära
+vägar + framställningsval, footer) mot facit, mätning-först-metodik (facit
+vs. implementation vid 393px primärt + 390/430/600px), rotorsak i ägande
+fil, ingen kod för att "vinna" en pixel-diff. De extra riktiga sektionerna
+(Bästsäljare, trustblock, kunskap, omdömen, nyhetsbrev, artikel/FAQ) är
+INTE i scope — dokumenterad, avsiktlig strukturskillnad, INTE en avvikelse.
+
+**Uppmätta huvudavvikelser före (urval, se enskilda commits för fullständig
+lista):**
+- Header: saknad 1px botten-skuggning (`box-shadow`) mot facit.
+- Hero: `.btn-solid` `border-radius:999px` i stället för facits 22px
+  (höjden 50px vid 390/393/430px var INTE en bugg — verifierat att facits
+  EGEN knapp radar samma 2-radersbrytning och samma 50px vid samma
+  bredder; endast border-radius var en riktig avvikelse).
+- Populära serier: ordning Hero/Magic Sauce/Faraoh/Nano-11 i stället för
+  facits Magic Sauce/Nano-11/[Hero]/[Faraoh]; `.pser-avatar` saknade
+  facits skugga.
+- Populära vägar: `.nh-routes.section-gap` krympte till 351px (flex-item
+  med `margin:0 auto` i en `flex-direction:column`-förälder utan
+  `align-items:stretch` konsumerar fritt utrymme via auto-margins i
+  stället för att sträcka ut) i stället för full 393px-bredd — kaskaderade
+  till ojämna `.seg-btn`-bredder (160 vs 177px i stället för lika 178.5px)
+  och en extra, i facits riktiga DOM obefintlig `.route-kicker`-etikett på
+  bildkort, som tillsammans med saknade `!important` på `h3`/`.route-sub`/
+  `.seg-t`/`.seg-s` (klassiskt tag-reset-mönster, se "Parity-workflow"
+  ovan) gav 129/126px korthöjd i stället för facits 112px och 4-radig
+  textombrytning i `.seg-btn` (91.78px hög) i stället för 1–2 rader/50px.
+- Footer: `.nh-footer__proof-row` dubbel-padding (16px från `.nh-footer`
+  själv + egna 16px) gav 159.5px kolumnbredd i stället för facits 175.5px;
+  `.nh-footer__col a` saknade `!important` (11.5px/annat typsnitt i
+  stället för facits 12px/`-apple-system`-stacken).
+- Vertikal rytm: `.nh-pser.section-gap` (Populära serier → Populära vägar)
+  saknades helt i den etablerade `margin-bottom`-listan från en tidigare
+  omgång — mätte 0px i stället för facits 15px (ett annat tal än de övriga
+  sektionernas 22px, egen regel).
+
+**Exakta ändringar per komponent (ägande fil i varje fall, ingen ny
+"final fixes"-blocksamling):**
+- `css/21-header-v2.css`: `box-shadow:0 1px 0 rgba(114,82,47,.08)` på
+  `#store-header.nh-header-v2` i befintlig `@media(max-width:880px)`.
+- `css/22-homepage-v2.css`: `border-radius:22px!important` tillagd i
+  redan existerande `.nh-qfind-hero .btn-solid`-mobilblock; `box-shadow`
+  tillagd på `.nh-pser .pser-avatar`; `.nh-routes.section-gap` bas-regel
+  fick `min-width:0;width:100%` (samma fix som redan fanns för
+  `.nh-pser.section-gap` i en tidigare omgång, aldrig applicerad på
+  routes — root-caused via kodkommentar som dokumenterade den tidigare
+  fixen); mobil-scopad `!important`-typografi tillagd på `.route h3`/
+  `.route-sub`/`.seg-t`/`.seg-s` matchande facits uppmätta värden;
+  `.route-kicker` dold för `.route.visual`/`.has-photo` (facits riktiga
+  mobila DOM saknar helt kicker-elementet för fotokort); ny separat
+  `.nh-pser.section-gap{margin-bottom:15px!important}`-regel (INTE
+  hopslagen med den befintliga 22px-listan, facit har ett annat tal här).
+- `js/18b-homepage-v2.js`: `NH_PSER_PRIORITY`/`NH_PSER_STATIC_IMG` styr
+  sorteringsordning + statisk bild för Hero/Faraoh (se nedan); Magic
+  Sauce/Nano-11/övriga behåller den befintliga live-foto-mekanismen
+  oförändrad.
+- `js/18a-header-v2.js`: NETT INGEN funktionsändring — en 5:e mobil
+  trust-ruta implementerades, provkördes, och rullades tillbaka INNAN
+  commit efter att facits egen `display:none` på sin 5:e ruta hittades
+  live (5 synliga rutor hade varit en REGRESSION, inte en fix — se
+  kodkommentar i filen för fullständigt resonemang, så nästa omgång inte
+  upprepar experimentet).
+- `css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`:
+  `.nh-footer__proof-row` fick `margin-left:-16px;margin-right:-16px`
+  (motverkar `.nh-footer`s egen delade padding, lämnad orörd för övriga
+  footer-element som fortfarande behöver den); `.nh-footer__col a` fick
+  `font-family`/`font-weight`/`letter-spacing:!important` + `font-size`
+  12px (upp från 11.5px).
+
+**Bildbyten (Populära serier):** `assets/series/hero.jpg` (75132 byte,
+kopia av facits `kat-thcx.jpg` — verifierad att visa Heros riktiga
+HighLife/El Gringo-underserie-förpackning) och `assets/series/faraoh.jpg`
+(47671 byte, kopia av facits `vape-blueberry.jpg` — verifierad att bokstavligen
+visa en "Faraoh Vapes"-låda). **Öppen fråga, INTE gissad förbi:** facits
+egna `kat-magicsauce.jpg`/`kat-nano11.jpg`-filer visade vid direkt
+bildgranskning OFÖRENLIGT innehåll ("Donny Burger"/"Tinky Wink"-påsar
+respektive "Tatra Hemp"-påsar) — troligen fel/förlegade filnamn i facit
+självt, inte en portningsbugg härifrån. Använde INTE dessa filer för
+Magic Sauce/Nano-11 (hade blivit felaktig produktrepresentation); de
+korten behåller sin befintliga, redan korrekta live-foto-mekanism
+oförändrad. **Vilmer behöver ta ställning till om facits egna Magic
+Sauce/Nano-11-bildfiler ska rättas i facit-prototypen** — inget kodbeslut
+härifrån.
+
+**Serieordning/länkar/antal:** ordning satt till Magic Sauce, Nano-11,
+Hero, Faraoh (`NH_PSER_PRIORITY`) — matchar facits visuella ordning för
+de två serier (Magic Sauce/Nano-11) som har en entydig verklig motsvarighet;
+Hero/Faraoh är de två posterna vars kort redan länkade till riktiga,
+existerande kategorier/serier (bibehållna oförändrade, INTE bytta mot
+påhittade mål). Produktantalen kommer alltid live från riktig
+nav/produktdata (oförändrad mekanism) — INGA hårdkodade tal, skiljer sig
+alltså avsiktligt från facits statiska skärmdumpstal (17/11/7/1), klassat
+som dynamiskt innehåll.
+
+**Geometrisk avvikelse efter, urval:** Populära vägar-korthöjd 129/126px →
+112px (exakt facit-match); `.seg-btn`-bredd 160.16/176.84px → lika
+178.5px (facit-match, ±sub-px); `.seg-btn`-höjd 91.78px (4 rader) → 50px
+(facit-match); footer-proofrad kolumnbredd 159.5px → 175.5px (facit-match,
+±sub-px); Populära serier→vägar-mellanrum 0px → 15px (facit-match).
+
+**Regressionstest-resultat (`npx playwright test tests/home-parity.spec.mjs
+--grep "regression:"`), granskade EN och EN, inte per automatik:**
+4 av 12 impl-regressionstester slog om (bristande mot den GAMLA,
+föråldrade golden-impl-baslinjen från FÖRE denna omgång) — alla fyra
+verifierade som avsiktliga, korrekta konsekvenser av ovanstående fixar,
+INGEN kallad "mätbrus" utan bevis:
+1. **Populära serier** (9.7% pixel-diff, samma storlek): förväntat —
+   omordning + två bildbyten.
+2. **Populära vägar** (395x468→390x409, 44.6% pixel-diff): förväntat —
+   direkt konsekvens av bredd-/kort-höjd-fixarna ovan.
+3. **Truststrip och footer** (1294→1276px höjd, 10.7% pixel-diff):
+   förväntat — länktypografiändringen (font-family/storlek) ger annan
+   radbrytning; proofradens marginfix.
+4. **"Snabb koll: vad är vad?"** (identisk 390x491-storlek, 3.4%
+   pixel-diff, tröskel 3%) — **INTE en kodändring i den sektionen** (dess
+   CSS rördes aldrig i denna omgång). Bisect-verifierat commit för commit
+   (git worktree, om och om) att avvikelsen först uppstår vid Paket C
+   (`7f5fe43`, routes-fixen). Root-causad genom att dumpa
+   `getComputedStyle` för ALLA barn-noder i `.nh-kunskap` före/efter:
+   **byte-för-byte identiska** font/färg/bakgrund/mått på varje nod —
+   ENDA skillnaden är sektionens absoluta `y`-position på sidan (flyttad
+   58px uppåt eftersom Populära vägar-sektionen ovanför blev kortare, en
+   AVSIKTLIG konsekvens). Klassad som **webbläsarens textrendering**
+   (klass 4) — ren scroll-position-beroende sub-pixel-antialisering vid
+   elementscreenshot, inget synligt för ögat (bekräftat, se
+   `tests/results/kunskap-regression/{expected,actual}.png`), ingen CSS-
+   egenskap skiljer. Ny golden-impl-baslinje låst efter denna granskning
+   (`npm run parity:update-impl`).
+
+**Test vid alla bredder:** `tests/tema6-smoke.spec.mjs` (14 tester,
+mobilmeny/konto/varukorg/sök mobil+desktop/kategori-sida/produktsida/
+logga+preview-token/0px overflow vid 390/430/600/1440px) — 14/14 GRÖNA
+efter en fristående, orelaterad bugg hittades och fixades: testets
+`hazey.css`/`hazey.min.js`-URL-kontroll väntade sig fortfarande den GAMLA
+`raw.githack`-baserade `/dev/hazey.css`-sökvägen (skriven före förra
+sessionens GitHub Pages-migrering, aldrig uppdaterad) — den faktiska,
+KORREKTA URL:en var redan `vilmerwahlberg-netizen.github.io/...`;
+assertionen uppdaterad i `tests/tema6-smoke.spec.mjs`, ingen produktionskod
+ändrad.
+
+**Skärmdumpar (helsida, iPhone 16 393×852@3x, INTE incheckade — sparade
+lokalt för granskning):**
+`/private/tmp/.../scratchpad/facit-full.png`,
+`.../impl-before-full.png` (commit `e406b9b`, före Paket A–D),
+`.../impl-after-full.png` (efter Paket A–D + rytmfix).
+
+**Kvarvarande avvikelser, klassificerade:**
+- Facits `kat-magicsauce.jpg`/`kat-nano11.jpg` visar fel produkter — öppen
+  fråga till Vilmer (medvetet produktbeslut, inte gissad).
+- De extra riktiga hemsektionerna (Bästsäljare/trustblock/kunskap/
+  omdömen/nyhetsbrev/FAQ) — medveten strukturskillnad, uttryckligen
+  utanför scope, INTE borttagna/dolda/förkortade.
+- Produktantal i Populära serier skiljer sig från facits statiska
+  skärmdumpstal — dynamiskt innehåll, förväntat.
+
+**Commits (lokala, EJ ännu pushade vid skrivandet av denna post — se
+nästa rad i denna fil för push-bekräftelse):** `0e80034` (Paket A),
+`11fc7d1` (Paket B), `7f5fe43` (Paket C), `926fc0c` (Paket D), `f6216b1`
+(rytmfix), `<pending>` (tema6-smoke-fix), `<pending>` (golden-impl +
+denna STATUS.md-post).
+
+**Inte rört:** `blocks/loader.html`, live tema 3, tema 5, någon
+Nyehandel-inställning, PUBLICERA aldrig klickad, desktop-CSS (ingen
+regel utanför `@media(max-width:860/880px)` ändrad).
