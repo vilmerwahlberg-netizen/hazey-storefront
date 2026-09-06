@@ -3134,17 +3134,27 @@
        tidigare konstaterad OMÖJLIG att bakas med riktig data (ingen
        tillförlitlig källa i produktkortens DOM, se STATUS.md/CLAUDE.md)
        och skrivs därför INTE in, varken gissad eller fabricerad.
-       Trustpilot-länken (redan riktig, redan använd) ersätter facits
-       egen /transparens-länk eftersom ingen sådan sida finns riktigt
-       byggd än — hittar aldrig på en URL. */
+       Facit-kalibrering 2026-09-06 (se STATUS.md): CTA:n är BYTT bort
+       från Trustpilot-länken igen. Verifierat att SAMMA "4,7/5 på
+       Trustpilot"-länk redan är den riktiga, avsedda CTA:n i
+       "Verifierade omdömen"-sektionen (nhReviewsHtml, nedan) — att
+       återanvända den här också hade varit en tyst dubblettlänk, precis
+       det uppdraget varnade för ("kontrollera avsedd informations-
+       arkitektur innan flytt/duplicering"). Ingen riktig transparens-/
+       labbrapportsida finns byggd (verifierat 404 på transparens/
+       analyscertifikat/labbrapport/certifikat/coa/analys), så CTA:n
+       pekar i stället på en ANNAN riktig sida vars innehåll faktiskt
+       täcker punkterna nedan (leveransgaranti/diskretion/spårbarhet):
+       /sv/page/kop-och-leveransvillkor (verifierat 200, riktig
+       köp-/leveransvillkorssida). */
     function nhTrustBlockHtml() {
       return '<section class="nh-trustblock section-gap">'
         + '  <div class="nh-tb-inner">'
         + '    <h2>Så arbetar Hazey med innehåll och ursprung</h2>'
         + '    <p>Vi är öppna med vad som finns i våra produkter och var de kommer ifrån — inga effektlöften, bara verifierbara fakta.</p>'
-        + '    <a class="nh-tb-link" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '    <a class="nh-tb-link" href="/sv/page/kop-och-leveransvillkor">'
         + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
-        + '      4,7/5 på Trustpilot — läs verifierade omdömen</a>'
+        + '      Läs våra köp- och leveransvillkor</a>'
         + '    <ul class="nh-tb-points">'
         + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
         + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
@@ -3225,8 +3235,28 @@
        medvetet UTESLUTET ur den nya, mer synliga kort-sektionen —
        cannabinoiden är juridiskt pausad (se STATUS.md, "juridik ej klar"),
        så vi gör den INTE mer framträdande. Paragrafen ligger kvar orörd
-       där den redan var, bara inte kopierad hit. ── */
-    function nhBuildKunskapFromRealContent() {
+       där den redan var, bara inte kopierad hit.
+
+       Facit-kalibrering 2026-09-06 (se STATUS.md för fullständig
+       utredning): facit visar FYRA kort (THCA/HHC, THCB/THCBA, Magic
+       Sauce, Nano-11). Uttömmande sökt igenom HELA den riktiga sajten
+       (startsidans egna textblock + samtliga ~32 riktiga kategorisidor)
+       efter varje verkligt "Vad är X?"-textblock som finns publicerat:
+       endast TRE existerar (THCA, THCNM, Magic Sauce, alla på
+       startsidan) -- INGEN sådan text finns någonstans för Nano-11
+       eller THCB/THCBA. THCNM är juridiskt pausad (utesluten ovan,
+       oförändrat). Ett fjärde kandidat-textblock hittades på CBN-
+       kategorisidan ("Vad är CBN?...") men INNEHÅLLER uttryckliga
+       hälso-/effektpåståenden ("sömnfrämjande", "hälsofördelar",
+       "avslappning", "minska stress och ångest") -- att lyfta fram DEN
+       texten mer synligt här hade varit precis den typen av "starkare
+       påstående än facit" uppdraget uttryckligen förbjöd (facit gör
+       aldrig effekt-/hälsopåståenden i denna sektion), så den används
+       INTE. Resultatet blir alltså fortsatt TVÅ kort (samma antal som
+       innan denna omgång) -- en verifierad, INTE gissad, äkta
+       innehållsbegränsning, rapporterad i slutrapporten i stället för
+       att fyllas ut med påhittad text för Nano-11/THCB. */
+    function nhBuildKunskapFromRealContent(navData) {
       var blocks = document.querySelectorAll(
         ".store-startpage .template-components__text-editor, .store-startpage .template-components__columns"
       );
@@ -3239,7 +3269,7 @@
           var p = h.nextElementSibling;
           while (p && p.tagName !== "P") p = p.nextElementSibling;
           if (!p) return;
-          cards.push({ title: title, text: p.textContent.trim() });
+          cards.push({ title: title, text: p.textContent.trim(), href: nhKunskapHref(navData, title) });
           // FLYTTAT, inte kopierat: original-rubriken/stycket döljs här så
           // samma text inte visas två gånger på sidan (Vilmer 2026-08-31:
           // "flytta och formatera om", inte duplicera).
@@ -3248,6 +3278,30 @@
         });
       });
       return cards;
+    }
+
+    /* Hittar en riktig länk för ett kunskapskort genom att matcha kortets
+       RUBRIK mot samma riktiga navigationsdata som resten av sidan redan
+       använder (footerLinks för formatlösa cannabinoid-landningssidor,
+       t.ex. THC-A; groups[*].series för seriesidor, t.ex. Magic Sauce) —
+       inget hårdkodat per kort, samma mekanism återanvänds automatiskt
+       om ett framtida riktigt "Vad är X?"-textblock tillkommer. Returnerar
+       null (inte "#") om inget riktigt mål hittas — kortet renderas då
+       utan länk, se nhKunskapHtml. */
+    function nhKunskapHref(navData, title) {
+      var t = title.toLowerCase();
+      var cannaHit = navData.footerLinks.filter(function (it) {
+        return t.indexOf(it.slug) > -1 || t.indexOf(it.label.toLowerCase()) > -1;
+      })[0];
+      if (cannaHit) return cannaHit.href;
+      var groups = navData.groups;
+      for (var g in groups) {
+        var series = groups[g].series;
+        for (var name in series) {
+          if (t.indexOf(name.toLowerCase()) > -1) return series[name];
+        }
+      }
+      return null;
     }
 
     /* Den GAMLA flik-sektionen (Bästsäljare/Nyheter/Kampanjer + produktgrid,
@@ -3267,10 +3321,18 @@
         + '  <div class="guide guide-dark">'
         + '    <div class="guide-top"><h2>Snabb koll: vad är vad?</h2>'
         + '    <span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
-        + '    <p class="lede">Korta förklaringar av det som frågas mest om. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
+        // Facit-kalibrering 2026-09-06: exakt facit-text (index.html rad
+        // 4594) -- nämner uttryckligen aktuell laglighet, vilket stämmer
+        // för våra egna kort (THCA/Magic Sauce handlar båda om just det).
+        + '    <p class="lede">Korta förklaringar av det som frågas mest om — och vad som är lagligt i Sverige just nu. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
         + '    <div class="guide-grid">'
         + cards.map(function (c) {
-            return '<div class="g-card nh-reveal"><span class="g-name">' + c.title + '</span><p>' + c.text + '</p></div>';
+            // Riktig länk om ett verkligt mål hittades (nhKunskapHref) --
+            // annars ett rent informativt kort utan `href="#"`, se
+            // uppdragets krav. Ingen kort-fabricerad länk.
+            var tag = c.href ? "a" : "div";
+            var hrefAttr = c.href ? ' href="' + c.href + '"' : "";
+            return '<' + tag + ' class="g-card nh-reveal"' + hrefAttr + '><span class="g-name">' + c.title + '</span><p>' + c.text + '</p></' + tag + '>';
           }).join("")
         + '    </div>'
         + '  </div>'
@@ -3398,7 +3460,7 @@
       // fortsätt där du slutade (dold) → bästsäljare → trust-block/
       // "transparens" → kunskap → omdömen → nyhetsbrev. Trust-blocket låg
       // FÖRE bästsäljare i föregående bygge — det var fel ordning.
-      var kunskapCards = nhBuildKunskapFromRealContent();
+      var kunskapCards = nhBuildKunskapFromRealContent(navData);
       var restWrap = document.createElement("div");
       restWrap.innerHTML = ''
         + '<section class="nh-aura-guide" id="aura-guiden" hidden data-status="juridik-ej-klar"></section>'

@@ -1076,7 +1076,14 @@
 .guide .skip { font-size: 12px; color: #9a9280; }
 .guide .skip a { color: #96683f; font-weight: 650; }
 .guide .lede { font-size: 12.5px; color: #5f5c50; line-height: 1.55; max-width: 600px; margin: 0 0 16px; }
-.guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+/* Facit-kalibrering 2026-09-06: facits egen mobilregel (index.html rad
+   997) är just `repeat(2,minmax(0,1fr))`, inte bart `1fr 1fr` -- utan
+   minmax(0,...) tillåter grid-spåren att växa förbi sin jämna andel när
+   ett korts INNEHÅLL (grid-items har min-width:auto som default) inte
+   får plats, vilket gav 201.7px/153.8px (olika bredd!) i stället för två
+   lika 156px-kolumner så fort korten hade olika lång text (våra riktiga,
+   olika långa SEO-texter, till skillnad från facits jämnlånga mocktext). */
+.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
 @media (min-width: 861px) { .guide-grid { grid-template-columns: repeat(4, 1fr); } }
 .g-card {
   display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 12px;
@@ -1253,6 +1260,18 @@
       {margin-bottom:34px}` (bas), `{margin-bottom:22px}` (mobil
       ≤860px, rad 1053) — mobilvärdet tillagt här. */
 @media (max-width: 860px) {
+  /* Facit-kalibrering 2026-09-06: färgen fick INTE delas mellan dessa tre
+     -- .nh-featured/.nh-reviews sitter på LJUS bakgrund (mörkgrön text,
+     #2c3620 rätt), men .nh-kunskap är den enda av de tre som sitter på
+     MÖRKGRÖN bakgrund (.guide-dark) och behöver LJUS text (#fffdf8,
+     redan satt korrekt i den befintliga, icke-!important-regeln
+     `.guide.guide-dark .guide-top h2{color:#fffdf8}` ovan) -- den delade
+     `color:#2c3620!important` här vann ändå över den regeln (!important
+     slår alltid icke-!important oavsett specificitet), vilket gjorde
+     rubriken nästan svart mot mörkgrön bakgrund. Typografin i övrigt
+     (font-family/vikt/storlek/line-height/letter-spacing) ÄR gemensam
+     för alla tre (samma uppmätta facit-värde, 19px/600/Iowan) och delas
+     fortfarande här -- bara färgen bröts ut nedan. */
   .nh-featured .sec-head h2,
   .nh-kunskap .guide-top h2,
   .nh-reviews .sec-head h2 {
@@ -1261,7 +1280,42 @@
     font-size: 19px !important;
     line-height: normal !important;
     letter-spacing: normal !important;
+  }
+  .nh-featured .sec-head h2,
+  .nh-reviews .sec-head h2 {
     color: #2c3620 !important;
+  }
+  /* Facit-kalibrering 2026-09-06 (Paket 3: transparens/trustblock +
+     Snabb koll) -- mobil-scopat (uppdraget denna omgång är avgränsat
+     till mobil, "rör inte desktopdesign"): trust-blockets rubrik/ingress/
+     bock-lista och kunskapskortens rubrik/text saknade flera facit-
+     uppmätta värden. Ingen av dessa har en konkurrerande !important-regel
+     UTANFÖR denna fil (utom g-name/g-card p, se separat kommentar nedan)
+     -- bas-reglerna ovan (utanför media-queryn) lämnas därför oförändrade
+     så att desktop (>860px) förblir bit-för-bit identiskt. */
+  .nh-tb-inner h2 { font-size: 20px !important; }
+  .nh-tb-inner > p {
+    font-size: 13px !important; line-height: 1.6 !important; color: #5f5c50 !important;
+  }
+  .nh-tb-points li {
+    color: #26261f !important; border-color: #f3ece0 !important; border-radius: 12px;
+  }
+  /* .g-name (en <span>) och .g-card p (en <p>) saknade !important -- samma
+     återkommande native tag-nivå-reset (span/p{font-family/font-size!
+     important} på Nyehandels egen sida, se "Parity-workflow" i
+     CLAUDE.md) slog ut båda helt (16px/500/Nunito i stället för facits
+     13.5px/700/system-ui-stacken; 16px/25.6 i stället för 11.5px/17.25)
+     -- samma bugg finns även på desktop (>860px, oförändrat denna
+     omgång eftersom uppdraget är mobil-avgränsat -- flaggat i
+     slutrapporten som kvarstående för en framtida desktop-omgång). */
+  .g-card .g-name {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 13.5px !important; font-weight: 700 !important; line-height: normal !important;
+    letter-spacing: normal !important;
+  }
+  .g-card p {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 11.5px !important; line-height: 1.5 !important; letter-spacing: normal !important;
   }
   .nh-signup-block h2 {
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
