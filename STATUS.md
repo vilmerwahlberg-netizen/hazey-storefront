@@ -2076,3 +2076,110 @@ verklig, synlig, kvarvarande avvikelse mot facit som Vilmer bör vara
 medveten om, inte något som tyst godkänts som "klart". Verifierade
 omdömen kräver ingen ytterligare granskning denna omgång (oförändrad,
 redan tidigare godkänd).
+
+## Två funktionella buggar i tema 6, fixade (2026-09-06)
+
+Prioriterade uppdrag: mobil sökning öppnade inte en fungerande sökning,
+och Hazey-loggan ledde inte till rätt startsida. Reproducerade båda på
+riktig tema 6-preview vid 390px, rotorsakade innan någon kod ändrades.
+
+### 1. Mobil sökning öppnades aldrig synligt
+
+Rotorsakat i två separata, samverkande lager (verifierat var för sig,
+inte gissat):
+
+1. `#search-container` (nyehandels riktiga sök-fält+resultat-UI) bor
+   INUTI `.center` — samma element som `css/21-header-v2.css` gömmer
+   ovillkorligt på mobil (`display:none!important`, ersätts av vår egna
+   `.nh-mobile-searchbar`). Det gömde alltså sökrutan permanent, ÄVEN
+   när den lyckades öppnas (native display:none på en förälder vinner
+   alltid över barnets egen "active"-klass, oavsett vad den klassen gör).
+   Fix: `#store-header.nh-header-v2 .main .center:has(#search-container.
+   active) { display: flex !important; }` — nyehandels egen CSS
+   positionerar redan den aktiva sökrutan korrekt som en fullbredds-
+   overlay (verifierat live), inget eget positioneringsarbete behövdes.
+2. `nativeSearchTrigger.click()` (i `.nh-mobile-searchbar`s klick-
+   lyssnare, `js/18a-header-v2.js`) öppnade faktiskt `#search-container`
+   korrekt — bekräftat med en `MutationObserver` som loggade
+   klassändringen — men SAMMA klickhändelse fortsatte bubbla upp till
+   nyehandels egen "klick utanför stänger sökrutan"-lyssnare (som ser
+   vår knapp, utanför `#search-container`, som ett utanför-klick) och
+   stängde den igen inom loggat 0,1 ms. Nettot blev alltid "stängd".
+   Fix: anropet skjuts nu upp till en NY event-loop-tick
+   (`setTimeout(function(){ nativeSearchTrigger.click(); }, 0)`), så vårt
+   klicks egen bubbling-fas hinner färdigt innan triggern faktiskt
+   klickas.
+
+**Verifiering:** en riktig injektion av den lokalt byggda `hazey.css`/
+`hazey.min.js` direkt mot tema 6 (kringgår `raw.githack.com`s
+cache-fördröjning, samma metod som `gotoImpl()`) vid 390/430/600px:
+sökrutan öppnas (`#search-container.active`), text går att skriva, och
+RIKTIGA nyehandel.se-länkar visas (25 st vid sökning på "thca" —
+kategorier som `thca-blommor`/`thca-hash`/`thca-vapes` samt riktiga
+produkter). 0px overflow alla tre bredder, inga konsolfel utöver de
+förväntade (blockerad `raw.githack`-route i själva testmetoden). Även
+verifierat på en kategori- och en produktsida (samma resultat).
+Desktop 1440px oberört (sökfältet är redan direkt synligt där, aldrig
+dolt av `.center`-regeln — CSS-fixen är `@media max-width:880px`-scopad).
+Ingen egen sökmotor byggd, inga falska resultat — allt går via
+plattformens riktiga `#search-container`.
+
+**Testuppdatering:** `tests/tema6-smoke.spec.mjs`s tidigare "sökning:
+dropdown visas vid inmatning"-test kördes medvetet på desktop-bredd
+eftersom mobil sökning då var trasig och inte gick att testa headless.
+Nu när buggen är fixad: ett NYTT mobiltest (390px, riktigt
+produktionsflöde — klick på `.nh-mobile-searchbar`, inte en genväg rakt
+mot triggern) verifierar regressionen direkt, och det gamla
+desktoptestet behålls oförändrat som ett eget, separat test.
+
+### 2. Loggan länkade till fel/instabil startsida
+
+Nyehandels egen, hårdkodade `href="/"` på logglänken (inte satt av oss)
+saknar både `/sv`-prefixet (riktiga svenska startsidan) och, i en
+tema-preview, `?preview=`-token:en — ett klick lämnade tema 6 helt och
+hamnade på tema 3:s nativa (icke-reskinnade) rendering av `/` (samma
+rotorsak som redan dokumenterat i CLAUDE.md för `hazeyse.nyehandel.se`
+utan `?preview=`). Verifierat att det är en vanlig `<a>`-navigering utan
+Vue-router-interception (`page.url()` blev exakt href-värdet efter ett
+riktigt klick) — säkert att bara sätta rätt `href`-attribut.
+
+Fix (`js/18a-header-v2.js`, i `initHeaderV2()`): `href` sätts dynamiskt
+ur `location.search` vid varje sidladdning — `"/sv?preview=" +
+encodeURIComponent(token)` om en `preview`-parameter finns i aktuell
+URL, annars bara `"/sv"`. Token:en är ALDRIG hårdkodad.
+
+**Verifiering:** `logoHref` = `/sv?preview=r8eo4lqy6wd5pz7` på tema 6,
+`/sv` på den riktiga live-sajten utan preview-param (testat direkt mot
+`hazeyse.nyehandel.se/sv`), samt korrekt per-sida på en kategori- och en
+produktsida. Ny testrad i `tests/tema6-smoke.spec.mjs` ("logga: länkar
+till /sv och bevarar aktuell preview-parameter").
+
+### Övrig verifiering (båda buggarna)
+
+- `node build.js`: OK.
+- Implementation-regression (`npm run parity -- --grep "regression:"`):
+  12/12 gröna, 0,0% diff på samtliga sektioner — bekräftar att ingen av
+  de två JS/CSS-fixarna hade någon oavsiktlig visuell sidoeffekt.
+- Desktop 1440px: `.center` fortsatt `display:flex` (aldrig träffad av
+  mobilregeln), 0px overflow.
+- Kategori-/produktsida: sökning öppnas, logga korrekt per URL, 0px
+  overflow, inga konsolfel.
+- **Ej hunnet i denna omgång:** en fullständig `npm run test:tema6`-körning
+  mot det RIKTIGA, pushade `dev`-innehållet via `raw.githack.com` (dev-
+  loaderns källa) — githacks CDN hade, >15 minuter efter push, fortfarande
+  inte reflekterat den nya koden (verifierat: `raw.githubusercontent.com`
+  hade den direkt, `raw.githack.com` inte — känd, tidigare dokumenterad
+  fördröjning, inget kodfel). All ovanstående verifiering skedde i stället
+  via direktinjektion av den lokalt byggda `hazey.css`/`hazey.min.js`
+  rakt mot tema 6:s riktiga DOM (samma metod som `gotoImpl()`) — verifierar
+  kodkorrekthet identiskt, men täcker inte dev-loaderns egen fetch-kedja.
+  Rekommenderas: kör `NH_TEMA6_URL=... npm run test:tema6` en gång till,
+  senare, för att stänga den sista luckan.
+
+**Filer ändrade:** `js/18a-header-v2.js` (båda fixarna),
+`css/21-header-v2.css` (sök-CSS-undantaget), `hazey.css`/`hazey.html`/
+`hazey.min.html`/`hazey.min.js` (byggda), `tests/tema6-smoke.spec.mjs`
+(nytt mobilt sökningstest + ny loggtest).
+
+**Commit (pushad till `dev`, ren fast-forward, ingen tagg, ingen
+Nyehandel-ändring):** `3f6cb77`.
