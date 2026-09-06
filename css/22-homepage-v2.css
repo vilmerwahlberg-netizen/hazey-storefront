@@ -213,6 +213,11 @@
     max-width: none;
     aspect-ratio: auto;
     margin: 0 auto;
+    /* Facit-kalibrering 2026-09-06: .pser-th har en vilande skugga
+       (index.html rad 103) som saknades helt hos oss. Bara mobilens
+       värde -- #dVp:s egen, separata regel (skarpare/djupare skugga)
+       rörs inte. */
+    box-shadow: 0 2px 10px rgba(40, 50, 30, .15);
   }
   /* KORRIGERING 3 (2026-09-02): rotorsak verifierad — Nyehandels
      globala `span{font-size:16px!important;line-height:1.6!important}`

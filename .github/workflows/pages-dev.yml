@@ -92,14 +92,14 @@ jobs:
       - name: Assemble Pages site (dev-preview assets only)
         run: |
           rm -rf _site
-          mkdir -p _site/assets
+          mkdir -p _site
           cp hazey.css _site/
           cp hazey.min.js _site/
-          cp assets/*.jpg _site/assets/ 2>/dev/null || true
-          cp assets/*.jpeg _site/assets/ 2>/dev/null || true
-          cp assets/*.png _site/assets/ 2>/dev/null || true
-          cp assets/*.webp _site/assets/ 2>/dev/null || true
-          cp assets/*.svg _site/assets/ 2>/dev/null || true
+          # Recursive copy (not a flat per-extension glob) so any
+          # subdirectory under assets/ (e.g. assets/series/) is included
+          # automatically -- no workflow edit needed the next time a new
+          # asset subfolder is added.
+          cp -r assets _site/assets
           echo "Published site contents:"
           find _site -type f | sort
 

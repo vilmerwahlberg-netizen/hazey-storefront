@@ -116,7 +116,42 @@
         + '</section>';
     }
 
-    /* ── "Populära serier" ── */
+    /* ── "Populära serier" ──
+       Facit-kalibrering 2026-09-06 (se STATUS.md): facits fyra synliga
+       serier ("Magic Sauce", "Nano-11", "THC-X", "THCbA") är INTE
+       hårdkodade i facit heller -- utrett i facits egen källa
+       (index.html, familySynonyms/quickAxis-datan) att "THC-X" där
+       betyder Hero Core/HighLife/El Gringo (våra riktiga "Hero"-serie)
+       och "THCbA" betyder Faraoh (den enskilda produktbilden är
+       bokstavligen en "Faraoh Vapes"-förpackning) -- alltså fyra av
+       våra SEX redan verkliga, live-hämtade serier, bara i en annan
+       ordning och med andra visningsnamn för just de två sista. Vi
+       behåller VÅRA riktiga, redan etablerade namn (Hero/Faraoh, samma
+       som resten av navigationen/footern använder) i stället för
+       facits interna cannabinoid-kodnamn -- annat skulle bli
+       inkonsekvent med hur samma serier redan heter på sajten.
+       NH_PSER_PRIORITY styr bara ORDNINGEN (riktig data/länkar/antal
+       oförändrat, inget hårdkodat produktinnehåll); serier som inte
+       finns med i listan hamnar kvar efteråt i sin naturliga ordning
+       (t.ex. Tatra Hemp, Magic Farmers -- fortfarande riktiga, fortfarande
+       synliga via scroll, INGET innehåll borttaget). */
+    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11", "Hero", "Faraoh"];
+    // Facits egna, verifierat KORREKTA seriebilder för just Hero/Faraoh
+    // (kat-thcx.jpg visar faktiskt Hero-varumärkets HighLife/El Gringo-
+    // undermärken; vape-blueberry.jpg är bokstavligen en Faraoh Vapes-ask
+    // -- båda kontrollerade bild-för-bild innan de kopierades in, se
+    // STATUS.md). Facits MOTSVARANDE filer för Magic Sauce/Nano-11
+    // (kat-magicsauce.jpg/kat-nano11.jpg) visar däremot HELT ANDRA,
+    // orelaterade varumärken (bl.a. "Donny Burger"/"Tinky Wink" resp.
+    // "Tatra Hemp" -- en annan riktig egen serie!) och skulle alltså
+    // MISSVISA om de användes -- de två seriernas egna riktiga,
+    // live-hämtade produktfoton (nhEnhanceWithRealPhotos, oförändrat)
+    // används därför fortfarande i stället. Flaggat som öppen fråga till
+    // Vilmer i slutrapporten, inte tyst gissat.
+    var NH_PSER_STATIC_IMG = {
+      "Hero": "series/hero.jpg",
+      "Faraoh": "series/faraoh.jpg"
+    };
     function nhPopularaSerierHtml(navData) {
       var seen = {};
       var series = [];
@@ -129,12 +164,26 @@
         });
       });
       if (!series.length) return "";
+      series.sort(function (a, b) {
+        var ia = NH_PSER_PRIORITY.indexOf(a.label);
+        var ib = NH_PSER_PRIORITY.indexOf(b.label);
+        if (ia === -1 && ib === -1) return 0; // stable: keep natural order for the rest
+        if (ia === -1) return 1;
+        if (ib === -1) return -1;
+        return ia - ib;
+      });
       return '<section class="nh-pser section-gap" id="populara-serier">'
         + '  <div class="sec-head"><h2>Populära serier</h2></div>'
         + '  <div class="pser-row">'
         + series.map(function (s) {
+            var staticImg = NH_PSER_STATIC_IMG[s.label];
+            var avatarAttrs = staticImg
+              ? ' data-static-photo="1" style="background-image:url(\'' + NH_ASSET_BASE + staticImg + '\')"'
+              : ' data-photo-href="' + s.href + '"';
+            var avatarInner = staticImg ? "" : NH_ROUTE_ICONS.serie;
+            var avatarClass = staticImg ? "pser-avatar has-photo" : "pser-avatar";
             return '<a class="pser-item nh-reveal" href="' + s.href + '" data-count-href="' + s.href + '">'
-              + '<span class="pser-avatar" data-photo-href="' + s.href + '">' + NH_ROUTE_ICONS.serie + '</span>'
+              + '<span class="' + avatarClass + '"' + avatarAttrs + '>' + avatarInner + '</span>'
               + '<span class="pser-name">' + s.label + '</span>'
               + '<span class="pser-n"></span></a>';
           }).join("")
