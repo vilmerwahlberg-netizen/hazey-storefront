@@ -1020,7 +1020,12 @@
 .nh-signup-block p { margin: 0; font-size: 12.5px; color: rgba(244,233,220,.8); }
 .nh-signup-form { display: flex; gap: 8px; flex-wrap: wrap; }
 .nh-signup-form input {
-  flex: 1 1 200px; padding: 11px 14px; border-radius: 999px; border: 1px solid rgba(255,253,248,.3);
+  /* flex-basis 160px (facit: .signup-form input, uppmätt live 2026-09-06 —
+     facit är ALDRIG staplad vid 390/430/600px). 200px var för brett för att
+     få plats bredvid knappen inom tillgänglig bredd vid 390px, vilket
+     tvingade flex-wrap:wrap att stapla fältet ovanpå knappen — roten till
+     avvikelsen flaggad i STATUS.md "Nyhetsbrev (#7)". */
+  flex: 1 1 160px; padding: 11px 14px; border-radius: 999px; border: 1px solid rgba(255,253,248,.3);
   background: rgba(255,253,248,.08); color: #fffdf8; font-size: 13px;
 }
 .nh-signup-form input::placeholder { color: rgba(255,253,248,.55); }
@@ -1104,6 +1109,13 @@
     font-size: 19px !important;
     line-height: normal !important;
     letter-spacing: normal !important;
+  }
+  /* Facit: .signup-block{padding:20px} på mobil (≤860px, ned från 28px på
+     desktop) — vår kortpadding var oskopad 26px på alla bredder, vilket
+     tog bort en del av den extra bredd nyhetsbrevsfältet+knappen behöver
+     för att rymmas sida vid sida vid 390px (se flex-basis-fixen ovan). */
+  .nh-signup-block {
+    padding: 20px !important;
   }
   /* Facit: .home-extra .hx-head p{display:none} på mobil — beskrivningen
      under rubriken visas bara på desktop. Gäller de sektioner som

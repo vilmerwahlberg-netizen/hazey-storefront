@@ -346,14 +346,19 @@
     padding: 0 16px !important;
   }
   .nh-footer__grid {
-    grid-template-columns: 1fr !important;
-    gap: 26px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 22px 18px !important;
     padding: 27px 0 22px !important;
     text-align: left !important;
   }
+  /* Varumärke och nyhetsbrev spänner hela bredden (facit: brand-kolumnen
+     är alltid full radbredd, .footer-signup sitter i den kolumnen — inte
+     i .footer-links-nätet alls). De tre RIKTIGA länkkolumnerna
+     (Kundservice/Utforska/Populära kategorier — 2026-09-06, se nedan)
+     paras 2 per rad i stället för att staplas var för sig. */
   .nh-footer__brand-col,
   .nh-footer__nl-col {
-    grid-column: auto !important;
+    grid-column: 1 / -1 !important;
   }
   .nh-footer__brand-col .nh-footer__tagline {
     max-width: 100% !important;
@@ -363,11 +368,15 @@
     color: rgba(248, 237, 223, 0.72) !important;
   }
 
-  /* Länkkolumner — facit .footer-col h2/a. OBS: facit parar kolumnerna
-     2×2 (.footer-links{grid-template-columns:repeat(2,...)}) — vår
-     footer behåller sin egen, redan godkända 3-kolumns-stack i stället
-     för att replikera facits exakta parning. Dokumenterad, kvarvarande
-     visuell avvikelse, inte dold eller självständigt godkänd. */
+  /* Länkkolumner — facit .footer-col h2/a. 2026-09-06: facit parar sina
+     4 riktiga länkkolumner 2×2 (.footer-links{grid-template-columns:
+     repeat(2,...)}); vi har 3 riktiga länkkolumner (annat, redan godkänt
+     innehållsupplägg — Kundservice/Utforska/Populära kategorier i stället
+     för facits Handla/Hjälp&leverans/Hazey/Villkor, inga länkar tagna
+     bort) — grid ovan paras nu 2 per rad precis som facit i stället för
+     att staplas var för sig (tidigare kvarvarande, odokumenterat fixad
+     avvikelse). Kvarvarande innehålls-/namnskillnaden är ett medvetet
+     produktbeslut (klass 5), inte en implementationslucka. */
   .nh-footer__col h3,
   .nh-footer__nl-col h3 {
     font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
@@ -375,6 +384,19 @@
     text-transform: uppercase !important;
     color: #f1bf87 !important;
     margin: 2px 0 10px !important;
+  }
+  /* font-size/letter-spacing måste matcha .nh-footer__grid .nh-footer__col
+     h3:s specificitet (0,2,1) för att faktiskt vinna — en ren
+     `.nh-footer__col h3`-selektor (0,1,1) kan ALDRIG slå den regeln
+     oavsett källordning/!important (se STATUS.md "Kartläggning fann tre
+     redan existerande... döda deklarationer", punkt 1 — detta var precis
+     den bekräftat aldrig-vinnande regeln, tidigare medvetet borttagen i
+     stället för att fixas. Fixad nu: samma selektor-prefix som regeln
+     den ska slå). */
+  .nh-footer__grid .nh-footer__col h3,
+  .nh-footer__grid .nh-footer__nl-col h3 {
+    font-size: 10.5px !important;
+    letter-spacing: 0.11em !important;
   }
   .nh-footer__col a {
     font-size: 11.5px !important;
