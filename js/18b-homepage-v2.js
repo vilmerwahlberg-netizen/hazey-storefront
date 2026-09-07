@@ -55,47 +55,104 @@
       (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
       "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
 
-    function nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl) {
+    /* ── Hero-karusell, konfigurationsdriven (2026-09-07, större homepage-
+       runda, uttrycklig instruktion): redo för upp till 3 aktiva slides
+       (1: evergreen sortiment/vägledning — dagens enda RIKTIGA slide,
+       måste förbli slide 1; 2: kampanj/ny serie/aktuell drop; 3: signup/
+       lojalitet/säsongserbjudande), men bygger ALDRIG in en fabricerad
+       kampanj bara för att fylla slots — "active" styr allt. Just nu
+       finns bara EN verifierad, riktig slide (samma innehåll som fanns
+       innan denna omgång, oförändrat), så karusellen renderar/beter sig
+       identiskt med en enda statisk hero (inga pilar/prickar, se
+       nhHeroHtml/nhInitHeroCarousel nedan) — men mekaniken i sig hanterar
+       generellt 1..3 aktiva slides utan att anta ett fast antal.
+
+       Slide 2/3 är MEDVETET INTE instansierade som objekt med påhittad
+       marknadsföringstext (det hade varit exakt den typen av gissat
+       innehåll uppdraget förbjuder) — när Vilmer har en riktig kampanj/
+       ett riktigt signup-erbjudande läggs den in som ett nytt objekt i
+       NH_HERO_SLIDES med samma form som slide 1 nedan (eyebrowMobile/
+       eyebrowDesktop/h1/pMobile/pDesktop/image/primaryCta/secondaryCta),
+       `active:true`. Mekanismen (nhHeroHtml/nhInitHeroCarousel) kräver
+       ingen kodändring för att gå från 1→2→3 aktiva slides. */
+    var NH_HERO_SLIDES = [
+      {
+        id: "assortment",
+        active: true,
+        image: "hero-westcoast-v4.jpg",
+        // Två olika eyebrow/underrubrik-texter per breddpunkt (uppmätt ur
+        // facit — INTE samma text skalad, se historiken nedan).
+        eyebrowMobile: "Brett sortiment · öppen information",
+        eyebrowDesktop: "Sveriges bredaste cannabinoidsortiment",
+        h1: "Hitta rätt utan att kunna allt.",
+        pMobile: "Sök direkt eller jämför på innehåll, format och framställning.",
+        pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
+        primaryCta: { label: "Utforska sortimentet", href: "#populara-vagar" },
+        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt →", openHr: true }
+      }
+    ];
+
+    function nhHeroSlideHtml(slide, i, kampanjerHref, catLinks) {
+      var heroSrc = NH_ASSET_BASE + slide.image;
+      // data-hero-src: en QA-selektorkrok för lockImplImages (se ovan) —
+      // värdet spelar ingen roll för testresultatet (skrivs över), bara
+      // att attributet finns. Sätts till samma URL som faktiskt visas.
+      var bg = ' style="background-image:url(\'' + heroSrc.replace(/'/g, "\\'") + '\')" data-hero-src="' + heroSrc.replace(/"/g, "&quot;") + '"';
+      var secondary = slide.secondaryCta
+        ? '<button type="button" class="hero-link"' + (slide.secondaryCta.openHr ? ' data-open-hr="1"' : "")
+          + '><span class="nh-hero-v2__btn--mobile">' + slide.secondaryCta.labelMobile + '</span>'
+          + '<span class="nh-hero-v2__btn--desktop">' + slide.secondaryCta.labelDesktop + '</span></button>'
+        : "";
+      return '<div class="nh-hero-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + '"' + bg + '>'
+        + '  <div class="nh-hero-v2__inner">'
+        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>'
+        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>'
+        + '    <h1>' + slide.h1 + '</h1>'
+        + '    <p class="nh-hero-v2__p--mobile">' + slide.pMobile + '</p>'
+        + '    <p class="nh-hero-v2__p--desktop">' + slide.pDesktop + '</p>'
+        // Kategori-genvägsraden finns BARA på desktop i rätt fil (dVp),
+        // inte i mVp — döljs på mobil via CSS. Delad mellan slides (samma
+        // riktiga navigationslänkar oavsett vilken slide som visas).
+        + '    <div class="nh-hero-v2__cats">' + catLinks + '</div>'
+        + '    <div class="nh-hero-v2__cta">'
+        + '      <a class="btn-solid" href="' + slide.primaryCta.href + '">' + slide.primaryCta.label + '</a>'
+        + secondary
+        + '    </div>'
+        + '  </div>'
+        + '</div>';
+    }
+
+    function nhHeroHtml(navData, kampanjerHref) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
       var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
       var hashHref = nhFirstHref(navData.groups.hash, "hasch") || "/sv/categories/hasch";
       var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
+      var catLinks = ''
+        + '<a href="' + vapeHref + '">Vapes &amp; carts</a>'
+        + '<a href="' + blommaHref + '">Blommor</a>'
+        + '<a href="' + hashHref + '">Hash</a>'
+        + '<a href="' + cbdHref + '">CBD, CBG &amp; CBN</a>'
+        + '<a href="' + kampanjerHref + '">Kampanjer</a>';
 
-      var heroSrc = NH_ASSET_BASE + "hero-westcoast-v4.jpg";
-      // data-hero-src: en QA-selektorkrok för lockImplImages (se ovan) —
-      // värdet spelar ingen roll för testresultatet (skrivs över), bara
-      // att attributet finns. Sätts till samma URL som faktiskt visas.
-      var bg = ' style="background-image:url(\'' + heroSrc.replace(/'/g, "\\'") + '\')" data-hero-src="' + heroSrc.replace(/"/g, "&quot;") + '"';
+      var active = NH_HERO_SLIDES.filter(function (s) { return s.active; });
+      var multi = active.length > 1;
+      var slidesHtml = active.map(function (s, i) { return nhHeroSlideHtml(s, i, kampanjerHref, catLinks); }).join("");
+      var dots = multi
+        ? '<div class="nh-hero-dots" role="tablist" aria-label="Val av bild">'
+          + active.map(function (s, i) {
+              return '<button type="button" class="nh-hero-dot" role="tab" aria-label="Bild ' + (i + 1) + '" aria-current="' + (i === 0 ? "true" : "false") + '" data-i="' + i + '"></button>';
+            }).join("")
+          + '</div>'
+        : "";
+      var arrows = multi
+        ? '<button type="button" class="nh-hero-arrow nh-hero-arrow--prev" aria-label="Föregående bild">‹</button>'
+          + '<button type="button" class="nh-hero-arrow nh-hero-arrow--next" aria-label="Nästa bild">›</button>'
+        : "";
 
-      return '<section class="nh-hero-v2 nh-qfind-hero"' + bg + '>'
-        + '  <div class="nh-hero-v2__inner">'
-        // Två olika eyebrow-texter per breddpunkt (uppmätt ur facit — INTE
-        // samma text skalad): mVp = "Brett sortiment · öppen information";
-        // dVp behåller den tidigare, av Vilmer bekräftade "störst i Sverige"-
-        // texten (2026-08-31: "vi är ju störst i Sverige och bredast utbud"),
-        // men visas nu BARA på desktop i stället för universellt.
-        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">Brett sortiment · öppen information</div>'
-        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">Sveriges bredaste cannabinoidsortiment</div>'
-        + '    <h1>Hitta rätt utan att kunna allt.</h1>'
-        // Två olika underrubriker per breddpunkt (uppmätt, INTE samma text
-        // skalad) — togglas med CSS, se .nh-hero-v2__p--mobile/desktop.
-        + '    <p class="nh-hero-v2__p--mobile">Sök direkt eller jämför på innehåll, format och framställning.</p>'
-        + '    <p class="nh-hero-v2__p--desktop">Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.</p>'
-        // Kategori-genvägsraden finns BARA på desktop i rätt fil (dVp),
-        // inte i mVp — döljs på mobil via CSS.
-        + '    <div class="nh-hero-v2__cats">'
-        + '      <a href="' + vapeHref + '">Vapes &amp; carts</a>'
-        + '      <a href="' + blommaHref + '">Blommor</a>'
-        + '      <a href="' + hashHref + '">Hash</a>'
-        + '      <a href="' + cbdHref + '">CBD, CBG &amp; CBN</a>'
-        + '      <a href="' + kampanjerHref + '">Kampanjer</a>'
-        + '    </div>'
-        + '    <div class="nh-hero-v2__cta">'
-        + '      <a class="btn-solid" href="#populara-vagar">Utforska sortimentet</a>'
-        + '      <button type="button" class="hero-link" data-open-hr="1"><span class="nh-hero-v2__btn--mobile">Hjälp mig →</span><span class="nh-hero-v2__btn--desktop">Hjälp mig hitta rätt →</span></button>'
-        + '    </div>'
-        + '  </div>'
+      return '<section class="nh-hero-v2 nh-qfind-hero" id="nhHero" data-slides="' + active.length + '">'
+        + '  <div class="nh-hero-track">' + slidesHtml + '</div>'
+        + arrows + dots
         + '</section>'
         // qfind — "Vad söker du?"-chipsraden direkt under hero:n. OBS:
         // Naturidentiskt/Semisyntetiskt-chippen använder samma ej-beslutade
@@ -114,6 +171,84 @@
         + '    </div>'
         + '  </div>'
         + '</section>';
+    }
+
+    /* Karusellbeteende — no-op när bara 1 slide är aktiv (inga lyssnare
+       registreras alls, se early return). Svep (pointer events, fungerar
+       för touch OCH mus), pilar, prickar, valfri diskret autoplay som
+       pausar permanent vid första interaktionen och pausar/återupptas med
+       fliksynlighet (document.visibilitychange) — aldrig aktiv om
+       `prefers-reduced-motion: reduce`. */
+    function nhInitHeroCarousel(root) {
+      var section = root.querySelector("#nhHero");
+      if (!section) return;
+      var total = parseInt(section.getAttribute("data-slides"), 10) || 1;
+      if (total <= 1) return; // inga kontroller när bara en slide finns
+      var track = section.querySelector(".nh-hero-track");
+      var dots = Array.prototype.slice.call(section.querySelectorAll(".nh-hero-dot"));
+      var prevBtn = section.querySelector(".nh-hero-arrow--prev");
+      var nextBtn = section.querySelector(".nh-hero-arrow--next");
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var index = 0;
+      var autoplayTimer = null;
+      var userStopped = false; // sant efter FÖRSTA manuella interaktionen — autoplay återupptas då aldrig, bara fliksynlighet får pausa/återuppta innan dess
+
+      function render() {
+        track.style.transform = "translateX(-" + (index * 100) + "%)";
+        dots.forEach(function (d, i) { d.setAttribute("aria-current", i === index ? "true" : "false"); });
+      }
+      function goTo(i) {
+        index = (i + total) % total;
+        render();
+      }
+      function stopAutoplay() {
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+      function startAutoplay() {
+        if (reduceMotion || userStopped || autoplayTimer) return;
+        autoplayTimer = setInterval(function () { goTo(index + 1); }, 6500);
+      }
+      function onManualInteraction() { userStopped = true; stopAutoplay(); } // pausar permanent vid interaktion, inte bara tillfälligt
+
+      dots.forEach(function (d) {
+        d.addEventListener("click", function () { onManualInteraction(); goTo(parseInt(d.getAttribute("data-i"), 10)); });
+      });
+      if (prevBtn) prevBtn.addEventListener("click", function () { onManualInteraction(); goTo(index - 1); });
+      if (nextBtn) nextBtn.addEventListener("click", function () { onManualInteraction(); goTo(index + 1); });
+
+      // Svep — pointer events täcker touch och mus i ett enda API.
+      var startX = null, dx = 0, dragging = false;
+      track.addEventListener("pointerdown", function (e) {
+        dragging = true; startX = e.clientX; dx = 0;
+        onManualInteraction();
+      });
+      track.addEventListener("pointermove", function (e) {
+        if (!dragging) return;
+        dx = e.clientX - startX;
+      });
+      function endDrag() {
+        if (!dragging) return;
+        dragging = false;
+        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+        dx = 0;
+      }
+      track.addEventListener("pointerup", endDrag);
+      track.addEventListener("pointercancel", endDrag);
+      track.addEventListener("pointerleave", function () { if (dragging) endDrag(); });
+
+      // Tangentbord — höger/vänster pil när karusellen har fokus.
+      section.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") { onManualInteraction(); goTo(index - 1); }
+        if (e.key === "ArrowRight") { onManualInteraction(); goTo(index + 1); }
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stopAutoplay();
+        else if (!reduceMotion) startAutoplay();
+      });
+
+      render();
+      startAutoplay();
     }
 
     /* ── "Populära serier" ──
@@ -866,21 +1001,12 @@
       var navData = nhBuildNavData(mega);
       var kampanjerHref = "/sv/page/kampanjer";
 
-      // Riktig, redan konfigurerad hero-bild — den enda produktionskällan
-      // (se nhHeroQfindHtml ovan för hela resonemanget).
-      var firstSlide = slideshow.querySelector(".slideshow__slides__slide");
-      var nativeHeroImgUrl = null;
-      if (firstSlide) {
-        var m = (firstSlide.getAttribute("style") || "").match(/url\((?:"|')?(.*?)(?:"|')?\)/);
-        if (m) nativeHeroImgUrl = m[1];
-      }
-
       // Döljer den nativa karusellen (rör den inte, bara CSS display:none)
-      // och ersätter med det nya qfind-hero-kortet.
+      // och ersätter med det nya, konfigurationsdrivna hero-kortet.
       slideRoot.classList.add("nh-native-hero-hidden");
 
       var heroWrap = document.createElement("div");
-      heroWrap.innerHTML = nhHeroQfindHtml(navData, kampanjerHref, nativeHeroImgUrl);
+      heroWrap.innerHTML = nhHeroHtml(navData, kampanjerHref);
       slideRoot.parentNode.insertBefore(heroWrap, slideRoot);
       while (heroWrap.firstChild) slideRoot.parentNode.insertBefore(heroWrap.firstChild, slideRoot);
       heroWrap.remove();
@@ -913,6 +1039,7 @@
       while (restWrap.firstChild) slideRoot.parentNode.insertBefore(restWrap.firstChild, anchor);
 
       nhInitReveal(document);
+      nhInitHeroCarousel(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
       nhInitReviewsLive(document);
