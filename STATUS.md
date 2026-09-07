@@ -3103,3 +3103,158 @@ desktop-CSS (verifierat 1440px bit-för-bit identiskt), live tema
 3/tema 5, Nyehandel-admin, PUBLICERA aldrig klickad. Ingen hemlig
 Trustpilot-nyckel skapad, läst ut eller exponerad; ingen scraping av
 Trustpilots HTML.
+
+## 2026-09-08 — Sammanhängande mobil visuell skuld-runda (HELA startsidan)
+
+Till skillnad från Paket 1-4 (isolerade tvåkomponentspaket): en
+systematisk genomgång av HELA den gemensamma facit/tema-6-ytan, med
+en explicit regel att INTE avfärda avvikelser som "plattformsinnehåll"
+eller "dynamiskt" utan verifiering, och att INTE uppdatera
+golden-impl förrän resultatet redovisats som en verklig förbättring.
+
+### Fas 1 — punchlist (uppmätt före ändring, facit vs. tema 6 vid
+390/430/600px, DOM + computed styles, inte gissat)
+
+**Rubrikfärg/kontrast (störst, mest akut):**
+- Ingen ny kontrastbugg hittades i Snabb koll/nyhetsbrev denna gång
+  (redan fixade i Paket 3/4) — men SAMMA klass av bugg hittades
+  ANNANSTANS: "Vad är THCNM?"-rubriken (nedanför nyhetsbrevet) visade
+  Roboto/rgb(50,61,37) i stället för sidans etablerade Iowan Old
+  Style-serif/#2c3620 — en delad, icke-scopad regel i css/22 förlorade
+  mot en mer specifik native-regel för just denna komponent.
+
+**Spacing/rytm:**
+- "THCA med flera"-artikelblocket (två staplade Divi-moduler) och
+  "Vad är THCNM?"-blocket (en tredje, helt annan native-komponent)
+  var båda HELT OSTYLADE flata rektanglar (0px radie, ingen kant,
+  ingen skugga) med Vilmers egen beskrivning "persiko-/
+  beigefärgad... känns som ett separat gammalt tema" — bekräftat
+  korrekt iakttagelse.
+- "Alla artiklar"-knappen (riktig länk till alla-produkter) hade 3px
+  radie mot sidans etablerade 12-24px/999px-familj.
+- Bästsäljarkorten saknade facits leveransrad under köpknappen.
+
+**Bildkällor (se separat tabell nedan).**
+
+**Falska spår, undersökta och avskrivna (INTE nya buggar):**
+- Mikrotrust-radens subtila inset-skugga/gradient — jämförd visuellt
+  mot facits flata variant, inte distraherande, bedöms som ett
+  redan avsiktligt, tidigare godkänt djup-tillägg. Ingen ändring.
+- Footerns bas-`color` (rgb(223,232,231) mot facits rgb(248,237,223))
+  — verifierat att ALLA faktiskt synliga footer-textelement/ikoner
+  (rubriker, brödtext, `.nh-footer__proof svg{color:#e9a258}`) redan
+  har sin EGEN explicita färg som vinner över detta ärvda, aldrig
+  synliga bas-värde. Ingen visuell effekt, ingen ändring gjord.
+- `.nh-test-btn`/`#323d25`/Roboto (leveranslänk-knappen): INITIALT
+  misstänkt som ett "gammalt tema"-misstag, men verifierat (grep) att
+  `#323d25`+Roboto är sajtens FAKTISKA, etablerade knapp-/textfärg
+  använd i 271 träffar över 19 andra CSS-filer (checkout, PDP,
+  kategorisidor, footer-betalning, mega-meny) — en pre-existerande,
+  medveten, sajtomfattande design, INTE en avvikelse att "fixa" mot
+  det nyare mobilreskin-språket. Endast knappens RADIE mjukades upp
+  (3px→24px, unikt för denna klass, ingen bred träffyta), färg/
+  typsnitt lämnades explicit orört.
+
+### Fas 2 — korrigeringar
+
+**1) "THCA med flera" + banner + "Vad är THCNM?"** (`css/18-mobil-
+pass-2026-06-29-thca-seo-text-banner-mobilna.css`, mobil-scopat
+`@media(max-width:768px)`, denna fils egen redan etablerade
+brytpunkt): slog samman de två Divi-modulerna visuellt till EN
+sammanhängande kortyta (sand-till-cream-gradient, 18px radie på
+YTTRE hörn, 1px `#ebe1d1`-kant, delad ingen synlig söm). Rubriken
+nedskalad 27px→20px (samma nivå som trustblock/kunskap/signup).
+"Vad är THCNM?"-blocket fick samma kortbehandling + korrekt
+typografi (Iowan/#2c3620, `:has(#test)`-scopat så syskonblocket
+#Banner inte påverkas). "Alla artiklar"-knappens radie mjukades till
+24px (färg/typsnitt orört, se ovan). Innehåll/riktiga länkar
+oförändrade. Desktop verifierat bit-för-bit identiskt.
+
+**2) Bästsäljarkort — leveransrad + en latent layoutbugg hittad och
+fixad** (`js/18b-homepage-v2.js` + `css/22-homepage-v2.css`, mobil-
+scopat): la till "Skickas normalt inom 1–2 vardagar" (samma redan
+verifierade, generella leveranspolicy som redan visas i mikrotrust-
+raden — INTE per-produkt-data) under köpknappen på varje kort, med
+facits egna `.card-ship`-mått. Detta AVSLÖJADE en redan existerande,
+tidigare osynlig bugg: `.nh-featured-row`s flex-stretch nådde bara
+sin egen direkta wrapper-div, inte hela vägen ner till
+`.product-card` (mellanliggande block-div fyllde inte i sin tur den
+stretchade höjden) — korten kunde få olika totalhöjd (421px mot
+394px) så fort produktnamnens radbrytning skilde sig tillräckligt.
+Fixad genom att kedja `display:flex` (+ `min-width:0` för att undvika
+en ny bredd-överflödesbugg) hela vägen ner. Verifierat: alla fyra
+korts köpknappar hamnar nu på EXAKT samma höjd (bekräftat med två
+verkliga produktnamn av olika längd), 0px sid-overflow.
+
+**3) Bildkällor — se separat tabell.**
+
+### Bildinventering och -mappning
+
+| Kortnamn | Riktig destination | Tidigare bild | Ny bild | Crop/variant | Status | Motivering |
+|---|---|---|---|---|---|---|
+| Magic Farmers | `/sv/categories/magic-farmers` (riktig, verifierad) | Live-hämtat, slumpmässigt FÖRSTA produktfoto från kategorisidan | `assets/series/magic-farmers.jpg` | Kvadratisk 850×850-crop av `D10-buds-kategoribild.png`, centrerad på produkterna, minimal negativ yta, 480×480 export | **Implementerad** | Bild-för-bild verifierad: visar bokstavligen "MAGIC FARMERS"-märkta påsar, exakt matchande kortets riktiga identitet. Vilmer-utvald. |
+| Faraoh | `/sv/categories/faraoh` (riktig, verifierad) | Live-hämtat, slumpmässigt FÖRSTA produktfoto | `assets/series/faraoh.jpg` | Kvadratisk 900×900-crop av `ThcaB-vapes-kategoribild.png` (2-asks-varianten), 480×480 export | **Implementerad** | Bild-för-bild verifierad: visar bokstavligen två "Faraoh Vapes"-askar, matchar kortets riktiga identitet. |
+| Faraoh (alternativ) | samma som ovan | — | `ThcbA-vapes-kategoribild.png` (7-asks lineup) | Ej beskuren | **Avvisad/oanvänd** | Samma riktiga varumärke (Faraoh), men den bredare 7-asks-kompositionen passar sämre för en cirkulär avatar (för smala askar per styck vid kvadratisk beskärning). Sparad som alternativ, inte kopierad till repot. |
+| Magic Sauce | `/sv/categories/m-s-vapes` (riktig, oförändrad) | Live-hämtat riktigt produktfoto | *(oförändrat)* | — | **Ej ändrad** | `Magic sauce kategori.jpeg` verifierad: visar EN blandad komposition av "Magic Farmers"/"Donny Burger"/"Tinky Wink"/"Yoda Ice Cream"/"Samurai Jack" -- INGEN av dessa är Magic Sauce. Matchar inte kortets identitet, används inte. |
+| Nano-11 | `/sv/categories/nano-11` (riktig, oförändrad) | Live-hämtat riktigt produktfoto | *(oförändrat)* | — | **Ej ändrad** | `nano11 kategoribild.jpeg` verifierad: visar uteslutande "TATRA HEMP"-märkta påsar, INTE Nano-11. Matchar inte kortets identitet. Öppen fråga: bilden matchar i stället VÅR RIKTIGA "Tatra Hemp"-serie -- inte tillämpad där heller utan Vilmers bekräftelse, eftersom bilden gavs uttryckligen märkt "nano11". |
+| THC-X (ospecificerat) | Ingen riktig kategori/serie med detta namn finns (verifierat i Paket 2, omprövat här) | — | `thc-x kategoribild.jpeg` | Ej beskuren | **Avvisad, ej implementerad** | Bilden visar bokstavligen "HIGH LIFE"-märkta produkter (Heros undervarumärke) -- INTE något bokstavligt "THC-X". Utan ett riktigt THC-X-kort/länkmål (uppdragets egen regel) exponeras bilden inte under en påhittad destination. |
+| Hero | `/sv/categories/hero-vapes` (riktig, oförändrad) | Live-hämtat riktigt produktfoto (redan visar High Life-produkter) | *(oförändrat)* | — | **Ej ändrad** | Redan korrekt via befintlig live-foto-mekanism; `thc-x kategoribild.jpeg` ovan hade visuellt kunnat passa Hero (samma High Life-varumärke) men bytes inte in eftersom nuvarande mekanism redan är korrekt och uppdraget inte bad om att ersätta redan fungerande, korrekta kort. |
+
+**Nyehandel-native kategoribild-källa, utredd FÖRE kopiering (Vilmers
+uttryckliga korrigering under omgången):** verifierat att ingen
+kategoribild exponeras publikt (`og:image` saknas, ingen
+category-header/banner-img i DOM:en) på någon av de fyra granskade
+kategorisidorna (magic-farmers/faraoh/magic-sauce/nano-11), och att
+den råa, orenderade sidan innehåller NOLL element vars klass/id
+matchar "categor*"/"kategori*" -- ingen "Kategoriboxar"-sektion
+existerar på den här sidan just nu. Ingen stabil publik Nyehandel-
+bildkälla att koppla mot; de lokala presentationsbilderna (steg 3 i
+Vilmers egen beslutsordning) används därför, serverade via GitHub
+Pages. Ingen Nyehandel-adminändring gjord eller behövd.
+
+**Käll-klassificering per kort:** Magic Sauce/Nano-11/Hero/Tatra Hemp
+= Nyehandel som källa (live `fetch`, dynamisk); Magic Farmers/Faraoh =
+statisk presentationsbild via GitHub Pages (inbäddad direkt i HTML,
+inget separat nätverksanrop, inget eget felläge att hantera).
+
+**Bildmappningen gäller ALLA bredder (inte mobil-scopad)** — se
+motivering: detta är en data-/innehållskorrekthetsfråga (rätt bild för
+rätt serieidentitet), samma kategori av beslut som Paket 2:s
+serieordning/länkar, som INTE var mobil-scopat då heller. Flaggat
+tydligt här ifall Vilmer vill att det ska mobil-scopas i efterhand.
+
+### Test
+
+Regressionssvit: 3/12 slog om, alla granskade och bekräftat
+avsiktliga (Populära serier 4,1% -- bildbyte; Bästsäljare 390×424→476,
+10,9% -- leveransrad; Snabb koll 3,5%, SAMMA storlek -- positions-
+skifteartefakt från Bästsäljares nya höjd, samma redan dokumenterade
+mönster). Övriga 9 sektioner 0-1,4% (under tröskeln). `tests/tema6-
+smoke.spec.mjs`: 14/14 gröna (meny/sök/konto/varukorg/kategori/
+produkt). 0px overflow vid 390/393/430/600/1440px. Desktop (1440px)
+explicit verifierat bit-för-bit identiskt för alla CSS-ändringar
+(THCA-block/THCNM-block/nh-test-btn-radie/Bästsäljare-flex-kedja
+allihop fortfarande i sitt ursprungliga läge). Golden-impl UPPDATERAD
+i en separat commit efter denna granskning (se nedan), inte i förväg.
+
+**Kvarvarande, klassificerade avvikelser:**
+- Nano-11/Magic Sauce saknar fortfarande en Vilmer-godkänd, korrekt
+  matchande statisk bild -- behåller sin redan korrekta, dynamiska
+  live-foto-mekanism.
+- THC-X har fortfarande inget riktigt länkmål -- bilden förberedd
+  (kvar i `/Users/wahlberg/HZY/Bilder/Kategorier/`, INTE kopierad till
+  repot) men inte exponerad, per uppdragets egen regel.
+- "Till Butiken"-knappraden (`.nh-btn-bar`, `#e4d1bf`-bakgrund) skapar
+  fortfarande en färgövergångssöm mot de nyharmoniserade blocken --
+  INTE fixad denna omgång: samma klass används i minst 12 andra
+  content-block-mallar (kategorisidor) med samma bakgrund, för bred
+  träffyta för att ändra säkert utan att se alla de sidorna.
+
+**Commits:** källkodsändringar (css/18-mobil-pass-..., css/22-
+homepage-v2.css, js/18b-homepage-v2.js, assets/series/{magic-farmers,
+faraoh}.jpg) i en commit, golden-impl-uppdatering + denna STATUS.md-
+post i en SEPARAT, tydligt motiverad commit (uppdragets egen regel).
+
+**Inte rört:** desktop-CSS (verifierat bit-för-bit identiskt för alla
+touched-filer utom bildkällorna, se motivering ovan), live tema
+3/tema 5, Nyehandel-admin, PUBLICERA aldrig klickad.
