@@ -3318,6 +3318,14 @@
             // visas i mikrotrust-raden (js/18a-header-v2.js, "Normalt
             // 1-2 vardagar"), bara skriven ut i sin helhet här. Gäller
             // alla produkter lika, fabricerar ingenting per kort.
+            // Lagerstatus: RIKTIG, inte gissad -- kortet kommer från
+            // fetchen ovan (?sort=in-stock, slice(0,4)), så "I lager" är
+            // sant för just dessa fyra vid hämtningstillfället per
+            // definition av sorteringen, inte ett hårdkodat påstående.
+            var stock = document.createElement("div");
+            stock.className = "nh-featured-stock";
+            stock.innerHTML = '<span class="nh-featured-stock-dot"></span>I lager';
+            clone.appendChild(stock);
             var ship = document.createElement("div");
             ship.className = "nh-featured-ship";
             ship.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>Skickas normalt inom 1–2 vardagar';

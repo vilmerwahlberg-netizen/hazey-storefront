@@ -12104,6 +12104,19 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   color: #9a9280; margin: 6px 14px 12px;
 }
 .nh-featured-ship svg { width: 12px !important; height: 12px !important; flex: 0 0 auto; color: #6f7a52; }
+/* .nh-featured-stock (lagerstatus, se js/18b-homepage-v2.js) -- samma
+   döljning/mobil-only-mönster som .nh-featured-ship ovan, se den
+   kommentaren för varför. */
+.nh-featured-stock {
+  display: none;
+  align-items: center; gap: 6px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 10.5px !important; font-weight: 650 !important; letter-spacing: normal !important;
+  color: #4d7042; margin: 6px 14px 0;
+}
+.nh-featured-stock-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #4d7042; flex: 0 0 auto;
+}
 /* Facit-kalibrering 2026-09-06 (näst avgränsade paket, se STATUS.md):
    sektionsrubrikraden ("Bästsäljare i lager" + "Se allt →") saknade
    layout helt -- `.sec-head` har ingen delad bas-regel (se kommentaren
@@ -12188,7 +12201,8 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-featured-row .details { flex: 1; }
   /* Facit-kalibrering 2026-09-08: .card-ship (se css ovan, dold som
      grundläge) -- visas bara mobil-scopat denna omgång. */
-  .nh-featured-row .nh-featured-ship { display: flex; }
+  .nh-featured-row .nh-featured-ship { display: flex; margin-top: 0; }
+  .nh-featured-row .nh-featured-stock { display: flex; }
 }
 
 /* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem
