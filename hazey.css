@@ -8180,44 +8180,37 @@ body.checkout-page .checkout-items-summary .item .content {
     border-radius: 0 0 18px 18px !important;
     padding-bottom: 28px !important;
   }
-  /* Samma "gammalt tema"-yta ett stycke längre ned: den kvarvarande,
-     medvetet SYNLIGA "Vad är THCNM?"-texten (THCA/Magic Sauce-rubrikerna
-     i samma ursprungliga innehåll flyttas in i Snabb koll-korten och
-     döljs här, se js/18b-homepage-v2.js -- THCNM lämnas kvar eftersom
-     cannabinoiden är juridiskt pausad, ska INTE göras mer framträdande,
-     bara harmoniseras visuellt). Ligger i en HELT ANNAN native-komponent
-     (.template-components__columns, inte __text-editor) än THCA-blocket
-     ovan, kant-i-kant (0px sidopadding, 0px radie). Scopat med :has(#test)
-     (samma teknik som #Banner-regeln nedan redan använder) så INTE
-     Banner-kolumnblocket (samma överklass, annat innehåll) påverkas. */
-  .template-components__columns:has(#test) {
-    background: linear-gradient(165deg, #faf3e9, #fffdf8 72%) !important;
-    border: 1px solid #ebe1d1 !important;
-    border-radius: 18px !important;
-    margin-left: 14px !important;
-    margin-right: 14px !important;
-    width: auto !important;
-  }
-  /* h3 var redan 18px men Roboto/rgb(50,61,37) i st.f. sidans etablerade
-     rubrikserif -- den delade .store-startpage .template-components__
-     columns h1,h2,h3-regeln (css/22-homepage-v2.css) förlorade mot en mer
-     specifik native-regel scopad till just denna kolumn-komponent.
-     Samma tag-reset-mönster som redan dokumenterat flera gånger, fixat
-     här med en regel specifik nog att vinna. */
-  .template-components__columns:has(#test) h3 {
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
-    font-weight: 600 !important;
-    font-size: 20px !important;
-    color: #2c3620 !important;
-  }
-  /* .nh-test-btn ("Alla artiklar", riktig länk till /sv/categories/alla-
-     produkter) hade bara 3px radie -- skarpare än sidans etablerade
-     knapp-radiefamilj (12-24px/999px, se signup/hero/reviews-CTA:erna).
-     Färg/bakgrund (mörkgrön yta, terra text) rörs INTE -- redan nära
-     sidans egna toner, bara hörnen mjukas upp. */
-  .nh-test-btn {
-    border-radius: 24px !important;
-  }
+  /* ÄNDRAT 2026-09-07 (större homepage-runda, uttrycklig instruktion #9):
+     "Vad är THCNM?"-blocket (native .template-components__columns:has
+     (#test), innehåller ÄVEN en bild-kolumn + "Alla artiklar"-knappen
+     .nh-test-btn) ska TAS BORT HELT från den synliga startsidan -- inte
+     bara harmoniseras visuellt som föregående omgång gjorde (se historik
+     nedan). Detta är en medveten, senare instruktion som ersätter den
+     tidigare "lämna synlig, gör inte mer framträdande"-bedömningen
+     (juridiskt-pausad-resonemanget gäller fortfarande FÖR INNEHÅLLET,
+     men slutsatsen är nu "dölj" i stället för "harmonisera och behåll
+     synlig"). Ingen Nyehandel-adminändring görs (kan inte göras här) --
+     blocket döljs robust i reskin-lagret. Innehållet/länkarna existerar
+     fortfarande i DOM:en (bara display:none), så THCA/Magic Sauce-texten
+     som js/18b-homepage-v2.js (nhBuildKunskapFromRealContent) flyttar in
+     i Snabb koll-korten går fortfarande att läsa via JS (dolda element
+     är fullt query:bara, .textContent fungerar oavsett CSS-display) --
+     ingen artikel eller URL tas bort, bara den visuella renderingen här.
+     Dokumenterat i STATUS.md som en öppen adminstädning: motsvarande
+     native block bör städas bort i tema 6:s admin innan en framtida
+     publicering, aldrig i tema 3. Tidigare historik (fram till denna
+     ändring): blocket fick en harmoniserad yta (rundade hörn, delad
+     sand-till-cream-gradient, samma familj som trustblock/kunskap/
+     signup/featured/reviews) i stället för sin ursprungliga kantiga,
+     "gammalt tema"-platta yta -- den styling som är onödig nu när
+     blocket är helt dolt, borttagen härifrån. Regeln själv flyttad UT ur
+     denna @media(max-width:768px)-block (se nedan, ovillkorad) -- blocket
+     ska bort på ALLA bredder, inte bara mobil, eftersom det är delad
+     native startsidesinnehåll (inte en del av mVp/dVp-uppdelningen). */
+}
+
+.template-components__columns:has(#test) {
+  display: none !important;
 }
 
 /* (B) #Banner — var kant-i-kant på mobil. Runda hörn + sidluft + mjuk skugga
