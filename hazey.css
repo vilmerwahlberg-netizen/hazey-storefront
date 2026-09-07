@@ -12158,6 +12158,28 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .nh-reviews-cta .stars { color: #b8865a; font-size: 15px; letter-spacing: 1px; }
 .nh-reviews-cta:hover { border-color: #b8865a; }
 
+/* Riktiga produktomdömen (2026-09-07) — se nhInitProductReviews,
+   js/18b-homepage-v2.js. Kompakt, döljs helt (redan [hidden]-regel
+   ovan) om ingen säker recension kunde hämtas -- Trustpilot-CTA:n ovan
+   räcker då som ensam, redan sann trust-signal. */
+.nh-reviews-grid {
+  display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px;
+}
+@media (min-width: 640px) {
+  .nh-reviews-grid { grid-template-columns: 1fr 1fr; }
+}
+.nh-rc-card {
+  background: #fff; border: 1px solid #ebe1d1; border-radius: 14px; padding: 16px 18px;
+}
+.nh-rc-stars { color: #b8865a; font-size: 13px; letter-spacing: 1px; }
+.nh-rc-quote {
+  font-size: 13.5px; line-height: 1.55; color: #342f27; margin: 8px 0 10px;
+}
+.nh-rc-source { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font-size: 12px; }
+.nh-rc-name { font-weight: 650; color: #2c3620; }
+.nh-rc-source a { color: #96683f; text-decoration: none; }
+.nh-rc-source a:hover { text-decoration: underline; }
+
 /* ── Nyhetsbrev, mitt på sidan (icke-kopplad platshållare, se JS) ── */
 .nh-signup.section-gap { padding: 12px 24px 34px; max-width: 1100px; margin: 0 auto; }
 .nh-signup-block {

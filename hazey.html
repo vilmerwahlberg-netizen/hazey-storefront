@@ -3721,6 +3721,38 @@
        uppdaterad men fortfarande korrekt siffra. ── */
     var NH_TRUSTPILOT_BUSINESS_UNIT_ID = "6479dc28f0b041b3c79af588";
     var NH_TRUSTPILOT_TEMPLATE_ID = "53aa8807dec7e10d38f59f32";
+    /* ── Riktiga produktomdömen (2026-09-07, större homepage-runda) ──
+       Datagranskning: Nyehandels egna PDP:er exponerar RIKTIGA, publika
+       kundomdömen (#product-reviews, namn + relativt datum + citat +
+       stjärnbredd i %) -- verifierat på flera riktiga produkter. Detta
+       är data-prioritetsstegets steg 2 ("riktiga produktrecensioner om
+       de exponeras publikt i Nyehandel"), som gör att vi INTE behöver
+       falla tillbaka på steg 3 (bara betyg+CTA) för hela sektionen.
+
+       VIKTIG BEGRÄNSNING, upptäckt under research, INTE en gissning:
+       riktiga kundomdömen på faktiska cannabinoid-produkter (buds/hash)
+       innehåller regelbundet uttryckliga rus-/effektbeskrivningar
+       ("blir go", "helstekt", "munchies, skratt", "potent", "dosera") --
+       exakt det CLAUDE.md:s varumärkesröst-regel förbjuder att lyfta
+       fram, oavsett att det är en riktig kunds egna ord. Källorna här är
+       därför MEDVETET begränsade till hårdvaru-/tillbehörsprodukter
+       (vape-batterier), vars riktiga recensioner rimligen handlar om
+       produktkvalitet, inte upplevelsen av att använda en cannabinoid --
+       INTE fabricerat, men en medveten avgränsning av VILKA riktiga
+       produkter som får vara källa. Det betyder att "variation mellan
+       relevanta produktkategorier" (uppdragets önskemål) inte kan
+       uppfyllas säkert med riktig recensionstext just nu -- flaggat i
+       slutrapporten som en genuin innehållsbegränsning, inte en kodlucka.
+       Ett sekundärt, defensivt textfilter (NH_REVIEW_UNSAFE_RE nedan)
+       skyddar ändå mot en framtida ny recension på samma produkter som
+       råkar innehålla rus-/effektspråk. "Verifierad köpare" visas INTE --
+       den riktiga datan innehåller ingen sådan markör. */
+    var NH_REVIEW_PRODUCTS = [
+      { href: "https://hazeyse.nyehandel.se/sv/products/ccell-m4-vape-batteri-510", name: "CCELL M4 – Vape Batteri – 510" },
+      { href: "https://hazeyse.nyehandel.se/sv/products/ccell-m3-plus-vape-batteri-510", name: "CCELL M3 Plus – Vape Batteri – 510" }
+    ];
+    var NH_REVIEW_UNSAFE_RE = /\brus\b|hög(?!re|sta)|skratt|munchies|kick|stoned|helstekt|påverkan|lugnande|avslappnande|smygande|potent|dosera|\bdos\b|sömnfrämjande|ångest|amnezia|minnesförlust|rök(?!else)|bäng|höjd(?!punkt)/i;
+
     function nhReviewsHtml() {
       return '<section class="nh-reviews section-gap">'
         + '  <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
@@ -3728,8 +3760,67 @@
         + '  <a class="nh-reviews-cta nh-reveal" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
         + '    <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
         + '  </a>'
-        + '  <div class="nh-reviews-grid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
+        + '  <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
         + '</section>';
+    }
+    function nhInitProductReviews(root) {
+      var grid = root.querySelector("#nhReviewsGrid");
+      if (!grid) return;
+      // Rotorsak (2026-09-07): #product-reviews-listan (li>h4+p) finns
+      // BARA i den klientsidesrenderade DOM:en, inte i den råa HTML:en --
+      // en vanlig fetch()+DOMParser (som redan används för Populära vägar/
+      // serier/Bästsäljare) hittar därför 0 element här. De RIKTIGA
+      // recensionerna ligger däremot redan i den råa HTML:en, som ett
+      // HTML-entitetskodat JSON-attribut på Vue-komponenten som senare
+      // hydrerar listan (`:reviews="[{&quot;name&quot;:...}]"`) --
+      // verifierat via `curl` mot en riktig produktsida. Extraherat med
+      // regex + en <textarea>-baserad entitetsavkodning (etablerad,
+      // pålitlig teknik, inget bibliotek behövs) + JSON.parse, i stället
+      // för DOMParser. `rating` kommer som ett rent numeriskt fält
+      // (1-5) i den här datan, inget %-bredd-antagande behövs.
+      function decodeEntities(s) {
+        var ta = document.createElement("textarea");
+        ta.innerHTML = s;
+        return ta.value;
+      }
+      Promise.all(NH_REVIEW_PRODUCTS.map(function (p) {
+        return fetch(p.href, { credentials: "same-origin" })
+          .then(function (r) { return r.ok ? r.text() : ""; })
+          .then(function (html) {
+            if (!html) return null;
+            var m = html.match(/:reviews="(\[.*?\])"/);
+            if (!m) return null;
+            var list;
+            try { list = JSON.parse(decodeEntities(m[1])); } catch (e) { return null; }
+            var pick = list.filter(function (r) {
+              return !r.anonymous && r.review && r.review.length >= 12 && r.review.length <= 170
+                && !NH_REVIEW_UNSAFE_RE.test(r.review);
+            });
+            if (!pick.length) return null;
+            var r = pick[0];
+            return { name: r.name, text: r.review, stars: r.rating, product: p.name, href: p.href };
+          })
+          .catch(function () { return null; });
+      })).then(function (results) {
+        var real = results.filter(Boolean);
+        if (!real.length) return; // ingen ändring -- grid förblir dold, Trustpilot-raden ovan är redan sann
+        // Medvetet INGEN .nh-reveal-klass här (samma beslut som redan
+        // gäller Bästsäljare-korten, nhInitBestsellers): nhInitReveal
+        // skannar bara EN gång vid boot, långt innan dessa asynkront
+        // hämtade kort finns i DOM:en -- ett .nh-reveal-kort som aldrig
+        // observeras stannar permanent osynligt (upptäckt och fixat
+        // direkt, se STATUS.md).
+        grid.innerHTML = real.map(function (r) {
+          var starsHtml = '<span class="nh-rc-stars" aria-hidden="true">' + "★".repeat(r.stars) + "☆".repeat(5 - r.stars) + '</span>';
+          return '<div class="nh-rc-card">'
+            + starsHtml
+            + '<p class="nh-rc-quote">”' + r.text.replace(/</g, "&lt;") + '”</p>'
+            + '<div class="nh-rc-source"><span class="nh-rc-name">' + r.name.replace(/</g, "&lt;") + '</span>'
+            + '<a href="' + r.href + '">' + r.product + '</a></div>'
+            + '</div>';
+        }).join("");
+        grid.hidden = false;
+      });
     }
     /* Hämtar det RIKTIGA, live TrustScore + antal omdömen från Trustpilots
        egen publika data-endpoint (samma som deras bootstrap-widget redan
@@ -3894,6 +3985,7 @@
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
       nhInitReviewsLive(document);
+      nhInitProductReviews(document);
       nhInitInactiveForms(document);
       nhHideSupersededTabsSection();
       nhInitThcaWallReadMore();
