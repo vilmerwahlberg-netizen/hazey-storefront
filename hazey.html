@@ -3503,6 +3503,89 @@
         });
     }
 
+    /* ── "I rampljuset" (Spotlight), Fas 2 (2026-09-07) — placerad efter
+       Bästsäljare, före trust-blocket. HELT konfigurationsdriven och
+       HELT osynlig (renderar ingenting alls, inte ens ett dolt skal)
+       när NH_SPOTLIGHT.active är false, vilket den är just nu.
+
+       Uttryckligt krav: välj INTE automatiskt en teknisk/tråkig produkt
+       bara för att den råkar ligga först i bästsäljarlistan -- kräver
+       en explicit konfiguration eller en verifierad flagga. Ingen sådan
+       finns ännu (Vilmer har inte pekat ut en riktig produkt), så
+       komponenten byggs och testas (se STATUS.md för hur den
+       verifierades med en tillfällig, INTE committad, riktig produkt)
+       men lämnas AVSTÄNGD. Se slutrapporten för en konkret rekommenda-
+       tion om VILKEN riktig produkt som är en bra kandidat och varför.
+
+       Datakälla vid aktivering: samma robusta, redan beprövade JSON-LD
+       `<script type="application/ld+json">`-block som varje riktig PDP
+       redan skriver ut (namn/bild/pris/lagerstatus) -- statisk i den
+       råa HTML:en, ingen Vue-hydrering behöver köras (samma upptäckt
+       som löste "Verifierade omdömen" ovan, men här räcker JSON-LD:s
+       EGNA fält, ingen entitetsavkodning av ett Vue-prop-attribut
+       behövs). Rationale/sekundärlänk kommer ALLTID från konfigen,
+       aldrig gissat eller skrapat. */
+    var NH_SPOTLIGHT = {
+      active: false,
+      productHref: null, // t.ex. "https://hazeyse.nyehandel.se/sv/products/...".
+      rationale: null,   // kort, redaktionell mening -- varför just den här produkten lyfts fram nu.
+      secondaryLabel: null, // t.ex. "Se hela Magic Sauce-serien".
+      secondaryHref: null
+    };
+    function nhSpotlightHtml() {
+      if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
+      return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
+        + '  <div class="nh-spotlight-inner">'
+        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img" id="nhSpotlightImg"></div></div>'
+        + '    <div class="nh-spotlight-body">'
+        + '      <div class="nh-spotlight-kicker">I rampljuset</div>'
+        + '      <h2 id="nhSpotlightName">Laddar…</h2>'
+        + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT.rationale + '</p>'
+        + '      <div class="nh-spotlight-meta" id="nhSpotlightMeta"></div>'
+        + '      <div class="nh-spotlight-cta">'
+        + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT.productHref + '">Visa produkten</a>'
+        + (NH_SPOTLIGHT.secondaryHref
+            ? '<a class="hero-link" href="' + NH_SPOTLIGHT.secondaryHref + '">' + NH_SPOTLIGHT.secondaryLabel + '</a>'
+            : '')
+        + '      </div>'
+        + '    </div>'
+        + '  </div>'
+        + '</section>';
+    }
+    function nhInitSpotlight(root) {
+      if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return;
+      var section = root.querySelector("#nh-spotlight");
+      if (!section) return;
+      fetch(NH_SPOTLIGHT.productHref, { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.text() : ""; })
+        .then(function (html) {
+          if (!html) throw new Error("no html");
+          var doc = new DOMParser().parseFromString(html, "text/html");
+          // Sidan skriver ut FLERA ld+json-block (Organization m.fl.) --
+          // måste hitta just Product-blocket, inte bara första träffen.
+          var scripts = Array.prototype.slice.call(doc.querySelectorAll('script[type="application/ld+json"]'));
+          var data = null;
+          scripts.some(function (s) {
+            try {
+              var parsed = JSON.parse(s.textContent);
+              if (parsed && parsed["@type"] === "Product") { data = parsed; return true; }
+            } catch (e) {}
+            return false;
+          });
+          if (!data) throw new Error("no Product ld+json");
+          var img = Array.isArray(data.image) ? data.image[0] : data.image;
+          var inStock = /InStock/i.test((data.offers || {}).availability || "");
+          section.querySelector("#nhSpotlightImg").style.backgroundImage = "url('" + img + "')";
+          section.querySelector("#nhSpotlightName").textContent = data.name || "";
+          section.querySelector("#nhSpotlightMeta").innerHTML = ''
+            + '<span class="nh-spotlight-price">' + ((data.offers || {}).price ? data.offers.price + " kr" : "") + '</span>'
+            + '<span class="nh-spotlight-stock' + (inStock ? "" : " is-out") + '">' + (inStock ? "I lager" : "Slut i lager") + '</span>';
+        })
+        .catch(function () {
+          section.hidden = true; // trasig hämtning -- visa aldrig ett halvfärdigt kort
+        });
+    }
+
     /* ── "Snabb koll: vad är vad?" — FLYTTAR och FORMATERAR OM befintlig,
        redan publicerad text (tar INTE bort innehåll, se regel i CLAUDE.md)
        från "THCA med flera"-textblocket till kortformat. THCNM är
@@ -3971,6 +4054,7 @@
         + '<section class="nh-aura-guide" id="aura-guiden" hidden data-status="juridik-ej-klar"></section>'
         + nhContinueShellHtml()
         + nhBestsellersHtml()
+        + nhSpotlightHtml()
         + nhTrustBlockHtml()
         + nhKunskapHtml(kunskapCards)
         + nhReviewsHtml()
@@ -3984,6 +4068,7 @@
       nhInitHeroCarousel(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
+      nhInitSpotlight(document);
       nhInitReviewsLive(document);
       nhInitProductReviews(document);
       nhInitInactiveForms(document);

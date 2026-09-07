@@ -12042,6 +12042,46 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .nh-routes .route-sub { font-size: 11px; color: rgba(255,255,255,.82); margin: 3px 0 0; }
 .nh-routes .route:not(.has-photo) .route-sub { color: #9a9280; }
 
+/* ── "I rampljuset" (Spotlight), Fas 2 (2026-09-07) — se
+   nhSpotlightHtml/js/18b-homepage-v2.js. Asymmetrisk bild/text-
+   komposition (varm bildyta + textkolumn), samma korttoner/radie/
+   familj som trust-block/kunskap/signup. Renderas bara i DOM:en när
+   NH_SPOTLIGHT.active är true (just nu false — se kommentaren i JS). ── */
+.nh-spotlight.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
+.nh-spotlight-inner {
+  display: flex; flex-direction: column;
+  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
+  border: 1px solid #ebe1d1; border-radius: 18px; overflow: hidden;
+}
+.nh-spotlight-media { flex: none; }
+.nh-spotlight-img {
+  width: 100%; aspect-ratio: 4 / 3; background-size: cover; background-position: center;
+  background-color: #efe9df;
+}
+.nh-spotlight-body { padding: 20px 20px 22px; }
+.nh-spotlight-kicker {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: #96683f; margin-bottom: 6px;
+}
+.nh-spotlight-body h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 20px; color: #2c3620; margin: 0 0 8px;
+}
+.nh-spotlight-rationale { font-size: 13px; line-height: 1.55; color: #342f27; margin: 0 0 12px; }
+.nh-spotlight-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.nh-spotlight-price { font-size: 17px; font-weight: 700; color: #2c3620; }
+.nh-spotlight-stock { font-size: 12px; font-weight: 650; color: #4d7042; }
+.nh-spotlight-stock.is-out { color: #96683f; }
+.nh-spotlight-cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.nh-spotlight-cta .hero-link { color: #2c3620; border-bottom: 1.5px solid rgba(44,54,32,.35); background: none; border-top: none; border-left: none; border-right: none; padding-bottom: 1px; font-size: 13px; font-weight: 650; cursor: pointer; text-decoration: none; }
+.nh-spotlight-cta .hero-link:hover { border-color: #2c3620; }
+@media (min-width: 641px) {
+  .nh-spotlight-inner { flex-direction: row; align-items: stretch; }
+  .nh-spotlight-media { flex: 0 0 42%; }
+  .nh-spotlight-img { height: 100%; aspect-ratio: auto; }
+  .nh-spotlight-body { flex: 1; padding: 28px 32px; display: flex; flex-direction: column; justify-content: center; }
+}
+
 /* ── Trust-block, PAKET B (2026-09-02) — portat mot facits riktiga
    .trust-block-struktur (index.html rad 658-664): enkolumns kort,
    rubrik+ingress överst, en bock-lista under. Ersätter den tidigare
