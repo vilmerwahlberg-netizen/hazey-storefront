@@ -159,6 +159,14 @@
   scrollbar-width: none;
 }
 .nh-pser .pser-row::-webkit-scrollbar { display: none; }
+/* Kort utan riktig destination (THCaB/THCbA/D10, se
+   nhPopularaSerierHtml) — SAMMA visuella markup/mått som ett aktivt
+   kort (uppdragets uttryckliga krav: "samma visuella utseende"), bara
+   utan klick-affordance. pointer-events:none (inte bara cursor:default)
+   så :hover-reglerna nedan (kantfärgsbyte vid hover, en signal om en
+   fungerande länk) aldrig triggas, oavsett breddpunktens olika
+   bas-kantfärg (vit på mobil, halvtransparent beige på desktop). */
+.nh-pser .pser-item--soon { cursor: default; pointer-events: none; }
 .nh-pser .pser-item {
   position: relative;
   display: flex;
@@ -466,6 +474,16 @@
   .nh-routes.section-gap {
     padding-left: 14px !important;
     padding-right: 14px !important;
+    /* Räddningsrunda 2026-09-08 (mätt live, se STATUS.md): facits egen
+       arkitektur ger ALDRIG en sektion sin egen top-padding för att skapa
+       mellanrum till FÖREGÅENDE sektion -- hela avståndet kommer bara
+       från föregåendes .section-gap{margin-bottom} (15px mellan just
+       Populära serier→vägar, se .nh-pser.section-gap nedan i filen).
+       Vår bas-regel ovan (padding:40px ...) är en KVARLEVA från en
+       desktop-anpassad siffra som aldrig zeroades för mobil -- staplad
+       på nh-pser:s 15px gav uppmätt 55px i stället för begärda ~14-16px.
+       Nollställd här (mobil-scopat, desktop 40px oförändrat). */
+    padding-top: 0 !important;
   }
   .nh-routes .route {
     border-color: rgba(177,125,70,.26);

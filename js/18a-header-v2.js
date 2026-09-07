@@ -76,6 +76,14 @@
                      hash: { label: "Hash", items: [], cannabinoids: {}, series: {} } };
       var flatExtra = []; // t.ex. Merch — hör inte till nåt format
       var footerLinks = []; // t.ex. CBD Group — egen landningssida, länkas i footer/trust, inte i topnav
+      // Platt slug→href-uppslagning för VARJE riktig länk, oavsett
+      // klassificering — tillagd 2026-09-08 (se nhSerieHref i
+      // js/18b-homepage-v2.js) eftersom en "paraply"-slug utan eget format
+      // (t.ex. "magic-sauce") ALDRIG hamnar i något groups[k].items (bara i
+      // groups[k].series, som skrivs över av senare, formatspecifika
+      // slugs som "m-s-vapes" i DOM-ordning) — utan denna platta karta
+      // fanns inget sätt att slå upp EN specifik, känd slug deterministiskt.
+      var bySlug = {};
 
       var links = Array.prototype.slice.call(navMenuEl.querySelectorAll(".index-menu a[href]"));
       links.forEach(function (a) {
@@ -85,6 +93,7 @@
         if (c.paused) return; // juridik ej klar — dölj helt
 
         var entry = { label: a.textContent.trim().replace(/\s+/g, " "), href: a.getAttribute("href"), slug: slug };
+        bySlug[slug] = entry.href;
 
         if (c.format && groups[c.format]) {
           groups[c.format].items.push(entry);
@@ -102,7 +111,7 @@
           flatExtra.push(entry);
         }
       });
-      return { groups: groups, flatExtra: flatExtra, footerLinks: footerLinks };
+      return { groups: groups, flatExtra: flatExtra, footerLinks: footerLinks, bySlug: bySlug };
     }
 
     function nhFormatDropdownHtml(key, group) {

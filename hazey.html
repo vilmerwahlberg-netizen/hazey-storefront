@@ -2411,6 +2411,14 @@
                      hash: { label: "Hash", items: [], cannabinoids: {}, series: {} } };
       var flatExtra = []; // t.ex. Merch — hör inte till nåt format
       var footerLinks = []; // t.ex. CBD Group — egen landningssida, länkas i footer/trust, inte i topnav
+      // Platt slug→href-uppslagning för VARJE riktig länk, oavsett
+      // klassificering — tillagd 2026-09-08 (se nhSerieHref i
+      // js/18b-homepage-v2.js) eftersom en "paraply"-slug utan eget format
+      // (t.ex. "magic-sauce") ALDRIG hamnar i något groups[k].items (bara i
+      // groups[k].series, som skrivs över av senare, formatspecifika
+      // slugs som "m-s-vapes" i DOM-ordning) — utan denna platta karta
+      // fanns inget sätt att slå upp EN specifik, känd slug deterministiskt.
+      var bySlug = {};
 
       var links = Array.prototype.slice.call(navMenuEl.querySelectorAll(".index-menu a[href]"));
       links.forEach(function (a) {
@@ -2420,6 +2428,7 @@
         if (c.paused) return; // juridik ej klar — dölj helt
 
         var entry = { label: a.textContent.trim().replace(/\s+/g, " "), href: a.getAttribute("href"), slug: slug };
+        bySlug[slug] = entry.href;
 
         if (c.format && groups[c.format]) {
           groups[c.format].items.push(entry);
@@ -2437,7 +2446,7 @@
           flatExtra.push(entry);
         }
       });
-      return { groups: groups, flatExtra: flatExtra, footerLinks: footerLinks };
+      return { groups: groups, flatExtra: flatExtra, footerLinks: footerLinks, bySlug: bySlug };
     }
 
     function nhFormatDropdownHtml(key, group) {
@@ -3075,154 +3084,141 @@
     }
 
     /* ── "Populära serier" ──
-       Facit-kalibrering 2026-09-06, ANDRA omgången (ersätter föregående
-       omgångs felaktiga slutsats, se STATUS.md): föregående omgång antog
-       att facits "THC-X"/"THCbA"-etiketter var interna kodnamn för våra
-       riktiga "Hero"/"Faraoh"-serier och bytte BARA bilderna, men behöll
-       namnen/länkarna Hero/Faraoh -- det gav en synlig etikett-mismatch
-       mot facit (facit säger "THC-X", vi sa "Hero") och är INTE
-       godkänt som 1:1.
+       RÄDDNINGSRUNDA 2026-09-08 (fokuserad mobil-omgång, se STATUS.md):
+       tidigare omgångar visade bara de serier en LIVE nav-DOM-genomsökning
+       råkade klassificera (Magic Sauce/Nano-11/Magic Farmers/Tatra Hemp)
+       -- riktigt datadrivet, men fel mot uppdraget, som uttryckligen vill
+       se alla SEX kundnära identiteter (THCaB, THCbA, Magic Sauce,
+       Nano-11, THC-X, D10) redan nu i tema 6, trots att tre av dem
+       fortfarande saknar migrerade produkter. Tre av de sex kan därför
+       INTE deriveras ur nav-DOM:en -- sektionen är nu en explicit
+       konfigurationslista (NH_PSER_CARDS) i stället för en ren
+       DOM-avläsning, med Magic Sauce/Nano-11 (som HAR riktig data)
+       fortfarande hämtade från samma live-klassificerade nav-data som
+       förut (NH_SERIE_OVERRIDES i js/18a-header-v2.js) -- inget
+       hårdkodat länkmål för dem, bara VILKA sex namn som visas är fast.
 
-       Verifierat på nytt, denna gång mot den RIKTIGA, live nav-menyn på
-       hazeyse.nyehandel.se (2026-09-06, alla ~48 kategorislugs lästa och
-       klassificerade): det finns INGEN kategori, cannabinoidgrupp eller
-       serie med sluggen "thcx"/"thc-x" eller "thcba"/"thc-ba" någonstans
-       på skarpa sajten. Närmaste RIKTIGA cannabinoidkategorier är
-       thca/thcb/thcv (juridiskt aktiva, NH_ACTIVE_CANNABINOIDS i
-       js/18a-header-v2.js) samt thcnm/10-oh-thc/hhcpm (medvetet PAUSADE,
-       juridik ej klar -- får inte visas, se samma fil) -- ingen av dessa
-       är samma sträng som "THC-X"/"THCbA", och att anta att de menar
-       samma sak vore att gissa en identitet ingen kan verifiera.
+       Verifierat på nytt 2026-09-08 (curl mot hazeyse.nyehandel.se,
+       läsning av riktig HTML/titel, inget skrivet):
+       - /sv/categories/magic-sauce -- 200, <title>Magic Sauce</title>,
+         12 riktiga produkter (räknat via .product-card-noder/2, matchar
+         Vilmers uppgift exakt).
+       - /sv/categories/nano-11 -- 200, <title>Nano-11</title>,
+         8 riktiga produkter (samma räkning, matchar exakt). Nyehandels
+         interna filtertagg heter "Serie_Nano11" (utan bindestreck) --
+         kundnamnet visas ändå alltid som "Nano-11" (bara etikett,
+         påverkar inte hrefen/datan).
+       - EXAKT en riktig THCX-produkt existerar
+         (/sv/products/vape-thcx-19-core-2ml, 200, verifierat) men är
+         taggad "Serie_Core" i Nyehandel -- en delad tagg som täcker fler
+         produkter än bara THCX, INTE en dedikerad THC-X-kategori. Vi rör
+         INTE Serie_Core och skapar INGEN ny Serie_THC-X härifrån (kan
+         inte göras från terminalen ändå). Kortet länkar i stället direkt
+         till den enda riktiga produktsidan -- en verifierad, relevant,
+         fungerande destination, mer ärlig än att peka på en delad,
+         missvisande Core-kategori som skulle visa fel produkter.
+       - THCaB/THCbA/D10: uttömmande omprövat (sitemap.xml + fritext-
+         sökning i hela produktkatalogen, se tidigare omgångars logg i
+         STATUS.md) -- fortfarande INGEN kategori eller produkt med
+         dessa namn någonstans på sajten. Byggs ändå visuellt färdiga nu
+         (uttrycklig instruktion denna omgång), men UTAN <a href> --
+         renderas som icke-klickbara kort (ingen gissad/lånad destination,
+         se nedan) tills en riktig produktmigrering ger dem ett riktigt
+         länkmål. Räkne-/tagg-/destinationsfälten i NH_PSER_CARDS är redan
+         förberedda så en framtida migrering bara fyller i värden --
+         ingen ny visuell ombyggnad ska behövas då.
 
-       Beslut: bygg INGEN "THC-X"/"THCbA"-platshållare med ett gissat
-       eller lånat länkmål (uttryckligen förbjudet i uppdraget). Rader 3
-       och 4 visar i stället helt enkelt näst mest relevanta RIKTIGA
-       serierna i sin egen, riktiga, redan etablerade namn (Hero/Faraoh)
-       -- vilket för övrigt redan är exakt var de hamnar helt UTAN någon
-       priority-styrning alls (verifierat: series-arrayen byggs i nav-
-       menyns egen DOM-ordning, och Hero/Faraoh råkar redan ligga direkt
-       efter Magic Sauce/Nano-11 där). NH_PSER_PRIORITY pinnar därför
-       bara de två FAKTISKT verifierade positionerna (Magic Sauce/Nano-11,
-       som matchar facits egen ordning); allt annat (Hero, Faraoh, Tatra
-       Hemp, Magic Farmers) behåller sin naturliga nav-ordning oförändrat.
-       Riktig data/länkar/antal påverkas inte alls av detta.
-
-       Öppen fråga till Vilmer (se slutrapport): motsvarar facits
-       "THC-X"/"THCbA" något som ÄNNU INTE finns i nav-menyn (en planerad
-       serie), eller ska de bytas mot riktiga namn i facit-prototypen? Vi
-       gissar inte svaret här.
-
-       Bildkälleinventering 2026-09-07 (visuell skuld-runda, se
-       STATUS.md): Vilmer bad specifikt om att först utreda om en RIKTIG
-       Nyehandel-nativ kategoribild (Produkter → Kategorier /
-       "Kategoriboxar") redan exponeras publikt innan några lokala
-       bilder kopieras in. Verifierat, INTE gissat: (1) `og:image` och
-       varje sökt kategori-DOM (magic-farmers/faraoh/magic-sauce/
-       nano-11) saknar en egen kategoribild helt -- bara produktkorts-
-       bilder och sajtens loggor finns i DOM:en; (2) hela den riktiga,
-       orenderade sidan innehåller noll element vars klass/id matchar
-       "categor*"/"kategori*", och de enda `template-components__*`-
-       blocken som faktiskt finns är slideshow/html-editor/product-list/
-       text-editor/columns -- ingen "Kategoriboxar"-sektion existerar på
-       den här sidan just nu. Alltså: ingen stabil, publikt nåbar
-       Nyehandel-bildkälla finns att koppla mot. Beslut (Vilmers egen
-       prioritetsordning, steg 3): använd i stället ett optimerat
-       presentationsderivat under repots `assets/`, serverat via GitHub
-       Pages -- INGEN Nyehandel-adminändring gjord eller behövd.
-
-       Två av Vilmers sex uttryckligen tillhandahållna kategoribilder
-       verifierades bild-för-bild matcha en RIKTIG, redan existerande
-       seriekort-identitet exakt (se STATUS.md för hela
-       bildinventeringstabellen, inkl. de fyra som INTE användes och
-       varför): Magic Farmers (`D10-buds-kategoribild.png`, visar
-       bokstavligen "MAGIC FARMERS"-märkta påsar). Ersätter den tidigare
-       "hämta första slumpmässiga live-produktbild"-mekanismen (Vilmers
-       egen instruktion: undvik det när en uttryckligt utvald
-       kategoribild finns) med en statisk, i HTML:en inbäddad bild --
-       serverad direkt från samma GitHub Pages-deploy som CSS/JS, inget
-       separat nätverksanrop vid sidladdning.
-
-       Helhets-runda 2026-09-08 (se STATUS.md, "Populära serier --
-       varumärke kontra serie"): Vilmer klargjorde uttryckligen att
-       Faraoh och Hero är VARUMÄRKEN (tredjeparts-/partnermärken vi
-       säljer), inte Hazeys egna "serier" -- de ska INTE längre ligga i
-       Populära serier. `assets/series/faraoh.jpg` (från föregående
-       omgång) refereras alltså inte längre härifrån -- filen rörs inte
-       (kan behövas för en framtida varumärkes-yta), bara denna
-       sektions urval ändras. Kvar som RIKTIGA serier: Magic Sauce,
-       Nano-11, Magic Farmers, Tatra Hemp -- alla fyra bekräftat riktiga
-       Nyehandel-kategorier med real produktdata, se filter nedan.
-
-       Uttömmande omprövad denna omgång (sitemap.xml, ALLA ~55 riktiga
-       kategori-slugs inkl. olänkade "-ny"/"hazey-v2"-arbetskategorier,
-       plus fritextsökning i hela produktkatalogen): INGEN kategori
-       eller produkt med namnet "THCaB"/"THCbA"/"D10" existerar
-       NÅGONSTANS på skarpa sajten. "THC-X" existerar som ETT enda
-       riktigt produktnamn ("Vape - THCX 19% - Core - 2ml") men ligger
-       under en olänkad, pågående ombyggnadskategori ("Hazey V2" /
-       "vapes-ny") -- inte en riktig, dedikerad, länkbar seriedestination
-       än. Bygger INGEN av dessa fyra som platshållare med gissat
-       länkmål (uttryckligen förbjudet i uppdraget) -- flaggat i
-       slutrapporten som en öppen fråga till Vilmer, inte tyst
-       ignorerat eller gissat. */
-    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11", "Magic Farmers", "Tatra Hemp"];
-    var NH_PSER_BRANDS_NOT_SERIES = ["Faraoh", "Hero"];
-    var NH_PSER_STATIC_IMG = {
-      "Magic Farmers": "series/magic-farmers.jpg"
+       Bilder: sex av Vilmer denna omgång UTTRYCKLIGEN godkända
+       kategoribilder, använda exakt som givna oavsett vilket varumärke/
+       vilken förpackning som råkar synas i dem (uttrycklig instruktion,
+       ersätter förra omgångens försiktighet där två av dem avvisades av
+       just den anledningen -- se STATUS.md-historiken för den tidigare
+       bedömningen). Nedskalade lokalt till assets/series/*.jpg (480×480,
+       jpeg q80), originalfilerna utanför repot orörda. */
+    // Umbrella-slug per serie -- FÖRETRÄDE framför formatspecifika
+    // undersidor (m-s-vapes/m-s-buds/nano11-blommor). Rotorsaksfynd
+    // 2026-09-08 (curl-verifierat mot hazeyse.nyehandel.se): den
+    // tidigare "ta första gruppens group.series[namn]"-logiken (borttagen
+    // nedan) råkade plocka "m-s-vapes" (2 riktiga produkter) i stället
+    // för den fullständiga "magic-sauce"-kategorin (12 riktiga produkter,
+    // Vilmers bekräftade tal) -- ren DOM-iterationsordning avgjorde vilken
+    // som "vann" i group.series, inte vilken som faktiskt är rätt
+    // destination för ett seriekort. Nano-11/nano11-blommor råkade redan
+    // ge samma riktiga produktantal (8) oavsett vilken som vann, så buggen
+    // syntes bara på Magic Sauce -- men den explicita slug-prioriteringen
+    // här gör båda deterministiskt korrekta oavsett DOM-ordning framöver.
+    var NH_PSER_SERIE_SLUGS = {
+      "Magic Sauce": ["magic-sauce", "m-s-vapes", "m-s-buds"],
+      "Nano-11": ["nano-11", "nano11-blommor"]
     };
-    function nhPopularaSerierHtml(navData) {
-      var seen = {};
-      var series = [];
+    function nhSerieHref(navData, name) {
+      var slugs = NH_PSER_SERIE_SLUGS[name] || [];
+      // navData.bySlug: platt slug→href-karta över VARJE riktig nav-länk
+      // (js/18a-header-v2.js, nhBuildNavData) — den enda uppslagningen som
+      // hittar en "paraply"-slug utan eget format (t.ex. "magic-sauce",
+      // som aldrig hamnar i något groups[k].items, se kommentaren där).
+      for (var i = 0; i < slugs.length; i++) {
+        var href = navData.bySlug ? navData.bySlug[slugs[i]] : null;
+        if (href) return href;
+      }
+      // Fallback (bör inte behövas i praktiken): samma äldre, mindre
+      // exakta group.series-uppslagning som fanns innan denna fix, ifall
+      // Nyehandel någon gång byter bort de kända umbrella-sluggarna ovan.
+      var fallback = null;
       ["vape", "blomma", "hash"].forEach(function (g) {
-        var group = navData.groups[g];
-        Object.keys(group.series).forEach(function (name) {
-          if (seen[name]) return;
-          if (NH_PSER_BRANDS_NOT_SERIES.indexOf(name) > -1) return; // varumärke, inte serie -- se kommentar ovan
-          seen[name] = true;
-          series.push({ label: name, href: group.series[name] });
-        });
+        if (fallback) return;
+        fallback = navData.groups[g].series[name] || null;
       });
-      if (!series.length) return "";
-      series.sort(function (a, b) {
-        var ia = NH_PSER_PRIORITY.indexOf(a.label);
-        var ib = NH_PSER_PRIORITY.indexOf(b.label);
-        if (ia === -1 && ib === -1) return 0; // stable: keep natural order for the rest
-        if (ia === -1) return 1;
-        if (ib === -1) return -1;
-        return ia - ib;
+      return fallback;
+    }
+    var NH_PSER_CARDS = [
+      { name: "Magic Sauce", img: "series/magic-sauce.jpg", serie: "Magic Sauce", liveCount: true },
+      { name: "Nano-11", img: "series/nano-11.jpg", serie: "Nano-11", liveCount: true },
+      { name: "THC-X", img: "series/thc-x.jpg", href: "/sv/products/vape-thcx-19-core-2ml" },
+      { name: "THCbA", img: "series/thcba.jpg" },
+      { name: "THCaB", img: "series/thcab.jpg" },
+      { name: "D10", img: "series/d10.jpg" }
+    ];
+    function nhPopularaSerierHtml(navData) {
+      var serieHrefs = {};
+      Object.keys(NH_PSER_SERIE_SLUGS).forEach(function (name) {
+        serieHrefs[name] = nhSerieHref(navData, name);
       });
+
       return '<section class="nh-pser section-gap" id="populara-serier">'
         + '  <div class="sec-head"><h2>Populära serier</h2></div>'
         + '  <div class="pser-row">'
-        + series.map(function (s) {
-            // Magic Farmers/Faraoh: Vilmer-utvald, bild-för-bild verifierad
-            // statisk kategoribild (se kommentaren ovan NH_PSER_PRIORITY).
-            // Övriga serier: samma riktiga, live-hämtade produktfoto-
-            // mekanism (nhEnhanceWithRealPhotos) som redan fanns.
-            var staticImg = NH_PSER_STATIC_IMG[s.label];
-            var avatarAttrs = staticImg
-              ? ' data-static-photo="1" style="background-image:url(\'' + NH_ASSET_BASE + staticImg + '\')"'
-              : ' data-photo-href="' + s.href + '"';
-            var avatarInner = staticImg ? "" : NH_ROUTE_ICONS.serie;
-            var avatarClass = staticImg ? "pser-avatar has-photo" : "pser-avatar";
-            return '<a class="pser-item nh-reveal" href="' + s.href + '" data-count-href="' + s.href + '">'
-              + '<span class="' + avatarClass + '"' + avatarAttrs + '>' + avatarInner + '</span>'
-              + '<span class="pser-name">' + s.label + '</span>'
-              + '<span class="pser-n"></span></a>';
+        + NH_PSER_CARDS.map(function (c) {
+            var href = c.serie ? (serieHrefs[c.serie] || null) : (c.href || null);
+            var avatar = '<span class="pser-avatar has-photo" style="background-image:url(\''
+              + NH_ASSET_BASE + c.img + '\')"></span>';
+            var countAttr = (c.liveCount && href) ? ' data-count-href="' + href + '"' : "";
+            var inner = avatar
+              + '<span class="pser-name">' + c.name + '</span>'
+              + '<span class="pser-n"></span>';
+            // Utan riktig destination (THCaB/THCbA/D10 i dag): rendera ett
+            // semantiskt icke-klickbart kort med SAMMA visuella markup --
+            // aldrig href="#", tom sträng eller en irrelevant kategori.
+            return href
+              ? '<a class="pser-item nh-reveal" href="' + href + '"' + countAttr + '>' + inner + '</a>'
+              : '<div class="pser-item pser-item--soon nh-reveal" aria-disabled="true">' + inner + '</div>';
           }).join("")
         + '  </div>'
         + '</section>';
     }
 
-    /* Hämtar en riktig kategori-/serie-sida och plockar ut FÖRSTA riktiga
-       produktbilden — samma beprövade mönster som js/10-product-sections.js.
-       Progressiv förbättring: ikon visas direkt, byts tyst mot äkta foto.
-       Samma fetch återanvänds för att räkna fram RIKTIGT produktantal till
-       ".pser-n" (inga hårdkodade mocktal) — en serie utan produkter döljs. */
+    /* Räknar fram RIKTIGT produktantal för Populära serier-kort som har
+       en verifierad, riktig destination (data-count-href, se
+       nhPopularaSerierHtml) — samma beprövade fetch-mönster som
+       js/10-product-sections.js. Inga hårdkodade mocktal. Kort UTAN
+       data-count-href (THC-X/THCbA/THCaB/D10 i dag, se kommentaren ovan
+       nhPopularaSerierHtml) rörs inte här — deras ".pser-n" förblir tom,
+       men kortet självt döljs ALDRIG av den anledningen (till skillnad
+       från ett kort som HAR en count-källa men får 0 träffar — det
+       antas då sakna riktiga produkter och döljs helt). */
     function nhEnhanceWithRealPhotos(root) {
-      var targets = root.querySelectorAll("[data-photo-href]");
       var countTargets = root.querySelectorAll("[data-count-href]");
-      if (!targets.length && !countTargets.length) return;
+      if (!countTargets.length) return;
       var cache = {};
       function fetchPage(href) {
         if (cache[href]) return cache[href];
@@ -3232,21 +3228,6 @@
           .catch(function () { return null; });
         return cache[href];
       }
-      targets.forEach(function (el) {
-        fetchPage(el.getAttribute("data-photo-href")).then(function (doc) {
-          if (!doc) return;
-          var img = doc.querySelector(".product-card__image img, .product-card img");
-          var src = img ? (img.getAttribute("src") || img.getAttribute("data-src")) : null;
-          if (!src) return;
-          if (el.classList.contains("route-icon")) {
-            el.parentNode.style.backgroundImage = "url('" + src + "')";
-            el.parentNode.classList.add("visual", "has-photo");
-            return;
-          }
-          el.style.backgroundImage = "url('" + src + "')";
-          el.classList.add("has-photo");
-        });
-      });
       countTargets.forEach(function (el) {
         fetchPage(el.getAttribute("data-count-href")).then(function (doc) {
           var n = doc ? doc.querySelectorAll(".product-card").length : 0;
