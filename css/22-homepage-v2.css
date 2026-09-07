@@ -1287,6 +1287,73 @@
 .guide.guide-dark .skip a { color: #e4d1bf; }
 .guide.guide-dark .g-card { border-color: rgba(228,209,191,.2); }
 .guide.guide-dark .g-card:hover { border-color: #e4d1bf; }
+/* Kort utan riktig destination (THCaB/THCbA, se nhBuildKunskapCards) —
+   samma "samma visuella utseende, ingen klick-affordance"-mönster som
+   redan etablerat för Populära serier (.pser-item--soon). */
+.g-card.g-card--soon { cursor: default; pointer-events: none; }
+/* "Läs om THC-X"/"Läs om D10" — sekundär rad under 2×2-grid:et. */
+.guide-more { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
+.guide-more-link {
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12.5px; font-weight: 650; color: #e4d1bf; text-decoration: none;
+}
+.guide-more-link:hover { color: #fff; }
+.guide-more-link--soon { color: rgba(228,209,191,.55); cursor: default; pointer-events: none; }
+
+/* ── "Guider & aktuellt" (SEO-paritetsrunda 2026-09-08) — ersätter den
+   isolerade "THCA med flera"-textväggen + frikopplade "Till Butiken"-
+   knappen med en sammanhängande sektion. Samma ljusa kortspråk som
+   trustblock/reviews/signup (sand-till-cream-gradient, 18px radie). ── */
+.nh-guides.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
+.nh-guides .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.nh-guides .sec-head h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 19px; color: #2c3620; margin: 0;
+}
+.nh-guides .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; }
+.nh-guides-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+@media (min-width: 861px) { .nh-guides-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; } }
+.nh-guide-card {
+  display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 14px;
+  padding: 16px; text-decoration: none;
+  transition: transform 200ms cubic-bezier(.22,.61,.36,1), box-shadow 200ms cubic-bezier(.22,.61,.36,1), border-color 200ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-guide-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px -10px rgba(44,54,32,.18); border-color: #e4d1bf; }
+.nh-guide-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #96683f; background: #faf3e9; border-radius: 999px; padding: 3px 9px; margin-bottom: 8px;
+}
+.nh-guide-card h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 15.5px; color: #2c3620; margin: 0 0 5px;
+}
+.nh-guide-card p { margin: 0 0 10px; font-size: 12px; line-height: 1.5; color: #5f5c50; }
+.nh-guide-cta { display: block; font-size: 12px; font-weight: 650; color: #96683f; }
+/* Legacy, redan publicerad SEO-text ("THCA med flera" + "Vad är THCA?"),
+   flyttad (inte kopierad, se nhInitGuides) hit och kompakterad i en
+   riktig, semantisk <details> -- redan i initial renderad DOM (ingen
+   klick-krävd fetch), bara visuellt hopfälld tills besökaren öppnar den. */
+.nh-guide-legacy {
+  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
+  border: 1px solid #ebe1d1; border-radius: 14px; padding: 4px 16px;
+}
+.nh-guide-legacy summary {
+  cursor: pointer; padding: 12px 0; font-size: 13px; font-weight: 650; color: #96683f;
+  list-style: none;
+}
+.nh-guide-legacy summary::-webkit-details-marker { display: none; }
+.nh-guide-legacy summary::before { content: "+ "; }
+.nh-guide-legacy[open] summary::before { content: "– "; }
+.nh-guide-legacy-body {
+  padding-bottom: 16px; font-size: 13px; line-height: 1.65; color: #5f5c50;
+}
+.nh-guide-legacy-body h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 17px; color: #2c3620; margin: 0 0 8px;
+}
+.nh-guide-legacy-body h3 { font-size: 14px; font-weight: 650; color: #2c3620; margin: 14px 0 4px; }
+.nh-guide-legacy-body p { margin: 0 0 10px; }
+.nh-guide-legacy-body img { max-width: 100%; height: auto; border-radius: 10px; }
 
 /* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
    STATUS.md om varför inga citat är med. ── */
@@ -1494,6 +1561,29 @@
      uppdrags scope) så `.details` fyller det extra utrymmet och knappen
      alltid hamnar precis vid kortets nedre kant, oavsett namnlängd. */
   .nh-featured-row .details { flex: 1; }
+  /* SEO-paritetsrunda 2026-09-08: facit visar produktnamnet på 2-3 rader,
+     inte avklippt efter en rad. Sitewide-regeln `.pl-list .details .name`
+     (css/18-mobil-pass-...) klampar redan till 2 rader för ALLA
+     produktkort på hela sajten -- rör den INTE (delad av kategorisidor/
+     PDP, utanför detta uppdrags scope). Denna mer specifika selektor
+     (bara vår egen rad) höjer taket till 3 rader, matchar uppdragets
+     "två till tre läsbara rader"-krav utan att påverka andra sidor. */
+  .nh-featured-row .details .name {
+    -webkit-line-clamp: 3 !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+  }
+  /* Verklig decimal-betygssiffra (nhWatchRealRatingValues,
+     js/18b-homepage-v2.js) — facits "4,6 · 63 omdömen"-format i stället
+     för bara stjärnor+antal. Scopat till denna rad, rör inte
+     .nh-stars/.nh-stars__count:s delade bas-stil (css/16). */
+  .nh-featured-rating-val {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 650 !important;
+    color: #342f27 !important;
+    margin-left: 4px !important;
+  }
   /* Facit-kalibrering 2026-09-08: .card-ship (se css ovan, dold som
      grundläge) -- visas bara mobil-scopat denna omgång. */
   .nh-featured-row .nh-featured-ship { display: flex; margin-top: 0; }

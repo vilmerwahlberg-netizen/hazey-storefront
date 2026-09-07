@@ -315,6 +315,15 @@
     // ge samma riktiga produktantal (8) oavsett vilken som vann, så buggen
     // syntes bara på Magic Sauce -- men den explicita slug-prioriteringen
     // här gör båda deterministiskt korrekta oavsett DOM-ordning framöver.
+    // SEO-status (SEO-paritetsrunda 2026-09-08): dessa två umbrella-URL:er
+    // är AVSIKTLIGA Nyehandel-landningssidor, inte en tillfällig fallback --
+    // de är de rimliga framtida mottagarna för den gamla WordPress-sajtens
+    // (www.hazey.se) indexerade P0-URL:er `/produkt-kategori/alla-produkter/
+    // magic-sauce/` respektive `.../nano-11/` (se seo-data/URL-HUBB-
+    // MASTERPLAN.md + SEO-RADATA-ARKIV-2026-08.md). Filter-URL:er
+    // (`?filters=...`) ska ALDRIG ersätta dem som länkmål här -- Nyehandels
+    // robots.txt blockerar redan `/*?filters` från crawling, så en
+    // filterlänk vore osynlig för Google oavsett innehåll.
     var NH_PSER_SERIE_SLUGS = {
       "Magic Sauce": ["magic-sauce", "m-s-vapes", "m-s-buds"],
       "Nano-11": ["nano-11", "nano11-blommor"]
@@ -339,13 +348,16 @@
       });
       return fallback;
     }
+    // Ordning låst 2026-09-08 (SEO-paritetsrunda): Magic Sauce/THCaB/
+    // Nano-11/THCbA visas direkt (fyra kort i första mobilvyn), D10/THC-X
+    // nås via swipe -- uttrycklig instruktion denna omgång.
     var NH_PSER_CARDS = [
       { name: "Magic Sauce", img: "series/magic-sauce.jpg", serie: "Magic Sauce", liveCount: true },
-      { name: "Nano-11", img: "series/nano-11.jpg", serie: "Nano-11", liveCount: true },
-      { name: "THC-X", img: "series/thc-x.jpg", href: "/sv/products/vape-thcx-19-core-2ml" },
-      { name: "THCbA", img: "series/thcba.jpg" },
       { name: "THCaB", img: "series/thcab.jpg" },
-      { name: "D10", img: "series/d10.jpg" }
+      { name: "Nano-11", img: "series/nano-11.jpg", serie: "Nano-11", liveCount: true },
+      { name: "THCbA", img: "series/thcba.jpg" },
+      { name: "D10", img: "series/d10.jpg" },
+      { name: "THC-X", img: "series/thc-x.jpg", href: "/sv/products/vape-thcx-19-core-2ml" }
     ];
     function nhPopularaSerierHtml(navData) {
       var serieHrefs = {};
@@ -646,10 +658,47 @@
             rowEl.appendChild(outer);
           });
           if (window.nhInitCards) window.nhInitCards();
+          nhWatchRealRatingValues(rowEl);
         })
         .catch(function () {
           rowEl.parentNode.parentNode.hidden = true; // dölj hela sektionen, visa inget trasigt
         });
+    }
+    /* SEO-paritetsrunda 2026-09-08: facit visar ett numeriskt betyg
+       ("4,6 · 63 omdömen"), inte bara stjärnor+antal. Den RIKTIGA
+       decimalsiffran finns redan i DOM:en efter att js/07-ratings.js
+       (sajtens delade, sitewide betygsmekanism, initCardRatings/
+       nhRatPaint) asynkront fyllt kortets `.rating`-div — som ett
+       `title="4.6 av 5"`-attribut på den nyinsatta `.nh-stars`-spannen.
+       Rör INTE 07-ratings.js (sitewide, delad av alla produktkort på
+       hela sajten, utanför detta uppdrags scope) -- läser bara av
+       samma redan hämtade, riktiga data en gång till här, scopat till
+       ENDAST denna rad, och lägger till en synlig decimaltext bredvid
+       stjärnorna. Ingen ny fetch, ingen fabricerad siffra: om `.rating`
+       aldrig får riktig data (nätverksfel/inga omdömen) visas ingen
+       decimalsiffra, bara de redan befintliga stjärnorna+antalet. */
+    function nhWatchRealRatingValues(rowEl) {
+      var ratings = Array.prototype.slice.call(rowEl.querySelectorAll(".rating"));
+      if (!ratings.length) return;
+      var mo = new MutationObserver(function () {
+        ratings.forEach(function (r) {
+          if (r.__nhValDone) return;
+          var starsEl = r.querySelector(".nh-stars");
+          if (!starsEl) return;
+          r.__nhValDone = true;
+          var m = (starsEl.getAttribute("title") || "").match(/^([0-9.]+)/);
+          if (!m) return;
+          var val = document.createElement("span");
+          val.className = "nh-featured-rating-val";
+          val.textContent = parseFloat(m[1]).toFixed(1).replace(".", ",");
+          starsEl.insertAdjacentElement("afterend", val);
+        });
+        if (ratings.every(function (r) { return r.__nhValDone; })) mo.disconnect();
+      });
+      mo.observe(rowEl, { attributes: true, attributeFilter: ["class"], subtree: true });
+      // Timeout-städning: om vissa kort aldrig får riktig data (inga
+      // omdömen alls) ska observern inte leva kvar för evigt.
+      setTimeout(function () { mo.disconnect(); }, 8000);
     }
 
     /* ── "I rampljuset" (Spotlight), Fas 2 (2026-09-07) — placerad efter
@@ -735,79 +784,67 @@
         });
     }
 
-    /* ── "Snabb koll: vad är vad?" — FLYTTAR och FORMATERAR OM befintlig,
-       redan publicerad text (tar INTE bort innehåll, se regel i CLAUDE.md)
-       från "THCA med flera"-textblocket till kortformat. THCNM är
-       medvetet UTESLUTET ur den nya, mer synliga kort-sektionen —
-       cannabinoiden är juridiskt pausad (se STATUS.md, "juridik ej klar"),
-       så vi gör den INTE mer framträdande. Paragrafen ligger kvar orörd
-       där den redan var, bara inte kopierad hit.
-
-       Facit-kalibrering 2026-09-06 (se STATUS.md för fullständig
-       utredning): facit visar FYRA kort (THCA/HHC, THCB/THCBA, Magic
-       Sauce, Nano-11). Uttömmande sökt igenom HELA den riktiga sajten
-       (startsidans egna textblock + samtliga ~32 riktiga kategorisidor)
-       efter varje verkligt "Vad är X?"-textblock som finns publicerat:
-       endast TRE existerar (THCA, THCNM, Magic Sauce, alla på
-       startsidan) -- INGEN sådan text finns någonstans för Nano-11
-       eller THCB/THCBA. THCNM är juridiskt pausad (utesluten ovan,
-       oförändrat). Ett fjärde kandidat-textblock hittades på CBN-
-       kategorisidan ("Vad är CBN?...") men INNEHÅLLER uttryckliga
-       hälso-/effektpåståenden ("sömnfrämjande", "hälsofördelar",
-       "avslappning", "minska stress och ångest") -- att lyfta fram DEN
-       texten mer synligt här hade varit precis den typen av "starkare
-       påstående än facit" uppdraget uttryckligen förbjöd (facit gör
-       aldrig effekt-/hälsopåståenden i denna sektion), så den används
-       INTE. Resultatet blir alltså fortsatt TVÅ kort (samma antal som
-       innan denna omgång) -- en verifierad, INTE gissad, äkta
-       innehållsbegränsning, rapporterad i slutrapporten i stället för
-       att fyllas ut med påhittad text för Nano-11/THCB. */
-    function nhBuildKunskapFromRealContent(navData) {
-      var blocks = document.querySelectorAll(
+    /* ── "Snabb koll: vad är vad?" ──
+       SEO-paritetsrunda 2026-09-08: uppdraget vill uttryckligen se ett
+       fast 2×2-grid (THCaB, THCbA, Magic Sauce, Nano-11) plus en separat
+       "Läs om THC-X"/"Läs om D10"-rad — INTE längre "visa alla riktiga
+       'Vad är X?'-textblock som råkar finnas" (föregående omgångars
+       modell, som av samma anledning aldrig kunde visa mer än THCA/Magic
+       Sauce, se historik nedan). Eftersom bara Magic Sauce har ett
+       riktigt, redan publicerat "Vad är X?"-textblock på sajten (se
+       tidigare uttömmande sökning: INGEN sådan text finns för THCaB,
+       THCbA eller Nano-11 — THCaB/THCbA existerar inte ens som
+       kategori/produkt än) är de tre andra korten byggda med kort, saklig,
+       juridiskt försiktig, MEDVETET tunn text (ingen kemi-/legal-
+       specificering vi inte kan verifiera) i stället för att fabricera
+       fakta. THCA flyttas INTE längre hit (borttaget ur grid:et denna
+       omgång) — dess riktiga textblock lämnas därför OBERÖRT/synligt på
+       sin ursprungliga plats och ingår i stället i den nya "Guider &
+       aktuellt"-sektionen (se nhGuidesHtml). THCNM förblir uteslutet
+       (juridiskt pausad, oförändrat sedan tidigare). */
+    function nhBuildKunskapCards(navData) {
+      // Magic Sauce: enda kortet med riktig, redan publicerad källtext —
+      // samma flytta-inte-kopiera-mönster som tidigare (döljer originalets
+      // rubrik+stycke så texten inte visas två gånger), men matchar NU
+      // bara exakt "Magic Sauce" (inte en generisk "vad är"-scanning som
+      // annars också skulle råkat plocka upp THCA/THCNM).
+      var magicSauce = null;
+      document.querySelectorAll(
         ".store-startpage .template-components__text-editor, .store-startpage .template-components__columns"
-      );
-      var cards = [];
-      blocks.forEach(function (block) {
+      ).forEach(function (block) {
         block.querySelectorAll("h1,h2,h3,h4").forEach(function (h) {
-          var title = h.textContent.trim();
-          if (!/^vad är/i.test(title)) return;
-          if (/thcnm/i.test(title)) return; // juridik ej klar, se ovan — lämnas SYNLIG i original-läget
+          if (!/^vad är magic sauce/i.test(h.textContent.trim())) return;
           var p = h.nextElementSibling;
           while (p && p.tagName !== "P") p = p.nextElementSibling;
           if (!p) return;
-          cards.push({ title: title, text: p.textContent.trim(), href: nhKunskapHref(navData, title) });
-          // FLYTTAT, inte kopierat: original-rubriken/stycket döljs här så
-          // samma text inte visas två gånger på sidan (Vilmer 2026-08-31:
-          // "flytta och formatera om", inte duplicera).
+          magicSauce = { title: h.textContent.trim(), text: p.textContent.trim() };
           h.style.display = "none";
           p.style.display = "none";
         });
       });
-      return cards;
-    }
+      var magicSauceHref = nhSerieHref(navData, "Magic Sauce");
+      var nano11Href = nhSerieHref(navData, "Nano-11");
 
-    /* Hittar en riktig länk för ett kunskapskort genom att matcha kortets
-       RUBRIK mot samma riktiga navigationsdata som resten av sidan redan
-       använder (footerLinks för formatlösa cannabinoid-landningssidor,
-       t.ex. THC-A; groups[*].series för seriesidor, t.ex. Magic Sauce) —
-       inget hårdkodat per kort, samma mekanism återanvänds automatiskt
-       om ett framtida riktigt "Vad är X?"-textblock tillkommer. Returnerar
-       null (inte "#") om inget riktigt mål hittas — kortet renderas då
-       utan länk, se nhKunskapHtml. */
-    function nhKunskapHref(navData, title) {
-      var t = title.toLowerCase();
-      var cannaHit = navData.footerLinks.filter(function (it) {
-        return t.indexOf(it.slug) > -1 || t.indexOf(it.label.toLowerCase()) > -1;
-      })[0];
-      if (cannaHit) return cannaHit.href;
-      var groups = navData.groups;
-      for (var g in groups) {
-        var series = groups[g].series;
-        for (var name in series) {
-          if (t.indexOf(name.toLowerCase()) > -1) return series[name];
+      return [
+        {
+          title: "Vad är THCaB?",
+          text: "THCaB tillhör samma familj av cannabinoider som THCA. Vi har ännu inga produkter med THCaB i sortimentet — den här rutan uppdateras så snart det finns riktig information att visa.",
+          href: null
+        },
+        {
+          title: "Vad är THCbA?",
+          text: "THCbA tillhör samma familj av cannabinoider som THCB. Vi har ännu inga produkter med THCbA i sortimentet — den här rutan uppdateras så snart det finns riktig information att visa.",
+          href: null
+        },
+        magicSauce
+          ? { title: magicSauce.title, text: magicSauce.text, href: magicSauceHref }
+          : { title: "Vad är Magic Sauce?", text: "Läs mer om Magic Sauce-serien i sortimentet.", href: magicSauceHref },
+        {
+          title: "Vad är Nano-11?",
+          text: "Nano-11 är en av Hazeys egna serier. Se hela sortimentet och produktinformationen på kategorisidan.",
+          href: nano11Href
         }
-      }
-      return null;
+      ];
     }
 
     /* Den GAMLA flik-sektionen (Bästsäljare/Nyheter/Kampanjer + produktgrid,
@@ -822,52 +859,136 @@
       if (section) section.style.display = "none";
     }
 
-    /* ── "THCA med flera"-SEO-väggen (et_pb_text_10/_11, se
-       css/18-mobil-pass-...) får inte fortsätta DOMINERA startsidan
-       (uttrycklig instruktion denna omgång). Ingen riktig artikel-/
-       bloggfunktion finns publicerad på Nyehandel (verifierat: sitemap.xml
-       innehåller INGA /blog//artikel//guide-URL:er, bara statiska
-       /sv/page/*-sidor) -- att bygga en riktig "Guider & aktuellt"-
-       kortsektion med separata artikelposter/lästid hade krävt att
-       fabricera artikel-URL:er, vilket uppdraget uttryckligen förbjuder.
-       Detta är alltså en genuin, INTE gissad, innehållslucka -- flaggad i
-       slutrapporten, inte tyst ignorerad.
+    /* ── "Guider & aktuellt" ──
+       SEO-paritetsrunda 2026-09-08: ersätter den isolerade "THCA med
+       flera"-textväggen + den lösa, FRIKOPPLADE "Till Butiken"-knappen
+       med EN sammanhängande sektion. Två riktiga, verifierade
+       destinationer finns på sajten för detta ämnesområde (uttömmande
+       sökt, se historik i nhBuildKunskapCards/tidigare STATUS.md-
+       omgångar -- sitemap.xml innehåller INGA /blog//artikel/-URL:er,
+       bara statiska /sv/page/*-sidor):
+       - THCA-kategorin (/sv/categories/thca, verifierad 200) -- riktig,
+         aktiv, laglig kategori med egna produkter.
+       - FAQ (/sv/page/faq, verifierad 200, redan länkad från Snabb koll).
+       Visar ALLTID bara det antal kort som faktiskt har en verifierad
+       destination (uppdragets krav) -- just nu exakt två, ingen tredje
+       gissad/fabricerad.
 
-       Det som GÅR att göra utan att hitta på innehåll: minska textväggens
-       dominans utan att ta bort den (samma "ta aldrig bort befintligt
-       innehåll utan lov"-regel som CLAUDE.md redan slår fast, plus SEO-
-       texten/länken ska bevaras). Återanvänder EXAKT samma beprövade
-       teaser+"Läs mer"-mönster som redan finns för PDP:ns short-
-       description (js/04-pdp.js initPdpShortDesc, se
-       css/20-footer-v2-...css) -- samma idempotenta guard, samma
-       klamp-fade-teknik, bara ett nytt värdpar. */
-    function nhInitThcaWallReadMore() {
-      var host = document.querySelector(".et_pb_text_11 .et_pb_text_inner");
-      if (!host) return;
-      if (host.querySelector(".nh-sd-body")) return; // redan wrappad
-      if (host.scrollHeight < 200) return; // redan kort nog, ingen klamp behövs
+       Den befintliga, redan publicerade SEO-texten ("THCA med flera" +
+       "Vad är THCA?") TAS INTE BORT -- den flyttas (DOM-noder, inte en
+       kopia) in i en riktig, semantisk <details><summary>, redan i
+       initial renderad DOM (ingen klick-krävd fetch). Samma möjlighet
+       att läsa den fulla texten kvarstår, bara visuellt kompakterad.
+       Native <h1>-taggen i introt ("THCA med flera...") bytes till en
+       riktig <h2> under tiden -- ROTORSAK-FYND denna omgång: den
+       taggen var (innan denna fix) startsidans ENDA <h1> i den råa,
+       icke-JS-körda HTML:en, och blev en ANDRA, dold-bakom-styling
+       <h1> så fort vår egen hero-<h1> injicerades ovanpå -- ett äkta,
+       verifierat two-H1-problem (curl-verifierat mot hazeyse.nyehandel.se
+       2026-09-08), inte gissat. Fixat här eftersom vi ändå bygger om
+       exakt detta DOM-område.
 
-      var body = document.createElement("div");
-      body.className = "nh-sd-body nh-sd-clamped";
-      while (host.firstChild) body.appendChild(host.firstChild);
-      host.appendChild(body);
-
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "nh-sd-toggle";
-      btn.setAttribute("aria-expanded", "false");
-      btn.textContent = "Läs mer";
-      host.appendChild(btn);
-
-      btn.addEventListener("click", function () {
-        var clamped = body.classList.toggle("nh-sd-clamped");
-        btn.setAttribute("aria-expanded", clamped ? "false" : "true");
-        btn.textContent = clamped ? "Läs mer" : "Visa mindre";
-        if (clamped) {
-          try { host.scrollIntoView({ block: "nearest" }); } catch (e) {}
-        }
-      });
+       Den separata, FRIKOPPLADE "Till Butiken"-knappen (eget
+       `.template-components__html-editor`-block, href="/bestsellers")
+       verifierades dessutom vara en TRASIG länk (curl → 404) -- döljs
+       (INTE tas bort ur DOM:en) eftersom dess funktion (väg till
+       sortimentet) redan täcks av de nya, riktiga korten ovan. */
+    function nhGuidesHtml(navData) {
+      var thcaHref = (navData.bySlug && navData.bySlug["thca"]) || "/sv/categories/thca";
+      var cards = [
+        { tag: "Kategori", title: "THCA", text: "Bläddra hela vårt THCA-sortiment — vapes, buds och information om vad som gäller i Sverige.", cta: "Till THCA-sortimentet →", href: thcaHref },
+        { tag: "Support", title: "Vanliga frågor", text: "Svar på det som frågas mest om beställning, leverans och lagstatus.", cta: "Till FAQ:n →", href: "/sv/page/faq" }
+      ];
+      return '<section class="nh-guides section-gap" id="nh-guides">'
+        + '  <div class="sec-head"><div><h2>Guider &amp; aktuellt</h2>'
+        + '  <p>Läs mer innan du handlar — samlat på ett ställe.</p></div></div>'
+        + '  <div class="nh-guides-grid">'
+        + cards.map(function (c) {
+            return '<a class="nh-guide-card nh-reveal" href="' + c.href + '">'
+              + '<span class="nh-guide-tag">' + c.tag + '</span>'
+              + '<h3>' + c.title + '</h3>'
+              + '<p>' + c.text + '</p>'
+              + '<span class="nh-guide-cta">' + c.cta + '</span>'
+              + '</a>';
+          }).join("")
+        + '  </div>'
+        + '  <details class="nh-guide-legacy" id="nhGuideLegacy">'
+        + '    <summary>Mer om vårt sortiment</summary>'
+        + '    <div class="nh-guide-legacy-body" id="nhGuideLegacyBody"></div>'
+        + '  </details>'
+        + '</section>';
     }
+    function nhInitGuides() {
+      var legacyBody = document.getElementById("nhGuideLegacyBody");
+      if (!legacyBody || legacyBody.__nhDone) return;
+      legacyBody.__nhDone = true;
+
+      // 1) Introt ("THCA med flera...") -- fixar H1→H2 INNAN noden flyttas.
+      var introBlock = document.querySelector(".store-startpage .et_pb_text_10")
+        ? document.querySelector(".store-startpage .et_pb_text_10").closest(".template-components__text-editor")
+        : null;
+      if (introBlock) {
+        var h1 = introBlock.querySelector("h1");
+        if (h1) {
+          var h2 = document.createElement("h2");
+          h2.innerHTML = h1.innerHTML;
+          h1.parentNode.replaceChild(h2, h1);
+        }
+        while (introBlock.firstChild) legacyBody.appendChild(introBlock.firstChild);
+        introBlock.style.display = "none";
+      }
+
+      // 2) "Vad är THCA?" (rubrik+stycke) -- ROTORSAK-FYND denna omgång:
+      // THCA/THCNM/Magic Sauce ligger som TRE h3+p-par EFTER VARANDRA
+      // inuti SAMMA native "#test"-columns-block (component-47 = text,
+      // component-46 = fabriksbilden) -- alltså exakt det block som
+      // `.template-components__columns:has(#test){display:none!important}`
+      // redan döljer HELT (se css/18-mobil-pass-...). Magic Sauce-texten
+      // har alltid kunnat läsas ändå (textContent fungerar oavsett CSS-
+      // display, se nhBuildKunskapCards), men en tidigare version av den
+      // HÄR funktionen hoppade uttryckligen över just detta block när den
+      // letade efter THCA (fel antagande att THCA/THCNM låg i separata
+      // block) -- THCA:s text blev därför ALDRIG flyttad, bara kvar dold.
+      // Fix: sök efter RUBRIKEN specifikt (inte hela blocket), flytta BARA
+      // den + dess stycke -- THCNM:s eget par, "Alla artiklar"-knappen och
+      // fabriksbilden i samma block lämnas HELT orörda och förblir dolda
+      // (juridiskt pausad cannabinoid, oförändrat).
+      var thcaHeading = Array.prototype.slice
+        .call(document.querySelectorAll(".store-startpage h1,.store-startpage h2,.store-startpage h3,.store-startpage h4"))
+        .filter(function (h) { return /^vad är thca\b/i.test(h.textContent.trim()); })[0];
+      if (thcaHeading) {
+        var thcaP = thcaHeading.nextElementSibling;
+        while (thcaP && thcaP.tagName !== "P") thcaP = thcaP.nextElementSibling;
+        legacyBody.appendChild(thcaHeading);
+        if (thcaP) legacyBody.appendChild(thcaP);
+      }
+
+      // 3) Den trasiga, frikopplade "Till Butiken"-knappen (href="/bestsellers",
+      // verifierad 404) -- döljs, ersätts funktionellt av korten ovan.
+      var brokenBtn = document.querySelector('.store-startpage .nh-btn-bar__btn[href="/bestsellers"]');
+      var brokenBar = brokenBtn ? brokenBtn.closest(".nh-btn-bar") : null;
+      var brokenBlock = brokenBar ? (brokenBar.closest(".template-components__html-editor") || brokenBar.parentElement) : null;
+      if (brokenBlock) brokenBlock.style.display = "none";
+      // Bonusfynd (curl-verifierat 2026-09-08): länken pekade mot
+      // "/bestsellers", som ger 404 -- en riktig, redan existerande bugg
+      // i det native innehållet, inte orsakad av oss. Hela blocket döljs
+      // ovan (dess funktion täcks nu av korten ovanför), men elementet
+      // ligger KVAR i DOM:en (hidden är aldrig detsamma som borttagen) --
+      // en dold `<a>` är fortfarande crawlbar, så vi rättar hrefen till en
+      // riktig, fungerande destination i stället för att lämna en trasig
+      // länk liggande för en eventuell crawler att hitta.
+      if (brokenBtn) brokenBtn.setAttribute("href", "/sv/categories/alla-produkter");
+    }
+    // "Läs om THC-X"/"Läs om D10" — sekundär rad UNDER 2×2-grid:et.
+    // THC-X: samma verifierade riktiga produktsida som Populära serier-
+    // kortet (nhPopularaSerierHtml) länkar till — enda riktiga
+    // destinationen, ingen ny gissad. D10: ingen riktig destination finns
+    // ännu (samma verifierade databegränsning som Populära serier-kortet),
+    // renderas icke-klickbart, samma mönster som där.
+    var NH_KUNSKAP_MORE = [
+      { title: "Läs om THC-X", href: "/sv/products/vape-thcx-19-core-2ml" },
+      { title: "Läs om D10", href: null }
+    ];
     function nhKunskapHtml(cards) {
       if (!cards.length) return "";
       return '<section class="nh-kunskap section-gap">'
@@ -880,16 +1001,25 @@
         + '    <p class="lede">Korta förklaringar av det som frågas mest om — och vad som är lagligt i Sverige just nu. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
         + '    <div class="guide-grid">'
         + cards.map(function (c) {
-            // Riktig länk om ett verkligt mål hittades (nhKunskapHref) --
-            // annars ett rent informativt kort utan `href="#"`, se
-            // uppdragets krav. Ingen kort-fabricerad länk.
+            // Riktig länk om ett verkligt mål finns -- annars ett rent
+            // informativt kort utan `href="#"`, se uppdragets krav. Ingen
+            // kort-fabricerad länk.
             var tag = c.href ? "a" : "div";
-            var hrefAttr = c.href ? ' href="' + c.href + '"' : "";
+            var hrefAttr = c.href ? ' href="' + c.href + '"' : ' aria-disabled="true"';
             // g-name som riktig <h3> (2026-09-07, SEO-krav: "riktiga
             // semantiska rubriker") i stället för en <span> -- underrubrik
             // till sektionens <h2>. Ren tag-ändring, .g-name-CSS:en är
             // redan taggnautral (klass-baserad), ingen visuell ändring.
-            return '<' + tag + ' class="g-card nh-reveal"' + hrefAttr + '><h3 class="g-name">' + c.title + '</h3><p>' + c.text + '</p></' + tag + '>';
+            var cls = "g-card nh-reveal" + (c.href ? "" : " g-card--soon");
+            return '<' + tag + ' class="' + cls + '"' + hrefAttr + '><h3 class="g-name">' + c.title + '</h3><p>' + c.text + '</p></' + tag + '>';
+          }).join("")
+        + '    </div>'
+        + '    <div class="guide-more">'
+        + NH_KUNSKAP_MORE.map(function (m) {
+            var tag = m.href ? "a" : "div";
+            var hrefAttr = m.href ? ' href="' + m.href + '"' : ' aria-disabled="true"';
+            var cls = "guide-more-link" + (m.href ? "" : " guide-more-link--soon");
+            return '<' + tag + ' class="' + cls + '"' + hrefAttr + '>' + m.title + ' →</' + tag + '>';
           }).join("")
         + '    </div>'
         + '  </div>'
@@ -1196,12 +1326,14 @@
       flexWrap.className = "nh-startpage-flex";
       flexWrap.innerHTML = nhPopularaSerierHtml(navData) + nhPopularaVagarHtml(navData);
 
-      // Övriga home-extra-sektioner, ordning enligt facit (uppmätt
-      // 2026-09-01, se PROTOTYP-INVENTERING.md): aura (befintlig, dold) →
-      // fortsätt där du slutade (dold) → bästsäljare → trust-block/
-      // "transparens" → kunskap → omdömen → nyhetsbrev. Trust-blocket låg
-      // FÖRE bästsäljare i föregående bygge — det var fel ordning.
-      var kunskapCards = nhBuildKunskapFromRealContent(navData);
+      // Övriga home-extra-sektioner. Ordning uppdaterad 2026-09-08
+      // (SEO-paritetsrunda, uppdragets egen prioritetslista): bästsäljare
+      // → trust-block/"transparens" → kunskap ("Snabb koll") → NY
+      // "Guider & aktuellt" (ersätter den gamla, isolerade THCA-väggens
+      // position långt nere vid FAQ — dess DOM-noder flyttas hit av
+      // nhInitGuides, se den funktionens kommentar) → omdömen →
+      // nyhetsbrev.
+      var kunskapCards = nhBuildKunskapCards(navData);
       var restWrap = document.createElement("div");
       restWrap.innerHTML = ''
         + '<section class="nh-aura-guide" id="aura-guiden" hidden data-status="juridik-ej-klar"></section>'
@@ -1210,6 +1342,7 @@
         + nhSpotlightHtml()
         + nhTrustBlockHtml()
         + nhKunskapHtml(kunskapCards)
+        + nhGuidesHtml(navData)
         + nhReviewsHtml()
         + nhNewsletterHtml();
 
@@ -1226,5 +1359,5 @@
       nhInitProductReviews(document);
       nhInitInactiveForms(document);
       nhHideSupersededTabsSection();
-      nhInitThcaWallReadMore();
+      nhInitGuides();
     }
