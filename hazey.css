@@ -8213,6 +8213,51 @@ body.checkout-page .checkout-items-summary .item .content {
   display: none !important;
 }
 
+/* (A2) "THCA med flera"-SEO-väggen — teaser + "Läs mer" (se
+   nhInitThcaWallReadMore, js/18b-homepage-v2.js) i stället för att låta
+   hela SEO-stycket dominera sidan. Samma klamp-fade-teknik som PDP:ns
+   redan godkända .nh-sd-body/.nh-sd-toggle (css/20-footer-v2-...css),
+   bara omfärgad till denna sektions egna sand/cream-toner i stället för
+   PDP-köpkolumnens #eee7e1. Innehållet/länken är HELT oförändrat,
+   dolt/klampat är bara den visuella höjden. Gäller alla bredder (samma
+   resonemang som THCNM-döljningen ovan). */
+.et_pb_text_11 .et_pb_text_inner { position: relative; }
+.et_pb_text_11 .nh-sd-body.nh-sd-clamped {
+  max-height: 132px !important;
+  overflow: hidden !important;
+}
+.et_pb_text_11 .nh-sd-body.nh-sd-clamped::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 34px;
+  height: 64px;
+  background: linear-gradient(180deg, rgba(250,243,233,0) 0%, #fffdf8 92%);
+  pointer-events: none;
+}
+.et_pb_text_11 .nh-sd-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+  padding: 9px 20px !important;
+  background: transparent !important;
+  color: #96683f !important;
+  border: 1.5px solid rgba(150,104,63,.3) !important;
+  border-radius: 24px !important;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: background .15s ease, border-color .15s ease, color .15s ease !important;
+}
+.et_pb_text_11 .nh-sd-toggle:hover {
+  background: rgba(150,104,63,.08) !important;
+  border-color: #96683f !important;
+}
+
 /* (B) #Banner — var kant-i-kant på mobil. Runda hörn + sidluft + mjuk skugga
    så bannern blir en polerad kort-yta istället för att nudda skärmkanten. */
 .template-components__columns:has(#Banner) > .container {

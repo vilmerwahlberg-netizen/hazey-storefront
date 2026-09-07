@@ -3426,6 +3426,53 @@
       var section = tabs.closest(".template-components__html-editor") || tabs.closest("section") || tabs.parentElement;
       if (section) section.style.display = "none";
     }
+
+    /* ── "THCA med flera"-SEO-väggen (et_pb_text_10/_11, se
+       css/18-mobil-pass-...) får inte fortsätta DOMINERA startsidan
+       (uttrycklig instruktion denna omgång). Ingen riktig artikel-/
+       bloggfunktion finns publicerad på Nyehandel (verifierat: sitemap.xml
+       innehåller INGA /blog//artikel//guide-URL:er, bara statiska
+       /sv/page/*-sidor) -- att bygga en riktig "Guider & aktuellt"-
+       kortsektion med separata artikelposter/lästid hade krävt att
+       fabricera artikel-URL:er, vilket uppdraget uttryckligen förbjuder.
+       Detta är alltså en genuin, INTE gissad, innehållslucka -- flaggad i
+       slutrapporten, inte tyst ignorerad.
+
+       Det som GÅR att göra utan att hitta på innehåll: minska textväggens
+       dominans utan att ta bort den (samma "ta aldrig bort befintligt
+       innehåll utan lov"-regel som CLAUDE.md redan slår fast, plus SEO-
+       texten/länken ska bevaras). Återanvänder EXAKT samma beprövade
+       teaser+"Läs mer"-mönster som redan finns för PDP:ns short-
+       description (js/04-pdp.js initPdpShortDesc, se
+       css/20-footer-v2-...css) -- samma idempotenta guard, samma
+       klamp-fade-teknik, bara ett nytt värdpar. */
+    function nhInitThcaWallReadMore() {
+      var host = document.querySelector(".et_pb_text_11 .et_pb_text_inner");
+      if (!host) return;
+      if (host.querySelector(".nh-sd-body")) return; // redan wrappad
+      if (host.scrollHeight < 200) return; // redan kort nog, ingen klamp behövs
+
+      var body = document.createElement("div");
+      body.className = "nh-sd-body nh-sd-clamped";
+      while (host.firstChild) body.appendChild(host.firstChild);
+      host.appendChild(body);
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "nh-sd-toggle";
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = "Läs mer";
+      host.appendChild(btn);
+
+      btn.addEventListener("click", function () {
+        var clamped = body.classList.toggle("nh-sd-clamped");
+        btn.setAttribute("aria-expanded", clamped ? "false" : "true");
+        btn.textContent = clamped ? "Läs mer" : "Visa mindre";
+        if (clamped) {
+          try { host.scrollIntoView({ block: "nearest" }); } catch (e) {}
+        }
+      });
+    }
     function nhKunskapHtml(cards) {
       if (!cards.length) return "";
       return '<section class="nh-kunskap section-gap">'
@@ -3694,6 +3741,7 @@
       nhInitReviewsLive(document);
       nhInitInactiveForms(document);
       nhHideSupersededTabsSection();
+      nhInitThcaWallReadMore();
     }
     initFooter();
     initKampanjer();
