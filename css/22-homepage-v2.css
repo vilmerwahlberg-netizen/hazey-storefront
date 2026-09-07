@@ -389,6 +389,17 @@
    matchar facit (index.html rad 4315-4317) — se kommentaren i
    js/18b-homepage-v2.js (nhPopularaVagarHtml, route-icon-keep). */
 .nh-routes .route.visual.has-photo.route-icon-keep .route-icon { display: flex; }
+/* Facit-kalibrering 2026-09-07: gäller BÅDA dVp (index.html rad
+   3218-3233, populara-vagar) och mVp (rad 4306-4318, m-populara-vagar)
+   — inget av de fyra fotokorten visar någonsin en "FORMAT"-kicker-rad,
+   inte ens på desktop. Tidigare bara mobil-scopad (se @media
+   max-width:860px nedan) vilket lämnade kvar en extra textrad på
+   desktop efter att alla fyra kort fick riktiga curated foton
+   (route.visual). Flyttad hit så den gäller alla bredder. */
+.nh-routes .route.visual .route-kicker,
+.nh-routes .route.has-photo .route-kicker {
+  display: none;
+}
 .nh-routes .route.visual::before {
   content: "";
   position: absolute;
@@ -492,19 +503,9 @@
     line-height: normal !important;
     letter-spacing: normal !important;
   }
-  /* Facit-kalibrering 2026-09-06 (rotorsak till att korten var 129/126px
-     i stället för facits 112px, kvarstod efter typografifixen ovan):
-     facits RIKTIGA mobila kort-markup (index.html rad 4306-4318,
-     #m-populara-vagar .m-routes-grid) har INGEN kicker/eyebrow-etikett
-     alls när kortet har en fotobakgrund -- bara <h3>+<p>, ingen
-     "FORMAT"-rad. Vår implementation visar den alltid, vilket lade till
-     en hel extra textrad + dess 12px/4px-marginaler. Alla fyra kort får
-     redan riktiga foton (nhEnhanceWithRealPhotos), så .visual/.has-photo
-     täcker samtliga i praktiken. */
-  .nh-routes .route.visual .route-kicker,
-  .nh-routes .route.has-photo .route-kicker {
-    display: none;
-  }
+  /* route-kicker-döljningen (facit visar den aldrig på fotokort, varken
+     mobil eller desktop) flyttad till bas-regeln ovan, se kommentaren
+     där — gäller nu alla bredder i stället för att dubblera regeln här. */
   .nh-routes .route.visual::before {
     background: linear-gradient(0deg,
       rgba(35,37,19,.72) 0%, rgba(47,42,22,.25) 46%, rgba(94,60,27,.01) 78%);
