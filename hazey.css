@@ -11273,6 +11273,10 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   justify-content: flex-end;
 }
 .nh-routes .route.visual.has-photo .route-icon { display: none; }
+/* Undantag: CBD/CBG/CBN-kortet behåller sin ikon-badge ovanpå fotot,
+   matchar facit (index.html rad 4315-4317) — se kommentaren i
+   js/18b-homepage-v2.js (nhPopularaVagarHtml, route-icon-keep). */
+.nh-routes .route.visual.has-photo.route-icon-keep .route-icon { display: flex; }
 .nh-routes .route.visual::before {
   content: "";
   position: absolute;

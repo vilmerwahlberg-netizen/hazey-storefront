@@ -303,7 +303,24 @@
        4 kort: Vapes/Blommor/Hash + CBD,CBG&CBN (Vilmer 2026-08-31: ett
        vägkort som länkar till CBD-landningssidan är okej, skiljer sig från
        beslutet om ingen egen cannabinoid-FLIK i toppnav). Plus
-       framställnings-segment (se flagga i koden). ── */
+       framställnings-segment (se flagga i koden).
+
+       Bildkälla (rättad 2026-09-07, se den mid-turn-korrigeringen i
+       STATUS.md om kategoribilder): kontrollerat att Nyehandels egna
+       publika kategorisidor (alla-vapes/blommor-buds/hasch) INTE
+       exponerar någon riktig kategori-/banner-bild i DOM:en — enda
+       bilden inom de första 500px är sajtens genomgående mini-header-
+       logga, ingen per-kategori-bild. Beslutsgren 2 (se korrigeringen)
+       gäller alltså: ingen riktig Nyehandel-källa finns, så en
+       optimerad presentationsderivat under assets/routes/ används i
+       stället för den gamla nhEnhanceWithRealPhotos-mekanismen (som
+       hämtade FÖRSTA slumpmässiga produktfoto från kategorisidan —
+       exakt det uppdraget förbjuder när en uttryckligt vald bild finns).
+       Källa: facitets EGNA, redan lokalt ägda lifestyle-bilder
+       (index.html rad 3219-3231, category-{vapes,buds,hash,cbd}-v3.jpg)
+       — en redan sammanhållen bildfamilj (varm studio/naturstil, samma
+       färggradering), kopierade och nedskalade (800×800 jpeg q78) till
+       assets/routes/. Originalen i prototyp/assets/ är oförändrade. */
     function nhPopularaVagarHtml(navData) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
       var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
@@ -312,10 +329,10 @@
       var cbdHref = cbdEntry ? cbdEntry.href : "/sv/categories/cbd-group";
 
       var cards = [
-        { kicker: "Format", label: "Vapes & carts", sub: "Engångsvapes & carts", href: vapeHref, icon: "vape" },
-        { kicker: "Format", label: "Blommor", sub: "Filtrerbar lista", href: blommaHref, icon: "blomma" },
-        { kicker: "Format", label: "Hash", sub: "Piatella & mousse", href: hashHref, icon: "hash" },
-        { kicker: "Format", label: "CBD, CBG & CBN", sub: "Egen ingång", href: cbdHref, icon: "cbd" }
+        { kicker: "Format", label: "Vapes & carts", sub: "Engångsvapes & carts", href: vapeHref, icon: "vape", photo: "routes/vapes.jpg" },
+        { kicker: "Format", label: "Blommor", sub: "Filtrerbar lista", href: blommaHref, icon: "blomma", photo: "routes/blommor.jpg" },
+        { kicker: "Format", label: "Hash", sub: "Piatella & mousse", href: hashHref, icon: "hash", photo: "routes/hash.jpg" },
+        { kicker: "Format", label: "CBD, CBG & CBN", sub: "Egen ingång", href: cbdHref, icon: "cbd", photo: "routes/cbd.jpg", showIcon: true }
       ];
 
       // Framställning (Naturidentiskt/Semisyntetiskt) — terminologin är
@@ -337,8 +354,17 @@
         + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
         + '  <div class="routes-grid">'
         + cards.map(function (c) {
-            return '<a class="route nh-reveal" href="' + c.href + '">'
-              + '<div class="route-icon" data-photo-href="' + c.href + '">' + NH_ROUTE_ICONS[c.icon] + '</div>'
+            var bg = ' style="background-image:url(\'' + NH_ASSET_BASE + c.photo + '\')"';
+            // Facit (index.html rad 4306-4318): endast CBD/CBG/CBN-kortet
+            // behåller en liten ikon-badge ovanpå fotot (de andra tre har
+            // ingen), troligen för att CBD/CBG/CBN är en cannabinoid-grupp,
+            // inte ett fysiskt format som de andra tre — .route-icon-keep
+            // är den enda undantagsklassen från den generella
+            // has-photo→dölj-ikon-regeln (css/22-homepage-v2.css).
+            var iconCls = c.showIcon ? " route-icon-keep" : "";
+            var iconHtml = c.showIcon ? '<div class="route-icon">' + NH_ROUTE_ICONS[c.icon] + '</div>' : "";
+            return '<a class="route visual has-photo nh-reveal' + iconCls + '" href="' + c.href + '"' + bg + '>'
+              + iconHtml
               + '<div class="route-kicker">' + c.kicker + '</div><h3>' + c.label + '</h3>'
               + '<p class="route-sub">' + c.sub + '</p></a>';
           }).join("")
