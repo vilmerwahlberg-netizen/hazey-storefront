@@ -913,7 +913,11 @@
             // uppdragets krav. Ingen kort-fabricerad länk.
             var tag = c.href ? "a" : "div";
             var hrefAttr = c.href ? ' href="' + c.href + '"' : "";
-            return '<' + tag + ' class="g-card nh-reveal"' + hrefAttr + '><span class="g-name">' + c.title + '</span><p>' + c.text + '</p></' + tag + '>';
+            // g-name som riktig <h3> (2026-09-07, SEO-krav: "riktiga
+            // semantiska rubriker") i stället för en <span> -- underrubrik
+            // till sektionens <h2>. Ren tag-ändring, .g-name-CSS:en är
+            // redan taggnautral (klass-baserad), ingen visuell ändring.
+            return '<' + tag + ' class="g-card nh-reveal"' + hrefAttr + '><h3 class="g-name">' + c.title + '</h3><p>' + c.text + '</p></' + tag + '>';
           }).join("")
         + '    </div>'
         + '  </div>'
