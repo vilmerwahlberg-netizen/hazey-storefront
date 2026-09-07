@@ -1155,6 +1155,19 @@
   border: 1px solid #ebe1d1; border-radius: 10px; padding: 10px 12px;
 }
 .nh-tb-points svg { width: 15px; height: 15px; flex: none; color: #6f7a52; margin-top: 1px; }
+/* .nh-tb-groups (2026-09-07): Transparens/Leverans-uppdelning, se
+   kommentaren i js/18b-homepage-v2.js (nhTrustBlockHtml). Staplade på
+   mobil, sida vid sida på desktop -- samma .nh-tb-points-lista återanvänds
+   oförändrat inuti varje grupp (redan 1/2-kolumns-responsiv). */
+.nh-tb-groups { display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+.nh-tb-group__label {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: #96683f; margin-bottom: 8px;
+}
+@media (min-width: 861px) {
+  .nh-tb-groups { flex-direction: row; gap: 28px; }
+  .nh-tb-group { flex: 1; min-width: 0; }
+}
 
 /* ── "Snabb koll: vad är vad?" — .guide/.guide-grid/.g-card (samma
    komponent som Aura-guiden delar när den ev. slås på), .guide-dark är en

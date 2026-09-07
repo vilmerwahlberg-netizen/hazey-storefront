@@ -550,6 +550,22 @@
        täcker punkterna nedan (leveransgaranti/diskretion/spårbarhet):
        /sv/page/kop-och-leveransvillkor (verifierat 200, riktig
        köp-/leveransvillkorssida). */
+    /* ÄNDRAT 2026-09-07 (större homepage-runda): trustblocket hade en
+       rubrik/ingress som lovade "innehåll och ursprung" men alla fyra
+       punkter var uteslutande leveransfokuserade -- ett genuint innehålls-
+       /rubrikmissförhållande, inte bara en visuell fråga. Delat i två
+       tydligt namngivna grupper (Transparens/Leverans) per uppdragets
+       progressiva trust-modell, i stället för att bygga en helt ny
+       sektion. Transparens-punkterna är medvetet BARA två och BARA sådant
+       som är verifierat sant: (1) innehåll/styrka anges verifierat på
+       riktiga produktsidor (t.ex. "22%" upprepat på en riktig THCA-
+       produkts PDP); (2) samma juridiska påstående som redan används
+       ordagrant i den riktiga FAQ:n ("Vi säljer endast cannabinoider som
+       är lagliga i Sverige"), inte en ny formulering. INGET om analys-
+       certifikat/batch-koppling -- redan tidigare konstaterat att ingen
+       tillförlitlig datakälla finns för det (se STATUS.md/CLAUDE.md),
+       skrivs därför inte in. Leverans-punkterna är oförändrade (samma
+       fyra som innan), bara omgrupperade under en egen etikett. */
     function nhTrustBlockHtml() {
       return '<section class="nh-trustblock section-gap">'
         + '  <div class="nh-tb-inner">'
@@ -558,12 +574,24 @@
         + '    <a class="nh-tb-link" href="/sv/page/kop-och-leveransvillkor">'
         + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
         + '      Läs våra köp- och leveransvillkor</a>'
-        + '    <ul class="nh-tb-points">'
-        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
-        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
-        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Spårbar leverans från Sverige</li>'
-        + '      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Svenskt bolag, sedan 2020</li>'
-        + '    </ul>'
+        + '    <div class="nh-tb-groups">'
+        + '      <div class="nh-tb-group">'
+        + '        <div class="nh-tb-group__label">Transparens</div>'
+        + '        <ul class="nh-tb-points">'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Innehåll och styrka anges på varje produktsida</li>'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Vi säljer endast cannabinoider som är lagliga i Sverige</li>'
+        + '        </ul>'
+        + '      </div>'
+        + '      <div class="nh-tb-group">'
+        + '        <div class="nh-tb-group__label">Leverans</div>'
+        + '        <ul class="nh-tb-points">'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Spårbar leverans från Sverige, aldrig gränsöverskridande</li>'
+        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Svenskt bolag, sedan 2020</li>'
+        + '        </ul>'
+        + '      </div>'
+        + '    </div>'
         + '  </div>'
         + '</section>';
     }
