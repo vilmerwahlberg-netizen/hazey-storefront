@@ -3258,3 +3258,87 @@ post i en SEPARAT, tydligt motiverad commit (uppdragets egen regel).
 **Inte rört:** desktop-CSS (verifierat bit-för-bit identiskt för alla
 touched-filer utom bildkällorna, se motivering ovan), live tema
 3/tema 5, Nyehandel-admin, PUBLICERA aldrig klickad.
+
+## 2026-09-07 — Stor homepage-runda: mobil färdigställning + desktop (PÅGÅENDE)
+
+Startat den stora, sammanhängande omgången med två huvudleveranser:
+(1) färdigställ mobilstartsidan till en presentabel ~90-95%-version,
+(2) bygg därefter den första kompletta desktopversionen. Detta är EN
+delrapport mitt i Fas 1 (mobil), inte slutrapporten — fortsätter i
+kommande commits. Fyra separata, committade delsteg hittills:
+
+**1. Populära serier — rättad brand/serie-korrekthet + gap-bugg
+(commit fbd00a1).** Faraoh och Hero är varumärken, inte serier —
+exkluderade via nytt `NH_PSER_BRANDS_NOT_SERIES`-filter
+(js/18b-homepage-v2.js). Kvarvarande 4 verifierat riktiga serier:
+Magic Sauce, Nano-11, Magic Farmers, Tatra Hemp. Uttömmande
+omprövat mot HELA sitemap.xml (~55 riktiga kategori-slugs) + full
+produktnamnssökning: THCaB/THCbA/D10 finns INTE någonstans på sajten
+(varken kategori eller produktnamn). THC-X finns som EXAKT en riktig
+produkt ("Vape - THCX 19% - Core - 2ml") men under en olänkad,
+pågående "Hazey V2"/"vapes-ny"-arbetskategori — inte en riktig,
+länkbar seriedestination. **Öppen fråga till Vilmer:** ska THC-X
+(och i så fall länkad till vapes-ny-kategorin, trots att den inte är
+länkad i nav) tas med som en femte serie, eller vänta tills en riktig
+kategori finns? THCaB/THCbA/D10 byggs INTE som platshållare — ingen
+gissad länk. Samtidigt rotorsakad och fixad: `.nh-pser.section-gap`
+hade en kvarvarande `padding-bottom:8px` (bas-shorthanden) som
+staplade på den redan korrekta `margin-bottom:15px`, gav 23px i
+stället för facits 15px mellan Populära serier och Populära vägar.
+
+**2. Populära vägar — sammanhållen bildfamilj i stället för
+slumpmässiga produktfoton (commit 385ea3f + eebab08).** Verifierat
+att Nyehandels publika kategorisidor (alla-vapes/blommor-buds/hasch)
+INTE exponerar någon riktig kategori-/bannerbild i DOM — enda bilden
+är sajtens genomgående mini-header-logga. Beslutsgren 2 (mid-turn-
+korrigeringen om kategoribilder) gäller alltså: använder facitens
+egna, redan sammanhållna lifestyle-bilder (category-{vapes,buds,hash,
+cbd}-v3.jpg, index.html rad 3219-3231), nedskalade till
+assets/routes/*.jpg (800×800, jpeg q78). Portat facitens exakta
+undantag: CBD/CBG/CBN-kortet behåller sin lövikon-badge ovanpå fotot,
+de tre andra korten har ingen (matchar facits riktiga markup exakt).
+Följdfix: "FORMAT"-kicker-döljningen för fotokort var av misstag bara
+mobil-scopad — flyttad till en bas-regel så den gäller alla bredder
+(facits BÅDA träd, dVp och mVp, visar aldrig kickern på fotokort).
+Verifierat 0px overflow och korrekt rendering vid 393px OCH 1440px.
+
+**3. Bästsäljare — riktig lagerstatus-badge (commit 857c365).**
+Bästsäljarraden hämtas redan via `?sort=in-stock` och tar de fyra
+första — "I lager" är därför sant, inte gissat, för just dessa kort.
+Övrig datahierarki (bild/varumärke/köp-mer-betala-mindre-badge/betyg/
+recensionsantal/namn/pris/rätt köp-CTA) ärvs redan automatiskt via
+kloningen av det riktiga `.product-card`-elementet. Jämförelsepris/
+analysbadge/naturidentiskt-semisyntetiskt-klassificering medvetet
+INTE tillagt — ingen tillförlitlig datakälla för de två förstnämnda
+bland de fyra aktuella bästsäljarna, och naturidentiskt/semisyntetiskt-
+terminologin är fortfarande en uttryckligen olöst fråga till Vilmer
+(se CLAUDE.md) som inte ska låsas fast i ny kod.
+
+**4. THCNM-blocket borttaget helt från synliga startsidan (commit
+323a29e).** Uttrycklig instruktion denna omgång, ersätter en tidigare
+bedömning (harmonisera visuellt, behåll synlig eftersom cannabinoiden
+är juridiskt pausad). Det native "Vad är THCNM?"-blocket
+(`.template-components__columns:has(#test)`, component-columns med
+textkolumn + bildkolumn + "Alla artiklar"-knapp) döljs nu helt
+(`display:none`) på ALLA bredder. Ingen Nyehandel-adminändring gjord
+(kan inte göras här) — dolt i reskin-CSS:en. Ingen artikel/URL borttagen:
+innehållet finns kvar i DOM:en (bara dolt), Snabb koll-korten
+(`nhBuildKunskapFromRealContent`) fortsätter fungera identiskt eftersom
+dolda element fortfarande är fullt query:bara via JS — verifierat
+(2 kort byggs korrekt, både 393px och 1440px).
+
+**Öppen adminstädning (dokumenteras, INTE utförd av oss):** motsvarande
+native "Vad är THCNM?"-block bör tas bort/städas i tema 6:s EGEN admin
+innan en framtida publicering av tema 6 — annars ligger det dolda
+native blocket kvar overksamt i admin-konfigurationen. Rör aldrig tema 3.
+
+**Kvarstår i Fas 1** (mobil ~90-95%-målet): hero-karusellarkitektur,
+trust/transparens-konsolidering, Snabb koll-utökning (blockerad av
+samma THCaB/THCbA-datalucka ovan), Verifierade omdömen vidare-arbete,
+Nyhetsbrev slutpolish, "THCA med flera"-väggen → "Guider & aktuellt"
+(kompakt artikelsektion, näst på tur), FAQ-tillgänglighetskoll,
+footer-verifiering. Därefter Fas 2 (Spotlight) och Fas 3 (hela
+desktop-bygget). `tests/golden-impl` INTE uppdaterad än — enligt
+uppdragets egen regel uppdateras den sist, i en separat commit, efter
+att förbättringarna är bevisade. Tema 3/5 opåverkade genomgående,
+ingen Nyehandel-adminändring, PUBLICERA aldrig klickad.
