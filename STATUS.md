@@ -2934,3 +2934,172 @@ pushade till `dev`.
 Bästsäljare, omdömen, nyhetsbrev, SEO/artikel, FAQ, footer, desktop-CSS
 (verifierat 1440px bit-för-bit identiskt), live tema 3/tema 5,
 Nyehandel-admin, PUBLICERA aldrig klickad.
+
+## 2026-09-07 — Nästa avgränsade mobilpaket 4: Verifierade omdömen + Nyhetsbrev
+
+### A. Verifierade omdömen — datagranskning (löser den gamla business-unit-id-frågan)
+
+**1. Vilken integration som redan laddas i Head-fältet:** verifierat
+LIVE mot skarpa sajten (`hazeyse.nyehandel.se`, utan `?preview=`,
+nätverksanrop inspekterade): en Trustpilot "Mini"-TrustBox
+(`templateId=53aa8807dec7e10d38f59f32`, endast stjärnor+TrustScore,
+INGA citat), `businessunitId=6479dc28f0b041b3c79af588`.
+
+**2. Riktig Business Unit:** samma id (`6479dc28f0b041b3c79af588`) --
+BEKRÄFTAT som det RIKTIGA, aktiva. Löser den sedan tidigare öppna
+frågan (STATUS.md, "Trustpilot business-unit-id stämmer inte överens
+mellan två block"): det andra id:t (`6513e1a93f98d9001a6cb9b0`,
+`blocks/testimonials-section.html`) är INTE live någonstans, troligen
+en felaktig/gammal kvarleva i en aldrig inklistrad, dormant blockfil.
+Filen rörs inte (utanför scope), men frågan är besvarad här.
+
+**3. Officiell TrustBox för citat:** testade den officiella "Review
+Carousel"-mallen (`templateId=54ad5defc6454f065c28af8b`, den enda
+Trustpilot-mallen som visar enskilda recensionscitat) mot SAMMA riktiga
+business-unit-id. Trustpilots EGEN publika data-endpoint svarar
+uttryckligen: `{"Error":["BusinessUnit does not have access to that
+trustbox"]}`. Alltså: Hazeys nuvarande Trustpilot-plan har INTE
+tillgång till citat-widgeten -- bekräftat via Trustpilots egen API,
+inte gissat eller antaget.
+
+**4. API-modul/nyckel:** samma endpoint för den redan aktiva Mini-mallen
+visar `"settings":{"customStylesAllowed":false,"syndicationEnabled":
+false}` -- syndikering (en förutsättning för att bygga egna kort ur
+riktig recensionstext) är AVSTÄNGD på kontot. Ingen Trustpilot-API-
+nyckel finns i repot (sökt igenom `js/`/`blocks/`/`.github/`).
+
+**5. GitHub Secrets:** min GitHub-token saknar behörighet att lista
+Actions-secrets (`403 Resource not accessible`) -- kunde varken
+bekräfta eller utesluta en redan sparad secret. Ingen kod refererar en,
+så det spelar ingen roll för denna omgångs beslut.
+
+**6. Dynamisk uppdatering utan kodpush:** Trustpilots publika
+data-endpoint för den redan aktiva Mini-mallen (samma URL widgeten
+själv anropar) är CORS-öppen (`Access-Control-Allow-Origin: *`), kräver
+ingen nyckel, och returnerar riktigt LIVE `trustScore`+
+`numberOfReviews.total` (bekräftat: 4,7 TrustScore, 583 omdömen just
+nu). Hämtas nu klientsidan (`nhInitReviewsLive`,
+`js/18b-homepage-v2.js`) och ersätter den statiska "4,7/5"-texten med
+det verkliga, aktuella talet -- uppdateras automatiskt vid varje
+sidladdning, ingen ny kodpush krävs per omdöme. Vid nätverksfel/
+oväntat svar rörs texten INTE -- den redan sanna statiska raden ligger
+kvar som fallback (verifierat: `catch`-grenen lämnar texten orörd).
+
+**SLUTSATS -- ingen 3-kort-pipeline byggd, varken:**
+- en egen GitHub Actions-hämtning (ingen API-nyckel finns), eller
+- den officiella citat-TrustBoxen (kontot saknar bekräftat åtkomst).
+
+**Vad Vilmer behöver skaffa för riktiga citat-kort:** antingen (a)
+uppgradera Trustpilot-planen så Review-Carousel-TrustBoxen blir
+tillgänglig (enklast -- bara byta `templateId`, ingen ny kod), eller
+(b) en Trustpilot Business/Content-API-nyckel + aktiverad syndikering,
+sparad som en GitHub-secret (t.ex. `TRUSTPILOT_API_KEY`) för en daglig
+GitHub Actions-hämtning enligt uppdragets föredragna arkitektur.
+
+**Visuell kalibrering (mobil-scopat, desktop verifierat oförändrat):**
+`.nh-reviews-cta` radie 14→12px, padding "16px 20px"→16px, stjärnstorlek
+15→13px (facits `.review-card` uppmätta värden). `align-items:center`
+→ `flex-start`, eftersom den nu dynamiska texten (olika lång beroende
+på antal omdömen) annars centrerade stjärnorna mot HELA det radbrutna
+textblocket i stället för att ligga i linje med första raden.
+
+### B. Nyhetsbrev
+
+**Datagranskning:** letat igenom hela repot och den riktiga sajten
+(kontosidor, registrering, `/sv/newsletter`) -- INGEN Nyehandel-nativ
+prenumerations-endpoint och INGET externt e-postverktyg (Klaviyo/
+Mailchimp/liknande) hittades. Bekräftar (omverifierar, upptäcker inte
+nytt) Vilmers egen tidigare notering (2026-08-31: "inget verktyg
+kopplat än").
+
+**Ärlighetsfix:** formuläret körde tidigare bara `e.preventDefault()`
+med NOLL synlig feedback (tyst no-op). Nu: riktig HTML5-validering
+(`form.checkValidity()`) körs på riktigt; vid en GILTIG e-postadress
+visas ett tydligt, sant `aria-live="polite"`-statusmeddelande ("Nyhets-
+brevet går inte att prenumerera på ännu — mejla oss på hej@hazey.se så
+lägger vi till dig") i stället för att låtsas lyckas, och knappen
+inaktiveras. INGEN fabricerad rabattkod, INGEN simulerad registrering,
+INGEN loggning av e-postadressen. (Footerns EGNA nyhetsbrevsformulär
+visar redan i dag en FABRICERAD "tack + rabattkod testahazey10"-
+framgång oavsett verkligt svar -- utanför scope denna omgång, footer
+rörs inte, men flaggas här som en relaterad observation.)
+
+**Kontrastbugg (samma mönster som redan fixat för Snabb koll/
+trustblock):** `.nh-signup-block h2` saknade EGEN `color` -- ärvde
+`#fffdf8` men en native h1,h2,...-tag-reset slog ut arvet, gav
+rgb(23,23,23) (nästan svart) mot den mörkgröna bakgrunden. Fixad,
+mobil-scopat, ingen ny !important-motivering behövd utöver den redan
+etablerade (samma bevisade konkurrerande native-regel som dokumenterat
+i CLAUDE.md).
+
+**Övrig kalibrering (mobil-scopat):** h2 19→20px (facits egna uppmätta
+värde, skiljer sig från featured/kunskap/reviews delade 19px); p
+16→13px, note 16→11px (samma native-reset-mönster); input/knapp-radie
+999→24px (facits uppmätta värde -- OBS: 999px är sajtens etablerade,
+medvetna pill-mönster på MÅNGA andra knappar/chips, ändrat ENDAST här,
+inte de andra); padding justerad till facits 12px 16/12px 20. Ny
+`.nh-signup-status`-textelement drabbades av samma native span-reset
+(16px/500/Nunito) -- fixad med samma `!important`-motivering.
+
+**"Orange knapp"-observation:** uppdraget bad om en orange knapp --
+vår knapp är REDAN orange (#d9782f, en tidigare godkänd, dokumenterad
+färg). Facits EGEN körda CSS (`.signup-form button{background:
+var(--terra)}` = #b8865a) är faktiskt TERRA/TAN, inte orange --
+uppmätt, inte gissat. Behöll vår redan godkända orange (matchar
+uppdragets egen beskrivning + tidigare beslut) i stället för att byta
+till facits terra, men flaggar den verifierade skillnaden här i
+stället för att tyst ignorera den.
+
+### Regressionstest
+
+2 av 12 slog om: **Nyhetsbrev** (390×289→251, 29.8% diff) --
+avsiktligt, direkt konsekvens av padding/typografifixarna. **Footer**
+(390×1276→1276, samma storlek, 11.8-14.0% diff mellan körningar, ICKE
+deterministiskt) -- INTE en regression: `.nh-footer`s egna källfiler
+(`css/20-footer-...css`, `js/08-footer.js`) verifierat HELT ORÖRDA
+(`git diff --stat` visar noll ändringar). Rotorsakad och REPRODUCERAD
+oberoende av testsviten (egen, fristående screenshot-körning):
+`.nh-footer` är TALARE än viewporten (1276px mot 844px), så
+Playwrights `elementHandle.screenshot()` måste scrolla sidan för att
+fånga hela elementet -- den `position:fixed`-headern/sökfältet förblir
+pinnad i viewporten under scrollningen och "bakas in" i skärmdumpen vid
+vilken scroll-position som råkade vara aktiv, en känd Playwright-
+begränsning för `position:fixed`-element inuti höga elementskärmdumpar.
+Denna omgångs (kortare) nyhetsbrev ändrade totalhöjden ovanför footern
+och därmed exakt vilken scroll-position som användes, vilket for
+första gången knuffade den redan existerande artefakten över 3%-
+tröskeln -- INTE ett nytt fel i footerns eget innehåll. Ny golden-impl
+låst efter granskning för båda.
+
+`tests/tema6-smoke.spec.mjs`: 14/14 gröna. 0px overflow vid 390/393/
+430/600/1440px. Trustpilot-länk verifierad fungerande
+(`trustpilot.com/review/hazey.se`). Nyhetsbrevsformulär testat:
+ogiltig e-post blockeras av nativ HTML5-validering, giltig e-post ger
+det ärliga statusmeddelandet (aldrig ett falskt "lyckades"),
+tangentbordsanvändning (Tab/skriv/Tab/Enter) fungerar.
+
+Desktop (1440px) explicit verifierat bit-för-bit identiskt (radie
+14px/999px, stjärnstorlek 16px, `align-items:center` -- allt
+oförändrat).
+
+**Kvarvarande, klassificerade avvikelser:**
+- Endast betyg+länk (inga citat) i Verifierade omdömen -- verifierad
+  plattformsbegränsning (kontot saknar TrustBox-åtkomst + syndikering
+  avstängd), inte gissad eller fabricerad.
+- Nyhetsbrevet är fortsatt ärligt inaktivt -- ingen backend finns.
+- Footerns EGNA nyhetsbrevsformulär visar en fabricerad framgångstext
+  oavsett verkligt svar -- utanför scope, flaggad för en framtida
+  footer-omgång.
+- g-name/h2-kontrastbuggen (native tag-reset) finns även på desktop
+  för flera komponenter -- oförändrat denna mobil-avgränsade omgång.
+
+**Commits:** källkodsändringar (css/22-homepage-v2.css,
+js/18b-homepage-v2.js) + golden-impl-uppdatering/denna STATUS.md-post,
+pushade till `dev`.
+
+**Inte rört:** header, sök, hero, Populära serier, Populära vägar,
+Bästsäljare, trustblock, Snabb koll, SEO/artikel, FAQ, footer,
+desktop-CSS (verifierat 1440px bit-för-bit identiskt), live tema
+3/tema 5, Nyehandel-admin, PUBLICERA aldrig klickad. Ingen hemlig
+Trustpilot-nyckel skapad, läst ut eller exponerad; ingen scraping av
+Trustpilots HTML.
