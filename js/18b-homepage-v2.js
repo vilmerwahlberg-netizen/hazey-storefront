@@ -177,25 +177,40 @@
        seriekort-identitet exakt (se STATUS.md för hela
        bildinventeringstabellen, inkl. de fyra som INTE användes och
        varför): Magic Farmers (`D10-buds-kategoribild.png`, visar
-       bokstavligen "MAGIC FARMERS"-märkta påsar) och Faraoh
-       (`ThcaB-vapes-kategoribild.png`, visar bokstavligen två "Faraoh
-       Vapes"-askar). Dessa två ersätter den tidigare "hämta första
-       slumpmässiga live-produktbild"-mekanismen (Vilmers egen
-       instruktion: undvik det när en uttryckligt utvald kategoribild
-       finns) med en statisk, i HTML:en inbäddad bild -- serverad direkt
-       från samma GitHub Pages-deploy som CSS/JS, inget separat
-       nätverksanrop vid sidladdning, alltså inget eget felläge att
-       hantera (till skillnad från Trustpilot-hämtningen, som verkligen
-       anropar en extern endpoint och behöver en fallback). Övriga fyra
-       serier (Magic Sauce, Nano-11, Hero, Tatra Hemp) behåller sin
-       redan korrekta, riktiga live-foto-mekanism helt oförändrad --
-       ingen av deras tillhandahållna kandidatbilder matchade rätt
-       produktidentitet (se STATUS.md), och ingen ny bild fanns för
-       Hero/Tatra Hemp. */
-    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11"];
+       bokstavligen "MAGIC FARMERS"-märkta påsar). Ersätter den tidigare
+       "hämta första slumpmässiga live-produktbild"-mekanismen (Vilmers
+       egen instruktion: undvik det när en uttryckligt utvald
+       kategoribild finns) med en statisk, i HTML:en inbäddad bild --
+       serverad direkt från samma GitHub Pages-deploy som CSS/JS, inget
+       separat nätverksanrop vid sidladdning.
+
+       Helhets-runda 2026-09-08 (se STATUS.md, "Populära serier --
+       varumärke kontra serie"): Vilmer klargjorde uttryckligen att
+       Faraoh och Hero är VARUMÄRKEN (tredjeparts-/partnermärken vi
+       säljer), inte Hazeys egna "serier" -- de ska INTE längre ligga i
+       Populära serier. `assets/series/faraoh.jpg` (från föregående
+       omgång) refereras alltså inte längre härifrån -- filen rörs inte
+       (kan behövas för en framtida varumärkes-yta), bara denna
+       sektions urval ändras. Kvar som RIKTIGA serier: Magic Sauce,
+       Nano-11, Magic Farmers, Tatra Hemp -- alla fyra bekräftat riktiga
+       Nyehandel-kategorier med real produktdata, se filter nedan.
+
+       Uttömmande omprövad denna omgång (sitemap.xml, ALLA ~55 riktiga
+       kategori-slugs inkl. olänkade "-ny"/"hazey-v2"-arbetskategorier,
+       plus fritextsökning i hela produktkatalogen): INGEN kategori
+       eller produkt med namnet "THCaB"/"THCbA"/"D10" existerar
+       NÅGONSTANS på skarpa sajten. "THC-X" existerar som ETT enda
+       riktigt produktnamn ("Vape - THCX 19% - Core - 2ml") men ligger
+       under en olänkad, pågående ombyggnadskategori ("Hazey V2" /
+       "vapes-ny") -- inte en riktig, dedikerad, länkbar seriedestination
+       än. Bygger INGEN av dessa fyra som platshållare med gissat
+       länkmål (uttryckligen förbjudet i uppdraget) -- flaggat i
+       slutrapporten som en öppen fråga till Vilmer, inte tyst
+       ignorerat eller gissat. */
+    var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11", "Magic Farmers", "Tatra Hemp"];
+    var NH_PSER_BRANDS_NOT_SERIES = ["Faraoh", "Hero"];
     var NH_PSER_STATIC_IMG = {
-      "Magic Farmers": "series/magic-farmers.jpg",
-      "Faraoh": "series/faraoh.jpg"
+      "Magic Farmers": "series/magic-farmers.jpg"
     };
     function nhPopularaSerierHtml(navData) {
       var seen = {};
@@ -204,6 +219,7 @@
         var group = navData.groups[g];
         Object.keys(group.series).forEach(function (name) {
           if (seen[name]) return;
+          if (NH_PSER_BRANDS_NOT_SERIES.indexOf(name) > -1) return; // varumärke, inte serie -- se kommentar ovan
           seen[name] = true;
           series.push({ label: name, href: group.series[name] });
         });

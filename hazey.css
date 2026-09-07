@@ -11007,6 +11007,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      båda) — den extra padding-top:28px var en påhittad siffra utan
      motsvarighet i facit, inte en verklig marginal att bevara. */
   .nh-pser.section-gap { padding-top: 0 !important; }
+  /* Homepage-runda 2026-09-08: samma rotorsak, den kvarvarande
+     padding-bottom:8px (från bas-regelns "28px 24px 8px"-shorthand,
+     rad ~60) LADE SIG OVANPÅ den redan korrekt uppmätta
+     margin-bottom:15px (se regeln längre ned i filen) -- 8+15=23px
+     i stället för facits enda, sanna 15px. Facit har INGEN egen
+     padding-bottom på denna sektion (bara margin), så padding-bottom
+     nollas här av samma anledning som padding-top redan är det. Detta
+     var den "tydligt för stora" gapet till Populära vägar som
+     rapporterats upprepade gånger. */
+  .nh-pser.section-gap { padding-bottom: 0 !important; }
 }
 /* Desktop: uppmätt mörkgrön full-bleed-panel (rgb(30,39,22), padding
    54px 26px) — INTE samma ljusa bakgrund som resten av sidan. Fullbredd
