@@ -8138,13 +8138,85 @@ body.checkout-page .checkout-items-summary .item .content {
     box-sizing: border-box !important;
   }
   .template-components__text-editor .et_pb_text_10 h1 {
-    font-size: 1.7rem !important;
+    /* Facit-kalibrering 2026-09-08: nedskalad från 1.7rem (~27px) till
+       samma etablerade rubriknivå som trustblock/kunskap/signup/
+       featured/reviews (19-20px) -- se motivering längre ned i filen. */
+    font-size: 20px !important;
     line-height: 1.2 !important;
   }
   .template-components__text-editor .et_pb_text_11 p,
   .template-components__text-editor .et_pb_text_11 .et_pb_text_inner {
     font-size: 15px !important;
     line-height: 1.65 !important;
+  }
+  /* Facit-kalibrering 2026-09-08 (mobil visuell skuld-runda, se STATUS.md):
+     "THCA med flera"-blocket är två STAPLADE Divi-moduler
+     (et_pb_text_10 = rubrik, et_pb_text_11 = brödtext), var och en med
+     sin egen platta #e4d1bf-bakgrund (Hazeys egna, redan etablerade
+     "beige"-token från designsystemet -- INTE en främmande färg) och
+     INGEN radie/kant/skugga alls. Två sammanfogade fyrkantiga block gav
+     en dominant, "gammalt tema"-känsla som stack ut mot resten av sidans
+     kortspråk (trustblock/kunskap/signup delar alla samma ljusa
+     sand-till-cream-gradient + 18px radie + 1px kant). Slås samman
+     visuellt till EN sammanhängande kortyta med samma familj:
+     rundade YTTRE hörn (topp på rubrikmodulen, botten på brödtexts-
+     modulen), delad kant, ingen synlig söm mellan modulerna. Innehåll/
+     länkar/text orörda, bara ytan. */
+  .template-components__text-editor .et_pb_text_10,
+  .template-components__text-editor .et_pb_text_11 {
+    background: linear-gradient(165deg, #faf3e9, #fffdf8 72%) !important;
+    border-left: 1px solid #ebe1d1 !important;
+    border-right: 1px solid #ebe1d1 !important;
+  }
+  .template-components__text-editor .et_pb_text_10 {
+    border-top: 1px solid #ebe1d1 !important;
+    border-bottom: none !important;
+    border-radius: 18px 18px 0 0 !important;
+    padding-top: 28px !important;
+  }
+  .template-components__text-editor .et_pb_text_11 {
+    border-top: none !important;
+    border-bottom: 1px solid #ebe1d1 !important;
+    border-radius: 0 0 18px 18px !important;
+    padding-bottom: 28px !important;
+  }
+  /* Samma "gammalt tema"-yta ett stycke längre ned: den kvarvarande,
+     medvetet SYNLIGA "Vad är THCNM?"-texten (THCA/Magic Sauce-rubrikerna
+     i samma ursprungliga innehåll flyttas in i Snabb koll-korten och
+     döljs här, se js/18b-homepage-v2.js -- THCNM lämnas kvar eftersom
+     cannabinoiden är juridiskt pausad, ska INTE göras mer framträdande,
+     bara harmoniseras visuellt). Ligger i en HELT ANNAN native-komponent
+     (.template-components__columns, inte __text-editor) än THCA-blocket
+     ovan, kant-i-kant (0px sidopadding, 0px radie). Scopat med :has(#test)
+     (samma teknik som #Banner-regeln nedan redan använder) så INTE
+     Banner-kolumnblocket (samma överklass, annat innehåll) påverkas. */
+  .template-components__columns:has(#test) {
+    background: linear-gradient(165deg, #faf3e9, #fffdf8 72%) !important;
+    border: 1px solid #ebe1d1 !important;
+    border-radius: 18px !important;
+    margin-left: 14px !important;
+    margin-right: 14px !important;
+    width: auto !important;
+  }
+  /* h3 var redan 18px men Roboto/rgb(50,61,37) i st.f. sidans etablerade
+     rubrikserif -- den delade .store-startpage .template-components__
+     columns h1,h2,h3-regeln (css/22-homepage-v2.css) förlorade mot en mer
+     specifik native-regel scopad till just denna kolumn-komponent.
+     Samma tag-reset-mönster som redan dokumenterat flera gånger, fixat
+     här med en regel specifik nog att vinna. */
+  .template-components__columns:has(#test) h3 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    color: #2c3620 !important;
+  }
+  /* .nh-test-btn ("Alla artiklar", riktig länk till /sv/categories/alla-
+     produkter) hade bara 3px radie -- skarpare än sidans etablerade
+     knapp-radiefamilj (12-24px/999px, se signup/hero/reviews-CTA:erna).
+     Färg/bakgrund (mörkgrön yta, terra text) rörs INTE -- redan nära
+     sidans egna toner, bara hörnen mjukas upp. */
+  .nh-test-btn {
+    border-radius: 24px !important;
   }
 }
 
@@ -12001,6 +12073,22 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
 .nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }
+/* .nh-featured-ship (leveransrad, se js/18b-homepage-v2.js) döljs som
+   grundläge (display:none) -- visas bara mobil-scopat nedan (uppdraget
+   kräver att desktop lämnas oförändrat; facits kort visar raden på
+   alla bredder, men vi lägger till den nya raden bara där den är
+   verifierad och testad denna omgång). Övrig typografi (facits egna
+   .card-ship-värden) sätts redan här -- native span/div-tag-reset
+   (samma mönster som redan dokumenterat flera gånger) slår annars ut
+   font-size/font-family även när elementet senare visas. */
+.nh-featured-ship {
+  display: none;
+  align-items: center; gap: 5px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 10.5px !important; font-weight: 400 !important; letter-spacing: normal !important;
+  color: #9a9280; margin: 6px 14px 12px;
+}
+.nh-featured-ship svg { width: 12px !important; height: 12px !important; flex: 0 0 auto; color: #6f7a52; }
 /* Facit-kalibrering 2026-09-06 (näst avgränsade paket, se STATUS.md):
    sektionsrubrikraden ("Bästsäljare i lager" + "Se allt →") saknade
    layout helt -- `.sec-head` har ingen delad bas-regel (se kommentaren
@@ -12057,7 +12145,20 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     flex: 0 0 46%;
     min-width: 158px;
     scroll-snap-align: start;
+    /* Facit-kalibrering 2026-09-08: .nh-featured-row (flex, default
+       align-items:stretch) stretchade bara sitt EGNA direkta barn (denna
+       wrapper-div) till radens högsta kort -- men det inre wrapper-lagret
+       (.nh-featured-row > div > div, ett vanligt block-element) fyllde
+       INTE i sin tur den stretchade höjden neråt till .product-card
+       (som bara har height:100% av SIN egen förälder, se css/18-mobil-
+       pass-...). Upptäcktes när .nh-featured-ship gjorde produktnamnens
+       redan små radbrytningsskillnader (1 mot 2 rader) tillräckligt
+       stora för att korten skulle få olika höjd (421px mot 394px) --
+       samma bugg fanns latent innan också, bara osynlig. display:flex
+       kedjar stretchen hela vägen ner. */
+    display: flex;
   }
+  .nh-featured-row > div > div { display: flex; flex: 1; min-width: 0; }
   /* "Kortens konsekventa bottenlinje" -- `.details-wrapper` (redan
      display:flex;flex-direction:column;flex:1, se .pl-list-avsnittet
      ovan) stretchar hela kortet till radens högsta kort, men `.details`
@@ -12070,6 +12171,9 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      uppdrags scope) så `.details` fyller det extra utrymmet och knappen
      alltid hamnar precis vid kortets nedre kant, oavsett namnlängd. */
   .nh-featured-row .details { flex: 1; }
+  /* Facit-kalibrering 2026-09-08: .card-ship (se css ovan, dold som
+     grundläge) -- visas bara mobil-scopat denna omgång. */
+  .nh-featured-row .nh-featured-ship { display: flex; }
 }
 
 /* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem

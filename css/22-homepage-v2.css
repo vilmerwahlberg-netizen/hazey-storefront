@@ -1185,6 +1185,22 @@
 .nh-featured-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media (min-width: 861px) { .nh-featured-row { grid-template-columns: repeat(4, 1fr); } }
 .nh-featured-empty { grid-column: 1 / -1; text-align: center; color: #9a9280; font-size: 13px; padding: 20px; }
+/* .nh-featured-ship (leveransrad, se js/18b-homepage-v2.js) döljs som
+   grundläge (display:none) -- visas bara mobil-scopat nedan (uppdraget
+   kräver att desktop lämnas oförändrat; facits kort visar raden på
+   alla bredder, men vi lägger till den nya raden bara där den är
+   verifierad och testad denna omgång). Övrig typografi (facits egna
+   .card-ship-värden) sätts redan här -- native span/div-tag-reset
+   (samma mönster som redan dokumenterat flera gånger) slår annars ut
+   font-size/font-family även när elementet senare visas. */
+.nh-featured-ship {
+  display: none;
+  align-items: center; gap: 5px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 10.5px !important; font-weight: 400 !important; letter-spacing: normal !important;
+  color: #9a9280; margin: 6px 14px 12px;
+}
+.nh-featured-ship svg { width: 12px !important; height: 12px !important; flex: 0 0 auto; color: #6f7a52; }
 /* Facit-kalibrering 2026-09-06 (näst avgränsade paket, se STATUS.md):
    sektionsrubrikraden ("Bästsäljare i lager" + "Se allt →") saknade
    layout helt -- `.sec-head` har ingen delad bas-regel (se kommentaren
@@ -1241,7 +1257,20 @@
     flex: 0 0 46%;
     min-width: 158px;
     scroll-snap-align: start;
+    /* Facit-kalibrering 2026-09-08: .nh-featured-row (flex, default
+       align-items:stretch) stretchade bara sitt EGNA direkta barn (denna
+       wrapper-div) till radens högsta kort -- men det inre wrapper-lagret
+       (.nh-featured-row > div > div, ett vanligt block-element) fyllde
+       INTE i sin tur den stretchade höjden neråt till .product-card
+       (som bara har height:100% av SIN egen förälder, se css/18-mobil-
+       pass-...). Upptäcktes när .nh-featured-ship gjorde produktnamnens
+       redan små radbrytningsskillnader (1 mot 2 rader) tillräckligt
+       stora för att korten skulle få olika höjd (421px mot 394px) --
+       samma bugg fanns latent innan också, bara osynlig. display:flex
+       kedjar stretchen hela vägen ner. */
+    display: flex;
   }
+  .nh-featured-row > div > div { display: flex; flex: 1; min-width: 0; }
   /* "Kortens konsekventa bottenlinje" -- `.details-wrapper` (redan
      display:flex;flex-direction:column;flex:1, se .pl-list-avsnittet
      ovan) stretchar hela kortet till radens högsta kort, men `.details`
@@ -1254,6 +1283,9 @@
      uppdrags scope) så `.details` fyller det extra utrymmet och knappen
      alltid hamnar precis vid kortets nedre kant, oavsett namnlängd. */
   .nh-featured-row .details { flex: 1; }
+  /* Facit-kalibrering 2026-09-08: .card-ship (se css ovan, dold som
+     grundläge) -- visas bara mobil-scopat denna omgång. */
+  .nh-featured-row .nh-featured-ship { display: flex; }
 }
 
 /* PAKET B/C (2026-09-02): två systemfel hittade i samtliga fem

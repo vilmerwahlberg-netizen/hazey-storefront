@@ -152,8 +152,51 @@
        Öppen fråga till Vilmer (se slutrapport): motsvarar facits
        "THC-X"/"THCbA" något som ÄNNU INTE finns i nav-menyn (en planerad
        serie), eller ska de bytas mot riktiga namn i facit-prototypen? Vi
-       gissar inte svaret här. */
+       gissar inte svaret här.
+
+       Bildkälleinventering 2026-09-07 (visuell skuld-runda, se
+       STATUS.md): Vilmer bad specifikt om att först utreda om en RIKTIG
+       Nyehandel-nativ kategoribild (Produkter → Kategorier /
+       "Kategoriboxar") redan exponeras publikt innan några lokala
+       bilder kopieras in. Verifierat, INTE gissat: (1) `og:image` och
+       varje sökt kategori-DOM (magic-farmers/faraoh/magic-sauce/
+       nano-11) saknar en egen kategoribild helt -- bara produktkorts-
+       bilder och sajtens loggor finns i DOM:en; (2) hela den riktiga,
+       orenderade sidan innehåller noll element vars klass/id matchar
+       "categor*"/"kategori*", och de enda `template-components__*`-
+       blocken som faktiskt finns är slideshow/html-editor/product-list/
+       text-editor/columns -- ingen "Kategoriboxar"-sektion existerar på
+       den här sidan just nu. Alltså: ingen stabil, publikt nåbar
+       Nyehandel-bildkälla finns att koppla mot. Beslut (Vilmers egen
+       prioritetsordning, steg 3): använd i stället ett optimerat
+       presentationsderivat under repots `assets/`, serverat via GitHub
+       Pages -- INGEN Nyehandel-adminändring gjord eller behövd.
+
+       Två av Vilmers sex uttryckligen tillhandahållna kategoribilder
+       verifierades bild-för-bild matcha en RIKTIG, redan existerande
+       seriekort-identitet exakt (se STATUS.md för hela
+       bildinventeringstabellen, inkl. de fyra som INTE användes och
+       varför): Magic Farmers (`D10-buds-kategoribild.png`, visar
+       bokstavligen "MAGIC FARMERS"-märkta påsar) och Faraoh
+       (`ThcaB-vapes-kategoribild.png`, visar bokstavligen två "Faraoh
+       Vapes"-askar). Dessa två ersätter den tidigare "hämta första
+       slumpmässiga live-produktbild"-mekanismen (Vilmers egen
+       instruktion: undvik det när en uttryckligt utvald kategoribild
+       finns) med en statisk, i HTML:en inbäddad bild -- serverad direkt
+       från samma GitHub Pages-deploy som CSS/JS, inget separat
+       nätverksanrop vid sidladdning, alltså inget eget felläge att
+       hantera (till skillnad från Trustpilot-hämtningen, som verkligen
+       anropar en extern endpoint och behöver en fallback). Övriga fyra
+       serier (Magic Sauce, Nano-11, Hero, Tatra Hemp) behåller sin
+       redan korrekta, riktiga live-foto-mekanism helt oförändrad --
+       ingen av deras tillhandahållna kandidatbilder matchade rätt
+       produktidentitet (se STATUS.md), och ingen ny bild fanns för
+       Hero/Tatra Hemp. */
     var NH_PSER_PRIORITY = ["Magic Sauce", "Nano-11"];
+    var NH_PSER_STATIC_IMG = {
+      "Magic Farmers": "series/magic-farmers.jpg",
+      "Faraoh": "series/faraoh.jpg"
+    };
     function nhPopularaSerierHtml(navData) {
       var seen = {};
       var series = [];
@@ -178,12 +221,18 @@
         + '  <div class="sec-head"><h2>Populära serier</h2></div>'
         + '  <div class="pser-row">'
         + series.map(function (s) {
-            // Alla serier (inkl. Hero/Faraoh) använder samma riktiga,
-            // live-hämtade produktfoto-mekanism (nhEnhanceWithRealPhotos)
-            // -- ingen serie får längre en facit-lånad platshållarbild,
-            // se kommentaren ovan NH_PSER_PRIORITY.
+            // Magic Farmers/Faraoh: Vilmer-utvald, bild-för-bild verifierad
+            // statisk kategoribild (se kommentaren ovan NH_PSER_PRIORITY).
+            // Övriga serier: samma riktiga, live-hämtade produktfoto-
+            // mekanism (nhEnhanceWithRealPhotos) som redan fanns.
+            var staticImg = NH_PSER_STATIC_IMG[s.label];
+            var avatarAttrs = staticImg
+              ? ' data-static-photo="1" style="background-image:url(\'' + NH_ASSET_BASE + staticImg + '\')"'
+              : ' data-photo-href="' + s.href + '"';
+            var avatarInner = staticImg ? "" : NH_ROUTE_ICONS.serie;
+            var avatarClass = staticImg ? "pser-avatar has-photo" : "pser-avatar";
             return '<a class="pser-item nh-reveal" href="' + s.href + '" data-count-href="' + s.href + '">'
-              + '<span class="pser-avatar" data-photo-href="' + s.href + '">' + NH_ROUTE_ICONS.serie + '</span>'
+              + '<span class="' + avatarClass + '"' + avatarAttrs + '>' + avatarInner + '</span>'
               + '<span class="pser-name">' + s.label + '</span>'
               + '<span class="pser-n"></span></a>';
           }).join("")
@@ -395,7 +444,19 @@
           cards.forEach(function (c) {
             var outer = document.createElement("div");
             var inner = document.createElement("div");
-            inner.appendChild(c.cloneNode(true));
+            var clone = c.cloneNode(true);
+            inner.appendChild(clone);
+            // Facit-kalibrering 2026-09-08 (visuell skuld-runda): facits
+            // kort har en leveransrad under köpknappen ("Skickas normalt
+            // inom 1-2 vardagar"). INTE per-produkt-data -- samma redan
+            // verifierade, riktiga, generella leveranspolicy som redan
+            // visas i mikrotrust-raden (js/18a-header-v2.js, "Normalt
+            // 1-2 vardagar"), bara skriven ut i sin helhet här. Gäller
+            // alla produkter lika, fabricerar ingenting per kort.
+            var ship = document.createElement("div");
+            ship.className = "nh-featured-ship";
+            ship.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>Skickas normalt inom 1–2 vardagar';
+            clone.appendChild(ship);
             outer.appendChild(inner);
             rowEl.appendChild(outer);
           });
