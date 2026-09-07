@@ -3339,54 +3339,156 @@
         + '</section>';
     }
 
-    /* ── "Verifierade omdömen" — ENDAST det riktiga, redan inkopplade
-       Trustpilot-betyget + en ärlig länk. INGA påhittade citat: verifierat
-       (2026-08-31) att vi inte har en bekräftad Trustpilot-widgetmall som
-       visar enskilda recensioner (två olika business-unit-id hittades i
-       koden, se öppen datafråga i STATUS.md) — så vi bygger INTE ett
-       citat-baserat kort tills det är utrett. ── */
-    /* Facit visar TRE separata recensionskort (stjärnor/verifierad-etikett/
-       citat/kund-metadata). Vi har INGEN verifierad källa för enskilda
-       recensionscitat att koppla (öppen datafråga, se STATUS.md — Trustpilot
-       widget-mallen för citat är oklar, två olika business-unit-id hittade
-       i koden). Att hitta på tre kundcitat vore fejkdata, uttryckligen
-       förbjudet. Lösning: den ÄKTA, verifierbara raden (4,7/5 + länk) visas
-       alltid; kort-layouten byggs som en FÖRBERED men dold platshållar-shell
-       (samma "hidden shell tills riktig data finns"-mönster som
-       nhContinueShellHtml) — redo att kopplas in den dagen en riktig
-       recensions-källa (widget eller API) med citat är bekräftad. ── */
+    /* ── "Verifierade omdömen" — ENDAST det riktiga Trustpilot-betyget
+       + en ärlig länk, aldrig påhittade citat.
+
+       Datagranskning 2026-09-07 (se STATUS.md, Paket 4 — löser den
+       tidigare öppna business-unit-id-frågan):
+       1. Head-fältets redan LIVE widget (verifierat direkt mot
+          hazeyse.nyehandel.se utan ?preview=, nätverksanrop inspekterade)
+          använder templateId "53aa8807dec7e10d38f59f32" (Trustpilots
+          "Mini"-mall: stjärnor + TrustScore, INGA citat) med
+          businessunitId "6479dc28f0b041b3c79af588" — DETTA är alltså det
+          bekräftat RIKTIGA, aktiva business-unit-id:t. Det andra id:t som
+          fanns i `blocks/testimonials-section.html`
+          ("6513e1a93f98d9001a6cb9b0") är INTE live någonstans — troligen
+          en kvarleva/felaktig kopia, aldrig inklistrad. Rör inte den
+          dormanta blockfilen (utanför uppdragets scope), men frågan är
+          nu besvarad här.
+       2. Testat en officiell "Review Carousel"-TrustBox (mallen som
+          faktiskt visar enskilda citat, templateId
+          "54ad5defc6454f065c28af8b") mot SAMMA riktiga business-unit-id
+          — Trustpilots egna publika data-endpoint svarar uttryckligen
+          `{"Error":["BusinessUnit does not have access to that
+          trustbox"]}`. Alltså: Hazeys nuvarande Trustpilot-plan har INTE
+          tillgång till citat-widgeten, oavsett hur den stylas.
+       3. Samma endpoint för den redan aktiva Mini-mallen visar dessutom
+          `"settings":{"customStylesAllowed":false,"syndicationEnabled":
+          false}` — syndikering (en förutsättning för att bygga egna,
+          1:1-stylade kort ur riktig recensionstext) är uttryckligen
+          AVSTÄNGD på kontot.
+       4. Ingen Trustpilot-API-nyckel finns någonstans i det här repot
+          (sökt igenom hela `js/`/`blocks/`/`.github/`) och min GitHub-
+          token saknar behörighet att lista Actions-secrets (403) — kunde
+          alltså inte bekräfta ELLER utesluta en redan sparad secret,
+          men ingen kod refererar en, så pipelinen skulle ändå inte gå
+          att koppla in utan att Vilmer själv bekräftar/skapar en.
+
+       SLUTSATS: bygg INTE en 3-kort-pipeline med riktiga citat — varken
+       Review-Carousel-TrustBoxen (kontot saknar åtkomst, bekräftat via
+       Trustpilots egen API, inte gissat) eller en egen GitHub Actions-
+       hämtning (ingen API-nyckel finns). Vad Vilmer behöver skaffa för
+       att detta ska bli möjligt: antingen (a) uppgradera Trustpilot-
+       planen så Review-Carousel-TrustBoxen blir tillgänglig (enklast,
+       ingen kod behöver ändras — bara byta template-id), eller (b) en
+       Trustpilot Business/Content-API-nyckel + aktiverad syndikering,
+       sparad som en GitHub-secret (t.ex. `TRUSTPILOT_API_KEY`) för en
+       daglig GitHub Actions-hämtning enligt uppdragets föredragna
+       arkitektur.
+
+       Vad som ÄR verkligt och dynamiskt: Trustpilots egen publika,
+       CORS-öppna (`Access-Control-Allow-Origin: *`) data-endpoint för
+       den redan aktiva Mini-mallen returnerar riktigt, LIVE
+       `trustScore`+`numberOfReviews.total` — samma siffror widgeten
+       själv visar, ingen autentisering krävs, ingen hemlighet
+       exponeras. Hämtas klientsidan (nhInitReviewsLive nedan) och
+       ersätter den statiska "4,7/5"-texten med det verkliga, aktuella
+       betyget+antalet omdömen — uppdateras automatiskt vid varje
+       sidladdning utan ny kodpush. Om hämtningen misslyckas (nätverk/
+       CORS-ändring/rate-limit) behålls den redan sanna statiska texten
+       oförändrad som fallback — ingen bruten funktion, bara en icke-
+       uppdaterad men fortfarande korrekt siffra. ── */
+    var NH_TRUSTPILOT_BUSINESS_UNIT_ID = "6479dc28f0b041b3c79af588";
+    var NH_TRUSTPILOT_TEMPLATE_ID = "53aa8807dec7e10d38f59f32";
     function nhReviewsHtml() {
       return '<section class="nh-reviews section-gap">'
         + '  <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
         + '  <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
         + '  <a class="nh-reviews-cta nh-reveal" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-        + '    <span class="stars">★★★★★</span><span>4,7/5 på Trustpilot — läs alla omdömen →</span>'
+        + '    <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
         + '  </a>'
         + '  <div class="nh-reviews-grid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
         + '</section>';
     }
+    /* Hämtar det RIKTIGA, live TrustScore + antal omdömen från Trustpilots
+       egen publika data-endpoint (samma som deras bootstrap-widget redan
+       anropar) — ingen nyckel, inget konto, ingen scraping av HTML. Vid
+       fel/oväntat svar rörs texten INTE (den redan sanna statiska raden
+       ligger kvar som fallback). */
+    function nhInitReviewsLive(root) {
+      var textEl = root.querySelector("#nhReviewsCtaText");
+      if (!textEl) return;
+      var url = "https://widget.trustpilot.com/trustbox-data/" + NH_TRUSTPILOT_TEMPLATE_ID
+        + "?businessUnitId=" + NH_TRUSTPILOT_BUSINESS_UNIT_ID + "&locale=sv-SE";
+      fetch(url)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          var bu = data && data.businessUnit;
+          var total = bu && bu.numberOfReviews && bu.numberOfReviews.total;
+          if (!bu || !bu.trustScore || !total) return; // oväntat svar — behåll den sanna fallback-texten
+          var score = String(bu.trustScore).replace(".", ",");
+          textEl.textContent = score + "/5 på Trustpilot · " + total.toLocaleString("sv-SE") + " omdömen — läs alla →";
+        })
+        .catch(function () { /* nätverksfel — den redan sanna statiska texten ligger kvar oförändrad */ });
+    }
 
     /* ── Nyhetsbrev, mitt på sidan (prototypen har ett HÄR + ett i
-       footern). Icke-kopplad platshållare — precis som prototypens EGEN
-       formulär (`onsubmit="return false"` där också). Vilmer 2026-08-31:
-       inget verktyg kopplat än, flaggat i STATUS.md att det behöver
-       kopplas innan lansering. ── */
+       footern, den senare utanför detta uppdrags scope — rörs inte).
+
+       Datagranskning 2026-09-07 (se STATUS.md, Paket 4): letat igenom
+       hela repot (js/blocks) och den riktiga sajten (kontosidor,
+       registrering, `/sv/newsletter`) efter en riktig, redan kopplad
+       nyhetsbrevsintegration — varken en Nyehandel-nativ prenumerations-
+       endpoint eller ett externt e-postverktyg (Klaviyo/Mailchimp/
+       liknande) hittades NÅGONSTANS. Detta bekräftar det Vilmer redan
+       konstaterade 2026-08-31 ("inget verktyg kopplat än") — INGEN ny
+       upptäckt, bara omverifierad.
+
+       Eftersom ingen riktig backend finns förblir formuläret ÄRLIGT
+       klassificerat som ej aktivt: förhindrar ALDRIG att knappen ser
+       tryckbar ut och LÅTSAS ALDRIG att en prenumeration lyckades (ingen
+       fabricerad "tack"-text, ingen rabattkod, ingen simulerad
+       registrering) — i stället visas ett tydligt, sant statusmeddelande
+       (aria-live, så skärmläsare hör det) om att nyhetsbrevet inte är
+       aktivt än. Riktig HTML5-e-postvalidering (`type="email" required`)
+       körs ändå på riktigt av webbläsaren innan statusmeddelandet visas.
+       E-postadressen loggas ALDRIG (ingen console.log/nätverksanrop).
+
+       Vad Vilmer behöver skaffa för att aktivera detta: ett riktigt
+       e-postverktyg (t.ex. Klaviyo/Mailchimp/Brevo) med ett publikt
+       prenumerations-API eller inbäddat formulär, ELLER bekräfta att
+       Nyehandel har en nativ nyhetsbrevs-endpoint jag inte hittat --
+       sedan kopplas formuläret om till en riktig `fetch()`/POST med ett
+       verkligt success/error-svar. ── */
     function nhNewsletterHtml() {
       return '<section class="nh-signup section-gap">'
         + '  <div class="nh-signup-block">'
         + '    <div><h2>Håll dig uppdaterad</h2>'
         + '    <p>Lagerpåfyllning, nya serier och viktiga juridiska uppdateringar — inget annat.</p></div>'
-        + '    <form class="nh-signup-form" data-nh-placeholder-form="1">'
+        + '    <form class="nh-signup-form" data-nh-inactive-form="1">'
         + '      <input type="email" placeholder="Din e-postadress" aria-label="E-postadress" required>'
         + '      <button type="submit">Prenumerera</button>'
         + '    </form>'
+        + '    <span class="nh-signup-status" aria-live="polite"></span>'
         + '    <span class="nh-signup-note">Du kan avsluta prenumerationen när du vill.</span>'
         + '  </div>'
         + '</section>';
     }
-    function nhInitPlaceholderForms(root) {
-      root.querySelectorAll("[data-nh-placeholder-form]").forEach(function (f) {
-        f.addEventListener("submit", function (e) { e.preventDefault(); });
+    /* Formulär som ÄRLIGT saknar en riktig backend (se kommentaren ovan
+       nhNewsletterHtml). Kör riktig HTML5-validering (`form.checkValidity()`,
+       samma mekanism webbläsaren redan skulle använt vid en normal submit),
+       men LÅTSAS aldrig lyckas — visar i stället ett sant "inte aktivt
+       än"-meddelande. Ingen e-postadress loggas eller skickas någonstans. */
+    function nhInitInactiveForms(root) {
+      root.querySelectorAll("[data-nh-inactive-form]").forEach(function (f) {
+        var status = f.parentNode.querySelector(".nh-signup-status");
+        f.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (!f.checkValidity()) { f.reportValidity(); return; }
+          if (status) status.textContent = "Nyhetsbrevet går inte att prenumerera på ännu — mejla oss på hej@hazey.se så lägger vi till dig.";
+          var btn = f.querySelector("button");
+          if (btn) btn.disabled = true;
+        });
       });
     }
 
@@ -3478,7 +3580,8 @@
       nhInitReveal(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
-      nhInitPlaceholderForms(document);
+      nhInitReviewsLive(document);
+      nhInitInactiveForms(document);
       nhHideSupersededTabsSection();
     }
     initFooter();

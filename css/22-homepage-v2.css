@@ -1158,7 +1158,21 @@
   font-weight: 650 !important; font-size: 13px !important; letter-spacing: normal !important;
 }
 .nh-signup-form button:hover { background: #c96a26; }
+.nh-signup-form button:disabled { opacity: .6; cursor: default; }
 .nh-signup-note { font-size: 11px; color: rgba(244,233,220,.6); }
+/* Ärligt statusmeddelande (se nhInitInactiveForms) — tomt/osynligt tills
+   ett submit-försök gjorts, ingen fast höjd reserverad. Samma native
+   span-reset som redan dokumenterat överallt annars i denna fil
+   (16px/500/Nunito i st.f. avsett värde) -- !important motiverat av
+   samma bekräftade konkurrerande Nyehandel-regel. */
+.nh-signup-status {
+  display: block;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12px !important; font-weight: 650 !important; letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  color: #fff;
+}
+.nh-signup-status:empty { display: none; }
 @media (min-width: 861px) {
   .nh-signup-block { flex-direction: row; align-items: center; justify-content: space-between; }
   .nh-signup-form { flex-wrap: nowrap; }
@@ -1317,12 +1331,30 @@
     font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 11.5px !important; line-height: 1.5 !important; letter-spacing: normal !important;
   }
+  /* Facit-kalibrering 2026-09-07 (Paket 4): h2 saknade EGEN `color` --
+     ärvde `.nh-signup-block{color:#fffdf8}`, men en native h1,h2,...
+     {color:...!important}-tag-reset (samma mönster som redan
+     dokumenterat flera gånger i CLAUDE.md/STATUS.md) slog ut arvet helt
+     och gav rgb(23,23,23) (nästan svart) mot den mörkgröna bakgrunden --
+     samma bugklass som redan fixades för Snabb koll-rubriken i förra
+     omgången, nu även här. font-size 20px (facits egna uppmätta värde
+     för DENNA komponent, INTE samma 19px som featured/kunskap/reviews
+     delar). */
   .nh-signup-block h2 {
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
     font-weight: 600 !important;
-    font-size: 19px !important;
+    font-size: 20px !important;
     line-height: normal !important;
     letter-spacing: normal !important;
+    color: #fffdf8 !important;
+  }
+  /* p/.nh-signup-note (span-liknande native-reset, samma mönster): 16px
+     i st.f. facits 13px/11px. */
+  .nh-signup-block p {
+    font-size: 13px !important; line-height: 1.55 !important; letter-spacing: normal !important;
+  }
+  .nh-signup-note {
+    font-size: 11px !important; letter-spacing: normal !important;
   }
   /* Facit: .signup-block{padding:20px} på mobil (≤860px, ned från 28px på
      desktop) — vår kortpadding var oskopad 26px på alla bredder, vilket
@@ -1330,6 +1362,20 @@
      för att rymmas sida vid sida vid 390px (se flex-basis-fixen ovan). */
   .nh-signup-block {
     padding: 20px !important;
+  }
+  /* Facit: .signup-form input/button{border-radius:24px} (index.html rad
+     681/uppmätt) -- vår 999px (pill) är den etablerade knapp-stilen på
+     resten av sajten (chips/filterknappar m.fl.), men just facits
+     nyhetsbrevsfält har ett mindre rundat, inte helt runt hörn. Rättat
+     bara här, rör inte de många andra 999px-knapparna på sidan. Padding
+     justerad till facits uppmätta 12px 16/12px 20. */
+  .nh-signup-form input {
+    border-radius: 24px;
+    padding: 12px 16px;
+  }
+  .nh-signup-form button {
+    border-radius: 24px;
+    padding: 12px 20px;
   }
   /* Facit: .home-extra .hx-head p{display:none} på mobil — beskrivningen
      under rubriken visas bara på desktop. Gäller de sektioner som
@@ -1340,6 +1386,24 @@
   .nh-featured .sec-head p,
   .nh-reviews .sec-head p {
     display: none;
+  }
+  /* Facit-kalibrering 2026-09-07 (Paket 4): facits .review-card{border-
+     radius:12px;padding:16px;stars font-size:13px} -- vår kortliknande
+     CTA-rad hade 14px/"16px 20px" (ojämn padding)/15px. Mobil-scopat
+     ("rör inte desktopdesign" denna omgång); desktop lämnas orört. */
+  .nh-reviews-cta {
+    border-radius: 12px;
+    padding: 16px;
+    /* Texten är nu dynamisk (riktigt antal omdömen, se
+       nhInitReviewsLive) och kan bli olika lång -- align-items:center
+       (bas-regeln) centrerade stjärnorna mot HELA textblockets höjd,
+       vilket såg konstigt ut så fort texten radbröt till fler rader än
+       innan. flex-start håller stjärnorna i linje med textens FÖRSTA
+       rad oavsett hur många rader den dynamiska texten blir. */
+    align-items: flex-start;
+  }
+  .nh-reviews-cta .stars {
+    font-size: 13px;
   }
   /* .nh-routes ingår här bara för att stänga SISTA kvarvarande 0px-gapet
      (Populära vägar → Bästsäljare, en av de uttryckligen efterfrågade
