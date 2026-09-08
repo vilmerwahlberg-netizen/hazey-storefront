@@ -2112,16 +2112,36 @@
     function nhInitHomeHeroHeader() {
       var header = document.getElementById("store-header");
       var hero = document.getElementById("nhHero");
+      var storeMain = document.getElementById("store-main");
       if (!header || !hero) return;
       header.classList.add("nh-home-hero");
 
+      /* KORRIGERAT (Desktop correction pass 2026-09-09): drog tidigare upp
+         heron med exakt HEADERNS renderade höjd, i tysta antagandet att
+         #store-mains egen native padding-top (se filkommentaren ovan)
+         alltid råkar matcha den nästan exakt -- höll bara för att den
+         gamla, tre-vånings-headern (175px) råkade ligga nära den uppmätta
+         180px-paddingen. Den nya, kompakta headern (68px) avslöjade att de
+         ALDRIG var kopplade till varandra: padding-top är en delad,
+         statisk/breakpoint-egen native platt-siffra (uppmätt live till
+         149px vid 1440px i denna omgång, INTE 180 -- ändras alltså även
+         den, oberoende av vår header), inte härledd ur headerns riktiga
+         höjd. Att bara dra upp med headerhöjden lämnade ett ~80px vitt/
+         cream-glapp mellan headerns botten och där hero-fotot faktiskt
+         började (native paddingen "vann" resten av utrymmet). Drar nu i
+         stället upp med #store-mains FAKTISKA, live uppmätta padding-top
+         rakt av -- det är den enda siffran som avgör var hero (headerns
+         fasta syskon i normalt flöde) naturligt hamnar innan någon
+         marginal alls sätts, så att dra upp med EXAKT det talet lägger
+         heron perfekt mot sidans riktiga topp (y=0) alltid, oavsett vilket
+         tal den delade native paddingen råkar vara just nu. */
       function syncOverlap() {
-        var h = header.getBoundingClientRect().height;
         // Bara vid bredder där headern faktiskt är transparent/overlay
         // (se css @media min-width:861px) -- under det behåller heron sin
         // vanliga mobila plats, ingen negativ marginal där.
         if (window.innerWidth >= 861) {
-          hero.style.marginTop = (-h) + "px";
+          var padTop = storeMain ? parseFloat(getComputedStyle(storeMain).paddingTop) || 0 : 0;
+          hero.style.marginTop = (-padTop) + "px";
         } else {
           hero.style.marginTop = "";
         }

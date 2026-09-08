@@ -13514,6 +13514,150 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   #store-header.nh-home-hero .nh-cat-row {
     transition: background 320ms cubic-bezier(.22,.61,.36,1);
   }
+
+  /* ── Desktop correction pass 2026-09-09 — kompakt EN-radskomposition ──
+     Headern var visuellt tre våningar (mikrotrust / stor centrerad logga-
+     sök-konto-varukorg-rad / separat navigationsrad), flaggat explicit.
+     #store-header's RIKTIGA barn är .topbar, .main och nav.navbar (samma
+     tre element som redan reskinnas ovan) -- gör #store-header till en
+     grid och lägg .main OCH nav.navbar i SAMMA cell (grid-column:1;
+     grid-row:1) i stället för att flytta någon DOM-nod. Båda blir sedan
+     EGNA grid med en IDENTISK, fast 220px första kolumn (loggzonen) --
+     .main:s kolumn 1 har den riktiga loggan, nav.navbar:s kolumn 1 är
+     medvetet TOM (samma breddvärde, inte uppmätt/beroende av loggans
+     faktiska renderade bredd) -- det garanterar att .nh-cat-row:s länkar
+     alltid börjar exakt där loggzonen slutar, oavsett webbläsare/typsnitt.
+     .main målas ovanpå (z-index:2) och lämnar sin egen kolumn 2 tom --
+     nav-länkarna (som ligger UNDER, z-index:1) syns rakt igenom den tomma
+     ytan, ingen av dem överlappar .main:s riktiga innehåll (sök/konto/
+     varukorg ligger i kolumn 3/4, längre till höger än där nav-länkarna
+     faktiskt tar slut). Mikrotrusten (.topbar) döljs helt på startsidans
+     desktop -- exakt samma verifierade fakta finns redan i hero-bildens
+     egen trust-rad längst ner (heroTrust, js/18b-homepage-v2.js). */
+  #store-header.nh-home-hero {
+    display: grid;
+  }
+  #store-header.nh-home-hero .topbar { display: none; }
+  #store-header.nh-home-hero .main,
+  #store-header.nh-home-hero nav.navbar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #store-header.nh-home-hero .main { position: relative; z-index: 2; }
+  #store-header.nh-home-hero nav.navbar { position: relative; z-index: 1; }
+
+  /* BUGGFYND (verifierat live via DOM-inspektion, inte antaget): precis
+     samma mönster som nav.navbar-fyndet nedan -- .main:s ENDA riktiga
+     barn är INTE .left/.center/.right direkt, det är EN nativ
+     `DIV.container`-wrapper (+ vår egen .nh-burger, mobil-endast). Ett
+     grid-column satt direkt på .left/.center/.right hade alltså ingen
+     effekt (allt hamnade i .main:s första auto-kolumn, staplat/
+     överflödande). Löst med flex på den RIKTIGA wrappern (.container) i
+     stället för grid på .main -- enklare och kräver ingen låtsad tom
+     kolumn: .left fast bredd, .center flex:1 men sitt EGET innehåll
+     högerjusterat (så det kompakta sökfältet hamnar nära .right, och den
+     tomma vänstra delen av .center lämnar nav-raden UNDER (z-index:1)
+     synlig genom den transparenta ytan), .right fast bredd. */
+  #store-header.nh-home-hero .main {
+    height: 68px;
+    padding: 0 !important;
+  }
+  #store-header.nh-home-hero .main > .container {
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    max-width: none !important;
+    height: 68px;
+    padding: 0 40px !important;
+    margin: 0 !important;
+    gap: 20px;
+  }
+  /* BUGGFYND: .brand (nativ, ej vår) bär en egen fast bredd (~340px,
+     rymlig nog för en riktig logotyp-bild i sin ursprungliga storlek) --
+     osynligt så länge <img> faktiskt fyllde ytan, men vi döljer bilden och
+     ersätter den visuellt med en mindre ::after-textrubrik (se
+     :not(.nh-home-hero--scrolled)-regeln högre upp i filen), vilket
+     lämnade ~260px osynligt, reserverat tomrum som blåste upp .left:s
+     flex-basis:auto och sköt hela resten av raden onödigt långt åt höger. */
+  #store-header.nh-home-hero .main .left {
+    flex: 0 0 auto;
+    width: auto !important;
+  }
+  #store-header.nh-home-hero .main .left .brand,
+  #store-header.nh-home-hero .main .left .brand a { width: auto !important; }
+  #store-header.nh-home-hero .main .center {
+    flex: 1 1 auto;
+    display: flex !important;
+    justify-content: flex-end;
+  }
+  #store-header.nh-home-hero .main .center .store-search { width: 190px; max-width: 100%; }
+  /* Kompaktare länkpadding (bara denna, startsidans desktop-läge) --
+     7 riktiga nav-länkar + logga + sökfält + konto + varukorg konkurrerar
+     annars om samma rad, se .container-paddingen nedan. */
+  #store-header.nh-home-hero .cat-link { padding: 12px 10px; }
+  #store-header.nh-home-hero .main .right { flex: 0 0 auto; width: auto !important; }
+
+  /* BUGGFYND (verifierat live via elementFromPoint/DOM-inspektion, inte
+     antaget): .nh-cat-row är INTE ett direkt grid-barn till nav.navbar --
+     riktig DOM-kedja är nav.navbar > .container (nativ Nyehandel-wrapper)
+     > .nh-cat-row. Ett grid-column satt direkt på .nh-cat-row hade alltså
+     ingen effekt (bara .container, navbars ENDA riktiga barn, auto-
+     placerades i kolumn 1 -- 220px -- vilket klämde in alla sju nav-
+     länkarna i en 220px-bred yta och tvingade dem att radbryta lodrätt).
+     Rättat på den RIKTIGA grid-cellen (.container), inte .nh-cat-row. */
+  #store-header.nh-home-hero nav.navbar {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    height: 68px;
+    align-items: center;
+  }
+  #store-header.nh-home-hero nav.navbar > .container {
+    grid-column: 2;
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    /* Reserverar utrymme åt .main:s sökfält+konto+varukorg, som ligger på
+       ETT HELT SEPARAT lager (z-index:2, egen flex-layout) ovanpå den här
+       raden -- de två lagren "vet" annars inget om varandra, verifierat
+       live: utan denna padding rände de sju riktiga nav-länkarna rakt in
+       under/bakom sökfältet (Merch/Hitta rätt syntes inte alls, riktigt
+       klickbara döda). 400px räcker med god marginal för dagens riktiga
+       innehåll (7 länkar, uppmätt behov ~793px av de ~1220px som annars
+       finns tillgängliga). */
+    padding: 0 400px 0 0 !important;
+    background: transparent !important;
+  }
+  #store-header.nh-home-hero .nh-cat-row {
+    /* BUGGFYND: .container:s padding-right (ovan) begränsade aldrig
+       .nh-cat-row i praktiken -- .nh-cat-row har ingen egen width, sizear
+       bara till sitt NATURLIGA innehåll (auto), så flex-wrap:wrap (redan
+       satt av oss) fick aldrig något smalare mått att faktiskt wrappa
+       emot. width:100% tvingar den att respektera förälderns (nu 400px
+       smalare) content-box på riktigt. */
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 !important;
+  }
+
+  /* Läsbar, tunn glasheader vid scroll -- täcker nu HELA den sammanslagna
+     raden (inte bara .main:s egen yta som tidigare), så nav-länkarna som
+     visuellt "tillhör" samma rad också får samma glasyta bakom sig. */
+  #store-header.nh-home-hero.nh-home-hero--scrolled {
+    background: rgba(250,243,233,.86) !important;
+    box-shadow: 0 20px 40px -30px rgba(44,54,32,.28) !important;
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    #store-header.nh-home-hero.nh-home-hero--scrolled {
+      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+  }
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main,
+  #store-header.nh-home-hero.nh-home-hero--scrolled nav.navbar {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }
 
 /* ── (3) "Good People Higher Moments" — NY fullbredds redaktionell
