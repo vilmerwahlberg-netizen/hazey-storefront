@@ -3715,3 +3715,73 @@ underlag för Fas 2 nedan.
   faktisk förbättring — kör om innan nästa sektion påbörjas.
 - Inget pushat till `origin/dev` ännu denna omgång — allt lokalt i
   `dev`-branchen. Inga golden-baslinjer rörda. Ingen PUBLICERA.
+
+### Checkpoint 5 — Fas 3: FAQ-ombyggnad + verifierad plattformsbegränsning (commit d778a59)
+
+1. **FAQ**: `.nh-faq__item` var en 14px-radad, vit, bordad "pill" med
+   generös padding staplad i EN centrerad 820px-kolumn — exakt "en mycket
+   lång stapel stora vita piller med överdriven höjd och mycket tomrum"
+   som flaggades explicit. Byggd om (desktop-scopat, `@media
+   min-width:861px`) till en kompakt tvåkolumns editorial-layout: rubrik
+   vänster (sticky), frågor i en tätare högerkolumn med flata
+   radbrytningar. Mobilens befintliga stapel (`css/10-filter-tabs-...`)
+   är helt orörd — verifierat via skärmdump vid 390px, identisk med
+   innan.
+
+2. **VERIFIERAD PLATTFORMSBEGRÄNSNING (inte fixad, se nedan varför):**
+   Den gamla "THCA hos oss – i alla former! / UPPTÄCK THCA"-bannern
+   (efter Guider & aktuellt) är INTE byggd av det här repots CSS/JS —
+   konkret DOM-bevis: `document.elementFromPoint()` på bannerns yta
+   ger `#Banner .image-component a > img`, dvs en enda platt raster-bild
+   (Cloudfront-URL, uppladdad i Nyehandels sidbyggare "Banner"-komponent)
+   med rubrik/ribbon-text/den lila CTA-knappen INBAKAD i bildens pixlar —
+   ingen riktig HTML/CSS-text eller knappstil att reskinna. Wrapper-
+   spacing/rundade hörn/skugga (`css/06-banner-...css`,
+   `css/18-mobil-pass-...css`) var redan applicerade och verifierat
+   aktiva (border-radius:12px, box-shadow) INNAN denna omgång — det är
+   bara själva bildinnehållets typografi/färg/CTA-stil som klämmer mot
+   den nya riktningen, och det kräver antingen en ny, på-varumärke
+   bannerbild (samma process som v2-assets denna session) uppladdad via
+   Nyehandel-admin, eller att Vilmer tar bort komponenten där — ingen av
+   delarna är en kodändring den här agenten kan göra i repot.
+
+### Läge efter Checkpoint 5 — `npm run parity:desktop` (1440px)
+
+| Sektion | Före Fas 2 | Nu |
+| --- | --- | --- |
+| Header + hero | -34,1% | -16,9% |
+| Populära serier | -16,3% | -16,3% (ej djupdykt) |
+| Bästsäljare i lager | (ej mätt förrän efter verktygsfixen) | -13% |
+| Bonfire | -14,3% | -6,9% |
+| Trustremsa | +20,2% | -6,4% |
+| Featured Magic Sauce | -5% (men fel riktning+dubblettbild) | -5% (rätt riktning, ingen dubblett) |
+| Verifierade omdömen | +5,6% (56/44-proportion) | +5,6% (70/30-proportion, siffran oförändrad men kompositionen korrigerad) |
+| Referensens footer | +132,8% | +104,2% |
+
+Alla 8 fortfarande formellt "flaggade" (tröskeln är strikt >5%/24px), men
+samtliga siffror har rört sig i rätt riktning utom Populära serier/
+Bästsäljare (inte djupdykta ännu — se nedan).
+
+### Kvarstår efter Checkpoint 5
+
+- **Fas 2, ej djupdykt:** Populära serier (-16,3%) och Bästsäljare
+  (-13%) — preliminär bedömning: kortstorlek/produktfotografi (riktiga
+  Nyehandel-produktbilder har mycket tomrum runt själva produkten,
+  till skillnad från referensens AI-bilder som fyller hela kortet) är
+  en trolig delorsak, inte bara CSS-padding — kräver närmare
+  undersökning innan fler CSS-ändringar görs blint.
+- **Fas 3 kvar:** Populära vägar, Snabb koll (redan rimligt nära,
+  inte granskad i detalj denna omgång), THCA-bannern (se ovan —
+  kräver Vilmers beslut/admin-åtgärd, inte kod).
+- **Fas 4** (typografi/färgrytm/material/motion-polish helhetspass),
+  **Fas 5** (fullständig SEO-/länk-/schema-diff-rapport), **Fas 6**
+  (responsiv verifiering 1024–1920 + mobil 390–600 vid ALLA
+  breddpunkter, fullt tekniskt/funktionellt checklist: tangentbordsnav,
+  fokussynlighet, karusellkontroller, sök, meny, varukorg, reduced-
+  motion) — INTE påbörjade.
+- Spot-verifierat (inte en fullständig Fas 6-körning): 0px overflow vid
+  390px OCH 1440px efter dagens ändringar, mobil-skärmdumpar av
+  Nyhetsbrev/FAQ/footer visar inga regressioner.
+- Inget pushat till `origin/dev` denna omgång — allt lokalt i
+  `dev`-branchen (11 commits denna omgång, senast `d778a59`). Inga
+  golden-baslinjer rörda. Ingen PUBLICERA.
