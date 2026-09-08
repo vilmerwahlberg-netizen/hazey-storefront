@@ -2561,7 +2561,16 @@
   .nh-tb-step__n { display: none; }
   .nh-tb-step__ico { display: flex; width: 26px; height: 26px; color: #e7ae63; flex: none; }
   .nh-tb-step__ico svg { width: 100%; height: 100%; }
-  .nh-tb-step h3 { font-size: 13px; color: #fffdf8; margin: 0; }
+  /* KORRIGERAT (Fas 4, mätbar desktop-paritetsrunda -- kontrastsvep):
+     basregeln (.nh-tb-step h3, ovan i filen) sätter color:#2c3620
+     med !important -- utan !important här vann den ALLTID, även på
+     desktop, och gav osynlig mörkgrön text på trustremsans mörkgröna
+     yta (#1e2716). Verifierat live via getComputedStyle innan fixen:
+     rgb(44,54,32) mot rgb(30,39,22), kontrastkvot ~1.2. Samma
+     bugklass som redan dokumenterats flera gånger (CLAUDE.md/
+     Nyhetsbrev-fixen tidigare denna omgång) -- ingen ny rotorsak, bara
+     inte hittad förrän ett systematiskt kontrastsvep kördes. */
+  .nh-tb-step h3 { font-size: 13px; color: #fffdf8 !important; margin: 0; }
   .nh-tb-step p { display: none; }
   .nh-tb-foot { margin-top: 10px; padding-top: 10px; border-top-color: rgba(255,253,248,.14); }
   .nh-tb-foot span { color: rgba(255,253,248,.62); }
