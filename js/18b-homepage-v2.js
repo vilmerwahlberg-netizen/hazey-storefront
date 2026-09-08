@@ -323,6 +323,15 @@
       var AUTOPLAY_MS = 7000;   // "cirka 6-8 sekunder", mitt i intervallet
       var RESUME_AFTER_MS = 9000; // "återuppta efter rimlig inaktivitet" -- INTE permanent paus längre
 
+      /* Desktop correction pass (2026-09-09): kuben (perspective/preserve-3d/
+         translateZ/rotateY) är nu ENDAST mobil (<=860px, samma brytpunkt som
+         resten av projektets desktop/mobil-CSS). Desktop använder en lugn
+         opacity-crossfade (se runTransitionFade) -- ingen 3D-transform sätts
+         någonsin på desktop, bekräftat via isDesktop()-grenen nedan i stället
+         för att lita på CSS @media ensamt (JS måste veta vilket LÄGE den ska
+         driva övergången i, inte bara vilken stil som råkar gälla). */
+      function isDesktop() { return window.innerWidth > 860; }
+
       slides.forEach(function (s, i) { s.classList.toggle("is-front", i === 0); });
 
       function setCubeHalf() {
@@ -330,13 +339,42 @@
         if (w > 0) cube.style.setProperty("--cube-half", (w / 2) + "px");
       }
       setCubeHalf();
+      var wasDesktop = isDesktop();
       var resizeQueued = false;
       window.addEventListener("resize", function () {
         if (resizeQueued) return;
         resizeQueued = true;
-        requestAnimationFrame(function () { resizeQueued = false; setCubeHalf(); });
+        requestAnimationFrame(function () {
+          resizeQueued = false;
+          setCubeHalf();
+          var nowDesktop = isDesktop();
+          if (nowDesktop !== wasDesktop) {
+            wasDesktop = nowDesktop;
+            resetTransitionState();
+          }
+        });
       });
       cube.classList.add("nh-hero-cube--ready");
+
+      /* Byte över 860/861-brytpunkten (t.ex. ett verkligt fönster som
+         dras om, eller devtools-breddändring) -- städar allt övergångs-
+         tillstånd från BÅDA lägena så nästa navigering startar rent,
+         oavsett vilket läge man kom ifrån. Rör ALDRIG `index`/vilken
+         slide som logiskt är aktiv, bara de tillfälliga övergångsspåren. */
+      function resetTransitionState() {
+        animating = false;
+        pendingStep = null;
+        cube.style.transition = "none";
+        cube.style.setProperty("--cube-rot", "0deg");
+        void cube.offsetWidth;
+        cube.style.transition = "";
+        slides.forEach(function (s, i) {
+          s.classList.remove("is-target", "nh-hero-fade-in");
+          s.classList.toggle("is-front", i === index);
+          s.style.transform = "";
+          s.style.transition = "";
+        });
+      }
 
       function updateDots() { dots.forEach(function (d, i) { d.setAttribute("aria-current", i === index ? "true" : "false"); }); }
       function updateAriaHidden() { slides.forEach(function (s, i) { s.setAttribute("aria-hidden", i === index ? "false" : "true"); }); }
@@ -359,6 +397,67 @@
         if (newIndex === index) return;
         if (animating) { pendingStep = { newIndex: newIndex, dir: dir }; return; } // "lås ny navigation... köa högst ett nästa steg"
         if (reduceMotion) { instantShow(newIndex); return; }
+        if (isDesktop()) { runTransitionFade(newIndex); return; }
+        runTransitionCube(newIndex, dir);
+      }
+
+      /* Desktop: lugn premium-crossfade (~420ms), INGEN 3D-transform sätts
+         någonsin här -- ingen perspective/rotateY/translateZ, ingen
+         bildzoom, inget beskuret utsnitt under bytet. Målsidan (toSlide)
+         tonas in OVANPÅ den nuvarande (z-index:2, se CSS), som ligger kvar
+         orörd undertill tills bytet är klart -- ingen egen fade-out-
+         animation behövs (den täcks helt, ingen synlig lucka). */
+      function runTransitionFade(newIndex) {
+        animating = true;
+        var fromSlide = slides[index];
+        var toSlide = slides[newIndex];
+
+        toSlide.classList.add("nh-hero-fade-in");
+        void toSlide.offsetWidth; // tvingad reflow, samma skäl som kub-varianten
+
+        function finish() {
+          toSlide.removeEventListener("transitionend", onEnd);
+          clearTimeout(safetyTimer);
+          fromSlide.classList.remove("is-front");
+          // Utan detta ärver fromSlide fortfarande .nh-hero-slide{transition:
+          // opacity 420ms} när den faller tillbaka till basreglens opacity:0
+          // -- overskådligt när fromSlide råkar ligga FÖRE toSlide i DOM-
+          // ordning (samma z-index, DOM-ordning avgör då stapling) blir det
+          // osynligt (toSlide, redan fullt opak, täcker helt), men vid nästa
+          // varv (motsatt riktning, fromSlide EFTER toSlide i DOM) skulle
+          // fromSlide fortsätta synas ovanpå och tona ut i ytterligare
+          // ~420ms -- en riktig "spöke ovanpå"-glitch. Nollställs instant,
+          // samma mönster som kub-variantens egna transform-reset.
+          fromSlide.style.transition = "none";
+          void fromSlide.offsetWidth;
+          fromSlide.style.transition = "";
+          toSlide.classList.remove("nh-hero-fade-in");
+          toSlide.classList.add("is-front");
+
+          index = newIndex;
+          updateDots();
+          updateAriaHidden();
+          animating = false;
+
+          if (pendingStep) {
+            var next = pendingStep; pendingStep = null;
+            runTransition(next.newIndex, next.dir);
+          }
+        }
+        function onEnd(e) {
+          if (e.target !== toSlide || e.propertyName !== "opacity") return;
+          finish();
+        }
+        toSlide.addEventListener("transitionend", onEnd);
+        // Samma städningsprincip som kub-varianten: fastna aldrig permanent
+        // i "animating" om transitionend av någon anledning uteblir.
+        var safetyTimer = setTimeout(function () {
+          toSlide.removeEventListener("transitionend", onEnd);
+          finish();
+        }, 550);
+      }
+
+      function runTransitionCube(newIndex, dir) {
         animating = true;
 
         var fromSlide = slides[index];

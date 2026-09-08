@@ -12112,6 +12112,53 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      ovan), fast för botten-justering i stället för stretch. */
   .nh-hero-slide { display: flex; flex-direction: column; justify-content: flex-end; }
 
+  /* Desktop correction pass 2026-09-09 — INGEN 3D-kub på desktop, bara en
+     lugn opacity-crossfade (se runTransitionFade/isDesktop() i
+     js/18b-homepage-v2.js). Kuben (perspective/preserve-3d/translateZ/
+     rotateY) är och förblir mobil-endast (<=860px, orört ovan/nedan i
+     filen). Här neutraliseras all 3D-geometri för desktop-vyn helt --
+     `transform:none` vinner över BÅDE cube-basregelns
+     translateZ(...)rotateY(...) OCH .is-front/.is-target-reglarna (se
+     `!important`-motiveringen i respektive kommentar nedan, alla tre
+     skrevs ursprungligen just för att vinna specificitetskampen mot
+     dessa) -- JS sätter heller aldrig --cube-rot/translateZ/rotateY i
+     denna kodväg (se runTransitionFade), detta är dubbel säkerhet, inte
+     den enda spärren. */
+  .nh-hero-cube { transform: none; transition: none; }
+  .nh-hero-slide {
+    transform: none !important;
+    visibility: visible;
+    filter: none !important;
+    transition: opacity 420ms cubic-bezier(.22,.61,.36,1);
+  }
+  .nh-hero-slide:not(.is-front) { opacity: 0; z-index: 1; }
+  .nh-hero-slide.is-front { opacity: 1; z-index: 1; }
+  .nh-hero-slide.nh-hero-fade-in { opacity: 1; z-index: 2; }
+  @media (prefers-reduced-motion: reduce) {
+    .nh-hero-slide { transition: none; }
+  }
+
+  /* KORRIGERAT (Desktop correction pass 2026-09-09): .nh-hero-slide::before
+     (basregeln, delad med mobil, se den ovan) lägger en heltäckande
+     grön/mörk linear-gradient(180deg,...55%,...88%) över HELA fotot --
+     rätt för mobilens inramade kort, men på desktop förstörde den
+     golden-hour-färgerna, produktförpackningarna, himlen och grafittin
+     rakt av (bekräftat, flaggat explicit). Ersatt här med ENDAST lokal,
+     riktad mörkläggning: ett vänster-till-höger-lager bakom textkolumnen
+     (fadear ut runt 62% bredd -- textkolumnen är max-width:620px, dvs
+     ca 32-60% av viewport beroende på bredd, resten av fotot förblir
+     klart), ett svagt topplager bakom headerzonen, och ett svagt
+     bottenlager bakom trust-raden. Högersidan (produkter/solnedgång/
+     grafitti) är avsiktligt helt orörd. Kontrast verifierad live via
+     computed style + pixelsampling under texten, inte gissad (se
+     STATUS.md). */
+  .nh-hero-slide::before {
+    background:
+      linear-gradient(90deg, rgba(20,17,10,.64) 0%, rgba(20,17,10,.42) 28%, rgba(20,17,10,.16) 48%, rgba(20,17,10,0) 62%),
+      linear-gradient(180deg, rgba(20,17,10,.3) 0%, rgba(20,17,10,0) 16%),
+      linear-gradient(0deg, rgba(20,17,10,.36) 0%, rgba(20,17,10,0) 20%);
+  }
+
   /* Trust-raden längst ner över heron (js/18b-homepage-v2.js, heroTrust) --
      bara verifierade fakta, se kommentaren där. */
   .nh-hero-v2__trust {
@@ -12158,6 +12205,24 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     .nh-qfind-hero .hero-link { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
   }
   .nh-qfind-hero .hero-link:hover { background: rgba(255,253,248,.18); }
+
+  /* KORRIGERAT (Desktop correction pass 2026-09-09): pilarna såg ut som
+     "stora mörka flytande knappar mitt på bilden" (flaggat explicit) --
+     32px/rgba(...,.45) var tänkt för mobilens mindre, inramade kort.
+     Diskretare glasbehandling på desktop: mindre, lägre opacitet, samma
+     glas-material som redan etablerat för hero-CTA:erna ovan, flyttade
+     närmare kanterna. */
+  .nh-hero-arrow {
+    width: 30px; height: 30px;
+    background: rgba(20,17,10,.22);
+    border: 1px solid rgba(255,253,248,.25);
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .nh-hero-arrow { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  }
+  .nh-hero-arrow:hover { background: rgba(20,17,10,.4); }
+  .nh-hero-arrow--prev { left: 20px; }
+  .nh-hero-arrow--next { right: 20px; }
 }
 
 /* Karusell-kontroller (prickar/pilar) — renderas bara i DOM:en när >1
