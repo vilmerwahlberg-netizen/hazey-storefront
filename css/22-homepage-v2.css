@@ -2681,3 +2681,29 @@
   .nh-faq__item.nh-faq__item summary { padding: 16px 0; font-size: 15px; }
   .nh-faq__a.nh-faq__a { padding: 0 0 16px; font-size: 13.5px; }
 }
+
+/* ── (9) Populära serier / Bästsäljare — Fas 2 fortsättning (mätbar
+   desktop-paritetsrunda): båda sektionerna mätte tydligt kortare än
+   referensen (-16%/-13%) trots redan korrekt kvadratisk kortform/grid.
+   Rotorsak (delvis): båda begränsades till max-width:1100px, vilket vid
+   breda skärmar lämnade betydligt bredare oanvända cream-marginaler än
+   referensens (som fyller nästan hela bredden). Bredare container ger
+   kvadratiska kort mer verklig yta att växa i, utan att röra grid-
+   kolumnantal/gap.
+   .nh-featured.section-gap självt bär max-width (aldrig gjord full-bredd)
+   -- ändring på den räckte där. .nh-pser.section-gap görs däremot redan
+   100vw/full-bredd på desktop (se regeln längre upp i filen) med en EGEN
+   inre max-width på `.nh-pser .sec-head`/`.nh-pser .pser-row` -- att bara
+   höja den yttre sektionens (verkningslösa) max-width missade rotorsaken
+   första försöket, verifierat via en oförändrad mätsiffra i
+   desktop-reference-parity efter den ändringen. Rättat på de RIKTIGA
+   inre selektorerna i stället. ── */
+@media (min-width: 861px) {
+  .nh-featured.section-gap {
+    max-width: 1280px;
+  }
+  .nh-pser .sec-head,
+  .nh-pser .pser-row {
+    max-width: 1280px;
+  }
+}
