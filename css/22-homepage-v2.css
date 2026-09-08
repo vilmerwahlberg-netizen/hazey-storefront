@@ -1547,8 +1547,24 @@
 .nh-qfc--pri { background: #d9782f; border-color: #d9782f; }
 .nh-qfc--pri:hover { background: #c96a26; color: #fff; }
 @media (min-width: 861px) {
-  .nh-qfind { margin: 0 26px 0; padding: 22px 26px; display: flex; align-items: center; }
-  .nh-qfind__inner { flex-direction: row; align-items: center; gap: 22px; }
+  /* KORRIGERAT (Desktop correction pass 2026-09-09): CRO-raden hade
+     margin:0 26px + border-radius -- en inramad, cream-kantad "kortyta"
+     i stället för referensens fullbredds övergångsremsa. Samma robusta
+     full-bleed-teknik som redan används för Bonfire/trustremsan/
+     nyhetsbrevet (100vw + negativ margin, ingen yttre radie); riktigt
+     innehåll flyttat till en centrerad innercontainer med samma
+     maxbredd som Bästsäljare/Populära serier, inte hela vägen ut i
+     kanten. */
+  .nh-qfind {
+    width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    border-radius: 0;
+    padding: 0;
+    display: block;
+  }
+  .nh-qfind__inner {
+    flex-direction: row; align-items: center; gap: 22px;
+    max-width: 1340px; margin: 0 auto; padding: 22px 40px;
+  }
 }
 
 /* Underrubrik på Populära vägar-korten (nytt sen förra omgången). */
@@ -2786,7 +2802,17 @@
    desktop till förmån för ikon + kort titel, se .nh-tb-step__ico (NY,
    den femte Trustpilot-posten, se nhTrustBlockHtml). ── */
 @media (min-width: 861px) {
-  .nh-trustblock.section-gap { max-width: none; padding: 0; }
+  /* BUGGFYND (Desktop correction pass 2026-09-09, bekräftat via
+     getComputedStyle): max-width:none ensam räckte inte -- basregelns
+     margin:0 auto (rad ~1670, aldrig återställd här) fick fortfarande
+     effekt. En flex-KOLUMN-förälders barn stretchar annars automatiskt
+     till full bredd (default align-items:stretch), men ICKE-NOLL auto-
+     marginaler på ett flex-item stänger uttryckligen av just den
+     stretchen (flexbox-specen) -- elementet krympte i stället till sitt
+     NATURLIGA innehållsmått (~944px) och centrerades med 248px cream-
+     marginal på var sida, exakt de "stora cream-marginalerna" som
+     flaggades. margin:0 återställer den avsedda full-bredd-stretchen. */
+  .nh-trustblock.section-gap { max-width: none; padding: 0; margin: 0; }
   .nh-tb-inner {
     background: #1e2716; border-radius: 0;
     /* 26px→31px (Fas 2, mätbar desktop-paritetsrunda): -6.4% mot
@@ -2820,6 +2846,26 @@
   .nh-tb-foot { margin-top: 10px; padding-top: 10px; border-top-color: rgba(255,253,248,.14); }
   .nh-tb-foot span { color: rgba(255,253,248,.62); }
   .nh-tb-link { color: #e7ae63; }
+}
+
+/* KORRIGERAT (Desktop correction pass 2026-09-09): nyhetsbrevsremsan hade
+   INGEN desktop-specifik override alls -- ärvde bara basregelns
+   max-width:1100px + margin:0 auto rakt av, en infälld avrundad "kort-yta"
+   i stället för referensens fullbreddsremsa. Samma full-bleed-mönster
+   som Bonfire/trustremsan (100vw + negativ margin, ingen yttre radie på
+   den mörkgröna ytan); innehållet (formulär/CTA) hamnar i en centrerad
+   innercontainer. Formulärets riktiga, sanningsenliga/inaktiva status
+   (se js/18b-homepage-v2.js nhInitInactiveForms) är helt orörd -- bara
+   layout/bredd. */
+@media (min-width: 861px) {
+  .nh-signup.section-gap {
+    width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    max-width: none; padding: 0;
+  }
+  .nh-signup-block {
+    border-radius: 0;
+    max-width: 1340px; margin: 0 auto; padding: 32px 40px;
+  }
 }
 
 /* ── (5) Featured/Spotlight — asymmetrisk delning, KORRIGERAD riktning
