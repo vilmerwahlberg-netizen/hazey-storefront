@@ -2503,7 +2503,11 @@
     display: block;
     position: relative;
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
-    height: 460px;
+    /* Höjd höjd 460→500px (Fas 2, mätbar desktop-paritetsrunda): mätte
+       -14% mot referensens uppmätta ~537px vid 1440px. Verifierat
+       visuellt efter ändringen att varken "Good People Higher Moments"-
+       texten eller surfbrädan till höger klipps av hårdare än innan. */
+    height: 500px;
     background-image: url('https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@dev/assets/v2/editorial-bonfire-good-people-v2.jpg');
     background-size: cover; background-position: center 38%;
     padding: 0;
