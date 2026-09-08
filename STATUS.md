@@ -3342,3 +3342,91 @@ desktop-bygget). `tests/golden-impl` INTE uppdaterad än — enligt
 uppdragets egen regel uppdateras den sist, i en separat commit, efter
 att förbättringarna är bevisade. Tema 3/5 opåverkade genomgående,
 ingen Nyehandel-adminändring, PUBLICERA aldrig klickad.
+
+## 2026-09-09 — 3D-kubhero, kampanjkonfiguration, portat scroll-reveal/bildintoning
+
+**Hero — rotorsak till "fastnar efter slide 2" (undersökt, inte längre reproducerbar men fixad ändå):**
+den gamla `onManualInteraction()` anropades redan vid `pointerdown`,
+innan rörelsens riktning var känd — ett vanligt LODRÄTT sidscroll som
+startar med fingret ovanpå heron tolkades som en avsiktlig swipe och
+satte `userStopped=true` PERMANENT, vilket stängde av autoplay för
+gott. Fixat: riktningen låses först när rörelsen är bekräftat
+horisontell (`horizLock`), och pausen är nu tidsbegränsad (återupptas
+efter ~9s inaktivitet) i stället för permanent. `touch-action:pan-y`
+på `.nh-hero-cube` är ett andra, webbläsarnivå-skyddslager.
+
+**3D-kubövergång:** `.nh-hero-cube` (perspective på `.nh-hero-track`,
+preserve-3d på kuben) roterar ±90° per navigering; målsidan
+positioneras instant på kubens sida innan rotationen startar, och
+kubens EGEN rotation nollställs (utan transition) efter varje
+transition — växer alltså aldrig obegränsat. Högst ETT köat steg
+medan en transition pågår. Reduced motion: ingen rotation, instant
+byte. Bugg hittad och fixad under bygget: `.nh-hero-slide:first-child`
+tvingade evergreen-sliden synlig OAVSETT vilken slide som logiskt var
+aktiv (samma specificitet som `.is-front`, men matchade oavsett) —
+slide 2 "försvann" tillbaka till slide 1:s innehåll efter varje
+transition tills detta fixades. Andra bugg: `.nh-hero-track{height:
+100%}` gav 0px eftersom `.nh-hero-slide` nu är absolut positionerad
+och därför aldrig bidrar till förälderns auto-höjd — fixat med en
+explicit `height` (238px mobil/420px desktop, samma tal som redan
+fanns som min-height) i stället för att lita på flex-stretch-kedjan.
+
+**Kampanjkonfiguration:** `NH_HERO_CAMPAIGNS` (js/18b-homepage-v2.js)
+— `id/enabled/order/startsAt/endsAt/imageMobile/imageDesktop/alt/
+eyebrowMobile/eyebrowDesktop/h1/pMobile/pDesktop/primaryCta/
+secondaryCta/theme`. `nhActiveHeroSlides()` filtrerar/validerar/
+sorterar och tvingar fram evergreen som garanterad fallback om inget
+annat är giltigt. **Arbetsflöde för en ny kampanj:** lägg bild(er) i
+`assets/`, duplicera en post i `NH_HERO_CAMPAIGNS`, fyll i text/länkar/
+alt-text, sätt `startsAt`/`endsAt` (eller lämna null), sätt
+`enabled:true`, `node build.js`, commit+push till `dev`, kontrollera
+tema 6, stäng av genom `enabled:false` eller ett passerat `endsAt`.
+Ingen kodändring i render-/kublogiken krävs.
+
+**Portat scroll-reveal/bildintoning** (från `chatgpt-claude-handover/
+CLAUDE-HANDOFF-2026-08-17/prototyp/index.html`, samma funktions-/
+klassnamn: armReveal/scanScrollReveal/cleanUpReveal/
+revealPassedElements/fadeInImages, `.pre-reveal`/`.in-view`/
+`.img-fade`/`.is-loaded`): whole-section reveal via `.section-gap,
+.nh-faq`; grid-stagger via `.pser-row/.nh-featured-row/.routes-grid/
+.guide-grid/.nh-guides-grid/.nh-tb-steps/.nh-reviews-grid` med
+runtime-koll som hoppar över barn-stagger på horisontella scroll-rader
+(skyddar vertikal touch-scroll, verifierat med simulerat lodrätt drag
+som startar på Bästsäljare/Populära serier). `fadeInBackgroundImages`
+är en nödvändig anpassning av facits `<img>`-baserade `fadeInImages`
+för våra CSS-background-image-element (seriekort/vägar/Spotlight/
+Guider) — samma säkerhetsprincip (Image()-förladdning, load+error
+löser båda, aldrig fastnar osynlig).
+
+**Säkerhetsnät TILLAGT utöver ren port (verifierat nödvändigt):**
+Playwrights `fullPage`-skärmdump visade ALL sektion mellan hero och
+footer som helt osynlig — varken IntersectionObserver eller
+scroll-sweepen hinner trigga när sidan förstoras till sin fulla höjd
+i stället för att scrollas. En hård 2,2s-tidsgräns per element (i
+`armReveal`) tvingar fram reveal ändå, långt efter en riktig besökares
+normala scroll men kort nog för crawlers/skärmdumpsverktyg. Matchar
+uppdragets egen SEO-regel ("innehåll får inte bli beroende av
+Googlebots interaktion") och ett redan tidigare etablerat mönster i
+denna fil (samma rotorsak dokumenterad i en äldre commit).
+
+**Testinfra-bugg hittad och fixad (aldrig fungerat, se git-historik):**
+`tests/parity-sections.mjs`s `lockImplImages` sökte
+`.nh-hero-v2[data-hero-src]` — `data-hero-src` har alltid suttit på
+`.nh-hero-slide`, aldrig på `.nh-hero-v2`. Låsningen var alltså ett
+tyst no-op sedan den skrevs; synligt först nu när slide 2 testades för
+första gången. Rättad till att låsa alla `.nh-hero-slide[data-hero-src]`.
+
+Verifierat: 0px overflow vid 390/393/430/600/1440px (inkl. efter
+hero-navigering vid varje bredd), h1Count fortsatt 1, inga konsol-/
+sidfel, reduced-motion ger omedelbar statisk rendering (18
+kontrollerade element, ingen dold), vertikalt drag som startar på
+heron/Bästsäljare/Populära serier blockeras aldrig. 12/12
+regressionstester gröna mot ny golden-impl-baslinje. `tests/
+tema6-smoke.spec.mjs` kunde INTE köras — sökt igenom hela repot efter
+en sparad preview-token, ingen finns (bekräftat medvetet aldrig
+hårdkodad, se filens egen kommentar) — kräver Vilmers riktiga
+tema 6-URL.
+
+Inte rört: SEO-metadata/H1-struktur (utöver att slide 2 nu explicit
+INTE är H1)/länkar/JSON-LD, produkter/kategorier/filtertaggar,
+Nyehandel-admin, tema 3/5, produktionsloadern. Ingen release-tagg.

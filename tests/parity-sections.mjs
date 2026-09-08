@@ -429,8 +429,19 @@ export async function lockFacitHeroImage(page) {
 export async function lockImplImages(page) {
   await page.evaluate(
     (imgs) => {
-      const hero = document.querySelector(".nh-hero-v2[data-hero-src]");
-      if (hero) hero.style.backgroundImage = "url('" + imgs.hero + "')";
+      // BUGGFYND (kub-/kampanjrunda 2026-09-09): denna selektor har ALDRIG
+      // matchat något element -- `data-hero-src` sitter (och har alltid
+      // suttit, se git-historik) på `.nh-hero-slide` (en per slide), inte
+      // på den yttre `.nh-hero-v2`-sektionen. Låsningen har alltså varit
+      // ett tyst no-op sedan den skrevs; testet råkade se rimligt ut ändå
+      // eftersom slide 1:s riktiga bild oftast laddade fint från jsDelivr
+      // i testmiljön. Buggen blev synlig först nu när en andra slide
+      // (Magic Sauce) testas. Låser ALLA slides, inte bara den första --
+      // kub-arkitekturen har flera samtidigt i DOM:en.
+      document.querySelectorAll(".nh-hero-slide[data-hero-src]").forEach((hero, i) => {
+        hero.style.setProperty("--hero-img-m", "url('" + (Array.isArray(imgs.hero) ? imgs.hero[i % imgs.hero.length] : imgs.hero) + "')");
+        hero.style.setProperty("--hero-img-d", "url('" + (Array.isArray(imgs.hero) ? imgs.hero[i % imgs.hero.length] : imgs.hero) + "')");
+      });
 
       const avatars = Array.from(document.querySelectorAll(".pser-avatar[data-photo-href]"));
       avatars.forEach((el, i) => {
