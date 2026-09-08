@@ -48,6 +48,7 @@ import {
   PACKAGE_GEOMETRY_GAP_TOLERANCE_PX,
   measurePackageGeometry,
   packageGeometryGoldenPath,
+  settleForCapture,
 } from "./parity-sections.mjs";
 import { diffPngBuffers, writePngFile, readPng } from "./pixel-diff.mjs";
 
@@ -184,6 +185,7 @@ if (MODE === "update") {
       const loc = page.locator(section.implSelector);
       await expect(loc, `Implementation-selektorn "${section.implSelector}" för "${section.label}" saknas`).toHaveCount(1);
 
+      await settleForCapture(loc);
       const box = await loc.boundingBox();
       const buf = await loc.screenshot();
       writePngFile(readPng(buf), implGoldenPngPath(section.key));
@@ -228,6 +230,7 @@ if (MODE === "update") {
       const golden = JSON.parse(fs.readFileSync(metaPath, "utf8"));
       const goldenBuf = fs.readFileSync(goldenPath);
 
+      await settleForCapture(loc);
       const box = await loc.boundingBox();
       const actualBuf = await loc.screenshot();
 
@@ -310,6 +313,7 @@ if (MODE === "update") {
       const golden = JSON.parse(fs.readFileSync(metaPath, "utf8"));
       const goldenBuf = fs.readFileSync(goldenPath);
 
+      await settleForCapture(loc);
       const box = await loc.boundingBox();
       const actualBuf = await loc.screenshot();
 

@@ -3430,3 +3430,95 @@ tema 6-URL.
 Inte rört: SEO-metadata/H1-struktur (utöver att slide 2 nu explicit
 INTE är H1)/länkar/JSON-LD, produkter/kategorier/filtertaggar,
 Nyehandel-admin, tema 3/5, produktionsloadern. Ingen release-tagg.
+
+## 2026-09-08 — Korrigeringsrunda: hero-kub (inzoomad bild, statisk mask) + reveal fyrde för tidigt
+
+Vilmer flaggade två konkreta fel i föregående omgångs leverans (skärmdump
+bifogad): (1) hero-bilden blev synligt inzoomad i kubbygget, och kuben
+kändes som att bara INNEHÅLLET roterade inuti en fast, rundad ram — inte
+att hela herokortet var en fysisk roterande yta; (2) scroll-reveal-effekten
+syntes inte längre vid en riktig scroll, eftersom allt redan hade "laddats
+in" innan han hann scrolla dit.
+
+**Rotorsak 1 (inzoomning):** `.nh-hero-cube` saknade en motviktande
+`translateZ(-cube-half)` på sig själv. Varje sida (`.nh-hero-slide.is-front`)
+sätter `translateZ(+cube-half)` för att hamna på kubens framsida — men utan
+motvikten låg fronten NÄRMARE kameran under `perspective` än ett vanligt,
+oroterat lager skulle ha gjort, vilket perspektivprojektionen tolkar som en
+STÖRRE yta — ren optisk förstoring, ingen ändring av bildens
+background-size/position. Fix: `.nh-hero-cube` fick en permanent bas-transform
+`translateZ(calc(var(--cube-half) * -1)) rotateY(var(--cube-rot))` (JS
+ändrar numera bara CSS-variabeln `--cube-rot`, aldrig `.style.transform`
+direkt). Verifierat via `getComputedStyle`-matriser: slide-transformet
+(`translateZ(+half)`) och kub-transformet (`translateZ(-half)`) tar ut
+varandra till netto noll — samma bildutsnitt som innan kubombygget,
+bekräftat visuellt (samma bil/växter/lådor synliga, ingen beskärning ändrad).
+
+**Rotorsak 2 (statisk mask):** `border-radius`/`overflow`/`box-shadow` satt
+på den YTTRE, icke-roterande `.nh-hero-v2`/`.nh-qfind-hero` (samma element,
+båda klasserna på samma `<section>`) — och en äldre, `!important`-märkt
+`.nh-hero-v2`-regel (rad ~48, kvar sen INNAN kubombygget) forcerade
+rundningen ÄNDÅ, oavsett vad som skrevs på `.nh-qfind-hero`. Fix: rundning +
+egen `overflow:hidden` flyttade till `.nh-hero-slide` (själva kub-sidan som
+roterar) — den yttre ramen är nu kant-till-kant, osynlig, bara ett tekniskt
+clip-lager (tillåtet av uppdraget: "ett yttre scene-/perspective-element för
+layout och clipping"). Ambient markskugga (box-shadow, icke-roterande — ett
+fysiskt objekt kastar ändå en skugga som inte roterar med det) lämnades kvar
+på den yttre ramen. Verifierat: `outerBorderRadius:"0px"`,
+`slideBorderRadius:"22px"` via computed style; bildsekvens
+(`final-0-slide1.png` … `final-5-back-slide1.png`) visar båda kubsidornas
+egna rundade hörn synliga samtidigt mitt i rotationen, ingen statisk ram
+kvar runtom.
+
+**Rörelsekaraktär:** kubens/filtrets easing bytt från sajtens delade
+mikro-interaktionskurva (`cubic-bezier(.22,.61,.36,1)`, byggd för 140-260ms
+hover/press — verifierat med en frame-för-frame-logg att den gjorde en
+650ms-rotation nästan färdig redan efter ~50ms) till en dedikerad
+symmetrisk ease-in-out (`cubic-bezier(.65,0,.35,1)`) enbart för
+`.nh-hero-cube`/`.nh-hero-slide`. Frame-logg (äkta `performance.now()` +
+matris-avläsning varje `requestAnimationFrame`, inte skärmdumpstiming) visar
+nu: 2° vid 100ms, 35° vid 300ms, 85° vid 500ms, 90.0° exakt vid 650ms, reset
+till 0° direkt efter — mjuk start, snabbast i mitten, mjuk inbromsning, ingen
+studs.
+
+**Rotorsak 3 (reveal för tidigt):** förra omgångens 2,2s globala
+tvångs-reveal-timer i `armReveal()` gjorde exakt det Vilmer beskrev — alla
+sektioner fick `.in-view` inom 2,2s efter sidladdning OAVSETT skrollposition,
+så vid normal läshastighet var redan allt synligt innan han scrollade dit.
+**Borttagen helt**, ingen ersättningstimer. `revealPassedElements()` (redan
+befintlig, körs dels en gång direkt efter arming, dels vid varje
+scroll-event) täcker både "innehåll som faktiskt ligger i första vyn vid
+sidladdning" och "snabb scroll som passerar ett block mellan två
+bildrutor" — det var alltid den avsedda mekanismen, inte timern. Verifierat
+direkt (inte antaget): `.nh-faq` har `opacity:"0"` 3.2s efter sidladdning
+utan att ha scrollats, och går till `opacity:"1"` först när sektionen
+faktiskt närmar sig viewporten under en stegvis simulerad scroll (0.2→0.4→
+0.6 av sidhöjden).
+
+**Testinfra-bugg hittad och fixad (samma klass som förra omgångens
+hero-selektor-fix):** `home-parity.spec.mjs`s tre capture-loopar
+(`impl-baseline`/facit-parity/regression) körde `loc.boundingBox()` +
+`loc.screenshot()` direkt utan att vänta på att en auto-skrollad sektions
+reveal-transition hann bli klar — med 2,2s-timern borttagen visade detta sig
+som ett falskt regressionslarm på "Snabb koll" (3,0%, precis vid tröskeln).
+Ny delad hjälpfunktion `settleForCapture(loc)` (parity-sections.mjs) skrollar
+sektionen till mitten av vyn och väntar 1200ms (längre än den längsta möjliga
+reveal-transitionen: 620ms + 4×90ms stagger + marginal) innan mätning/capture
+— tillagd i alla tre loopar. Efter fixen: 12/12 gröna, inklusive Snabb koll
+på 0,0%.
+
+Verifierat: full kub-bildsekvens (slide1 → ~25% → ~50%, båda sidors rundade
+hörn synliga → slide2 → tillbaka via motsatt rotationsriktning → slide1,
+identisk med startbilden), reduced-motion (transitionDuration:"0s", omedelbart
+bytt, ingen mellanvinkel), vertikalt drag som startar ovanpå heron (aktiv dot
+förblir 0, ingen swipe triggas), 0px overflow vid 390/393/430/600/1440px,
+inga konsol-/sidfel, 12/12 regressionstester gröna mot uppdaterad
+golden-impl-baslinje (Hero-diffen mot den GAMLA — buggiga — baslinjen var
+43,5% innan uppdatering, granskad bild-för-bild innan
+`npm run parity:update-impl` kördes).
+
+Inte rört: SEO-metadata/H1-struktur/länkar/JSON-LD, hero-copy/CTA-länkar/
+kampanjkonfiguration, produkter/kategorier/filtertaggar, Nyehandel-admin,
+tema 3/5, produktionsloadern. Ingen release-tagg. `tests/
+tema6-smoke.spec.mjs` fortsatt inte körbart utan Vilmers riktiga
+tema 6-preview-URL.

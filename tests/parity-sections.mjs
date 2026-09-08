@@ -569,6 +569,26 @@ export async function hasHorizontalOverflow(page) {
 }
 
 /**
+ * KORRIGERINGSRUNDA (2026-09-XX, kub/reveal-korrigering): en tidigare
+ * omgång hade en global 2,2s tvångs-reveal-timer (nu BORTTAGEN, se
+ * armReveal i js/18b-homepage-v2.js) som råkade göra detta test grönt av
+ * fel anledning — varje sektion hann alltid tvingas fram innan
+ * screenshot, oavsett skrollposition. Utan den timern fångar
+ * `loc.screenshot()` (som Playwright auto-skrollar in i vyn precis före
+ * capture) en sektion MITT I sin egen reveal-transition om inget extra
+ * väntas — inte en verklig regression, bara ett testtimingsfel. Denna
+ * hjälpfunktion skrollar sektionen till mitten av vyn (samma sak en
+ * riktig besökare skulle göra) och väntar sedan LÄNGRE än den längsta
+ * möjliga reveal-transitionen (620ms + max 4×90ms stagger + 140ms
+ * cleanup-marginal, se .pre-reveal/cleanUpReveal) innan mätning/capture.
+ * No-op-säker för facit (som inte har detta reveal-system alls).
+ */
+export async function settleForCapture(loc) {
+  await loc.scrollIntoViewIfNeeded();
+  await loc.page().waitForTimeout(1200);
+}
+
+/**
  * Header-paket-geometri — den absoluta dokumentkontroll som saknades
  * innan 2026-09-01: tidigare jämförde parity bara beskurna, isolerade
  * komponentbilder (header/sökfält/mikrotrust var för sig), vilket kunde
