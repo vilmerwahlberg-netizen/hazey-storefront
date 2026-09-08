@@ -13466,7 +13466,7 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
        -14% mot referensens uppmätta ~537px vid 1440px. Verifierat
        visuellt efter ändringen att varken "Good People Higher Moments"-
        texten eller surfbrädan till höger klipps av hårdare än innan. */
-    height: 500px;
+    height: 520px;
     background-image: url('https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@dev/assets/v2/editorial-bonfire-good-people-v2.jpg');
     background-size: cover; background-position: center 38%;
     padding: 0;
@@ -13674,10 +13674,10 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
    inre selektorerna i stället. ── */
 @media (min-width: 861px) {
   .nh-featured.section-gap {
-    max-width: 1280px;
+    max-width: 1340px;
   }
   .nh-pser .sec-head,
   .nh-pser .pser-row {
-    max-width: 1280px;
+    max-width: 1340px;
   }
 }
