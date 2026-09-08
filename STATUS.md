@@ -3603,3 +3603,115 @@ tema 3/5, Nyehandel-admin. Den gamla, redan tidigare dokumenterade
 native "THCA hos oss"-banner-resten (pre-existing, inte introducerad
 denna omgång) syns fortfarande efter Guider & aktuellt -- flaggat, inte
 åtgärdat (utanför denna omgångs scope).
+
+## MASTERUPPDRAG — mätbar desktop-paritet, full korrigering (2026-09-08, pågående)
+
+Vilmer avvisade explicit föregående omgångs ("Bygg den låsta desktop-
+startsidan 1:1 i tema 6", commits d8ed5cf/fb7dbff/a2c54ef) resultat som
+visuellt INTE en sann 1:1-matchning mot `preview/ai-direction/
+hazey-dadgrass-westcoast-concept-v1.png` — godkänd som teknisk grund,
+inte som facit uppnått. Nytt uppdrag i 6 faser + 4 checkpoints. Arbetet
+pågår i SAMMA session, dokumenteras här löpande så en annan agent kan
+återuppta om sessionen avbryts.
+
+### Checkpoint 1 — Fas 1: `desktop-reference-parity`-verktyget (commit a5a2424)
+
+Nytt, fristående verktyg: `tests/desktop-reference-parity.config.mjs` +
+`tests/desktop-reference-parity.mjs` (`npm run parity:desktop`). Läser
+referensbildens 8 sektionsgränser ur FAKTISKA pixlar (kolumn-färgskanning,
+inte gissat/beskrivet), mappar varje till en verifierad DOM-selektor
+(grep:ad ur js/18b-homepage-v2.js + tests/tema6-smoke.spec.mjs), producerar
+reference/implementation/side-by-side/overlay/diff-PNG:er + measurements.
+json/.md per sektion. Helt fristående från tests/parity-sections.mjs/
+golden(-impl) — rör dem aldrig.
+
+Två verktygsbuggar hittade och fixade UNDER byggandet (inte gissade):
+1. `page.setContent()` + `<img src="file://...">` renderade nästan tomt —
+   en icke-file://-sida blockeras av Chromium från att ladda en lokal
+   file://-bild. Löst: navigera till en riktig temp-.html-fil via file://.
+2. Flera sektioners `implementation.png` blev helt tomma —
+   `page.screenshot({fullPage:true})` scrollar aldrig sidan på riktigt, så
+   IntersectionObserver-baserad scroll-reveal (och den async produktdata-
+   hämtning `#nh-spotlight` gatear bakom, se nhInitSpotlight) hann aldrig
+   trigga. Löst med en `scrollThroughPage()`-fas (samma idé som
+   `tests/parity-sections.mjs` `settleForCapture`) innan skärmdumpen.
+
+Första körningen (1440px bredd) — ALLA 8 sektioner flaggade. Facit-
+underlag för Fas 2 nedan.
+
+### Checkpoint 2 — Fas 2, del 1: header-glas, hero-höjd, Featured-riktning (commit cea3661)
+
+1. **Header helt opak trots "korrekt" transparent CSS**: `#store-header`/
+   `.topbar`/`.main`/`.nh-cat-row` var redan transparenta, men nativ
+   `nav.navbar` (som `.nh-cat-row` ligger NÄSTLAD inuti, se
+   `js/18a-header-v2.js` `navMenu.parentNode.insertBefore`) bär SAMMA
+   nativa `!important`-märkta `#eee7e1`-bakgrund som redan dokumenterats
+   för `.main` i `css/21-header-v2.css` — lyste igenom hela glas-headern.
+   Fix: lade till `nav.navbar` i både den transparenta och den scrollade
+   glas-regeln i `css/22-homepage-v2.css`.
+2. **Hero-höjd**: 662px mot referensens ~1004px vid 1440px (-34%). Höjd
+   till `clamp(680px,58vw,920px)` (kvar -17%) — INTE hela vägen, en högre
+   hero skulle tvinga en mer aggressiv cover-beskärning av den fasta
+   1536×1024-bilden än den redan kända, dokumenterade 1920px-graffititext-
+   beskärningen. Verifierat visuellt vid 1920px: ingen ny regression.
+3. **Featured Magic Sauce hade bild VÄNSTER/text HÖGER** — tvärtom mot
+   både referensen och den redan korrekta kommentaren i koden. Rotorsak:
+   DOM-ordning (media före body) hamnade i gridets första kolumn. Fixat
+   med `order` (ingen HTML-/mobiländring). Tog samtidigt bort den extra
+   flytande produktbild-badgen (`#nhSpotlightImg`) på DESKTOP ENDAST —
+   mobilen orörd, visar fortfarande samma bild.
+
+### Checkpoint 3 — Fas 2, del 2: trustremsa, recensioner, faktakorrigering (commits 1c0e3e0, cd06916)
+
+1. **Trustremsan**: `.nh-tb-step` ärvde fortfarande sin mobila
+   vit-kort-stil (bakgrund/border/radie/padding) på desktop trots en
+   redan existerande kommentar "inte fem separata kort" — ingen regel
+   hade faktiskt återställt den. Nollställd till platt yta på desktop.
+   Höjdavvikelse +20% → -6%.
+2. **Verifierade omdömen**: proportion `1.3fr:1fr` (56/44) → `7fr:3fr`
+   (70/30), matchar referensen.
+3. **FAKTAKORRIGERING**: texten "Endast kunder som köpt produkten kan
+   lämna ett omdöme på Trustpilot" satt ovanför recensionskort som i
+   verkligheten kommer från Nyehandels EGNA produktsides-recensioner
+   (`:reviews`-Vue-propen, se `nhInitProductReviews`), inte Trustpilot —
+   fel källa angiven. Trustpilot-betyget är en helt separat, fortsatt
+   korrekt länkad datakälla. Ingen bekräftad källa för Nyehandels egen
+   köpverifieringspolicy finns i repot, så texten byttes mot en sann
+   formulering utan overifierbart policypåstående: "Riktiga omdömen från
+   våra produktsidor, plus vårt samlade betyg på Trustpilot." Fortfarande
+   bara de 2 riktiga recensioner som faktiskt finns, ingen påhittad tredje.
+
+### Checkpoint 4 — Fas 3 (påbörjad): footer, juridikremsa, Nyhetsbrev-kontrast (commits a102869, 4233886)
+
+1. **Footer +133% höjd mot referensen**: ingen text/länk/kolumn borttagen,
+   bara staplad desktop-padding/gap kompakterad holistiskt (grid, länkar,
+   trust-rad, botten-rad, nyhetsbrevspanel). Kvar +104% — en äkta
+   innehålls-/juridiktextvolymskillnad (disclaimer + 4 kolumner +
+   nyhetsbrev + trustrad + betalrad), inte bara luft; ytterligare
+   kompaktering riskerar läsbarheten. Endast desktop-standardregler
+   ändrade, mobil-scopade block orörda.
+2. **Juridik-/åldersremsan** hade en klar lime-/mintgrön (`#bce691`) som
+   klämde mot West Coast-paletten (flaggat explicit i uppdraget) — bytt
+   till `#f4e9dc` (beige-light-token), oförändrad kontrast/läsbarhet.
+3. **Nyhetsbrev-kontrastbugg** (flaggad explicit i uppdraget): `.nh-signup-
+   block h2` saknade egen `color`, en nativ `h1,h2,...{color:!important}`-
+   tag-reset gav `rgb(23,23,23)` (nästan svart) mot `rgb(44,54,32)`
+   (mörkgrön bakgrund) — verifierat live via `getComputedStyle`, på ALLA
+   bredder (en tidigare fix för samma bugklass fanns bara mobil-scopad).
+   Flyttad till basregeln, bekräftat fixat.
+
+### Kvarstår (nästa agent/session kan fortsätta direkt härifrån)
+
+- Fas 2 fortsatt: Populära serier (-16%), Bästsäljare (-14%), Bonfire
+  (-14%) höjd-/kompositionsavvikelser kvar, inte djupdykta än.
+- Fas 3 kvar: Populära vägar, Snabb koll, Guider & aktuellt, den gamla
+  native "THCA hos oss"-bannerresten (pre-existing, se tidigare
+  STATUS.md-post), FAQ (bygg om från hög vit-pill-stapel till kompakt
+  editorial+accordion).
+- Fas 4 (typografi/färgrytm/material/motion-polish), Fas 5 (fullständig
+  SEO-/länk-/schema-diff), Fas 6 (responsiv verifiering 1024–1920 +
+  mobil 390–600, fullt tekniskt/funktionellt checklist) INTE påbörjade.
+- `npm run parity:desktop` (1440px) efter varje ändring för att mäta
+  faktisk förbättring — kör om innan nästa sektion påbörjas.
+- Inget pushat till `origin/dev` ännu denna omgång — allt lokalt i
+  `dev`-branchen. Inga golden-baslinjer rörda. Ingen PUBLICERA.
