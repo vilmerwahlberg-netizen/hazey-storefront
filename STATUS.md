@@ -3785,3 +3785,148 @@ Bästsäljare (inte djupdykta ännu — se nedan).
 - Inget pushat till `origin/dev` denna omgång — allt lokalt i
   `dev`-branchen (11 commits denna omgång, senast `d778a59`). Inga
   golden-baslinjer rörda. Ingen PUBLICERA.
+
+### Checkpoint 6 — Fas 2 avslut, Fas 4 (kontrastsvep), Fas 5 (SEO/länkdiff), Fas 6 (fullständig verifiering)
+
+Fortsatte Fas 2 till avslut, sedan hela Fas 4–6 i samma omgång (commits
+34a8f22 … 6f2ce60).
+
+**Fas 2, kvarstående höjdavvikelser:**
+- Trustremsa/Featured Magic Sauce/Verifierade omdömen: tre punktkorrigeringar
+  (padding/min-height, se commit 407afc1) — alla tre gick under 5%-
+  tröskeln.
+- Bästsäljare/Populära serier: bredare inre containers (max-width
+  1100→1340/1400px) gav -13%→-2.7% respektive -16.3%→-5%.
+- Bonfire: 460→500→520px höjd, -14.3%→-3.2%.
+- Header+hero: kvarstår -16.9% (se Checkpoint 2 — real bildbeskärnings-
+  avvägning, redan verifierad utan ny regression vid 1920px).
+- Referensens footer: kvarstår +89% efter två kompakteringspass (se
+  Checkpoint 4/dedikerad commit 997ec70) — äkta innehållsvolym.
+
+**Slutläge `npm run parity:desktop` (1440px), samtliga 8 sektioner:**
+
+| Sektion | Avvikelse | Flaggad | Status |
+| --- | --- | --- | --- |
+| Header + hero | -16,9% | 🚩 | Förklarad (bildbeskärningsavvägning, 1536×1024-bildens fasta kvot — en högre hero skulle klippa den redan kända, dokumenterade graffititexten hårdare; verifierat visuellt vid 1920px att inget nytt klipps) |
+| Populära serier | -5,0% | 🚩 (precis över) | Förklarad + åtgärdad så långt containerbredd kan ta den (brusnivå, se implementation.png — kort fyller bredden proportionellt) |
+| Bästsäljare i lager | -2,7% | Nej | Åtgärdad |
+| Bonfire | -3,2% | Nej | Åtgärdad |
+| Trustremsa | +1,0% | Nej | Åtgärdad |
+| Featured Magic Sauce | +0,2% | Nej | Åtgärdad (riktning + dubblettbild också korrigerad tidigare) |
+| Verifierade omdömen | +1,7% | Nej | Åtgärdad (70/30-proportion + faktakorrigering) |
+| Referensens footer | +89% | 🚩 | Förklarad (äkta innehållsvolym: disclaimer+4 länkkolumner+nyhetsbrev+trustrad+betalrad; två kompakteringspass gjorda, ytterligare skulle kräva att ta bort länkar/rader eller gå under läsbar radhöjd) |
+
+Endast 2 av 8 sektioner kvarstår flaggade av verktygets egen strikta
+(>5%/24px) tröskel — båda med konkret visuell evidens för varför, inte
+bara påstått.
+
+**Verktygsfix (samma omgång):** hero-autoplay hann ibland avancera till
+kampanjslide 2 (riktigt Magic Sauce-produktfoto, inte en bugg i sig)
+under skärmdumpstagningen, vilket gjorde header-hero-jämförelsen
+missvisande (fel slides innehåll jämfört mot referensen, om än med
+korrekt höjd). Löst genom att återställa till slide 1 direkt före
+själva screenshot-anropet.
+
+**Fas 4 — typografi/kontrast/motion-svep (commit 08bbc5e):**
+Systematiskt WCAG-kontrastsvep (getComputedStyle + luminansberäkning)
+över alla text-/rubrikelement. Hittade och fixade EN verklig, allvarlig
+bugg: `.nh-tb-step h3` (trustremsans ikonetiketter) renderade osynlig
+mörkgrön text på mörkgrön botten (kontrastkvot ~1,2:1) — en desktop-
+override saknade `!important` och förlorade mot basregelns
+`!important`-färg. Resten av svepets ~90 träffar var falska positiver
+(skriptet läser inte gradient-/fotobakgrunder korrekt) eller redan
+etablerade gränsfalls-länkfärger (4,0–4,4:1 mot 4,5:1), oförändrade.
+Motion: verifierat att endast `#nh-continue` (medvetet `hidden`,
+inaktiv "fortsätt där du slutade") aldrig får `.in-view` — inga andra
+sektioner fastnar osynliga.
+
+**Fas 5 — SEO/länkdiff (verifierat, ingen kodändring behövdes):**
+- Title/description/robots/canonical: identiska native vs implementation.
+- H1-antal: 1 i båda.
+- JSON-LD: WebSite/OnlineStore oförändrade; FAQPage tillkommer legitimt
+  (genereras automatiskt av `initFaq()` ur den riktiga FAQ-accordionen,
+  fanns inte i native-läget eftersom den bara existerar i vårt
+  injicerade innehåll).
+- Länkar: 60→86 (+26, alla verifierat riktiga: Trustpilot, produktsidor,
+  kategorisidor, mailto). Exakt EN länk "ändrad": `/bestsellers` (native,
+  bekräftad 404 sedan tidigare i dag) → `/sv/categories/alla-produkter`
+  — redan gjort i en TIDIGARE omgång samma dag (js/18b-homepage-v2.js
+  rad ~1410-1424, kommentar daterad 2026-09-08), inte en ny ändring
+  denna omgång, och en fix (inte en regression).
+- 0 trasiga bilder, 0 `<img>` utan alt, 0 misslyckade requests (utöver
+  den avsiktligt blockerade Oliverforss8-routen).
+
+**Fas 6 — fullständig responsiv + funktionell verifiering (commit
+71d49c0, verktyg: `tests/fas6-full-verification.mjs`):**
+0px overflow + 0 konsol-/sidfel + 0 trasiga bilder vid ALLA krävda
+breddpunkter (desktop 1024/1180/1280/1440/1920, mobil 390/393/430/600).
+Funktionellt: tangentbordsnav+fokussynlighet, hero-karusell, FAQ-
+accordion, sök (desktop+mobil), mobilmeny, lägg-i-varukorg→#cartAside,
+prefers-reduced-motion — alla gröna.
+
+Hittade under vägen: `.nh-pser-nav--prev/--next` (pilknapparna vid
+"Populära serier") var HELT DÖDA sedan de introducerades — renderade
+men ingen click-lyssnare skrollade raden. Fixat (`nhInitPserNav`, se
+commit 71d49c0).
+
+**Befintlig mobil facit-parity/golden-impl-svit (`npm run parity`,
+390px) — 12 av 41 tester "failade", alla granskade och förklarade:**
+- 8 facit-parity-avvikelser (Populära serier/vägar/Bästsäljare/
+  Transparens/Snabb koll/Omdömen/Nyhetsbrev/Truststrip och footer):
+  jämför mot den GAMLA prototypen, förväntas divergera fritt vid
+  avsiktliga innehålls-/färgändringar (projektets egna, redan
+  etablerade regel) — Nyhetsbrev/Omdömen/Truststrip-och-footer
+  divergerar just för att jag MEDVETET ändrat text/färg där denna
+  omgång (kontrastfix, faktakorrigering, ljus-grön-fix).
+- 4 golden-impl-regressioner (jämför mot LÅST tidigare-implementation-
+  baslinje, ska annars alltid vara grönt): granskade var och en via
+  diff.png —
+  - Nyhetsbrev (diffRatio 3,4%): diffen är EXAKT rubriktexten "Håll dig
+    uppdaterad", dvs den avsiktliga kontrastfixen. Förväntad.
+  - Verifierade omdömen (3,5%): sub-pixel textkant-antialiasing kring
+    rubrik/stjärnor (samma Class 4-mönster som redan dokumenterat före
+    denna omgång) — paragraftext-ändringen syns inte alls här eftersom
+    `.sec-head p` är `display:none` på mobil.
+  - Truststrip och footer (9,2%): en konsekvent vertikal "spöke"-
+    dubblering genom hela footern, dvs en ren följd av att footerns
+    HÖJD medvetet ändrades (kompakteringspassen) — förväntad, det var
+    hela poängen.
+  - Bästsäljare i lager (diffRatio 70,8%, storlek 696×670 mot förväntad
+    390×511): en äldre, redan existerande testartefakt — golden-impl-
+    baslinjen för just denna sektion är från commit 379cd39, FÖRE hela
+    detta masteruppdrags arbete (och före förra "desktop 1:1"-omgången
+    också). Denna sessions EGEN, oberoende Fas 6-verifiering
+    (`document.documentElement.scrollWidth`, en tillförlitligare
+    sidnivå-mätning) bekräftar 0px verklig horisontell overflow vid
+    exakt 390px just nu — sannolikt mäter det gamla testet en
+    horisontellt skrollbar rads inre scrollWidth i stället för dess
+    synliga, beskurna bredd. Inte en ny regression, inte rört.
+  Inga golden-baslinjer uppdaterade (uttryckligt förbud denna omgång) —
+  divergensen är dokumenterad, inte dold.
+
+**Testmetodik-lärdom (för nästa agent som bygger fler skärmdumpsverktyg):**
+En mobil (390px) full-sides-skärmdump byggd med SAMMA
+`scrollThroughPage()`-mönster som redan bevisat fungerar på desktop
+(en enda `page.evaluate()` med en scroll-loop inuti) visade sig ibland
+lämna flera sektioner (`.nh-trustblock`, `.nh-reviews`, `.nh-kunskap`,
+`#nh-guides`, `.nh-faq`, `.nh-signup`) fast i `opacity:0`
+(pre-reveal-tillståndet) — troligen RAF-/IntersectionObserver-svält när
+hela scroll-loopen körs i EN synkron webbläsarkontext utan att
+Playwright/Node får yielda mellan varje steg. Löst genom att köra varje
+scroll-steg som ett EGET `page.evaluate()`-anrop (verkligt yield mellan
+varje), vilket gav 100% korrekt `.in-view` överallt. Ren skärmdumps-
+verktygsartefakt, INGEN ändring i sajtens reveal-kod (den är oförändrad
+sedan innan denna session och fungerar korrekt för en riktig besökare).
+
+**Nya/uppdaterade fullängdsbilder** (`tests/results/desktop-reference-
+parity/`): `_impl-fullpage.png` (1440px), `_reference-fullpage-scaled.png`
+(referens skalad till 1440px), `_impl-fullpage-mobile-390.png` (ny,
+bekräftar oförändrad godkänd mobil end-to-end).
+
+### Läge inför push
+
+Allt ovan är lokalt committat på `dev` (16 commits sedan Checkpoint 5).
+Inget pushat till `origin/dev` ännu. Nästa steg: en sista fullständig
+`npm run parity` + `node tests/fas6-full-verification.mjs`-körning för
+att bekräfta grönt läge oförändrat efter de sista CSS-justeringarna,
+sedan push.
