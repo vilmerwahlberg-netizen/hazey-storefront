@@ -4,6 +4,18 @@ Läses automatiskt av Claude Code vid varje ny session i det här repot. Innehå
 bara sådant som INTE ändras session till session. Löpande status (vad som är
 klart, vad som är näst, öppna frågor) står i `STATUS.md` — kolla den också.
 
+## Visuell design efter 2026-09-08
+
+Den äldre prototypen/facitets exakta värden är fortfarande bevis för tidigare
+parity-arbete och tekniska integrationer, men hela dess cream/serif/terrakotta-
+och-kortvärld är INTE längre slutlig kreativ auktoritet. Vilmer har uttryckligen
+avvisat helheten som för flat, repetitiv och AI-mallig. Vid design, redesign,
+motion, UX/CRO eller visuell kritik ska den projektspecifika skillen
+`.claude/skills/hazey-commerce-design/SKILL.md` användas. Pixelparitet mot
+prototypen gäller bara när uppgiften uttryckligen ber om parity eller en redan
+accepterad komponent ska repareras. Vid redesign ska först 2–3 visuella
+riktningar visas och väljas innan produktionskod ändras.
+
 ## Vad det här är
 
 Hazey.se's butik körs på plattformen **nyehandel** (hazeyse.nyehandel.se), en

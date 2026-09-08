@@ -1,5 +1,13 @@
 # Hazey Design System
 
+> **Status 2026-09-08:** Den här filen dokumenterar huvudsakligen verifierade
+> implementationstokens och plattformsregler från tidigare facit/parity-rundor.
+> Den nuvarande samlade cream/serif/terrakotta- och kortestetiken är uttryckligen
+> avvisad som slutlig premiumriktning. Vid ny design eller redesign ska
+> `agent-skills/hazey-commerce-design/SKILL.md` och dess beslutsregister styra
+> processen. Behåll denna fil som teknisk faktabas; behandla den inte som ett
+> krav att bevara dagens visuella helhet.
+
 Kanonisk, verktygsoberoende designkälla för Hazey.se:s reskin (både för
 Claude och Codex). Beskriver PRINCIPER, inte hundratals exakta CSS-värden
 — exakta tal lever i `css/`-filerna själva och facitets `index.html`
