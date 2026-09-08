@@ -55,31 +55,38 @@
       (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
       "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
 
-    /* ── Hero-karusell, konfigurationsdriven (2026-09-07, större homepage-
-       runda, uttrycklig instruktion): redo för upp till 3 aktiva slides
-       (1: evergreen sortiment/vägledning — dagens enda RIKTIGA slide,
-       måste förbli slide 1; 2: kampanj/ny serie/aktuell drop; 3: signup/
-       lojalitet/säsongserbjudande), men bygger ALDRIG in en fabricerad
-       kampanj bara för att fylla slots — "active" styr allt. Just nu
-       finns bara EN verifierad, riktig slide (samma innehåll som fanns
-       innan denna omgång, oförändrat), så karusellen renderar/beter sig
-       identiskt med en enda statisk hero (inga pilar/prickar, se
-       nhHeroHtml/nhInitHeroCarousel nedan) — men mekaniken i sig hanterar
-       generellt 1..3 aktiva slides utan att anta ett fast antal.
+    /* ── Hero-kampanjkonfiguration (2026-09-09, kub-/kampanjrunda) ──
+       Kampanjhantering separerad HELT från renderings-/kub-logiken: en ny
+       kampanj kräver ALDRIG en kodändring i nhHeroSlideHtml/nhHeroHtml/
+       nhInitHeroCarousel, bara en ny post här (eller att en befintlig
+       posts fält uppdateras). Se STATUS.md/slutrapporten för det korta
+       arbetsflödet ("lägg till en kampanj").
 
-       Slide 2/3 är MEDVETET INTE instansierade som objekt med påhittad
-       marknadsföringstext (det hade varit exakt den typen av gissat
-       innehåll uppdraget förbjuder) — när Vilmer har en riktig kampanj/
-       ett riktigt signup-erbjudande läggs den in som ett nytt objekt i
-       NH_HERO_SLIDES med samma form som slide 1 nedan (eyebrowMobile/
-       eyebrowDesktop/h1/pMobile/pDesktop/image/primaryCta/secondaryCta),
-       `active:true`. Mekanismen (nhHeroHtml/nhInitHeroCarousel) kräver
-       ingen kodändring för att gå från 1→2→3 aktiva slides. */
-    var NH_HERO_SLIDES = [
+       Varje post stödjer: id, enabled, order, startsAt/endsAt (ISO-
+       datumsträngar, styr AUTOMATISKT om kampanjen visas -- se
+       nhActiveHeroSlides), imageMobile/imageDesktop (desktop faller
+       tillbaka till mobilbilden om ingen egen desktopbild finns än --
+       INGEN ny bild fabricerad för detta), alt (bildens alt-text),
+       eyebrowMobile/eyebrowDesktop (kicker), h1, pMobile/pDesktop,
+       primaryCta{label,href}, secondaryCta{labelMobile,labelDesktop,
+       openHr}|null, theme (overlay-ton, se .nh-hero-slide[data-theme]
+       i CSS -- just nu bara "default", förberett för fler).
+
+       nhActiveHeroSlides() validerar/filtrerar/sorterar: en ogiltig post
+       (saknar bild/rubrik/CTA) hoppas tyst över i stället för att krascha
+       heron; om INGEN post blir kvar (allt inaktiverat/ogiltigt/utanför
+       datumfönster) tvingas evergreen-sliden fram som garanterad fallback
+       -- heron kan alltså aldrig bli helt tom. */
+    var NH_HERO_CAMPAIGNS = [
       {
         id: "assortment",
-        active: true,
-        image: "hero-westcoast-v4.jpg",
+        enabled: true,
+        order: 1,
+        startsAt: null,
+        endsAt: null,
+        imageMobile: "hero-westcoast-v4.jpg",
+        imageDesktop: null,
+        alt: "Västkustinspirerad livsstilsbild med cannabisprodukter",
         // Två olika eyebrow/underrubrik-texter per breddpunkt (uppmätt ur
         // facit — INTE samma text skalad, se historiken nedan).
         eyebrowMobile: "Brett sortiment · öppen information",
@@ -88,46 +95,85 @@
         pMobile: "Sök direkt eller jämför på innehåll, format och framställning.",
         pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
         primaryCta: { label: "Utforska sortimentet", href: "#populara-vagar" },
-        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt →", openHr: true }
+        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt →", openHr: true },
+        theme: "default"
       },
-      // Slide 2 (creative-direction-runda 2026-09-08): riktig, verifierad
-      // destination -- INGEN fabricerad rabatt/kampanj, se uppdragets
-      // uttryckliga förbud. Bilden är samma godkända Magic Sauce-derivat
-      // som redan används i Populära serier (assets/series/magic-sauce.jpg).
+      // Slide 2: riktig, verifierad destination -- INGEN fabricerad
+      // rabatt/kampanj, se uppdragets uttryckliga förbud. Bilden är samma
+      // godkända Magic Sauce-derivat som redan används i Populära serier.
+      // startsAt/endsAt lämnade null (ingen tidsgräns) -- sätt datum här
+      // den dagen kampanjen ska tidsstyras, ingen kodändring krävs.
       {
         id: "magic-sauce",
-        active: true,
-        image: "series/magic-sauce.jpg",
+        enabled: true,
+        order: 2,
+        startsAt: null,
+        endsAt: null,
+        imageMobile: "series/magic-sauce.jpg",
+        imageDesktop: null,
+        alt: "Magic Sauce-vapes i sin förpackning",
         eyebrowMobile: "Populär serie",
         eyebrowDesktop: "Populär serie hos Hazey",
         h1: "Upptäck Magic Sauce.",
         pMobile: "Vape, buds och hash i en av våra mest efterfrågade serier.",
         pDesktop: "Vape, buds och hash i en av våra mest efterfrågade serier — se hela sortimentet.",
         primaryCta: { label: "Se Magic Sauce-sortimentet", href: "/sv/categories/magic-sauce" },
-        secondaryCta: null
+        secondaryCta: null,
+        theme: "default"
       }
     ];
 
+    function nhValidHeroSlide(s) {
+      return !!(s && s.id && s.imageMobile && s.h1
+        && s.primaryCta && s.primaryCta.href && s.primaryCta.label);
+    }
+    function nhActiveHeroSlides() {
+      var now = Date.now();
+      var candidates = NH_HERO_CAMPAIGNS.filter(function (s) {
+        if (!s || !s.enabled) return false;
+        if (s.startsAt && now < new Date(s.startsAt).getTime()) return false;
+        if (s.endsAt && now > new Date(s.endsAt).getTime()) return false;
+        if (!nhValidHeroSlide(s)) return false; // ogiltig post -- hoppas över, kraschar aldrig heron
+        return true;
+      }).sort(function (a, b) { return (a.order || 0) - (b.order || 0); });
+      if (candidates.length) return candidates;
+      // Garanterad fallback: evergreen-sliden visas ändå om den själv är
+      // giltig, även om den råkat inaktiveras eller filtrerats bort ovan --
+      // heron ska ALDRIG kunna bli helt tom.
+      var evergreen = NH_HERO_CAMPAIGNS.filter(function (s) { return s.id === "assortment" && nhValidHeroSlide(s); })[0];
+      return evergreen ? [evergreen] : [];
+    }
+
     function nhHeroSlideHtml(slide, i, kampanjerHref, catLinks) {
-      var heroSrc = NH_ASSET_BASE + slide.image;
-      // data-hero-src: en QA-selektorkrok för lockImplImages (se ovan) —
-      // värdet spelar ingen roll för testresultatet (skrivs över), bara
-      // att attributet finns. Sätts till samma URL som faktiskt visas.
-      var bg = ' style="background-image:url(\'' + heroSrc.replace(/'/g, "\\'") + '\')" data-hero-src="' + heroSrc.replace(/"/g, "&quot;") + '"';
+      var mobileSrc = NH_ASSET_BASE + slide.imageMobile;
+      var desktopSrc = NH_ASSET_BASE + (slide.imageDesktop || slide.imageMobile);
+      // --hero-img-m/--hero-img-d: responsiv bildväxling via CSS custom
+      // properties (se css/22-homepage-v2.css) i stället för att JS måste
+      // skriva om bakgrundsbilden vid varje breakpoint-byte. Faller
+      // tillbaka till samma bild för båda om ingen egen desktopbild finns
+      // konfigurerad än -- syns INTE som en visuell skillnad idag, bara
+      // förberett. data-hero-src: oförändrad QA-selektorkrok (lockImplImages).
+      var bg = ' style="--hero-img-m:url(\'' + mobileSrc.replace(/'/g, "\\'") + '\');--hero-img-d:url(\'' + desktopSrc.replace(/'/g, "\\'") + '\')"'
+        + ' data-hero-src="' + mobileSrc.replace(/"/g, "&quot;") + '"';
       var secondary = slide.secondaryCta
         ? '<button type="button" class="hero-link"' + (slide.secondaryCta.openHr ? ' data-open-hr="1"' : "")
           + '><span class="nh-hero-v2__btn--mobile">' + slide.secondaryCta.labelMobile + '</span>'
           + '<span class="nh-hero-v2__btn--desktop">' + slide.secondaryCta.labelDesktop + '</span></button>'
         : "";
-      // SEO-krav (oförändrat sen förra rundan): startsidan får ha EXAKT EN
-      // <h1> i DOM:en, oavsett hur många hero-slides som finns (alla slides
-      // ligger samtidigt i DOM:en, bara förskjutna via transform -- en andra
-      // <h1> hade återinfört det redan verifierat fixade two-H1-problemet).
-      // Bara första slidet (i===0) får en riktig <h1>; övriga slides
-      // återanvänder EXAKT samma CSS-klass på en <p> i stället, visuellt
-      // identiskt, semantiskt en rubrik lägre.
+      // SEO-krav (oförändrat sen tidigare rundor): startsidan får ha EXAKT
+      // EN <h1> i DOM:en, oavsett hur många hero-slides som finns (alla
+      // slides ligger samtidigt i DOM:en som kubsidor, bara ROTERADE ur
+      // synligt läge -- en andra <h1> hade återinfört det redan verifierat
+      // fixade two-H1-problemet). Bara första slidet (i===0) får en riktig
+      // <h1>; övriga slides återanvänder EXAKT samma CSS-klass på en <p> i
+      // stället, visuellt identiskt, semantiskt en rubrik lägre.
       var headingTag = i === 0 ? "h1" : "p";
-      return '<div class="nh-hero-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + '"' + bg + '>'
+      // slide.alt beskriver bakgrundsbilden för skärmläsare -- bilden är
+      // rent dekorativ (all mening finns redan i rubrik/text/CTA), så den
+      // sätts som aria-label på gruppen i stället för en konstlad <img
+      // src=""> (ett tomt src-attribut kan trigga en egen nätverksrequest
+      // i vissa webbläsare -- ett känt anti-mönster, undviks helt här).
+      return '<div class="nh-hero-slide" role="group" aria-roledescription="slide" aria-label="' + slide.alt.replace(/"/g, "&quot;") + '" aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>'
@@ -159,7 +205,11 @@
         + '<a href="' + cbdHref + '">CBD, CBG &amp; CBN</a>'
         + '<a href="' + kampanjerHref + '">Kampanjer</a>';
 
-      var active = NH_HERO_SLIDES.filter(function (s) { return s.active; });
+      var active = nhActiveHeroSlides();
+      // "Om endast en slide är aktiv ska kubkontroller och autoplay stängas
+      // av" (uppdragets krav) -- multi styr både dots/pilar (nedan) och
+      // hela autoplay-/kub-initieringen (se nhInitHeroCarousel: total<=1
+      // ger tidig retur, inga lyssnare, ingen timer).
       var multi = active.length > 1;
       var slidesHtml = active.map(function (s, i) { return nhHeroSlideHtml(s, i, kampanjerHref, catLinks); }).join("");
       var dots = multi
@@ -174,8 +224,8 @@
           + '<button type="button" class="nh-hero-arrow nh-hero-arrow--next" aria-label="Nästa bild">›</button>'
         : "";
 
-      return '<section class="nh-hero-v2 nh-qfind-hero" id="nhHero" data-slides="' + active.length + '">'
-        + '  <div class="nh-hero-track">' + slidesHtml + '</div>'
+      return '<section class="nh-hero-v2 nh-qfind-hero" id="nhHero" data-slides="' + active.length + '" tabindex="' + (multi ? "0" : "-1") + '">'
+        + '  <div class="nh-hero-track"><div class="nh-hero-cube">' + slidesHtml + '</div></div>'
         + arrows + dots
         + '</section>'
         // qfind — "Vad söker du?"-chipsraden direkt under hero:n. OBS:
@@ -203,75 +253,233 @@
        pausar permanent vid första interaktionen och pausar/återupptas med
        fliksynlighet (document.visibilitychange) — aldrig aktiv om
        `prefers-reduced-motion: reduce`. */
+    /* ── Hero-karusell: 3D-kubövergång (2026-09-09) ──
+       ROTORSAK, "fastnar efter slide 2" (undersökt denna omgång, se
+       slutrapporten): den TIDIGARE versionen anropade
+       onManualInteraction() redan vid `pointerdown` -- INNAN riktningen
+       på rörelsen var känd. Ett helt vanligt LODRÄTT sidscroll som råkar
+       STARTA med fingret ovanpå hero-bilden (mycket vanligt -- besökare
+       scrollar neråt direkt från toppen) tolkades då som en avsiktlig
+       swipe, satte `userStopped=true` PERMANENT och stängde av autoplay
+       för gott -- det förklarar mönstret "går 1→2 (första autoplay-
+       ticket hinner före), sedan fastnar" utan att besökaren medvetet
+       gjort något. Fixat genom att aldrig räkna interaktionen som en
+       swipe förrän rörelsen faktiskt är tydligt horisontell (se
+       `horizLock` nedan) OCH genom att byta bort den permanenta
+       "userStopped"-flaggan mot en tidsbegränsad paus som återupptas
+       efter rimlig inaktivitet (uppdragets nya, uttryckliga krav).
+
+       Kubmekanik: vid varje navigering positioneras MÅLSIDAN instant
+       (ingen transition) på kubens sida (±90°, se runTransition), sedan
+       roterar HELA `.nh-hero-cube` -90/+90° så målsidan svänger in i
+       fronten. När rotationen är klar nollställs kubens EGEN transform
+       till 0 UTAN transition (`cube.style.transition="none"`, tvingad
+       reflow, transition återställd) -- detta är precis den
+       normalisering uppdraget efterfrågar: rotationsvärdet växer ALDRIG
+       obegränsat (…-90,-180,-270…), varje cykel startar om från 0. */
     function nhInitHeroCarousel(root) {
       var section = root.querySelector("#nhHero");
       if (!section) return;
       var total = parseInt(section.getAttribute("data-slides"), 10) || 1;
-      if (total <= 1) return; // inga kontroller när bara en slide finns
-      var track = section.querySelector(".nh-hero-track");
+      if (total <= 1) return; // "endast en slide -> kubkontroller/autoplay av" (inga dots/pilar renderade heller, se nhHeroHtml)
+      var cube = section.querySelector(".nh-hero-cube");
+      var slides = Array.prototype.slice.call(section.querySelectorAll(".nh-hero-slide"));
+      if (!cube || slides.length < 2) return;
       var dots = Array.prototype.slice.call(section.querySelectorAll(".nh-hero-dot"));
       var prevBtn = section.querySelector(".nh-hero-arrow--prev");
       var nextBtn = section.querySelector(".nh-hero-arrow--next");
       var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var index = 0;
-      var autoplayTimer = null;
-      var userStopped = false; // sant efter FÖRSTA manuella interaktionen — autoplay återupptas då aldrig, bara fliksynlighet får pausa/återuppta innan dess
 
-      function render() {
-        track.style.transform = "translateX(-" + (index * 100) + "%)";
-        dots.forEach(function (d, i) { d.setAttribute("aria-current", i === index ? "true" : "false"); });
+      var index = 0;
+      var animating = false;
+      var pendingStep = null; // högst ETT köat nästa steg medan en transition redan pågår
+      var autoplayTimer = null;
+      var resumeTimer = null;
+      var AUTOPLAY_MS = 7000;   // "cirka 6-8 sekunder", mitt i intervallet
+      var RESUME_AFTER_MS = 9000; // "återuppta efter rimlig inaktivitet" -- INTE permanent paus längre
+
+      slides.forEach(function (s, i) { s.classList.toggle("is-front", i === 0); });
+
+      function setCubeHalf() {
+        var w = section.getBoundingClientRect().width;
+        if (w > 0) cube.style.setProperty("--cube-half", (w / 2) + "px");
       }
-      function goTo(i) {
-        index = (i + total) % total;
-        render();
+      setCubeHalf();
+      var resizeQueued = false;
+      window.addEventListener("resize", function () {
+        if (resizeQueued) return;
+        resizeQueued = true;
+        requestAnimationFrame(function () { resizeQueued = false; setCubeHalf(); });
+      });
+      cube.classList.add("nh-hero-cube--ready");
+
+      function updateDots() { dots.forEach(function (d, i) { d.setAttribute("aria-current", i === index ? "true" : "false"); }); }
+      function updateAriaHidden() { slides.forEach(function (s, i) { s.setAttribute("aria-hidden", i === index ? "false" : "true"); }); }
+
+      // Reduced-motion-väg (och en generell säkerhetsfallback): omedelbart
+      // byte, ingen 3D-rotation alls -- uppdragets krav "ingen 3D-rotation
+      // vid reduced motion, manuell navigation ska fortsatt fungera".
+      function instantShow(newIndex) {
+        slides.forEach(function (s, i) {
+          s.classList.toggle("is-front", i === newIndex);
+          s.classList.remove("is-target");
+          s.style.transform = "";
+        });
+        index = newIndex;
+        updateDots();
+        updateAriaHidden();
       }
-      function stopAutoplay() {
-        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+
+      function runTransition(newIndex, dir) {
+        if (newIndex === index) return;
+        if (animating) { pendingStep = { newIndex: newIndex, dir: dir }; return; } // "lås ny navigation... köa högst ett nästa steg"
+        if (reduceMotion) { instantShow(newIndex); return; }
+        animating = true;
+
+        var fromSlide = slides[index];
+        var toSlide = slides[newIndex];
+
+        // Placera målsidan på kubens sida INNAN kuben roterar, utan egen
+        // transition (annars syns en extra "resa" till sidoläget som ett
+        // ryck strax före själva kubrotationen).
+        toSlide.style.transition = "none";
+        toSlide.style.transform = "rotateY(" + (dir * 90) + "deg) translateZ(var(--cube-half))";
+        toSlide.classList.add("is-target");
+        void toSlide.offsetWidth; // tvingad reflow — se kommentaren ovan
+        toSlide.style.transition = "";
+
+        cube.style.transform = "rotateY(0deg)";
+        void cube.offsetWidth;
+        cube.style.transform = "rotateY(" + (-dir * 90) + "deg)";
+
+        function finish() {
+          cube.removeEventListener("transitionend", onEnd);
+          clearTimeout(safetyTimer);
+          // Normalisera kubens EGEN rotation till 0 igen, UTAN transition —
+          // se filkommentaren ovan ("rotorsak"/normalisering).
+          cube.style.transition = "none";
+          cube.style.transform = "rotateY(0deg)";
+          void cube.offsetWidth;
+          cube.style.transition = "";
+
+          fromSlide.classList.remove("is-front");
+          fromSlide.style.transform = "";
+          toSlide.classList.remove("is-target");
+          toSlide.classList.add("is-front");
+          toSlide.style.transform = "";
+
+          index = newIndex;
+          updateDots();
+          updateAriaHidden();
+          animating = false;
+
+          if (pendingStep) {
+            var next = pendingStep; pendingStep = null;
+            runTransition(next.newIndex, next.dir);
+          }
+        }
+        function onEnd(e) {
+          if (e.target !== cube || e.propertyName !== "transform") return;
+          finish();
+        }
+        cube.addEventListener("transitionend", onEnd);
+        // Städning: om transitionend av någon anledning aldrig fyrar (dold
+        // flik mitt i animationen, en webbläsarkant) ska karusellen ändå
+        // aldrig fastna permanent låst i "animating".
+        var safetyTimer = setTimeout(function () {
+          cube.removeEventListener("transitionend", onEnd);
+          finish();
+        }, 900);
       }
+
+      function goTo(newIndexRaw, dir) {
+        var newIndex = ((newIndexRaw % total) + total) % total; // normaliserar korrekt oavsett hur långt/åt vilket håll man hoppar
+        if (dir == null) dir = 1;
+        runTransition(newIndex, dir);
+      }
+
+      function stopAutoplay() { if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } }
       function startAutoplay() {
-        if (reduceMotion || userStopped || autoplayTimer) return;
-        autoplayTimer = setInterval(function () { goTo(index + 1); }, 6500);
+        if (reduceMotion || autoplayTimer) return;
+        autoplayTimer = setInterval(function () { goTo(index + 1, 1); }, AUTOPLAY_MS);
       }
-      function onManualInteraction() { userStopped = true; stopAutoplay(); } // pausar permanent vid interaktion, inte bara tillfälligt
+      // Paus är nu TIDSBEGRÄNSAD, inte permanent (uppdragets nya krav) --
+      // varje ny interaktion skjuter bara upp återupptagandet ytterligare.
+      function pauseForNow() { stopAutoplay(); if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; } }
+      function scheduleResume() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () {
+          resumeTimer = null;
+          if (!document.hidden) startAutoplay();
+        }, RESUME_AFTER_MS);
+      }
+      function onManualInteraction() { pauseForNow(); scheduleResume(); }
 
       dots.forEach(function (d) {
-        d.addEventListener("click", function () { onManualInteraction(); goTo(parseInt(d.getAttribute("data-i"), 10)); });
+        d.addEventListener("click", function () {
+          var i = parseInt(d.getAttribute("data-i"), 10);
+          onManualInteraction();
+          goTo(i, i > index || (index === total - 1 && i === 0) ? 1 : -1);
+        });
       });
-      if (prevBtn) prevBtn.addEventListener("click", function () { onManualInteraction(); goTo(index - 1); });
-      if (nextBtn) nextBtn.addEventListener("click", function () { onManualInteraction(); goTo(index + 1); });
+      if (prevBtn) prevBtn.addEventListener("click", function () { onManualInteraction(); goTo(index - 1, -1); });
+      if (nextBtn) nextBtn.addEventListener("click", function () { onManualInteraction(); goTo(index + 1, 1); });
 
-      // Svep — pointer events täcker touch och mus i ett enda API.
-      var startX = null, dx = 0, dragging = false;
-      track.addEventListener("pointerdown", function (e) {
-        dragging = true; startX = e.clientX; dx = 0;
-        onManualInteraction();
+      // Hover/fokus pausar TILLFÄLLIGT (inte permanent, se ovan).
+      section.addEventListener("mouseenter", pauseForNow);
+      section.addEventListener("mouseleave", scheduleResume);
+      section.addEventListener("focusin", pauseForNow);
+      section.addEventListener("focusout", scheduleResume);
+
+      // Svep — pointer events (touch+mus i ett API), men navigering
+      // triggas ENDAST när rörelsen är tydligt horisontell (se
+      // filkommentaren ovan för varför). `touch-action:pan-y` i CSS
+      // (.nh-hero-cube) säkerställer dessutom att webbläsaren ALDRIG
+      // hindrar den native lodräta scrollen, oavsett vad JS gör här --
+      // två oberoende skyddslager mot samma bugg.
+      var startX = null, startY = null, dx = 0, dy = 0, dragging = false, horizLock = null;
+      cube.addEventListener("pointerdown", function (e) {
+        dragging = true; startX = e.clientX; startY = e.clientY; dx = 0; dy = 0; horizLock = null;
       });
-      track.addEventListener("pointermove", function (e) {
+      cube.addEventListener("pointermove", function (e) {
         if (!dragging) return;
         dx = e.clientX - startX;
+        dy = e.clientY - startY;
+        if (horizLock === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+          horizLock = Math.abs(dx) > Math.abs(dy);
+          if (horizLock) onManualInteraction(); // räknas som avsiktlig interaktion FÖRST när riktningen är bekräftat horisontell
+        }
       });
       function endDrag() {
         if (!dragging) return;
         dragging = false;
-        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-        dx = 0;
+        if (horizLock && Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+        dx = 0; dy = 0; horizLock = null;
       }
-      track.addEventListener("pointerup", endDrag);
-      track.addEventListener("pointercancel", endDrag);
-      track.addEventListener("pointerleave", function () { if (dragging) endDrag(); });
+      cube.addEventListener("pointerup", endDrag);
+      cube.addEventListener("pointercancel", endDrag);
+      cube.addEventListener("pointerleave", function () { if (dragging) endDrag(); });
+      // Ren tap/tryck som aldrig blir en swipe räknas ändå som
+      // touchinteraktion (uppdragets egen punkt, skilt från swipe-fallet
+      // ovan) — pausar tillfälligt utan att navigera eller blockera klick
+      // på riktiga länkar/knappar inuti slidet (ingen preventDefault
+      // någonstans i denna funktion).
+      cube.addEventListener("touchstart", onManualInteraction, { passive: true });
 
-      // Tangentbord — höger/vänster pil när karusellen har fokus.
+      // Tangentbord — höger/vänster pil när komponenten har fokus
+      // (sektionen är tabindex="0" när >1 slide, se nhHeroHtml).
       section.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowLeft") { onManualInteraction(); goTo(index - 1); }
-        if (e.key === "ArrowRight") { onManualInteraction(); goTo(index + 1); }
+        if (e.key === "ArrowLeft") { onManualInteraction(); goTo(index - 1, -1); }
+        if (e.key === "ArrowRight") { onManualInteraction(); goTo(index + 1, 1); }
       });
 
       document.addEventListener("visibilitychange", function () {
         if (document.hidden) stopAutoplay();
-        else if (!reduceMotion) startAutoplay();
+        else if (!resumeTimer && !reduceMotion) startAutoplay();
       });
 
-      render();
+      updateDots();
+      updateAriaHidden();
       startAutoplay();
     }
 
@@ -404,8 +612,8 @@
             // semantiskt icke-klickbart kort med SAMMA visuella markup --
             // aldrig href="#", tom sträng eller en irrelevant kategori.
             return href
-              ? '<a class="pser-item nh-reveal" href="' + href + '"' + countAttr + '>' + inner + '</a>'
-              : '<div class="pser-item pser-item--soon nh-reveal" aria-disabled="true">' + inner + '</div>';
+              ? '<a class="pser-item" href="' + href + '"' + countAttr + '>' + inner + '</a>'
+              : '<div class="pser-item pser-item--soon" aria-disabled="true">' + inner + '</div>';
           }).join("")
         + '  </div>'
         + '</section>';
@@ -506,16 +714,16 @@
             // has-photo→dölj-ikon-regeln (css/22-homepage-v2.css).
             var iconCls = c.showIcon ? " route-icon-keep" : "";
             var iconHtml = c.showIcon ? '<div class="route-icon">' + NH_ROUTE_ICONS[c.icon] + '</div>' : "";
-            return '<a class="route visual has-photo nh-reveal' + iconCls + '" href="' + c.href + '"' + bg + '>'
+            return '<a class="route visual has-photo' + iconCls + '" href="' + c.href + '"' + bg + '>'
               + iconHtml
               + '<div class="route-kicker">' + c.kicker + '</div><h3>' + c.label + '</h3>'
               + '<p class="route-sub">' + c.sub + '</p></a>';
           }).join("")
         + '  </div>'
-        + '  <p class="seg-note nh-reveal">Vill du hellre utgå från hur produkten är framställd?</p>'
+        + '  <p class="seg-note">Vill du hellre utgå från hur produkten är framställd?</p>'
         + '  <div class="seg">'
         + framCards.map(function (c) {
-            return '<a class="seg-btn nh-reveal" href="' + framHref + '">'
+            return '<a class="seg-btn" href="' + framHref + '">'
               + '<span class="seg-ico">' + c.icon + '</span>'
               + '<span><span class="seg-t">' + c.label + '</span><span class="seg-s">' + c.sub + '</span></span></a>';
           }).join("")
@@ -597,7 +805,7 @@
         + '    <p>Vi är öppna med vad som finns i våra produkter och var de kommer ifrån — inga effektlöften, bara verifierbara fakta.</p>'
         + '    <div class="nh-tb-steps">'
         + steps.map(function (s) {
-            return '<div class="nh-tb-step nh-reveal"><span class="nh-tb-step__n">' + s.n + '</span>'
+            return '<div class="nh-tb-step"><span class="nh-tb-step__n">' + s.n + '</span>'
               + '<div><h3>' + s.title + '</h3><p>' + s.text + '</p></div></div>';
           }).join("")
         + '    </div>'
@@ -717,6 +925,13 @@
           if (window.nhInitCards) window.nhInitCards();
           nhWatchRealRatingValues(rowEl);
           nhInitSwipeDots(rowEl, rowEl.parentNode.querySelector("#nhFeaturedDots"));
+          // Korten finns inte i DOM:en förrän nu (asynkront hämtade) --
+          // den första scanScrollReveal(document) vid sidladdning kunde
+          // alltså aldrig se dem. Kör om samma sökning, scopad till just
+          // denna rad: sektionen själv är redan armerad sen tidigare
+          // (no-op via revealSeen), men fadeInImages hittar nu de riktiga
+          // <img>-taggarna och kan fada in dem vid behov.
+          scanScrollReveal(rowEl.parentNode);
         })
         .catch(function () {
           rowEl.parentNode.parentNode.hidden = true; // dölj hela sektionen, visa inget trasigt
@@ -802,8 +1017,8 @@
     function nhSpotlightHtml() {
       if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
       return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
-        + '  <div class="nh-spotlight-inner nh-reveal">'
-        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img nh-reveal-img" id="nhSpotlightImg"></div></div>'
+        + '  <div class="nh-spotlight-inner">'
+        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img" id="nhSpotlightImg"></div></div>'
         + '    <div class="nh-spotlight-body">'
         + '      <div class="nh-spotlight-kicker">I rampljuset</div>'
         + '      <p class="nh-spotlight-type" id="nhSpotlightType"></p>'
@@ -860,6 +1075,10 @@
             + '<span class="nh-spotlight-price">' + ((data.offers || {}).price ? data.offers.price + " kr" : "") + '</span>'
             + '<span class="nh-spotlight-stock' + (inStock ? "" : " is-out") + '">' + (inStock ? "I lager" : "Slut i lager") + '</span>'
             + ratingHtml;
+          // Bilden sattes just NU (asynkront) -- fadeInBackgroundImages
+          // hoppade över detta element vid boot (ingen bild fanns då att
+          // förladda). Körs om, scopat till sektionen.
+          fadeInBackgroundImages(section);
         })
         .catch(function () {
           section.hidden = true; // trasig hämtning -- visa aldrig ett halvfärdigt kort
@@ -998,8 +1217,8 @@
             var iconHtml = c.variant === "dark"
               ? '<span class="nh-guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.6-1.35c.4.6.4 1.4 0 2A2.5 2.5 0 0 1 12 12v1"/><circle cx="12" cy="16.3" r=".1" fill="currentColor" stroke-width="1.5"/></svg></span>'
               : '';
-            return '<a class="nh-guide-card nh-guide-card--' + c.variant + ' nh-reveal" href="' + c.href + '"' + photoAttrs + '>'
-              + (c.variant === "photo" ? '<span class="nh-guide-photo nh-reveal-img"></span>' : '')
+            return '<a class="nh-guide-card nh-guide-card--' + c.variant + '" href="' + c.href + '"' + photoAttrs + '>'
+              + (c.variant === "photo" ? '<span class="nh-guide-photo"></span>' : '')
               + iconHtml
               + '<span class="nh-guide-tag">' + c.tag + '</span>'
               + '<h3>' + c.title + '</h3>'
@@ -1092,6 +1311,9 @@
             if (!src) return;
             var photoEl = photoCard.querySelector(".nh-guide-photo");
             if (photoEl) photoEl.style.backgroundImage = "url('" + src + "')";
+            // Bilden sattes just NU (asynkront) -- samma efterhandskörning
+            // som Spotlight ovan, se den kommentaren.
+            fadeInBackgroundImages(photoCard);
           })
           .catch(function () {}); // ingen bild -- kortet fungerar ändå, bara utan foto
       }
@@ -1127,7 +1349,7 @@
             // semantiska rubriker") i stället för en <span> -- underrubrik
             // till sektionens <h2>. Ren tag-ändring, .g-name-CSS:en är
             // redan taggnautral (klass-baserad), ingen visuell ändring.
-            var cls = "g-card nh-reveal" + (c.href ? "" : " g-card--soon");
+            var cls = "g-card" + (c.href ? "" : " g-card--soon");
             return '<' + tag + ' class="' + cls + '"' + hrefAttr + '><h3 class="g-name">' + c.title + '</h3><p>' + c.text + '</p></' + tag + '>';
           }).join("")
         + '    </div>'
@@ -1240,7 +1462,7 @@
       return '<section class="nh-reviews section-gap">'
         + '  <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
         + '  <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
-        + '  <a class="nh-reviews-cta nh-reveal" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '  <a class="nh-reviews-cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
         + '    <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
         + '  </a>'
         + '  <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
@@ -1387,33 +1609,193 @@
       });
     }
 
-    // Reveal-on-scroll (se css/22-homepage-v2.css .nh-reveal) — lägger bara
-    // till/tar bort en klass, ingen layoutlogik.
-    //
-    // BUGGFIX 2026-08-31: stort rootMargin (element räknas som "synligt" långt
-    // innan det faktiskt är i vy) + en hård tidsgräns som tvingar fram ALLT
-    // dolt innehåll oavsett, efter 2 sekunder. Orsak: verifierat att
-    // sidfulls-skärmdumpsverktyg (Chromes "Capture full size screenshot",
-    // Playwrights fullPage-screenshot) inte alltid hinner trigga
-    // IntersectionObserver innan bilden tas.
-    function nhInitReveal(root) {
-      var els = root.querySelectorAll(".nh-reveal, .nh-reveal-img");
-      if (!els.length) return;
-      function revealAll() {
-        els.forEach(function (el) { el.classList.add("is-in"); });
-      }
-      if (!("IntersectionObserver" in window)) { revealAll(); return; }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0, rootMargin: "600px 0px 600px 0px" });
-      els.forEach(function (el) { io.observe(el); });
-      setTimeout(revealAll, 2000);
+    /* ---------- Scroll-reveal ("premiumkänsla" vid scroll) ----------
+       PORTAT (2026-09-09) från det redan beprövade, uttryckligen utpekade
+       facit-systemet:
+       /Users/wahlberg/HZY/chatgpt-claude-handover/CLAUDE-HANDOFF-2026-08-17/
+       prototyp/index.html — samma funktionsnamn (armReveal/scanScrollReveal/
+       cleanUpReveal/revealPassedElements/fadeInImages), samma klassnamn
+       (.pre-reveal/.in-view/.img-fade/.is-loaded), samma säkerhetsprinciper
+       och samma mätta värden (24px/620ms, se .pre-reveal i css/22). Bara
+       SELEKTORERNA är anpassade till tema 6:s riktiga DOM — logiken är
+       oförändrad från facit.
+
+       Progressiv förbättring: vi lägger själva .pre-reveal-klassen på med
+       JS, precis innan vi börjar observera elementet. Om något går fel
+       innan dess (skriptfel, gammal webbläsare utan IntersectionObserver)
+       har elementet aldrig fått klassen och är redan synligt — inget kan
+       fastna osynligt. Varje element avslöjas bara en gång (unobserve
+       direkt efter), så man inte kan få saker att blinka ut och in genom
+       att scrolla upp och ner. */
+    var revealSeen = (typeof WeakSet !== "undefined") ? new WeakSet() : null;
+    function nhPrefersReducedMotion() {
+      return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     }
+    var revealIO = (!nhPrefersReducedMotion() && "IntersectionObserver" in window)
+      ? new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              revealIO.unobserve(entry.target);
+              cleanUpReveal(entry.target);
+            }
+          });
+        }, { threshold: 0.01, rootMargin: "0px 0px 60px 0px" })
+      : null;
+
+    /* Städa bort reveal-spåren när intoningen är klar. INTE kosmetiskt:
+       .pre-reveal sätter will-change:opacity,transform, vilket lyfter
+       elementet till ett eget kompositorlager — ligger det kvar på många
+       kort/sektioner kostar det onödigt minne/GPU-lager. revealSeen
+       säkerställer att elementet inte kan bli re-armat efteråt. */
+    function cleanUpReveal(el) {
+      var delay = parseFloat(el.style.transitionDelay) || 0; // "90ms" -> 90
+      setTimeout(function () {
+        el.classList.remove("pre-reveal", "in-view");
+        el.style.transitionDelay = "";
+      }, 620 + delay + 140);
+    }
+
+    function armReveal(el, staggerIndex) {
+      if (!el || (revealSeen && revealSeen.has(el))) return;
+      if (revealSeen) revealSeen.add(el);
+      if (!revealIO) return; // reducerad rörelse eller ingen IO-support: lämna som den är, redan synlig
+      el.classList.add("pre-reveal");
+      // 90ms trappsteg, max 4 steg — utan kap får en sektion med många
+      // kort nästan två sekunder innan sista kortet syns.
+      if (staggerIndex) el.style.transitionDelay = (Math.min(staggerIndex, 4) * 90) + "ms";
+      revealIO.observe(el);
+      // Säkerhetsnät, TILLAGT utöver den rena facit-porten (verifierat
+      // nödvändigt denna omgång, se slutrapporten): Playwrights
+      // `fullPage`-skärmdump (och sannolikt vissa crawler-renderare)
+      // förstorar sidan till sin fulla innehållshöjd i STÄLLET för att
+      // simulera en riktig scroll -- varken IntersectionObserver eller
+      // scroll-sweepen (revealPassedElements) hinner då NÅGONSIN trigga,
+      // och innehåll långt ner på sidan förblir permanent osynligt i en
+      // sådan capture. Detta är exakt samma rotorsak som redan
+      // dokumenterades i en tidigare omgång av DENNA fil (se historiken
+      // i git) -- en hård tidsgräns tvingar fram elementet ändå. 2,2s är
+      // lång nog att ALDRIG hinna före en riktig besökares normala scroll
+      // (som redan triggat IntersectionObserver långt innan), kort nog
+      // att en crawler/skärmdumpsverktyg som väntar en rimlig stund ändå
+      // ser rätt, fullt renderat innehåll. Kravet "innehåll får inte bli
+      // beroende av Googlebots interaktion" väger tyngre än att porta
+      // facit millimeterrätt på just denna punkt.
+      setTimeout(function () {
+        if (!el.classList.contains("in-view")) {
+          el.classList.add("in-view");
+          revealIO.unobserve(el);
+          cleanUpReveal(el);
+        }
+      }, 2200);
+    }
+
+    function scanScrollReveal(root) {
+      root = root || document;
+      // Hela sektioner/block tonar in som helhet. `.section-gap` täcker
+      // redan Populära serier/vägar, Bästsäljare, Spotlight, Transparens/
+      // leverans, Snabb koll, Guider & aktuellt, Omdömen och Nyhetsbrev
+      // (alla våra egna sektioner delar redan den klassen) — `.nh-faq`
+      // läggs till separat (äldre komponent, delar inte .section-gap).
+      var blocks = root.querySelectorAll(".section-gap, .nh-faq");
+      Array.prototype.forEach.call(blocks, function (el) { armReveal(el); });
+
+      // Kort i rader/grids tonar in i en lätt kaskad.
+      var groups = root.querySelectorAll(
+        ".pser-row, .nh-featured-row, .routes-grid, .guide-grid, .nh-guides-grid, .nh-tb-steps, .nh-reviews-grid"
+      );
+      Array.prototype.forEach.call(groups, function (group) {
+        /* Animera ALDRIG barnen inuti en vågrät scroller (Populära serier/
+           Bästsäljare/Omdömen på mobil) — verifierat beteende: kör man
+           transform på korten inuti en scroll-snap-container slutar
+           containern släppa igenom LODRÄTA svep till sidan. Villkoret
+           läses ur elementet i stället för att lista selektorer, eftersom
+           exakt samma rad är en scroller i mobilbredd men ett vanligt
+           rutnät på desktop (overflow-x blir visible där) — sektionen
+           runt omkring tonar fortfarande in som helhet ovan, så effekten
+           försvinner inte, den blir bara ett block i stället för en
+           korthaskad. */
+        var gcs = getComputedStyle(group);
+        var isHorizScroller = (group.scrollWidth > group.clientWidth + 2) && /auto|scroll/.test(gcs.overflowX);
+        if (isHorizScroller) return;
+        Array.prototype.forEach.call(group.children, function (child, i) { armReveal(child, i); });
+      });
+
+      fadeInImages(root);
+      fadeInBackgroundImages(root);
+      requestAnimationFrame(revealPassedElements);
+    }
+
+    /* Ett snabbt trackpad-/PageDown-hopp kan passera ett helt observerat
+       block mellan två bildrutor — då hann IntersectionObserver aldrig
+       rapportera skärningen och blocket låg osynligt ovanför vyn. Den här
+       billiga sweepen visar både det som redan passerats och det som
+       faktiskt ligger i vyn. */
+    var revealSweepQueued = false;
+    function revealPassedElements() {
+      revealSweepQueued = false;
+      document.querySelectorAll(".pre-reveal:not(.in-view)").forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < 0 || (r.top < window.innerHeight * .96 && r.bottom > 0)) {
+          el.classList.add("in-view");
+          if (revealIO) revealIO.unobserve(el);
+          cleanUpReveal(el);
+        }
+      });
+    }
+    window.addEventListener("scroll", function () {
+      if (revealSweepQueued) return;
+      revealSweepQueued = true;
+      requestAnimationFrame(revealPassedElements);
+    }, { passive: true });
+
+    /* Bildintoning (riktiga <img>-taggar) — samma failsafe-ordning som
+       facit: bilder som redan är klara (cache) får ALDRIG klassen alls,
+       och både load OCH error markerar som klar, så en trasig bild aldrig
+       kan fastna osynlig. Täcker Bästsäljare-kortens riktiga, klonade
+       <img>-taggar (produktfoton). */
+    function fadeInImages(root) {
+      if (nhPrefersReducedMotion()) return;
+      var imgs = (root || document).querySelectorAll(".nh-featured-row img, .pser-item img");
+      Array.prototype.forEach.call(imgs, function (img) {
+        if (img.getAttribute("data-fade-bound")) return;
+        img.setAttribute("data-fade-bound", "1");
+        if (img.complete && img.naturalWidth) return; // redan hämtad: visa direkt, ingen fade
+        img.classList.add("img-fade");
+        var done = function () { img.classList.add("is-loaded"); };
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+      });
+    }
+
+    /* Bildintoning, ANPASSAD för CSS-bakgrundsbilder (nödvändig avvikelse
+       från facits <img>-baserade fadeInImages, se slutrapporten: flera av
+       våra bilder — seriekort, Populära vägar, Spotlight, Guider-kortet —
+       är CSS background-image, inte <img>-taggar, och har därför ingen
+       inbyggd load/error-händelse att lyssna på). Samma säkerhetsprincip
+       återskapas ändå exakt: en osynlig, frånkopplad Image() förladdar
+       SAMMA url som redan står i background-image, och load/error (båda)
+       utlöser fadet — en bild kan alltså aldrig fastna osynlig här heller. */
+    function fadeInBackgroundImages(root) {
+      if (nhPrefersReducedMotion()) return;
+      var els = (root || document).querySelectorAll(
+        ".pser-avatar.has-photo, .route.has-photo, .nh-spotlight-img, .nh-guide-photo"
+      );
+      Array.prototype.forEach.call(els, function (el) {
+        if (el.getAttribute("data-fade-bound")) return;
+        var bg = el.style.backgroundImage;
+        var m = /url\((['"]?)(.*?)\1\)/.exec(bg || "");
+        if (!m || !m[2]) return; // ingen bild satt än (t.ex. asynkront hämtad Spotlight/Guide-bild) -- fadeInBackgroundImages körs igen när den sätts, se resp. init-funktion
+        el.setAttribute("data-fade-bound", "1");
+        var probe = new Image();
+        probe.onload = probe.onerror = function () { el.classList.add("is-loaded"); };
+        probe.src = m[2];
+        if (probe.complete) { el.classList.add("is-loaded"); return; } // redan i webbläsarens bildcache
+        el.classList.add("img-fade");
+      });
+    }
+
+    window.scanScrollReveal = scanScrollReveal;
 
     function initHomepageV2() {
       var slideRoot = document.querySelector(".template-components__slideshow");
@@ -1467,7 +1849,7 @@
       slideRoot.parentNode.insertBefore(flexWrap, anchor);
       while (restWrap.firstChild) slideRoot.parentNode.insertBefore(restWrap.firstChild, anchor);
 
-      nhInitReveal(document);
+      scanScrollReveal(document);
       nhInitHeroCarousel(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);

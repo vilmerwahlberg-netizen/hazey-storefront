@@ -572,29 +572,43 @@
   }
 }
 
-/* ── Reveal-on-scroll (mätt mot tershine.com/dadgrass.com, se CLAUDE.md) ──
-   translateY(24px)→0, ease-out-quad, 0.62s, 90ms stegring (max 4 steg).
-   Respekterar prefers-reduced-motion (samma princip som prototypens :root). */
-.nh-reveal {
+/* ── Scroll-reveal ("premiumkänsla" vid scroll) ──────────────────────
+   PORTAT (2026-09-09) rakt av från det uttryckligen utpekade
+   facit-systemet (samma klassnamn, samma mätta värden, samma
+   säkerhetsprincip) — se js/18b-homepage-v2.js (armReveal/
+   scanScrollReveal/cleanUpReveal/revealPassedElements) för hela
+   logiken. Bara .pre-reveal/.in-view är nya namn här; siffrorna
+   (24px/620ms/90ms-steg/max 4) är OFÖRÄNDRADE från den tidigare
+   .nh-reveal-implementationen, som i sin tur redan var hämtad från
+   samma facit-källa (mätt mot tershine.com/dadgrass.com, se CLAUDE.md). */
+.pre-reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .62s cubic-bezier(.25,.46,.45,.94), transform .62s cubic-bezier(.25,.46,.45,.94);
+  will-change: opacity, transform;
 }
-.nh-reveal.is-in { opacity: 1; transform: translateY(0); }
-.nh-reveal:nth-child(1) { transition-delay: 0ms; }
-.nh-reveal:nth-child(2) { transition-delay: 90ms; }
-.nh-reveal:nth-child(3) { transition-delay: 180ms; }
-.nh-reveal:nth-child(4),
-.nh-reveal:nth-child(n+4) { transition-delay: 270ms; }
-/* Bildvariant (creative-direction-runda 2026-09-08): samma system, en
-   mycket lätt skala i tillägg till fade+lyft -- bara för fotografiska
-   ytor (Spotlight, guidekortets bild), aldrig för text/ikonrader (se
-   uppdragets egen regel "animera inte varje liten text-/ikonrad"). */
-.nh-reveal-img { transform: translateY(16px) scale(1.02); }
-.nh-reveal-img.is-in { transform: translateY(0) scale(1); }
+.pre-reveal.in-view { opacity: 1; transform: none; }
+.pre-reveal:nth-child(1) { transition-delay: 0ms; }
+.pre-reveal:nth-child(2) { transition-delay: 90ms; }
+.pre-reveal:nth-child(3) { transition-delay: 180ms; }
+.pre-reveal:nth-child(4),
+.pre-reveal:nth-child(n+4) { transition-delay: 270ms; }
 @media (prefers-reduced-motion: reduce) {
-  .nh-reveal,
-  .nh-reveal-img { opacity: 1; transform: none; transition: none; }
+  .pre-reveal { transition: none; opacity: 1; transform: none; }
+}
+
+/* ── Bildintoning ──────────────────────────────────────────────────
+   PORTAT från facits `.img-fade`/`.img-fade.is-loaded` (se
+   js/18b-homepage-v2.js fadeInImages, för riktiga <img>-taggar som
+   Bästsäljare-kortens produktfoton). `fadeInBackgroundImages` är en
+   NÖDVÄNDIG anpassning (samma klasser/samma princip, se den funktionens
+   kommentar) för element som i stället använder CSS background-image
+   (seriekort, Populära vägar, Spotlight, Guider) — samma två klasser
+   återanvänds för båda, ingen separat CSS krävs per typ. */
+.img-fade { opacity: 0; transition: opacity .45s cubic-bezier(.25,.46,.45,.94); }
+.img-fade.is-loaded { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .img-fade { transition: none; opacity: 1; }
 }
 
 /* Mikrointeraktion (creative-direction-runda 2026-09-08): tydligt,
@@ -791,21 +805,110 @@
   overflow: hidden;
   box-shadow: 0 17px 34px -24px rgba(92,57,24,.72);
 }
+/* ── 3D-kubövergång (2026-09-09) ──────────────────────────────────────
+   .nh-hero-track: ren perspektiv-scen, roterar ALDRIG själv (perspective
+   måste sitta på en ANCESTOR till de roterande elementen, inte på dem
+   själva -- annars försvinner djupet). height:100% krävs eftersom
+   .nh-hero-cube/.nh-hero-slide är absolut positionerade (inset:0) och
+   annars inte har något att fylla.
+   .nh-hero-cube: den FAKTISKT roterande noden. transform-style:preserve-3d
+   håller barnens 3D-position intakt genom förälderns egen rotation --
+   utan den plattas kubens sidor ut till 2D innan rotationen ens börjar
+   (välkänd Chrome/Safari-fallgrop).
+   .nh-hero-slide: en kubsida per slide, absolut positionerad över hela
+   ramen. backface-visibility:hidden (båda prefix, Safari kräver -webkit-)
+   förhindrar att en sidas SPEGELVÄNDA baksida lyser igenom en annan sida
+   mitt i rotationen -- den vanligaste orsaken till flimmer i denna typ av
+   kubeffekt. Overflow:hidden på den YTTRE .nh-qfind-hero (ovan, orört)
+   klipper bort allt som roterar utanför synlig yta utan att klippa
+   djupet självt. */
 .nh-hero-track {
-  display: flex;
-  width: 100%;
-  transition: transform .45s cubic-bezier(.22,.61,.36,1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .nh-hero-track { transition: none; }
-}
-.nh-hero-slide {
   position: relative;
-  flex: 0 0 100%;
   width: 100%;
+  /* BUGGFYND (kub-/kampanjrunda 2026-09-09): `height:100%` gav 0px här --
+     .nh-hero-slide är nu ABSOLUT positionerad (inset:0) och bidrar därför
+     ALDRIG till förälderns auto-höjd (absolut positionerade element tas
+     helt ur flödet för höjdberäkning). Den gamla arkitekturen räddades av
+     en flex-stretch-kedja från .nh-hero-v2 (mobil: align-items:stretch,
+     desktop: min-height+align-items:flex-end) -- men den kedjan kunde i
+     sin tur bara "stretcha" mot en höjd som NÅGONSTANS var explicit satt,
+     och med ENDAST absolut positionerat innehåll kvar i track/kub fanns
+     inte längre någon sådan källa alls, så hela kedjan kollapsade till
+     0. Fix: track får sin höjd RAKT AV (samma tal som redan fanns som
+     min-height på .nh-hero-v2, se rad ~50/~937), oberoende av
+     förälderns stretch-beteende. */
+  height: 238px;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+}
+@media (min-width: 861px) {
+  .nh-hero-track { height: 420px; }
+}
+.nh-hero-cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  --cube-half: 0px; /* räknas ut/uppdateras av JS (setCubeHalf, nhInitHeroCarousel) från sektionens riktiga renderade bredd */
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform .65s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+  /* Endast horisontell swipe fångas av JS (se pointermove-logiken) --
+     touch-action:pan-y är ett ANDRA, webbläsarnivå-skyddslager som
+     garanterar att lodrät sidscroll ALDRIG blockeras här, oavsett vad
+     JS gör (skyddar även mot att JS inte hunnit initiera än). */
+  touch-action: pan-y;
+}
+/* Progressiv förbättring: INNAN JS hunnit initiera karusellen (eller om
+   den kraschar) ligger .nh-hero-cube kvar utan transform -- slide 1 (som
+   CSS-basregeln nedan alltid gör synlig oavsett JS) syns då exakt som en
+   vanlig, orörlig hero. Först när JS lägger till .nh-hero-cube--ready
+   (efter att kub-geometrin räknats ut, se nhInitHeroCarousel) blir
+   3D-positioneringen aktiv -- annars skulle en rotateY/translateZ satt
+   för tidigt (fel/0 bredd innan layout) kunna visa en tom eller felvriden
+   yta under en split second vid sidladdning. */
+.nh-hero-slide {
+  position: absolute;
+  inset: 0;
   background-color: #2c3620;
+  /* Responsiv bild utan JS-omskrivning vid breakpoint-byte, se
+     nhHeroSlideHtml — faller tillbaka till samma bild för båda om ingen
+     egen desktopbild är konfigurerad än. */
+  background-image: var(--hero-img-m);
   background-size: cover;
   background-position: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  visibility: hidden;
+  opacity: 0;
+  /* Lätt "ljus/skugga"-känsla under rotationen (uppdragets krav) — se
+     .is-target nedan. Egen transition, oberoende av kubens, så den
+     löper parallellt med 3D-rotationen utan att behöva synkas manuellt. */
+  filter: brightness(1);
+  transition: filter .65s cubic-bezier(.22,.61,.36,1);
+}
+@media (min-width: 861px) {
+  .nh-hero-slide { background-image: var(--hero-img-d); }
+}
+/* Slide 1 är ALLTID synlig utan att vänta på JS (no-JS/krasch-fallback,
+   uppdragets krav "första sliden ska alltid vara fullt synlig"). */
+.nh-hero-slide:first-child { visibility: visible; opacity: 1; z-index: 1; transform: translateZ(var(--cube-half)); }
+/* BUGGFYND (kub-/kampanjrunda 2026-09-09): utan denna rad vann regeln
+   ovan över `.is-front`/`.is-target` så fort JS navigerade BORT från
+   slide 1 (samma specificitet, båda 2 klasser/pseudoklasser -- men
+   :first-child matchar OAVSETT vilken slide som logiskt är aktiv, så
+   slide 1 förblev synlig för alltid oavsett vad JS satte index till).
+   Efter att JS lyckats initiera (.nh-hero-cube--ready) gäller i stället:
+   slide 1 är bara synlig OM den fortfarande faktiskt är fronten/målet. */
+.nh-hero-cube--ready .nh-hero-slide:first-child:not(.is-front):not(.is-target) { visibility: hidden; opacity: 0; }
+.nh-hero-slide.is-front {
+  visibility: visible; opacity: 1;
+  transform: translateZ(var(--cube-half)); /* kubens "framsida" — samma avstånd från centrum som alla andra sidor, bara roterad till 0deg (identitet, utelämnad) */
+}
+.nh-hero-slide.is-target { visibility: visible; opacity: 1; filter: brightness(.8); }
+@media (prefers-reduced-motion: reduce) {
+  .nh-hero-cube { transition: none; }
+  .nh-hero-slide { transition: none; }
 }
 .nh-hero-slide::before {
   content: "";
