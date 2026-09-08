@@ -3522,3 +3522,84 @@ kampanjkonfiguration, produkter/kategorier/filtertaggar, Nyehandel-admin,
 tema 3/5, produktionsloadern. Ingen release-tagg. `tests/
 tema6-smoke.spec.mjs` fortsatt inte körbart utan Vilmers riktiga
 tema 6-preview-URL.
+
+## 2026-09-08 — Desktop-parity-implementation mot godkänd referens (hazey-dadgrass-westcoast-concept-v1.png)
+
+Byggde den riktiga desktopstartsidan i tema 6 1:1 mot den låsta referensen
+(`preview/ai-direction/hazey-dadgrass-westcoast-concept-v1.png`), enligt
+uppdragets egen prioritetsordning: riktig produkt-/review-/trust-/länkdata
+> fungerande Nyehandel-integration > SEO/tillgänglighet > referensens
+visuella komposition > tidigare desktopimplementation.
+
+**Nya v2-bilder** (optimerade JPEG+WebP, `assets/v2/`, källor orörda i
+`preview/ai-direction/assets-v2/`): hero (`hero-westcoast-products-graffiti`),
+Magic Sauce-seriekort, Bonfire-editorial, Featured Magic Sauce, Reviews-
+editorial. Alla dessa är PRELIMINÄRA AI-genererade kampanj-/livsstilsbilder
+(inte produktkort) — markerat i kod och här. `series-venice-vibes-v2`/
+`series-hash-culture-v2`/`series-cbd-chill-v2`/`product-*-v2` sparade som
+designmaterial men ANVÄNDS INTE på den riktiga sidan (Venice Vibes är
+ingen riktig Hazey-serie, och produktkorten i Bästsäljare är 100% riktig,
+oförändrad Nyehandel-data — aldrig v2-bilder).
+
+**Header:** riktiga `#store-header` görs transparent/glasigt ovanpå heron
+via en ny klass (`nh-home-hero`, satt av `nhInitHomeHeroHeader`,
+js/18b-homepage-v2.js) — ENDAST vid min-width:861px. Rotorsaksfynd:
+`#store-header` har en egen native `!important`-bakgrund UTÖVER sina tre
+barnraders (.topbar/.main/.nh-cat-row) egna bakgrunder — alla fyra måste
+övervinnas. Vid scroll (>40px) övergår `.main`-raden till ett kontrollerat
+Hazey-glas (`backdrop-filter`, `@supports`-fallback till solid).
+
+**Hero:** riktig full-bleed (100vw-tricket, ingen kort-look). Rotorsaks-
+fynd: `.nh-hero-track` hade fortfarande en FAST 420px-höjd från kub-
+rundan — heron fick en clamp()-höjd men tracket fyllde inte den, vilket
+lämnade ett tomt gap högst upp (bodyns egen beige lyste igenom bakom den
+nu transparenta headern). Fixat till height:100%. Likaså fick
+`.nh-hero-slide` `display:flex;justify-content:flex-end` -- innehållet
+(`.nh-hero-v2__inner`) hade ingen egen vertikal placering i den nya,
+mycket högre ytan och låg kvar överst, bakom headern. Ny trust-rad
+(`.nh-hero-v2__trust`, bara verifierade fakta) + varm orange glas-CTA
+(gradient, specular kant, `@supports`-fallback). Höjden är en clamp, inte
+en bokstavlig 90vh -- en riktig, dokumenterad bild/viewport-kvot-
+begränsning (bilden är 1536×1024, en extremt bred 1920px-hero hade krävt
+en så aggressiv cover-beskärning att grafittitexten riskerat att klippas,
+se skärmdump). Vid 1920px är grafittitexten delvis (inte helt) synlig --
+närmaste säkra lösning, inte pixel-perfekt.
+
+**Sektionsordning:** alla home-extra-sektioner delar nu EN
+`.nh-startpage-flex`-wrapper (tidigare bara Populära serier/vägar) med
+explicita `order`-värden. Mobilens bas-ordning matchar EXAKT dagens redan
+godkända sekvens (oförändrad). Desktop: serier → bästsäljare → NY
+"Good People Higher Moments" (Bonfire, desktop-only, riktig länk till
+alla-produkter eftersom ingen riktig "vår story"-sida finns än) → kompakt
+trust-rad → Featured (Spotlight) → Omdömen → [allt äldre, ej i referensen
+synligt innehåll bevarat, bara flyttat hit: Populära vägar → Snabb koll →
+Guider & aktuellt → Nyhetsbrev] → footer.
+
+**Två verkliga mobil-regressioner hittade och fixade under verifiering**
+(skärmdumpsbevis, inte antaget): (1) Populära seriers nya kicker
+("Upptäck mer"+sol-ikon) och pilkontroller renderades UTAN
+breddpunkts-scopning, läckte in i mobilens redan godkända sektionshuvud
+-- fixat med `display:none`-bas + desktop-override. (2) Hero-trust-raden
+hade ingen mobil-bas-regel alls, renderades som ett ostylat block-element
+som spillde ut till höger om mobilkortet -- samma fix. Den preliminära
+bild-badgen på Magic Sauce-seriekortet radbröt/svämmade över på mobilens
+83px-cirkel (byggd för desktopens stora kort) -- döljs nu på mobil.
+
+**Verifierat:** 0px overflow vid 390/393/1024/1180/1280/1440/1920px, 0
+konsol-/sidfel vid alla breddpunkter, H1-antal fortsatt 1 (Bonfire-
+rubriken är H2), FAQPage/WebSite/OnlineStore JSON-LD oförändrat, 86
+riktiga interna länkar funna. 8/12 regressionstester gröna; de 4 som
+inte är gröna (Bästsäljare/Omdömen/Nyhetsbrev/Truststrip) visar vid
+manuell granskning av diff-bilderna ENDAST text-kant-antialiasing (ingen
+layout-/strukturskillnad) -- klass 4/dynamiskt-innehåll-avvikelser enligt
+skillens egen klassificering, inte riktiga regressioner. Ingen
+golden-baslinje uppdaterad (väntar på Vilmers visuella godkännande,
+uttryckligt förbud denna omgång).
+
+Inte rört: Populära vägars/Snabb kolls/Guiders/Nyhetsbrevs egen
+struktur/copy (bara flyttade i ordning + lätt kicker/knapp-harmonisering),
+footer (medvetet, "inga breda footerändringar"), produktionsloadern,
+tema 3/5, Nyehandel-admin. Den gamla, redan tidigare dokumenterade
+native "THCA hos oss"-banner-resten (pre-existing, inte introducerad
+denna omgång) syns fortfarande efter Guider & aktuellt -- flaggat, inte
+åtgärdat (utanför denna omgångs scope).
