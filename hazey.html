@@ -4429,7 +4429,19 @@
         + '  <div class="nh-reviews-layout">'
         + '    <div class="nh-reviews-main">'
         + '      <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
-        + '      <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
+        // KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): den tidigare
+        // texten ("Endast kunder som köpt produkten kan lämna ett omdöme
+        // på Trustpilot") stod direkt ovanför -- och beskrev alltså,
+        // felaktigt, -- korten i #nhReviewsGrid. De korten kommer
+        // (se nhInitProductReviews ovan) från Nyehandels EGNA
+        // produktsides-recensioner (:reviews-Vue-propen), inte från
+        // Trustpilot -- Trustpilot-betyget är en helt separat datakälla,
+        // bara länkad via CTA:n nedanför. Ingen bekräftad källa i det här
+        // repot för Nyehandels egen köpverifieringspolicy heller, så
+        // påståendet byttes mot en sann, overifierbar-fri formulering i
+        // stället för att bara flytta samma ogrundade policy-detalj till
+        // fel system.
+        + '      <p>Riktiga omdömen från våra produktsidor, plus vårt samlade betyg på Trustpilot.</p></div></div>'
         + '      <a class="nh-reviews-cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
         + '        <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
         + '      </a>'
