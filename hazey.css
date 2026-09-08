@@ -2449,7 +2449,15 @@ body:has(.nh-footer) .page-footer {
   width: 100vw;
   transform: translateX(-50%);
   box-sizing: border-box;
-  background: #bce691;
+  /* KORRIGERAT (Fas 3, mätbar desktop-paritetsrunda): #bce691 (en klarare
+     lime-/mintgrön) hörde inte hemma i Hazeys West Coast-cream/mörkgrön/
+     brändorange-palett -- klämde synligt mot både headern och footern
+     under. Bytt till samma varma beige-light-ton som redan används på
+     flera andra ljusa ytor (t.ex. .nh-tb-inner-gradienten), en "kontrollerad
+     Hazey-ton" i stället för en avvikande accentfärg. Text/kontrast
+     oförändrat läsbar (mörkgrön på ljus botten, samma mönster som
+     trustremsan). */
+  background: #f4e9dc;
   padding: 11px 24px;
   text-align: center;
 }
@@ -2458,7 +2466,7 @@ body:has(.nh-footer) .page-footer {
   max-width: 1100px;
   margin: 0 auto;
   font-size: 12px !important;
-  color: #323d25 !important;
+  color: #2c3620 !important;
   line-height: 1.6 !important;
   font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
 }
@@ -9167,11 +9175,19 @@ body.checkout-page .checkout-items-summary .item .content {
   margin: 0 auto !important;
   padding: 0 32px !important;
 }
+/* KORRIGERAT (Fas 3, mätbar desktop-paritetsrunda): footern mätte +133%
+   höjd mot referensens footer-yta -- inte för att den saknar riktigt
+   innehåll (allt bevaras oförändrat), utan för att varje rad/kolumn hade
+   generös, "luftig" desktop-padding staplad på varandra. Kompakterat
+   holistiskt (grid/trust-rad/botten-rad/länkpadding nedan) utan att ta
+   bort en enda länk, kolumn eller rad. Endast denna @media-fria (alltså
+   desktop-standard) regel -- mobilscopade block längre ned i filen är
+   orörda. */
 .nh-footer__grid {
   display: grid !important;
   grid-template-columns: 1.5fr 1fr 1fr 1.1fr 1.65fr !important;
-  gap: 34px 34px !important;
-  padding: 52px 0 40px !important;
+  gap: 22px 34px !important;
+  padding: 34px 0 26px !important;
 }
 /* Neutralisera den GAMLA 4-kolumns-footerns nth-child-regler (text-align:right
    på kol 2/4 + 28px letter-spaced h3 på kol 1/4) som annars stör de nya
@@ -9232,7 +9248,7 @@ body.checkout-page .checkout-items-summary .item .content {
   color: rgba(223, 232, 231, 0.72) !important;
   font-size: 15px !important;
   line-height: 1.5 !important;
-  padding: 5px 0 !important;
+  padding: 3px 0 !important;
   text-decoration: none !important;
   transition: color 0.15s ease !important;
 }
@@ -9335,7 +9351,7 @@ body.checkout-page .checkout-items-summary .item .content {
   border-top: 1px solid rgba(223, 232, 231, 0.12) !important;
   max-width: 100% !important;
   margin: 0 !important;
-  padding: 22px 0 !important;
+  padding: 14px 0 !important;
   justify-content: center !important;
 }
 /* .nh-footer__proof-row (mobil 2×2 ikon-kort, ersätter .nh-footer__trust
@@ -9354,7 +9370,7 @@ body.checkout-page .checkout-items-summary .item .content {
   gap: 14px !important;
   max-width: 1240px !important;
   margin: 0 auto !important;
-  padding: 20px 32px 30px !important;
+  padding: 14px 32px 20px !important;
   border-top: 1px solid rgba(223, 232, 231, 0.12) !important;
 }
 .nh-footer__bottom .nh-footer__pay {
@@ -9702,7 +9718,7 @@ body.checkout-page .checkout-items-summary .item .content {
   background: rgba(255, 255, 255, 0.04) !important;
   border: 1px solid rgba(223, 232, 231, 0.1) !important;
   border-radius: 16px !important;
-  padding: 22px 22px 20px !important;
+  padding: 16px 18px 16px !important;
 }
 .nh-footer__nl-col h3 {
   margin-top: 0 !important;

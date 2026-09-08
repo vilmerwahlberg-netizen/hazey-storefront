@@ -130,7 +130,15 @@ body:has(.nh-footer) .page-footer {
   width: 100vw;
   transform: translateX(-50%);
   box-sizing: border-box;
-  background: #bce691;
+  /* KORRIGERAT (Fas 3, mätbar desktop-paritetsrunda): #bce691 (en klarare
+     lime-/mintgrön) hörde inte hemma i Hazeys West Coast-cream/mörkgrön/
+     brändorange-palett -- klämde synligt mot både headern och footern
+     under. Bytt till samma varma beige-light-ton som redan används på
+     flera andra ljusa ytor (t.ex. .nh-tb-inner-gradienten), en "kontrollerad
+     Hazey-ton" i stället för en avvikande accentfärg. Text/kontrast
+     oförändrat läsbar (mörkgrön på ljus botten, samma mönster som
+     trustremsan). */
+  background: #f4e9dc;
   padding: 11px 24px;
   text-align: center;
 }
@@ -139,7 +147,7 @@ body:has(.nh-footer) .page-footer {
   max-width: 1100px;
   margin: 0 auto;
   font-size: 12px !important;
-  color: #323d25 !important;
+  color: #2c3620 !important;
   line-height: 1.6 !important;
   font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
 }
