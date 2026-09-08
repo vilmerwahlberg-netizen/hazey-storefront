@@ -125,6 +125,35 @@ async function scrollThroughPage(page) {
   await page.waitForTimeout(200);
 }
 
+/**
+ * The hero has autoplay (see nhInitHeroCarousel) -- caught live: a first
+ * full run's header-hero crop showed the SECOND campaign slide (real
+ * Magic Sauce product photo + "Upptäck Magic Sauce." copy) instead of the
+ * evergreen West Coast slide the locked reference actually depicts,
+ * because autoplay advanced the cube during this script's own wait/scroll
+ * time. Not a site bug (the real product photo is genuine, correct data
+ * for that slide) -- a test-tool reliability gap: comparing the WRONG
+ * slide's content against the reference makes the side-by-side/diff
+ * images misleading even though the section's measured HEIGHT stays
+ * valid either way. Clicking prev/next (see js/18b-homepage-v2.js
+ * onManualInteraction) also permanently disables autoplay for the rest
+ * of the page's lifetime, so this both fixes the current slide AND
+ * prevents it drifting again later during scrollThroughPage.
+ */
+async function resetHeroToFirstSlide(page) {
+  const prevBtn = await page.$(".nh-hero-arrow--prev");
+  if (!prevBtn) return; // no carousel controls -- only one slide, nothing to reset
+  for (let i = 0; i < 4; i++) {
+    const onFirst = await page.evaluate(() => {
+      const first = document.querySelector(".nh-hero-slide");
+      return first ? first.getAttribute("aria-hidden") === "false" : true;
+    });
+    if (onFirst) break;
+    await prevBtn.click();
+    await page.waitForTimeout(500);
+  }
+}
+
 async function captureImplementation(browser) {
   const page = await browser.newPage();
   const consoleErrors = [];
@@ -151,6 +180,7 @@ async function captureImplementation(browser) {
   await page.waitForTimeout(1000);
   await waitFontsAndImages(page);
   await page.waitForTimeout(400);
+  await resetHeroToFirstSlide(page);
   await scrollThroughPage(page);
 
   const overflow = await page.evaluate(
@@ -179,6 +209,13 @@ async function captureImplementation(browser) {
     });
   }, SECTIONS);
 
+  // Autoplay's pause-on-interaction is TEMPORARY (scheduleResume(), see
+  // js/18b-homepage-v2.js) -- resetting once, earlier, isn't enough: it
+  // can resume and advance again during this function's own multi-second
+  // wait/scroll time (caught live: the first fix attempt still landed on
+  // slide 2 here). Reset again right before the actual screenshot, the
+  // one place that matters.
+  await resetHeroToFirstSlide(page);
   const fullPageBuffer = await page.screenshot({ fullPage: true });
   await page.close();
   return { fullPageBuffer, bounds, consoleErrors, overflow };
