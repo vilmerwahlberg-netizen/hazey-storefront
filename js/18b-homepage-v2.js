@@ -701,6 +701,50 @@
       });
     }
 
+    /* BUGGFYND (Fas 6, mätbar desktop-paritetsrunda -- funktionell
+       verifiering): `.nh-pser-nav--prev`/`--next` (pilknapparna vid
+       "Populära serier", se nhPopularaSerierHtml) renderades i markupen
+       men hade ALDRIG en click-lyssnare som skrollade #nhPserRow --
+       verifierat live (scrollLeft oförändrat 0 efter klick, trots att
+       raden faktiskt har overflow, scrollWidth 1931 > clientWidth 1280
+       vid 1440px). Två helt döda knappar. Skrollar nu ett kort+gap åt
+       gången, samma smooth-scroll-mönster som .pser-row redan har
+       (scroll-snap-type:x proximity, se css/22-homepage-v2.css). */
+    function nhInitPserNav(root) {
+      var row = root.querySelector("#nhPserRow");
+      if (!row || row.__nhPserNav) return;
+      row.__nhPserNav = true;
+      var prevBtn = root.querySelector(".nh-pser-nav--prev");
+      var nextBtn = root.querySelector(".nh-pser-nav--next");
+      if (!prevBtn && !nextBtn) return;
+
+      function step() {
+        var item = row.querySelector(".pser-item");
+        if (!item) return row.clientWidth * 0.8;
+        var style = getComputedStyle(row);
+        var gap = parseFloat(style.columnGap || style.gap || "0") || 0;
+        return item.getBoundingClientRect().width + gap;
+      }
+      function updateDisabled() {
+        var max = row.scrollWidth - row.clientWidth - 1;
+        if (prevBtn) prevBtn.disabled = row.scrollLeft <= 0;
+        if (nextBtn) nextBtn.disabled = row.scrollLeft >= max;
+      }
+      if (prevBtn) prevBtn.addEventListener("click", function () {
+        row.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+      if (nextBtn) nextBtn.addEventListener("click", function () {
+        row.scrollBy({ left: step(), behavior: "smooth" });
+      });
+      row.addEventListener("scroll", function () {
+        if (!row.__nhPserNavTicking) {
+          row.__nhPserNavTicking = true;
+          requestAnimationFrame(function () { row.__nhPserNavTicking = false; updateDisabled(); });
+        }
+      }, { passive: true });
+      updateDisabled();
+    }
+
     /* ── "Populära vägar" — FORMAT (inte serier, de är i egen sektion).
        4 kort: Vapes/Blommor/Hash + CBD,CBG&CBN (Vilmer 2026-08-31: ett
        vägkort som länkar till CBD-landningssidan är okej, skiljer sig från
@@ -2053,6 +2097,7 @@
 
       scanScrollReveal(document);
       nhInitHeroCarousel(document);
+      nhInitPserNav(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
       nhInitSpotlight(document);

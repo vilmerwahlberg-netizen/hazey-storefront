@@ -186,6 +186,7 @@
 }
 .nh-pser-nav svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
 .nh-pser-nav:hover { background: #d9782f; border-color: #d9782f; color: #fff; }
+.nh-pser-nav:disabled { opacity: .35; cursor: default; pointer-events: none; }
 @media (min-width: 861px) { .nh-pser-nav { display: flex; } }
 /* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): på
    mobilens 83px-cirkel radbröt/svämmade badge-texten över kortkanten --
