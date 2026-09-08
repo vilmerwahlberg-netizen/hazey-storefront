@@ -13461,13 +13461,20 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   }
   .nh-tb-inner > h2, .nh-tb-inner > p { display: none; } /* kompakt rad, ingen egen rubrik på desktop -- rubriken/introt finns redan mobilt */
   .nh-tb-steps { grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: flex-start; }
-  .nh-tb-step { display: flex; align-items: center; gap: 10px; }
+  /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): .nh-tb-step ÄRVDE
+     fortfarande sin mobila vit-kort-stil (background:#fff, border, radie,
+     padding, se basregeln) -- kommentaren ovanför denna @media-regel har
+     redan sagt "inte fem separata kort" sedan tidigare, men ingen regel
+     återställde faktiskt kortstilen till en platt yta. Referensen visar
+     ikon+text direkt på den mörkgröna ytan, inga vita piller (bekräftat
+     via tests/results/desktop-reference-parity/trustremsa/side-by-side.png). */
+  .nh-tb-step { display: flex; align-items: center; gap: 10px; background: transparent; border: none; border-radius: 0; padding: 0; }
   .nh-tb-step__n { display: none; }
   .nh-tb-step__ico { display: flex; width: 26px; height: 26px; color: #e7ae63; flex: none; }
   .nh-tb-step__ico svg { width: 100%; height: 100%; }
   .nh-tb-step h3 { font-size: 13px; color: #fffdf8; margin: 0; }
   .nh-tb-step p { display: none; }
-  .nh-tb-foot { margin-top: 16px; padding-top: 14px; border-top-color: rgba(255,253,248,.14); }
+  .nh-tb-foot { margin-top: 10px; padding-top: 10px; border-top-color: rgba(255,253,248,.14); }
   .nh-tb-foot span { color: rgba(255,253,248,.62); }
   .nh-tb-link { color: #e7ae63; }
 }
@@ -13521,7 +13528,11 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
    stämningsbild höger). All recensionsdata i .nh-reviews-main OFÖRÄNDRAD. ── */
 @media (min-width: 861px) {
   .nh-reviews.section-gap { max-width: none; padding: 0; }
-  .nh-reviews-layout { display: grid; grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+  /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): referensen delar
+     ca 70/30 (recensioner/editorialbild), inte 50/50 -- 1.3fr:1fr (56/44)
+     var för jämnt fördelat, bekräftat mot
+     hazey-dadgrass-westcoast-concept-v1.png. */
+  .nh-reviews-layout { display: grid; grid-template-columns: 7fr 3fr; align-items: stretch; }
   .nh-reviews-main { padding: 48px 56px; max-width: 640px; }
   .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
 }
