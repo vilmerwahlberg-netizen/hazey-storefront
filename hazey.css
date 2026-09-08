@@ -12883,7 +12883,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   background: #2c3620; color: #fffdf8; border-radius: 18px; padding: 26px;
   display: flex; flex-direction: column; gap: 12px;
 }
-.nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 20px; margin: 0 0 4px; }
+/* KORRIGERAT (Fas 3, mätbar desktop-paritetsrunda): h2 saknade EGEN
+   `color` och ärvde avsett `.nh-signup-block{color:#fffdf8}`, men en
+   nativ h1,h2,...{color:...!important}-tag-reset slog ut arvet och gav
+   nästan-svart text på den mörkgröna ytan -- verifierat live via
+   getComputedStyle (rgb(23,23,23) mot rgb(44,54,32)), på ALLA bredder
+   (den tidigare fixen för samma bugklass fanns bara i ett mobil-scopat
+   @media-block längre ner i filen, se kommentaren där -- desktop hade
+   ingen motsvarande regel). Satt här på basregeln i stället, gäller nu
+   överallt. */
+.nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 20px; margin: 0 0 4px; color: #fffdf8 !important; }
 .nh-signup-block p { margin: 0; font-size: 12.5px; color: rgba(244,233,220,.8); }
 .nh-signup-form { display: flex; gap: 8px; flex-wrap: wrap; }
 /* Nyhetsbrevets stapel-lucka, rotorsakad i tre lager (2026-09-06,
