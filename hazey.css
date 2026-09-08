@@ -11550,7 +11550,8 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
    fanns ingen sådan regel alls tidigare i denna fil (bara webbläsarens
    omärkta standardfokus). Byggd med :focus-visible så mus-/touch-klick
    inte får en ring, bara riktig tangentbordsnavigation. */
-.nh-guide-card:focus-visible,
+.nh-guide-feature:focus-visible,
+.nh-guide-faq:focus-visible,
 .pser-item:focus-visible,
 .nh-routes .route:focus-visible,
 .nh-featured-row .product-card:focus-visible,
@@ -12466,10 +12467,18 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .guide-more-link:hover { color: #fff; }
 .guide-more-link--soon { color: rgba(228,209,191,.55); cursor: default; pointer-events: none; }
 
-/* ── "Guider & aktuellt" (SEO-paritetsrunda 2026-09-08) — ersätter den
-   isolerade "THCA med flera"-textväggen + frikopplade "Till Butiken"-
-   knappen med en sammanhängande sektion. Samma ljusa kortspråk som
-   trustblock/reviews/signup (sand-till-cream-gradient, 18px radie). ── */
+/* ── "Guider & aktuellt" — REDESIGN (hazey-commerce-design-skillen,
+   2026-09-08). Föregångaren (två höjdlika vita/mörka kort, "Kategori"/
+   "Support"-pillar, smala textkolumner) gav THCA-sortimentet och
+   FAQ-supportsidan samma visuella vikt, kändes AI-mallig/generisk och
+   saknade egen Hazey-identitet — exakt de fyra sakerna uppdraget bad om
+   att åtgärda. Ny komposition: EN dominant "feature"-yta (THCA, varm
+   mörk botten med produkten flytande i ett ljusfält — samma bildspråk
+   som Spotlight, se nedan) + EN tyst, sekundär "vidare läsning"-modul på
+   sidans egna varma botten (FAQ-länk + den redan hopfällda SEO-texten som
+   två rader i SAMMA yta, inte två separata kort). Riktig prioritering i
+   stället för symmetri — se `agent-skills/hazey-commerce-design/
+   references/decisions.md`. ── */
 .nh-guides.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
 .nh-guides .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
 .nh-guides .sec-head h2 {
@@ -12477,62 +12486,111 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   font-weight: 600; font-size: 19px; color: #2c3620; margin: 0;
 }
 .nh-guides .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; }
-.nh-guides-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
-@media (min-width: 861px) { .nh-guides-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; } }
-.nh-guide-card {
-  display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 14px;
-  padding: 16px; text-decoration: none;
-  transition: transform 200ms cubic-bezier(.22,.61,.36,1), box-shadow 200ms cubic-bezier(.22,.61,.36,1), border-color 200ms cubic-bezier(.22,.61,.36,1);
+
+.nh-guides-layout { display: flex; flex-direction: column; gap: 14px; }
+
+/* Feature-ytan: en mörk, varm kortbotten med produkten FLYTANDE i ett
+   ljusfält (samma beprövade mönster som .nh-spotlight-img — verifierat
+   nödvändigt: den riktiga THCA-bilden är en transparent produktbeskärning,
+   inte ett fullramat foto, se motiveringen i js/18b-homepage-v2.js
+   nhGuidesHtml), text i ett eget stycke UNDER i stället för bakat ovanpå
+   fotot. */
+.nh-guide-feature {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  border-radius: 18px; text-decoration: none;
+  background:
+    radial-gradient(120% 85% at 50% 6%, rgba(231,174,99,.24), transparent 62%),
+    linear-gradient(168deg, #38452a 0%, #2c3620 46%, #1e2716 100%);
+  box-shadow: 0 14px 30px -20px rgba(44,54,32,.4);
 }
-.nh-guide-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px -10px rgba(44,54,32,.18); border-color: #e4d1bf; }
-.nh-guide-tag {
-  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  color: #96683f; background: #faf3e9; border-radius: 999px; padding: 3px 9px; margin-bottom: 8px;
+.nh-guide-feature__media { flex: none; position: relative; padding: 26px 26px 4px; }
+.nh-guide-feature__photo {
+  display: block; width: 100%; aspect-ratio: 4 / 3;
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+  transition: transform 400ms cubic-bezier(.22,.61,.36,1);
 }
-.nh-guide-card h3 {
+@media (hover: hover) and (pointer: fine) {
+  .nh-guide-feature:hover .nh-guide-feature__photo { transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nh-guide-feature__photo { transition: none; }
+  .nh-guide-feature:hover .nh-guide-feature__photo { transform: none; }
+}
+.nh-guide-feature__body { padding: 4px 24px 26px; }
+.nh-guide-feature__kicker {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+  color: #f0c68a; margin-bottom: 6px;
+}
+.nh-guide-feature__body h3 {
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600; font-size: 15.5px; color: #2c3620; margin: 0 0 5px;
+  font-weight: 600; font-size: 26px; line-height: 1.05; color: #fffdf8; margin: 0 0 8px;
 }
-.nh-guide-card p { margin: 0 0 10px; font-size: 12px; line-height: 1.5; color: #5f5c50; }
-.nh-guide-cta { display: block; font-size: 12px; font-weight: 650; color: #96683f; transition: transform 160ms ease; }
-.nh-guide-card:hover .nh-guide-cta { transform: translateX(2px); }
-/* Redaktionell tyngd-variation (creative-direction-runda 2026-09-08):
-   "photo"-kortet får en riktig bild överst (live-hämtad, se nhInitGuides),
-   "dark"-kortet en ikonburen mörk yta -- två olika visuella vikter i
-   stället för två identiska vita textrutor. */
-.nh-guide-card--photo { padding-top: 0; overflow: hidden; }
-.nh-guide-photo {
-  display: block; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 12px;
-  background-size: cover; background-position: center; background-color: #efe9df;
+.nh-guide-feature__body p {
+  margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: rgba(244,233,220,.8);
+  max-width: 34ch;
 }
-.nh-guide-card--photo .nh-guide-tag,
-.nh-guide-card--photo h3,
-.nh-guide-card--photo p,
-.nh-guide-card--photo .nh-guide-cta { margin-left: 16px; margin-right: 16px; }
-.nh-guide-card--photo .nh-guide-cta { margin-bottom: 16px; }
-.nh-guide-card--dark {
-  background: linear-gradient(168deg, #38452a 0%, #2c3620 46%, #1e2716 100%);
-  border-color: rgba(228,209,191,.18);
+.nh-guide-feature .nh-guide-cta {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 13px; font-weight: 650; color: #fffdf8;
+  border-bottom: 1.5px solid rgba(255,253,248,.45); padding-bottom: 2px; width: fit-content;
+  transition: border-color 160ms ease, transform 160ms ease;
 }
-.nh-guide-card--dark:hover { border-color: rgba(228,209,191,.4); }
-.nh-guide-icon {
-  display: flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border-radius: 10px; margin-bottom: 10px;
-  background: rgba(255,253,248,.1); color: #e7ae63;
+.nh-guide-feature:hover .nh-guide-cta { border-color: #fffdf8; transform: translateX(2px); }
+
+/* Sekundärspåret: FAQ-länken + den hopfällda legacy-SEO-texten som två
+   rader i EN tyst, ljus yta -- inte två separata kort, medvetet mindre
+   dramatisk än feature-ytan ovan (riktig prioritering). */
+.nh-guide-aside {
+  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
+  border: 1px solid #ebe1d1; border-radius: 16px;
 }
-.nh-guide-icon svg { width: 18px; height: 18px; }
-.nh-guide-card--dark .nh-guide-tag { background: rgba(255,253,248,.12); color: #e7ae63; }
-.nh-guide-card--dark h3 { color: #fffdf8; }
-.nh-guide-card--dark p { color: rgba(244,233,220,.72); }
-.nh-guide-card--dark .nh-guide-cta { color: #e4d1bf; }
+.nh-guide-faq {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 16px 14px; text-decoration: none;
+}
+.nh-guide-faq__icon {
+  flex: none; width: 20px; height: 20px; margin-top: 2px;
+  color: #96683f;
+}
+.nh-guide-faq__body { flex: 1; min-width: 0; }
+.nh-guide-faq__title {
+  display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 600; font-size: 15.5px; color: #2c3620; margin-bottom: 3px;
+}
+.nh-guide-faq__text { display: block; font-size: 12.5px; line-height: 1.5; color: #5f5c50; }
+.nh-guide-faq__arrow {
+  flex: none; font-size: 15px; color: #96683f; margin-top: 2px;
+  transition: transform 160ms ease;
+}
+.nh-guide-faq:hover .nh-guide-faq__arrow { transform: translateX(3px); }
+.nh-guide-aside > .nh-guide-faq + .nh-guide-legacy { border-top: 1px solid #ebe1d1; }
+
+/* BUGGFYND (redesign-runda, verifierat via getComputedStyle/matchedRule-
+   inspektion): Nyehandels EGEN plattforms-CSS har en bred nativ regel,
+   `:focus-visible:not(.collection-carousel...)`, som -- med samma
+   specificitet som (och senare i cascade-ordningen än) det delade
+   `.nh-guide-feature:focus-visible`-blocket ovan i filen -- tyst vinner
+   och visar webbläsarens egen blå standardring i stället för vårt
+   varumärkesfärgade fokus. Detta drabbar sannolikt HELA det delade
+   fokusblocket (pser-item/route/product-card/btn-solid m.fl.), inte bara
+   dessa två element -- men SCOPE LOCK denna omgång tillåter bara en
+   komponent-scopad fix här, inte en ändring av den delade regeln (som
+   delas med andra sektioner). Samma mönster som redan dokumenterat i
+   CLAUDE.md för native typografi-resets, applicerat på outline: en
+   bevisad konkurrerande native-regel finns, så !important används
+   medvetet, bara för de två NYA elementen i denna sektion. */
+.nh-guide-feature:focus-visible,
+.nh-guide-faq:focus-visible {
+  outline: 2px solid #d9782f !important;
+  outline-offset: 2px;
+}
+
 /* Legacy, redan publicerad SEO-text ("THCA med flera" + "Vad är THCA?"),
    flyttad (inte kopierad, se nhInitGuides) hit och kompakterad i en
    riktig, semantisk <details> -- redan i initial renderad DOM (ingen
-   klick-krävd fetch), bara visuellt hopfälld tills besökaren öppnar den. */
-.nh-guide-legacy {
-  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
-  border: 1px solid #ebe1d1; border-radius: 14px; padding: 4px 16px;
-}
+   klick-krävd fetch), bara visuellt hopfälld tills besökaren öppnar den.
+   Nu en rad INUTI .nh-guide-aside i stället för ett eget separat kort. */
+.nh-guide-legacy { padding: 0 16px; }
 .nh-guide-legacy summary {
   cursor: pointer; padding: 12px 0; font-size: 13px; font-weight: 650; color: #96683f;
   list-style: none;
@@ -12550,6 +12608,23 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .nh-guide-legacy-body h3 { font-size: 14px; font-weight: 650; color: #2c3620; margin: 14px 0 4px; }
 .nh-guide-legacy-body p { margin: 0 0 10px; }
 .nh-guide-legacy-body img { max-width: 100%; height: auto; border-radius: 10px; }
+
+/* Desktop: en egen komposition (uppdragets krav), inte bara en bredare
+   mobilstack. Feature-ytan (62%) byter SJÄLV om internt -- produktbilden
+   till vänster, texten till höger, sida vid sida -- i stället för
+   mobilens vertikala stapling (bild ovanför, text under). Sekundärspåret
+   (38%) blir en smalare, lugnare "vidare läsning"-spalt till höger om
+   hela feature-ytan. */
+@media (min-width: 861px) {
+  .nh-guides-layout { flex-direction: row; align-items: stretch; gap: 22px; }
+  .nh-guide-feature { flex: 1 1 62%; flex-direction: row; align-items: center; min-height: 300px; }
+  .nh-guide-feature__media { flex: 0 0 42%; padding: 20px 12px 20px 28px; }
+  .nh-guide-feature__photo { aspect-ratio: 1 / 1; }
+  .nh-guide-feature__body { flex: 1; padding: 20px 30px 20px 12px; }
+  .nh-guide-feature__body h3 { font-size: 32px; }
+  .nh-guide-feature__body p { font-size: 14px; max-width: 34ch; }
+  .nh-guide-aside { flex: 1 1 38%; display: flex; flex-direction: column; justify-content: center; }
+}
 
 /* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
    STATUS.md om varför inga citat är med. ── */

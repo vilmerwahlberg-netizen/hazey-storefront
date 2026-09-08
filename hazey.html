@@ -4029,43 +4029,66 @@
        verifierades dessutom vara en TRASIG länk (curl → 404) -- döljs
        (INTE tas bort ur DOM:en) eftersom dess funktion (väg till
        sortimentet) redan täcks av de nya, riktiga korten ovan. */
+    /* KORRIGERINGSRUNDA (2026-09-08, hazey-commerce-design-skillen, REDESIGN
+       av just denna sektion -- se `agent-skills/hazey-commerce-design/`):
+       den tidigare tvåkorts-versionen (två höjdlika kort, "Kategori"/
+       "Support"-pillar, smala textkolumner) hade INGEN riktig hierarki --
+       en produktupptäcktsdestination (THCA) och en supportdestination
+       (FAQ) behandlades som visuellt likvärdiga, vilket uppdraget
+       uttryckligen pekade ut som fel ("om två innehållsspår inte förtjänar
+       två likvärdiga kort ska de inte behandlas likvärdigt"). Ombyggd till
+       EN dominant, fotografisk "feature"-yta (THCA -- den riktiga
+       sortimentsdestinationen, samma live-hämtade produktbild som förut,
+       se nhInitGuides) + EN tyst, sekundär "vidare läsning"-modul på sidans
+       egna varma botten (FAQ-länken + den redan befintliga hopfällda
+       SEO-texten, båda som rader i SAMMA yta i stället för ett eget kort
+       vardera) -- riktig prioritering, inte två identiska vita rutor.
+       Bildbehandling (verifierat, inte gissat, se STATUS.md): den riktiga
+       THCA-bilden är en transparent produktbeskärning (bud + prisetikett,
+       vitt/genomskinligt fält, plattformens vattenstämpel) -- INTE ett
+       fullramat lifestylefoto. En background-size:cover-fullbleed-
+       behandling (första försöket denna omgång) klippte etikettens hörn
+       mot kortets egen rundning och lutade sig på att transparensen råkade
+       visa kortets mörka bakgrundsfärg i stället för ett avsiktligt fält.
+       Samma redan beprövade mönster som Spotlight (.nh-spotlight-img,
+       background-size:contain + varm radial glow bakom en flytande
+       produktbild) återanvänds i stället -- produkten "flyter" i ett eget
+       varmt ljusfält, texten ligger i ett eget stycke UNDER (inte bakat
+       ovanpå fotot), robust mot en framtida annan produktbild oavsett dess
+       komposition.
+
+       Ingen ny/fabricerad destination: exakt samma två riktiga länkar och
+       exakt samma redan godkända copy som innan, bara omstrukturerade. */
     function nhGuidesHtml(navData) {
       var thcaHref = (navData.bySlug && navData.bySlug["thca"]) || "/sv/categories/thca";
-      // Creative-direction-runda 2026-09-08: variera kortens visuella
-      // tyngd (uppdragets krav) i stället för två identiska vita textkort.
-      // THCA-kortet får en RIKTIG, live-hämtad produktbild (samma beprövade
-      // fetch-mönster som Populära serier/vägar tidigare använde) --
-      // "photo"-varianten. FAQ-kortet har inget naturligt produktfoto att
-      // visa (det är en supportdestination, inte ett sortiment) och får i
-      // stället en mörk, ikonburen "dark"-variant -- olika TYNGD, ingen
-      // fabricerad bild.
-      var cards = [
-        { tag: "Kategori", title: "THCA", text: "Bläddra hela vårt THCA-sortiment — vapes, buds och information om vad som gäller i Sverige.", cta: "Till THCA-sortimentet →", href: thcaHref, variant: "photo", photoHref: thcaHref },
-        { tag: "Support", title: "Vanliga frågor", text: "Svar på det som frågas mest om beställning, leverans och lagstatus.", cta: "Till FAQ:n →", href: "/sv/page/faq", variant: "dark" }
-      ];
       return '<section class="nh-guides section-gap" id="nh-guides">'
         + '  <div class="sec-head"><div><h2>Guider &amp; aktuellt</h2>'
         + '  <p>Läs mer innan du handlar — samlat på ett ställe.</p></div></div>'
-        + '  <div class="nh-guides-grid">'
-        + cards.map(function (c) {
-            var photoAttrs = c.variant === "photo" ? ' data-photo-href="' + c.photoHref + '"' : "";
-            var iconHtml = c.variant === "dark"
-              ? '<span class="nh-guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.6-1.35c.4.6.4 1.4 0 2A2.5 2.5 0 0 1 12 12v1"/><circle cx="12" cy="16.3" r=".1" fill="currentColor" stroke-width="1.5"/></svg></span>'
-              : '';
-            return '<a class="nh-guide-card nh-guide-card--' + c.variant + '" href="' + c.href + '"' + photoAttrs + '>'
-              + (c.variant === "photo" ? '<span class="nh-guide-photo"></span>' : '')
-              + iconHtml
-              + '<span class="nh-guide-tag">' + c.tag + '</span>'
-              + '<h3>' + c.title + '</h3>'
-              + '<p>' + c.text + '</p>'
-              + '<span class="nh-guide-cta">' + c.cta + '</span>'
-              + '</a>';
-          }).join("")
+        + '  <div class="nh-guides-layout">'
+        + '    <a class="nh-guide-feature" href="' + thcaHref + '" data-photo-href="' + thcaHref + '">'
+        + '      <span class="nh-guide-feature__media"><span class="nh-guide-feature__photo"></span></span>'
+        + '      <span class="nh-guide-feature__body">'
+        + '        <span class="nh-guide-feature__kicker">Sortiment</span>'
+        + '        <h3>THCA</h3>'
+        + '        <p>Bläddra hela vårt THCA-sortiment — vapes, buds och information om vad som gäller i Sverige.</p>'
+        + '        <span class="nh-guide-cta">Till THCA-sortimentet →</span>'
+        + '      </span>'
+        + '    </a>'
+        + '    <div class="nh-guide-aside">'
+        + '      <a class="nh-guide-faq" href="/sv/page/faq">'
+        + '        <svg class="nh-guide-faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.6-1.35c.4.6.4 1.4 0 2A2.5 2.5 0 0 1 12 12v1"/><circle cx="12" cy="16.3" r=".1" fill="currentColor" stroke-width="1.5"/></svg>'
+        + '        <span class="nh-guide-faq__body">'
+        + '          <span class="nh-guide-faq__title">Vanliga frågor</span>'
+        + '          <span class="nh-guide-faq__text">Svar på det som frågas mest om beställning, leverans och lagstatus.</span>'
+        + '        </span>'
+        + '        <span class="nh-guide-faq__arrow" aria-hidden="true">→</span>'
+        + '      </a>'
+        + '      <details class="nh-guide-legacy" id="nhGuideLegacy">'
+        + '        <summary>Mer om vårt sortiment</summary>'
+        + '        <div class="nh-guide-legacy-body" id="nhGuideLegacyBody"></div>'
+        + '      </details>'
+        + '    </div>'
         + '  </div>'
-        + '  <details class="nh-guide-legacy" id="nhGuideLegacy">'
-        + '    <summary>Mer om vårt sortiment</summary>'
-        + '    <div class="nh-guide-legacy-body" id="nhGuideLegacyBody"></div>'
-        + '  </details>'
         + '</section>';
     }
     function nhInitGuides() {
@@ -4134,7 +4157,7 @@
       // innan de fick statiska tillgångar (fetch riktig kategorisida,
       // plocka FÖRSTA riktiga produktbilden). Progressiv förbättring:
       // kortet fungerar och är klickbart innan bilden hunnit laddas.
-      var photoCard = document.querySelector(".nh-guide-card[data-photo-href]");
+      var photoCard = document.querySelector(".nh-guide-feature[data-photo-href]");
       if (photoCard) {
         fetch(photoCard.getAttribute("data-photo-href"), { credentials: "same-origin" })
           .then(function (r) { return r.ok ? r.text() : ""; })
@@ -4144,7 +4167,7 @@
             var img = doc.querySelector(".product-card__image img");
             var src = img ? (img.getAttribute("src") || img.getAttribute("data-src")) : null;
             if (!src) return;
-            var photoEl = photoCard.querySelector(".nh-guide-photo");
+            var photoEl = photoCard.querySelector(".nh-guide-feature__photo");
             if (photoEl) photoEl.style.backgroundImage = "url('" + src + "')";
             // Bilden sattes just NU (asynkront) -- samma efterhandskörning
             // som Spotlight ovan, se den kommentaren.
@@ -4528,7 +4551,13 @@
 
       // Kort i rader/grids tonar in i en lätt kaskad.
       var groups = root.querySelectorAll(
-        ".pser-row, .nh-featured-row, .routes-grid, .guide-grid, .nh-guides-grid, .nh-tb-steps, .nh-reviews-grid"
+        /* .nh-guides-grid borttagen (redesign-runda 2026-09-08, se
+           nhGuidesHtml) -- den nya "Guider & aktuellt"-kompositionen är en
+           asymmetrisk feature+aside-yta, inte en upprepad lista/rutnät, så
+           barn-stagger hör inte hemma där (motion-regeln: stagger bara på
+           riktiga listor/rutnät). Hela sektionen tonar ändå in som helhet
+           via .section-gap ovan. */
+        ".pser-row, .nh-featured-row, .routes-grid, .guide-grid, .nh-tb-steps, .nh-reviews-grid"
       );
       Array.prototype.forEach.call(groups, function (group) {
         /* Animera ALDRIG barnen inuti en vågrät scroller (Populära serier/
@@ -4605,7 +4634,7 @@
     function fadeInBackgroundImages(root) {
       if (nhPrefersReducedMotion()) return;
       var els = (root || document).querySelectorAll(
-        ".pser-avatar.has-photo, .route.has-photo, .nh-spotlight-img, .nh-guide-photo"
+        ".pser-avatar.has-photo, .route.has-photo, .nh-spotlight-img, .nh-guide-feature__photo"
       );
       Array.prototype.forEach.call(els, function (el) {
         if (el.getAttribute("data-fade-bound")) return;
