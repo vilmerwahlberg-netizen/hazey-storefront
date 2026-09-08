@@ -12043,7 +12043,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-qfind-hero {
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     margin-bottom: 0;
-    height: clamp(620px, 46vw, 860px);
+    /* Höjd höjd (Fas 2, mätbar desktop-paritetsrunda) -- 620/46vw/860 gav
+       bara 662px vid 1440px mot referensens uppmätta ~1004px (-34%). Höjd
+       hela vägen till 1004px skulle tvinga en ÄNNU mer aggressiv cover-
+       beskärning av 1536x1024-bilden än vad som redan orsakar den kända,
+       dokumenterade 1920px-graffititext-beskärningen (se kommentaren ovan)
+       -- inte gjort här. Detta är en avvägd mellanposition: minskar
+       avvikelsen march mot referensen utan att göra den kända beskärnings-
+       bufferten värre. Verifierat visuellt vid 1440/1920px efter ändringen
+       (se STATUS.md). */
+    height: clamp(680px, 58vw, 920px);
     min-height: 0;
     display: flex; align-items: flex-end;
     position: relative;
@@ -13326,10 +13335,20 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   }
   #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar,
   #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) nav.navbar,
   #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .nh-cat-row {
     background: transparent !important;
     border-bottom-color: transparent !important;
   }
+  /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): .nh-cat-row ligger
+     nästlad INUTI nativ nav.navbar (se js/18a-header-v2.js
+     navMenu.parentNode.insertBefore), inte som syskon till den -- att bara
+     göra .nh-cat-row transparent räckte alltså inte, för nav.navbar bär
+     SAMMA nativa `!important`-märkta #eee7e1-bakgrund som #store-header
+     självt (se css/21-header-v2.css rad ~358, redan dokumenterad där för
+     .main). Den lyste opakt igenom hela den transparenta glas-headern --
+     verifierat live via getComputedStyle(document.querySelector("nav.navbar")).backgroundColor
+     före/efter den här fixen, inte gissat. */
   #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .usp li,
   #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .nh-age-badge {
     color: #fffdf8 !important;
@@ -13378,11 +13397,13 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     }
   }
   #store-header.nh-home-hero.nh-home-hero--scrolled .topbar,
+  #store-header.nh-home-hero.nh-home-hero--scrolled nav.navbar,
   #store-header.nh-home-hero.nh-home-hero--scrolled .nh-cat-row {
     background: rgba(250,243,233,.86) !important;
   }
   #store-header.nh-home-hero .topbar,
   #store-header.nh-home-hero .main,
+  #store-header.nh-home-hero nav.navbar,
   #store-header.nh-home-hero .nh-cat-row {
     transition: background 320ms cubic-bezier(.22,.61,.36,1);
   }
@@ -13451,30 +13472,34 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-tb-link { color: #e7ae63; }
 }
 
-/* ── (5) Featured/Spotlight — asymmetrisk delning (cream copy vänster,
-   stor foto/kampanjbild höger). Den riktiga produktbilden (#nhSpotlightImg,
-   JS-hämtad) blir en mindre "riktig produkt"-badge ovanpå kampanj-
-   bakgrunden (.nh-spotlight-backdrop) i stället för att fylla hela ytan --
-   se motiveringen i js/18b-homepage-v2.js (nhSpotlightHtml). ── */
+/* ── (5) Featured/Spotlight — asymmetrisk delning, KORRIGERAD riktning
+   (Fas 2, mätbar desktop-paritetsrunda): referensen visar copy VÄNSTER,
+   stort redaktionellt foto HÖGER (bekräftat mot
+   hazey-dadgrass-westcoast-concept-v1.png) -- den tidigare kommentaren
+   här sa redan "copy vänster, bild höger", men DOM-ordningen
+   (.nh-spotlight-media FÖRE .nh-spotlight-body i js/18b-homepage-v2.js,
+   orörd -- mobilen bygger fortfarande på samma markup och behöver den
+   ordningen oförändrad) placerade dem i motsatt kolumn på desktop,
+   verifierat live via en första felaktig side-by-side.png i
+   tests/results/desktop-reference-parity/. `order` löser det utan att
+   röra HTML/mobil. Den separata, flytande "riktig produkt"-bildbadgen
+   (#nhSpotlightImg) togs bort på desktop (endast desktop -- mobilen visar
+   fortfarande #nhSpotlightImg orört, se js-kommentaren): referensen har
+   EN sammanhängande kampanjbild som yta, ingen extra overlay-bild ovanpå. */
 @media (min-width: 861px) {
   .nh-spotlight.section-gap { max-width: none; padding: 0; }
   .nh-spotlight-inner {
     background: #faf3e9; border-radius: 0;
-    display: grid; grid-template-columns: 1fr 1.15fr;
+    display: grid; grid-template-columns: 1fr 1.3fr;
     max-width: none;
   }
-  .nh-spotlight-media { padding: 0; position: relative; min-height: 480px; overflow: hidden; }
+  .nh-spotlight-media { order: 2; padding: 0; position: relative; min-height: 480px; overflow: hidden; }
   .nh-spotlight-backdrop {
     position: absolute; inset: 0; background-size: cover; background-position: center 30%;
   }
   .nh-spotlight-media::before { display: none; }
-  .nh-spotlight-img {
-    position: absolute; left: 32px; bottom: 32px; z-index: 1;
-    width: 220px; height: 220px; border-radius: 12px;
-    border: 6px solid #fffdf8; box-shadow: 0 24px 44px -20px rgba(20,17,10,.5);
-    background-color: #fff;
-  }
-  .nh-spotlight-body { padding: 56px 56px 56px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .nh-spotlight-img { display: none; }
+  .nh-spotlight-body { order: 1; padding: 56px 48px 56px 56px; display: flex; flex-direction: column; justify-content: center; }
   .nh-spotlight-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
   .nh-spotlight-type { color: #9a9280; }
   .nh-spotlight-body h2 { color: #2c3620; font-size: 30px; }

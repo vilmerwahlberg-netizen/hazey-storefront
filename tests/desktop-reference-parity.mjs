@@ -97,6 +97,34 @@ async function waitFontsAndImages(page) {
   });
 }
 
+/**
+ * The homepage uses a scroll-triggered (IntersectionObserver) reveal system
+ * (translateY(24px)+opacity fade, see CLAUDE.md "Reveal/scroll-animation" and
+ * tests/parity-sections.mjs settleForCapture) — a page.screenshot({fullPage:
+ * true}) stitches the page WITHOUT ever scrolling it the way a real visitor
+ * would, so sections below the fold never intersect and stay in their
+ * pre-reveal (often opacity:0 / hidden-by-async-fetch-callback) state,
+ * producing a blank crop even though the section is really populated (found
+ * live: #nh-spotlight measured hidden:false with real fetched product data
+ * after scrolling, but rendered fully blank in the first fullPage capture —
+ * not a real bug, a capture-methodology gap). Scrolling down in steps before
+ * the final screenshot triggers every observer + the async product-fetch
+ * callbacks it gates, same as a real visitor scrolling the page once.
+ */
+async function scrollThroughPage(page) {
+  await page.evaluate(async () => {
+    const height = document.body.scrollHeight;
+    const step = 400;
+    for (let y = 0; y < height; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 70));
+    }
+  });
+  await page.waitForTimeout(1300); // longest reveal transition + stagger, see CLAUDE.md
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(200);
+}
+
 async function captureImplementation(browser) {
   const page = await browser.newPage();
   const consoleErrors = [];
@@ -123,6 +151,7 @@ async function captureImplementation(browser) {
   await page.waitForTimeout(1000);
   await waitFontsAndImages(page);
   await page.waitForTimeout(400);
+  await scrollThroughPage(page);
 
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
