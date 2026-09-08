@@ -138,26 +138,67 @@
      rapporterats upprepade gånger. */
   .nh-pser.section-gap { padding-bottom: 0 !important; }
 }
-/* Desktop: uppmätt mörkgrön full-bleed-panel (rgb(30,39,22), padding
-   54px 26px) — INTE samma ljusa bakgrund som resten av sidan. Fullbredd
-   via viewport-bredd-tricket (robust oavsett faktisk container-padding på
-   riktiga sidan, säkrare än att kopiera prototypens egen -24px-marginal
-   som gällde DESS container). */
+/* Desktop-parity-runda (godkänd referens): ljus cream-panel (INTE längre
+   mörkgrön), luftig kicker+rubrik, stora kvadratiska kort i stället för
+   cirkulära avatarer -- se det andra min-width:861px-blocket längre ned
+   i filen (.nh-pser .pser-avatar m.fl.) för själva kortformen. `order`
+   flyttad till 1 -- Populära serier är FÖRSTA sektionen efter heron på
+   desktop i den godkända referensen (var 2, efter Populära vägar). */
 @media (min-width: 861px) {
   .nh-pser.section-gap {
-    order: 2;
+    order: 1;
     max-width: none;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    background: rgb(30,39,22);
-    padding: 54px 26px;
+    background: #efe9df;
+    padding: 56px 26px 44px;
   }
+  .nh-pser .sec-head { max-width: 1100px; margin: 0 auto 28px; display: flex; align-items: flex-end; justify-content: space-between; }
   .nh-pser .sec-head h2,
-  .nh-pser .sec-head p { color: #fffdf8; }
-  .nh-pser .sec-head .more { color: #e4d1bf; }
-  .nh-pser .sec-head,
+  .nh-pser .sec-head p { color: #2c3620; }
+  .nh-pser .sec-head .more { color: #96683f; }
   .nh-pser .pser-row { max-width: 1100px; margin-left: auto; margin-right: auto; }
+}
+/* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): kickern
+   och pil-kontrollerna hör bara till den nya desktop-referensen -- utan
+   denna display:none-bas läckte de rakt in i mobilens redan godkända
+   "Populära serier"-huvud (oavsiktlig mobil-regression, sec-head fick fel
+   layout/extra innehåll). `.nh-pser-controls` (innehåller den redan
+   riktiga "Visa alla serier"-länken) döljs INTE helt på mobil -- bara
+   pilarna, se .nh-pser-nav nedan (redan display:none i grunden, oförändrat). */
+.nh-pser-kicker { display: none; }
+.nh-pser-controls .more { display: none; }
+@media (min-width: 861px) {
+  .nh-pser-kicker {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic; font-size: 14px; font-weight: 500; color: #b8865a; margin-bottom: 4px;
+  }
+  .nh-pser-controls .more { display: inline; font-size: 12.5px; font-weight: 650; text-decoration: none; white-space: nowrap; }
+}
+.nh-pser-kicker__sun { width: 15px; height: 15px; color: #d9782f; }
+.nh-pser-controls { display: flex; align-items: center; gap: 14px; }
+.nh-pser-nav {
+  display: none; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #ebe1d1;
+  background: #fff; color: #2c3620; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 160ms cubic-bezier(.22,.61,.36,1), color 160ms cubic-bezier(.22,.61,.36,1);
+}
+.nh-pser-nav svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+.nh-pser-nav:hover { background: #d9782f; border-color: #d9782f; color: #fff; }
+@media (min-width: 861px) { .nh-pser-nav { display: flex; } }
+/* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): på
+   mobilens 83px-cirkel radbröt/svämmade badge-texten över kortkanten --
+   byggd för desktopens stora kvadratiska kort. Döljs på mobil (samma
+   information finns ändå i slutrapporten/asset-manifestet), visas bara
+   där den faktiskt får plats. */
+.pser-preliminary { display: none; }
+@media (min-width: 861px) {
+  .pser-preliminary {
+    display: block; position: absolute; top: 8px; left: 8px; z-index: 1;
+    font-size: 9px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+    color: #fffdf8; background: rgba(44,54,32,.72); border-radius: 999px; padding: 3px 8px;
+  }
 }
 .nh-pser .pser-row {
   display: flex;
@@ -197,7 +238,13 @@
 }
 .nh-pser .pser-avatar svg { width: 28px; height: 28px; }
 .nh-pser .pser-item:hover .pser-avatar { border-color: #b8865a; }
-.nh-pser .pser-avatar.has-photo { background-size: cover; background-position: center; }
+.nh-pser .pser-avatar.has-photo {
+  background-size: cover; background-position: center;
+  /* Responsiv bildväxling utan JS-omrendering vid breakpoint-byte, samma
+     mönster som hero-slides (--hero-img-m/-d) -- se nhPopularaSerierHtml.
+     Bas/mobil: alltid --pser-img-m (oförändrad bild). */
+  background-image: var(--pser-img-m);
+}
 .nh-pser .pser-avatar.has-photo svg { display: none; }
 .nh-pser .pser-name {
   display: block;
@@ -287,22 +334,32 @@
     margin-top: 1px;
   }
 }
+/* Desktop-parity-runda (godkänd referens): stora KVADRATISKA kort, namn +
+   (riktig, live-räknad) metadata som text UNDER bilden -- inte cirkulära
+   avatarer med namnet överlagt på fotot. Fyra kort synliga direkt, resten
+   (D10/THC-X) nås via scroll/pilarna (#nhPserRow, se nhPopularaSerierHtml
+   + wiring i js/18b-homepage-v2.js) -- uppdragets egen instruktion: "på
+   desktop kan fyra visas direkt och resterande nås via tydliga
+   karusellkontroller". */
 @media (min-width: 861px) {
-  .nh-pser .pser-row { gap: 24px; }
-  .nh-pser .pser-item { width: 186px; }
-  .nh-pser .pser-avatar { width: 186px; height: 186px; border: 3px solid rgba(244,233,220,.22); position: relative; }
-  .nh-pser .pser-avatar.has-photo::after {
-    content: "";
-    position: absolute; inset: 0; border-radius: 50%;
-    background: linear-gradient(0deg, rgba(30,39,22,.75), rgba(30,39,22,0) 55%);
+  .nh-pser .pser-row {
+    gap: 22px; scroll-snap-type: x proximity; scroll-behavior: smooth;
   }
+  .nh-pser .pser-item {
+    width: calc((100% - 3 * 22px) / 4); flex: 0 0 calc((100% - 3 * 22px) / 4);
+    scroll-snap-align: start; position: relative;
+  }
+  .nh-pser .pser-avatar {
+    width: 100%; height: 0; padding-bottom: 100%; border-radius: 14px;
+    border: none; position: relative; box-shadow: 0 14px 28px -18px rgba(44,54,32,.3);
+  }
+  .nh-pser .pser-avatar.has-photo { background-image: var(--pser-img-d); }
   .nh-pser .pser-name {
-    position: absolute; left: 8px; right: 8px; bottom: 16px; margin-top: 0;
-    font-size: 15px; color: #fffdf8; z-index: 1;
+    position: static; margin-top: 14px; text-align: left;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600; font-size: 18px; color: #2c3620; -webkit-line-clamp: 1;
   }
-  .nh-pser .pser-item:not(:has(.pser-avatar.has-photo)) .pser-name {
-    position: static; color: #342f27; margin-top: 15px;
-  }
+  .nh-pser .pser-n { display: block; margin-top: 3px; font-size: 12px; color: #9a9280; }
 }
 
 /* ── Populära vägar — ENDAST format (Vapes/Blommor/Hash), inte serier
@@ -326,7 +383,14 @@
   width: 100%;
 }
 @media (min-width: 861px) {
-  .nh-routes.section-gap { order: 1; } /* desktop: FÖRE Populära serier, uppmätt */
+  /* Desktop-parity-runda: den godkända referensen visar INTE "Populära
+     vägar" som en egen synlig sektion i huvudflödet -- innehållet tas
+     INTE bort (uttryckligt förbud, riktiga länkar/data bevaras), bara
+     flyttat till efter referensens hela sektionsflöde (order:7, se den
+     samlade order-listan vid .nh-startpage-flex nedan i filen). Var
+     tidigare order:1 (FÖRE Populära serier) från en äldre facit-mätning,
+     ersatt av denna omgångs egen, uttryckliga sektionsordning. */
+  .nh-routes.section-gap { order: 7; }
 }
 .nh-routes .sec-head {
   display: flex;
@@ -865,7 +929,15 @@
   perspective-origin: 50% 50%;
 }
 @media (min-width: 861px) {
-  .nh-hero-track { height: 420px; }
+  /* Desktop-parity-runda: var height:420px (fast tal). Heron är nu
+     full-bleed med en RESPONSIV clamp()-höjd (se .nh-qfind-hero längre
+     ned) -- track:en måste fylla HELA den höjden (100%), inte ett gammalt
+     fast mått, annars lämnar den ett tomt gap högst upp (flex
+     align-items:flex-end på .nh-qfind-hero sköt tracket till botten av
+     den nu mycket högre ramen, verifierat live via elementFromPoint --
+     såg ut som en opak beige remsa, egentligen bodyns egen bakgrundsfärg
+     som lyste igenom det tomma utrymmet ovanför tracket). */
+  .nh-hero-track { height: 100%; }
 }
 .nh-hero-cube {
   position: relative;
@@ -1002,6 +1074,12 @@
 }
 
 .nh-hero-v2__cats { flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+/* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): utan
+   denna bas-regel var trust-raden ett OSTYLAT, statiskt block-element som
+   la sig i normalt dokumentflöde efter kuben, synligt läckande in i
+   mobilens redan godkända hero-kort. Hör bara till den nya, riktiga
+   full-bleed-heron på desktop (se @media min-width:861px nedan). */
+.nh-hero-v2__trust { display: none; }
 .nh-hero-v2__cats a {
   font-size: 11.5px; font-weight: 650; color: #fffdf8;
   border: 1px solid rgba(255,253,248,.35); border-radius: 999px; padding: 5px 11px;
@@ -1020,11 +1098,98 @@
   border-bottom: 1.5px solid rgba(255,253,248,.4); padding-bottom: 1px;
 }
 .nh-qfind-hero .hero-link:hover { border-color: #fffdf8; }
+/* Desktop-parity-runda (godkänd referens): heron blir riktig full-bleed --
+   inget kort, ingen marginal, ingen radie. Samma 100vw-trick som redan
+   används för Populära serier fullbredds-panel (se .nh-pser.section-gap
+   ovan) i stället för att gissa containerns faktiska padding. Höjden är
+   avsiktligt en clamp (inte en fast vh) -- en RIKTIG, dokumenterad
+   Nyehandel/bild-begränsning: v2-hero-bilden är 1536×1024 (kvot 1.5), en
+   ren 90vh-hero vid breda skärmar (t.ex. 1920px, kvot ~2.2) skulle kräva
+   en så aggressiv object-fit:cover-beskärning att grafittitexten
+   ("GOOD PLANTS BETTER DAYS") eller den handskrivna texten på
+   betongkanten riskerar att klippas bort -- se slutrapporten för
+   skärmdumpsbevis vid 1920px. Clampen begränsar hur extrem beskärningen
+   någonsin blir, i utbyte mot en något lägre hero vid mycket breda
+   fönster än en bokstavlig "nästan hela viewporten". margin-top sätts
+   INTE här -- den sätts som inline style av JS (nhInitHomeHeroHeader,
+   mätt live mot headerns riktiga höjd), så CSS lämnar den orörd. */
 @media (min-width: 861px) {
-  .nh-qfind-hero { margin: 20px 26px 0; min-height: 420px; display: flex; align-items: flex-end; }
-  .nh-hero-v2__inner { padding: 40px; max-width: 620px; }
-  .nh-qfind-hero .nh-hero-v2__h1 { font-size: 44px; }
+  .nh-qfind-hero {
+    width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    margin-bottom: 0;
+    height: clamp(620px, 46vw, 860px);
+    min-height: 0;
+    display: flex; align-items: flex-end;
+    position: relative;
+  }
+  .nh-hero-v2__inner { padding: 0 48px 56px; max-width: 620px; }
+  .nh-qfind-hero .nh-hero-v2__h1 { font-size: 46px; }
   .nh-qfind-hero p { font-size: 15px; }
+  /* .nh-hero-slide fick border-radius:22px i kub-korrigeringsrundan (den
+     rundade "kubsidan" som ersatte den gamla, statiska yttre masken, se
+     den kommentaren ovanför .nh-hero-slide) -- rätt för mobilens inramade
+     kort, men denna omgångs riktiga full-bleed-hero ska vara kant-till-
+     kant utan rundade hörn på desktop. */
+  .nh-hero-slide { border-radius: 0; }
+  /* BUGGFYND (desktop-parity-runda, verifierat live via skärmdump):
+     .nh-hero-slide är position:absolute;inset:0 (kubsidan) -- dess barn
+     (.nh-hero-v2__inner) är ett vanligt block-element utan egen
+     vertikal placering, så det låg kvar överst i den nu MYCKET högre
+     full-bleed-ytan (överlappade headern) i stället för nere vid botten
+     som i den godkända referensen. .nh-qfind-heros egen
+     align-items:flex-end (rad ~1089) gäller bara DESS EGNA direkta barn
+     (.nh-hero-track, pilar, dots, trust-raden) -- inte ett element tre
+     nivåer djupare inuti track→kub→slide. Samma mönster som mobilens
+     redan lösta stretch-kedjebugg (se kommentaren vid .nh-hero-track
+     ovan), fast för botten-justering i stället för stretch. */
+  .nh-hero-slide { display: flex; flex-direction: column; justify-content: flex-end; }
+
+  /* Trust-raden längst ner över heron (js/18b-homepage-v2.js, heroTrust) --
+     bara verifierade fakta, se kommentaren där. */
+  .nh-hero-v2__trust {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    display: flex; gap: 28px; padding: 16px 48px;
+    background: linear-gradient(0deg, rgba(20,26,15,.42), rgba(20,26,15,0));
+    font-size: 12.5px; color: rgba(255,253,248,.92);
+  }
+  .nh-hero-v2__trust b { color: #fffdf8; }
+
+  /* Primär CTA: varm orange glas, ljus specular kant, mjuk glöd -- inte
+     en platt knapp. Sekundär: lugnare glas/outline, konkurrerar inte. */
+  .nh-qfind-hero .btn-solid {
+    position: relative; overflow: hidden;
+    background: linear-gradient(155deg, rgba(255,198,140,.68), rgba(217,120,47,.82));
+    border: 1px solid rgba(255,255,255,.5);
+    color: #2e1c0c;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.6),
+      inset 0 -10px 16px -10px rgba(110,45,10,.4),
+      0 10px 24px -10px rgba(217,120,47,.6),
+      0 0 40px -14px rgba(255,180,90,.55);
+    transition: transform 160ms cubic-bezier(.22,.61,.36,1), box-shadow 220ms cubic-bezier(.22,.61,.36,1);
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .nh-qfind-hero .btn-solid { backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%); }
+  }
+  .nh-qfind-hero .btn-solid:hover {
+    background: linear-gradient(155deg, rgba(255,210,160,.74), rgba(217,120,47,.88));
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.7),
+      inset 0 -10px 16px -10px rgba(110,45,10,.4),
+      0 14px 30px -8px rgba(217,120,47,.7),
+      0 0 54px -10px rgba(255,190,110,.65);
+  }
+  .nh-qfind-hero .btn-solid:active { transform: translateY(0) scale(.98); }
+  .nh-qfind-hero .btn-solid:focus-visible { outline: 2px solid #2c3620; outline-offset: 3px; }
+  .nh-qfind-hero .hero-link {
+    background: rgba(255,253,248,.1); border: 1.5px solid rgba(255,253,248,.4);
+    border-radius: 999px; padding: 11px 20px 12px;
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .nh-qfind-hero .hero-link { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  }
+  .nh-qfind-hero .hero-link:hover { background: rgba(255,253,248,.18); }
 }
 
 /* Karusell-kontroller (prickar/pilar) — renderas bara i DOM:en när >1
@@ -1438,6 +1603,13 @@
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   font-size: 15px; font-weight: 600; color: #96683f; flex: none; line-height: 1.3;
 }
+/* Ikonen (.nh-tb-step__ico) hör bara till den kompakta desktopraden --
+   dold på mobil (se @media min-width:861px längre ned i filen för var den
+   faktiskt visas), annars hade den dykt upp bredvid nummer+text på mobil,
+   en oavsiktlig mobil-ändring. */
+.nh-tb-step__ico { display: none; }
+.nh-tb-step--desktop-only { display: none; }
+@media (min-width: 861px) { .nh-tb-step--desktop-only { display: flex; } }
 .nh-tb-step h3 {
   font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
   font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: normal !important;
@@ -2162,5 +2334,261 @@
   .nh-signup.section-gap {
     padding-left: 14px !important;
     padding-right: 14px !important;
+  }
+}
+
+/* ============================================================
+   DESKTOP-PARITY-RUNDA (godkänd referens: preview/ai-direction/
+   hazey-dadgrass-westcoast-concept-v1.png). Se STATUS.md för fullständig
+   rotorsak/beslutslogg. Denna sektion samlar: (1) den enda, delade
+   sektionsordningen (mobil = dagens redan godkända ordning oförändrad,
+   desktop = referensens ordning + allt äldre innehåll bevarat efter),
+   (2) transparent glasheader ovanpå heron, (3) NY "Good People Higher
+   Moments"-sektion, (4) kompakt desktop-trustrad, (5) Featured/Spotlight-
+   omkomposition, (6) Omdömen-uppdelning, (7) lätt visuell harmonisering
+   av Snabb koll/Guider/Nyhetsbrev så de känns som samma värld.
+   ============================================================ */
+
+/* ── (1) Sektionsordning — .nh-startpage-flex innehåller nu ALLA
+   home-extra-sektioner (se initHomepageV2). Bas-ordningen nedan är EXAKT
+   dagens redan godkända mobila visuella sekvens (oförändrad) -- .nh-pser
+   (order:1) och .nh-routes (order:2) hade redan egna regler tidigare i
+   filen, resten fick aldrig ett `order`-värde förrän nu eftersom de
+   tidigare låg UTANFÖR flex-wrappern som fristående syskon. ── */
+.nh-featured.section-gap { order: 3; }
+.nh-bonfire.section-gap { order: 4; }
+.nh-spotlight.section-gap { order: 5; }
+.nh-trustblock.section-gap { order: 6; }
+.nh-kunskap.section-gap { order: 7; }
+.nh-guides.section-gap { order: 8; }
+.nh-reviews.section-gap { order: 9; }
+.nh-signup.section-gap { order: 10; }
+@media (min-width: 861px) {
+  /* .nh-pser (1) och .nh-routes (7, se den egna regeln längre upp)
+     oförändrade av denna lista. */
+  .nh-featured.section-gap { order: 2; }
+  .nh-bonfire.section-gap { order: 3; }
+  .nh-trustblock.section-gap { order: 4; }
+  .nh-spotlight.section-gap { order: 5; }
+  .nh-reviews.section-gap { order: 6; }
+  /* .nh-routes: order 7 (se egen regel) */
+  .nh-kunskap.section-gap { order: 8; }
+  .nh-guides.section-gap { order: 9; }
+  .nh-signup.section-gap { order: 10; }
+}
+
+/* ── (2) Transparent glasheader ovanpå heron ──────────────────────────
+   Klasserna sätts av JS (nhInitHomeHeroHeader, js/18b-homepage-v2.js) på
+   det RIKTIGA #store-header -- ingen parallell header. Endast aktiv vid
+   min-width:861px (mobilens header är OFÖRÄNDRAD, ingen klass appliceras
+   där eftersom nedanstående regler är breddpunkts-scopade). */
+@media (min-width: 861px) {
+  /* Rotorsak (verifierat live, inte gissat): #store-header självt bär
+     INGEN synlig bakgrund -- de tre RADERNA under det (.topbar mörkgrön,
+     .main sand→cream, .nh-cat-row cream, se css/21-header-v2.css) har
+     var sin EGNA bakgrundsfärg. Att bara göra #store-header transparent
+     gjorde alltså ingen synlig skillnad -- måste sättas på alla tre. */
+  /* #store-header självt bär OCKSÅ en nativ, `!important`-märkt
+     bakgrund (#eee7e1, Nyehandels egen plattforms-CSS, se
+     css/21-header-v2.css rad ~358/385 för tidigare dokumenterade fynd
+     av samma regel) -- måste övervinnas här också, inte bara på
+     .topbar/.main/.nh-cat-row (annars lyser den beigea nativa färgen
+     igenom de nu transparenta barnraderna). */
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .nh-cat-row {
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+  }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .usp li,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .nh-age-badge {
+    color: #fffdf8 !important;
+  }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand img { display: none; }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand a { position: relative; display: inline-block; }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand a::after {
+    content: "hazey.se";
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic; font-weight: 600; font-size: 22px; color: #fffdf8; white-space: nowrap;
+    text-shadow: 0 2px 10px rgba(0,0,0,.25);
+  }
+  /* Riktiga navigations-/mega-menylänkarna renderas som .nh-cat-row
+     .cat-link (den nativa .navbar-menu är dold, se css/21-header-v2.css
+     rad 158) -- INTE .navbar-menu .navbar-item, den selektorn träffade
+     aldrig något synligt element. */
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .cat-link,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .cat-link .chev,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right .account-button,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right .cart-button,
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right svg {
+    color: #fffdf8 !important;
+  }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search .input {
+    background: rgba(255,253,248,.14) !important;
+    border-color: rgba(255,253,248,.4) !important;
+    color: #fffdf8 !important;
+  }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search .input::placeholder { color: rgba(255,253,248,.72) !important; }
+  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search svg { color: #fffdf8 !important; }
+
+  /* Vid scroll: ett läsbart, kontrollerat Hazey-glas -- inte bara en
+     platt solid bakgrund. @supports-fallback (solid) när backdrop-filter
+     saknas, se nedan. Bara .main (den rad som faktiskt bär navigation/
+     sök/konto) behöver bli synlig igen -- topbar/nh-cat-row kollapsar
+     redan bort av headerns EGNA scroll-mekanism (initHeaderScroll,
+     js/14-header-scroll.js) i samma veva, orört här. */
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main {
+    background: rgba(250,243,233,.86) !important;
+    box-shadow: 0 20px 40px -30px rgba(44,54,32,.28) !important;
+    transition: background 320ms cubic-bezier(.22,.61,.36,1), box-shadow 320ms cubic-bezier(.22,.61,.36,1);
+  }
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    #store-header.nh-home-hero.nh-home-hero--scrolled .main {
+      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+    }
+  }
+  #store-header.nh-home-hero.nh-home-hero--scrolled .topbar,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .nh-cat-row {
+    background: rgba(250,243,233,.86) !important;
+  }
+  #store-header.nh-home-hero .topbar,
+  #store-header.nh-home-hero .main,
+  #store-header.nh-home-hero .nh-cat-row {
+    transition: background 320ms cubic-bezier(.22,.61,.36,1);
+  }
+}
+
+/* ── (3) "Good People Higher Moments" — NY fullbredds redaktionell
+   sektion (se nhBonfireHtml). Endast desktop (>=861px) denna omgång --
+   ingen mobil komposition beslutad än, se slutrapporten. Innehållet
+   ligger ändå kvar i initial DOM (riktig text/länk), bara visuellt dold
+   under 861px. ── */
+.nh-bonfire.section-gap { display: none; }
+@media (min-width: 861px) {
+  .nh-bonfire.section-gap {
+    display: block;
+    position: relative;
+    width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    height: 460px;
+    background-image: url('https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@dev/assets/v2/editorial-bonfire-good-people-v2.jpg');
+    background-size: cover; background-position: center 38%;
+    padding: 0;
+    overflow: hidden;
+  }
+  .nh-bonfire-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(20,17,10,.1) 0%, rgba(20,17,10,.05) 45%, rgba(20,17,10,.72) 68%, rgba(20,17,10,.85) 100%);
+  }
+  .nh-bonfire-copy {
+    position: absolute; right: 0; top: 0; bottom: 0; z-index: 1;
+    width: min(38%, 420px); display: flex; flex-direction: column; justify-content: center;
+    padding: 0 48px;
+  }
+  .nh-bonfire-copy h2 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600; font-size: 26px; color: #fffdf8; margin: 0 0 10px;
+  }
+  .nh-bonfire-copy p { font-size: 14px; line-height: 1.55; color: rgba(255,253,248,.86); margin: 0 0 20px; max-width: 32ch; }
+  .nh-bonfire-cta {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+    font-size: 13.5px; font-weight: 650; color: #fffdf8; text-decoration: none;
+    border: 1.5px solid rgba(255,253,248,.5); border-radius: 999px; padding: 11px 20px;
+    background: rgba(255,253,248,.08); transition: background 160ms cubic-bezier(.22,.61,.36,1);
+  }
+  .nh-bonfire-cta:hover { background: rgba(255,253,248,.2); }
+}
+
+/* ── (4) Trustblock: kompakt desktop-rad (mörkgrön), inte fem separata
+   kort. Numren/beskrivningarna (mobilens fördjupade vy) döljs vid
+   desktop till förmån för ikon + kort titel, se .nh-tb-step__ico (NY,
+   den femte Trustpilot-posten, se nhTrustBlockHtml). ── */
+@media (min-width: 861px) {
+  .nh-trustblock.section-gap { max-width: none; padding: 0; }
+  .nh-tb-inner {
+    background: #1e2716; border-radius: 0;
+    padding: 26px 40px;
+  }
+  .nh-tb-inner > h2, .nh-tb-inner > p { display: none; } /* kompakt rad, ingen egen rubrik på desktop -- rubriken/introt finns redan mobilt */
+  .nh-tb-steps { grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: flex-start; }
+  .nh-tb-step { display: flex; align-items: center; gap: 10px; }
+  .nh-tb-step__n { display: none; }
+  .nh-tb-step__ico { display: flex; width: 26px; height: 26px; color: #e7ae63; flex: none; }
+  .nh-tb-step__ico svg { width: 100%; height: 100%; }
+  .nh-tb-step h3 { font-size: 13px; color: #fffdf8; margin: 0; }
+  .nh-tb-step p { display: none; }
+  .nh-tb-foot { margin-top: 16px; padding-top: 14px; border-top-color: rgba(255,253,248,.14); }
+  .nh-tb-foot span { color: rgba(255,253,248,.62); }
+  .nh-tb-link { color: #e7ae63; }
+}
+
+/* ── (5) Featured/Spotlight — asymmetrisk delning (cream copy vänster,
+   stor foto/kampanjbild höger). Den riktiga produktbilden (#nhSpotlightImg,
+   JS-hämtad) blir en mindre "riktig produkt"-badge ovanpå kampanj-
+   bakgrunden (.nh-spotlight-backdrop) i stället för att fylla hela ytan --
+   se motiveringen i js/18b-homepage-v2.js (nhSpotlightHtml). ── */
+@media (min-width: 861px) {
+  .nh-spotlight.section-gap { max-width: none; padding: 0; }
+  .nh-spotlight-inner {
+    background: #faf3e9; border-radius: 0;
+    display: grid; grid-template-columns: 1fr 1.15fr;
+    max-width: none;
+  }
+  .nh-spotlight-media { padding: 0; position: relative; min-height: 480px; overflow: hidden; }
+  .nh-spotlight-backdrop {
+    position: absolute; inset: 0; background-size: cover; background-position: center 30%;
+  }
+  .nh-spotlight-media::before { display: none; }
+  .nh-spotlight-img {
+    position: absolute; left: 32px; bottom: 32px; z-index: 1;
+    width: 220px; height: 220px; border-radius: 12px;
+    border: 6px solid #fffdf8; box-shadow: 0 24px 44px -20px rgba(20,17,10,.5);
+    background-color: #fff;
+  }
+  .nh-spotlight-body { padding: 56px 56px 56px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .nh-spotlight-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
+  .nh-spotlight-type { color: #9a9280; }
+  .nh-spotlight-body h2 { color: #2c3620; font-size: 30px; }
+  .nh-spotlight-rationale { color: #5f5c50; }
+  .nh-spotlight-price { color: #2c3620; }
+  .nh-spotlight-stock { color: #4d7042; }
+  .nh-spotlight-rating { color: #96683f; }
+  .nh-spotlight-rating span { color: #9a9280; }
+  .nh-spotlight-cta .btn-solid {
+    background: linear-gradient(155deg, rgba(255,198,140,.68), rgba(217,120,47,.82));
+    border: 1px solid rgba(255,255,255,.5); color: #2e1c0c;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 10px 24px -10px rgba(217,120,47,.6);
+  }
+  .nh-spotlight-secondary.hero-link { color: #96683f; border-color: rgba(150,104,63,.4); }
+  .nh-spotlight-secondary.hero-link:hover { border-color: #96683f; }
+}
+
+/* ── (6) Omdömen — delad komposition (recensioner vänster, redaktionell
+   stämningsbild höger). All recensionsdata i .nh-reviews-main OFÖRÄNDRAD. ── */
+@media (min-width: 861px) {
+  .nh-reviews.section-gap { max-width: none; padding: 0; }
+  .nh-reviews-layout { display: grid; grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+  .nh-reviews-main { padding: 48px 56px; max-width: 640px; }
+  .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
+}
+@media (max-width: 860px) {
+  .nh-reviews-editorial { display: none; }
+}
+
+/* ── (7) Lätt visuell harmonisering: Snabb koll/Guider/Nyhetsbrev ska
+   kännas som samma värld som resten av den nya sidan (kicker-typografi
+   + samma glas-CTA-material), utan att bygga om deras struktur eller
+   riktiga innehåll. ── */
+@media (min-width: 861px) {
+  .nh-kunskap .guide-top h2,
+  .nh-guides .sec-head h2 { letter-spacing: -.01em; }
+  .nh-signup-block .btn-solid,
+  .nh-signup-block button[type="submit"] {
+    background: linear-gradient(155deg, rgba(255,198,140,.68), rgba(217,120,47,.82)) !important;
+    border: 1px solid rgba(255,255,255,.5) !important; color: #2e1c0c !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 10px 20px -10px rgba(217,120,47,.55) !important;
   }
 }

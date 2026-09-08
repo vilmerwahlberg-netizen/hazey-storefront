@@ -85,12 +85,25 @@
         startsAt: null,
         endsAt: null,
         imageMobile: "hero-westcoast-v4.jpg",
-        imageDesktop: null,
+        // PRELIMINÄR (godkänd desktop-parity-runda, se STATUS.md): riktig
+        // Hazey-bild med PRELIMINÄRA AI-genererade produktförpackningar
+        // och grafittitext ("GOOD PLANTS BETTER DAYS"/"Same Plants
+        // Brighter Days") -- godkänt av Vilmer uttryckligen för denna
+        // omgång ("Vilmer har uttryckligen valt att först bygga
+        // referensen visuellt 1:1"). Ska kompositeras om med riktiga
+        // Hazey-produktförpackningar i en senare bildomgång. Mobilens
+        // bild (imageMobile ovan) är OFÖRÄNDRAD -- separat fält, ingen
+        // mobil-påverkan.
+        imageDesktop: "v2/hero-westcoast-products-graffiti.jpg",
         alt: "Västkustinspirerad livsstilsbild med cannabisprodukter",
         // Två olika eyebrow/underrubrik-texter per breddpunkt (uppmätt ur
-        // facit — INTE samma text skalad, se historiken nedan).
+        // facit — INTE samma text skalad, se historiken nedan). Desktop-
+        // eyebrowen byttes till den godkända referensens egen kicker
+        // ("California State of Mind") i desktop-parity-rundan -- ren
+        // tonsättande marknadsföringstext, ingen fakta-/handelsuppgift,
+        // se STATUS.md. Mobilens eyebrow är OFÖRÄNDRAD.
         eyebrowMobile: "Brett sortiment · öppen information",
-        eyebrowDesktop: "Sveriges bredaste cannabinoidsortiment",
+        eyebrowDesktop: "California State of Mind",
         h1: "Hitta rätt utan att kunna allt.",
         pMobile: "Sök direkt eller jämför på innehåll, format och framställning.",
         pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
@@ -224,9 +237,21 @@
           + '<button type="button" class="nh-hero-arrow nh-hero-arrow--next" aria-label="Nästa bild">›</button>'
         : "";
 
+      // Kort trust-rad längst ner över heron (uppdragets krav, desktop-
+      // parity-runda) -- ENDAST redan verifierade fakta, samma tre som
+      // redan visas i den övre mikrotrust-raden (js/18a-header-v2.js),
+      // ingen ny/fabricerad siffra. Egen, delad rad ovanpå/under kuben --
+      // INTE en del av varje enskild slide (skulle annars dupliceras per
+      // slide och blinka till vid varje kubrotation).
+      var heroTrust = '<div class="nh-hero-v2__trust">'
+        + '  <span><b>Fri frakt</b> från 499 kr</span>'
+        + '  <span>Skickas <b>1–2 vardagar</b></span>'
+        + '  <span><b>Trustpilot 4,7/5</b></span>'
+        + '</div>';
       return '<section class="nh-hero-v2 nh-qfind-hero" id="nhHero" data-slides="' + active.length + '" tabindex="' + (multi ? "0" : "-1") + '">'
         + '  <div class="nh-hero-track"><div class="nh-hero-cube">' + slidesHtml + '</div></div>'
         + arrows + dots
+        + heroTrust
         + '</section>'
         // qfind — "Vad söker du?"-chipsraden direkt under hero:n. OBS:
         // Naturidentiskt/Semisyntetiskt-chippen använder samma ej-beslutade
@@ -587,7 +612,16 @@
     // Nano-11/THCbA visas direkt (fyra kort i första mobilvyn), D10/THC-X
     // nås via swipe -- uttrycklig instruktion denna omgång.
     var NH_PSER_CARDS = [
-      { name: "Magic Sauce", img: "series/magic-sauce.jpg", serie: "Magic Sauce", liveCount: true },
+      // Magic Sauce: enda kortet med en godkänd, PRELIMINÄR v2-livsstilsbild
+      // (desktop-parity-runda) -- riktig serie, riktig destination, bara
+      // fotot är AI-genererat konceptmaterial i väntan på en riktig
+      // Hazey-fotosession (se STATUS.md). Övriga fem serier behåller sina
+      // redan etablerade, riktiga produktfoton -- INGEN av dem bytt mot
+      // felaktiga v2-serier (Venice Vibes/Hash Culture/CBD & Chill fanns
+      // aldrig som riktiga Hazey-serier och används inte här).
+      // imgDesktop: PRELIMINÄR (desktop-parity-runda) -- se kommentaren
+      // ovanför NH_PSER_CARDS. `img` (mobilens bild) OFÖRÄNDRAD.
+      { name: "Magic Sauce", img: "series/magic-sauce.jpg", imgDesktop: "v2/series-magic-sauce-v2.jpg", imgPreliminary: true, serie: "Magic Sauce", liveCount: true },
       { name: "THCaB", img: "series/thcab.jpg" },
       { name: "Nano-11", img: "series/nano-11.jpg", serie: "Nano-11", liveCount: true },
       { name: "THCbA", img: "series/thcba.jpg" },
@@ -599,16 +633,30 @@
       Object.keys(NH_PSER_SERIE_SLUGS).forEach(function (name) {
         serieHrefs[name] = nhSerieHref(navData, name);
       });
+      var allHref = "/sv/categories/alla-produkter";
 
       return '<section class="nh-pser section-gap" id="populara-serier">'
-        + '  <div class="sec-head"><h2>Populära serier</h2></div>'
-        + '  <div class="pser-row">'
+        + '  <div class="sec-head">'
+        + '    <div><span class="nh-pser-kicker">Upptäck mer<svg class="nh-pser-kicker__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6L5.5 5.5"/></svg></span>'
+        + '    <h2>Populära serier</h2></div>'
+        + '    <div class="nh-pser-controls"><a class="more" href="' + allHref + '">Visa alla serier →</a>'
+        + '      <button type="button" class="nh-pser-nav nh-pser-nav--prev" aria-label="Föregående serier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4l-8 8 8 8"/></svg></button>'
+        + '      <button type="button" class="nh-pser-nav nh-pser-nav--next" aria-label="Fler serier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4l8 8-8 8"/></svg></button>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="pser-row" id="nhPserRow">'
         + NH_PSER_CARDS.map(function (c) {
             var href = c.serie ? (serieHrefs[c.serie] || null) : (c.href || null);
-            var avatar = '<span class="pser-avatar has-photo" style="background-image:url(\''
-              + NH_ASSET_BASE + c.img + '\')"></span>';
+            // Samma responsiva bildväxlingsmönster som heron (--hero-img-m/-d,
+            // se nhHeroSlideHtml): mobilens bild ändras ALDRIG av en
+            // eventuell desktop-only-bild (c.imgDesktop), ren CSS-växling,
+            // ingen JS-omrendering vid breakpoint-byte.
+            var mUrl = NH_ASSET_BASE + c.img;
+            var dUrl = NH_ASSET_BASE + (c.imgDesktop || c.img);
+            var avatar = '<span class="pser-avatar has-photo" style="--pser-img-m:url(\'' + mUrl.replace(/'/g, "\\'") + '\');--pser-img-d:url(\'' + dUrl.replace(/'/g, "\\'") + '\')"></span>';
             var countAttr = (c.liveCount && href) ? ' data-count-href="' + href + '"' : "";
-            var inner = avatar
+            var badge = c.imgPreliminary ? '<span class="pser-preliminary" title="Preliminär bild, ersätts med riktig Hazey-fotografering">Preliminär bild</span>' : "";
+            var inner = avatar + badge
               + '<span class="pser-name">' + c.name + '</span>'
               + '<span class="pser-n"></span>';
             // Utan riktig destination (THCaB/THCbA/D10 i dag): rendera ett
@@ -795,13 +843,56 @@
        (uttryckligt förbud), ingen text borttagen: leveransgarantin och
        "sedan 2020" ligger kvar som en synlig fotnot under stegen i
        stället för i en egen punktlista. */
+    /* ── "Good People Higher Moments" — fullbredds redaktionellt
+       rytmbrott (desktop-parity-runda, NY sektion, finns inte sen
+       tidigare). Bilden (editorial-bonfire-good-people-v2.jpg) är
+       PRELIMINÄR redaktionell livsstilsbild (inga produkter, inga
+       handelspåståenden avbildade) -- godkänd för denna omgång, se
+       STATUS.md. Ingen riktig "vår story"-sida finns ännu på sajten
+       (uttömmande sökt i footerns riktiga länkar) -- CTA:n pekar därför
+       till en riktig, redan etablerad destination (alla-produkter)
+       med en text som ärligt beskriver VAD den faktiskt leder till,
+       i stället för att hitta på en story-sida eller använda href="#".
+       Endast synlig på desktop (>=861px): en HELT NY sektion får inte
+       ändra mobilens komposition, se uppdragets uttryckliga förbud --
+       innehållet ligger ändå kvar i initial DOM (riktig text, riktig
+       länk), bara visuellt dold under 861px via CSS. */
+    function nhBonfireHtml() {
+      return '<section class="nh-bonfire section-gap" id="nh-bonfire" aria-hidden="false">'
+        + '  <div class="nh-bonfire-scrim"></div>'
+        + '  <div class="nh-bonfire-copy">'
+        + '    <h2>Mer än bara produkter.</h2>'
+        + '    <p>En gemenskap byggd på bra vibbar, bättre val och en ljusare morgondag.</p>'
+        + '    <a class="nh-bonfire-cta" href="/sv/categories/alla-produkter">Utforska sortimentet →</a>'
+        + '  </div>'
+        + '</section>';
+    }
+
     function nhTrustBlockHtml() {
+      var stepIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>';
+      // Ikoner: rent dekorativa (samma redan etablerade linjeikon-språk
+      // som resten av filen, stroke="currentColor") -- visas ENDAST i den
+      // kompakta desktop-raden (css), mobilens redan godkända numrerade
+      // vy (.nh-tb-step__n) är helt oförändrad.
       var steps = [
-        { n: "01", title: "Kurerat sortiment", text: "Vi säljer endast cannabinoider som är lagliga i Sverige." },
-        { n: "02", title: "Tydligt innehåll", text: "Innehåll och styrka anges på varje produktsida, analyscertifikat där de finns." },
-        { n: "03", title: "Diskret paketerat", text: "Neutral avsändare, spårbar leverans från Sverige — aldrig gränsöverskridande." },
-        { n: "04", title: "Snabb leverans", text: "Normalt inom 1–2 vardagar." }
+        { n: "01", title: "Kurerat sortiment", text: "Vi säljer endast cannabinoider som är lagliga i Sverige.",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>' },
+        { n: "02", title: "Tydligt innehåll", text: "Innehåll och styrka anges på varje produktsida, analyscertifikat där de finns.",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h8l4 4v14H7z"/><path d="M9 11h6M9 15h6"/></svg>' },
+        { n: "03", title: "Diskret paketerat", text: "Neutral avsändare, spårbar leverans från Sverige — aldrig gränsöverskridande.",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>' },
+        { n: "04", title: "Snabb leverans", text: "Normalt inom 1–2 vardagar.",
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M12 8v5l3 2"/></svg>' }
       ];
+      // Femte, desktop-KOMPAKTA raden (uppdragets krav: "läsa som EN
+      // sammanhållen desktoprad", inte fem separata kort) -- SAMMA redan
+      // verifierade Trustpilot-värde som mikrotrust-raden och Verifierade
+      // omdömen (4,7/5), ingen ny siffra. `nh-tb-step--desktop-only` döljs
+      // helt under 861px (se css) så mobilens 4-stegslista förblir OFÖRÄNDRAD
+      // -- elementet ligger kvar i initial DOM (riktig text), bara visuellt
+      // dolt, inte en synlig mobil-regression.
+      var trustpilotStep = '<div class="nh-tb-step nh-tb-step--desktop-only"><span class="nh-tb-step__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.9H23l-6.7 4.9 2.6 7.9L12 17.8 5.1 22.7l2.6-7.9L1 9.9h8.4z"/></svg></span>'
+        + '<div><h3>Trustpilot 4,7/5</h3><p>584 verifierade omdömen</p></div></div>';
       return '<section class="nh-trustblock section-gap">'
         + '  <div class="nh-tb-inner">'
         + '    <h2>Så arbetar Hazey med innehåll och ursprung</h2>'
@@ -809,13 +900,15 @@
         + '    <div class="nh-tb-steps">'
         + steps.map(function (s) {
             return '<div class="nh-tb-step"><span class="nh-tb-step__n">' + s.n + '</span>'
+              + '<span class="nh-tb-step__ico">' + s.icon + '</span>'
               + '<div><h3>' + s.title + '</h3><p>' + s.text + '</p></div></div>';
           }).join("")
+        + trustpilotStep
         + '    </div>'
         + '    <div class="nh-tb-foot">'
         + '      <span>Leveransgaranti — försvinner paketet skickar vi ett nytt · Svenskt bolag, sedan 2020</span>'
         + '      <a class="nh-tb-link" href="/sv/page/kop-och-leveransvillkor">'
-        + '        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
+        + '        ' + stepIcon
         + '        Läs våra köp- och leveransvillkor</a>'
         + '    </div>'
         + '  </div>'
@@ -1019,11 +1112,21 @@
     };
     function nhSpotlightHtml() {
       if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
+      // Desktop-parity-runda: .nh-spotlight-backdrop är en PRELIMINÄR
+      // redaktionell kampanjbild (feature-magic-sauce-higher-things-v2.jpg,
+      // riktig Magic Sauce-serie, samma godkända undantag som hero-bilden,
+      // se STATUS.md) -- bara på desktop (css), mobilen visar även
+      // fortsättningsvis ENDAST den riktiga, JS-hämtade produktbilden
+      // (#nhSpotlightImg, se nhInitSpotlight -- helt orörd, fortfarande
+      // 100% riktig data). Ingen produktbild ersätts av kampanjbilden.
       return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
         + '  <div class="nh-spotlight-inner">'
-        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img" id="nhSpotlightImg"></div></div>'
+        + '    <div class="nh-spotlight-media">'
+        + '      <div class="nh-spotlight-backdrop" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/feature-magic-sauce-higher-things-v2.jpg\')" aria-hidden="true"></div>'
+        + '      <div class="nh-spotlight-img" id="nhSpotlightImg"></div>'
+        + '    </div>'
         + '    <div class="nh-spotlight-body">'
-        + '      <div class="nh-spotlight-kicker">I rampljuset</div>'
+        + '      <div class="nh-spotlight-kicker">Featured</div>'
         + '      <p class="nh-spotlight-type" id="nhSpotlightType"></p>'
         + '      <h2 id="nhSpotlightName">Laddar…</h2>'
         + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT.rationale + '</p>'
@@ -1485,13 +1588,23 @@
     var NH_REVIEW_UNSAFE_RE = /\brus\b|hög(?!re|sta)|skratt|munchies|kick|stoned|helstekt|påverkan|lugnande|avslappnande|smygande|potent|dosera|\bdos\b|sömnfrämjande|ångest|amnezia|minnesförlust|rök(?!else)|bäng|höjd(?!punkt)/i;
 
     function nhReviewsHtml() {
+      // .nh-reviews-editorial: PRELIMINÄR redaktionell stämningsbild
+      // (editorial-venice-good-idea-v2.jpg, inga produkter/påståenden
+      // avbildade) -- bara på desktop (css). All recensionsdata till
+      // vänster är OFÖRÄNDRAD, 100% riktig (samma nhInitProductReviews/
+      // nhInitReviewsLive som förut).
       return '<section class="nh-reviews section-gap">'
-        + '  <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
-        + '  <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
-        + '  <a class="nh-reviews-cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-        + '    <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
-        + '  </a>'
-        + '  <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
+        + '  <div class="nh-reviews-layout">'
+        + '    <div class="nh-reviews-main">'
+        + '      <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
+        + '      <p>Endast kunder som köpt produkten kan lämna ett omdöme på Trustpilot.</p></div></div>'
+        + '      <a class="nh-reviews-cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
+        + '        <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
+        + '      </a>'
+        + '      <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
+        + '    </div>'
+        + '    <div class="nh-reviews-editorial" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/editorial-venice-good-idea-v2.jpg\')" aria-hidden="true"></div>'
+        + '  </div>'
         + '</section>';
     }
     function nhInitProductReviews(root) {
@@ -1820,6 +1933,58 @@
 
     window.scanScrollReveal = scanScrollReveal;
 
+    /* ── Transparent glasheader ovanpå heron (desktop-parity-runda) ──
+       Återanvänder Nyehandels RIKTIGA #store-header (redan position:fixed,
+       se CLAUDE.md/js/14-header-scroll.js) -- ingen parallell låtsasheader
+       byggs, ingen navigation/sök/konto/varukorg dupliceras. Två delar:
+
+       1) #store-main har en delad, native padding-top (uppmätt 180px,
+          samma variabel/mekanism används på VARJE sida på sajten -- ändras
+          INTE globalt). För att heron ska synas BAKOM den fixed:a headern
+          i stället för UNDER den reserverade luckan, dras bara heron själv
+          upp med exakt headerns egen renderade höjd (margin-top:-<h>px,
+          mätt live -- samma teknik redan beprövad i Shape-rundornas
+          hero-prototyper). Görs EN gång vid boot, bara på startsidan
+          (denna funktion anropas bara från initHomepageV2).
+
+       2) Klassen "nh-home-hero"/"nh-home-hero--scrolled" på #store-header
+          styr utseendet via CSS (@media min-width:861px, se css/22) --
+          transparent/glasigt i vila, övergår kontrollerat till ett
+          läsbart Hazey-glas efter en kort scroll. Helt separat från och
+          stör inte den befintliga hide-on-scroll-down-mekanismen
+          (initHeaderScroll/.nh-header-hidden, js/14-header-scroll.js) --
+          båda klasserna kan vara aktiva samtidigt, olika CSS-egenskaper. */
+    function nhInitHomeHeroHeader() {
+      var header = document.getElementById("store-header");
+      var hero = document.getElementById("nhHero");
+      if (!header || !hero) return;
+      header.classList.add("nh-home-hero");
+
+      function syncOverlap() {
+        var h = header.getBoundingClientRect().height;
+        // Bara vid bredder där headern faktiskt är transparent/overlay
+        // (se css @media min-width:861px) -- under det behåller heron sin
+        // vanliga mobila plats, ingen negativ marginal där.
+        if (window.innerWidth >= 861) {
+          hero.style.marginTop = (-h) + "px";
+        } else {
+          hero.style.marginTop = "";
+        }
+      }
+      syncOverlap();
+      window.addEventListener("resize", syncOverlap);
+
+      function updateScrolled() {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        header.classList.toggle("nh-home-hero--scrolled", y > 40);
+      }
+      updateScrolled();
+      var ticking = false;
+      window.addEventListener("scroll", function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; updateScrolled(); }); }
+      }, { passive: true });
+    }
+
     function initHomepageV2() {
       var slideRoot = document.querySelector(".template-components__slideshow");
       var slideshow = slideRoot ? slideRoot.querySelector(".slideshow") : null;
@@ -1841,26 +2006,29 @@
       while (heroWrap.firstChild) slideRoot.parentNode.insertBefore(heroWrap.firstChild, slideRoot);
       heroWrap.remove();
 
-      // "Populära serier"/"Populära vägar" byts i INBÖRDES ORDNING mellan
-      // mobil (serier→vägar) och desktop (vägar→serier) — uppmätt, se
-      // STATUS.md. Kräver en flex-wrapper för att CSS `order` ska funka.
+      // ALLA home-extra-sektioner delar NU en enda flex-wrapper (utökat
+      // 2026-09-08, desktop-parity-rundan -- tidigare låg bara Populära
+      // serier/vägar i denna wrapper, resten som fristående syskon). Detta
+      // krävs för att CSS `order` ska kunna ge desktop en HELT ANNAN
+      // sektionsordning (matchar den godkända referensen: serier →
+      // bästsäljare → bonfire → trust → featured → omdömen → [befintligt
+      // innehåll som inte syns i referensen, men aldrig tas bort: vägar →
+      // snabb koll → guider → nyhetsbrev]) UTAN att röra mobilens redan
+      // godkända, oförändrade sekvens. Varje sektion får ett explicit
+      // `order`-värde både i bas-CSS (= dagens mobila ordning, se css/22)
+      // och i @media (min-width:861px) (den nya desktop-ordningen) --
+      // ingen sektion tas bort, bara omflyttad visuellt vid bredare
+      // breddpunkter.
+      var kunskapCards = nhBuildKunskapCards(navData);
       var flexWrap = document.createElement("div");
       flexWrap.className = "nh-startpage-flex";
-      flexWrap.innerHTML = nhPopularaSerierHtml(navData) + nhPopularaVagarHtml(navData);
-
-      // Övriga home-extra-sektioner. Ordning uppdaterad 2026-09-08
-      // (SEO-paritetsrunda, uppdragets egen prioritetslista): bästsäljare
-      // → trust-block/"transparens" → kunskap ("Snabb koll") → NY
-      // "Guider & aktuellt" (ersätter den gamla, isolerade THCA-väggens
-      // position långt nere vid FAQ — dess DOM-noder flyttas hit av
-      // nhInitGuides, se den funktionens kommentar) → omdömen →
-      // nyhetsbrev.
-      var kunskapCards = nhBuildKunskapCards(navData);
-      var restWrap = document.createElement("div");
-      restWrap.innerHTML = ''
+      flexWrap.innerHTML = ''
         + '<section class="nh-aura-guide" id="aura-guiden" hidden data-status="juridik-ej-klar"></section>'
         + nhContinueShellHtml()
+        + nhPopularaSerierHtml(navData)
+        + nhPopularaVagarHtml(navData)
         + nhBestsellersHtml()
+        + nhBonfireHtml()
         + nhSpotlightHtml()
         + nhTrustBlockHtml()
         + nhKunskapHtml(kunskapCards)
@@ -1870,7 +2038,6 @@
 
       var anchor = slideRoot.nextSibling;
       slideRoot.parentNode.insertBefore(flexWrap, anchor);
-      while (restWrap.firstChild) slideRoot.parentNode.insertBefore(restWrap.firstChild, anchor);
 
       scanScrollReveal(document);
       nhInitHeroCarousel(document);
@@ -1882,4 +2049,5 @@
       nhInitInactiveForms(document);
       nhHideSupersededTabsSection();
       nhInitGuides();
+      nhInitHomeHeroHeader();
     }
