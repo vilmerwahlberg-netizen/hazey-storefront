@@ -4,10 +4,15 @@
 
 Build from a specific intersection rather than a generic premium mood:
 
-- California golden-hour warmth and coastal landscape.
+- California golden-hour warmth, coastal landscape, surf ease, and a welcoming sun-faded optimism.
 - Independent hip-hop/record-label confidence: editorial crops, sleeve-like compositions, rhythm, and cultural specificity without graffiti clichés.
 - Botanical and material cues: paper, smoked glass, sun-faded pigment, canvas, wood, metal, product packaging, macro plant texture.
 - Swedish trust and restraint: readable facts, direct language, calm controls, no hype machinery.
+
+The emotional target is **friendly confidence**, not severity. Premium may be soft,
+playful, charming, and lightly humorous when the craft remains controlled. Avoid
+infantilizing mascots, toy-like UI, novelty fonts, candy color chaos, or anything
+that weakens product credibility; do not flatten the brand into sober luxury.
 
 Working name: **California Editorial Apothecary / West Coast Counterculture Commerce**. This is a prompt for exploration, not a locked style name.
 

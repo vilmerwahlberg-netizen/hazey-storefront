@@ -5,7 +5,7 @@ This file records durable human decisions, not agent opinions. Add an entry only
 ## Accepted product and brand truths
 
 - Hazey should appear market-leading, expensive, thoughtful, cool, serious, and trustworthy.
-- The cultural direction combines West Coast, hippie, rap, cannabis, and friendliness without childish stoner clichés.
+- The cultural direction combines West Coast, surf, hippie, rap, cannabis, friendliness, and controlled playfulness. “Childish” is not the right exclusion: reject infantilizing, cheap, mascot-like, toy-like, or credibility-damaging execution, while preserving warmth, charm, softness, humor, and visual surprise.
 - Conversion and customer journey outrank decorative spectacle.
 - Relevant motion and interaction are desirable when they do not block browsing or purchase.
 - Delivery, analysis/content transparency, domestic fulfilment/no cross-border shipping, and genuine reviews are core trust material.

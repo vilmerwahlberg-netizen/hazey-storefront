@@ -35,7 +35,7 @@ Before any Hazey design decision:
 
 ## Non-negotiable design thesis
 
-Hazey should feel like a market-leading Swedish specialist with a culturally specific visual identity: West Coast warmth, independent record-label confidence, botanical materiality, and calm legal/commercial trust. It must feel adult, expensive, friendly, and credible. It must not feel clinical, childish, aggressively stoner-coded, generically luxurious, or AI-generated.
+Hazey should feel like a market-leading Swedish specialist with a culturally specific visual identity: West Coast warmth, surf and hippie ease, independent record-label confidence, botanical materiality, and calm legal/commercial trust. It must feel expensive, friendly, credible, sun-warmed, and allowed to be playful. Reject infantilizing, cheap, mascot-like, aggressively stoner-coded, generically luxurious, clinical, or AI-generated treatment; do not reject charm, softness, humor, color, or gentle visual surprise merely because it is not stern.
 
 The visitor is shopping, not viewing an art installation. One authored focal moment can be cinematic; routine browsing, product comparison, navigation, and purchase remain immediate.
 
