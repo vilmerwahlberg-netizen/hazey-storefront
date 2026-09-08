@@ -20,8 +20,12 @@
 .nh-footer__grid {
   display: grid !important;
   grid-template-columns: 1.5fr 1fr 1fr 1.1fr 1.65fr !important;
-  gap: 22px 34px !important;
-  padding: 34px 0 26px !important;
+  /* 22px→14px radgap (andra kompakteringspasset) -- fortsatt +104% mot
+     referensen efter första passet, en äkta innehållsvolymskillnad
+     (disclaimer+4 kolumner+nyhetsbrev+trustrad+betalrad) men ytterligare
+     luft gick ändå att ta bort utan att tappa läsbarhet. */
+  gap: 14px 34px !important;
+  padding: 26px 0 20px !important;
 }
 /* Neutralisera den GAMLA 4-kolumns-footerns nth-child-regler (text-align:right
    på kol 2/4 + 28px letter-spaced h3 på kol 1/4) som annars stör de nya
@@ -67,7 +71,7 @@
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   color: #ffffff !important;
-  margin: 2px 0 16px !important;
+  margin: 2px 0 10px !important;
 }
 .nh-footer__col ul {
   list-style: none !important;

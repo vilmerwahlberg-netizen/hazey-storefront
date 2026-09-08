@@ -151,6 +151,18 @@ body:has(.nh-footer) .page-footer {
   line-height: 1.6 !important;
   font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif !important;
 }
+/* Desktop-ENDAST (Fas 3, mätbar desktop-paritetsrunda): footern mätte
+   +104% mot referensens footer-höjd efter första kompakteringspasset --
+   texten radbröt till 2 rader vid 1100px max-width trots gott om bredd
+   kvar på desktop. Bredare max-width låter den få plats på EN rad vid
+   normala desktopbredder, vilket sparar en hel textrads höjd. Mobilens
+   1100px/1.6-radhöjd är oförändrad (den regeln ovan gäller fortfarande
+   där, detta är bara ett tillägg som vinner vid >=861px). */
+@media (min-width: 861px) {
+  .nh-footer__disclaimer p {
+    max-width: 1300px;
+  }
+}
 
 /* Inner wrapper */
 .nh-footer__inner {
