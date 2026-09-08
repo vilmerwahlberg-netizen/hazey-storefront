@@ -2641,3 +2641,43 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 10px 20px -10px rgba(217,120,47,.55) !important;
   }
 }
+
+/* ── (8) FAQ (blocks/faq.html, .nh-faq) — Fas 3, mätbar desktop-
+   paritetsrunda: "en mycket lång stapel stora vita piller med
+   överdriven höjd och mycket tomrum" (flaggat explicit i uppdraget) --
+   .nh-faq__item var en 14px-radad, vit, bordad "pill" med generös
+   padding, staplade i EN centrerad 820px-kolumn, vilket lämnade breda
+   oanvända cream-marginaler på desktop. Byggd om till en kompakt
+   tvåkolumns editorial-layout (rubrik vänster, frågor höger, flata
+   radbrytningar i stället för separata kort) -- ENDAST desktop, mobilens
+   befintliga stapel (css/10-filter-tabs-...) är helt orörd. */
+@media (min-width: 861px) {
+  .nh-faq.nh-faq { padding: 64px 24px 76px; }
+  .nh-faq__inner.nh-faq__inner {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 8px 56px;
+    align-items: start;
+  }
+  .nh-faq__title.nh-faq__title {
+    grid-column: 1;
+    text-align: left;
+    margin: 0;
+    padding-bottom: 0;
+    position: sticky;
+    top: 96px;
+  }
+  .nh-faq__title.nh-faq__title::after { left: 0; transform: none; }
+  .nh-faq__item.nh-faq__item {
+    grid-column: 2;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #ebe1d1 !important;
+    border-radius: 0 !important;
+    margin-bottom: 0;
+  }
+  .nh-faq__item.nh-faq__item:first-of-type { grid-row: 1; }
+  .nh-faq__item.nh-faq__item summary { padding: 16px 0; font-size: 15px; }
+  .nh-faq__a.nh-faq__a { padding: 0 0 16px; font-size: 13.5px; }
+}
