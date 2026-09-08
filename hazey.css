@@ -13486,7 +13486,9 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-trustblock.section-gap { max-width: none; padding: 0; }
   .nh-tb-inner {
     background: #1e2716; border-radius: 0;
-    padding: 26px 40px;
+    /* 26px→31px (Fas 2, mätbar desktop-paritetsrunda): -6.4% mot
+       referensens uppmätta ~135px. */
+    padding: 31px 40px;
   }
   .nh-tb-inner > h2, .nh-tb-inner > p { display: none; } /* kompakt rad, ingen egen rubrik på desktop -- rubriken/introt finns redan mobilt */
   .nh-tb-steps { grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: flex-start; }
@@ -13529,7 +13531,9 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     display: grid; grid-template-columns: 1fr 1.3fr;
     max-width: none;
   }
-  .nh-spotlight-media { order: 2; padding: 0; position: relative; min-height: 480px; overflow: hidden; }
+  /* 480→506px (Fas 2, mätbar desktop-paritetsrunda): -5% mot referensens
+     uppmätta ~505px. */
+  .nh-spotlight-media { order: 2; padding: 0; position: relative; min-height: 506px; overflow: hidden; }
   .nh-spotlight-backdrop {
     position: absolute; inset: 0; background-size: cover; background-position: center 30%;
   }
@@ -13562,7 +13566,9 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      var för jämnt fördelat, bekräftat mot
      hazey-dadgrass-westcoast-concept-v1.png. */
   .nh-reviews-layout { display: grid; grid-template-columns: 7fr 3fr; align-items: stretch; }
-  .nh-reviews-main { padding: 48px 56px; max-width: 640px; }
+  /* 48px→38px vertikal padding (Fas 2, mätbar desktop-paritetsrunda):
+     mätte +5.6% mot referensens uppmätta ~515px. */
+  .nh-reviews-main { padding: 38px 56px; max-width: 640px; }
   .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
 }
 @media (max-width: 860px) {

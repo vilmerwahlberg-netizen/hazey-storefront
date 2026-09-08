@@ -75,8 +75,13 @@ export const SECTIONS = [
     id: "trustremsa",
     label: "Trustremsa",
     referenceY: [1461, 1529],
-    implTopSelector: ".nh-trustblock",
-    implBottomSelector: ".nh-trustblock",
+    // .nh-trustblock (yttre sektionen) bär cream-padding runt den
+    // faktiska mörkgröna ytan (.nh-tb-inner) -- mäta den yttre sektionen
+    // räknade in den ljusa marginalen som "sektionshöjd" och gav en
+    // missvisande avvikelsesiffra mot referensens rena, kant-i-kant
+    // mörkgröna remsa. Mäter den riktiga inre ytan i stället.
+    implTopSelector: ".nh-tb-inner",
+    implBottomSelector: ".nh-tb-inner",
   },
   {
     id: "featured-magic-sauce",
