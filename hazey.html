@@ -2921,6 +2921,22 @@
         pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
         primaryCta: { label: "Utforska sortimentet", href: "#populara-vagar" },
         secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt →", openHr: true }
+      },
+      // Slide 2 (creative-direction-runda 2026-09-08): riktig, verifierad
+      // destination -- INGEN fabricerad rabatt/kampanj, se uppdragets
+      // uttryckliga förbud. Bilden är samma godkända Magic Sauce-derivat
+      // som redan används i Populära serier (assets/series/magic-sauce.jpg).
+      {
+        id: "magic-sauce",
+        active: true,
+        image: "series/magic-sauce.jpg",
+        eyebrowMobile: "Populär serie",
+        eyebrowDesktop: "Populär serie hos Hazey",
+        h1: "Upptäck Magic Sauce.",
+        pMobile: "Vape, buds och hash i en av våra mest efterfrågade serier.",
+        pDesktop: "Vape, buds och hash i en av våra mest efterfrågade serier — se hela sortimentet.",
+        primaryCta: { label: "Se Magic Sauce-sortimentet", href: "/sv/categories/magic-sauce" },
+        secondaryCta: null
       }
     ];
 
@@ -2935,11 +2951,19 @@
           + '><span class="nh-hero-v2__btn--mobile">' + slide.secondaryCta.labelMobile + '</span>'
           + '<span class="nh-hero-v2__btn--desktop">' + slide.secondaryCta.labelDesktop + '</span></button>'
         : "";
+      // SEO-krav (oförändrat sen förra rundan): startsidan får ha EXAKT EN
+      // <h1> i DOM:en, oavsett hur många hero-slides som finns (alla slides
+      // ligger samtidigt i DOM:en, bara förskjutna via transform -- en andra
+      // <h1> hade återinfört det redan verifierat fixade two-H1-problemet).
+      // Bara första slidet (i===0) får en riktig <h1>; övriga slides
+      // återanvänder EXAKT samma CSS-klass på en <p> i stället, visuellt
+      // identiskt, semantiskt en rubrik lägre.
+      var headingTag = i === 0 ? "h1" : "p";
       return '<div class="nh-hero-slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + '"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>'
-        + '    <h1>' + slide.h1 + '</h1>'
+        + '    <' + headingTag + ' class="nh-hero-v2__h1">' + slide.h1 + '</' + headingTag + '>'
         + '    <p class="nh-hero-v2__p--mobile">' + slide.pMobile + '</p>'
         + '    <p class="nh-hero-v2__p--desktop">' + slide.pDesktop + '</p>'
         // Kategori-genvägsraden finns BARA på desktop i rätt fil (dVp),
@@ -3382,31 +3406,38 @@
        tillförlitlig datakälla finns för det (se STATUS.md/CLAUDE.md),
        skrivs därför inte in. Leverans-punkterna är oförändrade (samma
        fyra som innan), bara omgrupperade under en egen etikett. */
+    /* Creative-direction-runda 2026-09-08: omstrukturerad från en ljus
+       "punktlista i två spalter" till en kompakt, mörk 4-stegsprocess
+       (principen lånad från Lyfteds "urval till dörren"-storytelling,
+       INTE kopierad kod/text/bild -- egen design, egna riktiga fakta).
+       Samtliga sakuppgifter är OFÖRÄNDRADE, redan verifierade fakta från
+       föregående omgångar -- bara omgrupperade till fyra steg i stället
+       för två rubrikgrupper. Ingen ny SEO-utredning gjord denna omgång
+       (uttryckligt förbud), ingen text borttagen: leveransgarantin och
+       "sedan 2020" ligger kvar som en synlig fotnot under stegen i
+       stället för i en egen punktlista. */
     function nhTrustBlockHtml() {
+      var steps = [
+        { n: "01", title: "Kurerat sortiment", text: "Vi säljer endast cannabinoider som är lagliga i Sverige." },
+        { n: "02", title: "Tydligt innehåll", text: "Innehåll och styrka anges på varje produktsida, analyscertifikat där de finns." },
+        { n: "03", title: "Diskret paketerat", text: "Neutral avsändare, spårbar leverans från Sverige — aldrig gränsöverskridande." },
+        { n: "04", title: "Snabb leverans", text: "Normalt inom 1–2 vardagar." }
+      ];
       return '<section class="nh-trustblock section-gap">'
         + '  <div class="nh-tb-inner">'
         + '    <h2>Så arbetar Hazey med innehåll och ursprung</h2>'
         + '    <p>Vi är öppna med vad som finns i våra produkter och var de kommer ifrån — inga effektlöften, bara verifierbara fakta.</p>'
-        + '    <a class="nh-tb-link" href="/sv/page/kop-och-leveransvillkor">'
-        + '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
-        + '      Läs våra köp- och leveransvillkor</a>'
-        + '    <div class="nh-tb-groups">'
-        + '      <div class="nh-tb-group">'
-        + '        <div class="nh-tb-group__label">Transparens</div>'
-        + '        <ul class="nh-tb-points">'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Innehåll och styrka anges på varje produktsida</li>'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Vi säljer endast cannabinoider som är lagliga i Sverige</li>'
-        + '        </ul>'
-        + '      </div>'
-        + '      <div class="nh-tb-group">'
-        + '        <div class="nh-tb-group__label">Leverans</div>'
-        + '        <ul class="nh-tb-points">'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Leveransgaranti — försvinner paketet skickar vi ett nytt</li>'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Diskret paket, neutral avsändare</li>'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Spårbar leverans från Sverige, aldrig gränsöverskridande</li>'
-        + '          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Svenskt bolag, sedan 2020</li>'
-        + '        </ul>'
-        + '      </div>'
+        + '    <div class="nh-tb-steps">'
+        + steps.map(function (s) {
+            return '<div class="nh-tb-step nh-reveal"><span class="nh-tb-step__n">' + s.n + '</span>'
+              + '<div><h3>' + s.title + '</h3><p>' + s.text + '</p></div></div>';
+          }).join("")
+        + '    </div>'
+        + '    <div class="nh-tb-foot">'
+        + '      <span>Leveransgaranti — försvinner paketet skickar vi ett nytt · Svenskt bolag, sedan 2020</span>'
+        + '      <a class="nh-tb-link" href="/sv/page/kop-och-leveransvillkor">'
+        + '        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>'
+        + '        Läs våra köp- och leveransvillkor</a>'
         + '    </div>'
         + '  </div>'
         + '</section>';
@@ -3446,10 +3477,36 @@
     function nhBestsellersHtml() {
       return '<section class="nh-featured section-gap" id="nh-featured">'
         + '  <div class="sec-head"><div><h2>Bästsäljare i lager</h2>'
-        + '  <p>Snabbval för produkter utan variantval.</p></div>'
+        + '  <p>Redo att skickas idag — inget variantval krångel.</p></div>'
         + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
         + '  <div class="nh-featured-row pl-list" id="nhFeaturedRow"><div class="nh-featured-empty">Laddar…</div></div>'
+        + '  <div class="nh-swipe-dots" id="nhFeaturedDots" hidden></div>'
         + '</section>';
+    }
+    /* Swipe-indikation (creative-direction-runda 2026-09-08): en rad
+       prickar under svepraden, uppdaterade via IntersectionObserver (samma
+       "en observer per rad"-mönster som redan används för Populära serier/
+       reviews). Ingen automatisk rullning -- bara ett synligt "du är här"
+       som följer besökarens egen swipe. Döljs helt om det bara finns ett
+       kort (inget att svepa till). */
+    function nhInitSwipeDots(rowEl, dotsEl) {
+      if (!rowEl || !dotsEl) return;
+      var cards = Array.prototype.slice.call(rowEl.children);
+      if (cards.length < 2) { dotsEl.hidden = true; return; }
+      dotsEl.hidden = false;
+      dotsEl.innerHTML = cards.map(function (_, i) {
+        return '<span class="nh-swipe-dot' + (i === 0 ? " is-active" : "") + '"></span>';
+      }).join("");
+      var dots = Array.prototype.slice.call(dotsEl.children);
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var idx = cards.indexOf(entry.target);
+          if (idx === -1) return;
+          dots.forEach(function (d, i) { d.classList.toggle("is-active", i === idx); });
+        });
+      }, { root: rowEl, threshold: 0.6 });
+      cards.forEach(function (c) { io.observe(c); });
     }
     function nhInitBestsellers(root) {
       var rowEl = root.querySelector("#nhFeaturedRow");
@@ -3491,6 +3548,7 @@
           });
           if (window.nhInitCards) window.nhInitCards();
           nhWatchRealRatingValues(rowEl);
+          nhInitSwipeDots(rowEl, rowEl.parentNode.querySelector("#nhFeaturedDots"));
         })
         .catch(function () {
           rowEl.parentNode.parentNode.hidden = true; // dölj hela sektionen, visa inget trasigt
@@ -3555,27 +3613,39 @@
        EGNA fält, ingen entitetsavkodning av ett Vue-prop-attribut
        behövs). Rationale/sekundärlänk kommer ALLTID från konfigen,
        aldrig gissat eller skrapat. */
+    /* Aktiverad 2026-09-08 (creative-direction-runda). Produktval enligt
+       uppdragets egen prioritetsordning (relevant Magic Sauce-produkt
+       först): "Vape - Magic Sauce 99% - 2ml" -- verifierat via produktens
+       riktiga JSON-LD (curl mot hazeyse.nyehandel.se 2026-09-08): I lager,
+       595 kr, riktigt betyg 4,69/5 (13 omdömen), varumärke Magic Farmers.
+       Valt framför en bud-/hash-variant i samma serie eftersom en enskild
+       vape-förpackning ger en renare, mer "kampanjmotiv"-lik produktbild
+       (bud-/hash-fotona i denna kategori är gruppbilder av påsar/pulver,
+       svårare att låta "bryta gridet" snyggt). Ingen fabricerad rabatt --
+       produktens riktiga pris visas rakt av (ingen jämförelsepris/rea just
+       nu på denna specifika produkt). */
     var NH_SPOTLIGHT = {
-      active: false,
-      productHref: null, // t.ex. "https://hazeyse.nyehandel.se/sv/products/...".
-      rationale: null,   // kort, redaktionell mening -- varför just den här produkten lyfts fram nu.
-      secondaryLabel: null, // t.ex. "Se hela Magic Sauce-serien".
-      secondaryHref: null
+      active: true,
+      productHref: "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-99-2ml",
+      rationale: "En av våra mest populära Magic Sauce-produkter — engångsvape, redo direkt ur förpackningen.",
+      secondaryLabel: "Se hela Magic Sauce-sortimentet →",
+      secondaryHref: "/sv/categories/magic-sauce"
     };
     function nhSpotlightHtml() {
       if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
       return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
-        + '  <div class="nh-spotlight-inner">'
-        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img" id="nhSpotlightImg"></div></div>'
+        + '  <div class="nh-spotlight-inner nh-reveal">'
+        + '    <div class="nh-spotlight-media"><div class="nh-spotlight-img nh-reveal-img" id="nhSpotlightImg"></div></div>'
         + '    <div class="nh-spotlight-body">'
         + '      <div class="nh-spotlight-kicker">I rampljuset</div>'
+        + '      <p class="nh-spotlight-type" id="nhSpotlightType"></p>'
         + '      <h2 id="nhSpotlightName">Laddar…</h2>'
         + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT.rationale + '</p>'
         + '      <div class="nh-spotlight-meta" id="nhSpotlightMeta"></div>'
         + '      <div class="nh-spotlight-cta">'
         + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT.productHref + '">Visa produkten</a>'
         + (NH_SPOTLIGHT.secondaryHref
-            ? '<a class="hero-link" href="' + NH_SPOTLIGHT.secondaryHref + '">' + NH_SPOTLIGHT.secondaryLabel + '</a>'
+            ? '<a class="hero-link nh-spotlight-secondary" href="' + NH_SPOTLIGHT.secondaryHref + '">' + NH_SPOTLIGHT.secondaryLabel + '</a>'
             : '')
         + '      </div>'
         + '    </div>'
@@ -3605,11 +3675,23 @@
           if (!data) throw new Error("no Product ld+json");
           var img = Array.isArray(data.image) ? data.image[0] : data.image;
           var inStock = /InStock/i.test((data.offers || {}).availability || "");
+          // Verklig kategori/typ: härledd ur produktnamnets eget prefix
+          // ("Vape - ..." → "Vape") + varumärke -- inget gissat, samma
+          // namnkonvention som redan används brett i produktkatalogen.
+          var typeMatch = /^([^-–]+)[-–]/.exec(data.name || "");
+          var typeLabel = typeMatch ? typeMatch[1].trim() : "";
+          var brand = (data.brand && data.brand.name) || "";
           section.querySelector("#nhSpotlightImg").style.backgroundImage = "url('" + img + "')";
           section.querySelector("#nhSpotlightName").textContent = data.name || "";
+          section.querySelector("#nhSpotlightType").textContent = [typeLabel, brand].filter(Boolean).join(" · ");
+          var rating = data.aggregateRating;
+          var ratingHtml = (rating && rating.ratingValue && rating.reviewCount)
+            ? '<span class="nh-spotlight-rating">★ ' + Number(rating.ratingValue).toFixed(1).replace(".", ",") + ' <span>(' + rating.reviewCount + ')</span></span>'
+            : "";
           section.querySelector("#nhSpotlightMeta").innerHTML = ''
             + '<span class="nh-spotlight-price">' + ((data.offers || {}).price ? data.offers.price + " kr" : "") + '</span>'
-            + '<span class="nh-spotlight-stock' + (inStock ? "" : " is-out") + '">' + (inStock ? "I lager" : "Slut i lager") + '</span>';
+            + '<span class="nh-spotlight-stock' + (inStock ? "" : " is-out") + '">' + (inStock ? "I lager" : "Slut i lager") + '</span>'
+            + ratingHtml;
         })
         .catch(function () {
           section.hidden = true; // trasig hämtning -- visa aldrig ett halvfärdigt kort
@@ -3727,16 +3809,30 @@
        sortimentet) redan täcks av de nya, riktiga korten ovan. */
     function nhGuidesHtml(navData) {
       var thcaHref = (navData.bySlug && navData.bySlug["thca"]) || "/sv/categories/thca";
+      // Creative-direction-runda 2026-09-08: variera kortens visuella
+      // tyngd (uppdragets krav) i stället för två identiska vita textkort.
+      // THCA-kortet får en RIKTIG, live-hämtad produktbild (samma beprövade
+      // fetch-mönster som Populära serier/vägar tidigare använde) --
+      // "photo"-varianten. FAQ-kortet har inget naturligt produktfoto att
+      // visa (det är en supportdestination, inte ett sortiment) och får i
+      // stället en mörk, ikonburen "dark"-variant -- olika TYNGD, ingen
+      // fabricerad bild.
       var cards = [
-        { tag: "Kategori", title: "THCA", text: "Bläddra hela vårt THCA-sortiment — vapes, buds och information om vad som gäller i Sverige.", cta: "Till THCA-sortimentet →", href: thcaHref },
-        { tag: "Support", title: "Vanliga frågor", text: "Svar på det som frågas mest om beställning, leverans och lagstatus.", cta: "Till FAQ:n →", href: "/sv/page/faq" }
+        { tag: "Kategori", title: "THCA", text: "Bläddra hela vårt THCA-sortiment — vapes, buds och information om vad som gäller i Sverige.", cta: "Till THCA-sortimentet →", href: thcaHref, variant: "photo", photoHref: thcaHref },
+        { tag: "Support", title: "Vanliga frågor", text: "Svar på det som frågas mest om beställning, leverans och lagstatus.", cta: "Till FAQ:n →", href: "/sv/page/faq", variant: "dark" }
       ];
       return '<section class="nh-guides section-gap" id="nh-guides">'
         + '  <div class="sec-head"><div><h2>Guider &amp; aktuellt</h2>'
         + '  <p>Läs mer innan du handlar — samlat på ett ställe.</p></div></div>'
         + '  <div class="nh-guides-grid">'
         + cards.map(function (c) {
-            return '<a class="nh-guide-card nh-reveal" href="' + c.href + '">'
+            var photoAttrs = c.variant === "photo" ? ' data-photo-href="' + c.photoHref + '"' : "";
+            var iconHtml = c.variant === "dark"
+              ? '<span class="nh-guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.6-1.35c.4.6.4 1.4 0 2A2.5 2.5 0 0 1 12 12v1"/><circle cx="12" cy="16.3" r=".1" fill="currentColor" stroke-width="1.5"/></svg></span>'
+              : '';
+            return '<a class="nh-guide-card nh-guide-card--' + c.variant + ' nh-reveal" href="' + c.href + '"' + photoAttrs + '>'
+              + (c.variant === "photo" ? '<span class="nh-guide-photo nh-reveal-img"></span>' : '')
+              + iconHtml
               + '<span class="nh-guide-tag">' + c.tag + '</span>'
               + '<h3>' + c.title + '</h3>'
               + '<p>' + c.text + '</p>'
@@ -3810,6 +3906,27 @@
       // riktig, fungerande destination i stället för att lämna en trasig
       // länk liggande för en eventuell crawler att hitta.
       if (brokenBtn) brokenBtn.setAttribute("href", "/sv/categories/alla-produkter");
+
+      // 4) THCA-guidekortets riktiga produktbild -- samma beprövade
+      // live-fetch-mönster som redan användes för Populära serier/vägar
+      // innan de fick statiska tillgångar (fetch riktig kategorisida,
+      // plocka FÖRSTA riktiga produktbilden). Progressiv förbättring:
+      // kortet fungerar och är klickbart innan bilden hunnit laddas.
+      var photoCard = document.querySelector(".nh-guide-card[data-photo-href]");
+      if (photoCard) {
+        fetch(photoCard.getAttribute("data-photo-href"), { credentials: "same-origin" })
+          .then(function (r) { return r.ok ? r.text() : ""; })
+          .then(function (html) {
+            if (!html) return;
+            var doc = new DOMParser().parseFromString(html, "text/html");
+            var img = doc.querySelector(".product-card__image img");
+            var src = img ? (img.getAttribute("src") || img.getAttribute("data-src")) : null;
+            if (!src) return;
+            var photoEl = photoCard.querySelector(".nh-guide-photo");
+            if (photoEl) photoEl.style.backgroundImage = "url('" + src + "')";
+          })
+          .catch(function () {}); // ingen bild -- kortet fungerar ändå, bara utan foto
+      }
     }
     // "Läs om THC-X"/"Läs om D10" — sekundär rad UNDER 2×2-grid:et.
     // THC-X: samma verifierade riktiga produktsida som Populära serier-
@@ -4112,7 +4229,7 @@
     // Playwrights fullPage-screenshot) inte alltid hinner trigga
     // IntersectionObserver innan bilden tas.
     function nhInitReveal(root) {
-      var els = root.querySelectorAll(".nh-reveal");
+      var els = root.querySelectorAll(".nh-reveal, .nh-reveal-img");
       if (!els.length) return;
       function revealAll() {
         els.forEach(function (el) { el.classList.add("is-in"); });
