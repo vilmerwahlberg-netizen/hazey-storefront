@@ -13660,6 +13660,41 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   }
 }
 
+/* KORRIGERAT (Desktop correction pass 2026-09-09, verifierat vid 1024px):
+   den kompakta en-radskompositionen ovan mätt/tänkt för 1440px -- vid
+   1024px (uttryckligen en av de krävda kontrollbredderna) räckte inte
+   det smalare tillgängliga utrymmet (nav.navbar:s 1fr-spår krymper med
+   viewporten, .main:s reserverade högersida gör det inte i samma takt)
+   för alla sju riktiga nav-länkarna, som då tyst radbröt till EN ANDRA
+   rad -- den övre raden hamnade delvis OVANFÖR headerns synliga 0-68px-
+   yta (negativ y, avklippt/osynlig), inte bara trängre. Kompakterar
+   ytterligare i den smalare desktop-zonen (861-1279px): mindre
+   länkpadding/typsnitt, smalare sökfält, mindre reserverat utrymme --
+   allt fortfarande gott om plats för läsbar text, verifierat att alla
+   sju länkar ryms i EN rad efter denna ändring. */
+@media (min-width: 861px) and (max-width: 1279px) {
+  #store-header.nh-home-hero .cat-link { padding: 10px 6px; font-size: 12.5px; gap: 2px; }
+  #store-header.nh-home-hero .main .center .store-search { width: 110px; }
+  #store-header.nh-home-hero nav.navbar > .container { padding-right: 230px !important; }
+  /* Även med den kompakteringen ryms inte alltid alla sju riktiga
+     länkarna på en rad ner mot 1024px (verifierat live) -- i stället för
+     att fortsätta krympa text mot oläsbarhet tillåts raden här radbryta
+     till två rader, men headern/nav-lagret får då VÄXA (auto/min-height,
+     inte ett hårt 68px-tak) så en andra rad faktiskt får plats synligt i
+     stället för att klippas av ovanför headerns yta (vilket hände innan
+     denna fix -- rad 1 hamnade på negativt y, osynlig). #store-headers
+     grid-rad växer automatiskt till det högsta av .main/nav.navbar, och
+     JS mäter headerns RIKTIGA höjd live (nhInitHomeHeroHeader) så hero-
+     överlappet följer med oavsett om det blir en eller två nav-rader. */
+  #store-header.nh-home-hero .main,
+  #store-header.nh-home-hero nav.navbar,
+  #store-header.nh-home-hero nav.navbar > .container {
+    height: auto !important;
+    min-height: 68px;
+  }
+  #store-header.nh-home-hero .nh-cat-row { padding: 8px 0 !important; }
+}
+
 /* ── (3) "Good People Higher Moments" — NY fullbredds redaktionell
    sektion (se nhBonfireHtml). Endast desktop (>=861px) denna omgång --
    ingen mobil komposition beslutad än, se slutrapporten. Innehållet
