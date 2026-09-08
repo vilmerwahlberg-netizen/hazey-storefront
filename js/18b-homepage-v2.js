@@ -348,9 +348,12 @@
         void toSlide.offsetWidth; // tvingad reflow — se kommentaren ovan
         toSlide.style.transition = "";
 
-        cube.style.transform = "rotateY(0deg)";
+        // Kuben ändrar ALDRIG .style.transform direkt -- basrotationen
+        // (translateZ(-cube-half) rotateY(--cube-rot)) sitter i CSS (se
+        // .nh-hero-cube, kub-korrigeringsrundan), JS sätter bara vinkeln.
+        cube.style.setProperty("--cube-rot", "0deg");
         void cube.offsetWidth;
-        cube.style.transform = "rotateY(" + (-dir * 90) + "deg)";
+        cube.style.setProperty("--cube-rot", (-dir * 90) + "deg");
 
         function finish() {
           cube.removeEventListener("transitionend", onEnd);
@@ -358,7 +361,7 @@
           // Normalisera kubens EGEN rotation till 0 igen, UTAN transition —
           // se filkommentaren ovan ("rotorsak"/normalisering).
           cube.style.transition = "none";
-          cube.style.transform = "rotateY(0deg)";
+          cube.style.setProperty("--cube-rot", "0deg");
           void cube.offsetWidth;
           cube.style.transition = "";
 
@@ -1665,29 +1668,20 @@
       // kort nästan två sekunder innan sista kortet syns.
       if (staggerIndex) el.style.transitionDelay = (Math.min(staggerIndex, 4) * 90) + "ms";
       revealIO.observe(el);
-      // Säkerhetsnät, TILLAGT utöver den rena facit-porten (verifierat
-      // nödvändigt denna omgång, se slutrapporten): Playwrights
-      // `fullPage`-skärmdump (och sannolikt vissa crawler-renderare)
-      // förstorar sidan till sin fulla innehållshöjd i STÄLLET för att
-      // simulera en riktig scroll -- varken IntersectionObserver eller
-      // scroll-sweepen (revealPassedElements) hinner då NÅGONSIN trigga,
-      // och innehåll långt ner på sidan förblir permanent osynligt i en
-      // sådan capture. Detta är exakt samma rotorsak som redan
-      // dokumenterades i en tidigare omgång av DENNA fil (se historiken
-      // i git) -- en hård tidsgräns tvingar fram elementet ändå. 2,2s är
-      // lång nog att ALDRIG hinna före en riktig besökares normala scroll
-      // (som redan triggat IntersectionObserver långt innan), kort nog
-      // att en crawler/skärmdumpsverktyg som väntar en rimlig stund ändå
-      // ser rätt, fullt renderat innehåll. Kravet "innehåll får inte bli
-      // beroende av Googlebots interaktion" väger tyngre än att porta
-      // facit millimeterrätt på just denna punkt.
-      setTimeout(function () {
-        if (!el.classList.contains("in-view")) {
-          el.classList.add("in-view");
-          revealIO.unobserve(el);
-          cleanUpReveal(el);
-        }
-      }, 2200);
+      // KORRIGERINGSRUNDA (2026-09-XX): en tidigare version hade här en
+      // GLOBAL 2,2s-timer som tvingade fram `.in-view` på varje element
+      // oavsett skrollposition. Det var fel och är borttaget -- Vilmer
+      // rapporterade korrekt att det gjorde att hela sidan redan var
+      // "inladdad"/synlig innan han hann scrolla dit, så reveal-effekten
+      // aldrig syntes vid en riktig besökares faktiska scroll. Ingen
+      // ersättningstimer läggs till: `revealPassedElements()` (se nedan)
+      // körs redan dels EN gång direkt efter arming (fångar sånt som
+      // faktiskt redan ligger i första vyn vid sidladdning), dels vid
+      // varje scroll-event (fångar snabbt passerade element) -- det är
+      // den avsedda, riktiga "genuine failure"-vägen ut om
+      // IntersectionObserver av någon anledning aldrig rapporterar ett
+      // visst element, INTE en gemensam kort timer som avslöjar hela
+      // sidan i förväg.
     }
 
     function scanScrollReveal(root) {

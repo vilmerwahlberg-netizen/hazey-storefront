@@ -10971,8 +10971,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
        mikrotrust/Populära serier och INTE ska ändras denna omgång).
        Topp/botten-marginalen (10px/18px, redan exakt matchande) orörd. */
     margin: 10px 24px 18px !important;
-    border-radius: 22px !important;
-    overflow: hidden !important;
+    /* KORRIGERING (kub-korrigeringsrunda): border-radius/overflow TOGS
+       BORT härifrån -- den här regeln (.nh-hero-v2, samma element som
+       .nh-qfind-hero, se markupen i nhHeroHtml) hade tidigare EN GÅNG TILL
+       forcerat en statisk, rundad, klippande ram på den YTTRE, icke-
+       roterande sektionen -- med !important, alltså starkare än allt som
+       skrevs på .nh-qfind-hero/.nh-hero-slide senare. Det var precis den
+       "statiska masken" Vilmer flaggade: rundningen låg fast medan bara
+       innehållet bytte inuti den. Rundningen (+ egen overflow:hidden)
+       sitter nu i stället på .nh-hero-slide -- själva kub-sidan som
+       faktiskt roterar, se css-kommentaren där. */
     min-height: 238px;
     box-shadow: 0 17px 34px -24px rgba(92,57,24,.72) !important;
   }
@@ -11727,7 +11735,21 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   position: relative;
   color: #fffdf8;
   margin: 10px 10px 18px;
-  border-radius: 22px;
+  /* KORRIGERING (kub-korrigeringsrunda): border-radius bor INTE här längre.
+     Det HÄR elementet är bara det yttre scene-/clip-lagret (tillåtet av
+     uppdraget: "det kan finnas ett yttre scene-/perspective-element för
+     layout och clipping") -- overflow:hidden är kvar rent tekniskt (fångar
+     ev. perspektiv-överskjut vid extrema mellanlägen), men INGEN
+     border-radius och alltså ingen synlig, stillastående "ram" -- annars
+     ser det ut som att bara INNEHÅLLET roterar inuti ett fast, rundat
+     fönster, vilket var exakt vad Vilmer flaggade som fel. Border-radius
+     (+ egen overflow:hidden för att klippa gradient-lagren till samma
+     rundning) sitter i stället på .nh-hero-slide nedan -- SJÄLVA
+     kub-sidan som roterar, så hörnen känns fysiskt fasta vid ytan under
+     hela rotationen. box-shadow lämnas kvar här som en tunn, ickeroterande
+     markskugga (ett fysiskt roterat objekt kastar ändå en skugga som INTE
+     roterar med det) -- den ligger under den rundade ytan och är för svag
+     för att uppfattas som en egen "ram". */
   overflow: hidden;
   box-shadow: 0 17px 34px -24px rgba(92,57,24,.72);
 }
@@ -11775,9 +11797,30 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   width: 100%;
   height: 100%;
   --cube-half: 0px; /* räknas ut/uppdateras av JS (setCubeHalf, nhInitHeroCarousel) från sektionens riktiga renderade bredd */
+  --cube-rot: 0deg; /* JS ändrar ENDAST denna custom property (se nhInitHeroCarousel), aldrig .transform direkt -- se translateZ-kommentaren nedan för varför */
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: transform .65s cubic-bezier(.22,.61,.36,1);
+  /* BUGGFIX (kub-korrigeringsrunda): translateZ(-cube-half) FÖRST är den
+     saknade motvikten till varje sidas EGEN translateZ(+cube-half) (se
+     .nh-hero-slide.is-front/.is-target och toSlide-positioneringen i JS).
+     Utan den låg fronten kvar +cube-half NÄRMARE kameran än ett vanligt,
+     oroterat lager skulle ha gjort -- under `perspective` tolkas det som
+     att ytan är STÖRRE, en ren optisk förstoring (exakt buggen Vilmer
+     rapporterade som "hela hero-bilden blev inzoomad"). Med denna
+     motvikt hamnar frontsidan i vila på NETTO samma djup (z=0) som före
+     kubombygget, alltså SAMMA bildutsnitt/aspect ratio som tidigare --
+     ingen ändring av background-size/position/scale krävdes eller gjordes.
+     Kuben roterar sedan kring sitt eget, nu centrerade, origo. */
+  transform: translateZ(calc(var(--cube-half) * -1)) rotateY(var(--cube-rot));
+  /* Egen easing (INTE sajtens delade mikro-interaktionskurva
+     cubic-bezier(.22,.61,.36,1), som är ett medvetet snabbstart-/
+     mjuklandningsläge byggt för 140-260ms hover/press-feedback och
+     som verifierat gjorde en 650ms kubrotation nästan klar redan efter
+     ~50ms — inte "mjuk acceleration OCH inbromsning" som uppdraget
+     kräver). cubic-bezier(.65,0,.35,1) är en symmetrisk ease-in-out:
+     långsam start, accelererar genom mitten, bromsar in mjukt utan
+     studs. */
+  transition: transform .65s cubic-bezier(.65,0,.35,1);
   will-change: transform;
   /* Endast horisontell swipe fångas av JS (se pointermove-logiken) --
      touch-action:pan-y är ett ANDRA, webbläsarnivå-skyddslager som
@@ -11796,6 +11839,14 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .nh-hero-slide {
   position: absolute;
   inset: 0;
+  /* Rundningen (+ egen overflow:hidden som klipper gradient-/foto-filter-
+     pseudoelementen till samma rundning) sitter HÄR, på själva kub-sidan,
+     inte på den yttre statiska ramen -- se kommentaren vid .nh-qfind-hero.
+     Ingen box-shadow här (overflow:hidden på SAMMA element som bär en
+     egen box-shadow klipper bort skuggan i de flesta motorer -- den
+     ambienta markskuggan ligger kvar på .nh-qfind-hero i stället). */
+  border-radius: 22px;
+  overflow: hidden;
   background-color: #2c3620;
   /* Responsiv bild utan JS-omskrivning vid breakpoint-byte, se
      nhHeroSlideHtml — faller tillbaka till samma bild för båda om ingen
@@ -11811,7 +11862,7 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      .is-target nedan. Egen transition, oberoende av kubens, så den
      löper parallellt med 3D-rotationen utan att behöva synkas manuellt. */
   filter: brightness(1);
-  transition: filter .65s cubic-bezier(.22,.61,.36,1);
+  transition: filter .65s cubic-bezier(.65,0,.35,1); /* samma ease-in-out som kuben, se .nh-hero-cube */
 }
 @media (min-width: 861px) {
   .nh-hero-slide { background-image: var(--hero-img-d); }
