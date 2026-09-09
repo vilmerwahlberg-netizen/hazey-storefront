@@ -85,9 +85,16 @@
   width: 100%;
 }
 .nh-pser .sec-head h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600;
-  font-size: 19px;
+  /* KORRIGERAT (Desktop correction pass 2026-09-09): Nyehandels egna,
+     nativa h1,h2,h3...{font-family:Roboto!important} tag-reset (redan
+     dokumenterad i CLAUDE.md) vann tyst över VARJE seriftypografi-regel
+     för sektionsrubriker på HELA sidan (bekräftat via getComputedStyle:
+     samtliga renderade "Roboto, ... 28.8px 600" oavsett vad respektive
+     sektions egen, icke-!important-märkta regel sa) -- inte bara denna,
+     samma !important-fix upprepas nedan för varje sektionsrubrik. */
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 19px !important;
   color: #2c3620;
   margin: 0 0 14px;
 }
@@ -402,9 +409,9 @@
   flex-wrap: wrap;
 }
 .nh-routes .sec-head h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600;
-  font-size: 19px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 19px !important;
   color: #2c3620;
   margin: 0;
 }
@@ -1053,8 +1060,8 @@
   .nh-hero-v2__eyebrow--desktop { display: block; }
 }
 .nh-qfind-hero .nh-hero-v2__h1 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600; font-size: 26px; line-height: 1.05; margin: 0 0 10px; color: #fffdf8;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important; font-size: 26px !important; line-height: 1.05; margin: 0 0 10px; color: #fffdf8;
 }
 .nh-qfind-hero p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.88); margin: 0 0 16px; }
 
@@ -1133,7 +1140,7 @@
     position: relative;
   }
   .nh-hero-v2__inner { padding: 0 48px 56px; max-width: 620px; }
-  .nh-qfind-hero .nh-hero-v2__h1 { font-size: 46px; }
+  .nh-qfind-hero .nh-hero-v2__h1 { font-size: 46px !important; }
   .nh-qfind-hero p { font-size: 15px; }
   /* .nh-hero-slide fick border-radius:22px i kub-korrigeringsrundan (den
      rundade "kubsidan" som ersatte den gamla, statiska yttre masken, se
@@ -1613,8 +1620,8 @@
   text-transform: uppercase; letter-spacing: .04em;
 }
 .nh-spotlight-body h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600; font-size: 22px; color: #fffdf8; margin: 0 0 8px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important; font-size: 22px !important; color: #fffdf8; margin: 0 0 8px;
 }
 .nh-spotlight-rationale { font-size: 13px; line-height: 1.55; color: rgba(244,233,220,.8); margin: 0 0 12px; max-width: 46ch; }
 .nh-spotlight-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
@@ -1741,8 +1748,8 @@
 }
 .guide-top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
 .guide h2, .guide-top h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: 19px; margin: 0; color: #2c3620; font-weight: 600;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-size: 19px !important; margin: 0; color: #2c3620; font-weight: 600 !important;
 }
 .guide .skip { font-size: 12px; color: #9a9280; }
 .guide .skip a { color: #96683f; font-weight: 650; }
@@ -1819,8 +1826,21 @@
 .nh-guides.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
 .nh-guides .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
 .nh-guides .sec-head h2 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-weight: 600; font-size: 19px; color: #2c3620; margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important; font-size: 19px !important; color: #2c3620; margin: 0;
+}
+/* KORRIGERAT (Desktop correction pass 2026-09-09): Bästsäljare/
+   Verifierade omdömen hade ALDRIG en egen bas-serif-regel för sin h2 --
+   bara en mobil-scopad (max-width:860px) !important-fix längre ner i
+   filen (skriven för en tidigare, mobil-avgränsad omgång). Ingen
+   motsvarande regel fanns för desktop, så Nyehandels nativa
+   h1,h2,...{font-family:Roboto!important}-reset vann obehindrat där --
+   bekräftat via getComputedStyle: renderade "Roboto ... 28.8px" trots
+   uppdragets krav på seriftypografi. */
+.nh-featured .sec-head h2,
+.nh-reviews .sec-head h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-weight: 600 !important; font-size: 19px !important; color: #2c3620; margin: 0 0 14px;
 }
 .nh-guides .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; }
 
@@ -2032,7 +2052,7 @@
    @media-block längre ner i filen, se kommentaren där -- desktop hade
    ingen motsvarande regel). Satt här på basregeln i stället, gäller nu
    överallt. */
-.nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 20px; margin: 0 0 4px; color: #fffdf8 !important; }
+.nh-signup-block h2 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important; font-weight: 600 !important; font-size: 20px !important; margin: 0 0 4px; color: #fffdf8 !important; }
 .nh-signup-block p { margin: 0; font-size: 12.5px; color: rgba(244,233,220,.8); }
 .nh-signup-form { display: flex; gap: 8px; flex-wrap: wrap; }
 /* Nyhetsbrevets stapel-lucka, rotorsakad i tre lager (2026-09-06,
@@ -2784,8 +2804,8 @@
     padding: 0 48px;
   }
   .nh-bonfire-copy h2 {
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    font-weight: 600; font-size: 26px; color: #fffdf8; margin: 0 0 10px;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-weight: 600 !important; font-size: 26px !important; color: #fffdf8; margin: 0 0 10px;
   }
   .nh-bonfire-copy p { font-size: 14px; line-height: 1.55; color: rgba(255,253,248,.86); margin: 0 0 20px; max-width: 32ch; }
   .nh-bonfire-cta {
@@ -2900,7 +2920,7 @@
   .nh-spotlight-body { order: 1; padding: 56px 48px 56px 56px; display: flex; flex-direction: column; justify-content: center; }
   .nh-spotlight-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
   .nh-spotlight-type { color: #9a9280; }
-  .nh-spotlight-body h2 { color: #2c3620; font-size: 30px; }
+  .nh-spotlight-body h2 { color: #2c3620; font-size: 30px !important; }
   .nh-spotlight-rationale { color: #5f5c50; }
   .nh-spotlight-price { color: #2c3620; }
   .nh-spotlight-stock { color: #4d7042; }
