@@ -1144,8 +1144,13 @@
      tidigare bottom-ankrade paddingen (0 48px 56px). max-width oförändrad
      (620px, redan verifierad H1-radbrytning "Hitta rätt utan / att kunna
      allt." vid den bredden -- ändras inte här). */
-  .nh-hero-v2__inner { padding: 176px 48px 0; max-width: 620px; }
-  .nh-qfind-hero .nh-hero-v2__h1 {
+  /* KORRIGERAT (Refine 2026-09-09 -- kampanjslides behöver EGEN skala,
+     inte evergreens): denna regel gällde tidigare ALLA slides. Scopad nu
+     till evergreen-sliden specifikt -- dess uppmätta position/mått rörs
+     inte alls. Kampanjslides (.nh-hero-slide--campaign) får sin egen,
+     bredare/högre komposition längre ned. */
+  .nh-hero-slide--evergreen .nh-hero-v2__inner { padding: 176px 48px 0; max-width: 620px; }
+  .nh-qfind-hero .nh-hero-slide--evergreen .nh-hero-v2__h1 {
     /* Referensens H1 är lättare/mer editorial än tidigare 600-vikt --
        mätt mot referensen: lägre vikt, nästan samma storlek men något
        mindre, tätare line-height, en aning negativ spårning (typisk för
@@ -1194,7 +1199,7 @@
      klasser) + `!important` på just de två egenskaper den nativa
      resetten är känd för att träffa (font-size/font-family), se
      "Native tag-reset-bugg" i docs/HAZEY-DESIGN-SYSTEM.md §3. */
-  .nh-qfind-hero .nh-hero-v2__p--desktop {
+  .nh-qfind-hero .nh-hero-slide--evergreen .nh-hero-v2__p--desktop {
     font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
     font-size: 14px !important;
     line-height: 1.5;
@@ -1202,6 +1207,69 @@
     margin: 6px 0 22px;
     max-width: 30em;
   }
+
+  /* ── Gemensamt kampanjslide-system (Refine 2026-09-09) ──────────────
+     Gäller ALLA sekundära/kampanjstyrda slides (.nh-hero-slide--campaign,
+     satt i js/18b-homepage-v2.js för varje slide utom den första/
+     evergreen), inte en engångsregel för en specifik kampanjtext. Löser
+     den rapporterade "för liten/för smal/fel placerad"-bristen generellt:
+     egen, bredare/högre textskala + annan vänsterplacering än evergreen,
+     men samma grundkomponenter (kicker/rubrik/ingress/CTA), samma delade
+     eyebrow- och CTA-klasser (redan verifierat identiska mellan slides,
+     se slutrapporten -- bara inner/rubrik/ingress behöver en egen skala).
+
+     Placering: 5.5vw vänsterkant (inte fasta 48px), maxbredd 640px,
+     övre/mellersta vänstra delen (mindre padding-top än evergreen --
+     en mycket större rubrik tar redan mer eget lodrätt utrymme, så
+     blockets faktiska start kan ligga något lägre och ändå hamna
+     tydligt ovanför vertikal mittpunkt vid alla fyra krävda bredder,
+     verifierat med skärmdump/mätning). */
+  .nh-hero-slide--campaign .nh-hero-v2__inner {
+    /* KORRIGERAT: vh-baserad padding-top kolliderade med den FASTA 69px
+       headern vid kortare viewports (vh skalar med hela viewporthöjden,
+       men headern är alltid 69px oavsett höjd) -- kickern hamnade delvis
+       bakom headern vid t.ex. 900px höjd. Fast px-värde clearar headern
+       tillförlitligt vid alla krävda höjder; se den korta-viewport-
+       kompaktering (max-height:760px) längre ned för 1280x720-specifikt
+       finjustering av "tydligt ovanför vertikal mittpunkt". */
+    padding: 100px 5.5vw 0;
+    max-width: 640px;
+  }
+  .nh-qfind-hero .nh-hero-slide--campaign .nh-hero-v2__h1 {
+    /* Samma etablerade serifstack och ungefär samma visuella
+       självsäkerhet som evergreens rubrik (500-vikt, tät line-height) --
+       men i sin egen, betydligt större skala eftersom kampanjbilderna
+       (t.ex. Magic Sauce, produkterna mycket mer dominant centrerade)
+       kräver en tyngre motvikt än evergreens smala tvåordskolumn.
+       clamp() -- inte ett fast px-tal -- så storleken skalar kontrollerat
+       mellan 1024 och 1920 i stället för att hoppa vid en breakpoint.
+       font-size/max-width uppmätta tillsammans (canvas-textmätning) så
+       att "Upptäck Magic" / "Sauce." bryts naturligt vid denna specifika
+       text UTAN en text-specifik hack -- vid en annan, längre eller
+       kortare kampanjrubrik avgör samma clamp+640px bredd en egen,
+       naturlig brytpunkt (systemet är generellt, inte hårdkodat för
+       "Magic Sauce"). */
+    font-weight: 500 !important;
+    font-size: clamp(52px, 4.6vw, 76px) !important;
+    line-height: .96 !important;
+    letter-spacing: -.01em !important;
+    max-width: 640px !important;
+    margin: 0 0 14px !important;
+  }
+  .nh-qfind-hero .nh-hero-slide--campaign .nh-hero-v2__p--desktop {
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 19px !important;
+    line-height: 1.45 !important;
+    color: rgba(255,253,248,.9) !important;
+    margin: 10px 0 28px !important;
+    max-width: 540px !important;
+  }
+  /* CTA-raden ärver redan samma .btn-solid/.hero-link-klasser som
+     evergreen (uppmätt identiska computed styles, se slutrapporten) --
+     ingen egen kampanj-CTA-regel behövs eller ska läggas till här,
+     annars riskerar de två slidesens knappar att tysta glida isär igen
+     i en framtida omgång. Bredden ärvs naturligt av .nh-hero-v2__inners
+     nya 640px ovan. */
   /* .nh-hero-slide fick border-radius:22px i kub-korrigeringsrundan (den
      rundade "kubsidan" som ersatte den gamla, statiska yttre masken, se
      den kommentaren ovanför .nh-hero-slide) -- rätt för mobilens inramade
@@ -1392,6 +1460,25 @@
   .nh-hero-dots { opacity: .55; transition: opacity 160ms ease; }
   .nh-hero-dots:hover,
   .nh-hero-dots:focus-within { opacity: 1; }
+}
+
+/* KORRIGERAT (Refine 2026-09-09 -- kampanjslides på korta desktop-
+   viewports): kampanjrubrikens clamp() skalar med BREDDEN (4.6vw), inte
+   höjden -- vid en bred-men-kort viewport (1280x720, en av de fyra
+   krävda kontrollbredderna) blir blocket därför lika högt som vid en
+   bredare/högre viewport, men har mindre lodrätt utrymme att röra sig i
+   innan det korsar vertikal mittpunkt. Kompakterar HÄR (samma breddpunkt-
+   princip som redan används för evergreen-slidens 861-1279px-hantering
+   i tidigare omgångar): mindre rubrik + tightare marginaler, bara vid
+   max-height:760px (träffar 1280x720, rör INTE 1440x900/1920x1080). */
+@media (min-width: 861px) and (max-height: 760px) {
+  .nh-qfind-hero .nh-hero-slide--campaign .nh-hero-v2__h1 {
+    font-size: clamp(42px, 3.6vw, 52px) !important;
+    margin: 0 0 8px !important;
+  }
+  .nh-qfind-hero .nh-hero-slide--campaign .nh-hero-v2__p--desktop {
+    margin: 6px 0 16px !important;
+  }
 }
 
 /* Karusell-kontroller (prickar/pilar) — renderas bara i DOM:en när >1

@@ -191,12 +191,23 @@
       // <h1>; övriga slides återanvänder EXAKT samma CSS-klass på en <p> i
       // stället, visuellt identiskt, semantiskt en rubrik lägre.
       var headingTag = i === 0 ? "h1" : "p";
+      // KORRIGERAT (Refine 2026-09-09 -- sekundära kampanjslides fick
+      // exakt samma komposition/typografi som evergreen-sliden, trots att
+      // de kan ha en helt annan bildkomposition (t.ex. Magic Sauce-bilden,
+      // med produkterna mycket mer dominant centrerade) -- en generell
+      // modifierarklass, inte en engångsregel för just "Magic Sauce"-
+      // texten. Rör aldrig evergreen-slidens redan godkända layout (den
+      // får sin egen, oförändrade klass). Baserat på samma i===0-antagande
+      // som headingTag ovan (endast den första, garanterat evergreen,
+      // sliden får h1/--evergreen; alla ANDRA -- oavsett hur många
+      // framtida kampanjer som läggs till -- får p/--campaign). */
+      var slideKindClass = i === 0 ? "nh-hero-slide--evergreen" : "nh-hero-slide--campaign";
       // slide.alt beskriver bakgrundsbilden för skärmläsare -- bilden är
       // rent dekorativ (all mening finns redan i rubrik/text/CTA), så den
       // sätts som aria-label på gruppen i stället för en konstlad <img
       // src=""> (ett tomt src-attribut kan trigga en egen nätverksrequest
       // i vissa webbläsare -- ett känt anti-mönster, undviks helt här).
-      return '<div class="nh-hero-slide" role="group" aria-roledescription="slide" aria-label="' + slide.alt.replace(/"/g, "&quot;") + '" aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
+      return '<div class="nh-hero-slide ' + slideKindClass + '" role="group" aria-roledescription="slide" aria-label="' + slide.alt.replace(/"/g, "&quot;") + '" aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>'
         + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>'
