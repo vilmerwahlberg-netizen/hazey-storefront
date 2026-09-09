@@ -4274,3 +4274,145 @@ BÅDA CTA:erna, trust-raden) fullt synligt, ingen scroll behövs,
 Allt lokalt committat på `dev`, push sker direkt efter denna
 STATUS.md-uppdatering. Arbetet pausar därefter för Vilmers visuella
 granskning, enligt uttrycklig instruktion.
+
+## Mästeruppdrag — äkta EN-radshuvud, progressivt scrollglas, full-viewport hero (2026-09-09)
+
+Stort, avgränsat implementationsuppdrag: bygga hela startsidans desktop
+above-the-fold (header+hero+CTA+trust) 1:1 mot den låsta referensbilden
+(`preview/ai-direction/hazey-dadgrass-westcoast-concept-v1.png`, verifierat
+identisk med `Documents/Mockups/APPROVED Hazey desktop direction v1.png`),
+som EN sammanhängande designyta. Commit `5a46201` (från `fcd18b3`).
+
+### 1. Header ombyggd från två överlappande lager till ETT äkta lager
+
+Föregående omgångs header (`display:grid`, `.main`+`nav.navbar` staplade i
+samma cell, z-index-lager, medvetet tom kolumn så nav-länkarna skulle synas
+igenom) ersatt helt. Ny arkitektur: `.nh-cat-row` (byggd av `initHeaderV2`,
+delad kod för alla sidtyper) flyttas nu, ENDAST för startsidans header-
+instans (`nhMoveCatRowIntoMainRow`, körs från `nhInitHomeHeroHeader`), till
+ett riktigt syskon-element mellan `.left` (logga) och `.center` (sök) inuti
+`.main`s egen native `.container` — en enda flex-rad äger navigationen.
+`nav.navbar` (nu tomt) döljs helt via CSS, bara inom `.nh-home-hero`-scopet.
+Andra sidtypers header (produkt-/kategorisidor) anropar aldrig denna
+funktion — verifierat live att de behåller sin befintliga, oförändrade
+tvårads-layout (`nav.navbar{display:flex}`, `.nh-cat-row` kvar i sin
+default-position).
+
+**"Fler ▾"-översvämningsmeny** (`nhInitHeaderOverflowNav`): mätningsdriven
+prioritetsnavigation, INTE en gissad breddpunktslista — jämför
+`.nh-cat-row`s `scrollWidth`/`clientWidth` vid varje resize och flyttar
+länkar (bakifrån, aldrig "Alla produkter") in i en meny tills raden ryms.
+Ersätter föregående omgångs 861-1279px-kompromiss som tillät radbrytning
+till två rader — navigationen radbryter nu ALDRIG (§9), verifierat vid
+1024/1280/1440/1920px (0 fall av radbrytning, 0px horisontell overflow).
+
+**CBD, CBG & CBN** tillagt som riktig länk i header-navigationen
+(`nhBuildNewNavHtml`, `js/18a-header-v2.js`) — saknades helt där tidigare
+(fanns bara i heroens egen kategorirad), en äkta fyraxel-lucka, inte ett
+medvetet val. Samma redan verifierade `cbd-group`-länk som hero-raden
+använder, ingen ny/gissad URL. **"Hitta rätt"** uteslutet ur desktop-
+headern (redan synlig som heroens sekundära CTA) via en ny
+`.cat-item--find`-klass, scopat till `.nh-home-hero` — övriga sidtyper och
+mobilmenyn behåller den oförändrad.
+
+### 2. Progressivt scrollglas (ersätter binär 40px-tröskel)
+
+`nhInitHomeHeroHeader`s `updateScrolled()` sätter nu en kontinuerlig CSS-
+egenskap (`--nh-scroll`, 0..1, `y/220px`) i stället för att växla en klass
+vid en enda tröskel. CSS läser variabeln via `calc()` för bakgrundens
+alpha/blur/saturate — bakgrunden blir bokstavligen gradvis mörkare för
+varje pixel man scrollar, ingen abrupt växling. Golvvärdet (scroll=0) är
+INTE noll (`0.16` alpha, `6px` blur) — diskret mörk transparens redan i
+vila, inte bara efter scroll, per uppdragets ordval. Headerns geometri
+(höjd 69px, `position:fixed`, `top:0`) ändras aldrig, bara bakgrund/blur/
+skugga. `prefers-reduced-motion` nollar `transition` (verifierat:
+`transitionDuration` → `"0s"`), variabeln följer scroll direkt utan
+eftersläpning.
+
+### 3. Rotorsakade klickbarhets-/synlighetsbuggar (upptäckta under egen verifiering, inte antagna)
+
+- **Konto-/varukorgsikoner osynliga** (mörkgrön SVG-`fill` på mörkgrönt
+  glas): en nativ `!important`-regel (`#store-header svg:not([fill="none"])
+  path{fill:#323d25!important}`) satte `fill` direkt — vår tidigare regel
+  satte bara `color`, som SVG:n aldrig läste (ingen `currentColor`).
+  Fixat med en mer specifik `fill`-regel riktad direkt mot `path`/`circle`.
+- **`.nh-cat-row` osynlig vit-på-vit-navigation**: elementet ärvde en
+  kvarglömd kräm-/vit bakgrund (`css/21-header-v2.css`s default-styling för
+  ANDRA sidtypers tvårads-header) efter flytten in i `.main` — vit text på
+  nästan vit bakgrund. Fixat med en explicit `transparent`-override scopat
+  till `.nh-home-hero`.
+- **Heroens sekundära CTA helt oklickbar så fort >1 kampanjslide finns**:
+  en icke-främre slide (`opacity:0`) delade samma `z-index:1` som den
+  främre och "vann" stapelordningen via DOM-ordning (opacity gör ett
+  element osynligt, INTE overksamt för hit-testing) — reproducerat live
+  via Playwright (`.hero-link`-klick fastnade permanent på "subtree
+  intercepts pointer events"). Fixat med `pointer-events:none` på
+  icke-främre slides, scopat till desktop-crossfaden, rör inte mobilens
+  kub.
+- **Sökdropdown alldeles för bred/fel förankrad** (§7): en nativ regel
+  (`.store-search__dropdown{position:absolute;left:-610px;right:0;
+  width:800px}`) byggd för en annan header-kontext gav en 800px bred
+  dropdown som startade under navigationslänkarna i stället för under
+  sökfältet. Ankras nu om direkt under fältet, smalare (`min(440px,
+  100vw-80px)`), varmt cream-glas i stället för nativ platt beige — bara
+  inom `.nh-home-hero`.
+
+**Metodologiskt fynd (viktigt för framtida testomgångar):** tema 6:s redan
+inklistrade `loader-dev.html` laddar SJÄLV en stale, redan deployad
+hazey.css/js-kopia från GitHub Pages vid VARJE sidladdning i test-
+harnesset, oavsett egen manuell `addStyleTag`/`addScriptTag`-injektion —
+upptäckt via CDP `CSS.getMatchedStylesForNode` när en borttagen gammal
+regel ändå vann (högre selektor-specificitet). `tests/fas6-full-
+verification.mjs` och `tests/desktop-reference-parity.mjs` patchade med
+en ny `page.route(...vilmerwahlberg-netizen.github.io/hazey-storefront/
+hazey.*...).abort()`-rad (utöver den befintliga Oliverforss8-blockeringen)
+så framtida testkörningar bara mäter den nyss byggda, lokala koden.
+
+### 4. Flash-of-native-theme-guard (§8)
+
+**Rotorsak** (verifierad live via `curl` mot den riktiga sidan): Nyehandel
+skriver självt `<body style="visibility:hidden">` och äger en egen FOUC-
+guard (`document.addEventListener('DOMContentLoaded', () => body.style.
+visibility='visible')`) som gör sidan synlig OAVSETT om vår hazey.css/js
+hunnit ladda än — gapet mellan den revealen och att vår reskin är klar är
+den rapporterade ~0.2s-flashen.
+
+**Fix, helt i repot, ingen Nyehandel-admin/malländring behövs:**
+`blocks/loader-dev.html`/`blocks/loader.html` lägger nu, synkront som
+allra första sak (parser-blockerande, alltså FÖRE DOMContentLoaded),
+klassen `nh-boot` på `<html>` + en inline `<style>` (`html.nh-boot
+body{visibility:hidden!important}`, `html.nh-boot::before{...mörkgrön
+overlay...}`). `hazey.min.js`s `nhBoot()` (js/19-core-close.js) tar bort
+klassen som sista rad, efter att alla `initX()` körts synkront. En
+säkerhetstimeout (1800ms) i loadern garanterar att sidan aldrig förblir
+permanent osynlig om CSS/JS av nätverksskäl uteblir. Verifierat i en
+fristående, isolerad simulering (Nyehandels exakta boot-sekvens
+efterbildad) — body förblir dolt (mörkgrön overlay, ingen native-flash)
+trots att Nyehandels egen reveal redan hunnit fyra, tills vår klass tas
+bort. **Kräver en manuell admin-åtgärd för att faktiskt synas live:**
+tema 6:s JS-fält behöver klistras in på nytt med den uppdaterade
+`loader-dev.html` (samma etablerade arbetsflöde som redan gäller för varje
+loader-ändring — ingen NY typ av admin-beroende). Produktion (`loader.html`)
+har samma fix förberedd men otestad live (ingen PUBLICERA denna omgång).
+
+### 5. Verifiering
+
+- `node tests/fas6-full-verification.mjs`: ALLA kontroller gröna — 0px
+  overflow + 0 konsol-/sidfel + 0 trasiga bilder vid 1024/1180/1280/1440/
+  1920 (desktop) och 390/393/430/600 (mobil), tangentbordsnav, fokus-
+  synlighet, karuseller, FAQ, sök (desktop OCH mobil, riktiga resultat),
+  mobilmeny, varukorg, reduced-motion.
+- Mobil (390/430/600): riktig stash/pop-baseline jämförd pixel-för-pixel
+  mot efter-läget — 390px och 430px HELT identiska (`bbox=None`), 600px en
+  1px-rad sub-pixel-artefakt längst ned. Header-höjd (122px) och kubens
+  riktiga 3D-`matrix3d`-transform under en pågående övergång oförändrade.
+- Header/hero-geometri uppmätt vid alla fyra krävda desktopbredder: 69px
+  header, 0 fall av radbrytning, hero+copy+pills+BÅDA CTA:erna+trust-raden
+  synliga utan scroll vid 1280×720 (liksom 1024/1440/1920).
+- Ingen ändring gjord i produkter/priser/recensioner/Trustpilot-data/SEO-
+  metadata/schema/länkar/footer/THCA-banner/tema 3/5/produktion/golden-
+  baslinjer. Ingen PUBLICERA.
+
+Allt lokalt committat och pushat till `dev` (commit `5a46201`). Arbetet
+pausar för Vilmers visuella granskning, enligt uttrycklig instruktion —
+inga ändringar längre ned på sidan utan explicit godkännande.
