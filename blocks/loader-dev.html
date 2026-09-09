@@ -75,6 +75,47 @@
      ============================================================================ -->
 <script>
 (function () {
+  /* ── Flash-of-native-theme-guard (§8, Mästeruppdrag 2026-09-09) ──
+     ROTORSAK (verifierat live via curl mot https://hazeyse.nyehandel.se/
+     sv?preview=..., inte gissat): Nyehandel skriver självt
+     `<body style="visibility:hidden">` OCH äger en egen, redan
+     existerande FOUC-guard (native inline-skript i sidmallen, dess EGEN
+     kommentar lyder bokstavligen "this fixes Flash of Unstyled Text") som
+     gör body synligt igen på `DOMContentLoaded` -- helt OBEROENDE av om
+     vår egen hazey.css/hazey.min.js (laddade asynkront av DENNA loader,
+     se koden längre ned) hunnit hämtas/köras än. Nettoresultat: den
+     nativa cream/beige-headern och nativa hero-karusellen hinner målas
+     synligt under gapet mellan DOMContentLoaded och att vår reskin är
+     klar -- den rapporterade ~0.2s-flashen vid en hård omladdning.
+
+     FIX (helt inom detta repos rådighet, ingen Nyehandel-admin/mall-
+     ändring behövs): den här loader-taggen exekverar som ett vanligt,
+     parser-blockerande inline-skript -- alltså FÖRE DOMContentLoaded
+     hinner fyra, oavsett var i <body> fältet råkar renderas. Vi lägger
+     klassen "nh-boot" på <html> SYNKRONT här, med en egen inline <style>
+     (måste vara inline -- hazey.css självt är precis det vi väntar på,
+     ett beroende på den skulle vara cirkulärt) som tvingar body osynligt
+     och visar en enkel, solid Hazey-grön yta i stället för ett blankt/
+     nativt flimmer. Klassen tas bort av hazey.min.js självt (sista raden
+     i nhBoot(), se js/19-core-close.js) när headern/startsidan faktiskt
+     är färdigombyggd -- INTE en gissad fast fördröjning. En
+     säkerhetstimeout (nedan) garanterar att sidan ALDRIG förblir
+     permanent osynlig om CSS/JS av nätverks-/körningsskäl inte hinner/kan
+     ladda -- en trasig men SYNLIG sida är alltid bättre än en dold.
+     Innehållet i DOM:en (SEO/crawlbart) rörs inte alls, bara visuell
+     målning -- ingen "permanent" döljning, se uppdragets krav. */
+  var html = document.documentElement;
+  if (!html.classList.contains("nh-boot") && !document.querySelector("[data-nh-boot-guard]")) {
+    html.classList.add("nh-boot");
+    var guardStyle = document.createElement("style");
+    guardStyle.setAttribute("data-nh-boot-guard", "1");
+    guardStyle.textContent =
+      "html.nh-boot body{visibility:hidden!important}" +
+      "html.nh-boot::before{content:\"\";position:fixed;inset:0;background:#1e2716;z-index:2147483647}";
+    document.head.appendChild(guardStyle);
+    setTimeout(function () { html.classList.remove("nh-boot"); }, 1800);
+  }
+
   var BASE = "https://vilmerwahlberg-netizen.github.io/hazey-storefront/";
   var BUST = "?t=" + Date.now();
 

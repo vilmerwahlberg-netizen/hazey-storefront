@@ -1174,9 +1174,19 @@
     filter: none !important;
     transition: opacity 420ms cubic-bezier(.22,.61,.36,1);
   }
-  .nh-hero-slide:not(.is-front) { opacity: 0; z-index: 1; }
-  .nh-hero-slide.is-front { opacity: 1; z-index: 1; }
-  .nh-hero-slide.nh-hero-fade-in { opacity: 1; z-index: 2; }
+  /* BUGGFYND (Mästeruppdrag 2026-09-09, verifierat live via Playwright
+     click() -- "subtree intercepts pointer events"): en icke-främre slide
+     (opacity:0) delar SAMMA z-index:1 som den främre -- opacity:0 gör ett
+     element osynligt, men INTE overksamt för hit-testing. Vid >1 riktig
+     kampanjslide (t.ex. Magic Sauce-sliden) låg den osynliga sliden SENARE
+     i DOM-ordningen och "vann" därför stapelordningen trots att den aldrig
+     syns, vilket gjorde herons EGNA knappar (t.ex. sekundära CTA:n) helt
+     oklickbara så fort mer än en slide fanns -- inte bara ett teoretiskt
+     fall, reproducerat och fixat. pointer-events:none tar bort den dolda
+     sliden ur hit-testingen helt, utan att röra dess opacity/CSS i övrigt. */
+  .nh-hero-slide:not(.is-front) { opacity: 0; z-index: 1; pointer-events: none; }
+  .nh-hero-slide.is-front { opacity: 1; z-index: 1; pointer-events: auto; }
+  .nh-hero-slide.nh-hero-fade-in { opacity: 1; z-index: 2; pointer-events: auto; }
   @media (prefers-reduced-motion: reduce) {
     .nh-hero-slide { transition: none; }
   }
@@ -2449,139 +2459,20 @@
    min-width:861px (mobilens header är OFÖRÄNDRAD, ingen klass appliceras
    där eftersom nedanstående regler är breddpunkts-scopade). */
 @media (min-width: 861px) {
-  /* Rotorsak (verifierat live, inte gissat): #store-header självt bär
-     INGEN synlig bakgrund -- de tre RADERNA under det (.topbar mörkgrön,
-     .main sand→cream, .nh-cat-row cream, se css/21-header-v2.css) har
-     var sin EGNA bakgrundsfärg. Att bara göra #store-header transparent
-     gjorde alltså ingen synlig skillnad -- måste sättas på alla tre. */
-  /* #store-header självt bär OCKSÅ en nativ, `!important`-märkt
-     bakgrund (#eee7e1, Nyehandels egen plattforms-CSS, se
-     css/21-header-v2.css rad ~358/385 för tidigare dokumenterade fynd
-     av samma regel) -- måste övervinnas här också, inte bara på
-     .topbar/.main/.nh-cat-row (annars lyser den beigea nativa färgen
-     igenom de nu transparenta barnraderna). */
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) {
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) nav.navbar,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .nh-cat-row {
-    background: transparent !important;
-    border-bottom-color: transparent !important;
-  }
-  /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): .nh-cat-row ligger
-     nästlad INUTI nativ nav.navbar (se js/18a-header-v2.js
-     navMenu.parentNode.insertBefore), inte som syskon till den -- att bara
-     göra .nh-cat-row transparent räckte alltså inte, för nav.navbar bär
-     SAMMA nativa `!important`-märkta #eee7e1-bakgrund som #store-header
-     självt (se css/21-header-v2.css rad ~358, redan dokumenterad där för
-     .main). Den lyste opakt igenom hela den transparenta glas-headern --
-     verifierat live via getComputedStyle(document.querySelector("nav.navbar")).backgroundColor
-     före/efter den här fixen, inte gissat. */
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .usp li,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .topbar .nh-age-badge {
-    color: #fffdf8 !important;
-  }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand img { display: none; }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand a { position: relative; display: inline-block; }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .left .brand a::after {
-    content: "hazey.se";
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    font-style: italic; font-weight: 600; font-size: 22px; color: #fffdf8; white-space: nowrap;
-    text-shadow: 0 2px 10px rgba(0,0,0,.25);
-  }
-  /* Riktiga navigations-/mega-menylänkarna renderas som .nh-cat-row
-     .cat-link (den nativa .navbar-menu är dold, se css/21-header-v2.css
-     rad 158) -- INTE .navbar-menu .navbar-item, den selektorn träffade
-     aldrig något synligt element. */
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .cat-link,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .cat-link .chev,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right .account-button,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right .cart-button,
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .right svg {
-    color: #fffdf8 !important;
-  }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search .input {
-    background: rgba(255,253,248,.14) !important;
-    border-color: rgba(255,253,248,.4) !important;
-    color: #fffdf8 !important;
-  }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search .input::placeholder { color: rgba(255,253,248,.72) !important; }
-  #store-header.nh-home-hero:not(.nh-home-hero--scrolled) .main .center .store-search svg { color: #fffdf8 !important; }
-
-  /* Vid scroll: ett läsbart, kontrollerat Hazey-glas -- inte bara en
-     platt solid bakgrund. @supports-fallback (solid) när backdrop-filter
-     saknas, se nedan. Bara .main (den rad som faktiskt bär navigation/
-     sök/konto) behöver bli synlig igen -- topbar/nh-cat-row kollapsar
-     redan bort av headerns EGNA scroll-mekanism (initHeaderScroll,
-     js/14-header-scroll.js) i samma veva, orört här. */
-  #store-header.nh-home-hero.nh-home-hero--scrolled .main {
-    background: rgba(250,243,233,.86) !important;
-    box-shadow: 0 20px 40px -30px rgba(44,54,32,.28) !important;
-    transition: background 320ms cubic-bezier(.22,.61,.36,1), box-shadow 320ms cubic-bezier(.22,.61,.36,1);
-  }
-  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-    #store-header.nh-home-hero.nh-home-hero--scrolled .main {
-      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
-    }
-  }
-  #store-header.nh-home-hero.nh-home-hero--scrolled .topbar,
-  #store-header.nh-home-hero.nh-home-hero--scrolled nav.navbar,
-  #store-header.nh-home-hero.nh-home-hero--scrolled .nh-cat-row {
-    background: rgba(250,243,233,.86) !important;
-  }
+  /* ── Mästeruppdrag 2026-09-09 -- äkta EN-radshuvud ──
+     Ersätter föregående omgångs två ÖVERLAPPANDE lager (.main + nav.navbar
+     staplade i samma grid-cell, z-index-lager, en medvetet tom kolumn så
+     nav.navbar:s länkar skulle synas igenom) -- uttryckligen förbjudet av
+     detta uppdrag. .nh-cat-row flyttas nu (js/18b-homepage-v2.js,
+     nhMoveCatRowIntoMainRow, körs EN gång vid boot) till ett RIKTIGT
+     syskon-element mellan .left (logga) och .center (sök) inuti .main:s
+     egen native .container -- en enda flex-rad äger hela navigationen,
+     ingen overlay/z-index-choreografi kvar. nav.navbar blir tomt (dess
+     enda riktiga innehåll var just .nh-cat-row) och döljs helt. */
   #store-header.nh-home-hero .topbar,
-  #store-header.nh-home-hero .main,
-  #store-header.nh-home-hero nav.navbar,
-  #store-header.nh-home-hero .nh-cat-row {
-    transition: background 320ms cubic-bezier(.22,.61,.36,1);
-  }
-
-  /* ── Desktop correction pass 2026-09-09 — kompakt EN-radskomposition ──
-     Headern var visuellt tre våningar (mikrotrust / stor centrerad logga-
-     sök-konto-varukorg-rad / separat navigationsrad), flaggat explicit.
-     #store-header's RIKTIGA barn är .topbar, .main och nav.navbar (samma
-     tre element som redan reskinnas ovan) -- gör #store-header till en
-     grid och lägg .main OCH nav.navbar i SAMMA cell (grid-column:1;
-     grid-row:1) i stället för att flytta någon DOM-nod. Båda blir sedan
-     EGNA grid med en IDENTISK, fast 220px första kolumn (loggzonen) --
-     .main:s kolumn 1 har den riktiga loggan, nav.navbar:s kolumn 1 är
-     medvetet TOM (samma breddvärde, inte uppmätt/beroende av loggans
-     faktiska renderade bredd) -- det garanterar att .nh-cat-row:s länkar
-     alltid börjar exakt där loggzonen slutar, oavsett webbläsare/typsnitt.
-     .main målas ovanpå (z-index:2) och lämnar sin egen kolumn 2 tom --
-     nav-länkarna (som ligger UNDER, z-index:1) syns rakt igenom den tomma
-     ytan, ingen av dem överlappar .main:s riktiga innehåll (sök/konto/
-     varukorg ligger i kolumn 3/4, längre till höger än där nav-länkarna
-     faktiskt tar slut). Mikrotrusten (.topbar) döljs helt på startsidans
-     desktop -- exakt samma verifierade fakta finns redan i hero-bildens
-     egen trust-rad längst ner (heroTrust, js/18b-homepage-v2.js). */
-  #store-header.nh-home-hero {
-    display: grid;
-  }
-  #store-header.nh-home-hero .topbar { display: none; }
-  #store-header.nh-home-hero .main,
   #store-header.nh-home-hero nav.navbar {
-    grid-column: 1;
-    grid-row: 1;
+    display: none;
   }
-  #store-header.nh-home-hero .main { position: relative; z-index: 2; }
-  #store-header.nh-home-hero nav.navbar { position: relative; z-index: 1; }
-
-  /* BUGGFYND (verifierat live via DOM-inspektion, inte antaget): precis
-     samma mönster som nav.navbar-fyndet nedan -- .main:s ENDA riktiga
-     barn är INTE .left/.center/.right direkt, det är EN nativ
-     `DIV.container`-wrapper (+ vår egen .nh-burger, mobil-endast). Ett
-     grid-column satt direkt på .left/.center/.right hade alltså ingen
-     effekt (allt hamnade i .main:s första auto-kolumn, staplat/
-     överflödande). Löst med flex på den RIKTIGA wrappern (.container) i
-     stället för grid på .main -- enklare och kräver ingen låtsad tom
-     kolumn: .left fast bredd, .center flex:1 men sitt EGET innehåll
-     högerjusterat (så det kompakta sökfältet hamnar nära .right, och den
-     tomma vänstra delen av .center lämnar nav-raden UNDER (z-index:1)
-     synlig genom den transparenta ytan), .right fast bredd. */
   #store-header.nh-home-hero .main {
     height: 68px;
     padding: 0 !important;
@@ -2594,129 +2485,167 @@
     height: 68px;
     padding: 0 40px !important;
     margin: 0 !important;
-    gap: 20px;
+    gap: 28px;
   }
-  /* BUGGFYND: .brand (nativ, ej vår) bär en egen fast bredd (~340px,
-     rymlig nog för en riktig logotyp-bild i sin ursprungliga storlek) --
-     osynligt så länge <img> faktiskt fyllde ytan, men vi döljer bilden och
-     ersätter den visuellt med en mindre ::after-textrubrik (se
-     :not(.nh-home-hero--scrolled)-regeln högre upp i filen), vilket
-     lämnade ~260px osynligt, reserverat tomrum som blåste upp .left:s
-     flex-basis:auto och sköt hela resten av raden onödigt långt åt höger. */
-  #store-header.nh-home-hero .main .left {
-    flex: 0 0 auto;
-    width: auto !important;
-  }
+  #store-header.nh-home-hero .main .left { flex: 0 0 auto; width: auto !important; }
   #store-header.nh-home-hero .main .left .brand,
   #store-header.nh-home-hero .main .left .brand a { width: auto !important; }
-  #store-header.nh-home-hero .main .center {
-    flex: 1 1 auto;
-    display: flex !important;
-    justify-content: flex-end;
-  }
-  #store-header.nh-home-hero .main .center .store-search { width: 190px; max-width: 100%; }
-  /* Kompaktare länkpadding (bara denna, startsidans desktop-läge) --
-     7 riktiga nav-länkar + logga + sökfält + konto + varukorg konkurrerar
-     annars om samma rad, se .container-paddingen nedan. */
-  #store-header.nh-home-hero .cat-link { padding: 12px 10px; }
-  #store-header.nh-home-hero .main .right { flex: 0 0 auto; width: auto !important; }
-
-  /* BUGGFYND (verifierat live via elementFromPoint/DOM-inspektion, inte
-     antaget): .nh-cat-row är INTE ett direkt grid-barn till nav.navbar --
-     riktig DOM-kedja är nav.navbar > .container (nativ Nyehandel-wrapper)
-     > .nh-cat-row. Ett grid-column satt direkt på .nh-cat-row hade alltså
-     ingen effekt (bara .container, navbars ENDA riktiga barn, auto-
-     placerades i kolumn 1 -- 220px -- vilket klämde in alla sju nav-
-     länkarna i en 220px-bred yta och tvingade dem att radbryta lodrätt).
-     Rättat på den RIKTIGA grid-cellen (.container), inte .nh-cat-row. */
-  #store-header.nh-home-hero nav.navbar {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    height: 68px;
-    align-items: center;
-  }
-  #store-header.nh-home-hero nav.navbar > .container {
-    grid-column: 2;
-    width: 100%;
-    max-width: none !important;
-    margin: 0 !important;
-    /* Reserverar utrymme åt .main:s sökfält+konto+varukorg, som ligger på
-       ETT HELT SEPARAT lager (z-index:2, egen flex-layout) ovanpå den här
-       raden -- de två lagren "vet" annars inget om varandra, verifierat
-       live: utan denna padding rände de sju riktiga nav-länkarna rakt in
-       under/bakom sökfältet (Merch/Hitta rätt syntes inte alls, riktigt
-       klickbara döda). 400px räcker med god marginal för dagens riktiga
-       innehåll (7 länkar, uppmätt behov ~793px av de ~1220px som annars
-       finns tillgängliga). */
-    padding: 0 400px 0 0 !important;
-    background: transparent !important;
-  }
   #store-header.nh-home-hero .nh-cat-row {
-    /* BUGGFYND: .container:s padding-right (ovan) begränsade aldrig
-       .nh-cat-row i praktiken -- .nh-cat-row har ingen egen width, sizear
-       bara till sitt NATURLIGA innehåll (auto), så flex-wrap:wrap (redan
-       satt av oss) fick aldrig något smalare mått att faktiskt wrappa
-       emot. width:100% tvingar den att respektera förälderns (nu 400px
-       smalare) content-box på riktigt. */
-    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
+    gap: 2px;
     padding: 0 !important;
+    flex-wrap: nowrap; /* §9 -- får ALDRIG radbryta, se nh-cat-more/"Fler"-menyn nedan */
+    min-width: 0;
+    overflow: hidden; /* säkerhetsnät -- nhInitHeaderOverflowNav (JS) håller scrollWidth<=clientWidth innan detta någonsin behöver klippa nåt synligt */
   }
+  #store-header.nh-home-hero .main .center { flex: 0 0 auto; display: flex !important; justify-content: flex-end; }
+  #store-header.nh-home-hero .main .center .store-search { width: 190px; max-width: 100%; }
+  #store-header.nh-home-hero .main .right { flex: 0 0 auto; width: auto !important; }
+  #store-header.nh-home-hero .cat-link { padding: 10px 12px; white-space: nowrap; }
+  /* "Hitta rätt" är redan synlig i heron (sekundära CTA:n) -- uteslut ur
+     desktop-headern (§1), men bara här: mobilmenyn/andra sidtyper (som
+     inte har .nh-home-hero) behåller den oförändrad. */
+  #store-header.nh-home-hero .cat-item--find { display: none; }
 
-  /* Läsbar, tunn glasheader vid scroll -- täcker nu HELA den sammanslagna
-     raden (inte bara .main:s egen yta som tidigare), så nav-länkarna som
-     visuellt "tillhör" samma rad också får samma glasyta bakom sig. */
-  #store-header.nh-home-hero.nh-home-hero--scrolled {
-    background: rgba(250,243,233,.86) !important;
-    box-shadow: 0 20px 40px -30px rgba(44,54,32,.28) !important;
+  /* "Fler ▾" -- översvämningsmenyn (nhInitHeaderOverflowNav). Samma
+     visuella språk som befintliga .ddrop.cat-panel-dropdowns (css/21). */
+  #store-header.nh-home-hero .nh-cat-more { flex: 0 0 auto; }
+  #store-header.nh-home-hero .nh-cat-more__btn { border: none; background: none; cursor: pointer; font: inherit; }
+  #store-header.nh-home-hero .nh-cat-more__panel {
+    display: none;
+    right: 0; left: auto;
+    background: var(--nh-cream, #fffdf8);
+  }
+  #store-header.nh-home-hero .nh-cat-more.is-open .nh-cat-more__panel,
+  #store-header.nh-home-hero .nh-cat-more__btn[aria-expanded="true"] + .nh-cat-more__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    min-width: 200px;
+  }
+  #store-header.nh-home-hero .nh-cat-more__panel .cat-item { flex: none; }
+  #store-header.nh-home-hero .nh-cat-more__panel .cat-link { color: var(--nh-green, #2c3620) !important; padding: 9px 10px; }
+  #store-header.nh-home-hero .nh-cat-more.is-open .cat-link .chev { transform: rotate(180deg); }
+
+  /* ── Transparent/glas i vila, gradvis mörkare vid scroll (§1) ──
+     Sätts via en KONTINUERLIG CSS-variabel (--nh-scroll, 0..1, se
+     nhInitHomeHeroHeader) i stället för föregående omgångs binära
+     40px-tröskel (transparent → cream-glas i ett enda hopp). calc()
+     läser variabeln direkt in i opacity/blur -- bakgrunden blir alltså
+     bokstavligen gradvis mörkare för varje pixel man scrollar, ingen
+     abrupt växling vid nåt enskilt tröskelvärde. Ett mörkt Hazey-grönt
+     glas (inte det tidigare krämfärgade) håller kontrasten mot VARJE
+     underliggande sektion längre ned på sidan, inte bara mot heron. */
+  #store-header.nh-home-hero {
+    /* Baslinjen (scroll=0) är INTE helt transparent -- "diskret mörk
+       transparens" krävs redan i vila (§1), inte bara efter scroll, så
+       wordmark/nav har säker kontrast mot en ljus himmel direkt vid
+       sidladdning också. Övergången till scroll=1 är fortfarande
+       KONTINUERLIG (calc), bara med ett högre golv än 0. */
+    --nh-scroll: 0;
+    background: rgba(30,39,22, calc(0.16 + var(--nh-scroll) * 0.72)) !important;
+    box-shadow: 0 20px 40px -30px rgba(44,54,32, calc(0.08 + var(--nh-scroll) * 0.2)) !important;
+    border-bottom: 1px solid rgba(255,253,248, calc(0.1 + var(--nh-scroll) * 0.08));
   }
   @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-    #store-header.nh-home-hero.nh-home-hero--scrolled {
-      backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+    #store-header.nh-home-hero {
+      backdrop-filter: blur(calc(6px + var(--nh-scroll) * 12px)) saturate(calc(100% + var(--nh-scroll) * 40%));
+      -webkit-backdrop-filter: blur(calc(6px + var(--nh-scroll) * 12px)) saturate(calc(100% + var(--nh-scroll) * 40%));
     }
   }
-  #store-header.nh-home-hero.nh-home-hero--scrolled .main,
-  #store-header.nh-home-hero.nh-home-hero--scrolled nav.navbar {
-    background: transparent !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  #store-header.nh-home-hero .main { background: transparent !important; border-bottom: none !important; }
+  /* BUGGFYND (verifierat live via elementFromPoint, inte antaget): .nh-cat-row
+     bär en egen, redan satt kräm-/vit bakgrund (css/21-header-v2.css,
+     dess default-styling för ANDRA sidtypers tvårads-header) -- .main:s
+     egen transparens ovan ärvs INTE ned till ett barns egen background-
+     regel. Utan denna override renderades exakt den "vita/kräm-nav-
+     rektangel" uppdraget uttryckligen förbjuder, med VIT text (samma
+     .cat-link-regel som resten av filen) ovanpå en nästan lika ljus
+     bakgrund -- osynlig navigation, inte bara fel färgton. */
+  #store-header.nh-home-hero .nh-cat-row { background: transparent !important; border-bottom: none !important; }
+  #store-header.nh-home-hero .main .left .brand img { display: none; }
+  #store-header.nh-home-hero .main .left .brand a { position: relative; display: inline-block; }
+  #store-header.nh-home-hero .main .left .brand a::before,
+  #store-header.nh-home-hero .main .left .brand a::after {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic; font-weight: 600; font-size: 22px; white-space: nowrap;
+  }
+  #store-header.nh-home-hero .main .left .brand a::before {
+    content: "hazey";
+    color: #fffdf8;
+    text-shadow: 0 2px 10px rgba(0,0,0,.25);
+  }
+  #store-header.nh-home-hero .main .left .brand a::after {
+    content: ".se";
+    color: #e2984f;
+  }
+  #store-header.nh-home-hero .cat-link,
+  #store-header.nh-home-hero .cat-link .chev,
+  #store-header.nh-home-hero .main .right .account-button,
+  #store-header.nh-home-hero .main .right .cart-button,
+  #store-header.nh-home-hero .main .right svg {
+    color: #fffdf8 !important;
+  }
+  /* BUGGFYND (verifierat live via CDP CSS.getMatchedStylesForNode, inte
+     antaget): konto-/varukorgsikonernas SVG-`<path>` har INGEN egen
+     `fill`-attribut, så en nativ, `!important`-märkt regel
+     (`#store-header svg:not([fill="none"]) path{fill:#323d25!important}`)
+     vinner -- `color` (satt ovan) räcker inte, SVG:n läser aldrig
+     `currentColor` här. Ikonerna renderades mörkgröna på mörkgrönt glas,
+     i praktiken osynliga. Övervinner samma nativa regel med högre
+     specificitet (fler klasser) + !important, riktat direkt mot fill. */
+  #store-header.nh-home-hero .main .right svg:not([fill="none"]) path,
+  #store-header.nh-home-hero .main .right svg circle:not([fill="none"]) {
+    fill: #fffdf8 !important;
+  }
+  #store-header.nh-home-hero .main .center .store-search .input {
+    background: rgba(255,253,248, calc(0.14 - var(--nh-scroll) * 0.04)) !important;
+    border-color: rgba(255,253,248,.4) !important;
+    color: #fffdf8 !important;
+    transition: background 120ms linear;
+  }
+  #store-header.nh-home-hero .main .center .store-search .input::placeholder { color: rgba(255,253,248,.72) !important; }
+  #store-header.nh-home-hero .main .center .store-search svg { color: #fffdf8 !important; }
+
+  /* §7 -- fokuserad sökdropdown. Nativ regel (`.store-search__dropdown`,
+     verifierad live: position:absolute;left:-610px;right:0;top:50px;
+     width:800px;background:#eee7e1) är byggd för en bredare, annorlunda
+     header-kontext -- alldeles för bred/fel förankrad i vår smala
+     EN-radskomposition (uppmätt: 800px bred, vänsterkant hamnar under
+     navigationslänkarna i stället för direkt under sökfältet). Ankras om
+     direkt under fältet, smalare (uppdragets 380-480px), varmt ljust
+     glas i stället för nativ platt beige. */
+  #store-header.nh-home-hero .store-search__dropdown {
+    left: auto !important;
+    right: 0 !important;
+    top: calc(100% + 10px) !important;
+    width: min(440px, calc(100vw - 80px)) !important;
+    background: rgba(250,243,233,.98) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 24px 48px -18px rgba(20,26,15,.4) !important;
+    border: 1px solid rgba(235,225,209,.8) !important;
+    padding: 14px !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #store-header.nh-home-hero,
+    #store-header.nh-home-hero .main .center .store-search .input { transition: none !important; }
   }
 }
 
-/* KORRIGERAT (Desktop correction pass 2026-09-09, verifierat vid 1024px):
-   den kompakta en-radskompositionen ovan mätt/tänkt för 1440px -- vid
-   1024px (uttryckligen en av de krävda kontrollbredderna) räckte inte
-   det smalare tillgängliga utrymmet (nav.navbar:s 1fr-spår krymper med
-   viewporten, .main:s reserverade högersida gör det inte i samma takt)
-   för alla sju riktiga nav-länkarna, som då tyst radbröt till EN ANDRA
-   rad -- den övre raden hamnade delvis OVANFÖR headerns synliga 0-68px-
-   yta (negativ y, avklippt/osynlig), inte bara trängre. Kompakterar
-   ytterligare i den smalare desktop-zonen (861-1279px): mindre
-   länkpadding/typsnitt, smalare sökfält, mindre reserverat utrymme --
-   allt fortfarande gott om plats för läsbar text, verifierat att alla
-   sju länkar ryms i EN rad efter denna ändring. */
+/* Kompaktering vid smalare desktopbredder (861-1279px) -- kortare
+   loggzon/sökfält/länkpadding, ALDRIG radbrytning (§9, ersätter
+   föregående omgångs 2-rads-kompromiss helt). "Fler"-menyn
+   (nhInitHeaderOverflowNav) fångar upp allt som ändå inte får plats --
+   ingen text krymper under läsbarhet, ingen rad döljs bakom sökfältet. */
 @media (min-width: 861px) and (max-width: 1279px) {
-  #store-header.nh-home-hero .cat-link { padding: 10px 6px; font-size: 12.5px; gap: 2px; }
-  #store-header.nh-home-hero .main .center .store-search { width: 110px; }
-  #store-header.nh-home-hero nav.navbar > .container { padding-right: 230px !important; }
-  /* Även med den kompakteringen ryms inte alltid alla sju riktiga
-     länkarna på en rad ner mot 1024px (verifierat live) -- i stället för
-     att fortsätta krympa text mot oläsbarhet tillåts raden här radbryta
-     till två rader, men headern/nav-lagret får då VÄXA (auto/min-height,
-     inte ett hårt 68px-tak) så en andra rad faktiskt får plats synligt i
-     stället för att klippas av ovanför headerns yta (vilket hände innan
-     denna fix -- rad 1 hamnade på negativt y, osynlig). #store-headers
-     grid-rad växer automatiskt till det högsta av .main/nav.navbar, och
-     JS mäter headerns RIKTIGA höjd live (nhInitHomeHeroHeader) så hero-
-     överlappet följer med oavsett om det blir en eller två nav-rader. */
-  #store-header.nh-home-hero .main,
-  #store-header.nh-home-hero nav.navbar,
-  #store-header.nh-home-hero nav.navbar > .container {
-    height: auto !important;
-    min-height: 68px;
-  }
-  #store-header.nh-home-hero .nh-cat-row { padding: 8px 0 !important; }
+  #store-header.nh-home-hero .main > .container { padding: 0 24px !important; gap: 16px; }
+  #store-header.nh-home-hero .cat-link { padding: 9px 8px; font-size: 13px; }
+  #store-header.nh-home-hero .main .center .store-search { width: 130px; }
 }
 
 /* ── (3) "Good People Higher Moments" — NY fullbredds redaktionell

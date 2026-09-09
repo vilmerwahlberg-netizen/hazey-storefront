@@ -2507,11 +2507,19 @@
 
     function nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref) {
       var order = ["vape", "blomma", "hash"];
+      // CBD, CBG & CBN — riktig, redan verifierad landningssida (samma
+      // "cbd-group"-länk som redan används i heroens catLinks, se
+      // js/18b-homepage-v2.js nhHeroHtml). Saknades tidigare helt i den
+      // RIKTIGA header-navigationen (bara i hero-raden) -- ett äkta
+      // fyraxel-taxonomiluckа, inte ett medvetet val. Ingen ny/gissad URL,
+      // bara samma navData.footerLinks-post som redan finns.
+      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var html = '<div class="cat-item"><a class="cat-link" href="' + allProdukterHref + '">Alla produkter</a></div>'
         + order.map(function (k) { return nhFormatDropdownHtml(k, navData.groups[k]); }).join("")
+        + (cbdEntry ? '<div class="cat-item"><a class="cat-link" href="' + cbdEntry.href + '">CBD, CBG &amp; CBN</a></div>' : "")
         + '<div class="cat-item"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
         + navData.flatExtra.map(function (it) { return '<div class="cat-item"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
-        + '<div class="cat-item"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
+        + '<div class="cat-item cat-item--find"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Hitta rätt</a></div>';
       return html;
     }
@@ -4977,12 +4985,113 @@
           tillståndet för startsidans header. Headerns geometri (höjd/
           position:fixed/top:0) ändras aldrig av någon av de två
           funktionerna, bara bakgrund/blur/skugga via CSS-klassen. */
+    /* KORRIGERAT (Mästeruppdrag 2026-09-09 -- äkta EN-radshuvud, se
+       STATUS.md/slutrapporten): föregående omgångs header var två
+       ÖVERLAPPANDE lager (.main och nav.navbar staplade i samma grid-cell,
+       z-index-lager, en medvetet TOM kolumn i .main så nav.navbar:s
+       länkar skulle synas igenom) -- uttryckligen förbjudet av detta
+       uppdrag ("Bygg inte två överlappande lager med separat navigation
+       och sök/konto"). Ny arkitektur: den redan byggda .nh-cat-row
+       (js/18a-header-v2.js, RIKTIGA nav-länkar, byggd EN gång sitewide av
+       initHeaderV2 och som default monteras inuti nav.navbar för alla
+       andra sidtyper -- den defaulten rörs INTE) flyttas HÄR, bara för
+       startsidans headerinstans, till att bli ett RIKTIGT syskon-element
+       mellan .left (logga) och .center (sök) inuti .main:s egen native
+       .container -- en enda flex-rad, en enda DOM-nod äger navigationen,
+       ingen overlay/z-index-choreografi kvar. nav.navbar blir tomt (dess
+       enda riktiga innehåll var just .nh-cat-row) och döljs helt via CSS
+       (se @media min-width:861px i css/22). Flytten görs EN gång vid
+       boot -- ingen resize-baserad omflytt behövs, CSS:ens breddpunkter
+       styr fortfarande allt responsivt beteende oavsett var noden bor i
+       DOM:en. Andra sidtyper anropar aldrig denna funktion (den är bara
+       kopplad från initHomepageV2), så deras tvårads-header (accepterad,
+       oförändrad, utanför detta uppdrags scope) påverkas inte alls. */
+    function nhMoveCatRowIntoMainRow(header) {
+      var mainContainer = header.querySelector(".main > .container");
+      var catRow = header.querySelector(".nh-cat-row");
+      var searchCol = mainContainer ? mainContainer.querySelector(".center") : null;
+      if (!mainContainer || !catRow || !searchCol) return;
+      if (catRow.parentNode !== mainContainer) {
+        mainContainer.insertBefore(catRow, searchCol);
+      }
+    }
+
+    /* ── "Fler ▾"-översvämningsmeny (§9 -- desktopnavigationen får ALDRIG
+       radbryta till två rader, vilket ersätter föregående omgångs
+       861-1279px-kompromiss som uttryckligen tillät det). Riktig,
+       mätningsdriven prioritetsnavigation (mönstret kallas ofta
+       "priority+ nav") -- ingen gissad breddpunktslista. Mäter om
+       .nh-cat-row:s riktiga innehåll (scrollWidth) ryms i sin tillgängliga
+       bredd (clientWidth) vid varje resize; om inte, flyttas länkar in i
+       en "Fler"-meny bakifrån (Merch/Kampanjer/CBD osv, ALDRIG "Alla
+       produkter" som alltid är fäst kvar) tills raden ryms -- eller
+       flyttas TILLBAKA ut igen om fönstret breddas. Ingen text krymper
+       under läsbarhet, ingen rad döljs bakom sökfältet -- allt som inte
+       ryms syns i stället i menyn. */
+    function nhInitHeaderOverflowNav(header) {
+      var row = header.querySelector(".nh-cat-row");
+      if (!row || row.__nhOverflowNav) return;
+      row.__nhOverflowNav = true;
+      var pinned = row.querySelector(".cat-item"); // "Alla produkter" -- fäst, flyttas aldrig
+      var items = Array.prototype.slice.call(row.querySelectorAll(".cat-item")).filter(function (el) {
+        return el !== pinned && !el.classList.contains("cat-item--find");
+      });
+      if (!items.length) return;
+
+      var more = document.createElement("div");
+      more.className = "cat-item nh-cat-more";
+      more.innerHTML = '<button type="button" class="cat-link nh-cat-more__btn" aria-haspopup="true" aria-expanded="false">Fler'
+        + '<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button>'
+        + '<div class="ddrop cat-panel nh-cat-more__panel"></div>';
+      row.appendChild(more);
+      var panel = more.querySelector(".nh-cat-more__panel");
+      var btn = more.querySelector(".nh-cat-more__btn");
+      more.hidden = true;
+
+      function fits() { return row.scrollWidth <= row.clientWidth + 1; }
+
+      function recalc() {
+        // Återställ: flytta allt ur menyn tillbaka till raden (i sin
+        // ursprungliga ordning, direkt före "Fler"-knappen) innan mätning
+        // -- annars skulle en tidigare övermående aldrig kunna krympa
+        // tillbaka när fönstret breddas igen.
+        items.forEach(function (el) { row.insertBefore(el, more); });
+        more.hidden = true;
+        if (fits()) return;
+        more.hidden = false;
+        for (var i = items.length - 1; i >= 0 && !fits(); i--) {
+          panel.insertBefore(items[i], panel.firstChild);
+        }
+      }
+
+      function closeMenu() { btn.setAttribute("aria-expanded", "false"); more.classList.remove("is-open"); }
+      function openMenu() { btn.setAttribute("aria-expanded", "true"); more.classList.add("is-open"); }
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        if (open) closeMenu(); else openMenu();
+      });
+      document.addEventListener("click", function (e) {
+        if (!more.contains(e.target)) closeMenu();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+
+      var queued = false;
+      window.addEventListener("resize", function () {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; closeMenu(); recalc(); });
+      });
+      recalc();
+    }
+
     function nhInitHomeHeroHeader() {
       var header = document.getElementById("store-header");
       var hero = document.getElementById("nhHero");
       var storeMain = document.getElementById("store-main");
       if (!header || !hero) return;
       header.classList.add("nh-home-hero");
+      nhMoveCatRowIntoMainRow(header);
+      nhInitHeaderOverflowNav(header);
 
       /* KORRIGERAT (Desktop correction pass 2026-09-09): drog tidigare upp
          heron med exakt HEADERNS renderade höjd, i tysta antagandet att
@@ -5017,9 +5126,30 @@
       syncOverlap();
       window.addEventListener("resize", syncOverlap);
 
+      /* KORRIGERAT (Mästeruppdrag 2026-09-09 -- gradvis glas i stället för
+         en binär tröskel): föregående version växlade en enda gång vid
+         y>40 (transparent → cream-glas, ett tydligt "hopp"). Uppdraget
+         kräver att bakgrunden GRADVIS blir mörkare/mindre transparent
+         medan man scrollar GENOM heron, inte ett abrupt byte. Sätter en
+         CSS custom property (--nh-scroll, 0..1) som headerns egen CSS
+         (se css/22) läser via calc() för opacity/blur -- samma headernod,
+         samma geometri (höjd/position) hela tiden, bara en kontinuerlig
+         bakgrundsvariabel. 0 vid toppen (heron full synlig genom glaset),
+         1 efter en kort scrollsträcka (läsbart Hazey-glas). Sträckan
+         (220px) är en kort, avsiktlig övergångszon -- inte kopplad till
+         hero-höjden, som varierar per viewport (se .nh-qfind-hero-formeln)
+         och skulle göra övergången olika lång beroende på skärmstorlek. */
+      var REDUCE_MOTION_MQ = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+      var SCROLL_GLASS_DISTANCE = 220;
       function updateScrolled() {
         var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        header.classList.toggle("nh-home-hero--scrolled", y > 40);
+        var progress = Math.max(0, Math.min(1, y / SCROLL_GLASS_DISTANCE));
+        header.style.setProperty("--nh-scroll", String(progress));
+        // Klassen behålls (binär) som en enkel state-hook för ev. JS/CSS
+        // som bara behöver veta "i praktiken klar" (t.ex. :not()-scopade
+        // reset-regler) -- den visuella övergången själv styrs nu helt av
+        // --nh-scroll, inte av denna klass.
+        header.classList.toggle("nh-home-hero--scrolled", progress >= 1);
       }
       updateScrolled();
       var ticking = false;
@@ -5109,6 +5239,19 @@
     initTrustpilot();
     initHeaderV2();
     initHomepageV2();
+
+    /* Flash-of-native-theme-guard (§8, Mästeruppdrag 2026-09-09, se
+       STATUS.md/slutrapporten + blocks/loader-dev.html för rotorsaken):
+       loadern satte klassen "nh-boot" på <html> SYNKRONT innan hazey.css/
+       hazey.min.js ens började laddas, för att täcka gapet mellan
+       Nyehandels egen DOMContentLoaded-baserade FOUC-guard (native,
+       "this fixes Flash of Unstyled Text" -- gör body synlig igen OAVSETT
+       om vår reskin hunnit bli klar) och att sidan faktiskt är
+       färdigombyggd. All boot-logik ovan körs SYNKRONT (vanliga DOM-
+       mutationer, inget async/await) -- när nhBoot() når hit är headern/
+       startsidan/produktsektionerna redan i sitt slutgiltiga DOM-skick,
+       så det är säkert att ta bort klassen HÄR, som allra sista steget. */
+    document.documentElement.classList.remove("nh-boot");
   }
 
   if (document.readyState === "loading") {

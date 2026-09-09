@@ -154,11 +154,19 @@
 
     function nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref) {
       var order = ["vape", "blomma", "hash"];
+      // CBD, CBG & CBN — riktig, redan verifierad landningssida (samma
+      // "cbd-group"-länk som redan används i heroens catLinks, se
+      // js/18b-homepage-v2.js nhHeroHtml). Saknades tidigare helt i den
+      // RIKTIGA header-navigationen (bara i hero-raden) -- ett äkta
+      // fyraxel-taxonomiluckа, inte ett medvetet val. Ingen ny/gissad URL,
+      // bara samma navData.footerLinks-post som redan finns.
+      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var html = '<div class="cat-item"><a class="cat-link" href="' + allProdukterHref + '">Alla produkter</a></div>'
         + order.map(function (k) { return nhFormatDropdownHtml(k, navData.groups[k]); }).join("")
+        + (cbdEntry ? '<div class="cat-item"><a class="cat-link" href="' + cbdEntry.href + '">CBD, CBG &amp; CBN</a></div>' : "")
         + '<div class="cat-item"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
         + navData.flatExtra.map(function (it) { return '<div class="cat-item"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
-        + '<div class="cat-item"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
+        + '<div class="cat-item cat-item--find"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Hitta rätt</a></div>';
       return html;
     }

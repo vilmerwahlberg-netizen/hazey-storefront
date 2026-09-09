@@ -77,6 +77,14 @@ async function gotoInjected(browser, width, { reducedMotion = false } = {}) {
     window.NH_ASSET_BASE = base;
   }, NH_ASSET_BASE_DEV);
   await page.route("**/cdn.jsdelivr.net/gh/Oliverforss8/**", (route) => route.abort());
+  // KRITISKT (upptäckt 2026-09-09, Mästeruppdraget): tema 6's egen redan
+  // inklistrade loader-dev.html laddar SJÄLV en stale, redan deployad
+  // hazey.css/js-kopia från GitHub Pages vid varje sidladdning, oavsett
+  // manuell addStyleTag/addScriptTag-injektion nedan -- verifierat live
+  // via CDP CSS.getMatchedStylesForNode att den gamla kopian kan vinna
+  // över en ny regel pga selektor-specificitet. Blockeras explicit så
+  // testet bara mäter den nyss byggda, lokala koden.
+  await page.route("**vilmerwahlberg-netizen.github.io/hazey-storefront/hazey.*", (route) => route.abort());
   await page.goto(IMPL_URL, { waitUntil: "networkidle", timeout: 45000 });
   await page.waitForTimeout(800);
   await acceptCookies(page);
