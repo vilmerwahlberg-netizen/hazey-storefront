@@ -2134,6 +2134,18 @@
       if (!header || !hero) return;
       header.classList.add("nh-home-hero");
 
+      /* Godkänd desktopreferens: en enda riktig rad. Flytta vår egen
+         navrad in i samma nativa container som logga/sök/konto/varukorg.
+         Mobilen döljer fortsatt .nh-cat-row och påverkas inte. */
+      var desktopRow = header.querySelector(".main > .container");
+      var catRow = header.querySelector(".nh-cat-row");
+      var searchColumn = desktopRow ? desktopRow.querySelector(".center") : null;
+      if (desktopRow && catRow && catRow.parentNode !== desktopRow) {
+        desktopRow.insertBefore(catRow, searchColumn || desktopRow.querySelector(".right"));
+      }
+      var brandLink = header.querySelector(".main .left .brand a");
+      if (brandLink) brandLink.setAttribute("aria-label", "Hazey – startsida");
+
       /* KORRIGERAT (Desktop correction pass 2026-09-09): drog tidigare upp
          heron med exakt HEADERNS renderade höjd, i tysta antagandet att
          #store-mains egen native padding-top (se filkommentaren ovan)
@@ -2169,7 +2181,12 @@
 
       function updateScrolled() {
         var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        header.classList.toggle("nh-home-hero--scrolled", y > 40);
+        var heroHeight = Math.max(hero.offsetHeight, window.innerHeight || 0);
+        var fadeStart = Math.max(32, heroHeight * 0.56);
+        var fadeEnd = Math.max(fadeStart + 1, heroHeight - header.offsetHeight);
+        var progress = Math.max(0, Math.min(1, (y - fadeStart) / (fadeEnd - fadeStart)));
+        header.style.setProperty("--nh-header-scroll-progress", progress.toFixed(3));
+        header.classList.toggle("nh-home-hero--scrolled", progress >= 0.98);
       }
       updateScrolled();
       var ticking = false;

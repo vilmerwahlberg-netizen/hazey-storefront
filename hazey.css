@@ -13677,6 +13677,230 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   #store-header.nh-home-hero .nh-cat-row { padding: 8px 0 !important; }
 }
 
+/* ── APPROVED Hazey desktop direction v1: verklig enradig glasheader ──
+   Refine 2026-09-09. Detta block ersätter den tidigare två-lagers-
+   illusionen ovan. JS flyttar .nh-cat-row till .main > .container så
+   navigering, sök och ikoner delar samma layout och samma klicklager. */
+@media (min-width: 861px) {
+  #store-header.nh-home-hero {
+    --nh-header-scroll-progress: 0;
+    display: block !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    overflow: visible !important;
+    background: rgba(24, 31, 18, calc(.14 + (var(--nh-header-scroll-progress) * .78))) !important;
+    border-bottom: 1px solid rgba(255, 253, 248, calc(.18 + (var(--nh-header-scroll-progress) * .08))) !important;
+    box-shadow: 0 14px 34px rgba(20, 24, 15, calc(var(--nh-header-scroll-progress) * .18)) !important;
+    backdrop-filter: blur(calc(7px + (var(--nh-header-scroll-progress) * 11px))) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(calc(7px + (var(--nh-header-scroll-progress) * 11px))) saturate(145%) !important;
+    transition: none !important;
+  }
+  #store-header.nh-home-hero .topbar,
+  #store-header.nh-home-hero nav.navbar { display: none !important; }
+  #store-header.nh-home-hero .main,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main {
+    display: block !important;
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  #store-header.nh-home-hero .main > .container {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) minmax(170px, 220px) auto;
+    align-items: center !important;
+    column-gap: clamp(12px, 1.55vw, 28px) !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 68px !important;
+    margin: 0 !important;
+    padding: 0 clamp(24px, 3.2vw, 62px) !important;
+    overflow: visible !important;
+  }
+  #store-header.nh-home-hero .main .left,
+  #store-header.nh-home-hero .main .center,
+  #store-header.nh-home-hero .main .right {
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #store-header.nh-home-hero .main .left { grid-column: 1; }
+  #store-header.nh-home-hero .nh-cat-row { grid-column: 2; }
+  #store-header.nh-home-hero .main .center { grid-column: 3; display: block !important; }
+  #store-header.nh-home-hero .main .right { grid-column: 4; display: flex !important; align-items: center; gap: 4px; }
+
+  #store-header.nh-home-hero .main .left .brand img { display: none !important; }
+  #store-header.nh-home-hero .main .left .brand,
+  #store-header.nh-home-hero .main .left .brand a {
+    display: inline-flex !important;
+    align-items: baseline !important;
+    width: auto !important;
+    min-width: 0 !important;
+    text-decoration: none !important;
+  }
+  #store-header.nh-home-hero .main .left .brand a::before {
+    content: "hazey";
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1;
+    color: #fffdf8;
+    text-shadow: 0 2px 12px rgba(0,0,0,.28);
+  }
+  #store-header.nh-home-hero .main .left .brand a::after {
+    content: ".se" !important;
+    position: static !important;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-size: 19px !important;
+    font-style: italic !important;
+    font-weight: 650 !important;
+    line-height: 1 !important;
+    color: #e18135 !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,.3) !important;
+  }
+
+  #store-header.nh-home-hero .nh-cat-row,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .nh-cat-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: clamp(1px, .25vw, 5px) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 68px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  #store-header.nh-home-hero .cat-link,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .cat-link {
+    min-height: 44px;
+    padding: 0 clamp(5px, .55vw, 10px) !important;
+    border-radius: 999px;
+    color: #fffdf8 !important;
+    font-size: clamp(11.5px, .82vw, 14px) !important;
+    font-weight: 560 !important;
+    line-height: 1.1;
+    text-shadow: 0 1px 8px rgba(0,0,0,.28);
+    transition: background-color 180ms ease, color 180ms ease !important;
+  }
+  #store-header.nh-home-hero .cat-link:hover,
+  #store-header.nh-home-hero .cat-link:focus-visible {
+    color: #fffdf8 !important;
+    background: rgba(255,253,248,.13) !important;
+  }
+  #store-header.nh-home-hero .nh-nav-find { display: none !important; }
+
+  #store-header.nh-home-hero .main .center .store-search { width: 100% !important; max-width: none !important; }
+  #store-header.nh-home-hero #search-container { position: relative !important; width: 100% !important; }
+  #store-header.nh-home-hero .store-search__header { margin: 0 !important; padding: 0 !important; }
+  #store-header.nh-home-hero .main .center .store-search .input,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main .center .store-search .input {
+    width: 100% !important;
+    height: 40px !important;
+    padding: 0 43px 0 16px !important;
+    border: 1px solid rgba(255,253,248,.42) !important;
+    border-radius: 999px !important;
+    background: rgba(255,253,248,.13) !important;
+    color: #fffdf8 !important;
+    font-size: 13px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 8px 24px rgba(20,24,15,.09) !important;
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+  #store-header.nh-home-hero .main .center .store-search .input::placeholder { color: rgba(255,253,248,.72) !important; }
+  #store-header.nh-home-hero .main .center .store-search .input:focus {
+    outline: none !important;
+    border-color: rgba(255,253,248,.78) !important;
+    background: rgba(255,253,248,.19) !important;
+    box-shadow: 0 0 0 3px rgba(225,129,53,.22), inset 0 1px 0 rgba(255,255,255,.18) !important;
+  }
+  #store-header.nh-home-hero .main .center .store-search svg,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main .center .store-search svg { color: #fffdf8 !important; }
+  #store-header.nh-home-hero .close-button { display: none !important; }
+
+  #store-header.nh-home-hero .store-search__dropdown {
+    position: absolute !important;
+    top: calc(100% + 12px) !important;
+    right: 0 !important;
+    left: auto !important;
+    width: min(460px, calc(100vw - 32px)) !important;
+    height: auto !important;
+    max-height: min(560px, calc(100vh - 96px)) !important;
+    overflow: auto !important;
+    padding: 10px !important;
+    border: 1px solid rgba(228,209,191,.8) !important;
+    border-radius: 17px !important;
+    background: rgba(255,253,248,.97) !important;
+    box-shadow: 0 24px 70px rgba(24,31,18,.28) !important;
+    backdrop-filter: blur(22px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(150%) !important;
+  }
+  #store-header.nh-home-hero .inner-dropdown { display: flex !important; flex-direction: column !important; }
+  #store-header.nh-home-hero .nh-search-quicklinks { order: -1; padding: 8px 8px 12px; }
+  #store-header.nh-home-hero .nh-search-quicklinks > span {
+    display: block; margin: 0 0 8px; color: #77705f; font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase;
+  }
+  #store-header.nh-home-hero .nh-search-quicklinks > div { display: flex; flex-wrap: wrap; gap: 7px; }
+  #store-header.nh-home-hero .nh-search-quicklinks a {
+    display: inline-flex; align-items: center; min-height: 38px; padding: 7px 12px; border: 1px solid #e4d1bf;
+    border-radius: 999px; background: #faf3e9; color: #2c3620; font-size: 12.5px; font-weight: 650; text-decoration: none;
+  }
+  #store-header.nh-home-hero .nh-search-quicklinks a:hover,
+  #store-header.nh-home-hero .nh-search-quicklinks a:focus-visible { border-color: #d9782f; color: #9a4e21; }
+  #store-header.nh-home-hero #search-container.nh-search-has-query .nh-search-quicklinks { display: none !important; }
+
+  #store-header.nh-home-hero .main .right .account-button,
+  #store-header.nh-home-hero .main .right .cart-button,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main .right .account-button,
+  #store-header.nh-home-hero.nh-home-hero--scrolled .main .right .cart-button,
+  #store-header.nh-home-hero .main .right svg {
+    color: #fffdf8 !important;
+  }
+  #store-header.nh-home-hero .main .right .account-button,
+  #store-header.nh-home-hero .main .right .cart-button {
+    display: inline-flex !important; align-items: center; justify-content: center;
+    width: 42px !important; height: 42px !important; border-radius: 999px !important;
+  }
+  #store-header.nh-home-hero .main .right .account-button:hover,
+  #store-header.nh-home-hero .main .right .cart-button:hover { background: rgba(255,253,248,.13) !important; }
+
+  #store-header.nh-home-hero .ddrop.cat-panel {
+    top: calc(100% - 5px) !important;
+    border-color: rgba(228,209,191,.9) !important;
+    background: rgba(255,253,248,.98) !important;
+    box-shadow: 0 22px 56px rgba(24,31,18,.24) !important;
+    backdrop-filter: blur(18px) saturate(145%);
+    -webkit-backdrop-filter: blur(18px) saturate(145%);
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1100px) {
+  #store-header.nh-home-hero .main > .container {
+    grid-template-columns: auto minmax(0, 1fr) 150px auto;
+    column-gap: 8px !important;
+    padding-inline: 18px !important;
+  }
+  #store-header.nh-home-hero .cat-link { padding-inline: 5px !important; font-size: 11px !important; }
+  #store-header.nh-home-hero .nh-nav-extra { display: none !important; }
+}
+@media (min-width: 861px) and (max-width: 960px) {
+  #store-header.nh-home-hero .nh-nav-cbd { display: none !important; }
+}
+
 /* ── (3) "Good People Higher Moments" — NY fullbredds redaktionell
    sektion (se nhBonfireHtml). Endast desktop (>=861px) denna omgång --
    ingen mobil komposition beslutad än, se slutrapporten. Innehållet
