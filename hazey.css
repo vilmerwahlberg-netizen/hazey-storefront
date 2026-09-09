@@ -11650,7 +11650,6 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 .hero-link:focus-visible,
 .nh-hero-dot:focus-visible,
 .nh-hero-arrow:focus-visible,
-.nh-qfc:focus-visible,
 .seg-btn:focus-visible {
   outline: 2px solid #d9782f;
   outline-offset: 2px;
@@ -12468,54 +12467,6 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     font-size: inherit !important;
     font-weight: inherit !important;
     line-height: inherit !important;
-  }
-}
-
-/* ── qfind — "Vad söker du?"-chipsraden direkt under hero:n. Förenklad mot
-   prototypens desktop-variant (som blur:ar hero-bilden i bakgrunden) — vi
-   använder en plattare mörkgrön gradient istället, samma tonalitet.
-   UPPMÄTT 2026-09-01: finns ENDAST i facitens #dVp — #mVp .qfind hittas
-   inte alls i renderad DOM. Döljs därför helt under 861px. ── */
-.nh-qfind { display: none; }
-@media (min-width: 861px) {
-.nh-qfind {
-  display: block;
-  background: linear-gradient(168deg, #38452a 0%, #2c3620 60%, #1e2716 100%);
-  padding: 16px;
-  margin: 0 10px 18px;
-  border-radius: 18px;
-}
-}
-.nh-qfind__inner { display: flex; flex-direction: column; gap: 10px; }
-.nh-qfind__lbl { color: #fffdf8; font-size: 13px; font-weight: 650; }
-.nh-qfind__lbl span { display: block; font-size: 11px; font-weight: 500; color: rgba(255,253,248,.62); margin-top: 2px; }
-.nh-qfind__chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.nh-qfc {
-  background: rgba(255,253,248,.08); color: #fffdf8; border: 1px solid rgba(255,253,248,.24);
-  border-radius: 999px; padding: 8px 14px; font-size: 12.5px; font-weight: 600;
-  text-decoration: none; cursor: pointer;
-}
-.nh-qfc:hover { background: #fff; color: #2c3620; }
-.nh-qfc--pri { background: #d9782f; border-color: #d9782f; }
-.nh-qfc--pri:hover { background: #c96a26; color: #fff; }
-@media (min-width: 861px) {
-  /* KORRIGERAT (Desktop correction pass 2026-09-09): CRO-raden hade
-     margin:0 26px + border-radius -- en inramad, cream-kantad "kortyta"
-     i stället för referensens fullbredds övergångsremsa. Samma robusta
-     full-bleed-teknik som redan används för Bonfire/trustremsan/
-     nyhetsbrevet (100vw + negativ margin, ingen yttre radie); riktigt
-     innehåll flyttat till en centrerad innercontainer med samma
-     maxbredd som Bästsäljare/Populära serier, inte hela vägen ut i
-     kanten. */
-  .nh-qfind {
-    width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
-    border-radius: 0;
-    padding: 0;
-    display: block;
-  }
-  .nh-qfind__inner {
-    flex-direction: row; align-items: center; gap: 22px;
-    max-width: 1340px; margin: 0 auto; padding: 22px 40px;
   }
 }
 

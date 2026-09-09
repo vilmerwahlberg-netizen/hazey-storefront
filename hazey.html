@@ -3098,27 +3098,25 @@
         + '  <span>Skickas <b>1–2 vardagar</b></span>'
         + '  <span><b>Trustpilot 4,7/5</b></span>'
         + '</div>';
+      // KORRIGERAT (Korrigeringsrunda 2026-09-09): den redundanta
+      // "Vad söker du?"-CRO-raden (.nh-qfind, "Jag är nybörjare"/Vapes &
+      // carts/Blommor/Naturidentiskt/Semisyntetiskt/Kampanjer) togs bort
+      // helt ur DOM/JS -- fyllde ingen tillräckligt tydlig egen funktion
+      // och duplicerade navigation som redan finns på andra ställen.
+      // Verifierat FÖRE borttagning att varje riktig, distinkt destination
+      // redan finns kvar: "Jag är nybörjare" (data-open-hr="1", öppnar
+      // samma hjälp-quiz) finns redan som herons egen sekundära CTA
+      // ("Hjälp mig hitta rätt →", se secondaryCta.openHr ovan); Vapes &
+      // carts/Blommor/Kampanjer finns redan i herons egen catLinks-rad
+      // (se .nh-hero-v2__cats, samma vapeHref/blommaHref/kampanjerHref
+      // som redan används där). "Naturidentiskt"/"Semisyntetiskt" pekade
+      // båda mot samma generiska /alla-produkter-sida (ingen egen
+      // destination att bevara) och använde dessutom en ännu inte
+      // beslutad terminologi (samma öppna fråga som i Populära vägar).
       return '<section class="nh-hero-v2 nh-qfind-hero" id="nhHero" data-slides="' + active.length + '" tabindex="' + (multi ? "0" : "-1") + '">'
         + '  <div class="nh-hero-track"><div class="nh-hero-cube">' + slidesHtml + '</div></div>'
         + arrows + dots
         + heroTrust
-        + '</section>'
-        // qfind — "Vad söker du?"-chipsraden direkt under hero:n. OBS:
-        // Naturidentiskt/Semisyntetiskt-chippen använder samma ej-beslutade
-        // terminologi som segmentet i "Populära vägar" (se den kommentaren)
-        // — flaggat, inte ett nytt beslut.
-        + '<section class="nh-qfind" aria-label="Snabbval">'
-        + '  <div class="nh-qfind__inner">'
-        + '    <div class="nh-qfind__lbl">Vad söker du?<span>Ett klick — inget quiz.</span></div>'
-        + '    <div class="nh-qfind__chips">'
-        + '      <button type="button" class="nh-qfc nh-qfc--pri" data-open-hr="1">Jag är nybörjare</button>'
-        + '      <a class="nh-qfc" href="' + vapeHref + '">Vapes &amp; carts</a>'
-        + '      <a class="nh-qfc" href="' + blommaHref + '">Blommor</a>'
-        + '      <a class="nh-qfc" href="/sv/categories/alla-produkter">Naturidentiskt</a>'
-        + '      <a class="nh-qfc" href="/sv/categories/alla-produkter">Semisyntetiskt</a>'
-        + '      <a class="nh-qfc" href="' + kampanjerHref + '">Kampanjer</a>'
-        + '    </div>'
-        + '  </div>'
         + '</section>';
     }
 
