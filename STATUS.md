@@ -4126,3 +4126,151 @@ länkar/betyg, mobil 390/393/430/600 verifierat oförändrad (skärmdump
 Allt lokalt committat på `dev` (6 nya commits: 0b16141…fa95f5f). Push
 sker efter denna STATUS.md-uppdatering, sedan pausar arbetet för
 Vilmers visuella granskning, enligt uttrycklig instruktion.
+
+## Korrigeringsrunda — stabil desktopheader, viewport-anpassad hero, borttagen CRO-rad (2026-09-09)
+
+Avgränsat implementationsuppdrag ovanpå föregående "Desktop correction
+pass" (commit c4551ae), tre konkreta buggar Vilmer hittade i tema 6-
+previewn (`?preview=r8eo4lqy6wd5pz7`) + kod. Verifierat live FÖRE
+kodändring i samtliga tre fall, inte antaget utifrån tidigare gröna
+tester. Commits f13444a, 2234006, d80a45d.
+
+### 1. Headerns scrollbugg — rotorsak + fix (commit f13444a)
+
+**Exakt rotorsak (bekräftad live):** TVÅ oberoende scrollhandlers skrev
+till samma headers visuella tillstånd vid olika trösklar --
+`nhInitHomeHeroHeader()` (js/18b-homepage-v2.js) växlade
+`.nh-home-hero--scrolled` (färg/blur) vid y>40, medan den delade,
+äldre `initHeaderScroll()` (js/14-header-scroll.js) dolde HELA headern
+via `transform:translateY(-100%)` vid y>90 (rätt mönster för andra
+sidtypers solida header, fel för en alltid-synlig glasheader).
+Nettoresultat, uppmätt: headern bytte glasnyans vid 40px och försvann
+sedan HELT vid 90px tills man scrollade upp igen.
+
+**Konkurrerande regel borttagen/konsoliderad:** `initHeaderScroll()`s
+`update()`-funktion kollar nu explicit `header.classList.contains
+("nh-home-hero")` på VARJE scrollsteg (inte bara vid init) och rör då
+ALDRIG `.nh-header-hidden` för den headern. Ingen ny parallell
+scrollhanterare skriven -- den befintliga återanvänds, bara med ett
+scopat undantag. `nhInitHomeHeroHeader()` är nu den ENDA funktionen som
+styr startsidans headers visuella tillstånd. Andra sidtypers header
+(utan `.nh-home-hero`) fungerar exakt som förut, oförändrat.
+
+**Beteende vid toppläge/scroll ned/scroll upp (uppmätt, inte antaget):**
+vid scrollY 0/20/50/100/300 i BÅDA riktningarna mäter headern
+konsekvent `height:68px`, `top:0`, aldrig `.nh-header-hidden`. Bakgrund
+växlar EN gång, transparent (y≤40) → cream-glas rgba(250,243,233,.86)
+(y>40), och håller sig där resten av vägen ned. Skärmdumpar tagna vid
+alla fem checkpoints, bekräftar visuellt identisk geometri.
+
+### 2. Redundant CRO-rad borttagen helt (commit 2234006)
+
+`.nh-qfind` ("Vad söker du?"/"Jag är nybörjare"/Vapes & carts/Blommor/
+Naturidentiskt/Semisyntetiskt/Kampanjer) borttaget ur `nhHeroHtml()`s
+returnerade HTML-sträng (aldrig bara CSS-dolt) + all tillhörande död CSS
+(`.nh-qfind`/`.nh-qfind__*`/`.nh-qfc*`, inklusive förra omgångens
+full-bleed-regler och en `:focus-visible`-rad).
+
+Verifierat FÖRE borttagning att varje riktig destination redan finns
+bevarad: "Jag är nybörjare" (`data-open-hr="1"`) delar samma hjälp-quiz-
+trigger som redan finns på herons egen sekundära CTA ("Hjälp mig hitta
+rätt →"); Vapes & carts/Blommor/Kampanjer finns redan i herons egen
+`catLinks`-rad (`.nh-hero-v2__cats`, samma `vapeHref`/`blommaHref`/
+`kampanjerHref`); Naturidentiskt/Semisyntetiskt pekade båda mot samma
+generiska `/alla-produkter`-sida (ingen egen destination, dessutom en
+ännu inte beslutad terminologi). Inget SEO-värde eller riktig länk
+förlorad.
+
+Verifierat efter: `document.querySelector(".nh-qfind")` → `null`.
+"Populära serier" följer nu direkt efter hero med 0px mellanrum (mätt
+live), mot ett tidigare synligt tomrum.
+
+### 3. Desktophero anpassad mot viewporthöjd (commit d80a45d)
+
+**Rotorsak:** `height: clamp(680px, 58vw, 920px)` räknade höjd BARA ur
+viewportens bredd. Vid en bred-men-kort desktop-viewport (rapporterat
+konkret vid 1280×720) gav `58vw`=742px, vilket i en headless kontroll
+bara lämnade 8px marginal mellan sista CTA och viewportkanten -- i en
+riktig webbläsare (som äter av ytterligare utrymme för verklig,
+kollapsande adressrad/chrome) knuffade det CTA:erna helt eller delvis
+under bilden.
+
+**Fix:** `height: clamp(520px, min(58vw, 82svh), 920px)` -- tar det
+MINDRE av två oberoende tak. `svh` i stället för `vh` av samma skäl
+(utesluter webbläsar-chrome mer tillförlitligt på vissa plattformar).
+En lägre hero kräver MINDRE aggressiv cover-beskärning av den fasta
+1536×1024-bilden, inte mer -- ingen ökad beskärning, ingen ny tint,
+golden-hour-färgerna oförändrat intakta.
+
+**Uppmätt vid samtliga sex krävda viewports** (hero-höjd / header-höjd /
+H1-topp / sista CTA-nederkant / marginal mot viewportkant / horisontell
+overflow):
+
+| Viewport | Hero-höjd | Header-höjd | H1-topp | CTA-nederkant | Marginal | Overflow |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1024×768 | 594px | 114px (2 nav-rader) | 227 | 564 | 205px | 0px |
+| 1280×720 | 590px | 68px | 224 | 560 | 160px | 0px |
+| 1366×768 | 630px | 68px | 263 | 599 | 169px | 0px |
+| 1440×900 | 738px | 68px | 371 | 708 | 192px | 0px |
+| 1512×982 | 805px | 68px | 438 | 775 | 207px | 0px |
+| 1920×1080 | 886px | 68px | 519 | 855 | 225px | 0px |
+
+Ingen CTA hamnar utanför synligt område vid någon av de sex
+viewports (`ctaOutsideViewport:false` överallt) -- marginalen gick
+från 8px (1280×720, före fixen) till 160px+ (efter, alla sex
+bredder). Skärmdump tagen vid 1280×720 (den rapporterade MacBook-
+problematiken): hela hero-innehållet (H1, ingress, kategorichips,
+BÅDA CTA:erna, trust-raden) fullt synligt, ingen scroll behövs,
+"Populära serier" börjar synas i nederkanten av samma vy.
+
+### Bekräftelser (item 5, punkt 6-7)
+
+- **Desktop använder aldrig 3D-kuben:** verifierat live under en
+  pågående övergång (inte bara i vila) -- `getComputedStyle(cube)
+  .transform` = `"none"` mitt i en klick-triggad slide-växling vid
+  1440px.
+- **Mobil använder fortfarande sin befintliga kub, orörd:** verifierat
+  live under en pågående övergång vid 390px -- `getComputedStyle(cube)
+  .transform` returnerar en riktig `matrix3d(...)`-rotation (samma
+  mekanik som innan denna omgång, ingen kod i `runTransitionCube`
+  rörd).
+
+### Skyddsräcken (item 4) — verifierade, inte bara antagna
+
+- Full-bleed på trustremsan/nyhetsbrevet: oförändrat, mätt igen
+  (`left:0` till `right:1440` vid 1440px viewport).
+- THCA-bannern: ingen fil/selektor rörd denna omgång.
+- Hero-tinten återinfördes inte: samma lokala vänster/topp/botten-
+  gradient som förra omgången, orörd.
+- Produktdata/priser/betyg/Trustpilot/SEO-metadata/schema/länkar/
+  footer: ingen kodändring denna omgång rörde något av detta (bara
+  scrollogik i JS, borttagning av ett fristående CRO-block, och en
+  CSS-höjdformel för heron).
+- Inga golden-baslinjer uppdaterade.
+- `node tests/fas6-full-verification.mjs`: alla kontroller gröna
+  (0px overflow + 0 konsol-/sidfel + 0 trasiga bilder vid
+  1024/1180/1280/1440/1920 desktop och 390/393/430/600 mobil,
+  tangentbordsnav, fokussynlighet, karuseller, FAQ, sök, mobilmeny,
+  varukorg, reduced-motion).
+- `npm run parity:desktop`: inga nya regressioner mot föregående
+  omgångs siffror (Header+hero -15,8%, Populära serier -6,8%,
+  Bästsäljare -4,3%, Bonfire/Trustremsa/Featured/Omdömen alla under
+  5%-tröskeln, Footer +89% oförändrat, samtliga redan förklarade i
+  föregående STATUS.md-post).
+
+### Ärliga kvarstående avvikelser (item 5, punkt 8)
+
+- Header+hero-sektionens höjd mot referensen: -15,8% (samma,
+  redan dokumenterade bildbeskärningsavvägning som tidigare -- en
+  ANNAN, orelaterad fråga än denna omgångs MacBook-fold-bugg, som nu
+  är löst).
+- Footer +89% mot referensen: oförändrat, redan förklarat (äkta
+  innehållsvolym, två kompakteringspass gjorda i tidigare omgångar).
+- 1024px-headerns kända, mindre ofullkomlighet (två nav-rader vid den
+  bredaste änden av "mindre desktop"-intervallet 861-1279px) kvarstår
+  -- inte i scope för denna omgångs tre specifika buggfixar, redan
+  dokumenterad i föregående STATUS.md-post.
+
+Allt lokalt committat på `dev`, push sker direkt efter denna
+STATUS.md-uppdatering. Arbetet pausar därefter för Vilmers visuella
+granskning, enligt uttrycklig instruktion.
