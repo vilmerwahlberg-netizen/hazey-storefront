@@ -2110,10 +2110,25 @@
        2) Klassen "nh-home-hero"/"nh-home-hero--scrolled" på #store-header
           styr utseendet via CSS (@media min-width:861px, se css/22) --
           transparent/glasigt i vila, övergår kontrollerat till ett
-          läsbart Hazey-glas efter en kort scroll. Helt separat från och
-          stör inte den befintliga hide-on-scroll-down-mekanismen
-          (initHeaderScroll/.nh-header-hidden, js/14-header-scroll.js) --
-          båda klasserna kan vara aktiva samtidigt, olika CSS-egenskaper. */
+          läsbart Hazey-glas efter en kort scroll.
+
+          KORRIGERAT (Korrigeringsrunda 2026-09-09 -- headerns
+          scrollbugg): den ursprungliga kommentaren här hävdade att detta
+          var "helt separat från och stör inte" den befintliga hide-on-
+          scroll-down-mekaniken (initHeaderScroll/.nh-header-hidden,
+          js/14-header-scroll.js) -- det stämde INTE. Båda lyssnade på
+          `scroll` och skrev till SAMMA headers visuella tillstånd, bara
+          vid olika trösklar (40px här, 90px där) och med olika effekt
+          (färg/blur vs. hela headern osynlig via translateY(-100%)) --
+          nettoresultatet var att headern bytte glas-nyans vid 40px och
+          sedan försvann HELT vid 90px tills man scrollade upp igen, en
+          riktig bugg, inte bara en subjektiv känsla. Konsoliderat:
+          js/14-header-scroll.js's update() kollar nu explicit efter
+          .nh-home-hero och rör den ALDRIG (varken döljer eller visar) --
+          den här funktionen är nu den ENDA som styr det visuella
+          tillståndet för startsidans header. Headerns geometri (höjd/
+          position:fixed/top:0) ändras aldrig av någon av de två
+          funktionerna, bara bakgrund/blur/skugga via CSS-klassen. */
     function nhInitHomeHeroHeader() {
       var header = document.getElementById("store-header");
       var hero = document.getElementById("nhHero");
