@@ -2507,13 +2507,11 @@
 
     function nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref) {
       var order = ["vape", "blomma", "hash"];
-      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var html = '<div class="cat-item"><a class="cat-link" href="' + allProdukterHref + '">Alla produkter</a></div>'
         + order.map(function (k) { return nhFormatDropdownHtml(k, navData.groups[k]); }).join("")
-        + (cbdEntry ? '<div class="cat-item nh-nav-cbd"><a class="cat-link" href="' + cbdEntry.href + '">CBD, CBG &amp; CBN</a></div>' : '')
-        + '<div class="cat-item nh-nav-campaign"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
-        + navData.flatExtra.map(function (it) { return '<div class="cat-item nh-nav-extra"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
-        + '<div class="cat-item nh-nav-find"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
+        + '<div class="cat-item"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
+        + navData.flatExtra.map(function (it) { return '<div class="cat-item"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
+        + '<div class="cat-item"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Hitta rätt</a></div>';
       return html;
     }
@@ -2632,7 +2630,6 @@
       var kampanjerHref = "/sv/page/kampanjer"; // verifierad riktig sida, se blocks/kampanjer-page.html
 
       var navData = nhBuildNavData(mega);
-      var desktopCbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
 
       // Bygg NY nav bredvid den nativa (som vi döljer via CSS, inte tar
       // bort — bevarar den som fallback/länk-källa om något går fel).
@@ -2641,46 +2638,6 @@
       newNav.innerHTML = nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref);
       navMenu.parentNode.insertBefore(newNav, navMenu);
       navMenu.classList.add("nh-native-nav-hidden");
-
-      /* Nyehandels riktiga sökmotor/resultat behålls. Snabblänkarna är
-         däremot alltid användbara och byggs enbart från samma live-lästa
-         navData som resten av headern; inga produktträffar fabriceras. */
-      var searchRoot = sh.querySelector("#search-container");
-      var searchInput = searchRoot ? searchRoot.querySelector("input") : null;
-      if (searchInput) {
-        searchInput.setAttribute("placeholder", "Sök produkter…");
-        function syncSearchState() {
-          searchRoot.classList.toggle("nh-search-has-query", !!searchInput.value.trim());
-        }
-        function ensureSearchQuicklinks() {
-          var inner = searchRoot.querySelector(".inner-dropdown");
-          if (!inner || inner.querySelector(".nh-search-quicklinks")) return;
-          var links = [
-            { label: "Alla produkter", href: allProdukterHref },
-            { label: navData.groups.vape.label, href: (navData.groups.vape.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: navData.groups.blomma.label, href: (navData.groups.blomma.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: navData.groups.hash.label, href: (navData.groups.hash.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: "Magic Sauce", href: navData.bySlug["magic-sauce"] },
-            desktopCbdEntry ? { label: "CBD, CBG & CBN", href: desktopCbdEntry.href } : null
-          ].filter(function (it) { return it && it.href; });
-          var quick = document.createElement("div");
-          quick.className = "nh-search-quicklinks";
-          quick.innerHTML = '<span>Snabblänkar</span><div>'
-            + links.map(function (it) { return '<a href="' + it.href + '">' + it.label + '</a>'; }).join("")
-            + '</div>';
-          inner.insertBefore(quick, inner.firstChild);
-        }
-        searchInput.addEventListener("input", syncSearchState);
-        searchInput.addEventListener("focus", function () {
-          syncSearchState();
-          setTimeout(ensureSearchQuicklinks, 0);
-        });
-        syncSearchState();
-        ensureSearchQuicklinks();
-        if (window.MutationObserver) {
-          new MutationObserver(ensureSearchQuicklinks).observe(searchRoot, { childList: true, subtree: true });
-        }
-      }
 
       // Ny mobilmeny (samma navData — EN datakälla för både desktop- och
       // mobilmarkup, se CLAUDE.md om varför inte två separata träd).
@@ -5027,18 +4984,6 @@
       if (!header || !hero) return;
       header.classList.add("nh-home-hero");
 
-      /* Godkänd desktopreferens: en enda riktig rad. Flytta vår egen
-         navrad in i samma nativa container som logga/sök/konto/varukorg.
-         Mobilen döljer fortsatt .nh-cat-row och påverkas inte. */
-      var desktopRow = header.querySelector(".main > .container");
-      var catRow = header.querySelector(".nh-cat-row");
-      var searchColumn = desktopRow ? desktopRow.querySelector(".center") : null;
-      if (desktopRow && catRow && catRow.parentNode !== desktopRow) {
-        desktopRow.insertBefore(catRow, searchColumn || desktopRow.querySelector(".right"));
-      }
-      var brandLink = header.querySelector(".main .left .brand a");
-      if (brandLink) brandLink.setAttribute("aria-label", "Hazey – startsida");
-
       /* KORRIGERAT (Desktop correction pass 2026-09-09): drog tidigare upp
          heron med exakt HEADERNS renderade höjd, i tysta antagandet att
          #store-mains egen native padding-top (se filkommentaren ovan)
@@ -5074,12 +5019,7 @@
 
       function updateScrolled() {
         var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        var heroHeight = Math.max(hero.offsetHeight, window.innerHeight || 0);
-        var fadeStart = Math.max(32, heroHeight * 0.56);
-        var fadeEnd = Math.max(fadeStart + 1, heroHeight - header.offsetHeight);
-        var progress = Math.max(0, Math.min(1, (y - fadeStart) / (fadeEnd - fadeStart)));
-        header.style.setProperty("--nh-header-scroll-progress", progress.toFixed(3));
-        header.classList.toggle("nh-home-hero--scrolled", progress >= 0.98);
+        header.classList.toggle("nh-home-hero--scrolled", y > 40);
       }
       updateScrolled();
       var ticking = false;

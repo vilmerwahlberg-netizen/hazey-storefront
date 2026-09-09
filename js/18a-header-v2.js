@@ -154,13 +154,11 @@
 
     function nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref) {
       var order = ["vape", "blomma", "hash"];
-      var cbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
       var html = '<div class="cat-item"><a class="cat-link" href="' + allProdukterHref + '">Alla produkter</a></div>'
         + order.map(function (k) { return nhFormatDropdownHtml(k, navData.groups[k]); }).join("")
-        + (cbdEntry ? '<div class="cat-item nh-nav-cbd"><a class="cat-link" href="' + cbdEntry.href + '">CBD, CBG &amp; CBN</a></div>' : '')
-        + '<div class="cat-item nh-nav-campaign"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
-        + navData.flatExtra.map(function (it) { return '<div class="cat-item nh-nav-extra"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
-        + '<div class="cat-item nh-nav-find"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
+        + '<div class="cat-item"><a class="cat-link campaign" href="' + kampanjerHref + '">Kampanjer</a></div>'
+        + navData.flatExtra.map(function (it) { return '<div class="cat-item"><a class="cat-link" href="' + it.href + '">' + it.label + '</a></div>'; }).join("")
+        + '<div class="cat-item"><a class="cat-link find" href="#hitta-ratt" data-open-hr="1">'
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Hitta rätt</a></div>';
       return html;
     }
@@ -279,7 +277,6 @@
       var kampanjerHref = "/sv/page/kampanjer"; // verifierad riktig sida, se blocks/kampanjer-page.html
 
       var navData = nhBuildNavData(mega);
-      var desktopCbdEntry = navData.footerLinks.filter(function (it) { return it.slug === "cbd-group"; })[0];
 
       // Bygg NY nav bredvid den nativa (som vi döljer via CSS, inte tar
       // bort — bevarar den som fallback/länk-källa om något går fel).
@@ -288,46 +285,6 @@
       newNav.innerHTML = nhBuildNewNavHtml(navData, allProdukterHref, kampanjerHref);
       navMenu.parentNode.insertBefore(newNav, navMenu);
       navMenu.classList.add("nh-native-nav-hidden");
-
-      /* Nyehandels riktiga sökmotor/resultat behålls. Snabblänkarna är
-         däremot alltid användbara och byggs enbart från samma live-lästa
-         navData som resten av headern; inga produktträffar fabriceras. */
-      var searchRoot = sh.querySelector("#search-container");
-      var searchInput = searchRoot ? searchRoot.querySelector("input") : null;
-      if (searchInput) {
-        searchInput.setAttribute("placeholder", "Sök produkter…");
-        function syncSearchState() {
-          searchRoot.classList.toggle("nh-search-has-query", !!searchInput.value.trim());
-        }
-        function ensureSearchQuicklinks() {
-          var inner = searchRoot.querySelector(".inner-dropdown");
-          if (!inner || inner.querySelector(".nh-search-quicklinks")) return;
-          var links = [
-            { label: "Alla produkter", href: allProdukterHref },
-            { label: navData.groups.vape.label, href: (navData.groups.vape.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: navData.groups.blomma.label, href: (navData.groups.blomma.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: navData.groups.hash.label, href: (navData.groups.hash.items.filter(function (it) { return it.slug.indexOf("alla-") === 0; })[0] || {}).href },
-            { label: "Magic Sauce", href: navData.bySlug["magic-sauce"] },
-            desktopCbdEntry ? { label: "CBD, CBG & CBN", href: desktopCbdEntry.href } : null
-          ].filter(function (it) { return it && it.href; });
-          var quick = document.createElement("div");
-          quick.className = "nh-search-quicklinks";
-          quick.innerHTML = '<span>Snabblänkar</span><div>'
-            + links.map(function (it) { return '<a href="' + it.href + '">' + it.label + '</a>'; }).join("")
-            + '</div>';
-          inner.insertBefore(quick, inner.firstChild);
-        }
-        searchInput.addEventListener("input", syncSearchState);
-        searchInput.addEventListener("focus", function () {
-          syncSearchState();
-          setTimeout(ensureSearchQuicklinks, 0);
-        });
-        syncSearchState();
-        ensureSearchQuicklinks();
-        if (window.MutationObserver) {
-          new MutationObserver(ensureSearchQuicklinks).observe(searchRoot, { childList: true, subtree: true });
-        }
-      }
 
       // Ny mobilmeny (samma navData — EN datakälla för både desktop- och
       // mobilmarkup, se CLAUDE.md om varför inte två separata träd).
