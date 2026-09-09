@@ -195,19 +195,6 @@
 .nh-pser-nav:hover { background: #d9782f; border-color: #d9782f; color: #fff; }
 .nh-pser-nav:disabled { opacity: .35; cursor: default; pointer-events: none; }
 @media (min-width: 861px) { .nh-pser-nav { display: flex; } }
-/* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): på
-   mobilens 83px-cirkel radbröt/svämmade badge-texten över kortkanten --
-   byggd för desktopens stora kvadratiska kort. Döljs på mobil (samma
-   information finns ändå i slutrapporten/asset-manifestet), visas bara
-   där den faktiskt får plats. */
-.pser-preliminary { display: none; }
-@media (min-width: 861px) {
-  .pser-preliminary {
-    display: block; position: absolute; top: 8px; left: 8px; z-index: 1;
-    font-size: 9px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
-    color: #fffdf8; background: rgba(44,54,32,.72); border-radius: 999px; padding: 3px 8px;
-  }
-}
 .nh-pser .pser-row {
   display: flex;
   gap: 18px;

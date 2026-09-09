@@ -3586,8 +3586,13 @@
             var dUrl = NH_ASSET_BASE + (c.imgDesktop || c.img);
             var avatar = '<span class="pser-avatar has-photo" style="--pser-img-m:url(\'' + mUrl.replace(/'/g, "\\'") + '\');--pser-img-d:url(\'' + dUrl.replace(/'/g, "\\'") + '\')"></span>';
             var countAttr = (c.liveCount && href) ? ' data-count-href="' + href + '"' : "";
-            var badge = c.imgPreliminary ? '<span class="pser-preliminary" title="Preliminär bild, ersätts med riktig Hazey-fotografering">Preliminär bild</span>' : "";
-            var inner = avatar + badge
+            // KORRIGERAT (Desktop correction pass 2026-09-09): "Preliminär
+            // bild" renderades tidigare som en kundsynlig badge -- flaggat
+            // explicit ("får inte visas i det publika kortet"). c.imgPreliminary
+            // behålls som INTERN status i datan (Magic Sauce-kortet ovan)
+            // för att komma ihåg att bilden ska ersättas med riktig Hazey-
+            // fotografering, men bygger inte längre någon synlig badge.
+            var inner = avatar
               + '<span class="pser-name">' + c.name + '</span>'
               + '<span class="pser-n"></span>';
             // Utan riktig destination (THCaB/THCbA/D10 i dag): rendera ett
