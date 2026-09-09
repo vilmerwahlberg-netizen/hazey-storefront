@@ -3930,3 +3930,199 @@ Inget pushat till `origin/dev` ännu. Nästa steg: en sista fullständig
 `npm run parity` + `node tests/fas6-full-verification.mjs`-körning för
 att bekräfta grönt läge oförändrat efter de sista CSS-justeringarna,
 sedan push.
+
+## Desktop correction pass — visuell korrigering efter manuell Chrome-/kodgranskning (2026-09-09)
+
+Vilmer granskade tema 6-previewn (`?preview=r8eo4lqy6wd5pz7`) och koden
+manuellt och skickade ett avgränsat, konkret buggfixuppdrag (inte en ny
+koncept-/mockuprunda) mot samma låsta referens
+(`APPROVED Hazey desktop direction v1.png`). 9 numrerade problemområden,
+alla adresserade denna omgång (commits 0b16141…fa95f5f, 6 commits).
+Referensbilden kunde INTE läsas denna omgång (macOS nekade
+filsystemsåtkomst till `/Users/wahlberg/Documents/Mockups/`, `EPERM` i
+både Read-verktyget och `cp`/`cat` i terminalen — Vilmer valde att ge
+Full Disk Access, men den tar inte effekt förrän sessionen/appen
+startas om) — arbetet gjordes mot Vilmers egen, mycket precisa
+textspecifikation + den riktiga live-implementationen, inte mot bilden
+direkt. Vilmer bör göra den slutliga sida-vid-sida-jämförelsen mot
+referensbilden själv.
+
+### 1. Hero-tinten borttagen (commit 0b16141)
+
+`.nh-hero-slide::before` (delad med mobil) lade en heltäckande grön/mörk
+`linear-gradient(180deg,...55%,...88%)` över HELA desktopfotot --
+förstörde golden-hour-färger/produktförpackningar/himmel/grafitti helt.
+Ersatt (endast `@media min-width:861px`) med lokal, riktad mörkläggning:
+vänster-till-höger-lager bakom textkolumnen (fadear ut ~62% bredd),
+svagt topplager bakom headerzonen, svagt bottenlager bakom trust-raden.
+Högersidan (produkter/solnedgång/grafitti) förblir helt klar. Kontrast
+verifierad MATEMATISKT (WCAG-luminansformel, text dold + bakgrund
+pixelsamplad separat via Playwright, inte gissad): H1 11,6:1, brödtext
+10,8:1, eyebrow 10,4:1, trust-rad 15,2:1 mot vit text.
+
+### 2. 3D-kuben är nu ENDAST mobil (commit 0b16141)
+
+`nhInitHeroCarousel()` grenar nu på `isDesktop()`
+(`window.innerWidth>860`): mobil behåller EXAKT samma kub (translateZ/
+rotateY/perspective) oförändrad, desktop använder en ny
+`runTransitionFade()` -- ren opacity-crossfade (~420ms), aldrig någon
+3D-transform. Extra bugg hittad+fixad under verifiering: fromSlide
+ärvde sin egen opacity-transition även vid instant-reset efter en
+avslutad crossfade, vilket gav en osynlig "spöke ovanpå"-glitch i EN av
+de två loop-riktningarna (samma z-index, DOM-ordning avgjorde
+stapling) -- nollställs nu instant. Breakpoint-korsning (fönster som
+dras om över 860/861px) städas explicit (`resetTransitionState`).
+Verifierat: desktop cube-transform alltid "none" (vila + under
+övergång), mobil visar fortfarande genuin matrix3d-rotation, loop
+1→2→1→2→1 fungerar i båda lägen, reduced-motion byter inom <80ms.
+
+### 3. Kompakt en-radsheader (commits 54133f2, 1ac785d)
+
+Tre visuella våningar (mikrotrust/stor centrerad rad/separat nav-rad) →
+EN kompakt rad (68px, ned från 175px), utan att flytta någon DOM-nod
+eller duplicera Nyehandels riktiga nav/sök/konto/varukorg.
+`#store-header.nh-home-hero` blir en grid; `.main` och `nav.navbar`
+läggs i SAMMA cell och överlappar (`.main` ovanpå, z-index:2, nav
+under, z-index:1, syns genom `.main`s tomma mittyta). Mikrotrusten
+(`.topbar`) döljs helt på startsidans desktop (samma fakta finns redan
+i hero-bildens trust-rad).
+
+Tre dolda DOM-lager hittades och rättades (verifierade via
+getComputedStyle/DOM-inspektion, inte gissade): `.nh-cat-row` är INTE
+`nav.navbar`s direkta barn (riktig kedja: `nav.navbar > .container >
+.nh-cat-row`), samma mönster i `.main` (`.container > .left/.center/
+.right`), och `.brand` (nativ) bär en egen fast bredd (~340px,
+dimensionerad för en riktig logobild) som blev osynligt tomrum när
+bilden doldes och ersattes med en mindre textrubrik. Alla tre rättade
+på de RIKTIGA elementen, inte på de element man skulle tro.
+
+Hero-fotots negativa margin-top drog tidigare upp med HEADERNS egen
+höjd (fungerade bara för att den gamla 175px-headern råkade ligga nära
+`#store-main`s delade, native padding-top). Den nya 68px-headern
+avslöjade att de aldrig varit kopplade (native padding mätte 149px vid
+1440px, oberoende siffra) -- drar nu i stället upp med `#store-main`s
+FAKTISKA, live uppmätta padding-top, så heron alltid landar exakt vid
+sidans topp oavsett vad den delade native-paddingen råkar vara.
+
+1024px (en av de krävda kontrollbredderna) krävde ett andra
+kompakteringspass (mindre länkpadding/typsnitt/sökfältsbredd) + tillät
+kontrollerad radbrytning till två rader med auto-höjd i stället för ett
+hårt 68px-tak (annars klipptes rad 1 osynligt ovanför headerns yta).
+Kvarstår en mindre, känd ofullkomlighet vid exakt 1024px ("Merch"
+överlappar sökfältets vänsterkant med ett par pixlar) -- avsevärt
+förbättrat från det tidigare helt trasiga/osynliga läget.
+
+### 5. Full-bleed övergångsremsor (commit 83484a3)
+
+CRO-raden (`.nh-qfind`), trustremsan (`.nh-trustblock`) och
+nyhetsbrevet (`.nh-signup`) hade cream-sidogutter i stället för att gå
+kant till kant. Trustremsans `max-width:none` hade ingen effekt --
+bekräftat via getComputedStyle att en ALDRIG återställd
+`margin:0 auto` fortfarande vann (icke-noll auto-marginaler stänger av
+en flex-kolumnförälders annars automatiska stretch). Nyhetsbrevet
+saknade en desktop-override helt. Alla tre nu verifierat full-bleed
+(left:0 till right:<viewport>) vid 1024/1280/1440/1920px. "Snabb koll"
+och övriga faktiska innehållskort är oförändrade/fortsatt avgränsade
+(uppdragets uttryckliga undantag).
+
+### 6. Redaktionell serif-typografi återställd site-wide (commit 706c5d6)
+
+Systematisk kontroll visade att NÄSTAN VARJE sektionsrubrik + hero-H1
+renderade Nyehandels nativa `h1,h2,...{font-family:Roboto!important}`-
+reset (28,8px/600) i stället för den avsedda Iowan/Palatino-serifen --
+en spridd, site-wide variant av en redan flera gånger dokumenterad
+bugklass (CLAUDE.md). Två sektioner (Bästsäljare/Verifierade omdömen)
+hade INTE ENS en bas-serifregel, bara en mobil-scopad fix utan
+desktop-motsvarighet. `!important` tillagt på font-family/-weight/-size
+för 11 kontrollerade rubriker (Populära serier/vägar, Bästsäljare,
+Featured, Verifierade omdömen, Snabb koll, Guider, Nyhetsbrev,
+Bonfire-copy, hero-H1). Verifierat via getComputedStyle efter fixen:
+samtliga renderar nu korrekt serif med meningsfullt olika storlekar
+(19-46px) i stället för alla klämda till samma 28,8px.
+
+### 7. Kvalitetsfel (commit fa95f5f)
+
+"Preliminär bild"-badgen (Magic Sauce-seriekortet) togs bort från det
+publika kortet -- den interna statusflaggan (`imgPreliminary`) behålls
+i datan. Två andra punkter verifierades vara ICKE-buggar: Bonfire-
+textens synliga klippning var ett testmetodik-artefakt (ett abrupt
+scroll-hopp lurade headerns dölj-vid-scroll-logik) -- vid en
+realistisk kontinuerlig nedåtscroll döljer headern sig korrekt innan
+Bonfire når vytoppen, texten syns fullt ut. Verifierade omdömens
+tvåkortslayout bildar redan ett balanserat grid, ingen ändring behövdes
+(den ensamma bokstaven "O" som författarnamn är riktig kunddata, rörs
+inte).
+
+Bästsäljarnas produktbild-mot-korttext-prioritet och Populära vägar/
+Snabb koll/Guiders känsla av "samma desktopvärld" bedöms redan
+tillräckligt adresserade av typografifixen (item 6) + de tidigare
+containerbredds-/full-bleed-fixarna denna och förra omgången -- ingen
+ytterligare specifik ändring gjord för dem denna gång.
+
+**THCA-bannern (item 7, verifierad TIDIGARE denna session, oförändrad):**
+bekräftat via `document.elementFromPoint()` att bannern är EN platt
+raster-bild (`#Banner .image-component a > img`, Cloudfront-URL,
+uppladdad i Nyehandels sidbyggare) med rubrik/ribbon-text/den lila
+CTA-knappen inbakad i bildens pixlar -- ingen CSS kan reskinna det.
+Rapporterat, inte "fixat" med CSS: behöver antingen en ny, på-varumärke
+bannerbild i samma bildformat (2048×768-liknande bred banderoll,
+samma process som v2-tillgångarna: separat, sektion-specifik prompt,
+riktiga produkter/copy hålls utanför bilden) uppladdad via Nyehandel-
+admin, eller att Vilmer tar bort komponenten där -- ingen adminåtgärd
+gjord.
+
+### 8-9. Motion/scope
+
+Motion oförändrad utöver crossfade-tillägget (se punkt 2) -- scroll-
+reveal, IntersectionObserver-fallback, reduced-motion-hantering redan
+verifierade tidigare denna session, inte rörda. Endast tema 6/dev,
+ingen PUBLICERA, tema 3/5/admin orörda, inga fabricerade produkter/
+länkar/betyg, mobil 390/393/430/600 verifierat oförändrad (skärmdump
++ funktionstest).
+
+### 10. Verifiering
+
+- `npm run parity:desktop` (1440px) kört om efter alla ändringar:
+  Header+hero -14,3% (förbättrat från -16,9%), Populära serier -6,8%,
+  Bästsäljare -4,3% (nu under 5%-tröskeln), Bonfire/Trustremsa/Featured/
+  Omdömen alla under tröskeln, Footer +89% (oförändrat, redan förklarat).
+  Inga nya regressioner.
+- `node tests/fas6-full-verification.mjs` kört om: ALLA kontroller
+  gröna -- 0px overflow + 0 konsol-/sidfel + 0 trasiga bilder vid
+  1024/1180/1280/1440/1920 (desktop) och 390/393/430/600 (mobil),
+  tangentbordsnav, fokussynlighet, karuseller, FAQ, sök, mobilmeny,
+  varukorg, reduced-motion.
+- De två `net::ERR_FAILED`-konsolfelen i `desktop-reference-parity`s
+  rapport är (verifierat live via en dedikerad `requestfailed`-
+  lyssnare, samma kontroll som redan gjordes förra omgången) den
+  AVSIKTLIGT blockerade `Oliverforss8`-jsDelivr-routen (`page.route(...)
+  .abort()`), inte ett riktigt fel -- filtreras redan bort i
+  `fas6-full-verification.mjs`s brusfilter, men `desktop-reference-
+  parity.mjs` (byggd tidigare) filtrerar dem inte bort ur sin egen
+  textrapport, vilket gjorde att de syntes där trots att de var kända/
+  ofarliga. Inte ändrat i detta verktyg denna omgång (kosmetiskt,
+  rapporttexten förklarar redan att en hög diff/avvikelse kan vara
+  förväntad, samma princip gäller här).
+- SEO/länkar: ingen kodändring rörde title/meta/canonical/robots/
+  hreflang/schema/länkar denna omgång (bara CSS/JS-layout/typografi) --
+  ingen ny diff förväntad, inte omkörd i sin helhet denna gång (redan
+  fullständigt verifierad förra omgången, se Checkpoint 6 ovan).
+
+### Sammanfattning: fyra kategorier
+
+- **Visuellt korrigerat:** hero-tint, 3D-kub-scope, header-komposition,
+  full-bleed-remsor, site-wide serif-typografi, "Preliminär bild"-badge.
+- **Medvetet annorlunda pga riktig data:** Verifierade omdömens
+  2-kortslayout och ensamma "O"-författarnamn; Bästsäljarnas riktiga
+  produktfoto-proportioner (redan dokumenterat tidigare omgångar).
+- **Plattforms-/adminbegränsning:** THCA-bannern (platt raster-bild,
+  kräver ny bildtillgång eller borttagning i Nyehandel-admin, inte en
+  kodfix).
+- **Kvarvarande visuell skuld:** Header+hero -14,3% (bildbeskärnings-
+  avvägning, tidigare dokumenterad), footer +89% (äkta innehållsvolym,
+  två kompakteringspass redan gjorda), 1024px-headerns marginella
+  "Merch"-överlapp.
+
+Allt lokalt committat på `dev` (6 nya commits: 0b16141…fa95f5f). Push
+sker efter denna STATUS.md-uppdatering, sedan pausar arbetet för
+Vilmers visuella granskning, enligt uttrycklig instruktion.
