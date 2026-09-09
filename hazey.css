@@ -13457,7 +13457,18 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     padding: 0 !important;
     flex-wrap: nowrap; /* §9 -- får ALDRIG radbryta, se nh-cat-more/"Fler"-menyn nedan */
     min-width: 0;
-    overflow: hidden; /* säkerhetsnät -- nhInitHeaderOverflowNav (JS) håller scrollWidth<=clientWidth innan detta någonsin behöver klippa nåt synligt */
+    /* KORRIGERINGSUPPDRAG (2026-09-09, fynd via egen skärmdumpsverifiering):
+       ett tidigare "overflow:hidden"-säkerhetsnät här klippte i praktiken
+       ALLA nav-dropdowns (.cat-panel/.nh-cat-more__panel) helt osynliga --
+       de öppnas nedåt, UTANFÖR .nh-cat-rows egen 46px-höga box, och
+       overflow:hidden på ETT axel klipper båda i webbläsare (ingen ren
+       "overflow-x:hidden;overflow-y:visible"-genväg finns i CSS-spec).
+       Ingen ersättande klippning behövs: nhInitHeaderOverflowNav (JS)
+       håller redan scrollWidth<=clientWidth aktivt (flyttar länkar till
+       "Fler" INNAN nåt överflödar), så en horisontell overflow skulle
+       bara kunna uppstå under en enstaka resize-frame -- footprintet av
+       att ta bort klippningen är en dropdown som faktiskt syns, mot en
+       overflow som aldrig observerats i praktiken. */
   }
   #store-header.nh-home-hero .main .center { flex: 0 0 auto; display: flex !important; justify-content: flex-end; }
   #store-header.nh-home-hero .main .center .store-search { width: 190px; max-width: 100%; }
@@ -13488,6 +13499,14 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   #store-header.nh-home-hero .nh-cat-more__panel .cat-item { flex: none; }
   #store-header.nh-home-hero .nh-cat-more__panel .cat-link { color: var(--nh-green, #2c3620) !important; padding: 9px 10px; }
   #store-header.nh-home-hero .nh-cat-more.is-open .cat-link .chev { transform: rotate(180deg); }
+  /* Säkerhet mot en kort viewport (t.ex. 1024x768) -- formatdropdownarna
+     (Vapes & carts/Blommor/Hash) har mycket riktigt innehåll (delserier +
+     "Fler i..."-lista + Populära serier) och kan annars bli högre än
+     viewporten. Egen scroll i stället för att klippas av kanten. */
+  #store-header.nh-home-hero .ddrop.cat-panel {
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
 
   /* ── Transparent/glas i vila, gradvis mörkare vid scroll (§1) ──
      Sätts via en KONTINUERLIG CSS-variabel (--nh-scroll, 0..1, se
@@ -13564,6 +13583,12 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     background: rgba(255,253,248, calc(0.14 - var(--nh-scroll) * 0.04)) !important;
     border-color: rgba(255,253,248,.4) !important;
     color: #fffdf8 !important;
+    /* KORRIGERINGSUPPDRAG (2026-09-09): referensens sökfält är en hel
+       "pill" (stadium-form) -- nativ radie (4px, verifierat via
+       getComputedStyle) gav nästan raka hörn. 999px matchar samma
+       pill-radiefamilj som redan används för CTA/kategorichips (se
+       docs/HAZEY-DESIGN-SYSTEM.md §5). */
+    border-radius: 999px !important;
     transition: background 120ms linear;
   }
   #store-header.nh-home-hero .main .center .store-search .input::placeholder { color: rgba(255,253,248,.72) !important; }
