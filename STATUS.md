@@ -4463,3 +4463,62 @@ före/efter, pixel-diff visar bara känd sub-pixel-textrendering
 
 Commit `b68f062` på `dev`. Arbetet pausar för Vilmers visuella
 granskning.
+
+## Refine — desktophero-innehåll mot låst referens (2026-09-09)
+
+Sex avgränsade rättningar av herons INNEHÅLL (desktop, min-width:861px),
+commit `95707d5` på `dev`:
+
+1. **Textkomposition flyttad högt**: `.nh-hero-slide` bytt från
+   `justify-content:flex-end` (bottenankrad) till `flex-start`, med egen
+   `padding-top` på `.nh-hero-v2__inner`. Sitter nu strax under headern,
+   övre vänster, inte centrerad/bottenförankrad. Verifierat med en
+   50%-overlay mot referensen (skalad till 1440px bredd) -- kickerns
+   position matchar mycket nära.
+2. **Kategoripillerna dolda på desktop** (`.nh-hero-v2__cats{display:
+   none}`, CSS-endast, DOM/länkar orörda) -- referensen har ingen pillrad
+   mellan brödtext och CTA. Mobilen helt oberörd.
+3. **Typografi**: H1 lättare (600->500), något mindre (46->44px), tätare
+   line-height/spårning -- exakt radbrytning "Hitta rätt utan / att
+   kunna allt." bevarad (max-width 315px, uppmätt via canvas-textmätning,
+   inte gissat). Kickern egen klass (`--desktop`, rör aldrig `--mobile`)
+   -- kursiv Iowan-serif, varm orange, blandade versaler, tvåradig
+   ("California"/"State of Mind") i stället för liten versal sans-rad.
+   Brödtext (`.nh-hero-v2__p--desktop`) mindre/lugnare/tätare mot H1.
+4. **CTA-knappar**: primär mättad klar orange + vit text + tunn varm
+   specular-kant (ersätter blek glasgradient + mörk text + vit outline).
+   Sekundär mörkt rökigt glas + vit text + tunn lågkontrastkant.
+5. **Trust-rad**: tre kompakta objekt med inline-SVG-ikon (botanisk/
+   frakt, leverans, Trustpilot-stjärna) + text, ingen bakgrundsplatta/
+   kort/piller.
+6. **Karusellkontroller** diskreta i vila (opacity .38 pilar/.55
+   prickar), full synlighet vid hover/fokus -- funktion/tangentbord
+   oförändrat.
+
+**Rotorsakat under egen verifiering** (getComputedStyle, inte antaget):
+Nyehandels native `span/p/button{font-size:16px;font-family:Nunito}
+!important`-reset vann tyst över flera nya reglers font-size/font-family
+(brödtext, CTA-knappar inkl. deras inre `<span>`, trust-radens span/b) --
+fixat med högre specificitet + riktade `!important`-rader, samma mönster
+som redan dokumenterat för mikrotrusten på mobil (docs/HAZEY-DESIGN-
+SYSTEM.md §3).
+
+**Verifiering**: 0px overflow vid 1280x720/1440x900/1920x1080, allt
+innehåll synligt utan scroll vid alla tre, 100svh-fullscreen oförändrad.
+Mobil 390x844/430x932 pixelkontrollerad mot en riktig stash/pop-baseline
+(heroHeight 238px, kubens matrix3d-transform, 0px overflow identiska,
+körd två gånger denna omgång). Sida-vid-sida/50%-overlay/diffbild mot
+referensen vid 1440x900. `node tests/fas6-full-verification.mjs` grönt.
+
+**Ärligt dokumenterad kvarstående avvikelse**: H1:ens exakta vertikala
+position kunde inte verifieras mot referensen inom en säker
+pixel-tolerans -- referensfilen är en komprimerad/nedskalad
+förhandsvisning utan känd exakt skalfaktor, och flera oberoende
+mätmetoder (canvas-textbredd, native-pixel-rutnät, ljusstyrke-/
+variansanalys) gav sinsemellan motstridiga resultat för H1:ens absoluta
+storlek/position. Kickerns position (mätt oberoende, mindre påverkad av
+en brusig bildbakgrund) matchar däremot referensen mycket nära. H1:ens
+EXPLICITA krav (lägre vikt, storleksminskning, tätare line-height, exakt
+radbrytning) är uppfyllda och verifierade, oavsett detta.
+
+Arbetet pausar för Vilmers visuella granskning.
