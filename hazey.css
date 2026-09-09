@@ -12069,16 +12069,24 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-qfind-hero {
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     margin-bottom: 0;
-    /* Höjd höjd (Fas 2, mätbar desktop-paritetsrunda) -- 620/46vw/860 gav
-       bara 662px vid 1440px mot referensens uppmätta ~1004px (-34%). Höjd
-       hela vägen till 1004px skulle tvinga en ÄNNU mer aggressiv cover-
-       beskärning av 1536x1024-bilden än vad som redan orsakar den kända,
-       dokumenterade 1920px-graffititext-beskärningen (se kommentaren ovan)
-       -- inte gjort här. Detta är en avvägd mellanposition: minskar
-       avvikelsen march mot referensen utan att göra den kända beskärnings-
-       bufferten värre. Verifierat visuellt vid 1440/1920px efter ändringen
-       (se STATUS.md). */
-    height: clamp(680px, 58vw, 920px);
+    /* KORRIGERAT (Korrigeringsrunda 2026-09-09 -- MacBook-fold-buggen):
+       höjden räknades tidigare BARA ur viewportens BREDD (58vw) -- på en
+       vanlig kort/bred desktop-viewport (rapporterat konkret vid
+       1280x720) blev heron alldeles för hög för sin egen viewporthöjd,
+       vilket knuffade CTA-raden helt eller delvis under bilden vid
+       första sidladdning, ingen scroll behövd för att se det. min(58vw,
+       82svh) tar det MINDRE av två oberoende tak: bred-men-kort viewport
+       begränsas nu av höjdtaket i stället för att fortsätta växa med
+       bredden. `svh` (small viewport height) i stället för `vh` --
+       exkluderar aldrig verklig, kollapsande webbläsar-chrome (adress-
+       rad/bokmärkesrad) som `vh` kan råka räkna in på vissa plattformar.
+       Sänker INTE bildkvaliteten/beskärningen -- en LÄGRE hero kräver
+       tvärtom MINDRE aggressiv cover-beskärning av den fasta
+       1536x1024-bilden än en högre, se kommentaren ovan om varför för
+       hög är problemet, inte för låg. min-bound sänkt 680→520px så
+       höjdtaket faktiskt får styra i stället för att klämmas av ett för
+       högt golv på korta viewports. */
+    height: clamp(520px, min(58vw, 82svh), 920px);
     min-height: 0;
     display: flex; align-items: flex-end;
     position: relative;
