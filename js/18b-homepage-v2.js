@@ -108,7 +108,12 @@
         pMobile: "Sök direkt eller jämför på innehåll, format och framställning.",
         pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
         primaryCta: { label: "Utforska sortimentet", href: "#populara-vagar" },
-        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt →", openHr: true },
+        // KORRIGERINGSUPPDRAG (2026-09-09): desktop-texten hade av misstag
+        // en egen pil ("→") tillagd i en tidigare omgång -- den låsta
+        // referensbilden visar uttryckligen INGEN pil på den sekundära
+        // CTA:n (bara på den primära). Mobilens egen, kortare text/pil
+        // (labelMobile) är en annan, redan godkänd yta -- orörd här.
+        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt", openHr: true },
         theme: "default"
       },
       // Slide 2: riktig, verifierad destination -- INGEN fabricerad
