@@ -4416,3 +4416,50 @@ har samma fix förberedd men otestad live (ingen PUBLICERA denna omgång).
 Allt lokalt committat och pushat till `dev` (commit `5a46201`). Arbetet
 pausar för Vilmers visuella granskning, enligt uttrycklig instruktion —
 inga ändringar längre ned på sidan utan explicit godkännande.
+
+## Punktkorrigering — desktophero verkligen 100svh, inte 82svh (2026-09-09)
+
+Avgränsat, en punkt: heron var fortfarande begränsad till max 82% av
+viewporthöjden på ALLA desktopbredder (inte bara en avsiktlig kort-
+viewport-kompromiss som tidigare kommentar påstod). Rotorsakad via CDP
+`CSS.getMatchedStylesForNode` (inte antaget) mot `#nhHero` vid 1280/1440/
+1920: en enda vinnande regel, `.nh-qfind-hero{height:clamp(520px,
+min(58vw,82svh),920px)}` (css/22-homepage-v2.css) — ingen annan wrapper,
+inget JS-satt inline-height, ingen konkurrerande regel. Ersatt med en
+riktig `height:100svh` (`100vh`-fallback), `max-height:none`, ingen
+bredd-baserad takbegränsning kvar.
+
+**Uppmätt vid scrollY=0** (dokument-topp till hero-nederkant, header
+inkluderad i samma yta):
+
+| Viewport | heroTop | heroBottom | heroHeight | window.innerHeight | Populära serier synligt |
+|---|---|---|---|---|---|
+| 1280×720 | 0 | 720 | 720 | 720 | 0px |
+| 1440×900 | 0 | 900 | 900 | 900 | 0px |
+| 1920×1080 | 0 | 1080 | 1080 | 1080 | 0px |
+
+Exakt match (0px avvikelse, inte bara inom ±2px-toleransen). CTA-knappar
+och trust-rad verifierat helt inom viewporten vid alla tre bredder.
+Ingen kubrotation på desktop (`getComputedStyle(cube).transform` →
+`"none"`), header fortsatt ovanpå bilden. 0px horisontell overflow.
+
+**Beskärning (uttrycklig extra fråga denna omgång, besvarad med
+uträkning, inte antagande):** `background-size:cover`/`background-
+position:center` (oförändrad, ingen ny bredd-specifik regel behövdes).
+Cover-skalan avgörs av MAX(bredd-kvot, höjd-kvot) — vid alla tre
+breddpunkter dominerar breddkvoten (oförändrad av höjdändringen), så
+skalningsfaktorn är IDENTISK före/efter. En högre wrapper visar därför
+bara MER av samma redan skalade bild (ingen omzoomning, ingen
+stretching): uppmätt synlig källbildshöjd steg från 69,1%→84,4% (1280/
+1920) respektive 76,9%→93,8% (1440) av bildens 1024px. Produkterna,
+"GOOD PLANTS BETTER DAYS" och "Same Plants Brighter Days"-texten
+verifierade fullt synliga vid alla tre bredder (skärmdumpar).
+
+**Mobil (390/430/600):** riktig stash/pop-baseline — `heroHeight`
+(238px), kubens 3D-`matrix3d`-transform och 0px overflow identiska
+före/efter, pixel-diff visar bara känd sub-pixel-textrendering
+(ingen mobil-CSS/JS rörd, ändringen är scopad till
+`@media (min-width:861px)`).
+
+Commit `b68f062` på `dev`. Arbetet pausar för Vilmers visuella
+granskning.
