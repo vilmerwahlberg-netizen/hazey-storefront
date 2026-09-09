@@ -12053,41 +12053,35 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 /* Desktop-parity-runda (godkänd referens): heron blir riktig full-bleed --
    inget kort, ingen marginal, ingen radie. Samma 100vw-trick som redan
    används för Populära serier fullbredds-panel (se .nh-pser.section-gap
-   ovan) i stället för att gissa containerns faktiska padding. Höjden är
-   avsiktligt en clamp (inte en fast vh) -- en RIKTIG, dokumenterad
-   Nyehandel/bild-begränsning: v2-hero-bilden är 1536×1024 (kvot 1.5), en
-   ren 90vh-hero vid breda skärmar (t.ex. 1920px, kvot ~2.2) skulle kräva
-   en så aggressiv object-fit:cover-beskärning att grafittitexten
-   ("GOOD PLANTS BETTER DAYS") eller den handskrivna texten på
-   betongkanten riskerar att klippas bort -- se slutrapporten för
-   skärmdumpsbevis vid 1920px. Clampen begränsar hur extrem beskärningen
-   någonsin blir, i utbyte mot en något lägre hero vid mycket breda
-   fönster än en bokstavlig "nästan hela viewporten". margin-top sätts
-   INTE här -- den sätts som inline style av JS (nhInitHomeHeroHeader,
-   mätt live mot headerns riktiga höjd), så CSS lämnar den orörd. */
+   ovan) i stället för att gissa containerns faktiska padding. margin-top
+   sätts INTE här -- den sätts som inline style av JS
+   (nhInitHomeHeroHeader, mätt live mot #store-mains faktiska
+   padding-top), så CSS lämnar den orörd. */
 @media (min-width: 861px) {
   .nh-qfind-hero {
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     margin-bottom: 0;
-    /* KORRIGERAT (Korrigeringsrunda 2026-09-09 -- MacBook-fold-buggen):
-       höjden räknades tidigare BARA ur viewportens BREDD (58vw) -- på en
-       vanlig kort/bred desktop-viewport (rapporterat konkret vid
-       1280x720) blev heron alldeles för hög för sin egen viewporthöjd,
-       vilket knuffade CTA-raden helt eller delvis under bilden vid
-       första sidladdning, ingen scroll behövd för att se det. min(58vw,
-       82svh) tar det MINDRE av två oberoende tak: bred-men-kort viewport
-       begränsas nu av höjdtaket i stället för att fortsätta växa med
-       bredden. `svh` (small viewport height) i stället för `vh` --
-       exkluderar aldrig verklig, kollapsande webbläsar-chrome (adress-
-       rad/bokmärkesrad) som `vh` kan råka räkna in på vissa plattformar.
-       Sänker INTE bildkvaliteten/beskärningen -- en LÄGRE hero kräver
-       tvärtom MINDRE aggressiv cover-beskärning av den fasta
-       1536x1024-bilden än en högre, se kommentaren ovan om varför för
-       hög är problemet, inte för låg. min-bound sänkt 680→520px så
-       höjdtaket faktiskt får styra i stället för att klämmas av ett för
-       högt golv på korta viewports. */
-    height: clamp(520px, min(58vw, 82svh), 920px);
-    min-height: 0;
+    /* KORRIGERAT (Punktkorrigering 2026-09-09 -- heron var 82svh, inte
+       fullscreen): en tidigare clamp (`clamp(520px, min(58vw,82svh),
+       920px)`) begränsade heron till max 82% av viewporthöjden på BREDA
+       skärmar (1440/1920) -- inte bara en avsiktlig MacBook-fold-
+       kompromiss vid smala/korta viewports som kommentaren påstod, utan
+       en hård takbegränsning som gällde VARJE bredd >861px, verifierat
+       live (CDP CSS.getMatchedStylesForNode bekräftade denna exakta
+       regel som vinnande, ingen annan wrapper/JS satte en konkurrerande
+       höjd). Uppdraget kräver en bokstavligen fullskärms-hero (dokument-
+       topp till herons nederkant = en viewport, headern inkluderad i
+       samma yta, INTE adderad ovanpå) -- ersatt med en riktig 100svh/
+       100vh, ingen max-height, inget bredd-baserat tak kvar. En högre
+       hero KRÄVER mer object-fit:cover-beskärning av den fasta
+       1536x1024-bildens sidor vid breda/korta format -- hanteras nu med
+       breddspecifik background-position i stället för att offra
+       fullskärmskravet (se reglerna nedan). */
+    height: 100vh;
+    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
+    max-height: none;
     display: flex; align-items: flex-end;
     position: relative;
   }
