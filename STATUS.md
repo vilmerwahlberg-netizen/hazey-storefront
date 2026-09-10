@@ -4734,3 +4734,90 @@ tests/fas6-full-verification.mjs`, alla kontroller gröna), skärmdump
 mot referensbilden vid 1440px (matchar mycket nära), fungerande
 paginering testad (nästa-knapp bytte korrekt från
 Krille/O/Tobias → Jonte/Fred Winters/Erik).
+
+## Hero-datakällemigrering — riktiga native-slides i stället för hårdkodad konfiguration (2026-09-10)
+
+Uppdrag: byt startsidans hero från `NH_HERO_CAMPAIGNS` (hårdkodad
+kampanjkonfiguration) till de riktiga slides som redan finns sparade i
+Nyehandels native bildspel (`.template-components__slideshow`),
+bevarande av befintlig visuell design/beteende 1:1 -- en
+datakällemigrering, inte en redesign.
+
+**Ny läsfunktion** `nhReadNativeHeroSlides(slideshow)`
+(js/18b-homepage-v2.js): ren avläsning, muterar ALDRIG native-DOM:en.
+Läser per `.slideshow__slides__slide[data-index]`: absolut bild-URL
+(via `getComputedStyle(el).backgroundImage`, robust mot citattecken/
+kodning i style-attributet -- inte en regex mot rå HTML), rubrik
+(`.slideshow__slides__slide__content__title h2`), underrubrik (enda
+`<p>` i slide-contenten), primär CTA-text+länk (`.action a`). Endast
+slides med bild+rubrik+fungerande CTA räknas som giltiga, sorterade på
+`data-index`. `nhNativeSlideToHeroSlide()` konverterar en läst slide
+till samma objektform som den befintliga renderings-/kublogiken
+(`nhHeroSlideHtml`/`nhHeroHtml`/`nhInitHeroCarousel`) redan förväntar
+sig -- den logiken är HELT oförändrad, bara datakällan byts.
+
+**Absoluta bild-URL:er prefixas ALDRIG med NH_ASSET_BASE** (ny
+`mobileIsAbsolute`/`desktopIsAbsolute`-koll i `nhHeroSlideHtml`, `/^https?:\/\//`)
+-- den hårdkodade fallback-konfigurationens relativa filnamn fortsätter
+att prefixas som förut. Samma native-bild används för mobil och
+desktop i denna första version (inget gissat mobilbeskär). Ingen
+alt-text fabricerad -- native exponerar ingen i renderad DOM, så
+`aria-label` utelämnas helt när `slide.alt` saknas (i stället för ett
+`null`/gissat värde). Ingen eyebrow (kicker) för native-slides -- de
+tomma eyebrow-elementen renderas inte alls (annars kvarstod en liten,
+omotiverad `margin-bottom` som ett tomt mellanrum). Den permanenta
+"Hjälp mig hitta rätt"-sekundär-CTA:n (nu `NH_HERO_SECONDARY_CTA`, en
+delad konstant) finns kvar bara på FÖRSTA sliden -- inga nya
+kampanjspecifika sekundär-CTA:er för native-slides.
+
+**Fallback-hantering:** `NH_HERO_CAMPAIGNS` döptes om till
+`NH_HERO_CAMPAIGNS_FALLBACK` och `nhActiveHeroSlides()` BEHÖLLS
+oförändrad i koden (uppdragets krav -- inte borttagen förrän den nya
+vägen är verifierad), men anropas INTE längre automatiskt.
+Uppdragets explicita krav ("Om native-slides tillfälligt saknas
+lämnas native-bildspelet synligt") väger tyngre än att auto-ersätta
+med den hårdkodade konfigurationen: om `nhReadNativeHeroSlides` ger
+NOLL giltiga slides rörs native-DOM:en inte alls i `initHomepageV2` --
+den förblir synlig och fullt fungerande på egen hand (verifierat genom
+att simulera en trasig native-DOM där varje slides `.action`-länk
+togs bort innan avläsningen: `nh-native-hero-hidden`-klassen sattes
+ALDRIG, `#nhHero` skapades ALDRIG, ingen krasch, inga nya konsol-/
+sidfel). `NH_HERO_CAMPAIGNS_FALLBACK`/`nhActiveHeroSlides()` är alltså
+just nu oanvänd, dokumenterad, dold kod -- ett manuellt skyddsnät, inte
+en automatisk reservväg.
+
+**Konflikt löst:** `initSlideshowButtons()` (js/16-slideshow-
+buttons.js) körde tidigare FÖRE `initHomepageV2()` och skrev över
+VARJE slides `.action` med samma hårdkodade THCA/BÄSTSÄLJARE-knappar
+-- detta hade permanent förstört den riktiga native-CTA:n innan vår
+egen avläsning hann köra. Fixat med ett tidigt `if
+(document.querySelector(".store-startpage")) return;` -- funktionen
+gör ingenting alls på startsidan nu, men är HELT oförändrad för andra
+sidtyper (om ett native-bildspel någon gång används där).
+
+**Rört INTE:** reviewkorten, Featured/Spotlight, footer, loaders,
+`.gitignore`, `_to_delete/`, `assets/campaigns/`, tema 8/native-
+migreringen, produktion. Ingen golden-baslinje uppdaterad blint.
+
+**Verifierat live i tema 6 (2026-09-10) innan/efter kodning:**
+exakt 3 admin-slides läses i rätt ordning ("Hitta rätt utan att kunna
+allt." → "Upptäck Nano-11." → "Mer av Hazey. Lite mer tillbaka."), rätt
+bild/rubrik/underrubrik/CTA-text/CTA-länk per slide, ingen THCA/
+BÄSTSÄLJARE-knapp kvar, exakt EN `<h1>` (slide 1, `p` för övriga),
+0px overflow vid 390/430/1024/1180/1280/1440/1920, mobil svep
+(touch-simulerad drag) roterar kuben korrekt till slide 2 utan
+overflow, skrivbordspilar/prickar/kubövergång fungerar (testat via
+klick genom alla tre slides + dot-klick tillbaka till slide 1),
+`prefers-reduced-motion` oförändrat grönt, `node tests/fas6-full-
+verification.mjs` grönt (en enstaka mobil/desktop-sökflagga växlade
+mellan körningar -- samma redan dokumenterade nätverksflaké som
+tidigare i sessionen, obereoende av heron).
+
+En bakgrundsbild (Nano-11-sliden, en ~2MB PNG) uteblev/målades bara
+delvis i flera Playwright-skärmdumpar trots korrekt
+`getComputedStyle`-verifierad `background-image` -- samma redan
+dokumenterade headless-Chromium-målningsartefakt (kopplad till
+kubens 3D-transform) som tidigare i sessionen, bekräftad som en ren
+testverktygs-artefakt genom en isolerad standalone-HTML-sida med
+exakt samma bild+CSS (renderade perfekt direkt) -- ingen produktions-
+bugg, ingen kodändring gjord som svar på detta.

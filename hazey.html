@@ -2188,6 +2188,17 @@
        This swaps each slide's action area for two buttons (THCA outline +
        BÄSTSÄLJARE fill). Edit SLIDE_BTNS to change text/links. */
     function initSlideshowButtons() {
+      // Datakällemigrering (2026-09-10): på startsidan (.store-startpage)
+      // läser js/18b-homepage-v2.js (nhReadNativeHeroSlides) nu RIKTIGA
+      // native-CTA:er (text+länk) direkt ur samma .action-element som
+      // denna funktion annars skriver över -- den gamla, hårdkodade
+      // THCA/BÄSTSÄLJARE-knapp-injektionen måste därför upphöra HÄR,
+      // eftersom den här filen körs FÖRE initHomepageV2 (se
+      // 19-core-close.js) och annars permanent skulle förstöra den
+      // riktiga adminens CTA-text/länk innan vår egen avläsning hinner
+      // köra. Andra sidtyper (om ett native-bildspel någon gång används
+      // där) behåller det gamla beteendet helt oförändrat.
+      if (document.querySelector(".store-startpage")) return;
       var SLIDE_BTNS = [
         { text: "THCA", url: "/sv/categories/thca", cls: "nh-hero__btn--outline" },
         { text: "BÄSTSÄLJARE", url: "/sv/page/vara-bastsaljare", cls: "nh-hero__btn--fill" }
@@ -2913,12 +2924,17 @@
       (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
       "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
 
-    /* ── Hero-kampanjkonfiguration (2026-09-09, kub-/kampanjrunda) ──
-       Kampanjhantering separerad HELT från renderings-/kub-logiken: en ny
-       kampanj kräver ALDRIG en kodändring i nhHeroSlideHtml/nhHeroHtml/
-       nhInitHeroCarousel, bara en ny post här (eller att en befintlig
-       posts fält uppdateras). Se STATUS.md/slutrapporten för det korta
-       arbetsflödet ("lägg till en kampanj").
+    /* ── Hero-datakällemigrering (2026-09-10) ──
+       Heron läser nu i FÖRSTA HAND riktiga slides direkt ur Nyehandels
+       egen native bildspels-DOM (se nhReadNativeHeroSlides längre ner) --
+       INTE längre den hårdkodade kampanjkonfigurationen nedan som
+       primär källa. NH_HERO_CAMPAIGNS_FALLBACK finns KVAR ENDAST som
+       skyddsnät (se nhActiveHeroSlides/initHomepageV2): används BARA om
+       native-avläsningen misslyckas eller ger noll giltiga slides, ALDRIG
+       när riktiga native-slides finns. Rör inte renderings-/kub-logiken
+       (nhHeroSlideHtml/nhHeroHtml/nhInitHeroCarousel) för att lägga till
+       en ny riktig kampanj -- lägg till/redigera slidet direkt i
+       Nyehandel-admins bildspel i stället, det läses automatiskt härifrån.
 
        Varje post stödjer: id, enabled, order, startsAt/endsAt (ISO-
        datumsträngar, styr AUTOMATISKT om kampanjen visas -- se
@@ -2935,7 +2951,11 @@
        heron; om INGEN post blir kvar (allt inaktiverat/ogiltigt/utanför
        datumfönster) tvingas evergreen-sliden fram som garanterad fallback
        -- heron kan alltså aldrig bli helt tom. */
-    var NH_HERO_CAMPAIGNS = [
+    // Delad mellan native- och fallback-vägen (samma permanenta funktion,
+    // se uppdragets krav -- inga NYA kampanjspecifika sekundär-CTA:er för
+    // native-slides, bara den här, redan godkända, på den FÖRSTA sliden).
+    var NH_HERO_SECONDARY_CTA = { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt", openHr: true };
+    var NH_HERO_CAMPAIGNS_FALLBACK = [
       {
         id: "assortment",
         enabled: true,
@@ -2971,12 +2991,7 @@
         pMobile: "Sök direkt eller jämför på innehåll, format och framställning.",
         pDesktop: "Sök direkt, eller jämför produkter på innehåll, framställning och publicerat analyscertifikat.",
         primaryCta: { label: "Utforska sortimentet", href: "#populara-vagar" },
-        // KORRIGERINGSUPPDRAG (2026-09-09): desktop-texten hade av misstag
-        // en egen pil ("→") tillagd i en tidigare omgång -- den låsta
-        // referensbilden visar uttryckligen INGEN pil på den sekundära
-        // CTA:n (bara på den primära). Mobilens egen, kortare text/pil
-        // (labelMobile) är en annan, redan godkänd yta -- orörd här.
-        secondaryCta: { labelMobile: "Hjälp mig →", labelDesktop: "Hjälp mig hitta rätt", openHr: true },
+        secondaryCta: NH_HERO_SECONDARY_CTA,
         theme: "default"
       },
       // Slide 2: riktig, verifierad destination -- INGEN fabricerad
@@ -3008,9 +3023,12 @@
       return !!(s && s.id && s.imageMobile && s.h1
         && s.primaryCta && s.primaryCta.href && s.primaryCta.label);
     }
+    // Fallback-ENDAST (se filens kommentar ovan) -- anropas av
+    // initHomepageV2 bara när nhReadNativeHeroSlides gav noll giltiga
+    // resultat.
     function nhActiveHeroSlides() {
       var now = Date.now();
-      var candidates = NH_HERO_CAMPAIGNS.filter(function (s) {
+      var candidates = NH_HERO_CAMPAIGNS_FALLBACK.filter(function (s) {
         if (!s || !s.enabled) return false;
         if (s.startsAt && now < new Date(s.startsAt).getTime()) return false;
         if (s.endsAt && now > new Date(s.endsAt).getTime()) return false;
@@ -3021,13 +3039,99 @@
       // Garanterad fallback: evergreen-sliden visas ändå om den själv är
       // giltig, även om den råkat inaktiveras eller filtrerats bort ovan --
       // heron ska ALDRIG kunna bli helt tom.
-      var evergreen = NH_HERO_CAMPAIGNS.filter(function (s) { return s.id === "assortment" && nhValidHeroSlide(s); })[0];
+      var evergreen = NH_HERO_CAMPAIGNS_FALLBACK.filter(function (s) { return s.id === "assortment" && nhValidHeroSlide(s); })[0];
       return evergreen ? [evergreen] : [];
     }
 
+    /* ── Läser RIKTIGA hero-slides direkt ur Nyehandels egen native
+       bildspels-DOM (.template-components__slideshow .slideshow), i
+       stället för NH_HERO_CAMPAIGNS_FALLBACK ovan. Ren avläsningsfunktion
+       -- rör ALDRIG native-DOM:en (ingen mutation här), returnerar bara
+       enkla dataobjekt. Rubrik/underrubrik/CTA-text/CTA-länk är
+       Nyehandel-adminens EGNA, redan sparade, riktiga värden -- ingen
+       fabricerad text.
+
+       Verifierat live i tema 6 (2026-09-10) innan denna funktion
+       skrevs (curl/DOM-inspektion, inte gissat):
+       - root: .template-components__slideshow, karusell: .slideshow
+       - varje slide: .slideshow__slides__slide[data-index]
+       - bild: slidens EGEN inline background-image (absolut
+         CloudFront-URL) -- läst via getComputedStyle (robust mot
+         citattecken-/kodning i style-attributet, ingen regex mot rå
+         HTML-sträng).
+       - rubrik: .slideshow__slides__slide__content__title h2
+       - underrubrik: den enda <p> i .slideshow__slides__slide__content
+       - primär CTA: .action a (text + href, adminens egna)
+       - ingen alt-text exponeras i den renderade DOM:en -- fabricerar
+         ingen (se nhNativeSlideToHeroSlide, alt lämnas null). */
+    function nhReadNativeHeroSlides(slideshow) {
+      if (!slideshow) return [];
+      var slideEls = Array.prototype.slice.call(slideshow.querySelectorAll(".slideshow__slides__slide[data-index]"));
+      var read = slideEls.map(function (el) {
+        var idx = parseInt(el.getAttribute("data-index"), 10);
+        var bg = (getComputedStyle(el).backgroundImage || "").trim();
+        var m = /^url\((["']?)(.*)\1\)$/.exec(bg);
+        var image = m ? m[2] : null;
+        var titleEl = el.querySelector(".slideshow__slides__slide__content__title h2");
+        var title = titleEl ? titleEl.textContent.replace(/\s+/g, " ").trim() : null;
+        var contentWrap = el.querySelector(".slideshow__slides__slide__content");
+        var pEl = contentWrap ? contentWrap.querySelector("p") : null;
+        var sub = pEl ? pEl.textContent.replace(/\s+/g, " ").trim() : "";
+        var actionA = el.querySelector(".action a");
+        var ctaText = actionA ? actionA.textContent.replace(/\s+/g, " ").trim() : null;
+        var ctaHref = actionA ? actionA.getAttribute("href") : null;
+        return { index: isNaN(idx) ? null : idx, image: image, title: title, sub: sub, ctaText: ctaText, ctaHref: ctaHref };
+      });
+      // Endast giltiga slides (bild + rubrik + fungerande CTA-text+länk)
+      // -- en trasig/ofullständig adminpost hoppas tyst över, precis som
+      // nhValidHeroSlide redan gör för fallback-konfigurationen. Sorteras
+      // explicit på data-index (uppdragets krav "rätt ordning") snarare
+      // än att lita blint på DOM-ordningen.
+      return read
+        .filter(function (s) { return !!(s.image && s.title && s.ctaText && s.ctaHref); })
+        .sort(function (a, b) { return (a.index || 0) - (b.index || 0); });
+    }
+    /* Konverterar en läst native-slide (se ovan) till samma objektform
+       som nhHeroSlideHtml/nhValidHeroSlide redan förväntar sig -- samma
+       rendering/kub-logik återanvänds helt oförändrad, bara datakällan
+       byts. SAMMA bild används för mobil och desktop i denna första
+       version (uppdragets krav, punkt 8) -- ingen gissad separat
+       mobilbeskärning. Ingen eyebrow (kicker) -- native har inget sådant
+       fält (nhHeroSlideHtml utelämnar helt tomma eyebrow-element). Ingen
+       alt-text fabricerad -- aria-label utelämnas helt när ingen finns. */
+    function nhNativeSlideToHeroSlide(native, i) {
+      return {
+        id: "native-" + native.index,
+        imageMobile: native.image,
+        imageDesktop: native.image,
+        alt: null,
+        eyebrowMobile: "",
+        eyebrowDesktop: "",
+        h1: native.title,
+        pMobile: native.sub,
+        pDesktop: native.sub,
+        primaryCta: { label: native.ctaText, href: native.ctaHref },
+        // Uppdragets krav (punkt 12): den permanenta "Hjälp mig hitta
+        // rätt"-funktionen finns KVAR bara på FÖRSTA sliden -- inga nya
+        // kampanjspecifika sekundär-CTA:er för native-slides ännu.
+        secondaryCta: i === 0 ? NH_HERO_SECONDARY_CTA : null,
+        theme: "default"
+      };
+    }
+
     function nhHeroSlideHtml(slide, i, kampanjerHref, catLinks) {
-      var mobileSrc = NH_ASSET_BASE + slide.imageMobile;
-      var desktopSrc = NH_ASSET_BASE + (slide.imageDesktop || slide.imageMobile);
+      // Datakällemigrering (2026-09-10): native hero-slides (se
+      // nhReadNativeHeroSlides/nhNativeSlideToHeroSlide) ger en ABSOLUT
+      // CloudFront-bild-URL -- den ska ALDRIG prefixas med NH_ASSET_BASE
+      // (uppdragets uttryckliga krav). Den äldre, hårdkodade fallback-
+      // konfigurationen (NH_HERO_CAMPAIGNS_FALLBACK) använder fortfarande
+      // relativa filnamn som redan förutsätter NH_ASSET_BASE-prefixet --
+      // båda formaten stöds här utan att den ena vägen påverkar den andra.
+      var mobileIsAbsolute = /^https?:\/\//i.test(slide.imageMobile || "");
+      var desktopImg = slide.imageDesktop || slide.imageMobile;
+      var desktopIsAbsolute = /^https?:\/\//i.test(desktopImg || "");
+      var mobileSrc = mobileIsAbsolute ? slide.imageMobile : NH_ASSET_BASE + slide.imageMobile;
+      var desktopSrc = desktopIsAbsolute ? desktopImg : NH_ASSET_BASE + desktopImg;
       // --hero-img-m/--hero-img-d: responsiv bildväxling via CSS custom
       // properties (se css/22-homepage-v2.css) i stället för att JS måste
       // skriva om bakgrundsbilden vid varje breakpoint-byte. Faller
@@ -3065,10 +3169,24 @@
       // sätts som aria-label på gruppen i stället för en konstlad <img
       // src=""> (ett tomt src-attribut kan trigga en egen nätverksrequest
       // i vissa webbläsare -- ett känt anti-mönster, undviks helt här).
-      return '<div class="nh-hero-slide ' + slideKindClass + '" role="group" aria-roledescription="slide" aria-label="' + slide.alt.replace(/"/g, "&quot;") + '" aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
+      // Native hero-slides har INGEN exponerad alt-text i den renderade
+      // DOM:en (verifierat 2026-09-10) -- fabricerar aldrig en egen
+      // beskrivning, aria-label utelämnas då helt i stället för ett
+      // gissat värde.
+      var ariaLabelAttr = slide.alt ? ' aria-label="' + slide.alt.replace(/"/g, "&quot;") + '"' : "";
+      // Eyebrow (kicker) finns bara för den hårdkodade fallback-
+      // konfigurationen -- native-slides har inget sådant fält (se
+      // nhNativeSlideToHeroSlide). Renderas bara när text faktiskt finns,
+      // annars hade en tom <div> lämnat kvar sin egen margin-bottom som
+      // ett litet, omotiverat tomrum ovanför rubriken.
+      var eyebrowMobileHtml = slide.eyebrowMobile
+        ? '<div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>' : "";
+      var eyebrowDesktopHtml = slide.eyebrowDesktop
+        ? '<div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>' : "";
+      return '<div class="nh-hero-slide ' + slideKindClass + '" role="group" aria-roledescription="slide"' + ariaLabelAttr + ' aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
-        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>'
-        + '    <div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>'
+        + eyebrowMobileHtml
+        + eyebrowDesktopHtml
         + '    <' + headingTag + ' class="nh-hero-v2__h1">' + slide.h1 + '</' + headingTag + '>'
         + '    <p class="nh-hero-v2__p--mobile">' + slide.pMobile + '</p>'
         + '    <p class="nh-hero-v2__p--desktop">' + slide.pDesktop + '</p>'
@@ -3084,7 +3202,7 @@
         + '</div>';
     }
 
-    function nhHeroHtml(navData, kampanjerHref) {
+    function nhHeroHtml(navData, kampanjerHref, active) {
       var vapeHref = nhFirstHref(navData.groups.vape, "alla-vapes") || "/sv/categories/alla-vapes";
       var blommaHref = nhFirstHref(navData.groups.blomma, "blommor-buds") || "/sv/categories/blommor-buds";
       var hashHref = nhFirstHref(navData.groups.hash, "hasch") || "/sv/categories/hasch";
@@ -3097,7 +3215,12 @@
         + '<a href="' + cbdHref + '">CBD, CBG &amp; CBN</a>'
         + '<a href="' + kampanjerHref + '">Kampanjer</a>';
 
-      var active = nhActiveHeroSlides();
+      // Datakällemigrering (2026-09-10): `active` kommer nu in som
+      // parameter (redan upplöst i initHomepageV2 -- native-slides i
+      // första hand, NH_HERO_CAMPAIGNS_FALLBACK bara om avläsningen gav
+      // noll giltiga resultat) i stället för att denna funktion själv
+      // ringde nhActiveHeroSlides(). Renderings-/kub-logiken nedan är
+      // HELT oförändrad oavsett vilken källa slidesen kom ifrån.
       // "Om endast en slide är aktiv ska kubkontroller och autoplay stängas
       // av" (uppdragets krav) -- multi styr både dots/pilar (nedan) och
       // hela autoplay-/kub-initieringen (se nhInitHeroCarousel: total<=1
@@ -5272,15 +5395,40 @@
       var navData = nhBuildNavData(mega);
       var kampanjerHref = "/sv/page/kampanjer";
 
-      // Döljer den nativa karusellen (rör den inte, bara CSS display:none)
-      // och ersätter med det nya, konfigurationsdrivna hero-kortet.
-      slideRoot.classList.add("nh-native-hero-hidden");
+      // Datakällemigrering (2026-09-10): läser RIKTIGA slides ur
+      // Nyehandels egna native bildspel (ren avläsning, ingen DOM-
+      // mutation ännu -- se nhReadNativeHeroSlides).
+      //
+      // Uppdragets krav punkt 6 (upprepat explicit i "Verifiera minst":
+      // "Om native-slides tillfälligt saknas lämnas native-bildspelet
+      // synligt") väger tyngre än att automatiskt återgå till den
+      // hårdkodade NH_HERO_CAMPAIGNS_FALLBACK-konfigurationen -- om
+      // avläsningen ger NOLL giltiga slides rörs native-DOM:en därför
+      // INTE ALLS här (varken dold eller ersatt); den förblir synlig och
+      // fullt fungerande på egen hand, vilket redan uppfyller "heron
+      // kan aldrig bli tom" utan att vår egen (numera sekundära)
+      // fallback-konfiguration behöver aktiveras automatiskt.
+      // NH_HERO_CAMPAIGNS_FALLBACK/nhActiveHeroSlides() BEHÅLLS i koden
+      // oanvänd (punkt 13 -- "ta inte bort... tydligt markerad som
+      // fallback") som ett manuellt skyddsnät, inte en automatisk
+      // ersättning.
+      var nativeSlides = nhReadNativeHeroSlides(slideshow);
+      var active = nativeSlides.map(nhNativeSlideToHeroSlide);
 
-      var heroWrap = document.createElement("div");
-      heroWrap.innerHTML = nhHeroHtml(navData, kampanjerHref);
-      slideRoot.parentNode.insertBefore(heroWrap, slideRoot);
-      while (heroWrap.firstChild) slideRoot.parentNode.insertBefore(heroWrap.firstChild, slideRoot);
-      heroWrap.remove();
+      // Kravet (punkt 5/6): native-bildspelet döljs FÖRST när minst en
+      // giltig native-slide faktiskt lästs/validerats och det egna
+      // hero-kortet är byggt.
+      if (active.length) {
+        // Döljer den nativa karusellen (rör den inte, bara CSS
+        // display:none) och ersätter med det egna hero-kortet.
+        slideRoot.classList.add("nh-native-hero-hidden");
+
+        var heroWrap = document.createElement("div");
+        heroWrap.innerHTML = nhHeroHtml(navData, kampanjerHref, active);
+        slideRoot.parentNode.insertBefore(heroWrap, slideRoot);
+        while (heroWrap.firstChild) slideRoot.parentNode.insertBefore(heroWrap.firstChild, slideRoot);
+        heroWrap.remove();
+      }
 
       // ALLA home-extra-sektioner delar NU en enda flex-wrapper (utökat
       // 2026-09-08, desktop-parity-rundan -- tidigare låg bara Populära
