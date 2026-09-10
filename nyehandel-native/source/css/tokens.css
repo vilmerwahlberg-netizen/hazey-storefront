@@ -1,0 +1,22 @@
+/* Hazey — design tokens for the native template 8 header.
+   Values reused from the already-approved CSS/JS reskin header
+   (css/21-header-v2.css / css/22-homepage-v2.css in the repo root),
+   not the old override rules themselves — template 8 uses its own
+   native markup/classes, so only the color/type/spacing VALUES carry
+   over, not the selectors. */
+:root {
+  --hz-green: #2c3620;
+  --hz-green-deep: #1e2716;
+  --hz-cream: #fffdf8;
+  --hz-line: rgba(255, 253, 248, 0.16);
+  --hz-orange: #d9782f;
+  --hz-orange-soft: #e2984f;
+
+  --hz-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --hz-font-ui: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --hz-header-height: 68px;
+  --hz-radius-pill: 999px;
+  --hz-gap: 20px;
+  --hz-side-inset: 40px;
+}

@@ -1,0 +1,121 @@
+/* ---- tokens.css ---- */
+/* Hazey — design tokens for the native template 8 header.
+   Values reused from the already-approved CSS/JS reskin header
+   (css/21-header-v2.css / css/22-homepage-v2.css in the repo root),
+   not the old override rules themselves — template 8 uses its own
+   native markup/classes, so only the color/type/spacing VALUES carry
+   over, not the selectors. */
+:root {
+  --hz-green: #2c3620;
+  --hz-green-deep: #1e2716;
+  --hz-cream: #fffdf8;
+  --hz-line: rgba(255, 253, 248, 0.16);
+  --hz-orange: #d9782f;
+  --hz-orange-soft: #e2984f;
+
+  --hz-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --hz-font-ui: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --hz-header-height: 68px;
+  --hz-radius-pill: 999px;
+  --hz-gap: 20px;
+  --hz-side-inset: 40px;
+}
+
+/* ---- header.css ---- */
+/* Hazey — native header layout, Nyehandel template 8.
+   Targets ONLY the wrapper classes from fields/header.html — never a
+   native Nyehandel class/DOM node directly, since template 8's own
+   internal markup for [#navbar]/[#search]/etc is unverified this round
+   (no admin access). This keeps the CSS safe even if the real native
+   structure inside a slot differs from what we assume — we only ever
+   own the box AROUND a slot, not its contents. Fresh, minimal rules —
+   not a port of the old reskin's override CSS. */
+
+.hz-header {
+  background: var(--hz-green);
+  color: var(--hz-cream);
+  font-family: var(--hz-font-ui);
+  border-bottom: 1px solid var(--hz-line);
+}
+
+.hz-header__row {
+  display: flex;
+  align-items: center;
+  gap: var(--hz-gap);
+  min-height: var(--hz-header-height);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--hz-side-inset);
+}
+
+.hz-header__brand {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  font-family: var(--hz-font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--hz-cream);
+}
+/* Constrains whatever Nyehandel's own logo markup renders (usually an
+   <img>) without touching its DOM — no hide-and-replace trick, since
+   we don't have a confirmed native logo structure for template 8. */
+.hz-header__brand img {
+  max-height: 32px;
+  width: auto;
+  display: block;
+}
+
+.hz-header__nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 14px;
+}
+.hz-header__nav a {
+  color: var(--hz-cream);
+}
+
+.hz-header__actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+/* min-width:0 lets the flex item shrink below its content's intrinsic
+   width; max-width:100% on whatever Nyehandel renders inside (usually
+   a text input) stops that native component's own default/intrinsic
+   width from forcing horizontal overflow on a narrow viewport — the
+   one native-markup assumption this file makes, since without it a
+   default <input> can be wider than the space actually available. */
+.hz-header__search { min-width: 0; max-width: 220px; }
+.hz-header__search > * { max-width: 100%; box-sizing: border-box; }
+.hz-header__account,
+.hz-header__basket {
+  display: flex;
+  align-items: center;
+  color: var(--hz-cream);
+}
+
+.hz-header__hamburger {
+  display: none;
+  border: none;
+  background: none;
+  color: var(--hz-cream);
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* One responsive tree: below 861px the nav row hides and the hamburger
+   trigger takes over — same breakpoint already established for the
+   rest of Hazey's storefront (see css/21-header-v2.css in the repo
+   root), reused here for visual consistency across templates. */
+@media (max-width: 860px) {
+  .hz-header__nav { display: none; }
+  .hz-header__hamburger { display: flex; }
+  .hz-header__row { padding: 0 16px; gap: 12px; }
+}

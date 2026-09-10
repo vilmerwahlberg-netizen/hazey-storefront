@@ -1,0 +1,49 @@
+<!--
+  Hazey — native header, Nyehandel template 8 "Header" field.
+
+  Uses ONLY documented native slots (CLAUDE.md / support.nyehandel.se
+  article 8679707): [#logo] [#navbar] [#search] [#account-icon]
+  [#basket-icon] [#hamburger]. Nyehandel substitutes each slot with its
+  own real, already-working component (native search, nav + dropdowns,
+  account, cart, mobile menu trigger) — nothing here clones, moves, or
+  rebuilds that markup. This file only supplies the surrounding layout
+  (one responsive flex tree, no separate desktop/mobile trees) and
+  wraps each slot in a lightly-styled container so it lines up with
+  Hazey's brand colors/type (see hazey-tokens.css / hazey-header.css,
+  pasted separately into Nyehandel's CSS field).
+
+  ASSUMPTION TO VERIFY before pasting into a real Header field: that a
+  slot may be wrapped in an arbitrary <div> without breaking Nyehandel's
+  own substitution — this matches the documented usage pattern, but has
+  not been confirmed live against template 8 specifically (no admin
+  access this round). If a slot renders literally as text instead of
+  the real component, remove the wrapping div around that one slot only
+  and re-test.
+-->
+<header class="hz-header">
+  <div class="hz-header__row">
+    <button type="button" class="hz-header__hamburger" aria-label="Öppna meny">
+      [#hamburger]
+    </button>
+
+    <div class="hz-header__brand">
+      [#logo]
+    </div>
+
+    <nav class="hz-header__nav" aria-label="Huvudmeny">
+      [#navbar]
+    </nav>
+
+    <div class="hz-header__actions">
+      <div class="hz-header__search">
+        [#search]
+      </div>
+      <div class="hz-header__account">
+        [#account-icon]
+      </div>
+      <div class="hz-header__basket">
+        [#basket-icon]
+      </div>
+    </div>
+  </div>
+</header>
