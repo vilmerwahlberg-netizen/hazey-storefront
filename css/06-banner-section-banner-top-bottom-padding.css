@@ -1,17 +1,14 @@
 /* =============================================
-   BANNER SECTION (#Banner) — top/bottom padding
+   BANNER SECTION (#Banner) — borttagen på Vilmers begäran (THCA-bannern,
+   "THCA hos oss – i alla former! / UPPTÄCK THCA"). #Banner är Nyehandels
+   egen sidbyggar-komponent (en enda uppladdad rasterbild, ingen riktig
+   HTML/CSS-text att reskinna — se STATUS.md), men id:t är stabilt och
+   unikt så hela wrapper-sektionen kan säkert döljas härifrån utan att
+   röra admin-innehållet i sig.
    ============================================= */
 
 .template-components__columns:has(#Banner) {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
-}
-
-@media (max-width: 768px) {
-  .template-components__columns:has(#Banner) {
-    padding-top: 32px !important;
-    padding-bottom: 32px !important;
-  }
+  display: none !important;
 }
 
 /* =============================================

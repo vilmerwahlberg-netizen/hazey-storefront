@@ -4522,3 +4522,24 @@ EXPLICITA krav (lägre vikt, storleksminskning, tätare line-height, exakt
 radbrytning) är uppfyllda och verifierade, oavsett detta.
 
 Arbetet pausar för Vilmers visuella granskning.
+
+## THCA-bannern borttagen (2026-09-10)
+
+Vilmer bad om att ta bort den gamla "THCA hos oss – i alla former! /
+UPPTÄCK THCA"-bannern (en enda uppladdad rasterbild i Nyehandels egen
+sidbyggar-"Banner"-komponent, `#Banner .image-component a > img` — se
+tidigare dokumenterad plattformsbegränsning ovan). Elementets `id="Banner"`
+är stabilt och unikt, så hela wrapper-sektionen kunde döljas säkert från
+vår CSS utan admin-åtkomst: `css/06-banner-section-banner-top-bottom-
+padding.css` — `.template-components__columns:has(#Banner){display:none
+!important}` ersatte de gamla padding-reglerna. Verifierat borttagen (0×0,
+inget kvarvarande tomrum) på både desktop (1440px) och mobil (390px) mot
+tema 6-preview. `node tests/fas6-full-verification.mjs` grönt förutom en
+enstaka mobil-sökflaggning som verifierades vara opåverkad av denna ändring
+(samma live async-datakapplöpning som tidigare dokumenterats i sessionen,
+inte reproducerbar vid omkörning).
+
+De mobil-specifika `#Banner`-styling-reglerna i `css/18-mobil-pass-2026-
+06-29-thca-seo-text-banner-mobilna.css` (rundade hörn/skugga) blev
+oskadlig död kod av samma ändring — rörda inte, ingen anledning att städa
+bort dem separat.
