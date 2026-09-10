@@ -4136,19 +4136,30 @@
     var NH_SPOTLIGHT = {
       active: true,
       productHref: "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-99-2ml",
+      // Riktig serietillhörighet (verifierad -- produkten är en Magic
+      // Sauce-vape, se productHref/JSON-LD), inte en fabricerad rubrik --
+      // används för desktopens H2 ("Magic Sauce är i lager."/"...snart
+      // tillbaka i lager.", se nhInitSpotlight) OCH CTA-texten
+      // ("Köp Magic Sauce →"), båda härledda, ingen hårdkodad SKU-text.
+      seriesLabel: "Magic Sauce",
       rationale: "En av våra mest populära Magic Sauce-produkter — engångsvape, redo direkt ur förpackningen.",
       secondaryLabel: "Se hela Magic Sauce-sortimentet →",
       secondaryHref: "/sv/categories/magic-sauce"
     };
     function nhSpotlightHtml() {
       if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
-      // Desktop-parity-runda: .nh-spotlight-backdrop är en PRELIMINÄR
-      // redaktionell kampanjbild (feature-magic-sauce-higher-things-v2.jpg,
-      // riktig Magic Sauce-serie, samma godkända undantag som hero-bilden,
-      // se STATUS.md) -- bara på desktop (css), mobilen visar även
-      // fortsättningsvis ENDAST den riktiga, JS-hämtade produktbilden
-      // (#nhSpotlightImg, se nhInitSpotlight -- helt orörd, fortfarande
-      // 100% riktig data). Ingen produktbild ersätts av kampanjbilden.
+      // KORRIGERINGSRUNDA (2026-09-10, Vilmer jämförde direkt mot en ny
+      // referensbild och flaggade stor avvikelse i typsnitt/text/bild-
+      // format/CTA): .nh-spotlight-backdrop fyller nu HELA kortet (inte
+      // en 33%-kolumn) -- .nh-spotlight-body ligger som en separat,
+      // diagonalt avskuren kräm-panel OVANPÅ fotot (se css, clip-path),
+      // exakt referensens komposition, i stället för en 50/50- eller
+      // 67/33-sida-vid-sida-delning. Typ/pris/lager/betyg
+      // (#nhSpotlightType/#nhSpotlightMeta) är KVAR i DOM:en med samma
+      // riktiga data som förut -- bara visuellt dolda på desktop (css),
+      // eftersom referensen inte visar den raden alls på den här
+      // kortstilen. Mobilen (#nhSpotlightImg + typ/pris/lager/betyg)
+      // är HELT oförändrad. */
       return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
         + '  <div class="nh-spotlight-inner">'
         + '    <div class="nh-spotlight-media">'
@@ -4159,10 +4170,17 @@
         + '      <div class="nh-spotlight-kicker">Featured</div>'
         + '      <p class="nh-spotlight-type" id="nhSpotlightType"></p>'
         + '      <h2 id="nhSpotlightName">Laddar…</h2>'
+        // Desktop-ENDA rubrik (se css: visas i stället för #nhSpotlightName
+        // på desktop, tvärtom på mobil) -- kort lagerstatusrad, se
+        // motivering vid NH_SPOTLIGHT.seriesLabel ovan och nhInitSpotlight.
+        + '      <h2 id="nhSpotlightHeadline" class="nh-spotlight-headline">Laddar…</h2>'
         + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT.rationale + '</p>'
         + '      <div class="nh-spotlight-meta" id="nhSpotlightMeta"></div>'
         + '      <div class="nh-spotlight-cta">'
-        + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT.productHref + '">Visa produkten</a>'
+        + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT.productHref + '">'
+        + '          <span id="nhSpotlightBuyLabel">Köp ' + NH_SPOTLIGHT.seriesLabel + '</span>'
+        + '          <span aria-hidden="true">→</span>'
+        + '        </a>'
         + (NH_SPOTLIGHT.secondaryHref
             ? '<a class="hero-link nh-spotlight-secondary" href="' + NH_SPOTLIGHT.secondaryHref + '">' + NH_SPOTLIGHT.secondaryLabel + '</a>'
             : '')
@@ -4201,7 +4219,17 @@
           var typeLabel = typeMatch ? typeMatch[1].trim() : "";
           var brand = (data.brand && data.brand.name) || "";
           section.querySelector("#nhSpotlightImg").style.backgroundImage = "url('" + img + "')";
+          // Mobil: OFÖRÄNDRAD, visar fortfarande den riktiga fullständiga
+          // SKU-titeln (t.ex. "Vape - Magic Sauce 99% - 2ml").
           section.querySelector("#nhSpotlightName").textContent = data.name || "";
+          // Desktop (2026-09-10, matchar referensbildens rubrikstil): en
+          // kort, ärlig lagerstatusrad ("Magic Sauce är i lager."/"...snart
+          // tillbaka i lager.") i stället för SKU-titeln -- HELT härlett
+          // av samma riktiga `inStock`-fält som redan beräknas ovan (live
+          // JSON-LD), ingen hårdkodad påstådd lagerstatus. Se css för
+          // vilken av de två <h2>-raderna som visas var.
+          section.querySelector("#nhSpotlightHeadline").textContent = NH_SPOTLIGHT.seriesLabel
+            + (inStock ? " är i lager." : " är snart tillbaka i lager.");
           section.querySelector("#nhSpotlightType").textContent = [typeLabel, brand].filter(Boolean).join(" · ");
           var rating = data.aggregateRating;
           var ratingHtml = (rating && rating.ratingValue && rating.reviewCount)

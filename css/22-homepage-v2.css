@@ -1740,6 +1740,9 @@
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
   font-weight: 600 !important; font-size: 22px !important; color: #fffdf8; margin: 0 0 8px;
 }
+/* Desktop-ENDA rubrik (se @media min-width:861px) -- dold på mobil så
+   #nhSpotlightName (den riktiga SKU-titeln) förblir mobilens enda H2. */
+.nh-spotlight-headline { display: none; }
 .nh-spotlight-rationale { font-size: 13px; line-height: 1.55; color: rgba(244,233,220,.8); margin: 0 0 12px; max-width: 46ch; }
 .nh-spotlight-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
 .nh-spotlight-price { font-size: 18px; font-weight: 700; color: #fffdf8; }
@@ -2970,20 +2973,36 @@
   }
 }
 
-/* ── (5) Featured/Spotlight — asymmetrisk delning, KORRIGERAD riktning
-   (Fas 2, mätbar desktop-paritetsrunda): referensen visar copy VÄNSTER,
-   stort redaktionellt foto HÖGER (bekräftat mot
-   hazey-dadgrass-westcoast-concept-v1.png) -- den tidigare kommentaren
-   här sa redan "copy vänster, bild höger", men DOM-ordningen
-   (.nh-spotlight-media FÖRE .nh-spotlight-body i js/18b-homepage-v2.js,
-   orörd -- mobilen bygger fortfarande på samma markup och behöver den
-   ordningen oförändrad) placerade dem i motsatt kolumn på desktop,
-   verifierat live via en första felaktig side-by-side.png i
-   tests/results/desktop-reference-parity/. `order` löser det utan att
-   röra HTML/mobil. Den separata, flytande "riktig produkt"-bildbadgen
-   (#nhSpotlightImg) togs bort på desktop (endast desktop -- mobilen visar
-   fortfarande #nhSpotlightImg orört, se js-kommentaren): referensen har
-   EN sammanhängande kampanjbild som yta, ingen extra overlay-bild ovanpå. */
+/* ── (5) Featured/Spotlight — KORRIGERINGSRUNDA (2026-09-10): Vilmer
+   jämförde direkt mot en ny referensbild (inte den äldre
+   hazey-dadgrass-westcoast-concept-v1.png) och flaggade stor, konkret
+   avvikelse: "typsnittet är fel, texten är fel, bilden är fel format
+   och storlek, cta knappen är fel färg text och design". Rotorsak: den
+   FÖREGÅENDE rundan byggde en sida-vid-sida-delning (67% text/33% bild)
+   -- referensen visar i stället EN heltäckande fotoyta (~68% av bredden)
+   med en diagonalt avskuren kräm-panel FLYTANDE OVANPÅ fotot (~32%),
+   alltså tvärtom proportion OCH en helt annan komposition (overlay, inte
+   grid-delning). Byggd om i grunden:
+   - .nh-spotlight-media/.nh-spotlight-backdrop fyller nu HELA kortet
+     (position:absolute, inset:0), inte en smal kolumn.
+   - .nh-spotlight-body är nu en position:absolute kräm-panel OVANPÅ
+     fotot, med en diagonal högerkant (clip-path) som i referensen --
+     bredd/vinkel mätt mot referensbilden (1452×526px): panelen är ~38%
+     bred vid toppen, ~5px smalare vid botten per 100px höjd.
+   - Rubrik/kicker/CTA fick ny typografi/färg/storlek (se nedan), mätt
+     mot referensens dominant serif-rubrik (stor, fet, mörk -- inte
+     grön), varm mättad orange CTA (samma `--terra`-familj som redan
+     finns i designtokens, se docs/HAZEY-DESIGN-SYSTEM.md) i stället för
+     den bleka glasgradienten.
+   - Typ/pris/lager/betyg (.nh-spotlight-type/.nh-spotlight-meta) och
+     sekundärlänken visas INTE i referensens kortstil -- döljs på
+     desktop (fortfarande i DOM:en, fortfarande synliga på mobil,
+     ingen data togs bort). Se js/18b-homepage-v2.js för motivering av
+     den nya, härledda H2-texten (#nhSpotlightHeadline).
+   Mobilen (#nhSpotlightImg, #nhSpotlightName, typ/pris/lager/betyg,
+   sekundärlänk) är HELT OFÖRÄNDRAD -- alla nya regler är scopade hit,
+   .nh-spotlight-headline är dessutom dold som standard (se basregeln
+   ovan i filen) och visas bara här. */
 @media (min-width: 861px) {
   /* BUGGFYND (verifierat live via getComputedStyle, samma bugklass som
      redan dokumenterad för .nh-trustblock ovan): basregelns
@@ -2996,41 +3015,66 @@
      hela bredden, exakt de cream-marginalerna som flaggades. */
   .nh-spotlight.section-gap { max-width: none; padding: 0; margin: 0; }
   .nh-spotlight-inner {
-    background: #faf3e9; border-radius: 0;
-    /* Referensbild 2026-09-10 (bento-komposition Featured+Omdömen): 2fr/1fr
-       (33,3% bild), SAMMA förhållande som .nh-reviews-layout nedan -- gör
-       att fotokolumnen får identisk bredd i båda raderna, en förutsättning
-       för att de ska upplevas som EN sammanhängande bild (se motivering i
-       js/18b-homepage-v2.js nhReviewsHtml). Tidigare 1fr/1.3fr (56,5% bild)
-       matchade inte omdömesradens 30% alls. */
-    display: grid; grid-template-columns: 2fr 1fr;
+    background: transparent; border-radius: 0;
+    position: relative; display: block; overflow: hidden;
     max-width: none;
+    /* 1452/526 -- referensbildens egna proportion (inte anpassad efter
+       en specifik upplösning, men förhållandet skalar med bredden). */
+    aspect-ratio: 2.76 / 1; min-height: 420px;
   }
-  /* 480→506px (Fas 2, mätbar desktop-paritetsrunda): -5% mot referensens
-     uppmätta ~505px. */
-  .nh-spotlight-media { order: 2; padding: 0; position: relative; min-height: 506px; overflow: hidden; }
+  .nh-spotlight-media {
+    order: initial; position: absolute; inset: 0; padding: 0; min-height: 0; overflow: hidden;
+  }
   .nh-spotlight-backdrop {
-    position: absolute; inset: 0; background-size: cover; background-position: center 30%;
+    position: absolute; inset: 0; background-size: cover; background-position: center 38%;
   }
   .nh-spotlight-media::before { display: none; }
   .nh-spotlight-img { display: none; }
-  .nh-spotlight-body { order: 1; padding: 56px 48px 56px 56px; display: flex; flex-direction: column; justify-content: center; }
-  .nh-spotlight-kicker,
-  .nh-reviews-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
-  .nh-spotlight-type { color: #9a9280; }
-  .nh-spotlight-body h2 { color: #2c3620; font-size: 30px !important; }
-  .nh-spotlight-rationale { color: #5f5c50; }
-  .nh-spotlight-price { color: #2c3620; }
-  .nh-spotlight-stock { color: #4d7042; }
-  .nh-spotlight-rating { color: #96683f; }
-  .nh-spotlight-rating span { color: #9a9280; }
-  .nh-spotlight-cta .btn-solid {
-    background: linear-gradient(155deg, rgba(255,198,140,.68), rgba(217,120,47,.82));
-    border: 1px solid rgba(255,255,255,.5); color: #2e1c0c;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 10px 24px -10px rgba(217,120,47,.6);
+  /* Kräm-panelen: diagonal högerkant via clip-path, flytande ovanpå
+     fotot (z-index) i stället för en egen grid-kolumn. */
+  .nh-spotlight-body {
+    order: initial; position: absolute; inset: 0 auto 0 0; z-index: 1;
+    width: 40%; min-width: 340px; max-width: 620px;
+    background: #faf3e9;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 80px) 100%, 0 100%);
+    padding: 44px 96px 44px 56px;
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .nh-spotlight-secondary.hero-link { color: #96683f; border-color: rgba(150,104,63,.4); }
-  .nh-spotlight-secondary.hero-link:hover { border-color: #96683f; }
+  .nh-spotlight-kicker,
+  .nh-reviews-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 600; font-size: 18px; color: #c1592c; text-transform: none; letter-spacing: 0; margin-bottom: 10px; }
+  /* Referensen visar varken typ/pris/lager/betyg eller sekundärlänken på
+     den här kortstilen -- all data finns kvar (mobil, produktsidan bakom
+     CTA:n), bara visuellt dold här. */
+  .nh-spotlight-type,
+  .nh-spotlight-meta,
+  .nh-spotlight-name-mobile,
+  #nhSpotlightName,
+  .nh-spotlight-secondary { display: none; }
+  .nh-spotlight-headline {
+    display: block;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    /* !important på color: basregeln (.nh-spotlight-body h2, mobilens
+       ljusa text mot den mörka kortbakgrunden) sätter color:#fffdf8
+       !important -- utan samma vapen här vinner den ALLTID, samma
+       redan dokumenterade bugklass som trustraden/CLAUDE.md beskriver
+       (verifierat live: renderade rgb(255,253,248) i stället för den
+       avsedda mörka färgen innan denna fix). */
+    font-weight: 700 !important; font-size: 40px !important; line-height: 1.06;
+    color: #241f18 !important; margin: 0 0 14px;
+  }
+  .nh-spotlight-rationale { color: #5c574d; font-size: 14.5px; line-height: 1.6; max-width: 32ch; margin-bottom: 22px; }
+  .nh-spotlight-cta { gap: 0; }
+  .nh-spotlight-cta .btn-solid {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #d9782f; border: none; color: #fffdf8;
+    font-weight: 700; font-size: 14.5px; letter-spacing: .01em;
+    padding: 15px 26px; border-radius: 999px;
+    box-shadow: 0 12px 24px -12px rgba(180,90,30,.55);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+  .nh-spotlight-cta .btn-solid:hover { background: #c26a29; transform: translateY(-1px); box-shadow: 0 12px 24px -12px rgba(180,90,30,.55); }
+  .nh-spotlight-cta .btn-solid:active { transform: translateY(0); }
+  .nh-spotlight-cta .btn-solid span[aria-hidden] { font-size: 15px; }
 }
 
 /* ── (6) Omdömen — delad komposition (recensioner vänster, redaktionell

@@ -4619,3 +4619,65 @@ produktdata):
 flaggade mobil-sökkontrollen, som nu passerade -- bekräftar att den
 föregående flaggningen var en engångs nätverksflaké, inte orsakad av
 någon kodändring).
+
+## KORRIGERINGSRUNDA — Featured/Spotlight-kortet var fel i grunden (2026-09-10)
+
+Ovanstående runda byggde Featured-kortet som en 67/33 sida-vid-sida-
+grid. Vilmer jämförde direkt mot en ny, mer specifik referensbild av
+kortet i isolering och avvisade resultatet rakt av: "du ser ju galen
+stor skillnad på dessa... typsnittet är fel, texten är fel, bilden är
+fel format och storlek, cta knappen är fel färg text och design."
+
+Rotorsak (mätt mot referensbilden, 1452×526px): referensen är INTE en
+sida-vid-sida-delning -- det är EN heltäckande fotoyta (~68% av
+bredden) med en diagonalt avskuren kräm-panel FLYTANDE OVANPÅ fotot
+(~32%), tvärtom proportion mot vad som byggdes, och en helt annan
+komposition (overlay, inte grid). Byggd om i grunden i
+`.nh-spotlight-inner` (css/22-homepage-v2.css, "(5) Featured/Spotlight"):
+
+- `.nh-spotlight-media`/`.nh-spotlight-backdrop`: `position:absolute;
+  inset:0` -- fyller nu HELA kortet, `aspect-ratio:2.76/1` (referensens
+  egna proportion).
+- `.nh-spotlight-body`: `position:absolute` kräm-panel ovanpå fotot,
+  `clip-path: polygon(...)` för den diagonala högerkanten, 40% bredd.
+- Ny rubrik-typografi: 40px, fetvikt 700, `Iowan Old Style`, mörk
+  varm-svart färg (`#241f18`, inte grön) -- mätt mot referensens
+  dominanta seriffade rubrik.
+- Ny CTA: solid `#d9782f` (samma varumärkes-orange som redan finns i
+  designtokens), vit fet text + pil, helt rundad piller-form -- ersatte
+  den bleka glasgradienten med vit outline.
+- Kicker "Featured": större (18px), fetare (600), varmare orange
+  (`#c1592c`).
+- Typ/pris/lager/betyg-raden och sekundärlänken visas INTE i
+  referensens kortstil -- dolda på desktop (fortfarande i DOM:en,
+  fortfarande synliga på mobil, ingen data togs bort).
+
+**Ny, ärlig rubriktext (inte fabricerad):** `NH_SPOTLIGHT.seriesLabel`
+("Magic Sauce", den riktiga serien produkten tillhör) + ett härlett
+lagerstatus-omdöme ("är i lager."/"är snart tillbaka i lager.") ur
+SAMMA riktiga `inStock`-fält som redan beräknas från produktens live
+JSON-LD -- ingen hårdkodad påstådd lagerstatus, uppdateras automatiskt
+om produkten säljs slut. Ny `<h2 id="nhSpotlightHeadline">` ENDAST
+synlig på desktop; `#nhSpotlightName` (den riktiga fullständiga
+SKU-titeln, "Vape - Magic Sauce 99% - 2ml") förblir HELT oförändrad på
+mobil. CTA-texten blev "Köp Magic Sauce →" (delad mellan mobil/desktop,
+samma härledda `seriesLabel` -- en tydligare handling-CTA än tidigare
+"Visa produkten", ingen förlust av information eftersom länken pekar
+mot samma riktiga produktsida).
+
+**Bugg hittad och fixad under egen verifiering:** den nya rubriken
+renderade first `rgb(255,253,248)` (nästan vit) i stället för den
+avsedda mörka färgen -- samma redan dokumenterade bugklass som flera
+gånger tidigare i den här filen: basregeln `.nh-spotlight-body h2 {
+color:#fffdf8 !important }` (mobilens ljusa text mot en mörk
+kortbakgrund) vann över den nya desktop-regeln eftersom den senare
+saknade `!important`. Fixat genom att lägga samma vapen på den nya
+regeln, verifierat via getComputedStyle efteråt (`rgb(36,31,24)`).
+
+**Verifiering**: 0px overflow + inga konsolfel vid 1024/1180/1280/
+1440/1920, skärmdump-jämförd mot referensbilden vid alla tre (1024/
+1440/1920) -- diagonal panel, fotoproportion, rubriktypografi och
+CTA-stil matchar nu tydligt. Mobil pixelkontrollerad (oförändrad:
+riktig SKU-titel, typ/pris/lager/betyg, produktfoto, sekundärlänk allt
+kvar, bara CTA-texten uppdaterad). `node tests/fas6-full-
+verification.mjs` grönt.
