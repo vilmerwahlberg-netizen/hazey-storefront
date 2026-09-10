@@ -1,16 +1,29 @@
 <!--
   Hazey — Nyehandel template 8 "Head" field.
 
-  Intentionally empty of any Hazey/Oliver loader script. Per CLAUDE.md
-  ("KRITISKT — säkerhet mot skarpa sajten"): the Head field belongs to
-  Google Fonts + the Trustpilot widget only, and must never also carry
-  a storefront loader — the two fields (Head vs. JavaScript) have
-  separate, non-overlapping responsibilities. Template 8's native
-  header/main do not need any externally-loaded script, so this field
-  stays clean rather than getting a new loader moved into it.
+  Confirmed directly in template 8: this theme instance currently has
+  the Oliver loader in BOTH the Head field and the JavaScript field.
+  This file replaces the Head field's content and removes that loader
+  from Head entirely — it carries only what Head is actually for
+  (CLAUDE.md: Google Fonts + the Trustpilot widget), nothing else.
+  The JavaScript field's own removal is a separate file — see
+  nyehandel-native/dist/javascript.html.
 
-  Paste this exactly as-is. If Nyehandel's own Google Fonts/Trustpilot
-  snippet already lives in this theme instance's Head field, keep that
-  snippet and do not overwrite it with this file — this file is only
-  meant for a Head field that is currently empty.
+  Google Fonts preconnect + the Manrope stylesheet link below use the
+  standard Google Fonts v2 CSS API for the weight range already implied
+  by this repo's own typography notes (css/01-hazeyse-slideshow-hero-
+  enhancement.css documents Manrope as the platform's native default
+  before Hazey's own Nunito override). The exact weight list has not
+  been read back from the live Head field itself this round — confirm
+  it matches before assuming this is byte-for-byte identical to what
+  is there today.
+
+  The Trustpilot bootstrap script tag below is the exact one already
+  observed live on the current theme (verified this session via a
+  direct page fetch), not a guess.
 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>

@@ -1,20 +1,14 @@
 <!--
-  Hazey — Nyehandel template 8 "Main" field. Minimal scaffold only.
+  Hazey — Nyehandel template 8 "Main" field. NOT part of this
+  delivery.
 
-  UNVERIFIED (flag this before pasting, see README "Nyehandel-
-  begränsningar"): CLAUDE.md documents real native slots for the
-  HEADER field only ([#logo] [#navbar] [#search] [#account-icon]
-  [#basket-icon] [#hamburger] [#usp]) — no Main-field slot name is
-  documented anywhere in this repo, and this round has no Nyehandel
-  admin access to confirm one live. [#main-content] below is a
-  best-guess placeholder following the same bracket convention, NOT a
-  confirmed slot name. Confirm the real placeholder with Nyehandel
-  support (or by inspecting a live template-8 Main field, if one
-  already exists in the account) before pasting this into a real
-  field — an unrecognized slot will most likely render as literal
-  text instead of the page's actual content, a visible but
-  non-destructive failure (nothing else on the page breaks).
+  Confirmed directly in template 8 + official docs: the Main field
+  supports [#campaign-bar], [#main-content], and [#default-main], and
+  template 8 renders its own normal Main content automatically when
+  the Main field is left EMPTY. The header POC in this round relies on
+  exactly that — Main stays empty in Nyehandel admin until hero/the
+  homepage is migrated in a future round, so this file is scaffolded
+  but intentionally not built into dist/ yet (see
+  nyehandel-native/README.md). When that round starts, replace this
+  comment with real content built from the three confirmed slots above.
 -->
-<main class="hz-main">
-  [#main-content]
-</main>
