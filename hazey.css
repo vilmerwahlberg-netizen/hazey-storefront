@@ -13852,8 +13852,15 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      marginal på var sida, exakt de "stora cream-marginalerna" som
      flaggades. margin:0 återställer den avsedda full-bredd-stretchen. */
   .nh-trustblock.section-gap { max-width: none; padding: 0; margin: 0; }
+  /* BUGGFYND (verifierat live via getComputedStyle): basregelns
+     `border: 1px solid #ebe1d1` (den ljusa kort-kanten, rätt för
+     mobilens vita kort) ärvdes oförändrad hit -- desktop-regeln
+     återställde background/border-radius/padding men glömde bort
+     border, vilket lämnade en synlig ljus "outline" runt den annars
+     fullbredds mörkgröna remsan, precis den kant som flaggades mot
+     bilden ovanför. */
   .nh-tb-inner {
-    background: #1e2716; border-radius: 0;
+    background: #1e2716; border: none; border-radius: 0;
     /* 26px→31px (Fas 2, mätbar desktop-paritetsrunda): -6.4% mot
        referensens uppmätta ~135px. */
     padding: 31px 40px;
@@ -13922,7 +13929,16 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
    fortfarande #nhSpotlightImg orört, se js-kommentaren): referensen har
    EN sammanhängande kampanjbild som yta, ingen extra overlay-bild ovanpå. */
 @media (min-width: 861px) {
-  .nh-spotlight.section-gap { max-width: none; padding: 0; }
+  /* BUGGFYND (verifierat live via getComputedStyle, samma bugklass som
+     redan dokumenterad för .nh-trustblock ovan): basregelns
+     `margin: 0 auto` (rad ~1709) återställdes aldrig här -- max-width:
+     none ensam räcker inte, en icke-noll auto-marginal på ett
+     flex-kolumn-barn stänger uttryckligen av standard-stretchen
+     (flexbox-specen). Uppmätt FÖRE denna fix: computed margin
+     "0px 97.125px", bredd 1246px av 1440px -- sektionen krympte till
+     sitt naturliga innehåll och centrerades i stället för att fylla
+     hela bredden, exakt de cream-marginalerna som flaggades. */
+  .nh-spotlight.section-gap { max-width: none; padding: 0; margin: 0; }
   .nh-spotlight-inner {
     background: #faf3e9; border-radius: 0;
     display: grid; grid-template-columns: 1fr 1.3fr;
@@ -13957,15 +13973,28 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 /* ── (6) Omdömen — delad komposition (recensioner vänster, redaktionell
    stämningsbild höger). All recensionsdata i .nh-reviews-main OFÖRÄNDRAD. ── */
 @media (min-width: 861px) {
-  .nh-reviews.section-gap { max-width: none; padding: 0; }
+  /* BUGGFYND (verifierat live via getComputedStyle, samma bugklass som
+     .nh-trustblock/.nh-spotlight ovan): basregelns `margin: 0 auto`
+     (rad ~2105) återställdes aldrig här. Uppmätt FÖRE denna fix:
+     computed margin "0px 262.859px", bredd 914px av 1440px -- sektionen
+     var inte alls anpassad till riktiga desktop-upplösningar (1440/1920
+     m.fl.), bara krympt till sitt naturliga innehåll och centrerad. */
+  .nh-reviews.section-gap { max-width: none; padding: 0; margin: 0; }
   /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): referensen delar
      ca 70/30 (recensioner/editorialbild), inte 50/50 -- 1.3fr:1fr (56/44)
      var för jämnt fördelat, bekräftat mot
      hazey-dadgrass-westcoast-concept-v1.png. */
   .nh-reviews-layout { display: grid; grid-template-columns: 7fr 3fr; align-items: stretch; }
-  /* 48px→38px vertikal padding (Fas 2, mätbar desktop-paritetsrunda):
-     mätte +5.6% mot referensens uppmätta ~515px. */
-  .nh-reviews-main { padding: 38px 56px; max-width: 640px; }
+  /* BUGGFYND (verifierat live via getComputedStyle): max-width:640px
+     var tydligen räknat mot en tidigare, felaktigt hopkrympt 914px-
+     containerbredd (7/10 av 914≈640 -- exakt samma tal), inte en
+     avsiktlig läsbarhetsbegränsning. Efter fixen ovan (sektionen fyller
+     nu hela 1440/1920px) lämnade den stela 640px:en ett stort tomt
+     cream-glapp mellan recensionskorten och redaktionellbilden i stället
+     för att fylla sin egna 7fr-cell (uppmätt 1008px vid 1440, 1344px vid
+     1920). 48px→38px vertikal padding (Fas 2, mätbar desktop-
+     paritetsrunda): mätte +5.6% mot referensens uppmätta ~515px. */
+  .nh-reviews-main { padding: 38px 56px; max-width: none; }
   .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
 }
 @media (max-width: 860px) {
