@@ -16,6 +16,9 @@
   [#hamburger] is NOT placed inside our own <button> — the slot
   component renders its own interactive element, so it sits in a
   neutral wrapper instead (no nested/duplicate interactive control).
+  Same reasoning for [#navbar]: it can render its own <nav> internally,
+  so it sits in a neutral <div> here rather than a <nav> we add
+  ourselves — no risk of a nested/duplicate navigation landmark.
 -->
 <header class="hz-header">
   <div class="hz-header__row">
@@ -27,9 +30,9 @@
       [#logo]
     </div>
 
-    <nav class="hz-header__nav" aria-label="Huvudmeny">
+    <div class="hz-header__nav">
       [#navbar]
-    </nav>
+    </div>
 
     <div class="hz-header__actions">
       <div class="hz-header__search">
