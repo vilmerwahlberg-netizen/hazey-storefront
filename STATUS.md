@@ -4543,3 +4543,79 @@ De mobil-specifika `#Banner`-styling-reglerna i `css/18-mobil-pass-2026-
 06-29-thca-seo-text-banner-mobilna.css` (rundade hörn/skugga) blev
 oskadlig död kod av samma ändring — rörda inte, ingen anledning att städa
 bort dem separat.
+
+## Trustrad/Featured/Omdömen — bento-komposition mot ny referensbild (2026-09-10)
+
+Vilmer bifogade en ny referensbild (inte anpassad efter en specifik
+upplösning, men designen ska fungera på alla desktop-bredder) som visar
+trustrad → Featured (Magic Sauce) → Verifierade omdömen som EN
+sammanhängande komposition, med ett enda lodrätt redaktionellt foto som
+löper genom både Featured- och Omdömen-raden. Nuvarande läge (image 35 i
+hans meddelande) visade i stället två separata, boxiga kort med olika
+bilder — "jag är inte nöjd med dagsläget, jag vill ha som referensbilden
+i design. mycket snyggare".
+
+**Tur i implementationen:** `.nh-trustblock`(order 4) → `.nh-spotlight`
+(order 5) → `.nh-reviews`(order 6) ligger redan direkt efter varandra i
+den befintliga desktop-flex-ordningen (se "(1) Sektionsordning" i
+css/22) — ingen DOM-omflyttning behövdes. En bokstavlig sammanslagning av
+Spotlight+Reviews till EN DOM-nod övervägdes för ett helt sömlöst foto,
+men förkastades: mobilens redan godkända, oberoende sektionsordning
+(Spotlight=order 5, Reviews=order 9, med Kunskap/Guider emellan) hade då
+tvingats till samma plats — mot uttrycklig regel ("UTAN att röra
+mobilens redan godkända... sekvens", se kommentar i js/18b-homepage-
+v2.js). Löst i stället utan DOM-ändring:
+
+1. **Trustrad**: understycket (redan RIKTIG text, `steps[].text` i
+   `nhTrustBlockHtml`) visades tidigare bara på mobil
+   (`.nh-tb-step p{display:none}` på desktop) — nu synligt på desktop
+   också, så varje post blir ikon + fet rubrik + kort understycke
+   (samma tvåradiga struktur som referensen), ingen ny text skriven.
+2. **Spotlight + Omdömen fotokolumn**: båda sektionernas interna grid
+   (`.nh-spotlight-inner`, `.nh-reviews-layout`) hade olika kolumn-
+   förhållanden (56,5% resp. 30% fotobredd) — enades till IDENTISKT
+   `2fr 1fr` (33,3% foto) i båda, en förutsättning för att fotot ska
+   läsas som en fortsättning i stället för två orelaterade bilder.
+3. **Samma bild i båda raderna**: `.nh-reviews-editorial` bytte källa
+   från `editorial-venice-good-idea-v2.jpg` till SAMMA fil som
+   Spotlight redan använder (`feature-magic-sauce-higher-things-v2.jpg`,
+   riktig, redan godkänd Magic Sauce-kampanjbild), med en annan
+   `background-position` (`center 85%` mot Spotlightens `center 30%`)
+   så raden under visar en annan del av samma foto i stället för en
+   identisk upprepning — ingen ny bildtillgång behövdes.
+4. **Kicker-etikett**: en liten "Äkta röster"-rad lades till ovanför
+   "Verifierade omdömen" (`.nh-reviews-kicker`), samma visuella grepp
+   som Spotlightens redan befintliga "Featured"-kicker — ren
+   sektionsetikett, ingen data.
+
+**Medvetet INTE kopierat från referensbilden** (innehöll fabricerad/
+overifierad platshållardata, se CLAUDE.md:s regel mot påhittad trust-/
+produktdata):
+- **Ingen tredje recensionskort** ("Erik L./Sofia K./Marcus T.") --
+  den riktiga datakällan (`NH_REVIEW_PRODUCTS`, se js/18b-homepage-v2.js)
+  har bara två godkända produkter att hämta ifrån (medvetet begränsat
+  till vape-tillbehör, se befintlig kommentar om varumärkesröst-regeln),
+  så exakt två riktiga kort visas, inte tre påhittade.
+- **Ingen "Verifierad köpare"-badge** -- den riktiga recensionsdatan
+  (Nyehandels egna produktsides-recensioner) innehåller ingen sådan
+  markör, redan uttryckligen dokumenterat i koden ("'Verifierad köpare'
+  visas INTE -- den riktiga datan innehåller ingen sådan markör").
+- **Ingen "5 000+ omdömen"** -- det riktiga, live-hämtade Trustpilot-
+  antalet (585, `nhInitReviewsLive`) används oförändrat, ingen uppräknad
+  siffra.
+- **Featured-kortets copy** ("Magic Sauce är i lager."/"Mer strains på
+  väg in...") ersattes INTE -- det är aspirerande platshållartext från
+  en AI-mockup utan bekräftad grund; den riktiga, konfigurationsstyrda
+  copyn (`NH_SPOTLIGHT.rationale`, produktens riktiga namn/pris/lager/
+  betyg via JSON-LD) behölls oförändrad, bara layouten/proportionerna
+  matchades mot referensen.
+
+**Verifiering**: 0px overflow vid 1024/1180/1280/1440/1920, mobil
+390/393/430/600 pixelkontrollerad mot en riktig stash/pop-baseline
+(trustrad + omdömen-sektionen båda byte-identiska mot innan -- alla CSS-
+ändringar scopade till `@media (min-width:861px)`, JS-ändringen
+(kicker-text + bildbyte) påverkar bara desktop-synliga element).
+`node tests/fas6-full-verification.mjs` grönt (inkl. den tidigare
+flaggade mobil-sökkontrollen, som nu passerade -- bekräftar att den
+föregående flaggningen var en engångs nätverksflaké, inte orsakad av
+någon kodändring).

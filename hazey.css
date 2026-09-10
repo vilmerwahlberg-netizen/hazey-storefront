@@ -12916,6 +12916,15 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 }
 .nh-guides .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; }
 
+/* Referensbild 2026-09-10 (bento-komposition Featured+Omdömen): en liten
+   kicker-etikett ovanför "Verifierade omdömen", samma visuella grepp som
+   .nh-spotlight-kicker ("Featured") -- rent kosmetisk sektionsetikett,
+   ingen data. */
+.nh-reviews-kicker {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: #96683f; margin: 0 0 6px;
+}
+
 .nh-guides-layout { display: flex; flex-direction: column; gap: 14px; }
 
 /* Feature-ytan: en mörk, varm kortbotten med produkten FLYTANDE i ett
@@ -13885,7 +13894,12 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      Nyhetsbrev-fixen tidigare denna omgång) -- ingen ny rotorsak, bara
      inte hittad förrän ett systematiskt kontrastsvep kördes. */
   .nh-tb-step h3 { font-size: 13px; color: #fffdf8 !important; margin: 0; }
-  .nh-tb-step p { display: none; }
+  /* Referensbild 2026-09-10: varje post visas som ikon + FET rubrik +
+     mindre understycke (två rader), inte bara en rubrikrad -- texten är
+     samma riktiga, redan skrivna copy (steps[].text i nhTrustBlockHtml),
+     bara synliggjord här igen i stället för dold. */
+  .nh-tb-step > div { display: flex; flex-direction: column; }
+  .nh-tb-step p { display: block; font-size: 11.5px; line-height: 1.35; color: rgba(255,253,248,.62); margin: 2px 0 0; }
   .nh-tb-foot { margin-top: 10px; padding-top: 10px; border-top-color: rgba(255,253,248,.14); }
   .nh-tb-foot span { color: rgba(255,253,248,.62); }
   .nh-tb-link { color: #e7ae63; }
@@ -13938,7 +13952,13 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-spotlight.section-gap { max-width: none; padding: 0; margin: 0; }
   .nh-spotlight-inner {
     background: #faf3e9; border-radius: 0;
-    display: grid; grid-template-columns: 1fr 1.3fr;
+    /* Referensbild 2026-09-10 (bento-komposition Featured+Omdömen): 2fr/1fr
+       (33,3% bild), SAMMA förhållande som .nh-reviews-layout nedan -- gör
+       att fotokolumnen får identisk bredd i båda raderna, en förutsättning
+       för att de ska upplevas som EN sammanhängande bild (se motivering i
+       js/18b-homepage-v2.js nhReviewsHtml). Tidigare 1fr/1.3fr (56,5% bild)
+       matchade inte omdömesradens 30% alls. */
+    display: grid; grid-template-columns: 2fr 1fr;
     max-width: none;
   }
   /* 480→506px (Fas 2, mätbar desktop-paritetsrunda): -5% mot referensens
@@ -13950,7 +13970,8 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-spotlight-media::before { display: none; }
   .nh-spotlight-img { display: none; }
   .nh-spotlight-body { order: 1; padding: 56px 48px 56px 56px; display: flex; flex-direction: column; justify-content: center; }
-  .nh-spotlight-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
+  .nh-spotlight-kicker,
+  .nh-reviews-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 500; font-size: 15px; color: #b8865a; text-transform: none; letter-spacing: 0; }
   .nh-spotlight-type { color: #9a9280; }
   .nh-spotlight-body h2 { color: #2c3620; font-size: 30px !important; }
   .nh-spotlight-rationale { color: #5f5c50; }
@@ -13977,22 +13998,27 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      var inte alls anpassad till riktiga desktop-upplösningar (1440/1920
      m.fl.), bara krympt till sitt naturliga innehåll och centrerad. */
   .nh-reviews.section-gap { max-width: none; padding: 0; margin: 0; }
-  /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): referensen delar
-     ca 70/30 (recensioner/editorialbild), inte 50/50 -- 1.3fr:1fr (56/44)
-     var för jämnt fördelat, bekräftat mot
-     hazey-dadgrass-westcoast-concept-v1.png. */
-  .nh-reviews-layout { display: grid; grid-template-columns: 7fr 3fr; align-items: stretch; }
+  /* Referensbild 2026-09-10: samma 2fr/1fr (33,3% bild) som
+     .nh-spotlight-inner ovan -- SAMMA fotokolumnbredd i båda raderna
+     (tidigare 7fr/3fr=30%, nära men inte identiskt med spotlightens
+     dåvarande 56,5%) är en förutsättning för att fotot ska läsas som EN
+     sammanhängande bild som löper genom hela Featured+Omdömen-blocket. */
+  .nh-reviews-layout { display: grid; grid-template-columns: 2fr 1fr; align-items: stretch; }
   /* BUGGFYND (verifierat live via getComputedStyle): max-width:640px
      var tydligen räknat mot en tidigare, felaktigt hopkrympt 914px-
      containerbredd (7/10 av 914≈640 -- exakt samma tal), inte en
      avsiktlig läsbarhetsbegränsning. Efter fixen ovan (sektionen fyller
      nu hela 1440/1920px) lämnade den stela 640px:en ett stort tomt
      cream-glapp mellan recensionskorten och redaktionellbilden i stället
-     för att fylla sin egna 7fr-cell (uppmätt 1008px vid 1440, 1344px vid
-     1920). 48px→38px vertikal padding (Fas 2, mätbar desktop-
-     paritetsrunda): mätte +5.6% mot referensens uppmätta ~515px. */
+     för att fylla sin egna kolumncell. 48px→38px vertikal padding (Fas 2,
+     mätbar desktop-paritetsrunda): mätte +5.6% mot referensens uppmätta
+     ~515px. */
   .nh-reviews-main { padding: 38px 56px; max-width: none; }
-  .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
+  /* background-position center 85% (inte center/30% som spotlightens
+     bild ovanför) -- SAMMA fil, men en annan del av bilden, så raden
+     under upplevs som en fortsättning av fotot i stället för en exakt
+     upprepning av samma beskärning (se nhReviewsHtml). */
+  .nh-reviews-editorial { background-size: cover; background-position: center 85%; min-height: 480px; }
 }
 @media (max-width: 860px) {
   .nh-reviews-editorial { display: none; }

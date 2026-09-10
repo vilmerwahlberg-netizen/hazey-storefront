@@ -4618,15 +4618,24 @@
     var NH_REVIEW_UNSAFE_RE = /\brus\b|hög(?!re|sta)|skratt|munchies|kick|stoned|helstekt|påverkan|lugnande|avslappnande|smygande|potent|dosera|\bdos\b|sömnfrämjande|ångest|amnezia|minnesförlust|rök(?!else)|bäng|höjd(?!punkt)/i;
 
     function nhReviewsHtml() {
-      // .nh-reviews-editorial: PRELIMINÄR redaktionell stämningsbild
-      // (editorial-venice-good-idea-v2.jpg, inga produkter/påståenden
-      // avbildade) -- bara på desktop (css). All recensionsdata till
-      // vänster är OFÖRÄNDRAD, 100% riktig (samma nhInitProductReviews/
-      // nhInitReviewsLive som förut).
+      // .nh-reviews-editorial: ÅTERANVÄNDER samma redaktionella bild som
+      // Spotlight-sektionen precis ovanför (feature-magic-sauce-higher-
+      // things-v2.jpg, inte längre editorial-venice-good-idea-v2.jpg) --
+      // Vilmers referensbild (2026-09-10) visar EN sammanhängande bild
+      // som fortsätter genom både Featured- och Omdömen-raden. Samma
+      // fil + matchande kolumnbredd (css, se "(5)/(6)"-blocken) + spegel-
+      // vänd beskärning (spotlight visar bildens ÖVRE del, denna radens
+      // NEDRE del, se background-position i css) ger intrycket av EN
+      // lodrät bild som löper genom båda sektionerna, utan att slå ihop
+      // DOM:en (mobilens redan godkända, oberoende sektionsordning för
+      // Omdömen (order 9) kontra Spotlight (order 5) förblir OFÖRÄNDRAD --
+      // en fysisk sammanslagning hade tvingat dem till samma plats på
+      // mobil). All recensionsdata till vänster är OFÖRÄNDRAD, 100%
+      // riktig (samma nhInitProductReviews/nhInitReviewsLive som förut).
       return '<section class="nh-reviews section-gap">'
         + '  <div class="nh-reviews-layout">'
         + '    <div class="nh-reviews-main">'
-        + '      <div class="sec-head"><div><h2>Verifierade omdömen</h2>'
+        + '      <div class="sec-head"><div><p class="nh-reviews-kicker">Äkta röster</p><h2>Verifierade omdömen</h2>'
         // KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): den tidigare
         // texten ("Endast kunder som köpt produkten kan lämna ett omdöme
         // på Trustpilot") stod direkt ovanför -- och beskrev alltså,
@@ -4645,7 +4654,7 @@
         + '      </a>'
         + '      <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
         + '    </div>'
-        + '    <div class="nh-reviews-editorial" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/editorial-venice-good-idea-v2.jpg\')" aria-hidden="true"></div>'
+        + '    <div class="nh-reviews-editorial" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/feature-magic-sauce-higher-things-v2.jpg\')" aria-hidden="true"></div>'
         + '  </div>'
         + '</section>';
     }
