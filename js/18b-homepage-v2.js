@@ -1788,43 +1788,44 @@
     var NH_REVIEW_UNSAFE_RE = /\brus\b|hög(?!re|sta)|skratt|munchies|kick|stoned|helstekt|påverkan|lugnande|avslappnande|smygande|potent|dosera|\bdos\b|sömnfrämjande|ångest|amnezia|minnesförlust|rök(?!else)|bäng|höjd(?!punkt)/i;
 
     function nhReviewsHtml() {
-      // .nh-reviews-editorial: ÅTERANVÄNDER samma redaktionella bild som
-      // Spotlight-sektionen precis ovanför (feature-magic-sauce-higher-
-      // things-v2.jpg, inte längre editorial-venice-good-idea-v2.jpg) --
-      // Vilmers referensbild (2026-09-10) visar EN sammanhängande bild
-      // som fortsätter genom både Featured- och Omdömen-raden. Samma
-      // fil + matchande kolumnbredd (css, se "(5)/(6)"-blocken) + spegel-
-      // vänd beskärning (spotlight visar bildens ÖVRE del, denna radens
-      // NEDRE del, se background-position i css) ger intrycket av EN
-      // lodrät bild som löper genom båda sektionerna, utan att slå ihop
-      // DOM:en (mobilens redan godkända, oberoende sektionsordning för
-      // Omdömen (order 9) kontra Spotlight (order 5) förblir OFÖRÄNDRAD --
-      // en fysisk sammanslagning hade tvingat dem till samma plats på
-      // mobil). All recensionsdata till vänster är OFÖRÄNDRAD, 100%
-      // riktig (samma nhInitProductReviews/nhInitReviewsLive som förut).
+      // KORRIGERINGSRUNDA (2026-09-10): .nh-reviews-editorial ÅTERSTÄLLD
+      // till den ORIGINALA, redan godkända redaktionella stämningsbilden
+      // (editorial-venice-good-idea-v2.jpg) -- föregående runda bytte
+      // felaktigt till Spotlightens Magic Sauce-bild i ett försök att
+      // skapa "en sammanhängande bild genom båda sektionerna", vilket
+      // Vilmer INTE bett om ("förrförrförra prompten... bilden var
+      // identisk innan"). Ingen produkt/påstående avbildas, bara
+      // stämning, precis som ursprungligen.
+      //
+      // Ny sammanfattningsrad (stjärnor + "X av 5" + "Y verifierade
+      // omdömen") och en separat "Läs alla omdömen"-länk + föregående/
+      // nästa-knappar (matchar en ny referensbild 1:1, se css) -- alla
+      // tre värden är RIKTIGA, live-hämtade Trustpilot-tal
+      // (nhInitReviewsLive), samma datakälla som förut, bara omstylad.
+      // Föregående/nästa styr en RIKTIG paginering genom flera riktiga
+      // produktomdömen (se nhInitProductReviews) -- inte dekorativa
+      // knappar, se motivering där.
       return '<section class="nh-reviews section-gap">'
         + '  <div class="nh-reviews-layout">'
         + '    <div class="nh-reviews-main">'
-        + '      <div class="sec-head"><div><p class="nh-reviews-kicker">Äkta röster</p><h2>Verifierade omdömen</h2>'
-        // KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): den tidigare
-        // texten ("Endast kunder som köpt produkten kan lämna ett omdöme
-        // på Trustpilot") stod direkt ovanför -- och beskrev alltså,
-        // felaktigt, -- korten i #nhReviewsGrid. De korten kommer
-        // (se nhInitProductReviews ovan) från Nyehandels EGNA
-        // produktsides-recensioner (:reviews-Vue-propen), inte från
-        // Trustpilot -- Trustpilot-betyget är en helt separat datakälla,
-        // bara länkad via CTA:n nedanför. Ingen bekräftad källa i det här
-        // repot för Nyehandels egen köpverifieringspolicy heller, så
-        // påståendet byttes mot en sann, overifierbar-fri formulering i
-        // stället för att bara flytta samma ogrundade policy-detalj till
-        // fel system.
-        + '      <p>Riktiga omdömen från våra produktsidor, plus vårt samlade betyg på Trustpilot.</p></div></div>'
-        + '      <a class="nh-reviews-cta" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">'
-        + '        <span class="stars">★★★★★</span><span id="nhReviewsCtaText">4,7/5 på Trustpilot — läs alla omdömen →</span>'
-        + '      </a>'
+        + '      <div class="sec-head">'
+        + '        <div><p class="nh-reviews-kicker">Äkta röster</p><h2>Verifierade omdömen</h2></div>'
+        + '        <div class="nh-reviews-controls">'
+        + '          <a class="nh-reviews-readall" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">Läs alla omdömen →</a>'
+        + '          <div class="nh-reviews-nav" id="nhReviewsNav" hidden>'
+        + '            <button type="button" class="nh-reviews-nav__btn" id="nhReviewsPrev" aria-label="Föregående omdömen">‹</button>'
+        + '            <button type="button" class="nh-reviews-nav__btn" id="nhReviewsNext" aria-label="Nästa omdömen">›</button>'
+        + '          </div>'
+        + '        </div>'
+        + '      </div>'
+        + '      <div class="nh-reviews-summary">'
+        + '        <span class="nh-reviews-stars" aria-hidden="true"><span class="nh-reviews-stars__bg">★★★★★</span><span class="nh-reviews-stars__fg" id="nhReviewsStarsFg" style="width:94%">★★★★★</span></span>'
+        + '        <span class="nh-reviews-score" id="nhReviewsScore">4,7 av 5</span>'
+        + '        <p class="nh-reviews-count" id="nhReviewsCount">584 verifierade omdömen</p>'
+        + '      </div>'
         + '      <div class="nh-reviews-grid" id="nhReviewsGrid" hidden data-status="ingen-verifierad-recensionskalla-an"></div>'
         + '    </div>'
-        + '    <div class="nh-reviews-editorial" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/feature-magic-sauce-higher-things-v2.jpg\')" aria-hidden="true"></div>'
+        + '    <div class="nh-reviews-editorial" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/editorial-venice-good-idea-v2.jpg\')" aria-hidden="true"></div>'
         + '  </div>'
         + '</section>';
     }
@@ -1848,43 +1849,78 @@
         ta.innerHTML = s;
         return ta.value;
       }
+      // KORRIGERINGSRUNDA (2026-09-10): tidigare togs bara EN recension
+      // per produkt (pick[0]), max 2 kort totalt. Referensbilden visar
+      // 3 kort + en fungerande föregående/nästa-paginering -- verifierat
+      // via curl (2026-09-10) att BÅDA produkterna har FLERA säkra
+      // recensioner var (CCELL M4: "Krille"+"Tobias" godkänns av filtret
+      // nedan, CCELL M3 Plus: "O"+"Jonte"+"Fred Winters"+"Erik"), så
+      // fler riktiga kort går att visa utan att hitta på något -- bara
+      // filtrets `pick[0]`-begränsning togs bort, samma säkerhetsfilter
+      // (icke-anonym, 12-170 tecken, inget rus-/effektspråk) gäller
+      // oförändrat för VARJE recension, inte bara den första.
       Promise.all(NH_REVIEW_PRODUCTS.map(function (p) {
         return fetch(p.href, { credentials: "same-origin" })
           .then(function (r) { return r.ok ? r.text() : ""; })
           .then(function (html) {
-            if (!html) return null;
+            if (!html) return [];
             var m = html.match(/:reviews="(\[.*?\])"/);
-            if (!m) return null;
+            if (!m) return [];
             var list;
-            try { list = JSON.parse(decodeEntities(m[1])); } catch (e) { return null; }
-            var pick = list.filter(function (r) {
+            try { list = JSON.parse(decodeEntities(m[1])); } catch (e) { return []; }
+            return list.filter(function (r) {
               return !r.anonymous && r.review && r.review.length >= 12 && r.review.length <= 170
                 && !NH_REVIEW_UNSAFE_RE.test(r.review);
+            }).map(function (r) {
+              return { name: r.name, text: r.review, stars: r.rating, product: p.name, href: p.href };
             });
-            if (!pick.length) return null;
-            var r = pick[0];
-            return { name: r.name, text: r.review, stars: r.rating, product: p.name, href: p.href };
           })
-          .catch(function () { return null; });
-      })).then(function (results) {
-        var real = results.filter(Boolean);
-        if (!real.length) return; // ingen ändring -- grid förblir dold, Trustpilot-raden ovan är redan sann
-        // Medvetet INGEN .nh-reveal-klass här (samma beslut som redan
-        // gäller Bästsäljare-korten, nhInitBestsellers): nhInitReveal
-        // skannar bara EN gång vid boot, långt innan dessa asynkront
-        // hämtade kort finns i DOM:en -- ett .nh-reveal-kort som aldrig
-        // observeras stannar permanent osynligt (upptäckt och fixat
-        // direkt, se STATUS.md).
-        grid.innerHTML = real.map(function (r) {
-          var starsHtml = '<span class="nh-rc-stars" aria-hidden="true">' + "★".repeat(r.stars) + "☆".repeat(5 - r.stars) + '</span>';
-          return '<div class="nh-rc-card">'
-            + starsHtml
-            + '<p class="nh-rc-quote">”' + r.text.replace(/</g, "&lt;") + '”</p>'
-            + '<div class="nh-rc-source"><span class="nh-rc-name">' + r.name.replace(/</g, "&lt;") + '</span>'
-            + '<a href="' + r.href + '">' + r.product + '</a></div>'
-            + '</div>';
-        }).join("");
-        grid.hidden = false;
+          .catch(function () { return []; });
+      })).then(function (perProduct) {
+        // Round-robin-interfoliera produkterna (samma "variation mellan
+        // produkter"-avsikt som redan fanns) i stället för att gruppera
+        // en produkt i taget.
+        var queues = perProduct.map(function (list) { return list.slice(); });
+        var real = [];
+        var more = true;
+        while (more) {
+          more = false;
+          queues.forEach(function (q) { if (q.length) { real.push(q.shift()); more = true; } });
+        }
+        if (!real.length) return; // ingen ändring -- grid förblir dold, sammanfattningsraden ovan är redan sann
+
+        var PAGE_SIZE = 3;
+        var pages = [];
+        for (var i = 0; i < real.length; i += PAGE_SIZE) pages.push(real.slice(i, i + PAGE_SIZE));
+        var pageIndex = 0;
+
+        function renderPage() {
+          // Medvetet INGEN .nh-reveal-klass här (samma beslut som redan
+          // gäller Bästsäljare-korten, nhInitBestsellers): nhInitReveal
+          // skannar bara EN gång vid boot, långt innan dessa asynkront
+          // hämtade/ombytta kort finns i DOM:en -- ett .nh-reveal-kort
+          // som aldrig observeras stannar permanent osynligt.
+          grid.innerHTML = pages[pageIndex].map(function (r) {
+            var starsHtml = '<span class="nh-rc-stars" aria-hidden="true">' + "★".repeat(r.stars) + "☆".repeat(5 - r.stars) + '</span>';
+            return '<div class="nh-rc-card">'
+              + starsHtml
+              + '<p class="nh-rc-quote">”' + r.text.replace(/</g, "&lt;") + '”</p>'
+              + '<div class="nh-rc-source"><span class="nh-rc-name">' + r.name.replace(/</g, "&lt;") + '</span>'
+              + '<a href="' + r.href + '">' + r.product + '</a></div>'
+              + '</div>';
+          }).join("");
+          grid.hidden = false;
+        }
+        renderPage();
+
+        var nav = root.querySelector("#nhReviewsNav");
+        if (pages.length > 1 && nav) {
+          nav.hidden = false;
+          var prevBtn = root.querySelector("#nhReviewsPrev");
+          var nextBtn = root.querySelector("#nhReviewsNext");
+          if (nextBtn) nextBtn.addEventListener("click", function () { pageIndex = (pageIndex + 1) % pages.length; renderPage(); });
+          if (prevBtn) prevBtn.addEventListener("click", function () { pageIndex = (pageIndex - 1 + pages.length) % pages.length; renderPage(); });
+        }
       });
     }
     /* Hämtar det RIKTIGA, live TrustScore + antal omdömen från Trustpilots
@@ -1893,8 +1929,10 @@
        fel/oväntat svar rörs texten INTE (den redan sanna statiska raden
        ligger kvar som fallback). */
     function nhInitReviewsLive(root) {
-      var textEl = root.querySelector("#nhReviewsCtaText");
-      if (!textEl) return;
+      var scoreEl = root.querySelector("#nhReviewsScore");
+      var countEl = root.querySelector("#nhReviewsCount");
+      var starsFg = root.querySelector("#nhReviewsStarsFg");
+      if (!scoreEl || !countEl) return;
       var url = "https://widget.trustpilot.com/trustbox-data/" + NH_TRUSTPILOT_TEMPLATE_ID
         + "?businessUnitId=" + NH_TRUSTPILOT_BUSINESS_UNIT_ID + "&locale=sv-SE";
       fetch(url)
@@ -1902,11 +1940,13 @@
         .then(function (data) {
           var bu = data && data.businessUnit;
           var total = bu && bu.numberOfReviews && bu.numberOfReviews.total;
-          if (!bu || !bu.trustScore || !total) return; // oväntat svar — behåll den sanna fallback-texten
-          var score = String(bu.trustScore).replace(".", ",");
-          textEl.textContent = score + "/5 på Trustpilot · " + total.toLocaleString("sv-SE") + " omdömen — läs alla →";
+          if (!bu || !bu.trustScore || !total) return; // oväntat svar — behåll den sanna fallback-texten/bredden
+          var score = Number(bu.trustScore);
+          scoreEl.textContent = String(score).replace(".", ",") + " av 5";
+          countEl.textContent = total.toLocaleString("sv-SE") + " verifierade omdömen";
+          if (starsFg) starsFg.style.width = Math.max(0, Math.min(100, (score / 5) * 100)) + "%";
         })
-        .catch(function () { /* nätverksfel — den redan sanna statiska texten ligger kvar oförändrad */ });
+        .catch(function () { /* nätverksfel — den redan sanna statiska texten/bredden ligger kvar oförändrad */ });
     }
 
     /* ── Nyhetsbrev, mitt på sidan (prototypen har ett HÄR + ett i

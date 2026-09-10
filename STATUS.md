@@ -4681,3 +4681,56 @@ CTA-stil matchar nu tydligt. Mobil pixelkontrollerad (oförändrad:
 riktig SKU-titel, typ/pris/lager/betyg, produktfoto, sekundärlänk allt
 kvar, bara CTA-texten uppdaterad). `node tests/fas6-full-
 verification.mjs` grönt.
+
+## KORRIGERINGSRUNDA — Omdömen-sektionen mot ny referensbild + rätt bild återställd (2026-09-10)
+
+Vilmer bifogade nya bilder av dagsläget kontra en referens för
+"Verifierade omdömen"-blocket, med en viktig rättelse: `.nh-reviews-
+editorial` skulle ALDRIG ha bytts till Spotlightens Magic Sauce-bild i
+föregående bento-runda ("förrförrförra prompten") -- bilden var redan
+identisk/korrekt innan dess. Återställd till den ORIGINALA
+`editorial-venice-good-idea-v2.jpg`. Spotlight är sedan förra rundan
+ändå en helt fristående komposition (ingen grid-delning kvar att
+matcha bredd mot), så `.nh-reviews-layout` återställdes samtidigt till
+sitt egna, tidigare godkända 7fr/3fr (70/30).
+
+Ny sammanfattnings-/kontrollrad (matchar referensen 1:1): riktiga
+stjärnor (bakgrunds-/förgrundslager, bredd = verkligt trustScore/5),
+"X av 5" + "Y verifierade omdömen" -- SAMMA live Trustpilot-data som
+redan hämtades (`nhInitReviewsLive`, bara omstylad från den gamla
+boxade CTA-pillen till platt text) -- plus en separat "Läs alla
+omdömen"-länk + fungerande föregående/nästa-knappar.
+
+**Tre kort i stället för två, UTAN att fabricera en tredje recension:**
+verifierade via `curl` (2026-09-10) att båda de redan godkända,
+säkra produkterna (CCELL M4/M3 Plus vape-batterier, se historik ovan
+om varför just dessa) har FLERA säkra recensioner var, inte bara en --
+`nhInitProductReviews` filtrerade tidigare bort alla utom `pick[0]` per
+produkt. Filtret (icke-anonym, 12-170 tecken, inget rus-/effektspråk)
+är oförändrat, men appliceras nu på HELA listan, inte bara den första
+träffen. Resultat: 6 riktiga, säkra recensioner totalt, round-robin-
+interfolierade och paginerade 3+3 -- föregående/nästa-knapparna är
+alltså en RIKTIG, fungerande paginering genom riktiga omdömen, inte
+dekoration.
+
+**Medvetet INTE kopierat från referensbilden** (samma
+"hitta-aldrig-på-trust-data"-princip som redan gäller i det här
+projektet): ingen "Verifierad köpare"-badge (Nyehandels egen
+produktrecensionsdata saknar en sådan markör -- redan dokumenterat
+tidigare i filen) och ingen "5 000+"-siffra (den riktiga, live-hämtade
+Trustpilot-summan, 585, används oförändrat).
+
+**Testmetodik-lärdom denna omgång:** flera ad-hoc Playwright-
+verifieringsskript använde `window.NH_ASSET_BASE = "injected"` (ett
+ogiltigt platshållarvärde utan avslutande snedstreck) i stället för det
+riktiga formatet (`https://vilmerwahlberg-netizen.github.io/hazey-
+storefront/assets/`, se `blocks/loader-dev.html`) -- fick bakgrunds-
+bilden i Omdömen-sektionen att helt utebli i en första skärmdump
+(404:a på en felstavad URL), innan rotorsaken hittades och alla
+verifieringsskript rättades till den riktiga bassökvägen.
+
+**Verifiering**: 0px overflow vid alla desktop-/mobilbredder (`node
+tests/fas6-full-verification.mjs`, alla kontroller gröna), skärmdump
+mot referensbilden vid 1440px (matchar mycket nära), fungerande
+paginering testad (nästa-knapp bytte korrekt från
+Krille/O/Tobias → Jonte/Fred Winters/Erik).

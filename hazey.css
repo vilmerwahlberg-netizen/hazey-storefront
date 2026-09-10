@@ -13070,23 +13070,35 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 /* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
    STATUS.md om varför inga citat är med. ── */
 .nh-reviews.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
-/* Ska kännas som ett distinkt Trustpilot-"signal"-block, inte ett
-   citatkort till -- varm sand-ton (i stället för rent vitt som
-   citatkorten nedan) + en liten grön TrustScore-prick, samma gröna ton
-   Trustpilot själva använder, bara som en diskret accent, ingen logga. */
-.nh-reviews-cta {
-  display: flex; align-items: center; gap: 12px;
-  background: linear-gradient(165deg, #faf3e9, #fffdf8 72%);
-  border: 1px solid #ebe1d1; border-radius: 14px; padding: 16px 20px;
-  text-decoration: none; color: #2c3620; font-weight: 650; font-size: 14px;
-  position: relative; transition: box-shadow 160ms ease, border-color 160ms ease;
+/* KORRIGERINGSRUNDA (2026-09-10, referensbild jämförd 1:1): ersätter
+   den tidigare boxade "signal-kort"-CTA:n (.nh-reviews-cta, en enda
+   klickbar pill med stjärnor+text ihopklumpade) med en sammanfattnings-
+   rad (riktiga stjärnor via en bakgrunds-/förgrundslager-teknik, "X av
+   5", "Y verifierade omdömen" -- alla RIKTIGA, live-hämtade tal, se
+   nhInitReviewsLive) + en separat "Läs alla omdömen"-länk + föregående/
+   nästa-knappar som en egen rad -- matchar referensens platta,
+   obboxade stil. */
+.nh-reviews-summary { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 10px 0 2px; }
+.nh-reviews-stars { position: relative; display: inline-block; font-size: 15px; letter-spacing: 2px; line-height: 1; }
+.nh-reviews-stars__bg { color: #e4d1bf; }
+.nh-reviews-stars__fg { position: absolute; inset: 0; overflow: hidden; white-space: nowrap; color: #b8865a; }
+.nh-reviews-score { font-size: 14px; font-weight: 650; color: #2c3620; }
+.nh-reviews-count { flex: 1 0 100%; font-size: 12.5px; color: #9a9280; margin: 0; }
+.nh-reviews-controls { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+.nh-reviews-readall {
+  font-size: 13px; font-weight: 650; color: #96683f; text-decoration: none;
+  border-bottom: 1px solid rgba(150,104,63,.35);
 }
-.nh-reviews-cta::before {
-  content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px;
-  background: #4d7042; border-radius: 0 3px 3px 0;
+.nh-reviews-readall:hover { border-color: #96683f; }
+.nh-reviews-nav { display: flex; gap: 8px; }
+.nh-reviews-nav__btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 999px;
+  background: #fffdf8; border: 1px solid #ebe1d1; color: #2c3620;
+  font-size: 16px; line-height: 1; cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
 }
-.nh-reviews-cta .stars { color: #b8865a; font-size: 15px; letter-spacing: 1px; }
-.nh-reviews-cta:hover { border-color: #b8865a; box-shadow: 0 8px 20px -14px rgba(30,39,22,.35); }
+.nh-reviews-nav__btn:hover { border-color: #b8865a; background: #faf3e9; }
 
 /* Riktiga produktomdömen (2026-09-07) — se nhInitProductReviews,
    js/18b-homepage-v2.js. Kompakt, döljs helt (redan [hidden]-regel
@@ -13485,24 +13497,6 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-featured .sec-head p,
   .nh-reviews .sec-head p {
     display: none;
-  }
-  /* Facit-kalibrering 2026-09-07 (Paket 4): facits .review-card{border-
-     radius:12px;padding:16px;stars font-size:13px} -- vår kortliknande
-     CTA-rad hade 14px/"16px 20px" (ojämn padding)/15px. Mobil-scopat
-     ("rör inte desktopdesign" denna omgång); desktop lämnas orört. */
-  .nh-reviews-cta {
-    border-radius: 12px;
-    padding: 16px;
-    /* Texten är nu dynamisk (riktigt antal omdömen, se
-       nhInitReviewsLive) och kan bli olika lång -- align-items:center
-       (bas-regeln) centrerade stjärnorna mot HELA textblockets höjd,
-       vilket såg konstigt ut så fort texten radbröt till fler rader än
-       innan. flex-start håller stjärnorna i linje med textens FÖRSTA
-       rad oavsett hur många rader den dynamiska texten blir. */
-    align-items: flex-start;
-  }
-  .nh-reviews-cta .stars {
-    font-size: 13px;
   }
   /* .nh-routes ingår här bara för att stänga SISTA kvarvarande 0px-gapet
      (Populära vägar → Bästsäljare, en av de uttryckligen efterfrågade
@@ -14042,27 +14036,39 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
      var inte alls anpassad till riktiga desktop-upplösningar (1440/1920
      m.fl.), bara krympt till sitt naturliga innehåll och centrerad. */
   .nh-reviews.section-gap { max-width: none; padding: 0; margin: 0; }
-  /* Referensbild 2026-09-10: samma 2fr/1fr (33,3% bild) som
-     .nh-spotlight-inner ovan -- SAMMA fotokolumnbredd i båda raderna
-     (tidigare 7fr/3fr=30%, nära men inte identiskt med spotlightens
-     dåvarande 56,5%) är en förutsättning för att fotot ska läsas som EN
-     sammanhängande bild som löper genom hela Featured+Omdömen-blocket. */
-  .nh-reviews-layout { display: grid; grid-template-columns: 2fr 1fr; align-items: stretch; }
+  /* ÅTERSTÄLLD (2026-09-10): 7fr/3fr (70/30) -- den föregående "bento"-
+     rundans 2fr/1fr fanns bara för att låtsas fotot fortsätta från
+     Spotlight-kortet ovanför, vilket Vilmer klargjorde INTE var avsikten
+     ("bilden var identisk innan, du missförstod"). Spotlight är nu en
+     egen, fristående komposition (se "(5)" ovan) -- ingen anledning att
+     matcha dess kolumnbredd längre. 7fr/3fr var redan uppmätt/godkänt
+     mot hazey-dadgrass-westcoast-concept-v1.png tidigare i sessionen. */
+  .nh-reviews-layout { display: grid; grid-template-columns: 7fr 3fr; align-items: stretch; }
+  /* sec-head som en rad: kicker+rubrik vänster, "Läs alla"+pagineringen
+     höger -- matchar den nya referensbilden (2026-09-10) 1:1. Scopat
+     till .nh-reviews (delas INTE med andra .sec-head-sektioner, se
+     etablerat mönster för .nh-guides/.nh-pser ovan i filen). */
+  .nh-reviews .sec-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .nh-reviews-controls { margin-top: 4px; }
+  /* Referensbilden visar 3 kort i rad (inte 2) -- se nhInitProductReviews
+     för hur ytterligare riktiga recensioner (inte fabricerade) gjorde
+     detta möjligt. */
+  .nh-reviews-grid { grid-template-columns: repeat(3, 1fr); }
   /* BUGGFYND (verifierat live via getComputedStyle): max-width:640px
      var tydligen räknat mot en tidigare, felaktigt hopkrympt 914px-
      containerbredd (7/10 av 914≈640 -- exakt samma tal), inte en
      avsiktlig läsbarhetsbegränsning. Efter fixen ovan (sektionen fyller
      nu hela 1440/1920px) lämnade den stela 640px:en ett stort tomt
      cream-glapp mellan recensionskorten och redaktionellbilden i stället
-     för att fylla sin egna kolumncell. 48px→38px vertikal padding (Fas 2,
-     mätbar desktop-paritetsrunda): mätte +5.6% mot referensens uppmätta
-     ~515px. */
+     för att fylla sin egna 7fr-cell (uppmätt 1008px vid 1440, 1344px vid
+     1920). 48px→38px vertikal padding (Fas 2, mätbar desktop-
+     paritetsrunda): mätte +5.6% mot referensens uppmätta ~515px. */
   .nh-reviews-main { padding: 38px 56px; max-width: none; }
-  /* background-position center 85% (inte center/30% som spotlightens
-     bild ovanför) -- SAMMA fil, men en annan del av bilden, så raden
-     under upplevs som en fortsättning av fotot i stället för en exakt
-     upprepning av samma beskärning (se nhReviewsHtml). */
-  .nh-reviews-editorial { background-size: cover; background-position: center 85%; min-height: 480px; }
+  /* ÅTERSTÄLLD (2026-09-10): plain center-crop av den ORIGINALA
+     redaktionella bilden (se nhReviewsHtml) -- den tidigare "center 85%"
+     var bara till för att beskära Spotlightens Magic Sauce-bild
+     annorlunda, irrelevant nu när bilden är en annan fil igen. */
+  .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
 }
 @media (max-width: 860px) {
   .nh-reviews-editorial { display: none; }
