@@ -4821,3 +4821,84 @@ kubens 3D-transform) som tidigare i sessionen, bekräftad som en ren
 testverktygs-artefakt genom en isolerad standalone-HTML-sida med
 exakt samma bild+CSS (renderade perfekt direkt) -- ingen produktions-
 bugg, ingen kodändring gjord som svar på detta.
+
+## Granskningsfix ovanpå e9909a1 — utskriftssäkring, aria-labelledby, dokumentation (2026-09-11)
+
+Liten, avgränsad granskningsfix på hero-datakällemigreringen ovan --
+rör INTE design/animationer/navigation/datakälla/fallback-beteende.
+
+**1) Utskriftssäkring av all native-slidedata** (js/18b-homepage-v2.js):
+native-slidedata (rubrik/underrubrik/CTA-text/CTA-länk/bild-URL) skrivs
+in i en HTML-sträng via ren textkonkatenering -- osanerat hade en
+adminpost (avsiktligt eller av misstag) kunnat bryta ut ur sitt HTML-
+sammanhang eller peka på en farlig länk. Fyra nya, små hjälpfunktioner:
+- `nhEscHtml(s)`/`nhEscAttr(s)` -- HTML-escaping för textnod- resp.
+  citerat attributinnehåll, applicerade i `nhHeroSlideHtml` på rubrik/
+  underrubrik/CTA-text (textnod) och CTA-länk (attribut).
+- `nhSafeHref(raw)` -- CTA-länken accepteras BARA som en relativ länk
+  (path/fragment/query, inget schema) eller absolut http/https (`new
+  URL()`-validerad); `javascript:`/`data:`/`vbscript:`/trasiga URL:er
+  ger `null`, vilket gör HELA den lästa native-sliden ogiltig i
+  `nhReadNativeHeroSlides` (samma "hoppa tyst över"-mönster som en
+  saknad bild/rubrik redan gav).
+- `nhSanitizeCssUrl(raw)` -- bild-URL:en saneras i rätt ordning för
+  inbäddning i ett CSS `url('...')`-token inuti ett dubbelciterat HTML-
+  attribut: kontrolltecken bort → CSS-escapa `\`/`'` → HTML-attribut-
+  escapa resultatet (`&`/`"`). Ersätter de tidigare ofullständiga
+  `.replace()`-anropen som bara hanterade EN av de två citattecken-
+  nivåerna.
+Eyebrow-fälten (`slide.eyebrowMobile/eyebrowDesktop`) escapas MEDVETET
+INTE -- fallback-konfigurationen lägger avsiktligt in en egen `<br>`
+där, och native-slides sätter alltid tomma strängar (renderas inte
+alls) så det finns ingen native-data att sanera i just de fälten.
+
+Verifierat med en simulerad, injicerad payload (title/underrubrik med
+`<script>`/`<img onerror>`, en bild-URL med citattecken+backslash, en
+CTA-länk ombytt till `javascript:alert(1)`): ingen skriptkörning
+(`window.__xss*`-flaggorna förblev `false`), ingen dialogruta, style-
+attributet förblev intakt, och slide:n med den farliga länken föll bort
+helt (data-slides 3→2) i stället för att renderas.
+
+**2) Unikt id per rubrik + aria-labelledby**: varje sliderubrik får nu
+`id="nh-hero-heading-{i}"`, och gruppens (`role="group"`) tillgängliga
+namn kommer från `aria-labelledby="nh-hero-heading-{i}"` i stället för
+den tidigare `aria-label`-baserade på `slide.alt` (som ändå bara fanns
+för de hårdkodade fallback-slidesen -- native-slides hade `alt:null`
+och saknade helt ett tillgängligt gruppnamn). Ingen bild-alt-text
+fabricerad, oförändrat. Verifierat: alla tre native-slides' `aria-
+labelledby` pekar på ett existerande id vars textinnehåll matchar
+rubriken exakt.
+
+**3) Rättade inaktuella kommentarer** som påstod att
+`NH_HERO_CAMPAIGNS_FALLBACK`/`nhActiveHeroSlides()` används automatiskt
+"om avläsningen misslyckas eller ger noll giltiga slides" -- det
+STÄMDE INTE (redan i e9909a1): det verkliga beteendet är att native-
+bildspelet lämnas HELT orört och synligt i det läget, fallback-
+konfigurationen anropas aldrig automatiskt någonstans. Tre kommentarer
+korrigerade (rad ~121, ~240, ~455) till att beskriva detta korrekt.
+
+**4) Dokumentation (detta avsnitt):** Nyehandels FÖRSTA slide (index 0
+i den lästa, sorterade native-listan) är just nu den KANONISKA
+huvudsliden för Hazeys startsida, och får därför:
+- sidans enda `<h1>` (övriga slides renderar samma rubrikklass på en
+  `<p>` i stället, se `headingTag`/`i === 0` i `nhHeroSlideHtml`),
+- evergreen-variantens typografi (`nh-hero-slide--evergreen`-klassen,
+  större/tyngre H1-behandling än kampanjklassen `--campaign`),
+- den permanenta sekundära "Hjälp mig hitta rätt"-knappen
+  (`NH_HERO_SECONDARY_CTA`, se `nhNativeSlideToHeroSlide`).
+
+Detta är en INDEXBASERAD regel (positionen i adminens egen bildspels-
+ordning), INTE en gissning baserad på rubrikinnehåll eller URL-mönster
+-- ändras inte i denna fix. Om Nyehandel-admin någon gång ändrar vilken
+slide som ligger FÖRST i bildspelet, byter den nya position-0-sliden
+automatiskt till att bli den kanoniska huvudsliden (H1/evergreen/
+Hjälp-knapp) utan kodändring -- vilket är en medveten konsekvens av
+indexbaserad regel, inte en bugg, men värt att känna till om admin
+någon gång omorganiserar slide-ordningen och en annan slide oavsiktligt
+"ärver" huvudslide-behandlingen.
+
+**Verifiering**: samma som e9909a1 -- `node tests/fas6-full-
+verification.mjs`, 0px overflow 390-1920px, exakt en `<h1>`, ingen
+THCA/BÄSTSÄLJARE-knapp, mobilsvep/skrivbordspilar/prickar/reduced-
+motion oförändrat fungerande, plus den nya säkerhets-/aria-
+verifieringen ovan.

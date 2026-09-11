@@ -2889,6 +2889,69 @@
       return hit ? hit.href : null;
     }
 
+    /* ── Utskriftssäkring för hero-slidedata (2026-09-11, gransknings-
+       fix ovanpå e9909a1) ──
+       Native hero-slidedata (rubrik/underrubrik/CTA-text/CTA-länk/
+       bild-URL) kommer från Nyehandel-adminen, men skrivs in i en
+       HTML-sträng via ren textkonkatenering (samma mönster som resten
+       av filen redan använder) -- osanerat skulle det låta en
+       administratörspost (avsiktligt eller av misstag) bryta ut ur
+       sitt HTML-sammanhang eller peka på en farlig CTA-länk
+       (javascript:/data:). Två små, tydliga hjälpfunktioner täcker de
+       kontexter denna fil interpolerar värden i. */
+    // Textnod-innehåll (mellan taggar, t.ex. <h1>HÄR</h1>).
+    function nhEscHtml(s) {
+      return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+    // Ett dubbelciterat HTML-attributvärde (t.ex. href="HÄR").
+    function nhEscAttr(s) {
+      return nhEscHtml(s).replace(/"/g, "&quot;");
+    }
+    /* Säker CTA-länk: relativ (path/fragment/query, inget schema) eller
+       absolut http(s) -- blockerar javascript:/data:/vbscript: m.fl.
+       Returnerar null vid allt annat (inkl. en trasig URL som new URL()
+       inte kan tolka), vilket gör den lästa native-sliden OGILTIG (se
+       nhReadNativeHeroSlides) i stället för att gissa en tolkning eller
+       rendera en farlig länk. */
+    // Kontrolltecken (radbrytning/tab/m.fl., inkl. DEL) -- byggd via
+    // teckenkoder (inte en inbäddad kontrolltecken-regexliteral, som är
+    // osynlig och skör vid framtida redigering/kopiering) för tydlighet.
+    function nhStripControlChars(s) {
+      var out = "";
+      for (var i = 0; i < s.length; i++) {
+        var code = s.charCodeAt(i);
+        if (code <= 31 || code === 127) continue;
+        out += s.charAt(i);
+      }
+      return out;
+    }
+    function nhHasControlChars(s) {
+      return nhStripControlChars(s) !== s;
+    }
+    function nhSafeHref(raw) {
+      var href = (raw == null ? "" : String(raw)).trim();
+      if (!href || nhHasControlChars(href)) return null;
+      if (/^[/#?]/.test(href)) return href; // relativ (path/fragment/query)
+      if (/^https?:\/\//i.test(href)) {
+        try { new URL(href); return href; } catch (e) { return null; }
+      }
+      return null;
+    }
+    /* Säkrar en bild-URL för inbäddning i ett CSS url('...')-token som i
+       sin tur sitter i ett dubbelciterat HTML style-/data-attribut --
+       måste göras i RÄTT ORDNING: (1) ta bort kontrolltecken
+       (radbrytning m.m. -- en URL ska aldrig innehålla dem), (2)
+       CSS-escapa backslash och enkelt citattecken (så URL:en inte kan
+       bryta ut ur den enkelciterade url()-token), (3) HTML-attribut-
+       escapa RESULTATET (& och dubbelt citattecken) -- utan detta sista
+       steg skulle ett bokstavligt " i URL:en avsluta HELA HTML-
+       attributet i förtid. */
+    function nhSanitizeCssUrl(raw) {
+      var noControl = nhStripControlChars(String(raw == null ? "" : raw));
+      var cssEscaped = noControl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+      return nhEscAttr(cssEscaped);
+    }
+
     /* ── Hero + qfind — ERSÄTTER nyehandels nativa bildkarusell på
        startsidan (döljs, INTE tas bort — samma "dölj, radera aldrig
        nativt"-mönster som resten av bygget). Copy är prototypens egen,
@@ -2924,14 +2987,19 @@
       (typeof window !== "undefined" && window.NH_ASSET_BASE) ||
       "https://cdn.jsdelivr.net/gh/vilmerwahlberg-netizen/hazey-storefront@v1.1.0-rc1/assets/";
 
-    /* ── Hero-datakällemigrering (2026-09-10) ──
-       Heron läser nu i FÖRSTA HAND riktiga slides direkt ur Nyehandels
-       egen native bildspels-DOM (se nhReadNativeHeroSlides längre ner) --
-       INTE längre den hårdkodade kampanjkonfigurationen nedan som
-       primär källa. NH_HERO_CAMPAIGNS_FALLBACK finns KVAR ENDAST som
-       skyddsnät (se nhActiveHeroSlides/initHomepageV2): används BARA om
-       native-avläsningen misslyckas eller ger noll giltiga slides, ALDRIG
-       när riktiga native-slides finns. Rör inte renderings-/kub-logiken
+    /* ── Hero-datakällemigrering (2026-09-10, granskningsfix 2026-09-11) ──
+       Heron läser RIKTIGA slides direkt ur Nyehandels egen native
+       bildspels-DOM (se nhReadNativeHeroSlides längre ner) -- INTE
+       längre den hårdkodade kampanjkonfigurationen nedan.
+       NH_HERO_CAMPAIGNS_FALLBACK finns KVAR i koden (se
+       nhActiveHeroSlides) men anropas INTE automatiskt någonstans
+       (varken härifrån eller från initHomepageV2) -- den är ett rent
+       manuellt skyddsnät, inte en aktiv reservväg. Faktiskt beteende:
+       finns minst en giltig native-slide byggs Hazey-heron av DEN;
+       finns ingen giltig native-slide rörs native-bildspelet INTE alls
+       och det förblir synligt (se initHomepageV2 för den fullständiga
+       motiveringen till varför detta väger tyngre än att tyst byta till
+       den hårdkodade konfigurationen). Rör inte renderings-/kub-logiken
        (nhHeroSlideHtml/nhHeroHtml/nhInitHeroCarousel) för att lägga till
        en ny riktig kampanj -- lägg till/redigera slidet direkt i
        Nyehandel-admins bildspel i stället, det läses automatiskt härifrån.
@@ -3044,12 +3112,16 @@
     }
 
     /* ── Läser RIKTIGA hero-slides direkt ur Nyehandels egen native
-       bildspels-DOM (.template-components__slideshow .slideshow), i
-       stället för NH_HERO_CAMPAIGNS_FALLBACK ovan. Ren avläsningsfunktion
-       -- rör ALDRIG native-DOM:en (ingen mutation här), returnerar bara
-       enkla dataobjekt. Rubrik/underrubrik/CTA-text/CTA-länk är
-       Nyehandel-adminens EGNA, redan sparade, riktiga värden -- ingen
-       fabricerad text.
+       bildspels-DOM (.template-components__slideshow .slideshow) --
+       detta är DEN FAKTISKA datakällan när minst en giltig slide finns.
+       NH_HERO_CAMPAIGNS_FALLBACK/nhActiveHeroSlides() nedan anropas INTE
+       automatiskt härifrån eller från initHomepageV2 (se den funktionen
+       för fullständig motivering) -- kvar i koden bara som ett manuellt
+       skyddsnät, inte en aktiv reservväg. Ren avläsningsfunktion -- rör
+       ALDRIG native-DOM:en (ingen mutation här), returnerar bara enkla
+       dataobjekt. Rubrik/underrubrik/CTA-text/CTA-länk är Nyehandel-
+       adminens EGNA, redan sparade, riktiga värden -- ingen fabricerad
+       text.
 
        Verifierat live i tema 6 (2026-09-10) innan denna funktion
        skrevs (curl/DOM-inspektion, inte gissat):
@@ -3063,7 +3135,16 @@
        - underrubrik: den enda <p> i .slideshow__slides__slide__content
        - primär CTA: .action a (text + href, adminens egna)
        - ingen alt-text exponeras i den renderade DOM:en -- fabricerar
-         ingen (se nhNativeSlideToHeroSlide, alt lämnas null). */
+         ingen (se nhNativeSlideToHeroSlide, alt lämnas null).
+
+       Granskningsfix (2026-09-11) ovanpå e9909a1: CTA-länken körs genom
+       nhSafeHref (bara relativ path/fragment/query eller absolut
+       http/https, blockerar javascript:/data:/vbscript: och trasiga
+       URL:er) INNAN giltighetskontrollen nedan -- en osäker/trasig länk
+       gör alltså hela sliden ogiltig, precis som en saknad bild/rubrik
+       redan gjorde. Själva HTML-escapingen av rubrik/underrubrik/CTA-
+       text/bild-URL sker i nhHeroSlideHtml (rätt ställe, där värdena
+       faktiskt skrivs in i en HTML-sträng) -- se den funktionen. */
     function nhReadNativeHeroSlides(slideshow) {
       if (!slideshow) return [];
       var slideEls = Array.prototype.slice.call(slideshow.querySelectorAll(".slideshow__slides__slide[data-index]"));
@@ -3079,14 +3160,14 @@
         var sub = pEl ? pEl.textContent.replace(/\s+/g, " ").trim() : "";
         var actionA = el.querySelector(".action a");
         var ctaText = actionA ? actionA.textContent.replace(/\s+/g, " ").trim() : null;
-        var ctaHref = actionA ? actionA.getAttribute("href") : null;
+        var ctaHref = actionA ? nhSafeHref(actionA.getAttribute("href")) : null;
         return { index: isNaN(idx) ? null : idx, image: image, title: title, sub: sub, ctaText: ctaText, ctaHref: ctaHref };
       });
-      // Endast giltiga slides (bild + rubrik + fungerande CTA-text+länk)
-      // -- en trasig/ofullständig adminpost hoppas tyst över, precis som
-      // nhValidHeroSlide redan gör för fallback-konfigurationen. Sorteras
-      // explicit på data-index (uppdragets krav "rätt ordning") snarare
-      // än att lita blint på DOM-ordningen.
+      // Endast giltiga slides (bild + rubrik + fungerande, SÄKER
+      // CTA-text+länk) -- en trasig/ofullständig/osäker adminpost hoppas
+      // tyst över, precis som nhValidHeroSlide redan gör för fallback-
+      // konfigurationen. Sorteras explicit på data-index (uppdragets
+      // krav "rätt ordning") snarare än att lita blint på DOM-ordningen.
       return read
         .filter(function (s) { return !!(s.image && s.title && s.ctaText && s.ctaHref); })
         .sort(function (a, b) { return (a.index || 0) - (b.index || 0); });
@@ -3098,7 +3179,8 @@
        version (uppdragets krav, punkt 8) -- ingen gissad separat
        mobilbeskärning. Ingen eyebrow (kicker) -- native har inget sådant
        fält (nhHeroSlideHtml utelämnar helt tomma eyebrow-element). Ingen
-       alt-text fabricerad -- aria-label utelämnas helt när ingen finns. */
+       bild-alt-text fabricerad -- gruppens tillgängliga namn kommer i
+       stället från rubriken via aria-labelledby (se nhHeroSlideHtml). */
     function nhNativeSlideToHeroSlide(native, i) {
       return {
         id: "native-" + native.index,
@@ -3130,16 +3212,24 @@
       var mobileIsAbsolute = /^https?:\/\//i.test(slide.imageMobile || "");
       var desktopImg = slide.imageDesktop || slide.imageMobile;
       var desktopIsAbsolute = /^https?:\/\//i.test(desktopImg || "");
+      // Granskningsfix (2026-09-11): nhSanitizeCssUrl tar bort kontroll-
+      // tecken och escapar backslash/citattecken i RÄTT ordning för ett
+      // CSS url('...')-token inuti ett dubbelciterat HTML-attribut (se
+      // funktionens egen kommentar) -- ersätter de tidigare enkla,
+      // ofullständiga .replace()-anropen som bara hanterade EN av de två
+      // citattecken-nivåerna.
       var mobileSrc = mobileIsAbsolute ? slide.imageMobile : NH_ASSET_BASE + slide.imageMobile;
       var desktopSrc = desktopIsAbsolute ? desktopImg : NH_ASSET_BASE + desktopImg;
+      var mobileSrcSafe = nhSanitizeCssUrl(mobileSrc);
+      var desktopSrcSafe = nhSanitizeCssUrl(desktopSrc);
       // --hero-img-m/--hero-img-d: responsiv bildväxling via CSS custom
       // properties (se css/22-homepage-v2.css) i stället för att JS måste
       // skriva om bakgrundsbilden vid varje breakpoint-byte. Faller
       // tillbaka till samma bild för båda om ingen egen desktopbild finns
       // konfigurerad än -- syns INTE som en visuell skillnad idag, bara
       // förberett. data-hero-src: oförändrad QA-selektorkrok (lockImplImages).
-      var bg = ' style="--hero-img-m:url(\'' + mobileSrc.replace(/'/g, "\\'") + '\');--hero-img-d:url(\'' + desktopSrc.replace(/'/g, "\\'") + '\')"'
-        + ' data-hero-src="' + mobileSrc.replace(/"/g, "&quot;") + '"';
+      var bg = ' style="--hero-img-m:url(\'' + mobileSrcSafe + '\');--hero-img-d:url(\'' + desktopSrcSafe + '\')"'
+        + ' data-hero-src="' + nhEscAttr(mobileSrc) + '"';
       var secondary = slide.secondaryCta
         ? '<button type="button" class="hero-link"' + (slide.secondaryCta.openHr ? ' data-open-hr="1"' : "")
           + '><span class="nh-hero-v2__btn--mobile">' + slide.secondaryCta.labelMobile + '</span>'
@@ -3151,7 +3241,11 @@
       // synligt läge -- en andra <h1> hade återinfört det redan verifierat
       // fixade two-H1-problemet). Bara första slidet (i===0) får en riktig
       // <h1>; övriga slides återanvänder EXAKT samma CSS-klass på en <p> i
-      // stället, visuellt identiskt, semantiskt en rubrik lägre.
+      // stället, visuellt identiskt, semantiskt en rubrik lägre. Detta är
+      // en INDEXBASERAD regel (positionen i den lästa slide-listan), inte
+      // en gissning utifrån rubrik/URL -- se STATUS.md ("Nyehandels
+      // FÖRSTA slide är den kanoniska huvudsliden") för den fullständiga
+      // motiveringen till varför just index 0 äger detta.
       var headingTag = i === 0 ? "h1" : "p";
       // KORRIGERAT (Refine 2026-09-09 -- sekundära kampanjslides fick
       // exakt samma komposition/typografi som evergreen-sliden, trots att
@@ -3164,38 +3258,50 @@
       // sliden får h1/--evergreen; alla ANDRA -- oavsett hur många
       // framtida kampanjer som läggs till -- får p/--campaign). */
       var slideKindClass = i === 0 ? "nh-hero-slide--evergreen" : "nh-hero-slide--campaign";
-      // slide.alt beskriver bakgrundsbilden för skärmläsare -- bilden är
-      // rent dekorativ (all mening finns redan i rubrik/text/CTA), så den
-      // sätts som aria-label på gruppen i stället för en konstlad <img
-      // src=""> (ett tomt src-attribut kan trigga en egen nätverksrequest
-      // i vissa webbläsare -- ett känt anti-mönster, undviks helt här).
-      // Native hero-slides har INGEN exponerad alt-text i den renderade
-      // DOM:en (verifierat 2026-09-10) -- fabricerar aldrig en egen
-      // beskrivning, aria-label utelämnas då helt i stället för ett
-      // gissat värde.
-      var ariaLabelAttr = slide.alt ? ' aria-label="' + slide.alt.replace(/"/g, "&quot;") + '"' : "";
+      // Granskningsfix (2026-09-11): gruppens tillgängliga namn kommer nu
+      // från rubriken (aria-labelledby → ett unikt id på <h1>/<p>) i
+      // stället för en aria-label baserad på slide.alt. Bilden förblir
+      // rent dekorativ och får ALDRIG en fabricerad alt-text/beskrivning
+      // -- rubriken/undertexten/CTA:n bär redan hela den meningsfulla
+      // informationen, precis som tidigare, bara via ett mer korrekt/
+      // standardmässigt ARIA-mönster (ett element kan inte själv vara
+      // sin egen aria-labelledby-referens på ett tillförlitligt sätt om
+      // det saknar ett id, vilket saknades innan denna fix).
+      var headingId = "nh-hero-heading-" + i;
       // Eyebrow (kicker) finns bara för den hårdkodade fallback-
       // konfigurationen -- native-slides har inget sådant fält (se
       // nhNativeSlideToHeroSlide). Renderas bara när text faktiskt finns,
       // annars hade en tom <div> lämnat kvar sin egen margin-bottom som
-      // ett litet, omotiverat tomrum ovanför rubriken.
+      // ett litet, omotiverat tomrum ovanför rubriken. Escapas INTE (till
+      // skillnad från h1/pMobile/pDesktop nedan) -- fallback-konfigen
+      // (NH_HERO_CAMPAIGNS_FALLBACK) lägger medvetet in en egen <br> i
+      // eyebrowDesktop för en avsiktlig radbrytning; native-slides sätter
+      // alltid tomma strängar här (renderas inte alls) så det finns
+      // ingen native-data att sanera i just dessa två fält.
       var eyebrowMobileHtml = slide.eyebrowMobile
         ? '<div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--mobile">' + slide.eyebrowMobile + '</div>' : "";
       var eyebrowDesktopHtml = slide.eyebrowDesktop
         ? '<div class="nh-hero-v2__eyebrow nh-hero-v2__eyebrow--desktop">' + slide.eyebrowDesktop + '</div>' : "";
-      return '<div class="nh-hero-slide ' + slideKindClass + '" role="group" aria-roledescription="slide"' + ariaLabelAttr + ' aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
+      // Granskningsfix (2026-09-11): h1/underrubrik/CTA-text HTML-
+      // escapas (nhEscHtml) och CTA-länken attribut-escapas (nhEscAttr)
+      // här, vid själva interpoleringspunkten -- native-slidens
+      // CTA-länk är dessutom redan schema-validerad (nhSafeHref) i
+      // nhReadNativeHeroSlides, så escapingen här är ett andra,
+      // oberoende skyddslager (skadar aldrig fallback-konfigurationens
+      // egna, redan trygga text-/länkvärden).
+      return '<div class="nh-hero-slide ' + slideKindClass + '" role="group" aria-roledescription="slide" aria-labelledby="' + headingId + '" aria-hidden="' + (i === 0 ? "false" : "true") + '" data-theme="' + (slide.theme || "default") + '"' + bg + '>'
         + '  <div class="nh-hero-v2__inner">'
         + eyebrowMobileHtml
         + eyebrowDesktopHtml
-        + '    <' + headingTag + ' class="nh-hero-v2__h1">' + slide.h1 + '</' + headingTag + '>'
-        + '    <p class="nh-hero-v2__p--mobile">' + slide.pMobile + '</p>'
-        + '    <p class="nh-hero-v2__p--desktop">' + slide.pDesktop + '</p>'
+        + '    <' + headingTag + ' id="' + headingId + '" class="nh-hero-v2__h1">' + nhEscHtml(slide.h1) + '</' + headingTag + '>'
+        + '    <p class="nh-hero-v2__p--mobile">' + nhEscHtml(slide.pMobile) + '</p>'
+        + '    <p class="nh-hero-v2__p--desktop">' + nhEscHtml(slide.pDesktop) + '</p>'
         // Kategori-genvägsraden finns BARA på desktop i rätt fil (dVp),
         // inte i mVp — döljs på mobil via CSS. Delad mellan slides (samma
         // riktiga navigationslänkar oavsett vilken slide som visas).
         + '    <div class="nh-hero-v2__cats">' + catLinks + '</div>'
         + '    <div class="nh-hero-v2__cta">'
-        + '      <a class="btn-solid" href="' + slide.primaryCta.href + '">' + slide.primaryCta.label + '</a>'
+        + '      <a class="btn-solid" href="' + nhEscAttr(slide.primaryCta.href) + '">' + nhEscHtml(slide.primaryCta.label) + '</a>'
         + secondary
         + '    </div>'
         + '  </div>'
@@ -3216,11 +3322,12 @@
         + '<a href="' + kampanjerHref + '">Kampanjer</a>';
 
       // Datakällemigrering (2026-09-10): `active` kommer nu in som
-      // parameter (redan upplöst i initHomepageV2 -- native-slides i
-      // första hand, NH_HERO_CAMPAIGNS_FALLBACK bara om avläsningen gav
-      // noll giltiga resultat) i stället för att denna funktion själv
-      // ringde nhActiveHeroSlides(). Renderings-/kub-logiken nedan är
-      // HELT oförändrad oavsett vilken källa slidesen kom ifrån.
+      // parameter (redan upplöst i initHomepageV2 -- de RIKTIGA lästa
+      // native-slidesen, se nhReadNativeHeroSlides/nhNativeSlideToHero
+      // Slide; denna funktion anropas bara alls när minst en giltig
+      // sådan finns) i stället för att denna funktion själv ringde
+      // nhActiveHeroSlides(). Renderings-/kub-logiken nedan är HELT
+      // oförändrad oavsett vilken källa slidesen kom ifrån.
       // "Om endast en slide är aktiv ska kubkontroller och autoplay stängas
       // av" (uppdragets krav) -- multi styr både dots/pilar (nedan) och
       // hela autoplay-/kub-initieringen (se nhInitHeroCarousel: total<=1
