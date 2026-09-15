@@ -5483,7 +5483,6 @@
        rapportera skärningen och blocket låg osynligt ovanför vyn. Den här
        billiga sweepen visar både det som redan passerats och det som
        faktiskt ligger i vyn. */
-    var revealSweepQueued = false;
     function revealPassedElements() {
       revealSweepQueued = false;
       document.querySelectorAll(".pre-reveal:not(.in-view)").forEach(function (el) {
@@ -5495,11 +5494,50 @@
         }
       });
     }
-    window.addEventListener("scroll", function () {
-      if (revealSweepQueued) return;
-      revealSweepQueued = true;
-      requestAnimationFrame(revealPassedElements);
-    }, { passive: true });
+    /* KORRIGERINGSRUNDA (2026-09-15): rotorsak till att hela sektioner
+       kunde förbli osynliga (stora tomma creamytor, rapporterat bl.a.
+       mellan Snabb koll och FAQ) vid snabb scroll/Page Down/stora
+       scrollhopp -- den tidigare koden hade BARA EN väg ut: ett enda
+       `scroll`-event, rAF-strypt till max en sweep per bildruta, utan
+       någon "vila"-bekräftelse. Verifierade Chromium-beteenden gör detta
+       skört: webbläsaren kan koalescera/strypa `scroll`-events under en
+       snabb fling-scroll (särskilt med en passiv lyssnare) så att det
+       SISTA, avgörande eventet för en viss gest aldrig levereras -- om
+       det händer fastnar elementet permanent (inget mer scroll-event
+       kommer någonsin trigga en ny sweep). Samma sak gäller en ankarlänk
+       som redan låg i URL:en vid sidladdning (webbläsarens egen hopp kan
+       ha skett innan vår scroll-lyssnare ens hann bindas).
+       Fix: sweepen triggas nu från FLERA oberoende källor i stället för
+       bara `scroll`, så att MINST en av dem alltid når fram:
+       1) `scroll` + rAF (oförändrad, snabb respons under pågående scroll).
+       2) en ren `setTimeout`-baserad "vila"-koll (oberoende av om ännu
+          ett scroll-/paint-event någonsin kommer) -- den riktiga fixen
+          för koalescerings-scenariot ovan.
+       3) `scrollend` där webbläsaren stödjer den (byggd exakt för detta
+          "har scrollningen verkligen avslutats"-problem).
+       4) `resize`, `hashchange` och `pageshow` (bfcache-återkomst) --
+          täcker ankarlänkar och en sida som visas igen från bakåt/framåt-
+          cachen utan att köra om boot-skriptet.
+       Ingen av dessa ändrar SJÄLVA animationen (.pre-reveal/.in-view-CSS:en
+       är orörd) -- bara HUR OFTA/PÅ VILKA SÄTT vi kontrollerar om något
+       redan borde vara synligt. */
+    var revealSweepQueued = false;
+    var revealSettleTimer = null;
+    function queueRevealSweep() {
+      if (!revealSweepQueued) {
+        revealSweepQueued = true;
+        requestAnimationFrame(revealPassedElements);
+      }
+      clearTimeout(revealSettleTimer);
+      revealSettleTimer = setTimeout(revealPassedElements, 180);
+    }
+    window.addEventListener("scroll", queueRevealSweep, { passive: true });
+    window.addEventListener("resize", queueRevealSweep, { passive: true });
+    window.addEventListener("hashchange", queueRevealSweep);
+    window.addEventListener("pageshow", queueRevealSweep);
+    if ("onscrollend" in window) {
+      window.addEventListener("scrollend", revealPassedElements, { passive: true });
+    }
 
     /* Bildintoning (riktiga <img>-taggar) — samma failsafe-ordning som
        facit: bilder som redan är klara (cache) får ALDRIG klassen alls,
