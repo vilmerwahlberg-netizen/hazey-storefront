@@ -5041,3 +5041,100 @@ föregående runda (ingen visuell ändring). `node build.js` + `node
 CDN/förhandsvisningsdomänen förekom sporadiskt under denna omgångs
 testkörningar också -- bekräftat extern och transient igen, bl.a.
 genom att den återhämtade sig helt under en enkel `curl`-pollning.)
+
+## Desktop-parity-runda 1 — Spotlight/Magic Sauce mot facit (2026-09-15)
+
+Strikt, desktop-only (`@media (min-width:861px)`) visuell paritetsrunda
+mot `tests/results/desktop-reference-parity/featured-magic-sauce/
+reference.png`. Ingen JS rörd, ingen datakälla/fallback/validering
+ändrad, mobilen bevisligen pixelidentisk (se nedan). Endast
+`css/22-homepage-v2.css` ändrad.
+
+**Rotorsak, hittad via getComputedStyle (INTE gissat):** desktop-
+rubriken (`#nhSpotlightHeadline`) hade REDAN `font-size:40px !important;
+font-weight:700 !important` sedan förra rundan (2026-09-10) -- men
+renderade ändå `22px/600` (basregelns mobila värden). Orsak: basregeln
+`.nh-spotlight-body h2` (element+klass-selektor, specificitet 0-1-1)
+slår `.nh-spotlight-headline` (bara klass, 0-1-0) i en !important-mot-
+!important-konflikt, där SPECIFICITET (inte källordning) avgör -- inte
+källordning som man annars kunde tro. Rubriken har alltså ALDRIG
+renderat vid den avsedda storleken sedan den byggdes. Samma mönster
+(saknat `!important`, inte en specificitetsförlust) gjorde att
+`.nh-spotlight-rationale` tyst ärvde en native `16px`/`Nunito`-
+tag-reset i stället för de avsedda 14,5px, och `.nh-spotlight-cta
+.btn-solid` tyst ärvde `16px`/`500` i stället för 14,5px/700.
+
+**Uppmätta värden (getComputedStyle, 1440px, före → efter):**
+| Element | Egenskap | Före | Efter |
+| --- | --- | --- | --- |
+| `#nhSpotlightHeadline` | font-size | 22px | **40px** |
+| `#nhSpotlightHeadline` | font-weight | 600 | **700** |
+| `.nh-spotlight-rationale` | font-size | 16px | **15px** (nu faktiskt applicerad) |
+| `.nh-spotlight-cta .btn-solid` | font-size/weight | 16px/500 | **14.5px/700** |
+| `.nh-spotlight-body` (kräm-panel) | bredd | 576px (40%) | **489.6px (34%)** |
+| `.nh-spotlight-backdrop` | background-position-y | 38% | **22%** |
+
+**Fixat:**
+1. **Rubrik-specificitet**: `.nh-spotlight-headline` → `#nhSpotlightHeadline
+   .nh-spotlight-headline` (id-kvalificerad, specificitet 1-0-0,
+   obestridd). Samma `!important` lades till på line-height/margin för
+   att stänga alla kryphål.
+2. **Rationale/CTA-typografi**: lade till `!important` där det saknades
+   (font-size på båda, color/margin på rationale, color/font-weight på
+   CTA) -- nu de FAKTISKT avsedda värdena appliceras i stället för
+   Nyehandels native tag-reset.
+3. **Kräm-panelens proportion**: mätt om pixel-för-pixel mot facit
+   (enkel färgavvikelse-skanning i bildens topp/botten, utanför
+   textområdet) -- gränsen ligger vid ~34% upptill/~30% nedtill i
+   facit, inte tidigare rundans 40%/34,4%. `width:40%→34%`,
+   `clip-path`-slanten `80px→60px`, padding justerad (96px→72px höger)
+   så texten fortsatt har gott om marginal till den diagonala kanten.
+4. **Bildbeskärning**: `background-position` 38%→22% -- facit visar
+   tydligt mer himmel ovanför produktpåsen (inte klämd mot kortets
+   överkant), jämfört skärmdump-för-skärmdump.
+
+**Mobil bevisat oförändrad:** `git stash` av CSS-ändringen, byggd
+baseline vid 390/430px, `git stash pop`, byggd om, ny skärmdump --
+`md5` BYTE-IDENTISK på båda breddpunkterna (inte bara visuellt lika).
+
+**Verifiering:** 0px overflow vid 1024/1180/1280/1440/1920. `node
+tests/fas6-full-verification.mjs` grönt (en första körning flaggade
+samma redan dokumenterade nätverksflaké mot CDN/sökfetchen, en andra
+körning omedelbart efter var helt grön). Exakt en synlig `.nh-spotlight`
+(`data-nh-spotlight-source="native"`), rätt rubrik/text/CTA/länk,
+`#nhSpotlightType`/`#nhSpotlightMeta` fortsatt dolda (ingen produkt-
+specifik data återinförd). Tangentbordsfokus verifierat SYNLIGT på
+CTA:n (blå 4px-ring, `outline-offset:2px`) -- se dock kvarstående
+avvikelse nedan.
+
+**Kvarstående avvikelser mot facit (klassificerade, inte absorberade
+i en ny baseline):**
+- **Fokusfärg (plattformsbegränsning, sitewide, EJ introducerad i denna
+  runda):** CTA:ns tangentbordsfokusring renderar blå (webbläsarens/
+  troligen Nyehandels egen native `:focus-visible`-reset) i stället för
+  den avsedda orange `#d9782f` som `.btn-solid:focus-visible`-regeln
+  (rad ~696, delad av MÅNGA andra komponenter sitewide) anger --
+  samma "native tag-reset vinner utan `!important`"-mönster som
+  hittades i rubriken/rationale/CTA-typografin ovan, men HÄR i en delad
+  regel som påverkar många andra sektioner. Fixades INTE i denna
+  Spotlight-avgränsade runda (skulle kräva att ändra en delad regel,
+  utanför scope) -- fokusringen är fortfarande fullt SYNLIG (kravet),
+  bara fel färg. Flaggas som en möjlig framtida, egen, sitewide-
+  avgränsad fix.
+- **Bildkomposition (verklig innehållsskillnad, inte en CSS-brist):**
+  den uppladdade native-bilden (1774×887, verifierad `curl`) är bredare
+  i förhållande till sitt motiv än facitets exakta källbild -- vid
+  kortets 2.76:1-proportion syns därför en bit av en skateboard/ett bord
+  längst till höger som inte syns i facit. Facit-motivet (påse, vapes,
+  "HIGHER THINGS AHEAD", palmer, soluppgång) är annars fullt synligt och
+  korrekt beskuret. Ingen hårdkodad bild användes för att dölja detta
+  (uppdragets uttryckliga krav) -- en genuin, ärlig skillnad i den
+  faktiska uppladdade tillgången, inte en gissning eller kompromiss i
+  CSS:en.
+- **Rubrikens radbrytning** skiljer sig naturligt från facit eftersom
+  den riktiga native-rubriken ("Magic Sauce är tillbaka i lager.") är
+  längre än facitets exempel-copy ("Magic Sauce är i lager.") -- 2 rader
+  vid 1440-1920px ("Magic Sauce är / tillbaka i lager."), 3 rader vid
+  1024px. Ingen forcerad radbrytning infördes; detta är en äkta,
+  ofrånkomlig konsekvens av att den riktiga, längre native-texten
+  används i stället för facitets kortare platshållartext.

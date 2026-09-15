@@ -13979,19 +13979,30 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-spotlight-media {
     order: initial; position: absolute; inset: 0; padding: 0; min-height: 0; overflow: hidden;
   }
+  /* 38%→22% (parity-runda 2026-09-15): facit visar tydligt mer himmel
+     ovanför påsen (produkten sitter inte klämd mot kortets överkant) --
+     jämfört skärmdump-för-skärmdump mot referensen, inte gissat. */
   .nh-spotlight-backdrop {
-    position: absolute; inset: 0; background-size: cover; background-position: center 38%;
+    position: absolute; inset: 0; background-size: cover; background-position: center 22%;
   }
   .nh-spotlight-media::before { display: none; }
   .nh-spotlight-img { display: none; }
   /* Kräm-panelen: diagonal högerkant via clip-path, flytande ovanpå
-     fotot (z-index) i stället för en egen grid-kolumn. */
+     fotot (z-index) i stället för en egen grid-kolumn.
+     PARITETSRUNDA (2026-09-15) -- panelen mätt om pixel-för-pixel mot
+     facit (tests/results/desktop-reference-parity/featured-magic-
+     sauce/reference.png, 1440×505): kräm/foto-gränsen ligger vid ~34%
+     av bredden upptill och ~30% nedtill (mätt via en enkel färg-
+     avvikelse-skanning i toppen/botten av bilden, utanför text-
+     området) -- föregående 40%/80px gav en märkbart bredare, tommare
+     kräm-yta och en smalare bildyta än facit (uppdragets krav 8: "undvik
+     ett stort tomt krämfält eller en för smal bildyta"). */
   .nh-spotlight-body {
     order: initial; position: absolute; inset: 0 auto 0 0; z-index: 1;
-    width: 40%; min-width: 340px; max-width: 620px;
+    width: 34%; min-width: 320px; max-width: 540px;
     background: #faf3e9;
-    clip-path: polygon(0 0, 100% 0, calc(100% - 80px) 100%, 0 100%);
-    padding: 44px 96px 44px 56px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 60px) 100%, 0 100%);
+    padding: 40px 72px 40px 56px;
     display: flex; flex-direction: column; justify-content: center;
   }
   .nh-spotlight-kicker,
@@ -14004,24 +14015,36 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-spotlight-name-mobile,
   #nhSpotlightName,
   .nh-spotlight-secondary { display: none; }
-  .nh-spotlight-headline {
+  /* BUGGFYND (parity-runda 2026-09-15, getComputedStyle): denna regel
+     hade REDAN !important på font-weight/font-size/font-family/color,
+     men renderade ändå 22px/600 (basregelns värden) i stället för de
+     avsedda 40px/700 -- basregeln `.nh-spotlight-body h2` (element+
+     klass, specificitet 0-1-1) slår `.nh-spotlight-headline` (bara
+     klass, 0-1-0) i en !important-mot-!important-konflikt, DÄR
+     SPECIFICITET (inte källordning) avgör. Detta har varit fallet
+     sedan regeln skrevs (2026-09-10) -- rubriken har alltså ALDRIG
+     renderat vid den avsedda storleken förrän nu. Fixat genom att
+     rikta ID-selektorn (#nhSpotlightHeadline, specificitet 1-0-0,
+     obestridd) i stället för klassen. Samma mönster tillämpat på
+     .nh-spotlight-rationale/CTA-typografin nedan, som av samma skäl
+     (saknat !important, inte en specificitetsförlust där) tyst
+     ärvde Nyehandels native tag-reset (16px/Nunito respektive
+     16px/500 i stället för de avsedda värdena). */
+  #nhSpotlightHeadline.nh-spotlight-headline {
     display: block;
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
-    /* !important på color: basregeln (.nh-spotlight-body h2, mobilens
-       ljusa text mot den mörka kortbakgrunden) sätter color:#fffdf8
-       !important -- utan samma vapen här vinner den ALLTID, samma
-       redan dokumenterade bugklass som trustraden/CLAUDE.md beskriver
-       (verifierat live: renderade rgb(255,253,248) i stället för den
-       avsedda mörka färgen innan denna fix). */
-    font-weight: 700 !important; font-size: 40px !important; line-height: 1.06;
-    color: #241f18 !important; margin: 0 0 14px;
+    font-weight: 700 !important; font-size: 40px !important; line-height: 1.06 !important;
+    color: #241f18 !important; margin: 0 0 14px !important;
   }
-  .nh-spotlight-rationale { color: #5c574d; font-size: 14.5px; line-height: 1.6; max-width: 32ch; margin-bottom: 22px; }
+  .nh-spotlight-rationale {
+    color: #5c574d !important; font-size: 15px !important; line-height: 1.65 !important;
+    max-width: 30ch; margin-bottom: 22px !important;
+  }
   .nh-spotlight-cta { gap: 0; }
   .nh-spotlight-cta .btn-solid {
     display: inline-flex; align-items: center; gap: 10px;
-    background: #d9782f; border: none; color: #fffdf8;
-    font-weight: 700; font-size: 14.5px; letter-spacing: .01em;
+    background: #d9782f; border: none; color: #fffdf8 !important;
+    font-weight: 700 !important; font-size: 14.5px !important; letter-spacing: .01em;
     padding: 15px 26px; border-radius: 999px;
     box-shadow: 0 12px 24px -12px rgba(180,90,30,.55);
     transition: background 160ms ease, transform 160ms ease;
