@@ -2146,7 +2146,7 @@
         + '  <div class="nh-reviews-layout">'
         + '    <div class="nh-reviews-main">'
         + '      <div class="sec-head">'
-        + '        <div><p class="nh-reviews-kicker">Äkta röster</p><h2>Verifierade omdömen</h2></div>'
+        + '        <div><p class="nh-reviews-kicker">Äkta röster</p><h2 id="nhReviewsHeading">Verifierade omdömen</h2></div>'
         + '        <div class="nh-reviews-controls">'
         + '          <a class="nh-reviews-readall" href="https://www.trustpilot.com/review/hazey.se" target="_blank" rel="noopener">Läs alla omdömen →</a>'
         + '          <div class="nh-reviews-nav" id="nhReviewsNav" hidden>'

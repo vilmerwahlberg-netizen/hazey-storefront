@@ -3050,8 +3050,22 @@
     padding: 40px 72px 40px 56px;
     display: flex; flex-direction: column; justify-content: center;
   }
+  /* BUGGFYND (parity-runda 2026-09-15, Omdömen): denna regel gällde
+     redan båda selektorerna, men .nh-spotlight-kicker är en <div>
+     (aldrig i vägen för Nyehandels native p/span/a-textreset) medan
+     .nh-reviews-kicker är en <p> -- samma element-typ som native
+     tvingar till 16px/Nunito/500 med !important. Utan eget !important
+     här förlorade ENDAST recensionskickern (verifierat: renderade
+     16px/Nunito/500 i stället för 18px/Iowan/600, medan Spotlights
+     kicker redan renderade rätt). Tillägget nedan är alltså en NO-OP
+     för Spotlight (redan godkänd, oförändrat slutresultat) och en
+     riktig fix för Omdömen. */
   .nh-spotlight-kicker,
-  .nh-reviews-kicker { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-weight: 600; font-size: 18px; color: #c1592c; text-transform: none; letter-spacing: 0; margin-bottom: 10px; }
+  .nh-reviews-kicker {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+    font-style: italic !important; font-weight: 600 !important; font-size: 18px !important;
+    color: #c1592c; text-transform: none; letter-spacing: 0; margin-bottom: 10px;
+  }
   /* Referensen visar varken typ/pris/lager/betyg eller sekundärlänken på
      den här kortstilen -- all data finns kvar (mobil, produktsidan bakom
      CTA:n), bara visuellt dold här. */
@@ -3142,6 +3156,81 @@
      var bara till för att beskära Spotlightens Magic Sauce-bild
      annorlunda, irrelevant nu när bilden är en annan fil igen. */
   .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
+
+  /* ── Parity-runda 2026-09-15 (facit: preview/ai-direction/hazey-
+     dadgrass-westcoast-concept-v1.png, "Verifierade omdömen") ──
+     BUGGFYND, samma klass som redan dokumenterad för Spotlight
+     (2026-09-15): flera av dessa element (<h2>/<p>/<span>/<a>) matchar
+     Nyehandels egna native text-tag-resets (font-family/size/weight
+     !important på p,span,a,button,label,td, se CLAUDE.md). Ingen av de
+     befintliga reglerna nedan hade tidigare !important, så de FÖRLORADE
+     tyst -- verifierat via getComputedStyle FÖRE denna fix: rubriken
+     19px (delad med Bästsäljare, aldrig höjd för Omdömen specifikt),
+     stjärnor/betyg/antal/länk ALLA 16px (avsedda 15/14/12,5/13px),
+     citat 16px (avsett 13,5px), kundnamn 16px/500 (avsett 650, ärvde
+     inte radens 12px). Korten (.nh-rc-card, en <div>) och källraden
+     (.nh-rc-source, också en <div>) klarade sig redan (inga text-
+     tag-resets på div). Allt nedan är strikt scopat till denna
+     @media-block -- mobilen (som råkar visa SAMMA 16px idag, se
+     STATUS.md) rörs inte alls, oförändrad. */
+
+  /* Rubriken: ny, egen storlek via id (starkare än den delade
+     .nh-featured/.nh-reviews .sec-head h2-regeln, rad ~1966, utan att
+     ändra Bästsäljares 19px). Uppmätt mot facit (pixelhöjd på "V" i
+     "Verifierade" mot "Ä" i kickern, samma förhållande applicerat på
+     kickerns egna, redan bekräftade 18px): ~28px -- tydligt mindre än
+     Spotlightens 40px (uppdragets krav), men en riktig, redaktionell
+     rubrik i stället för en liten sektionsrubrik. */
+  #nhReviewsHeading {
+    font-size: 28px !important; font-weight: 700 !important; line-height: 1.15 !important;
+    margin: 0 0 10px !important;
+  }
+  .nh-reviews-stars { font-size: 15px !important; }
+  .nh-reviews-score { font-size: 14px !important; font-weight: 650 !important; color: #2c3620 !important; }
+  /* WCAG AA (uppdragets krav): #9a9280/#96683f mätte 2,56:1 resp. 4,0:1
+     mot sektionens kräm-botten (getComputedStyle-verifierat, kräver
+     4,5:1 för normal text) -- mörkade till närmaste tone-in-tone-nyans
+     som klarar 4,5:1 (4,72:1 resp. 4,71:1), fortfarande samma
+     färgfamilj/känsla, bara läsbar. */
+  .nh-reviews-count { font-size: 12.5px !important; color: #6c665a !important; }
+  .nh-reviews-readall { font-size: 13px !important; font-weight: 650 !important; color: #875e39 !important; }
+  /* Tillgänglighet (uppdragets krav): tangentbordsfokus ska vara synligt
+     OCH passa Hazeys färgsystem -- utan en egen regel föll dessa två
+     tillbaka på webbläsarens generiska blå fokusring (`.btn-solid:focus-
+     visible` -- den delade sitewide-regeln -- omfattar INTE dessa två
+     klasser). Samma orange (#d9782f) som redan används sitewide för
+     fokus på andra kontroller. */
+  .nh-reviews-nav__btn:focus-visible { outline: 2px solid #d9782f; outline-offset: 2px; }
+  .nh-reviews-readall:focus-visible { outline: 2px solid #d9782f; outline-offset: 3px; }
+  .nh-rc-stars { font-size: 13px !important; }
+  .nh-rc-quote { font-size: 14px !important; line-height: 1.6 !important; }
+  .nh-rc-name { font-size: 12px !important; font-weight: 650 !important; }
+  .nh-rc-source, .nh-rc-source a { font-size: 12px !important; }
+
+  /* Korten: redan varmvit/diskret (#fff, tunn #ebe1d1-kant, mjuk skugga)
+     eftersom <div> inte drabbas av native-textresets -- justerat mot
+     facit: en varmare botten (samma --cream-token som resten av
+     designsystemet, se docs/HAZEY-DESIGN-SYSTEM.md, i stället för rent
+     #fff), något mindre radie och en ännu mer återhållsam skugga (facit
+     visar knappt någon skugga alls). Ingen ny badge/pill -- "Verifierad
+     köpare" fabriceras INTE (Nyehandels data saknar den uppgiften,
+     uppdragets krav), produktlänken (redan riktig) är kortets enda
+     källhänvisning. */
+  .nh-rc-card {
+    background: #fffdf8; border-radius: 12px;
+    box-shadow: 0 4px 14px -10px rgba(30,39,22,.22);
+    /* Uppdragets krav: "lös olika textlängder så att korten fortfarande
+       känns balanserade och deras nedersta metadata linjerar". Korten
+       har redan samma YTTRE höjd (grid-radens default align-items:
+       stretch), men källraden (.nh-rc-source) satt kvar direkt efter
+       citatet -- olika citatlängder gav då olika HÖJD kvar under
+       källraden i stället för att den låg i linje mellan korten.
+       flex-column + margin-top:auto på källraden nedan trycker den
+       till kortets botten oavsett citatlängd, utan att klippa någon
+       recensionstext. */
+    display: flex; flex-direction: column;
+  }
+  .nh-rc-source { margin-top: auto; padding-top: 10px; }
 }
 @media (max-width: 860px) {
   .nh-reviews-editorial { display: none; }

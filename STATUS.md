@@ -5138,3 +5138,103 @@ i en ny baseline):**
   1024px. Ingen forcerad radbrytning infördes; detta är en äkta,
   ofrånkomlig konsekvens av att den riktiga, längre native-texten
   används i stället för facitets kortare platshållartext.
+
+## Desktop-parity-runda 2 — Verifierade omdömen mot facit (2026-09-15)
+
+Strikt desktop-only (`@media (min-width:861px)`) paritetsrunda mot
+`preview/ai-direction/hazey-dadgrass-westcoast-concept-v1.png`
+("Verifierade omdömen"). Spotlight rörd INTE (bekräftat oförändrad:
+`#nhSpotlightHeadline` fortsatt 40px/700). Endast
+`css/22-homepage-v2.css` (reviewregler) + en id-tillägg i
+`js/18b-homepage-v2.js` (`#nhReviewsHeading` på H2, för en obestridd
+CSS-specificitet -- ingen markup/funktionalitet i övrigt ändrad).
+
+**Rotorsak (getComputedStyle, samma bugklass som Spotlight-rundan
+2026-09-15):** kicker/H2/stjärnor/betyg/antal/länk/citat/kundnamn
+matchar Nyehandels native text-tag-resets (p/span/a, se CLAUDE.md).
+Ingen av de befintliga reglerna hade `!important`, så ALLA förlorade
+tyst -- verifierat FÖRE fix: kicker 16px/Nunito/500 (avsett 18px/
+Iowan/600), rubrik 19px (delad med Bästsäljare, aldrig egen storlek
+för Omdömen), stjärnor/betyg/antal/länk ALLA 16px (avsett 15/14/12,5/
+13px), citat 16px (avsett 13,5px→14px), kundnamn 16px/500 (avsett
+650, ärvde inte radens 12px). Korten (`<div>`) och källraden klarade
+sig redan (inga native-resets på div).
+
+**Uppmätta värden (getComputedStyle, 1440px, före → efter):**
+| Element | Egenskap | Före | Efter |
+| --- | --- | --- | --- |
+| `.nh-reviews-kicker` | font-size/family | 16px/Nunito | **18px/Iowan** (delad regel med Spotlight, NO-OP där) |
+| `#nhReviewsHeading` | font-size/weight | 19px/600 | **28px/700** (egen storlek, rör inte Bästsäljares 19px) |
+| `.nh-reviews-stars` | font-size | 16px | **15px** |
+| `.nh-reviews-score` | font-size/weight | 16px/500 | **14px/650** |
+| `.nh-reviews-count` | font-size/färg | 16px/#9a9280 | **12,5px/#6c665a** (mörkad för WCAG AA, se nedan) |
+| `.nh-reviews-readall` | font-size/färg | 16px/#96683f | **13px/#875e39** (mörkad för WCAG AA) |
+| `.nh-rc-quote` | font-size | 16px | **14px** |
+| `.nh-rc-name` | font-size/weight | 16px/500 | **12px/650** |
+| `.nh-rc-card` | bakgrund/radie/skugga | #fff/14px/0 8px 22px -16px rgba(.3) | **#fffdf8/12px/0 4px 14px -10px rgba(.22)** |
+
+**7fr/3fr-kolumnfördelningen behölls oförändrad** -- live-mätt till
+exakt 1008px/432px (70%/30%) vid 1440px, bekräftat nära facitets
+uppmätta ~70/30 (mätt pixel-för-pixel i facitbilden: kräm/foto-gränsen
+vid ~72,5% brett). Originalbilden `editorial-venice-good-idea-v2.jpg`
+oförändrad, `background-size:cover; position:center`, samma höjd som
+vänsterkolumnen (grid `align-items:stretch`).
+
+**Kortens metadata-linjering** (uppdragets krav): korten hade redan
+samma YTTRE höjd (grid-radens stretch), men källraden
+(`.nh-rc-source`) satt direkt efter citatet -- olika citatlängder gav
+olika mycket tomrum UNDER källraden i stället för att den låg i linje
+mellan korten. Fix: `.nh-rc-card{display:flex;flex-direction:column}`
++ `.nh-rc-source{margin-top:auto}` -- verifierat vid 1920px att alla
+tre kundnamn/produktlänkar nu ligger på EXAKT samma Y-position oavsett
+citatlängd.
+
+**WCAG AA-kontroll (uppdragets krav):** beräknade kontrastkvoter
+(relativ luminans, WCAG-formel) för all text mot sin faktiska bakgrund:
+`.nh-reviews-count` (2,56:1) och `.nh-reviews-readall` (4,0:1) FÖLL
+under 4,5:1-kravet för normal text -- mörkade till #6c665a (4,72:1)
+respektive #875e39 (4,71:1), samma färgfamilj, nu läsbara. Kortens
+kundnamn (12,48:1), citat (13,06:1) och produktlänk (4,75:1) klarade
+redan gränsen. Kickerns `#c1592c` (3,67:1 vid 18px kursiv) ligger under
+4,5:1 för normal text men över 3:1-gränsen för stor text -- INTE
+ändrad eftersom färgen delas med Spotlightens redan godkända,
+LÅSTA kicker-stil ("Featured") -- att mörka den hade ändrat en
+sektion uppdraget uttryckligen förbjuder att röra. Flaggas ärligt som
+en kvarstående, medvetet olöst gränsfall.
+
+**Tangentbordsfokus (uppdragets krav — "synligt OCH passa Hazeys
+färgsystem"):** `.nh-reviews-nav__btn`/`.nh-reviews-readall` hade
+INGEN egen `:focus-visible`-regel (den delade sitewide `.btn-solid:
+focus-visible` omfattar inte dessa klasser) och föll tillbaka på
+webbläsarens generiska blå ring. Ny, review-ägd regel: `outline:2px
+solid #d9782f` (samma orange som redan används sitewide för fokus).
+
+**Verifiering:** 0px overflow vid 1024/1180/1280/1440/1920. Paginering
+testad med både musklick och tangentbord (Tab+Enter) -- sida 1
+(Krille/O/Tobias) → sida 2 (Jonte/Fred Winters/Erik) → tangentbord
+tillbaka till sida 1, korrekt varje gång. Trustpilot-länken (riktig
+href, `target=_blank`) och nav-knapparnas `aria-label` oförändrade/
+verifierade. Exakt en `<h1>` på sidan. `node tests/fas6-full-
+verification.mjs` grönt. Mobil bevisat BYTE-IDENTISK vid 390/430/600px
+(en första 430px-jämförelse visade en skenbar avvikelse i en 15px
+buffertzon ovanför sektionen -- spårad till en ANNAN, datatidsberoende
+sektion strax ovanför (inte reviews-koden) och bekräftad falsk genom
+en tightare beskärning som gav byte-identiska bilder).
+
+**Kvarstående avvikelser mot facit (klassificerade, ärligt
+redovisade):**
+- **Kickerns kontrast** (se ovan) -- 3,67:1, under normal-text-
+  gränsen men delad/låst med Spotlight, medvetet inte ändrad.
+- **Tre kort vs facitets tre kort:** facit visar fabricerad "Verifierad
+  köpare"-badge och antyder "5 000+"-recensioner -- INTE återskapat
+  (uppdragets uttryckliga krav, Nyehandels data saknar köpverifiering).
+  Den riktiga produktlänken är kortens enda källhänvisning i stället,
+  exakt som uppdraget bad om.
+- **Rubriksemantik:** "Verifierade omdömen" antyder att ALLA synliga
+  tal (recensioner + Trustpilot-totalen) är verifierade på samma sätt
+  -- i verkligheten kommer korten från Nyehandels egna produkt-
+  recensioner (ingen känd verifieringsmekanism) medan totalsumman
+  (585-590, live) kommer från Trustpilot (som HAR en köpverifiering).
+  Ingen text ändrad utan godkännande (uppdragets krav) -- flaggas här
+  som en genuin, oförändrad risk för överlovande rubrik, inte en ny
+  upptäckt av denna runda.
