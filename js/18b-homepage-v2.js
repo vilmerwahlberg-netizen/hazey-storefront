@@ -2073,12 +2073,25 @@
       }).join("");
       var rows = cards.map(function (c) { return topicRow(c.title, c.text, c.href); }).join("")
         + (moreRow ? '<div class="kk-more">' + moreRow + '</div>' : "");
+      // KORRIGERINGSRUNDA 2 (2026-09-15, mänsklig visuell granskning):
+      // "Hela FAQ:n" satt tidigare på SAMMA rad som kickern, ovanför
+      // rubriken -- konkurrerade visuellt med kapitlets huvudrubrik.
+      // Länken är OFÖRÄNDRAD (samma riktiga href, ingen text ändrad),
+      // bara flyttad till en diskret rad överst i listkolumnen i stället.
       return '<section class="nh-kunskap section-gap">'
         + '  <div class="guide guide-dark">'
         + '    <div class="kk-layout">'
         + '      <div class="kk-main">'
+        // Länken finns i TVÅ positioner i DOM:en (samma riktiga href/text,
+        // ingen kopia av innehåll skapad utan syfte) -- mobil (oförändrad,
+        // uppdraget fryser mobil denna omgång) visar den kvar bredvid
+        // kickern precis som förut, desktop döljer DEN kopian och visar i
+        // stället den nya, diskreta positionen ovanför listan (se
+        // .kk-list-head nedan). CSS avgör vilken som är synlig per
+        // brytpunkt (display:none tar bort den dolda kopian helt ur
+        // tabbordning/skärmläsarträd), aldrig båda samtidigt.
         + '        <div class="guide-top"><span class="kk-kicker">Kunskap</span>'
-        + '        <span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
+        + '        <span class="skip kk-mobile-faq"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
         + '        <h2>Snabb koll: vad är vad?</h2>'
         // Facit-kalibrering 2026-09-06: exakt facit-text (index.html rad
         // 4594) -- nämner uttryckligen aktuell laglighet, vilket stämmer
@@ -2086,7 +2099,10 @@
         + '        <p class="lede">Korta förklaringar av det som frågas mest om — och vad som är lagligt i Sverige just nu. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
         + (ctaItem && ctaItem.href ? '<a class="kk-cta" href="' + ctaItem.href + '">' + ctaItem.title + ' →</a>' : "")
         + '      </div>'
-        + '      <div class="kk-list">' + rows + '</div>'
+        + '      <div class="kk-list">'
+        + '        <div class="kk-list-head"><span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
+        + rows
+        + '      </div>'
         + '    </div>'
         + '  </div>'
         + '</section>';

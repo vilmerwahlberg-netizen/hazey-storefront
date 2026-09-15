@@ -5515,3 +5515,67 @@ byte-identisk via getComputedStyle-diff.
 **Ändrade källfiler:** `css/22-homepage-v2.css`,
 `css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`,
 `js/18b-homepage-v2.js` (+ genererade filer via `node build.js`).
+
+## Kunskapskapitlet plattat till EN yta (korrigering 2, 2026-09-15)
+
+Mänsklig granskning underkände föregående runda: "samma hexkod på tre
+sektioner" upplevdes ändå som tre staplade block. Rotorsaka och åtgärdad
+holistiskt, endast `.nh-kunskap`/`.nh-guides`/`.nh-signup` (desktop
+≥1024px), mot `preview/design-targets/homepage-desktop-lower-direction-v1.png`.
+
+**Rotorsaker (identifierade via getComputedStyle, inte gissade):**
+1. Tre olika inre max-width per del (`guide.guide-dark` 1400px,
+   `.nh-guides-layout` ingen alls, `.nh-signup-block` 1340px) -- olika
+   vänster-/högerkanter mätta live (t.ex. Guiders innehåll saknade helt
+   en cap och kunde avvika från de andra två).
+2. `.nh-guide-feature` behöll sin EGNA gradient + `box-shadow` +
+   18px `border-radius` -- ett bokstavligt upphöjt kort ovanpå den
+   platta mörkgröna ytan, den enskilt starkaste orsaken till
+   "tre block"-intrycket.
+3. Ingen gemensam vertikal rytmbudget -- tre olika paddingval utan en
+   avsiktlig kapitelkänsla.
+
+**Fix:** alla tre delar delar nu EXAKT samma inre max-width (1340px,
+centrerat, `.guide.guide-dark`/`.nh-guides .sec-head`/
+`.nh-guides-layout`/`.nh-signup-block`) och samma yttre sidpadding
+(26px) -- uppmätt identiskt `left:50px, width:1340px` vid 1440px för
+alla tre. `.nh-guide-feature` plattad helt (ingen bakgrund/kant/radie/
+skugga) -- bild+text ligger direkt på kapitlets gemensamma yta, bara
+bilden (`.nh-guide-feature__photo`) behåller en 12px radie + en
+dämpad varm glöd bakom sig (`.nh-guide-feature__media`), inte hela
+panelen. Snabb koll → Guider och Guider → Nyhetsbrev separeras nu
+ENDAST av en 1px `rgba(228,209,191,.16-.18)`-linje inom
+1340px-containern (inte hela viewportens bredd) + 24-28px luft --
+ingen ny bakgrund, ingen radie, ingen skugga. "Hela FAQ:n" flyttad
+från att konkurrera ovanför H2 till en diskret rad överst i
+listkolumnen (samma riktiga länk, ingen textändring) -- en andra kopia
+behölls på sin ORIGINALA plats bredvid kickern men dold via CSS,
+uteslutande för att hålla mobil bit-för-bit oförändrad (endast en
+kopia synlig per brytpunkt).
+
+**Uppmätt slutresultat vid 1440px:**
+- Total kapitelhöjd (Snabb kolls överkant → Nyhetsbrevets underkant):
+  **763px** (budget ~760px, +3px -- inom felmarginalen, ingen text
+  kapad för att nå dit).
+- Snabb koll: ~247px (kicker+H2+ingress+CTA vänster ~34%, dragspelslista
+  höger ~66%, 48px topp-/14px bottenpadding).
+- Guider: ~319px (rubrik+ingress följt av en rad: bild ~40%/text ~60%,
+  bildhöjd 190px, stödlänkar höger ~38%).
+- Nyhetsbrev: 123px (rubrik/ingress vänster ~35%, formulär mitten,
+  status höger).
+- Alla tre: `left:50px, width:1340px` vid 1440px (identiska kanter).
+- 0px overflow vid 1024/1180/1440/1920. Mobil (390/430px) bevisad
+  byte-identisk via getComputedStyle-diff mot `c4044a4` (enda skillnaden:
+  den dolda FAQ-radskopian existerar nu i DOM:en men `display:none`,
+  0×0, ingen mätbar mobil-påverkan).
+
+**Kvarstående, ärligt redovisad skuld:** `.nh-guide-feature`/
+`.nh-guide-faq`s tangentbordsfokus visar webbläsarens generiska blå
+ring i stället för den avsedda orange -- redan dokumenterat FÖRE denna
+runda (Nyehandels egen bredare `:focus-visible`-regel vinner tyst,
+scope-låst i en tidigare omgång). Synligt fokus finns (kravet är
+uppfyllt), bara inte varumärkesfärgat -- ingen ny regression, inte
+åtgärdad denna runda (utanför scope).
+
+**Ändrade källfiler:** `css/22-homepage-v2.css`, `js/18b-homepage-v2.js`
+(+ genererade filer).

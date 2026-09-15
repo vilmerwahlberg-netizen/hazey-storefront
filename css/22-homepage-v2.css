@@ -2054,6 +2054,15 @@
 }
 .kk-cta:hover { color: #fff; }
 .kk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+/* "Hela FAQ:n" -- flyttad hit (från kickerraden, se nhKunskapHtml) för
+   att inte konkurrera med H2:n. grid-column:1/-1 = egen fullbreddsrad
+   överst i mobilens 2-kolumnsrutnät, samma mönster som .kk-more redan
+   använder längst ner. */
+/* Dold på mobil (oförändrad mobildesign, uppdraget denna omgång är
+   desktop-only) -- "Hela FAQ:n" visas där på mobil i stället via
+   .kk-mobile-faq (den ORIGINALA positionen bredvid kickern), se
+   nhKunskapHtml. Endast EN av de två kopiorna är synlig per brytpunkt. */
+.kk-list-head { display: none; grid-column: 1 / -1; margin-bottom: 8px; }
 .kk-item {
   display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 12px;
   padding: 13px 13px 12px;
@@ -2102,19 +2111,22 @@
     display: inline-flex; align-items: center; gap: 6px;
     background: #d9782f; color: #fffdf8 !important; font-weight: 700 !important; font-size: 13.5px !important;
     font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
-    padding: 13px 24px; border-radius: 999px; margin-top: 18px;
+    padding: 13px 24px; border-radius: 999px; margin-top: 16px;
     box-shadow: 0 10px 22px -12px rgba(180,90,30,.5);
     transition: background 160ms ease, transform 160ms ease;
   }
   .kk-cta:hover { background: #c26a29; color: #fffdf8; transform: translateY(-1px); }
   .kk-list { display: block; }
+  .kk-list-head { display: block; text-align: right; margin-bottom: 6px; }
+  .kk-mobile-faq { display: none; }
+  .kk-list-head .skip { font-size: 12.5px; }
   .kk-item {
     display: block; background: none; border: none; border-radius: 0; padding: 0;
     border-bottom: 1px solid rgba(228,209,191,.18);
   }
   .kk-item summary {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 14px 2px; cursor: pointer;
+    padding: 11px 2px; cursor: pointer;
   }
   .kk-item-title { font-size: 14px !important; font-weight: 650 !important; color: #fffdf8 !important; }
   .kk-item-toggle {
@@ -2133,7 +2145,7 @@
   .kk-more { display: block; margin-top: 0; }
   .kk-item-more, .kk-item-more--soon {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 14px 2px; border-bottom: 1px solid rgba(228,209,191,.18);
+    padding: 11px 2px; border-bottom: 1px solid rgba(228,209,191,.18);
     font-size: 14px !important; font-weight: 650 !important;
   }
   .kk-item-more { color: #fffdf8 !important; }
@@ -2151,20 +2163,28 @@
      mobilens redan godkända inset-kort (bas-reglerna, orörda) påverkas
      inte av detta (scopat till samma media-block som resten av denna
      redesign). */
+  /* KORRIGERINGSRUNDA 2 (2026-09-15, mänsklig visuell granskning
+     underkände föregående runda): "samma hexkod på tre sektioner"
+     räckte inte -- upplevdes fortfarande som tre staplade block.
+     Rotorsak: (1) olika inre max-width per del (guide-dark 1400px,
+     nh-guides-layout ingen alls, nh-signup-block 1340px -- olika
+     vänster/högerkanter), (2) .nh-guide-feature behöll sin EGNA
+     gradient+skugga+radie (ett bokstavligt upphöjt kort ovanpå den
+     platta ytan), (3) olika vertikal padding-rytm per sektion utan en
+     gemensam, avsiktlig kapitelbudget. Fixat holistiskt: alla tre
+     delar EXAKT samma inre max-width (1340px, se .guide.guide-dark/
+     .nh-guides-layout/.nh-guide-sechead/.nh-signup-block nedan),
+     samma yttre sidpadding (26px), och .nh-guide-feature plattas ut
+     helt (se den egna kommentaren där). */
   .nh-kunskap.section-gap {
     max-width: none; width: 100vw;
     margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     background: #1e2716;
-    padding: 52px 26px 44px;
+    padding: 40px 26px 14px;
   }
   .guide.guide-dark {
     background: none; border: none; box-shadow: none; border-radius: 0; padding: 0;
-    /* Innehållet (rubrik/lista) capas till samma 1400px-familj som
-       Populära serier redan använder (.nh-pser .sec-head/.pser-row) --
-       den mörkgröna YTAN förblir full 100vw, men listkolumnen slutar
-       sträcka sig ohämmat vid mycket breda skärmar (uppmätt: osar ut
-       till nästan 1900px utan detta, otydlig läsriktning på raderna). */
-    max-width: 1400px; margin-left: auto; margin-right: auto;
+    max-width: 1340px; margin-left: auto; margin-right: auto;
   }
 }
 
@@ -2353,13 +2373,28 @@
    (38%) blir en smalare, lugnare "vidare läsning"-spalt till höger om
    hela feature-ytan. */
 @media (min-width: 861px) {
-  .nh-guides-layout { flex-direction: row; align-items: stretch; gap: 22px; }
-  .nh-guide-feature { flex: 1 1 62%; flex-direction: row; align-items: center; min-height: 300px; }
-  .nh-guide-feature__media { flex: 0 0 42%; padding: 20px 12px 20px 28px; }
-  .nh-guide-feature__photo { aspect-ratio: 1 / 1; }
-  .nh-guide-feature__body { flex: 1; padding: 20px 30px 20px 12px; }
-  .nh-guide-feature__body h3 { font-size: 32px; }
-  .nh-guide-feature__body p { font-size: 14px; max-width: 34ch; }
+  .nh-guides-layout { flex-direction: row; align-items: stretch; gap: 32px; }
+  /* min-height:300px borttagen (mänsklig granskning: "ingen del ska få
+     en artificiell min-height som gör kapitlet högre än innehållet
+     kräver") -- höjden avgörs nu enbart av bildens 210px + textens
+     naturliga höjd. */
+  .nh-guide-feature { flex: 1 1 62%; flex-direction: row; align-items: center; gap: 28px; }
+  .nh-guide-feature__media {
+    flex: 0 0 40%; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    /* Enda tillåtna "toning": en dämpad varm glöd BAKOM bilden, inte
+       bakom hela panelen -- samma redan etablerade varma accentton
+       (#e7ae63-familjen) som resten av kapitlets ikoner/länkar. */
+    background: radial-gradient(120% 100% at 50% 50%, rgba(231,174,99,.16), transparent 70%);
+    border-radius: 12px;
+  }
+  .nh-guide-feature__photo {
+    aspect-ratio: auto; height: 190px; width: 100%;
+    border-radius: 12px;
+  }
+  .nh-guide-feature__body { flex: 1; padding: 0; }
+  .nh-guide-feature__body h3 { font-size: 30px; }
+  .nh-guide-feature__body p { font-size: 14px; max-width: 38ch; }
   .nh-guide-aside { flex: 1 1 38%; display: flex; flex-direction: column; justify-content: center; }
 
   /* KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1): "Guider &
@@ -2374,13 +2409,38 @@
     max-width: none; width: 100vw;
     margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     background: #1e2716;
-    padding: 40px 26px 56px;
+    /* Topp-paddingen flyttad till .nh-guides .sec-head nedan (samma
+       element som bär den enda tillåtna avdelaren mot Snabb koll) --
+       annars adderas två separata utrymmen (sektionens EGEN padding +
+       inre wrapperns) till en för stor, "ny sektion börjar"-känsla. */
+    padding: 0 26px 20px;
+  }
+  /* Rubrik+ingress + den gemensamma avdelaren mot Snabb koll ovanför.
+     max-width matchar EXAKT .guide.guide-dark/.nh-signup-block (1340px)
+     -- tidigare hade denna rad INGEN egen cap alls, vilket gjorde att
+     Guiders vänsterkant kunde avvika från Snabb kolls/Nyhetsbrevets. */
+  .nh-guides .sec-head {
+    max-width: 1340px; margin-left: auto; margin-right: auto;
+    border-top: 1px solid rgba(228,209,191,.16);
+    padding-top: 24px; margin-bottom: 14px;
   }
   /* BUGGFYND (samma bugklass som .guide.guide-dark h2 ovan): rubrik+ingress
      hade bara den ljusa bakgrundens mörkgröna/grå text -- osynlig nu när
      sektionen är mörk. */
   .nh-guides .sec-head h2 { color: #fffdf8; }
   .nh-guides .sec-head p { color: rgba(244,233,220,.6); }
+  .nh-guides-layout {
+    max-width: 1340px; margin-left: auto; margin-right: auto;
+  }
+  /* .nh-guide-feature uppfattades som ett upphöjt kort (egen gradient +
+     drop-shadow + 18px radie) -- exakt det den mänskliga granskningen
+     bad att platta ut. Bild och text ligger nu direkt på kapitlets
+     gemensamma mörkgröna yta, ingen egen panelbakgrund/kant/skugga.
+     Endast själva bilden (.nh-guide-feature__photo) får behålla en
+     modest radie -- se den regeln nedan. */
+  .nh-guide-feature {
+    background: none; box-shadow: none; border-radius: 0;
+  }
   /* .nh-guide-aside var en ljus kräm-kort-yta -- rätt på den tidigare ljusa
      sidbakgrunden, men en omisskännlig "vit låda kvarlämnad på en mörk
      sektion" nu när ytan runt den är mörkgrön (exakt den bugklass
@@ -2398,6 +2458,17 @@
   .nh-guide-legacy summary { color: #e7ae63; }
   .nh-guide-legacy-body { color: rgba(244,233,220,.68); }
   .nh-guide-legacy-body h2, .nh-guide-legacy-body h3 { color: #fffdf8; }
+  /* Kompaktering (mänsklig granskning: "kompakt lista, ~44-52px stängd
+     rad, tunna linjer, titel vänster/ikon-pil höger"). Beskrivnings-
+     texten (riktig, oförändrad) ligger kvar direkt under titeln --
+     raden blir därför något högre än en ren en-radig lista, men utan
+     att en enda bokstav av den riktiga texten tas bort eller döljs
+     utan öppningsmöjlighet. */
+  .nh-guide-faq { padding: 10px 0; gap: 10px; }
+  .nh-guide-faq__icon { width: 18px; height: 18px; }
+  .nh-guide-legacy { padding: 0; }
+  .nh-guide-legacy summary { padding: 10px 0; }
+  .nh-guide-legacy-body { padding-bottom: 12px; }
 }
 
 /* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
@@ -3249,7 +3320,11 @@
 @media (min-width: 861px) {
   .nh-signup.section-gap {
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
-    max-width: none; padding: 0;
+    max-width: none;
+    /* 26px sidpadding -- SAMMA värde som Snabb koll/Guider (tidigare 0,
+       vilket lät innehållet nudda viewport-kanten vid 1024-1180px där
+       den inre 1340px-capen inte hinner ta över). */
+    padding: 0 26px;
     /* KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1): bakgrunden satt
        tidigare BARA på .nh-signup-block (innercontainern, kapad vid
        1340px) -- den yttre 100vw-sektionen själv var transparent, vilket
@@ -3259,10 +3334,20 @@
        mörkgrön yta utan synlig skarv, exakt målbildens komposition. */
     background: #1e2716;
   }
+  /* KORRIGERINGSRUNDA 2 (2026-09-15): 40px eget horisontellt padding gav
+     Nyhetsbrevet en ANNAN vänsterkant än Snabb koll/Guiders 0-inset-
+     innehåll (som bara förlitar sig på sektionens 26px yttre padding) --
+     bytt till samma mönster (0 eget horisontellt padding, .guide.
+     guide-dark/.nh-guides-layout har heller inget). En enda tunn
+     avdelare (samma rgba-ton som Guiders, se .nh-guides .sec-head)
+     markerar övergången från Guider i stället för en egen bakgrund/
+     ram/skugga/radie. */
   .nh-signup-block {
     background: #1e2716;
     border-radius: 0;
-    max-width: 1340px; margin: 0 auto; padding: 32px 40px;
+    max-width: 1340px; margin: 0 auto;
+    border-top: 1px solid rgba(228,209,191,.18);
+    padding: 26px 0;
   }
   /* Paket 3+4 (2026-09-15): 20px (bas-regeln, facits egen mätta värde för
      just denna komponent) -> samma 32px kapitelrubrik-skala som resten av
