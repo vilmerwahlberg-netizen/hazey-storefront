@@ -11800,6 +11800,11 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
 /* Nativ hero-karusell döljs (INTE tas bort) — ersatt av .nh-qfind-hero. */
 .template-components__slideshow.nh-native-hero-hidden { display: none !important; }
 
+/* Nativ "Text med bild"-sektion döljs (INTE tas bort) — ersatt av
+   .nh-spotlight när nhReadNativeSpotlight() gav giltig data (se
+   js/18b-homepage-v2.js, initHomepageV2, 2026-09-15). */
+.template-components__image-and-text.nh-native-spotlight-hidden { display: none !important; }
+
 /* Gamla trust-ikonraden (nh-trust, byggd i en tidigare omgång) är nu
    överflödig — .nh-trustblock ersätter den med rikare, konsoliderad copy. */
 .nh-trust.nh-trust { display: none !important; }

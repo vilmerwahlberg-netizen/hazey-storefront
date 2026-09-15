@@ -4902,3 +4902,89 @@ verification.mjs`, 0px overflow 390-1920px, exakt en `<h1>`, ingen
 THCA/BÄSTSÄLJARE-knapp, mobilsvep/skrivbordspilar/prickar/reduced-
 motion oförändrat fungerande, plus den nya säkerhets-/aria-
 verifieringen ovan.
+
+## Spotlight-datakällemigrering — riktig native "Text med bild" i stället för enskild produktfetch (2026-09-15)
+
+Uppdrag: koppla `.nh-spotlight` ("Featured / Magic Sauce är i lager")
+till den nya native "Text med bild"-sektionen längst ned på startsidan
+i tema 6, i stället för att fetch:a en enskild produkts JSON-LD.
+Samma "datakällemigrering, inte designrunda"-princip som hero
+(2026-09-10/11) -- desktopkomposition/diagonal/storlek/typografi/
+CTA-stil/sektionsordning/omgivande komponenter rörda INTE.
+
+**Native-sektionen, verifierad live i tema 6 (2026-09-15):** stabil
+komponent-TYP-selektor (inte nth-child/position/aktuell rubriktext):
+`.template-components__image-and-text` (wrapper) →
+`section.image-and-text[data-id="206"]` (Nyehandels egna stabila
+per-komponent-id, motsvarande container `id="itc-206"`) → `.iat` →
+`.iat__image img` (bild, src/currentSrc + alt) + `.iat__content`
+(`h2`/`p`/`.action a`). Exakt EN sådan sektion finns just nu.
+Uppmätt data (matchar exakt det Vilmer angav): bild
+`feature-magic-sauce-higher-things-v2-eb0eeb84.webp` (SAMMA
+grundbild som redan användes hårdkodat, nu native-uppladdad som
+.webp), alt "Magic Sauce-produkter vid Venice Beach i solnedgång.",
+rubrik "Magic Sauce är tillbaka i lager.", text "En av våra mest
+efterfrågade serier är äntligen påfylld. Se vad som finns inne just
+nu.", CTA "Se hela Magic Sauce" → `/sv/categories/magic-sauce`.
+
+**Ny läsfunktion** `nhReadNativeSpotlight()` (js/18b-homepage-v2.js):
+ren avläsning, rör ALDRIG native-DOM:en. CTA-länken körs genom SAMMA
+`nhSafeHref` som heron (2026-09-11) -- en osäker/trasig länk gör hela
+sektionen ogiltig. Bild/rubrik/CTA-text krävs för giltighet (alt är
+valfri, tomt om saknas -- ingen fabricerad alt-text).
+
+**`nhSpotlightHtml(native)` byggd om** till en ren gren-switch: `native`
+(sant/validerat resultat) → renderar native-grenen; `null` → renderar
+den OFÖRÄNDRADE fallback-grenen. SAMMA markup/CSS-klasser/ids
+(`#nhSpotlightImg`/`#nhSpotlightName`/`#nhSpotlightHeadline`/
+`#nhSpotlightType`/`#nhSpotlightMeta`/`#nhSpotlightBuy`) återanvänds
+i båda grenarna -- befintlig desktop-/mobil-CSS fungerar oförändrat.
+Rubrik/brödtext/CTA-text HTML-escapas (`nhEscHtml`), CTA-länken
+attribut-escapas (`nhEscAttr`), bild-URL:en saneras med SAMMA
+`nhSanitizeCssUrl` som heron. SAMMA native-bild används för mobil och
+desktop (`#nhSpotlightImg`+`.nh-spotlight-backdrop` får identisk
+`imgSafe`-URL) -- ingen gissad separat mobilbeskärning.
+
+**Semantisk blandning undviken (uppdragets krav 5):** kampanjen gäller
+nu HELA Magic Sauce-serien (kategori-CTA), inte den enskilda produkten
+"Vape - Magic Sauce 99% - 2ml" -- `#nhSpotlightType`/`#nhSpotlightMeta`
+(typ/pris/lager/betyg, hörde till DEN produkten) renderas `hidden` och
+lämnas HELT tomma i native-grenen, ingen efterföljande kod fyller i
+dem. Ingen sekundärlänk i native-grenen heller -- den gamla "Se hela
+Magic Sauce-sortimentet →" pekade mot EXAKT samma kategori-URL som den
+nya primära CTA:n redan gör, en dubblettlänk hade varit meningslös.
+
+**Fallback (uppdragets krav 7/8):** `NH_SPOTLIGHT` döptes om till
+`NH_SPOTLIGHT_FALLBACK`, `nhInitSpotlight` till
+`nhInitSpotlightFallback` -- BEHÅLLS oförändrade, anropas bara när
+`nhReadNativeSpotlight()` gav `null`. Native-sektionens wrapper döljs
+(`.nh-native-spotlight-hidden`, ny CSS-regel i css/22-homepage-v2.css,
+samma mönster som `.nh-native-hero-hidden`) FÖRST efter att den egna
+Spotlighten byggts med giltig data. Testat med en simulerad trasig
+native-sektion (CTA-länken borttagen): native-sektionen förblev
+synlig och orörd, exakt en `.nh-spotlight` renderades (fallback-grenen,
+med sitt oförändrade produktfetch-baserade pris/lager/betyg), ingen
+krasch, inga sidfel.
+
+**Verifiering:** dedikerade Playwright-kontroller (körda flera gånger)
+bekräftade: exakt en synlig `.nh-spotlight` (`data-nh-spotlight-source`
+= "native" i normalläge), rätt bild/rubrik/text/kategorilänk, ingen
+sekundärlänk, `#nhSpotlightType`/`#nhSpotlightMeta` dolda och tomma,
+0px overflow vid 1024/1180/1280/1440/1920 (desktop) och
+390/393/430/600 (mobil), inga sidfel. `node build.js` + `node --check`
+gröna.
+
+**Ärligt begränsning -- nätverksinstabilitet under denna omgång:**
+CDN-domänen (`d3dnwnveix5428.cloudfront.net`) och själva
+förhandsvisningsdomänen visade intermittent `ERR_ADDRESS_UNREACHABLE`
+under flera körningar av `fas6-full-verification.mjs` denna session --
+bekräftat via upprepade fristående `curl`-anrop (samma domän,
+utanför Playwright/Chromium helt) som ALLA visade samma sporadiska
+timeout-mönster (t.ex. 3 av 5 raka `curl`-anrop mot samma bild-URL
+lyckades, 2 timeout:ade). Detta är en verklig, extern
+nätverksinstabilitet i sessionens miljö just nu -- INTE orsakad av
+någon kodändring i denna runda (samma redan dokumenterade flake-klass
+som setts flera gånger tidigare i den här sessionen). De delar av
+sviten som inte beror på sammanhängande nätverksuthållighet (0px
+overflow, sidfel, den riktade spotlight-specifika verifieringen ovan)
+var konsekvent gröna i alla körningar.

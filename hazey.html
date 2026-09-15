@@ -4330,67 +4330,149 @@
       setTimeout(function () { mo.disconnect(); }, 8000);
     }
 
-    /* ── "I rampljuset" (Spotlight), Fas 2 (2026-09-07) — placerad efter
-       Bästsäljare, före trust-blocket. HELT konfigurationsdriven och
-       HELT osynlig (renderar ingenting alls, inte ens ett dolt skal)
-       när NH_SPOTLIGHT.active är false, vilket den är just nu.
+    /* ── "I rampljuset" (Spotlight) -- datakällemigrering (2026-09-15) ──
+       Läser nu i FÖRSTA HAND en riktig native "Text med bild"-sektion
+       (Nyehandels egen page builder-komponent) i stället för att fetch:a
+       en enskild produkts JSON-LD. Se nhReadNativeSpotlight nedan för
+       den fullständiga avläsningen/valideringen.
 
-       Uttryckligt krav: välj INTE automatiskt en teknisk/tråkig produkt
+       NH_SPOTLIGHT_FALLBACK/nhSpotlightHtmlFallback/nhInitSpotlightFallback
+       BEHÅLLS i koden, tydligt namngivna, som ett manuellt skyddsnät --
+       används BARA om native-sektionen saknas, är ofullständig eller har
+       en osäker CTA-länk (se initHomepageV2). Ta inte bort förrän Vilmer
+       visuellt godkänt migreringen. */
+    /* ── Historik (2026-09-07/08, den ursprungliga, fortfarande aktiva
+       FALLBACK-konfigurationen nedan) ──
+       Uttryckligt krav då: välj INTE automatiskt en teknisk/tråkig produkt
        bara för att den råkar ligga först i bästsäljarlistan -- kräver
-       en explicit konfiguration eller en verifierad flagga. Ingen sådan
-       finns ännu (Vilmer har inte pekat ut en riktig produkt), så
-       komponenten byggs och testas (se STATUS.md för hur den
-       verifierades med en tillfällig, INTE committad, riktig produkt)
-       men lämnas AVSTÄNGD. Se slutrapporten för en konkret rekommenda-
-       tion om VILKEN riktig produkt som är en bra kandidat och varför.
-
-       Datakälla vid aktivering: samma robusta, redan beprövade JSON-LD
-       `<script type="application/ld+json">`-block som varje riktig PDP
-       redan skriver ut (namn/bild/pris/lagerstatus) -- statisk i den
-       råa HTML:en, ingen Vue-hydrering behöver köras (samma upptäckt
-       som löste "Verifierade omdömen" ovan, men här räcker JSON-LD:s
-       EGNA fält, ingen entitetsavkodning av ett Vue-prop-attribut
-       behövs). Rationale/sekundärlänk kommer ALLTID från konfigen,
-       aldrig gissat eller skrapat. */
-    /* Aktiverad 2026-09-08 (creative-direction-runda). Produktval enligt
-       uppdragets egen prioritetsordning (relevant Magic Sauce-produkt
-       först): "Vape - Magic Sauce 99% - 2ml" -- verifierat via produktens
-       riktiga JSON-LD (curl mot hazeyse.nyehandel.se 2026-09-08): I lager,
-       595 kr, riktigt betyg 4,69/5 (13 omdömen), varumärke Magic Farmers.
-       Valt framför en bud-/hash-variant i samma serie eftersom en enskild
-       vape-förpackning ger en renare, mer "kampanjmotiv"-lik produktbild
-       (bud-/hash-fotona i denna kategori är gruppbilder av påsar/pulver,
-       svårare att låta "bryta gridet" snyggt). Ingen fabricerad rabatt --
-       produktens riktiga pris visas rakt av (ingen jämförelsepris/rea just
-       nu på denna specifika produkt). */
-    var NH_SPOTLIGHT = {
+       en explicit konfiguration eller en verifierad flagga. Produktval
+       enligt uppdragets egen prioritetsordning (relevant Magic Sauce-
+       produkt först): "Vape - Magic Sauce 99% - 2ml" -- verifierat via
+       produktens riktiga JSON-LD (curl 2026-09-08): I lager, 595 kr,
+       betyg 4,69/5 (13 omdömen), varumärke Magic Farmers. Datakälla:
+       samma robusta JSON-LD `<script type="application/ld+json">`-block
+       som varje PDP redan skriver ut. Rationale/sekundärlänk kommer
+       ALLTID från konfigen, aldrig gissat eller skrapat. */
+    var NH_SPOTLIGHT_FALLBACK = {
       active: true,
       productHref: "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-99-2ml",
       // Riktig serietillhörighet (verifierad -- produkten är en Magic
       // Sauce-vape, se productHref/JSON-LD), inte en fabricerad rubrik --
       // används för desktopens H2 ("Magic Sauce är i lager."/"...snart
-      // tillbaka i lager.", se nhInitSpotlight) OCH CTA-texten
+      // tillbaka i lager.", se nhInitSpotlightFallback) OCH CTA-texten
       // ("Köp Magic Sauce →"), båda härledda, ingen hårdkodad SKU-text.
       seriesLabel: "Magic Sauce",
       rationale: "En av våra mest populära Magic Sauce-produkter — engångsvape, redo direkt ur förpackningen.",
       secondaryLabel: "Se hela Magic Sauce-sortimentet →",
       secondaryHref: "/sv/categories/magic-sauce"
     };
-    function nhSpotlightHtml() {
-      if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return "";
-      // KORRIGERINGSRUNDA (2026-09-10, Vilmer jämförde direkt mot en ny
-      // referensbild och flaggade stor avvikelse i typsnitt/text/bild-
-      // format/CTA): .nh-spotlight-backdrop fyller nu HELA kortet (inte
-      // en 33%-kolumn) -- .nh-spotlight-body ligger som en separat,
-      // diagonalt avskuren kräm-panel OVANPÅ fotot (se css, clip-path),
-      // exakt referensens komposition, i stället för en 50/50- eller
-      // 67/33-sida-vid-sida-delning. Typ/pris/lager/betyg
-      // (#nhSpotlightType/#nhSpotlightMeta) är KVAR i DOM:en med samma
-      // riktiga data som förut -- bara visuellt dolda på desktop (css),
-      // eftersom referensen inte visar den raden alls på den här
-      // kortstilen. Mobilen (#nhSpotlightImg + typ/pris/lager/betyg)
-      // är HELT oförändrad. */
-      return '<section class="nh-spotlight section-gap" id="nh-spotlight">'
+    /* ── Läser den RIKTIGA "Text med bild"-sektionen (Nyehandels egen
+       page builder-komponent) direkt ur DOM:en -- ren avläsning, rör
+       ALDRIG native-DOM:en (ingen mutation här). Rubrik/brödtext/CTA-
+       text/CTA-länk/bild/alt-text är adminens EGNA, redan sparade,
+       riktiga värden -- ingen fabricerad text.
+
+       Verifierat live i tema 6 (2026-09-15) innan denna funktion
+       skrevs (DOM-inspektion, inte gissat) -- EXAKT en sådan sektion
+       finns just nu på startsidan:
+       - stabil komponent-TYP-selektor (inte position/nth-child/den
+         aktuella rubriktexten): .template-components__image-and-text
+         (wrapper) → section.image-and-text[data-id]  (data-id är
+         Nyehandels egen, stabila per-komponent-id, t.ex. "206" --
+         motsvarande container får id="itc-{data-id}") → .iat
+       - bild: .iat__image img, src/currentSrc (absolut CloudFront-URL)
+         + alt-attribut (riktig, adminskriven alt-text)
+       - rubrik: .iat__content h2
+       - brödtext: .iat__content p
+       - CTA: .iat__content .action a (text + href, adminens egna)
+       Om Nyehandel någon gång får FLERA "Text med bild"-sektioner på
+       samma sida väljer detta den FÖRSTA -- inget observerat idag, men
+       värt att känna till (se slutrapporten). */
+    function nhReadNativeSpotlight() {
+      var wrap = document.querySelector(".template-components__image-and-text");
+      var iat = wrap ? wrap.querySelector(".iat") : null;
+      if (!iat) return null;
+      var imgEl = iat.querySelector(".iat__image img");
+      var image = imgEl ? (imgEl.currentSrc || imgEl.getAttribute("src")) : null;
+      var alt = imgEl ? (imgEl.getAttribute("alt") || "") : "";
+      var headingEl = iat.querySelector(".iat__content h2");
+      var heading = headingEl ? headingEl.textContent.replace(/\s+/g, " ").trim() : null;
+      var bodyEl = iat.querySelector(".iat__content p");
+      var body = bodyEl ? bodyEl.textContent.replace(/\s+/g, " ").trim() : "";
+      var ctaEl = iat.querySelector(".iat__content .action a");
+      var ctaText = ctaEl ? ctaEl.textContent.replace(/\s+/g, " ").trim() : null;
+      // Samma säkerhetsprincip som heron (nhSafeHref, 2026-09-11): bara
+      // relativ länk eller absolut http/https godkänns -- en osäker
+      // (javascript:/data:/m.fl.) eller trasig CTA-länk gör HELA
+      // sektionen ogiltig i stället för att renderas.
+      var ctaHref = ctaEl ? nhSafeHref(ctaEl.getAttribute("href")) : null;
+      if (!(image && heading && ctaText && ctaHref)) return null;
+      return { wrap: wrap, image: image, alt: alt, heading: heading, body: body, ctaText: ctaText, ctaHref: ctaHref };
+    }
+    /* Bygger .nh-spotlight-markupen. `native` är antingen ett validerat
+       resultat från nhReadNativeSpotlight() eller null (se
+       initHomepageV2) -- exakt EN av de två grenarna nedan renderas
+       någonsin, aldrig båda. Markup/CSS-klasser/ids återanvänds HELT
+       oförändrade mellan grenarna (samma #nhSpotlightImg/#nhSpotlightName/
+       #nhSpotlightHeadline/#nhSpotlightType/#nhSpotlightMeta/#nhSpotlightBuy)
+       så att befintlig desktop-/mobil-CSS fungerar identiskt oavsett
+       datakälla -- detta är en datakällemigrering, INTE en redesign. */
+    function nhSpotlightHtml(native) {
+      if (native) {
+        // Kampanjen gäller nu HELA Magic Sauce-serien (kategori-CTA från
+        // native-sektionen), inte den enskilda produkten "Vape - Magic
+        // Sauce 99% - 2ml" -- typ/pris/lager/betyg (#nhSpotlightType/
+        // #nhSpotlightMeta) hörde till DEN produkten specifikt och skulle
+        // vara en felaktig semantisk blandning ihop med den nya
+        // kategori-länken (uppdragets uttryckliga krav). Elementen finns
+        // kvar i DOM:en (samma ids, ingen markup tas bort) men renderas
+        // `hidden` och lämnas HELT tomma -- ingen efterföljande kod
+        // fyller i dem för native-grenen.
+        //
+        // Mobil och desktop använder SAMMA native-bild (samma princip
+        // som redan gäller för heron, se STATUS.md 2026-09-10) -- ingen
+        // gissad separat mobilbeskärning. Bild-URL:en saneras med samma
+        // nhSanitizeCssUrl som heron (kontrolltecken/citattecken/
+        // backslash, rätt ordning för ett CSS url()-token i ett HTML-
+        // attribut). Rubrik/brödtext/CTA-text HTML-escapas (nhEscHtml),
+        // CTA-länken attribut-escapas (nhEscAttr) -- den är dessutom
+        // redan schema-validerad (nhSafeHref) i nhReadNativeSpotlight.
+        //
+        // Ingen sekundärlänk för native-grenen: den gamla "Se hela Magic
+        // Sauce-sortimentet →" pekade mot EXAKT samma kategori-URL som
+        // den nya primära CTA:n nu gör -- att visa båda hade varit en
+        // meningslös dubblettlänk. Sekundärlänken hör bara hemma i
+        // fallback-grenen (se nedan), som fortfarande har en riktig,
+        // distinkt destination att peka mot.
+        var imgSafe = nhSanitizeCssUrl(native.image);
+        var headingSafe = nhEscHtml(native.heading);
+        return '<section class="nh-spotlight section-gap" id="nh-spotlight" data-nh-spotlight-source="native">'
+          + '  <div class="nh-spotlight-inner">'
+          + '    <div class="nh-spotlight-media">'
+          + '      <div class="nh-spotlight-backdrop" style="background-image:url(\'' + imgSafe + '\')" aria-hidden="true"></div>'
+          + '      <div class="nh-spotlight-img" id="nhSpotlightImg" style="background-image:url(\'' + imgSafe + '\')"></div>'
+          + '    </div>'
+          + '    <div class="nh-spotlight-body">'
+          + '      <div class="nh-spotlight-kicker">Featured</div>'
+          + '      <p class="nh-spotlight-type" id="nhSpotlightType" hidden></p>'
+          + '      <h2 id="nhSpotlightName">' + headingSafe + '</h2>'
+          + '      <h2 id="nhSpotlightHeadline" class="nh-spotlight-headline">' + headingSafe + '</h2>'
+          + '      <p class="nh-spotlight-rationale">' + nhEscHtml(native.body) + '</p>'
+          + '      <div class="nh-spotlight-meta" id="nhSpotlightMeta" hidden></div>'
+          + '      <div class="nh-spotlight-cta">'
+          + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + nhEscAttr(native.ctaHref) + '">'
+          + '          <span id="nhSpotlightBuyLabel">' + nhEscHtml(native.ctaText) + '</span>'
+          + '          <span aria-hidden="true">→</span>'
+          + '        </a>'
+          + '      </div>'
+          + '    </div>'
+          + '  </div>'
+          + '</section>';
+      }
+      // ── FALLBACK (oförändrad sedan 2026-09-10, se NH_SPOTLIGHT_FALLBACK
+      // ovan) -- används bara när nhReadNativeSpotlight() gav null. ──
+      if (!NH_SPOTLIGHT_FALLBACK.active || !NH_SPOTLIGHT_FALLBACK.productHref) return "";
+      return '<section class="nh-spotlight section-gap" id="nh-spotlight" data-nh-spotlight-source="fallback">'
         + '  <div class="nh-spotlight-inner">'
         + '    <div class="nh-spotlight-media">'
         + '      <div class="nh-spotlight-backdrop" style="background-image:url(\'' + NH_ASSET_BASE + 'v2/feature-magic-sauce-higher-things-v2.jpg\')" aria-hidden="true"></div>'
@@ -4400,30 +4482,30 @@
         + '      <div class="nh-spotlight-kicker">Featured</div>'
         + '      <p class="nh-spotlight-type" id="nhSpotlightType"></p>'
         + '      <h2 id="nhSpotlightName">Laddar…</h2>'
-        // Desktop-ENDA rubrik (se css: visas i stället för #nhSpotlightName
-        // på desktop, tvärtom på mobil) -- kort lagerstatusrad, se
-        // motivering vid NH_SPOTLIGHT.seriesLabel ovan och nhInitSpotlight.
         + '      <h2 id="nhSpotlightHeadline" class="nh-spotlight-headline">Laddar…</h2>'
-        + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT.rationale + '</p>'
+        + '      <p class="nh-spotlight-rationale">' + NH_SPOTLIGHT_FALLBACK.rationale + '</p>'
         + '      <div class="nh-spotlight-meta" id="nhSpotlightMeta"></div>'
         + '      <div class="nh-spotlight-cta">'
-        + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT.productHref + '">'
-        + '          <span id="nhSpotlightBuyLabel">Köp ' + NH_SPOTLIGHT.seriesLabel + '</span>'
+        + '        <a class="btn-solid" id="nhSpotlightBuy" href="' + NH_SPOTLIGHT_FALLBACK.productHref + '">'
+        + '          <span id="nhSpotlightBuyLabel">Köp ' + NH_SPOTLIGHT_FALLBACK.seriesLabel + '</span>'
         + '          <span aria-hidden="true">→</span>'
         + '        </a>'
-        + (NH_SPOTLIGHT.secondaryHref
-            ? '<a class="hero-link nh-spotlight-secondary" href="' + NH_SPOTLIGHT.secondaryHref + '">' + NH_SPOTLIGHT.secondaryLabel + '</a>'
+        + (NH_SPOTLIGHT_FALLBACK.secondaryHref
+            ? '<a class="hero-link nh-spotlight-secondary" href="' + NH_SPOTLIGHT_FALLBACK.secondaryHref + '">' + NH_SPOTLIGHT_FALLBACK.secondaryLabel + '</a>'
             : '')
         + '      </div>'
         + '    </div>'
         + '  </div>'
         + '</section>';
     }
-    function nhInitSpotlight(root) {
-      if (!NH_SPOTLIGHT.active || !NH_SPOTLIGHT.productHref) return;
+    /* FALLBACK-ENDAST (se filens header-kommentar ovan) -- den gamla,
+       per-produkt-fetch-baserade berikningen. Anropas INTE när native-
+       sektionen gav giltig data (se initHomepageV2) -- oförändrad. */
+    function nhInitSpotlightFallback(root) {
+      if (!NH_SPOTLIGHT_FALLBACK.active || !NH_SPOTLIGHT_FALLBACK.productHref) return;
       var section = root.querySelector("#nh-spotlight");
       if (!section) return;
-      fetch(NH_SPOTLIGHT.productHref, { credentials: "same-origin" })
+      fetch(NH_SPOTLIGHT_FALLBACK.productHref, { credentials: "same-origin" })
         .then(function (r) { return r.ok ? r.text() : ""; })
         .then(function (html) {
           if (!html) throw new Error("no html");
@@ -4458,7 +4540,7 @@
           // av samma riktiga `inStock`-fält som redan beräknas ovan (live
           // JSON-LD), ingen hårdkodad påstådd lagerstatus. Se css för
           // vilken av de två <h2>-raderna som visas var.
-          section.querySelector("#nhSpotlightHeadline").textContent = NH_SPOTLIGHT.seriesLabel
+          section.querySelector("#nhSpotlightHeadline").textContent = NH_SPOTLIGHT_FALLBACK.seriesLabel
             + (inStock ? " är i lager." : " är snart tillbaka i lager.");
           section.querySelector("#nhSpotlightType").textContent = [typeLabel, brand].filter(Boolean).join(" · ");
           var rating = data.aggregateRating;
@@ -5551,6 +5633,18 @@
       // ingen sektion tas bort, bara omflyttad visuellt vid bredare
       // breddpunkter.
       var kunskapCards = nhBuildKunskapCards(navData);
+      // Datakällemigrering (2026-09-15): läser den RIKTIGA "Text med
+      // bild"-native-sektionen (ren avläsning, ingen DOM-mutation ännu
+      // -- se nhReadNativeSpotlight) INNAN flexWrap byggs, så
+      // nhSpotlightHtml kan rendera rätt gren direkt (ingen "Laddar…"-
+      // period behövs för native-vägen -- all data finns redan
+      // synkront i DOM:en, ingen fetch krävs). Samma "väger tyngre än
+      // auto-fallback"-princip som heron (se ovan): om avläsningen gav
+      // null (sektionen saknas/ofullständig/osäker CTA-länk) används
+      // NH_SPOTLIGHT_FALLBACK i stället, och native-sektionen rörs INTE
+      // alls (varken dold eller ersatt) -- ingen krasch, inget tomrum,
+      // ingen dubbelt dold sektion.
+      var nativeSpotlight = nhReadNativeSpotlight();
       var flexWrap = document.createElement("div");
       flexWrap.className = "nh-startpage-flex";
       flexWrap.innerHTML = ''
@@ -5560,7 +5654,7 @@
         + nhPopularaVagarHtml(navData)
         + nhBestsellersHtml()
         + nhBonfireHtml()
-        + nhSpotlightHtml()
+        + nhSpotlightHtml(nativeSpotlight)
         + nhTrustBlockHtml()
         + nhKunskapHtml(kunskapCards)
         + nhGuidesHtml(navData)
@@ -5570,12 +5664,22 @@
       var anchor = slideRoot.nextSibling;
       slideRoot.parentNode.insertBefore(flexWrap, anchor);
 
+      // Döljer native-sektionens wrapper FÖRST nu, efter att den egna
+      // Spotlighten (ovan) faktiskt byggts med den lästa datan (samma
+      // "dölj sist"-princip som heron, uppdragets krav punkt 6).
+      if (nativeSpotlight) {
+        nativeSpotlight.wrap.classList.add("nh-native-spotlight-hidden");
+      }
+
       scanScrollReveal(document);
       nhInitHeroCarousel(document);
       nhInitPserNav(document);
       nhEnhanceWithRealPhotos(document);
       nhInitBestsellers(document);
-      nhInitSpotlight(document);
+      // FALLBACK-ENDAST: körs bara när native-sektionen INTE gav giltig
+      // data -- den redan renderade native-grenen behöver ingen
+      // efterhandsberikning (allt lästes synkront).
+      if (!nativeSpotlight) nhInitSpotlightFallback(document);
       nhInitReviewsLive(document);
       nhInitProductReviews(document);
       nhInitInactiveForms(document);
