@@ -3846,10 +3846,17 @@
       });
       var allHref = "/sv/categories/alla-produkter";
 
+      // KORRIGERINGSRUNDA (2026-09-15, Paket 3+4): solikonen satt tidigare
+      // INUTI kickern (liten, 15px, bredvid "Upptäck mer") -- facit visar
+      // den i stället som en avsiktlig, större del av SJÄLVA rubrik-
+      // kompositionen, direkt efter "Populära serier". Flyttad in i H2:n
+      // (samma SVG-path, oförändrad) + ny egen klass (.nh-pser-sun) för
+      // rubrik-skalig storlek i CSS, i stället för kickerns tidigare
+      // .nh-pser-kicker__sun (borttagen).
       return '<section class="nh-pser section-gap" id="populara-serier">'
         + '  <div class="sec-head">'
-        + '    <div><span class="nh-pser-kicker">Upptäck mer<svg class="nh-pser-kicker__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6L5.5 5.5"/></svg></span>'
-        + '    <h2>Populära serier</h2></div>'
+        + '    <div><span class="nh-pser-kicker">Upptäck mer</span>'
+        + '    <h2>Populära serier<svg class="nh-pser-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1M18.5 18.5l-2.1-2.1M7.6 7.6L5.5 5.5"/></svg></h2></div>'
         + '    <div class="nh-pser-controls"><a class="more" href="' + allHref + '">Visa alla serier →</a>'
         + '      <button type="button" class="nh-pser-nav nh-pser-nav--prev" aria-label="Föregående serier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4l-8 8 8 8"/></svg></button>'
         + '      <button type="button" class="nh-pser-nav nh-pser-nav--next" aria-label="Fler serier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4l8 8-8 8"/></svg></button>'
@@ -4206,11 +4213,23 @@
        Lösning: återanvänd den befintliga klassen (`pl-list` på raden)
        i stället för att bygga en ny parallell kortstil — exakt samma
        premiumkort som redan finns, bara i en ny container. ── */
+    // KORRIGERINGSRUNDA (2026-09-15, Paket 3+4): kicker "Våra favoriter"
+    // + en dekorativ eldikon (samma rent kosmetiska, datafria mönster som
+    // solen vid Populära serier/kickern vid Spotlight/Reviews -- ingen ny
+    // datapunkt, bara ett visuellt grepp) tillagda för att ge sektionen
+    // samma redaktionella rubriktyngd som de redan godkända Spotlight-/
+    // Reviews-sektionerna. Den befintliga, riktiga mikrotexten ("Redo att
+    // skickas idag...") TAS INTE BORT (uppdragets uttryckliga förbud mot
+    // att radera innehåll) -- bara nedtonad till sekundär mikrocopy via
+    // en ny klass (.nh-featured-micro), se CSS. CTA-texten bytt till
+    // "Se alla produkter →" (uppdragets explicita copy för denna sektion).
     function nhBestsellersHtml() {
+      var flameIcon = '<svg class="nh-featured-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c1.2 2.6-2.4 4-2.4 7a2.4 2.4 0 004.8 0c0-.9-.5-1.6-.7-2.4 1.7 1 3.1 3 3.1 5.4a4.8 4.8 0 01-9.6 0c0-4.2 3-6.3 4.8-10z"/></svg>';
       return '<section class="nh-featured section-gap" id="nh-featured">'
-        + '  <div class="sec-head"><div><h2>Bästsäljare i lager</h2>'
-        + '  <p>Redo att skickas idag — inget variantval krångel.</p></div>'
-        + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
+        + '  <div class="sec-head"><div><span class="nh-featured-kicker">Våra favoriter</span>'
+        + '  <h2>Bästsäljare i lager' + flameIcon + '</h2>'
+        + '  <p class="nh-featured-micro">Redo att skickas idag — inget variantval krångel.</p></div>'
+        + '  <a class="more" href="/sv/categories/alla-produkter">Se alla produkter →</a></div>'
         + '  <div class="nh-featured-row pl-list" id="nhFeaturedRow"><div class="nh-featured-empty">Laddar…</div></div>'
         + '  <div class="nh-swipe-dots" id="nhFeaturedDots" hidden></div>'
         + '</section>';

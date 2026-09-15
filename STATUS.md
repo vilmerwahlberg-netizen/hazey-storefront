@@ -5376,3 +5376,71 @@ kicker-utbrytningen delad med Spotlight), `js/18b-homepage-v2.js`
 (`nhReviewsHtml`, `nhInitProductReviews`, `nhInitReviewsLive`s
 textformat) + genererade `hazey.css`/`hazey.html`/`hazey.min.html`/
 `hazey.min.js` via `node build.js`. Ingen annan sektion rörd.
+
+## Paket 3+4 — samlad avslutande desktoprunda (2026-09-15)
+
+Spotlight/Reviews frysta, orörda. Strikt desktop (`min-width:861px`),
+mobil bevisad oförändrad via getComputedStyle-diff mot b80a042 (390px,
+alla berörda selektorer identiska utom den avsiktliga CTA-textändringen
+i Bästsäljare, som gäller alla bredder per uppdraget).
+
+**Enat rubriksystem:** alla kapitelrubriker (Populära serier/Bästsäljare/
+Populära vägar/Snabb koll/Guider/Nyhetsbrev) 19-20px → 32px, under
+Reviews (36px) och Spotlight (40px, låst). Kickrar (nya: Bästsäljare
+"Våra favoriter"; omstyld: Populära serier) delar nu Spotlight/Reviews
+typografi (18px italic 600 Iowan), egen färg `#a8481f` (samma redan
+WCAG AA-verifierade 4,82:1-nyans som Reviews kicker, återanvänd i
+stället för ett nytt färgvärde).
+
+**Populära serier:** solikonen flyttad från kickern (15px) in i H2:n
+(24px, del av rubrikkompositionen, matchar facit).
+
+**Bästsäljare:** ny kicker + dekorativ eldikon (ren stil, ingen ny
+data), CTA-text "Se allt" → "Se alla produkter →", den riktiga
+"Redo att skickas idag"-mikrotexten BEHÅLLEN men nedtonad (12px, ej
+borttagen). Rotorsak-fix: sektionen var ALDRIG riktigt full-bredd som
+sin granne Populära serier (1340px centrerad -> rubrik-x=74 mot
+Populära seriers x=26) -- bytt till samma 100vw+26px-teknik, korten
+fick dessutom mer verklig yta (1388px i st.f. 1340px).
+
+**Trustremsan:** padding 31px→22px, ikoner 26px→21px, rubrik/brödtext
+något mindre -- lägre och mer kompakt utan att ta bort någon av de
+fem verifierade posterna (leveransgaranti/bolagsinfo/länk oförändrade).
+
+**Populära vägar/Guider:** bara rubrikstorlek (+Guider: en `min-width:0;
+width:100%`-fix, samma redan kända "krymper i flex-kolumn"-bugklass som
+Populära serier/vägar redan hade -- Guider mätte 1082px/x=179 i stället
+för den avsedda 1100px/x=170, nu identisk med Populära vägar/Snabb
+koll/FAQ).
+
+**Snabb koll:** de fyra vita "kort-i-kort" (vit box i mörkgrön box) gjorda
+till platta textblock direkt på den mörkgröna ytan, avdelade med en tunn
+linje (samma linje-princip som FAQ:n) i stället för egna boxar. Ingen
+sakcopy ändrad -- line-clamp 5→6 rader (mer utrymme utan kortpaddingen,
+mjukar den tidigare mitt-i-ord-avklippningen, tar inte bort den helt).
+
+**Nyhetsbrev/FAQ:** Nyhetsbrev bara rubrikstorlek (redan fullbredd/mörk
+sen tidigare runda). FAQ:n var redan en kompakt tvåkolumns editorial-
+layout (Fas 3, tidigare runda) som redan uppfyllde uppdragets krav --
+lämnad orörd.
+
+**Verifiering:** `node tests/fas6-full-verification.mjs` grönt (en första
+körning visade enstaka `ERR_ADDRESS_UNREACHABLE`/bild-timeouts mot
+externa värdar, samma kända nätverksflakighet som dokumenterats
+upprepade gånger tidigare i projektet -- en omkörning gav 100% grönt).
+Riktade kontroller: Populära serier-karusellen skrollar fortfarande,
+Snabb koll-länkarnas THC-X/D10-mönster (riktig länk kontra icke-
+klickbar) oförändrat, FAQ-dragspelet togglar, tangentbordsfokus synlig
+på nya kicker/CTA-element, nyhetsbrevsformuläret visar fortsatt sin
+ärliga inaktiv-status. 0px overflow 1024-1920px.
+
+**Kvarstående, ärligt redovisad skuld:** trustremsans längsta post
+("Diskret paketerat") radbryter fortfarande till 3 rader vid 5 kolumner
+-- en fullständig 2-radsuniformitet hade krävt en omformulering av
+själva sakpåståendet, vilket uppdraget uttryckligen förbjuder utan
+godkännande. Snabb kolls SEO-text klipps fortfarande (line-clamp,
+mjukare men inte borta) av samma skäl. Två strukturellt olika
+container-konventioner lever kvar sida vid sida (Populära serier/
+Bästsäljare: 100vw-26px "kortradsband"; Populära vägar/Snabb koll/
+Guider/FAQ: 1100px centrerad "redaktionell panel") -- en medveten,
+inte en upptäckt bugg, men flaggas här för synlighet.

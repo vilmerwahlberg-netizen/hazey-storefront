@@ -166,6 +166,17 @@
   .nh-pser .sec-head p { color: #2c3620; }
   .nh-pser .sec-head .more { color: #96683f; }
   .nh-pser .pser-row { max-width: 1100px; margin-left: auto; margin-right: auto; }
+  /* Paket 3+4 (2026-09-15): 19px (delad bas-regel, rad ~87) var en liten
+     plattformsrubrik, inte en redaktionell kapitelrubrik -- samma
+     32px-skala som resten av rundans övriga kapitelrubriker (Bästsäljare/
+     Populära vägar/Snabb koll/Guider/Nyhetsbrev, se respektive regel),
+     fortfarande under Reviews (36px) och Spotlight (40px, låst). Egen
+     regel, senare i källordningen än bas-regeln (rad ~87) -- samma
+     specificitet, vinner via källordning (etablerat mönster, se Reviews-
+     rundans #nhReviewsHeading-kommentar för samma bugklass). */
+  .nh-pser .sec-head h2 {
+    font-size: 32px !important; line-height: 1.15 !important; display: flex; align-items: center;
+  }
 }
 /* BUGGFYND (desktop-parity-runda, verifierat via mobil-skärmdump): kickern
    och pil-kontrollerna hör bara till den nya desktop-referensen -- utan
@@ -176,15 +187,30 @@
    pilarna, se .nh-pser-nav nedan (redan display:none i grunden, oförändrat). */
 .nh-pser-kicker { display: none; }
 .nh-pser-controls .more { display: none; }
+/* Solen (flyttad in i H2:n, se js/18b-homepage-v2.js) hör bara till
+   desktop-rubrikkompositionen -- utan denna bas-döljning hade den
+   oavsiktligt dykt upp i mobilens redan godkända rubrik (kickern som
+   tidigare bar ikonen var redan mobil-dold via regeln ovan, men H2:n
+   är INTE det). */
+.nh-pser-sun { display: none; }
 @media (min-width: 861px) {
+  /* Paket 3+4 (2026-09-15): kickern var 14px/500/#b8865a -- klart mindre/
+     svagare än den redan godkända Spotlight-/Reviews-kickerns 18px/600
+     (samma terrakotta-familj, #a8481f -- redan WCAG AA-verifierad 4,82:1
+     mot samma #efe9df-botten i Reviews-rundan, återanvänd här i stället
+     för ett nytt, oprövat färgvärde). Enat typografiskt system över hela
+     sidans kickrar (uppdragets krav 9). */
   .nh-pser-kicker {
-    display: inline-flex; align-items: center; gap: 6px;
+    display: inline-block;
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    font-style: italic; font-size: 14px; font-weight: 500; color: #b8865a; margin-bottom: 4px;
+    font-style: italic; font-size: 18px; font-weight: 600; color: #a8481f; margin-bottom: 6px;
   }
   .nh-pser-controls .more { display: inline; font-size: 12.5px; font-weight: 650; text-decoration: none; white-space: nowrap; }
+  /* Solen flyttad IN i rubriken (se js/18b-homepage-v2.js) -- storlek nu
+     matchad mot den nya 32px-rubriken (se .nh-pser .sec-head h2 nedan) i
+     stället för kickerns tidigare 15px. */
+  .nh-pser-sun { display: inline-block; width: 24px; height: 24px; color: #d9782f; flex: none; vertical-align: -4px; margin-left: 10px; }
 }
-.nh-pser-kicker__sun { width: 15px; height: 15px; color: #d9782f; }
 .nh-pser-controls { display: flex; align-items: center; gap: 14px; }
 .nh-pser-nav {
   display: none; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #ebe1d1;
@@ -404,6 +430,15 @@
 }
 .nh-routes .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; max-width: 480px; line-height: 1.5; }
 .nh-routes .sec-head .more { font-size: 12.5px; font-weight: 650; color: #96683f; text-decoration: none; white-space: nowrap; }
+@media (min-width: 861px) {
+  /* Paket 3+4 (2026-09-15): 19px (bas-regeln ovan) -> samma 32px
+     kapitelrubrik-skala som Bästsäljare/Populära serier/Snabb koll/
+     Guider denna runda (uppdragets krav 9: delat typografiskt system).
+     Egen regel EFTER bas-regeln i källordningen (samma specificitet,
+     vinner via källordning -- se samma etablerade mönster i Reviews-
+     rundan). */
+  .nh-routes .sec-head h2 { font-size: 32px !important; line-height: 1.15 !important; }
+}
 
 .nh-routes .routes-grid {
   display: grid;
@@ -1927,6 +1962,30 @@
    samma "samma visuella utseende, ingen klick-affordance"-mönster som
    redan etablerat för Populära serier (.pser-item--soon). */
 .g-card.g-card--soon { cursor: default; pointer-events: none; }
+/* KORRIGERINGSRUNDA (2026-09-15, Paket 3+4): "Snabb koll" hade fyra vita
+   kort-i-kort inuti en redan mörkgrön yttre box -- exakt den tunga,
+   repetitiva "kort-i-kort"-känsla uppdraget bad att minska. Desktop-
+   scopat (mobilens redan granskade vy rörs inte): korten görs om till
+   fyra platta textblock direkt på den mörkgröna ytan, avdelade med en
+   tunn vänsterlinje (samma "linjer/whitespace i stället för lådor"-
+   princip som redan används för FAQ:n) i stället för egna vita boxar.
+   Ingen text ändrad (uppdragets uttryckliga förbud mot ny sakcopy) --
+   line-clamp höjd 5->6 rader eftersom textblocken nu har mer verkligt
+   utrymme utan kortpaddingen, vilket minskar (INTE tar bort helt) den
+   tidigare mitt-i-ord-avklippningen på långa SEO-stycken. */
+@media (min-width: 861px) {
+  .nh-kunskap .guide-top h2 { font-size: 32px !important; line-height: 1.15 !important; }
+  .guide.guide-dark .g-card {
+    background: transparent; border: none; border-radius: 0; padding: 0 0 0 18px;
+    border-left: 1px solid rgba(228,209,191,.22);
+  }
+  .guide.guide-dark .guide-grid > .g-card:first-child { padding-left: 0; border-left: none; }
+  .guide.guide-dark .g-card:hover { transform: none; box-shadow: none; }
+  .guide.guide-dark .g-card .g-name { color: #fffdf8 !important; }
+  .guide.guide-dark .g-card p {
+    color: rgba(244,233,220,.68); -webkit-line-clamp: 6;
+  }
+}
 /* "Läs om THC-X"/"Läs om D10" — sekundär rad under 2×2-grid:et. */
 .guide-more { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
 .guide-more-link {
@@ -1948,11 +2007,25 @@
    två rader i SAMMA yta, inte två separata kort). Riktig prioritering i
    stället för symmetri — se `agent-skills/hazey-commerce-design/
    references/decisions.md`. ── */
-.nh-guides.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; }
+/* BUGGFYND (Paket 3+4, 2026-09-15, samma bugklass som redan dokumenterad
+   för .nh-pser/.nh-routes ovan -- "krymper till innehållsbredd i en flex-
+   kolumn"): till skillnad från .nh-pser/.nh-routes saknade denna sektion
+   `min-width:0; width:100%` -- eftersom guide-layoutens riktiga innehåll
+   (dark-card + FAQ-teaser) råkar vara SMALARE än 1100px krympte hela
+   sektionen till sin egen ~1082px innehållsbredd i stället för att fylla
+   den avsedda 1100px-ramen, vilket gav en 9px-avvikande vänsterkant mot
+   Populära vägar/Snabb koll/FAQ (uppmätt: x=179/bredd=1082 mot x=170/
+   bredd=1100 där). */
+.nh-guides.section-gap { padding: 12px 24px 28px; max-width: 1100px; margin: 0 auto; min-width: 0; width: 100%; }
 .nh-guides .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
 .nh-guides .sec-head h2 {
   font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
   font-weight: 600 !important; font-size: 19px !important; color: #2c3620; margin: 0;
+}
+@media (min-width: 861px) {
+  /* Paket 3+4 (2026-09-15): samma 32px kapitelrubrik-skala som övriga
+     sektioner denna runda (uppdragets krav 9). */
+  .nh-guides .sec-head h2 { font-size: 32px !important; line-height: 1.15 !important; }
 }
 /* KORRIGERAT (Desktop correction pass 2026-09-09): Bästsäljare/
    Verifierade omdömen hade ALDRIG en egen bas-serif-regel för sin h2 --
@@ -2914,12 +2987,14 @@
      bilden ovanför. */
   .nh-tb-inner {
     background: #1e2716; border: none; border-radius: 0;
-    /* 26px→31px (Fas 2, mätbar desktop-paritetsrunda): -6.4% mot
-       referensens uppmätta ~135px. */
-    padding: 31px 40px;
+    /* Paket 3+4 (2026-09-15): 31px→22px -- uppdraget bad uttryckligen om
+       en LÄGRE, mer kompakt remsa ("informationsmässigt tät" flaggades).
+       Facits egen remsa (preview/ai-direction/...) är märkbart lägre än
+       31px gav; 22px behåller samma andningsrum utan att kännas kapad. */
+    padding: 22px 40px;
   }
   .nh-tb-inner > h2, .nh-tb-inner > p { display: none; } /* kompakt rad, ingen egen rubrik på desktop -- rubriken/introt finns redan mobilt */
-  .nh-tb-steps { grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: flex-start; }
+  .nh-tb-steps { grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: flex-start; }
   /* KORRIGERAT (Fas 2, mätbar desktop-paritetsrunda): .nh-tb-step ÄRVDE
      fortfarande sin mobila vit-kort-stil (background:#fff, border, radie,
      padding, se basregeln) -- kommentaren ovanför denna @media-regel har
@@ -2927,9 +3002,9 @@
      återställde faktiskt kortstilen till en platt yta. Referensen visar
      ikon+text direkt på den mörkgröna ytan, inga vita piller (bekräftat
      via tests/results/desktop-reference-parity/trustremsa/side-by-side.png). */
-  .nh-tb-step { display: flex; align-items: center; gap: 10px; background: transparent; border: none; border-radius: 0; padding: 0; }
+  .nh-tb-step { display: flex; align-items: center; gap: 9px; background: transparent; border: none; border-radius: 0; padding: 0; }
   .nh-tb-step__n { display: none; }
-  .nh-tb-step__ico { display: flex; width: 26px; height: 26px; color: #e7ae63; flex: none; }
+  .nh-tb-step__ico { display: flex; width: 21px; height: 21px; color: #e7ae63; flex: none; }
   .nh-tb-step__ico svg { width: 100%; height: 100%; }
   /* KORRIGERAT (Fas 4, mätbar desktop-paritetsrunda -- kontrastsvep):
      basregeln (.nh-tb-step h3, ovan i filen) sätter color:#2c3620
@@ -2940,14 +3015,14 @@
      bugklass som redan dokumenterats flera gånger (CLAUDE.md/
      Nyhetsbrev-fixen tidigare denna omgång) -- ingen ny rotorsak, bara
      inte hittad förrän ett systematiskt kontrastsvep kördes. */
-  .nh-tb-step h3 { font-size: 13px; color: #fffdf8 !important; margin: 0; }
+  .nh-tb-step h3 { font-size: 12.5px; color: #fffdf8 !important; margin: 0; }
   /* Referensbild 2026-09-10: varje post visas som ikon + FET rubrik +
      mindre understycke (två rader), inte bara en rubrikrad -- texten är
      samma riktiga, redan skrivna copy (steps[].text i nhTrustBlockHtml),
      bara synliggjord här igen i stället för dold. */
   .nh-tb-step > div { display: flex; flex-direction: column; }
-  .nh-tb-step p { display: block; font-size: 11.5px; line-height: 1.35; color: rgba(255,253,248,.62); margin: 2px 0 0; }
-  .nh-tb-foot { margin-top: 10px; padding-top: 10px; border-top-color: rgba(255,253,248,.14); }
+  .nh-tb-step p { display: block; font-size: 10.5px; line-height: 1.3; color: rgba(255,253,248,.62); margin: 2px 0 0; }
+  .nh-tb-foot { margin-top: 8px; padding-top: 8px; border-top-color: rgba(255,253,248,.14); }
   .nh-tb-foot span { color: rgba(255,253,248,.62); }
   .nh-tb-link { color: #e7ae63; }
 }
@@ -2970,6 +3045,11 @@
     border-radius: 0;
     max-width: 1340px; margin: 0 auto; padding: 32px 40px;
   }
+  /* Paket 3+4 (2026-09-15): 20px (bas-regeln, facits egen mätta värde för
+     just denna komponent) -> samma 32px kapitelrubrik-skala som resten av
+     rundans sektioner (uppdragets krav 9: "stark rubrikhierarki" + delat
+     typografiskt system). */
+  .nh-signup-block h2 { font-size: 32px !important; line-height: 1.15 !important; }
 }
 
 /* ── (5) Featured/Spotlight — KORRIGERINGSRUNDA (2026-09-10): Vilmer
@@ -3374,9 +3454,58 @@
    första försöket, verifierat via en oförändrad mätsiffra i
    desktop-reference-parity efter den ändringen. Rättat på de RIKTIGA
    inre selektorerna i stället. ── */
+/* KORRIGERINGSRUNDA (2026-09-15, Paket 3+4): .nh-featured.section-gap
+   ovan gjordes bredare (1100→1340px) men ALDRIG riktigt full-bredd som
+   sin direkta granne .nh-pser.section-gap -- vid 1440px gav 1340px
+   centrerad en 50px sidmarginal (rubriken hamnade på x=74) mot Populära
+   seriers 26px (rubrik x=26), en tydlig, mätbar "hoppande vänsterkant"
+   mellan två annars visuellt likartade kortradssektioner (uppdragets
+   krav 9: "konsekventa vänsterkanter"). Bytt till EXAKT samma 100vw+
+   26px-padding-teknik som .nh-pser redan använder (se den regeln högre
+   upp i filen) -- ingen egen inre max-width behövs (samma no-op-effekt
+   som Populära seriers 1400px nedan vid normala desktopbredder), så
+   kort-raden (.nh-featured-row, redan ett fritt flytande grid utan egen
+   maxbredd) automatiskt får samma vänsterkant och ANNU mer verklig yta
+   (1388px i stället för 1340px) -- i linje med samma Fas 2-rotorsak som
+   redan dokumenterad ovan. */
+/* Kicker+flamma hör bara till desktop-rubrikkompositionen (samma mönster
+   som .nh-pser-kicker/.nh-pser-sun ovan) -- utan denna bas-döljning hade
+   de läckt in oskylda (16px osynlig platform-text/en gigantisk oskalad
+   SVG) i mobilens redan godkända rubrik, som INTE fick en egen
+   döljningsregel förrän nu (verifierat live: utan detta renderade
+   flamman 161px bred på mobil). */
+.nh-featured-kicker, .nh-featured-flame { display: none; }
 @media (min-width: 861px) {
   .nh-featured.section-gap {
-    max-width: 1340px;
+    max-width: none; width: 100vw;
+    margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    background: #efe9df;
+    padding: 28px 26px 44px;
+  }
+  .nh-featured .sec-head {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    margin-bottom: 24px;
+  }
+  /* Kicker (samma delade terrakotta-typografi som Populära serier/
+     Spotlight/Reviews -- se motiveringen vid .nh-pser-kicker ovan). */
+  .nh-featured-kicker {
+    display: block;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic; font-size: 18px; font-weight: 600; color: #a8481f; margin-bottom: 6px;
+  }
+  .nh-featured .sec-head h2 {
+    font-size: 32px !important; line-height: 1.15 !important; margin: 0 !important;
+    display: flex; align-items: center;
+  }
+  .nh-featured-flame { display: inline-block; width: 22px; height: 22px; color: #d9782f; flex: none; margin-left: 10px; }
+  /* Den redan riktiga mikrotexten nedtonad till sekundär "fine print" --
+     INTE borttagen (uppdragets uttryckliga förbud), bara mindre/lugnare
+     så den inte konkurrerar med den nya, större rubriken. !important
+     krävs (samma native p-tag-reset som redan dokumenterat överallt i
+     filen, se CLAUDE.md). */
+  .nh-featured-micro {
+    font-size: 12px !important; font-weight: 400 !important; color: #6b6355 !important;
+    margin: 4px 0 0 !important;
   }
   .nh-pser .sec-head,
   .nh-pser .pser-row {
