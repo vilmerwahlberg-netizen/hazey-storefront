@@ -1148,8 +1148,18 @@
           icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/><circle cx="12" cy="19" r="2"/><path d="M12 7v5m-5.5-2.5L12 12m5.5-2.5L12 12m0 2v3"/></svg>' }
       ];
 
+      // KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1): kicker "Utforska"
+      // tillagd (samma delade, redan WCAG-verifierade terrakotta-kickerstil
+      // som Populära serier/Bästsäljare -- rent kosmetisk sektionsetikett,
+      // ingen data). Pilikon tillagd i varje formatkorts underrad och i
+      // framställnings-raderna (seg-btn) -- ren UI-affordance, samma mönster
+      // som redan finns på "Se allt"/rutt-länkar överallt annars på sidan,
+      // ingen ny data. Terminologin "Semisyntetiskt" OFÖRÄNDRAD (riktig,
+      // befintlig data -- byts INTE till målbildens "Syntetnyheter", som
+      // uppdraget uttryckligen flaggar som sannolikt AI-påhittad text).
       return '<section class="nh-routes section-gap" id="populara-vagar">'
-        + '  <div class="sec-head"><div><h2>Populära vägar</h2>'
+        + '  <div class="sec-head"><div><span class="nh-routes-kicker">Utforska</span>'
+        + '  <h2>Populära vägar</h2>'
         + '  <p>Format för den som redan vet vad den vill ha.</p></div>'
         + '  <a class="more" href="/sv/categories/alla-produkter">Se allt →</a></div>'
         + '  <div class="routes-grid">'
@@ -1166,7 +1176,7 @@
             return '<a class="route visual has-photo' + iconCls + '" href="' + c.href + '"' + bg + '>'
               + iconHtml
               + '<div class="route-kicker">' + c.kicker + '</div><h3>' + c.label + '</h3>'
-              + '<p class="route-sub">' + c.sub + '</p></a>';
+              + '<p class="route-sub">' + c.sub + '<span class="route-arrow" aria-hidden="true">→</span></p></a>';
           }).join("")
         + '  </div>'
         + '  <p class="seg-note">Vill du hellre utgå från hur produkten är framställd?</p>'
@@ -1174,7 +1184,8 @@
         + framCards.map(function (c) {
             return '<a class="seg-btn" href="' + framHref + '">'
               + '<span class="seg-ico">' + c.icon + '</span>'
-              + '<span><span class="seg-t">' + c.label + '</span><span class="seg-s">' + c.sub + '</span></span></a>';
+              + '<span><span class="seg-t">' + c.label + '</span><span class="seg-s">' + c.sub + '</span></span>'
+              + '<span class="seg-arrow" aria-hidden="true">→</span></a>';
           }).join("")
         + '  </div>'
         + '</section>';
@@ -2013,38 +2024,69 @@
       { title: "Läs om THC-X", href: "/sv/products/vape-thcx-19-core-2ml" },
       { title: "Läs om D10", href: null }
     ];
+    /* KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1, hazey-commerce-
+       design-skillen, Redesign-läge): tidigare 2×2-rutnät av vita kort
+       (redan plattat till linjeavdelade textblock i en föregående runda)
+       görs nu om till en kompakt, skanningsbar VERTIKAL lista sida vid
+       sida med rubrik/ingress/CTA, för att bilda ETT sammanhängande
+       "kunskapskapitel" tillsammans med Guider & aktuellt (samma
+       mörkgröna fullbreddsyta, se css) i stället för två fristående
+       komponenter.
+
+       Ingen text/länk/destination TAS BORT eller fabriceras -- exakt
+       samma riktiga fyra ämnen (cards) + exakt samma två "läs om"-rader
+       (NH_KUNSKAP_MORE) som förut, bara omstrukturerade:
+       - Den enda posten med en riktig, redan fungerande destination i
+         NH_KUNSKAP_MORE ("Läs om THC-X") blir kapitlets EGNA prioriterade
+         CTA-knapp (uppdragets krav: "en prioriterad riktig guide eller
+         CTA") i stället för en rad textlänk längst ner.
+       - De fyra ämnena (cards) blir <details>-rader (SAMMA etablerade
+         "kompakt men inte kapad"-mönster som redan används för Guiders
+         legacy-SEO-text, se nhGuidesHtml/.nh-guide-legacy) -- rubriken
+         syns alltid, den fulla riktiga texten finns kvar i initial DOM
+         och går att fälla ut, aldrig dold utan en fungerande väg att
+         läsa vidare (uppdragets uttryckliga krav). Kort MED en riktig
+         länk (Magic Sauce/Nano-11) får dessutom en riktig "Läs mer →"
+         inuti den utfällda texten.
+       - "Läs om D10" (ingen riktig destination) blir en tyst, icke-
+         klickbar rad i samma lista -- ingen egen text att bevara. */
     function nhKunskapHtml(cards) {
       if (!cards.length) return "";
+      var ctaItem = NH_KUNSKAP_MORE[0];
+      var soonMore = NH_KUNSKAP_MORE.slice(1);
+      function topicRow(title, text, href) {
+        var readMore = href ? '<a class="kk-item-link" href="' + href + '">Läs mer →</a>' : "";
+        return '<details class="kk-item">'
+          + '<summary><span class="kk-item-title">' + title + '</span><span class="kk-item-toggle" aria-hidden="true"></span></summary>'
+          + '<div class="kk-item-body"><p>' + text + '</p>' + readMore + '</div>'
+          + '</details>';
+      }
+      // soonMore ("Läs om THC-X" hanteras separat som ctaItem ovan; kvar
+      // här: "Läs om D10") grupperas i EN wrapper (.kk-more) i stället för
+      // egna grid-rader -- på mobil ger det samma "en gemensam rad med
+      // radbrytning" som den tidigare .guide-more-flexraden hade, i
+      // stället för att varje post oavsiktligt blir en egen fullbreddsrad.
+      var moreRow = soonMore.map(function (m) {
+        return m.href
+          ? '<a class="kk-item-more" href="' + m.href + '"><span class="kk-item-title">' + m.title + '</span><span class="kk-item-arrow" aria-hidden="true">→</span></a>'
+          : '<div class="kk-item-more kk-item-more--soon" aria-disabled="true"><span class="kk-item-title">' + m.title + '</span></div>';
+      }).join("");
+      var rows = cards.map(function (c) { return topicRow(c.title, c.text, c.href); }).join("")
+        + (moreRow ? '<div class="kk-more">' + moreRow + '</div>' : "");
       return '<section class="nh-kunskap section-gap">'
         + '  <div class="guide guide-dark">'
-        + '    <div class="guide-top"><h2>Snabb koll: vad är vad?</h2>'
-        + '    <span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
+        + '    <div class="kk-layout">'
+        + '      <div class="kk-main">'
+        + '        <div class="guide-top"><span class="kk-kicker">Kunskap</span>'
+        + '        <span class="skip"><a href="/sv/page/faq">Hela FAQ:n →</a></span></div>'
+        + '        <h2>Snabb koll: vad är vad?</h2>'
         // Facit-kalibrering 2026-09-06: exakt facit-text (index.html rad
         // 4594) -- nämner uttryckligen aktuell laglighet, vilket stämmer
         // för våra egna kort (THCA/Magic Sauce handlar båda om just det).
-        + '    <p class="lede">Korta förklaringar av det som frågas mest om — och vad som är lagligt i Sverige just nu. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
-        + '    <div class="guide-grid">'
-        + cards.map(function (c) {
-            // Riktig länk om ett verkligt mål finns -- annars ett rent
-            // informativt kort utan `href="#"`, se uppdragets krav. Ingen
-            // kort-fabricerad länk.
-            var tag = c.href ? "a" : "div";
-            var hrefAttr = c.href ? ' href="' + c.href + '"' : ' aria-disabled="true"';
-            // g-name som riktig <h3> (2026-09-07, SEO-krav: "riktiga
-            // semantiska rubriker") i stället för en <span> -- underrubrik
-            // till sektionens <h2>. Ren tag-ändring, .g-name-CSS:en är
-            // redan taggnautral (klass-baserad), ingen visuell ändring.
-            var cls = "g-card" + (c.href ? "" : " g-card--soon");
-            return '<' + tag + ' class="' + cls + '"' + hrefAttr + '><h3 class="g-name">' + c.title + '</h3><p>' + c.text + '</p></' + tag + '>';
-          }).join("")
-        + '    </div>'
-        + '    <div class="guide-more">'
-        + NH_KUNSKAP_MORE.map(function (m) {
-            var tag = m.href ? "a" : "div";
-            var hrefAttr = m.href ? ' href="' + m.href + '"' : ' aria-disabled="true"';
-            var cls = "guide-more-link" + (m.href ? "" : " guide-more-link--soon");
-            return '<' + tag + ' class="' + cls + '"' + hrefAttr + '>' + m.title + ' →</' + tag + '>';
-          }).join("")
+        + '        <p class="lede">Korta förklaringar av det som frågas mest om — och vad som är lagligt i Sverige just nu. Vi beskriver innehåll och framställning, aldrig hur en produkt känns att använda.</p>'
+        + (ctaItem && ctaItem.href ? '<a class="kk-cta" href="' + ctaItem.href + '">' + ctaItem.title + ' →</a>' : "")
+        + '      </div>'
+        + '      <div class="kk-list">' + rows + '</div>'
         + '    </div>'
         + '  </div>'
         + '</section>';

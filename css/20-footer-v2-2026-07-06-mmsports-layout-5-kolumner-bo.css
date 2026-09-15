@@ -4,6 +4,20 @@
    Populära kategorier · Nyhetsbrev (kompakt pill). Ersätter den gamla
    .nh-footer__cols / .nh-footer__newsletter-strukturen. Appended → vinner.
    ===================================================================== */
+/* Visuell harmonisering (lower-direction-v1, 2026-09-15): den enda platsen
+   som sätter .nh-footer:s bottenfärg är css/05 (#23231d, en fristående
+   nästan-svart nyans, laddad FÖRE denna fil). #23231d/#4faa25/#cdfc9f/
+   #bce691 är en bred, redan etablerad plattformskonvention (~15-30 träffar
+   vardera över header/checkout/kategori/PDP/karusell m.fl., se
+   HAZEY-DESIGN-SYSTEM.md §9.4) -- rörs INTE här, bara denna ENDA
+   komponents bottenfärg (samma #1e2716 som redan används för
+   .nh-footer__disclaimer på mobil längre ner i denna fil, se @media
+   max-width:860px) skrivs över, så footern känns som ett kontrollerat
+   slut på SAMMA sida som Snabb koll/Guider/Nyhetsbrev ovan i stället för
+   en egen, obesläktad nyans. Kontrast oförändrad (verifierat: #23231d
+   och #1e2716 har nästan identisk luminans, ingen text/länk tappar
+   WCAG AA). Ingen struktur, länk, ikon eller kolumnfärg ändrad. */
+.nh-footer { background: #1e2716; }
 .nh-footer__inner {
   max-width: 1240px !important;
   margin: 0 auto !important;

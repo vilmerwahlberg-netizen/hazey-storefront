@@ -430,6 +430,10 @@
 }
 .nh-routes .sec-head p { margin: 5px 0 0; font-size: 12px; color: #9a9280; max-width: 480px; line-height: 1.5; }
 .nh-routes .sec-head .more { font-size: 12.5px; font-weight: 650; color: #96683f; text-decoration: none; white-space: nowrap; }
+/* Kicker (lower-direction-v1): dold på mobil (oförändrad mobildesign) --
+   samma delade, redan WCAG-verifierade terrakotta-kickerstil som
+   Populära serier/Bästsäljare, se motiveringen vid .nh-pser-kicker. */
+.nh-routes-kicker { display: none; }
 @media (min-width: 861px) {
   /* Paket 3+4 (2026-09-15): 19px (bas-regeln ovan) -> samma 32px
      kapitelrubrik-skala som Bästsäljare/Populära serier/Snabb koll/
@@ -438,6 +442,11 @@
      vinner via källordning -- se samma etablerade mönster i Reviews-
      rundan). */
   .nh-routes .sec-head h2 { font-size: 32px !important; line-height: 1.15 !important; }
+  .nh-routes-kicker {
+    display: block;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-style: italic; font-size: 18px; font-weight: 600; color: #a8481f; margin-bottom: 6px;
+  }
 }
 
 .nh-routes .routes-grid {
@@ -550,6 +559,16 @@
 .nh-routes .seg-ico svg { width: 16px; height: 16px; }
 .nh-routes .seg-t { display: block; font-size: 13px; font-weight: 650; color: #2c3620; }
 .nh-routes .seg-s { display: block; font-size: 11px; color: #9a9280; margin-top: 1px; }
+/* Pilikon (lower-direction-v1): ren UI-affordance, dold på mobil (oförändrad
+   mobildesign) -- samma "→"-mönster som redan används på "Se allt"/route-
+   länkar överallt annars på sidan. */
+.seg-arrow, .route-arrow { display: none; }
+@media (min-width: 861px) {
+  .nh-routes .seg-btn { justify-content: space-between; }
+  .seg-arrow { display: inline-block; color: #b8865a; font-size: 13px; flex: none; }
+  .nh-routes .route-sub { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .route-arrow { display: inline-block; }
+}
 
 /* PAKET A (2026-09-02): mobil kalibrering mot facits index.html rad
    1972-1997 (#m-populara-vagar, ID-scopad, den faktiskt vinnande mobila
@@ -1952,7 +1971,16 @@
   border-color: rgba(228,209,191,.16);
   box-shadow: inset 0 1px 0 rgba(255,253,248,.10), 0 20px 44px -26px rgba(30,39,22,.5);
 }
-.guide.guide-dark .guide-top h2 { color: #fffdf8; }
+/* BUGGFYND (lower-direction-v1, 2026-09-15): rubriken flyttades ut ur
+   .guide-top (ligger nu direkt i .kk-main, se nhKunskapHtml) för den nya
+   tvåkolumnskompositionen -- .guide-top innehåller numera bara kickern +
+   "Hela FAQ:n"-länken. Den gamla `.guide-top h2`-selektorn slutade
+   därför träffa, vilket lämnade rubriken på basregelns mörkgröna text
+   (#2c3620) mot den nya mörka bottnen -- nästan osynlig, samma bugklass
+   som HAZEY-DESIGN-SYSTEM.md §9.1 varnar för. Bredare selektor (.guide
+   h2, matchar oavsett nästling) i stället för att bero på en specifik
+   DOM-plats. */
+.guide.guide-dark h2 { color: #fffdf8; }
 .guide.guide-dark .lede { color: rgba(244,233,220,.74); }
 .guide.guide-dark .skip { color: rgba(244,233,220,.6); }
 .guide.guide-dark .skip a { color: #e4d1bf; }
@@ -1974,7 +2002,10 @@
    utrymme utan kortpaddingen, vilket minskar (INTE tar bort helt) den
    tidigare mitt-i-ord-avklippningen på långa SEO-stycken. */
 @media (min-width: 861px) {
-  .nh-kunskap .guide-top h2 { font-size: 32px !important; line-height: 1.15 !important; }
+  /* Rubrikstorleken (32px) flyttad till den nya .kk-*-redesignblocket
+     nedan (rätt DOM-plats, se motiveringen vid .guide.guide-dark h2
+     ovan) -- denna gamla .g-card-dragspelsstil är kvar orörd nedan bara
+     för Aura-guidens skull, se kommentaren vid .guide-grid. */
   .guide.guide-dark .g-card {
     background: transparent; border: none; border-radius: 0; padding: 0 0 0 18px;
     border-left: 1px solid rgba(228,209,191,.22);
@@ -1994,6 +2025,148 @@
 }
 .guide-more-link:hover { color: #fff; }
 .guide-more-link--soon { color: rgba(228,209,191,.55); cursor: default; pointer-events: none; }
+
+/* ── "Snabb koll" REDESIGN (lower-direction-v1, 2026-09-15,
+   hazey-commerce-design-skillen, Redesign-läge) — .kk-* ersätter
+   .guide-grid/.g-card/.guide-more FÖR DENNA SEKTION (de äldre klasserna
+   ovan lämnas orörda, delas med den avstängda Aura-guiden om den någon
+   gång slås på igen, se kommentaren vid .guide-grid).
+
+   MOBIL (bas-reglerna nedan, ingen media query): återskapar EXAKT samma
+   visuella intryck .g-card/.guide-more redan hade (vita kort i ett
+   2-kolumnsrutnät, "Läs om X"-rad som platta textlänkar under) -- bara
+   under nya klassnamn, eftersom uppdraget uttryckligen fryser mobil-
+   design men markupen (samma JS-funktion) oundvikligen renderas där
+   också. <details>/<summary> tvingas ALLTID synlig på mobil
+   (.kk-item-body{display:block}, ingen !important -- en vanlig
+   författarregel slår redan webbläsarens UA-dolda `details:not([open])
+   > *`-beteende utan att behöva !important) -- ser ut som facitets
+   redan godkända, alltid synliga kort-text, ingen faktisk
+   dragspelsfunktion förrän desktop-brytpunkten nedan uttryckligen
+   återinför den (display:none/[open]-reglerna). */
+.kk-layout { display: block; }
+.kk-main { margin-bottom: 14px; }
+.kk-kicker { display: none; }
+.kk-cta {
+  display: inline-block; margin-top: 4px;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12.5px; font-weight: 650; color: #e4d1bf; text-decoration: none;
+}
+.kk-cta:hover { color: #fff; }
+.kk-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+.kk-item {
+  display: block; background: #fff; border: 1px solid #ebe1d1; border-radius: 12px;
+  padding: 13px 13px 12px;
+}
+.kk-item summary { cursor: default; list-style: none; }
+.kk-item summary::-webkit-details-marker { display: none; }
+.kk-item-title {
+  display: block; font-size: 13.5px; font-weight: 700; color: #2c3620;
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.3;
+}
+.kk-item-toggle { display: none; }
+.kk-item-body { display: block; margin-top: 7px; }
+.kk-item-body p {
+  margin: 0; font-size: 11.5px; line-height: 1.5; color: #5f5c50;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+}
+.kk-item-link { display: block; margin-top: 6px; font-size: 12px; font-weight: 650; color: #96683f; text-decoration: none; }
+.kk-item-link:hover { text-decoration: underline; }
+.kk-more { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 3px; }
+.kk-item-more {
+  font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12.5px; font-weight: 650; color: #e4d1bf; text-decoration: none;
+}
+.kk-item-more:hover { color: #fff; }
+.kk-item-more .kk-item-title { display: inline; font-size: inherit; font-weight: inherit; color: inherit; font-family: inherit; }
+.kk-item-more .kk-item-arrow { margin-left: 4px; }
+.kk-item-more--soon { color: rgba(228,209,191,.55); cursor: default; pointer-events: none; }
+
+/* DESKTOP: den faktiska redesignen -- kompakt tvåkolumnskomposition
+   (rubrik/ingress/CTA vänster, skanningsbar dragspelslista höger) i
+   stället för ett rutnät av vita kort. Se .nh-kunskap.section-gap +
+   .guide.guide-dark nedan för fullbredds-mörkgrön-konverteringen som
+   binder ihop denna sektion med Guider & aktuellt (nästa sektion,
+   samma botten, ingen synlig skarv). */
+@media (min-width: 861px) {
+  .nh-kunskap h2 { font-size: 32px !important; line-height: 1.15 !important; }
+  .kk-kicker {
+    display: block;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+    color: #f0c68a; margin-bottom: 8px;
+  }
+  .kk-layout { display: grid; grid-template-columns: minmax(260px, 380px) 1fr; gap: 48px; align-items: start; }
+  .kk-main { margin-bottom: 0; }
+  .kk-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #d9782f; color: #fffdf8 !important; font-weight: 700 !important; font-size: 13.5px !important;
+    font-family: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+    padding: 13px 24px; border-radius: 999px; margin-top: 18px;
+    box-shadow: 0 10px 22px -12px rgba(180,90,30,.5);
+    transition: background 160ms ease, transform 160ms ease;
+  }
+  .kk-cta:hover { background: #c26a29; color: #fffdf8; transform: translateY(-1px); }
+  .kk-list { display: block; }
+  .kk-item {
+    display: block; background: none; border: none; border-radius: 0; padding: 0;
+    border-bottom: 1px solid rgba(228,209,191,.18);
+  }
+  .kk-item summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 2px; cursor: pointer;
+  }
+  .kk-item-title { font-size: 14px !important; font-weight: 650 !important; color: #fffdf8 !important; }
+  .kk-item-toggle {
+    display: block; flex: none; width: 8px; height: 8px;
+    border-right: 1.5px solid #e7ae63; border-bottom: 1.5px solid #e7ae63;
+    transform: rotate(45deg); transition: transform 160ms ease;
+  }
+  .kk-item[open] .kk-item-toggle { transform: rotate(225deg); }
+  .kk-item-body { display: none; margin-top: 0; padding: 0 2px 16px; }
+  .kk-item[open] .kk-item-body { display: block; }
+  .kk-item-body p {
+    font-size: 12.5px !important; line-height: 1.6 !important; color: rgba(244,233,220,.7) !important;
+    -webkit-line-clamp: unset; display: block; overflow: visible;
+  }
+  .kk-item-link { color: #e7ae63 !important; font-size: 12.5px !important; font-weight: 650 !important; }
+  .kk-more { display: block; margin-top: 0; }
+  .kk-item-more, .kk-item-more--soon {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 2px; border-bottom: 1px solid rgba(228,209,191,.18);
+    font-size: 14px !important; font-weight: 650 !important;
+  }
+  .kk-item-more { color: #fffdf8 !important; }
+  .kk-item-more .kk-item-arrow { color: #e7ae63; font-size: 14px; transition: transform 160ms ease; }
+  .kk-item-more:hover .kk-item-arrow { transform: translateX(3px); }
+  .kk-item-more--soon { color: rgba(228,209,191,.5) !important; }
+  /* Fullbredds-konvertering (samma redan beprövade 100vw-teknik som
+     Populära serier/Bästsäljare, se de reglerna högre upp i filen):
+     .nh-kunskap.section-gap var tidigare en 1100px-centrerad container
+     med ett INSET, avrundat mörkgrönt kort (.guide.guide-dark) inuti --
+     facit (lower-direction-v1) visar i stället en riktig, kant-till-kant
+     mörkgrön yta, samma teknik som redan används för Bonfire/trustremsan/
+     Nyhetsbrevet. Kortstilen (radie/kant/skugga) på .guide.guide-dark
+     neutraliseras här eftersom den YTTRE sektionen nu bär bakgrunden --
+     mobilens redan godkända inset-kort (bas-reglerna, orörda) påverkas
+     inte av detta (scopat till samma media-block som resten av denna
+     redesign). */
+  .nh-kunskap.section-gap {
+    max-width: none; width: 100vw;
+    margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    background: #1e2716;
+    padding: 52px 26px 44px;
+  }
+  .guide.guide-dark {
+    background: none; border: none; box-shadow: none; border-radius: 0; padding: 0;
+    /* Innehållet (rubrik/lista) capas till samma 1400px-familj som
+       Populära serier redan använder (.nh-pser .sec-head/.pser-row) --
+       den mörkgröna YTAN förblir full 100vw, men listkolumnen slutar
+       sträcka sig ohämmat vid mycket breda skärmar (uppmätt: osar ut
+       till nästan 1900px utan detta, otydlig läsriktning på raderna). */
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+  }
+}
 
 /* ── "Guider & aktuellt" — REDESIGN (hazey-commerce-design-skillen,
    2026-09-08). Föregångaren (två höjdlika vita/mörka kort, "Kategori"/
@@ -2188,6 +2361,43 @@
   .nh-guide-feature__body h3 { font-size: 32px; }
   .nh-guide-feature__body p { font-size: 14px; max-width: 34ch; }
   .nh-guide-aside { flex: 1 1 38%; display: flex; flex-direction: column; justify-content: center; }
+
+  /* KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1): "Guider &
+     aktuellt" görs till samma mörkgröna fullbreddsyta som Snabb koll
+     precis ovanför (se .nh-kunskap.section-gap) -- noll synlig skarv,
+     läses som ETT sammanhängande kunskapskapitel i stället för två
+     komponenter som råkar ligga bredvid varandra. Feature-kortets EGNA
+     mörka gradient (redan varmare/rikare än den nya platta bottenfärgen)
+     får stå kvar oförändrad -- det är precis den kontrasten som gör den
+     till kapitlets prioriterade blickfång. */
+  .nh-guides.section-gap {
+    max-width: none; width: 100vw;
+    margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+    background: #1e2716;
+    padding: 40px 26px 56px;
+  }
+  /* BUGGFYND (samma bugklass som .guide.guide-dark h2 ovan): rubrik+ingress
+     hade bara den ljusa bakgrundens mörkgröna/grå text -- osynlig nu när
+     sektionen är mörk. */
+  .nh-guides .sec-head h2 { color: #fffdf8; }
+  .nh-guides .sec-head p { color: rgba(244,233,220,.6); }
+  /* .nh-guide-aside var en ljus kräm-kort-yta -- rätt på den tidigare ljusa
+     sidbakgrunden, men en omisskännlig "vit låda kvarlämnad på en mörk
+     sektion" nu när ytan runt den är mörkgrön (exakt den bugklass
+     HAZEY-DESIGN-SYSTEM.md §9.1 varnar för, här i den ANDRA riktningen --
+     en ljus komponent som råkar hantera på en ny mörk botten). Plattad
+     till samma "linjer i stället för lådor"-behandling som redan används
+     i Snabb koll/FAQ: ingen egen bakgrund/kant/radie, ljus text, en tunn
+     ljus avdelare mellan FAQ-raden och den hopfällda SEO-texten. */
+  .nh-guide-aside { background: none; border: none; border-radius: 0; }
+  .nh-guide-faq__title { color: #fffdf8 !important; }
+  .nh-guide-faq__text { color: rgba(244,233,220,.68) !important; }
+  .nh-guide-faq__icon { color: #e7ae63; }
+  .nh-guide-faq__arrow { color: #e7ae63; }
+  .nh-guide-aside > .nh-guide-faq + .nh-guide-legacy { border-top-color: rgba(228,209,191,.18); }
+  .nh-guide-legacy summary { color: #e7ae63; }
+  .nh-guide-legacy-body { color: rgba(244,233,220,.68); }
+  .nh-guide-legacy-body h2, .nh-guide-legacy-body h3 { color: #fffdf8; }
 }
 
 /* ── "Verifierade omdömen" — bara riktigt betyg + ärlig länk, se
@@ -2524,7 +2734,7 @@
      för alla tre (samma uppmätta facit-värde, 19px/600/Iowan) och delas
      fortfarande här -- bara färgen bröts ut nedan. */
   .nh-featured .sec-head h2,
-  .nh-kunskap .guide-top h2,
+  .nh-kunskap h2,
   .nh-reviews .sec-head h2 {
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
     font-weight: 600 !important;
@@ -3040,8 +3250,17 @@
   .nh-signup.section-gap {
     width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
     max-width: none; padding: 0;
+    /* KORRIGERINGSRUNDA (2026-09-15, lower-direction-v1): bakgrunden satt
+       tidigare BARA på .nh-signup-block (innercontainern, kapad vid
+       1340px) -- den yttre 100vw-sektionen själv var transparent, vilket
+       lämnade en 50px kräm-marginal på var sida vid 1440px (uppmätt live)
+       i stället för en riktig kant-till-kant-remsa. Samma #1e2716 som
+       Snabb koll/Guider ovan -- de tre bildar nu EN sammanhängande
+       mörkgrön yta utan synlig skarv, exakt målbildens komposition. */
+    background: #1e2716;
   }
   .nh-signup-block {
+    background: #1e2716;
     border-radius: 0;
     max-width: 1340px; margin: 0 auto; padding: 32px 40px;
   }
@@ -3388,7 +3607,7 @@
    + samma glas-CTA-material), utan att bygga om deras struktur eller
    riktiga innehåll. ── */
 @media (min-width: 861px) {
-  .nh-kunskap .guide-top h2,
+  .nh-kunskap h2,
   .nh-guides .sec-head h2 { letter-spacing: -.01em; }
   .nh-signup-block .btn-solid,
   .nh-signup-block button[type="submit"] {

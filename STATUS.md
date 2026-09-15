@@ -5444,3 +5444,74 @@ container-konventioner lever kvar sida vid sida (Populära serier/
 Bästsäljare: 100vw-26px "kortradsband"; Populära vägar/Snabb koll/
 Guider/FAQ: 1100px centrerad "redaktionell panel") -- en medveten,
 inte en upptäckt bugg, men flaggas här för synlighet.
+
+## Nederdels-redesign mot lower-direction-v1 (2026-09-15)
+
+Redesign-läge (hazey-commerce-design-skillen) mot Vilmers valda målbild
+`preview/design-targets/homepage-desktop-lower-direction-v1.png`.
+Spotlight/Reviews/header/mobil frysta, orörda (mobil bevisad
+oförändrad via getComputedStyle-diff mot 107bb7e vid 390/430px --
+identiskt på alla delade selektorer).
+
+**Populära vägar:** kicker "Utforska" + pilikoner på formatkort/
+framställningsrader (ren UI, ingen ny data). "Semisyntetiskt" bevarat
+-- bytte INTE till målbildens "Syntetnyheter" (uppdraget flaggade
+uttryckligen AI-bildens text som opålitlig).
+
+**Snabb koll + Guider & aktuellt:** slagits ihop VISUELLT (delad
+100vw mörkgrön botten `#1e2716`, ingen synlig skarv) utan att flytta
+innehåll mellan komponenterna. Snabb koll: ny kicker "Kunskap",
+tvåkolumnslayout (rubrik/ingress/CTA vänster -- "Läs om THC-X"
+promoverad till kapitlets riktiga CTA-knapp; höger: en kompakt,
+linjeavdelad lista där de fyra riktiga ämnena blev `<details>`-rader
+(SAMMA "kompakt men aldrig kapad utan väg vidare"-mönster som redan
+används för Guiders legacy-SEO-text) i stället för ett rutnät av vita
+kort. Guiders ljusa aside (FAQ-teaser + hopfälld SEO-text) omfärgad
+till samma mörka linjestil -- var annars en omisskännlig "vit låda på
+mörk botten" efter fullbreddskonverteringen.
+
+**Nyhetsbrev:** riktigt fullbrett nu (den mörka ytan var tidigare bara
+den inre 1340px-boxen, 50px kräm-marginal syntes på var sida vid
+1440px) -- samma `#1e2716` som kapitlet ovanför.
+
+**Footer:** en (1) avgränsad ändring -- bottenfärg `#23231d` →
+`#1e2716` i den FAKTISKT aktiva filen (`css/20-footer-v2-...`, se
+rotorsak nedan). Länkfärger/struktur/innehåll oförändrat (bred,
+etablerad plattformskonvention, se HAZEY-DESIGN-SYSTEM.md §9.4 --
+rörs inte).
+
+**Rotorsaksfynd under arbetet:** min första footer-ändring gjordes i
+`css/05-info-section-info-html-ersatter-test.css` (`.nh-footer__cols`/
+`.nh-footer__newsletter`) -- verifierat via CDP/DOM-inspektion att
+denna markup INTE längre renderas. Den riktiga footern byggs av
+`js/08-footer.js` (`.nh-footer__grid`/`.nh-footer__nl-col`) och stylas
+av `css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`.
+css/05-ändringen ångrades, gjordes om rätt i css/20.
+
+**Fristående upptäckt, UTANFÖR detta uppdrags scope (rapporteras
+ärligt, inte åtgärdad):** den publika bas-URL:en
+(`https://hazeyse.nyehandel.se/` utan `?preview=`) laddar fortfarande
+`cdn.jsdelivr.net/gh/Oliverforss8/hazey-storefront@v1.0.3/hazey.min.js`
+(den gamla kontraktorns pinnade loader) OCH en direkt inklistrad,
+föråldrad CSS-ögonblicksbild (`<style id="nyts">`, ~265KB, innehåller
+gamla `.nh-footer`-regler) -- verifierat via `curl` direkt mot den
+råa HTML:en (inte ett testartefakt). Detta motsäger CLAUDE.md:s
+tidigare dokumenterade "bas-URL:en visar alltid nativ rendering"-fynd
+och bör städas i Nyehandel-admin som en SEPARAT, explicit godkänd
+uppgift (rör produktion, utanför denna rundas mandat). Orsakade EN
+synlig testartefakt denna runda (en `.nh-footer`-bakgrundsregel som
+tillfälligt tycktes "inte ta") -- löst genom att verifiera källkoden
+direkt (grep/CDP) i stället för att lita blint på en skärmdump.
+
+**Verifiering:** `node tests/fas6-full-verification.mjs` 100% grönt
+(overflow 1024-1920px, mobil 390-600px oförändrad, tangentbord, FAQ,
+sök, add-to-cart). Riktade kontroller: alla nya element har riktiga
+`<a href>` (inga `#`), `kk-item`-dragspelen fälls ut/in med både
+musklick och tangentbord, synligt fokus på alla nya interaktiva
+element (kk-cta, kk-item summary, route-kort, seg-btn, guide-faq),
+0px overflow vid 1024/1180/1440/1920, mobil (390/430px) bevisat
+byte-identisk via getComputedStyle-diff.
+
+**Ändrade källfiler:** `css/22-homepage-v2.css`,
+`css/20-footer-v2-2026-07-06-mmsports-layout-5-kolumner-bo.css`,
+`js/18b-homepage-v2.js` (+ genererade filer via `node build.js`).
