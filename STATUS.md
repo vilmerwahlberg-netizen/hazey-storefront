@@ -4988,3 +4988,56 @@ som setts flera gånger tidigare i den här sessionen). De delar av
 sviten som inte beror på sammanhängande nätverksuthållighet (0px
 overflow, sidfel, den riktade spotlight-specifika verifieringen ovan)
 var konsekvent gröna i alla körningar.
+
+## Granskningsfix ovanpå a3d413d — exakt id, saknad≠ogiltig, riktig alt-text (2026-09-15)
+
+Ren teknisk korrigering, ingen designändring.
+
+**1) Exakt komponent-id i stället för generisk typselektor:**
+`nhReadNativeSpotlight()` läste tidigare bara
+`.template-components__image-and-text` (första träffen) -- fungerade
+bara för att exakt en sådan sektion råkade finnas. Läser nu explicit
+`section.image-and-text[data-id="206"]` (`NH_SPOTLIGHT_NATIVE_DATA_ID`,
+namngiven konstant), hittar sin EGEN `.iat` och sin närmaste wrapper
+via `.closest(".template-components__image-and-text")`. Verifierat med
+en simulerad, klonad "decoy"-sektion (`data-id="999"`, annan rubrik)
+inklistrad FÖRE den riktiga -- Spotlighten läste fortfarande korrekt
+206-datan, decoyn rördes inte alls.
+
+**2) Tre skilda lägen** (`nhReadNativeSpotlight()` returnerar nu):
+- `null` -- sektionen (id 206) saknas helt → hårdkodad fallback
+  renderas (oförändrat beteende).
+- `{valid:false, wrap}` -- sektionen finns men saknar bild/rubrik/
+  CTA-text ELLER har en osäker/trasig CTA-länk (`nhSafeHref`) →
+  `initHomepageV2` renderar INGENTING i Spotlight-slotet (varken
+  native- eller fallback-grenen) -- native-sektionen lämnas synlig och
+  orörd, är redan den enda synliga kampanjen i det läget. Detta var
+  BUGGEN som fixades: tidigare gav "sektionen finns men CTA:n är
+  osäker" SAMMA null-retur som "sektionen saknas helt", vilket hade
+  gjort att BÅDA (den orörda native-sektionen OCH en nyrenderad
+  hårdkodad fallback-Spotlight) visats samtidigt.
+- `{valid:true, wrap, image, alt, heading, body, ctaText, ctaHref}` --
+  allt giltigt → bygg egen Spotlight, dölj native-wrappern.
+
+Verifierat med tre simulerade scenarier: (a) giltig 206 + decoy före →
+exakt en Spotlight (native, rätt data, native-wrapper döljd, decoyn
+orörd och synlig); (b) 206 med `javascript:`-CTA → 0 renderade
+Spotlight-sektioner, native-sektionen (206) förblev synlig; (c) 206
+borttagen helt → exakt en Spotlight (fallback-grenen, gamla
+produktdata). Ingen krasch, inga sidfel i något läge.
+
+**3) Riktig alt-text bevarad:** `#nhSpotlightImg` ("den synliga
+bildytan") får nu `role="img"` + en escapad `aria-label` när
+`native.alt` är en icke-tom sträng -- verifierat
+`aria-label="Magic Sauce-produkter vid Venice Beach i solnedgång."`.
+`.nh-spotlight-backdrop` ("den separata bakgrundskopian") förblir
+`aria-hidden="true"` oförändrat, så bilden inte annonseras två gånger.
+Ingen fabricerad beskrivning om alt saknas.
+
+**Verifiering:** 0px overflow vid 1024/1180/1440/1920 (desktop) och
+390/430 (mobil), inga sidfel, skärmdump vid 1440/390 pixelidentisk med
+föregående runda (ingen visuell ändring). `node build.js` + `node
+--check` gröna. (Samma redan dokumenterade nätverksinstabilitet mot
+CDN/förhandsvisningsdomänen förekom sporadiskt under denna omgångs
+testkörningar också -- bekräftat extern och transient igen, bl.a.
+genom att den återhämtade sig helt under en enkel `curl`-pollning.)

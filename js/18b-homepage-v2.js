@@ -1497,32 +1497,53 @@
       secondaryLabel: "Se hela Magic Sauce-sortimentet →",
       secondaryHref: "/sv/categories/magic-sauce"
     };
+    // Nyehandels egna, stabila per-komponent-id för DENNA specifika
+    // "Text med bild"-sektion (verifierat live i tema 6, 2026-09-15 --
+    // motsvarande container har id="itc-206"). Om Vilmer någon gång
+    // tar bort och återskapar komponenten (i stället för att redigera
+    // den befintliga) tilldelar Nyehandel ett NYTT data-id -- den här
+    // konstanten måste då uppdateras manuellt, se slutrapporten.
+    var NH_SPOTLIGHT_NATIVE_DATA_ID = "206";
     /* ── Läser den RIKTIGA "Text med bild"-sektionen (Nyehandels egen
        page builder-komponent) direkt ur DOM:en -- ren avläsning, rör
        ALDRIG native-DOM:en (ingen mutation här). Rubrik/brödtext/CTA-
        text/CTA-länk/bild/alt-text är adminens EGNA, redan sparade,
        riktiga värden -- ingen fabricerad text.
 
-       Verifierat live i tema 6 (2026-09-15) innan denna funktion
-       skrevs (DOM-inspektion, inte gissat) -- EXAKT en sådan sektion
-       finns just nu på startsidan:
-       - stabil komponent-TYP-selektor (inte position/nth-child/den
-         aktuella rubriktexten): .template-components__image-and-text
-         (wrapper) → section.image-and-text[data-id]  (data-id är
-         Nyehandels egen, stabila per-komponent-id, t.ex. "206" --
-         motsvarande container får id="itc-{data-id}") → .iat
+       Granskningsfix (2026-09-15, ovanpå a3d413d): identifierar nu
+       EXAKT sektionen med Nyehandels stabila data-id (NH_SPOTLIGHT_
+       NATIVE_DATA_ID) i stället för den generiska komponent-TYP-
+       selektorn (som råkade fungera bara för att exakt en sådan
+       sektion fanns -- hade blivit fel/gissat "första träffen" om
+       fler "Text med bild"-sektioner läggs till). Utgår från
+       `section.image-and-text[data-id]`, hittar sin EGEN `.iat` och
+       sin närmaste wrapper via `.closest()` -- ingen nth-child/
+       position/rubriktextgissning.
        - bild: .iat__image img, src/currentSrc (absolut CloudFront-URL)
          + alt-attribut (riktig, adminskriven alt-text)
        - rubrik: .iat__content h2
        - brödtext: .iat__content p
        - CTA: .iat__content .action a (text + href, adminens egna)
-       Om Nyehandel någon gång får FLERA "Text med bild"-sektioner på
-       samma sida väljer detta den FÖRSTA -- inget observerat idag, men
-       värt att känna till (se slutrapporten). */
+
+       Returnerar ETT av tre lägen (uppdragets krav -- "saknad" och
+       "ogiltig" är INTE samma sak):
+       - null: sektionen med rätt data-id finns inte alls i DOM:en →
+         initHomepageV2 renderar den hårdkodade fallback-Spotlighten.
+       - { valid:false, wrap }: sektionen finns men saknar bild/rubrik/
+         CTA-text ELLER har en osäker/trasig CTA-länk (nhSafeHref) →
+         initHomepageV2 lämnar native-sektionen SYNLIG och rör den
+         inte, och renderar INGEN egen Spotlight (varken native- eller
+         fallback-grenen) -- exakt en kampanj förblir synlig (den
+         orörda native-sektionen själv).
+       - { valid:true, wrap, image, alt, heading, body, ctaText,
+         ctaHref }: allt läst och validerat → initHomepageV2 bygger
+         den egna Spotlighten och döljer native-wrappern. */
     function nhReadNativeSpotlight() {
-      var wrap = document.querySelector(".template-components__image-and-text");
-      var iat = wrap ? wrap.querySelector(".iat") : null;
-      if (!iat) return null;
+      var section = document.querySelector('section.image-and-text[data-id="' + NH_SPOTLIGHT_NATIVE_DATA_ID + '"]');
+      if (!section) return null; // sektionen saknas helt -- se fallback-läget ovan
+      var wrap = section.closest(".template-components__image-and-text") || section;
+      var iat = section.querySelector(".iat");
+      if (!iat) return { valid: false, wrap: wrap };
       var imgEl = iat.querySelector(".iat__image img");
       var image = imgEl ? (imgEl.currentSrc || imgEl.getAttribute("src")) : null;
       var alt = imgEl ? (imgEl.getAttribute("alt") || "") : "";
@@ -1534,19 +1555,23 @@
       var ctaText = ctaEl ? ctaEl.textContent.replace(/\s+/g, " ").trim() : null;
       // Samma säkerhetsprincip som heron (nhSafeHref, 2026-09-11): bara
       // relativ länk eller absolut http/https godkänns -- en osäker
-      // (javascript:/data:/m.fl.) eller trasig CTA-länk gör HELA
-      // sektionen ogiltig i stället för att renderas.
+      // (javascript:/data:/m.fl.) eller trasig CTA-länk gör sektionen
+      // OGILTIG (valid:false) i stället för att renderas.
       var ctaHref = ctaEl ? nhSafeHref(ctaEl.getAttribute("href")) : null;
-      if (!(image && heading && ctaText && ctaHref)) return null;
-      return { wrap: wrap, image: image, alt: alt, heading: heading, body: body, ctaText: ctaText, ctaHref: ctaHref };
+      if (!(image && heading && ctaText && ctaHref)) return { valid: false, wrap: wrap };
+      return { valid: true, wrap: wrap, image: image, alt: alt, heading: heading, body: body, ctaText: ctaText, ctaHref: ctaHref };
     }
-    /* Bygger .nh-spotlight-markupen. `native` är antingen ett validerat
-       resultat från nhReadNativeSpotlight() eller null (se
-       initHomepageV2) -- exakt EN av de två grenarna nedan renderas
-       någonsin, aldrig båda. Markup/CSS-klasser/ids återanvänds HELT
-       oförändrade mellan grenarna (samma #nhSpotlightImg/#nhSpotlightName/
-       #nhSpotlightHeadline/#nhSpotlightType/#nhSpotlightMeta/#nhSpotlightBuy)
-       så att befintlig desktop-/mobil-CSS fungerar identiskt oavsett
+    /* Bygger .nh-spotlight-markupen. Anropas av initHomepageV2 med
+       ANTINGEN ett `{valid:true, ...}`-resultat från
+       nhReadNativeSpotlight() ELLER `null` -- ALDRIG med ett
+       `{valid:false, ...}`-resultat (det "ogiltig sektion finns men
+       datan dög inte"-läget renderar ingenting alls, se
+       initHomepageV2, och kallar därför aldrig hit). Exakt EN av de
+       två grenarna nedan renderas någonsin, aldrig båda. Markup/CSS-
+       klasser/ids återanvänds HELT oförändrade mellan grenarna (samma
+       #nhSpotlightImg/#nhSpotlightName/#nhSpotlightHeadline/
+       #nhSpotlightType/#nhSpotlightMeta/#nhSpotlightBuy) så att
+       befintlig desktop-/mobil-CSS fungerar identiskt oavsett
        datakälla -- detta är en datakällemigrering, INTE en redesign. */
     function nhSpotlightHtml(native) {
       if (native) {
@@ -1577,11 +1602,22 @@
         // distinkt destination att peka mot.
         var imgSafe = nhSanitizeCssUrl(native.image);
         var headingSafe = nhEscHtml(native.heading);
+        // Granskningsfix (2026-09-15): bilden renderas som TVÅ CSS-
+        // bakgrundskopior (en per breakpoint, se css) -- utan riktig
+        // alt-text hade ingen av dem haft ett tillgängligt namn alls.
+        // #nhSpotlightImg är "den synliga bildytan" (fick aldrig något
+        // ARIA-attribut innan denna fix) och får nu role="img" +
+        // en escapad aria-label NÄR native.alt är en icke-tom sträng --
+        // .nh-spotlight-backdrop är "den separata bakgrundskopian" och
+        // förblir aria-hidden="true" (oförändrat sedan tidigare) så att
+        // bilden inte annonseras två gånger för skärmläsare. Ingen
+        // fabricerad beskrivning om alt saknas.
+        var imgAccessibleAttrs = native.alt ? ' role="img" aria-label="' + nhEscAttr(native.alt) + '"' : "";
         return '<section class="nh-spotlight section-gap" id="nh-spotlight" data-nh-spotlight-source="native">'
           + '  <div class="nh-spotlight-inner">'
           + '    <div class="nh-spotlight-media">'
           + '      <div class="nh-spotlight-backdrop" style="background-image:url(\'' + imgSafe + '\')" aria-hidden="true"></div>'
-          + '      <div class="nh-spotlight-img" id="nhSpotlightImg" style="background-image:url(\'' + imgSafe + '\')"></div>'
+          + '      <div class="nh-spotlight-img" id="nhSpotlightImg"' + imgAccessibleAttrs + ' style="background-image:url(\'' + imgSafe + '\')"></div>'
           + '    </div>'
           + '    <div class="nh-spotlight-body">'
           + '      <div class="nh-spotlight-kicker">Featured</div>'
@@ -2764,18 +2800,27 @@
       // ingen sektion tas bort, bara omflyttad visuellt vid bredare
       // breddpunkter.
       var kunskapCards = nhBuildKunskapCards(navData);
-      // Datakällemigrering (2026-09-15): läser den RIKTIGA "Text med
-      // bild"-native-sektionen (ren avläsning, ingen DOM-mutation ännu
-      // -- se nhReadNativeSpotlight) INNAN flexWrap byggs, så
-      // nhSpotlightHtml kan rendera rätt gren direkt (ingen "Laddar…"-
-      // period behövs för native-vägen -- all data finns redan
-      // synkront i DOM:en, ingen fetch krävs). Samma "väger tyngre än
-      // auto-fallback"-princip som heron (se ovan): om avläsningen gav
-      // null (sektionen saknas/ofullständig/osäker CTA-länk) används
-      // NH_SPOTLIGHT_FALLBACK i stället, och native-sektionen rörs INTE
-      // alls (varken dold eller ersatt) -- ingen krasch, inget tomrum,
-      // ingen dubbelt dold sektion.
+      // Datakällemigrering (2026-09-15, granskningsfix samma dag) --
+      // läser den RIKTIGA "Text med bild"-native-sektionen (ren
+      // avläsning, ingen DOM-mutation ännu -- se nhReadNativeSpotlight)
+      // INNAN flexWrap byggs. nhReadNativeSpotlight() returnerar ETT av
+      // tre lägen -- "saknad" och "ogiltig" är INTE samma sak
+      // (uppdragets uttryckliga krav):
+      //   null                 → sektionen finns inte alls → fallback.
+      //   { valid:false, ... } → sektionen finns men är ofullständig
+      //                          eller har en osäker CTA-länk → rendera
+      //                          INGENTING här (varken native- eller
+      //                          fallback-Spotlight) -- native-
+      //                          sektionen lämnas SYNLIG och orörd, den
+      //                          ÄR redan "den enda synliga kampanjen"
+      //                          i det läget, ingen dubblett.
+      //   { valid:true, ... }  → bygg den egna Spotlighten av datan och
+      //                          dölj native-wrappern.
       var nativeSpotlight = nhReadNativeSpotlight();
+      var spotlightIsValid = !!(nativeSpotlight && nativeSpotlight.valid);
+      var spotlightHtml = !nativeSpotlight
+        ? nhSpotlightHtml(null) // saknad -- fallback
+        : (spotlightIsValid ? nhSpotlightHtml(nativeSpotlight) : ""); // ogiltig -- rendera inget
       var flexWrap = document.createElement("div");
       flexWrap.className = "nh-startpage-flex";
       flexWrap.innerHTML = ''
@@ -2785,7 +2830,7 @@
         + nhPopularaVagarHtml(navData)
         + nhBestsellersHtml()
         + nhBonfireHtml()
-        + nhSpotlightHtml(nativeSpotlight)
+        + spotlightHtml
         + nhTrustBlockHtml()
         + nhKunskapHtml(kunskapCards)
         + nhGuidesHtml(navData)
@@ -2797,8 +2842,11 @@
 
       // Döljer native-sektionens wrapper FÖRST nu, efter att den egna
       // Spotlighten (ovan) faktiskt byggts med den lästa datan (samma
-      // "dölj sist"-princip som heron, uppdragets krav punkt 6).
-      if (nativeSpotlight) {
+      // "dölj sist"-princip som heron, uppdragets krav punkt 6) --
+      // ENDAST i det giltiga läget. I det "ogiltiga" läget (sektionen
+      // finns men datan dög inte) rörs den INTE -- den ska förbli
+      // synlig, se kommentaren ovan.
+      if (spotlightIsValid) {
         nativeSpotlight.wrap.classList.add("nh-native-spotlight-hidden");
       }
 
