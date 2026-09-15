@@ -5217,15 +5217,32 @@
           // skannar bara EN gång vid boot, långt innan dessa asynkront
           // hämtade/ombytta kort finns i DOM:en -- ett .nh-reveal-kort
           // som aldrig observeras stannar permanent osynligt.
+          //
+          // ESCAPING-FIX (2026-09-15): återanvänder samma redan etablerade
+          // säkringshjälpare som resten av filen (se toppen: nhEscHtml/
+          // nhEscAttr/nhSafeHref, byggda för hero-slidedata) i stället för
+          // ett eget, ofullständigt `<`-only-filter -- namn/citat/
+          // produktnamn är RIKTIG, extern kunddata (samma tillitsnivå som
+          // hero-slidedata) och ska HTML-escapas fullt ut (&/</>), inte
+          // bara delvis. `title`-attributet är dessutom ett citerat HTML-
+          // attribut (kräver även "-escaping, nhEscHtml räcker inte där).
+          // Länken saneras med nhSafeHref (blockerar javascript:/data:
+          // m.fl.) -- osannolikt att den någonsin är ogiltig här (kommer
+          // från en riktig <a href> på en verklig produktsidelista), men
+          // faller ärligt tillbaka på en olänkad <span> med produktnamnet
+          // kvar i stället för att antingen rendera en farlig länk eller
+          // tyst tappa bort en annars äkta recension.
           grid.innerHTML = pages[pageIndex].map(function (r) {
             var starsHtml = '<span class="nh-rc-stars" aria-hidden="true">' + "★".repeat(r.stars) + "☆".repeat(5 - r.stars) + '</span>';
-            var safeName = r.name.replace(/</g, "&lt;");
-            var safeProduct = r.product.replace(/</g, "&lt;");
+            var safeHref = nhSafeHref(r.href);
+            var productHtml = safeHref
+              ? '<a href="' + nhEscAttr(safeHref) + '" title="' + nhEscAttr(r.product) + '">' + nhEscHtml(r.product) + '</a>'
+              : '<span>' + nhEscHtml(r.product) + '</span>';
             return '<div class="nh-rc-card">'
               + starsHtml
-              + '<p class="nh-rc-quote">”' + r.text.replace(/</g, "&lt;") + '”</p>'
-              + '<div class="nh-rc-source"><span class="nh-rc-name">' + safeName + '</span>'
-              + '<a href="' + r.href + '" title="' + safeProduct + '">' + safeProduct + '</a></div>'
+              + '<p class="nh-rc-quote">”' + nhEscHtml(r.text) + '”</p>'
+              + '<div class="nh-rc-source"><span class="nh-rc-name">' + nhEscHtml(r.name) + '</span>'
+              + productHtml + '</div>'
               + '</div>';
           }).join("");
           grid.hidden = false;
