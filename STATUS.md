@@ -5238,3 +5238,141 @@ redovisade):**
   Ingen text ändrad utan godkännande (uppdragets krav) -- flaggas här
   som en genuin, oförändrad risk för överlovande rubrik, inte en ny
   upptäckt av denna runda.
+
+## Paket 2 — Omdömen, sista korrigeringsrunda mot facit + riktig
+   produktspridning (2026-09-15)
+
+Föregående runda (378ad99) var INTE visuellt godkänd -- Vilmer bedömde
+sektionen som fortfarande för långt från
+`preview/ai-direction/hazey-dadgrass-westcoast-concept-v1.png`, och
+påpekade att "Verifierade omdömen" bara byggde på två hårdkodade
+vape-batteriprodukter (ser selektivt ut för ett brett sortiment). Två
+separata problem åtgärdade i denna runda, strikt desktop-only
+(`@media (min-width:861px)`), inget Review/AggregateRating-schema
+skapat eller ändrat.
+
+### Problem 1 — visuell paritet mot facit
+
+Alla ändringar i `css/22-homepage-v2.css`s befintliga "(6) Omdömen"-
+block (skapades INTE ett nytt "final fixes"-block):
+
+| Element | Före (378ad99) | Efter | Varför |
+| --- | --- | --- | --- |
+| Rubriktext | "Verifierade omdömen" | **"Vad våra kunder säger"** | "Verifierade" antydde att BÅDA datakällorna (korten + totalsumman) delar verifieringsstatus -- korten kommer i själva verket från Nyehandels egna produktrecensioner (ingen känd köpverifiering), bara Trustpilot-totalen har det |
+| Rubrikstorlek | 28px/700 | **36px/700** | Vilmer bedömde 28px som fortfarande klart för litet mot facit. Ytterligare sub-pixel-glyfmätning mot den lågupplösta (724px), AI-genererade facitbilden gav olika, motsägande förhållanden beroende på vilket bokstavspar som mättes (samma metod som redan dokumenterat opålitlig i Spotlight-rundan) -- i stället en upprepad DIREKT skärmdumpsjämförelse (bygg → skärmdump → jämför mot facitcrop → justera), som visade att 28px sedan 34px fortfarande låg klart under facitets kicker/rubrik-proportion (~2,2-2,5x) innan 36px (2,0x) gav en tillräckligt nära matchning. Fortfarande tydligt (10%) under Spotlightens LÅSTA 40px (rörd inte). |
+| Rubrik-marginal | 10px | 6px | Tightare rubrik→betygsrad-rytm |
+| Kicker-marginal | 10px (delad med Spotlight) | **4px** (utbruten, se nedan) | Tightare kicker→rubrik-rytm utan att röra Spotlightens 10px |
+| Betygsrad-text | "4,7 av 5" / "584 verifierade omdömen" | **"4,7 av 5 på Trustpilot"** / **"590 omdömen"** | Namnger explicit KÄLLAN (Trustpilot) i stället för att antyda en gemensam verifieringsstatus -- samma motivering som rubriken |
+| CTA-text | "Läs alla omdömen →" | **"Läs alla på Trustpilot →"** | Samma |
+| Betygsrad-marginal | 10px 0 2px | **6px 0 2px** | Tightare rytm |
+| Kort-padding | 16px 18px (delad m. mobil) | **14px 16px 12px** | Mindre generiskt e-handelskort, mer redaktionellt kompakt |
+| Stjärnor→citat-glapp | 8px | **5px** | Tightare, matchar facit |
+| Rutnätsglapp | 12px | **10px**, margin-top 10px→**12px** | Kompaktare kortrad |
+| Sektionens vänsterpadding (`.nh-reviews-main`) | 38px | **32px** | Minskar tomrum runt korten |
+| `.nh-reviews-editorial` | `min-height:480px` (fast golvhöjd) | **borttagen** | Tvingade HELA sektionen (grid `align-items:stretch`) till minst 480px även när det kompakterade innehållet naturligt behövde mindre -- gav ett tomt fält under korten. Bildkolumnen fyller nu exakt huvudkolumnens riktiga höjd, ingen egen golvhöjd. Uppmätt sektionshöjd (1440px, 3 kort): **480px+ → 392px**. |
+| Produktnamn i korten | inline, 1 eller 2 rader beroende på längd (inkonsekvent mellan kort) | **max 2 rader (`-webkit-line-clamp:2`), alltid staplat under kundnamnet** | Uppdragets krav: sekundär källinfo, får inte dominera kortet, men INGEN textklippning av den riktiga texten i DOM/skärmläsarträd (line-clamp klipper bara visuellt) -- `title`-attribut (satt i JS) ger dessutom hela namnet vid hover om det klipps av |
+
+**Kickerns WCAG-kontrast** (uppdragets uttryckliga krav: "verifiera det
+verkliga tröskelvärdet, anta inte att 18px automatiskt räknas som stor
+text"): WCAG:s undantag för stor text kräver ≥24px normal text ELLER
+≥18,66px TYP-BOLD (font-weight 700) -- 18px/**600** ("semibold") och
+kursiv stil kvalar INTE som bold, så kickern måste klara 4,5:1 (normal
+text), inte bara 3:1. Delad `#c1592c` mätte 3,67:1 mot den verkliga,
+getComputedStyle-verifierade bakgrunden (`rgb(239,233,223)` =
+`.store-startpage`s `#efe9df`) -- INTE tillräckligt. Löst genom att
+bryta ut `.nh-reviews-kicker`s färg separat från `.nh-spotlight-kicker`
+(själva typografin — family/style/weight/size — delas fortfarande, bara
+FÄRG+MARGIN bröts ut): `#a8481f`, beräknat till **4,82:1** (WCAG relativ
+luminans-formel), samma terrakotta-familj, Spotlightens låsta `#c1592c`
+orörd.
+
+Höger bild (`editorial-venice-good-idea-v2.jpg`, ~70/30-delning) --
+BEHÅLLEN oförändrad, `background-position:center` -- en direkt
+skärmdumpsjämförelse visade redan "VENICE ALWAYS A GOOD IDEA"-skylten,
+palmerna och personen tydligt exponerade, ingen justering av
+`background-position` var motiverad.
+
+### Problem 2 — riktig produktspridning (inte bara vape-batterier)
+
+`js/18b-homepage-v2.js`s `nhInitProductReviews` skrevs om i grunden.
+`NH_REVIEW_PRODUCTS` (2 hårdkodade CCELL-batterier) och
+`NH_REVIEW_UNSAFE_RE` (rus-/effektspråksfilter) TOGS BORT HELT --
+Vilmer bad uttryckligen om detta: en genuin, verbatim, tydligt
+kund-tillskriven recension är inte "ny copy" från Hazey (CLAUDE.md:s
+varumärkesröst-regel gäller Hazeys EGNA påståenden). Kvar står ENDAST
+tekniska filter: icke-anonym (namnet visas, måste finnas), 12-170
+tecken, giltigt 1-5-betyg. Inget innehållsfilter på VAD kunden skriver.
+
+**Ny källa** (i stället för en hårdkodad lista): samma redan bevisat
+stabila, riktiga endpoint som `nhInitBestsellers` redan använder --
+`/sv/categories/alla-produkter?sort=in-stock` (ETT anrop, ingen ny
+integration). Verifierat via curl 2026-09-15: 25 riktiga produkter,
+spänner CCELL/Vape/Buds/Hash/Blommor/Isolat/Cart. Arkitektur:
+1. Produkterna hinkas efter namnprefix (samma
+   `/^([^-–]+)[-–]/`-mönster som redan används i
+   `nhInitSpotlightFallback`).
+2. Round-robin ÖVER hinkarna bygger en kandidatlista, tak
+   `NH_REVIEW_MAX_CANDIDATES=14` (hämtar ALDRIG hela katalogen).
+3. PDP:er hämtas i kontrollerade omgångar om `NH_REVIEW_CONCURRENCY=3`
+   åt gången -- ingen produkt hämtas två gånger (kandidaterna är redan
+   unika hrefs).
+4. Hämtningen stannar så fort minst `NH_REVIEW_MIN_PRODUCTS=5` skilda
+   produkter gett minst en godkänd recension, eller ett hårdtak
+   (`NH_REVIEW_HARD_CAP=16` insamlade recensioner) nås, eller
+   kandidaterna tar slut -- aldrig fler nätverksanrop än nödvändigt.
+5. Innan interfoliering sorteras produkterna så substansprodukter
+   kommer FÖRE tillbehör (`nhIsAccessoryProduct`, ren namnbaserad
+   heuristik, rör ALDRIG recensionens innehåll) -- säkerställer att en
+   sida hellre visar en verklig blandning av format än att råka fyllas
+   av enbart tillbehörsrecensioner, utan att fabricera eller utesluta
+   någon riktig recension.
+6. Max `NH_REVIEW_MAX_SHOWN=9` kort totalt (3 sidor), trimmat till jämn
+   sidstorlek UTAN fyllnadskort.
+
+Determinism: ingen `Math.random()` någonstans -- ordningen följer
+kategorilistans egna, redan stabila sortering (`sort=in-stock`) plus
+en fast bucket-/round-robin-algoritm, hoppar alltså inte slumpmässigt
+mellan sidladdningar (ändras bara när det riktiga sortimentet/lagret
+faktiskt ändras).
+
+**Verifierat resultat (live, 2026-09-15, 1440px):** sida 1 = Vape (CBN
+89%, Canapuff), Buds (≈15% CBD, Russian Roulette), Vape (THCV,
+Euphoria) -- tre olika produkter, två kategorier, alla substans, NOLL
+tillbehör. Sida 2 = Hash (THCA 40%, Northern Lights), CCELL M4
+(vape-batteri), Vape (CBN 89%, Canapuff, annan recensent) -- tre
+kategorier, ALDRIG tre batterirecensioner på samma sida. Nätverksanrop
+under testet: 1 discovery-anrop + 13 PDP-anrop (stannade före taket på
+14, `NH_REVIEW_MIN_PRODUCTS` uppnått).
+
+### Verifiering
+
+- `node tests/fas6-full-verification.mjs`: ALLA kontroller gröna (0px
+  overflow 1024–1920px, inga konsolfel, tangentbordsfokus, sök,
+  add-to-cart, FAQ, karuseller m.m.) -- se
+  `tests/results/fas6-verification/results.json`.
+- Paginering testad (musklick, sida 1 → sida 2 → sida 1) -- fungerar.
+- Ingen HTML/script-injektion möjlig: `<`-tecken i namn/citat/
+  produktnamn HTML-escapeas fortfarande vid rendering (oförändrad,
+  redan etablerad teknik).
+- Mobil (390/430/600px) **BEVISAD OFÖRÄNDRAD via getComputedStyle**
+  (rigorösare än en skärmdumps-diff eftersom recensionstexten
+  legitimt skiljer sig åt mellan för- och efterkörning): kicker
+  (16px/Nunito/#96683f/6px -- native tag-reset vinner fortfarande på
+  mobil, OFÖRÄNDRAT, ett redan känt, inte nytt problem), rubrik
+  (19px/600), betygsradsmarginal, kortpadding (16px 18px), kortradie,
+  kortflex (0 0 88%), citat-typografi, källradens `display:flex/row`
+  (INTE `column` -- min-width-861px-scopningen bekräftad) -- alla
+  IDENTISKA mellan `git stash` (378ad99) och den nya koden.
+- Kvarstående, ärligt redovisad avvikelse: mobilens kicker vinner
+  fortfarande INTE mot native-textresettet (16px/Nunito i stället för
+  10,5px uppercase) -- ett redan existerande, oförändrat problem sedan
+  tidigare rundor, INTE en regression eller ny upptäckt denna gång
+  (utanför detta uppdrags scope, som är desktop-only).
+
+### Ändrade filer
+
+`css/22-homepage-v2.css` (endast Omdömen-reglerna i "(6)"-blocket +
+kicker-utbrytningen delad med Spotlight), `js/18b-homepage-v2.js`
+(`nhReviewsHtml`, `nhInitProductReviews`, `nhInitReviewsLive`s
+textformat) + genererade `hazey.css`/`hazey.html`/`hazey.min.html`/
+`hazey.min.js` via `node build.js`. Ingen annan sektion rörd.

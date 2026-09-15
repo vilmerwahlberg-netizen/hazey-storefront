@@ -3059,13 +3059,28 @@
      16px/Nunito/500 i stället för 18px/Iowan/600, medan Spotlights
      kicker redan renderade rätt). Tillägget nedan är alltså en NO-OP
      för Spotlight (redan godkänd, oförändrat slutresultat) och en
-     riktig fix för Omdömen. */
+     riktig fix för Omdömen. Typografin (family/style/weight/size) delas
+     fortfarande -- bara FÄRG och MARGIN bröts ut per sektion nedan
+     (Paket 2, se motivering). */
   .nh-spotlight-kicker,
   .nh-reviews-kicker {
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
     font-style: italic !important; font-weight: 600 !important; font-size: 18px !important;
-    color: #c1592c; text-transform: none; letter-spacing: 0; margin-bottom: 10px;
+    text-transform: none; letter-spacing: 0;
   }
+  .nh-spotlight-kicker { color: #c1592c; margin-bottom: 10px; }
+  /* WCAG AA (Paket 2, uppdragets uttryckliga krav -- "18px/600 räknar inte
+     per automatik som stor text, verifiera det verkliga tröskelvärdet"):
+     WCAG:s undantag för stor text kräver antingen ≥24px vanlig text eller
+     ≥18.66px TYP-BOLD (font-weight 700) -- 600 ("semibold") kvalar INTE,
+     och kursiv stil räknas inte som bold. Kickern måste alltså klara
+     4,5:1 (normal text), inte bara 3:1. Delad #c1592c mätte 3,67:1 mot
+     sektionens #efe9df-botten -- eftersom färgen nu är utbruten kan
+     Omdömens kicker mörkas till #a8481f (4,82:1, beräknat via WCAG:s
+     relativa luminans-formel) UTAN att röra Spotlightens redan låsta,
+     godkända #c1592c. Marginalen minskad (10px->4px) för en tightare
+     kicker->rubrik-rytm, se rubrikkommentaren nedan. */
+  .nh-reviews-kicker { color: #a8481f; margin-bottom: 4px; }
   /* Referensen visar varken typ/pris/lager/betyg eller sekundärlänken på
      den här kortstilen -- all data finns kvar (mobil, produktsidan bakom
      CTA:n), bara visuellt dold här. */
@@ -3150,12 +3165,24 @@
      för att fylla sin egna 7fr-cell (uppmätt 1008px vid 1440, 1344px vid
      1920). 48px→38px vertikal padding (Fas 2, mätbar desktop-
      paritetsrunda): mätte +5.6% mot referensens uppmätta ~515px. */
-  .nh-reviews-main { padding: 38px 56px; max-width: none; }
+  /* Paket 2: 38px->32px vertikal padding -- en del av "minska tomrummet
+     runt korten"-kravet, kompletterar den borttagna min-height nedan och
+     den kompakterade kort-/rytm-typografin ovan. */
+  .nh-reviews-main { padding: 32px 56px; max-width: none; }
   /* ÅTERSTÄLLD (2026-09-10): plain center-crop av den ORIGINALA
      redaktionella bilden (se nhReviewsHtml) -- den tidigare "center 85%"
      var bara till för att beskära Spotlightens Magic Sauce-bild
-     annorlunda, irrelevant nu när bilden är en annan fil igen. */
-  .nh-reviews-editorial { background-size: cover; background-position: center; min-height: 480px; }
+     annorlunda, irrelevant nu när bilden är en annan fil igen.
+     BUGGFYND (Paket 2, 2026-09-15): den fasta `min-height:480px` tvingade
+     HELA sektionen (via .nh-reviews-layout's `align-items:stretch`) till
+     minst 480px även när det kompakterade vänsterkolumnsinnehållet (Paket
+     2: mindre kort/tightare rytm) naturligt behövde mindre -- gav ett
+     tomt fält under korten som uppdraget uttryckligen bad att ta bort
+     ("total höjd ska drivas av facit/riktigt innehåll, inte 480px bara
+     för att värdet redan finns"). Borttagen -- bildkolumnen fyller nu
+     exakt den höjd huvudkolumnens riktiga innehåll ger (grid-stretch),
+     fortsatt full höjd, ingen egen golvhöjd. */
+  .nh-reviews-editorial { background-size: cover; background-position: center; }
 
   /* ── Parity-runda 2026-09-15 (facit: preview/ai-direction/hazey-
      dadgrass-westcoast-concept-v1.png, "Verifierade omdömen") ──
@@ -3174,17 +3201,33 @@
      @media-block -- mobilen (som råkar visa SAMMA 16px idag, se
      STATUS.md) rörs inte alls, oförändrad. */
 
-  /* Rubriken: ny, egen storlek via id (starkare än den delade
-     .nh-featured/.nh-reviews .sec-head h2-regeln, rad ~1966, utan att
-     ändra Bästsäljares 19px). Uppmätt mot facit (pixelhöjd på "V" i
-     "Verifierade" mot "Ä" i kickern, samma förhållande applicerat på
-     kickerns egna, redan bekräftade 18px): ~28px -- tydligt mindre än
-     Spotlightens 40px (uppdragets krav), men en riktig, redaktionell
-     rubrik i stället för en liten sektionsrubrik. */
+  /* KORRIGERINGSRUNDA (2026-09-15, Paket 2): Vilmer bedömde 28px som
+     fortfarande klart för litet mot facit ("mät proportionen direkt mot
+     facitbilden ... inte allmän designsmak"). Vidare sub-pixel-mätning på
+     glyfhöjd i den lågupplösta (724px bred), AI-genererade facitbilden gav
+     upprepat inkonsekventa förhållanden (samma glyfpar gav 1,11 respektive
+     1,29 beroende på vilka bokstäver som mättes -- inte ett tillförlitligt
+     mått vid den upplösningen). I stället: en direkt, upprepad visuell
+     jämförelse (helskärmscrop av facitets rubrikblock bredvid en
+     skärmdump av implementationen vid 1440px) användes för att välja ett
+     bestämt, klart större värde -- 34px, fortsatt tydligt mindre än
+     Spotlightens låsta 40px (uppdragets krav 8) men en verkligt
+     redaktionell rubrikstorlek i stället för en liten sektionsrubrik.
+     Marginalen minskad (10px->6px) för en tightare rubrik->betygsrad-
+     rytm (uppdragets krav om en sammanhållen, kompakt trust-hierarki).
+     UPPFÖLJNING samma runda: en första direkt skärmdumpsjämförelse (efter
+     att 34px byggts) visade fortfarande en synligt mindre kicker/rubrik-
+     proportion än facit (facitets rubrik är ~2,2-2,5x kickerns kapitälhöjd,
+     34px/18px gav bara ~1,9x) -- höjt ytterligare till 36px, fortfarande
+     tydligt (10%) under Spotlightens låsta 40px. */
   #nhReviewsHeading {
-    font-size: 28px !important; font-weight: 700 !important; line-height: 1.15 !important;
-    margin: 0 0 10px !important;
+    font-size: 36px !important; font-weight: 700 !important; line-height: 1.08 !important;
+    margin: 0 0 6px !important;
   }
+  /* Vertikal rytm (Paket 2): basregelns "10px 0 2px" (rad ~2131, delad
+     med mobil) gav ett onödigt stort glapp rubrik->betygsrad på desktop
+     nu när rubriken är mycket större -- egen, tightare desktop-marginal. */
+  .nh-reviews-summary { margin: 6px 0 2px !important; }
   .nh-reviews-stars { font-size: 15px !important; }
   .nh-reviews-score { font-size: 14px !important; font-weight: 650 !important; color: #2c3620 !important; }
   /* WCAG AA (uppdragets krav): #9a9280/#96683f mätte 2,56:1 resp. 4,0:1
@@ -3202,10 +3245,30 @@
      fokus på andra kontroller. */
   .nh-reviews-nav__btn:focus-visible { outline: 2px solid #d9782f; outline-offset: 2px; }
   .nh-reviews-readall:focus-visible { outline: 2px solid #d9782f; outline-offset: 3px; }
+  /* Kortkompaktering (Paket 2): korten kändes för stora/generiska --
+     mindre glapp mellan stjärnor och citat (var 8px topp via basregelns
+     "8px 0 10px", rad ~2179), tightare rutnätsglapp mellan korten. */
+  .nh-reviews-grid { gap: 10px !important; margin-top: 12px !important; }
   .nh-rc-stars { font-size: 13px !important; }
-  .nh-rc-quote { font-size: 14px !important; line-height: 1.6 !important; }
+  .nh-rc-quote { font-size: 14px !important; line-height: 1.55 !important; margin: 5px 0 8px !important; }
   .nh-rc-name { font-size: 12px !important; font-weight: 650 !important; }
   .nh-rc-source, .nh-rc-source a { font-size: 12px !important; }
+  /* Produktnamn (uppdragets krav): sant och länkat, men får brytas ut
+     typografiskt som sekundär källinfo -- max två visuella rader så ett
+     långt produktnamn inte dominerar kortet. INGEN textklippning i sig
+     (line-clamp klipper bara VISUELLT, den fullständiga texten finns kvar
+     i DOM:en/skärmläsarträdet) -- `title` nedan (satt i JS) ger dessutom
+     en hover-tooltip med hela namnet om det klipps av vid två rader. */
+  .nh-rc-source a {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; flex: 1 1 auto; min-width: 0;
+  }
+  /* Konsekvent metadata-rad (Paket 2): basregelns rad-layout ("flex,
+     baseline, wrap") gav ett OLIKA antal visuella rader per kort beroende
+     på om namn+produktnamn råkade rymmas på en rad eller inte (kortare
+     namn -- en rad, längre namn -- två) -- staplat i stället, alltid
+     namn ovanför produktlänk, samma rytm i alla tre kort oavsett längd. */
+  .nh-rc-source { flex-direction: column; align-items: flex-start; gap: 2px; }
 
   /* Korten: redan varmvit/diskret (#fff, tunn #ebe1d1-kant, mjuk skugga)
      eftersom <div> inte drabbas av native-textresets -- justerat mot
@@ -3217,8 +3280,12 @@
      uppdragets krav), produktlänken (redan riktig) är kortets enda
      källhänvisning. */
   .nh-rc-card {
-    background: #fffdf8; border-radius: 12px;
+    background: #fffdf8; border-radius: 12px; padding: 14px 16px 12px !important;
     box-shadow: 0 4px 14px -10px rgba(30,39,22,.22);
+    /* Kompaktering (Paket 2): mindre inre padding än basregelns "16px
+       18px" (rad ~2170, delad med mobilens svep-karusell -- oförändrad
+       där) -- facit visar ett tightare, redaktionellt kort, inte ett
+       generiskt e-handelskort med mycket luft. */
     /* Uppdragets krav: "lös olika textlängder så att korten fortfarande
        känns balanserade och deras nedersta metadata linjerar". Korten
        har redan samma YTTRE höjd (grid-radens default align-items:
