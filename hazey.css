@@ -14802,3 +14802,160 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
     max-width: 1400px; margin-left: auto; margin-right: auto;
   }
 }
+/* ============================================================
+   Kategoritopp + dynamiska snabbval (Refine, West Coast Ledger-
+   riktningen, godkänd i preview/category-direction-round-2).
+   Namespace: .nh-cattop-*. Native ankare som återanvänds/omstylas
+   (rör dem inte strukturellt, bara visuellt): .category-description,
+   .nh-cat-lead/.nh-cat-box (js/03-category.js:initReadMore),
+   .category-sort, #products_count/.filters__counter,
+   .product-filter-button[aria-label="Öppna filter"], .sort-control.
+   Se js/03-category.js:initCategoryTop() för injektionslogiken. */
+
+.nh-cattop-mark{
+  color:#96683f;
+  flex:0 0 auto;
+  display:flex;
+  align-items:flex-start;
+  padding-top:4px;
+}
+.nh-cattop-mark svg{ width:30px; height:40px; }
+
+/* Ny wrapper runt native h1.title (flyttad, inte kopierad) + markören,
+   se js/03-category.js:initCategoryTop(). Native h1-klass/stil orörd. */
+.nh-cattop-headrow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+.nh-cattop-headrow h1{ min-width:0; flex:1 1 auto; }
+
+/* Kompakt ingress (native .nh-cat-lead, byggd av initReadMore) */
+.nh-cat-lead{
+  font-size:13px;
+  line-height:1.5;
+  color:#5f5c50;
+  max-width:520px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* ============ Snabbval ============ */
+.nh-cattop-quickpicks-wrap{
+  background:#faf3e9;
+  border-top:1px solid #e6dac6;
+  border-bottom:1px solid #e6dac6;
+  padding:12px 0 12px;
+}
+.nh-cattop-quickpicks{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  padding:0 20px 2px;
+}
+.nh-cattop-quickpicks::-webkit-scrollbar{ display:none; }
+.nh-cattop-qp{
+  flex:0 0 auto;
+  background:none;
+  border:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  width:64px;
+  padding:2px 0;
+  font-family:inherit;
+  cursor:pointer;
+}
+.nh-cattop-qp-ring{
+  width:56px; height:56px; border-radius:50%; padding:2px;
+  border:1.5px solid #e6dac6;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color 140ms ease;
+}
+.nh-cattop-qp[aria-current="true"] .nh-cattop-qp-ring{ border-color:#2c3620; border-width:2px; }
+.nh-cattop-qp-img{ width:100%; height:100%; border-radius:50%; overflow:hidden; background:#d9c3ae; }
+.nh-cattop-qp-img img{ width:100%; height:100%; object-fit:cover; }
+.nh-cattop-qp-icon{ width:100%; height:100%; border-radius:50%; background:#2c3620; display:flex; align-items:center; justify-content:center; color:#fffdf8; }
+.nh-cattop-qp-icon svg{ width:20px; height:20px; }
+.nh-cattop-qp-label{ font-size:11px; color:#5f5c50; font-weight:600; white-space:nowrap; }
+.nh-cattop-qp[aria-current="true"] .nh-cattop-qp-label{ color:#2c3620; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+.nh-cattop-secondary-wrap{ padding:10px 20px 0; }
+.nh-cattop-secondary-label{
+  font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:#9a9280; margin:0 0 8px;
+}
+.nh-cattop-secondary{ display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
+.nh-cattop-secondary::-webkit-scrollbar{ display:none; }
+.nh-cattop-sopt{
+  flex:0 0 auto; background:#fffdf8; border:1px solid #e6dac6; border-radius:999px;
+  padding:7px 14px; font-size:12px; font-weight:650; color:#5f5c50; cursor:pointer;
+  min-height:32px; font-family:inherit;
+}
+.nh-cattop-sopt[aria-pressed="true"]{ background:#2c3620; border-color:#2c3620; color:#fffdf8; }
+
+/* Klientsidig döljning för produkttyp-axeln (ingen native motsvarighet,
+   se js/03-category.js:initCategoryTop). Serie-axeln rör aldrig detta --
+   den återanvänder Nyehandels egen filtrering/rendering. */
+.product-card.nh-cattop-hidden{ display:none!important; }
+
+.nh-cattop-qp:focus-visible,
+.nh-cattop-sopt:focus-visible{
+  outline:2.5px solid #d9782f; outline-offset:2px; border-radius:8px;
+}
+@media (prefers-reduced-motion:reduce){
+  .nh-cattop-qp-ring{ transition:none; }
+}
+
+/* ============ Restylning av Nyehandels EGEN antal/filter/sortera-rad ============
+   Native markup/beteende och Vue-bindningar oförändrade. Den befintliga
+   gröna "Filtrera"-knappen (css/07, #323d25-varumärkeskonventionen för
+   .is-primary-knappar på kategori/checkout) BEHÅLLS OFÖRÄNDRAD -- den är
+   en etablerad, avsiktlig konvention (se HAZEY-DESIGN-SYSTEM.md §9 pkt 4),
+   inte något att harmonisera bort. Vi justerar bara mått/rytm så raden får
+   plats på en rad (native bryter annars till två rader under ca 480px --
+   se rapport för uppmätning), samt trunkerar sorteringsknappens TEXT
+   visuellt med ellipsis vid platsbrist. Selektorerna matchar css/07:s
+   specificitet (samma klassantal) så att denna SENARE fil vinner enligt
+   projektets egen kaskadprincip (se CLAUDE.md, "senare filer override:ar
+   tidigare med avsikt"), utan att behöva höja specificiteten ytterligare. */
+.category-sort{
+  display:flex!important; flex-direction:row!important; flex-wrap:nowrap!important;
+  align-items:center!important; gap:8px!important;
+  padding:10px 14px!important; background:#faf3e9!important; border-color:#e6dac6!important;
+  font-family:-apple-system,"system-ui","Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+.category-sort .mobile-filter{
+  display:flex!important; flex-direction:row!important; align-items:center!important; gap:8px!important;
+  flex:0 1 auto; min-width:0;
+}
+.category-sort #products_count,
+.category-sort .filters__counter{
+  font-size:12px!important; color:#5f5c50!important; white-space:nowrap; order:-1; flex:0 0 auto;
+}
+.category-sort .product-filter-button.button.is-primary{
+  padding:7px 12px!important; font-size:12px!important; border-radius:999px!important; flex:0 0 auto;
+}
+.category-sort > div:last-child{ margin-left:auto!important; flex:0 1 auto; min-width:0; overflow:hidden; }
+.sort-button.dropdown .button{
+  padding:7px 12px!important; font-size:12px!important; border-radius:999px!important; max-width:100%;
+}
+.sort-button.dropdown .button > span:not(.icon){
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:88px; display:inline-block;
+}
+
+@media (min-width:1024px){
+  .nh-cattop-mark svg{ width:40px; height:52px; }
+  .nh-cat-lead{ font-size:14px; -webkit-line-clamp:2; max-width:460px; }
+  .nh-cattop-quickpicks-wrap{ padding:14px 0; }
+  .nh-cattop-quickpicks{ max-width:1440px; margin:0 auto; padding:0 32px; gap:18px; }
+  .nh-cattop-secondary-wrap{ max-width:1440px; margin:0 auto; padding:10px 32px 0; }
+  .nh-cattop-qp{ width:58px; }
+  .nh-cattop-qp-ring{ width:48px; height:48px; }
+  .category-sort{ padding:12px 32px; }
+}

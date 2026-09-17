@@ -8,6 +8,7 @@
     initAllCards = nhSafe(initAllCards);
     initReadMore = nhSafe(initReadMore);
     initCategoryPage = nhSafe(initCategoryPage);
+    initCategoryTop = nhSafe(initCategoryTop);
     initKampanjer = nhSafe(initKampanjer);
     initProductSections = nhSafe(initProductSections);
     initAllProducts = nhSafe(initAllProducts);
@@ -37,6 +38,7 @@
       initCardRatings();
       initReadMore();
       initCategoryPage();
+      initCategoryTop();
       initKampanjer();
       initProductSections();
       initAllProducts();
@@ -63,6 +65,7 @@
         initAllCards();
         initReadMore();
         initCategoryPage();
+        initCategoryTop();
         initKampanjer();
       });
     } else {
@@ -71,6 +74,7 @@
       initCardRatings();
       initReadMore();
       initCategoryPage();
+      initCategoryTop();
       initKampanjer();
       initProductSections();
       initAllProducts();
@@ -85,6 +89,7 @@
       initCardRatings();
       initReadMore();
       initCategoryPage();
+      initCategoryTop();
       initKampanjer();
       initProductSections();
       initAllProducts();

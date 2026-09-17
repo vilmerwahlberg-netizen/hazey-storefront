@@ -5579,3 +5579,91 @@ uppfyllt), bara inte varumärkesfärgat -- ingen ny regression, inte
 
 **Ändrade källfiler:** `css/22-homepage-v2.css`, `js/18b-homepage-v2.js`
 (+ genererade filer).
+
+## Kategoritopp + dynamiska snabbval — Refine, västkust-riktningen (2026-09-17)
+
+Ny återanvändbar komponent på kategorisidan (breadcrumb→H1→ingress→
+West Coast-markör→snabbval→ev. serienivå→antal/filter/sortera), byggd
+mot Theme 6:s RIKTIGA DOM (verifierad live på `alla-vapes` och
+`blommor-buds` via `?preview=r8eo4lqy6wd5pz7`), inte mot den gamla
+prototypfilens demo-router. Visuellt facit: den godkända
+`preview/category-direction-round-2`-riktningen (round-1 är fortsatt
+anti-referens).
+
+**Verklig upptäckt som ändrade planen:** ingen enskild riktig
+Nyehandel-kategori kombinerar idag engångsvapes+carts+batterier --
+`alla-vapes` (24 produkter) är rent format-homogen (bara "Vape"/"Vape
+Dual"), `alla-cartridges` ("Alla Carts") och `pennor` ("Pennor/Batteri")
+är separata sidor. Avstämt med Vilmer i chatten: bygg klart dagens
+komponent generellt/datadrivet mot de riktiga sidor som finns, en
+eventuell kodad ihopslagen "Vapes & carts"-sida är ett eget, senare
+beslut (egen URL/SEO/canonical-fråga, inte del av denna uppgift).
+
+**Primär snabbvalsaxel — generell regel, ingen hårdkodad lista:**
+1. Om de riktiga produktkortens namn (`.details .name`, första ordet)
+   visar ≥2 olika produkttyper → produkttyp blir primär axel, med
+   Nyehandels egen native "Serie"-filtergrupp som sekundär nivå
+   ("Välj serie"), omberäknad mot vilka serier som faktiskt förekommer
+   bland de just synliga korten.
+2. Annars, om native "Serie" redan har ≥2 riktiga alternativ (plattformen
+   visar bara serier med faktiska träffar) → serie blir primär axel direkt.
+3. Annars ingen snabbvalsrad alls.
+
+Verifierat idag: `alla-vapes` hamnar i gren 2 (Alla/Core/Magic Sauce --
+native "Serie"-data, INTE den gamla prototypens "THCA-B"/Faraoh, som
+inte är en riktig serietagg i dagens katalog). `blommor-buds` hamnar
+FAKTISKT i gren 1 (Alla/Buds/Blommor/Isolat, med Nano11/Magic Sauce som
+sekundär serienivå under "Buds") -- alltså tvärtom mot vad den gamla
+prototypen antog, men korrekt enligt regeln och dagens riktiga data.
+Gren 1:s producttype-först-flöde är alltså riktigt LIVE-verifierat på
+Blommor, inte bara byggt och overifierat.
+
+**Native integration, inget parallellt filtersystem:** serie-snabbvalen
+klickar Nyehandels egen `<a role="button">`-kontroll i `#sidebar`
+(samma element admin-filtret redan äger) -- native URL/state/rendering/
+produkträkning (`#products_count`) opåverkat, bara vår UI-yta ovanpå.
+Produkttyp-axeln har ingen native motsvarighet och döljer/visar riktiga
+`.product-card`-element klientsidan via en namnad CSS-klass
+(`.nh-cattop-hidden`) -- **känd, ärligt kvarstående begränsning:**
+i det läget uppdateras INTE Nyehandels egen "N produkter"-räknare
+(den hör ihop med native-filtret, inte vår klient-only döljning).
+
+**West Coast-markör:** bara palmikonen (SVG, terra), INGEN
+"Good Plants Better Days"-text i produktion -- den copyn är inte
+dokumenterad som godkänd, se uppdragets egen instruktion om det.
+
+**Stabila DOM-ankare** (kartlagda live, se rapport för fullständig
+karta): `#skip-to-main-content > article.category-description` (H1.title
++ native `.nh-cat-lead`/`.nh-cat-box` från `initReadMore()`) och
+`div.container.designer-category > section.main-container.category.
+has-sidebar` (native filter/sort/`.products`-grid) är SYSKON -- vår
+`.nh-cattop-quickpicks-wrap` injiceras mellan dem. `.vertical-filters__
+product-filter__item h4` (native gruppetiketter "Varumärke"/"Serie"/
+"Lagerstatus") är den riktiga källan för serie-vokabuläret.
+
+**Idempotens/re-render:** wired in i den redan etablerade delade
+`MutationObserver`:n i `js/08-footer.js` (samma mönster som
+`initReadMore`/`initCategoryPage`) -- ingen ny observer. `initCategoryTop()`
+guardar ombyggnad på `location.pathname`, men synkar alltid om
+`aria-current` mot native checkbox-state (serie-axeln) vid varje körning.
+
+**Observerat, EJ orsakat av denna ändring:** `alla-vapes` har två
+`<h1>` (den synliga `h1.title` + en andra H1 inne i den långa
+SEO-artikelns egen rubrik, `.readmore__content h1`) -- ett
+befintligt innehålls-/temaproblem i katalogadmin, inte något jag rör
+(katalogändringar är utanför scope). `blommor-buds` har bara en H1.
+
+**Restylning av native `.category-sort`-verktygsrad:** `css/07-category-
+filter-sort-clean-toolbar-branded-dropdow.css`s etablerade
+`#323d25`-brandade "Filtrera"-knapp (den ÄLDRE, sajtomfattande
+`.is-primary`-konventionen, se HAZEY-DESIGN-SYSTEM.md §9 pkt 4) är
+MEDVETET oförändrad i sin färg -- bara mått/padding justerat + tvingad
+enradslayout (native bröt annars till två rader < ~480px) i den nya
+filen, med matchande selektor-specificitet så kaskadordningen (senare
+fil vinner) räcker utan att höja specificiteten. Sorteringsknappens
+text ("Publiceringsdatum" m.fl., riktigt Vue-bundet innehåll) trunkeras
+visuellt med ellipsis vid platsbrist -- aldrig bytt ut eller gissat.
+
+**Ändrade källfiler:** `css/23-category-top-v1.css` (ny),
+`js/03-category.js` (utökad med `initCategoryTop()` + hjälpfunktioner),
+`js/08-footer.js` (wiring i befintlig boot/observer) + genererade filer.
