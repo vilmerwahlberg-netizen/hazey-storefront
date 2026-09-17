@@ -14784,4 +14784,21 @@ a.nh-mt-item:hover { color: var(--nh-terra-deep, #96683f); }
   .nh-pser .pser-row {
     max-width: 1400px;
   }
+  /* BUGGFYND (2026-09-17): Bästsäljare fick samma 100vw+26px-fullbredds-
+     teknik som Populära serier (se .nh-featured.section-gap ovan,
+     tillagd i 389a3c6) för att dela vänsterkant -- men ENDAST
+     vänsterkanten kopierades, aldrig breddCAPEN precis ovanför (samma
+     media-block, .nh-pser .sec-head/.pser-row {max-width:1400px}).
+     Resultat, uppmätt live vid 1920px FÖRE denna fix: .nh-featured-row
+     saknade max-width helt, så grid-kolumnerna (repeat(4,1fr)) delade
+     hela den tillgängliga 1868px-bredden jämnt -- 458px per kort i
+     stället för Populära seriers oförändrade ~334px. Samma fix som
+     ovan, samma tal (1400px), inte en ny, gissad breddgräns -- ger
+     ~341px/kort vid 1920px (341=(1400-3*12px gap)/4) och NOLL effekt
+     vid 1440px (1388px innehållsbredd < 1400px, capen binder aldrig
+     där, kortbredden 338px oförändrad). */
+  .nh-featured .sec-head,
+  .nh-featured-row {
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+  }
 }
