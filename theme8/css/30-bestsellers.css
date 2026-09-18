@@ -20,6 +20,7 @@
 .hz8-mini-product h3 { margin: 6px 0 1px; font: 700 12px/1.15 Arial, sans-serif !important; }
 .hz8-mini-product small { color: var(--hz8-muted); font: 400 11px/1.15 Arial, sans-serif !important; }
 .hz8-mini-product strong { margin-top: 3px; color: var(--hz8-ink); font: 700 14px/1.1 Arial, sans-serif !important; }
+.hz8-mini-product .hz8-add { color: #fff; }
 .hz8-add {
   position: absolute; right: 9px; bottom: 9px; width: 28px; height: 28px;
   border: 0; border-radius: 50%; background: var(--hz8-green); color: #fff;

@@ -21,7 +21,7 @@
 .hz8-product h3 { margin-top: 10px; margin-bottom: 2px; font: 700 13px/1.15 Arial, sans-serif !important; }
 .hz8-product small { min-height: 14px; color: var(--hz8-muted); font: 400 11px/1.2 Arial, sans-serif !important; }
 .hz8-product strong { margin-top: 10px; font: 700 15px/1 Arial, sans-serif !important; }
-.hz8-product .hz8-add { bottom: 10px; }
+.hz8-product .hz8-add { bottom: 10px; color: #fff; }
 
 @media (max-width: 900px) {
   .hz8-series__grid, .hz8-products__grid { grid-template-columns: repeat(2, 1fr); }
