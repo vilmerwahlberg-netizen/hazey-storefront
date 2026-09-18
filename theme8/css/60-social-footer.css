@@ -2,6 +2,11 @@
 .hz8-review { min-height: 218px; margin: 0; padding: 27px; border: 1px solid var(--hz8-line); border-radius: 6px; background: var(--hz8-paper); display: flex; flex-direction: column; justify-content: space-between; font: 400 14px/1.42 Arial, sans-serif !important; }
 .hz8-review--feature { border: 0; background: linear-gradient(rgba(0,67,51,.82),rgba(0,67,51,.82)), url("assets/hero-venice-background.png") center/cover; color: #fff; }
 .hz8-review strong { color: #e99a21; letter-spacing: 2px; }
+.hz8-review__foot { display: flex; flex-direction: column; gap: 3px; }
+.hz8-review__score { font: 700 13px/1 Arial, sans-serif !important; }
+.hz8-review--feature .hz8-review__score { color: #fff; }
+.hz8-review__verified { color: var(--hz8-muted); font: 400 11px/1 Arial, sans-serif !important; }
+.hz8-review--feature .hz8-review__verified { color: rgba(255,255,255,.75); }
 .hz8-score { display: inline-flex; align-items: center; gap: 7px; }
 .hz8-score__stars { color: #e99a21; letter-spacing: 1px; }
 
