@@ -20,8 +20,6 @@
   .hz8-campaign { position: relative; inset: auto; width: 100%; height: 190px; clip-path: none; }
 }
 
-@media (max-width: 767px) { .hz8-campaigns { display: none; } }
-
 @media (min-width: 1600px) {
   .hz8-campaigns { height: 584px; }
   .hz8-campaign__copy { left: 32px; top: 27px; }
