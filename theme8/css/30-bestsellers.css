@@ -46,6 +46,7 @@
 .hz8-featured__qty-btn:hover { border-color: #151515; }
 .hz8-featured__qty-value { min-width: 22px; text-align: center; font: 700 15px/1 Arial, sans-serif !important; }
 .hz8-featured__cta { width: 100%; min-height: 44px; border: 0; border-radius: 4px; background: var(--hz8-orange); color: #fff; font: 700 13px/1 Arial, sans-serif !important; }
+.hz8-featured .hz8-featured__cta { color: #fff; }
 
 @media (max-width: 900px) {
   .hz8-bestsellers__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 220px) 440px; height: auto; }
