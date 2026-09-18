@@ -5,6 +5,8 @@
   "description": "Hazey.se (Nyehandel) storefront facelift — CSS + injected JS.",
   "scripts": {
     "build": "node build.js",
+    "build:theme8": "node build-theme8.js",
+    "build:all": "npm run build && npm run build:theme8",
     "parity:update": "PARITY_MODE=update playwright test",
     "parity:update-impl": "PARITY_MODE=update-impl playwright test",
     "parity": "playwright test",

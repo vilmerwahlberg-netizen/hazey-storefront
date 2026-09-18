@@ -67,8 +67,8 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
 
-      - name: Build hazey.css / hazey.min.js
-        run: npm run build
+      - name: Build Theme 6 and isolated Theme 8 assets
+        run: npm run build:all
 
       # build.js's own terser step already exits non-zero (failing this
       # step, and the whole job) on a real minification error. This is an
@@ -83,7 +83,9 @@ jobs:
         run: |
           test -s hazey.css
           test -s hazey.min.js
-          echo "hazey.css and hazey.min.js exist and are non-empty."
+          test -s dist/theme8/hazey-theme8.css
+          test -s dist/theme8/hazey-theme8.min.js
+          echo "Theme 6 and Theme 8 outputs exist and are non-empty."
 
       # Assemble ONLY what tema 6's dev-loader actually needs into a
       # clean, throwaway directory — never the repo root. This keeps
@@ -100,6 +102,12 @@ jobs:
           # automatically -- no workflow edit needed the next time a new
           # asset subfolder is added.
           cp -r assets _site/assets
+          # Theme 8 is published under a separate URL namespace. Theme 6's
+          # existing root URLs and assets remain byte-for-byte compatible.
+          mkdir -p _site/theme8/assets
+          cp dist/theme8/hazey-theme8.css _site/theme8/
+          cp dist/theme8/hazey-theme8.min.js _site/theme8/
+          cp -r theme8/assets/. _site/theme8/assets/
           echo "Published site contents:"
           find _site -type f | sort
 

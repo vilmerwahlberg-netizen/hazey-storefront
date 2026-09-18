@@ -1,0 +1,42 @@
+<!-- Theme 8 development loader. Paste this as the ONLY content of the
+     JavaScript field in a NEW, INACTIVE Nyehandel theme. Never use it in
+     Theme 6 or a published theme. -->
+<script>
+(function () {
+  var html = document.documentElement;
+  var BASE = "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/";
+  var BUST = "?t=" + Date.now();
+
+  window.HZ8_ASSET_BASE = BASE + "assets/";
+
+  if (document.querySelector("[data-hz8-dev-css]") || document.querySelector("[data-hz8-dev-js]")) {
+    return;
+  }
+
+  html.classList.add("hz8-boot");
+  setTimeout(function () { html.classList.remove("hz8-boot"); }, 2500);
+
+  function loadScript() {
+    if (document.querySelector("[data-hz8-dev-js]")) return;
+    var script = document.createElement("script");
+    script.setAttribute("data-hz8-dev-js", "1");
+    script.src = BASE + "hazey-theme8.min.js" + BUST;
+    script.onerror = function () {
+      html.classList.remove("hz8-boot");
+      console.error("[Hazey Theme 8] JavaScript could not be loaded.");
+    };
+    document.head.appendChild(script);
+  }
+
+  var link = document.createElement("link");
+  link.setAttribute("data-hz8-dev-css", "1");
+  link.rel = "stylesheet";
+  link.href = BASE + "hazey-theme8.css" + BUST;
+  link.onload = loadScript;
+  link.onerror = function () {
+    console.error("[Hazey Theme 8] CSS could not be loaded; native page remains available.");
+    loadScript();
+  };
+  document.head.appendChild(link);
+})();
+</script>
