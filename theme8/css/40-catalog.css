@@ -1,0 +1,30 @@
+.hz8-series__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.hz8-series-card {
+  position: relative; height: 154px; overflow: hidden; border-radius: 6px; color: #fff;
+  background: var(--hz8-green); isolation: isolate;
+}
+.hz8-series-card, .hz8-series-card b, .hz8-series-card span { color: #fff !important; }
+.hz8-series-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(0,55,42,.88), rgba(0,55,42,.08)); }
+.hz8-series-card img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.hz8-series-card b { position: absolute; left: 16px; top: 14px; font: 600 28px/.92 "Iowan Old Style", Georgia, serif !important; }
+.hz8-series-card span { position: absolute; left: 16px; bottom: 13px; font: 600 11px/1 Arial, sans-serif !important; text-transform: uppercase; letter-spacing: .08em; }
+
+.hz8-products__filters { display: flex; gap: 8px; margin: 0 0 12px; }
+.hz8-products__filters button { border: 1px solid var(--hz8-line); border-radius: 999px; padding: 7px 16px; background: var(--hz8-paper); color: var(--hz8-ink); font-size: 12px !important; }
+.hz8-products__filters button.is-active { border-color: #151515; background: #151515; color: #fff; }
+.hz8-products__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.hz8-product { position: relative; overflow: hidden; border: 1px solid var(--hz8-line); border-radius: 6px; background: var(--hz8-paper); padding-bottom: 12px; }
+.hz8-product.is-hidden { display: none; }
+.hz8-product__media { height: 150px; background: #f2eadc; }
+.hz8-product__media img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.hz8-product h3, .hz8-product small, .hz8-product strong { display: block; margin-inline: 12px; }
+.hz8-product h3 { margin-top: 10px; margin-bottom: 2px; font: 700 13px/1.15 Arial, sans-serif !important; }
+.hz8-product small { min-height: 14px; color: var(--hz8-muted); font: 400 11px/1.2 Arial, sans-serif !important; }
+.hz8-product strong { margin-top: 10px; font: 700 15px/1 Arial, sans-serif !important; }
+.hz8-product .hz8-add { bottom: 10px; }
+
+@media (max-width: 900px) {
+  .hz8-series__grid, .hz8-products__grid { grid-template-columns: repeat(2, 1fr); }
+  .hz8-series-card:last-child, .hz8-product:last-child { grid-column: 1 / -1; }
+  .hz8-products__filters { overflow-x: auto; padding-bottom: 4px; }
+}

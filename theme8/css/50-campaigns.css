@@ -1,0 +1,21 @@
+.hz8-campaigns { position: relative; height: 438px; }
+.hz8-campaign { position: absolute; overflow: hidden; border-radius: 7px; color: #fff; isolation: isolate; }
+.hz8-campaign, .hz8-campaign strong, .hz8-campaign .hz8-campaign__copy > span { color: #fff !important; }
+.hz8-campaign img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.hz8-campaign::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(0,67,51,.94), rgba(0,67,51,.58) 42%, rgba(0,67,51,.03) 78%); }
+.hz8-campaign__copy { position: absolute; left: 24px; top: 20px; display: flex; flex-direction: column; }
+.hz8-campaign__copy strong { font: 600 34px/.95 "Iowan Old Style", Georgia, serif !important; }
+.hz8-campaign__copy span { margin-top: 3px; font: 600 18px/1.03 "Iowan Old Style", Georgia, serif !important; }
+.hz8-campaign__cta { position: absolute; left: 24px; bottom: 18px; padding: 8px 13px; border-radius: 4px; background: #fff; color: #17301f; font: 700 11px/1 Arial, sans-serif !important; }
+.hz8-campaign--thcab { left: 0; top: 0; width: calc(50% - 6px); height: 58%; clip-path: url(#hz8-campaign-tl); }
+.hz8-campaign--magic { left: 0; bottom: 0; width: calc(50% - 6px); height: 58%; clip-path: url(#hz8-campaign-bl); color: #172717; }
+.hz8-campaign--magic, .hz8-campaign--magic strong, .hz8-campaign--magic .hz8-campaign__copy > span { color: #172717 !important; }
+.hz8-campaign--magic::after { background: linear-gradient(90deg, rgba(232,166,50,.96), rgba(232,166,50,.42), rgba(232,166,50,.02)); }
+.hz8-campaign--thca { right: 0; top: 0; width: calc(50% - 6px); height: calc(50% - 6px); }
+.hz8-campaign--nano { right: 0; bottom: 0; width: calc(50% - 6px); height: calc(50% - 6px); }
+.hz8-campaign--nano::after { background: linear-gradient(90deg, rgba(0,104,135,.92), rgba(0,104,135,.30), transparent); }
+
+@media (max-width: 900px) {
+  .hz8-campaigns { height: auto; display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .hz8-campaign { position: relative; inset: auto; width: 100%; height: 190px; clip-path: none; }
+}

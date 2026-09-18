@@ -1,0 +1,25 @@
+.hz8-reveal { opacity: 0; filter: blur(7px); transform: translateY(12px); transition: opacity .72s var(--hz8-ease), filter .72s var(--hz8-ease), transform .72s var(--hz8-ease); }
+.hz8-reveal.is-visible { opacity: 1; filter: none; transform: none; }
+.hz8-reveal-group > * { opacity: 0; filter: blur(6px); transform: translateY(12px); transition: opacity .7s var(--hz8-ease), filter .7s var(--hz8-ease), transform .7s var(--hz8-ease); }
+.hz8-reveal-group.is-visible > * { opacity: 1; filter: none; transform: none; }
+.hz8-reveal-group.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.hz8-reveal-group.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.hz8-reveal-group.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.hz8-reveal-group.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+
+.hz8-bestsellers__title span { display: inline-flex; overflow: hidden; }
+.hz8-bestsellers__title i { display: inline-block; opacity: 0; font: inherit; font-style: normal; filter: blur(4px); transform: translateY(110%); }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__title i { animation: hz8-letter-wave .65s var(--hz8-ease) both; animation-delay: calc(var(--i) * 38ms); }
+.hz8-bestsellers__grid > * { opacity: 0; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > * { animation: hz8-card-in .72s var(--hz8-ease) both; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > *:nth-child(1) { animation-delay: .5s; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > *:nth-child(2) { animation-delay: .62s; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > *:nth-child(3) { animation-delay: .74s; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > *:nth-child(4) { animation-delay: .86s; }
+.hz8-bestsellers.is-sequenced .hz8-bestsellers__grid > *:nth-child(5) { animation-delay: 1s; }
+@keyframes hz8-letter-wave { 65% { opacity:1; filter:none; transform:translateY(-6%); } to { opacity:1; filter:none; transform:none; } }
+@keyframes hz8-card-in { from { opacity:0; filter:blur(7px); transform:translateY(14px); } to { opacity:1; filter:none; transform:none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hz8-reveal, .hz8-reveal-group > *, .hz8-bestsellers__title i, .hz8-bestsellers__grid > * { opacity: 1 !important; filter: none !important; transform: none !important; }
+}
