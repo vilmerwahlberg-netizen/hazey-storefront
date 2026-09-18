@@ -1,4 +1,13 @@
-.hz8-campaigns { position: relative; height: 438px; }
+/* margin-bottom (not padding): .hz8-campaign children are position:absolute
+   with bottom:0 + percentage heights resolved against the padding box, whose
+   bottom edge coincides with this section's own border-box edge (box-sizing:
+   border-box, no border) -- so .hz8-home__section's padding-bottom never
+   creates visible space here the way it does for every other (normal-flow)
+   section. Confirmed via getBoundingClientRect: last card bottom and
+   .hz8-reviews h2 top landed on the exact same y-coordinate. Only applies
+   >900px -- below that .hz8-campaign is position:relative in normal flow and
+   the existing padding-bottom already produces a correct ~28px gap there. */
+.hz8-campaigns { position: relative; height: 438px; margin-bottom: 34px; }
 .hz8-campaign { position: absolute; overflow: hidden; border-radius: 7px; color: #fff; isolation: isolate; }
 .hz8-campaign, .hz8-campaign strong, .hz8-campaign .hz8-campaign__copy > span { color: #fff !important; }
 .hz8-campaign img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
@@ -16,12 +25,12 @@
 .hz8-campaign--nano::after { background: linear-gradient(90deg, rgba(0,104,135,.92), rgba(0,104,135,.30), transparent); }
 
 @media (max-width: 900px) {
-  .hz8-campaigns { height: auto; display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .hz8-campaigns { height: auto; display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 0; }
   .hz8-campaign { position: relative; inset: auto; width: 100%; height: 190px; clip-path: none; }
 }
 
 @media (min-width: 1600px) {
-  .hz8-campaigns { height: 584px; }
+  .hz8-campaigns { height: 584px; margin-bottom: 45px; }
   .hz8-campaign__copy { left: 32px; top: 27px; }
   .hz8-campaign__copy strong { font-size: 45px !important; }
   .hz8-campaign__copy span { font-size: 24px !important; }
