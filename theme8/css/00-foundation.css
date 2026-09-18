@@ -3,7 +3,10 @@
 :root {
   --hz8-ink: #172717;
   --hz8-cream: #f6f0e5;
-  --hz8-orange: #df7428;
+  /* Pixel-mätt medelvärde av 8 CTA-knappsampel (Handla nu / Lägg i
+     varukorg / Kontakta oss) över alla tre facit-bredder (393/1440/1920),
+     spann #be4b11-#c54f18, se implementeringsrapport för metod. */
+  --hz8-orange: #c14e16;
   --hz8-green: #005743;
   --hz8-ease: cubic-bezier(.25,.46,.45,.94);
 }

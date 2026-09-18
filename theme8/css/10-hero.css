@@ -99,7 +99,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   min-height: 54px;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 999px;
   padding: 0 24px;
   font: 700 15px/1 Arial,sans-serif !important;
 }
