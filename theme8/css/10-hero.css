@@ -169,20 +169,34 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 }
 
 @media (max-width: 767px) {
-  .hz8-hero { min-height: 690px; }
-  .hz8-hero__inner { width: 100%; min-height: 690px; }
-  .hz8-hero__copy { width: auto; padding: 34px 20px 0; }
-  .hz8-hero h1 { max-width: 350px; font-size: 43px !important; }
+  .hz8-hero { min-height: 386px; }
+  .hz8-hero__inner { width: 100%; min-height: 386px; }
+  .hz8-hero__copy { width: auto; padding: 38px 20px 0; }
+  .hz8-hero h1 { max-width: 350px; margin-bottom: 14px; font-size: 45px !important; line-height: 1.02 !important; }
   .hz8-hero__lede { max-width: 340px; font-size: 15px !important; }
-  .hz8-hero__trust { margin-bottom: 14px; }
+  .hz8-hero__trust, .hz8-hero__secondary, .hz8-hero__more { display: none; }
   .hz8-hero__actions { align-items: stretch; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 48px; padding: 0 18px; font-size: 13px !important; }
   .hz8-hero__microtrust { display: none; }
-  .hz8-hero__products { right: -115px; bottom: -18px; width: 620px; max-width: none; }
+  .hz8-hero__products { display: none; }
   .hz8-hero__bar, .hz8-hero__background {
     background-position: 58% center;
     background-image:
-      linear-gradient(180deg,rgba(255,249,237,.96) 0%,rgba(255,249,237,.80) 43%,rgba(255,249,237,.16) 70%,transparent 100%),
+      linear-gradient(90deg,rgba(255,249,237,.92) 0%,rgba(255,249,237,.70) 48%,rgba(255,249,237,.06) 82%),
       url("assets/hero-venice-background.png");
   }
+}
+
+@media (min-width: 1600px) {
+  .hz8-hero, .hz8-hero__inner { min-height: 674px; }
+  .hz8-hero__inner { width: min(100% - 80px, 1760px); }
+  .hz8-hero__copy { width: 760px; padding-top: 78px; }
+  .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
+  .hz8-hero__eyebrow { font-size: 16px !important; margin-bottom: 18px; }
+  .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 22px; }
+  .hz8-hero__trust { font-size: 16px !important; margin-bottom: 20px; }
+  .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
+  .hz8-hero__more { font-size: 17px !important; }
+  .hz8-hero__microtrust { margin-top: 20px; font-size: 15px !important; gap: 10px 28px; }
+  .hz8-hero__products { right: -28px; bottom: -70px; width: min(57vw, 1080px); }
 }

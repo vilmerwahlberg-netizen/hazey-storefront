@@ -33,3 +33,20 @@
   .hz8-footer__inner { grid-template-columns: 1fr 1fr; }
   .hz8-footer__brand { grid-column: 1 / -1; }
 }
+
+@media (max-width: 767px) { .hz8-reviews, .hz8-faq, .hz8-footer { display: none; } }
+
+@media (min-width: 1600px) {
+  .hz8-review { min-height: 291px; padding: 36px; font-size: 18px !important; }
+  .hz8-faq { gap: 24px; }
+  .hz8-faq__card { min-height: 380px; padding: 45px; }
+  .hz8-faq__card h2 { font-size: 36px !important; }
+  .hz8-faq__card p { font-size: 17px !important; }
+  .hz8-faq__card a { padding: 15px 23px; font-size: 16px !important; }
+  .hz8-faq__list details { padding: 20px 7px; }
+  .hz8-faq__list summary { font-size: 17px !important; }
+  .hz8-footer { margin-inline: -24px; padding: 59px 24px 29px; }
+  .hz8-footer__inner, .hz8-footer__bottom { width: min(100%,1760px); }
+  .hz8-footer__inner { gap: 40px; font-size: 16px !important; }
+  .hz8-footer__brand strong { font-size: 41px !important; }
+}

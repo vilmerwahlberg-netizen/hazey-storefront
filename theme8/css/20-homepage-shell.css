@@ -21,7 +21,15 @@ html.hz8 .hz8-native-footer-hidden { display: none !important; }
 .hz8-home__head a, .hz8-home__head > span { font: 700 12px/1.2 Arial, sans-serif !important; }
 
 @media (max-width: 767px) {
-  .hz8-home { padding: 28px 14px 0; }
+  .hz8-home { padding: 22px 14px 0; }
   .hz8-home__section { padding-bottom: 28px; }
   .hz8-home__head h2 { font-size: 24px !important; }
+}
+
+@media (min-width: 1600px) {
+  .hz8-home { padding-top: 52px; }
+  .hz8-home__section { width: min(100%, 1760px); padding-bottom: 45px; }
+  .hz8-home__head { margin-bottom: 17px; }
+  .hz8-home__head h2 { font-size: 39px !important; }
+  .hz8-home__head a, .hz8-home__head > span { font-size: 16px !important; }
 }

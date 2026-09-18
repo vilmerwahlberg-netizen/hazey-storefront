@@ -1,9 +1,11 @@
 import { chromium } from "playwright";
 
 const browser = await chromium.launch({ headless: true });
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
 const targetUrl = process.argv[2] || "file:///Users/wahlberg/HZY/hemsidor/hazey-storefront/theme8/review/hero-pilot.html";
 const outputPath = process.argv[3] || "/private/tmp/hz8-home-full-1440-scrolled.png";
+const viewportWidth = Number(process.argv[4] || 1440);
+const viewportHeight = Number(process.argv[5] || 900);
+const page = await browser.newPage({ viewport: { width: viewportWidth, height: viewportHeight }, deviceScaleFactor: 1 });
 await page.goto(targetUrl, { waitUntil: "networkidle" });
 await page.waitForTimeout(3200);
 const height = await page.evaluate(() => document.documentElement.scrollHeight);
