@@ -31,9 +31,28 @@
       + products.map(function (product) { return card(product, context.assetBase); }).join("")
       + '<article class="hz8-featured">'
       + '<a class="hz8-featured__art" href="/sv/categories/thca"><span class="hz8-featured__badge">BÄSTSÄLJARE</span><img src="' + context.assetBase + 'campaign-thca.jpg" alt="THCa Flower"></a>'
-      + '<div class="hz8-featured__copy"><h3>THCa Flower – Sunset Gelato</h3><p>Premium indoor flower med fyllig arom, balanserad profil och hög kvalitet.</p><strong class="hz8-featured__price">299 kr</strong><span class="hz8-featured__stock">I lager</span><a class="hz8-featured__cta" href="/sv/categories/thca">Visa produkten</a></div>'
+      + '<div class="hz8-featured__copy"><h3>THCa Flower – Sunset Gelato</h3><p>Premium indoor flower med fyllig arom, balanserad profil och hög kvalitet.</p><strong class="hz8-featured__price">299 kr</strong><span class="hz8-featured__stock">I lager (12 st)</span>'
+      + '<div class="hz8-featured__qty" role="group" aria-label="Antal">'
+      + '<button type="button" class="hz8-featured__qty-btn" data-qty-step="-1" aria-label="Minska antal">−</button>'
+      + '<span class="hz8-featured__qty-value" aria-live="polite">1</span>'
+      + '<button type="button" class="hz8-featured__qty-btn" data-qty-step="1" aria-label="Öka antal">+</button>'
+      + '</div>'
+      + '<a class="hz8-featured__cta" href="/sv/categories/thca">Lägg i varukorg</a></div>'
       + '</article></div>';
     context.home.appendChild(section);
     context.bestsellers = section;
+
+    /* Visuell kvantitetsväljare, enkel lokal state -- Theme 8 har ingen
+       riktig cart-logik någonstans (endast href-länkar), så detta ändrar
+       bara siffran som visas, min 1, ingen övre gräns. */
+    var qtyValue = section.querySelector(".hz8-featured__qty-value");
+    var qty = 1;
+    section.querySelectorAll(".hz8-featured__qty-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var step = Number(btn.getAttribute("data-qty-step"));
+        qty = Math.max(1, qty + step);
+        qtyValue.textContent = String(qty);
+      });
+    });
   });
 })();
