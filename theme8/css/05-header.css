@@ -71,6 +71,14 @@ html.hz8 #store-header > *{
    och hero-sektionen inte reserverar något eget utrymme). */
 html.hz8 #store-main{
   padding-top:0!important;
+  /* Ytterligare ~24px kvarstod ändå ovanför hero-bilden efter fixen
+     ovan -- ett native, av oss oberoende offset som kvarstår identiskt
+     även med hela Theme 8 helt avstängt (verifierat), och som inte gick
+     att spåra till någon enskild CSS-regel trots omfattande sökning.
+     Kompenseras pragmatiskt med en negativ margin-top; effekten är
+     verifierad (hero-bilden börjar nu exakt vid y=0 vid alla tre
+     bredder) även om plattformens exakta mekanism förblir okänd. */
+  margin-top:-24px!important;
 }
 
 /* USP-tickern (.topbar) -- borttagen på explicit instruktion (Vilmer,
