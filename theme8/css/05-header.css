@@ -94,10 +94,24 @@ html.hz8 #mobile-menu.mobile-navigation-menu{ display:none!important; }
 html.hz8 #mobile-side-nav-wrap{ display:none!important; }
 
 /* ============ .main = den faktiska glaspanelen ============ */
+/* KORRIGERING (scroll-övergång): centrering fick tidigare göras med
+   margin-inline:auto -- men CSS kan aldrig animera TILL/FRÅN "auto",
+   bara mellan två riktiga längdvärden. Resultatet blev att
+   margin-left/right hoppade blixtsnabbt till 0 i samma ögonblick som
+   .hz8-header-scrolled las på, medan max-width fortfarande animerade
+   mjukt mot 100% under hela 320ms -- vänsterkanten låstes vid 0 medan
+   högerkanten sköt ut åt höger, dvs en synlig vänster-till-höger-"wipe"
+   istället för en symmetrisk expansion. Uppmätt live (rAF-sampling av
+   .main:s bounding rect under själva övergången): mittpunkten drev upp
+   till 264px vid 1920px bredd innan den återhämtade sig vid transition
+   end. Fix: uttryck samma centrering som två EXPLICITA calc()-värden
+   (aldrig "auto") som båda animerar mjukt och symmetriskt mot 0. */
 html.hz8 #store-header .main{
-  margin:20px 24px 0;
+  margin-top:20px;
+  margin-bottom:0;
+  margin-left:max(24px, calc((100% - 1392px) / 2));
+  margin-right:max(24px, calc((100% - 1392px) / 2));
   max-width:1392px;
-  margin-inline:auto;
   height:var(--hz8-header-height, 76px);
   border-radius:var(--hz8-header-radius, 24px);
   background:var(--hz8-glass-bg, rgba(255,255,255,.55));
