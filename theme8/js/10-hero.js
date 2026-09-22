@@ -12,6 +12,7 @@
     section.innerHTML = ''
       + '<div class="hz8-hero__bar" aria-hidden="true"></div>'
       + '<div class="hz8-hero__background" aria-hidden="true"></div>'
+      + '<div class="hz8-hero__van-photo" aria-hidden="true"></div>'
       + '<div class="hz8-hero__inner">'
       + '  <div class="hz8-hero__copy">'
       + '    <h1 id="hz8-hero-title"><span class="hz8-hero__title-line" data-line="1">Sveriges bredaste</span><br><span class="hz8-hero__title-line" data-line="2">sortiment.</span></h1>'
@@ -32,7 +33,6 @@
       + '    <source media="(max-width: 767px)" srcset="' + context.assetBase + 'hero-van-mobile-v2.png">'
       + '    <img src="' + context.assetBase + 'hero-van-desktop-v2.png" alt="">'
       + '  </picture>'
-      + '  <div class="hz8-hero__van-photo" aria-hidden="true"></div>'
       + '</div>';
 
     var nativeRoot = nativeHero.closest(".template-components__slideshow") || nativeHero;
