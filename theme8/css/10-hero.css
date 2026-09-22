@@ -15,8 +15,8 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   inset-inline: 0;
   top: 0;
   background-image:
-    linear-gradient(90deg,rgba(255,249,237,.97) 0%,rgba(255,249,237,.89) 29%,rgba(255,249,237,.20) 53%,transparent 70%),
-    url("assets/hero-venice-background.png");
+    linear-gradient(90deg,rgba(255,249,237,.90) 0%,rgba(255,249,237,.74) 29%,rgba(255,249,237,.12) 53%,transparent 70%),
+    url("assets/hero-beach-desktop-v2.png");
   background-size: cover;
   background-position: center 53%;
 }
@@ -52,7 +52,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero__secondary,
 .hz8-hero__more,
 .hz8-hero__microtrust,
-.hz8-hero__products { opacity: 0; }
+.hz8-hero__van { opacity: 0; }
 
 .hz8-hero__eyebrow {
   margin: 0 0 14px;
@@ -135,15 +135,28 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero__microtrust span { display: inline-flex; align-items: center; gap: 6px; }
 .hz8-hero__microtrust svg { width: 15px; height: 15px; color: #98653c; }
 
-.hz8-hero__products {
+.hz8-hero__van {
   position: absolute;
+  isolation: isolate;
   z-index: 1;
-  right: max(-42px, calc((100vw - 1460px) / 2));
-  bottom: -52px;
-  width: min(57vw, 825px);
-  height: auto;
+  right: 0;
+  bottom: 0;
+  width: min(53vw, 760px);
   pointer-events: none;
 }
+.hz8-hero__van::before {
+  content: "";
+  position: absolute;
+  left: 33%;
+  right: 2%;
+  bottom: 3px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(39, 28, 14, .32);
+  filter: blur(10px);
+  z-index: -1;
+}
+.hz8-hero__van img { display: block; width: 100%; height: auto; }
 
 .hz8-hero.is-entering .hz8-hero__bar { animation: hz8-scale-x .48s var(--hz8-ease) .18s both; }
 .hz8-hero.is-entering .hz8-hero__background { animation: hz8-scale-y .72s var(--hz8-ease) .54s both; }
@@ -153,7 +166,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: 1.18s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .56s var(--hz8-ease) 1.54s both; }
-.hz8-hero.is-entering .hz8-hero__products { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
+.hz8-hero.is-entering .hz8-hero__van { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
 .hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .5s var(--hz8-ease) 1.72s both; }
 .hz8-hero.is-entering .hz8-hero__secondary,
 .hz8-hero.is-entering .hz8-hero__more { animation: hz8-fade-blur .52s var(--hz8-ease) 1.88s both; }
@@ -178,12 +191,12 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__actions { align-items: stretch; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 48px; padding: 0 18px; font-size: 13px !important; }
   .hz8-hero__microtrust { display: none; }
-  .hz8-hero__products { display: none; }
+  .hz8-hero__van { right: -5px; bottom: -4px; width: 300px; }
   .hz8-hero__bar, .hz8-hero__background {
-    background-position: 58% center;
+    background-position: center center;
     background-image:
-      linear-gradient(90deg,rgba(255,249,237,.92) 0%,rgba(255,249,237,.70) 48%,rgba(255,249,237,.06) 82%),
-      url("assets/hero-venice-background.png");
+      linear-gradient(90deg,rgba(255,249,237,.74) 0%,rgba(255,249,237,.52) 48%,rgba(255,249,237,.04) 82%),
+      url("assets/hero-beach-mobile-v2.png");
   }
 }
 
@@ -198,5 +211,24 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
   .hz8-hero__more { font-size: 17px !important; }
   .hz8-hero__microtrust { margin-top: 20px; font-size: 15px !important; gap: 10px 28px; }
-  .hz8-hero__products { right: -28px; bottom: -70px; width: min(57vw, 1080px); }
+  .hz8-hero__van { right: 0; bottom: 0; width: min(53vw, 1020px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hz8-hero.is-entering .hz8-hero__bar,
+  .hz8-hero.is-entering .hz8-hero__background,
+  .hz8-hero.is-entering .hz8-hero__eyebrow,
+  .hz8-hero.is-entering .hz8-hero__title-line,
+  .hz8-hero.is-entering .hz8-hero__lede,
+  .hz8-hero.is-entering .hz8-hero__van,
+  .hz8-hero.is-entering .hz8-hero__trust,
+  .hz8-hero.is-entering .hz8-hero__secondary,
+  .hz8-hero.is-entering .hz8-hero__more,
+  .hz8-hero.is-entering .hz8-hero__microtrust,
+  .hz8-hero.is-entering .hz8-hero__primary {
+    animation: none !important;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
 }

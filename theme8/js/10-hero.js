@@ -29,7 +29,10 @@
       + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Leveransgaranti</span>'
       + '    </div>'
       + '  </div>'
-      + '  <img class="hz8-hero__products" src="' + context.assetBase + 'hero-products-layer.png" alt="Magic Sauce, Venice Vibes och Hazey-produkter">'
+      + '  <picture class="hz8-hero__van" aria-hidden="true">'
+      + '    <source media="(max-width: 767px)" srcset="' + context.assetBase + 'hero-van-mobile-v2.png">'
+      + '    <img src="' + context.assetBase + 'hero-van-desktop-v2.png" alt="">'
+      + '  </picture>'
       + '</div>';
 
     var nativeRoot = nativeHero.closest(".template-components__slideshow") || nativeHero;
