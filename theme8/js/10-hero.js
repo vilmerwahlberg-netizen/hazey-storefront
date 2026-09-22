@@ -14,7 +14,6 @@
       + '<div class="hz8-hero__background" aria-hidden="true"></div>'
       + '<div class="hz8-hero__inner">'
       + '  <div class="hz8-hero__copy">'
-      + '    <p class="hz8-hero__eyebrow">Premium cannabinoider</p>'
       + '    <h1 id="hz8-hero-title"><span class="hz8-hero__title-line" data-line="1">Sveriges bredaste</span><br><span class="hz8-hero__title-line" data-line="2">sortiment.</span></h1>'
       + '    <p class="hz8-hero__lede">Ett brett utbud av lagliga cannabinoider för ett skönare liv. Inspirerad av naturen. Formad av frihet.</p>'
       + '    <div class="hz8-hero__trust"><span class="hz8-hero__stars" aria-hidden="true">★★★★★</span><span>4,7/5 på Trustpilot</span></div>'

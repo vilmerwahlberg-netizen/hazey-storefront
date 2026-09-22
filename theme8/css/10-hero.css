@@ -18,7 +18,8 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
     linear-gradient(90deg,rgba(255,249,237,.90) 0%,rgba(255,249,237,.74) 29%,rgba(255,249,237,.12) 53%,transparent 70%),
     url("assets/hero-beach-desktop-v2.png");
   background-size: cover;
-  background-position: center 53%;
+  /* Keep the street/sand visible at the bottom so the van has a ground plane. */
+  background-position: center bottom;
 }
 
 .hz8-hero__bar {
@@ -43,14 +44,9 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   margin: 0 auto;
 }
 
-/* padding-top höjt 58px -> 120px (header-uppföljningsprompten, "Fel 2"):
-   den flytande glasheadern (20px topp-marginal + 76px höjd = botten vid
-   96px) täcker nu hero-bilden direkt från y=0 istället för att ha ett
-   dött utrymme ovanför sig -- utan denna höjning hamnade eyebrow-texten
-   ("PREMIUM CANNABINOIDER") delvis dold bakom headerpanelen. */
+/* Clear the floating header without leaving an empty strip above the hero. */
 .hz8-hero__copy { width: min(560px, 47vw); padding-top: 120px; }
 
-.hz8-hero__eyebrow,
 .hz8-hero__title-line,
 .hz8-hero__lede,
 .hz8-hero__trust,
@@ -58,14 +54,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero__more,
 .hz8-hero__microtrust,
 .hz8-hero__van { opacity: 0; }
-
-.hz8-hero__eyebrow {
-  margin: 0 0 14px;
-  color: #174134;
-  font: 700 12px/1.2 Arial,sans-serif !important;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
 
 .hz8-hero h1 {
   margin: 0 0 22px;
@@ -165,9 +153,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 
 .hz8-hero.is-entering .hz8-hero__bar { animation: hz8-scale-x .48s var(--hz8-ease) .18s both; }
 .hz8-hero.is-entering .hz8-hero__background { animation: hz8-scale-y .72s var(--hz8-ease) .54s both; }
-.hz8-hero.is-entering .hz8-hero__eyebrow,
 .hz8-hero.is-entering .hz8-hero__title-line { animation: hz8-fade-blur .62s var(--hz8-ease) both; }
-.hz8-hero.is-entering .hz8-hero__eyebrow,
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: 1.18s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .56s var(--hz8-ease) 1.54s both; }
@@ -213,7 +199,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   /* padding-top höjt 78px -> 130px, samma orsak som basvarianten ovan. */
   .hz8-hero__copy { width: 760px; padding-top: 130px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
-  .hz8-hero__eyebrow { font-size: 16px !important; margin-bottom: 18px; }
   .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 22px; }
   .hz8-hero__trust { font-size: 16px !important; margin-bottom: 20px; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
@@ -225,7 +210,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .hz8-hero.is-entering .hz8-hero__bar,
   .hz8-hero.is-entering .hz8-hero__background,
-  .hz8-hero.is-entering .hz8-hero__eyebrow,
   .hz8-hero.is-entering .hz8-hero__title-line,
   .hz8-hero.is-entering .hz8-hero__lede,
   .hz8-hero.is-entering .hz8-hero__van,
