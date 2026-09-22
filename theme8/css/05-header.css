@@ -32,7 +32,7 @@
   --hz8-glass-border: rgba(255,255,255,.45);
   --hz8-glass-border-scrolled: rgba(23,39,23,.08);
   --hz8-header-radius: 24px;
-  --hz8-header-height: 76px;
+  --hz8-header-height: 66px;
   --hz8-header-height-mobile: 60px;
 }
 
@@ -128,7 +128,7 @@ html.hz8 #mobile-side-nav-wrap{ display:none!important; }
    end. Fix: uttryck samma centrering som två EXPLICITA calc()-värden
    (aldrig "auto") som båda animerar mjukt och symmetriskt mot 0. */
 html.hz8 #store-header .main{
-  margin-top:20px;
+  margin-top:14px;
   margin-bottom:0;
   margin-left:max(24px, calc((100% - 1392px) / 2));
   margin-right:max(24px, calc((100% - 1392px) / 2));
