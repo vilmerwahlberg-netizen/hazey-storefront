@@ -16,7 +16,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   top: 0;
   background-image:
     linear-gradient(90deg,rgba(255,249,237,.90) 0%,rgba(255,249,237,.74) 29%,rgba(255,249,237,.12) 53%,transparent 70%),
-    url("assets/hero-beach-desktop-v2.png");
+    url("assets/hero-scene-desktop-empty.png");
   background-size: cover;
   /* Keep the street/sand visible at the bottom so the van has a ground plane. */
   background-position: center bottom;
@@ -34,6 +34,28 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   transform: scaleY(0);
   transform-origin: center top;
   z-index: 0;
+}
+
+/* Desktop-only hero photo hybrid (>=768px, see media query below): a
+   second full-bleed photo of the SAME scene with the van already in it
+   (real camera lighting/shadow/perspective, no cutout compositing),
+   masked to reveal only its right portion and faded in during the
+   entrance timeline. Verified via pixel-diffing the two AI-generated
+   plates that the region left of the mask's feather is effectively
+   identical between them, and that the feather zone (41-47%) sits
+   safely after all copy text (max 39.7% width) and before the van's
+   own real content (from ~50%) -- an earlier, wider feather (18-46%)
+   caused a real, visible lightening across "Sveriges bredaste" from
+   a subtle global exposure difference between the two plates.
+   display:none by default; enabled only inside the >=768px query so it
+   can never affect the mobile layout below. */
+.hz8-hero__van-photo {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .hz8-hero__inner {
@@ -207,6 +229,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .56s var(--hz8-ease) 1.54s both; }
 .hz8-hero.is-entering .hz8-hero__van { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
+.hz8-hero.is-entering .hz8-hero__van-photo { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
 .hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .5s var(--hz8-ease) 1.72s both; }
 .hz8-hero.is-entering .hz8-hero__secondary,
 .hz8-hero.is-entering .hz8-hero__more { animation: hz8-fade-blur .52s var(--hz8-ease) 1.88s both; }
@@ -242,6 +265,22 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   }
 }
 
+/* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo declaration
+   above for the full rationale. The old transparent-PNG van (still used
+   on mobile, untouched below) is hidden here so exactly one van layer
+   is ever visible at a given width. */
+@media (min-width: 768px) {
+  .hz8-hero__van { display: none; }
+  .hz8-hero__van-photo {
+    display: block;
+    background-image: url("assets/hero-scene-desktop-van.png");
+    background-size: cover;
+    background-position: center bottom;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 41%, #000 47%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 41%, #000 47%, #000 100%);
+  }
+}
+
 @media (min-width: 1600px) {
   .hz8-hero, .hz8-hero__inner { min-height: 710px; }
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
@@ -262,6 +301,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero.is-entering .hz8-hero__title-line,
   .hz8-hero.is-entering .hz8-hero__lede,
   .hz8-hero.is-entering .hz8-hero__van,
+  .hz8-hero.is-entering .hz8-hero__van-photo,
   .hz8-hero.is-entering .hz8-hero__trust,
   .hz8-hero.is-entering .hz8-hero__secondary,
   .hz8-hero.is-entering .hz8-hero__more,

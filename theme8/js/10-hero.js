@@ -32,6 +32,7 @@
       + '    <source media="(max-width: 767px)" srcset="' + context.assetBase + 'hero-van-mobile-v2.png">'
       + '    <img src="' + context.assetBase + 'hero-van-desktop-v2.png" alt="">'
       + '  </picture>'
+      + '  <div class="hz8-hero__van-photo" aria-hidden="true"></div>'
       + '</div>';
 
     var nativeRoot = nativeHero.closest(".template-components__slideshow") || nativeHero;
