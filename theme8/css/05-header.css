@@ -189,6 +189,12 @@ html.hz8 #store-header .search-input-container{
   border:0!important;
   border-radius:0!important;
   box-shadow:none!important;
+  /* KORRIGERING (vertikal centrering): denna wrapper är nativt
+     display:flex men align-items:normal (=stretch till toppen), så
+     40px-pillen låg kvar överkant-justerad i sin 50px-höga förälder
+     -- 5px för högt jämfört med headerns övriga ikoner (mätt: cy=42
+     mot header-cy=47). align-items:center centrerar den korrekt. */
+  align-items:center;
 }
 html.hz8 #store-header .search-field{
   background:rgba(255,255,255,.6);
@@ -254,6 +260,12 @@ html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
 /* Desktop-bara: göm mobilens hamburgare + mobil-sök-trigger */
 @media (min-width:768px){
   html.hz8 #store-header .hamburger{ display:none!important; }
+  /* KORRIGERING (ojämna mellanrum): uppmätt nav->sök = 137px, sök->konto
+     = 137px (redan i samklang), men konto->varukorg bara 94px -- bröt
+     den annars konsekventa rytmen. Jämnar ut till samma ~137px genom
+     att bara knuffa varukorgen, utan att röra de två redan korrekta
+     gapen eller native kontot/varukorgens egen storlek/funktion. */
+  html.hz8 #store-header .basket-icon{ margin-left:43px; }
 }
 
 /* ============ MOBIL — brytpunkt ============ */
