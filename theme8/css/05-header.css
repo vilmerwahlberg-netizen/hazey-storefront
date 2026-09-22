@@ -177,7 +177,19 @@ html.hz8 #store-header #search-container{
   order:3; flex:0 1 320px; min-width:0;
 }
 html.hz8 #store-header .store-search__header{ background:transparent; }
-html.hz8 #store-header .search-input-container{ width:100%; }
+/* KORRIGERING (dubbel-box): Nyehandels egen .search-input-container
+   (241x50px, vit bakgrund, 2px grå border, radius 6px) omslöt vår redan
+   korrekt stylade .search-field-pill (glas, radius 999px) -- två
+   synliga, nästlade boxar. Neutraliserar containerns egen visuella
+   yta helt så bara pillen syns; sökfunktionen i sig (input/knapp/
+   dropdown) rörs inte, bara den yttre wrapperns bakgrund/kant/radie. */
+html.hz8 #store-header .search-input-container{
+  width:100%;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
 html.hz8 #store-header .search-field{
   background:rgba(255,255,255,.6);
   border-radius:999px!important;
