@@ -3,7 +3,12 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 
 .hz8-hero {
   position: relative;
-  min-height: 540px;
+  /* 540 -> 570 (+30px): gives the bottom-anchored .hz8-hero__microtrust
+     (position:absolute; bottom:32px, unchanged) room to move down along
+     with the rest of the copy group without becoming flush against the
+     section's own bottom edge -- its 32px offset from the edge is
+     unchanged, only its absolute position shifts as the section grows. */
+  min-height: 570px;
   overflow: hidden;
   background: var(--hz8-cream);
   color: var(--hz8-ink);
@@ -62,12 +67,17 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   position: relative;
   z-index: 2;
   width: min(100% - 48px, 1316px);
-  min-height: 540px;
+  min-height: 570px;
   margin: 0 auto;
 }
 
-/* Clear the floating header without leaving an empty strip above the hero. */
-.hz8-hero__copy { width: min(560px, 47vw); padding-top: 120px; }
+/* Clear the floating header without leaving an empty strip above the hero.
+   120 -> 144 (+24px): the previous fix only cleared the header (16px
+   gap, header bottom to H1); this pushes the whole copy group (H1/lede/
+   trust/CTAs/pill) down further for real breathing room underneath it,
+   moving as one block since they're all normal-flow siblings below this
+   padding. */
+.hz8-hero__copy { width: min(560px, 47vw); padding-top: 144px; }
 
 .hz8-hero__title-line,
 .hz8-hero__lede,
@@ -291,10 +301,11 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 }
 
 @media (min-width: 1600px) {
-  .hz8-hero, .hz8-hero__inner { min-height: 710px; }
+  /* +30px, samma motivering/mekanism som basvariantens 540->570. */
+  .hz8-hero, .hz8-hero__inner { min-height: 740px; }
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
-  /* padding-top höjt 78px -> 130px, samma orsak som basvarianten ovan. */
-  .hz8-hero__copy { width: 760px; padding-top: 130px; }
+  /* padding-top höjt 78px -> 130px -> 154px (+24px), samma orsak/mekanism som basvarianten ovan. */
+  .hz8-hero__copy { width: 760px; padding-top: 154px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
   .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 22px; }
   .hz8-hero__trust { font-size: 16px !important; margin-bottom: 20px; }
