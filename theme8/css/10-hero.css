@@ -130,11 +130,19 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   text-underline-offset: 3px;
 }
 
+/* Bottom-anchored to .hz8-hero__inner (position:relative ancestor)
+   instead of following normal flow -- .hz8-hero__inner's min-height is
+   taller than the copy's own content, so in-flow the row was landing
+   163px above the section's bottom edge. Absolute positioning decouples
+   it from the copy's flow height without moving H1/lede/CTA above it. */
 .hz8-hero__microtrust {
+  position: absolute;
+  left: 0;
+  bottom: 32px;
+  width: min(560px, 47vw);
   display: flex;
   flex-wrap: wrap;
   gap: 8px 22px;
-  margin-top: 15px;
   color: #666158;
   font: 600 12px/1.3 Arial,sans-serif !important;
 }
@@ -233,7 +241,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__trust { font-size: 16px !important; margin-bottom: 20px; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
   .hz8-hero__more { font-size: 17px !important; }
-  .hz8-hero__microtrust { margin-top: 20px; font-size: 15px !important; gap: 10px 28px; }
+  .hz8-hero__microtrust { width: 760px; font-size: 15px !important; gap: 10px 28px; }
   .hz8-hero__van { right: 0; bottom: 0; width: min(53vw, 1020px); }
 }
 
