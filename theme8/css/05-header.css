@@ -57,6 +57,22 @@ html.hz8 #store-header > *{
   flex:0 0 auto!important;
 }
 
+/* KORRIGERING (hero-överlappning): #store-header är redan nativt
+   position:fixed (tar ingen egen plats i dokumentflödet) -- men
+   Nyehandels egen <main id="store-main"> har en HÅRDKODAD
+   padding-top (180px desktop / 100px mobil) som native-plattformen
+   själv reserverar åt den GAMLA, högre headern (180/100px). Den
+   padding-en känner inte till att vår header nu bara är 76/60px hög,
+   så resultatet blev ett dött, tomt glapp mellan header och hero --
+   inte headern som låg "ovanför" hero i flödet (den gör den aldrig),
+   utan en föråldrad kompensation som aldrig uppdaterades. Nollställs
+   här så att hero-bilden börjar vid y=0, med den flytande glaspanelen
+   ovanpå (exakt som i prototypen, där header-wrappern flyter fritt
+   och hero-sektionen inte reserverar något eget utrymme). */
+html.hz8 #store-main{
+  padding-top:0!important;
+}
+
 /* USP-tickern (.topbar) är riktigt, befintligt innehåll (fraktvillkor,
    Trustpilot-omdöme) -- tas ALDRIG bort. Döljs bara i scrollat läge,
    då den fullbredda sticky-glasbaren tar över topp-positionen (samma

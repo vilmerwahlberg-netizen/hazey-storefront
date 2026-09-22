@@ -43,7 +43,12 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   margin: 0 auto;
 }
 
-.hz8-hero__copy { width: min(560px, 47vw); padding-top: 58px; }
+/* padding-top höjt 58px -> 120px (header-uppföljningsprompten, "Fel 2"):
+   den flytande glasheadern (20px topp-marginal + 76px höjd = botten vid
+   96px) täcker nu hero-bilden direkt från y=0 istället för att ha ett
+   dött utrymme ovanför sig -- utan denna höjning hamnade eyebrow-texten
+   ("PREMIUM CANNABINOIDER") delvis dold bakom headerpanelen. */
+.hz8-hero__copy { width: min(560px, 47vw); padding-top: 120px; }
 
 .hz8-hero__eyebrow,
 .hz8-hero__title-line,
@@ -184,7 +189,9 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 @media (max-width: 767px) {
   .hz8-hero { min-height: 386px; }
   .hz8-hero__inner { width: 100%; min-height: 386px; }
-  .hz8-hero__copy { width: auto; padding: 38px 20px 0; }
+  /* padding-top höjt 38px -> 90px, samma orsak som desktop-varianten
+     ovan -- mobilheaderns botten ligger vid 12px+60px=72px. */
+  .hz8-hero__copy { width: auto; padding: 90px 20px 0; }
   .hz8-hero h1 { max-width: 350px; margin-bottom: 14px; font-size: 45px !important; line-height: 1.02 !important; }
   .hz8-hero__lede { max-width: 340px; font-size: 15px !important; }
   .hz8-hero__trust, .hz8-hero__secondary, .hz8-hero__more { display: none; }
@@ -203,7 +210,8 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 @media (min-width: 1600px) {
   .hz8-hero, .hz8-hero__inner { min-height: 674px; }
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
-  .hz8-hero__copy { width: 760px; padding-top: 78px; }
+  /* padding-top höjt 78px -> 130px, samma orsak som basvarianten ovan. */
+  .hz8-hero__copy { width: 760px; padding-top: 130px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
   .hz8-hero__eyebrow { font-size: 16px !important; margin-bottom: 18px; }
   .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 22px; }
