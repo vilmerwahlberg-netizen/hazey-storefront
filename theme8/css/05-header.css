@@ -1,0 +1,266 @@
+/* ============================================================
+   HEADER PORT — flytande glasig header -> fullbredds sticky bar
+   Portad från godkänd prototyp:
+   /Users/wahlberg/HZY/header-theme8-prototyp/index.html
+   (dess index.html + assets/hazey-logo.png, självbärande fil).
+
+   Reskinnar Nyehandels RIKTIGA #store-header i-läge. Logga, sök,
+   konto och varukorg är äkta Vue-bundna element -- flyttas ALDRIG
+   i DOM:en, bara omstylade eller (search-fältet, se nedan) lämnade
+   funktionellt orörda. Native mega-meny (nav.main-navbar) och
+   native mobilmeny-DRAWERNS INNEHÅLL ersätts visuellt (se
+   05-header.js) eftersom godkänd kategorilista (Alla produkter/
+   Vapes/Buds/Hasch/CBD/Kampanjer) skiljer sig från det som är
+   live just nu -- men alla länkar pekar på riktiga, verifierade
+   Nyehandel-kategorisidor (se 05-header.js).
+
+   KÄND AVVIKELSE mot prototypen (dokumenterad, inte dold):
+   prototypens sökknapp är enbart en ikon (klick = "DEMO ENDAST").
+   Nyehandels riktiga sökfält är redan permanent synligt i headerns
+   mittzon på desktop (fungerande autocomplete/dropdown). Att tvinga
+   fram ikon-only-med-expand hade krävt att bygga om plattformens
+   egna sök-UI-state -- risk utan verklig vinst. Sökfältet ligger
+   kvar där det är, bara omstylat (kompakt, pill-form, Hazey-toner)
+   i stället för att flyttas till höger som en ikon.
+   ============================================================ */
+
+:root{
+  /* Header-specifika tillägg -- glaseffekt/layout, inga nya brand-färger
+     (samma tokens som i den godkända prototypen). */
+  --hz8-glass-bg: rgba(255,255,255,.55);
+  --hz8-glass-bg-scrolled: rgba(246,240,229,.72);
+  --hz8-glass-border: rgba(255,255,255,.45);
+  --hz8-glass-border-scrolled: rgba(23,39,23,.08);
+  --hz8-header-radius: 24px;
+  --hz8-header-height: 76px;
+  --hz8-header-height-mobile: 60px;
+}
+
+/* #store-header is native display:flex;flex-direction:column with an
+   explicit fixed height (180px desktop/100px mobile) -- its three
+   children (.topbar/.main/nav) share that fixed total via flex-grow.
+   Collapsing .topbar and hiding nav therefore doesn't shrink the
+   header; the freed space gets redistributed into whichever child
+   still has flex-grow, silently overriding any height we set on it.
+   Fix: let the header itself size to its real content (height:auto)
+   and pin every child to flex-grow:0/flex-shrink:0 so each one's own
+   height rule is authoritative. */
+html.hz8 #store-header{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  overflow:visible;
+  z-index:100;
+  height:auto!important;
+}
+html.hz8 #store-header > *{
+  flex:0 0 auto!important;
+}
+
+/* USP-tickern (.topbar) är riktigt, befintligt innehåll (fraktvillkor,
+   Trustpilot-omdöme) -- tas ALDRIG bort. Döljs bara i scrollat läge,
+   då den fullbredda sticky-glasbaren tar över topp-positionen (samma
+   välkända mönster som "headroom"-headers: ticker syns i vila,
+   försvinner så fort den kompakta sticky-baren aktiveras). */
+html.hz8 #store-header .topbar{
+  transition:opacity 200ms var(--hz8-ease), max-height 200ms var(--hz8-ease);
+  max-height:60px;
+}
+html.hz8 body.hz8-header-scrolled #store-header .topbar{
+  opacity:0; max-height:0; overflow:hidden; pointer-events:none;
+}
+
+/* Native mega-meny -- ersätts av .hz8-header-nav (05-header.js).
+   Klassnamnet på denna <nav> varierar per sidtyp (t.ex.
+   "nav.navbar.main-navbar" på startsidan men bara "nav.navbar" på en
+   kategorisida) -- matcha strukturellt (tredje direkta barnet till
+   #store-header, efter .topbar och .main) i stället för ett specifikt
+   klassnamn, så den döljs korrekt överallt. */
+html.hz8 #store-header > nav{ display:none!important; }
+
+/* Native mobilmeny-drawer -- innehållet matchar inte godkänd
+   kategorilista (visar hela det verkliga, långa kategoriträdet).
+   Döljs permanent (oavsett Vues egen öppen/stängd-transform) och
+   ersätts av en egen, enklare drawer (.hz8-mobile-drawer) med samma
+   sex kategorier som desktop-navigationen -- se 05-header.js för
+   varför detta är säkrare än att injicera i Vue-hanterad DOM. */
+html.hz8 #mobile-menu.mobile-navigation-menu{ display:none!important; }
+/* Native drawer-wrappern har EGNA sub-element (t.ex. en "tab"-header
+   för meny-nivå-navigering) som INTE ligger inuti #mobile-menu och
+   därför inte täcks av regeln ovan -- de blir synliga/klickbara när
+   Vue sätter .is-active vid öppning, och kan då hamna ovanpå vår egen
+   hamburgare/drawer (uppmätt: en 133x55px yta i övre vänstra hörnet,
+   exakt där hamburgaren nu sitter visuellt). Neutraliserad helt. */
+html.hz8 #mobile-side-nav-wrap{ display:none!important; }
+
+/* ============ .main = den faktiska glaspanelen ============ */
+html.hz8 #store-header .main{
+  margin:20px 24px 0;
+  max-width:1392px;
+  margin-inline:auto;
+  height:var(--hz8-header-height, 76px);
+  border-radius:var(--hz8-header-radius, 24px);
+  background:var(--hz8-glass-bg, rgba(255,255,255,.55));
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--hz8-glass-border, rgba(255,255,255,.45));
+  box-shadow:0 12px 40px rgba(23,39,23,.18);
+  transition:background 320ms var(--hz8-ease), border-radius 320ms var(--hz8-ease),
+             border-color 320ms var(--hz8-ease), box-shadow 320ms var(--hz8-ease),
+             max-width 320ms var(--hz8-ease), height 320ms var(--hz8-ease),
+             margin 320ms var(--hz8-ease);
+}
+html.hz8 #store-header .main .container{
+  max-width:none; width:100%; height:100%;
+  display:flex; align-items:center; gap:24px; padding:0 24px;
+}
+
+html.hz8 body.hz8-header-scrolled #store-header .main{
+  margin:0; max-width:100%; border-radius:0; height:68px;
+  background:var(--hz8-glass-bg-scrolled, rgba(246,240,229,.72));
+  border-color:var(--hz8-glass-border-scrolled, rgba(23,39,23,.08));
+  border-width:0 0 1px 0;
+  box-shadow:0 4px 20px rgba(23,39,23,.06);
+}
+
+/* ---- Logo ---- */
+html.hz8 #store-header .left,
+html.hz8 #store-header .brand.header-logo{ display:contents; }
+html.hz8 #store-header .brand.header-logo a{
+  order:1; flex-shrink:0; display:flex; align-items:center;
+}
+html.hz8 #store-header .brand.header-logo img{
+  height:22px; width:auto; max-height:22px; max-width:none;
+}
+
+/* ---- Sökfält (center) -- funktionellt orört, bara omstylat ---- */
+html.hz8 #store-header .center{ display:contents; }
+/* Klassen på #search-container varierar per sidtyp (t.ex.
+   ".header-search" tillagd på startsidan men saknas på en
+   kategorisida) -- matcha bara på ID:t, som är stabilt överallt. */
+html.hz8 #store-header #search-container{
+  order:3; flex:0 1 320px; min-width:0;
+}
+html.hz8 #store-header .store-search__header{ background:transparent; }
+html.hz8 #store-header .search-input-container{ width:100%; }
+html.hz8 #store-header .search-field{
+  background:rgba(255,255,255,.6);
+  border-radius:999px!important;
+  border:1px solid rgba(23,39,23,.12)!important;
+  height:40px;
+}
+html.hz8 #store-header .search-field input{
+  background:transparent!important; border:0!important; height:38px;
+}
+html.hz8 body.hz8-header-scrolled #store-header .search-field{
+  background:#fff;
+}
+
+/* ---- Höger: konto + varukorg + (mobil) sök-trigger/hamburgare ---- */
+html.hz8 #store-header .right,
+html.hz8 #store-header .actions.account-basket{ display:contents; }
+html.hz8 #store-header .account-button{ order:4; }
+html.hz8 #store-header .basket-icon{ order:5; }
+html.hz8 #store-header #mobile-search-trigger{ order:2; }
+/* Hamburgaren finns bara i DOM:en, flyttas ALDRIG -- omplacerad visuellt
+   längst till vänster (före loggan) via display:contents + order ovan/
+   nedan, ingen DOM-manipulation, så dess riktiga klick-hanterare
+   (öppnar nu VÅR egen drawer, se 05-header.js) aldrig påverkas av
+   Vues egna re-renders. */
+html.hz8 #store-header .hamburger{ order:0; }
+
+html.hz8 #store-header .account-button,
+html.hz8 #store-header .basket-icon .cart-button,
+html.hz8 #store-header #mobile-search-trigger,
+html.hz8 #store-header .hamburger{
+  color:var(--hz8-ink);
+}
+
+/* ---- Ny nav (05-header.js injicerar .hz8-header-nav som syskon till
+   .left, mellan logga och sök) ---- */
+html.hz8 .hz8-header-nav{
+  order:2; display:flex; align-items:center; gap:22px; flex-shrink:0;
+}
+html.hz8 .hz8-header-nav a.hz8-cat{
+  display:flex; align-items:center; gap:5px;
+  font:600 13px/1 Arial, sans-serif;
+  color:var(--hz8-ink); white-space:nowrap;
+}
+html.hz8 .hz8-header-nav a.hz8-cat:hover,
+html.hz8 .hz8-header-nav a.hz8-cat:focus-visible{ opacity:.65; }
+html.hz8 .hz8-header-nav a.hz8-cat.hz8-cat--campaign{ color:var(--hz8-orange); }
+html.hz8 .hz8-header-nav .hz8-cat-item{ position:relative; }
+html.hz8 .hz8-header-nav .hz8-dropdown{
+  position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(6px);
+  background:#fffdf8; border:1px solid rgba(23,39,23,.08); border-radius:14px;
+  box-shadow:0 16px 40px rgba(23,39,23,.12);
+  padding:14px; min-width:180px;
+  font-size:13px; font-weight:500; color:var(--hz8-ink);
+  opacity:0; visibility:hidden;
+  transition:opacity 180ms var(--hz8-ease), transform 180ms var(--hz8-ease);
+}
+html.hz8 .hz8-header-nav .hz8-cat-item:hover .hz8-dropdown,
+html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
+  opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+}
+
+/* Desktop-bara: göm mobilens hamburgare + mobil-sök-trigger */
+@media (min-width:768px){
+  html.hz8 #store-header .hamburger{ display:none!important; }
+}
+
+/* ============ MOBIL — brytpunkt ============ */
+@media (max-width:767px){
+  html.hz8 #store-header .main{ margin:12px 12px 0; height:var(--hz8-header-height-mobile, 60px); border-radius:16px; }
+  html.hz8 body.hz8-header-scrolled #store-header .main{ margin:0; height:56px; border-radius:0; }
+  html.hz8 #store-header .main .container{ gap:0; padding:0 14px; }
+
+  html.hz8 .hz8-header-nav{ display:none; }
+
+  html.hz8 #store-header .hamburger{ display:flex!important; order:0; }
+  html.hz8 #store-header .brand.header-logo a{ order:1; flex-grow:1; justify-content:center; }
+  html.hz8 #store-header .brand.header-logo img{ height:16px; }
+  html.hz8 #store-header #search-container{ display:none; }
+  html.hz8 #store-header #mobile-search-trigger{ order:2; display:flex!important; }
+  html.hz8 #store-header .account-button{ order:3; }
+  html.hz8 #store-header .basket-icon{ order:4; }
+}
+
+/* ============ Egen mobil-drawer (matchar desktop-navets 6 kategorier) ============ */
+.hz8-mobile-drawer{
+  position:fixed; inset:0; z-index:200;
+  visibility:hidden; pointer-events:none;
+}
+.hz8-mobile-drawer.is-open{ visibility:visible; pointer-events:auto; }
+.hz8-mobile-drawer__backdrop{
+  position:absolute; inset:0; background:rgba(23,39,23,.35);
+  opacity:0; transition:opacity 260ms var(--hz8-ease);
+}
+.hz8-mobile-drawer.is-open .hz8-mobile-drawer__backdrop{ opacity:1; }
+.hz8-mobile-drawer__panel{
+  position:absolute; top:0; left:0; bottom:0; width:82%; max-width:340px;
+  background:#fffdf8; box-shadow:20px 0 50px rgba(23,39,23,.18);
+  transform:translateX(-100%); transition:transform 320ms var(--hz8-ease);
+  display:flex; flex-direction:column; padding:24px 20px; overflow-y:auto;
+}
+.hz8-mobile-drawer.is-open .hz8-mobile-drawer__panel{ transform:translateX(0); }
+.hz8-mobile-drawer__header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+.hz8-mobile-drawer__header img{ height:18px; width:auto; }
+.hz8-mobile-drawer__close{ display:flex; color:var(--hz8-ink); }
+.hz8-mobile-drawer__list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+.hz8-mobile-drawer__list a{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 4px; font-size:16px; font-weight:600; color:var(--hz8-ink);
+  border-bottom:1px solid rgba(23,39,23,.08);
+}
+.hz8-mobile-drawer__list a.hz8-cat--campaign{ color:var(--hz8-orange); }
+
+@media (prefers-reduced-motion:reduce){
+  html.hz8 #store-header .main,
+  html.hz8 #store-header .topbar,
+  .hz8-mobile-drawer__backdrop,
+  .hz8-mobile-drawer__panel,
+  html.hz8 .hz8-header-nav .hz8-dropdown{
+    transition-duration:.01ms!important;
+  }
+}

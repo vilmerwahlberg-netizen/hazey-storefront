@@ -43,7 +43,7 @@
     };
 
     window.__HZ8_DIAGNOSTICS__ = {
-      version: "0.2.0-modular",
+      version: "0.3.0-modular",
       homepageDetected: !!homepageRoot,
       nativeHeaderDetected: !!header,
       nativeHeroDetected: !!hero,
@@ -52,13 +52,15 @@
       modules: modules.map(function (module) { return module.name; })
     };
 
-    if (!homepageRoot) {
-      html.classList.remove("hz8-boot");
-      return;
-    }
-
+    /* Theme 8 körs numera på ALLA sidtyper, inte bara startsidan --
+       headern (se 05-header.js) är global. Homepage-specifika moduler
+       (hero/bestsellers/catalog/campaigns/social-footer) skyddar sig
+       redan själva med "if (!context.home) return;", och context.home
+       sätts bara av homepage-shell.js när en riktig startsida hittas --
+       så de no-opar korrekt på kategori-/produktsidor utan ändring. */
     html.classList.add("hz8");
-    homepageRoot.setAttribute("data-hz8-state", "native-safe");
+    if (homepageRoot) homepageRoot.setAttribute("data-hz8-state", "native-safe");
+
     modules.forEach(function (module) {
       try {
         module.mount(context);
