@@ -14,30 +14,20 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   color: var(--hz8-ink);
 }
 
-.hz8-hero__bar,
+/* Entrance was a "curtain": .hz8-hero__bar swept in via scaleX and
+   .hz8-hero__background dropped in via scaleY -- removed per explicit
+   request (no bar element at all anymore, no scaling/movement on the
+   background). Background now does a plain opacity fade only. */
 .hz8-hero__background {
   position: absolute;
-  inset-inline: 0;
-  top: 0;
+  inset: 0;
   background-image:
     linear-gradient(90deg,rgba(255,249,237,.90) 0%,rgba(255,249,237,.74) 29%,rgba(255,249,237,.12) 53%,transparent 70%),
     url("assets/hero-scene-desktop-empty.png");
   background-size: cover;
   /* Keep the street/sand visible at the bottom so the van has a ground plane. */
   background-position: center bottom;
-}
-
-.hz8-hero__bar {
-  height: 6px;
-  transform: scaleX(0);
-  transform-origin: center top;
-  z-index: 0;
-}
-
-.hz8-hero__background {
-  bottom: 0;
-  transform: scaleY(0);
-  transform-origin: center top;
+  opacity: 0;
   z-index: 0;
 }
 
@@ -241,8 +231,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   filter: saturate(.92) contrast(.95) brightness(1.02) sepia(.05);
 }
 
-.hz8-hero.is-entering .hz8-hero__bar { animation: hz8-scale-x .48s var(--hz8-ease) .18s both; }
-.hz8-hero.is-entering .hz8-hero__background { animation: hz8-scale-y .72s var(--hz8-ease) .54s both; }
+.hz8-hero.is-entering .hz8-hero__background { animation: hz8-fade .6s var(--hz8-ease) .18s both; }
 .hz8-hero.is-entering .hz8-hero__title-line { animation: hz8-fade-blur .62s var(--hz8-ease) both; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: 1.18s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
@@ -255,8 +244,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero.is-entering .hz8-hero__microtrust { animation: hz8-fade-blur .52s var(--hz8-ease) 2s both; }
 .hz8-hero.is-entering .hz8-hero__primary { animation: hz8-fade .58s var(--hz8-ease) 2.04s both; }
 
-@keyframes hz8-scale-x { to { transform: scaleX(1); } }
-@keyframes hz8-scale-y { to { transform: scaleY(1); } }
 @keyframes hz8-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hz8-fade-blur {
   from { opacity: 0; filter: blur(7px); transform: translateY(8px); }
@@ -276,7 +263,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 48px; padding: 0 18px; font-size: 13px !important; }
   .hz8-hero__microtrust { display: none; }
   .hz8-hero__van { right: -5px; bottom: -4px; width: 300px; }
-  .hz8-hero__bar, .hz8-hero__background {
+  .hz8-hero__background {
     background-position: center center;
     background-image:
       linear-gradient(90deg,rgba(255,249,237,.74) 0%,rgba(255,249,237,.52) 48%,rgba(255,249,237,.04) 82%),
@@ -316,7 +303,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hz8-hero.is-entering .hz8-hero__bar,
   .hz8-hero.is-entering .hz8-hero__background,
   .hz8-hero.is-entering .hz8-hero__title-line,
   .hz8-hero.is-entering .hz8-hero__lede,

@@ -10,7 +10,6 @@
     section.setAttribute("data-hz8-hero", "1");
     section.setAttribute("aria-labelledby", "hz8-hero-title");
     section.innerHTML = ''
-      + '<div class="hz8-hero__bar" aria-hidden="true"></div>'
       + '<div class="hz8-hero__background" aria-hidden="true"></div>'
       + '<div class="hz8-hero__van-photo" aria-hidden="true"></div>'
       + '<div class="hz8-hero__inner">'
