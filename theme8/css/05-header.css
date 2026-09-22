@@ -73,17 +73,14 @@ html.hz8 #store-main{
   padding-top:0!important;
 }
 
-/* USP-tickern (.topbar) är riktigt, befintligt innehåll (fraktvillkor,
-   Trustpilot-omdöme) -- tas ALDRIG bort. Döljs bara i scrollat läge,
-   då den fullbredda sticky-glasbaren tar över topp-positionen (samma
-   välkända mönster som "headroom"-headers: ticker syns i vila,
-   försvinner så fort den kompakta sticky-baren aktiveras). */
+/* USP-tickern (.topbar) -- borttagen på explicit instruktion (Vilmer,
+   2026-09-22, header-uppföljningsprompten "Fel 3"). Tidigare gömdes den
+   bara i scrollat läge; nu döljs den helt, alltid. Ren visuell
+   CSS-döljning (display:none), Nyehandels egen data/funktion för
+   tickern rörs inte -- den finns kvar i DOM:en och skulle synas igen om
+   denna regel togs bort. */
 html.hz8 #store-header .topbar{
-  transition:opacity 200ms var(--hz8-ease), max-height 200ms var(--hz8-ease);
-  max-height:60px;
-}
-html.hz8 body.hz8-header-scrolled #store-header .topbar{
-  opacity:0; max-height:0; overflow:hidden; pointer-events:none;
+  display:none!important;
 }
 
 /* Native mega-meny -- ersätts av .hz8-header-nav (05-header.js).
@@ -287,7 +284,6 @@ html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
 
 @media (prefers-reduced-motion:reduce){
   html.hz8 #store-header .main,
-  html.hz8 #store-header .topbar,
   .hz8-mobile-drawer__backdrop,
   .hz8-mobile-drawer__panel,
   html.hz8 .hz8-header-nav .hz8-dropdown{
