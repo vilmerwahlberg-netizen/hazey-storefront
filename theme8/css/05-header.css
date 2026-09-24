@@ -305,19 +305,127 @@ html.hz8 .hz8-header-nav a.hz8-cat:hover,
 html.hz8 .hz8-header-nav a.hz8-cat:focus-visible{ opacity:.65; }
 html.hz8 .hz8-header-nav a.hz8-cat.hz8-cat--campaign{ color:var(--hz8-orange); }
 html.hz8 .hz8-header-nav .hz8-cat-item{ position:relative; }
+
+/* ============================================================
+   Dropdown-panel -- JS-styrd (.is-open), INTE ren :hover/:focus-within.
+   Se initDropdowns() i 05-header.js för öppning/stängning (hover-
+   intent-fördröjning, klick, tangentbord, en åt gången, Escape,
+   klick utanför). CSS här sköter bara det VISUELLA (opacity/transform/
+   blur), aldrig show/hide-logiken själv. */
 html.hz8 .hz8-header-nav .hz8-dropdown{
-  position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(6px);
-  background:#fffdf8; border:1px solid rgba(23,39,23,.08); border-radius:14px;
-  box-shadow:0 16px 40px rgba(23,39,23,.12);
-  padding:14px; min-width:180px;
-  font-size:13px; font-weight:500; color:var(--hz8-ink);
-  opacity:0; visibility:hidden;
-  transition:opacity 180ms var(--hz8-ease), transform 180ms var(--hz8-ease);
+  position:absolute; top:calc(100% + 14px); left:50%;
+  transform:translateX(-50%) translateY(6px);
+  background:rgba(255,253,247,.94);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid rgba(23,39,23,.09);
+  border-radius:18px;
+  box-shadow:0 20px 48px rgba(23,39,23,.16);
+  padding:22px;
+  width:min(72vw, 560px);
+  color:var(--hz8-ink);
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity 220ms var(--hz8-ease), transform 220ms var(--hz8-ease), filter 220ms var(--hz8-ease);
+  filter:blur(4px);
+  z-index:5;
 }
-html.hz8 .hz8-header-nav .hz8-cat-item:hover .hz8-dropdown,
-html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
-  opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);
+html.hz8 .hz8-header-nav .hz8-cat-item.is-open .hz8-dropdown{
+  opacity:1; visibility:visible; pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+  filter:blur(0);
 }
+/* CBD sitter näst längst till höger i navet -- ett centrerat 560px-brett
+   Kort skulle skjuta ut över headerns högerkant vid 1440px (uppmätt).
+   Höger-ankrat i stället för sina egna, smalare gruppstorlekar. */
+html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"] .hz8-dropdown{
+  left:auto; right:-24px;
+  transform:translateY(6px);
+}
+html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown{
+  transform:translateY(0);
+}
+
+.hz8-dropdown__grid{
+  display:flex; gap:28px; align-items:flex-start;
+}
+.hz8-dropdown__col--links{
+  flex:1 1 auto; min-width:0;
+  display:flex; flex-direction:column; gap:20px;
+}
+.hz8-dropdown__group{ display:flex; flex-direction:column; gap:2px; }
+.hz8-dropdown__heading{
+  margin:0 0 8px;
+  font:700 11px/1 Arial, sans-serif;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:#6f7a63;
+}
+.hz8-dropdown__list{ list-style:none; margin:0; padding:0; }
+.hz8-dropdown__list a{
+  display:block; padding:7px 0;
+  font:600 14px/1.2 Arial, sans-serif;
+  color:var(--hz8-ink);
+  border-radius:6px;
+  transition:color 140ms var(--hz8-ease), opacity 140ms var(--hz8-ease);
+}
+.hz8-dropdown__list a:hover,
+.hz8-dropdown__list a:focus-visible{ color:var(--hz8-orange); }
+.hz8-dropdown__cta{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:4px;
+  font:700 13px/1 Arial, sans-serif;
+  color:var(--hz8-orange);
+}
+.hz8-dropdown__cta:hover,
+.hz8-dropdown__cta:focus-visible{ text-decoration:underline; text-underline-offset:3px; }
+
+.hz8-dropdown__col--product{ flex:0 0 210px; }
+.hz8-dropdown__product{
+  display:flex; flex-direction:column;
+  border-radius:14px; overflow:hidden;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(23,39,23,.08);
+  transition:transform 180ms var(--hz8-ease), box-shadow 180ms var(--hz8-ease);
+}
+.hz8-dropdown__product:hover,
+.hz8-dropdown__product:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(23,39,23,.14);
+}
+.hz8-dropdown__product-media{
+  aspect-ratio:1/1; background:#fff;
+}
+.hz8-dropdown__product-media img{
+  width:100%; height:100%; object-fit:contain; display:block;
+}
+/* Badgen ligger i kort-KROPPEN, inte ovanpå bilden -- riktiga
+   produktfoton har ofta ett eget, inbakat pris-/styrka-märke nära
+   bildens överkant (uppmätt på flera riktiga produkter 2026-09-24,
+   t.ex. "19% THCX · 2ml"), som annars visuellt kolliderar med en
+   absolut-positionerad badge ovanpå bilden. Se renderProductCard(). */
+.hz8-dropdown__product-badge{
+  display:inline-block; margin-bottom:6px;
+  padding:4px 8px; border-radius:999px;
+  background:var(--hz8-orange); color:#fff;
+  font:700 9px/1 Arial, sans-serif; letter-spacing:.06em; text-transform:uppercase;
+}
+.hz8-dropdown__product-body{ padding:10px 12px 12px; }
+.hz8-dropdown__product-name{
+  display:block; margin:0 0 2px;
+  font:700 13px/1.25 Arial, sans-serif; color:var(--hz8-ink);
+}
+.hz8-dropdown__product-price{
+  display:block; font:700 14px/1 Arial, sans-serif; color:var(--hz8-ink);
+}
+.hz8-dropdown__product-stock{
+  display:block; margin-top:3px;
+  font:600 11px/1 Arial, sans-serif; color:#6f7a52;
+}
+.hz8-dropdown__product-link{
+  display:block; margin-top:8px;
+  font:700 12px/1 Arial, sans-serif; color:var(--hz8-orange);
+}
+
+/* (reduced-motion redan hanterad av headerns gemensamma block längre ner i filen) */
 
 /* Desktop-bara: göm mobilens hamburgare + mobil-sök-trigger */
 @media (min-width:768px){
@@ -346,6 +454,12 @@ html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
   html.hz8 #store-header .account-button{ order:3; }
   html.hz8 #store-header .basket-icon{ order:4; }
 }
+
+/* Bakgrundsscroll-lås medan mobil-drawern är öppen (se lockBodyScroll i
+   05-header.js) -- body.position=fixed kollapsar annars sin egen bredd
+   till innehållets naturliga bredd i vissa browsers, width:100% håller
+   den vid viewport-bredd så inget vågrätt hopp/scroll uppstår. */
+body.hz8-scroll-locked{ width:100%; }
 
 /* ============ Egen mobil-drawer (matchar desktop-navets 6 kategorier) ============ */
 .hz8-mobile-drawer{
@@ -376,11 +490,68 @@ html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
 }
 .hz8-mobile-drawer__list a.hz8-cat--campaign{ color:var(--hz8-orange); }
 
+/* ---- Mobil accordion (samma DROPDOWN_CONTENT-data som desktop) ---- */
+.hz8-mobile-accordion{ border-bottom:1px solid rgba(23,39,23,.08); }
+.hz8-mobile-accordion__trigger{
+  width:100%; min-height:44px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 4px; margin:0;
+  font:600 16px/1 Arial, sans-serif; color:var(--hz8-ink);
+  background:none; border:0; text-align:left; cursor:pointer;
+}
+.hz8-mobile-accordion__trigger svg{ flex-shrink:0; transition:transform 220ms var(--hz8-ease); }
+.hz8-mobile-accordion__trigger[aria-expanded="true"] svg{ transform:rotate(180deg); }
+.hz8-mobile-accordion__panel{
+  max-height:0; overflow:hidden;
+  transition:max-height 280ms var(--hz8-ease);
+}
+.hz8-mobile-accordion__panel.is-open{ max-height:2000px; }
+.hz8-mobile-accordion__inner{ padding:2px 4px 18px; }
+.hz8-mobile-accordion__group{ margin-bottom:14px; }
+.hz8-mobile-accordion__heading{
+  margin:0 0 6px;
+  font:700 11px/1 Arial, sans-serif; letter-spacing:.1em; text-transform:uppercase;
+  color:#6f7a63;
+}
+.hz8-mobile-accordion__list{ list-style:none; margin:0; padding:0; }
+.hz8-mobile-accordion__list a{
+  display:flex; align-items:center; min-height:44px;
+  font:600 15px/1 Arial, sans-serif; color:var(--hz8-ink);
+  border-bottom:0; padding:0;
+}
+.hz8-mobile-accordion__cta{
+  display:inline-flex; align-items:center; min-height:44px;
+  font:700 14px/1 Arial, sans-serif; color:var(--hz8-orange);
+  margin-top:4px;
+}
+.hz8-mobile-accordion__product{
+  display:flex; gap:12px; align-items:center;
+  margin-top:12px; padding:10px;
+  background:rgba(23,39,23,.03); border-radius:12px;
+  min-height:44px;
+}
+.hz8-mobile-accordion__product-media{
+  flex:0 0 56px; width:56px; height:56px; border-radius:8px;
+  background:#fff; border:1px solid rgba(23,39,23,.08);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.hz8-mobile-accordion__product-media img{ width:100%; height:100%; object-fit:contain; }
+.hz8-mobile-accordion__product-body{ min-width:0; flex:1 1 auto; }
+.hz8-mobile-accordion__product-badge{
+  display:inline-block; margin-bottom:3px; padding:2px 7px; border-radius:999px;
+  background:var(--hz8-orange); color:#fff;
+  font:700 8px/1.4 Arial, sans-serif; letter-spacing:.05em; text-transform:uppercase;
+}
+.hz8-mobile-accordion__product-name{ display:block; font:700 13px/1.25 Arial, sans-serif; color:var(--hz8-ink); }
+.hz8-mobile-accordion__product-price{ display:block; font:700 13px/1 Arial, sans-serif; margin-top:2px; }
+
 @media (prefers-reduced-motion:reduce){
   html.hz8 #store-header .main,
   html.hz8 #store-header .main::before,
   .hz8-mobile-drawer__backdrop,
   .hz8-mobile-drawer__panel,
+  .hz8-mobile-accordion__panel,
+  .hz8-mobile-accordion__trigger svg,
   html.hz8 .hz8-header-nav .hz8-dropdown{
     transition-duration:.01ms!important;
   }
