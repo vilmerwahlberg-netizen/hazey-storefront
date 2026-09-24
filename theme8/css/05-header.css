@@ -328,6 +328,19 @@ html.hz8 .hz8-header-nav .hz8-dropdown{
   transition:opacity 220ms var(--hz8-ease), transform 220ms var(--hz8-ease), filter 220ms var(--hz8-ease);
   filter:blur(4px);
   z-index:5;
+  /* KORRIGERING (2026-09-24, Serier+Format-utökningen gjorde panelen
+     betydligt högre): Nyehandels egen native ".main-wrapper" har
+     overflow:hidden och klipper allt som sticker ut ur dess box --
+     bekräftat live vid låg fönsterhöjd, oavsett att headern/panelen
+     själv ligger position:fixed. Att ändra en native platform-
+     wrapper vore både riskabelt (påverkar hela sajtens layout) och
+     utanför uppdragets scope. Den säkra, självförsörjande fixen är
+     att panelen ALDRIG växer högre än tillgängligt utrymme under
+     headern -- den kan då aldrig nå wrapperns klippgräns -- och
+     scrollar internt om innehållet ändå inte får plats. */
+  max-height:calc(100vh - 140px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
 }
 html.hz8 .hz8-header-nav .hz8-cat-item.is-open .hz8-dropdown{
   opacity:1; visibility:visible; pointer-events:auto;

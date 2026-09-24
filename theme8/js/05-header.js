@@ -4,14 +4,26 @@
   /* Godkänd kategorilista (från uppdraget, inte nyehandels nuvarande
      mega-meny) -- hrefs är VERIFIERADE riktiga Nyehandel-kategorisidor
      (kontrollerade live 2026-09-22 mot hazeyse.nyehandel.se), inte
-     gissade. Dropdown-innehållet är medvetet en tom platshållare tills
-     Vilmer bestämmer undersortimentet. */
+     gissade. Dropdown-innehållet byggs av DROPDOWN_CONTENT nedan.
+
+     KORRIGERING 2026-09-24: CBD-triggerns/CTA:ns mål bytt från
+     "cbd-group" (en 2-produkters VARUMÄRKES-sida, "CBD Group" --
+     bekräftat i Vapes egen Varumärke-filterfacett, inte en CBD-hubb)
+     till "h4cbd" (29 produkter, den riktiga, största konsoliderade
+     CBD-hubben på plattformen). Se DROPDOWN_CONTENT.cbd för samma
+     korrigering i undersidorna.
+
+     "Bästsäljare" tillagd som egen huvudlänk (uppdrag 2026-09-24 §9)
+     -- pekar på nyehandels EGNA, riktiga, merchant-kurerade
+     "Våra bästsäljare"-sida (verifierad live, ~45 riktiga produkter),
+     inte en gissad/konstruerad lista. */
   var CATEGORIES = [
     { label: "Alla produkter", href: "https://hazeyse.nyehandel.se/sv/categories/alla-produkter", dropdown: false },
+    { label: "Bästsäljare", href: "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare", dropdown: false },
     { label: "Vapes", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes", dropdown: true },
     { label: "Buds", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds", dropdown: true },
     { label: "Hasch", href: "https://hazeyse.nyehandel.se/sv/categories/hasch", dropdown: true },
-    { label: "CBD", href: "https://hazeyse.nyehandel.se/sv/categories/cbd-group", dropdown: true },
+    { label: "CBD", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd", dropdown: true },
     { label: "Kampanjer", href: "https://hazeyse.nyehandel.se/sv/page/kampanjer", dropdown: false, campaign: true }
   ];
 
@@ -103,54 +115,93 @@
 
   /* ============ Dropdown-innehåll ============
      EN samlad datakälla, återanvänd av BÅDE desktop-dropdown och
-     mobil-accordion (samma HTML byggs av samma data på båda ställena,
-     se buildDropdownBody()). Håll ALL manuell kuration -- länkar,
-     ordning, utvald produkt -- HÄR, ingenstans annanstans (inte i CSS,
-     inte i en andra JS-fil).
+     mobil-accordion. Håll ALL manuell kuration -- länkar, ordning,
+     utvald produkt -- HÄR, ingenstans annanstans (inte i CSS, inte i
+     en andra JS-fil).
 
-     "product"-fältet per kategori är headerns EGEN, centrala plats för
-     "vald produkt"-konfigurationen som uppdraget efterfrågar: byt bara
-     ut värdena här när en riktig bästsäljare bekräftas eller ett annat
-     utställningsobjekt väljs. badge ska vara "POPULÄRAST" ENDAST när
-     datan verkligen bygger på en bekräftad popularitetskälla (se
-     kommentar per produkt) -- annars "UTVALD PRODUKT". */
+     NAMNBYTE (uppdrag 2026-09-24 §1): "THCaB" är det NYA kundvända
+     namnet för det GAMLA/interna "THC-A"/"THCA" -- och "THCbA" för
+     det gamla/interna "THC-B"/"THCB". De interna Nyehandel-slugarna
+     (thca-vapes, thcb-vapes, osv) fortsätter använda de gamla
+     namnen; bara den kundvända etiketten här har bytts. "D10" är
+     Vilmers egna tidigare valda kundnamn -- dess enda verifierade
+     interna motsvarighet på plattformen är "10-OH-THC" (10-oh-thc-*),
+     inte bokstavligen "D10" någonstans i Nyehandels egen data.
+
+     STOR KORRIGERING 2026-09-24 (efter en andra, djupare research-
+     omgång): THCaB/THCbA/D10 trodddes tidigare sakna riktiga
+     destinationer helt. De gör INTE det för Vapes -- Nyehandel har
+     egna cannabinoid-nivå-kategorisidor (thca-vapes/thcb-vapes/
+     10-oh-thc-vapes) utöver Serie-filtret (Core/Magic Sauce). Kvar
+     som "kommer snart" ENDAST där en riktig destination verkligen
+     saknas per format (se kommentarer per länk).
+
+     "product"-fältet per dropdown är headerns EGEN, centrala plats
+     för "utvald produkt"-konfigurationen. badge är "POPULÄRAST"
+     ENDAST när produkten är verifierad mot Nyehandels egen, riktiga
+     "Våra bästsäljare"-sida (https://hazeyse.nyehandel.se/sv/page/
+     vara-bastsaljare) -- annars "UTVALD PRODUKT". Aldrig gissat. */
   var DROPDOWN_CONTENT = {
     vapes: {
       groups: [
         {
           heading: "SERIER",
           links: [
-            /* Egen, dedikerad kategorisida -- verifierad live 2026-09-24
-               (m-s-vapes, "M.S Vapes", riktiga produkter). */
+            /* Egen, dedikerad kategorisida -- verifierad live. */
             { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/m-s-vapes" },
-            /* THCaB/THCbA: ingen verifierad, dedikerad destination hittad
-               -- varken egen kategorisida eller ett fungerande Serie-filter
-               under detta exakta namn. Renderas inaktiva ("kommer snart"),
-               INTE länkade till närmaste liknande namn (t.ex. thca/thcb),
-               eftersom det inte är samma sak och skulle vilseleda kunden. */
-            { label: "THCaB", href: null },
-            { label: "THCbA", href: null },
-            /* "Core" = produktnamnsbeslut (ersätter THCX i kundvänd copy).
-               Ingen egen kategorisida finns, men det riktiga Serie-filtret
-               är verifierat (klick-och-observera-URL + fristående reload
-               av exakt denna URL, båda gav produkter). */
+            /* THCaB = gamla "THC-A". Egen kategorisida (thca-vapes,
+               8 produkter) -- verifierad live 2026-09-24. */
+            { label: "THCaB", href: "https://hazeyse.nyehandel.se/sv/categories/thca-vapes" },
+            /* THCbA = gamla "THC-B". Egen kategorisida (thcb-vapes,
+               6 produkter) -- verifierad live 2026-09-24. */
+            { label: "THCbA", href: "https://hazeyse.nyehandel.se/sv/categories/thcb-vapes" },
+            /* "Core" = produktnamnsbeslut (ersätter THCX i kundvänd
+               copy). Ingen egen kategorisida, men det riktiga
+               Serie-filtret är verifierat. */
             { label: "Core", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?filters=Serie_Core" },
-            { label: "D10", href: null }
+            /* D10 = "10-OH-THC" internt. Egen kategorisida
+               (10-oh-thc-vapes, 2 produkter) -- verifierad live. */
+            { label: "D10", href: "https://hazeyse.nyehandel.se/sv/categories/10-oh-thc-vapes" },
+            /* Extra aktiva cannabinoider hittade utöver minimilistan
+               (uppdraget bad om att inventera och lägga till fler om
+               de finns) -- båda egna kategorisidor, verifierade live. */
+            { label: "THCV", href: "https://hazeyse.nyehandel.se/sv/categories/thcv-vape" },
+            { label: "HHCPM", href: "https://hazeyse.nyehandel.se/sv/categories/hhcpm-vapes" }
+          ]
+        },
+        {
+          heading: "FORMAT",
+          links: [
+            /* 1ml/2ml engångsvapes: produktnamn nämner ofta volymen,
+               men Nyehandel exponerar INGET filter/kategori för volym
+               -- att bygga en länk hade krävt en gissad URL. Kommer
+               snart tills en riktig destination finns. */
+            { label: "1 ml engångsvapes", href: null },
+            { label: "2 ml engångsvapes", href: null },
+            /* 5 ml: research bekräftade att INGEN produkt i hela
+               sortimentet ens nämner "5ml" -- produkten finns inte
+               alls än, inte bara kategorin. */
+            { label: "5 ml engångsvapes", href: null },
+            { label: "Carts", href: "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges" },
+            { label: "510-batterier & tillbehör", href: "https://hazeyse.nyehandel.se/sv/categories/pennor" },
+            /* Refill/Liquid 10ml: ingen produkt av den typen hittad
+               i sortimentet. */
+            { label: "Refill/Liquid 10 ml", href: null }
           ]
         }
       ],
       cta: { label: "Alla vapes →", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes" },
-      /* Nyehandels frontend exponerar ingen sorterings-/försäljningsdata
-         (ingen "populäraste"-sortering, inga sälj-badges hittade) --
-         "POPULÄRAST" skulle alltså vara påhittat. Manuellt vald
-         utställningsprodukt tills en riktig popularitetskälla finns;
-         byt bara ut fälten nedan när det händer. */
+      /* "Vape - Magic Sauce 99% - 2ml" är VERIFIERAD på Nyehandels
+         egna riktiga "Våra bästsäljare"-sida (kontrollerad live
+         2026-09-24) -- äkta POPULÄRAST, inte gissat. Ersätter
+         föregående "Vape - THCX 19% - Core - 2ml" som INTE fanns på
+         bästsäljarlistan. */
       product: {
-        badge: "UTVALD PRODUKT",
-        name: "Vape - THCX 19% - Core - 2ml",
-        price: "495 kr",
-        image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjeC12YXBlLWhlcm8tY29yZS0ybWwtNWJlMTc0MTAucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
-        url: "https://hazeyse.nyehandel.se/sv/products/vape-thcx-19-core-2ml",
+        badge: "POPULÄRAST",
+        name: "Vape - Magic Sauce 99% - 2ml",
+        price: "499 kr",
+        image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtdmFwZXMtMm1sLW1hZ2ljLWZhcm1lcnMtNTA1NTk4MTMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+        url: "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-99-2ml",
         stock: null
       }
     },
@@ -159,16 +210,50 @@
         {
           heading: "SERIER",
           links: [
-            /* Båda egna, dedikerade kategorisidor -- verifierade live
-               2026-09-24 (riktiga produkter på båda). */
+            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/m-s-buds" },
+            /* THCaB = gamla "THC-A". Egen kategorisida (thca-blommor,
+               32 produkter) -- verifierad live 2026-09-24. */
+            { label: "THCaB", href: "https://hazeyse.nyehandel.se/sv/categories/thca-blommor" },
+            /* THCbA/Core/D10: research hittade INGEN egen buds-
+               destination för något av dessa tre (varken kategorisida
+               eller Serie-filtervärde -- Buds egna Serie-facett
+               innehåller bara Nano11 och Magic Sauce). D10 och THCbA
+               visas ändå (uppdraget kräver att de finns under Buds
+               även om ofullständiga) som "kommer snart". Core
+               utelämnas INTE heller (samma minimilista), samma status. */
+            { label: "THCbA", href: null },
+            { label: "Core", href: null },
+            { label: "D10", href: null },
             { label: "Nano11", href: "https://hazeyse.nyehandel.se/sv/categories/nano11-blommor" },
-            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/m-s-buds" }
+            /* Extra aktiva serier/cannabinoider hittade utöver
+               minimilistan -- båda egna kategorisidor, verifierade live. */
+            { label: "HHCPM", href: "https://hazeyse.nyehandel.se/sv/categories/hhcpm-blommor" },
+            { label: "THCNM", href: "https://hazeyse.nyehandel.se/sv/categories/thcnm-blommor" }
+          ]
+        },
+        {
+          heading: "FORMAT",
+          links: [
+            { label: "Buds/Blommor", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds" },
+            /* Pre-rolls: research sökte hela sortimentet (flera sökord)
+               -- INGA pre-roll-produkter finns alls än, i något format.
+               Detta är alltså inte bara en saknad kategori utan en
+               produkttyp som ännu inte lanserats. Visas "kommer snart"
+               enligt uppdragets egen regel, ingen gissad länk. */
+            { label: "Pre-rolls", href: null }
+            /* Flerpack/Bundles: uppdraget bad om detta ENDAST "om en
+               riktig aktiv destination finns" -- ingen hittades, så
+               utelämnas helt (villkorad, till skillnad från D10/THCbA
+               som uttryckligen ska finnas kvar oavsett). */
           ]
         }
       ],
       cta: { label: "Alla buds →", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds" },
+      /* Redan verifierad på Nyehandels riktiga "Våra bästsäljare"-sida
+         -- äkta POPULÄRAST (uppgraderad från UTVALD PRODUKT, samma
+         produkt som innan). */
       product: {
-        badge: "UTVALD PRODUKT",
+        badge: "POPULÄRAST",
         name: "Buds – THCA 22% – Orange Small Buds – 5 gram",
         price: "495 kr",
         image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjYS1idWRzLWhhemV5LW9yYW5nZS1zbWFsbC1idWRzLXRoYy1hLTUtZ3JhbXMtaGFtcGEtYmxvbW1vci10aGMtYnVkcy1jNmQ5MDQ0NC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
@@ -181,63 +266,107 @@
         {
           heading: "SERIER",
           links: [
-            /* Ingen egen Magic-Sauce-Hasch-sida finns (kontrollerat,
-               404/tom) -- det riktiga, verifierade Serie-filtret på
-               huvud-hasch-sidan används i stället. */
-            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/hasch?filters=Serie_Magic%20Sauce" }
+            /* Ingen egen Magic-Sauce-Hasch-sida finns -- det riktiga,
+               verifierade Serie-filtret på huvud-hasch-sidan används. */
+            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/hasch?filters=Serie_Magic%20Sauce" },
+            /* THCaB = gamla "THC-A". Egen kategorisida (thca-hash,
+               20 produkter) -- verifierad live 2026-09-24. */
+            { label: "THCaB", href: "https://hazeyse.nyehandel.se/sv/categories/thca-hash" },
+            /* THCbA/Core/D10: ingen egen hasch-destination hittad för
+               något av dessa -- visas ändå som "kommer snart" (samma
+               regel som under Buds). */
+            { label: "THCbA", href: null },
+            { label: "Core", href: null },
+            { label: "D10", href: null },
+            /* Extra: THCNM har en egen hasch-kategorisida (thcnm-hash,
+               4 produkter) -- verifierad live. Nano11/Nano-11
+               UTELÄMNAS helt här (inte "kommer snart") -- uppdraget
+               bad om Nano11 under Hasch bara "om serien har aktuella
+               haschprodukter", och ingen sådan destination hittades
+               (Hasch egen Serie-facett innehåller bara Magic Sauce). */
+            { label: "THCNM", href: "https://hazeyse.nyehandel.se/sv/categories/thcnm-hash" }
           ]
         }
+        /* Inget eget Format-behov hittat under Hasch -- research fann
+           inga verifierade sub-format utöver huvudkategorin. */
       ],
       cta: { label: "Allt hasch →", href: "https://hazeyse.nyehandel.se/sv/categories/hasch" },
+      /* KORRIGERING (CBD-separation, uppdrag 2026-09-24 §3): föregående
+         kort visade "Hash – CBD 15% – Primero", en CBD-familjeprodukt
+         -- bryter mot den nya, hårda regeln att CBD/CBG/CBN ALDRIG ska
+         visas under Vapes/Buds/Hasch. Ersatt med en riktig, icke-CBD
+         Hasch-bästsäljare ("Hash – THCA 50% – Bubble Hash",
+         verifierad på Nyehandels egna "Våra bästsäljare"-sida). Den
+         gamla CBD-produkten flyttad till CBD→Hasch-formatlänken
+         nedan istället, där den hör hemma. */
       product: {
-        badge: "UTVALD PRODUKT",
-        name: "Hash – CBD 15% – Primero – 1 gram",
-        price: "65 kr",
-        image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY2JkLWhhc2gtdHJpbmFjcmlhLWhlbXAtcHJpbWVyby1jZTQ1NDAyZi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
-        url: "https://hazeyse.nyehandel.se/sv/products/hash-cbd-15-primero-1-gram",
+        badge: "POPULÄRAST",
+        name: "Hash – THCA 50% – Bubble Hash – 5 gram",
+        price: "499 kr",
+        image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjYS1idWRzLWhhemV5LWJ1YmJsZS1oYXNoLXRoYy1hLTUtZ3JhbXMtaGFtcGEtYmxvbW1vci01Z3JhbS10aGMtaGFzaC1iMjJjZDcxOS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+        url: "https://hazeyse.nyehandel.se/sv/products/hash-thca-50-bubble-hash-5-gram",
         stock: null
       }
     },
     cbd: {
       groups: [
-        /* CBD självt visas medvetet INTE som en egen länk här -- ingen
-           konsoliderad "all CBD, alla format"-sida finns nativt, och att
-           tvinga fram en skulle antingen dubblera FORMAT-gruppens länkar
-           eller sammanblanda cannabinoid/format (bryter mot
-           fyraxel-principen i CLAUDE.md). Huvudtriggerns egen länk +
-           CTA:n nedan täcker redan "allt inom CBD". CBG saknar helt
-           verifierad destination (404) och utelämnas därför helt --
-           varken länkad eller visad som inaktiv, eftersom uppdraget för
-           just denna grupp säger "hitta inte på tomma kategorier". */
+        /* KORRIGERING 2026-09-24: föregående version hade CBD/CBG
+           helt utelämnade. Uppdraget kräver nu uttryckligen att alla
+           tre (CBD/CBG/CBN) visas -- CBG som "kommer snart" om ingen
+           destination finns, ALDRIG helt dold. */
         {
           heading: "CANNABINOIDER",
           links: [
-            { label: "CBN", href: "https://hazeyse.nyehandel.se/sv/categories/cbn" },
-            { label: "H4CBD", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd" }
+            /* Ingen fristående "CBD"-sida finns (404) -- Nyehandels
+               egen, största konsoliderade CBD-hubb är "h4cbd" (29
+               produkter). Används som den mest verifierat riktiga
+               motsvarigheten till ren "CBD", dokumenterat här snarare
+               än att gissa en annan URL. */
+            { label: "CBD", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd" },
+            /* CBG: research bekräftade NOLL produkter/kategorier för
+               CBG någonstans i sortimentet. Visas ändå (uppdragets
+               minimilista är ovillkorad för CBD/CBG/CBN) som
+               "kommer snart", inte dold. */
+            { label: "CBG", href: null },
+            { label: "CBN", href: "https://hazeyse.nyehandel.se/sv/categories/cbn" }
           ]
         },
         {
           heading: "FORMAT",
           links: [
-            { label: "Buds", href: "https://hazeyse.nyehandel.se/sv/categories/cbd-buds" },
-            { label: "Vapes", href: "https://hazeyse.nyehandel.se/sv/categories/cbd-group" }
-            /* Hasch/Carts under CBD: ingen verifierad, dedikerad
-               destination hittades -- utelämnade helt (inte inaktiva),
-               samma princip som CBG ovan. */
+            /* Alla FORMAT-länkar här pekar på CBD/H4CBD-SPECIFIKA
+               kategorisidor, INTE de allmänna Vapes/Buds/Hasch-sidorna
+               -- exakt uppdragets krav ("CBD → Hasch ska visa CBD-
+               relaterat hasch, inte allmänt hasch"). */
+            { label: "Buds/Blommor", href: "https://hazeyse.nyehandel.se/sv/categories/cbd-buds" },
+            /* h4cbd-hasch: enda produkten där är en riktig, verifierad
+               bästsäljare ("Hash – H4CBD 20% + CBN 20% – H-Bomb"). */
+            { label: "Hasch", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd-hasch" },
+            /* Pre-rolls finns inte alls i sortimentet (se Buds-
+               kommentaren ovan) -- gäller alla format, inklusive CBD. */
+            { label: "Pre-rolls", href: null },
+            /* KORRIGERING: tidigare pekade detta på "cbd-group", en
+               2-produkters VARUMÄRKES-sida (bekräftat i Vapes egen
+               Varumärke-filterfacett), inte en CBD-vapes-kategori.
+               Rätt destination är "h4cbd-vape" (18 produkter). */
+            { label: "Vapes", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd-vape" },
+            /* Riktiga CBD-carts-produkter existerar (t.ex. "Cart - CBD
+               60% - Tatra Hemp"), men ingen egen, filtrerad
+               kategorisida hittades för dem. */
+            { label: "Carts", href: null }
           ]
         }
       ],
-      cta: { label: "Visa allt inom CBD →", href: "https://hazeyse.nyehandel.se/sv/categories/cbd-group" },
-      /* cbd-buds' RIKTIGA förstaprodukt är samma Hash-produkt som redan
-         visas i Hasch-kortet (verifierat, inte ett skriptfel -- se
-         förstaproduktens namn i kategorisidans egen produktlista) --
-         men att återanvända den hade brutit mot "varje kort ska vara
-         eget/relevant, aldrig återanvänt reflexmässigt". Näst-första
-         riktiga produkten på samma sida (en faktisk CBD-blomma, inte
-         Hasch) används i stället -- verifierad i lager (synlig
-         "Lägg i varukorgen"-knapp) med eget foto. */
+      /* KORRIGERING: "cbd-group" (huvudtrigger + denna CTA) var en
+         2-produkters VARUMÄRKES-sida, inte en CBD-hubb -- bytt till
+         "h4cbd" (29 produkter), plattformens riktiga, största
+         konsoliderade CBD-samlingssida. */
+      cta: { label: "Visa allt inom CBD →", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd" },
+      /* Redan verifierad på Nyehandels riktiga "Våra bästsäljare"-sida
+         -- äkta POPULÄRAST (uppgraderad från UTVALD PRODUKT, samma
+         produkt som innan). */
       product: {
-        badge: "UTVALD PRODUKT",
+        badge: "POPULÄRAST",
         name: "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
         price: "435 kr",
         image: "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY29va2llcy1idWRzLXN2ZXJpZ2UtY2JkLWJ1ZHMtdGVxdWlsYS1zdW5yaXNlLWxhZ2xpZ2EtY2FubmFiaXMtYnVkcy1jb29raWVzLWYyODA5Y2FmLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
@@ -341,7 +470,7 @@
       if (!cat.dropdown) {
         return '<a href="' + cat.href + '" class="hz8-cat' + campaignClass + '">' + cat.label + '</a>';
       }
-      var catKey = cat.href.split("/").pop() === "cbd-group" ? "cbd" : cat.label.toLowerCase();
+      var catKey = cat.label.toLowerCase();
       var panelId = "hz8Dropdown-" + catKey;
       return '<div class="hz8-cat-item" data-hz8-cat="' + catKey + '">'
         + '<a href="' + cat.href + '" class="hz8-cat" aria-haspopup="true" aria-expanded="false" aria-controls="' + panelId + '">' + cat.label + chevronSvg() + '</a>'
@@ -392,7 +521,7 @@
       + '<div class="hz8-mobile-drawer__list">'
       + CATEGORIES.map(function (cat) {
           if (cat.dropdown) {
-            var catKey = cat.href.split("/").pop() === "cbd-group" ? "cbd" : cat.label.toLowerCase();
+            var catKey = cat.label.toLowerCase();
             return buildMobileAccordionItem(catKey, cat.label);
           }
           var campaignClass = cat.campaign ? " hz8-cat--campaign" : "";
