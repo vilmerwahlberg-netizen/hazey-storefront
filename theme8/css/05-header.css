@@ -127,35 +127,97 @@ html.hz8 #mobile-side-nav-wrap{ display:none!important; }
    till 264px vid 1920px bredd innan den återhämtade sig vid transition
    end. Fix: uttryck samma centrering som två EXPLICITA calc()-värden
    (aldrig "auto") som båda animerar mjukt och symmetriskt mot 0. */
+/* KORRIGERING (entré-animation, 2026-09-24): panelens visuella yta
+   (bakgrund/blur/kant/skugga/radie) flyttad till en ::before-pseudoelement
+   i stället för att ligga direkt på .main. Detta låter oss zooma/skala
+   in GLASET (scaleX från mitten) utan att röra .main:s egen box --
+   .main:s riktiga bredd/höjd/marginal (och därmed alla barns layout
+   och klickytor: logga, nav, sök, konto, varukorg) är stabil från
+   första bildrutan, aldrig del av animationen. Se ::before-regeln och
+   .hz8-header-anim-item nedan för hela sekvensen. */
 html.hz8 #store-header .main{
+  position:relative;
   margin-top:14px;
   margin-bottom:0;
   margin-left:max(24px, calc((100% - 1392px) / 2));
   margin-right:max(24px, calc((100% - 1392px) / 2));
   max-width:1392px;
   height:var(--hz8-header-height, 76px);
+  transition:max-width 320ms var(--hz8-ease), height 320ms var(--hz8-ease),
+             margin 320ms var(--hz8-ease);
+}
+html.hz8 #store-header .main::before{
+  content:"";
+  position:absolute;
+  inset:0;
   border-radius:var(--hz8-header-radius, 24px);
   background:var(--hz8-glass-bg, rgba(255,255,255,.55));
   -webkit-backdrop-filter:blur(20px) saturate(180%);
   backdrop-filter:blur(20px) saturate(180%);
   border:1px solid var(--hz8-glass-border, rgba(255,255,255,.45));
   box-shadow:0 12px 40px rgba(23,39,23,.18);
+  transform:scaleX(1);
+  transform-origin:center;
+  pointer-events:none;
+  z-index:0;
   transition:background 320ms var(--hz8-ease), border-radius 320ms var(--hz8-ease),
-             border-color 320ms var(--hz8-ease), box-shadow 320ms var(--hz8-ease),
-             max-width 320ms var(--hz8-ease), height 320ms var(--hz8-ease),
-             margin 320ms var(--hz8-ease);
+             border-color 320ms var(--hz8-ease), box-shadow 320ms var(--hz8-ease);
 }
 html.hz8 #store-header .main .container{
+  position:relative;
+  z-index:1;
   max-width:none; width:100%; height:100%;
   display:flex; align-items:center; gap:24px; padding:0 24px;
 }
 
 html.hz8 body.hz8-header-scrolled #store-header .main{
-  margin:0; max-width:100%; border-radius:0; height:68px;
+  margin:0; max-width:100%; height:68px;
+}
+html.hz8 body.hz8-header-scrolled #store-header .main::before{
+  border-radius:0;
   background:var(--hz8-glass-bg-scrolled, rgba(246,240,229,.72));
   border-color:var(--hz8-glass-border-scrolled, rgba(23,39,23,.08));
   border-width:0 0 1px 0;
   box-shadow:0 4px 20px rgba(23,39,23,.06);
+}
+
+/* ---- Entré-animation: panel (::before) + innehåll (.hz8-header-anim-item) ----
+   Default (alltid sant, oavsett JS): panelen är full bredd, allt
+   innehåll fullt synligt -- "utan JavaScript ska headern vara fullt
+   synlig och användbar" är alltså redan uppfyllt HÄR, innan någon
+   klass läggs till. .hz8-header-priming/-entering läggs bara till av
+   05-header.js precis innan/under animationen (se initHeaderEntrance)
+   -- gömda lägen "armas" alltså aldrig förrän initieringen faktiskt
+   är igång, och en JS-timeout-säkring tar bort dem igen oavsett vad
+   som händer, så innehållet aldrig kan bli permanent osynligt. */
+html.hz8-header-priming #store-header .main::before{
+  transform:scaleX(0);
+  transition:none;
+}
+html.hz8-header-entering #store-header .main::before{
+  transform:scaleX(1);
+  transition:transform 560ms var(--hz8-ease);
+}
+html.hz8-header-priming #store-header .hz8-header-anim-item{
+  opacity:0;
+  transform:translateY(6px);
+  transition:none;
+}
+html.hz8-header-entering #store-header .hz8-header-anim-item{
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity 280ms var(--hz8-ease), transform 280ms var(--hz8-ease);
+  transition-delay:var(--hz8-anim-delay, 0ms);
+}
+@media (prefers-reduced-motion:reduce){
+  html.hz8-header-priming #store-header .main::before,
+  html.hz8-header-entering #store-header .main::before{
+    transform:scaleX(1)!important; transition:none!important;
+  }
+  html.hz8-header-priming #store-header .hz8-header-anim-item,
+  html.hz8-header-entering #store-header .hz8-header-anim-item{
+    opacity:1!important; transform:none!important; transition:none!important;
+  }
 }
 
 /* ---- Logo ---- */
@@ -316,6 +378,7 @@ html.hz8 .hz8-header-nav .hz8-cat-item:focus-within .hz8-dropdown{
 
 @media (prefers-reduced-motion:reduce){
   html.hz8 #store-header .main,
+  html.hz8 #store-header .main::before,
   .hz8-mobile-drawer__backdrop,
   .hz8-mobile-drawer__panel,
   html.hz8 .hz8-header-nav .hz8-dropdown{

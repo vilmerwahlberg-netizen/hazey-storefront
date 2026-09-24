@@ -15,6 +15,92 @@
     { label: "Kampanjer", href: "https://hazeyse.nyehandel.se/sv/page/kampanjer", dropdown: false, campaign: true }
   ];
 
+  /* ============ Entré-animation ============
+     Ordning matchar samma order:-värden headern redan använder i CSS
+     (hamburgare=0, logga=1, nav/mobil-sök-trigger=2, sök=3, konto=4,
+     varukorg=5) -- ren vänster-till-höger-stagger, inget hittepå. */
+  var ANIM_ITEM_SELECTORS = [
+    ".hamburger",
+    ".brand.header-logo a",
+    ".hz8-header-nav",
+    "#mobile-search-trigger",
+    "#search-container",
+    ".account-button",
+    ".basket-icon"
+  ];
+  var ANIM_BASE_DELAY = 420; // ms -- inom kravet 400-500ms efter start
+  var ANIM_STAGGER = 50;     // ms -- inom kravet 45-70ms
+  var ANIM_SAFETY_TIMEOUT = 1600; // ms -- gott om marginal över ~950ms total animation
+
+  function initHeaderEntrance(header) {
+    var html = document.documentElement;
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      /* Ingen "priming"-klass läggs alls -- default-CSS:en (panel full
+         bredd, allt innehåll synligt) gäller direkt, exakt kravet
+         "visa den färdiga headern omedelbart utan skala, stagger eller
+         väntetid". */
+      return;
+    }
+
+    var items = [];
+    ANIM_ITEM_SELECTORS.forEach(function (sel) {
+      var el = header.querySelector(sel);
+      if (el) items.push(el);
+    });
+    /* Nav-kategoriernas EGNA barn (chip-länkarna) räknas inte som egna
+       stagger-steg -- hela .hz8-header-nav är redan ETT steg i listan
+       ovan, matchar uppdragets "navigationslänkar" som EN grupp. */
+
+    items.forEach(function (el, i) {
+      el.classList.add("hz8-header-anim-item");
+      el.style.setProperty("--hz8-anim-delay", (ANIM_BASE_DELAY + i * ANIM_STAGGER) + "ms");
+    });
+
+    /* Arma det gömda läget FÖRST här -- aldrig som ett obetingat
+       CSS-default -- och bara om vi faktiskt tänker animera. Utan
+       JavaScript, eller om detta aldrig körs, förblir headern i sitt
+       normala (fullt synliga) default-läge permanent. */
+    html.classList.add("hz8-header-priming");
+
+    var settled = false;
+    function settle() {
+      if (settled) return;
+      settled = true;
+      html.classList.remove("hz8-header-priming");
+      html.classList.add("hz8-header-entering");
+
+      /* Städa bort alla tillfälliga klasser/inline-egenskaper när sista
+         objektet garanterat hunnit klart (sista stagger-steget + dess
+         egen 280ms-transition + marginal) -- annars ligger "entering"
+         kvar på <html> och --hz8-anim-delay kvar inline för alltid.
+         Harmlöst rent visuellt (samma sluttillstånd som default-CSS:en
+         utan klasserna), men städat bort ändå så ingen framtida,
+         orelaterad opacity/transform-ändring på dessa element av misstag
+         skulle kunna ärva ett gammalt transition-delay. */
+      var lastItemDelay = ANIM_BASE_DELAY + Math.max(0, items.length - 1) * ANIM_STAGGER;
+      var itemTransitionDuration = 280;
+      window.setTimeout(function () {
+        html.classList.remove("hz8-header-entering");
+        items.forEach(function (el) {
+          el.classList.remove("hz8-header-anim-item");
+          el.style.removeProperty("--hz8-anim-delay");
+        });
+      }, lastItemDelay + itemTransitionDuration + 100);
+    }
+
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(settle);
+    });
+
+    /* Säkerhetsnät: oavsett om rAF-kedjan ovan av någon anledning
+       aldrig kör klart (t.ex. en bildresurs eller ett annat skript
+       fryser fliken), tvingas det synliga läget fram efter en fast
+       tidsgräns -- innehållet kan alltså aldrig förbli permanent
+       osynligt. */
+    window.setTimeout(settle, ANIM_SAFETY_TIMEOUT);
+  }
+
   function chevronSvg() {
     return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
@@ -76,6 +162,8 @@
     if (leftCol && !header.querySelector(".hz8-header-nav")) {
       leftCol.insertAdjacentElement("afterend", buildDesktopNav());
     }
+
+    initHeaderEntrance(header);
 
     /* Native loggabilden är en admin-konfigurerad, lågupplöst
        mini-variant (t.ex. "mini-header-hazey.webp") -- byter bara
