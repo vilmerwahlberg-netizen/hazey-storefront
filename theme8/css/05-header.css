@@ -27,49 +27,13 @@
 :root{
   /* Header-specifika tillägg -- glaseffekt/layout, inga nya brand-färger
      (samma tokens som i den godkända prototypen). */
-  /* KORRIGERING (scroll-prestanda, 2026-09-25): opacitet höjd .55->.485
-     (inom uppdragets ".45-.50"-spann) -- en ren blur-sänkning (20px->12px,
-     se ::before nedan) släpper mer av bakgrunden rakt igenom, vilket utan
-     denna kompensation sänkte kontrasten mellan mörkgrön menytext och en
-     ljus del av hero-himlen under WCAG AA (uppmätt, se kontrollskriptet i
-     theme8/review/header-anim/). Opacitet höjd tills AA klaras vid BÅDA
-     vilo- och scrollat läge (se slutrapporten för uppmätta värden). */
-  --hz8-glass-bg: rgba(255,255,255,.8);
-  --hz8-glass-bg-scrolled: rgba(254,253,251,.99);
+  --hz8-glass-bg: rgba(255,255,255,.55);
+  --hz8-glass-bg-scrolled: rgba(246,240,229,.72);
   --hz8-glass-border: rgba(255,255,255,.45);
   --hz8-glass-border-scrolled: rgba(23,39,23,.08);
   --hz8-header-radius: 24px;
   --hz8-header-height: 66px;
   --hz8-header-height-mobile: 60px;
-
-  /* ---- Scroll-övergång utan layoutegenskaper (2026-09-25) ----
-     .main:s EGEN box (margin/max-width/height) är nu KONSTANT, alltid
-     vila-geometrin -- den byter aldrig värde längre, så ingen Layout/
-     Recalc Style-omräkning sker någonsin på grund av scroll. Det
-     "scrollat"-utseendet (fullbredd, lägre, spetsigare hörn) uppnås i
-     stället helt visuellt genom att TRANSFORMERA hela .main (skala+
-     flytta) -- transform/opacity är kompositor-bara egenskaper, ingen
-     layout inblandad. Skalfaktorerna räknas ut rent i CSS (calc/max),
-     ingen JS behövs, och de är bredd-medvetna så övergången ser exakt
-     likadan ut vid alla bredder (24px-golvet vid smala vyer, upp till
-     264px-marginalen vid 1920px, är redan inbyggt i samma calc-uttryck
-     som vila-layouten alltid använt).
-     KÄND, ACCEPTERAD BIVERKAN: eftersom transform skalar HELA .main
-     (inklusive dess riktiga innehåll: nav/sök/ikoner), skalas texten
-     tekniskt med under själva de ~320ms övergången skjer -- exakt
-     samma avvägning som branschstandard-mönstret för krympande sticky
-     headers använder överallt (t.ex. Stripe/Linear), eftersom
-     ALTERNATIVET är just den Layout-kostnad uppdraget bad om att ta
-     bort. Vid VILA (start) och SCROLLAT (efter övergången) är transform
-     alltid exakt 1/identitet igen, så texten är pixel-skarp i båda
-     vilolägena -- bara den korta mellanliggande rörelsen berörs. */
-  --hz8-rest-margin: max(24px, calc((100vw - 1392px) / 2));
-  --hz8-rest-width: calc(100vw - 2 * var(--hz8-rest-margin));
-  --hz8-scale-x-scrolled: calc(100vw / var(--hz8-rest-width));
-  /* Vila-höjden är --hz8-header-height (66px, se ovan), INTE 76px --
-     verifierat mot den faktiska CSS-variabeln, inte gissat. */
-  --hz8-scale-y-scrolled: calc(68 / 66);
-  --hz8-translate-y-scrolled: -14px;
 }
 
 /* #store-header is native display:flex;flex-direction:column with an
@@ -88,10 +52,6 @@ html.hz8 #store-header{
   overflow:visible;
   z-index:100;
   height:auto!important;
-  /* Eget kompositlager (scroll-prestanda, 2026-09-25) -- tvingar
-     definitivt GPU-lager oavsett webbläsarens egna promotion-
-     heuristik för position:fixed. */
-  transform:translateZ(0);
 }
 html.hz8 #store-header > *{
   flex:0 0 auto!important;
@@ -175,11 +135,6 @@ html.hz8 #mobile-side-nav-wrap{ display:none!important; }
    och klickytor: logga, nav, sök, konto, varukorg) är stabil från
    första bildrutan, aldrig del av animationen. Se ::before-regeln och
    .hz8-header-anim-item nedan för hela sekvensen. */
-/* .main:s EGEN box (margin/max-width/height) är nu KONSTANT -- alltid
-   vila-geometrin, oavsett hz8-header-scrolled. Den byter aldrig värde,
-   så Layout/Recalc Style körs aldrig på grund av scroll. Se
-   --hz8-scale-x-scrolled m.fl. i :root ovan för hela resonemanget.
-   Endast transform (kompositor-bara) skiljer vila från scrollat. */
 html.hz8 #store-header .main{
   position:relative;
   margin-top:14px;
@@ -188,19 +143,8 @@ html.hz8 #store-header .main{
   margin-right:max(24px, calc((100% - 1392px) / 2));
   max-width:1392px;
   height:var(--hz8-header-height, 76px);
-  transform:scaleX(1) scaleY(1) translateY(0);
-  transform-origin:top center;
-  transition:transform 320ms var(--hz8-ease);
-  /* Egen kompositlager -- hela headern (form + innehåll) rastreras/
-     komponeras då oberoende av resten av sidan, i stället för att
-     Chrome varje frame behöver avgöra om den ska slås ihop med
-     underliggande lager. #store-header självt är redan position:fixed
-     (brukar promotas automatiskt av de flesta motorer), men denna
-     tvingar det definitivt regardless av webbläsarens egna heuristik. */
-  will-change:transform;
-}
-html.hz8 body.hz8-header-scrolled #store-header .main{
-  transform:translateY(var(--hz8-translate-y-scrolled)) scaleX(var(--hz8-scale-x-scrolled)) scaleY(var(--hz8-scale-y-scrolled));
+  transition:max-width 320ms var(--hz8-ease), height 320ms var(--hz8-ease),
+             margin 320ms var(--hz8-ease);
 }
 html.hz8 #store-header .main::before{
   content:"";
@@ -208,17 +152,10 @@ html.hz8 #store-header .main::before{
   inset:0;
   border-radius:var(--hz8-header-radius, 24px);
   background:var(--hz8-glass-bg, rgba(255,255,255,.55));
-  /* KORRIGERING (scroll-prestanda, 2026-09-25): blur 20px->12px,
-     saturate 180%->120% -- backdrop-filter är en av de dyraste CSS-
-     egenskaperna att rastrera om varje gång bakgrunden bakom rör sig
-     (dvs varje scroll-frame). Bakgrundens opacitet höjd i :root ovan
-     för att kompensera kontrastförlusten den lägre bluren annars gav. */
-  -webkit-backdrop-filter:blur(12px) saturate(120%);
-  backdrop-filter:blur(12px) saturate(120%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  backdrop-filter:blur(20px) saturate(180%);
   border:1px solid var(--hz8-glass-border, rgba(255,255,255,.45));
-  /* Skugga sänkt (mindre spridning/opacitet) -- samma resonemang, en
-     stor mjuk skugga är dyrare att rastrera om än en liten. */
-  box-shadow:0 8px 24px rgba(23,39,23,.14);
+  box-shadow:0 12px 40px rgba(23,39,23,.18);
   transform:scaleX(1);
   transform-origin:center;
   pointer-events:none;
@@ -232,16 +169,13 @@ html.hz8 #store-header .main .container{
   max-width:none; width:100%; height:100%;
   display:flex; align-items:center; gap:24px; padding:0 24px;
 }
+
+html.hz8 body.hz8-header-scrolled #store-header .main{
+  margin:0; max-width:100%; height:68px;
+}
 html.hz8 body.hz8-header-scrolled #store-header .main::before{
   border-radius:0;
   background:var(--hz8-glass-bg-scrolled, rgba(246,240,229,.72));
-  /* Scrollat läge hade tidigare INGEN egen backdrop-filter-regel alls
-     -- den ärvde tyst vilolägets (nu 12px). Sätts uttryckligen till
-     ca 8px per uppdraget: scrollat läge har en betydligt mer opak
-     bakgrund (.72 vs .485) så en lägre blur räcker för samma lugna
-     glasyta, och kostar mindre att rastrera om vid fortsatt scroll. */
-  -webkit-backdrop-filter:blur(8px) saturate(120%);
-  backdrop-filter:blur(8px) saturate(120%);
   border-color:var(--hz8-glass-border-scrolled, rgba(23,39,23,.08));
   border-width:0 0 1px 0;
   box-shadow:0 4px 20px rgba(23,39,23,.06);
@@ -519,16 +453,8 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 
 /* ============ MOBIL — brytpunkt ============ */
 @media (max-width:767px){
-  /* Mobilens vila-geometri är fast (12px marginal, 60px hög) -- samma
-     "konstant box + transform" -princip som desktop ovan, bara med
-     mobilens egna mått. Skala/förflyttning för scrollat läge räknas ut
-     härifrån via samma delade --hz8-scale-x-scrolled-formel i :root. */
-  :root{
-    --hz8-rest-width: calc(100vw - 24px);
-    --hz8-scale-y-scrolled: calc(56 / 60);
-    --hz8-translate-y-scrolled: -12px;
-  }
-  html.hz8 #store-header .main{ margin:12px 12px 0; height:var(--hz8-header-height-mobile, 60px); }
+  html.hz8 #store-header .main{ margin:12px 12px 0; height:var(--hz8-header-height-mobile, 60px); border-radius:16px; }
+  html.hz8 body.hz8-header-scrolled #store-header .main{ margin:0; height:56px; border-radius:0; }
   html.hz8 #store-header .main .container{ gap:0; padding:0 14px; }
 
   html.hz8 .hz8-header-nav{ display:none; }
