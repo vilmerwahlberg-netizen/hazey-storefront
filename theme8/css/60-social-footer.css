@@ -28,16 +28,51 @@
 .hz8-faq__list details[open] summary::after { content: "\2212"; }
 .hz8-faq__list p { color: var(--hz8-muted); font: 400 12px/1.4 Arial, sans-serif !important; }
 
-.hz8-footer { margin: 8px -24px 0; padding: 44px 24px 22px; background: #064c3c; color: #fff; }
-.hz8-footer__inner { width: min(100%, 1320px); margin: 0 auto; display: grid; grid-template-columns: 2fr repeat(4,1fr); gap: 30px; font: 400 12px/1.8 Arial, sans-serif !important; }
-.hz8-footer__brand strong { color: #f2d18d; font: 700 31px/1 "Iowan Old Style", Georgia, serif !important; }
-.hz8-footer__brand em { display: block; margin-top: 12px; color: #e6a954; font: italic 18px/1.2 "Iowan Old Style", Georgia, serif !important; }
+/* CSS-variabler för footerns färger (samma visuella resultat som förut
+   -- bara namngivna, så hela paletten kan bytas på ett ställe senare
+   utan att leta upp varje enskild hex-kod i markupen). */
+:root {
+  --hz8-footer-bg: #064c3c;
+  --hz8-footer-text: #fff;
+  --hz8-footer-heading: #f2d18d;
+  --hz8-footer-accent: #e6a954;
+  --hz8-footer-link: rgba(255,255,255,.86);
+  --hz8-footer-border: #d49a3f;
+  --hz8-footer-muted: rgba(255,255,255,.7);
+  --hz8-footer-divider: rgba(255,255,255,.16);
+}
+.hz8-footer { margin: 8px -24px 0; padding: 44px 24px 22px; background: var(--hz8-footer-bg); color: var(--hz8-footer-text); }
+.hz8-footer__inner { width: min(100%, 1320px); margin: 0 auto; display: grid; grid-template-columns: 1.6fr repeat(5,1fr); gap: 24px; font: 400 12px/1.8 Arial, sans-serif !important; }
+.hz8-footer__brand strong { color: var(--hz8-footer-heading); font: 700 31px/1 "Iowan Old Style", Georgia, serif !important; }
+.hz8-footer__brand em { display: block; margin-top: 12px; color: var(--hz8-footer-accent); font: italic 18px/1.2 "Iowan Old Style", Georgia, serif !important; }
 .hz8-footer__col b { display: block; margin-bottom: 6px; font-size: 12px; }
-.hz8-footer__col a { display: block; color: rgba(255,255,255,.86); }
+.hz8-footer__col a { display: block; color: var(--hz8-footer-link); }
+.hz8-footer__nl-offer { margin: 0 0 9px; color: var(--hz8-footer-link); font: 400 12px/1.5 Arial, sans-serif !important; }
+.hz8-footer__nl-offer strong { color: var(--hz8-footer-accent); }
 .hz8-footer__newsletter { display: flex; margin-top: 9px; }
 .hz8-footer__newsletter input { min-width: 0; width: 100%; border: 0; padding: 10px; }
-.hz8-footer__newsletter button { width: 42px; border: 1px solid #d49a3f; background: transparent; color: #fff; }
-.hz8-footer__bottom { width: min(100%,1320px); margin: 34px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.16); display: flex; justify-content: space-between; color: rgba(255,255,255,.7); font: 400 10px/1.3 Arial, sans-serif !important; }
+.hz8-footer__newsletter button { flex: 0 0 auto; padding: 0 14px; border: 1px solid var(--hz8-footer-border); background: transparent; color: var(--hz8-footer-text); font: 700 11px/1 Arial, sans-serif !important; white-space: nowrap; }
+.hz8-footer__contact { display: flex; flex-direction: column; gap: 2px; margin-top: 10px; }
+.hz8-footer__contact a { color: var(--hz8-footer-link); font-size: 11px; }
+/* Trygghetsrad -- egen rad mellan kolumnerna och ansvarstexten, samma
+   ljusa, dämpade ton som footerns övriga sekundära text. */
+.hz8-footer__trustrow {
+  width: min(100%,1320px); margin: 28px auto 0; padding-top: 18px;
+  border-top: 1px solid var(--hz8-footer-divider);
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  color: var(--hz8-footer-muted); font: 600 11px/1 Arial, sans-serif !important;
+  letter-spacing: .02em;
+}
+/* Ansvarstext (18+) -- obligatorisk, ordagrant från Theme 6. Egen rad,
+   dämpad men läsbar, ovanför den understa copyright-raden. */
+.hz8-footer__disclaimer {
+  width: min(100%,1320px); margin: 14px auto 0;
+  color: var(--hz8-footer-muted); font: 400 10.5px/1.5 Arial, sans-serif !important;
+}
+.hz8-footer__disclaimer p { margin: 0; max-width: 900px; }
+.hz8-footer__bottom { width: min(100%,1320px); margin: 18px auto 0; padding-top: 18px; border-top: 1px solid var(--hz8-footer-divider); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; justify-content: space-between; color: var(--hz8-footer-muted); font: 400 10px/1.3 Arial, sans-serif !important; }
+.hz8-footer__pay { display: flex; align-items: center; gap: 8px; }
+.hz8-footer__pay img { height: 18px; width: auto; display: block; }
 
 @media (max-width: 900px) {
   .hz8-reviews__grid, .hz8-faq { grid-template-columns: 1fr; }
