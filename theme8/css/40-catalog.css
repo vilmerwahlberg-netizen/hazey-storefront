@@ -32,11 +32,30 @@
 .hz8-mobile-lifestyle { display: none; }
 
 @media (max-width: 767px) {
-  .hz8-series__grid { grid-template-columns: repeat(5, minmax(0,1fr)); gap: 5px; }
-  .hz8-series-card { height: 108px; }
+  /* KORRIGERING (2026-09-25): "Populära serier" var tidigare ett 5-
+     kolumners CSS-grid hoppressat till ~75px breda kort på 393px --
+     bytt mot en riktig horisontell karusell (scroll-snap, dold
+     scrollbar, swipe). flex:0 0 calc(...) delar upp bredden i "4.15
+     kortenheter" (4 hela gapmellanrum avdragna först) -- ger konsekvent
+     4 hela kort + en ~15% glimt av nästa, oavsett hur MÅNGA serier som
+     finns totalt (rent CSS, ingen räkning/kodändring krävs för fler
+     serier). Desktop (>=768px) helt orört -- basregelns display:grid
+     gäller där precis som förut. */
+  .hz8-series__grid {
+    display: flex; grid-template-columns: none; gap: 8px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+    margin: 0 -14px; padding: 0 14px 4px;
+    scrollbar-width: none;
+  }
+  .hz8-series__grid::-webkit-scrollbar { display: none; }
+  .hz8-series-card {
+    flex: 0 0 calc((100% - 4 * 8px) / 4.15);
+    scroll-snap-align: start;
+    height: 108px;
+  }
   .hz8-series-card b { left: 7px; top: 9px; font-size: 17px !important; }
   .hz8-series-card span { left: 7px; bottom: 8px; max-width: 58px; font-size: 7px !important; }
-  .hz8-series-card:last-child { grid-column: auto; }
   .hz8-products__grid { grid-template-columns: repeat(2, 1fr); }
   .hz8-product:nth-child(n+3) { display: none; }
   .hz8-product__media { height: 150px; }
