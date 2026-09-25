@@ -16,12 +16,26 @@
 .hz8-product { position: relative; overflow: hidden; border: 1px solid var(--hz8-line); border-radius: 6px; background: var(--hz8-paper); padding-bottom: 12px; }
 .hz8-product.is-hidden { display: none; }
 .hz8-product__media { display: block; height: 150px; background: #f2eadc; }
+/* "Hela kortet klickbart": en egen, osynlig overlay-länk (.hz8-card-link,
+   se productCard() i 40-catalog.js) läggs som kortets sista barn --
+   inte ett ::after-pseudo-element på media-länken, eftersom det hade
+   klippts av .hz8-product__medias overflow:hidden (samma problem som
+   .hz8-mini-product__media, se 30-bestsellers.css). Overlayn ligger
+   under (z-index) den riktiga "Visa"-knappen, som därför fortfarande
+   fångar sina egna klick och behåller sin egen aria-label; overlayn är
+   tabindex="-1"/aria-hidden eftersom media-länken och Visa-knappen redan
+   ger tangentbords-/skärmläsaranvändare två riktiga vägar till samma mål. */
+.hz8-card-link { position: absolute; inset: 0; z-index: 0; }
+/* Pris + "Visa"-knapp i en flex-rad, normalt dokumentflöde -- se samma
+   motivering som .hz8-mini-product__foot i 30-bestsellers.css (den
+   bredare pill-knappen överlappade annars prissträngen på smala kort). */
+.hz8-product__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 10px 12px 0; }
 .hz8-product__media img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
-.hz8-product h3, .hz8-product small, .hz8-product strong { display: block; margin-inline: 12px; }
+.hz8-product h3, .hz8-product small { display: block; margin-inline: 12px; }
 .hz8-product h3 { margin-top: 10px; margin-bottom: 2px; font: 700 13px/1.15 Arial, sans-serif !important; }
 .hz8-product small { min-height: 14px; color: var(--hz8-muted); font: 400 11px/1.2 Arial, sans-serif !important; }
-.hz8-product strong { margin-top: 10px; font: 700 15px/1 Arial, sans-serif !important; }
-.hz8-product .hz8-add { bottom: 10px; color: #fff; }
+.hz8-product strong { font: 700 15px/1 Arial, sans-serif !important; }
+.hz8-product .hz8-add { color: var(--hz8-add-text); }
 
 @media (max-width: 900px) {
   .hz8-series__grid, .hz8-products__grid { grid-template-columns: repeat(2, 1fr); }

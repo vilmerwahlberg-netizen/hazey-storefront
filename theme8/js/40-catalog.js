@@ -23,7 +23,7 @@
 
   function productCard(item, assetBase) {
     var src = item.image || assetBase + item.asset;
-    return '<article class="hz8-product" data-hz8-category="' + item.cat + '"><a class="hz8-product__media" href="' + item.href + '"><img src="' + src + '" alt="' + item.name + '" loading="lazy"></a><h3>' + item.name + '</h3><small>' + item.meta + '</small><strong>' + item.price + '</strong><a class="hz8-add" href="' + item.href + '" aria-label="Visa ' + item.name + '">+</a></article>';
+    return '<article class="hz8-product" data-hz8-category="' + item.cat + '"><a class="hz8-product__media" href="' + item.href + '"><img src="' + src + '" alt="' + item.name + '" loading="lazy"></a><h3>' + item.name + '</h3><small>' + item.meta + '</small><div class="hz8-product__foot"><strong>' + item.price + '</strong><a class="hz8-add" href="' + item.href + '" aria-label="Visa ' + item.name + '">Visa</a></div><a class="hz8-card-link" href="' + item.href + '" tabindex="-1" aria-hidden="true"></a></article>';
   }
 
   window.HZ8.register("homepage-catalog", function (context) {

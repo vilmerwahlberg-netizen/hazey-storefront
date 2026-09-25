@@ -12,8 +12,16 @@
     var src = product.image || assetBase + product.asset;
     return '<article class="hz8-mini-product">'
       + '<a class="hz8-mini-product__media" href="' + product.href + '"><img src="' + src + '" alt="' + product.name + '" loading="lazy"></a>'
-      + '<h3>' + product.name + '</h3><small>' + product.meta + '</small><strong>' + product.price + '</strong>'
-      + '<a class="hz8-add" href="' + product.href + '" aria-label="Visa ' + product.name + '">+</a>'
+      + '<h3>' + product.name + '</h3><small>' + product.meta + '</small>'
+      /* Pris och "Visa"-knapp delar en flex-rad i NORMALT dokumentflöde
+         (inte position:absolute längre) -- den bredare pill-knappen
+         (jämfört med den gamla lilla "+"-cirkeln) täckte annars över
+         hälften av priset på smala mobilkort (uppmätt: 48px överlapp
+         av en ~100px bred prissträng). En flex-rad kan aldrig överlappa
+         sitt eget innehåll. */
+      + '<div class="hz8-mini-product__foot"><strong>' + product.price + '</strong>'
+      + '<a class="hz8-add" href="' + product.href + '" aria-label="Visa ' + product.name + '">Visa</a></div>'
+      + '<a class="hz8-card-link" href="' + product.href + '" tabindex="-1" aria-hidden="true"></a>'
       + '</article>';
   }
 

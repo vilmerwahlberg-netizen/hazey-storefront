@@ -15,16 +15,66 @@
 }
 
 .hz8-mini-product { position: relative; display: flex; flex-direction: column; padding: 8px; }
+/* "Hela kortet klickbart" (utan nästlade <a>-taggar, vilket är ogiltig
+   HTML): media-länken -- som redan är ett riktigt, eget <a> till samma
+   href -- får en osynlig ::after som sträcks ut till HELA kortets box
+   (kortet self är position:relative, se ovan) via det klassiska
+   "stretched link"-mönstret. .hz8-add ligger kvar OVANPÅ (senare i DOM-
+   ordningen => högre i stapelordningen) och fångar därför fortfarande
+   sina egna klick själv inom sin egen, mindre yta. */
 .hz8-mini-product__media { min-height: 0; flex: 1; border-radius: 3px; background: #f4eee3; overflow: hidden; }
+/* Se .hz8-card-link i 40-catalog.css för fullständig förklaring: en
+   egen overlay-länk (inte ett ::after-pseudo-element på media-länken)
+   eftersom .hz8-mini-product__medias EGNA overflow:hidden (för de
+   rundade hörnen) annars hade klippt bort pseudo-elementets sträckta
+   yta ner till bara mediats 150px, oavsett dess absoluta positionering
+   mot en YTTRE förälder. */
+.hz8-card-link { position: absolute; inset: 0; z-index: 0; }
 .hz8-mini-product__media img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
 .hz8-mini-product h3 { margin: 6px 0 1px; font: 700 12px/1.15 Arial, sans-serif !important; }
 .hz8-mini-product small { color: var(--hz8-muted); font: 400 11px/1.15 Arial, sans-serif !important; }
-.hz8-mini-product strong { margin-top: 3px; color: var(--hz8-ink); font: 700 14px/1.1 Arial, sans-serif !important; }
-.hz8-mini-product .hz8-add { color: #fff; }
+/* Pris + "Visa"-knapp delar en flex-rad -- se motivering i
+   30-bestsellers.js/card(). gap+justify-content:space-between garanterar
+   att de aldrig kan överlappa, oavsett prisets textlängd eller knappens
+   bredd (till skillnad från den tidigare absolut-positionerade knappen). */
+.hz8-mini-product__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 3px; }
+.hz8-mini-product strong { color: var(--hz8-ink); font: 700 14px/1.1 Arial, sans-serif !important; }
+/* KORRIGERING (2026-09-25): "+" (missvisande -- knappen lägger INTE i
+   varukorgen, den länkar till produkten) ersatt med texten "Visa" i en
+   tydlig pill-knapp. Färger som CSS-variabler (för framtida palettbyte).
+   Kontrast: vit text (#fff) mot --hz8-add-bg (samma mörkgröna
+   --hz8-green som redan användes) ger >8:1, långt över WCAG AA. */
+:root {
+  --hz8-add-bg: var(--hz8-green);
+  --hz8-add-bg-hover: #04382a;
+  --hz8-add-text: #fff;
+}
+.hz8-mini-product .hz8-add { color: var(--hz8-add-text); }
 .hz8-add {
-  position: absolute; right: 9px; bottom: 9px; width: 28px; height: 28px;
-  border: 0; border-radius: 50%; background: var(--hz8-green); color: #fff;
-  font-size: 18px !important; line-height: 28px !important;
+  /* position:relative (utan några offset-värden) behåller den i det
+     NORMALA flödet -- bara för att skapa en egen stapelkontext så
+     z-index verkligen lyfter den ovanför den kortomspännande
+     .hz8-card-link-overlayn (position:absolute, z-index:0), som annars
+     -- eftersom en icke-positionerad inline-flex-knapp annars målas
+     FÖRE positionerade syskon i CSS:s egen målningsordning -- hade
+     kunnat stjäla klick avsedda för knappen själv. */
+  position: relative; z-index: 1; flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 34px; padding: 0 14px;
+  border: 0; border-radius: 999px;
+  background: var(--hz8-add-bg); color: var(--hz8-add-text);
+  font: 600 13px/1 Arial, sans-serif !important;
+  white-space: nowrap;
+  transition: background-color 160ms var(--hz8-ease, ease), transform 160ms var(--hz8-ease, ease);
+}
+.hz8-add:hover, .hz8-add:focus-visible {
+  background: var(--hz8-add-bg-hover);
+  transform: translateY(-1px);
+}
+.hz8-add:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--hz8-add-bg-hover);
 }
 
 .hz8-featured { grid-column: 3; grid-row: 1 / 3; display: grid; grid-template-columns: 58% 42%; }
@@ -61,7 +111,8 @@
   .hz8-mini-product h3 { font-size: 10.5px !important; }
   .hz8-mini-product small { font-size: 10px !important; }
   .hz8-mini-product strong { font-size: 13px !important; }
-  .hz8-add { width: 28px; height: 28px; right: 7px; bottom: 7px; }
+  /* min 40px hög på mobil för tillräcklig tryckyta (uppdragets krav). */
+  .hz8-add { height: 40px; padding: 0 12px; font-size: 12px !important; }
   .hz8-featured { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 1fr; grid-template-rows: 318px 212px; }
   .hz8-featured__art img { object-position: center 58%; }
   .hz8-featured__copy { padding: 14px 12px 12px; display: grid; grid-template-columns: 1fr auto; gap: 7px 10px; }
@@ -80,7 +131,7 @@
   .hz8-mini-product h3 { font-size: 16px !important; }
   .hz8-mini-product small { font-size: 14px !important; }
   .hz8-mini-product strong { font-size: 19px !important; }
-  .hz8-add { width: 38px; height: 38px; font-size: 23px !important; }
+  .hz8-add { height: 38px; padding: 0 18px; font-size: 15px !important; }
   .hz8-featured__copy { padding: 45px 34px 32px; }
   .hz8-featured__copy h3 { font-size: 35px !important; }
   .hz8-featured__copy p { font-size: 17px !important; }
