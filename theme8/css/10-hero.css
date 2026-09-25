@@ -7,8 +7,13 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
      (position:absolute; bottom:32px, unchanged) room to move down along
      with the rest of the copy group without becoming flush against the
      section's own bottom edge -- its 32px offset from the edge is
-     unchanged, only its absolute position shifts as the section grows. */
-  min-height: 570px;
+     unchanged, only its absolute position shifts as the section grows.
+     570 -> 630 (+60px, 2026-09-25): the new H1 copy wraps to 3 lines
+     instead of 2 -- without this, the extra line pushed "Populära
+     serier" down far enough to overlap the microtrust row by 15.6px
+     at 1440px (measured). +60px gives real clearance, not just enough
+     to avoid touching. */
+  min-height: 630px;
   overflow: hidden;
   background: var(--hz8-cream);
   color: var(--hz8-ink);
@@ -57,7 +62,10 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   position: relative;
   z-index: 2;
   width: min(100% - 48px, 1316px);
-  min-height: 570px;
+  /* Must match .hz8-hero's min-height above: .hz8-hero__microtrust is
+     positioned against THIS box, so leaving it at 570 while the section
+     grew to 630 made the "Populära serier" pill overlap microtrust. */
+  min-height: 630px;
   margin: 0 auto;
 }
 
