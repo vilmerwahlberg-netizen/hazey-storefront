@@ -18,7 +18,7 @@
       + '    <p class="hz8-hero__lede">Ett brett utbud av lagliga cannabinoider för ett skönare liv. Inspirerad av naturen. Formad av frihet.</p>'
       + '    <div class="hz8-hero__trust"><span class="hz8-hero__stars" aria-hidden="true">★★★★★</span><span>4,7/5 på Trustpilot</span></div>'
       + '    <div class="hz8-hero__actions">'
-      + '      <a class="hz8-hero__primary" href="/sv/categories/thcb">Handla THCA-B&nbsp; →</a>'
+      + '      <a class="hz8-hero__primary" href="/sv/categories/thcb">Handla THCA-B</a>'
       + '      <a class="hz8-hero__secondary" href="/sv/categories/magic-sauce">Upptäck Magic Sauce</a>'
       + '    </div>'
       + '    <a class="hz8-hero__more" href="/sv/categories/alla-produkter">Populära serier</a>'

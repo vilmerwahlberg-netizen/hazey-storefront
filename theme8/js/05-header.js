@@ -190,7 +190,7 @@
           ]
         }
       ],
-      cta: { label: "Alla vapes →", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes" },
+      cta: { label: "Alla vapes", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes" },
       /* "Vape - Magic Sauce 99% - 2ml" är VERIFIERAD på Nyehandels
          egna riktiga "Våra bästsäljare"-sida (kontrollerad live
          2026-09-24) -- äkta POPULÄRAST, inte gissat. Ersätter
@@ -248,7 +248,7 @@
           ]
         }
       ],
-      cta: { label: "Alla buds →", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds" },
+      cta: { label: "Alla buds", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds" },
       /* Redan verifierad på Nyehandels riktiga "Våra bästsäljare"-sida
          -- äkta POPULÄRAST (uppgraderad från UTVALD PRODUKT, samma
          produkt som innan). */
@@ -290,7 +290,7 @@
         /* Inget eget Format-behov hittat under Hasch -- research fann
            inga verifierade sub-format utöver huvudkategorin. */
       ],
-      cta: { label: "Allt hasch →", href: "https://hazeyse.nyehandel.se/sv/categories/hasch" },
+      cta: { label: "Allt hasch", href: "https://hazeyse.nyehandel.se/sv/categories/hasch" },
       /* KORRIGERING (CBD-separation, uppdrag 2026-09-24 §3): föregående
          kort visade "Hash – CBD 15% – Primero", en CBD-familjeprodukt
          -- bryter mot den nya, hårda regeln att CBD/CBG/CBN ALDRIG ska
@@ -361,7 +361,7 @@
          2-produkters VARUMÄRKES-sida, inte en CBD-hubb -- bytt till
          "h4cbd" (29 produkter), plattformens riktiga, största
          konsoliderade CBD-samlingssida. */
-      cta: { label: "Visa allt inom CBD →", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd" },
+      cta: { label: "Visa allt inom CBD", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd" },
       /* Redan verifierad på Nyehandels riktiga "Våra bästsäljare"-sida
          -- äkta POPULÄRAST (uppgraderad från UTVALD PRODUKT, samma
          produkt som innan). */
@@ -420,7 +420,7 @@
       + '<span class="' + cls + '-name">' + product.name + '</span>'
       + '<span class="' + cls + '-price">' + product.price + '</span>'
       + stock
-      + '<span class="' + cls + '-link">Visa produkten →</span>'
+      + '<span class="' + cls + '-link">Visa produkten</span>'
       + '</span>'
       + '</a>';
   }
@@ -595,7 +595,7 @@
 
       trigger.addEventListener("click", function (e) {
         /* Toppnivå-triggern är dropdown-VÄXLARE, inte en direktlänk --
-           full kategorisida nås via panelens egen CTA ("Alla vapes →"
+           full kategorisida nås via panelens egen CTA ("Alla vapes"
            osv), så navigering hit skulle bara stänga panelen man just
            öppnade. */
         e.preventDefault();

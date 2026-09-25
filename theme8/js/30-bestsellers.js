@@ -26,7 +26,7 @@
     section.className = "hz8-home__section hz8-bestsellers";
     section.innerHTML = '<div class="hz8-home__head">'
       + '<h2 class="hz8-bestsellers__title" aria-label="Bästsäljare"><span aria-hidden="true">' + letters + '</span></h2>'
-      + '<a href="/sv/page/vara-bastsaljare">Visa alla →</a></div>'
+      + '<a href="/sv/page/vara-bastsaljare">Visa alla bästsäljare</a></div>'
       + '<div class="hz8-bestsellers__grid">'
       + products.map(function (product) { return card(product, context.assetBase); }).join("")
       + '<article class="hz8-featured">'
