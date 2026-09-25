@@ -74,8 +74,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero__trust,
 .hz8-hero__secondary,
 .hz8-hero__more,
-.hz8-hero__microtrust,
-.hz8-hero__van { opacity: 0; }
+.hz8-hero__microtrust { opacity: 0; }
 
 .hz8-hero h1 {
   margin: 0 0 22px;
@@ -192,51 +191,11 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero__microtrust span { display: inline-flex; align-items: center; gap: 6px; }
 .hz8-hero__microtrust svg { width: 15px; height: 15px; color: #98653c; }
 
-.hz8-hero__van {
-  position: absolute;
-  isolation: isolate;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-  width: min(53vw, 760px);
-  pointer-events: none;
-}
-/* Contact shadow: widened to span both wheels (was a single thin ellipse
-   offset toward the rear wheel only) and switched to a radial falloff so
-   it reads as ground contact rather than a blurred bar. Warmed slightly
-   toward the pavement's own sunset tone instead of neutral black-brown. */
-.hz8-hero__van::before {
-  content: "";
-  position: absolute;
-  left: 24%;
-  right: -3%;
-  bottom: -6px;
-  /* Scales with the van's own width (min(53vw,760px)) instead of a fixed
-     px value, so it doesn't thin out proportionally at larger sizes. */
-  height: clamp(28px, 3.6vw, 52px);
-  background: radial-gradient(ellipse 100% 100% at center,
-    rgba(46, 30, 14, .56) 0%,
-    rgba(46, 30, 14, .34) 40%,
-    rgba(46, 30, 14, 0) 72%);
-  filter: blur(4px);
-  z-index: -1;
-}
-/* Subtle toning so the crisp, saturated cutout sits closer to the hazy,
-   lower-contrast sunset light of the background photo -- deliberately
-   mild (no blur) so the Hazey wordmark on the surfboard stays legible. */
-.hz8-hero__van img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: saturate(.92) contrast(.95) brightness(1.02) sepia(.05);
-}
-
 .hz8-hero.is-entering .hz8-hero__background { animation: hz8-fade .6s var(--hz8-ease) .18s both; }
 .hz8-hero.is-entering .hz8-hero__title-line { animation: hz8-fade-blur .62s var(--hz8-ease) both; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: 1.18s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .56s var(--hz8-ease) 1.54s both; }
-.hz8-hero.is-entering .hz8-hero__van { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
 .hz8-hero.is-entering .hz8-hero__van-photo { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
 .hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .5s var(--hz8-ease) 1.72s both; }
 .hz8-hero.is-entering .hz8-hero__secondary,
@@ -245,38 +204,76 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 .hz8-hero.is-entering .hz8-hero__primary { animation: hz8-fade .58s var(--hz8-ease) 2.04s both; }
 
 @keyframes hz8-fade { from { opacity: 0; } to { opacity: 1; } }
+/* KORRIGERING (2026-09-25): filter:blur borttaget ur denna in-animation.
+   Bekräftat på riktig iPhone/Safari (WebKit): en `filter:blur(7px)->
+   blur(0)`-animation lämnade H1 och (icke-deterministiskt, olika kort
+   varje gång) ett av bästsäljarkorten kvar SUDDIGA efter att animationen
+   redan var klar -- Safari målar inte alltid om lagret skarpt efter att
+   ett animerat filter når sitt sluttillstånd. opacity+transform ensamma
+   ger samma upplevda "mjuk intoning"-känsla utan den risken. */
 @keyframes hz8-fade-blur {
-  from { opacity: 0; filter: blur(7px); transform: translateY(8px); }
-  to { opacity: 1; filter: blur(0); transform: none; }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }
 
 @media (max-width: 767px) {
-  .hz8-hero { min-height: 410px; }
-  .hz8-hero__inner { width: 100%; min-height: 410px; }
-  /* padding-top höjt 38px -> 90px, samma orsak som desktop-varianten
-     ovan -- mobilheaderns botten ligger vid 12px+60px=72px. */
-  .hz8-hero__copy { width: auto; padding: 90px 20px 0; }
+  /* Höjd höjd (410->520px) för att rymma den återinsatta sekundära
+     CTA:n (Magic Sauce) samt det ökade avståndet under headern utan
+     att bakgrundsbilden/kopian klipps av i botten. */
+  .hz8-hero { min-height: 520px; }
+  .hz8-hero__inner { width: 100%; min-height: 520px; }
+  /* KORRIGERING (2026-09-25): padding-top höjt 90px -> 132px. Uppmätt
+     live: mobilheadern slutar vid y=72px (12px marginal + 60px hög),
+     men en separat, native -24px-kompensation (se #store-main i
+     05-header.css, satt av en helt annan anledning) drog effektivt UPP
+     hela hero-sektionen 24px också -- nettoresultatet blev H1:s
+     överkant vid y=66px, dvs 6px INUTI headerns glaspanel, inte 18px
+     under den som avsett. 132px padding-top ger nu H1 vid y=132-24=108,
+     ett verkligt fritt utrymme på 108-72=36px (uppdragets krav: minst
+     ~24px). Verifierat via getBoundingClientRect, inte gissat. */
+  .hz8-hero__copy { width: auto; padding: 132px 20px 0; }
+  /* Brödtextens bredd sänkt 340->300px: den nya bakgrunden visar bussen
+     tydligare mot höger (se .hz8-hero__background nedan), och 300px
+     håller lede-texten inom den vänstra, mörkare/kräm-tonade delen av
+     gradient-overlayn så den aldrig går in över bussens siluett. */
   .hz8-hero h1 { max-width: 350px; margin-bottom: 14px; font-size: 45px !important; line-height: 1.02 !important; }
-  .hz8-hero__lede { max-width: 340px; font-size: 15px !important; }
-  .hz8-hero__trust, .hz8-hero__secondary, .hz8-hero__more { display: none; }
-  .hz8-hero__actions { align-items: stretch; }
-  .hz8-hero__primary, .hz8-hero__secondary { min-height: 48px; padding: 0 18px; font-size: 13px !important; }
+  .hz8-hero__lede { max-width: 225px; font-size: 15px !important; }
+  .hz8-hero__trust, .hz8-hero__more { display: none; }
+  /* Sekundär-CTA:n (Magic Sauce) tillbaka på mobil (var dold helt) --
+     staplad i full bredd under primärknappen (inte 50/50) eftersom dess
+     längre text ("Upptäck Magic Sauce") annars riskerar radbryta vid
+     smala bredder; full bredd garanterar en rad oavsett textlängd. */
+  .hz8-hero__actions { align-items: stretch; flex-direction: column; }
+  .hz8-hero__primary, .hz8-hero__secondary {
+    display: inline-flex; width: 100%;
+    min-height: 48px; padding: 0 18px; font-size: 13px !important;
+    white-space: nowrap;
+  }
   .hz8-hero__microtrust { display: none; }
-  .hz8-hero__van { right: -5px; bottom: -4px; width: 300px; }
+  /* KORRIGERING (2026-09-25): mobil hade tidigare en flat strandbild
+     (hero-beach-mobile-v2) + en separat urklippt bussbild inklistrad
+     ovanpå -- bytt mot ETT riktigt beskuret fotoutsnitt av samma äkta
+     desktop-scen (hero-scene-mobile-van.webp, ~1000px bred, genererat
+     från hero-scene-desktop-van.png) där bussen redan står naturligt på
+     vägen. background-position:right hjälper hålla bussen synlig i
+     högerkanten medan gradienten till vänster (samma som förut) håller
+     textzonen läsbar. */
   .hz8-hero__background {
-    background-position: center center;
+    background-position: right bottom;
+    /* Gradienten håller hög opacitet ända till ~80% av bredden (där
+       lede-texten faktiskt slutar, uppmätt) innan den öppnar upp för
+       bussen i den sista femtedelen -- en tidigare, snabbare avtoning
+       lämnade lede-textens högra del med under 1,2:1 kontrast (uppmätt
+       med riktig pixel-sampling, inte gissat). */
     background-image:
-      linear-gradient(90deg,rgba(255,249,237,.74) 0%,rgba(255,249,237,.52) 48%,rgba(255,249,237,.04) 82%),
-      url("assets/hero-beach-mobile-v2.webp");
+      linear-gradient(90deg,rgba(255,249,237,.94) 0%,rgba(255,249,237,.88) 60%,rgba(255,249,237,.5) 80%,rgba(255,249,237,.12) 98%),
+      url("assets/hero-scene-mobile-van.webp");
   }
 }
 
 /* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo declaration
-   above for the full rationale. The old transparent-PNG van (still used
-   on mobile, untouched below) is hidden here so exactly one van layer
-   is ever visible at a given width. */
+   above for the full rationale. */
 @media (min-width: 768px) {
-  .hz8-hero__van { display: none; }
   /* KORRIGERING (scroll-prestanda, 2026-09-25): mask-image tvingade
      Chrome att beräkna om masken varje gång detta lager kompositerades
      om (t.ex. vid scroll om en förälder animerar, eller vid resize) --
@@ -306,14 +303,12 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
   .hz8-hero__more { font-size: 17px !important; }
   .hz8-hero__microtrust { width: 760px; font-size: 15px !important; gap: 10px 28px; }
-  .hz8-hero__van { right: 0; bottom: 0; width: min(53vw, 1020px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hz8-hero.is-entering .hz8-hero__background,
   .hz8-hero.is-entering .hz8-hero__title-line,
   .hz8-hero.is-entering .hz8-hero__lede,
-  .hz8-hero.is-entering .hz8-hero__van,
   .hz8-hero.is-entering .hz8-hero__van-photo,
   .hz8-hero.is-entering .hz8-hero__trust,
   .hz8-hero.is-entering .hz8-hero__secondary,

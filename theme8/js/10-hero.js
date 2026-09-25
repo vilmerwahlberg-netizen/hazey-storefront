@@ -28,23 +28,14 @@
       + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Leveransgaranti</span>'
       + '    </div>'
       + '  </div>'
-      /* .hz8-hero__van is display:none on >=768px (desktop uses the
-         separate .hz8-hero__van-photo background layer instead, see
-         10-hero.css) -- but a <picture>'s fallback <img src> is still
-         eagerly fetched by the browser regardless of that CSS, since
-         source selection happens at parse time before layout/CSS is
-         even considered. Verified live: the 1MB desktop van PNG was
-         downloading on every desktop pageview despite never being
-         shown. Fix: the fallback img now points at a 1x1 transparent
-         GIF data URI (zero network bytes) instead of a real desktop
-         image -- the mobile <source> continues to take over exactly
-         as before whenever its own media query actually matches, so
-         mobile is completely unaffected. */
-      + '  <picture class="hz8-hero__van" aria-hidden="true">'
-      + '    <source media="(max-width: 767px)" srcset="' + context.assetBase + 'hero-van-mobile-v2.webp">'
-      + '    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">'
-      + '  </picture>'
       + '</div>';
+    /* Mobil hade tidigare en separat urklippt bussbild (.hz8-hero__van)
+       inklistrad OVANPÅ en flat strandbild -- bytt (2026-09-25) mot ett
+       enda riktigt beskuret fotoutsnitt av samma äkta desktop-scen som
+       redan visas på >=768px (se .hz8-hero__background i mobil-media-
+       queryn i 10-hero.css), där bussen redan står naturligt på vägen i
+       bilden själv. Elementet och dess <picture>-hämtning är alltså
+       helt borttagna -- inget att dölja med CSS, inget att ladda. */
 
     var nativeRoot = nativeHero.closest(".template-components__slideshow") || nativeHero;
     nativeRoot.parentNode.insertBefore(section, nativeRoot);
