@@ -280,13 +280,20 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
    is ever visible at a given width. */
 @media (min-width: 768px) {
   .hz8-hero__van { display: none; }
+  /* KORRIGERING (scroll-prestanda, 2026-09-25): mask-image tvingade
+     Chrome att beräkna om masken varje gång detta lager kompositerades
+     om (t.ex. vid scroll om en förälder animerar, eller vid resize) --
+     en extra, löpande kostnad ovanpå bilden själv. Samma exakta
+     övertoning (osynlig 0-41%, mjuk kant 41-47%, helt synlig 47-100%)
+     är nu inbakad direkt i bildens EGEN alfakanal
+     (hero-scene-desktop-van-masked.webp, genererad från samma källa
+     som hero-scene-desktop-van.webp) -- pixelidentiskt resultat, men
+     ingen mask-image kvar att räkna om. */
   .hz8-hero__van-photo {
     display: block;
-    background-image: url("assets/hero-scene-desktop-van.webp");
+    background-image: url("assets/hero-scene-desktop-van-masked.webp");
     background-size: cover;
     background-position: center bottom;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 41%, #000 47%, #000 100%);
-    mask-image: linear-gradient(to right, transparent 0%, transparent 41%, #000 47%, #000 100%);
   }
 }
 
