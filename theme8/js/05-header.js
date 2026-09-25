@@ -44,6 +44,14 @@
   var ANIM_STAGGER = 50;     // ms -- inom kravet 45-70ms
   var ANIM_SAFETY_TIMEOUT = 1600; // ms -- gott om marginal över ~950ms total animation
 
+  /* Andel av .hz8-hero:s höjd som ska scrollas förbi innan headern går
+     till fullbreddsläge (2026-09-25) -- byt bara detta tal för att
+     justera hur länge glaspanelen svävar. 0.7 = headern blir fullbredd
+     efter att 70% av heron passerat. */
+  var HERO_SCROLL_FRACTION = 0.7;
+  var HEADER_SCROLL_FALLBACK = 40; // px -- samma fasta tröskel som förut, används på sidor UTAN hero
+  var HEADER_SCROLL_HYSTERESIS = 10; // px -- förhindrar flimmer om scrollpositionen står still exakt vid tröskeln
+
   function initHeaderEntrance(header) {
     var html = document.documentElement;
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -768,12 +776,31 @@
       initMobileAccordions(drawer);
     }
 
-    /* Glasig flytande header (vila) -> fullbredds sticky bar (scrollat),
-       samma tröskel/mönster som prototypen. */
-    var THRESHOLD = 40;
+    /* Glasig flytande header (vila) -> fullbredds sticky bar (scrollat).
+       KORRIGERING (2026-09-25): tröskeln var tidigare ett fast 40px-tal
+       -- bytt mot HERO_SCROLL_FRACTION (70%) av den riktiga herons
+       höjd, så headern svävar längre på sidor med en hög hero. Räknas
+       om vid resize (herons höjd ändras vid varje brytpunkt: 410/520/
+       570/740px). Sidor utan hero (kategori/produkt) faller tillbaka
+       till samma fasta 40px som förut. */
+    var threshold = HEADER_SCROLL_FALLBACK;
+    function computeThreshold() {
+      var hero = document.querySelector(".hz8-hero");
+      threshold = hero ? hero.getBoundingClientRect().height * HERO_SCROLL_FRACTION : HEADER_SCROLL_FALLBACK;
+    }
+
     var ticking = false;
+    var scrolled = false;
+    /* Hysteres (±10px runt tröskeln): utan den skulle scrollY som ligger
+       still på pixeln exakt vid tröskeln kunna växla klassen fram och
+       tillbaka varje litet, ofrivilliga scroll-jitter (t.ex. adressfält
+       som döljs/visas på mobil) -- klassen byter bara läge när
+       scrollpositionen passerat tydligt förbi tröskeln åt endera hållet. */
     function syncScroll() {
-      document.body.classList.toggle("hz8-header-scrolled", window.scrollY > THRESHOLD);
+      var y = window.scrollY;
+      if (!scrolled && y > threshold + HEADER_SCROLL_HYSTERESIS) scrolled = true;
+      else if (scrolled && y < threshold - HEADER_SCROLL_HYSTERESIS) scrolled = false;
+      document.body.classList.toggle("hz8-header-scrolled", scrolled);
       ticking = false;
     }
     window.addEventListener("scroll", function () {
@@ -781,6 +808,30 @@
       ticking = true;
       window.requestAnimationFrame(syncScroll);
     }, { passive: true });
+
+    var resizeTicking = false;
+    window.addEventListener("resize", function () {
+      if (resizeTicking) return;
+      resizeTicking = true;
+      window.requestAnimationFrame(function () {
+        computeThreshold();
+        syncScroll();
+        resizeTicking = false;
+      });
+    });
+
+    /* .hz8-hero injiceras av 10-hero.js, ett SENARE modul i uppstarts-
+       ordningen (se 00-bootstrap.js: modulerna monteras i registrerings-
+       ordning, och 05-header.js registrerar sig FÖRE 10-hero.js) -- vid
+       denna punkt i körningen finns heron alltså ännu inte i DOM:en.
+       Den omedelbara syncScroll() nedan använder därför fallback-värdet
+       (ofarligt, korrigeras direkt i nästa bildruta). Den riktiga,
+       hero-medvetna uträkningen görs i en rAF som körs EFTER att hela
+       uppstarts-loopen (och därmed 10-hero.js) hunnit köra klart. */
     syncScroll();
+    window.requestAnimationFrame(function () {
+      computeThreshold();
+      syncScroll();
+    });
   });
 })();
