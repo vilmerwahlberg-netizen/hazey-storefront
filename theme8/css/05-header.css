@@ -382,8 +382,11 @@ html.hz8 .hz8-header-nav .hz8-dropdown{
   position:absolute; top:calc(100% + 14px); left:50%;
   transform:translateX(-50%) translateY(6px);
   background:rgba(255,253,247,.94);
-  -webkit-backdrop-filter:blur(22px) saturate(160%);
-  backdrop-filter:blur(22px) saturate(160%);
+  /* KORRIGERING (scroll-prestanda, 2026-09-25): blur 22px->14px,
+     saturate 160%->120%. Bakgrunden är redan .94 opak (nästan solid)
+     så en lägre blur är knappt märkbar i själva panelen. */
+  -webkit-backdrop-filter:blur(14px) saturate(120%);
+  backdrop-filter:blur(14px) saturate(120%);
   border:1px solid rgba(23,39,23,.09);
   border-radius:18px;
   box-shadow:0 20px 48px rgba(23,39,23,.16);
