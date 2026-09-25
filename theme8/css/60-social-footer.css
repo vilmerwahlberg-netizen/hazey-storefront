@@ -1,6 +1,6 @@
 .hz8-reviews__grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 8px; }
 .hz8-review { min-height: 218px; margin: 0; padding: 27px; border: 1px solid var(--hz8-line); border-radius: 6px; background: var(--hz8-paper); display: flex; flex-direction: column; justify-content: space-between; font: 400 14px/1.42 Arial, sans-serif !important; }
-.hz8-review--feature { border: 0; background: linear-gradient(rgba(0,67,51,.82),rgba(0,67,51,.82)), url("assets/hero-venice-background.png") center/cover; color: #fff; }
+.hz8-review--feature { border: 0; background: linear-gradient(rgba(0,67,51,.82),rgba(0,67,51,.82)), url("assets/hero-venice-background.webp") center/cover; color: #fff; }
 .hz8-review strong { color: #e99a21; letter-spacing: 2px; }
 .hz8-review__foot { display: flex; flex-direction: column; gap: 3px; }
 .hz8-review__score { font: 700 13px/1 Arial, sans-serif !important; }
@@ -11,7 +11,7 @@
 .hz8-score__stars { color: #e99a21; letter-spacing: 1px; }
 
 .hz8-faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; }
-.hz8-faq__card { min-height: 285px; border-radius: 6px; padding: 34px; background: linear-gradient(110deg, rgba(239,227,206,.96), rgba(239,227,206,.72)), url("assets/hero-venice-background.png") center/cover; }
+.hz8-faq__card { min-height: 285px; border-radius: 6px; padding: 34px; background: linear-gradient(110deg, rgba(239,227,206,.96), rgba(239,227,206,.72)), url("assets/hero-venice-background.webp") center/cover; }
 .hz8-faq__card h2 { margin: 0 0 12px; font: 600 27px/1.05 "Iowan Old Style", Georgia, serif !important; }
 .hz8-faq__card p { max-width: 350px; color: #4f4c44; font: 400 13px/1.45 Arial, sans-serif !important; }
 .hz8-faq__card a { display: inline-block; margin-top: 10px; border-radius: 999px; padding: 11px 17px; background: var(--hz8-orange); color: #fff; font: 700 12px/1 Arial, sans-serif !important; }

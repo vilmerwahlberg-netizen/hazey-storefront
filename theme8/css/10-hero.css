@@ -23,7 +23,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   inset: 0;
   background-image:
     linear-gradient(90deg,rgba(255,249,237,.90) 0%,rgba(255,249,237,.74) 29%,rgba(255,249,237,.12) 53%,transparent 70%),
-    url("assets/hero-scene-desktop-empty.png");
+    url("assets/hero-scene-desktop-empty.webp");
   background-size: cover;
   /* Keep the street/sand visible at the bottom so the van has a ground plane. */
   background-position: center bottom;
@@ -267,7 +267,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
     background-position: center center;
     background-image:
       linear-gradient(90deg,rgba(255,249,237,.74) 0%,rgba(255,249,237,.52) 48%,rgba(255,249,237,.04) 82%),
-      url("assets/hero-beach-mobile-v2.png");
+      url("assets/hero-beach-mobile-v2.webp");
   }
 }
 
@@ -279,7 +279,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   .hz8-hero__van { display: none; }
   .hz8-hero__van-photo {
     display: block;
-    background-image: url("assets/hero-scene-desktop-van.png");
+    background-image: url("assets/hero-scene-desktop-van.webp");
     background-size: cover;
     background-position: center bottom;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 41%, #000 47%, #000 100%);

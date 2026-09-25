@@ -4,7 +4,7 @@
   var series = [
     { name: "Magic Sauce", label: "Smak. Effekt. Balans.", href: "/sv/categories/magic-sauce", asset: "campaign-magic.webp" },
     { name: "THCaB", label: "Kraftfullt. Rent. Äkta.", href: "/sv/categories/thcb", asset: "campaign-thcab.jpg" },
-    { name: "D10", label: "West Coast", href: "/sv/categories/alla-vapes", asset: "hero-venice-background.png" },
+    { name: "D10", label: "West Coast", href: "/sv/categories/alla-vapes", asset: "hero-venice-background.webp" },
     { name: "Nano-11", label: "Nästa generation", href: "/sv/categories/alla-produkter", asset: "campaign-nano.jpg" },
     { name: "THCa", label: "Premium flower", href: "/sv/categories/thca", asset: "campaign-thca.jpg" }
   ];

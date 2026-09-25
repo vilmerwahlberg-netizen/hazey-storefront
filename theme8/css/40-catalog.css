@@ -44,7 +44,7 @@
   .hz8-mobile-lifestyle {
     display: flex; min-height: 205px; margin: 0 -14px; padding: 28px 26px;
     flex-direction: column; justify-content: center; align-items: flex-start;
-    background: linear-gradient(90deg,rgba(0,62,48,.96),rgba(0,62,48,.58)),url("assets/hero-venice-background.png") center/cover;
+    background: linear-gradient(90deg,rgba(0,62,48,.96),rgba(0,62,48,.58)),url("assets/hero-venice-background.webp") center/cover;
     color: #fff;
   }
   .hz8-mobile-lifestyle h2 { max-width: 280px; margin: 0 0 10px; color: #fff; font: 600 27px/1.03 "Iowan Old Style",Georgia,serif !important; }
