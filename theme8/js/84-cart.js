@@ -15,6 +15,16 @@
      på /sv/page/faq och i produktsidornas USP-rad (admin). Ändra här om
      butiken ändrar sin fraktregel. */
   var FREE_SHIPPING_FROM = 499;
+  var BONUS_FROM = 2700;   // prototypens bonusmål (150 kr)
+  var BONUS_AMOUNT = 150;
+  /* Mål visas bara när kassan faktiskt tillämpar dem. Verifierat
+     2026-09-28: Nyehandels kassa tar 49 kr frakt även vid 990 och
+     3 168 kr, och ingen bonus/rabatt appliceras vid >2 700 kr -- båda
+     målen är därför AV tills butikens frakt-/kampanjregler finns i
+     Nyehandel (se slutrapport). */
+  HZ8.flags = HZ8.flags || {};
+  if (HZ8.flags.freeShippingGoal == null) HZ8.flags.freeShippingGoal = false;
+  if (HZ8.flags.bonusGoal == null) HZ8.flags.bonusGoal = false;
 
   function cartState() {
     var store = HZ8.store();
@@ -29,11 +39,13 @@
     return Math.ceil(value).toLocaleString("sv-SE") + " kr";
   }
 
+  /* Tvåstegsmål (fri frakt -> bonus) -- bara när respektive flagga är på. */
   function syncShipping(aside) {
     var footer = aside.querySelector(".section.footer");
     var existing = aside.querySelector(".hz8-cart-shipping");
     var state = cartState();
-    if (!footer || !state || state.total == null || !state.count) {
+    var show = HZ8.flags.freeShippingGoal || HZ8.flags.bonusGoal;
+    if (!footer || !state || state.total == null || !state.count || !show) {
       if (existing) existing.remove();
       return;
     }
@@ -41,17 +53,24 @@
       existing = document.createElement("div");
       existing.className = "hz8-cart-shipping";
       existing.setAttribute("role", "status");
-      existing.innerHTML = '<p class="hz8-cart-shipping__text"></p><div class="hz8-cart-shipping__bar" aria-hidden="true"><span></span></div>';
-      footer.insertBefore(existing, footer.firstChild);
+      existing.innerHTML = '<p class="hz8-cart-shipping__text"></p><div class="hz8-cart-shipping__bar" aria-hidden="true"><span></span><i class="hz8-cart-shipping__mark"></i></div>';
+      var items = aside.querySelector(".section.items");
+      (items ? items.parentNode : aside).insertBefore(existing, items || null);
     }
-    var left = FREE_SHIPPING_FROM - state.total;
-    var text = left > 0
-      ? "Handla för " + formatKr(left) + " till för fri frakt"
-      : "Du har fri frakt";
+    var t = state.total, text, pct;
+    var fs = HZ8.flags.freeShippingGoal, bo = HZ8.flags.bonusGoal;
+    if (fs && t < FREE_SHIPPING_FROM) text = formatKr(FREE_SHIPPING_FROM - t) + " kvar till fri frakt";
+    else if (bo && t < BONUS_FROM) text = (fs ? "Fri frakt uppnådd · " : "") + formatKr(BONUS_FROM - t) + " kvar till " + BONUS_AMOUNT + " kr bonus";
+    else text = fs && bo ? "Fri frakt + " + BONUS_AMOUNT + " kr bonus uppnått" : fs ? "Fri frakt uppnådd" : BONUS_AMOUNT + " kr bonus uppnådd";
+    var max = bo ? BONUS_FROM : FREE_SHIPPING_FROM;
+    pct = Math.min(100, Math.max(3, t / max * 100));
     var p = existing.querySelector(".hz8-cart-shipping__text");
     if (p.textContent !== text) p.textContent = text;
-    existing.classList.toggle("is-complete", left <= 0);
-    existing.querySelector(".hz8-cart-shipping__bar span").style.width = Math.min(100, Math.max(4, state.total / FREE_SHIPPING_FROM * 100)) + "%";
+    existing.classList.toggle("is-complete", t >= max);
+    existing.querySelector(".hz8-cart-shipping__bar span").style.width = pct + "%";
+    var mark = existing.querySelector(".hz8-cart-shipping__mark");
+    mark.hidden = !(fs && bo);
+    mark.style.left = (FREE_SHIPPING_FROM / BONUS_FROM * 100) + "%";
   }
 
   function parseKr(t) { var m = String(t || "").replace(/\s/g, "").match(/(\d+(?:,\d+)?)/); return m ? parseFloat(m[1].replace(",", ".")) : 0; }
@@ -77,6 +96,8 @@
     }
     var n = state ? state.count : 0;
     var txt = n ? "(" + n + ")" : "";
+    var h2 = head.querySelector("h2");
+    if (h2 && h2.firstChild && h2.firstChild.nodeType === 3 && /Din varukorg/.test(h2.firstChild.textContent)) h2.firstChild.textContent = "Varukorg ";
     if (badge.textContent !== txt) badge.textContent = txt;
     var live = document.getElementById("hz8-cart-live");
     if (!live) {
@@ -140,23 +161,49 @@
     if (key === xsellKey && host) return;
     xsellKey = key;
     var hubs = HZ8.catalog.build().series.filter(function (x) { return x.hub; });
-    Promise.all(hubs.map(function (h) {
+    var bat = HZ8.catalog.formatByKey("batterier");
+    var pageText = { key: "text1", run: function (doc) { return ((doc.getElementById("product-page") || doc.body).textContent || "").slice(0, 20000); } };
+    var brandOf = function (c) { var m = c.html.match(/class="brand"[^>]*>\s*([^<]+?)\s*</); return m ? m[1].trim() : ""; };
+    var pathOf = function (c) { var m = c.html.match(/href="([^"]*\/products\/[^"]+)"/); return m ? productPathOf(m[1]) : ""; };
+    /* 1) Kompatibelt tillbehör: cart i korgen och inget batteri -> batterier
+       vars varumärke nämns i cartens egen produkttext. */
+    var carts = items.filter(function (i) { return /^\s*cart\b/i.test(i.name || ""); });
+    var compat = !bat || !carts.length ? Promise.resolve([]) : HZ8.fetchPage(bat.href, HZ8.categoryCards).then(function (bcards) {
+      var batPaths = bcards.map(pathOf);
+      if (items.some(function (i) { return batPaths.indexOf(productPathOf(i.href)) !== -1; })) return [];
+      return Promise.all(carts.map(function (c) { return HZ8.fetchPage(c.href, pageText).catch(function () { return ""; }); })).then(function (texts) {
+        var t = texts.join(" ");
+        return bcards.filter(function (c) { var br = brandOf(c); return br && new RegExp("\\b" + br.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i").test(t); });
+      });
+    }).catch(function () { return []; });
+    /* 2) Kompletterande produkter ur samma serie. */
+    var series = Promise.all(hubs.map(function (h) {
       return HZ8.fetchPage(h.hub, HZ8.categoryCards).then(function (cards) { return { series: h, cards: cards }; }).catch(function () { return null; });
     })).then(function (res) {
-      if (xsellKey !== key) return;
-      var picks = [];
-      var seen = {};
+      var out = [];
       res.forEach(function (r) {
         if (!r) return;
-        var paths = r.cards.map(function (c) { var m = c.html.match(/href="([^"]*\/products\/[^"]+)"/); return m ? productPathOf(m[1]) : ""; });
+        var paths = r.cards.map(pathOf);
         if (!paths.some(function (p) { return inCart[p]; })) return;
-        r.cards.forEach(function (c, idx) {
-          var p = paths[idx];
-          if (!p || inCart[p] || seen[p] || picks.length >= 3) return;
-          seen[p] = true;
-          picks.push(c);
-        });
+        r.cards.forEach(function (c) { out.push(c); });
       });
+      return out;
+    });
+    Promise.all([compat, series]).then(function (lists) {
+      var seen = {};
+      var cands = lists[0].concat(lists[1]).filter(function (c) {
+        var p = pathOf(c);
+        if (!p || inCart[p] || seen[p]) return false;
+        seen[p] = true; return true;
+      }).slice(0, 8);
+      /* Bara köpbara (Nyehandels product/state). */
+      return Promise.all(cands.map(function (c) {
+        var a = c.html.match(/href="([^"]*\/products\/[^"]+)"/);
+        return HZ8.productState(a[1]).then(function (st) { return st.buyable ? c : null; }).catch(function () { return null; });
+      }));
+    }).then(function (checked) {
+      if (xsellKey !== key) return;
+      var picks = checked.filter(Boolean).slice(0, 3);
       var cur = aside.querySelector(".hz8-xsell");
       if (!picks.length) { if (cur) cur.remove(); return; }
       var box = cur || document.createElement("section");
@@ -187,6 +234,102 @@
       return HZ8.addVariant(st.variantId);
     }).catch(function () { location.href = href; }).finally(function () { b.removeAttribute("aria-busy"); b.textContent = "Lägg till"; });
   });
+
+  /* ---- Paketuppgradering per korgrad ----
+     Nästa riktiga nivå i produktens pristrappa (product/state, prices[].
+     price.tier). Uppgradering = samma strain, högre antal (PUT
+     /frontend-api/cart/item/{id} + cart/reload) -- Nyehandel sätter
+     nivåpriset, inga dubbla rader. Nya strains i samma paket kräver
+     paketprodukter (se theme8/blocks/MIXED-PACKS.md). */
+  var tierCache = {};
+  function tiersFor(productId) {
+    if (tierCache[productId]) return tierCache[productId];
+    tierCache[productId] = fetch("/frontend-api/product/state", {
+      method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(),
+      body: JSON.stringify({ product_id: productId, variant_ids: [null] })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      var v = (d.product && d.product.variants || [])[0];
+      var byVariant = {};
+      (d.product && d.product.variants || []).forEach(function (x) { byVariant[x.id] = x; });
+      return { tiers: (v && v.prices || []).map(function (p) { return { min: p.price.tier, unit: parseKr(p.price.formatted_price) }; }).filter(function (t) { return t.min; }).sort(function (a, b) { return a.min - b.min; }), variants: byVariant };
+    }).catch(function () { return { tiers: [], variants: {} }; });
+    return tierCache[productId];
+  }
+  function syncUpgrades(aside) {
+    var items = cartItems();
+    var rows = aside.querySelectorAll("#cartAside article.item");
+    items.forEach(function (it, idx) {
+      var row = rows[idx];
+      if (!row) return;
+      var qty = parseFloat(it.quantity) || 1;
+      tiersFor(it.product_id).then(function (info) {
+        var next = info.tiers.filter(function (t) { return t.min > qty; })[0];
+        var v = info.variants[it.variant_id];
+        var box = row.querySelector(".hz8-upgrade");
+        var stockOk = !v || !v.track_inventory || v.available_stock >= (next ? next.min : 0);
+        if (!next || !stockOk) { if (box) box.remove(); return; }
+        var nowTotal = parseKr(it.formatted_total);
+        var newTotal = next.min * next.unit;
+        var cur = info.tiers.filter(function (t) { return t.min <= qty; }).pop() || info.tiers[0];
+        var extraSave = next.min * (cur.unit - next.unit);
+        var sig = it.id + ":" + qty + ":" + next.min;
+        if (box && box.getAttribute("data-sig") === sig) return;
+        if (!box) { box = document.createElement("div"); box.className = "hz8-upgrade"; row.appendChild(box); }
+        box.setAttribute("data-sig", sig);
+        box.innerHTML = '<p class="hz8-upgrade__text">Uppgradera till <strong>' + next.min + " st</strong> för " + kr(newTotal - nowTotal) + " till" +
+          (extraSave >= 0.5 ? ' <span class="hz8-upgrade__save">· du sparar ' + kr(extraSave) + " till</span>" : "") + "</p>" +
+          '<button type="button" class="hz8-upgrade__btn" data-item="' + it.id + '" data-qty="' + next.min + '">Uppgradera</button>';
+      });
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest(".hz8-upgrade__btn");
+    if (!b || b.getAttribute("aria-busy") === "true") return;
+    b.setAttribute("aria-busy", "true"); b.textContent = "…";
+    var id = b.getAttribute("data-item"), q = +b.getAttribute("data-qty");
+    fetch("/frontend-api/cart/item/" + id, { method: "PUT", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify({ id: +id, quantity: q }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); var st = HZ8.store(); return st && st.dispatch("cart/reload"); })
+      .catch(function () { b.textContent = "Försök igen"; b.removeAttribute("aria-busy"); });
+  });
+
+  /* ---- Ordersammanställning + kassaknapp med total ---- */
+  function syncSummary(aside) {
+    var footer = aside.querySelector(".section.footer");
+    var state = cartState();
+    if (!footer || !state || !state.count) return;
+    var ship = footer.querySelector(".hz8-cart-shipline");
+    if (!ship) {
+      ship = document.createElement("div");
+      ship.className = "hz8-cart-shipline";
+      ship.innerHTML = "<span>Frakt</span><span>Beräknas i kassan</span>";
+      var total = footer.querySelector(".total");
+      if (total) total.insertBefore(ship, total.firstChild);
+    }
+    var btn = footer.querySelector(".button.buy");
+    var label = "Till kassan · " + kr(state.total);
+    if (btn && btn.getAttribute("data-hz8-label") !== label) { btn.setAttribute("data-hz8-label", label); btn.setAttribute("aria-label", label); }
+    var trust = aside.querySelector(".hz8-cart-trust");
+    if (trust && btn && trust.previousElementSibling !== btn) btn.parentNode.insertBefore(trust, btn.nextSibling);
+  }
+
+  /* ---- Tom korg: riktiga ingångar ---- */
+  function syncEmpty(aside) {
+    var empty = aside.querySelector("section.empty");
+    var st = cartState();
+    if (st && st.count) { aside.querySelectorAll(".hz8-cart-empty-links, .hz8-cart-empty-lead").forEach(function (n) { n.remove(); }); return; }
+    if (!empty || empty.querySelector(".hz8-cart-empty-links")) return;
+    var cats = (HZ8.navCategories || []).filter(function (c) { return !c.campaign && /\/categories\//.test(c.href || ""); });
+    if (!cats.length) return;
+    var p = document.createElement("p");
+    p.className = "hz8-cart-empty-lead";
+    p.textContent = "Hitta något du gillar i sortimentet.";
+    var nav = document.createElement("nav");
+    nav.className = "hz8-cart-empty-links";
+    nav.setAttribute("aria-label", "Sortiment");
+    nav.innerHTML = cats.map(function (c) { return '<a href="' + HZ8.esc(HZ8.link(c.href)) + '">' + HZ8.esc(c.label) + "</a>"; }).join("");
+    var h3 = empty.querySelector("h3");
+    if (h3) { h3.parentNode.insertBefore(p, h3.nextSibling); p.parentNode.insertBefore(nav, p.nextSibling); }
+  }
 
   var release = null;
   /* Utlösaren (varukorgsikon, köpknapp ...) sparas vid klick, eftersom
@@ -237,6 +380,9 @@
       }
       syncShipping(aside);
       syncHeader(aside);
+      syncUpgrades(aside);
+      syncSummary(aside);
+      syncEmpty(aside);
       syncSavings(aside);
       syncTrust(aside);
       if (wrap.classList.contains("is-active")) syncCrossSell(aside);
