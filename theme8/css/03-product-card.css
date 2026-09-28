@@ -153,6 +153,7 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .price {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: flex-start !important;
   gap: 2px 6px;
   font: 700 16px/1.2 var(--hz8-font-ui) !important;
 }
@@ -166,7 +167,7 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill {
   right: 12px;
   bottom: 12px;
 }
-html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 70px; min-height: 36px; display: flex; align-items: flex-end; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 70px; min-height: 36px; display: flex; align-items: flex-end; justify-content: flex-start; }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill.is-wide) .offer { padding-right: 0; }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill.is-wide {
   position: static;

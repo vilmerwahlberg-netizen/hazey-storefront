@@ -115,14 +115,14 @@
     }
   };
 
-  /* Produktlänkar på Nyehandels egen "Våra bästsäljare"-sida. */
-  HZ8.bestsellerPaths = {
-    key: "best1",
+  /* De första produktkorten på en kategorisida hämtad med Nyehandels
+     egen sortering "Mest populära" (?sort=popular) -- serverrenderade,
+     samma markup som i gridet. */
+  HZ8.popularCards = {
+    key: "pop1",
     run: function (doc) {
-      var seen = {};
-      return Array.prototype.slice.call(doc.querySelectorAll(".product-card a[href*='/products/']"))
-        .map(function (a) { return HZ8.path(a.getAttribute("href")); })
-        .filter(function (p) { if (!p || seen[p]) return false; seen[p] = true; return true; });
+      return Array.prototype.slice.call(doc.querySelectorAll("#category-products .product-card"), 0, 5)
+        .map(function (card) { return card.outerHTML; });
     }
   };
 
