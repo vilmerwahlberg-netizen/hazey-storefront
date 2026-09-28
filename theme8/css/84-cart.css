@@ -205,3 +205,11 @@ html.hz8 #cartAside .nh-cart-swish img { width: auto !important; height: 18px !i
   html.hz8 #cartAside article.item .media { width: 64px; height: 64px; }
 }
 html.hz8 #cartAside .section.items:not(:has(article)) { display: none !important; }
+
+/* "Dela varukorg" fungerar (Nyehandel skapar en delningslänk via
+   /frontend-api/shared-cart) -- länkfältet den visar i Theme 8-stil. */
+html.hz8 #cartAside .share-cart .field { margin-top: 8px; }
+html.hz8 #cartAside .share-cart .control { display: flex; align-items: stretch; gap: 6px; }
+html.hz8 #cartAside .share-cart .input { flex: 1; min-width: 0; min-height: 40px; padding: 8px 12px; border: 1.5px solid var(--hz8-line-strong); border-radius: var(--hz8-radius-m); background: var(--hz8-surface); font: 500 13px/1.2 var(--hz8-font-ui); }
+html.hz8 #cartAside .share-cart .placeholder { display: none; }
+html.hz8 #cartAside .share-cart .slot button { min-height: 40px; padding: 0 12px; border: 1.5px solid var(--hz8-olive); border-radius: var(--hz8-radius-m); background: transparent; color: var(--hz8-olive); font: 700 12.5px/1 var(--hz8-font-ui); text-decoration: none; cursor: pointer; }

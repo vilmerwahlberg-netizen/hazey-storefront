@@ -118,3 +118,53 @@
   .hz8-footer__inner { gap: 40px; font-size: 16px !important; }
   .hz8-footer__brand strong { font-size: 41px !important; }
 }
+
+/* Footerkorrigering (visuell QA 2026-09-28): rubrikknappar (fällbara på
+   mobil, vanliga rubriker på desktop), nyhetsbrevslänk i stället för ett
+   formulär utan integration, större text på mobil. */
+.hz8-footer__toggle {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: 700 12px/1.8 Arial, sans-serif !important;
+  text-align: left;
+  cursor: default;
+}
+.hz8-footer__toggle:disabled { opacity: 1; }
+.hz8-footer__links a { display: block; color: var(--hz8-footer-link); }
+.hz8-footer__nl-link { display: inline-block; margin-top: 4px; color: var(--hz8-footer-text) !important; font: 700 12px/1.4 Arial, sans-serif !important; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 767px) {
+  .hz8-footer__inner { gap: 0 !important; }
+  .hz8-footer__brand { margin-bottom: 18px; }
+  .hz8-footer__col:not(.hz8-footer__col--nl) { border-top: 1px solid var(--hz8-footer-divider); }
+  .hz8-footer__toggle {
+    position: relative;
+    min-height: 48px;
+    margin: 0;
+    font-size: 15px !important;
+    cursor: pointer;
+  }
+  .hz8-footer__toggle::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-right: 1.6px solid currentColor;
+    border-bottom: 1.6px solid currentColor;
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform .2s var(--hz8-ease);
+  }
+  .hz8-footer__col.is-open .hz8-footer__toggle::after { transform: translateY(-30%) rotate(-135deg); }
+  .hz8-footer__links { padding: 0 0 12px; }
+  .hz8-footer__links a { padding: 7px 0; font-size: 15px !important; }
+  .hz8-footer__col--nl { padding-top: 18px; border-top: 1px solid var(--hz8-footer-divider); }
+  .hz8-footer__nl-offer, .hz8-footer__contact a { font-size: 14px !important; }
+  .hz8-footer__disclaimer p, .hz8-footer__bottom { font-size: 12.5px !important; line-height: 1.6 !important; }
+  .hz8-footer__trustrow span { font-size: 12.5px !important; }
+}
