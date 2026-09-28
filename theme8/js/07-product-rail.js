@@ -42,6 +42,9 @@
     section.className = "hz8-prail" + (opts.className ? " " + opts.className : "");
     section.id = id;
     section.setAttribute("aria-labelledby", titleId);
+    /* bare: ingen synlig rubrikrad (sammanhanget ges av omgivningen);
+       rubriken finns kvar för hjälpmedel. */
+    if (opts.bare) section.classList.add("is-bare");
     section.innerHTML =
       '<div class="hz8-prail__head">' +
         '<h2 class="hz8-prail__title" id="' + titleId + '" tabindex="-1">' + (opts.titleHref ? '<a href="' + HZ8.esc(opts.titleHref) + '">' + HZ8.esc(opts.title) + "</a>" : HZ8.esc(opts.title)) + "</h2>" +
@@ -86,7 +89,7 @@
         return;
       }
       list.innerHTML = items.map(function (c) { return '<li class="hz8-prail__item">' + prepareCardHtml(c.html) + "</li>"; }).join("");
-      if (opts.count != null || cards.length) section.querySelector(".hz8-prail__count").textContent = countLabel(opts.count != null ? opts.count : cards.length);
+      if (!opts.hideCount && (opts.count != null || cards.length)) section.querySelector(".hz8-prail__count").textContent = countLabel(opts.count != null ? opts.count : cards.length);
       section.classList.toggle("is-single", items.length === 1);
       window.requestAnimationFrame(syncButtons);
       if (opts.onRender) opts.onRender(items);

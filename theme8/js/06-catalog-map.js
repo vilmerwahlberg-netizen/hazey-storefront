@@ -144,8 +144,42 @@
   var HOUSE_BRANDS = ["Hazey.se"];
   function isHouseBrand(name) { return HOUSE_BRANDS.map(norm).indexOf(norm(name)) !== -1; }
 
+  /* Cannabinoidvokabulär = etiketterna i headerns verifierade
+     "CANNABINOIDER"-grupp (t.ex. CBD, CBG, CBN) -- ingen egen lista. */
+  function cannabinoids() {
+    var out = [];
+    var nav = HZ8.navContent || {};
+    Object.keys(nav).forEach(function (k) {
+      (nav[k].groups || []).forEach(function (g) {
+        if (!/cannabinoid/i.test(g.heading || "")) return;
+        (g.links || []).forEach(function (l) { if (l.label && out.indexOf(l.label) === -1) out.push(l.label); });
+      });
+    });
+    return out;
+  }
+
+  /* Försiktig produktfamilj för produkter utan serie: de cannabinoider
+     ur vokabulären som står som egna ord i produktnamnet, i namnets
+     ordning. Endast om ALLA produkter ger exakt samma uppsättning --
+     annars null (anroparen faller tillbaka på en neutral etikett). */
+  function familyLabel(names) {
+    var vocab = cannabinoids();
+    if (!vocab.length || !names.length) return null;
+    var sets = names.map(function (name) {
+      var found = [];
+      vocab.forEach(function (c) {
+        var re = new RegExp("(^|[^A-Za-z0-9])" + c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?![A-Za-z0-9])");
+        var m = re.exec(name);
+        if (m) found.push({ c: c, at: m.index });
+      });
+      return found.sort(function (a, b) { return a.at - b.at; }).map(function (f) { return f.c; }).join(" + ");
+    });
+    return sets[0] && sets.every(function (x) { return x === sets[0]; }) ? sets[0] : null;
+  }
+
   HZ8.catalog = {
     isHouseBrand: isHouseBrand,
+    familyLabel: familyLabel,
     build: build,
     contextFor: contextFor,
     formatByKey: formatByKey,

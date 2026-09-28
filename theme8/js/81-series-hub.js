@@ -114,7 +114,7 @@
             shelves.sort(function (x, y) { return y.cards.length - x.cards.length; });
             var rest = Object.keys(pool).map(function (k) { return pool[k]; });
             if (!shelves.length && !rest.length) return null;
-            return buildMore({ brand: brand, format: format, series: series, shelves: shelves, rest: rest, brandRoute: brandRoute });
+            return buildMore({ brand: brand, format: format, series: series, shelves: shelves, rest: rest });
           });
         }));
       }).then(function (sections) { return sections.filter(Boolean); });
@@ -127,15 +127,38 @@
   }
 
   var moreUid = 0;
+  function cardName(html) {
+    var m = html.match(/class="name"[^>]*>\s*([^<]+?)\s*</);
+    return m ? m[1].trim() : "";
+  }
+
+  /* Adaptiv panel efter verkligt innehåll:
+     - 1 produkt totalt: kortet direkt, ingen hyllrubrik/antal/länk.
+     - 1 serie (flera produkter): seriens namn en gång, en karusell,
+       "Visa alla" till seriens serie x format-route.
+     - flera serier/grupper: en karusell per grupp, rubrik = gruppnamn.
+     Produkter utan serie: försiktig familjeetikett ur verifierad
+     cannabinoidvokabulär ("CBD + CBN Vapes"), annars "Fler vapes".
+     Varumärket nämns bara i panelens rubrik. */
   function buildMore(o) {
     moreUid += 1;
     var fmt = o.format.label.toLowerCase();
     var base = "hz8-more-" + moreUid;
     var title = "Fler " + fmt + " från " + o.brand;
+    var groups = o.shelves.map(function (sh) {
+      return { name: sh.series.name, cards: sh.cards, href: HZ8.link(sh.route) };
+    });
+    if (o.rest.length) {
+      var fam = HZ8.catalog.familyLabel(o.rest.map(function (c) { return cardName(c.html); }));
+      groups.push({ name: fam ? fam + " " + o.format.label : "Fler " + fmt, cards: o.rest, href: null, rest: true });
+    }
+    var total = groups.reduce(function (n, g) { return n + g.cards.length; }, 0);
+    var mode = total === 1 ? "single" : groups.length === 1 ? "one" : "multi";
+
     var section = document.createElement("section");
-    section.className = "hz8-more";
+    section.className = "hz8-more hz8-more--" + mode;
     section.setAttribute("aria-labelledby", base + "-title");
-    var peekCards = o.shelves.map(function (sh) { return sh.cards[0]; }).concat(o.rest.slice(0, 1)).slice(0, 3);
+    var peekCards = groups.map(function (g) { return g.cards[0]; }).slice(0, 3);
     section.innerHTML =
       '<div class="hz8-more__bar">' +
         '<div class="hz8-more__text"><span class="hz8-kicker">Samma tillverkare</span>' +
@@ -151,34 +174,28 @@
       "</div>" +
       '<div class="hz8-more__region" id="' + base + '" inert aria-hidden="true"><div class="hz8-more__inner"></div></div>';
     var inner = section.querySelector(".hz8-more__inner");
-    /* En namngiven hylla per verklig serie; "Visa alla" = seriens riktiga
-       serie x format-route. */
-    o.shelves.forEach(function (sh) {
+    groups.forEach(function (g, i) {
+      /* Enkelläge: gruppens sanna namn (serie eller familj, t.ex.
+         "CBD + CBN Vapes") som liten bildtext -- ingen hyllrubrik. Den
+         neutrala reservetiketten ("Fler vapes") upprepar bara panelen och
+         utelämnas. */
+      if (mode === "single" && !(g.rest && /^Fler /.test(g.name))) {
+        var cap = document.createElement("p");
+        cap.className = "hz8-more__caption";
+        cap.textContent = g.name;
+        inner.appendChild(cap);
+      }
       inner.appendChild(HZ8.productRail({
-        id: base + "-" + sh.series.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        id: base + "-" + i,
         className: "hz8-prail--compact hz8-more__shelf",
-        title: sh.series.name + " " + o.format.label,
-        href: HZ8.link(sh.route),
-        cards: sh.cards,
-        count: sh.cards.length,
+        title: mode === "single" ? title : g.name,
+        href: mode === "single" ? null : g.href,
+        bare: mode === "single",
+        hideCount: true,
+        cards: g.cards,
         eager: true
       }));
     });
-    if (o.rest.length) {
-      /* Reservhylla (inget serienamn). Destination = formatets sida
-         filtrerad på varumärket -- riktig route, därav den uttryckliga
-         etiketten. */
-      inner.appendChild(HZ8.productRail({
-        id: base + "-ovriga",
-        className: "hz8-prail--compact hz8-more__shelf hz8-more__shelf--rest",
-        title: "Övriga " + fmt + " från " + o.brand,
-        href: HZ8.link(o.brandRoute),
-        allLabel: "Alla " + fmt + " från " + o.brand,
-        cards: o.rest,
-        count: o.rest.length,
-        eager: true
-      }));
-    }
     var region = section.querySelector(".hz8-more__region");
     var toggle = section.querySelector(".hz8-more__toggle");
     toggle.addEventListener("click", function () {

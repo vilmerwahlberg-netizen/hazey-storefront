@@ -236,3 +236,18 @@ html.hz8[data-hz8-page="category"] .hz8-combo-related { grid-row: 8; display: gr
 }
 .hz8-more.is-open .hz8-more__toggle-closed { display: none; }
 .hz8-more__region { overflow-anchor: none; }
+
+/* Adaptiv panel (enkel -> full). Öppet läge: bara en rubrik per nivå. */
+.hz8-prail.is-bare .hz8-prail__head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
+.hz8-more.is-open .hz8-more__text .hz8-kicker { display: none; }
+.hz8-more.is-open .hz8-more__bar { padding: 12px 0 6px; min-height: 0; }
+.hz8-more.is-open .hz8-more__title { font-size: clamp(18px, 1.7vw, 24px) !important; }
+.hz8-more.is-open .hz8-more__inner { gap: 16px; padding: 2px 0 16px; }
+.hz8-more .hz8-more__shelf .hz8-prail__title { font-family: var(--hz8-font-ui) !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .02em; }
+.hz8-more .hz8-more__shelf .hz8-prail__head { margin-bottom: 8px; flex-wrap: nowrap !important; }
+.hz8-more .hz8-more__shelf .hz8-prail__title { flex: 1 1 auto !important; }
+.hz8-more .hz8-more__shelf .hz8-prail__count:empty { display: none; }
+.hz8-more.is-open .hz8-more__toggle { min-height: 44px; font-size: 12.5px; }
+.hz8-more__caption { margin: 0 0 -8px; color: color-mix(in srgb, #fff 82%, transparent); font: 700 14px/1.2 var(--hz8-font-ui) !important; }
+.hz8-more--single.is-open .hz8-more__inner { gap: 14px; padding-bottom: 14px; }
+html.hz8 #store-main .hz8-more .hz8-more__shelf .hz8-prail__title { font-family: var(--hz8-font-ui) !important; font-size: 15px !important; font-weight: 700 !important; line-height: 1.2 !important; letter-spacing: 0; text-transform: none; }
