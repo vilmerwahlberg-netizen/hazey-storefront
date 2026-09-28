@@ -572,3 +572,12 @@ html.hz8.hz8-series-hub.hz8-hub-grid-open .designer-category { margin-top: 28px;
   .hz8-more__toggle { width: 100%; }
   .hz8-hub__grid-toggle .hz8-btn { width: 100%; }
 }
+
+/* Rälsarna får aldrig växa till innehållets bredd (annars blir
+   procentuella kortbredder fel och raden slutar scrolla). */
+html.hz8[data-hz8-page="category"] .hz8-cat-rails { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+html.hz8[data-hz8-page="category"] .hz8-rail, html.hz8[data-hz8-page="category"] .hz8-rail__list { min-width: 0; max-width: 100%; }
+@media (max-width: 767px) {
+  html.hz8[data-hz8-page="category"] .hz8-rail, html.hz8[data-hz8-page="category"] .hz8-rail__list { max-width: none; }
+  html.hz8[data-hz8-page="category"] .hz8-cat-rails { width: calc(100% + 32px); }
+}
