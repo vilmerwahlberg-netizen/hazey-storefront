@@ -92,6 +92,23 @@
     page.appendChild(aside);
   }
 
+  /* Kontaktsidans formulär är mailto:-formulär (öppnar besökarens
+     e-postprogram) utan serverintegration. En ärlig hjälptext läggs
+     under knappen så att de inte ser ut som ett skickat formulär, och
+     adressen visas så att den går att kopiera. Inget skickas härifrån. */
+  function annotateMailtoForms(page) {
+    Array.prototype.forEach.call(page.querySelectorAll("form[action^='mailto:']"), function (form) {
+      if (form.querySelector(".hz8-form-note")) return;
+      var address = form.getAttribute("action").replace(/^mailto:/, "").split("?")[0];
+      var note = document.createElement("p");
+      note.className = "hz8-form-note";
+      note.innerHTML = "Knappen öppnar ditt e-postprogram med meddelandet. Du kan också mejla direkt till " +
+        '<a href="mailto:' + HZ8.esc(address) + '">' + HZ8.esc(address) + "</a>.";
+      form.appendChild(note);
+      form.classList.add("hz8-mailto-form");
+    });
+  }
+
   HZ8.register("content-pages", function (context) {
     if (context.page !== "page" && context.page !== "faq") return;
     var page = document.querySelector("#skip-to-main-content .store-page") || document.querySelector(".store-page");
@@ -102,6 +119,8 @@
     } else {
       ensureH1(page);
     }
+    annotateMailtoForms(page);
+    if (page.querySelector(".nh-contact")) document.documentElement.classList.add("hz8-contact-page");
     if (page.querySelector(".hz8-about")) document.documentElement.classList.add("hz8-about-page");
   });
 

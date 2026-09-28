@@ -177,3 +177,39 @@ html.hz8 .hz8-faq-search input { width: 100%; min-height: 52px !important; paddi
 html.hz8:is([data-hz8-page="search"], [data-hz8-page="account"]) #store-main > * { width: var(--hz8-content); margin-inline: auto; }
 html.hz8:is([data-hz8-page="search"], [data-hz8-page="account"]) #store-main .hz8-utility-title { margin: 18px 0 20px !important; font-size: clamp(32px, 3.6vw, 52px) !important; line-height: 1.05 !important; }
 html.hz8[data-hz8-page="account"] #store-main :is(.box, .card) { border: 1px solid var(--hz8-line); border-radius: var(--hz8-radius-l); background: var(--hz8-surface); box-shadow: none; }
+
+/* ======================================================================
+   Visuell QA 2026-09-28: kontakt, FAQ, Om oss
+   ====================================================================== */
+
+/* Kontakt: formulär vänster, verifierad hjälpinformation höger (sticky). */
+@media (min-width: 1024px) {
+  html.hz8.hz8-contact-page .nh-contact__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    column-gap: clamp(28px, 4vw, 56px);
+    align-items: start;
+    max-width: none;
+  }
+  html.hz8.hz8-contact-page .nh-contact__inner > .nh-contact__grid { grid-column: 1; grid-row: 1 / span 3; margin-top: 0; grid-template-columns: 1fr; }
+  html.hz8.hz8-contact-page .nh-contact__inner > .nh-contact__note { grid-column: 2; grid-row: 1; }
+  html.hz8.hz8-contact-page .nh-contact__inner > .nh-contact__info { grid-column: 2; grid-row: 2; flex-direction: column; position: sticky; top: calc(var(--hz8-top-clear) + 8px); }
+  html.hz8.hz8-contact-page .nh-contact__info-card { min-width: 0; }
+}
+.hz8-form-note { margin: 2px 0 0; color: var(--hz8-text-muted); font: 400 13px/1.5 var(--hz8-font-ui) !important; }
+.hz8-form-note a { color: var(--hz8-olive) !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* FAQ: luftigare mobil, tydligare sökträffar. */
+html.hz8[data-hz8-page="faq"] .nh-faq details[open] > summary { color: var(--hz8-text-heading); }
+html.hz8[data-hz8-page="faq"] .nh-faq details:not([hidden]) + .hz8-faq-empty { margin-top: 0; }
+@media (max-width: 767px) {
+  html.hz8[data-hz8-page="faq"] .nh-faq summary { min-height: 58px; padding: 12px 2px !important; font-size: 15.5px !important; line-height: 1.35 !important; }
+  html.hz8[data-hz8-page="faq"] .nh-faq__a { font-size: 15px !important; padding-bottom: 18px; }
+  .hz8-faq-tools { gap: 8px; }
+}
+
+/* Om oss: jämnare desktopbalans. */
+.hz8-about__points { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); column-gap: 24px; }
+@media (min-width: 1024px) {
+  .hz8-about__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
