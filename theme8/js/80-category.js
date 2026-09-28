@@ -191,6 +191,11 @@
         }
       });
     } else {
+      if (ctx.type === "all" && map.all) {
+        var allItem = railItem({ label: map.all.label, href: map.all.href }, current, "format");
+        allItem.setAttribute("aria-current", "page");
+        flist.appendChild(allItem);
+      }
       map.formats.forEach(function (f) { flist.appendChild(railItem({ label: f.label, href: f.href }, current, "format")); });
     }
     wrap.appendChild(fnav);
@@ -215,6 +220,12 @@
         slist.appendChild(it);
       });
     } else {
+      if (ctx.type === "all" && map.all) {
+        var allSeries = railItem({ label: "Alla serier", href: map.all.href }, current, "series");
+        allSeries.classList.add("hz8-rail__item--all");
+        allSeries.setAttribute("aria-current", "page");
+        slist.appendChild(allSeries);
+      }
       map.series.forEach(function (s) {
         var landing = HZ8.catalog.landingFor(s);
         if (!landing) return;
@@ -344,11 +355,70 @@
     if (close) close.click();
   }
 
+  /* ---- Begripliga sorteringsetiketter ----
+     Nyehandels egna sorteringsval (alla är riktiga, "Mest populära" är
+     plattformens egen popularitetssortering). Texten i Vue-noderna rörs
+     inte: etiketten läggs som data-attribut + aria-label och visas via
+     CSS. Platshållaren "-- Välj --" döljs. */
+  var SORT_LABELS = {
+    "Mest populära": "Populärast",
+    "Publiceringsdatum": "Nyast",
+    "Lägsta pris": "Pris: lägst först",
+    "Högsta pris": "Pris: högst först",
+    "Namn A-Ö": "Namn A–Ö",
+    "Namn Ö-A": "Namn Ö–A",
+    "Finns i lager": "I lager först",
+    "Slut i lager": "Slut i lager först"
+  };
+  function syncSortLabels() {
+    document.querySelectorAll(".category-sort .sort-button .dropdown-item").forEach(function (a) {
+      var t = a.textContent.trim();
+      if (/^-+\s*Välj/.test(t)) { a.classList.add("hz8-sort-placeholder"); return; }
+      var label = SORT_LABELS[t];
+      if (label && a.getAttribute("data-hz8-label") !== label) { a.setAttribute("data-hz8-label", label); a.setAttribute("aria-label", label); }
+    });
+    var cur = document.querySelector(".category-sort .sort-button .dropdown-trigger button span:nth-child(2)");
+    if (cur) {
+      var label = SORT_LABELS[cur.textContent.trim()] || "";
+      if (cur.getAttribute("data-hz8-label") !== label) cur.setAttribute("data-hz8-label", label);
+      var btn = cur.closest("button");
+      if (btn && label) btn.setAttribute("aria-label", "Sortering: " + label);
+    }
+  }
+
+  /* Filterpanelens primärknapp visar riktigt resultatantal. */
+  function syncDrawerCount() {
+    var counter = document.getElementById("products_count");
+    var n = counter && (counter.textContent.match(/(\d+)/) || [])[1];
+    var btn = document.querySelector("#sidebar .sidebar__action .button span");
+    if (btn && n && btn.getAttribute("data-hz8-label") !== "Visa " + n + " produkter") btn.setAttribute("data-hz8-label", "Visa " + n + " produkter");
+    var active = Array.prototype.filter.call(document.querySelectorAll(".category-sort .selected-filters-item:not(.no-chip)"), function (el) { return !el.closest("#sidebar"); }).length;
+    var trigger = document.querySelector(".category-sort .product-filter-button[aria-label='Öppna filter']");
+    if (trigger) trigger.setAttribute("data-hz8-active", active ? String(active) : "");
+  }
+
   /* ---- Tomt resultat ---- */
   function syncEmpty() {
     var grid = document.getElementById("category-products");
     var host = grid && grid.parentNode;
-    if (!host) return;
+    /* Nyehandel renderar varken grid eller verktygsrad när filter i URL:en
+       ger noll träffar -- då ett tomläge med riktig länk som rensar
+       filtren (samma sida utan filters-parametern). */
+    if (!host) {
+      var root = document.getElementById("skip-to-main-content");
+      if (!root || root.querySelector(".hz8-cat-empty") || !/[?&]filters=/.test(location.search)) return;
+      var clean = new URL(location.href);
+      clean.searchParams.delete("filters");
+      clean.searchParams.delete("page");
+      var box = document.createElement("div");
+      box.className = "hz8-state hz8-cat-empty hz8-cat-empty--nogrid";
+      box.setAttribute("role", "status");
+      box.innerHTML = "<h2>Inga produkter matchar</h2><p>Kombinationen av filter gav inga träffar.</p>" +
+        '<a class="hz8-btn hz8-btn--secondary" href="' + HZ8.esc(clean.pathname + clean.search) + '">Rensa alla filter</a>';
+      var guide = root.querySelector(".hz8-cat-guide");
+      root.insertBefore(box, guide || null);
+      return;
+    }
     var hasCards = !!grid.querySelector(".product-card");
     var empty = host.querySelector(".hz8-cat-empty");
     if (hasCards) { if (empty) empty.remove(); return; }
@@ -400,6 +470,29 @@
     }).catch(function () { /* utan data visas sektionen inte */ });
   }
 
+  /* Katalogportal: Nyehandels "Mest populära" som EN kompakt karusell
+     (gemensam produktkarusell) så att griden nås snabbt. */
+  function buildPortalPopular(root, h1Text) {
+    if (/[?&](sort|filters)=/.test(location.search) || !HZ8.productRail) return;
+    var url = new URL(location.href);
+    url.searchParams.set("sort", "popular");
+    url.searchParams.delete("page");
+    url.searchParams.delete("preview");
+    var rail = HZ8.productRail({
+      id: "hz8-portal-popular",
+      className: "hz8-prail--compact hz8-cat-popular hz8-portal-popular",
+      title: "Populärast just nu",
+      href: HZ8.link(url.pathname + url.search),
+      allLabel: "Sortera på populärast",
+      hideCount: true,
+      limit: 10,
+      source: url.pathname + url.search,
+      eager: true
+    });
+    rail.setAttribute("data-hz8-cat", "popular");
+    root.insertBefore(rail, root.querySelector(".designer-category"));
+  }
+
   /* ---- Vägledning + kategorins egen text längst ned ---- */
   function buildGuide(root, h1Text) {
     var band = document.createElement("section");
@@ -439,6 +532,7 @@
 
     buildHero(h1, root);
     var ctx = HZ8.catalog ? HZ8.catalog.contextFor(location.href) : null;
+    if (ctx && ctx.type === "all") document.documentElement.classList.add("hz8-cat-portal");
     if (ctx) {
       root.appendChild(buildCatalogNav(ctx));
       root.setAttribute("data-hz8-nav", ctx.type);
@@ -455,12 +549,24 @@
     }
     buildGuide(root, h1Text);
     if (ctx && ctx.type === "series-hub" && HZ8.seriesHub) HZ8.seriesHub(root, ctx, h1Text);
+    else if (ctx && ctx.type === "all") buildPortalPopular(root, h1Text);
     else buildPopular(root, h1Text);
     if (ctx && ctx.type === "combo" && HZ8.comboRelated) HZ8.comboRelated(root, ctx);
+
+    /* Nyehandel byter filter-URL med pushState men ritar inte om vid
+       bakåt/framåt -- då laddas sidan om så att resultat och URL alltid
+       stämmer. Hash-ändringar (seriehubbens hopp) påverkas inte. */
+    var lastSearch = location.search;
+    window.addEventListener("popstate", function () {
+      if (location.search !== lastSearch) location.reload();
+    });
+    HZ8.watch(function () { lastSearch = location.search; });
 
     var actions = root.querySelector("[data-hz8-cat='actions']");
     HZ8.watch(function () {
       syncCount(actions);
+      syncSortLabels();
+      syncDrawerCount();
       syncDock();
       syncSidebar();
       syncEmpty();

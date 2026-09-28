@@ -84,7 +84,10 @@
       return { name: d.name, attr: d.attr || null, hub: d.hub ? abs(d.hub) : null, routes: routes };
     }).filter(function (s) { return Object.keys(s.routes).length || s.hub; });
 
-    built = { formats: formats, series: series };
+    /* Katalogportalen = headerns första icke-dropdown kategorilänk med
+       kategori-route ("Alla produkter"). */
+    var allCat = (HZ8.navCategories || []).filter(function (c) { return !c.dropdown && !c.campaign && /\/categories\//.test(c.href || ""); })[0];
+    built = { formats: formats, series: series, all: allCat ? { label: allCat.label, href: allCat.href } : null };
     return built;
   }
 
@@ -101,6 +104,7 @@
   function contextFor(href) {
     var map = build();
     var i, j, keys;
+    if (map.all && samePath(map.all.href, href)) return { type: "all", series: null, format: null };
     for (i = 0; i < map.series.length; i += 1) {
       var s = map.series[i];
       if (s.hub && samePath(s.hub, href)) return { type: "series-hub", series: s, format: null };

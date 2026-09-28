@@ -220,3 +220,4 @@ html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill::after { c
 html.hz8 #store-main .hz8-prail--compact .product-card .offer { padding-right: 76px !important; }
 html.hz8 #store-main .hz8-prail--compact .product-card .offer { height: 40px; }
 html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill { bottom: 11px; }
+html.hz8 #store-main .hz8-prail--compact .product-card .price :is(ins, del) { white-space: nowrap; }

@@ -553,3 +553,62 @@ html.hz8[data-hz8-page="category"] .hz8-rail, html.hz8[data-hz8-page="category"]
 html.hz8[data-hz8-page="category"] .hz8-hub__related:empty { display: none; }
 html.hz8[data-hz8-page="category"] .hz8-hub__related { margin-top: calc(-1 * clamp(18px, 2vw, 28px)); }
 html.hz8[data-hz8-page="category"] .hz8-combo-related { grid-row: 8; margin: 40px 0 0; }
+
+/* ======================================================================
+   Katalogportal "Alla produkter" + gemensamma verktygsförbättringar
+   ====================================================================== */
+/* Sorteringsetiketter (data-hz8-label, se 80-category.js). Native text
+   finns kvar i DOM:en men visas inte. */
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-item[data-hz8-label],
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-trigger button span[data-hz8-label]:not([data-hz8-label=""]) { font-size: 0 !important; }
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-item[data-hz8-label]::after,
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-trigger button span[data-hz8-label]:not([data-hz8-label=""])::after { content: attr(data-hz8-label); font-size: 14px; }
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-trigger button span[data-hz8-label]::after { font-size: 13px; font-weight: 700; }
+html.hz8[data-hz8-page="category"] .sort-button .dropdown-item.hz8-sort-placeholder { display: none !important; }
+/* Filterknappen: antal aktiva filter. */
+html.hz8[data-hz8-page="category"] .category-sort .product-filter-button[data-hz8-active]:not([data-hz8-active=""])::after {
+  content: attr(data-hz8-active);
+  display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 6px; padding: 0 6px;
+  border-radius: 99px; background: var(--hz8-cta); color: #fff; font: 700 11px/1 var(--hz8-font-ui);
+}
+/* Filterpanelens primärknapp: "Visa X produkter". */
+html.hz8 #sidebar .sidebar__action .button span[data-hz8-label] { font-size: 0 !important; }
+html.hz8 #sidebar .sidebar__action .button span[data-hz8-label]::after { content: attr(data-hz8-label); font-size: 15px; }
+/* Aktiva filter i panelen + "Rensa alla" tydligt. */
+html.hz8 #sidebar .selected-filters-item { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 8px 0 12px; border: 1.5px solid var(--hz8-cta); border-radius: 99px; font: 600 13px/1 var(--hz8-font-ui); }
+html.hz8 #sidebar .selected-filters-item.no-chip { border: 0; padding: 0; }
+html.hz8 #sidebar .selected-filters-item__remove { display: inline-grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+html.hz8 #sidebar .selected-filters-item__remove svg { width: 18px; height: 18px; fill: var(--hz8-text-muted); }
+html.hz8 #sidebar .product-filter__clear { min-height: 36px; padding: 0 4px; border: 0; background: none; color: var(--hz8-olive); font: 700 13px/1 var(--hz8-font-ui); text-decoration: underline; cursor: pointer; }
+
+/* Portal: kompaktare masthead, ingen ingress (kategoritexten ligger kvar
+   längre ned bakom "Läs mer"). */
+html.hz8.hz8-cat-portal[data-hz8-page="category"] .hz8-cat-lead { display: none !important; }
+html.hz8.hz8-cat-portal[data-hz8-page="category"] article.category-description h1 { margin: 6px 0 10px !important; font-size: clamp(36px, 3.6vw, 56px) !important; }
+html.hz8.hz8-cat-portal[data-hz8-page="category"] .hz8-cat-actions { margin-bottom: 26px; }
+html.hz8.hz8-cat-portal[data-hz8-page="category"] .hz8-cat-rails { margin-top: 6px; }
+
+@media (max-width: 767px) {
+  /* Aktiva filter-chips scrollar internt i x-led. */
+  html.hz8[data-hz8-page="category"] .category-sort .selected-filters.is-hidden-touch { display: flex !important; }
+  html.hz8[data-hz8-page="category"] .category-sort .selected-filters {
+    order: 20 !important; flex: 1 1 100%; flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;
+  }
+  html.hz8[data-hz8-page="category"] .category-sort .selected-filters::-webkit-scrollbar { display: none; }
+  html.hz8[data-hz8-page="category"] .category-sort .selected-filters-item { flex: 0 0 auto; white-space: nowrap; }
+  html.hz8[data-hz8-page="category"] .category-sort { flex-wrap: wrap !important; }
+  html.hz8.hz8-cat-portal[data-hz8-page="category"] article.category-description h1 { font-size: 36px !important; margin-top: 56px !important; }
+  html.hz8.hz8-cat-portal[data-hz8-page="category"] .hz8-cat-actions { margin-bottom: 18px; }
+}
+/* Nyehandels andra chips-lista (inne i filterpanelen) visas bara i panelen. */
+html.hz8[data-hz8-page="category"] .category-sort #sidebar .selected-filters { display: flex !important; }
+html.hz8[data-hz8-page="category"] .hz8-cat-empty--nogrid { grid-row: 7; margin: 8px 0 24px; }
+/* Sticky verktygsrad: Nyehandels overflow:hidden/auto på #store-main och
+   .main-wrapper gör dem till scrollcontainrar och bryter position:sticky.
+   overflow:clip klipper lika (ingen horisontell scroll) utan att bryta. */
+html.hz8[data-hz8-page="category"] #store-main { overflow: clip !important; }
+html.hz8[data-hz8-page="category"] #store-instance.main-wrapper { overflow: clip !important; }
+html.hz8[data-hz8-page="category"] body.hz8-header-scrolled .category-sort { top: 76px; }
+@media (max-width: 767px) { html.hz8[data-hz8-page="category"] body.hz8-header-scrolled .category-sort { top: 64px; } }
+html.hz8[data-hz8-page="category"] .hz8-portal-popular { grid-row: 6; margin: 4px 0 28px; }
+html.hz8[data-hz8-page="category"] .hz8-portal-popular .hz8-prail__title { font-size: clamp(22px, 2vw, 28px) !important; }
