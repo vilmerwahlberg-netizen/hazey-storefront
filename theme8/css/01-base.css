@@ -473,7 +473,9 @@ html.hz8:not([data-hz8-page="home"]) #store-main .tags .tag a:hover { border-col
   color: var(--hz8-text-on-dark);
 }
 .hz8-band :is(h2, h3) { color: var(--hz8-text-on-dark) !important; }
-.hz8-band p { color: var(--hz8-text-on-dark-muted); }
+.hz8-band p { color: var(--hz8-text-on-dark-muted) !important; }
+
+html.hz8 [class*="hz8-"][hidden] { display: none !important; }
 
 .hz8-visually-hidden {
   position: absolute !important;
