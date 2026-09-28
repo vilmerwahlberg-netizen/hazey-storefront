@@ -448,6 +448,7 @@
     buildGuide(root, h1Text);
     if (ctx && ctx.type === "series-hub" && HZ8.seriesHub) HZ8.seriesHub(root, ctx, h1Text);
     else buildPopular(root, h1Text);
+    if (ctx && ctx.type === "combo" && HZ8.comboRelated) HZ8.comboRelated(root, ctx);
 
     var actions = root.querySelector("[data-hz8-cat='actions']");
     HZ8.watch(function () {

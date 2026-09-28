@@ -139,7 +139,13 @@
     return BASE + "alla-produkter?filters=" + encodeURIComponent("Varumärke_" + brand);
   }
 
+  /* Butikens eget varumärke i Nyehandel (egna/omärkta produkter i alla
+     kategorier) -- ingen tillverkare i relationsmening. */
+  var HOUSE_BRANDS = ["Hazey.se"];
+  function isHouseBrand(name) { return HOUSE_BRANDS.map(norm).indexOf(norm(name)) !== -1; }
+
   HZ8.catalog = {
+    isHouseBrand: isHouseBrand,
     build: build,
     contextFor: contextFor,
     formatByKey: formatByKey,

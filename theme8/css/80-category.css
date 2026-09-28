@@ -581,3 +581,9 @@ html.hz8[data-hz8-page="category"] .hz8-rail, html.hz8[data-hz8-page="category"]
   html.hz8[data-hz8-page="category"] .hz8-rail, html.hz8[data-hz8-page="category"] .hz8-rail__list { max-width: none; }
   html.hz8[data-hz8-page="category"] .hz8-cat-rails { width: calc(100% + 32px); }
 }
+
+/* Relaterad tillverkare per format -- direkt efter sin produktrad. */
+html.hz8[data-hz8-page="category"] .hz8-hub__related:empty { display: none; }
+html.hz8[data-hz8-page="category"] .hz8-hub__related { margin-top: calc(-1 * clamp(18px, 2vw, 28px)); }
+.hz8-more__all { justify-self: start; margin-top: 4px; }
+html.hz8[data-hz8-page="category"] .hz8-combo-related { grid-row: 8; margin: 40px 0 0; }
