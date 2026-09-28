@@ -384,6 +384,11 @@
     }
   };
 
+  /* Samma verifierade kategorikarta återanvänds av kategorisidornas
+     format-/serienavigering (80-category.js) -- EN datakälla. */
+  window.HZ8.navContent = DROPDOWN_CONTENT;
+  window.HZ8.navCategories = CATEGORIES;
+
   function chevronSvg() {
     return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }

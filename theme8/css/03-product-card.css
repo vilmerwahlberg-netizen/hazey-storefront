@@ -1,0 +1,189 @@
+/* Gemensamt produktkort -- Nyehandels egna .product-card (kategori,
+   sök, liknande produkter, produktlistor på innehållssidor). Samma
+   visuella familj som startsidans kort: ljus media-yta, serifnamn,
+   tydligt pris och en kompakt olivgrön "Visa"/"Välj"-kontroll i
+   stället för en stor rund plusknapp. Rutnätet är fluid (auto-fill) så
+   det bär både dagens få produkter och ett mycket större sortiment. */
+
+html.hz8:not([data-hz8-page="home"]) #store-main .products {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 18px 16px;
+  margin: 0 !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .products > div {
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+@media (max-width: 767px) {
+  html.hz8:not([data-hz8-page="home"]) #store-main .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+}
+@media (min-width: 1600px) {
+  html.hz8:not([data-hz8-page="home"]) #store-main .products { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px 18px; }
+}
+
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid var(--hz8-card-border) !important;
+  border-radius: var(--hz8-radius-m) !important;
+  background: var(--hz8-card-bg) !important;
+  overflow: hidden;
+  box-shadow: none !important;
+  transition: border-color .2s var(--hz8-ease), box-shadow .2s var(--hz8-ease);
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card:hover {
+  border-color: var(--hz8-line-strong) !important;
+  box-shadow: var(--hz8-shadow-m) !important;
+}
+
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card__image {
+  position: relative;
+  display: block !important;
+  aspect-ratio: 1 / 1;
+  margin: 8px 8px 0 !important;
+  padding: 0 !important;
+  border-radius: calc(var(--hz8-radius-m) - 3px);
+  background: var(--hz8-media-bg) !important;
+  overflow: hidden;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card__image img {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  transition: transform .45s var(--hz8-ease);
+}
+@media (hover: hover) {
+  html.hz8:not([data-hz8-page="home"]) #store-main .product-card:hover .product-card__image img { transform: scale(1.03); }
+}
+/* Nyehandels egna bild-etiketter ("Köp mer - Betala mindre",
+   "Finns i flera varianter") -- samma text, diskret placerad. */
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card__image .buy-more-pay-less {
+  position: absolute !important;
+  left: 8px;
+  bottom: 8px;
+  top: auto !important;
+  right: auto !important;
+  z-index: 2;
+  width: auto !important;
+  max-width: calc(100% - 16px);
+  padding: 5px 8px !important;
+  border-radius: var(--hz8-radius-s);
+  background: color-mix(in srgb, var(--hz8-surface) 92%, transparent) !important;
+  color: var(--hz8-olive) !important;
+  font: 700 10px/1.1 var(--hz8-font-ui) !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align: left !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card__image .has-variants { display: none !important; }
+
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .ribbon,
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-ribbon-row {
+  position: absolute !important;
+  top: 16px !important;
+  left: 16px !important;
+  right: auto !important;
+  z-index: 3;
+  margin: 0 !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-ribbon-row .ribbon { position: static !important; }
+
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details-wrapper {
+  display: flex !important;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 14px 14px !important;
+  text-align: left !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details {
+  display: flex !important;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .brand {
+  order: -1;
+  color: var(--hz8-text-muted) !important;
+  font: 700 10.5px/1.2 var(--hz8-font-ui) !important;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 2.5em;
+  color: var(--hz8-text) !important;
+  font: 600 15px/1.25 var(--hz8-font-display) !important;
+  white-space: normal !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .rating { order: 2; min-height: 0; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .stars-outer {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .stars-outer::before { color: var(--hz8-line-strong); }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .stars-inner::before { color: var(--hz8-stars); }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .offer {
+  order: 3;
+  margin-top: auto;
+  padding-top: 8px;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  font: 700 16px/1.2 var(--hz8-font-ui) !important;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .price del { font-size: 13px !important; }
+
+/* Kompakt kontroll (injiceras av 03-product-card.js, sist i kortet)
+   ligger i nedre högra hörnet i höjd med priset. */
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details-wrapper { position: relative; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+}
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 70px; min-height: 36px; display: flex; align-items: flex-end; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill.is-wide) .offer { padding-right: 0; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill.is-wide {
+  position: static;
+  align-self: stretch;
+  margin-top: 10px;
+}
+
+@media (max-width: 420px) {
+  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details-wrapper { padding: 10px 10px 12px !important; }
+  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .name { font-size: 14px !important; }
+  html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 0; }
+  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill { position: static; align-self: stretch; margin-top: 8px; }
+}
+
+/* Betyg: Nyehandels egna stjärnor och den äldre bundlens .nh-stars. */
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .rating { display: flex !important; align-items: center; gap: 6px; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-stars { display: inline-flex; gap: 1px; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star { color: var(--hz8-line-strong); font: 400 12px/1 var(--hz8-font-ui) !important; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star.is-on { color: var(--hz8-stars); }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-stars__count { color: var(--hz8-text-muted); font: 500 11.5px/1 var(--hz8-font-ui) !important; }

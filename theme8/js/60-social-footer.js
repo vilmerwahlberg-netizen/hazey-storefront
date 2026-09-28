@@ -1,6 +1,13 @@
 (function () {
   "use strict";
 
+  /* Footern är gemensam för alla sidtyper -- exakt samma markup som
+     startsidan redan använder, nu även monterad på övriga sidor. */
+  function footerHTML() {
+    return '<footer class="hz8-footer"><div class="hz8-footer__inner"><div class="hz8-footer__brand"><strong>HAZEY.se</strong><em>Good Plants. Brighter Days.</em></div><div class="hz8-footer__col"><b>Shop</b><a href="/sv/categories/alla-produkter">Alla produkter</a><a href="/sv/page/vara-bastsaljare">Populära serier</a><a href="/sv/page/butik">Om oss</a></div><div class="hz8-footer__col"><b>Kundservice</b><a href="/sv/page/kontakt">Kontakta oss</a><a href="/sv/page/faq">Vanliga frågor</a><a href="/sv/page/kop-och-leveransvillkor">Köp- &amp; leveransvillkor</a><a href="/sv/page/integritetspolicy">Integritets- &amp; cookiepolicy</a><a href="/sv/page/kontakt">Bli återförsäljare</a></div><div class="hz8-footer__col"><b>Populära kategorier</b><a href="/sv/categories/thca">THCA-B</a><a href="https://hazeyse.nyehandel.se/sv/categories/alla-vapes">Vapes</a><a href="https://hazeyse.nyehandel.se/sv/categories/blommor-buds">Buds</a><a href="https://hazeyse.nyehandel.se/sv/categories/hasch">Hasch</a><a href="https://hazeyse.nyehandel.se/sv/categories/h4cbd">CBD</a><a href="/sv/categories/magic-sauce">Magic Sauce</a></div><div class="hz8-footer__col"><b>Följ oss</b><a href="https://www.instagram.com/hazey.se/">Instagram</a><a href="https://www.youtube.com/">YouTube</a></div><div class="hz8-footer__col hz8-footer__col--nl"><b>Få de senaste nyheterna</b><p class="hz8-footer__nl-offer">Få <strong>10%</strong> på ditt första köp — plus drops, nyheter och exklusiva erbjudanden.</p><div class="hz8-footer__newsletter"><input type="email" aria-label="E-postadress" placeholder="Din e-postadress"><button type="button" aria-label="Prenumerera">Prenumerera</button></div><div class="hz8-footer__contact"><a href="mailto:Hej@hazey.se">Hej@hazey.se</a><a href="mailto:Butik@hazey.se">Butik@hazey.se (återförsäljare)</a></div></div></div><div class="hz8-footer__trustrow"><span>Säker betalning</span><span>Diskret frakt</span><span>Skickas från Sverige</span><span>18+ åldersgräns</span></div><div class="hz8-footer__disclaimer"><p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p></div><div class="hz8-footer__bottom"><div class="hz8-footer__pay"><span>Trygg betalning</span><img src="https://www.hazey.se/wp-content/uploads/2023/04/Swish-Logo-Secondary-Light-BG.png" alt="Swish" loading="lazy"></div><span>© 2026 Hazey.se · Stockholm, Sweden · Alla rättigheter förbehållna.</span><span>Kvalitet idag. En grönare morgondag.</span></div></footer>';
+  }
+  window.HZ8.footerHTML = footerHTML;
+
   window.HZ8.register("homepage-social-footer", function (context) {
     if (!context.home) return;
     var wrapper = document.createElement("div");
@@ -20,8 +27,25 @@
          trygghetsrad) är MEDVETET utelämnad -- uppdraget listade bara
          4 specifika trygghetspunkter, inte den femte, och ingen ny
          hälso-/effektrelaterad formulering ska läggas till utan
-         uttryckligt godkännande. */
-      + '<footer class="hz8-footer"><div class="hz8-footer__inner"><div class="hz8-footer__brand"><strong>HAZEY.se</strong><em>Good Plants. Brighter Days.</em></div><div class="hz8-footer__col"><b>Shop</b><a href="/sv/categories/alla-produkter">Alla produkter</a><a href="/sv/page/vara-bastsaljare">Populära serier</a><a href="/sv/page/butik">Om oss</a></div><div class="hz8-footer__col"><b>Kundservice</b><a href="/sv/page/kontakt">Kontakta oss</a><a href="/sv/page/faq">Vanliga frågor</a><a href="/sv/page/kop-och-leveransvillkor">Köp- &amp; leveransvillkor</a><a href="/sv/page/integritetspolicy">Integritets- &amp; cookiepolicy</a><a href="/sv/page/kontakt">Bli återförsäljare</a></div><div class="hz8-footer__col"><b>Populära kategorier</b><a href="/sv/categories/thca">THCA-B</a><a href="https://hazeyse.nyehandel.se/sv/categories/alla-vapes">Vapes</a><a href="https://hazeyse.nyehandel.se/sv/categories/blommor-buds">Buds</a><a href="https://hazeyse.nyehandel.se/sv/categories/hasch">Hasch</a><a href="https://hazeyse.nyehandel.se/sv/categories/h4cbd">CBD</a><a href="/sv/categories/magic-sauce">Magic Sauce</a></div><div class="hz8-footer__col"><b>Följ oss</b><a href="https://www.instagram.com/hazey.se/">Instagram</a><a href="https://www.youtube.com/">YouTube</a></div><div class="hz8-footer__col hz8-footer__col--nl"><b>Få de senaste nyheterna</b><p class="hz8-footer__nl-offer">Få <strong>10%</strong> på ditt första köp — plus drops, nyheter och exklusiva erbjudanden.</p><div class="hz8-footer__newsletter"><input type="email" aria-label="E-postadress" placeholder="Din e-postadress"><button type="button" aria-label="Prenumerera">Prenumerera</button></div><div class="hz8-footer__contact"><a href="mailto:Hej@hazey.se">Hej@hazey.se</a><a href="mailto:Butik@hazey.se">Butik@hazey.se (återförsäljare)</a></div></div></div><div class="hz8-footer__trustrow"><span>Säker betalning</span><span>Diskret frakt</span><span>Skickas från Sverige</span><span>18+ åldersgräns</span></div><div class="hz8-footer__disclaimer"><p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p></div><div class="hz8-footer__bottom"><div class="hz8-footer__pay"><span>Trygg betalning</span><img src="https://www.hazey.se/wp-content/uploads/2023/04/Swish-Logo-Secondary-Light-BG.png" alt="Swish" loading="lazy"></div><span>© 2026 Hazey.se · Stockholm, Sweden · Alla rättigheter förbehållna.</span><span>Kvalitet idag. En grönare morgondag.</span></div></footer>';
+         uttryckligt godkännande. */;
+
+    wrapper.innerHTML += footerHTML();
     while (wrapper.firstChild) context.home.appendChild(wrapper.firstChild);
+  });
+
+  /* Övriga sidtyper: samma footer före Nyehandels egen footer, som
+     döljs visuellt (den finns kvar i DOM:en). Kassan kör inte Theme 8. */
+  window.HZ8.register("global-footer", function (context) {
+    if (context.home || context.page === "home" || document.querySelector(".hz8-footer")) return;
+    var native = document.querySelector("footer.page-footer") || document.querySelector("#store-instance > footer, body > footer");
+    var shell = document.createElement("div");
+    shell.className = "hz8-footer-shell";
+    shell.innerHTML = footerHTML();
+    if (native && native.parentNode) {
+      native.parentNode.insertBefore(shell, native);
+      native.classList.add("hz8-native-footer-hidden");
+    } else {
+      (document.getElementById("store-instance") || document.body).appendChild(shell);
+    }
   });
 })();

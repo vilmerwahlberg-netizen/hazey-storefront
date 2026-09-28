@@ -28,6 +28,23 @@
     }
   };
 
+  /* Sidtyp härleds ur Nyehandels egen DOM/URL (aldrig en hårdkodad
+     lista av sidor) och exponeras som html[data-hz8-page] så att CSS
+     för varje sidtyp kan scopas utan att läcka till startsidan. */
+  function detectPage(homepageRoot) {
+    var path = location.pathname;
+    if (homepageRoot && document.body.classList.contains("store-startpage")) return "home";
+    if (document.body.classList.contains("checkout-page")) return "checkout";
+    if (document.getElementById("product-page")) return "product";
+    if (document.querySelector("section.main-container.category")) return "category";
+    if (/\/search/.test(path)) return "search";
+    if (/\/account/.test(path)) return "account";
+    if (/\/page\/faq\/?$/.test(path)) return "faq";
+    if (document.querySelector(".store-page")) return "page";
+    if (homepageRoot) return "home";
+    return "other";
+  }
+
   function boot() {
     var homepageRoot = first(HOME_SELECTORS);
     var header = first(["header", ".header", "[class*='header']"]);
@@ -41,10 +58,12 @@
       nativeHero: hero,
       assetBase: window.HZ8_ASSET_BASE || ""
     };
+    context.page = detectPage(homepageRoot);
 
     window.__HZ8_DIAGNOSTICS__ = {
       version: "0.3.0-modular",
       homepageDetected: !!homepageRoot,
+      page: context.page,
       nativeHeaderDetected: !!header,
       nativeHeroDetected: !!hero,
       nativeProductCount: products.length,
@@ -59,6 +78,7 @@
        sätts bara av homepage-shell.js när en riktig startsida hittas --
        så de no-opar korrekt på kategori-/produktsidor utan ändring. */
     html.classList.add("hz8");
+    html.setAttribute("data-hz8-page", context.page);
     if (homepageRoot) homepageRoot.setAttribute("data-hz8-state", "native-safe");
 
     modules.forEach(function (module) {
