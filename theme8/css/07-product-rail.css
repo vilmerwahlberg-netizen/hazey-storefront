@@ -125,3 +125,98 @@ html.hz8:not(.hz8-series-hub) #store-main .hz8-prail.is-single .hz8-prail__list 
 .hz8-choice__count { color: var(--hz8-text-muted); font: 500 13px/1 var(--hz8-font-ui) !important; white-space: nowrap; }
 .hz8-choice-backdrop { z-index: 1002; }
 @media (prefers-reduced-motion: reduce) { .hz8-choice.is-sheet { animation: none; } }
+
+/* ======================================================================
+   Kompakt karusellkort (.hz8-prail--compact) -- seriehubbarnas format-
+   hyllor och relaterade varumärkeshyllor (design-concepts/compact-
+   commerce-shelves-393x852.png). Samma Nyehandel-kort, bara tätare:
+   4:3 bildscen, varumärkesrad, namn max 2 rader, betyg endast om det
+   finns, pris vänster + CTA höger på en gemensam nedre rad. Samma
+   bredd för alla hyllor, även ensamkort.
+   ====================================================================== */
+html.hz8 #store-main .hz8-prail--compact .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 12px) / 5.4); gap: 12px !important; }
+@media (min-width: 1600px) { html.hz8 #store-main .hz8-prail--compact .hz8-prail__list { grid-auto-columns: calc((100% - 5 * 14px) / 6.4); gap: 14px !important; } }
+@media (max-width: 1023px) { html.hz8 #store-main .hz8-prail--compact .hz8-prail__list { grid-auto-columns: calc((100% - 2 * 10px) / 3.3); gap: 10px !important; } }
+@media (max-width: 767px) { html.hz8 #store-main .hz8-prail--compact .hz8-prail__list { grid-auto-columns: 49%; gap: 10px !important; } }
+html.hz8 #store-main .hz8-prail--compact.is-single .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 12px) / 5.4); }
+@media (min-width: 1600px) { html.hz8 #store-main .hz8-prail--compact.is-single .hz8-prail__list { grid-auto-columns: calc((100% - 5 * 14px) / 6.4); } }
+@media (max-width: 1023px) { html.hz8 #store-main .hz8-prail--compact.is-single .hz8-prail__list { grid-auto-columns: calc((100% - 2 * 10px) / 3.3); } }
+@media (max-width: 767px) { html.hz8 #store-main .hz8-prail--compact.is-single .hz8-prail__list { grid-auto-columns: 49%; } }
+
+html.hz8 #store-main .hz8-prail--compact .product-card { border-radius: 12px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card:hover { box-shadow: 0 8px 20px -14px color-mix(in srgb, var(--hz8-ink) 40%, transparent) !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card__image {
+  aspect-ratio: 4 / 3 !important;
+  margin: 6px 6px 0 !important;
+  border-radius: 8px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hz8-beige) 38%, var(--hz8-surface)) 0%, color-mix(in srgb, var(--hz8-beige) 58%, var(--hz8-surface)) 100%) !important;
+}
+html.hz8 #store-main .hz8-prail--compact .product-card__image img { inset: 6% 8% !important; width: 84% !important; height: 88% !important; object-fit: contain !important; }
+/* Kampanjremsan "Köp mer - Betala mindre" döljs bara visuellt i den
+   kompakta varianten; Nyehandels pristrappa/paketlogik är orörd. */
+html.hz8 #store-main .hz8-prail--compact .product-card__image .buy-more-pay-less { display: none !important; }
+/* Reabadge diskret i bildytans övre högra hörn. */
+html.hz8 #store-main .hz8-prail--compact .product-card :is(.ribbon, .nh-ribbon-row) {
+  top: 12px !important;
+  right: 12px !important;
+  left: auto !important;
+  min-height: 20px;
+  padding: 0 6px;
+  font-size: 10px !important;
+}
+html.hz8 #store-main .hz8-prail--compact .product-card .details-wrapper { padding: 8px 10px 10px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .details { gap: 2px; }
+html.hz8 #store-main .hz8-prail--compact .product-card .brand { font-size: 9.5px !important; letter-spacing: .11em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html.hz8 #store-main .hz8-prail--compact .product-card .name { min-height: 2.4em; font-size: 14px !important; line-height: 1.2 !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .rating { min-height: 15px; }
+html.hz8 #store-main .hz8-prail--compact .product-card :is(.nh-star, .stars-outer) { font-size: 11px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .nh-stars__count { font-size: 10.5px !important; }
+/* Nedre köprad: pris vänster, CTA höger -- samma höjd med och utan rea. */
+html.hz8 #store-main .hz8-prail--compact .product-card .offer {
+  min-height: 44px;
+  margin-top: 4px !important;
+  padding: 0 72px 0 0 !important;
+  align-items: center !important;
+}
+html.hz8 #store-main .hz8-prail--compact .product-card .price { flex-direction: column; align-items: flex-start !important; gap: 0 !important; font-size: 15.5px !important; line-height: 1.1 !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .price del { margin: 0 !important; font-size: 11px !important; line-height: 1.1; }
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill {
+  position: absolute !important;
+  right: 10px;
+  bottom: 10px;
+  width: auto !important;
+  min-width: 0;
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding: 0 11px !important;
+  border-radius: 9px;
+  font-size: 12.5px !important;
+}
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill .hz8-pill-long { display: none; }
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill .hz8-pill-short { display: inline; }
+/* Tätare vertikalt raster (mål: ~25-30 % lägre än standardkortet). */
+html.hz8 #store-main .hz8-prail--compact .product-card .details-wrapper { padding: 7px 10px 8px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .details { margin: 0 !important; padding: 0 !important; gap: 1px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .brand { line-height: 1.2 !important; margin: 0 !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .rating { min-height: 13px; margin: 1px 0 0 !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .offer { margin-top: 2px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill { bottom: 8px; }
+/* Fast inre raster: identisk kordhöjd oavsett rea/betyg/namnlängd. */
+html.hz8 #store-main .hz8-prail--compact .product-card .brand { display: block !important; height: 12px; }
+html.hz8 #store-main .hz8-prail--compact .product-card .details > a { display: block; height: 2.45em; font-size: 14px; line-height: 1.2; overflow: hidden; }
+html.hz8 #store-main .hz8-prail--compact .product-card .name { min-height: 0; }
+html.hz8 #store-main .hz8-prail--compact .product-card .rating { height: 14px; min-height: 0; overflow: hidden; }
+html.hz8 #store-main .hz8-prail--compact .product-card .offer { height: 44px; min-height: 0; }
+html.hz8 #store-main .hz8-prail--compact .product-card { height: auto !important; }
+/* CTA: lägre visuell pill (34px), 44px tryckyta via utökat klickområde. */
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill {
+  min-height: 34px !important;
+  height: 34px;
+  bottom: 13px;
+  padding: 0 14px !important;
+  border-radius: 8px;
+}
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill::after { content: ""; position: absolute; inset: -5px -4px; }
+html.hz8 #store-main .hz8-prail--compact .product-card .offer { padding-right: 76px !important; }
+html.hz8 #store-main .hz8-prail--compact .product-card .offer { height: 40px; }
+html.hz8 #store-main .hz8-prail--compact .product-card .hz8-card-pill { bottom: 11px; }

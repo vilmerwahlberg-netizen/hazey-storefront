@@ -188,3 +188,6 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star { color:
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star.is-on { color: var(--hz8-stars); }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-stars__count { color: var(--hz8-text-muted); font: 500 11.5px/1 var(--hz8-font-ui) !important; }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .offer { display: flex !important; justify-content: flex-start !important; text-align: left !important; }
+
+/* CTA-etikett: lång variant som standard, kort i kompakta karusellkort. */
+.hz8-card-pill .hz8-pill-short { display: none; }

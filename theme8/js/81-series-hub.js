@@ -29,7 +29,6 @@
      paginering) + serie x format-routen. Fångar produkter som tillhör
      serien men saknas i formatets underkategori. */
   var MAX_HUB_PAGES = 5;
-  var MAX_SERIES_SHELVES = 2;
   function seriesProducts(series, route) {
     var sources = [route];
     var jobs = [HZ8.fetchPage(route, HZ8.categoryCards)];
@@ -42,10 +41,6 @@
       }));
     }
     return Promise.all(jobs).then(function (res) { return { own: res[0], all: [].concat.apply([], res) }; });
-  }
-  function firstImage(html) {
-    var m = html.match(/<img[^>]+src="([^"]+)"/);
-    return m ? m[1] : "";
   }
 
   function focusRail(key, smooth) {
@@ -61,91 +56,107 @@
     return m ? m[1].trim() : "";
   }
 
-  /* ---- Generell relation, grupperad per serie ----
-     aktiv serie S -> faktisk tillverkare B -> samma format F
-     -> ANDRA verkliga serier T som har produkter från B i format F
-     -> en egen namngiven hylla per T ("D10 Vapes", "THCbA Vapes" ...).
-     - B = det ENDA varumärket bland S:s produkter i F (Nyehandels egna
-       kort). Flera varumärken, eller butikens eget varumärke -> ingen
-       sektion; ingen tillverkare väljs automatiskt.
-     - T hämtas ur relationskartan (serier med en riktig route i F).
-       Hyllans kort = T:s serie x format-route, filtrerad på varumärke B,
-       exkl. allt i S (hubbens alla sidor + S:s route) och exkl. kort
-       som redan visats i en tidigare hylla.
-     - Max 2 seriehyllor (flest produkter först); fler serier som länkar.
-     - Produkter från B i F utan egen serie/route samlas i EN transparent
-       reservhylla "Övriga <format> från B" (strikt samma tillverkare och
-       format, aldrig ett påhittat serienamn). Tomt totalt -> ingen sektion.
-     - Samma kodväg för alla serier/tillverkare. */
+  /* ---- Generell relation, grupperad per varumärke och serie ----
+     aktiv serie S, format F:
+     för varje verkligt varumärke B bland S:s produkter i F
+       -> B:s övriga produkter i F (formatets sida serverfiltrerad på
+          Varumärke) exkl. hela S, dubbletter och kort utan pris/URL
+       -> grupperas per annan verklig serie T (relationskartans T x F-
+          route) = en egen namngiven hylla per T
+       -> produkter utan serie -> EN reservhylla "Övriga F från B" sist
+     -> en teaser "Fler F från B" per B med innehåll.
+     - Varumärkets namn = Nyehandels kanoniska Varumärke (kortens .brand,
+       samma värde som filtret) -- ingenting hårdkodat.
+     - Flera varumärken i S gissas inte fram till ett: varje varumärke får
+       sin egen, tydligt namngivna grupp. Butikens eget varumärke räknas
+       inte som tillverkare.
+     - Samma kodväg för alla serier/varumärken. */
+  function brandRouteFor(format, brand) {
+    return format.href + (format.href.indexOf("?") === -1 ? "?" : "&") + "filters=" + encodeURIComponent("Varumärke_" + brand);
+  }
+  function validCard(c) { return !!productPath(c.html) && /\d\s*kr/.test(c.html); }
+
   HZ8.relatedByManufacturer = function (opts) {
     var format = opts.format, series = opts.series, route = opts.route;
     return seriesProducts(series, route).then(function (res) {
-      var brands = {};
-      res.own.forEach(function (c) { var b = cardBrand(c.html); if (b) brands[b] = true; });
-      var names = Object.keys(brands);
-      if (names.length !== 1 || HZ8.catalog.isHouseBrand(names[0])) return null;
-      var brand = names[0];
-      var seen = {};
-      res.all.forEach(function (c) { seen[productPath(c.html)] = true; });
+      var counts = {};
+      res.own.forEach(function (c) { var b = cardBrand(c.html); if (b && !HZ8.catalog.isHouseBrand(b)) counts[b] = (counts[b] || 0) + 1; });
+      var brands = Object.keys(counts).sort(function (x, y) { return counts[y] - counts[x]; });
+      if (!brands.length) return [];
+      var inSeries = {};
+      res.all.forEach(function (c) { inSeries[productPath(c.html)] = true; });
       var others = HZ8.catalog.build().series.filter(function (t) { return t !== series && t.routes[format.key]; });
-      return Promise.all(others.map(function (t) {
+      var seriesLists = Promise.all(others.map(function (t) {
         return HZ8.fetchPage(t.routes[format.key], HZ8.categoryCards).then(function (cards) {
           return { series: t, route: t.routes[format.key], cards: cards };
         }).catch(function () { return null; });
-      })).then(function (lists) {
-        var shelves = [];
-        lists.forEach(function (l) {
-          if (!l) return;
-          var cards = l.cards.filter(function (c) {
-            var path = productPath(c.html);
-            if (!path || seen[path] || cardBrand(c.html) !== brand) return false;
-            seen[path] = true;
-            return true;
+      }));
+      return seriesLists.then(function (lists) {
+        return Promise.all(brands.map(function (brand) {
+          var brandRoute = brandRouteFor(format, brand);
+          return HZ8.fetchPage(brandRoute, HZ8.categoryCards).catch(function () { return []; }).then(function (cands) {
+            var pool = {};
+            cands.forEach(function (c) {
+              var path = productPath(c.html);
+              if (validCard(c) && !inSeries[path] && cardBrand(c.html) === brand) pool[path] = c;
+            });
+            var shelves = [];
+            lists.forEach(function (l) {
+              if (!l) return;
+              var cards = l.cards.filter(function (c) {
+                var path = productPath(c.html);
+                if (!pool[path]) return false;
+                delete pool[path];
+                return true;
+              });
+              if (cards.length) shelves.push({ series: l.series, route: l.route, cards: cards });
+            });
+            shelves.sort(function (x, y) { return y.cards.length - x.cards.length; });
+            var rest = Object.keys(pool).map(function (k) { return pool[k]; });
+            if (!shelves.length && !rest.length) return null;
+            return buildMore({ brand: brand, format: format, series: series, shelves: shelves, rest: rest, brandRoute: brandRoute });
           });
-          if (cards.length) shelves.push({ series: l.series, route: l.route, cards: cards });
-        });
-        /* Mest relevanta först (flest produkter); max 2 seriehyllor, övriga
-           serier som textlänkar. */
-        shelves.sort(function (a, b) { return b.cards.length - a.cards.length; });
-        var extra = shelves.slice(MAX_SERIES_SHELVES);
-        shelves = shelves.slice(0, MAX_SERIES_SHELVES);
-        /* Reservhylla: samma tillverkare + samma format, men utan egen serie/
-           route. Strikt filtrerad; aldrig ett påhittat serienamn. */
-        var brandRoute = format.href + (format.href.indexOf("?") === -1 ? "?" : "&") + "filters=" + encodeURIComponent("Varumärke_" + brand);
-        return HZ8.fetchPage(brandRoute, HZ8.categoryCards).catch(function () { return []; }).then(function (cands) {
-          extra.forEach(function (sh) { sh.cards.forEach(function (c) { seen[productPath(c.html)] = true; }); });
-          var rest = cands.filter(function (c) {
-            var path = productPath(c.html);
-            if (!path || seen[path] || cardBrand(c.html) !== brand || !/kr/.test(c.html)) return false;
-            seen[path] = true;
-            return true;
-          });
-          if (!shelves.length && !rest.length && !extra.length) return null;
-          return buildMore({ brand: brand, format: format, series: series, shelves: shelves, extra: extra, rest: rest, brandRoute: brandRoute });
-        });
-      });
-    }).catch(function () { return null; });
+        }));
+      }).then(function (sections) { return sections.filter(Boolean); });
+    }).catch(function () { return []; });
   };
 
+  function firstImage(html) {
+    var m = html.match(/<img[^>]+src="([^"]+)"/);
+    return m ? m[1] : "";
+  }
+
+  var moreUid = 0;
   function buildMore(o) {
+    moreUid += 1;
     var fmt = o.format.label.toLowerCase();
-    var regionId = "hz8-more-" + o.format.key + "-" + o.brand.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    var base = "hz8-more-" + moreUid;
+    var title = "Fler " + fmt + " från " + o.brand;
     var section = document.createElement("section");
     section.className = "hz8-more";
-    section.setAttribute("aria-labelledby", regionId + "-title");
+    section.setAttribute("aria-labelledby", base + "-title");
+    var peekCards = o.shelves.map(function (sh) { return sh.cards[0]; }).concat(o.rest.slice(0, 1)).slice(0, 3);
     section.innerHTML =
-      '<div class="hz8-more__head"><span class="hz8-kicker">Samma tillverkare</span>' +
-      '<h2 id="' + regionId + '-title">Mer ' + HZ8.esc(fmt) + " från " + HZ8.esc(o.brand) + "</h2>" +
-      "<p>" + HZ8.esc(o.format.label) + " från " + HZ8.esc(o.brand) + " utanför " + HZ8.esc(o.series.name) + ".</p></div>" +
-      '<div class="hz8-more__region" id="' + regionId + '"></div>' +
-      '<div class="hz8-more__bar"><button type="button" class="hz8-btn hz8-more__toggle" aria-expanded="false" aria-controls="' + regionId + '">Visa mer från ' + HZ8.esc(o.brand) + "</button></div>";
-    var region = section.querySelector(".hz8-more__region");
+      '<div class="hz8-more__bar">' +
+        '<div class="hz8-more__text"><span class="hz8-kicker">Samma tillverkare</span>' +
+        '<h2 class="hz8-more__title" id="' + base + '-title">' + HZ8.esc(title) + "</h2></div>" +
+        '<div class="hz8-more__peek" aria-hidden="true">' + peekCards.map(function (c) {
+          var src = firstImage(c.html);
+          return src ? '<span class="hz8-more__peek-item"><img src="' + HZ8.esc(src) + '" alt="" loading="lazy" decoding="async" width="120" height="90"></span>' : "";
+        }).join("") + "</div>" +
+        '<button type="button" class="hz8-more__toggle" aria-expanded="false" aria-controls="' + base + '">' +
+          '<span class="hz8-more__toggle-closed"><span class="hz8-visually-hidden">' + HZ8.esc(title) + "</span></span>" +
+          '<span class="hz8-more__toggle-open">Visa mindre</span>' + HZ8.icon("chevron") +
+        "</button>" +
+      "</div>" +
+      '<div class="hz8-more__region" id="' + base + '" inert aria-hidden="true"><div class="hz8-more__inner"></div></div>';
+    var inner = section.querySelector(".hz8-more__inner");
     /* En namngiven hylla per verklig serie; "Visa alla" = seriens riktiga
        serie x format-route. */
     o.shelves.forEach(function (sh) {
-      region.appendChild(HZ8.productRail({
-        id: regionId + "-" + sh.series.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-        className: "hz8-more__shelf",
+      inner.appendChild(HZ8.productRail({
+        id: base + "-" + sh.series.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        className: "hz8-prail--compact hz8-more__shelf",
         title: sh.series.name + " " + o.format.label,
         href: HZ8.link(sh.route),
         cards: sh.cards,
@@ -153,21 +164,13 @@
         eager: true
       }));
     });
-    if (o.extra && o.extra.length) {
-      var more = document.createElement("p");
-      more.className = "hz8-more__series-links";
-      more.innerHTML = "Fler serier från " + HZ8.esc(o.brand) + ": " + o.extra.map(function (sh) {
-        return '<a href="' + HZ8.esc(HZ8.link(sh.route)) + '">' + HZ8.esc(sh.series.name + " " + o.format.label.toLowerCase()) + "</a>";
-      }).join(", ");
-      region.appendChild(more);
-    }
-    if (o.rest && o.rest.length) {
-      /* "Alla vapes från X" = formatets sida filtrerad på tillverkaren --
-         riktig, beständig route (visar även den aktiva seriens produkter,
-         därav den uttryckliga etiketten i stället för "Visa alla"). */
-      region.appendChild(HZ8.productRail({
-        id: regionId + "-ovriga",
-        className: "hz8-more__shelf hz8-more__shelf--rest",
+    if (o.rest.length) {
+      /* Reservhylla (inget serienamn). Destination = formatets sida
+         filtrerad på varumärket -- riktig route, därav den uttryckliga
+         etiketten. */
+      inner.appendChild(HZ8.productRail({
+        id: base + "-ovriga",
+        className: "hz8-prail--compact hz8-more__shelf hz8-more__shelf--rest",
         title: "Övriga " + fmt + " från " + o.brand,
         href: HZ8.link(o.brandRoute),
         allLabel: "Alla " + fmt + " från " + o.brand,
@@ -176,24 +179,14 @@
         eager: true
       }));
     }
-    /* Kollapsat: bara toppen av första hyllan syns bakom en fade, och
-       hela regionen är inert (inga fokuserbara/klickbara kort). */
-    region.inert = true;
-    region.setAttribute("aria-hidden", "true");
+    var region = section.querySelector(".hz8-more__region");
     var toggle = section.querySelector(".hz8-more__toggle");
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     toggle.addEventListener("click", function () {
       var open = toggle.getAttribute("aria-expanded") !== "true";
-      var from = region.getBoundingClientRect().height;
       section.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
       region.inert = !open;
       if (open) region.removeAttribute("aria-hidden"); else region.setAttribute("aria-hidden", "true");
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.textContent = open ? "Visa mindre" : "Visa mer från " + o.brand;
-      if (!reduce.matches && region.animate) {
-        var to = region.getBoundingClientRect().height;
-        region.animate([{ height: from + "px" }, { height: to + "px" }], { duration: 260, easing: "cubic-bezier(.25,.46,.45,.94)" });
-      }
     });
     return section;
   }
@@ -231,10 +224,12 @@
   HZ8.comboRelated = function (root, ctx) {
     if (!ctx.series || !ctx.format) return;
     var route = ctx.series.routes[ctx.format.key];
-    HZ8.relatedByManufacturer({ format: ctx.format, series: ctx.series, route: route }).then(function (section) {
-      if (!section) return;
-      section.classList.add("hz8-combo-related");
-      root.insertBefore(section, root.querySelector(".hz8-cat-guide"));
+    HZ8.relatedByManufacturer({ format: ctx.format, series: ctx.series, route: route }).then(function (sections) {
+      if (!sections.length) return;
+      var wrap = document.createElement("div");
+      wrap.className = "hz8-combo-related";
+      sections.forEach(function (sec) { wrap.appendChild(sec); });
+      root.insertBefore(wrap, root.querySelector(".hz8-cat-guide"));
     });
   };
 
@@ -259,7 +254,7 @@
       if (!route || f.seriesless) return;
       var rail = HZ8.productRail({
         id: f.key,
-        className: "hz8-hub__rail",
+        className: "hz8-hub__rail hz8-prail--compact",
         title: series.name + " " + f.label,
         titleHref: HZ8.link(route),
         href: HZ8.link(f.href),
@@ -280,8 +275,8 @@
       slot.className = "hz8-hub__related";
       hub.appendChild(slot);
       whenNear(rail, function () {
-        HZ8.relatedByManufacturer({ format: f, series: series, route: route }).then(function (section) {
-          if (section && rail.isConnected) slot.appendChild(section); else slot.remove();
+        HZ8.relatedByManufacturer({ format: f, series: series, route: route }).then(function (sections) {
+          if (sections.length && rail.isConnected) sections.forEach(function (sec) { slot.appendChild(sec); }); else slot.remove();
         });
       });
     });

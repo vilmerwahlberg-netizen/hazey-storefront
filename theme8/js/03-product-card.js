@@ -25,12 +25,13 @@
     if (variants) {
       pill = document.createElement("a");
       pill.href = href;
-      pill.textContent = "Välj variant";
+      pill.innerHTML = '<span class="hz8-pill-long">Välj variant</span><span class="hz8-pill-short" aria-hidden="true">Välj</span>';
       pill.setAttribute("aria-label", "Välj variant: " + name);
     } else {
       pill = document.createElement("button");
       pill.type = "button";
-      pill.textContent = "+ Lägg till";
+      var ADD = '<span class="hz8-pill-long">+ Lägg till</span><span class="hz8-pill-short" aria-hidden="true">Lägg till</span>';
+      pill.innerHTML = ADD;
       pill.setAttribute("aria-label", "Lägg i varukorgen: " + name);
       pill.addEventListener("click", function () {
         if (pill.getAttribute("aria-busy") === "true") return;
@@ -40,7 +41,7 @@
           if (!state.variantId || !state.buyable || state.variants > 1) { location.href = HZ8.link(href); return null; }
           return HZ8.addVariant(state.variantId).then(function () {
             pill.textContent = "Tillagd";
-            window.setTimeout(function () { pill.textContent = "+ Lägg till"; }, 1800);
+            window.setTimeout(function () { pill.innerHTML = ADD; }, 1800);
           });
         }).catch(function () {
           location.href = HZ8.link(href);
