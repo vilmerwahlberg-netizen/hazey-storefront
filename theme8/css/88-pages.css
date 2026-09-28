@@ -172,3 +172,8 @@ html.hz8 .hz8-faq-search input { width: 100%; min-height: 52px !important; paddi
   .hz8-about__intro, .hz8-about__section { grid-template-columns: minmax(0, 1fr); }
   .hz8-about__media { min-height: 200px; order: -1; }
 }
+
+/* Sök / konto: Nyehandels egna vyer i sidramen. */
+html.hz8:is([data-hz8-page="search"], [data-hz8-page="account"]) #store-main > * { width: var(--hz8-content); margin-inline: auto; }
+html.hz8:is([data-hz8-page="search"], [data-hz8-page="account"]) #store-main .hz8-utility-title { margin: 18px 0 20px !important; font-size: clamp(32px, 3.6vw, 52px) !important; line-height: 1.05 !important; }
+html.hz8[data-hz8-page="account"] #store-main :is(.box, .card) { border: 1px solid var(--hz8-line); border-radius: var(--hz8-radius-l); background: var(--hz8-surface); box-shadow: none; }

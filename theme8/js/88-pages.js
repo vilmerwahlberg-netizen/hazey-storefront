@@ -104,4 +104,14 @@
     }
     if (page.querySelector(".hz8-about")) document.documentElement.classList.add("hz8-about-page");
   });
+
+  /* Sök- och kontosidorna har inget H1 -- sidans egen första rubrik
+     ("Sökresultat för", "Logga in") exponeras som nivå 1. */
+  HZ8.register("utility-pages", function (context) {
+    if (context.page !== "search" && context.page !== "account") return;
+    var main = document.getElementById("store-main");
+    if (!main || main.querySelector("h1")) return;
+    var first = main.querySelector("h2");
+    if (first) { first.setAttribute("role", "heading"); first.setAttribute("aria-level", "1"); first.classList.add("hz8-utility-title"); }
+  });
 })();

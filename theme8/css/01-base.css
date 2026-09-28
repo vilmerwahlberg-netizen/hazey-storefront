@@ -490,3 +490,9 @@ html.hz8 [class*="hz8-"][hidden] { display: none !important; }
 html.hz8:not([data-hz8-page="home"]) #store-main :is(.nh-card-buy, .nh-ribbon-row:empty) { display: none !important; }
 /* Samma bundle injicerar en egen footer -- Theme 8 har sin gemensamma. */
 html.hz8 footer.nh-footer { display: none !important; }
+
+/* Global footer (60-social-footer.js) utanför startsidan: samma
+   sidopadding som startsidans .hz8-home, som footerns negativa
+   marginaler är byggda mot. */
+html.hz8 .hz8-footer-shell { padding-inline: 24px; overflow-x: clip; }
+@media (max-width: 900px) { html.hz8 .hz8-footer-shell { padding-inline: 14px; } }
