@@ -348,32 +348,8 @@ html.hz8[data-hz8-page="product"] .product-page-lists { width: var(--hz8-content
 html.hz8[data-hz8-page="product"] .product-page-lists .section { padding: 0 0 48px !important; }
 html.hz8[data-hz8-page="product"] .product-page-lists .container { width: auto !important; }
 
-/* ---------- Mobil köpbar ---------- */
-.hz8-pdp-sticky { display: none; }
+/* ---------- Mobil ---------- */
 @media (max-width: 767px) {
-  .hz8-pdp-sticky {
-    position: fixed;
-    left: 10px;
-    right: 10px;
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    z-index: 900;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 8px 8px 16px;
-    border: 1px solid var(--hz8-line);
-    border-radius: var(--hz8-radius-l);
-    background: color-mix(in srgb, var(--hz8-surface) 96%, transparent);
-    box-shadow: var(--hz8-shadow-l);
-    transform: translateY(140%);
-    transition: transform .25s var(--hz8-ease);
-  }
-  .hz8-pdp-sticky.is-visible { transform: none; }
-  html.hz8-scroll-locked .hz8-pdp-sticky { transform: translateY(140%); }
-  .hz8-pdp-sticky__info { display: grid; min-width: 0; flex: 1; }
-  .hz8-pdp-sticky__name { overflow: hidden; color: var(--hz8-text-muted); font: 500 12px/1.3 var(--hz8-font-ui); white-space: nowrap; text-overflow: ellipsis; }
-  .hz8-pdp-sticky__price { color: var(--hz8-text); font: 700 17px/1.2 var(--hz8-font-ui); }
-  .hz8-pdp-sticky .hz8-btn { flex: 0 0 auto; min-height: 46px; padding: 0 18px; }
 
   html.hz8[data-hz8-page="product"] .product-detail { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-bottom: 36px !important; }
   html.hz8[data-hz8-page="product"] .product-detail__media { position: relative; top: 0; margin-inline: -16px !important; }
@@ -539,3 +515,126 @@ html.hz8.hz8-pdp-no-reviews[data-hz8-page="product"] .accordion-item:has(#produc
   .hz8-pdp-docs { grid-template-columns: auto 1fr; }
   .hz8-pdp-docs .hz8-btn { grid-column: 1 / -1; justify-self: start; }
 }
+
+/* ======================================================================
+   Varm, köpdrivande PDP (2026-09-28) -- WooCommerce-flödet som UX-
+   referens, Theme 8-paletten. Inga Vue-noder flyttas; ordning via
+   display:contents + order.
+   ====================================================================== */
+/* Varm, rundad bildyta. */
+html.hz8[data-hz8-page="product"] .product-image-slider__main {
+  border-radius: 22px;
+  background: radial-gradient(120% 90% at 50% 20%, color-mix(in srgb, var(--hz8-beige) 30%, var(--hz8-surface)) 0%, color-mix(in srgb, var(--hz8-beige) 70%, var(--hz8-surface)) 100%) !important;
+}
+/* Köpflödet som en sammanhängande yta. */
+html.hz8[data-hz8-page="product"] .product-detail__information {
+  padding: clamp(18px, 2.2vw, 28px) !important;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--hz8-beige) 26%, var(--hz8-surface));
+}
+html.hz8[data-hz8-page="product"] .price-features { border-bottom: 0 !important; padding-bottom: 6px !important; margin-bottom: 10px !important; }
+html.hz8[data-hz8-page="product"] .price-features #product-price { color: var(--hz8-cta-fill) !important; }
+html.hz8[data-hz8-page="product"] .price-features .comparison:not(:empty) + #product-price { color: var(--hz8-error) !important; }
+/* Ordning: pris -> lager -> paket -> strain -> antal+CTA -> mikrotrust -> intro. */
+html.hz8[data-hz8-page="product"] .product-detail__information .meta-usp-buy-container { display: contents !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information .product-meta { order: 4 !important; margin: 0 0 14px !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information .hz8-packages { order: 5 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information #product-variants { order: 6 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information .buy-controls { order: 7 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information .product-usp { order: 8 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information #product-pricing-table { order: 9 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information .short-description { order: 11 !important; }
+html.hz8[data-hz8-page="product"] #stock {
+  padding: 5px 10px 5px 8px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--hz8-success) 26%, var(--hz8-surface));
+  font-size: 13px !important;
+}
+html.hz8[data-hz8-page="product"] #stock:not(.is-positive) { background: var(--hz8-error-soft); color: var(--hz8-error) !important; }
+/* Paketkort varmare. */
+html.hz8[data-hz8-page="product"] .hz8-package { border-radius: 14px; background: var(--hz8-surface); border-color: color-mix(in srgb, var(--hz8-ink) 14%, transparent); }
+html.hz8[data-hz8-page="product"] .hz8-package[aria-pressed="true"] { border-color: var(--hz8-olive); background: color-mix(in srgb, var(--hz8-olive) 9%, var(--hz8-surface)); }
+html.hz8[data-hz8-page="product"] .hz8-package__save { color: var(--hz8-cta-fill); }
+/* Strainval som mjuka chips. */
+html.hz8[data-hz8-page="product"] .hz8-variant { border-radius: 99px; background: var(--hz8-surface); border-color: color-mix(in srgb, var(--hz8-ink) 14%, transparent); }
+/* Primär CTA: pris i knappen (data-hz8-label, 82-product.js). */
+html.hz8[data-hz8-page="product"] .buy-form .button.buy { border-radius: 16px !important; background: var(--hz8-olive) !important; border-color: var(--hz8-olive) !important; }
+html.hz8[data-hz8-page="product"] .buy-form .button.buy:hover { background: var(--hz8-secondary-hover) !important; }
+html.hz8[data-hz8-page="product"] .buy-form .button.buy span[data-hz8-label] { font-size: 0 !important; }
+html.hz8[data-hz8-page="product"] .buy-form .button.buy span[data-hz8-label]::after { content: attr(data-hz8-label); font-size: 16px; }
+html.hz8[data-hz8-page="product"] .buy-form__controls .amount-input { border-radius: 16px; background: var(--hz8-surface); }
+/* Mikrotrust: kompakt rad, inga linjer. */
+html.hz8[data-hz8-page="product"] .product-usp { border: 0 !important; margin-top: 12px !important; padding: 0 !important; gap: 6px 14px !important; }
+html.hz8[data-hz8-page="product"] .product-usp li { font-size: 12px !important; }
+
+/* Accordions: Specifikation / Innehåll och analys / Leverans och retur. */
+.hz8-pdp-acc { border-top: 1px solid var(--hz8-line); }
+.hz8-pdp-acc details { border-bottom: 1px solid var(--hz8-line); }
+.hz8-pdp-acc summary { min-height: 56px; font: 700 16px/1.3 var(--hz8-font-ui) !important; }
+.hz8-pdp-acc details > :not(summary) { max-width: none !important; }
+.hz8-pdp-acc dl { margin: 0 0 16px; border-top: 0 !important; }
+.hz8-pdp-acc ul { margin: 0 0 8px; padding-left: 1.1em; }
+.hz8-pdp-acc a { color: var(--hz8-olive) !important; font-weight: 700; }
+html.hz8[data-hz8-page="product"] .hz8-pdp-extra { gap: 32px; }
+/* Recensionssammanfattning. */
+.hz8-review-summary { display: flex; align-items: center; gap: 10px; margin: 4px 0 16px; padding: 14px 16px; border-radius: 14px; background: var(--hz8-surface-warm); }
+.hz8-review-summary__avg { font: 700 26px/1 var(--hz8-font-ui); color: var(--hz8-text); }
+.hz8-review-summary__stars { position: relative; display: inline-block; width: 90px; height: 16px; background: linear-gradient(90deg, var(--hz8-line-strong) 0 100%); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 16'%3E%3Cg%3E%3Cpath id='s' d='M8 0l2.4 5 5.6.6-4.2 3.8 1.2 5.6L8 12.2 3 15l1.2-5.6L0 5.6 5.6 5z'/%3E%3Cuse href='%23s' x='18.5'/%3E%3Cuse href='%23s' x='37'/%3E%3Cuse href='%23s' x='55.5'/%3E%3Cuse href='%23s' x='74'/%3E%3C/g%3E%3C/svg%3E") 0 0/90px 16px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 16'%3E%3Cg%3E%3Cpath id='s' d='M8 0l2.4 5 5.6.6-4.2 3.8 1.2 5.6L8 12.2 3 15l1.2-5.6L0 5.6 5.6 5z'/%3E%3Cuse href='%23s' x='18.5'/%3E%3Cuse href='%23s' x='37'/%3E%3Cuse href='%23s' x='55.5'/%3E%3Cuse href='%23s' x='74'/%3E%3C/g%3E%3C/svg%3E") 0 0/90px 16px; }
+.hz8-review-summary__stars span { position: absolute; inset: 0 auto 0 0; background: var(--hz8-stars); }
+.hz8-review-summary__count { color: var(--hz8-text-muted); font: 600 13px/1 var(--hz8-font-ui); }
+/* Relaterade: serie-hylla och liknande som kompakta karuseller. */
+html.hz8[data-hz8-page="product"] .hz8-pdp-series .hz8-prail__title { font-size: clamp(22px, 2vw, 28px) !important; }
+html.hz8[data-hz8-page="product"] .product-page-lists__similar-products .products {
+  display: grid !important; grid-auto-flow: column; grid-template-columns: none !important;
+  grid-auto-columns: calc((100% - 4 * 12px) / 5.4); gap: 12px !important; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 8px !important;
+}
+html.hz8[data-hz8-page="product"] .product-page-lists__similar-products .products > div { scroll-snap-align: start; }
+html.hz8[data-hz8-page="product"] .product-page-lists__similar-products .product-card__image { aspect-ratio: 4 / 3 !important; }
+html.hz8[data-hz8-page="product"] .product-page-lists__similar-products .buy-more-pay-less { display: none !important; }
+html.hz8[data-hz8-page="product"] .hz8-pdp-brandmore { margin-top: -12px; }
+
+/* Sticky köpbar (alla bredder): pris + CTA, mikrotrust ovanför. */
+.hz8-pdp-sticky {
+  position: fixed; left: 50%; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 900;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px;
+  width: min(560px, calc(100vw - 20px)); padding: 8px 8px 8px 16px;
+  border: 1px solid color-mix(in srgb, var(--hz8-ink) 10%, transparent); border-radius: 18px;
+  background: color-mix(in srgb, var(--hz8-surface) 96%, var(--hz8-beige)); box-shadow: var(--hz8-shadow-l);
+  transform: translate(-50%, 150%); transition: transform .25s var(--hz8-ease);
+}
+.hz8-pdp-sticky.is-visible { transform: translate(-50%, 0); }
+.hz8-pdp-sticky.is-cart-open, html.hz8-scroll-locked .hz8-pdp-sticky { transform: translate(-50%, 150%) !important; }
+.hz8-pdp-sticky__trust { grid-column: 1 / -1; display: flex; gap: 12px; overflow: hidden; color: var(--hz8-text-muted); font: 600 11px/1.2 var(--hz8-font-ui); white-space: nowrap; }
+.hz8-pdp-sticky__trust:empty { display: none; }
+.hz8-pdp-sticky__trust span::before { content: "✓ "; color: var(--hz8-olive); }
+.hz8-pdp-sticky__info { display: grid; min-width: 0; }
+.hz8-pdp-sticky__name { overflow: hidden; color: var(--hz8-text-muted); font: 500 12px/1.3 var(--hz8-font-ui); white-space: nowrap; text-overflow: ellipsis; }
+.hz8-pdp-sticky__price { color: var(--hz8-cta-fill); font: 700 18px/1.2 var(--hz8-font-ui); }
+.hz8-pdp-sticky .hz8-btn { min-height: 48px; padding: 0 20px; border-radius: 14px !important; background: var(--hz8-olive) !important; border-color: var(--hz8-olive) !important; color: #fff !important; }
+@media (prefers-reduced-motion: reduce) { .hz8-pdp-sticky { transition: none; } }
+
+@media (max-width: 767px) {
+  html.hz8[data-hz8-page="product"] .product-detail__media { margin-inline: 0 !important; }
+  html.hz8[data-hz8-page="product"] .product-image-slider__main { max-height: 40vh; border-radius: 20px; }
+  html.hz8[data-hz8-page="product"] .product-image-slider__slide .ratio { height: 40vh !important; }
+  html.hz8[data-hz8-page="product"] .product-detail__information { margin-inline: -4px !important; padding: 16px !important; border-radius: 20px; }
+  html.hz8[data-hz8-page="product"] .product-page-lists__similar-products .products { grid-auto-columns: 49%; gap: 10px !important; }
+  .hz8-pdp-sticky { width: calc(100vw - 16px); bottom: calc(8px + env(safe-area-inset-bottom)); }
+  .hz8-pdp-sticky .hz8-btn { padding: 0 16px; }
+}
+html.hz8[data-hz8-page="product"] #store-main .hz8-variant[aria-pressed="true"] { border-color: var(--hz8-olive); background: var(--hz8-olive); color: var(--hz8-on-secondary); }
+html.hz8[data-hz8-page="product"] #store-main .buy-form .button.buy { border-radius: 16px !important; background: var(--hz8-olive) !important; border-color: var(--hz8-olive) !important; min-width: 0; padding: 0 14px !important; }
+html.hz8[data-hz8-page="product"] #store-main .buy-form .button.buy:hover { background: var(--hz8-secondary-hover) !important; border-color: var(--hz8-secondary-hover) !important; }
+html.hz8[data-hz8-page="product"] .buy-form__controls .action { min-width: 0; }
+html.hz8[data-hz8-page="product"] .hz8-package__save { white-space: nowrap; font-size: 11.5px; }
+@media (max-width: 767px) {
+  html.hz8[data-hz8-page="product"] .buy-form__controls { gap: 8px; }
+  html.hz8[data-hz8-page="product"] .buy-form__controls .amount-input .button { width: 34px; }
+  html.hz8[data-hz8-page="product"] .buy-form__controls .amount-input .input { width: 32px; }
+  html.hz8[data-hz8-page="product"] .buy-form .button.buy span[data-hz8-label]::after { font-size: 14.5px; }
+}
+@media (max-width: 767px) {
+  html.hz8[data-hz8-page="product"] .buy-form .button.buy span[data-hz8-short]::after { content: attr(data-hz8-short); font-size: 14px; }
+}
+.hz8-pdp-acc details.hz8-pdp-docs { display: block; padding: 0; border: 0; border-bottom: 1px solid var(--hz8-line); border-radius: 0; background: none; }
+.hz8-pdp-acc details.hz8-pdp-docs p { margin: 0 0 16px; color: var(--hz8-text-muted); }
