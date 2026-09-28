@@ -2,10 +2,10 @@ html.hz8 .hz8-native-content-hidden,
 html.hz8 .hz8-native-footer-hidden { display: none !important; }
 
 .hz8-home {
-  --hz8-paper: #fffdf8;
-  --hz8-sand: #f4ece0;
-  --hz8-line: #e6dac6;
-  --hz8-muted: #68645b;
+  --hz8-paper: var(--hz8-surface);
+  --hz8-sand: var(--hz8-surface-warm);
+  --hz8-line: var(--hz8-line);
+  --hz8-muted: var(--hz8-text-muted);
   background: var(--hz8-cream);
   color: var(--hz8-ink);
   padding: 38px 24px 0;

@@ -27,10 +27,10 @@
 :root{
   /* Header-specifika tillägg -- glaseffekt/layout, inga nya brand-färger
      (samma tokens som i den godkända prototypen). */
-  --hz8-glass-bg: rgba(255,255,255,.55);
-  --hz8-glass-bg-scrolled: rgba(246,240,229,.72);
-  --hz8-glass-border: rgba(255,255,255,.45);
-  --hz8-glass-border-scrolled: rgba(23,39,23,.08);
+  --hz8-glass-bg: color-mix(in srgb, #fff 55%, transparent);
+  --hz8-glass-bg-scrolled: color-mix(in srgb, var(--hz8-bg) 72%, transparent);
+  --hz8-glass-border: color-mix(in srgb, #fff 45%, transparent);
+  --hz8-glass-border-scrolled: color-mix(in srgb, var(--hz8-ink) 8%, transparent);
   --hz8-header-radius: 24px;
   --hz8-header-height: 66px;
   --hz8-header-height-mobile: 60px;
@@ -151,11 +151,11 @@ html.hz8 #store-header .main::before{
   position:absolute;
   inset:0;
   border-radius:var(--hz8-header-radius, 24px);
-  background:var(--hz8-glass-bg, rgba(255,255,255,.55));
+  background:var(--hz8-glass-bg, color-mix(in srgb, #fff 55%, transparent));
   -webkit-backdrop-filter:blur(20px) saturate(180%);
   backdrop-filter:blur(20px) saturate(180%);
-  border:1px solid var(--hz8-glass-border, rgba(255,255,255,.45));
-  box-shadow:0 12px 40px rgba(23,39,23,.18);
+  border:1px solid var(--hz8-glass-border, color-mix(in srgb, #fff 45%, transparent));
+  box-shadow:0 12px 40px color-mix(in srgb, var(--hz8-ink) 18%, transparent);
   transform:scaleX(1);
   transform-origin:center;
   pointer-events:none;
@@ -175,10 +175,10 @@ html.hz8 body.hz8-header-scrolled #store-header .main{
 }
 html.hz8 body.hz8-header-scrolled #store-header .main::before{
   border-radius:0;
-  background:var(--hz8-glass-bg-scrolled, rgba(246,240,229,.72));
-  border-color:var(--hz8-glass-border-scrolled, rgba(23,39,23,.08));
+  background:var(--hz8-glass-bg-scrolled, color-mix(in srgb, var(--hz8-bg) 72%, transparent));
+  border-color:var(--hz8-glass-border-scrolled, color-mix(in srgb, var(--hz8-ink) 8%, transparent));
   border-width:0 0 1px 0;
-  box-shadow:0 4px 20px rgba(23,39,23,.06);
+  box-shadow:0 4px 20px color-mix(in srgb, var(--hz8-ink) 6%, transparent);
 }
 
 /* ---- Entré-animation: panel (::before) + innehåll (.hz8-header-anim-item) ----
@@ -259,16 +259,16 @@ html.hz8 #store-header .search-input-container{
   align-items:center;
 }
 html.hz8 #store-header .search-field{
-  background:rgba(255,255,255,.6);
+  background:color-mix(in srgb, #fff 60%, transparent);
   border-radius:999px!important;
-  border:1px solid rgba(23,39,23,.12)!important;
+  border:1px solid color-mix(in srgb, var(--hz8-ink) 12%, transparent)!important;
   height:40px;
 }
 html.hz8 #store-header .search-field input{
   background:transparent!important; border:0!important; height:38px;
 }
 html.hz8 body.hz8-header-scrolled #store-header .search-field{
-  background:#fff;
+  background:var(--hz8-surface);
 }
 
 /* ---- Höger: konto + varukorg + (mobil) sök-trigger/hamburgare ---- */
@@ -315,12 +315,12 @@ html.hz8 .hz8-header-nav .hz8-cat-item{ position:relative; }
 html.hz8 .hz8-header-nav .hz8-dropdown{
   position:absolute; top:calc(100% + 14px); left:50%;
   transform:translateX(-50%) translateY(6px);
-  background:rgba(255,253,247,.94);
+  background:color-mix(in srgb, var(--hz8-surface) 94%, transparent);
   -webkit-backdrop-filter:blur(22px) saturate(160%);
   backdrop-filter:blur(22px) saturate(160%);
-  border:1px solid rgba(23,39,23,.09);
+  border:1px solid color-mix(in srgb, var(--hz8-ink) 9%, transparent);
   border-radius:18px;
-  box-shadow:0 20px 48px rgba(23,39,23,.16);
+  box-shadow:0 20px 48px color-mix(in srgb, var(--hz8-ink) 16%, transparent);
   padding:22px;
   width:min(72vw, 560px);
   color:var(--hz8-ink);
@@ -370,7 +370,7 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
   margin:0 0 8px;
   font:700 11px/1 Arial, sans-serif;
   letter-spacing:.12em; text-transform:uppercase;
-  color:#6f7a63;
+  color:color-mix(in srgb, var(--hz8-olive) 72%, var(--hz8-neutral));
 }
 .hz8-dropdown__list{ list-style:none; margin:0; padding:0; }
 .hz8-dropdown__list a{
@@ -395,17 +395,17 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 .hz8-dropdown__product{
   display:flex; flex-direction:column;
   border-radius:14px; overflow:hidden;
-  background:rgba(255,255,255,.55);
-  border:1px solid rgba(23,39,23,.08);
+  background:color-mix(in srgb, #fff 55%, transparent);
+  border:1px solid color-mix(in srgb, var(--hz8-ink) 8%, transparent);
   transition:transform 180ms var(--hz8-ease), box-shadow 180ms var(--hz8-ease);
 }
 .hz8-dropdown__product:hover,
 .hz8-dropdown__product:focus-visible{
   transform:translateY(-2px);
-  box-shadow:0 10px 24px rgba(23,39,23,.14);
+  box-shadow:0 10px 24px color-mix(in srgb, var(--hz8-ink) 14%, transparent);
 }
 .hz8-dropdown__product-media{
-  aspect-ratio:1/1; background:#fff;
+  aspect-ratio:1/1; background:var(--hz8-surface);
 }
 .hz8-dropdown__product-media img{
   width:100%; height:100%; object-fit:contain; display:block;
@@ -418,7 +418,7 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 .hz8-dropdown__product-badge{
   display:inline-block; margin-bottom:6px;
   padding:4px 8px; border-radius:999px;
-  background:var(--hz8-orange); color:#fff;
+  background:var(--hz8-orange); color:var(--hz8-text-on-dark);
   font:700 9px/1 Arial, sans-serif; letter-spacing:.06em; text-transform:uppercase;
 }
 .hz8-dropdown__product-body{ padding:10px 12px 12px; }
@@ -431,7 +431,7 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 }
 .hz8-dropdown__product-stock{
   display:block; margin-top:3px;
-  font:600 11px/1 Arial, sans-serif; color:#6f7a52;
+  font:600 11px/1 Arial, sans-serif; color:color-mix(in srgb, var(--hz8-olive) 72%, var(--hz8-neutral));
 }
 .hz8-dropdown__product-link{
   display:block; margin-top:8px;
@@ -481,13 +481,13 @@ body.hz8-scroll-locked{ width:100%; }
 }
 .hz8-mobile-drawer.is-open{ visibility:visible; pointer-events:auto; }
 .hz8-mobile-drawer__backdrop{
-  position:absolute; inset:0; background:rgba(23,39,23,.35);
+  position:absolute; inset:0; background:color-mix(in srgb, var(--hz8-ink) 35%, transparent);
   opacity:0; transition:opacity 260ms var(--hz8-ease);
 }
 .hz8-mobile-drawer.is-open .hz8-mobile-drawer__backdrop{ opacity:1; }
 .hz8-mobile-drawer__panel{
   position:absolute; top:0; left:0; bottom:0; width:82%; max-width:340px;
-  background:#fffdf8; box-shadow:20px 0 50px rgba(23,39,23,.18);
+  background:var(--hz8-surface); box-shadow:20px 0 50px color-mix(in srgb, var(--hz8-ink) 18%, transparent);
   transform:translateX(-100%); transition:transform 320ms var(--hz8-ease);
   display:flex; flex-direction:column; padding:24px 20px; overflow-y:auto;
 }
@@ -499,12 +499,12 @@ body.hz8-scroll-locked{ width:100%; }
 .hz8-mobile-drawer__list a{
   display:flex; align-items:center; justify-content:space-between;
   padding:16px 4px; font-size:16px; font-weight:600; color:var(--hz8-ink);
-  border-bottom:1px solid rgba(23,39,23,.08);
+  border-bottom:1px solid color-mix(in srgb, var(--hz8-ink) 8%, transparent);
 }
 .hz8-mobile-drawer__list a.hz8-cat--campaign{ color:var(--hz8-orange); }
 
 /* ---- Mobil accordion (samma DROPDOWN_CONTENT-data som desktop) ---- */
-.hz8-mobile-accordion{ border-bottom:1px solid rgba(23,39,23,.08); }
+.hz8-mobile-accordion{ border-bottom:1px solid color-mix(in srgb, var(--hz8-ink) 8%, transparent); }
 .hz8-mobile-accordion__trigger{
   width:100%; min-height:44px;
   display:flex; align-items:center; justify-content:space-between;
@@ -524,7 +524,7 @@ body.hz8-scroll-locked{ width:100%; }
 .hz8-mobile-accordion__heading{
   margin:0 0 6px;
   font:700 11px/1 Arial, sans-serif; letter-spacing:.1em; text-transform:uppercase;
-  color:#6f7a63;
+  color:color-mix(in srgb, var(--hz8-olive) 72%, var(--hz8-neutral));
 }
 .hz8-mobile-accordion__list{ list-style:none; margin:0; padding:0; }
 .hz8-mobile-accordion__list a{
@@ -540,19 +540,19 @@ body.hz8-scroll-locked{ width:100%; }
 .hz8-mobile-accordion__product{
   display:flex; gap:12px; align-items:center;
   margin-top:12px; padding:10px;
-  background:rgba(23,39,23,.03); border-radius:12px;
+  background:color-mix(in srgb, var(--hz8-ink) 3%, transparent); border-radius:12px;
   min-height:44px;
 }
 .hz8-mobile-accordion__product-media{
   flex:0 0 56px; width:56px; height:56px; border-radius:8px;
-  background:#fff; border:1px solid rgba(23,39,23,.08);
+  background:var(--hz8-surface); border:1px solid color-mix(in srgb, var(--hz8-ink) 8%, transparent);
   display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
 .hz8-mobile-accordion__product-media img{ width:100%; height:100%; object-fit:contain; }
 .hz8-mobile-accordion__product-body{ min-width:0; flex:1 1 auto; }
 .hz8-mobile-accordion__product-badge{
   display:inline-block; margin-bottom:3px; padding:2px 7px; border-radius:999px;
-  background:var(--hz8-orange); color:#fff;
+  background:var(--hz8-orange); color:var(--hz8-text-on-dark);
   font:700 8px/1.4 Arial, sans-serif; letter-spacing:.05em; text-transform:uppercase;
 }
 .hz8-mobile-accordion__product-name{ display:block; font:700 13px/1.25 Arial, sans-serif; color:var(--hz8-ink); }

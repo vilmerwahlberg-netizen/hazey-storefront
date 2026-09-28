@@ -22,7 +22,7 @@
    "stretched link"-mönstret. .hz8-add ligger kvar OVANPÅ (senare i DOM-
    ordningen => högre i stapelordningen) och fångar därför fortfarande
    sina egna klick själv inom sin egen, mindre yta. */
-.hz8-mini-product__media { min-height: 0; flex: 1; border-radius: 3px; background: #f4eee3; overflow: hidden; }
+.hz8-mini-product__media { min-height: 0; flex: 1; border-radius: 3px; background: var(--hz8-media-bg); overflow: hidden; }
 /* Se .hz8-card-link i 40-catalog.css för fullständig förklaring: en
    egen overlay-länk (inte ett ::after-pseudo-element på media-länken)
    eftersom .hz8-mini-product__medias EGNA overflow:hidden (för de
@@ -46,8 +46,8 @@
    --hz8-green som redan användes) ger >8:1, långt över WCAG AA. */
 :root {
   --hz8-add-bg: var(--hz8-green);
-  --hz8-add-bg-hover: #04382a;
-  --hz8-add-text: #fff;
+  --hz8-add-bg-hover: var(--hz8-secondary-hover);
+  --hz8-add-text: var(--hz8-on-secondary);
 }
 .hz8-mini-product .hz8-add { color: var(--hz8-add-text); }
 .hz8-add {
@@ -78,25 +78,25 @@
 }
 
 .hz8-featured { grid-column: 3; grid-row: 1 / 3; display: grid; grid-template-columns: 58% 42%; }
-.hz8-featured__art { position: relative; min-width: 0; background: #e9ddc7; overflow: hidden; }
+.hz8-featured__art { position: relative; min-width: 0; background: var(--hz8-surface-warm); overflow: hidden; }
 .hz8-featured__art img { width: 100%; height: 100%; object-fit: cover; }
-.hz8-featured__badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 6px 9px; background: var(--hz8-green); color: #fff; font: 700 10px/1 Arial, sans-serif !important; }
+.hz8-featured__badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 6px 9px; background: var(--hz8-green); color: var(--hz8-text-on-dark); font: 700 10px/1 Arial, sans-serif !important; }
 .hz8-featured__copy { display: flex; flex-direction: column; align-items: flex-start; padding: 34px 26px 24px; }
 .hz8-featured__copy h3 { margin: 0 0 14px; font: 700 26px/1.02 "Iowan Old Style", Georgia, serif !important; }
-.hz8-featured__copy p { margin: 0; color: #4f4c44; font: 400 13px/1.45 Arial, sans-serif !important; }
+.hz8-featured__copy p { margin: 0; color: var(--hz8-text-muted); font: 400 13px/1.45 Arial, sans-serif !important; }
 .hz8-featured__price { margin-top: auto; font: 700 27px/1 Arial, sans-serif !important; }
-.hz8-featured__stock { margin: 10px 0 12px; color: #3f4c3d; font: 600 12px/1 Arial, sans-serif !important; }
-.hz8-featured__stock::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 7px; border-radius: 50%; background: #159447; }
+.hz8-featured__stock { margin: 10px 0 12px; color: var(--hz8-olive); font: 600 12px/1 Arial, sans-serif !important; }
+.hz8-featured__stock::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 7px; border-radius: 50%; background: var(--hz8-success-dot); box-shadow: 0 0 0 1.5px var(--hz8-success-ring); }
 .hz8-featured__qty { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
 .hz8-featured__qty-btn {
   width: 32px; height: 32px; border: 1px solid var(--hz8-line); border-radius: 4px;
   background: var(--hz8-paper); color: var(--hz8-ink); font: 700 16px/1 Arial, sans-serif !important;
   display: flex; align-items: center; justify-content: center;
 }
-.hz8-featured__qty-btn:hover { border-color: #151515; }
+.hz8-featured__qty-btn:hover { border-color: var(--hz8-ink); }
 .hz8-featured__qty-value { min-width: 22px; text-align: center; font: 700 15px/1 Arial, sans-serif !important; }
-.hz8-featured__cta { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; border: 0; border-radius: 999px; background: var(--hz8-orange); color: #fff; font: 700 13px/1 Arial, sans-serif !important; }
-.hz8-featured .hz8-featured__cta { color: #fff; }
+.hz8-featured__cta { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; border: 0; border-radius: 999px; background: var(--hz8-orange); color: var(--hz8-text-on-dark); font: 700 13px/1 Arial, sans-serif !important; }
+.hz8-featured .hz8-featured__cta { color: var(--hz8-text-on-dark); }
 
 @media (max-width: 900px) {
   .hz8-bestsellers__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 220px) 440px; height: auto; }

@@ -1,19 +1,84 @@
 /* Theme 8 foundation: shared tokens and global safety only.
-   Component styling belongs in its numbered owning module. */
+   Component styling belongs in its numbered owning module.
+
+   FÄRGSYSTEM (2026-09-28). All färg i Theme 8 härleds från de sju
+   palettvärdena nedan -- ingen modul ska ha egna hex-värden. Tonade
+   ytor, linjer och alfa-varianter räknas fram med color-mix() från
+   paletten, så ett byte av ett palettvärde slår igenom överallt.
+   Rollback: ändra värdena här, eller reverta bara färg-commiten. */
 :root {
-  --hz8-ink: #172717;
-  --hz8-cream: #f6f0e5;
-  /* Pixel-mätt medelvärde av 8 CTA-knappsampel (Handla nu / Lägg i
-     varukorg / Kontakta oss) över alla tre facit-bredder (393/1440/1920),
-     spann #be4b11-#c54f18, se implementeringsrapport för metod. */
-  --hz8-orange: #c14e16;
-  --hz8-green: #005743;
+  /* ---- Palett ---- */
+  --hz8-ink: #23231d;          /* primär text, mörka ytor, stark kontrast */
+  --hz8-olive: #323d25;        /* varumärkesgrön, sekundära mörka ytor, kontroller */
+  --hz8-neutral: #ede9e8;      /* ljus neutral bakgrund */
+  --hz8-beige: #e4d1bf;        /* varm beige, mjuka redaktionella ytor */
+  --hz8-accent-red: #f03322;   /* mycket sparsam accent */
+  --hz8-cta: #d2691e;          /* primär CTA / kommersiell accent */
+  --hz8-success: #cdfc9f;      /* mycket sparsam success-/lageraccent */
+
+  /* ---- Ytor ---- */
+  --hz8-bg: var(--hz8-neutral);
+  --hz8-surface: color-mix(in srgb, var(--hz8-neutral) 38%, #fff);
+  --hz8-surface-warm: color-mix(in srgb, var(--hz8-beige) 55%, var(--hz8-neutral));
+  --hz8-surface-beige: var(--hz8-beige);
+  --hz8-surface-dark: var(--hz8-olive);
+  --hz8-surface-ink: var(--hz8-ink);
+  --hz8-media-bg: color-mix(in srgb, var(--hz8-beige) 30%, var(--hz8-surface));
+
+  /* ---- Text ---- */
+  --hz8-text: var(--hz8-ink);
+  --hz8-text-heading: var(--hz8-olive);
+  --hz8-text-muted: color-mix(in srgb, var(--hz8-ink) 74%, var(--hz8-neutral));
+  --hz8-text-on-dark: #fff;
+  --hz8-text-on-dark-muted: color-mix(in srgb, #fff 76%, transparent);
+  --hz8-text-on-dark-accent: var(--hz8-beige);
+
+  /* ---- Linjer ---- */
+  --hz8-line: color-mix(in srgb, var(--hz8-ink) 13%, var(--hz8-neutral));
+  --hz8-line-strong: color-mix(in srgb, var(--hz8-ink) 28%, var(--hz8-neutral));
+  --hz8-line-on-dark: color-mix(in srgb, #fff 16%, transparent);
+
+  /* ---- Handlingar ----
+     CTA-fyllningen är #d2691e blandad med 18% ink: vit knapptext mot
+     ren #d2691e ger bara 3,6:1 (under WCAG AA 4,5:1 för 13-16px text),
+     blandningen ger ~4,8:1. Ren --hz8-cta används för accenter, ringar
+     och glöd. Sätt --hz8-cta-fill: var(--hz8-cta) för ren ton. */
+  --hz8-cta-fill: color-mix(in srgb, var(--hz8-cta) 82%, var(--hz8-ink));
+  --hz8-cta-hover: color-mix(in srgb, var(--hz8-cta) 68%, var(--hz8-ink));
+  --hz8-cta-text: #fff;
+  --hz8-secondary: var(--hz8-olive);
+  --hz8-secondary-hover: color-mix(in srgb, var(--hz8-olive) 78%, #000);
+  --hz8-secondary-soft: color-mix(in srgb, var(--hz8-olive) 7%, var(--hz8-surface));
+  --hz8-on-secondary: #fff;
+
+  /* ---- Status ---- */
+  --hz8-success-dot: var(--hz8-success);
+  --hz8-success-ring: var(--hz8-olive);
+  --hz8-error: color-mix(in srgb, var(--hz8-accent-red) 72%, var(--hz8-ink));
+  --hz8-error-soft: color-mix(in srgb, var(--hz8-accent-red) 9%, var(--hz8-surface));
+  --hz8-sale: var(--hz8-accent-red);
+  --hz8-stars: var(--hz8-cta);
+  --hz8-focus: var(--hz8-cta);
+
+  /* ---- Overlays / glas / formulär / kort ---- */
+  --hz8-overlay: color-mix(in srgb, var(--hz8-ink) 46%, transparent);
+  --hz8-shadow-color: color-mix(in srgb, var(--hz8-ink) 14%, transparent);
+  --hz8-field-bg: var(--hz8-surface);
+  --hz8-field-border: var(--hz8-line-strong);
+  --hz8-card-bg: var(--hz8-surface);
+  --hz8-card-border: var(--hz8-line);
+
+  /* ---- Bakåtkompatibla alias (befintliga moduler) ---- */
+  --hz8-green: var(--hz8-olive);
+  --hz8-orange: var(--hz8-cta-fill);
+  --hz8-cream: var(--hz8-bg);
+
   --hz8-ease: cubic-bezier(.25,.46,.45,.94);
 }
 
 html.hz8 body {
-  background: var(--hz8-cream);
-  color: var(--hz8-ink);
+  background: var(--hz8-bg);
+  color: var(--hz8-text);
 }
 
 html.hz8 [data-hz8-state="native-safe"] {

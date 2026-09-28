@@ -1,20 +1,20 @@
 .hz8-reviews__grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 8px; }
 .hz8-review { min-height: 218px; margin: 0; padding: 27px; border: 1px solid var(--hz8-line); border-radius: 6px; background: var(--hz8-paper); display: flex; flex-direction: column; justify-content: space-between; font: 400 14px/1.42 Arial, sans-serif !important; }
-.hz8-review--feature { border: 0; background: linear-gradient(rgba(0,67,51,.82),rgba(0,67,51,.82)), url("assets/hero-venice-background.webp") center/cover; color: #fff; }
-.hz8-review strong { color: #e99a21; letter-spacing: 2px; }
+.hz8-review--feature { border: 0; background: linear-gradient(color-mix(in srgb, var(--hz8-olive) 82%, transparent),color-mix(in srgb, var(--hz8-olive) 82%, transparent)), url("assets/hero-venice-background.webp") center/cover; color: var(--hz8-text-on-dark); }
+.hz8-review strong { color: var(--hz8-stars); letter-spacing: 2px; }
 .hz8-review__foot { display: flex; flex-direction: column; gap: 3px; }
 .hz8-review__score { font: 700 13px/1 Arial, sans-serif !important; }
-.hz8-review--feature .hz8-review__score { color: #fff; }
+.hz8-review--feature .hz8-review__score { color: var(--hz8-text-on-dark); }
 .hz8-review__verified { color: var(--hz8-muted); font: 400 11px/1 Arial, sans-serif !important; }
-.hz8-review--feature .hz8-review__verified { color: rgba(255,255,255,.75); }
+.hz8-review--feature .hz8-review__verified { color: color-mix(in srgb, #fff 75%, transparent); }
 .hz8-score { display: inline-flex; align-items: center; gap: 7px; }
-.hz8-score__stars { color: #e99a21; letter-spacing: 1px; }
+.hz8-score__stars { color: var(--hz8-stars); letter-spacing: 1px; }
 
 .hz8-faq { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; }
-.hz8-faq__card { min-height: 285px; border-radius: 6px; padding: 34px; background: linear-gradient(110deg, rgba(239,227,206,.96), rgba(239,227,206,.72)), url("assets/hero-venice-background.webp") center/cover; }
+.hz8-faq__card { min-height: 285px; border-radius: 6px; padding: 34px; background: linear-gradient(110deg, color-mix(in srgb, var(--hz8-surface-warm) 96%, transparent), color-mix(in srgb, var(--hz8-surface-warm) 72%, transparent)), url("assets/hero-venice-background.webp") center/cover; }
 .hz8-faq__card h2 { margin: 0 0 12px; font: 600 27px/1.05 "Iowan Old Style", Georgia, serif !important; }
-.hz8-faq__card p { max-width: 350px; color: #4f4c44; font: 400 13px/1.45 Arial, sans-serif !important; }
-.hz8-faq__card a { display: inline-block; margin-top: 10px; border-radius: 999px; padding: 11px 17px; background: var(--hz8-orange); color: #fff; font: 700 12px/1 Arial, sans-serif !important; }
+.hz8-faq__card p { max-width: 350px; color: var(--hz8-text-muted); font: 400 13px/1.45 Arial, sans-serif !important; }
+.hz8-faq__card a { display: inline-block; margin-top: 10px; border-radius: 999px; padding: 11px 17px; background: var(--hz8-orange); color: var(--hz8-text-on-dark); font: 700 12px/1 Arial, sans-serif !important; }
 .hz8-faq__list { border-top: 1px solid var(--hz8-line); }
 .hz8-faq__list details { border-bottom: 1px solid var(--hz8-line); padding: 15px 5px; }
 .hz8-faq__list summary {
@@ -32,14 +32,14 @@
    -- bara namngivna, så hela paletten kan bytas på ett ställe senare
    utan att leta upp varje enskild hex-kod i markupen). */
 :root {
-  --hz8-footer-bg: #064c3c;
-  --hz8-footer-text: #fff;
-  --hz8-footer-heading: #f2d18d;
-  --hz8-footer-accent: #e6a954;
-  --hz8-footer-link: rgba(255,255,255,.86);
-  --hz8-footer-border: #d49a3f;
-  --hz8-footer-muted: rgba(255,255,255,.7);
-  --hz8-footer-divider: rgba(255,255,255,.16);
+  --hz8-footer-bg: var(--hz8-olive);
+  --hz8-footer-text: var(--hz8-text-on-dark);
+  --hz8-footer-heading: var(--hz8-beige);
+  --hz8-footer-accent: var(--hz8-cta);
+  --hz8-footer-link: color-mix(in srgb, #fff 86%, transparent);
+  --hz8-footer-border: var(--hz8-cta);
+  --hz8-footer-muted: color-mix(in srgb, #fff 70%, transparent);
+  --hz8-footer-divider: color-mix(in srgb, #fff 16%, transparent);
 }
 .hz8-footer { margin: 8px -24px 0; padding: 44px 24px 22px; background: var(--hz8-footer-bg); color: var(--hz8-footer-text); }
 .hz8-footer__inner { width: min(100%, 1320px); margin: 0 auto; display: grid; grid-template-columns: 1.6fr repeat(5,1fr); gap: 24px; font: 400 12px/1.8 Arial, sans-serif !important; }
