@@ -188,3 +188,4 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-stars { displ
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star { color: var(--hz8-line-strong); font: 400 12px/1 var(--hz8-font-ui) !important; }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-star.is-on { color: var(--hz8-stars); }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-stars__count { color: var(--hz8-text-muted); font: 500 11.5px/1 var(--hz8-font-ui) !important; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .offer { display: flex !important; justify-content: flex-start !important; text-align: left !important; }
