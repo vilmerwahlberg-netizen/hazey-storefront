@@ -58,7 +58,16 @@
   }
 
   /* ---- Lager på strainknappar + strainchips + summering ---- */
+  /* USP-punkter utan verifierad källa (omdömesbetyg, absoluta laglighets-
+     påståenden) visas inte nära köpbeslutet; texten finns kvar i DOM. */
+  function markUnverifiedUsps() {
+    document.querySelectorAll(".product-usp li").forEach(function (li) {
+      if (/trustpilot|lagligt/i.test(li.textContent)) li.classList.add("hz8-usp-unverified");
+    });
+  }
+
   function syncStock() {
+    markUnverifiedUsps();
     var sel = select();
     if (!sel || !state.variants.length) return;
     var options = Array.prototype.filter.call(sel.options, function (o) { return o.value !== ""; });

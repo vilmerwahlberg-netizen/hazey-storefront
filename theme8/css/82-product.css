@@ -712,3 +712,5 @@ html.hz8[data-hz8-page="product"] .product-page-lists__similar-products { order:
 html.hz8[data-hz8-page="product"] .related-categories { order: 10 !important; }
 html.hz8[data-hz8-page="product"] .hz8-pdp-brand { order: 11 !important; }
 html.hz8[data-hz8-page="product"] .hz8-pdp-help { order: 12 !important; }
+html.hz8[data-hz8-page="product"] .product-detail__information > .hz8-stock-sum { order: 4 !important; }
+html.hz8[data-hz8-page="product"] .product-usp li.hz8-usp-unverified { display: none !important; }
