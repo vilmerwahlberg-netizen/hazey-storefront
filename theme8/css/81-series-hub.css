@@ -188,7 +188,7 @@ html.hz8[data-hz8-page="category"] .hz8-combo-related { border-radius: var(--hz8
   html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__item { min-height: 44px; }
   html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__label { font-size: 14px !important; }
   html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-hub { margin-top: 20px; gap: 28px; }
-  html.hz8.hz8-series-hub #store-main .hz8-prail__list { grid-auto-columns: 43%; }
+  html.hz8.hz8-series-hub #store-main .hz8-prail__list { grid-auto-columns: 45%; }
   .hz8-more { --hz8-more-bleed: 16px; padding-top: 24px; }
   .hz8-more:not(.is-open) .hz8-more__region { max-height: 170px; }
   .hz8-more__toggle { width: 100%; }
@@ -197,10 +197,20 @@ html.hz8[data-hz8-page="category"] .hz8-combo-related { border-radius: var(--hz8
   html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__list { grid-auto-columns: 200px; }
 }
 @media (max-width: 767px) {
-  /* Rubrik, antal och "Visa alla" på en rad (som i facit). */
-  html.hz8.hz8-series-hub .hz8-prail__head { flex-wrap: nowrap; align-items: baseline; gap: 8px; }
-  html.hz8.hz8-series-hub .hz8-prail__title { flex: 0 1 auto; min-width: 0; font-size: 22px !important; letter-spacing: -.01em; }
+  /* Rubrik på egen rad; antal + "Alla <format>" på raden under. */
+  html.hz8.hz8-series-hub .hz8-prail__head { flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+  html.hz8.hz8-series-hub .hz8-prail__title { flex: 1 0 100%; min-width: 0; font-size: 22px !important; letter-spacing: -.01em; }
   html.hz8.hz8-series-hub .hz8-prail__count { flex: 0 0 auto; font-size: 11.5px !important; }
   html.hz8.hz8-series-hub .hz8-prail__all { flex: 0 0 auto; }
   html.hz8.hz8-series-hub[data-hz8-page="category"] .designer-breadcrumbs { padding-top: 80px !important; }
 }
+
+/* Global ingång "Alla vapes" först i serieraden (format- och serie x
+   format-sidor): tydlig "visa allt"-länk, inte en serie. */
+.hz8-rail--series .hz8-rail__item--all { border-style: solid; }
+.hz8-rail--series .hz8-rail__item--all .hz8-rail__label { font-family: var(--hz8-font-ui) !important; font-weight: 700 !important; }
+/* Rubriklänk till serie x format-sidan. */
+.hz8-prail__title a { color: inherit !important; text-decoration: none !important; }
+.hz8-prail__title a:hover { text-decoration: underline !important; text-underline-offset: 4px; }
+.hz8-more__series-links { margin: 0; color: color-mix(in srgb, #fff 80%, transparent); font: 500 14px/1.5 var(--hz8-font-ui) !important; }
+.hz8-more__series-links a { color: #fff !important; font-weight: 700; text-decoration: underline; }

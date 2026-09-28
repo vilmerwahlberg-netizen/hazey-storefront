@@ -200,7 +200,15 @@
     var slist = snav.querySelector(".hz8-rail__list");
     var formatKey = ctx.format && ctx.format.key;
     if (ctx.type === "format" || ctx.type === "combo") {
-      if (ctx.type === "combo" && ctx.format) slist.appendChild(railItem({ label: "Alla serier", href: ctx.format.href }, current, "series"));
+      /* Global ingång först: "Alla vapes" -> formatets riktiga sida (ur
+         relationskartan). Ingen serie i datamodellen, bara en "visa allt"-
+         länk i samma rad; markerad när man redan står på formatsidan. */
+      if (ctx.format) {
+        var allFmt = railItem({ label: "Alla " + ctx.format.label.toLowerCase(), href: ctx.format.href }, current, "series");
+        allFmt.classList.add("hz8-rail__item--all");
+        if (ctx.type === "format") allFmt.setAttribute("aria-current", "page");
+        slist.appendChild(allFmt);
+      }
       HZ8.catalog.seriesWithFormat(formatKey).forEach(function (s) {
         var it = railItem({ label: s.name, href: s.routes[formatKey] }, current, "series");
         if (ctx.series === s) it.setAttribute("aria-current", "page");

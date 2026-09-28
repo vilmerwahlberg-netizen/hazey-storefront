@@ -59,7 +59,9 @@ html.hz8 #store-main .hz8-prail__list {
   scrollbar-width: thin;
 }
 html.hz8 #store-main .hz8-prail__item { min-width: 0; scroll-snap-align: start; list-style: none; }
-html.hz8 #store-main .hz8-prail.is-single .hz8-prail__list { grid-auto-columns: min(300px, 80%); }
+/* Ensamt kort får vara bredare på vanliga sidor -- men inte på seriehubbar,
+   där alla hyllor delar exakt samma kortgeometri (81-series-hub.css). */
+html.hz8:not(.hz8-series-hub) #store-main .hz8-prail.is-single .hz8-prail__list { grid-auto-columns: min(300px, 80%); }
 @media (min-width: 1600px) {
   html.hz8 #store-main .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 18px) / 5.25); gap: 18px !important; }
 }

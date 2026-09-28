@@ -82,13 +82,43 @@
   function cacheSet(key, value) {
     try { sessionStorage.setItem("hz8:" + key, JSON.stringify({ t: Date.now(), v: value })); } catch (e) { /* privat läge */ }
   }
+  /* Nyehandel svarar 429 vid många samtidiga sidhämtningar -- därför en
+     gemensam kö (max MAX_PARALLEL samtidigt) och omförsök med backoff
+     vid 429/503. */
+  var MAX_PARALLEL = 3;
+  var active = 0;
+  var queue = [];
+  function pump() {
+    while (active < MAX_PARALLEL && queue.length) {
+      var job = queue.shift();
+      active += 1;
+      job().finally(function () { active -= 1; pump(); });
+    }
+  }
+  function queuedFetch(url) {
+    return new Promise(function (resolve, reject) {
+      function attempt(n) {
+        queue.push(function () {
+          return fetch(url, { credentials: "same-origin" }).then(function (res) {
+            if ((res.status === 429 || res.status === 503) && n < 3) {
+              window.setTimeout(function () { attempt(n + 1); }, 700 * Math.pow(2, n));
+              return;
+            }
+            if (!res.ok) throw new Error(res.status);
+            return res.text().then(resolve);
+          }).catch(reject);
+        });
+        pump();
+      }
+      attempt(0);
+    });
+  }
   HZ8.fetchPage = function (href, extract) {
     var key = extract.key + ":" + HZ8.path(href);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     if (inflight[key]) return inflight[key];
-    inflight[key] = fetch(HZ8.link(href), { credentials: "same-origin" })
-      .then(function (res) { if (!res.ok) throw new Error(res.status); return res.text(); })
+    inflight[key] = queuedFetch(HZ8.link(href))
       .then(function (text) {
         var doc = new DOMParser().parseFromString(text, "text/html");
         var value = extract.run(doc);
