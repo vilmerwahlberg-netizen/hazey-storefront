@@ -406,3 +406,4 @@ html.hz8[data-hz8-page="product"] .nh-review-cta {
 html.hz8[data-hz8-page="product"] .nh-review-cta a { color: var(--hz8-olive) !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 html.hz8[data-hz8-page="product"] .price-features > *, html.hz8[data-hz8-page="product"] .price-features .stock-price { padding: 0 !important; margin: 0 !important; border: 0 !important; }
 html.hz8[data-hz8-page="product"] .price-features :is(.price, ins, del) { padding: 0 !important; margin-left: 0 !important; }
+html.hz8:not([data-hz8-page="home"]) #store-main del.comparison:empty { display: none !important; }

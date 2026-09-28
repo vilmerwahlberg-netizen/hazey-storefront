@@ -1,0 +1,207 @@
+/* Minicart / varukorg -- Nyehandels egen drawer (#cartAside) i Theme 8:s
+   visuella system. Gäller alla sidtyper (även startsidan: drawern är
+   en plattformsfunktion, inte en del av startsidans layout). */
+
+html.hz8 #cart-side-wrap .cart-overlay { background: var(--hz8-overlay) !important; }
+html.hz8 #cartAside.cart.aside {
+  width: min(460px, 100vw) !important;
+  max-width: 100vw;
+  padding: 0 !important;
+  border-radius: var(--hz8-radius-l) 0 0 var(--hz8-radius-l);
+  background: var(--hz8-surface) !important;
+  color: var(--hz8-text);
+  box-shadow: var(--hz8-shadow-l);
+  font-family: var(--hz8-font-ui);
+  display: flex !important;
+  flex-direction: column;
+}
+html.hz8 #cartAside :is(p, span, a, strong, div, button, input, h3) { font-family: var(--hz8-font-ui); }
+html.hz8 #cartAside > hr { display: none; }
+html.hz8 #cartAside .header {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 24px 18px !important;
+  border-bottom: 1px solid var(--hz8-line);
+}
+html.hz8 #cartAside .header h2 {
+  margin: 0 !important;
+  color: var(--hz8-text-heading) !important;
+  font: 600 28px/1 var(--hz8-font-display) !important;
+  letter-spacing: -.01em;
+}
+html.hz8 #cartAside .close-cart {
+  display: grid;
+  place-items: center;
+  width: var(--hz8-tap);
+  height: var(--hz8-tap);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--hz8-secondary-soft);
+  color: var(--hz8-text);
+  cursor: pointer;
+}
+html.hz8 #cartAside .close-cart:hover { background: color-mix(in srgb, var(--hz8-olive) 14%, var(--hz8-surface)); }
+
+/* Orderrader */
+html.hz8 #cartAside .section.items {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 6px 24px !important;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+html.hz8 #cartAside article.item {
+  display: grid !important;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 4px 14px;
+  align-items: start;
+  margin: 0 !important;
+  padding: 16px 0 !important;
+  border-bottom: 1px solid var(--hz8-line);
+}
+html.hz8 #cartAside article.item .media {
+  grid-row: span 2;
+  width: 76px;
+  height: 76px;
+  margin: 0 !important;
+  border-radius: var(--hz8-radius-m);
+  background: var(--hz8-media-bg);
+  overflow: hidden;
+}
+html.hz8 #cartAside article.item .media img { width: 100%; height: 100%; object-fit: contain; }
+html.hz8 #cartAside article.item .content { display: contents !important; }
+html.hz8 #cartAside article.item .content > div:first-child { grid-column: 2; min-width: 0; }
+html.hz8 #cartAside article.item .content br { display: none; }
+html.hz8 #cartAside article.item .content a strong {
+  display: block;
+  color: var(--hz8-text) !important;
+  font: 600 15px/1.25 var(--hz8-font-display) !important;
+}
+html.hz8 #cartAside article.item .content a { text-decoration: none; }
+html.hz8 #cartAside article.item .price,
+html.hz8 #cartAside article.item .option {
+  margin-top: 4px;
+  color: var(--hz8-text-muted) !important;
+  font: 500 12.5px/1.35 var(--hz8-font-ui) !important;
+}
+html.hz8 #cartAside article.item .option span { color: var(--hz8-text-muted); font-weight: 600; text-transform: capitalize; }
+html.hz8 #cartAside article.item .item-amount { grid-column: 2; margin-top: 8px; }
+html.hz8 #cartAside article.item .amount-input .control:last-child .button {
+  width: 42px;
+  color: var(--hz8-text-muted) !important;
+  border-left: 1px solid var(--hz8-line) !important;
+}
+html.hz8 #cartAside article.item .amount-input .control:last-child .button:hover { color: var(--hz8-error) !important; }
+html.hz8 #cartAside article.item .amount-input .button,
+html.hz8 #cartAside article.item .amount-input .input { min-height: 36px !important; }
+html.hz8 #cartAside article.item > .total {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--hz8-text);
+  font: 700 15px/1.2 var(--hz8-font-ui) !important;
+  text-align: right;
+  white-space: nowrap;
+}
+html.hz8 #cartAside article.item > .total del { display: block; color: var(--hz8-text-muted); font-weight: 400; font-size: 12px; }
+
+/* Summering */
+html.hz8 #cartAside .section.footer {
+  flex: 0 0 auto;
+  padding: 18px 24px calc(20px + env(safe-area-inset-bottom)) !important;
+  border-top: 1px solid var(--hz8-line);
+  background: var(--hz8-surface);
+}
+html.hz8 #cartAside .section.footer > .total { margin: 0 0 16px !important; padding: 0 !important; }
+html.hz8 #cartAside .section.footer .sum {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: var(--hz8-text);
+  font: 700 18px/1.2 var(--hz8-font-ui) !important;
+}
+html.hz8 #cartAside .section.footer .sum span:last-child { font-size: 22px; }
+html.hz8 #cartAside .section.footer .tax {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  color: var(--hz8-text-muted);
+  font: 400 12.5px/1.3 var(--hz8-font-ui) !important;
+}
+html.hz8 #cartAside .section.footer .tax * { font-style: normal !important; }
+html.hz8 #cartAside .share-cart { margin-top: 8px; }
+html.hz8 #cartAside .share-cart button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--hz8-olive);
+  font: 600 12.5px/1.3 var(--hz8-font-ui) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+html.hz8 #cartAside .section.footer .button.buy {
+  width: 100%;
+  min-height: 54px !important;
+  font-size: 16px !important;
+}
+html.hz8 #cartAside .continue-shopping {
+  display: block;
+  width: 100%;
+  min-height: var(--hz8-tap);
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--hz8-text) !important;
+  font: 600 14px/1 var(--hz8-font-ui) !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+/* Fri frakt-indikator (84-cart.js) */
+.hz8-cart-shipping { width: 100%; margin: 0 0 16px; text-align: left; }
+.hz8-cart-shipping__text { margin: 0 0 8px; color: var(--hz8-text); font: 600 13px/1.3 var(--hz8-font-ui) !important; }
+.hz8-cart-shipping__bar { height: 6px; border-radius: 99px; background: var(--hz8-line); overflow: hidden; }
+.hz8-cart-shipping__bar span { display: block; height: 100%; border-radius: inherit; background: var(--hz8-cta); transition: width .35s var(--hz8-ease); }
+.hz8-cart-shipping.is-complete .hz8-cart-shipping__bar span { background: var(--hz8-olive); }
+
+/* Tomt läge */
+html.hz8 #cartAside section.empty {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 14px;
+  flex: 1;
+  padding: 48px 28px !important;
+  text-align: center;
+}
+html.hz8 #cartAside section.empty .icon { display: none; }
+html.hz8 #cartAside section.empty h3 { margin: 0 !important; color: var(--hz8-text-heading) !important; font: 600 26px/1.15 var(--hz8-font-display) !important; }
+html.hz8 #cartAside section.empty .button.buy { width: auto; min-width: 200px; }
+
+/* Den äldre bundlens betalningsrad -- samma innehåll, rimlig storlek. */
+html.hz8 #cartAside .nh-cart-swish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  color: var(--hz8-text-muted);
+  font: 500 12px/1 var(--hz8-font-ui) !important;
+}
+html.hz8 #cartAside .nh-cart-swish img { width: auto !important; height: 18px !important; max-width: 80px; }
+
+@media (max-width: 767px) {
+  html.hz8 #cartAside.cart.aside { width: 100vw !important; border-radius: 0; }
+  html.hz8 #cartAside .header { padding: 16px 16px 14px !important; }
+  html.hz8 #cartAside .header h2 { font-size: 24px !important; }
+  html.hz8 #cartAside .section.items { padding: 4px 16px !important; }
+  html.hz8 #cartAside .section.footer { padding: 14px 16px calc(14px + env(safe-area-inset-bottom)) !important; }
+  html.hz8 #cartAside article.item { grid-template-columns: 64px minmax(0, 1fr) auto; }
+  html.hz8 #cartAside article.item .media { width: 64px; height: 64px; }
+}
+html.hz8 #cartAside .section.items:not(:has(article)) { display: none !important; }
