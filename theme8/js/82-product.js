@@ -60,14 +60,126 @@
           });
           group.appendChild(b);
         });
+        var current = document.createElement("span");
+        current.className = "hz8-variant-current";
+        current.setAttribute("aria-hidden", "true");
+        if (labelEl) labelEl.appendChild(current);
         field.appendChild(group);
         field.classList.add("hz8-has-variant-buttons");
+        if (options.length > 6) field.classList.add("hz8-many-variants");
         if (!field.getAttribute("data-hz8-variant-index")) field.setAttribute("data-hz8-variant-index", String(index));
       }
       Array.prototype.forEach.call(group.children, function (b) {
         b.setAttribute("aria-pressed", b.getAttribute("data-value") === select.value ? "true" : "false");
       });
+      var cur = field.querySelector(".hz8-variant-current");
+      var sel = select.selectedOptions && select.selectedOptions[0];
+      if (cur && sel && cur.textContent !== ": " + sel.textContent.trim()) cur.textContent = ": " + sel.textContent.trim();
     });
+  }
+
+  /* ---- Paketväljare: Nyehandels egen pristrappa ("Köp mer - Betala
+     mindre", #product-pricing-table) som valbara nivåer. Antal, styckpris
+     och besparing räknas ur plattformens egna värden; valet styr den
+     native antal-väljaren (+/-), så Nyehandel sätter priset i varukorgen.
+     Saknas pristrappan visas ingenting. "Prisvärdast" = nivån med lägst
+     styckpris (faktum ur tabellen). */
+  function parseKr(text) {
+    var m = (text || "").replace(/\s/g, "").match(/(\d+(?:,\d+)?)/);
+    return m ? parseFloat(m[1].replace(",", ".")) : null;
+  }
+  function kr(value) {
+    var rounded = Math.round(value * 100) / 100;
+    return rounded.toLocaleString("sv-SE", { minimumFractionDigits: rounded % 1 ? 2 : 0, maximumFractionDigits: 2 }) + " kr";
+  }
+  function readTiers() {
+    return Array.prototype.map.call(document.querySelectorAll("#product-pricing-table tr"), function (tr) {
+      var cells = tr.cells;
+      if (!cells || cells.length < 2) return null;
+      var min = parseInt((cells[0].textContent.match(/\d+/) || [])[0], 10);
+      var unit = parseKr(cells[1].textContent);
+      return min && unit ? { min: min, unit: unit } : null;
+    }).filter(Boolean);
+  }
+  function qtyInput() { return document.querySelector(".buy-form .amount-input .input"); }
+  function setQty(target) {
+    var input = qtyInput();
+    var plus = document.querySelector(".buy-form .amount-input button[aria-label='Öka antalet']");
+    var minus = document.querySelector(".buy-form .amount-input button[aria-label='Minska antalet']");
+    if (!input || !plus || !minus) return;
+    var guard = 0;
+    (function step() {
+      var current = parseInt(input.value, 10) || 1;
+      if (current === target || guard++ > 60) { syncPackages(); return; }
+      (current < target ? plus : minus).click();
+      window.setTimeout(step, 30);
+    })();
+  }
+  function syncPackages() {
+    var table = document.getElementById("product-pricing-table");
+    var tiers = readTiers();
+    var host = document.querySelector(".hz8-packages");
+    if (!table || tiers.length < 2) { if (host) host.remove(); return; }
+    var base = tiers[0].unit;
+    var sig = tiers.map(function (t) { return t.min + ":" + t.unit; }).join("|");
+    if (!host || host.getAttribute("data-sig") !== sig) {
+      if (host) host.remove();
+      host = document.createElement("div");
+      host.className = "hz8-packages";
+      host.setAttribute("data-sig", sig);
+      var best = tiers.reduce(function (a, b) { return b.unit < a.unit ? b : a; });
+      var heading = table.querySelector("h4");
+      host.innerHTML = '<p class="hz8-packages__title" id="hz8-packages-title">' + HZ8.esc(heading ? heading.textContent.trim() : "Köp fler, betala mindre") + "</p>";
+      var list = document.createElement("div");
+      list.className = "hz8-packages__list";
+      list.setAttribute("role", "group");
+      list.setAttribute("aria-labelledby", "hz8-packages-title");
+      tiers.forEach(function (t) {
+        var total = t.min * t.unit;
+        var saved = t.min * (base - t.unit);
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "hz8-package";
+        b.setAttribute("data-qty", String(t.min));
+        b.innerHTML = (t === best && t !== tiers[0] ? '<span class="hz8-package__badge">Prisvärdast</span>' : "") +
+          '<span class="hz8-package__qty">' + t.min + " st</span>" +
+          '<span class="hz8-package__total">' + kr(total) + "</span>" +
+          '<span class="hz8-package__unit">' + kr(t.unit) + " / st</span>" +
+          (saved > 0.5 ? '<span class="hz8-package__save">Spara ' + kr(saved) + "</span>" : '<span class="hz8-package__save is-empty">Ordinarie pris</span>');
+        b.addEventListener("click", function () { setQty(t.min); });
+        list.appendChild(b);
+      });
+      host.appendChild(list);
+      table.parentNode.insertBefore(host, table);
+    }
+    var input = qtyInput();
+    var qty = input ? parseInt(input.value, 10) || 1 : 1;
+    var activeMin = tiers.filter(function (t) { return t.min <= qty; }).pop();
+    Array.prototype.forEach.call(host.querySelectorAll(".hz8-package"), function (b) {
+      b.setAttribute("aria-pressed", activeMin && String(activeMin.min) === b.getAttribute("data-qty") ? "true" : "false");
+    });
+  }
+
+  /* ---- Kort ingress i köpdelen: första riktiga stycket i produktens
+     egen korta beskrivning (resten syns i full beskrivning längre ned). */
+  function markLead(shortDesc) {
+    if (!shortDesc || shortDesc.querySelector(".hz8-pdp-lead")) return;
+    var lead = Array.prototype.find.call(shortDesc.querySelectorAll("p"), function (p) { return p.textContent.trim().length > 40; });
+    if (lead) { lead.classList.add("hz8-pdp-lead"); shortDesc.classList.add("hz8-has-lead"); }
+  }
+
+  /* ---- Analys & dokument: visas bara om produktens egen text nämner
+     labbrapport/analys -- meningen citeras ur texten, inget nytt. */
+  function docsSentence() {
+    var el = document.querySelector(".product-detail__information .short-description");
+    /* textContent (inte innerText): delar av texten är visuellt dolda i
+       köpdelen. Blockgränser blir radbrytningar så meningen avgränsas. */
+    var text = "";
+    if (el) Array.prototype.forEach.call(el.querySelectorAll("p, li, span, b, strong, u, a, h2, h3"), function (n) { if (!n.children.length) text += n.textContent + "\n"; });
+    var m = text.match(/(labbrapport|analysintyg|analysrapport)[^.!?\n]*[.!?]?/i);
+    if (!m) return "";
+    var sentence = m[0].trim();
+    return sentence.charAt(0).toUpperCase() + sentence.slice(1);
   }
 
   /* ---- Produktinformation (etikett/värde ur produktens egen text) ---- */
@@ -93,7 +205,8 @@
     document.querySelectorAll("#product-variants .field").forEach(function (field) {
       var select = field.querySelector("select");
       var label = field.querySelector(".label");
-      if (select && label && select.selectedOptions[0]) add(label.textContent.trim().replace(/^\w/, function (c) { return c.toUpperCase(); }), select.selectedOptions[0].textContent);
+      var labelText = label ? Array.prototype.filter.call(label.childNodes, function (n) { return n.nodeType === 3; }).map(function (n) { return n.textContent; }).join("").trim() : "";
+      if (select && labelText && select.selectedOptions[0]) add(labelText.replace(/^\w/, function (c) { return c.toUpperCase(); }), select.selectedOptions[0].textContent);
     });
     var sku = document.getElementById("product-sku");
     if (sku) add("Artikel", sku.textContent);
@@ -166,6 +279,7 @@
 
     /* Kort "Läs mer" till den fullständiga beskrivningen längre ned. */
     var shortDesc = info.querySelector(".short-description");
+    markLead(shortDesc);
     if (shortDesc) {
       var more = document.createElement("a");
       more.className = "hz8-link hz8-pdp-more";
@@ -176,7 +290,10 @@
 
     /* Ankarnavigering + sektioner under köpdelen. */
     var article = document.querySelector("#product-page > article.section") || document.getElementById("product-page");
-    var hasReviews = !!document.querySelector("#product-reviews.accordion-button, .accordion-button#product-reviews");
+    var reviewsBtn = document.querySelector(".accordion-button#product-reviews");
+    var hasReviews = !!reviewsBtn;
+    var reviewCount = reviewsBtn ? parseInt((reviewsBtn.textContent.match(/\((\d+)\)/) || [])[1] || "0", 10) : 0;
+    document.documentElement.classList.toggle("hz8-pdp-no-reviews", !reviewCount);
     var similar = document.querySelector(".product-page-lists__similar-products");
     var nav = document.createElement("nav");
     nav.className = "hz8-pdp-nav";
@@ -189,8 +306,11 @@
 
     var extra = document.createElement("div");
     extra.className = "hz8-pdp-extra";
+    var docs = docsSentence();
     extra.innerHTML =
       '<section class="hz8-pdp-spec" id="hz8-pdp-spec" aria-labelledby="hz8-pdp-spec-title"><h2 id="hz8-pdp-spec-title">Produktinformation</h2><dl></dl></section>' +
+      (docs ? '<section class="hz8-pdp-docs" aria-labelledby="hz8-pdp-docs-title">' + HZ8.icon("doc") + '<div><h2 id="hz8-pdp-docs-title">Analys &amp; dokument</h2><p>' + HZ8.esc(docs) +
+        '</p></div><a class="hz8-btn hz8-btn--secondary hz8-btn--small" href="mailto:hej@hazey.se">hej@hazey.se</a></section>' : "") +
       (brandName ? '<section class="hz8-band hz8-pdp-brand" aria-labelledby="hz8-pdp-brand-title"><div class="hz8-pdp-brand__copy"><span class="hz8-kicker">Varumärke</span><h2 id="hz8-pdp-brand-title">Mer från ' + HZ8.esc(brandName) +
         '</h2><p>Se alla produkter från ' + HZ8.esc(brandName) + ' i vårt sortiment.</p><a class="hz8-btn hz8-btn--light" href="' + HZ8.esc(HZ8.link(brandLink.getAttribute("href"))) + '">Visa ' + HZ8.esc(brandName) +
         '</a></div><div class="hz8-pdp-brand__art" aria-hidden="true"></div></section>' : "") +
@@ -231,10 +351,23 @@
       similar.parentNode.insertBefore(simAnchor, similar);
     }
 
+    /* Antalsfältets värde ändras utan DOM-mutation -- synka paketvalet
+       när antal-väljaren används. */
+    document.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest(".buy-form .amount-input")) window.setTimeout(syncPackages, 60);
+    });
+    document.addEventListener("input", function (e) {
+      if (e.target.closest && e.target.closest(".buy-form .amount-input")) syncPackages();
+    });
+    document.addEventListener("change", function (e) {
+      if (e.target.closest && e.target.closest(".buy-form .amount-input")) syncPackages();
+    });
+
     var spec = extra.querySelector(".hz8-pdp-spec");
     var sticky = buildStickyBuy();
     HZ8.watch(function () {
       syncVariants();
+      syncPackages();
       renderSpec(spec);
       syncSticky(sticky);
       var stock = document.getElementById("stock");
