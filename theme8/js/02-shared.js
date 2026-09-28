@@ -126,6 +126,54 @@
     }
   };
 
+  /* ---- Nyehandels frontend-API (samma mönster som Theme 6:s quick add):
+     produktsidans HTML -> produkt-id -> /frontend-api/product/state ->
+     vald variant. Resultatet cachas per produkt i sessionStorage. ---- */
+  HZ8.apiHeaders = function () {
+    var m = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]+)/);
+    var h = { Accept: "application/json", "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" };
+    if (m) h["X-XSRF-TOKEN"] = decodeURIComponent(m[1]);
+    return h;
+  };
+  HZ8.productState = function (productUrl) {
+    var key = "state1:" + HZ8.path(productUrl);
+    var cached = cacheGet(key);
+    if (cached) return Promise.resolve(cached);
+    return fetch(HZ8.link(productUrl), { credentials: "same-origin" })
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var m = html.match(/window\.visitor\.viewProduct\('(\d+)'\)/);
+        if (!m) throw new Error("no product id");
+        return fetch("/frontend-api/product/state", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: HZ8.apiHeaders(),
+          body: JSON.stringify({ product_id: parseInt(m[1], 10), variant_ids: [null] })
+        });
+      })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        var sv = data.selected_variant || {};
+        var variants = (data.product && data.product.variants) || [];
+        var value = {
+          variantId: sv.id || null,
+          variants: variants.length,
+          buyable: sv.buyable !== false && sv.in_stock !== false && sv.active !== false
+        };
+        cacheSet(key, value);
+        return value;
+      });
+  };
+  /* Lägg i varukorgen via Nyehandels egen Vuex-action (drawern öppnas
+     reaktivt, precis som från produktsidans köpknapp). */
+  HZ8.addVariant = function (variantId) {
+    var store = HZ8.store();
+    var payload = { product_variant_id: Number(variantId), quantity: 1, meta: null };
+    if (store && store._actions && store._actions["cart/addVariant"]) return Promise.resolve(store.dispatch("cart/addVariant", payload));
+    return fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify(payload) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  };
+
   /* ---- Overlay-hjälp: scroll-lås + fokusfälla + Escape ---- */
   var lockCount = 0;
   HZ8.lockScroll = function () {

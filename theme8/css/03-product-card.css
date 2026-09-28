@@ -159,27 +159,26 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .price {
 }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .price del { font-size: 13px !important; }
 
-/* Kompakt kontroll (injiceras av 03-product-card.js, sist i kortet)
-   ligger i nedre högra hörnet i höjd med priset. */
-html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details-wrapper { position: relative; }
+/* Gemensam kortstandard (visuell QA 2026-09-28): samma bildyta
+   (1:1, contain), titel på max två rader med reserverad höjd, pris på
+   samma nivå och kontrollen i full bredd längst ned på alla kort. */
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card { container-type: inline-size; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details { flex: 1 1 auto; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .rating { min-height: 16px; }
 html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 12px;
+  cursor: pointer;
 }
-html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 70px; min-height: 36px; display: flex; align-items: flex-end; justify-content: flex-start; }
-html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill.is-wide) .offer { padding-right: 0; }
-html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill.is-wide {
-  position: static;
-  align-self: stretch;
-  margin-top: 10px;
-}
-
-@media (max-width: 420px) {
-  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .details-wrapper { padding: 10px 10px 12px !important; }
-  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .name { font-size: 14px !important; }
-  html.hz8:not([data-hz8-page="home"]) #store-main .product-card:has(.hz8-card-pill) .offer { padding-right: 0; }
-  html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill { position: static; align-self: stretch; margin-top: 8px; }
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .hz8-card-pill[aria-busy="true"] { opacity: .7; cursor: progress; }
+/* Rea-/kampanjbadge i bildens nederkant till höger -- produktbilderna
+   har ofta ett inbakat textband överst som badgen annars täcker. */
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .ribbon,
+html.hz8:not([data-hz8-page="home"]) #store-main .product-card .nh-ribbon-row {
+  top: calc(100cqw - 38px) !important;
+  left: auto !important;
+  right: 16px !important;
 }
 
 /* Betyg: Nyehandels egna stjärnor och den äldre bundlens .nh-stars. */

@@ -1,9 +1,7 @@
-/* Gemensamt produktkort: lägger en kompakt, tillgänglig kontroll på
-   varje native .product-card utanför startsidan. Kortet har ingen
-   variant-id i sin markup, så kontrollen leder alltid till produktens
-   riktiga sida (där Nyehandels egna köpflöde finns) -- "Välj variant"
-   när plattformen själv märkt kortet med flera varianter, annars
-   "Visa". Idempotent; körs om vid Vue-re-render. */
+/* Gemensamt produktkort: en kompakt, tillgänglig kontroll längst ned på
+   varje native .product-card utanför startsidan -- "+ Lägg till" för
+   enkla produkter (Nyehandels egen varukorgsaction), "Välj variant" för
+   variantprodukter. Idempotent; körs om vid Vue-re-render. */
 (function () {
   "use strict";
 
@@ -16,14 +14,40 @@
     if (!wrapper || !link) return;
     var nameEl = card.querySelector(".name");
     var name = nameEl ? nameEl.textContent.trim() : "";
+    var href = link.getAttribute("href");
+    /* Nyehandel märker själv kort med flera varianter ("Finns i flera
+       varianter"). Övriga kort får direktköp via plattformens egen
+       varukorgsaction; går det inte (slut, fel) leder knappen till
+       produktsidan i stället -- aldrig ett låtsat resultat. Läggs SIST
+       i kortet (flyttar aldrig Vue-ägda noder). */
     var variants = !!card.querySelector(".has-variants");
-    /* Läggs SIST i kortet (flyttar aldrig Vue-ägda noder) och
-       positioneras med CSS bredvid priset. */
-    var pill = document.createElement("a");
-    pill.className = "hz8-add-pill hz8-card-pill" + (variants ? " is-wide" : "");
-    pill.href = link.getAttribute("href");
-    pill.textContent = variants ? "Välj variant" : "Visa";
-    pill.setAttribute("aria-label", (variants ? "Välj variant: " : "Visa produkt: ") + name);
+    var pill;
+    if (variants) {
+      pill = document.createElement("a");
+      pill.href = href;
+      pill.textContent = "Välj variant";
+      pill.setAttribute("aria-label", "Välj variant: " + name);
+    } else {
+      pill = document.createElement("button");
+      pill.type = "button";
+      pill.textContent = "+ Lägg till";
+      pill.setAttribute("aria-label", "Lägg i varukorgen: " + name);
+      pill.addEventListener("click", function () {
+        if (pill.getAttribute("aria-busy") === "true") return;
+        pill.setAttribute("aria-busy", "true");
+        pill.textContent = "Lägger till…";
+        HZ8.productState(href).then(function (state) {
+          if (!state.variantId || !state.buyable || state.variants > 1) { location.href = HZ8.link(href); return null; }
+          return HZ8.addVariant(state.variantId).then(function () {
+            pill.textContent = "Tillagd";
+            window.setTimeout(function () { pill.textContent = "+ Lägg till"; }, 1800);
+          });
+        }).catch(function () {
+          location.href = HZ8.link(href);
+        }).finally(function () { pill.removeAttribute("aria-busy"); });
+      });
+    }
+    pill.className = "hz8-add-pill hz8-card-pill";
     wrapper.appendChild(pill);
   }
 
