@@ -46,7 +46,7 @@
       '<div class="hz8-prail__head">' +
         '<h2 class="hz8-prail__title" id="' + titleId + '" tabindex="-1">' + HZ8.esc(opts.title) + "</h2>" +
         '<span class="hz8-prail__count"></span>' +
-        (opts.href ? '<a class="hz8-prail__all" href="' + HZ8.esc(opts.href) + '">Visa alla<span class="hz8-visually-hidden"> ' + HZ8.esc(opts.title) + "</span></a>" : "") +
+        (opts.href ? '<a class="hz8-prail__all" href="' + HZ8.esc(opts.href) + '">Visa alla<span class="hz8-visually-hidden"> ' + HZ8.esc(opts.title) + "</span>" + HZ8.icon("arrow") + "</a>" : "") +
         '<div class="hz8-prail__controls" hidden>' +
           '<button type="button" class="hz8-prail__btn" data-dir="-1" aria-label="Föregående produkter" aria-controls="' + id + '-list">' + HZ8.icon("chevron") + "</button>" +
           '<button type="button" class="hz8-prail__btn" data-dir="1" aria-label="Nästa produkter" aria-controls="' + id + '-list">' + HZ8.icon("chevron") + "</button>" +

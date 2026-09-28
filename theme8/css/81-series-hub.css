@@ -1,0 +1,206 @@
+/* Seriehubb, koncept B "Editorial shelf" (design-concepts/magic-sauce-
+   editorial-mobile-393x852.png). Gäller alla seriehubbar
+   (html.hz8-series-hub, satt av 81-series-hub.js) -- samma mall för
+   Magic Sauce, THCaB, THCbA, D10, Nano-11 ...
+
+   Struktur (rader i kategorisidans grid, se 80-category.css):
+   1-4 mörk olivgrön masthead: brödsmulor, H1, ev. egen ingress,
+       orange accentlinje (.hz8-masthead__rule)
+   5   ljust navigationsinstrument (FORMAT + SERIER) som överlappar
+       mastheadens nederkant
+   6   formathyllor + "Mer <format> från <tillverkare>"-band */
+
+/* ---------- Header: två uttryckliga kontrastlägen ---------- */
+html.hz8.hz8-series-hub #store-header .main::before,
+html.hz8.hz8-series-hub #store-header :is(.account-button, .cart-button, #mobile-search-trigger, .hamburger, .hz8-header-nav > a, .hz8-header-nav > .hz8-cat, .search-field),
+html.hz8.hz8-series-hub #store-header .brand.header-logo img {
+  transition: background-color .2s var(--hz8-ease), background .2s var(--hz8-ease), color .2s var(--hz8-ease),
+              border-color .2s var(--hz8-ease), box-shadow .2s var(--hz8-ease), filter .2s var(--hz8-ease) !important;
+}
+/* Mörkt underlag: olivtonat glas, vit logga/ikoner, ljus kant. */
+html.hz8 #store-header.hz8-header--on-dark .main::before {
+  background: color-mix(in srgb, var(--hz8-olive) 72%, transparent) !important;
+  border-color: color-mix(in srgb, #fff 20%, transparent) !important;
+  box-shadow: 0 12px 34px color-mix(in srgb, #000 22%, transparent) !important;
+}
+html.hz8 #store-header.hz8-header--on-dark .brand.header-logo img { filter: brightness(0) invert(1); }
+html.hz8 #store-header.hz8-header--on-dark :is(.account-button, .basket-icon .cart-button, #mobile-search-trigger, .hamburger) { color: #fff !important; }
+html.hz8 #store-header.hz8-header--on-dark :is(.account-button, .basket-icon, #mobile-search-trigger, .hamburger) svg { color: #fff !important; fill: #fff; }
+html.hz8 #store-header.hz8-header--on-dark :is(.hamburger, #mobile-search-trigger) svg[fill="none"] { fill: none; }
+html.hz8 #store-header.hz8-header--on-dark .hz8-header-nav a.hz8-cat:not(.hz8-cat--campaign) { color: #fff !important; }
+html.hz8 #store-header.hz8-header--on-dark .hz8-header-nav a.hz8-cat--campaign { color: var(--hz8-beige) !important; }
+html.hz8 #store-header.hz8-header--on-dark .search-field {
+  background: color-mix(in srgb, #fff 14%, transparent) !important;
+  border-color: color-mix(in srgb, #fff 26%, transparent) !important;
+}
+html.hz8 #store-header.hz8-header--on-dark .search-field :is(input, button, svg, i) { color: #fff !important; }
+html.hz8 #store-header.hz8-header--on-dark .search-field input::placeholder { color: color-mix(in srgb, #fff 72%, transparent) !important; }
+@media (prefers-reduced-motion: reduce) {
+  html.hz8.hz8-series-hub #store-header * , html.hz8.hz8-series-hub #store-header .main::before { transition: none !important; }
+}
+
+/* ---------- Masthead ---------- */
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-hero {
+  margin: 0;
+  background:
+    radial-gradient(120% 90% at 85% 0%, color-mix(in srgb, var(--hz8-beige) 9%, transparent) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, color-mix(in srgb, #fff 1.6%, transparent) 0 1px, transparent 1px 3px),
+    var(--hz8-olive);
+}
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-hero__art { display: none; }
+html.hz8.hz8-series-hub[data-hz8-page="category"] .designer-breadcrumbs { padding-top: calc(var(--hz8-top-clear) - 4px) !important; }
+html.hz8.hz8-series-hub .breadcrumb a,
+html.hz8.hz8-series-hub .breadcrumb li + li::before { color: color-mix(in srgb, #fff 74%, transparent) !important; }
+html.hz8.hz8-series-hub .breadcrumb li.is-active a { color: #fff !important; }
+html.hz8.hz8-series-hub[data-hz8-page="category"] article.category-description h1 {
+  max-width: none;
+  margin: 6px 0 8px !important;
+  color: #fff !important;
+  font-size: clamp(44px, 5vw, 76px) !important;
+}
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-lead { color: color-mix(in srgb, #fff 86%, transparent) !important; margin-bottom: 10px; -webkit-line-clamp: 2; }
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-actions { display: none; }
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-masthead__rule {
+  grid-row: 4;
+  display: block;
+  align-self: start;
+  position: relative;
+  z-index: 1;
+  width: min(320px, 82%);
+  height: 4px;
+  margin: 6px 0 46px;
+  border-radius: 99px;
+  background: var(--hz8-cta);
+}
+
+/* ---------- Navigationsinstrument (FORMAT + SERIER) ---------- */
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-rails {
+  grid-column: 1 / -1 !important;
+  position: relative;
+  z-index: 2;
+  width: auto;
+  margin: -26px 0 0;
+  padding: 16px max(24px, calc((100% - var(--hz8-content-w, 1320px)) / 2)) 18px;
+  gap: 14px;
+  border-radius: 20px 20px 0 0;
+  background: var(--hz8-surface-warm);
+  box-shadow: 0 -8px 24px color-mix(in srgb, #000 12%, transparent);
+}
+html.hz8.hz8-series-hub .hz8-rail__heading { display: flex; margin-bottom: 8px; color: var(--hz8-text) !important; }
+/* Formatkort: kompakta bildtiles. */
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__list { grid-auto-columns: 168px; gap: 10px; }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__item {
+  grid-template-columns: 1fr;
+  grid-template-rows: 88px auto;
+  gap: 6px;
+  min-height: 0;
+  padding: 8px 8px 10px;
+  border-radius: var(--hz8-radius-m);
+  background: var(--hz8-surface);
+}
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__media { order: -1; width: 100%; height: 88px; }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__text { order: 0; gap: 2px; }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__label { font-size: 16px !important; line-height: 1.15 !important; }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__count { font-size: 12px !important; }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__item[aria-current] { border-color: var(--hz8-cta); box-shadow: inset 0 0 0 1px var(--hz8-cta); }
+html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__item.is-frosted .hz8-rail__media { height: 88px; }
+/* Seriechips: kompakta, sekundära. */
+html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__list { grid-auto-columns: max-content; gap: 8px; }
+html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__item { min-height: 44px; padding: 5px 16px 5px 5px; gap: 8px; border-radius: 10px; }
+html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__media { width: 34px; height: 34px; border-radius: 6px; }
+html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__label { font-size: 15px !important; }
+html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__count { display: none; }
+
+/* ---------- Formathyllor ---------- */
+html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-hub { margin-top: 28px; gap: 34px; }
+html.hz8.hz8-series-hub .hz8-prail__all { display: inline-flex; align-items: center; gap: 6px; }
+html.hz8.hz8-series-hub .hz8-prail__all .hz8-icon { width: 16px; height: 16px; }
+/* Kompaktare kort i hyllorna (bild 4:3). */
+html.hz8.hz8-series-hub #store-main .hz8-prail .product-card__image { aspect-ratio: 4 / 3; }
+html.hz8.hz8-series-hub #store-main .hz8-prail .product-card .details-wrapper { padding: 10px 12px 12px !important; }
+html.hz8.hz8-series-hub #store-main .hz8-prail .product-card .hz8-card-pill { min-height: 44px; margin-top: 10px; }
+
+/* ---------- "Mer <format> från <tillverkare>" -- mörkt band ---------- */
+html.hz8.hz8-series-hub .hz8-hub__related:empty { display: none; }
+.hz8-more {
+  --hz8-more-bleed: calc((100vw - 100%) / 2);
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin: 0 calc(-1 * var(--hz8-more-bleed));
+  padding: 30px var(--hz8-more-bleed) 0;
+  background:
+    repeating-linear-gradient(0deg, color-mix(in srgb, #fff 1.6%, transparent) 0 1px, transparent 1px 3px),
+    var(--hz8-olive);
+  color: #fff;
+}
+.hz8-more__head .hz8-kicker { margin-bottom: 4px; color: var(--hz8-cta) !important; }
+.hz8-more__head h2 { margin: 0 0 4px !important; color: #fff !important; font-size: clamp(26px, 2.6vw, 38px) !important; }
+.hz8-more__head p { margin: 0; color: color-mix(in srgb, #fff 78%, transparent) !important; }
+.hz8-more__head a { color: #fff !important; }
+.hz8-more__region { display: grid; gap: 28px; min-width: 0; overflow: hidden; }
+.hz8-more .hz8-prail__title { color: #fff !important; font-size: clamp(20px, 1.8vw, 26px) !important; }
+.hz8-more .hz8-prail__count { color: color-mix(in srgb, #fff 70%, transparent); }
+.hz8-more .hz8-prail__all { color: #fff !important; }
+.hz8-more .hz8-prail__btn { border-color: color-mix(in srgb, #fff 30%, transparent); background: transparent; color: #fff; }
+/* Kollapsat: toppen av första hyllan bakom en vertikal fade/frost. */
+.hz8-more:not(.is-open) .hz8-more__region {
+  max-height: 210px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 30%, transparent 92%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 30%, transparent 92%);
+  pointer-events: none;
+  user-select: none;
+}
+.hz8-more__bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 30px;
+}
+.hz8-more:not(.is-open) .hz8-more__bar { margin-top: -64px; }
+.hz8-more__toggle {
+  min-width: min(100%, 320px);
+  min-height: 48px;
+  border-color: color-mix(in srgb, #fff 55%, transparent) !important;
+  background: color-mix(in srgb, var(--hz8-surface) 92%, transparent) !important;
+  color: var(--hz8-text) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.hz8-more.is-open .hz8-more__toggle { background: transparent !important; color: #fff !important; }
+html.hz8.hz8-series-hub .hz8-hub__related { margin-top: -8px; }
+html.hz8[data-hz8-page="category"] .hz8-combo-related { border-radius: var(--hz8-radius-l); margin-inline: 0; padding-inline: clamp(18px, 3vw, 32px); }
+
+/* ---------- Mobil ---------- */
+@media (max-width: 767px) {
+  html.hz8.hz8-series-hub[data-hz8-page="category"] .designer-breadcrumbs { padding-top: 70px !important; }
+  html.hz8.hz8-series-hub[data-hz8-page="category"] article.category-description h1 { font-size: 46px !important; margin: 2px 0 6px !important; }
+  html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-masthead__rule { margin-bottom: 40px; }
+  html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-rails { width: auto; margin: -24px 0 0; padding: 14px 0 14px; border-radius: 18px 18px 0 0; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__list { grid-auto-columns: 86px; gap: 8px; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__item { grid-template-rows: 62px auto; padding: 5px 5px 8px; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__media,
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__item.is-frosted .hz8-rail__media { height: 62px; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__label { font-size: 13.5px !important; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__count { font-size: 11px !important; }
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__alt { font-size: 11px; }
+  html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__item { min-height: 44px; }
+  html.hz8.hz8-series-hub .hz8-rail--series .hz8-rail__label { font-size: 14px !important; }
+  html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-hub { margin-top: 20px; gap: 28px; }
+  html.hz8.hz8-series-hub #store-main .hz8-prail__list { grid-auto-columns: 43%; }
+  .hz8-more { --hz8-more-bleed: 16px; padding-top: 24px; }
+  .hz8-more:not(.is-open) .hz8-more__region { max-height: 170px; }
+  .hz8-more__toggle { width: 100%; }
+}
+@media (min-width: 1600px) {
+  html.hz8.hz8-series-hub .hz8-rail--format .hz8-rail__list { grid-auto-columns: 200px; }
+}
+@media (max-width: 767px) {
+  /* Rubrik, antal och "Visa alla" på en rad (som i facit). */
+  html.hz8.hz8-series-hub .hz8-prail__head { flex-wrap: nowrap; align-items: baseline; gap: 8px; }
+  html.hz8.hz8-series-hub .hz8-prail__title { flex: 0 1 auto; min-width: 0; font-size: 22px !important; letter-spacing: -.01em; }
+  html.hz8.hz8-series-hub .hz8-prail__count { flex: 0 0 auto; font-size: 11.5px !important; }
+  html.hz8.hz8-series-hub .hz8-prail__all { flex: 0 0 auto; }
+  html.hz8.hz8-series-hub[data-hz8-page="category"] .designer-breadcrumbs { padding-top: 80px !important; }
+}
