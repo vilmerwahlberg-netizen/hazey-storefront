@@ -126,6 +126,16 @@
     }
   };
 
+  /* Alla serverrenderade produktkort på en kategorisida (första sidan). */
+  HZ8.categoryCards = {
+    key: "cards1",
+    run: function (doc) {
+      return Array.prototype.map.call(doc.querySelectorAll("#category-products .product-card"), function (card) {
+        return { html: card.outerHTML, sale: !!card.querySelector(".price.has-comparison, del.comparison") };
+      });
+    }
+  };
+
   /* ---- Nyehandels frontend-API (samma mönster som Theme 6:s quick add):
      produktsidans HTML -> produkt-id -> /frontend-api/product/state ->
      vald variant. Resultatet cachas per produkt i sessionStorage. ---- */

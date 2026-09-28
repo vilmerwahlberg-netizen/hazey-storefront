@@ -109,6 +109,83 @@
     });
   }
 
+  /* Produktlistor i admininnehållet (Butik, Bästsäljare, Kampanjer)
+     deklarerar sin källa: data-nh-source (kategori), data-nh-limit,
+     data-nh-order="fixed" (kategorins egen ordning) och data-nh-filter=
+     "discounted" (bara produkter med jämförelsepris). Tidigare fylldes de
+     ENBART av den äldre kontraktor-bundlen; nu fyller Theme 8 dem själv
+     med riktiga kort från respektive kategorisida. Utan data -> tomt
+     läge med länk vidare, aldrig påhittade produkter. */
+  var MAX_SALE_PAGES = 6; // rea-listor: Nyehandels egen paginering, 25 per sida
+
+  function cardsFor(source, opts) {
+    var url = new URL(source, location.origin);
+    if (opts.filter === "discounted") {
+      /* Rea kräver hela sortimentet i standardordning (de populäraste
+         25 har inte alltid någon rea): sida för sida tills listan är
+         full, sidorna tar slut eller taket nås. */
+      var collected = [];
+      var page = 1;
+      var next = function () {
+        url.searchParams.set("page", String(page));
+        return HZ8.fetchPage(url.pathname + url.search, HZ8.categoryCards).then(function (cards) {
+          collected = collected.concat(cards.filter(function (c) { return c.sale; }));
+          if (!cards.length || collected.length >= opts.limit || page >= MAX_SALE_PAGES || cards.length < 25) return collected;
+          page += 1;
+          return next();
+        });
+      };
+      return next();
+    }
+    if (opts.order !== "fixed") url.searchParams.set("sort", "popular");
+    return HZ8.fetchPage(url.pathname + url.search, HZ8.categoryCards);
+  }
+
+  function fillList(grid, source, opts) {
+    grid.setAttribute("aria-busy", "true");
+    return cardsFor(source, opts).then(function (cards) {
+      var picked = cards.slice(0, opts.limit || 8);
+      if (!picked.length) {
+        grid.innerHTML = '<div class="hz8-state hz8-list-empty"><p>Inga produkter att visa just nu.</p></div>';
+      } else {
+        grid.innerHTML = picked.map(function (c) { return "<div>" + c.html + "</div>"; }).join("");
+        grid.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+      }
+      grid.setAttribute("data-hz8-filled", source);
+    }).catch(function () {
+      grid.innerHTML = '<div class="hz8-state hz8-state--error hz8-list-empty"><p>Produkterna kunde inte laddas. Försök igen om en stund.</p></div>';
+    }).finally(function () { grid.removeAttribute("aria-busy"); });
+  }
+
+  function initProductLists(page) {
+    page.querySelectorAll("[data-nh-source]").forEach(function (grid) {
+      if (grid.getAttribute("data-hz8-filled")) return;
+      fillList(grid, grid.getAttribute("data-nh-source"), {
+        limit: parseInt(grid.getAttribute("data-nh-limit"), 10) || 8,
+        order: grid.getAttribute("data-nh-order"),
+        filter: grid.getAttribute("data-nh-filter")
+      });
+    });
+    /* Butikens kampanjgrid saknar egen källa: produkter med
+       jämförelsepris ur hela sortimentet (samma regel som Kampanjer-sidan). */
+    var campaign = page.querySelector("#nh-kampanjer-grid");
+    if (campaign && !campaign.getAttribute("data-hz8-filled")) fillList(campaign, "/sv/categories/alla-produkter", { limit: 8, filter: "discounted" });
+    /* Filterbar lista (Bästsäljare): knapparna byter kategori. */
+    var filters = page.querySelector(".nh-bs-filters");
+    if (filters && !filters.getAttribute("data-hz8-bound")) {
+      filters.setAttribute("data-hz8-bound", "1");
+      var grid = filters.parentNode.querySelector(".products");
+      var buttons = filters.querySelectorAll("[data-cat]");
+      function select(btn) {
+        buttons.forEach(function (b) { b.classList.toggle("is-active", b === btn); b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+        if (grid) fillList(grid, "/sv/categories/" + btn.getAttribute("data-cat"), { limit: 12 });
+      }
+      buttons.forEach(function (b) { b.addEventListener("click", function () { select(b); }); });
+      var active = filters.querySelector(".is-active") || buttons[0];
+      if (active && grid && !grid.getAttribute("data-hz8-filled")) select(active);
+    }
+  }
+
   HZ8.register("content-pages", function (context) {
     if (context.page !== "page" && context.page !== "faq") return;
     var page = document.querySelector("#skip-to-main-content .store-page") || document.querySelector(".store-page");
@@ -120,6 +197,7 @@
       ensureH1(page);
     }
     annotateMailtoForms(page);
+    initProductLists(page);
     if (page.querySelector(".nh-contact")) document.documentElement.classList.add("hz8-contact-page");
     if (page.querySelector(".hz8-about")) document.documentElement.classList.add("hz8-about-page");
   });
