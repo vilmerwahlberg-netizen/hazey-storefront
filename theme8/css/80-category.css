@@ -429,3 +429,61 @@ html.hz8[data-hz8-page="category"] .category-sort:has(#sidebar.is-active) { z-in
     text-overflow: ellipsis;
   }
 }
+
+/* ======================================================================
+   Mobil strukturkorrigering (visuell QA 2026-09-28)
+   ====================================================================== */
+@media (max-width: 767px) {
+  /* Rälsar: tydlig scrollsignal -- nästa kort syns delvis och högerkanten
+     tonas ut; scroll snap per kort. */
+  html.hz8[data-hz8-page="category"] .hz8-rail__list {
+    scroll-snap-type: x mandatory;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 36px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 36px), transparent 100%);
+    padding-right: 40px;
+  }
+  html.hz8[data-hz8-page="category"] .hz8-rail--format .hz8-rail__list { grid-auto-columns: 42%; }
+  html.hz8[data-hz8-page="category"] .hz8-rail__heading { display: flex; justify-content: space-between; }
+
+  /* Populärast: kompakt horisontell räls, inte ett andra långt rutnät. */
+  html.hz8[data-hz8-page="category"] .hz8-cat-popular { margin: 4px -16px 26px; }
+  html.hz8[data-hz8-page="category"] .hz8-cat-popular .hz8-section-head { padding-inline: 16px; }
+  html.hz8[data-hz8-page="category"] .hz8-cat-popular .hz8-section-head h2 { font-size: 22px !important; }
+  html.hz8[data-hz8-page="category"] .hz8-cat-popular .hz8-section-head a { display: none; }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__list {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-template-columns: none !important;
+    grid-auto-columns: 58%;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 0 40px 6px 16px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 36px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 36px), transparent 100%);
+  }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__list::-webkit-scrollbar { display: none; }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__list > div { scroll-snap-align: start; }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__lead { grid-column: auto; grid-row: auto; }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__lead .product-card__image { aspect-ratio: 1 / 1 !important; }
+  html.hz8[data-hz8-page="category"] #store-main .hz8-cat-popular__lead .name { font-size: 14px !important; }
+
+  /* Filter + sortering + antal på EN rad, direkt före huvudresultaten;
+     sticky bara inom produktområdet (dockan ligger i .designer-category). */
+  html.hz8[data-hz8-page="category"] .category-sort { flex-wrap: nowrap; }
+  html.hz8[data-hz8-page="category"] .category-sort #products_count {
+    order: 4;
+    flex: 0 0 auto;
+    margin: 0 0 0 2px !important;
+    color: var(--hz8-text-muted);
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+  html.hz8[data-hz8-page="category"] .category-sort .vue-portal-target > ul { flex: 1 1 0; min-width: 0; }
+  html.hz8[data-hz8-page="category"] .category-sort > div:last-child { flex: 1 1 0; min-width: 0; order: 3; }
+  html.hz8[data-hz8-page="category"] .category-sort .sort-button .button { padding: 0 10px !important; }
+  html.hz8[data-hz8-page="category"] .category-sort .sort-button .button .icon:first-child { display: none; }
+  html.hz8[data-hz8-page="category"] #category-products { scroll-margin-top: 150px; }
+}
