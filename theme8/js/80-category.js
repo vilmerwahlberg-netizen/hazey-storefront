@@ -105,6 +105,120 @@
     return wrap.children.length ? wrap : null;
   }
 
+
+  /* ======================================================================
+     Format- och serienavigation ur den centrala relationskartan
+     (HZ8.catalog, 06-catalog-map.js). Tre sidtyper:
+     - format ("Alla Vapes"): alla format + serierna som finns i formatet
+     - combo  (serie x format, "THCA Vapes"): seriens format (frostade
+       om de saknas i serien men finns i andra) + serier i samma format
+     - series-hub ("Magic Sauce"): seriens format som lokala hopp till
+       produktraderna + alla serier
+     Antal och bilder läses ur respektive riktig sida; 0 produkter = dold.
+     ====================================================================== */
+  function catalogCount(href) {
+    return HZ8.fetchPage(href, HZ8.categoryInfo).then(function (info) { return info.count; }).catch(function () { return null; });
+  }
+
+  function navSection(heading, variant) {
+    var nav = document.createElement("nav");
+    nav.className = "hz8-rail hz8-rail--" + variant;
+    nav.setAttribute("aria-label", heading);
+    nav.innerHTML = '<p class="hz8-rail__heading">' + HZ8.esc(heading) + '</p><div class="hz8-rail__list"></div>';
+    return nav;
+  }
+
+  /* Frostat upptäcktskort: formatet saknas i aktuell serie men finns i
+     andra. Aktiveras (riktig knapp, inte disabled) -> valpanel med de
+     serier där formatet finns, som riktiga länkar med riktiga antal. */
+  function frostedItem(format, series) {
+    var others = HZ8.catalog.seriesWithFormat(format.key, series);
+    if (!others.length) return null;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "hz8-rail__item hz8-rail__item--format is-frosted";
+    b.setAttribute("aria-haspopup", "dialog");
+    b.setAttribute("aria-expanded", "false");
+    b.innerHTML = '<span class="hz8-rail__media" aria-hidden="true"></span><span class="hz8-rail__text"><span class="hz8-rail__label">' + HZ8.esc(format.label) +
+      '</span><span class="hz8-rail__count">Finns inte i ' + HZ8.esc(series.name) + '</span><span class="hz8-rail__alt"></span></span>';
+    var resolved = null;
+    var ready = Promise.all(others.map(function (o) {
+      return catalogCount(o.routes[format.key]).then(function (n) { return { label: o.name, href: HZ8.link(o.routes[format.key]), count: n }; });
+    })).then(function (items) {
+      resolved = items.filter(function (it) { return it.count !== 0; });
+      if (!resolved.length) { b.remove(); return; }
+      b.querySelector(".hz8-rail__alt").textContent = "Finns i " + resolved.length + (resolved.length === 1 ? " annan serie" : " andra serier");
+      b.setAttribute("aria-label", format.label + ", finns inte i " + series.name + ". Visa " + resolved.length + (resolved.length === 1 ? " serie" : " serier") + " med " + format.label.toLowerCase());
+    });
+    b.addEventListener("click", function () {
+      ready.then(function () { if (resolved && resolved.length) HZ8.openChoicePanel(b, format.label + " finns i", resolved); });
+    });
+    return b;
+  }
+
+  function buildCatalogNav(ctx) {
+    var map = HZ8.catalog.build();
+    var wrap = document.createElement("div");
+    wrap.className = "hz8-cat-rails";
+    wrap.setAttribute("data-hz8-cat", "rails");
+    var current = HZ8.path(location.href);
+    var isHub = ctx.type === "series-hub";
+
+    /* -- Format -- */
+    var fnav = navSection("Format", "format");
+    var flist = fnav.querySelector(".hz8-rail__list");
+    if (ctx.series) {
+      if (ctx.series.hub) {
+        var all = railItem({ label: "Alla " + ctx.series.name, href: ctx.series.hub }, current, "format");
+        flist.appendChild(all);
+      }
+      map.formats.forEach(function (f) {
+        if (f.seriesless) return;
+        var route = ctx.series.routes[f.key];
+        if (route) {
+          var item = railItem({ label: f.label, href: route }, current, "format");
+          if (isHub) {
+            /* Seriehubb: formatkortet hoppar till produktraden längre ned
+               (#vapes osv.); raden har egen "Visa alla" till routen. */
+            item.setAttribute("href", "#" + f.key);
+            item.setAttribute("data-hz8-local", f.key);
+          }
+          if (ctx.format && ctx.format.key === f.key) item.setAttribute("aria-current", "page");
+          flist.appendChild(item);
+        } else {
+          var frost = frostedItem(f, ctx.series);
+          if (frost) flist.appendChild(frost);
+        }
+      });
+    } else {
+      map.formats.forEach(function (f) { flist.appendChild(railItem({ label: f.label, href: f.href }, current, "format")); });
+    }
+    wrap.appendChild(fnav);
+
+    /* -- Serier -- */
+    var snav = navSection("Serier", "series");
+    var slist = snav.querySelector(".hz8-rail__list");
+    var formatKey = ctx.format && ctx.format.key;
+    if (ctx.type === "format" || ctx.type === "combo") {
+      if (ctx.type === "combo" && ctx.format) slist.appendChild(railItem({ label: "Alla serier", href: ctx.format.href }, current, "series"));
+      HZ8.catalog.seriesWithFormat(formatKey).forEach(function (s) {
+        var it = railItem({ label: s.name, href: s.routes[formatKey] }, current, "series");
+        if (ctx.series === s) it.setAttribute("aria-current", "page");
+        slist.appendChild(it);
+      });
+    } else {
+      map.series.forEach(function (s) {
+        var landing = HZ8.catalog.landingFor(s);
+        if (!landing) return;
+        var it = railItem({ label: s.name, href: landing }, current, "series");
+        if (ctx.series === s) it.setAttribute("aria-current", "page");
+        slist.appendChild(it);
+      });
+    }
+    if (slist.children.length > 1) wrap.appendChild(snav);
+    return wrap;
+  }
+
   function buildHero(h1, root) {
     var hero = document.createElement("div");
     hero.className = "hz8-cat-hero";
@@ -316,15 +430,24 @@
     });
 
     buildHero(h1, root);
-    var found = groupForPath(HZ8.path(location.href).split("?")[0]);
-    if (found) {
-      var rails = buildRails(found);
-      if (rails) root.appendChild(rails);
-      var label = groupLabel(found.key);
-      if (label) root.setAttribute("data-hz8-group", label);
+    var ctx = HZ8.catalog ? HZ8.catalog.contextFor(location.href) : null;
+    if (ctx) {
+      root.appendChild(buildCatalogNav(ctx));
+      root.setAttribute("data-hz8-nav", ctx.type);
+    } else {
+      /* Sidor som relationskartan inte beskriver (CBD-familjen,
+         tillverkarsidor): headerns grupprälsar som tidigare. */
+      var found = groupForPath(HZ8.path(location.href).split("?")[0]);
+      if (found) {
+        var rails = buildRails(found);
+        if (rails) root.appendChild(rails);
+        var label = groupLabel(found.key);
+        if (label) root.setAttribute("data-hz8-group", label);
+      }
     }
     buildGuide(root, h1Text);
-    buildPopular(root, h1Text);
+    if (ctx && ctx.type === "series-hub" && HZ8.seriesHub) HZ8.seriesHub(root, ctx, h1Text);
+    else buildPopular(root, h1Text);
 
     var actions = root.querySelector("[data-hz8-cat='actions']");
     HZ8.watch(function () {
