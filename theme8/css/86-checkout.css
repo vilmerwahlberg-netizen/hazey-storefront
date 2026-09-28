@@ -1,0 +1,186 @@
+/* Kassa (/sv/checkout) -- Nyehandels egen Vue-kassa, bara reskinnad.
+
+   PLATTFORMSGRÄNS: kassan kör INTE temats JavaScript-fält (verifierat
+   2026-09-28 -- endast Head-fältet laddas där), så Theme 8:s JS-loader
+   (och därmed html.hz8) finns inte i kassan. Dessa regler scopas därför
+   till body.checkout-page och får effekt först när hazey-theme8.css
+   laddas i kassan (t.ex. via Theme 8:s CSS-fält). Inga fält, steg eller
+   betalningsflöden ändras -- endast utseende.
+
+   Selektorerna följer Nyehandels foundation.css (checkout-layout,
+   checkout-information, checkout-items-summary, .options, coupon-code,
+   confirm-checkout, .button.checkout-order, checkout-system-error). */
+
+body.checkout-page {
+  background: var(--hz8-bg) !important;
+  color: var(--hz8-text);
+  font-family: var(--hz8-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+body.checkout-page :is(p, span, a, li, label, input, select, textarea, button, td, th, div) { font-family: var(--hz8-font-ui); }
+body.checkout-page :is(h1, h2, h3) { color: var(--hz8-text-heading); font-family: var(--hz8-font-display) !important; font-weight: 600 !important; letter-spacing: -.01em; }
+
+/* Förenklat kass-sidhuvud: logga tillbaka + "Kassa", ingen meny. */
+body.checkout-page header.checkout {
+  position: relative;
+  height: 72px;
+  border-bottom: 1px solid var(--hz8-line);
+  background: var(--hz8-surface) !important;
+}
+body.checkout-page header.checkout .container { justify-content: center !important; }
+body.checkout-page header.checkout .container .title {
+  color: var(--hz8-text-heading) !important;
+  font: 600 24px/1 var(--hz8-font-display) !important;
+}
+body.checkout-page .checkout-back { height: 72px; padding-left: 24px; }
+body.checkout-page .checkout-back .icon { margin-right: 14px; }
+body.checkout-page .checkout-back .icon svg { width: 22px; height: 22px; fill: var(--hz8-text) !important; color: var(--hz8-text) !important; }
+body.checkout-page .checkout-back img { max-height: 26px; }
+
+/* Lugnt Stockholmsband under sidhuvudet (dekor, ingen text/claim). */
+body.checkout-page main.checkout::before {
+  content: "";
+  display: block;
+  height: clamp(90px, 13vw, 170px);
+  background:
+    linear-gradient(180deg, transparent 40%, var(--hz8-bg) 100%),
+    url("assets/checkout-stockholm.webp") center 62% / cover no-repeat;
+}
+body.checkout-page main.checkout { padding-top: 0 !important; }
+body.checkout-page main.checkout .breadcrumb { margin: 0 !important; padding: 0 !important; background: transparent !important; position: relative; }
+body.checkout-page main.checkout .breadcrumb .container { width: min(100% - 48px, 1180px); margin: 0 auto; }
+body.checkout-page main.checkout .breadcrumb a { color: var(--hz8-text-muted) !important; font: 500 13px/1.3 var(--hz8-font-ui) !important; }
+body.checkout-page main.checkout .breadcrumb li.is-active a { color: var(--hz8-text) !important; font-weight: 700 !important; }
+body.checkout-page main.checkout > .section, body.checkout-page main.checkout .container.checkout { padding-top: 22px !important; }
+body.checkout-page main.checkout .container { max-width: none; width: min(100% - 48px, 1180px); margin: 0 auto; }
+
+/* Två kolumner: uppgifter vänster, order höger (sticky). */
+body.checkout-page main.checkout .container .checkout-layout { gap: 28px; margin: 0 !important; align-items: flex-start; }
+body.checkout-page main.checkout .container .checkout-information {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 36px) !important;
+  border: 1px solid var(--hz8-line);
+  border-radius: var(--hz8-radius-l) !important;
+  background: var(--hz8-surface) !important;
+  box-shadow: none !important;
+}
+body.checkout-page main.checkout .container .checkout-items-summary {
+  flex: 0 0 min(400px, 38%);
+  position: sticky;
+  top: 20px;
+  padding: 24px !important;
+  border-radius: var(--hz8-radius-l);
+  background: var(--hz8-surface-warm);
+}
+body.checkout-page main.checkout .container h2 {
+  margin: 0 0 14px !important;
+  color: var(--hz8-text-heading) !important;
+  font: 600 22px/1.15 var(--hz8-font-display) !important;
+}
+body.checkout-page main.checkout .container h4 { color: var(--hz8-text); }
+
+/* Orderrader i sammanfattningen */
+body.checkout-page .checkout-items-summary .items .item { display: flex; gap: 12px; align-items: flex-start; padding: 0 0 14px; margin: 0 0 14px !important; border-bottom: 1px solid color-mix(in srgb, var(--hz8-ink) 10%, transparent); }
+body.checkout-page .checkout-items-summary .items .item .media { flex: 0 0 64px; width: 64px; height: 64px; margin: 0 !important; border-radius: var(--hz8-radius-m) !important; background: var(--hz8-surface) !important; overflow: hidden; }
+body.checkout-page .checkout-items-summary .items .item .media img { width: 100%; height: 100%; object-fit: contain; }
+body.checkout-page .checkout-items-summary .items .item strong { font: 600 15px/1.25 var(--hz8-font-display) !important; color: var(--hz8-text); }
+body.checkout-page .checkout-items-summary .summary .totals h4 { margin: 0 0 8px; color: var(--hz8-text-muted) !important; font: 700 11px/1.2 var(--hz8-font-ui) !important; letter-spacing: .14em !important; }
+body.checkout-page .checkout-items-summary .summary .totals .row { padding: 6px 0; font: 500 14px/1.35 var(--hz8-font-ui); }
+body.checkout-page .checkout-items-summary .summary .totals .row div.total-sum span { font: 700 22px/1.2 var(--hz8-font-ui) !important; color: var(--hz8-text); }
+body.checkout-page .checkout-items-summary .summary .totals .row div.total-sum span.inc-vat { font: 400 12.5px/1.3 var(--hz8-font-ui) !important; color: var(--hz8-text-muted); }
+
+/* Fält */
+body.checkout-page :is(.input, .textarea, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], textarea) {
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--hz8-field-border) !important;
+  border-radius: var(--hz8-radius-m) !important;
+  background: var(--hz8-field-bg) !important;
+  color: var(--hz8-text) !important;
+  font: 400 16px/1.3 var(--hz8-font-ui) !important;
+  box-shadow: none !important;
+}
+body.checkout-page :is(.input, .textarea, input, textarea):focus { border-color: var(--hz8-olive) !important; }
+body.checkout-page .select select {
+  min-height: 48px;
+  height: auto;
+  border: 1.5px solid var(--hz8-field-border) !important;
+  border-radius: var(--hz8-radius-m) !important;
+  background: var(--hz8-field-bg) !important;
+  color: var(--hz8-text) !important;
+  font: 500 16px/1.2 var(--hz8-font-ui) !important;
+}
+body.checkout-page .select:not(.is-multiple)::after { border-color: var(--hz8-olive) !important; }
+body.checkout-page .label, body.checkout-page label.label {
+  margin-bottom: 6px !important;
+  color: var(--hz8-text) !important;
+  font: 700 12px/1.2 var(--hz8-font-ui) !important;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+body.checkout-page :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--hz8-olive); }
+body.checkout-page .help.is-danger, body.checkout-page .is-danger.help { color: var(--hz8-error) !important; font: 600 13px/1.4 var(--hz8-font-ui) !important; }
+body.checkout-page :is(.input, .textarea, select).is-danger { border-color: var(--hz8-error) !important; }
+body.checkout-page :is(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 2px !important; }
+
+/* Frakt- och betalningsval */
+body.checkout-page main.checkout .container .options {
+  overflow: hidden;
+  border: 1.5px solid var(--hz8-line) !important;
+  border-radius: var(--hz8-radius-l) !important;
+  background: var(--hz8-surface);
+  font-size: 14px !important;
+}
+body.checkout-page main.checkout .container .options li { padding: 14px 16px !important; border-bottom: 1px solid var(--hz8-line) !important; }
+body.checkout-page main.checkout .container .options li:hover { background: var(--hz8-secondary-soft); }
+body.checkout-page main.checkout .container .options li:has(input:checked) { background: color-mix(in srgb, var(--hz8-olive) 7%, var(--hz8-surface)); box-shadow: inset 3px 0 0 var(--hz8-olive); }
+body.checkout-page main.checkout .container .options li .description h4 { font: 700 15px/1.3 var(--hz8-font-ui) !important; color: var(--hz8-text); }
+body.checkout-page main.checkout .container .options li .price { font: 700 14px/1.3 var(--hz8-font-ui) !important; color: var(--hz8-text); }
+body.checkout-page main.checkout .container .options li>.pickup-locations .pickup_location_alternatives { background: var(--hz8-bg) !important; border-radius: var(--hz8-radius-m) !important; }
+body.checkout-page main.checkout .container .offline-form .checkbox { border: 1.5px solid var(--hz8-line) !important; border-radius: var(--hz8-radius-m) !important; }
+
+/* Rabattkod */
+body.checkout-page main.checkout .coupon-code h4, body.checkout-page main.checkout .coupon-code__toggle { color: var(--hz8-olive); font: 700 12px/1.2 var(--hz8-font-ui) !important; letter-spacing: .1em; }
+body.checkout-page main.checkout .coupon-code__row div .button { border-radius: var(--hz8-radius-m) !important; }
+
+/* Knappar */
+body.checkout-page .button {
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1.5px solid var(--hz8-line-strong);
+  border-radius: var(--hz8-radius-pill) !important;
+  background: var(--hz8-surface);
+  color: var(--hz8-text);
+  font: 700 15px/1 var(--hz8-font-ui) !important;
+}
+body.checkout-page .button.is-primary, body.checkout-page .button.checkout-order, body.checkout-page .confirm-checkout button {
+  border-color: var(--hz8-cta-fill) !important;
+  background: var(--hz8-cta-fill) !important;
+  color: var(--hz8-cta-text) !important;
+}
+body.checkout-page .button.checkout-order { width: 100%; min-height: 56px; font-size: 17px !important; }
+body.checkout-page .button.is-primary:hover, body.checkout-page .button.checkout-order:hover { background: var(--hz8-cta-hover) !important; border-color: var(--hz8-cta-hover) !important; }
+
+/* Fel / meddelanden / tomt */
+body.checkout-page .checkout-system-error {
+  padding: 12px 14px !important;
+  border: 1px solid color-mix(in srgb, var(--hz8-accent-red) 40%, var(--hz8-line)) !important;
+  border-radius: var(--hz8-radius-m) !important;
+  background: var(--hz8-error-soft) !important;
+  color: var(--hz8-error) !important;
+  font: 600 13.5px/1.45 var(--hz8-font-ui) !important;
+}
+body.checkout-page main.checkout .checkout-message { padding: 16px !important; border-radius: var(--hz8-radius-m); background: var(--hz8-surface); }
+body.checkout-page main.checkout .has-text-centered { display: grid; justify-items: center; gap: 12px; padding: 40px 0 64px; }
+body.checkout-page main.checkout .has-text-centered h2 { font-size: clamp(26px, 3vw, 36px) !important; }
+body.checkout-page main.checkout .has-text-centered p { color: var(--hz8-text-muted); }
+body.checkout-page #checkout-overlay { background: color-mix(in srgb, var(--hz8-bg) 70%, transparent); }
+
+@media (max-width: 1023px) {
+  body.checkout-page main.checkout .container { width: min(100% - 32px, 1180px); }
+  body.checkout-page main.checkout .container .checkout-items-summary { position: static; flex: none; width: 100%; }
+  body.checkout-page main.checkout .container .checkout-information { padding: 18px !important; }
+  body.checkout-page header.checkout, body.checkout-page .checkout-back { height: 60px; }
+  body.checkout-page .checkout-back { padding-left: 14px; }
+}
