@@ -32,6 +32,18 @@ async function build() {
   fs.writeFileSync(path.join(OUT, "hazey-theme8.css"), css);
   fs.writeFileSync(path.join(OUT, "hazey-theme8.js"), js);
   fs.writeFileSync(path.join(OUT, "hazey-theme8.min.js"), minified.code);
+  /* Kassan kör inte temats JS-loader -- den här filen är avsedd att
+     klistras in i Theme 8:s CSS-fält (se theme8/blocks/CHECKOUT.md):
+     bara tokens + kassans regler, med absoluta bild-URL:er eftersom
+     relativa sökvägar inte fungerar i ett inklistrat CSS-fält. */
+  const CHECKOUT_ASSET_BASE = process.env.HZ8_CHECKOUT_ASSET_BASE ||
+    "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/";
+  const checkoutCss = ["00-foundation.css", "01-base.css", "86-checkout.css"]
+    .map((file) => fs.readFileSync(path.join(ROOT, "css", file), "utf8"))
+    .join("\n")
+    .replace(/url\("assets\//g, 'url("' + CHECKOUT_ASSET_BASE);
+  fs.writeFileSync(path.join(OUT, "hazey-theme8-checkout.css"), checkoutCss);
+
   fs.cpSync(path.join(ROOT, "assets"), path.join(OUT, "assets"), {
     recursive: true,
     force: true
