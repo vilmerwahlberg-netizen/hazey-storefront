@@ -162,12 +162,6 @@ html.hz8 #cartAside .continue-shopping {
   cursor: pointer;
 }
 
-/* Fri frakt-indikator (84-cart.js) */
-.hz8-cart-shipping { width: 100%; margin: 0 0 16px; text-align: left; }
-.hz8-cart-shipping__text { margin: 0 0 8px; color: var(--hz8-text); font: 600 13px/1.3 var(--hz8-font-ui) !important; }
-.hz8-cart-shipping__bar { height: 6px; border-radius: 99px; background: var(--hz8-line); overflow: hidden; }
-.hz8-cart-shipping__bar span { display: block; height: 100%; border-radius: inherit; background: var(--hz8-cta); transition: width .35s var(--hz8-ease); }
-.hz8-cart-shipping.is-complete .hz8-cart-shipping__bar span { background: var(--hz8-olive); }
 
 /* Tomt läge */
 html.hz8 #cartAside section.empty {
@@ -228,8 +222,6 @@ html.hz8 #cartAside article.item > .total del, html.hz8 #cartAside article.item 
 html.hz8 #cartAside .section.footer { border-top: 0; border-radius: 20px 20px 0 0; background: var(--hz8-surface) !important; box-shadow: 0 -10px 30px -18px color-mix(in srgb, var(--hz8-ink) 40%, transparent); }
 html.hz8 #cartAside .section.footer .button.buy { border-radius: 16px !important; background: var(--hz8-olive) !important; border-color: var(--hz8-olive) !important; }
 html.hz8 #cartAside .section.footer .button.buy:hover { background: var(--hz8-secondary-hover) !important; }
-.hz8-cart-shipping { padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--hz8-beige) 40%, var(--hz8-surface)); }
-.hz8-cart-shipping.is-complete { background: color-mix(in srgb, var(--hz8-success) 30%, var(--hz8-surface)); }
 .hz8-cart-savings { margin: -8px 0 14px; color: var(--hz8-cta-fill); font: 700 13px/1.3 var(--hz8-font-ui); text-align: right; }
 .hz8-cart-trust { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; margin: 10px 0 0; padding: 0; list-style: none; color: var(--hz8-text-muted); font: 600 11.5px/1.3 var(--hz8-font-ui); }
 .hz8-cart-trust li::before { content: "✓ "; color: var(--hz8-olive); }
@@ -259,9 +251,6 @@ html.hz8 #cartAside section.empty .button.buy { background: var(--hz8-olive) !im
 /* ======================================================================
    Minicart-paritet: mål, uppgradering, sammanställning, tom korg
    ====================================================================== */
-.hz8-cart-shipping { position: relative; margin: 0 24px 12px !important; }
-.hz8-cart-shipping__bar { position: relative; }
-.hz8-cart-shipping__mark { position: absolute; top: -3px; width: 3px; height: 12px; border-radius: 2px; background: var(--hz8-olive); transform: translateX(-50%); }
 .hz8-upgrade { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--hz8-beige) 45%, var(--hz8-surface)); }
 .hz8-upgrade__text { margin: 0; color: var(--hz8-text); font: 500 13px/1.35 var(--hz8-font-ui); }
 .hz8-upgrade__save { color: var(--hz8-cta-fill); font-weight: 700; }
@@ -273,4 +262,34 @@ html.hz8 #cartAside .section.footer .button.buy[data-hz8-label]::after { content
 .hz8-cart-empty-lead { margin: -4px 0 6px; color: var(--hz8-text-muted); font: 500 14px/1.4 var(--hz8-font-ui); }
 .hz8-cart-empty-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 14px; }
 .hz8-cart-empty-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--hz8-line-strong); border-radius: 99px; background: var(--hz8-surface); color: var(--hz8-text) !important; font: 600 14px/1 var(--hz8-font-ui); text-decoration: none; }
-@media (max-width: 767px) { .hz8-cart-shipping { margin: 0 16px 10px !important; } }
+
+/* ======================================================================
+   Frakt -> bonus-status (84-cart.js syncGoals, regler i 02a-commerce.js).
+   Kompakt rad direkt ovanför ordersumman; tunn mätare, ingen panel.
+   ====================================================================== */
+html.hz8 #cartAside .hz8-goal { align-self: stretch; width: 100%; margin: 0 0 12px; text-align: left; }
+.hz8-goal__text {
+  display: block;
+  margin: 0 0 7px !important;
+  color: var(--hz8-text) !important;
+  font: 500 13.5px/1.35 var(--hz8-font-ui) !important;
+  text-align: left;
+}
+.hz8-goal__text strong { font-weight: 700; }
+.hz8-goal__ok { display: inline-flex; align-items: center; gap: 5px; margin-right: 8px; vertical-align: top; color: var(--hz8-leaf, var(--hz8-olive)); font-weight: 700; }
+.hz8-goal__ok::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: currentColor url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.6l4.6-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+.hz8-goal__track { position: relative; height: 5px; border-radius: 99px; background: color-mix(in srgb, var(--hz8-beige) 70%, var(--hz8-surface)); overflow: hidden; }
+.hz8-goal__fill { position: absolute; inset: 0; border-radius: inherit; background: var(--hz8-terra, var(--hz8-cta)); transform-origin: left center; transform: scaleX(0); transition: transform .45s var(--hz8-ease); }
+.hz8-goal[data-stage="bonus"] .hz8-goal__fill { background: var(--hz8-olive); }
+.hz8-goal[data-stage="done"] .hz8-goal__track { display: none; }
+.hz8-goal[data-stage="done"] .hz8-goal__text { margin-bottom: 0 !important; }
+@media (prefers-reduced-motion: reduce) { .hz8-goal__fill { transition: none; } }
+.hz8-cart-shipline.is-free span:last-child { color: var(--hz8-leaf, var(--hz8-olive)); font-weight: 700; }
+.hz8-upgrade__goal { color: var(--hz8-leaf, var(--hz8-olive)); font-weight: 700; }

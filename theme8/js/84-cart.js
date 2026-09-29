@@ -3,7 +3,7 @@
    varukorgslogik (antal, ta bort, summa, moms, "Till Kassan") är
    plattformens egen och lämnas orörd; Theme 8 läser bara Nyehandels
    Vuex-store och lägger till:
-   - fri frakt-indikator (butikens egen regel, se FREE_SHIPPING_FROM),
+   - statusyta fri frakt -> 150 kr bonus (regler i 02a-commerce.js),
    - Escape stänger, fokus hålls i drawern medan den är öppen,
    - tillgängliga namn/roll på drawern.
    Allt är idempotent och körs om när Vue ritar om drawern. */
@@ -11,20 +11,7 @@
   "use strict";
 
   var HZ8 = window.HZ8;
-  /* "Fri frakt på alla beställningar över 499 kr" -- butikens egen text
-     på /sv/page/faq och i produktsidornas USP-rad (admin). Ändra här om
-     butiken ändrar sin fraktregel. */
-  var FREE_SHIPPING_FROM = 499;
-  var BONUS_FROM = 2700;   // prototypens bonusmål (150 kr)
-  var BONUS_AMOUNT = 150;
-  /* Mål visas bara när kassan faktiskt tillämpar dem. Verifierat
-     2026-09-28: Nyehandels kassa tar 49 kr frakt även vid 990 och
-     3 168 kr, och ingen bonus/rabatt appliceras vid >2 700 kr -- båda
-     målen är därför AV tills butikens frakt-/kampanjregler finns i
-     Nyehandel (se slutrapport). */
-  HZ8.flags = HZ8.flags || {};
-  if (HZ8.flags.freeShippingGoal == null) HZ8.flags.freeShippingGoal = false;
-  if (HZ8.flags.bonusGoal == null) HZ8.flags.bonusGoal = false;
+  var C = HZ8.commerce; // gemensamma frakt-/bonusregler (02a-commerce.js)
 
   function cartState() {
     var store = HZ8.store();
@@ -35,42 +22,34 @@
     return { total: total, count: c.quantity_count || 0 };
   }
 
-  function formatKr(value) {
-    return Math.ceil(value).toLocaleString("sv-SE") + " kr";
-  }
-
-  /* Tvåstegsmål (fri frakt -> bonus) -- bara när respektive flagga är på. */
-  function syncShipping(aside) {
+  /* Statusyta fri frakt -> 150 kr bonus, nära ordersumman. Allt räknas
+     av HZ8.commerce på Nyehandels verkliga korg; tom korg eller okänt
+     belopp (aktiv kod utan verifierat nettobelopp) -> ingen mätare. */
+  function syncGoals(aside) {
     var footer = aside.querySelector(".section.footer");
-    var existing = aside.querySelector(".hz8-cart-shipping");
-    var state = cartState();
-    var show = HZ8.flags.freeShippingGoal || HZ8.flags.bonusGoal;
-    if (!footer || !state || state.total == null || !state.count || !show) {
-      if (existing) existing.remove();
+    var el = aside.querySelector(".hz8-goal");
+    var s = C.current();
+    if (!footer || !s || !s.known || s.stage === "empty" || !C.goalsEnabled()) {
+      if (el) el.remove();
       return;
     }
-    if (!existing) {
-      existing = document.createElement("div");
-      existing.className = "hz8-cart-shipping";
-      existing.setAttribute("role", "status");
-      existing.innerHTML = '<p class="hz8-cart-shipping__text"></p><div class="hz8-cart-shipping__bar" aria-hidden="true"><span></span><i class="hz8-cart-shipping__mark"></i></div>';
-      var items = aside.querySelector(".section.items");
-      (items ? items.parentNode : aside).insertBefore(existing, items || null);
+    if (!el) {
+      el = document.createElement("div");
+      el.className = "hz8-goal";
+      el.innerHTML = '<p class="hz8-goal__text" aria-live="polite" aria-atomic="true"></p>' +
+        '<div class="hz8-goal__track" aria-hidden="true"><span class="hz8-goal__fill"></span></div>';
     }
-    var t = state.total, text, pct;
-    var fs = HZ8.flags.freeShippingGoal, bo = HZ8.flags.bonusGoal;
-    if (fs && t < FREE_SHIPPING_FROM) text = formatKr(FREE_SHIPPING_FROM - t) + " kvar till fri frakt";
-    else if (bo && t < BONUS_FROM) text = (fs ? "Fri frakt uppnådd · " : "") + formatKr(BONUS_FROM - t) + " kvar till " + BONUS_AMOUNT + " kr bonus";
-    else text = fs && bo ? "Fri frakt + " + BONUS_AMOUNT + " kr bonus uppnått" : fs ? "Fri frakt uppnådd" : BONUS_AMOUNT + " kr bonus uppnådd";
-    var max = bo ? BONUS_FROM : FREE_SHIPPING_FROM;
-    pct = Math.min(100, Math.max(3, t / max * 100));
-    var p = existing.querySelector(".hz8-cart-shipping__text");
-    if (p.textContent !== text) p.textContent = text;
-    existing.classList.toggle("is-complete", t >= max);
-    existing.querySelector(".hz8-cart-shipping__bar span").style.width = pct + "%";
-    var mark = existing.querySelector(".hz8-cart-shipping__mark");
-    mark.hidden = !(fs && bo);
-    mark.style.left = (FREE_SHIPPING_FROM / BONUS_FROM * 100) + "%";
+    var total = footer.querySelector(".total");
+    if (el.parentNode !== footer || el.nextElementSibling !== total) footer.insertBefore(el, total || footer.firstChild);
+    var R = C.rules, html;
+    if (s.stage === "shipping") html = "<strong>" + C.kr(s.shipping.remaining) + "</strong> kvar till fri frakt";
+    else if (s.stage === "bonus") html = '<span class="hz8-goal__ok">Fri frakt<span class="hz8-visually-hidden"> uppnådd.</span></span> <span><strong>' + C.kr(s.bonus.remaining) + "</strong> kvar till " + R.bonusAmount + " kr bonus</span>";
+    else html = '<span class="hz8-goal__ok">Fri frakt + ' + R.bonusAmount + " kr bonus uppnått</span>";
+    var p = el.querySelector(".hz8-goal__text");
+    if (p.innerHTML !== html) p.innerHTML = html;
+    el.setAttribute("data-stage", s.stage);
+    var prog = s.stage === "shipping" ? s.shipping.progress : s.stage === "bonus" ? s.bonus.progress : 1;
+    el.querySelector(".hz8-goal__fill").style.transform = "scaleX(" + prog.toFixed(4) + ")";
   }
 
   function parseKr(t) { var m = String(t || "").replace(/\s/g, "").match(/(\d+(?:,\d+)?)/); return m ? parseFloat(m[1].replace(",", ".")) : 0; }
@@ -199,6 +178,10 @@
       /* Bara köpbara (Nyehandels product/state). */
       return Promise.all(cands.map(function (c) {
         var a = c.html.match(/href="([^"]*\/products\/[^"]+)"/);
+        /* Giltigt pris krävs (kortets eget pris, > 0 kr). */
+        var tmp = document.createElement("div"); tmp.innerHTML = c.html;
+        var pr = tmp.querySelector(".price ins") || tmp.querySelector(".price");
+        if (!pr || !(C.parseKr(pr.textContent) > 0)) return null;
         return HZ8.productState(a[1]).then(function (st) { return st.buyable ? c : null; }).catch(function () { return null; });
       }));
     }).then(function (checked) {
@@ -272,12 +255,21 @@
         var newTotal = next.min * next.unit;
         var cur = info.tiers.filter(function (t) { return t.min <= qty; }).pop() || info.tiers[0];
         var extraSave = next.min * (cur.unit - next.unit);
-        var sig = it.id + ":" + qty + ":" + next.min;
+        /* Når uppgraderingen nästa mål? Räknat på korgens verkliga
+           varuvärde + prisskillnaden enligt Nyehandels egen pristrappa. */
+        var hint = "", cs = C.current();
+        if (cs && cs.known && C.goalsEnabled()) {
+          var after = C.evaluate(cs.goods + (newTotal - nowTotal), cs.count);
+          if (!cs.bonus.reached && after.bonus.reached) hint = C.rules.bonusAmount + " kr bonus";
+          else if (!cs.shipping.reached && after.shipping.reached) hint = "fri frakt";
+        }
+        var sig = it.id + ":" + qty + ":" + next.min + ":" + hint;
         if (box && box.getAttribute("data-sig") === sig) return;
         if (!box) { box = document.createElement("div"); box.className = "hz8-upgrade"; row.appendChild(box); }
         box.setAttribute("data-sig", sig);
         box.innerHTML = '<p class="hz8-upgrade__text">Uppgradera till <strong>' + next.min + " st</strong> för " + kr(newTotal - nowTotal) + " till" +
-          (extraSave >= 0.5 ? ' <span class="hz8-upgrade__save">· du sparar ' + kr(extraSave) + " till</span>" : "") + "</p>" +
+          (extraSave >= 0.5 ? ' <span class="hz8-upgrade__save">· du sparar ' + kr(extraSave) + " till</span>" : "") +
+          (hint ? ' <span class="hz8-upgrade__goal">· ger ' + hint + "</span>" : "") + "</p>" +
           '<button type="button" class="hz8-upgrade__btn" data-item="' + it.id + '" data-qty="' + next.min + '">Uppgradera</button>';
       });
     });
@@ -301,10 +293,17 @@
     if (!ship) {
       ship = document.createElement("div");
       ship.className = "hz8-cart-shipline";
-      ship.innerHTML = "<span>Frakt</span><span>Beräknas i kassan</span>";
-      var total = footer.querySelector(".total");
-      if (total) total.insertBefore(ship, total.firstChild);
+      ship.innerHTML = "<span>Frakt</span><span></span>";
     }
+    var total = footer.querySelector(".total");
+    if (total && ship.parentNode !== total) total.insertBefore(ship, total.firstChild);
+    /* Fraktkostnaden visas bara när regeln får visas (se
+       HZ8.commerce.goalsEnabled) -- annars räknar kassan fram den. */
+    var s = C.current();
+    var shipTxt = s && s.known && C.goalsEnabled() ? (s.shippingCost ? C.kr(s.shippingCost) + " tillkommer" : "Fri frakt") : "Beräknas i kassan";
+    var shipVal = ship.lastElementChild;
+    if (shipVal.textContent !== shipTxt) shipVal.textContent = shipTxt;
+    ship.classList.toggle("is-free", shipTxt === "Fri frakt");
     var btn = footer.querySelector(".button.buy");
     var label = "Till kassan · " + kr(state.total);
     if (btn && btn.getAttribute("data-hz8-label") !== label) { btn.setAttribute("data-hz8-label", label); btn.setAttribute("aria-label", label); }
@@ -368,8 +367,20 @@
         if (wrap.classList.contains("is-active")) syncCrossSell(document.getElementById("cartAside") || aside);
       }).observe(wrap, { attributes: true, attributeFilter: ["class"] });
     }
-    HZ8.watch(function () {
-      watchWrap();
+    /* Vue uppdaterar belopp som ren textändring (ingen childList-
+       mutation) -- därför synkas också vid varje cart/*-mutation i
+       Nyehandels Vuex-store, efter att Vue hunnit rita om. */
+    var subscribed = false, pending = 0;
+    function subscribe() {
+      var st = HZ8.store();
+      if (subscribed || !st || !st.subscribe) return;
+      subscribed = true;
+      st.subscribe(function (m) {
+        if (!/^cart\//.test(m.type) || pending) return;
+        pending = requestAnimationFrame(function () { pending = 0; setTimeout(sync, 0); });
+      });
+    }
+    function sync() {
       var wrap = document.getElementById("cart-side-wrap");
       var aside = document.getElementById("cartAside");
       if (!wrap || !aside) return;
@@ -378,7 +389,7 @@
         aside.setAttribute("aria-modal", "true");
         aside.setAttribute("aria-label", "Din varukorg");
       }
-      syncShipping(aside);
+      syncGoals(aside);
       syncHeader(aside);
       syncUpgrades(aside);
       syncSummary(aside);
@@ -387,6 +398,11 @@
       syncTrust(aside);
       if (wrap.classList.contains("is-active")) syncCrossSell(aside);
       syncOpen(wrap, aside);
+    }
+    HZ8.watch(function () {
+      watchWrap();
+      subscribe();
+      sync();
     });
   });
 })();
