@@ -233,7 +233,7 @@
      laglighetspåståenden utan källa används inte i mikrotrust. */
   function realUsps() {
     return Array.prototype.map.call(document.querySelectorAll(".product-usp li"), function (li) { return li.textContent.trim(); })
-      .filter(function (t) { return t && !/trustpilot|lagligt/i.test(t); });
+      .filter(function (t) { return t && !/trustpilot|lagligt|\d\s*[–-]\s*\d\s*(arbets|vardag|dag)|dhl|postnord/i.test(t); });
   }
 
   /* Aktuellt totalpris = antal x Nyehandels pris för den nivån
@@ -355,9 +355,9 @@
     var extra = document.createElement("div");
     extra.className = "hz8-pdp-extra";
     var docs = docsSentence();
-    /* Leveranspunkter = produktens egna USP-rad (admin), utan omdömes-/
-       laglighetspåståenden. */
-    var usps = realUsps().filter(function (u) { return /frakt|skickas|leverans|diskret|paket/i.test(u); });
+    /* Leveranspunkter = butikens verifierade regler (HZ8.commerce), inte
+       USP-radens leveranstid/transportör som motsäger andra källor. */
+    var usps = HZ8.commerce.deliveryLines();
     extra.innerHTML =
       '<div class="hz8-pdp-acc hz8-accordion" id="hz8-pdp-spec">' +
         '<details class="hz8-pdp-spec" open><summary>Specifikation</summary><dl></dl></details>' +

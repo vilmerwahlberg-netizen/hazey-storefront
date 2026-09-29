@@ -62,7 +62,9 @@
      påståenden) visas inte nära köpbeslutet; texten finns kvar i DOM. */
   function markUnverifiedUsps() {
     document.querySelectorAll(".product-usp li").forEach(function (li) {
-      if (/trustpilot|lagligt/i.test(li.textContent)) li.classList.add("hz8-usp-unverified");
+      /* Overifierat nära köpbeslutet: omdöme/laglighet samt leveranstid
+         och transportör (motstridiga uppgifter i butikens innehåll). */
+      if (/trustpilot|lagligt|\d\s*[–-]\s*\d\s*(arbets|vardag|dag)|dhl|postnord/i.test(li.textContent)) li.classList.add("hz8-usp-unverified");
     });
   }
 
@@ -136,14 +138,14 @@
   function usps() { return Array.prototype.map.call(document.querySelectorAll(".product-usp li"), function (li) { return li.textContent.trim(); }); }
 
   function trustItems() {
-    /* Endast verifierade uppgifter: butikens adress (Stockholm, kontakt-
-       sidan/footern), diskret paket och leveranstid ur produktens egen
-       USP-rad, 18-årsgräns (footern). */
-    var items = [{ short: "Stockholm", long: "Skickas från Stockholm" }];
-    var u = usps();
-    if (u.some(function (t) { return /diskret/i.test(t); })) items.push({ short: "Diskret", long: "Diskret paket" });
-    var days = u.map(function (t) { return (t.match(/(\d\s*[–-]\s*\d)\s*(vardagar|dagar)/i) || [])[1]; }).filter(Boolean)[0];
-    if (days) items.push({ short: days.replace(/\s/g, "").replace("-", "–") + " dagar", long: "Skickas inom " + days.replace(/\s/g, "").replace("-", "–") + " vardagar" });
+    /* Endast verifierade, generella uppgifter (HZ8.commerce): ingen
+       transportör och ingen leveranstid förrän butikens motstridiga
+       uppgifter (1–2/1–3/1–4 dagar, DHL/PostNord) är lösta. */
+    var R = HZ8.commerce.rules;
+    var items = [];
+    if (HZ8.commerce.goalsEnabled()) items.push({ short: "Fri frakt " + R.freeShippingFrom + " kr", long: "Fri frakt från " + R.freeShippingFrom + " kr" });
+    items.push({ short: "Sverige", long: "Skickas från Sverige" });
+    items.push({ short: "Diskret", long: "Diskret förpackning" });
     items.push({ short: "18 år", long: "18 års åldersgräns" });
     return items;
   }

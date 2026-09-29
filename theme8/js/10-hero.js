@@ -23,9 +23,9 @@
       + '    </div>'
       + '    <a class="hz8-hero__more" href="/sv/categories/alla-produkter">Populära serier</a>'
       + '    <div class="hz8-hero__microtrust">'
-      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/></svg>Snabb leverans</span>'
+      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/></svg>' + (window.HZ8 && HZ8.commerce && HZ8.commerce.goalsEnabled() ? "Fri frakt från " + HZ8.commerce.rules.freeShippingFrom + " kr" : "Skickas från Sverige") + '</span>'
       + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg>Diskret förpackning</span>'
-      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Leveransgaranti</span>'
+      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Spårbar leverans</span>'
       + '    </div>'
       + '  </div>'
       + '</div>';
