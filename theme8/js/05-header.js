@@ -389,6 +389,18 @@
   window.HZ8.navContent = DROPDOWN_CONTENT;
   window.HZ8.navCategories = CATEGORIES;
 
+  /* Butikens egna absoluta URL:er (https://hazeyse.nyehandel.se/...) ->
+     sökväg, så att samma meny fungerar på den slutliga domänen. Preview-
+     parametern läggs på vid klick av 01-preview-links.js. */
+  (function relativize(node) {
+    if (!node || typeof node !== "object") return;
+    Object.keys(node).forEach(function (k) {
+      var v = node[k];
+      if (k === "href" && typeof v === "string") node[k] = v.replace(/^https:\/\/hazeyse\.nyehandel\.se(?=\/)/, "");
+      else if (v && typeof v === "object") relativize(v);
+    });
+  })({ c: CATEGORIES, d: DROPDOWN_CONTENT });
+
   function chevronSvg() {
     return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
@@ -506,7 +518,7 @@
     var productHtml = content ? renderProductCard(content.product, "mobile") : "";
     return '<div class="hz8-mobile-accordion" data-hz8-cat="' + catKey + '">'
       + '<button type="button" class="hz8-mobile-accordion__trigger" aria-expanded="false" aria-controls="' + panelId + '">'
-      + label + chevronSvg()
+      + '<span>' + label + '</span><span class="hz8-mobile-accordion__chev" aria-hidden="true">' + chevronSvg() + '</span>'
       + '</button>'
       + '<div class="hz8-mobile-accordion__panel" id="' + panelId + '" role="region" aria-label="' + label + ' -- undersortiment">'
       + '<div class="hz8-mobile-accordion__inner">'
@@ -522,16 +534,24 @@
     wrap.className = "hz8-mobile-drawer";
     wrap.id = "hz8MobileDrawer";
     var logoSrc = assetBase ? assetBase + "hazey-logo.png" : "";
+    /* Trust: bara stabila, verifierade uppgifter (ingen leveranstid,
+       transportör eller betyg). Fri frakt följer samma lanseringsspärr
+       som minicarten (HZ8.commerce.goalsEnabled). */
+    var trust = ["Skickas från Sverige", "Diskret förpackning"];
+    if (window.HZ8.commerce && window.HZ8.commerce.goalsEnabled()) trust.unshift("Fri frakt från " + window.HZ8.commerce.rules.freeShippingFrom + " kr");
     wrap.innerHTML = ''
       + '<div class="hz8-mobile-drawer__backdrop" data-hz8-drawer-backdrop></div>'
       + '<div class="hz8-mobile-drawer__panel" role="dialog" aria-modal="true" aria-label="Meny">'
       + '<div class="hz8-mobile-drawer__header">'
       + (logoSrc ? '<img src="' + logoSrc + '" alt="Hazey.se">' : '<strong>HAZEY.se</strong>')
       + '<button type="button" class="hz8-mobile-drawer__close" data-hz8-drawer-close aria-label="Stäng meny">'
-      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
       + '</button>'
       + '</div>'
-      + '<div class="hz8-mobile-drawer__list">'
+      + '<button type="button" class="hz8-mobile-drawer__search" data-hz8-open-search aria-haspopup="dialog">'
+      + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'
+      + '<span>Sök produkter</span></button>'
+      + '<nav class="hz8-mobile-drawer__list" aria-label="Sortiment">'
       + CATEGORIES.map(function (cat) {
           if (cat.dropdown) {
             var catKey = cat.label.toLowerCase();
@@ -540,7 +560,19 @@
           var campaignClass = cat.campaign ? " hz8-cat--campaign" : "";
           return '<a href="' + cat.href + '" class="' + campaignClass.trim() + '">' + cat.label + '</a>';
         }).join("")
-      + '</div>'
+      + '</nav>'
+      + '<nav class="hz8-mobile-drawer__utility" aria-label="Konto och kundservice">'
+      + '<a href="/sv/account" data-hz8-account>'
+      + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
+      + '<span>Mitt konto</span></a>'
+      + '<a href="/sv/page/kontakt">'
+      + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>'
+      + '<span>Kontakt</span></a>'
+      + '<a href="/sv/page/faq">'
+      + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17.5v.01"/></svg>'
+      + '<span>Vanliga frågor</span></a>'
+      + '</nav>'
+      + '<ul class="hz8-mobile-drawer__trust">' + trust.map(function (t) { return '<li>' + t + '</li>'; }).join("") + '</ul>'
       + '</div>';
     return wrap;
   }
@@ -729,57 +761,14 @@
       var drawer = buildMobileDrawer(context.assetBase);
       document.body.appendChild(drawer);
 
-      var backdrop = drawer.querySelector("[data-hz8-drawer-backdrop]");
-      var closeBtn = drawer.querySelector("[data-hz8-drawer-close]");
       var burger = document.getElementById("mobile-nav-menu") || header.querySelector(".hamburger");
-      var lockedScrollY = 0;
-
-      /* Bakgrundsscroll måste låsas medan drawern är öppen (annars
-         scrollar sidan BAKOM den fasta drawer-panelen på touch-enheter).
-         position:fixed+top=-scrollY är det enda pålitliga sättet att
-         låsa scroll på iOS Safari (overflow:hidden ensamt läcker
-         igenom där) -- scrollpositionen återställs exakt vid stängning. */
-      function lockBodyScroll() {
-        lockedScrollY = window.scrollY;
-        document.body.style.position = "fixed";
-        document.body.style.top = "-" + lockedScrollY + "px";
-        document.body.style.left = "0";
-        document.body.style.right = "0";
-        document.body.classList.add("hz8-scroll-locked");
-      }
-      function unlockBodyScroll() {
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.left = "";
-        document.body.style.right = "";
-        document.body.classList.remove("hz8-scroll-locked");
-        window.scrollTo(0, lockedScrollY);
-      }
-
-      function openDrawer() {
-        drawer.classList.add("is-open");
-        if (burger) burger.setAttribute("aria-expanded", "true");
-        lockBodyScroll();
-      }
-      function closeDrawer() {
-        drawer.classList.remove("is-open");
-        if (burger) burger.setAttribute("aria-expanded", "false");
-        unlockBodyScroll();
-      }
-      if (burger) {
-        burger.addEventListener("click", function () {
-          if (drawer.classList.contains("is-open")) closeDrawer();
-          else openDrawer();
-        });
-      }
-      if (backdrop) backdrop.addEventListener("click", closeDrawer);
-      if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && drawer.classList.contains("is-open")) closeDrawer();
-      });
-
+      /* Öppna/stäng, scroll-lås, fokusfälla, Escape och konflikter med
+         sök/minicart ägs av HZ8.mobileNav (05a-mobile-nav.js). */
+      window.HZ8.mobileNav.initDrawer(drawer, burger);
       initMobileAccordions(drawer);
     }
+    var searchTrigger = document.getElementById("mobile-search-trigger");
+    if (searchTrigger) window.HZ8.mobileNav.initSearch(searchTrigger, CATEGORIES.filter(function (c) { return !c.campaign; }));
 
     /* Glasig flytande header (vila) -> fullbredds sticky bar (scrollat).
        KORRIGERING (2026-09-25): tröskeln var tidigare ett fast 40px-tal
