@@ -50,3 +50,43 @@ strainvarianterna, `pivot_id` = paketets platser).
 Tills dess: vanliga paket med en och samma strain fungerar med korrekt
 pris (antal på en variant). Byggaren kan förhandsvisas med
 `?hz8-mixed=1`; köpknappen är då låst ("Blandade paket kommer snart").
+
+## Byggaren (2026-09-29, `83-pdp-purchase.js`)
+
+- Paketstorlek väljs först (Nyehandels egna paket-/antalsknappar). Vid 2+
+  visas en rad per plats med variantbild om Nyehandel har en, annars
+  platsnumret.
+- "Slumpa strains" fyller alla platser med köpbara strains och tar
+  aldrig fler av en strain än dess `available_stock`. Slutsålda strains
+  väljs aldrig. Varje plats kan ändras efteråt, och val som skulle
+  överskrida lagret är spärrade.
+- Köp är låst tills alla platser är giltiga **och** en verifierad
+  paketprodukt finns i `PACKAGE_PRODUCTS` (`{ produktId: { storlek:
+  paketvariantId } }`, tom idag) **och** `HZ8.flags.mixedPacks` är på.
+- `HZ8.mixedPack.payload()` bygger payloaden ovan av valen. Köpknappen
+  skickar den som en rad och öppnar sedan minicarten.
+
+## Önskat paketpris mot Nyehandels pris idag
+
+Uppmätt i previewn, Cart THC-A 45 % Faraoh 1 ml, 5-pack (nivåpris 396 kr/st):
+
+| Val | Önskat (paket) | Nyehandel idag (en rad per strain) |
+|---|---|---|
+| 5 × samma strain | 1 980 kr | 1 980 kr |
+| 3 + 1 + 1 | 1 980 kr | 3 × 420,75 + 495 + 495 = **2 252,25 kr** |
+| 2 + 2 + 1 | 1 980 kr | 2 × 495 + 2 × 495 + 495 = **2 475 kr** |
+
+Skillnaden visas bara i förhandsvisningen. Ingen frontendrabatt läggs
+på, eftersom Nyehandel ska ta det pris som visas.
+
+## Befintliga Nyehandel-modeller
+
+- **Paketprodukt (`is_package`)**: den enda modell som bär ett eget pris
+  och valda barnvarianter i en rad. Frontendstödet finns i `foundation.js`.
+  Lagerdragning per barnvariant och hur orderraden visas är **inte
+  verifierat**. Ingen paketprodukt finns i katalogen, och en dold
+  testprodukt kräver admin (ADMIN-TODO.md punkt 7).
+- **Fast bundle / kombo** (som WooCommerce "Kombo – …"): fast innehåll,
+  ingen strainval per plats. Duger inte för blandade paket.
+- **Rad-`meta`**: sparas på raden men påverkar varken pris eller lager.
+  Duger inte.

@@ -68,3 +68,27 @@ laddar, så dubbelladdningen påverkar inget.
   Trustpilot; inget Theme 8-skript föreslås där.
 - Kassans "Till Kassan"-navigering (Vue) tappar `?preview=`; det spelar
   ingen roll eftersom kassan ändå inte kör temat.
+
+## Frakt- och bonusstatus i kassan (2026-09-29)
+
+**Inte byggd, och det är avsiktligt.** Kassan laddar inte Theme 8:s JS
+(kontrollerat igen: `window.HZ8` saknas, bara `foundation.js`, den gamla
+Oliverforss8-bundlen från Head-fältet och `pulse-tracker.js`). En status
+kräver beräkning och kan inte göras i ren CSS. Ett skript i Head-fältet är
+inte tillåtet (CLAUDE.md), och Kustoms iframe får inte röras.
+
+Nyehandels kassa räknar redan själv
+`checkout.calculations.free_shipping = { remaining,
+free_shipping_progress_percentage, has_alternative }` och
+`shipping.free_freight_activated`. När fri frakt över 499 kr är
+aktiverad i fraktsättet (ADMIN-TODO.md punkt 1–3) visar Nyehandels egen
+kassa sin fri frakt-status. Den kan då stylas med CSS i
+`86-checkout.css` utan egen logik. Bonusstatus finns inte i kassan och
+ska inte läggas dit förrän bonusmekanismen är beslutad.
+
+Om Nyehandel har ett separat skriptfält för kassan kan
+`hazey-theme8.min.js` läggas där. Då visar `HZ8.commerce` samma status.
+Det är inte verifierat att ett sådant fält finns.
+
+Kassans frakt är idag **49 kr vid alla belopp** (fraktsätt
+"Fraktkostnad", ingen fri frakt-gräns), se ADMIN-TODO.md.
