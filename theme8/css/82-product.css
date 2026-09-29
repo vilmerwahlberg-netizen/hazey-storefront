@@ -662,13 +662,30 @@ html.hz8[data-hz8-page="product"] #store-main .hz8-variant.is-out { opacity: .5;
 .hz8-builder__title { margin: 0; font: 700 14px/1.3 var(--hz8-font-ui); }
 .hz8-builder__count { color: var(--hz8-cta-fill); font: 700 13px/1 var(--hz8-font-ui); }
 .hz8-builder__note { margin: 6px 0 0; color: var(--hz8-text-muted); font: 500 12px/1.4 var(--hz8-font-ui); }
-.hz8-builder__slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 12px 0; padding: 0; list-style: none; }
-.hz8-builder__slots li { display: grid; grid-template-columns: 26px 1fr; align-items: center; gap: 6px; }
-.hz8-builder__slots label { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--hz8-olive); color: #fff; font: 700 12px/1 var(--hz8-font-ui) !important; margin: 0 !important; letter-spacing: 0 !important; }
-.hz8-builder__slots select { min-height: 44px; width: 100%; padding: 0 10px; border: 1.5px solid var(--hz8-line-strong); border-radius: 10px; background: var(--hz8-surface); font: 500 14px/1 var(--hz8-font-ui); }
+.hz8-builder__slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin: 12px 0; padding: 0; list-style: none; }
+.hz8-builder__slot { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: center; gap: 8px; min-width: 0; }
+.hz8-builder__thumb { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: color-mix(in srgb, var(--hz8-beige) 55%, var(--hz8-surface)); color: var(--hz8-text-muted); font: 700 12px/1 var(--hz8-font-ui); overflow: hidden; }
+.hz8-builder__slot.is-set .hz8-builder__thumb { background: var(--hz8-olive); color: #fff; }
+.hz8-builder__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.hz8-builder__slot select { min-width: 0; min-height: 44px; width: 100%; padding: 0 10px; border: 1.5px solid var(--hz8-line-strong); border-radius: 10px; background: var(--hz8-surface); color: var(--hz8-text); font: 500 14px/1 var(--hz8-font-ui); }
+.hz8-builder__slot.is-set select { border-color: var(--hz8-olive); font-weight: 600; }
+.hz8-builder__scramble[disabled] { opacity: .5; cursor: not-allowed; }
+.hz8-builder__summary { margin: 12px 0 0; padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--hz8-beige) 35%, var(--hz8-surface)); font: 500 13px/1.45 var(--hz8-font-ui); }
+.hz8-builder__summary p { margin: 0; }
+.hz8-builder__summary ul { display: flex; flex-wrap: wrap; gap: 2px 12px; margin: 4px 0 0; padding: 0; list-style: none; color: var(--hz8-text); font-weight: 600; }
+.hz8-builder__summary ul span { color: var(--hz8-text-muted); font-weight: 500; }
+.hz8-builder__diff { margin-top: 6px !important; color: var(--hz8-cta-fill); font-weight: 600; }
+@media (max-width: 767px) {
+  .hz8-builder__slots { grid-template-columns: 1fr 1fr; gap: 6px; }
+}
+@media (max-width: 479px) {
+  .hz8-builder__slots { grid-template-columns: 1fr; }
+  .hz8-builder__slot { grid-template-columns: 28px minmax(0, 1fr); gap: 6px; }
+  .hz8-builder__thumb { width: 28px; height: 28px; border-radius: 8px; }
+  .hz8-builder__slot select { min-height: 44px; padding: 0 6px; font-size: 13px; }
+}
 .hz8-builder__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .hz8-builder__same { padding: 0; border: 0; background: none; cursor: pointer; min-height: 44px; }
-.hz8-builder__summary { margin: 10px 0 0; color: var(--hz8-text); font: 600 13px/1.5 var(--hz8-font-ui); }
 /* Köpbar (mobil): alltid tillgänglig, döljs när huvudköpraden syns. */
 .hz8-buybar { display: none; }
 @media (max-width: 767px) {
@@ -714,3 +731,8 @@ html.hz8[data-hz8-page="product"] .hz8-pdp-brand { order: 11 !important; }
 html.hz8[data-hz8-page="product"] .hz8-pdp-help { order: 12 !important; }
 html.hz8[data-hz8-page="product"] .product-detail__information > .hz8-stock-sum { order: 4 !important; }
 html.hz8[data-hz8-page="product"] .product-usp li.hz8-usp-unverified { display: none !important; }
+
+/* Strainbyggare: låst huvudköpknapp (83-pdp-purchase.js, data-hz8-block). */
+html.hz8[data-hz8-page="product"] .buy-form .button.buy[data-hz8-block] { opacity: .62; cursor: not-allowed; }
+html.hz8[data-hz8-page="product"] .buy-form .button.buy[data-hz8-block] span { display: none !important; }
+html.hz8[data-hz8-page="product"] .buy-form .button.buy[data-hz8-block]::after { content: attr(data-hz8-block); font-size: 15px; }

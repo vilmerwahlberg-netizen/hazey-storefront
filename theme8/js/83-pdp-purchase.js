@@ -206,21 +206,39 @@
     var cta = bar.querySelector(".hz8-buybar__cta");
     if (cta.textContent !== label) { cta.textContent = label; cta.setAttribute("aria-label", label); }
     if (block) bar.setAttribute("data-block", "1"); else bar.removeAttribute("data-block");
+    /* Huvudköpknappen visar samma spärr (klicket stoppas i capture). */
+    if (nb) {
+      if (block) { if (nb.getAttribute("data-hz8-block") !== block) { nb.setAttribute("data-hz8-block", block); nb.setAttribute("aria-disabled", "true"); nb.setAttribute("aria-label", block); } }
+      else if (nb.hasAttribute("data-hz8-block")) { nb.removeAttribute("data-hz8-block"); nb.removeAttribute("aria-disabled"); nb.removeAttribute("aria-label"); }
+    }
     cta.disabled = !block && !!(nb && nb.disabled);
     bar.querySelector("output").textContent = q ? (q.value || "1") : "1";
     var blocked = !!document.querySelector("#cart-side-wrap.is-active, #hz8MobileDrawer.is-open, .hz8-choice, #sidebar.is-active");
     bar.classList.toggle("is-hidden", blocked);
   }
 
-  /* ---- Strainbyggare (blandade paket) -- bakom flagga ---- */
+  /* ---- Strainbyggare (blandade paket) -- bakom flagga ----
+     Kunden väljer paketstorlek (Nyehandels egna antal/paketknappar),
+     sedan en strain per plats. Slumpa fyller ALLA platser med köpbara
+     strains inom lagersaldot; varje plats kan ändras efteråt. Köp är
+     låst tills alla platser är giltiga OCH en verifierad Nyehandel-
+     paketprodukt finns för produkten (PACKAGE_PRODUCTS nedan) -- annars
+     skulle Nyehandel prissätta varje strain som en egen rad. */
+  /* Produktens id -> { size: paketproduktens variant-id }. Tom tills en
+     riktig, dold paketprodukt är verifierad (MIXED-PACKS.md). */
+  var PACKAGE_PRODUCTS = {};
   var builder = { size: 0, slots: [], scrambleLabel: "Slumpa strains" };
   function builderEnabled() { return HZ8.flags.mixedPacks || mixedPreview; }
   function currentPackSize() { var q = nativeQty(); return q ? parseInt(q.value, 10) || 1 : 1; }
+  function packageVariantId() {
+    var map = state.product && PACKAGE_PRODUCTS[state.product.id];
+    return map && map[builder.size] || null;
+  }
   function builderBlock() {
     if (!builderEnabled() || builder.size < 2) return "";
     var missing = builder.slots.filter(function (s) { return !s; }).length;
     if (missing) return "Välj " + missing + (missing === 1 ? " strain till" : " strains till");
-    if (!HZ8.flags.mixedPacks) return "Blandade paket kommer snart";
+    if (!HZ8.flags.mixedPacks || !packageVariantId()) return "Blandade paket kommer snart";
     return "";
   }
   function focusFirstMissing() {
@@ -232,7 +250,53 @@
     var sel = select();
     if (!sel) return [];
     return Array.prototype.filter.call(sel.options, function (o) { return o.value !== "" && isBuyable(variantFor(o.value)); })
-      .map(function (o) { return { value: o.value, label: o.textContent.trim() }; });
+      .map(function (o) { var v = variantFor(o.value); return { value: o.value, label: o.textContent.trim(), variant: v, stock: v.track_inventory === false ? Infinity : v.available_stock }; });
+  }
+  function variantImage(v) {
+    if (!v || !v.image_id || !state.product || !state.product.images) return null;
+    var img = state.product.images.filter(function (i) { return i.id === v.image_id; })[0];
+    return img ? (img.thumb_url || img.image_url) : null;
+  }
+  /* Pristrappa (inkl. moms) för en variant: [{min, unit}] stigande. */
+  function tiersOf(v) {
+    return ((v && v.prices) || []).map(function (p) { return { min: p.price.tier || 1, unit: parseKr(p.price.formatted_price) }; })
+      .filter(function (t) { return t.unit != null; }).sort(function (a, b) { return a.min - b.min; });
+  }
+  function tierTotal(v, qty) {
+    var t = tiersOf(v).filter(function (x) { return x.min <= qty; }).pop();
+    return t ? t.unit * qty : null;
+  }
+  /* Önskat paketpris = produktens nivåpris för hela paketet. Nyehandels
+     faktiska pris idag = varje strain som egen rad med egen nivå. */
+  function packPrices(opts) {
+    var groups = {};
+    builder.slots.forEach(function (v) { if (v) groups[v] = (groups[v] || 0) + 1; });
+    var first = opts[0] && opts[0].variant;
+    var wanted = tierTotal(first, builder.size);
+    var actual = 0, ok = true;
+    Object.keys(groups).forEach(function (val) {
+      var o = opts.filter(function (x) { return x.value === val; })[0];
+      var t = o && tierTotal(o.variant, groups[val]);
+      if (t == null) ok = false; else actual += t;
+    });
+    return { groups: groups, wanted: wanted, actual: ok ? actual : null };
+  }
+  /* Nyehandels paketformat (foundation.js): en rad för paketprodukten,
+     valda strainvarianter per paketplats i meta. */
+  function packagePayload() {
+    var opts = buyableOptions();
+    return {
+      product_variant_id: packageVariantId(),
+      quantity: 1,
+      meta: { data: { packageProductVariants: builder.slots.map(function (val, i) {
+        var o = opts.filter(function (x) { return x.value === val; })[0];
+        return { id: o ? o.variant.id : null, pivot_id: i + 1 };
+      }) } }
+    };
+  }
+  HZ8.mixedPack = { payload: packagePayload, packages: PACKAGE_PRODUCTS };
+  function usedBy(val, exceptIdx) {
+    return builder.slots.filter(function (v, i) { return v === val && i !== exceptIdx; }).length;
   }
   function renderBuilder() {
     if (!builderEnabled()) return;
@@ -245,50 +309,82 @@
       while (builder.slots.length < size) builder.slots.push("");
       builder.size = size;
     }
+    /* Val som inte längre är köpbara (lager ändrat) töms. */
+    builder.slots = builder.slots.map(function (v) { return v && opts.some(function (o) { return o.value === v; }) ? v : ""; });
     if (!host) {
       host = document.createElement("section");
       host.className = "hz8-builder";
       host.setAttribute("aria-labelledby", "hz8-builder-title");
       var anchor = document.getElementById("product-variants");
       anchor.parentNode.insertBefore(host, anchor.nextSibling);
+      bindBuilder(host);
     }
     var done = builder.slots.filter(Boolean).length;
-    var groups = {};
-    builder.slots.forEach(function (v) { if (v) groups[v] = (groups[v] || 0) + 1; });
-    var summary = Object.keys(groups).map(function (v) { var o = opts.filter(function (x) { return x.value === v; })[0]; return esc(o ? o.label : v) + " × " + groups[v]; }).join("<br>");
-    host.innerHTML =
-      '<div class="hz8-builder__head"><p id="hz8-builder-title" class="hz8-builder__title">Välj strains för ' + size + '-pack</p>' +
+    var pr = packPrices(opts);
+    var summary = Object.keys(pr.groups).map(function (v) { var o = opts.filter(function (x) { return x.value === v; })[0]; return "<li>" + esc(o ? o.label : v) + " <span>× " + pr.groups[v] + "</span></li>"; }).join("");
+    var capacity = opts.reduce(function (n, o) { return n + Math.min(o.stock, size); }, 0);
+    var locked = !HZ8.flags.mixedPacks || !packageVariantId();
+    var html =
+      '<div class="hz8-builder__head"><p id="hz8-builder-title" class="hz8-builder__title">Välj strains för ' + size + "-pack</p>" +
       '<span class="hz8-builder__count" aria-live="polite">' + done + " av " + size + " valda</span></div>" +
-      (HZ8.flags.mixedPacks ? "" : '<p class="hz8-builder__note">Förhandsvisning: blandade paket är avstängda tills Nyehandel prissätter dem som ett paket.</p>') +
+      (locked ? '<p class="hz8-builder__note">Förhandsvisning: blandade paket kan inte köpas ännu. Nyehandel prissätter idag varje strain som en egen rad.</p>' : "") +
       '<ol class="hz8-builder__slots">' + builder.slots.map(function (v, i) {
-        return '<li><label for="hz8-slot-' + i + '">' + (i + 1) + '</label><select id="hz8-slot-' + i + '" data-slot="' + i + '"><option value="">Välj strain</option>' +
-          opts.map(function (o) { return '<option value="' + esc(o.value) + '"' + (o.value === v ? " selected" : "") + ">" + esc(o.label) + "</option>"; }).join("") + "</select></li>";
+        var o = opts.filter(function (x) { return x.value === v; })[0];
+        var img = o && variantImage(o.variant);
+        return '<li class="hz8-builder__slot' + (v ? " is-set" : "") + '"><span class="hz8-builder__thumb" aria-hidden="true">' + (img ? '<img src="' + esc(img) + '" alt="" width="36" height="36" loading="lazy">' : (i + 1)) + "</span>" +
+          '<label class="hz8-visually-hidden" for="hz8-slot-' + i + '">Plats ' + (i + 1) + " av " + size + "</label>" +
+          '<select id="hz8-slot-' + i + '" data-slot="' + i + '"><option value="">Plats ' + (i + 1) + ": välj strain</option>" +
+          opts.map(function (x) {
+            var full = x.value !== v && usedBy(x.value, i) >= x.stock;
+            return '<option value="' + esc(x.value) + '"' + (x.value === v ? " selected" : "") + (full ? " disabled" : "") + ">" + esc(x.label) + (full ? " (inga fler i lager)" : "") + "</option>";
+          }).join("") + "</select></li>";
       }).join("") + "</ol>" +
-      '<div class="hz8-builder__actions"><button type="button" class="hz8-btn hz8-btn--secondary hz8-btn--small hz8-builder__scramble">' + esc(builder.scrambleLabel) + "</button>" +
-      '' +
+      '<div class="hz8-builder__actions"><button type="button" class="hz8-btn hz8-btn--secondary hz8-btn--small hz8-builder__scramble"' + (capacity < size ? " disabled" : "") + ">" + esc(builder.scrambleLabel) + "</button>" +
       '<button type="button" class="hz8-link hz8-builder__same">Samma strain i alla</button></div>' +
-      (summary ? '<p class="hz8-builder__summary">' + summary + "</p>" : "");
-    host.querySelectorAll("select[data-slot]").forEach(function (s) {
-      s.addEventListener("change", function () { builder.slots[+s.getAttribute("data-slot")] = s.value; renderBuilder(); syncBuybar(); });
+      (summary ? '<div class="hz8-builder__summary"><p><strong>' + size + "-pack</strong>" + (pr.wanted != null ? " · " + kr(pr.wanted) : "") + "</p><ul>" + summary + "</ul>" +
+        (locked && done === size && pr.actual != null && pr.wanted != null && Math.abs(pr.actual - pr.wanted) >= 0.5 ? '<p class="hz8-builder__diff">Nyehandel skulle idag ta ' + kr(pr.actual) + " för samma val.</p>" : "") + "</div>" : "");
+    /* Rita bara om när innehållet ändrats -- annars tappar ett fokuserat
+       fält fokus vid varje DOM-mutation på sidan. */
+    if (host.__hz8Html !== html) {
+      var active = document.activeElement && host.contains(document.activeElement) ? document.activeElement : null;
+      var focusKey = active ? (active.getAttribute("data-slot") != null ? 'select[data-slot="' + active.getAttribute("data-slot") + '"]' : active.classList.contains("hz8-builder__scramble") ? ".hz8-builder__scramble" : active.classList.contains("hz8-builder__same") ? ".hz8-builder__same" : null) : null;
+      host.innerHTML = html;
+      host.__hz8Html = html;
+      if (focusKey) { var again = host.querySelector(focusKey); if (again) again.focus({ preventScroll: true }); }
+    }
+  }
+  function builderOpts() { return buyableOptions(); }
+  function bindBuilder(host) {
+    host.addEventListener("change", function (e) {
+      var s = e.target.closest("select[data-slot]");
+      if (!s) return;
+      builder.slots[+s.getAttribute("data-slot")] = s.value; renderBuilder(); syncBuybar();
     });
-    host.querySelector(".hz8-builder__scramble").addEventListener("click", function (e) {
-      /* Fyll tomma platser med köpbara strains, varierat innan upprepning. */
-      var pool = opts.map(function (o) { return o.value; });
-      var bag = [];
-      builder.slots = builder.slots.map(function (v) {
-        if (v) return v;
-        if (!bag.length) bag = pool.slice().sort(function () { return Math.random() - 0.5; });
-        return bag.shift();
-      });
-      builder.scrambleLabel = "Slumpat ✓";
-      renderBuilder(); syncBuybar();
-      window.setTimeout(function () { builder.scrambleLabel = "Slumpa igen"; renderBuilder(); }, 1400);
-    });
-    host.querySelector(".hz8-builder__same").addEventListener("click", function () {
-      var sel = select();
-      var v = sel && isBuyable(variantFor(sel.value)) ? sel.value : (opts[0] && opts[0].value);
-      builder.slots = builder.slots.map(function () { return v; });
-      renderBuilder(); syncBuybar();
+    host.addEventListener("click", function (e) {
+      var opts = builderOpts(), size = builder.size;
+      if (e.target.closest(".hz8-builder__scramble")) {
+        /* Alla platser, slumpat bland köpbara strains, aldrig över saldot;
+           varierat innan en strain upprepas. */
+        var left = {}; opts.forEach(function (o) { left[o.value] = o.stock; });
+        var bag = [];
+        builder.slots = builder.slots.map(function () {
+          for (var guard = 0; guard < 3; guard++) {
+            if (!bag.length) bag = opts.map(function (o) { return o.value; }).filter(function (v) { return left[v] > 0; }).sort(function () { return Math.random() - 0.5; });
+            var pick = bag.shift();
+            if (pick && left[pick] > 0) { left[pick]--; return pick; }
+          }
+          return "";
+        });
+        builder.scrambleLabel = "Slumpat ✓";
+        renderBuilder(); syncBuybar();
+        window.setTimeout(function () { builder.scrambleLabel = "Slumpa igen"; renderBuilder(); }, 1400);
+      } else if (e.target.closest(".hz8-builder__same")) {
+        var sel = select();
+        var cur = opts.filter(function (o) { return sel && o.value === sel.value && o.stock >= size; })[0] || opts.filter(function (o) { return o.stock >= size; })[0];
+        if (!cur) return;
+        builder.slots = builder.slots.map(function () { return cur.value; });
+        renderBuilder(); syncBuybar();
+      }
     });
   }
 
@@ -340,7 +436,14 @@
        standardvariant i korgen. */
     document.addEventListener("click", function (e) {
       var b = e.target.closest && e.target.closest(".buy-form .button.buy");
-      if (b && builderBlock()) { e.preventDefault(); e.stopImmediatePropagation(); focusFirstMissing(); }
+      if (!b || !builderEnabled() || builder.size < 2) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (builderBlock()) { focusFirstMissing(); return; }
+      /* Endast med verifierad paketprodukt (PACKAGE_PRODUCTS): en rad,
+         valda strains i meta -- Nyehandel sätter pris och lager. */
+      fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify(packagePayload()) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); var st = HZ8.store(); return st && st.dispatch("cart/reload").then(function () { st.dispatch("cart/open"); }); })
+        .catch(function () { b.setAttribute("data-hz8-error", "1"); });
     }, true);
   });
 })();
