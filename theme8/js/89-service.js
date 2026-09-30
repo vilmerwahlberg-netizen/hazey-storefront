@@ -301,6 +301,10 @@
     if (!root || document.querySelector(".hz8-contact")) return;
     var h1 = root.querySelector("h1");
     var lead = root.querySelector(".nh-contact__hero p");
+    /* Facitets hierarki: desktop och mobil har olika rubrik; en H1 med
+       två varianter (den dolda är display:none och läses inte upp). */
+    if (h1) h1.innerHTML = '<span class="hz8-v hz8-v--d">Vi finns här<br>för dig</span><span class="hz8-v hz8-v--m">Vad kan vi hjälpa dig med?</span>';
+    if (lead) lead.innerHTML = '<span class="hz8-v hz8-v--d">Har du en fråga om din order, en produkt eller behöver hjälp med en retur? Skicka ett meddelande så hjälper vi dig.</span><span class="hz8-v hz8-v--m">Välj ett ämne nedan eller fyll i formuläret.</span>';
     var preset = (function () { try { return new URLSearchParams(location.search).get("arende"); } catch (e) { return null; } })();
     var points = [
       { icon: "truck", title: "Order och leverans", text: "Frågor om din beställning och leverans.", href: "/sv/page/faq#leverans" },
@@ -323,10 +327,11 @@
         '<section class="hz8-contact__ways" aria-labelledby="hz8-cw-title"><h2 id="hz8-cw-title">Andra kontaktvägar</h2>' +
           ways('<li>' + icon("pin") + "<div><span class=\"hz8-svc-ways__static\">Stockholm, Sverige</span><span>Adress</span></div></li>") + "</section>" +
       "</div>" +
-      '<nav class="hz8-svc-dest" aria-label="Genvägar"><h2 class="hz8-svc-dest__title">Gå direkt till</h2><ul>' +
-        [{ icon: "doc", t: "Vanliga frågor", s: "Hitta svar på de vanligaste frågorna.", h: "/sv/page/faq" },
-         { icon: "truck", t: "Leverans och retur", s: "Frågor om leverans, spårning och retur.", h: "/sv/page/faq#leverans" },
-         { icon: "book", t: "Köp- och leveransvillkor", s: "Läs våra fullständiga villkor.", h: "/sv/page/kop-och-leveransvillkor" }].map(function (d) {
+      '<nav class="hz8-svc-dest" aria-label="Genvägar"><h2 class="hz8-svc-dest__title">Gå direkt till vanliga destinationer</h2><ul>' +
+        [{ icon: "box", t: "Beställning", s: "Order och bekräftelse", h: "/sv/page/faq#bestallning" },
+         { icon: "truck", t: "Leverans", s: "Frakt, spårning och diskret paket", h: "/sv/page/faq#leverans" },
+         { icon: "ret", t: "Retur", s: "Retur och reklamation", h: "/sv/page/faq#retur" },
+         { icon: "book", t: "Köp- och leveransvillkor", s: "Våra fullständiga villkor", h: "/sv/page/kop-och-leveransvillkor" }].map(function (d) {
           return '<li><a href="' + esc(link(d.h)) + '">' + icon(d.icon) + "<span><strong>" + esc(d.t) + "</strong>" + esc(d.s) + "</span>" + icon("chev") + "</a></li>";
         }).join("") + "</ul></nav>";
     var note = root.querySelector(".nh-contact__note");
@@ -416,8 +421,36 @@
     }
     input.addEventListener("input", update);
     update();
-    spy(Array.prototype.slice.call(root.querySelectorAll(".hz8-faq__nav a")), topics.map(function (t) { return root.querySelector("#" + t.key); }));
-    scrollToHash(root);
+    /* Mobil (facit): ett ämne i taget, första frågan öppen. Desktop:
+       alla ämnen, navigeringen scrollar. */
+    var mob = window.matchMedia("(max-width: 767px)");
+    var navLinks = Array.prototype.slice.call(root.querySelectorAll(".hz8-faq__nav a"));
+    function showTopic(key, openFirst) {
+      topics.forEach(function (t) { root.querySelector("#" + t.key).classList.toggle("is-current", t.key === key); });
+      navLinks.forEach(function (l) { var on = l.getAttribute("href") === "#" + key; l.classList.toggle("is-active", on); if (on) l.setAttribute("aria-current", "true"); else l.removeAttribute("aria-current"); });
+      var first = openFirst && root.querySelector("#" + key + " .hz8-faq__item");
+      if (first && !root.querySelector("#" + key + " .hz8-faq__item[open]")) first.open = true;
+    }
+    function syncMode() {
+      var filter = mob.matches && !input.value.trim();
+      document.documentElement.classList.toggle("hz8-faq-filter", filter);
+      if (filter) { var cur = root.querySelector(".hz8-faq__group.is-current"); showTopic(cur ? cur.id : (location.hash.slice(1) && topicByKey(location.hash.slice(1)) ? location.hash.slice(1) : topics[0].key), true); }
+    }
+    root.querySelector(".hz8-faq__nav").addEventListener("click", function (e) {
+      var a = e.target.closest("a[href^='#']");
+      if (!a || !mob.matches) return;
+      e.preventDefault();
+      if (input.value) { input.value = ""; update(); }
+      showTopic(a.getAttribute("href").slice(1), true);
+      document.documentElement.classList.add("hz8-faq-filter");
+      if (history.replaceState) history.replaceState(null, "", a.getAttribute("href"));
+      a.scrollIntoView({ block: "nearest", inline: "center" });
+    });
+    input.addEventListener("input", syncMode);
+    if (mob.addEventListener) mob.addEventListener("change", syncMode);
+    syncMode();
+    if (!mob.matches) spy(navLinks, topics.map(function (t) { return root.querySelector("#" + t.key); }));
+    if (!mob.matches) scrollToHash(root);
     document.documentElement.classList.add("hz8-svc-faq");
   }
 
@@ -465,6 +498,10 @@
     syncToc();
     if (wide.addEventListener) wide.addEventListener("change", syncToc);
     box.addEventListener("click", function (e) { if (e.target.closest("a") && !wide.matches) box.open = false; });
+    /* "Uppdaterad: …" (dokumentets egen rubrik) visas som metarad. */
+    Array.prototype.forEach.call(text.querySelectorAll("h2, h3, h4, p"), function (el) {
+      if (/^\s*Uppdaterad:/i.test(el.textContent) && el.textContent.length < 60) el.classList.add("hz8-doc__meta");
+    });
     /* Admininnehållet (inklistrat från WooCommerce) har inline-färg och
        -storlek på länkar; bara presentationen tas bort, texten rörs inte. */
     text.querySelectorAll("a[style]").forEach(function (a) { a.style.removeProperty("color"); a.style.removeProperty("font-size"); });
@@ -537,6 +574,13 @@
       (examples.length ? '<div class="hz8-sempty__examples"><p class="hz8-sempty__ex-title">Sök till exempel</p><ul>' + examples.map(function (x) {
         return '<li><a href="' + esc(searchUrl(x)) + '">' + icon("search") + "<span>" + esc(x) + "</span></a></li>";
       }).join("") + "</ul></div>" : "") +
+      '<aside class="hz8-sempty__help hz8-svc-help" aria-labelledby="hz8-sempty-help-title"><h2 id="hz8-sempty-help-title">Fick du inga träffar?</h2>' +
+        "<p>Kontakta oss så hjälper vi dig att hitta rätt, eller läs svaren på vanliga frågor.</p>" +
+        '<a class="hz8-svc-btn hz8-svc-btn--cta" href="' + esc(contactUrl("produkt")) + '">' + icon("chat") + "<span>Skicka ett meddelande</span>" + icon("arrow") + "</a>" +
+        '<h3 class="hz8-svc-help__sub">Fler sätt att få hjälp</h3><ul class="hz8-svc-lines hz8-svc-lines--icons">' +
+        '<li><a href="mailto:hej@hazey.se">' + icon("mail") + "<span>hej@hazey.se</span>" + icon("chev") + "</a></li>" +
+        '<li><a href="' + esc(link("/sv/page/faq")) + '">' + icon("doc") + "<span>Vanliga frågor</span>" + icon("chev") + "</a></li>" +
+        '<li><a href="' + esc(link("/sv/categories/alla-produkter")) + '">' + icon("grid") + "<span>Alla produkter</span>" + icon("chev") + "</a></li></ul></aside>" +
       '<ul class="hz8-svc-trio">' +
         [{ i: "chat", t: "Kundservice", s: "Hör av dig om du har frågor om produkter, en order eller retur.", h: "/sv/page/kontakt" },
          { i: "doc", t: "Vanliga frågor", s: "Svar om beställning, leverans och betalning.", h: "/sv/page/faq" },
