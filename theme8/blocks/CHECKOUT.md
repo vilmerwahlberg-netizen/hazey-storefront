@@ -1,5 +1,52 @@
 # Theme 8 — kassan: vad som är gjort och vad som kräver admin
 
+## Redesign 2026-09-30 (facit: `checkout-hybrid-approved-mobile-393x852-v1.png`, `…-desktop-1920x1080-v2.png`)
+
+Endast `css/86-checkout.css` (ren CSS på Nyehandels befintliga DOM,
+scopad till `body.checkout-page`). Verifierad genom att injicera den byggda
+`dist/theme8/hazey-theme8-checkout.css` lokalt i den riktiga fyllda
+previewkassan -- **inte** via admin. Skärmbilder och jämförelser:
+`theme8/review/checkout/`.
+
+**Implementerat:** mörkoliv header (70 px desktop / 62 px mobil) med
+tillbaka, logga, "Trygg kassa" och lås + "Säker betalning" (mobil: bara
+lås); Stockholmsremsa 124/58 px utan text; trygghetsrad; desktop två
+kolumner (max 1340 px, sammanfattning ~30 %, sticky); mobil ordning
+trygghet → sammanfattning → land/kundtyp → frakt → betalning; kort per
+steg; 44 px antalsknappar; totalsumman störst; nyhetsbrevet som liten
+valfri rad; "Betalning"-kort runt `#kustom-checkout` (inget inuti ramen
+rört); stylat tomläge.
+
+**Generated content (CSS `content`, inte text i DOM):** "Trygg kassa"
+(ersätter visuellt Nyehandels "Kassa"), "Säker betalning" i headern,
+trygghetsraden, "Din beställning". Skärmläsare kan läsa pseudo-text
+olika; H1 saknas i Nyehandels kassa-DOM.
+
+**Går inte med ren CSS / plattformen -- inte byggt:**
+- *Hjälprad "Behöver du hjälp? Kontakta oss"*: CSS kan inte skapa länkar.
+  Admin: lägg texten med länk till `/sv/page/kontakt` i kassatexten
+  (`.checkout-message`, redan stylad) om fältet tillåter länk.
+- *Fri frakt-status*: ingen Nyehandel-DOM idag (se nedan). Ingen egen
+  mätare.
+- *Antal varor i rubriken* ("· 1 vara") och *"Garanterad leverans"* under
+  fraktsättet: finns inte i DOM (fraktsättets `<p>` är tom -- admin kan
+  fylla i fraktsättets beskrivning).
+- *Rabattkoden hopfälld på desktop*: Nyehandels växlare är en `div` utan
+  tangentbordsfokus och visas bara under 1024 px. Desktop visar därför
+  fältet öppet (kompakt). Mobil/surfplatta: nativ hopfällning; den är
+  inte nåbar med tangentbord (Nyehandels komponent).
+- *Kustoms rubrikrad* ("Kustom · Säker betalning med Kustom") ligger i
+  ramen. Kustom kör **Test Mode** (limegul rad, "Test Data") i previewn.
+- *Tabbordning på mobil*: sammanfattningen flyttas visuellt först (grid),
+  men i DOM ligger den efter betalningen -- tangentbordsordningen följer
+  DOM (tillbaka → land → kundtyp → nyhetsbrev → frakt → Kustom → antal).
+- *Loggans alt-text* är "Måbroberg AB (NDA)" -- ändras i admin (logotyp
+  för kassan).
+
+**Aktivering:** se "Aktivera" nedan. Utan inklistring i Theme 8:s
+CSS-fält syns inget av detta i previewn -- kassan laddar inte loadern.
+
+
 Verifierat 2026-09-28 mot Nyehandels RIKTIGA, fyllda kassa (en vara i
 korgen via UI → minicart → "Till Kassan" i samma webbläsarsession).
 Ingen order skickades.

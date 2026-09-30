@@ -98,6 +98,11 @@ ett skript läggs i ett kassafält (om det finns). Kassan laddar
 fortfarande den gamla `Oliverforss8/hazey-storefront@v1.0.3/hazey.min.js`
 via Theme 8:s Head-fält. Ta bort den när Theme 8 aktiveras.
 
+## 9b. Kassa-redesign (2026-09-30) -- klistra in CSS
+`dist/theme8/hazey-theme8-checkout.css` sist i **Theme 8:s** CSS-fält,
+spara, publicera inte. Därefter: kassatext med hjälplänk till kontakt,
+fraktsättets beskrivning, loggans alt-text. Se `CHECKOUT.md`.
+
 ## 10. Informationssidor, formulär, 404 och juridik
 
 Se `INFO-PAGES.md`: Om oss och Leverans och retur (sidor saknas, block
