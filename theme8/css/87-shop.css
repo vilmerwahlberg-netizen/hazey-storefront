@@ -122,12 +122,6 @@ html.hz8 #store-main .hz8-shop .hz8-prail__title { color: var(--hz8-ink) !import
 html.hz8 #store-main .hz8-shop .hz8-prail__all { color: var(--hz8-cta-fill) !important; font: 600 clamp(15px, 1vw, 19px)/1 var(--hz8-font-ui) !important; }
 html.hz8 #store-main .hz8-shop .hz8-prail--compact .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 14px) / 5); gap: 14px !important; }
 
-/* Desktop: kompakta kort med lägre bildyta (facitets täthet), fem per rad. */
-@media (min-width: 1180px) {
-  html.hz8 #store-main .hz8-shop .hz8-prail .product-card__image { aspect-ratio: 4 / 3 !important; overflow: hidden; }
-  html.hz8 #store-main .hz8-shop .hz8-prail .product-card__image img { inset: -17% 6% auto !important; width: 88% !important; height: 118% !important; object-position: 50% 100%; }
-}
-
 /* Serier */
 html.hz8 #store-main .hz8-shop__stiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0 !important; list-style: none; }
 html.hz8 #store-main .hz8-shop__stile { margin: 0; min-width: 0; }
@@ -226,3 +220,58 @@ html.hz8 #store-main .hz8-shop .hz8-prail__btn { width: 44px !important; height:
 html.hz8 #store-main .hz8-shop .product-card .hz8-card-pill,
 html.hz8 #store-main .hz8-shop .product-card .button { min-height: 44px !important; min-width: 44px; }
 html.hz8 #store-main .hz8-shop .product-card .details a { display: block; min-height: 44px; }
+
+/* ======================================================================
+   Kompakt produktkort -- bara Butiks hyllor (variantklass .hz8-shop__rail
+   på den befintliga produktkarusellen; samma Nyehandel-kort, ingen ny
+   komponent). Nyehandels produktbilder har en inbakad etikettremsa
+   överst: bildfönstret beskärs konsekvent så att remsan hamnar utanför.
+   ====================================================================== */
+html.hz8 #store-main .hz8-shop__rail .product-card .rating { display: none !important; }
+html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image { overflow: hidden; background: var(--shop-stage) !important; }
+/* Bilden skalas 124 % och förankras nedtill: remsan överst (≈ 12 % av
+   bildens höjd) hamnar utanför fönstret. */
+html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image img { position: absolute !important; inset: auto auto 0 -12% !important; width: 124% !important; height: 124% !important; max-width: none !important; object-fit: contain !important; object-position: 50% 100% !important; }
+html.hz8 #store-main .hz8-shop__rail .product-card .brand { font-size: 11px !important; letter-spacing: .08em; }
+html.hz8 #store-main .hz8-shop__rail .product-card .details a { min-height: 0 !important; }
+html.hz8 #store-main .hz8-shop__rail .product-card .name { display: -webkit-box !important; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; font-size: 15px !important; line-height: 1.25 !important; }
+html.hz8 #store-main .hz8-shop__rail .product-card .offer { min-height: 0 !important; margin-top: auto; }
+
+@media (min-width: 1180px) {
+  html.hz8 #store-main .hz8-shop__rail .product-card { display: grid !important; grid-template-columns: 44% minmax(0, 1fr); height: 172px; padding: 8px !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image { position: relative; height: 156px !important; aspect-ratio: auto !important; margin: 0 !important; border-radius: 8px; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .details-wrapper { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 4px 4px 4px 14px !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .details { display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto; padding: 0 !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .offer { padding-right: 52px; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .price { font-size: 17px !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .hz8-card-pill { position: absolute !important; right: 4px; bottom: 4px; margin: 0 !important; padding: 0 12px !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image img { inset: auto auto 0 -17% !important; width: 134% !important; height: 134% !important; }
+}
+@media (max-width: 1179px) {
+  html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image { position: relative; aspect-ratio: 1.3 / 1 !important; height: auto !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .details-wrapper { padding: 8px 10px 10px !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .details { gap: 3px; padding: 0 !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .name { font-size: 14px !important; min-height: 0 !important; -webkit-line-clamp: 2; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .offer { margin: 2px 0 0 !important; padding: 0 58px 0 0 !important; min-height: 44px; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .price { white-space: nowrap; margin: 0 !important; }
+  html.hz8 #store-main .hz8-shop__rail .product-card .hz8-card-pill { right: 8px; bottom: 8px; }
+}
+
+/* ======================================================================
+   Formatkort: samma bildfönster, stage, gradient och typografi.
+   ====================================================================== */
+html.hz8 #store-main .hz8-shop__ftile a { aspect-ratio: 1.05 / 1; background: var(--shop-stage); padding: 0 16px 14px; }
+html.hz8 #store-main .hz8-shop__fimg { inset: 0 0 26% 0 !important; background-size: auto 132% !important; background-position: 50% 100% !important; background-color: var(--shop-stage); }
+html.hz8 #store-main .hz8-shop__ftile a::after { background: linear-gradient(0deg, color-mix(in srgb, var(--hz8-ink) 90%, transparent) 0%, color-mix(in srgb, var(--hz8-ink) 72%, transparent) 26%, color-mix(in srgb, var(--hz8-ink) 10%, transparent) 50%, transparent 62%); }
+html.hz8 #store-main .hz8-shop__flabel { font-size: clamp(18px, 1.5vw, 30px) !important; }
+html.hz8 #store-main .hz8-shop__fcount { margin-top: 3px; font-size: 12.5px !important; opacity: .85; }
+html.hz8 #store-main .hz8-shop__ftile--all a { background: var(--hz8-olive); }
+html.hz8 #store-main .hz8-shop__formats .hz8-shop__head h2 { font-size: clamp(30px, 2.6vw, 50px) !important; }
+@media (max-width: 767px) {
+  html.hz8 #store-main .hz8-shop__ftile a { aspect-ratio: .7 / 1; padding: 0 7px 8px; }
+  html.hz8 #store-main .hz8-shop__fimg { inset: 0 0 24% 0 !important; background-size: auto 124% !important; }
+  html.hz8 #store-main .hz8-shop__flabel { font-size: 15px !important; }
+  html.hz8 #store-main .hz8-shop__fcount { display: none; }
+  html.hz8 #store-main .hz8-shop__formats .hz8-shop__head h2 { font-size: 22.5px !important; }
+  html.hz8 #store-main .hz8-shop .hz8-prail--compact .hz8-prail__list { grid-auto-columns: calc((100% - 2 * 10px) / 2.2); }
+}
