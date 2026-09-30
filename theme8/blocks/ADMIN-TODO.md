@@ -97,3 +97,10 @@ Se `CHECKOUT.md`. Kassan kan inte visa frakt- eller bonusstatus utan att
 ett skript läggs i ett kassafält (om det finns). Kassan laddar
 fortfarande den gamla `Oliverforss8/hazey-storefront@v1.0.3/hazey.min.js`
 via Theme 8:s Head-fält. Ta bort den när Theme 8 aktiveras.
+
+## 10. Informationssidor, formulär, 404 och juridik
+
+Se `INFO-PAGES.md`: Om oss och Leverans och retur (sidor saknas, block
+finns), Nyehandels kontakt- och nyhetsbrevskomponenter, den tomma sidan
+`/sv/page/kopvillkor`, 404-mallen som inte laddar temat, FAQ-texter som
+ska ändras och juridiska motsägelser i villkor och integritetspolicy.
