@@ -11,16 +11,49 @@ previewkassan -- **inte** via admin. Skärmbilder och jämförelser:
 **Implementerat:** mörkoliv header (70 px desktop / 62 px mobil) med
 tillbaka, logga, "Trygg kassa" och lås + "Säker betalning" (mobil: bara
 lås); Stockholmsremsa 124/58 px utan text; trygghetsrad; desktop två
-kolumner (max 1340 px, sammanfattning ~30 %, sticky); mobil ordning
-trygghet → sammanfattning → land/kundtyp → frakt → betalning; kort per
+kolumner (max 1340 px, sammanfattning ~30 %, sticky); under 1024 px en
+kolumn i DOM-ordning (se korrigering nedan); kort per
 steg; 44 px antalsknappar; totalsumman störst; nyhetsbrevet som liten
 valfri rad; "Betalning"-kort runt `#kustom-checkout` (inget inuti ramen
 rört); stylat tomläge.
 
-**Generated content (CSS `content`, inte text i DOM):** "Trygg kassa"
-(ersätter visuellt Nyehandels "Kassa"), "Säker betalning" i headern,
-trygghetsraden, "Din beställning". Skärmläsare kan läsa pseudo-text
-olika; H1 saknas i Nyehandels kassa-DOM.
+**Korrigering 2026-10-01 -- fokusordning och skärmläsare**
+
+*Ordning under 1024 px* (390–1023, även 768): sammanfattningen visas
+sist, efter betalningen, eftersom den ligger där i Nyehandels DOM. Den
+tidigare visuella flytten (sammanfattning först, som i facit) gav
+fokushopp nedåt till Kustom och sedan uppåt igen. Visuellt: header →
+remsa → trygghetsrad → land/kundtyp → nyhetsbrev → fraktsätt → betalning
+(Kustom) → Din beställning. Tangentbord (uppmätt 390/393/430/768):
+Gå tillbaka → leveransland → kundtyp → nyhetsbrev → fraktsätt → Kustom-
+ramen (Kustoms egna fält) → produktlänk → minska/öka/ta bort per vara →
+Kustoms dolda helskärmsram. Inga uppåthopp. Rabattkodens växlare på
+mobil är Nyehandels `div` och går inte att nå med tangentbord (nativ
+begränsning, inte ändrad). Desktop (från 1024 px): vänsterkolumnen
+uppifrån och ned, därefter den sticky sammanfattningen till höger, som
+är synlig i fönstret när fokus når den, och sist rabattkodsfältet.
+
+*Vad en skärmläsare får* (Chromium-tillgänglighetsträd, uppmätt):
+- Header: "Kassa" (Nyehandels text, kvar) och knappen "Gå tillbaka"
+  (bild med alt "Måbroberg AB (NDA)", admin). "Trygg kassa" och
+  headerns "Säker betalning" har tom alt-text (`content: "…" / ""`) och
+  läses inte upp.
+- Trygghetsraden: dekorativ, tom alt-text, läses inte upp. Den ersätter
+  ingen native information.
+- Ordersammanfattning: Nyehandel har ingen egen rubrik eller region för
+  den (inga `h*`, `aside` eller `aria-label`). "Din beställning" läses som
+  vanlig text före varorna (ingen rubrik, ingen ARIA). Därefter per vara:
+  produktbild och länk, "595 kr / Styck", variant, "Minska antalet",
+  "Valt antal", "Öka antalet", "Ta bort varan", radsumma; sedan
+  delsumma, frakt, totalsumma, moms och rabattkod.
+- Rubrikerna Fraktsätt (h2), Fraktkostnad (h4) och Betalning (h2) finns
+  kvar. Kassan saknar H1 (Nyehandels DOM).
+- Styckpriset ("595 kr / Styck") var dolt i `29edf0d` och därmed borta ur
+  tillgänglighetsträdet. Det visas nu igen.
+- Äldre webbläsare utan alt-syntaxen använder en fallback-rad med samma
+  text. Där läses de dekorativa texterna upp, men inget försvinner.
+- Nyehandel-ärende: en rubrik eller `aria-label` för sammanfattningen
+  och en H1 i kassan.
 
 **Går inte med ren CSS / plattformen -- inte byggt:**
 - *Hjälprad "Behöver du hjälp? Kontakta oss"*: CSS kan inte skapa länkar.

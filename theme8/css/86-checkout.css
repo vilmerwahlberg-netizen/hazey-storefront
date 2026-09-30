@@ -22,7 +22,12 @@
    ritas med generated content; alla belopp, varor, frakt och
    betalning är Nyehandels/Kustoms egna. Grid-trick: .checkout-
    information får display:contents så att dess egna block och
-   pseudo-element placeras direkt i kassans grid (trygghetsraden). */
+   pseudo-element placeras direkt i kassans grid (trygghetsraden).
+   Skärmläsare: "Trygg kassa", headerns "Säker betalning" och
+   trygghetsraden har tom alt-text (content: "…" / "") -- dekorativa,
+   Nyehandels "Kassa" är kvar. "Din beställning" läses som vanlig text
+   (ingen rubrik; Nyehandel har ingen egen för sammanfattningen). Första
+   content-raden är fallback för motorer utan alt-syntaxen. */
 
 /* Plattformens HTML har ett löst ">" direkt i <body> -- dolt genom att
    bara body själv får font-size 0 (alla element återställs). */
@@ -56,7 +61,7 @@ body.checkout-page header.checkout {
 body.checkout-page header.checkout .container { position: absolute; left: 50%; top: 0; height: 100%; display: flex; align-items: center; width: auto; max-width: none; margin: 0; padding: 0; transform: translateX(-50%); pointer-events: none; }
 /* Nyehandels "Kassa" visas som "Trygg kassa" (facit). */
 body.checkout-page header.checkout .container .title { font-size: 0 !important; line-height: 0; }
-body.checkout-page header.checkout .container .title::after { content: "Trygg kassa"; color: var(--hz8-text-on-dark); font: 600 30px/1 var(--hz8-font-display); letter-spacing: -.01em; }
+body.checkout-page header.checkout .container .title::after { content: "Trygg kassa"; content: "Trygg kassa" / ""; color: var(--hz8-text-on-dark); font: 600 30px/1 var(--hz8-font-display); letter-spacing: -.01em; }
 body.checkout-page .checkout-back { position: absolute; z-index: 1; left: max(16px, calc((100% - 1340px) / 2)); top: 0; display: flex; align-items: center; height: 70px; margin: 0; padding: 0; transform: none; }
 body.checkout-page .checkout-back a { display: flex; align-items: center; gap: 22px; min-height: 44px; }
 body.checkout-page .checkout-back .icon { display: grid; place-items: center; width: 44px; height: 44px; margin: 0 !important; }
@@ -66,6 +71,7 @@ body.checkout-page .checkout-back .icon svg * { width: 26px; height: 26px; fill:
 body.checkout-page .checkout-back img { height: 60px; max-height: none; width: auto; margin: -8px 0; filter: brightness(0) invert(1); }
 body.checkout-page header.checkout::after {
   content: "Säker betalning";
+  content: "Säker betalning" / "";
   position: absolute; right: max(24px, calc((100% - 1340px) / 2)); top: 50%; transform: translateY(-50%);
   padding-left: 30px; color: var(--hz8-text-on-dark); font: 500 15px/22px var(--hz8-font-ui);
   background: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%23ffffff%22%20stroke-width=%221.9%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Crect%20x=%225%22%20y=%2211%22%20width=%2214%22%20height=%2210%22%20rx=%222%22/%3E%3Cpath%20d=%22M8%2011V8a4%204%200%200%201%208%200v3%22/%3E%3C/svg%3E") left center / 22px no-repeat;
@@ -118,9 +124,9 @@ body.checkout-page .checkout-information::after {
   white-space: nowrap;
   background: var(--co-icon) left center / 26px no-repeat;
 }
-body.checkout-page .checkout-layout::before { content: "Svenskt lager"; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M3%206h11v9H3z%22/%3E%3Cpath%20d=%22M14%209h4l3%203v3h-7%22/%3E%3Ccircle%20cx=%227%22%20cy=%2217%22%20r=%221.6%22/%3E%3Ccircle%20cx=%2217%22%20cy=%2217%22%20r=%221.6%22/%3E%3C/svg%3E"); grid-column: 1; }
-body.checkout-page .checkout-information::before { content: "Diskret paket"; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%208l8-4%208%204v8l-8%204-8-4z%22/%3E%3Cpath%20d=%22M4%208l8%204%208-4M12%2012v8%22/%3E%3C/svg%3E"); grid-column: 2; }
-body.checkout-page .checkout-information::after { content: "Säker betalning"; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M12%203l7%203v5c0%204.5-3%208-7%2010-4-2-7-5.5-7-10V6z%22/%3E%3Cpath%20d=%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E"); grid-column: 3; margin-right: 0; left: -12px; }
+body.checkout-page .checkout-layout::before { content: "Svenskt lager"; content: "Svenskt lager" / ""; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M3%206h11v9H3z%22/%3E%3Cpath%20d=%22M14%209h4l3%203v3h-7%22/%3E%3Ccircle%20cx=%227%22%20cy=%2217%22%20r=%221.6%22/%3E%3Ccircle%20cx=%2217%22%20cy=%2217%22%20r=%221.6%22/%3E%3C/svg%3E"); grid-column: 1; }
+body.checkout-page .checkout-information::before { content: "Diskret paket"; content: "Diskret paket" / ""; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M4%208l8-4%208%204v8l-8%204-8-4z%22/%3E%3Cpath%20d=%22M4%208l8%204%208-4M12%2012v8%22/%3E%3C/svg%3E"); grid-column: 2; }
+body.checkout-page .checkout-information::after { content: "Säker betalning"; content: "Säker betalning" / ""; --co-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2226%22%20height=%2226%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%2323231d%22%20stroke-width=%221.6%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpath%20d=%22M12%203l7%203v5c0%204.5-3%208-7%2010-4-2-7-5.5-7-10V6z%22/%3E%3Cpath%20d=%22M9%2012l2%202%204-4%22/%3E%3C/svg%3E"); grid-column: 3; margin-right: 0; left: -12px; }
 body.checkout-page .checkout-layout::after {
   content: ""; grid-row: 1; grid-column: 1 / 4; margin-right: 24px; height: 66px; z-index: 0;
   border: 1px solid var(--co-line); border-radius: var(--co-r); background: var(--co-card);
@@ -223,7 +229,7 @@ body.checkout-page .checkout-items-summary article.item .content > div:first-chi
 body.checkout-page .checkout-items-summary article.item .content br { display: none; }
 body.checkout-page .checkout-items-summary article.item strong { display: block; color: var(--hz8-ink); font: 600 18px/1.25 var(--hz8-font-display) !important; overflow-wrap: anywhere; }
 body.checkout-page .checkout-items-summary article.item a { text-decoration: none; }
-body.checkout-page .checkout-items-summary article.item .price { display: none; }
+body.checkout-page .checkout-items-summary article.item .price { margin-top: 4px; color: var(--hz8-text-muted) !important; font: 400 15px/1.35 var(--hz8-font-ui) !important; }
 body.checkout-page .checkout-items-summary article.item .option { margin-top: 4px; color: var(--hz8-text-muted) !important; font: 400 15px/1.35 var(--hz8-font-ui) !important; }
 body.checkout-page .checkout-items-summary article.item .option span { font-weight: 400; text-transform: capitalize; }
 body.checkout-page .checkout-items-summary article.item .item-amount { grid-column: 2; justify-self: start; margin-top: 10px; }
@@ -263,18 +269,18 @@ body.checkout-page main.checkout .has-text-centered h2 { font-size: clamp(26px, 
 body.checkout-page main.checkout .has-text-centered p { color: var(--hz8-text-muted); }
 body.checkout-page #checkout-overlay { background: color-mix(in srgb, var(--co-bg) 70%, transparent); }
 
-/* ---------- Mellanbredd: en kolumn, sammanfattningen först ---------- */
+/* ---------- Mellanbredd: en kolumn i DOM-ordning ----------
+   Sammanfattningen ligger efter betalningen i Nyehandels DOM. Den visas
+   därför också sist, så att fokus (antal, radera, rabattkod) följer den
+   visuella ordningen uppifrån och ned. Facit visar den först; tillgänglig
+   ordning går före. */
 @media (max-width: 1023px) {
   body.checkout-page main.checkout .container { width: calc(100% - 24px); }
   body.checkout-page main.checkout .container .checkout-layout { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); flex-direction: initial; row-gap: 14px; }
   body.checkout-page .checkout-information > *, body.checkout-page .checkout-layout::after, body.checkout-page .checkout-information::after { margin-right: 0 !important; }
   body.checkout-page .checkout-layout::after { grid-column: 1 / -1; }
   body.checkout-page .checkout-information > * { grid-column: 1 / -1; }
-  body.checkout-page main.checkout .container .checkout-items-summary { grid-column: 1 / -1; grid-row: 2; position: static; padding: 20px !important; }
-  body.checkout-page .checkout-information > .columns { grid-row: 3; }
-  body.checkout-page .checkout-information > .newsletter-subscription { grid-row: 4; }
-  body.checkout-page .checkout-information > .shipping { grid-row: 5; }
-  body.checkout-page .checkout-information > .payment { grid-row: 6; }
+  body.checkout-page main.checkout .container .checkout-items-summary { grid-column: 1 / -1; grid-row: 6; position: static; padding: 20px !important; }
 }
 @media (max-width: 767px) {
   body.checkout-page header.checkout, body.checkout-page .checkout-back { height: 62px; }
