@@ -219,3 +219,10 @@ html.hz8.hz8-shop-page body:not(.hz8-header-scrolled) #store-header .main::befor
   html.hz8 #store-main .hz8-shop__help { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { html.hz8 #store-main .hz8-shop__fimg { transition: none; } }
+
+/* Tryckytor ≥ 44 px för de delade karusell-/kortkontrollerna i portalen. */
+html.hz8 #store-main .hz8-shop .hz8-prail__all { display: inline-flex; align-items: center; min-height: 44px; }
+html.hz8 #store-main .hz8-shop .hz8-prail__btn { width: 44px !important; height: 44px !important; }
+html.hz8 #store-main .hz8-shop .product-card .hz8-card-pill,
+html.hz8 #store-main .hz8-shop .product-card .button { min-height: 44px !important; min-width: 44px; }
+html.hz8 #store-main .hz8-shop .product-card .details a { display: block; min-height: 44px; }
