@@ -440,8 +440,19 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 
 /* (reduced-motion redan hanterad av headerns gemensamma block längre ner i filen) */
 
+/* ============ Tre lägen: mobil <768 · kompakt 768–1179 · desktop ≥1180 ============
+   Uppmätt 2026-09-30: full desktoprad (logga 78 + nav 554 px, flex-
+   shrink 0, + sök + konto + varukorg med gap 24 och 43 px marginal)
+   kräver ~981 px; under det låg konto/varukorg utanför viewporten
+   (768 px: konto höger kant 828, varukorg 933). Nyehandels sökfält
+   visas först från 1024 px och får då bredden viewport − 971 px
+   (53 px vid 1024, 129 px vid 1100) -- först vid 1180 px (209 px) är
+   det ett användbart sökfält. Därför kompakt läge upp till 1179 px:
+   samma drawer och sökyta som mobilen (05a-mobile-nav.js), desktop-
+   panelens höjd och glas. */
+
 /* Desktop-bara: göm mobilens hamburgare + mobil-sök-trigger */
-@media (min-width:768px){
+@media (min-width:1180px){
   html.hz8 #store-header .hamburger{ display:none!important; }
   /* KORRIGERING (ojämna mellanrum): uppmätt nav->sök = 137px, sök->konto
      = 137px (redan i samklang), men konto->varukorg bara 94px -- bröt
@@ -449,6 +460,30 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
      att bara knuffa varukorgen, utan att röra de två redan korrekta
      gapen eller native kontot/varukorgens egen storlek/funktion. */
   html.hz8 #store-header .basket-icon{ margin-left:43px; }
+}
+
+/* ============ KOMPAKT (surfplatta) 768–1179 px ============ */
+@media (min-width:768px) and (max-width:1179px){
+  html.hz8 #store-header .main .container{ gap:8px; padding:0 16px; }
+  html.hz8 .hz8-header-nav{ display:none; }
+  html.hz8 #store-header .hamburger{ display:flex!important; order:0; }
+  html.hz8 #store-header .brand.header-logo a{ order:1; flex-grow:1; justify-content:center; }
+  html.hz8 #store-header #search-container{ display:none!important; }
+  html.hz8 #store-header #mobile-search-trigger{ order:2; display:flex!important; }
+  html.hz8 #store-header .account-button{ order:3; }
+  html.hz8 #store-header .basket-icon{ order:4; }
+  html.hz8 #store-header .hamburger,
+  html.hz8 #store-header #mobile-search-trigger,
+  html.hz8 #store-header .account-button,
+  html.hz8 #store-header .basket-icon .cart-button{
+    min-width:44px; min-height:44px; justify-content:center; align-items:center;
+  }
+  /* Samma ikonstorlek i hela kompaktläget (Nyehandel byter till 38 px
+     från 1024 px). */
+  html.hz8 #store-header .hamburger :is(.icon, svg),
+  html.hz8 #store-header #mobile-search-trigger :is(.icon, svg),
+  html.hz8 #store-header .account-button :is(.icon, svg),
+  html.hz8 #store-header .basket-icon .cart-button :is(.icon, svg){ width:24px!important; height:24px!important; }
 }
 
 /* ============ MOBIL — brytpunkt ============ */
@@ -687,7 +722,7 @@ html.hz8:not([data-hz8-page="home"]) .hz8-msearch__field input:focus-visible{
 }
 .hz8-msearch__empty p{ margin:0 0 8px; color:var(--hz8-text); font:500 14px/1.45 Arial, sans-serif; }
 .hz8-msearch__empty a{ color:var(--hz8-olive); font-weight:700; }
-/* Bara där headerns sökknapp visas (Nyehandel: under 1024 px);
+/* Bara där headerns sökknapp visas (kompakt läge och mobil, <1180 px);
    desktop har headerns eget sökfält. */
-@media (min-width:1024px){ .hz8-msearch{ display:none !important; } }
+@media (min-width:1180px){ .hz8-msearch{ display:none !important; } }
 @media (min-width:768px){ .hz8-msearch__panel{ left:50%; right:auto; width:min(640px, calc(100% - 48px)); top:16px; max-height:calc(100% - 32px); transform:translate(-50%, -12px); border-radius:20px; } .hz8-msearch.is-open .hz8-msearch__panel{ transform:translate(-50%, 0); } }
