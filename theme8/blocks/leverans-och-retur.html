@@ -1,51 +1,62 @@
 <!-- Leverans och retur -- innehållsblock för Theme 8 (EJ publicerat).
-     Användning: se theme8/blocks/INFO-PAGES.md (ny sida, slug
-     leverans-och-retur, klistras in som HTML-block). Stylas av
-     theme8/css/88-pages.css (klasser hz8-journey*).
+     Användning: ny sida "Leverans och retur" (slug leverans-och-retur),
+     klistra in som HTML-block. Se INFO-PAGES.md. Stylas av
+     theme8/css/89-service.css; 89-service.js lyfter mastheaden, ritar
+     ikoner, fyller fraktfakta ur HZ8.commerce (lanseringsspärren gäller)
+     och hämtar leveransfrågorna ur butikens riktiga FAQ.
 
-     Copy-regler: bara uppgifter som redan står i butikens FAQ,
-     köp- och leveransvillkor och kassa. Ingen transportör och ingen
-     leveranstid nämns förrän en enda korrekt uppgift är beslutad
-     (villkoren säger 1–4 arbetsdagar, FAQ 1–2 vardagar, hazey.se 1–3).
-     Juridiska villkor återges inte -- steg 6 länkar till villkoren.
-     Klistra inte in innan fri frakt från 499 kr gäller i Nyehandels
-     kassa (theme8/blocks/ADMIN-TODO.md punkt 1–3). -->
-<section class="hz8-journey">
-  <div class="hz8-journey__intro">
+     Copy-regler: bara uppgifter ur butikens FAQ, köp- och
+     leveransvillkor och kassa. Ingen transportör och ingen leveranstid
+     förrän en enda korrekt uppgift är beslutad. Juridiken återges inte
+     -- returfliken länkar till villkoren. -->
+<div class="hz8-dlv-block">
+  <div data-hz8-mast="photo">
     <h1>Leverans och retur</h1>
     <p>Så går det till från beställning till leverans – och vad du gör om något behöver skickas tillbaka.</p>
+    <ol class="hz8-steps" data-hz8-mast-aside aria-label="Så går leveransen till">
+      <li><span data-hz8-icon="cart"></span><div><h2>Beställning</h2><p>När beställningen är klar får du en orderbekräftelse via e-post.</p></div></li>
+      <li><span data-hz8-icon="box"></span><div><h2>Packning</h2><p>Vi packar din beställning i Sverige, i en neutral och omärkt förpackning.</p></div></li>
+      <li><span data-hz8-icon="truck"></span><div><h2>Leverans</h2><p>Vi levererar endast inom Sverige.</p></div></li>
+      <li><span data-hz8-icon="pin"></span><div><h2>Spårning</h2><p>Spårningsnumret mejlas till dig när paketet har lämnats till transportören.</p></div></li>
+    </ol>
   </div>
 
-  <ol class="hz8-journey__steps">
-    <li>
-      <h2>Beställning</h2>
-      <p>När beställningen är klar får du en orderbekräftelse via e-post. Hittar du den inte, titta i skräpposten.</p>
-    </li>
-    <li>
-      <h2>Betalning</h2>
-      <p>Du betalar i kassan. Alla priser anges i svenska kronor inklusive moms, och fraktkostnaden visas i kassan innan du betalar. Fri frakt från 499 kr.</p>
-    </li>
-    <li>
-      <h2>Packning</h2>
-      <p>Vi packar din beställning i Sverige, i en neutral och omärkt förpackning.</p>
-    </li>
-    <li>
-      <h2>Leverans</h2>
-      <p>Vi levererar endast inom Sverige.</p>
-    </li>
-    <li>
-      <h2>Spårning</h2>
-      <p>Spårningsnumret mejlas till dig när paketet har lämnats till transportören.</p>
-    </li>
-    <li>
-      <h2>Ångerrätt och retur</h2>
-      <p>Du har ångerrätt enligt distansavtalslagen. Vad som gäller för returer, returfrakt och outlösta paket står i våra <a href="/sv/page/kop-och-leveransvillkor">köp- och leveransvillkor</a>.</p>
-    </li>
-    <li>
-      <h2>Kontakt vid problem</h2>
-      <p>Har paketet skadats, försenats eller kommit bort? Mejla <a href="mailto:hej@hazey.se">hej@hazey.se</a> med ditt ordernummer så hjälper vi dig.</p>
-    </li>
-  </ol>
+  <ul class="hz8-facts" aria-label="Frakt">
+    <li><span data-hz8-icon="truck"></span><strong data-hz8-fact="free"></strong></li>
+    <li><span data-hz8-icon="card"></span><strong data-hz8-fact="fee"></strong></li>
+    <li><span data-hz8-icon="pin"></span><strong data-hz8-fact="country"></strong></li>
+  </ul>
 
-  <p class="hz8-journey__note">Har du fler frågor? Läs <a href="/sv/page/faq">Vanliga frågor</a> eller <a href="/sv/page/kontakt">kontakta oss</a>.</p>
-</section>
+  <div class="hz8-dlv">
+    <div>
+      <div class="hz8-tabs" role="tablist" aria-label="Leverans och retur">
+        <button type="button" role="tab" id="tab-leverans" aria-controls="leverans" aria-selected="true">Leverans</button>
+        <button type="button" role="tab" id="tab-retur" aria-controls="retur" aria-selected="false">Retur och reklamation</button>
+      </div>
+      <section class="hz8-dlv__panel" id="leverans" role="tabpanel" aria-labelledby="tab-leverans">
+        <h2>Leverans</h2>
+        <p>När beställningen är klar får du en orderbekräftelse via e-post. Vi packar i Sverige, levererar endast inom Sverige och mejlar spårningsnumret när paketet har lämnats till transportören. Fraktkostnaden visas i kassan innan du betalar.</p>
+        <ul class="hz8-dlv__list">
+          <li><span data-hz8-icon="mail"></span><div><h3>Orderbekräftelse</h3><p>Skickas via e-post när beställningen är klar. Hittar du den inte, titta i skräpposten.</p></div></li>
+          <li><span data-hz8-icon="box"></span><div><h3>Diskret förpackning</h3><p>Varken avsändare eller produkt framgår på utsidan.</p></div></li>
+          <li><span data-hz8-icon="pin"></span><div><h3>Spårning</h3><p>Du får spårningsnumret via e-post när paketet har skickats.</p></div></li>
+        </ul>
+      </section>
+      <section class="hz8-dlv__panel" id="retur" role="tabpanel" aria-labelledby="tab-retur" hidden>
+        <h2>Retur och reklamation</h2>
+        <p>Du har ångerrätt enligt distansavtalslagen. Vad som gäller för returer, returfrakt, outlösta paket och reklamationer står i våra <a href="/sv/page/kop-och-leveransvillkor">köp- och leveransvillkor</a>.</p>
+        <ul class="hz8-dlv__list">
+          <li><span data-hz8-icon="ret"></span><div><h3>Ångra ett köp</h3><p>Kontakta oss på <a href="mailto:hej@hazey.se">hej@hazey.se</a> så hjälper vi dig vidare.</p></div></li>
+          <li><span data-hz8-icon="chat"></span><div><h3>Skadat, försenat eller borttappat paket</h3><p>Hör av dig med ditt ordernummer via <a href="/sv/page/kontakt?arende=retur">kontaktformuläret</a>.</p></div></li>
+        </ul>
+      </section>
+    </div>
+    <div class="hz8-dlv__side">
+      <section class="hz8-dlv__faq" data-hz8-faq-topic="leverans" aria-labelledby="hz8-dlv-faq-title">
+        <div class="hz8-dlv__faq-head"><h2 id="hz8-dlv-faq-title">Vanliga frågor om leverans</h2><a href="/sv/page/faq#leverans">Se alla frågor <span data-hz8-icon="arrow"></span></a></div>
+        <div class="hz8-faq__list"></div>
+      </section>
+      <div data-hz8-help></div>
+    </div>
+  </div>
+</div>

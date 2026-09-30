@@ -7,13 +7,13 @@ nedan är gjort i Nyehandel-admin.
 
 | Route | Status | Theme 8 | Innehåll |
 |---|---|---|---|
-| `/sv/page/faq` | 200 | ja | 10 frågor (admin, `nh-faq`) + Theme 8-sök |
-| `/sv/page/kontakt` | 200 | ja | admin-html; mailto:-formulären döljs, ärlig kontaktväg visas |
-| `/sv/page/kop-och-leveransvillkor` | 200 | ja | villkor (admin), innehållsförteckning av egna rubriker |
-| `/sv/page/integritetspolicy` | 200 | ja | policy (admin), innehållsförteckning |
+| `/sv/page/faq` | 200 | ja | servicesida: butikens 10 frågor i ämnen, sök, djuplänkar |
+| `/sv/page/kontakt` | 200 | ja | servicesida: riktigt kontaktformulär (Nyehandels ärendefunktion), ärendeval, kontaktvägar |
+| `/sv/page/kop-och-leveransvillkor` | 200 | ja | dokumentmall: innehållsförteckning, läskolumn, hjälpkolumn (juridisk text orörd) |
+| `/sv/page/integritetspolicy` | 200 | ja | dokumentmall |
 | `/sv/page/kopvillkor` | 200 | ja | **tom sida** i admin -- Theme 8 visar tomläge med länk till villkoren |
 | `/sv/page/butik`, `/vara-bastsaljare`, `/kampanjer` | 200 | ja | admin-html |
-| `/sv/search?query=` | 200 | ja | H1 med sökord, ny sökning, tomläge vid 0 träffar |
+| `/sv/search?query=` | 200 | ja | servicemasthead med sökfält (riktig sökroute), tomläge med kategoriplattor |
 | `/sv/page/om-oss` | **404** | nej | block finns: `om-oss.html` |
 | `/sv/page/leverans-och-retur` (ny) | **404** | nej | block finns: `leverans-och-retur.html` |
 | okänd URL (404) | 404 | **nej** | Nyehandels 404-mall laddar inte temats JS/CSS |
@@ -37,25 +37,31 @@ Klistra in först när fri frakt från 499 kr gäller i kassan
 3. Lägg till i footern (Kundservice) -- länken läggs då in i
    `theme8/js/60-social-footer.js` (finns inte ännu, eftersom routen saknas).
 
-### Kontakt- och nyhetsbrevsformulär
-Nyehandel har inbyggda komponenter: **Kontaktformulär**
-(`POST /frontend-api/contact-form`: namn, e-post, telefon, meddelande,
-reCAPTCHA, bekräftelse "meddelande skickat") och **Nyhetsbrev**
-(`POST /frontend-api/newsletter-form`: e-post, reCAPTCHA, valfri
-rabattinsamling). reCAPTCHA-nyckeln är konfigurerad (`window.config.rcsk`).
-Theme 8 använder dem inte själv: vart inskicken går och vem som får dem
-kan bara verifieras i admin.
-1. Kontakt-sidan: lägg till komponenten Kontaktformulär; kontrollera
-   mottagaradressen; skicka ett testmeddelande från preview.
-2. Nyhetsbrev: kontrollera om Nyehandels nyhetsbrev är kopplat till
-   ActiveCampaign (villkoren nämner ActiveCampaign). Lägg komponenten
-   där den ska synas. **Rabatt**: "10 % på första köp" visas inte i
-   Theme 8 förrän en riktig kod faktiskt delas ut av systemet.
-3. Ta sedan bort de tre mailto:-formulären ur Kontakt-sidans html.
-4. Ändra kontaktsidans ingress (admin): "Har du fortfarande frågor –
-   använd kontaktformuläret nedan." → "Har du fortfarande frågor – mejla
-   oss på hej@hazey.se." (tills formuläret finns). Texten nämner också
-   "Swish-rutan" (WooCommerce-kassan) -- Nyehandels kassa använder Kustom.
+### Kontaktformulär (Theme 8, 2026-09-30)
+Kontaktsidans formulär i Theme 8 skickar till Nyehandels egen
+ärendefunktion, samma som plattformens komponent Kontaktformulär:
+`POST /frontend-api/contact-form` med `name`, `email`, `phone` (tomt),
+`message` och `g-recaptcha-response` (reCAPTCHA v2, nyckeln
+`window.config.rcsk` är konfigurerad), CSRF via `X-XSRF-TOKEN`.
+Ärende och ordernummer läggs först i meddelandet ("Ärende: …",
+"Ordernummer: …"). Namn krävs av plattformen och finns därför som fält.
+Verifierat: plattformens validering (422 med svenska fältfel) och
+kopplingen av felen till fälten. **Inte verifierat:** ett lyckat utskick
+-- vart meddelandet levereras styrs av butikens e-postinställning i
+Nyehandel-admin.
+1. Admin: kontrollera mottagaradressen för kontaktformulär.
+2. Skicka ett testmeddelande från `/sv/page/kontakt?preview=…` och
+   bekräfta att det kommer fram.
+3. Därefter kan de tre dolda mailto:-formulären tas bort ur sidans html.
+4. Kontaktsidans admintext nämner "Swish-rutan" (WooCommerce-kassan) --
+   Nyehandels kassa använder Kustom.
+
+### Nyhetsbrev
+Nyehandel har komponenten Nyhetsbrev (`POST /frontend-api/newsletter-form`,
+reCAPTCHA, valfri rabattinsamling). Theme 8 visar inget nyhetsbrev och
+inget "10 % på första köp" förrän en riktig registrering och kod finns.
+Kontrollera om nyhetsbrevet är kopplat till ActiveCampaign (villkoren
+nämner det).
 
 ### Tom sida `/sv/page/kopvillkor`
 Finns i Nyehandels sidfot som "Köpvillkor" men saknar innehåll. Ta bort

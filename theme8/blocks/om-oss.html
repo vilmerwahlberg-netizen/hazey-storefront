@@ -1,58 +1,44 @@
-<!-- Om oss -- innehållsblock för Theme 8 (EJ publicerat).
-     Användning: skapa en ny sida "Om oss" (slug om-oss) i Nyehandel-
-     admin för Theme 8 och klistra in detta som ett HTML-block. Stylas
-     av theme8/css/88-pages.css (klasser hz8-about*).
+<!-- Om Hazey -- innehållsblock för Theme 8 (EJ publicerat).
+     Användning: ny sida "Om oss" (slug om-oss) i Nyehandel-admin för
+     Theme 8, klistra in detta som ett HTML-block. Se INFO-PAGES.md.
+     Stylas av theme8/css/89-service.css; 89-service.js lyfter blockets
+     masthead ([data-hz8-mast]) ovanför innehållet och ritar ikonerna.
 
-     Copy-regler: endast uppgifter som redan står på sajten idag
-     (FAQ, footer, produktsidornas USP-rad, kontaktsidan) används.
-     Inga kundantal, betyg, grundarberättelser eller årtal visas och
-     inga generella/permanenta laglighetslöften ges --
-     prototypens "8 000+ kunder", "två vänner", "2023" och
-     "publicerade analyser på produktnivå" är INTE verifierade.
-     TODO-kommentarerna nedan markerar var godkänd copy kan läggas in.
-     Admininstruktion: se theme8/blocks/INFO-PAGES.md. -->
-<section class="hz8-about">
-  <div class="hz8-about__intro">
+     Copy-regler: endast uppgifter som redan står på sajten idag (FAQ,
+     footer, produktsidornas USP-rad, kontaktsidan). Inga kundantal,
+     betyg, årtal, certifieringar eller grundarberättelse; inga effekt-
+     eller välmåendepåståenden. -->
+<div class="hz8-about2">
+  <div data-hz8-mast="photo">
+    <h1>En svensk butik för lagliga cannabinoider</h1>
+    <p>Hazey.se är en svensk nätbutik för cannabinoidprodukter. Vi skickar från Sverige i diskreta paket och vill att det ska vara enkelt att förstå vad du köper.</p>
+  </div>
+
+  <ul class="hz8-values">
+    <li><span data-hz8-icon="box"></span><div><h2>Noggrant utvalt</h2><p>Sortimentet anpassas löpande efter gällande svensk lagstiftning.</p></div></li>
+    <li><span data-hz8-icon="doc"></span><div><h2>Tydlig information</h2><p>Innehåll och halter står på varje produktsida. Labbrapport skickas på begäran.</p></div></li>
+    <li><span data-hz8-icon="truck"></span><div><h2>Skickas från Sverige</h2><p>Alla paket skickas i neutral, omärkt förpackning. Spårningsnumret mejlas när beställningen skickas.</p></div></li>
+  </ul>
+
+  <section class="hz8-story" aria-labelledby="hz8-story-title">
     <div>
-      <span class="hz8-kicker">Om Hazey</span>
-      <h1>En svensk butik för lagliga cannabinoider</h1>
-      <p class="hz8-about__lead">Hazey.se är en svensk nätbutik för cannabinoidprodukter. Vi skickar från Sverige i diskreta paket. Vi vill att det ska vara enkelt att förstå vad du köper och lätt att få hjälp när något känns oklart.</p>
-      <!-- TODO (Vilmer): ev. godkänd berättelse om hur Hazey startade.
-           Verifierat men ej visat: butiken drivs av Måbroberg AB (bolag
-           registrerat 2020 enligt tidigare avstämning) -- lägg in om du
-           vill visa bolagsnamnet. -->
-      <div class="hz8-about__actions">
-        <a class="hz8-btn hz8-btn--primary" href="/sv/categories/alla-produkter">Utforska sortimentet</a>
-        <a class="hz8-btn hz8-btn--secondary" href="/sv/page/faq">Vanliga frågor</a>
-      </div>
+      <p class="hz8-svc-eyebrow hz8-eyebrow-rule">Om Hazey</p>
+      <h2 id="hz8-story-title">Enkelt att hitta, lätt att få hjälp</h2>
+      <p>Vi samlar vårt sortiment i tydliga kategorier – vapes, buds, hasch och CBD – så att det är enkelt att hitta rätt och jämföra.</p>
+      <p>Känns något oklart? Svaren på vanliga frågor finns samlade, och kundservice hjälper dig med frågor om produkter, beställningar och leveranser.</p>
     </div>
-    <div class="hz8-about__media" role="img" aria-label="Stockholm i kvällsljus"></div>
-  </div>
+    <div class="hz8-story__media" role="img" aria-label="Stockholm i kvällsljus"></div>
+  </section>
 
-  <div class="hz8-about__section">
-    <h2>Så arbetar vi</h2>
-    <ul class="hz8-about__points">
-      <li><strong>Följer lagstiftningen</strong><span>Sortimentet anpassas löpande efter gällande svensk lagstiftning.</span></li>
-      <li><strong>Labbrapport på begäran</strong><span>Labbrapport skickas på begäran &ndash; mejla hej@hazey.se.</span></li>
-      <li><strong>Diskreta paket</strong><span>Alla paket skickas i neutral, omärkt förpackning från Sverige.</span></li>
-      <li><strong>Spårbar leverans</strong><span>Spårningsnumret mejlas till dig när beställningen skickas.</span></li>
-    </ul>
-  </div>
+  <section class="hz8-about2__ansvar" aria-labelledby="hz8-ansvar-title">
+    <h2 id="hz8-ansvar-title">Ansvar</h2>
+    <p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p>
+  </section>
 
-  <div class="hz8-about__section">
-    <h2>Ansvar</h2>
-    <div>
-      <p>Du måste vara minst 18 år för att handla på Hazey.se. Våra produkter är avsedda för samlings- och prydnadsändamål. Förvaras oåtkomligt för barn. Vi uppmanar inte till användning eller konsumtion av produkterna.</p>
-      <!-- TODO (Vilmer): ev. godkänd text om kvalitetsarbete / leverantörer. -->
-    </div>
-  </div>
-
-  <div class="hz8-band hz8-about__band">
-    <div>
-      <span class="hz8-kicker">Kundservice</span>
-      <h2>Frågor om en order eller produkt?</h2>
-      <p>Skriv till hej@hazey.se. Återförsäljare och företag når oss på butik@hazey.se.</p>
-    </div>
-    <a class="hz8-btn hz8-btn--light" href="/sv/page/kontakt">Kontakta oss</a>
-  </div>
-</section>
+  <nav class="hz8-onward" aria-labelledby="hz8-onward-title">
+    <div><p class="hz8-svc-eyebrow hz8-eyebrow-rule">Gå vidare</p><h2 id="hz8-onward-title">Utforska vidare</h2></div>
+    <a class="hz8-onward__dark" href="/sv/categories/alla-produkter"><span data-hz8-icon="box"></span><span><strong>Till sortimentet</strong>Alla produkter och kategorier</span><span data-hz8-icon="arrow"></span></a>
+    <a class="hz8-onward__light" href="/sv/page/faq"><span data-hz8-icon="help"></span><span><strong>Vanliga frågor</strong>Svar om beställning och leverans</span><span data-hz8-icon="arrow"></span></a>
+    <a class="hz8-onward__cta" href="/sv/page/kontakt"><span data-hz8-icon="mail"></span><span><strong>Kontakta oss</strong>hej@hazey.se</span><span data-hz8-icon="arrow"></span></a>
+  </nav>
+</div>
