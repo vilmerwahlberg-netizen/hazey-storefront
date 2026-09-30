@@ -233,7 +233,7 @@ html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image { overfl
    bildens höjd) hamnar utanför fönstret. */
 html.hz8 #store-main .hz8-shop__rail .product-card .product-card__image img { position: absolute !important; inset: auto auto 0 -12% !important; width: 124% !important; height: 124% !important; max-width: none !important; object-fit: contain !important; object-position: 50% 100% !important; }
 html.hz8 #store-main .hz8-shop__rail .product-card .brand { font-size: 11px !important; letter-spacing: .08em; }
-html.hz8 #store-main .hz8-shop__rail .product-card .details a { min-height: 0 !important; }
+html.hz8 #store-main .hz8-shop__rail .product-card .details a { display: block; min-height: 44px !important; }
 html.hz8 #store-main .hz8-shop__rail .product-card .name { display: -webkit-box !important; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; font-size: 15px !important; line-height: 1.25 !important; }
 html.hz8 #store-main .hz8-shop__rail .product-card .offer { min-height: 0 !important; margin-top: auto; }
 
