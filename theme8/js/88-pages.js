@@ -152,6 +152,8 @@
 
   HZ8.register("content-pages", function (context) {
     if (context.page !== "page" && context.page !== "faq") return;
+    /* Butik ägs av 87-shop.js (katalogportal) -- inga generella listor här. */
+    if (HZ8.isShopPage && HZ8.isShopPage()) return;
     var page = document.querySelector("#skip-to-main-content .store-page") || document.querySelector(".store-page");
     if (!page) return;
     var S = HZ8.service;
