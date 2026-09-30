@@ -3,8 +3,29 @@
    en plattformsfunktion, inte en del av startsidans layout). */
 
 html.hz8 #cart-side-wrap .cart-overlay { background: var(--hz8-overlay) !important; }
+html.hz8 #cart-side-wrap.is-active #cartAside.cart.aside {
+  right: 0 !important;
+  visibility: visible;
+  pointer-events: auto;
+  transition: right .2s, visibility 0s;
+}
+/* Öppen drawer låser sidans scroll (Nyehandel gör det inte; på desktop
+   scrollade sidan bakom backdroppen). Gutter hålls så att inget hoppar. */
+html.hz8:has(#cart-side-wrap.is-active) { overflow: hidden !important; scrollbar-gutter: stable; }
+/* Stängt läge: Nyehandels .cart parkerar drawern med ett fast
+   right:-500px (för sin 500 px breda drawer). Theme 8:s drawer är
+   --hz8-cart-w bred (100vw på mobil), så över 500 px viewport låg
+   100vw - 500px kvar på skärmen och fångade klick på headerns knappar.
+   Stängd position räknas därför från den egna bredden (+ skuggan), och
+   stängd drawer är osynlig för pekare och tangentbord -- visibility
+   släpps först när utglidningen (right 0.2s, Nyehandels egen) är klar. */
 html.hz8 #cartAside.cart.aside {
-  width: min(460px, 100vw) !important;
+  --hz8-cart-w: min(460px, 100vw);
+  width: var(--hz8-cart-w) !important;
+  right: calc(-1 * var(--hz8-cart-w) - 40px) !important;
+  visibility: hidden;
+  pointer-events: none;
+  transition: right .2s, visibility 0s linear .2s;
   max-width: 100vw;
   padding: 0 !important;
   border-radius: var(--hz8-radius-l) 0 0 var(--hz8-radius-l);
@@ -190,7 +211,7 @@ html.hz8 #cartAside .nh-cart-swish {
 html.hz8 #cartAside .nh-cart-swish img { width: auto !important; height: 18px !important; max-width: 80px; }
 
 @media (max-width: 767px) {
-  html.hz8 #cartAside.cart.aside { width: 100vw !important; border-radius: 0; }
+  html.hz8 #cartAside.cart.aside { --hz8-cart-w: 100vw; border-radius: 0; }
   html.hz8 #cartAside .header { padding: 16px 16px 14px !important; }
   html.hz8 #cartAside .header h2 { font-size: 24px !important; }
   html.hz8 #cartAside .section.items { padding: 4px 16px !important; }
