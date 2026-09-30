@@ -13,12 +13,15 @@
   <div data-hz8-mast="photo">
     <h1>Leverans och retur</h1>
     <p>Så går det till från beställning till leverans – och vad du gör om något behöver skickas tillbaka.</p>
-    <ol class="hz8-steps" data-hz8-mast-aside aria-label="Så går leveransen till">
+    <div class="hz8-steps-wrap" data-hz8-mast-aside>
+    <h2 class="hz8-steps__title" id="hz8-steps-title">Så går leveransen till</h2>
+    <ol class="hz8-steps" aria-labelledby="hz8-steps-title">
       <li><span data-hz8-icon="cart"></span><div><h2>Beställning</h2><p>När beställningen är klar får du en orderbekräftelse via e-post.</p></div></li>
       <li><span data-hz8-icon="box"></span><div><h2>Packning</h2><p>Vi packar din beställning i Sverige, i en neutral och omärkt förpackning.</p></div></li>
       <li><span data-hz8-icon="truck"></span><div><h2>Leverans</h2><p>Vi levererar endast inom Sverige.</p></div></li>
       <li><span data-hz8-icon="pin"></span><div><h2>Spårning</h2><p>Spårningsnumret mejlas till dig när paketet har lämnats till transportören.</p></div></li>
     </ol>
+    </div>
   </div>
 
   <ul class="hz8-facts" aria-label="Frakt">
@@ -36,6 +39,7 @@
       <section class="hz8-dlv__panel" id="leverans" role="tabpanel" aria-labelledby="tab-leverans">
         <h2>Leverans</h2>
         <p>När beställningen är klar får du en orderbekräftelse via e-post. Vi packar i Sverige, levererar endast inom Sverige och mejlar spårningsnumret när paketet har lämnats till transportören. Fraktkostnaden visas i kassan innan du betalar.</p>
+        <p class="hz8-dlv__rule" data-hz8-fact="rule"></p>
         <ul class="hz8-dlv__list">
           <li><span data-hz8-icon="mail"></span><div><h3>Orderbekräftelse</h3><p>Skickas via e-post när beställningen är klar. Hittar du den inte, titta i skräpposten.</p></div></li>
           <li><span data-hz8-icon="box"></span><div><h3>Diskret förpackning</h3><p>Varken avsändare eller produkt framgår på utsidan.</p></div></li>

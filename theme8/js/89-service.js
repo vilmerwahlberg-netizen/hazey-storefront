@@ -108,6 +108,17 @@
   /* Hjälpkolumn: rubrik, text, primär knapp, kontaktvägar, relaterade. */
   function helpRail(opts) {
     opts = opts || {};
+    /* Radvariant (FAQ-facit): e-post, kontaktformulär, återförsäljare. */
+    if (opts.rows) {
+      return '<aside class="hz8-svc-help hz8-svc-help--rows" aria-labelledby="hz8-svc-help-title">' +
+        (opts.icon ? '<span class="hz8-svc-help__mark">' + icon(opts.icon) + "</span>" : "") +
+        '<h2 id="hz8-svc-help-title">' + esc(opts.title) + "</h2>" + (opts.text ? "<p>" + esc(opts.text) + "</p>" : "") +
+        '<ul class="hz8-svc-ways">' +
+          '<li>' + icon("mail") + '<div><span class="hz8-svc-ways__title">E-post</span><a href="mailto:hej@hazey.se">hej@hazey.se</a><span>Kundservice</span></div></li>' +
+          '<li>' + icon("chat") + '<div><span class="hz8-svc-ways__title">Kontaktformulär</span><a href="' + esc(contactUrl()) + '">Skicka ett meddelande</a><span>Via vårt formulär</span></div></li>' +
+          '<li>' + icon("store") + '<div><span class="hz8-svc-ways__title">Återförsäljare</span><a href="mailto:butik@hazey.se">butik@hazey.se</a><span>För befintliga och blivande återförsäljare</span></div></li>' +
+        "</ul></aside>";
+    }
     return '<aside class="hz8-svc-help" aria-labelledby="hz8-svc-help-title">' +
       (opts.icon ? '<span class="hz8-svc-help__mark">' + icon(opts.icon) + "</span>" : "") +
       '<h2 id="hz8-svc-help-title">' + esc(opts.title || "Har du frågor?") + "</h2>" +
@@ -184,13 +195,13 @@
     return '<form class="hz8-cform" id="' + p + '" novalidate aria-labelledby="' + p + '-title">' +
       '<h2 id="' + p + '-title">Skicka ett meddelande</h2>' +
       '<p class="hz8-cform__summary" role="alert" tabindex="-1" hidden></p>' +
-      field(p + "-topic", "Ärende", '<div class="hz8-select"><select id="' + p + '-topic" name="topic" required aria-describedby="' + p + '-topic-err">' + opts + "</select>" + icon("chev", "hz8-select__chev") + "</div>") +
-      field(p + "-order", "Ordernummer", '<input id="' + p + '-order" name="order" type="text" inputmode="text" autocomplete="off" maxlength="40" placeholder="t.ex. 12345" aria-describedby="' + p + '-order-err">', true) +
-      '<div class="hz8-cform__row">' +
+      '<div class="hz8-cform__pair">' + field(p + "-topic", "Ärende", '<div class="hz8-select"><select id="' + p + '-topic" name="topic" required aria-describedby="' + p + '-topic-err">' + opts + "</select>" + icon("chev", "hz8-select__chev") + "</div>") +
+      field(p + "-order", "Ordernummer", '<input id="' + p + '-order" name="order" type="text" inputmode="text" autocomplete="off" maxlength="40" placeholder="t.ex. 12345" aria-describedby="' + p + '-order-err">', true) + "</div>" +
+      '<div class="hz8-cform__pair">' +
       field(p + "-name", "Namn", '<input id="' + p + '-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="' + p + '-name-err">') +
       field(p + "-email", "E-post", '<input id="' + p + '-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160" placeholder="din@epost.se" aria-describedby="' + p + '-email-err">') +
       "</div>" +
-      field(p + "-message", "Meddelande", '<textarea id="' + p + '-message" name="message" required minlength="10" maxlength="900" rows="5" placeholder="Skriv ditt meddelande här" aria-describedby="' + p + '-message-err"></textarea>') +
+      field(p + "-message", "Meddelande", '<textarea id="' + p + '-message" name="message" required minlength="10" maxlength="900" rows="4" placeholder="Skriv ditt meddelande här" aria-describedby="' + p + '-message-err"></textarea>') +
       '<div class="hz8-field hz8-cform__captcha"><div class="hz8-cform__captcha-box" id="' + p + '-captcha"></div><p class="hz8-field__err" id="' + p + '-captcha-err" hidden></p></div>' +
       '<button type="submit" class="hz8-svc-btn hz8-svc-btn--cta hz8-cform__submit"><span>Skicka meddelande</span>' + icon("arrow") + "</button>" +
       '<p class="hz8-cform__status" role="status" aria-live="polite"></p>' +
@@ -372,7 +383,7 @@
         }).join("") +
         '<div class="hz8-faq__empty" hidden><h2>Ingen fråga matchar din sökning</h2><p>Prova ett annat ord, eller kontakta oss så hjälper vi dig.</p><a class="hz8-svc-btn hz8-svc-btn--ghost" href="' + esc(contactUrl()) + '">Kontakta oss</a></div>' +
       "</div>" +
-      helpRail({ icon: "help", title: "Hittar du inte svaret?", text: "Kontakta oss så hjälper vi dig. Har du en order, skicka gärna med ordernumret.", cta: "Kontakta kundservice" });
+      helpRail({ rows: true, icon: "help", title: "Hittar du inte svaret?", text: "Kontakta oss så hjälper vi dig. Välj det sätt som passar dig bäst." });
     topics.forEach(function (t) {
       var list = root.querySelector("#" + t.key + " .hz8-faq__list");
       groups[t.key].forEach(function (d) { list.appendChild(d); });
@@ -418,6 +429,9 @@
     var heads = Array.prototype.filter.call(page.querySelectorAll("h2, h3"), function (h) { return /^\d+\.\s+\S/.test(h.textContent.trim()); });
     if (heads.length < 5 || (page.textContent || "").length < 2000) return false;
     var h1 = page.querySelector("h1");
+    /* Varumärket står redan i sidans header och titel -- den synliga
+       rubriken visar bara dokumentnamnet (texten i övrigt orörd). */
+    if (h1 && /\s[–-]\s*Hazey\.se\s*$/i.test(h1.textContent)) h1.textContent = h1.textContent.replace(/\s[–-]\s*Hazey\.se\s*$/i, "").trim();
     mast({ variant: "band", h1: h1 });
     var body = document.createElement("div");
     body.className = "hz8-doc";
@@ -429,9 +443,9 @@
       return { id: h.id, num: m ? m[1] : String(i + 1), text: m ? m[2] : h.textContent.trim() };
     });
     body.innerHTML =
-      '<nav class="hz8-doc__toc" aria-label="Innehåll på sidan"><p class="hz8-doc__toc-title">På denna sida</p><ol>' + toc.map(function (t) {
+      '<nav class="hz8-doc__toc" aria-label="Innehåll på sidan"><details class="hz8-doc__toc-box"><summary class="hz8-doc__toc-title"><span>På denna sida</span><span class="hz8-doc__toc-count">' + toc.length + " avsnitt</span>" + icon("chev", "hz8-doc__toc-chev") + "</summary><ol>" + toc.map(function (t) {
         return '<li><a href="#' + t.id + '"><span class="hz8-doc__toc-num">' + esc(t.num) + ".</span><span>" + esc(t.text) + "</span></a></li>";
-      }).join("") + "</ol></nav>" +
+      }).join("") + "</ol></details></nav>" +
       '<div class="hz8-doc__text"></div>' +
       helpRail({ title: "Har du frågor?", text: "Kundservice hjälper dig gärna med frågor om beställningar, leveranser, returer och produkter.", cta: "Kontakta kundservice",
         related: [{ label: "Fråga om min order", href: contactUrl("order") }, { label: "Fråga om en produkt", href: contactUrl("produkt") }, { label: "Retur eller reklamation", href: contactUrl("retur") }, { label: "Vanliga frågor om leverans", href: link("/sv/page/faq#leverans") }] });
@@ -443,6 +457,14 @@
       text.appendChild(n);
     });
     page.appendChild(body);
+    /* Index: alltid öppet på desktop (sticky lista), hopfällt på mobil
+       så att inga avsnitt klipps av i en horisontell rad. */
+    var box = body.querySelector(".hz8-doc__toc-box");
+    var wide = window.matchMedia("(min-width: 768px)");
+    var syncToc = function () { box.open = wide.matches; };
+    syncToc();
+    if (wide.addEventListener) wide.addEventListener("change", syncToc);
+    box.addEventListener("click", function (e) { if (e.target.closest("a") && !wide.matches) box.open = false; });
     /* Admininnehållet (inklistrat från WooCommerce) har inline-färg och
        -storlek på länkar; bara presentationen tas bort, texten rörs inte. */
     text.querySelectorAll("a[style]").forEach(function (a) { a.style.removeProperty("color"); a.style.removeProperty("font-size"); });
@@ -489,9 +511,17 @@
      riktiga produktbilden på respektive kategorisida. Utan bild visas
      ett olivfält (ingen påhittad bild). */
   function searchEmpty(head) {
-    var cats = (HZ8.navCategories || []).filter(function (c) { return !c.campaign && c.href; });
-    var order = ["Vapes", "Buds", "Hasch", "CBD", "Alla produkter", "Bästsäljare"];
-    cats.sort(function (a, b) { return order.indexOf(a.label) - order.indexOf(b.label); });
+    var want = ["Vapes", "Buds", "Hasch", "CBD"];
+    var cats = (HZ8.navCategories || []).filter(function (c) { return want.indexOf(c.label) !== -1 && c.href; });
+    cats.sort(function (a, b) { return want.indexOf(a.label) - want.indexOf(b.label); });
+    var best = (HZ8.navCategories || []).filter(function (c) { return /bästsälj/i.test(c.label); })[0];
+    var all = (HZ8.navCategories || []).filter(function (c) { return /alla produkter/i.test(c.label); })[0];
+    /* Sökexempel = riktiga serienamn ur relationskartan (inga påhittade
+       "populära" sökningar -- Nyehandels popular_searches är tom). */
+    var examples = [];
+    try {
+      examples = HZ8.catalog.build().series.filter(function (x) { return x.hub && !/^thc[ab]/i.test(x.name); }).map(function (x) { return x.name; }).slice(0, 5);
+    } catch (e) { examples = []; }
     var box = document.createElement("section");
     box.className = "hz8-sempty";
     box.setAttribute("aria-labelledby", "hz8-sempty-title");
@@ -500,26 +530,30 @@
       '<ul class="hz8-sempty__tiles">' + cats.map(function (c) {
         return '<li><a href="' + esc(link(c.href)) + '" data-src="' + esc(c.href) + '"><span class="hz8-sempty__img" aria-hidden="true"></span><span class="hz8-sempty__label">' + esc(c.label) + "</span>" + icon("chev") + "</a></li>";
       }).join("") + "</ul>" +
+      '<div class="hz8-sempty__cta">' +
+        (best ? '<a class="hz8-svc-btn hz8-svc-btn--dark" href="' + esc(link(best.href)) + '">' + icon("star") + "<span>Se våra bästsäljare</span>" + icon("arrow") + "</a>" : "") +
+        (all ? '<a class="hz8-svc-btn hz8-svc-btn--ghost" href="' + esc(link(all.href)) + '">' + icon("grid") + "<span>Alla produkter</span></a>" : "") +
+      "</div>" +
+      (examples.length ? '<div class="hz8-sempty__examples"><p class="hz8-sempty__ex-title">Sök till exempel</p><ul>' + examples.map(function (x) {
+        return '<li><a href="' + esc(searchUrl(x)) + '">' + icon("search") + "<span>" + esc(x) + "</span></a></li>";
+      }).join("") + "</ul></div>" : "") +
       '<ul class="hz8-svc-trio">' +
-        [{ i: "grid", t: "Alla produkter", s: "Bläddra och filtrera i hela sortimentet.", h: "/sv/categories/alla-produkter" },
-         { i: "chat", t: "Kundservice", s: "Hör av dig om du har frågor om produkter, en order eller retur.", h: "/sv/page/kontakt" },
-         { i: "doc", t: "Vanliga frågor", s: "Svar om beställning, leverans och betalning.", h: "/sv/page/faq" }].map(function (x) {
+        [{ i: "chat", t: "Kundservice", s: "Hör av dig om du har frågor om produkter, en order eller retur.", h: "/sv/page/kontakt" },
+         { i: "doc", t: "Vanliga frågor", s: "Svar om beställning, leverans och betalning.", h: "/sv/page/faq" },
+         { i: "book", t: "Köp- och leveransvillkor", s: "Frakt, retur och reklamation.", h: "/sv/page/kop-och-leveransvillkor" }].map(function (x) {
           return '<li><a href="' + esc(link(x.h)) + '">' + icon(x.i) + "<span><strong>" + esc(x.t) + "</strong>" + esc(x.s) + "</span></a></li>";
         }).join("") + "</ul>";
     head.parentNode.insertBefore(box, head.nextSibling);
-    /* Varje platta får en egen bild: första produktbilden i kategorin
-       som inte redan används av en tidigare platta. */
+    /* Varje platta: första produktbilden i kategorin som inte redan
+       används av en tidigare platta. */
     var anchors = Array.prototype.slice.call(box.querySelectorAll("a[data-src]"));
     Promise.all(anchors.map(function (a) {
-      var src = a.getAttribute("data-src");
-      return /\/categories\//.test(src) ? HZ8.fetchPage(src, HZ8.categoryCards).catch(function () { return []; }) : Promise.resolve(null);
+      return HZ8.fetchPage(a.getAttribute("data-src"), HZ8.categoryCards).catch(function () { return []; });
     })).then(function (lists) {
       var used = {};
       anchors.forEach(function (a, i) {
-        var img = a.querySelector(".hz8-sempty__img");
-        if (!lists[i]) { a.classList.add("is-plain"); img.innerHTML = icon("star"); return; }
-        var url = null;
-        lists[i].some(function (c) { var m = c.html.match(/<img[^>]+src="([^"]+)"/); if (m && !used[m[1]]) { url = m[1]; return true; } return false; });
+        var img = a.querySelector(".hz8-sempty__img"), url = null;
+        (lists[i] || []).some(function (c) { var m = c.html.match(/<img[^>]+src="([^"]+)"/); if (m && !used[m[1]]) { url = m[1]; return true; } return false; });
         if (!url) { a.classList.add("is-plain"); img.innerHTML = icon("grid"); return; }
         used[url] = true;
         img.style.backgroundImage = 'url("' + url.replace(/"/g, "%22") + '")';
@@ -541,6 +575,7 @@
     var sec = mast({ variant: m.getAttribute("data-hz8-mast") || "photo", h1: h1, lead: lead, aside: aside ? " " : "" });
     if (aside && sec) sec.querySelector(".hz8-svc-mast__aside").replaceChildren(aside);
     if (sec && m.getAttribute("data-hz8-mast-image")) sec.classList.add("hz8-svc-mast--" + m.getAttribute("data-hz8-mast-image"));
+    if (sec && page.querySelector(".hz8-about2")) sec.classList.add("hz8-svc-mast--about");
     m.remove();
   }
   function fillCommerce(root) {
@@ -549,9 +584,10 @@
     var R = C.rules, on = C.goalsEnabled();
     root.querySelectorAll("[data-hz8-fact]").forEach(function (el) {
       var k = el.getAttribute("data-hz8-fact");
-      var t = k === "free" ? "Fri frakt från " + R.freeShippingFrom + " kr" : k === "fee" ? R.shippingFee + " kr under gränsen" : k === "country" ? "Endast Sverige" : "";
+      var t = k === "free" ? "Fri frakt från " + R.freeShippingFrom + " kr" : k === "fee" ? R.shippingFee + " kr under gränsen" : k === "country" ? "Endast Sverige" :
+        k === "rule" ? "Fri frakt från " + R.freeShippingFrom + " kr – gränsen räknas på varuvärdet efter rabatt. Under gränsen är frakten " + R.shippingFee + " kr." : "";
       /* Frakt-/prislöften följer lanseringsspärren i 02a-commerce.js. */
-      if (!on && (k === "free" || k === "fee")) { (el.closest("li") || el).hidden = true; return; }
+      if (!on && (k === "free" || k === "fee" || k === "rule")) { (el.closest("li") || el).hidden = true; return; }
       el.textContent = t;
     });
   }
@@ -603,6 +639,25 @@
       }).join("");
     }).catch(function () { host.hidden = true; });
   }
+  /* Leverans (mobil): flikarna ska ligga direkt under mastheaden, före
+     tidslinjen -- flyttas mellan sina två platser efter bredd. */
+  function placeDeliveryTabs() {
+    var tabs = document.querySelector(".hz8-dlv .hz8-tabs, .hz8-svc-mast .hz8-tabs");
+    var aside = document.querySelector(".hz8-svc-mast__aside");
+    var home = document.querySelector(".hz8-dlv > div:first-child");
+    if (!tabs || !aside || !home) return;
+    var mq = window.matchMedia("(max-width: 767px)");
+    var place = function () {
+      if (mq.matches && tabs.parentNode !== aside) aside.insertBefore(tabs, aside.firstChild);
+      else if (!mq.matches && tabs.parentNode !== home) home.insertBefore(tabs, home.firstChild);
+    };
+    place();
+    if (mq.addEventListener) mq.addEventListener("change", place);
+    aside.addEventListener("click", function (e) {
+      var t = e.target.closest('[role="tab"]');
+      if (t && mq.matches) { var p = document.getElementById(t.getAttribute("aria-controls")); if (p) p.scrollIntoView({ block: "start" }); }
+    });
+  }
   function initBlocks(page) {
     if (!page.querySelector("[data-hz8-mast]")) return false;
     page.querySelectorAll("[data-hz8-icon]").forEach(function (el) {
@@ -615,6 +670,8 @@
     var main = document.getElementById("store-main");
     fillCommerce(main);
     initTabs(main);
+    placeDeliveryTabs();
+    if (main.querySelector(".hz8-steps")) document.documentElement.classList.add("hz8-svc-dlv");
     faqExcerpt(main);
     return true;
   }
