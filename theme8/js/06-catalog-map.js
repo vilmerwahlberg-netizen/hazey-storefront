@@ -28,12 +28,18 @@
      karta formatets egen sida finns. Pre-rolls och Refill finns inte i
      sortimentet (headern har dem som "kommer snart", href null) och
      utelämnas därför helt. */
+  /* `family` = vilka produkttyper som är grannar i den lokala navigeringen
+     på en formatsida (Alla Vapes visar Vapes/Carts/Refill/Batterier, inte
+     Buds). Refillvätska har ingen route än (headerns "Refill/Liquid 10 ml"
+     är null) och visas automatiskt när kategorin finns. Volym är aldrig en
+     produkttyp -- den hör till filterpanelen. */
   var FORMAT_DEFS = [
-    { key: "vapes", label: "Vapes", group: "vapes", cta: true },
-    { key: "carts", label: "Carts", group: "vapes", formatLabel: "Carts" },
-    { key: "buds", label: "Buds", group: "buds", cta: true },
-    { key: "hasch", label: "Hasch", group: "hasch", cta: true },
-    { key: "batterier", label: "Batterier & tillbehör", short: "Batterier", group: "vapes", formatLabel: "510-batterier & tillbehör", seriesless: true }
+    { key: "vapes", label: "Vapes", group: "vapes", cta: true, family: "vape" },
+    { key: "carts", label: "Carts", group: "vapes", formatLabel: "Carts", family: "vape" },
+    { key: "refill", label: "Refillvätska", group: "vapes", formatLabel: "Refill/Liquid 10 ml", family: "vape", seriesless: true },
+    { key: "buds", label: "Buds", group: "buds", cta: true, family: "plant" },
+    { key: "hasch", label: "Hasch", group: "hasch", cta: true, family: "plant" },
+    { key: "batterier", label: "Batterier & tillbehör", short: "Batterier", group: "vapes", formatLabel: "510-batterier & tillbehör", seriesless: true, family: "vape" }
   ];
 
   /* Serier: namn som i headern + verifierade tillägg. `attr` = Nyehandels
@@ -66,7 +72,7 @@
       (group.groups || []).forEach(function (g) {
         (g.links || []).forEach(function (l) { if (d.formatLabel && l.label === d.formatLabel && l.href) href = l.href; });
       });
-      return { key: d.key, label: d.label, short: d.short || d.label, href: href, seriesless: !!d.seriesless };
+      return { key: d.key, label: d.label, short: d.short || d.label, href: href, seriesless: !!d.seriesless, family: d.family };
     }).filter(function (f) { return !!f.href; });
 
     var series = SERIES_DEFS.map(function (d) {
@@ -103,6 +109,7 @@
      - null: kartan beskriver inte sidan (t.ex. CBD-familjen, tillverkare). */
   function contextFor(href) {
     var map = build();
+    href = withoutSeriesState(href);
     var i, j, keys;
     if (map.all && samePath(map.all.href, href)) return { type: "all", series: null, format: null };
     for (i = 0; i < map.series.length; i += 1) {
@@ -116,7 +123,36 @@
     for (i = 0; i < map.formats.length; i += 1) {
       if (samePath(map.formats[i].href, href)) return { type: "format", series: null, format: map.formats[i] };
     }
-    return null;
+    /* Native filter, sortering eller sida i URL:en (t.ex. /alla-vapes?
+       filters=Varumärke_X&sort=popular): samma sida -- matcha utan dem. */
+    var bare = withoutListState(href);
+    return bare !== href ? contextFor(bare) : null;
+  }
+
+  function withoutListState(href) {
+    try {
+      var url = new URL(href, location.origin);
+      ["filters", "sort", "page"].forEach(function (k) { url.searchParams.delete(k); });
+      return url.pathname + url.search;
+    } catch (e) { return href; }
+  }
+
+  /* ?serie= är kategorisidornas flervalsstate (80-category.js), inte en
+     egen sida -- räknas bort när sidans kontext bestäms. */
+  var SERIES_PARAM = "serie";
+  function withoutSeriesState(href) {
+    try {
+      var url = new URL(href, location.origin);
+      url.searchParams.delete(SERIES_PARAM);
+      return url.pathname + url.search;
+    } catch (e) { return href; }
+  }
+  function seriesSlug(series) { return series.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+  /* Produkttyperna i samma familj som `key`, i navigeringsordning. */
+  function familyFormats(key) {
+    var f = formatByKey(key);
+    return build().formats.filter(function (x) { return f && x.family === f.family; });
   }
 
   function formatByKey(key) {
@@ -189,6 +225,10 @@
     formatByKey: formatByKey,
     seriesWithFormat: seriesWithFormat,
     landingFor: landingFor,
-    manufacturerRoute: manufacturerRoute
+    manufacturerRoute: manufacturerRoute,
+    familyFormats: familyFormats,
+    seriesSlug: seriesSlug,
+    seriesParam: SERIES_PARAM,
+    withoutSeriesState: withoutSeriesState
   };
 })();

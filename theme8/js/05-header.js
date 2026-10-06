@@ -638,20 +638,29 @@
       item.addEventListener("mouseenter", function () { openItem(item, false); });
       item.addEventListener("mouseleave", function () { closeItem(item, false); });
 
+      /* Toppnivålänken är en riktig länk till formatets egen sida (Vapes ->
+         Alla Vapes osv., href ur kategorikartan). Panelen öppnas med hover,
+         Mellanslag eller Pil ned. Bara på enheter utan hover öppnar första
+         trycket panelen (som har "Alla ..."-länken) -- annars vore panelen
+         onåbar där. */
+      var noHover = window.matchMedia && window.matchMedia("(hover: none)");
       trigger.addEventListener("click", function (e) {
-        /* Toppnivå-triggern är dropdown-VÄXLARE, inte en direktlänk --
-           full kategorisida nås via panelens egen CTA ("Alla vapes"
-           osv), så navigering hit skulle bara stänga panelen man just
-           öppnade. */
-        e.preventDefault();
-        if (item.classList.contains("is-open")) closeItem(item, true);
-        else openItem(item, true);
+        if (noHover && noHover.matches && !item.classList.contains("is-open")) {
+          e.preventDefault();
+          openItem(item, true);
+        }
       });
 
       trigger.addEventListener("keydown", function (e) {
         if (e.key === " " || e.key === "Spacebar") {
           e.preventDefault();
-          trigger.click();
+          if (item.classList.contains("is-open")) closeItem(item, true);
+          else openItem(item, true);
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          openItem(item, true);
+          var first = item.querySelector(".hz8-dropdown a");
+          if (first) first.focus();
         } else if (e.key === "Escape" && item.classList.contains("is-open")) {
           closeItem(item, true);
           focusTrigger(item);
