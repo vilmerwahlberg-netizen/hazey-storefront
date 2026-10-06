@@ -486,6 +486,15 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
   html.hz8 #store-header .basket-icon .cart-button :is(.icon, svg){ width:24px!important; height:24px!important; }
 }
 
+/* 44 px tryckytor även på desktop (konto/varukorg var 52x40, logolänken
+   22 px hög); ikonerna och headerns höjd är oförändrade. */
+@media (min-width:768px){
+  html.hz8 #store-header .account-button,
+  html.hz8 #store-header .basket-icon .cart-button{ min-height:44px; min-width:44px; justify-content:center; align-items:center; }
+  html.hz8 #store-header .brand.header-logo a{ display:flex; min-height:44px; align-items:center; }
+  html.hz8 .hz8-header-nav :is(a.hz8-cat, > a){ min-height:44px; min-width:44px; justify-content:center; }
+}
+
 /* ============ MOBIL — brytpunkt ============ */
 @media (max-width:767px){
   html.hz8 #store-header .main{ margin:12px 12px 0; height:var(--hz8-header-height-mobile, 60px); border-radius:16px; }

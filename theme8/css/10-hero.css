@@ -70,7 +70,6 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 
 .hz8-hero__title-line,
 .hz8-hero__lede,
-.hz8-hero__trust,
 .hz8-hero__tp,
 .hz8-hero__actions,
 .hz8-hero__more,
@@ -96,19 +95,23 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   font: 400 17px/1.38 Arial,sans-serif !important;
 }
 
-/* Trustpilot-raden är en länk (riktig profil) med 44 px tryckyta; den
-   visuella raden är bara textraden, marginalerna äter upp resten. */
-.hz8-hero__trust {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  margin: 0 0 6px;
-  color: var(--hz8-hero-text) !important;
-  font: 600 14px/1.3 Arial,sans-serif !important;
+/* Trustpilot: officiell TrustBox (Micro TrustScore, live-betyg) på alla
+   bredder. Raden reserverar 44 px från start (ingen layout shift när
+   iframen laddar). Widgeten centrerar sitt innehåll, så den är 250 px bred
+   och flyttad 31 px åt vänster -- "Utmärkt" linjerar med texten. */
+.hz8-hero__tp { position: relative; height: 44px; margin: -2px 0 2px; }
+.hz8-hero__tp-widget { position: absolute; top: 10px; left: -31px; width: 250px; height: 24px; }
+.hz8-hero__tp-widget iframe { display: block; }
+/* Tangentbordsfokus ligger i widgetens egen länk (i iframen). */
+.hz8-hero__tp:focus-within { outline: 2px solid var(--hz8-hero-text); outline-offset: 2px; border-radius: 6px; }
+/* Fallback om Trustpilot inte laddar: neutral länk, inget betyg. */
+.hz8-hero__tp-widget > a {
+  display: inline-flex; align-items: center; min-height: 24px; padding-left: 31px;
+  color: var(--hz8-hero-text) !important; font: 500 13.5px/1.3 Arial,sans-serif !important;
 }
-.hz8-hero__trust:hover span { text-decoration: underline; text-underline-offset: 3px; }
-.hz8-hero__star { flex: none; width: 20px; height: 20px; color: var(--hz8-stars); }
+/* Pekaryta: hela 44 px-raden öppnar profilen. Dold för tangentbord och
+   skärmläsare, som använder widgetens egen länk (med betyget i text). */
+.hz8-hero__tp-hit { position: absolute; top: 0; left: 0; width: 200px; height: 44px; z-index: 1; }
 .hz8-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .hz8-hero a { text-decoration: none !important; }
 
@@ -151,7 +154,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__secondary:hover .hz8-hero__cta-icon { transform: translateX(3px); }
 }
 
-.hz8-hero :is(.hz8-hero__trust, .hz8-hero__primary, .hz8-hero__secondary, .hz8-hero__more):focus-visible {
+.hz8-hero :is(.hz8-hero__primary, .hz8-hero__secondary, .hz8-hero__more):focus-visible {
   outline: 2px solid var(--hz8-hero-text);
   outline-offset: 3px;
 }
@@ -189,8 +192,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 .hz8-hero__microtrust span { display: inline-flex; align-items: center; gap: 6px; }
 .hz8-hero__microtrust svg { width: 15px; height: 15px; color: #f0a76a; }
 
-/* Trusthyllan och TrustBox-raden finns bara på mobil (se nedan). */
-.hz8-hero__shelf, .hz8-hero__tp { display: none; }
+/* Trusthyllan: se mobil- och desktopblocken nedan. */
+.hz8-hero__shelf { display: none; }
 
 /* Entré: kort och tidig, så text och CTA är läsbara/klickbara direkt.
    Bakgrunden tonar in från samma mörka ton (ingen ljus blinkning). */
@@ -199,7 +202,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: .12s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: .2s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .5s var(--hz8-ease) .28s both; }
-.hz8-hero.is-entering :is(.hz8-hero__trust, .hz8-hero__tp) { animation: hz8-fade-blur .45s var(--hz8-ease) .34s both; }
+.hz8-hero.is-entering .hz8-hero__tp { animation: hz8-fade-blur .45s var(--hz8-ease) .34s both; }
 .hz8-hero.is-entering .hz8-hero__actions { animation: hz8-fade .45s var(--hz8-ease) .38s both; }
 .hz8-hero.is-entering .hz8-hero__more,
 .hz8-hero.is-entering .hz8-hero__microtrust,
@@ -254,25 +257,6 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__lede { max-width: 268px; margin-bottom: 0; font-size: 15px !important; line-height: 1.22 !important; }
   /* B5 bryter före sista meningen. */
   .hz8-hero__lede-end { display: block; }
-  /* Mobil: officiell TrustBox (Micro TrustScore, live-betyg) i stället för
-     den neutrala länken. Raden reserverar 44 px från start (ingen layout
-     shift när iframen laddar). Widgeten centrerar sitt innehåll, så den är
-     250 px bred och flyttad 31 px åt vänster -- "Utmärkt" linjerar med texten. */
-  .hz8-hero__trust { display: none; }
-  .hz8-hero__tp { display: block; position: relative; height: 44px; margin: -2px 0 2px; }
-  .hz8-hero__tp-widget { position: absolute; top: 10px; left: -31px; width: 250px; height: 24px; }
-  .hz8-hero__tp-widget iframe { display: block; }
-  /* Tangentbordsfokus ligger i widgetens egen länk (i iframen). */
-  .hz8-hero__tp:focus-within { outline: 2px solid var(--hz8-hero-text); outline-offset: 2px; border-radius: 6px; }
-  /* Fallback om Trustpilot inte laddar: neutral länk, inget betyg. */
-  .hz8-hero__tp-widget > a {
-    display: inline-flex; align-items: center; min-height: 24px; padding-left: 31px;
-    color: var(--hz8-hero-text) !important; font: 500 13.5px/1.3 Arial,sans-serif !important;
-  }
-  /* Pekaryta: hela 44 px-raden öppnar profilen. Dold för tangentbord och
-     skärmläsare, som använder widgetens egen länk (med betyget i text). */
-  .hz8-hero__tp-hit { position: absolute; top: 0; left: 0; width: 200px; height: 44px; z-index: 1; }
-  .hz8-hero__star { width: 19px; height: 19px; }
   .hz8-hero__actions { flex-direction: column; align-items: stretch; gap: 8px; width: min(100%, 262px); }
   .hz8-hero__primary, .hz8-hero__secondary {
     min-height: 48px; padding: 0 16px 0 18px;
@@ -333,7 +317,6 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 @media (max-width: 359px) {
   .hz8-hero__copy { padding-inline: 20px; }
   .hz8-hero__tp-widget { left: 0; width: 100%; }
-  .hz8-hero__trust { flex-wrap: wrap; row-gap: 0; }
   .hz8-hero__primary, .hz8-hero__secondary { white-space: normal; padding-block: 8px; line-height: 1.15 !important; }
   .hz8-hero__shelf li { flex-direction: column; gap: 3px; padding: 7px 2px; white-space: normal; text-align: center; font-size: 11px !important; }
 }
@@ -342,33 +325,145 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__copy { padding-top: 156px; }
 }
 
-/* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo above. */
+/* ======================================================================
+   Desktop och surfplatta (>= 768 px) -- facit Concept A:
+   theme8/review/hero-desktop-concepts-2026-10/concept-a-full-bleed-cinematic.png
+   Fullbleed foto med naturlig grön kvällshimmel, text till vänster, van
+   och Hazey-bräda till höger, trusthyllan över herons nederkant.
+
+   Bildfamilj efter fönstrets proportion (inte en hårt beskuren bild):
+   4:3 (surfplatta/smalt fönster), 16:10 (MacBook), 16:9 (desktop).
+   Den kompletta bilden används: paketets van-lager är inte
+   koordinatmatchat med bakgrunden (se theme8/review/hero-desktop-a-impl-
+   2026-10/REGISTRATION-*.png), så ingen separat van-animation -- bara
+   en intoning av hela fotot. Heron är 72 % av fönsterhöjden (580-900 px),
+   så hyllan och början på Bästsäljare syns i första vyn; bildens
+   vertikala läge håller brädans topp och hjulen i bild i alla familjer.
+   ====================================================================== */
 @media (min-width: 768px) {
-  .hz8-hero__van-photo {
-    display: block;
-    background-image: url("assets/hero-scene-desktop-van-masked.webp");
-    background-size: cover;
-    background-position: center bottom;
+  .hz8-hero {
+    --hz8-hero-h: clamp(580px, calc(72svh + 24px), 900px);
+    min-height: var(--hz8-hero-h);
+    overflow: visible;
+    overflow-x: clip;
+  }
+  .hz8-hero__inner { min-height: var(--hz8-hero-h); }
+  .hz8-hero__background {
+    /* Lokal kvällston bakom textkolumnen, borta före vanen. */
+    background-image:
+      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      url("assets/hero-desktop-a-1440x1080-v1.webp");
+    background-size: 100% 100%, cover;
+    background-position: 0 0, 70% 80%;
+    background-repeat: no-repeat;
+  }
+  .hz8-hero__van-photo { display: none; }
+  .hz8-hero h1 { font-weight: 700 !important; }
+  .hz8-hero__lede { margin-bottom: 8px; }
+  .hz8-hero__tp { margin-bottom: 14px; }
+  /* Concept A har varken pillen "Populära serier" eller mikrotrust-raden;
+     trusthyllan nedan bär trygghetsbudskapen. */
+  .hz8-hero__more, .hz8-hero__microtrust { display: none; }
+
+  .hz8-hero__shelf {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    bottom: -28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    width: min(780px, 100% - 48px);
+    min-height: 56px;
+    margin: 0 auto;
+    padding: 0 8px;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, #fff 60%, transparent);
+    border-radius: 16px;
+    background: color-mix(in srgb, #fbf4ea 90%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--hz8-ink) 16%, transparent);
+    color: var(--hz8-olive);
+  }
+  .hz8-hero__shelf li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 6px;
+    color: var(--hz8-olive) !important;
+    font: 600 15px/1.2 Arial,sans-serif !important;
+    white-space: nowrap;
+  }
+  .hz8-hero__shelf li + li { border-left: 1px solid color-mix(in srgb, var(--hz8-olive) 22%, transparent); }
+  .hz8-hero__shelf svg { flex: none; width: 22px; height: 22px; }
+}
+@media (min-width: 768px) and (min-aspect-ratio: 3/2) {
+  .hz8-hero__background {
+    background-image:
+      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      url("assets/hero-desktop-a-1440x900-v1.webp");
+    background-position: 0 0, 70% 82%;
+  }
+}
+@media (min-width: 768px) and (min-aspect-ratio: 17/10) {
+  .hz8-hero__background {
+    background-image:
+      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      url("assets/hero-desktop-a-1920x1080-v1.webp");
+    background-position: 0 0, 70% 74%;
   }
 }
 
-/* Surfplatta: textspalten (47vw) är för smal för två knappar i rad, så
-   de staplas -- högre hero så "Populära serier" inte når mikrotrust-raden. */
+/* Ultrawide (bredare än 21:10): ingen egen bild. Fotot får en maxbredd
+   (2,3 x herons höjd), centreras och fasas mjukt ut mot herons mörkgröna
+   bakgrund -- vanen förstoras inte och brädan beskärs inte. */
+@media (min-width: 768px) and (min-aspect-ratio: 21/10) {
+  .hz8-hero__background {
+    inset: 0 auto 0 50%;
+    width: min(100%, calc(var(--hz8-hero-h) * 2.3));
+    transform: translateX(-50%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  }
+}
+
+/* Surfplatta (768-1023): textspalten (47vw) är för smal för två knappar
+   i rad, så de staplas. */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hz8-hero, .hz8-hero__inner { min-height: 700px; }
   .hz8-hero__copy { padding-top: 124px; }
   .hz8-hero h1 { font-size: 44px !important; margin-bottom: 18px; }
   .hz8-hero__lede { max-width: 330px; font-size: 16px !important; }
 }
+/* Kompakta bredder (768-1179, samma som headerns kompaktläge): starkare
+   ton över hela textkolumnen. */
+@media (min-width: 768px) and (max-width: 1179px) {
+  .hz8-hero__background {
+    background-image:
+      linear-gradient(90deg, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent) 0%, color-mix(in srgb, var(--hz8-hero-dusk) 56%, transparent) 38%, transparent 58%),
+      url("assets/hero-desktop-a-1440x1080-v1.webp");
+  }
+}
+@media (min-width: 768px) and (max-width: 1179px) and (min-aspect-ratio: 3/2) {
+  .hz8-hero__background {
+    background-image:
+      linear-gradient(90deg, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent) 0%, color-mix(in srgb, var(--hz8-hero-dusk) 56%, transparent) 38%, transparent 58%),
+      url("assets/hero-desktop-a-1440x900-v1.webp");
+  }
+}
+/* Stående surfplatta: bilden förankras i högerkanten så att Hazey-brädan
+   aldrig beskärs. */
+@media (min-width: 768px) and (max-aspect-ratio: 1/1) {
+  .hz8-hero__background { background-position: 0 0, 100% 80%; }
+}
 
 @media (min-width: 1600px) {
-  .hz8-hero, .hz8-hero__inner { min-height: 740px; }
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
   .hz8-hero__copy { width: 760px; padding-top: 154px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
   .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 14px; }
-  .hz8-hero__trust { font-size: 16px !important; margin-bottom: 14px; }
-  .hz8-hero__star { width: 23px; height: 23px; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 28px 26px; font-size: 18px !important; }
   .hz8-hero__cta-icon { width: 22px; height: 22px; }
   .hz8-hero__more { font-size: 16px !important; }
@@ -376,8 +471,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hz8-hero.is-entering :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf),
-  .hz8-hero :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf) {
+  .hz8-hero.is-entering :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf),
+  .hz8-hero :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf) {
     animation: none !important;
     opacity: 1;
     transform: none;

@@ -1,37 +1,28 @@
 (function () {
   "use strict";
 
-  /* Startar den officiella TrustBoxen bara på mobil (raden är dold från
-     768 px). Trustpilots bootstrap laddas av Head-fältet; finns den inte
-     läggs samma officiella skript till. Laddar den aldrig syns fallback-
-     länken "Omdömen på Trustpilot" utan betyg. */
+  /* Startar den officiella TrustBoxen. Trustpilots bootstrap laddas av
+     Head-fältet; finns den inte läggs samma officiella skript till.
+     Laddar den aldrig syns fallback-länken "Omdömen på Trustpilot" utan
+     betyg. Klassen sätts först här så att bootstrapen inte laddar raden
+     innan den finns i DOM:en. */
   function mountTrustbox(widget) {
-    if (!widget || !window.matchMedia) return;
-    var mq = window.matchMedia("(max-width: 767px)");
-    var started = false;
-    function start() {
-      if (started || !mq.matches) return;
-      started = true;
-      /* Klassen sätts först här: Trustpilots bootstrap laddar annars alla
-         .trustpilot-widget automatiskt, även den dolda raden på desktop. */
-      widget.classList.add("trustpilot-widget");
-      if (!document.querySelector("script[src*='tp.widget.bootstrap']")) {
-        var s = document.createElement("script");
-        s.src = "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-        s.async = true;
-        document.head.appendChild(s);
-      }
-      var tries = 0;
-      (function load() {
-        if (window.Trustpilot && window.Trustpilot.loadFromElement) {
-          try { window.Trustpilot.loadFromElement(widget, true); } catch (e) {}
-        } else if (tries++ < 40) {
-          window.setTimeout(load, 250);
-        }
-      })();
+    if (!widget) return;
+    widget.classList.add("trustpilot-widget");
+    if (!document.querySelector("script[src*='tp.widget.bootstrap']")) {
+      var s = document.createElement("script");
+      s.src = "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+      s.async = true;
+      document.head.appendChild(s);
     }
-    start();
-    if (!started && mq.addEventListener) mq.addEventListener("change", start);
+    var tries = 0;
+    (function load() {
+      if (window.Trustpilot && window.Trustpilot.loadFromElement) {
+        try { window.Trustpilot.loadFromElement(widget, true); } catch (e) {}
+      } else if (tries++ < 40) {
+        window.setTimeout(load, 250);
+      }
+    })();
   }
 
   window.HZ8.register("homepage-hero", function (context) {
@@ -39,9 +30,9 @@
     if (!nativeHero || document.querySelector("[data-hz8-hero]")) return;
 
     /* Trustpilot: länk och business unit återanvänds från adminens egen,
-       officiella TrustBox i DOM:en. Desktopraden är en neutral länk (inget
-       betyg); mobilen visar en officiell Micro TrustScore-widget som hämtar
-       Hazeys aktuella betyg direkt från Trustpilot -- inget värde i koden. */
+       officiella TrustBox i DOM:en. Raden är en officiell Micro TrustScore-
+       widget som hämtar Hazeys aktuella betyg direkt från Trustpilot --
+       inget värde i koden (mobil och desktop). */
     var tpNative = document.querySelector(".trustpilot-widget[data-businessunit-id]");
     var tpLink = document.querySelector(".trustpilot-widget a[href*='trustpilot.com']");
     var tpHref = tpLink ? tpLink.href : "https://se.trustpilot.com/review/hazey.se";
@@ -62,7 +53,6 @@
          cannabinoider" -- styrs av H1:ns maxbredd i 10-hero.css. */
       + '    <h1 id="hz8-hero-title"><span class="hz8-hero__title-line" data-line="1">Sveriges #1 för</span> <span class="hz8-hero__title-line" data-line="2">lagliga cannabinoider</span></h1>'
       + '    <p class="hz8-hero__lede">Noggrant testade och lagliga i Sverige – vi följer lagstiftningen löpande. <span class="hz8-hero__lede-end">Din trygghet först.</span></p>'
-      + '    <a class="hz8-hero__trust" href="' + tpHref + '" target="_blank" rel="noopener"><svg class="hz8-hero__star" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.6l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17.1l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z"/></svg><span>Omdömen på Trustpilot</span><span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a>'
       + '    <div class="hz8-hero__tp">'
       + '      <div class="hz8-hero__tp-widget" data-locale="sv-SE" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="' + tpUnit + '" data-style-height="24px" data-style-width="100%" data-theme="dark"><a href="' + tpHref + '" target="_blank" rel="noopener">Omdömen på Trustpilot<span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a></div>'
       + '      <a class="hz8-hero__tp-hit" href="' + tpHref + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>'
@@ -96,12 +86,11 @@
        bilden själv. Elementet och dess <picture>-hämtning är alltså
        helt borttagna -- inget att dölja med CSS, inget att ladda. */
 
-    mountTrustbox(section.querySelector(".hz8-hero__tp-widget"));
-
     var nativeRoot = nativeHero.closest(".template-components__slideshow") || nativeHero;
     nativeRoot.parentNode.insertBefore(section, nativeRoot);
     nativeRoot.classList.add("hz8-native-hero-hidden");
     nativeRoot.setAttribute("aria-hidden", "true");
+    mountTrustbox(section.querySelector(".hz8-hero__tp-widget"));
 
     window.requestAnimationFrame(function () {
       window.requestAnimationFrame(function () { section.classList.add("is-entering"); });
