@@ -176,14 +176,16 @@
     return h;
   };
   HZ8.productState = function (productUrl) {
-    var key = "state1:" + HZ8.path(productUrl);
+    var key = "state3:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
+    var page = null;
     return fetch(HZ8.link(productUrl), { credentials: "same-origin" })
       .then(function (r) { return r.text(); })
       .then(function (html) {
         var m = html.match(/window\.visitor\.viewProduct\('(\d+)'\)/);
         if (!m) throw new Error("no product id");
+        page = new DOMParser().parseFromString(html, "text/html");
         return fetch("/frontend-api/product/state", {
           method: "POST",
           credentials: "same-origin",
@@ -194,21 +196,63 @@
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
         var sv = data.selected_variant || {};
-        var variants = (data.product && data.product.variants) || [];
+        var product = data.product || {};
+        var variants = product.variants || [];
+        var images = product.images || [];
+        /* Lager enligt Nyehandels egna fält -- inget antal visas. */
+        var inStock = !sv.track_inventory || sv.always_orderable || (sv.available_stock || 0) > 0;
+        var status = inStock ? sv.positive_inventory_status : sv.negative_inventory_status;
+        /* Kategori = sista brödsmulan före produkten (produktnamnet och
+           "Hem" räknas inte). */
+        var name = product.name || "";
+        var crumbs = page ? Array.prototype.map.call(page.querySelectorAll(".designer-breadcrumbs a"), function (a) { return a.textContent.replace(/\s+/g, " ").trim(); })
+          .filter(function (t) { return t && t !== name && !/^hem$/i.test(t); }) : [];
         var value = {
           variantId: sv.id || null,
           variants: variants.length,
-          buyable: sv.buyable !== false && sv.in_stock !== false && sv.active !== false
+          buyable: sv.buyable !== false && sv.in_stock !== false && sv.active !== false && inStock,
+          inStock: inStock,
+          stockLabel: status && status.name ? status.name : (inStock ? "I lager" : "Slut i lager"),
+          image: images[0] && images[0].image_url ? images[0].image_url : null,
+          imageAlt: images[0] && images[0].alt ? images[0].alt : "",
+          /* Första riktiga stycket i produktens korta beskrivning. */
+          intro: page ? firstParagraph(page.querySelector(".short-description")) : "",
+          category: crumbs.length ? crumbs[crumbs.length - 1] : ""
         };
         cacheSet(key, value);
         return value;
       });
   };
+  function firstParagraph(root) {
+    if (!root) return "";
+    var ps = root.querySelectorAll("p");
+    for (var i = 0; i < ps.length; i += 1) {
+      var t = ps[i].textContent.replace(/\s+/g, " ").trim();
+      if (t.length >= 40) return t;
+    }
+    return "";
+  }
+
+  /* Bästsäljarsidans aktiva urval (Nyehandels egen sida /page/vara-
+     bastsaljare): kategori eller källa, och om ordningen är fast. Delas
+     av startsidans bästsäljare (30-bestsellers.js) och Butik (87-shop.js). */
+  HZ8.bestsellerSource = {
+    key: "bs-src1",
+    run: function (doc) {
+      var btn = doc.querySelector(".nh-bs-filters .is-active[data-cat], .nh-bs-filters [data-cat]");
+      var grid = doc.querySelector("[data-nh-source]");
+      return {
+        cat: btn ? btn.getAttribute("data-cat") : null,
+        source: grid ? grid.getAttribute("data-nh-source") : null,
+        fixed: grid ? grid.getAttribute("data-nh-order") === "fixed" : false
+      };
+    }
+  };
   /* Lägg i varukorgen via Nyehandels egen Vuex-action (drawern öppnas
      reaktivt, precis som från produktsidans köpknapp). */
-  HZ8.addVariant = function (variantId) {
+  HZ8.addVariant = function (variantId, quantity) {
     var store = HZ8.store();
-    var payload = { product_variant_id: Number(variantId), quantity: 1, meta: null };
+    var payload = { product_variant_id: Number(variantId), quantity: Math.max(1, parseInt(quantity, 10) || 1), meta: null };
     if (store && store._actions && store._actions["cart/addVariant"]) return Promise.resolve(store.dispatch("cart/addVariant", payload));
     return fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify(payload) })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });

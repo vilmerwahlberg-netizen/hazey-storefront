@@ -4,8 +4,20 @@
   window.HZ8.register("homepage-motion", function (context) {
     if (!context.home) return;
 
+    /* Bästsäljare: kort intoning när sektionen syns (tidigare en fast
+       väntan på 2,3 s, som gömde produkterna i flera sekunder). */
     if (context.bestsellers) {
-      window.setTimeout(function () { context.bestsellers.classList.add("is-sequenced"); }, 2300);
+      var bs = context.bestsellers;
+      if ("IntersectionObserver" in window) {
+        var bsObs = new IntersectionObserver(function (entries) {
+          if (!entries.some(function (e) { return e.isIntersecting; })) return;
+          bs.classList.add("is-sequenced");
+          bsObs.disconnect();
+        }, { rootMargin: "0px 0px -6% 0px" });
+        bsObs.observe(bs);
+      } else {
+        bs.classList.add("is-sequenced");
+      }
     }
 
     var targets = context.home.querySelectorAll(".hz8-reveal, .hz8-reveal-group");

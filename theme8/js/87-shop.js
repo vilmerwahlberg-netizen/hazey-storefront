@@ -143,18 +143,7 @@
   }
 
   /* ---------- Populärt just nu: bästsäljarsidans aktiva urval ---------- */
-  var bestsellerSource = {
-    key: "bs-src1",
-    run: function (doc) {
-      var btn = doc.querySelector(".nh-bs-filters .is-active[data-cat], .nh-bs-filters [data-cat]");
-      var grid = doc.querySelector("[data-nh-source]");
-      return {
-        cat: btn ? btn.getAttribute("data-cat") : null,
-        source: grid ? grid.getAttribute("data-nh-source") : null,
-        fixed: grid ? grid.getAttribute("data-nh-order") === "fixed" : false
-      };
-    }
-  };
+  var bestsellerSource = HZ8.bestsellerSource;
   function popular(root, map) {
     var slot = root.querySelector('[data-slot="popular"]');
     HZ8.fetchPage("/sv/page/vara-bastsaljare", bestsellerSource).then(function (bs) {
