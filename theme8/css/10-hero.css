@@ -320,9 +320,10 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__primary, .hz8-hero__secondary { white-space: normal; padding-block: 8px; line-height: 1.15 !important; }
   .hz8-hero__shelf li { flex-direction: column; gap: 3px; padding: 7px 2px; white-space: normal; text-align: center; font-size: 11px !important; }
 }
-/* Under 300 px är headern två rader (05-header.css). */
+/* Under 300 px är headern två rader (05-header.css, ~96 px). Heron börjar
+   24 px ovanför fönstret, så rubriken hamnar 12 px under headern. */
 @media (max-width: 299px) {
-  .hz8-hero__copy { padding-top: 156px; }
+  .hz8-hero__copy { padding-top: calc(var(--hz8-top-clear) + 24px); }
 }
 
 /* ======================================================================

@@ -521,12 +521,17 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
   html.hz8 #store-header .brand.header-logo a{ min-height:44px; align-items:center; }
 }
 
-/* Under 300 px (t.ex. 200 % zoom) ryms inte logga + fyra 44 px-ikoner på
-   en rad: loggan får en egen rad överst, ikonerna behåller sina ytor. */
+/* Under 300 px (t.ex. 200 % zoom på en telefon, ~196 CSS-px): logga + fyra
+   44 px-ikoner (176 px) ryms inte på en rad. Kompakt panel med 6 px
+   marginal: en låg loggrad överst och en ikonrad under -- totalt ~90 px.
+   Innehållets offset (--hz8-top-clear) följer med i 01-base.css. */
 @media (max-width:299px){
-  html.hz8 #store-header .main{ height:auto; min-height:var(--hz8-header-height-mobile, 60px); }
-  html.hz8 #store-header .main .container{ flex-wrap:wrap; justify-content:space-between; padding:2px 6px; }
-  html.hz8 #store-header .brand.header-logo a{ order:-1; flex-basis:100%; min-height:36px; justify-content:center; }
+  html.hz8 #store-header .main{ height:auto; min-height:0; margin:6px 6px 0; border-radius:14px; }
+  html.hz8 body.hz8-header-scrolled #store-header .main{ margin:0; }
+  html.hz8 #store-header .main .container{ flex-wrap:wrap; justify-content:space-between; align-content:flex-start; gap:0; padding:2px 0 0; }
+  html.hz8 #store-header .brand.header-logo a{ order:-1; flex:0 0 100%; min-height:30px; justify-content:center; }
+  html.hz8 #store-header .brand.header-logo img{ height:14px; }
+  html.hz8 #store-header :is(.hamburger, #mobile-search-trigger, .account-button, .basket-icon .cart-button){ margin:0 !important; padding:0 !important; }
 }
 
 /* Bakgrundsscroll-lås medan mobil-drawern är öppen (se lockBodyScroll i

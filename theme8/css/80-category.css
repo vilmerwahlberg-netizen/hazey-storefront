@@ -621,11 +621,23 @@ html.hz8[data-hz8-page="category"] .hz8-portal-popular .hz8-prail__title { font-
 /* Mobilens rubrikrad (space-between för "dra"-ledtråden) ska inte skjuta
    ledtråden "välj flera" till högerkanten. */
 html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8-rail__hint) { justify-content: flex-start; }
-.hz8-serie { position: relative; display: grid; min-width: 0; scroll-snap-align: start; }
-.hz8-serie > .hz8-rail__item { width: 100%; padding-right: 44px; font: inherit; text-align: left; cursor: pointer; }
+/* Två zoner i ett kort: valknappen (huvuddelen, bock vid val) och en
+   smal avgränsad högerzon som öppnar seriens sida. Syskon i ett grid --
+   de överlappar aldrig, långa namn bryts i valknappen. */
+.hz8-serie { display: grid; grid-template-columns: minmax(0, 1fr) 44px; min-width: 0; scroll-snap-align: start; }
+.hz8-serie > .hz8-rail__item {
+  width: 100%;
+  min-width: 0;
+  border-right: 0;
+  border-radius: var(--hz8-radius-m) 0 0 var(--hz8-radius-m);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.hz8-serie .hz8-rail__label { overflow-wrap: anywhere; }
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"] { background: var(--hz8-olive); border-color: var(--hz8-olive); box-shadow: none; }
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"] :is(.hz8-rail__label, .hz8-rail__count) { color: var(--hz8-text-on-dark) !important; }
-/* Bock på miniatyren: vald status syns även utan färg. */
+/* Bocken tillhör bara valknappen (miniatyrens hörn). */
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"]::after {
   content: "";
   position: absolute;
@@ -636,22 +648,41 @@ html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8
   border-radius: 50%;
   background: var(--hz8-text-on-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.4l2.5 2.4L12 5.4' fill='none' stroke='%23323d25' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
-/* Länken till seriens egen sida: 44 x 44 yta i kortets högra hörn,
-   visuellt en liten pil. Syskon till knappen, aldrig inuti den. */
 .hz8-serie__open {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  color: var(--hz8-text-muted) !important;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1.5px solid var(--hz8-line);
+  border-left: 1px solid var(--hz8-line);
+  border-radius: 0 var(--hz8-radius-m) var(--hz8-radius-m) 0;
+  background: var(--hz8-surface-warm);
+  color: var(--hz8-olive) !important;
   text-decoration: none !important;
+  transition: background-color .16s var(--hz8-ease), border-color .16s var(--hz8-ease);
 }
 .hz8-serie__open svg { width: 16px; height: 16px; }
-.hz8-serie__open:hover { color: var(--hz8-olive) !important; }
-.hz8-serie.is-selected .hz8-serie__open { color: var(--hz8-text-on-dark) !important; }
+.hz8-serie.is-selected .hz8-serie__open { border-color: var(--hz8-olive); border-left-color: color-mix(in srgb, var(--hz8-olive) 40%, var(--hz8-line)); }
+/* Hover och fokus markerar respektive zon separat. */
+.hz8-serie > .hz8-rail__item:hover { border-color: var(--hz8-line-strong); box-shadow: none; }
+.hz8-serie__open:hover { background: var(--hz8-secondary-soft); border-color: var(--hz8-line-strong); }
+.hz8-serie > .hz8-rail__item:focus-visible,
+.hz8-serie__open:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--hz8-olive); outline-offset: 2px; }
+
+/* Från 768 px: valraden radbryts i stället för att trycka ihop korten --
+   varje kort minst 220 px så namn och antal ryms bredvid miniatyren. */
+@media (min-width: 768px) {
+  html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__list:has(.hz8-serie) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-columns: auto;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding-right: 2px;
+  }
+  html.hz8[data-hz8-page="category"] .hz8-serie > .hz8-rail__item { min-height: 64px; padding: 8px 12px 8px 8px; }
+}
 
 /* Kompakt statusrad: "2 serier valda · 4 produkter · Rensa". Knapparna
    har 44 px tryckyta men ser ut som textlänkar. */

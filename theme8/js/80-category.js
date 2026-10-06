@@ -257,7 +257,7 @@
     item.innerHTML = '<button type="button" class="hz8-rail__item hz8-rail__item--series hz8-rail__item--toggle is-loading" aria-pressed="false">' +
       '<span class="hz8-rail__media" aria-hidden="true"></span>' +
       '<span class="hz8-rail__text"><span class="hz8-rail__label">' + HZ8.esc(series.name) + '</span><span class="hz8-rail__count"></span></span></button>' +
-      '<a class="hz8-serie__open" href="' + HZ8.esc(HZ8.link(route)) + '" aria-label="Öppna sidan ' + HZ8.esc(series.name + " " + format.label) + '">' +
+      '<a class="hz8-serie__open" href="' + HZ8.esc(HZ8.link(route)) + '" aria-label="Gå till sidan ' + HZ8.esc(series.name + " " + format.label.toLowerCase()) + '" title="Gå till sidan ' + HZ8.esc(series.name + " " + format.label.toLowerCase()) + '">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
     var button = item.querySelector("button");
     HZ8.fetchPage(route, HZ8.categoryInfo).then(function (info) {
@@ -337,6 +337,50 @@
   function nativeFilterTokens() {
     var raw = new URLSearchParams(location.search).get("filters") || "";
     return raw.split("~").filter(function (t) { return t && !/^Serie_/.test(t); });
+  }
+
+  /* Ordning för den sammanslagna listan. Nyehandel sorterar i två block
+     (produkter i lager först, sedan slutsålda) och sorterar inom varje
+     block -- med price_low blir den sammanslagna listan t.ex. 745, 725,
+     985 kr. Pris och namn sorteras därför strikt här, på kortens riktiga
+     data (nuvarande pris, namn), stabilt: lika värden behåller Nyehandels
+     ordning. Övriga lägen (popular, published, in-stock, out-of-stock och
+     standard) har ingen data på korten att räkna fram -- där följer
+     listan Nyehandels egen ordning för samma sortering, vilket är korrekt
+     eftersom unionen är en delmängd av den listan i samma ordning. */
+  var SERVER_ORDER = { popular: 1, published: 1, "in-stock": 1, "out-of-stock": 1 };
+  function cardPrice(html) {
+    var doc = document.createElement("div");
+    doc.innerHTML = html;
+    var price = doc.querySelector(".price");
+    if (!price) return null;
+    var cur = price.querySelector("ins") || price;
+    var all = cur.textContent.replace(/\s+/g, " ").match(/\d[\d ]*(?:[.,]\d+)?(?=\s*kr)/g);
+    if (!all || !all.length) return null;
+    return parseFloat(all[all.length - 1].replace(/ /g, "").replace(",", "."));
+  }
+  function cardName(html) {
+    var m = html.match(/class="name"[^>]*>\s*([^<]+?)\s*</);
+    return m ? m[1].replace(/&amp;/g, "&").trim() : "";
+  }
+  /* Returnerar sorterad lista, eller null om läget inte kan återskapas. */
+  function orderUnion(out, sort) {
+    if (!sort || SERVER_ORDER[sort]) return out;
+    var keyed = out.map(function (c, i) { return { c: c, i: i }; });
+    var cmp;
+    if (sort === "price_low" || sort === "price_high") {
+      var dir = sort === "price_low" ? 1 : -1;
+      keyed.forEach(function (k) { k.v = cardPrice(k.c.html); });
+      if (keyed.some(function (k) { return k.v == null; })) return null;
+      cmp = function (a, b) { return (a.v - b.v) * dir || a.i - b.i; };
+    } else if (sort === "name_a" || sort === "name_z") {
+      var nd = sort === "name_a" ? 1 : -1;
+      keyed.forEach(function (k) { k.v = cardName(k.c.html); });
+      cmp = function (a, b) { return a.v.localeCompare(b.v, "sv") * nd || a.i - b.i; };
+    } else {
+      return null;
+    }
+    return keyed.sort(cmp).map(function (k) { return k.c; });
   }
 
   function seriesPicker(root, ctx, nav) {
@@ -509,6 +553,16 @@
           out.push(c);
         });
 
+        var sorted = orderUnion(out, sort);
+        if (!sorted) {
+          /* Okänt sorteringsläge: visa inte en lista som ser sorterad ut. */
+          deactivate();
+          actionBtn.hidden = true;
+          setStatus(sel, "den här sorteringen kan inte kombineras med flera serier, sidans egna produkter visas");
+          status.hidden = false;
+          return;
+        }
+        out = sorted;
         results.innerHTML = "";
         if (designer && results.parentNode !== designer) designer.appendChild(results);
         if (!out.length) {
