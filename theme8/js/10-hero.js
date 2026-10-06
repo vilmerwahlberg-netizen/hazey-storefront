@@ -76,10 +76,14 @@
       + '      <a class="hz8-hero__secondary" href="/sv/categories/magic-sauce"><span>Upptäck Magic Sauce</span>' + arrow + '</a>'
       + '    </div>'
       + '    <a class="hz8-hero__more" href="/sv/categories/alla-produkter">Populära serier</a>'
+      /* Desktop (Concept B): tunn trustrad nere till vänster. Första
+         budskapet följer de delade fraktreglerna (HZ8.commerce) -- fri
+         frakt visas bara när reglerna är aktiva, annars "Skickas från
+         Sverige". Ikonerna är dekorativa. */
       + '    <div class="hz8-hero__microtrust">'
-      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/></svg>' + (window.HZ8 && HZ8.commerce && HZ8.commerce.goalsEnabled() ? "Fri frakt från " + HZ8.commerce.rules.freeShippingFrom + " kr" : "Skickas från Sverige") + '</span>'
-      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg>Diskret förpackning</span>'
-      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Spårbar leverans</span>'
+      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 3.5 7v10l8.5 4.5 8.5-4.5V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg>' + (window.HZ8 && HZ8.commerce && HZ8.commerce.goalsEnabled() ? "Fri frakt från " + HZ8.commerce.rules.freeShippingFrom + " kr" : "Skickas från Sverige") + '</span>'
+      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6z"/></svg>Diskret förpackning</span>'
+      + '      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-6 4-11 14-14-1 9-6 14-12 14"/><path d="M5 19 13 11"/></svg>Spårbar leverans</span>'
       + '    </div>'
       + '  </div>'
       + '</div>'

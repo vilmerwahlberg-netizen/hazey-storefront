@@ -17,24 +17,8 @@ html.hz8.hz8-series-hub #store-header .brand.header-logo img {
   transition: background-color .2s var(--hz8-ease), background .2s var(--hz8-ease), color .2s var(--hz8-ease),
               border-color .2s var(--hz8-ease), box-shadow .2s var(--hz8-ease), filter .2s var(--hz8-ease) !important;
 }
-/* Mörkt underlag: olivtonat glas, vit logga/ikoner, ljus kant. */
-html.hz8 #store-header.hz8-header--on-dark .main::before {
-  background: color-mix(in srgb, var(--hz8-olive) 72%, transparent) !important;
-  border-color: color-mix(in srgb, #fff 20%, transparent) !important;
-  box-shadow: 0 12px 34px color-mix(in srgb, #000 22%, transparent) !important;
-}
-html.hz8 #store-header.hz8-header--on-dark .brand.header-logo img { filter: brightness(0) invert(1); }
-html.hz8 #store-header.hz8-header--on-dark :is(.account-button, .basket-icon .cart-button, #mobile-search-trigger, .hamburger) { color: #fff !important; }
-html.hz8 #store-header.hz8-header--on-dark :is(.account-button, .basket-icon, #mobile-search-trigger, .hamburger) svg { color: #fff !important; fill: #fff; }
-html.hz8 #store-header.hz8-header--on-dark :is(.hamburger, #mobile-search-trigger) svg[fill="none"] { fill: none; }
-html.hz8 #store-header.hz8-header--on-dark .hz8-header-nav a.hz8-cat:not(.hz8-cat--campaign) { color: #fff !important; }
-html.hz8 #store-header.hz8-header--on-dark .hz8-header-nav a.hz8-cat--campaign { color: var(--hz8-beige) !important; }
-html.hz8 #store-header.hz8-header--on-dark .search-field {
-  background: color-mix(in srgb, #fff 14%, transparent) !important;
-  border-color: color-mix(in srgb, #fff 26%, transparent) !important;
-}
-html.hz8 #store-header.hz8-header--on-dark .search-field :is(input, button, svg, i) { color: #fff !important; }
-html.hz8 #store-header.hz8-header--on-dark .search-field input::placeholder { color: color-mix(in srgb, #fff 72%, transparent) !important; }
+/* Mörkt underlag: headerns ljusa kontrastläge (hz8-header--on-dark) ägs av
+   05-header.css -- samma regler som startsidans hero-läge. */
 @media (prefers-reduced-motion: reduce) {
   html.hz8.hz8-series-hub #store-header * , html.hz8.hz8-series-hub #store-header .main::before { transition: none !important; }
 }

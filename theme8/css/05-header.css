@@ -28,7 +28,8 @@
   /* Header-specifika tillägg -- glaseffekt/layout, inga nya brand-färger
      (samma tokens som i den godkända prototypen). */
   --hz8-glass-bg: color-mix(in srgb, #fff 55%, transparent);
-  --hz8-glass-bg-scrolled: color-mix(in srgb, var(--hz8-bg) 72%, transparent);
+  /* Scrollat läge: varm, mer solid kräm (tidigare 72 % neutral bakgrund). */
+  --hz8-glass-bg-scrolled: color-mix(in srgb, #fbf4ea 92%, transparent);
   --hz8-glass-border: color-mix(in srgb, #fff 45%, transparent);
   --hz8-glass-border-scrolled: color-mix(in srgb, var(--hz8-ink) 8%, transparent);
   --hz8-header-radius: 24px;
@@ -181,6 +182,55 @@ html.hz8 body.hz8-header-scrolled #store-header .main::before{
   box-shadow:0 4px 20px color-mix(in srgb, var(--hz8-ink) 6%, transparent);
 }
 
+/* ---- Två färglägen, styrda av samma state som panelens form ----
+   1. Hero-läge: startsidan innan headern scrollat (body utan
+      hz8-header-scrolled) och seriehubbarnas mörka masthead
+      (#store-header.hz8-header--on-dark, 81-series-hub.js). Varmt
+      olivtonat glas där fotot syns igenom, ljus logga, text, ikoner,
+      sökfält och fokus.
+   2. Scrollat/innehåll: varm, mer solid kräm med mörka kontroller
+      (standardreglerna ovan).
+   Inga egna triggers -- allt följer klasserna ovan, så bakgrund och
+   färger kan aldrig hamna ur synk. Fallback utan bild: heron är mörk
+   oliv (10-hero.css), så ljus text gäller även då. */
+html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .main::before{
+  background:color-mix(in srgb, #1f2a17 34%, transparent);
+  -webkit-backdrop-filter:blur(18px) saturate(165%);
+  backdrop-filter:blur(18px) saturate(165%);
+  border-color:color-mix(in srgb, #fff 26%, transparent);
+  box-shadow:inset 0 1px 0 color-mix(in srgb, #fff 18%, transparent), 0 10px 30px color-mix(in srgb, #000 18%, transparent);
+}
+html.hz8 #store-header.hz8-header--on-dark .main::before{
+  background:color-mix(in srgb, var(--hz8-olive) 72%, transparent) !important;
+  border-color:color-mix(in srgb, #fff 20%, transparent) !important;
+  box-shadow:0 12px 34px color-mix(in srgb, #000 22%, transparent) !important;
+}
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .brand.header-logo img{ filter:brightness(0) invert(1); }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) :is(.account-button, .basket-icon .cart-button, #mobile-search-trigger, .hamburger){ color:#fff !important; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) :is(.account-button, .basket-icon, #mobile-search-trigger, .hamburger) svg{ color:#fff !important; fill:#fff; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) :is(.hamburger, #mobile-search-trigger) svg[fill="none"]{ fill:none; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .hz8-header-nav a.hz8-cat:not(.hz8-cat--campaign){ color:#fff !important; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .hz8-header-nav a.hz8-cat--campaign{ color:#ffc89a !important; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .search-field{
+  /* Mörk tonad fältyta: ljus platshållare måste läsas även där headern
+     ligger över den ljusa solnedgångshimlen. */
+  background:color-mix(in srgb, #141c0e 46%, transparent) !important;
+  border-color:color-mix(in srgb, #fff 34%, transparent) !important;
+}
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .search-field :is(input, button, svg, i){ color:#fff !important; }
+/* Nyehandels platshållare (rgba(54,54,54,.3)) når inte AA på krämglaset. */
+html.hz8 #store-header .search-field input::placeholder{ color:var(--hz8-text-muted) !important; opacity:1; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) .search-field input::placeholder{ color:color-mix(in srgb, #fff 80%, transparent) !important; }
+:is(html.hz8 #store-header.hz8-header--on-dark, html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header) :is(a, button, input):focus-visible{ outline:2px solid #fff !important; outline-offset:2px; }
+/* Kort, lugn övergång mellan lägena (färg, inte layout). */
+html.hz8[data-hz8-page="home"] #store-header :is(.account-button, .cart-button, #mobile-search-trigger, .hamburger, .hz8-header-nav a.hz8-cat, .search-field, .search-field input),
+html.hz8[data-hz8-page="home"] #store-header .brand.header-logo img{
+  transition:color .22s var(--hz8-ease), background-color .22s var(--hz8-ease), border-color .22s var(--hz8-ease), filter .22s var(--hz8-ease);
+}
+@media (prefers-reduced-motion:reduce){
+  html.hz8[data-hz8-page="home"] #store-header *, html.hz8[data-hz8-page="home"] #store-header .main::before{ transition:none !important; }
+}
+
 /* ---- Entré-animation: panel (::before) + innehåll (.hz8-header-anim-item) ----
    Default (alltid sant, oavsett JS): panelen är full bredd, allt
    innehåll fullt synligt -- "utan JavaScript ska headern vara fullt
@@ -303,7 +353,8 @@ html.hz8 .hz8-header-nav a.hz8-cat{
 }
 html.hz8 .hz8-header-nav a.hz8-cat:hover,
 html.hz8 .hz8-header-nav a.hz8-cat:focus-visible{ opacity:.65; }
-html.hz8 .hz8-header-nav a.hz8-cat.hz8-cat--campaign{ color:var(--hz8-orange); }
+/* Mörkare orange: --hz8-orange på krämglaset gav 3,8:1 (under AA). */
+html.hz8 .hz8-header-nav a.hz8-cat.hz8-cat--campaign{ color:var(--hz8-cta-hover); }
 html.hz8 .hz8-header-nav .hz8-cat-item{ position:relative; }
 
 /* ============================================================

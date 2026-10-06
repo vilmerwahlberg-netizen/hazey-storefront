@@ -20,13 +20,6 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   color: var(--hz8-hero-text);
 }
 
-/* Headerns glaspanel blir grå över den mörka heron -- tätare varm ton på
-   startsidan tills headern scrollat (då tar den egna scrolled-tonen över). */
-html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .main {
-  --hz8-glass-bg: color-mix(in srgb, #fbf4ea 90%, transparent);
-  --hz8-glass-border: color-mix(in srgb, #fff 55%, transparent);
-}
-
 /* Desktop: tomma scenen + olivton över textkolumnen. Tonen är borta vid
    52 % av bredden, där bussen i .hz8-hero__van-photo börjar. */
 .hz8-hero__background {
@@ -84,6 +77,14 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   font-weight: 600 !important;
   letter-spacing: -.025em !important;
   line-height: 1.08 !important;
+}
+
+/* Diskret separation från fotot för rubrik och ingress: en kort kontakt-
+   skugga nära bokstäverna och ett mjukt, svagt lager. Bara här -- inte
+   CTA, header eller sektionen. */
+.hz8-hero h1,
+.hz8-hero__lede {
+  text-shadow: 0 1px 1px rgba(12, 18, 9, .45), 0 2px 12px rgba(12, 18, 9, .24);
 }
 
 .hz8-hero__title-line { display: inline-block; }
@@ -339,10 +340,11 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 }
 
 /* ======================================================================
-   Desktop och surfplatta (>= 768 px) -- facit Concept A:
-   theme8/review/hero-desktop-concepts-2026-10/concept-a-full-bleed-cinematic.png
+   Desktop och surfplatta (>= 768 px) -- facit Concept B (2026-10-06):
+   theme8/review/hero-desktop-concepts-2026-10/concept-b-editorial-two-zone.png
    Fullbleed foto med naturlig grön kvällshimmel, text till vänster, van
-   och Hazey-bräda till höger, trusthyllan över herons nederkant.
+   och Hazey-bräda till höger, tunn trustrad nere till vänster i fotot.
+   (Concept A:s flytande trusthylla är borttagen.)
 
    Bildfamilj efter fönstrets proportion (inte en hårt beskuren bild):
    4:3 (surfplatta/smalt fönster), 16:10 (MacBook), 16:9 (desktop).
@@ -350,21 +352,19 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
    koordinatmatchat med bakgrunden (se theme8/review/hero-desktop-a-impl-
    2026-10/REGISTRATION-*.png), så ingen separat van-animation -- bara
    en intoning av hela fotot. Heron är 72 % av fönsterhöjden (580-900 px),
-   så hyllan och början på Bästsäljare syns i första vyn; bildens
+   så början på Bästsäljare syns i första vyn; bildens
    vertikala läge håller brädans topp och hjulen i bild i alla familjer.
    ====================================================================== */
 @media (min-width: 768px) {
   .hz8-hero {
     --hz8-hero-h: clamp(580px, calc(72svh + 24px), 900px);
     min-height: var(--hz8-hero-h);
-    overflow: visible;
-    overflow-x: clip;
   }
   .hz8-hero__inner { min-height: var(--hz8-hero-h); }
   .hz8-hero__background {
     /* Lokal kvällston bakom textkolumnen, borta före vanen. */
     background-image:
-      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      radial-gradient(ellipse 64% 74% at 16% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 78%, transparent), transparent 76%),
       url("assets/hero-desktop-a-1440x1080-v1.webp");
     background-size: 100% 100%, cover;
     background-position: 0 0, 70% 80%;
@@ -374,49 +374,36 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero h1 { font-weight: 700 !important; }
   .hz8-hero__lede { margin-bottom: 8px; }
   .hz8-hero__tp { margin-bottom: 14px; }
-  /* Concept A har varken pillen "Populära serier" eller mikrotrust-raden;
-     trusthyllan nedan bär trygghetsbudskapen. */
-  .hz8-hero__more, .hz8-hero__microtrust { display: none; }
-
-  .hz8-hero__shelf {
+  /* Concept B: ingen flytande hylla och ingen pill. Trygghetsbudskapen
+     ligger som en tunn rad längst ned till vänster i fotot, separerade av
+     tunna linjer, med en svag lokal toning bakom (ingen panel). */
+  .hz8-hero__more, .hz8-hero__shelf { display: none; }
+  .hz8-hero__microtrust {
+    bottom: clamp(22px, 4.2svh, 40px);
+    width: auto;
+    flex-wrap: nowrap;
+    gap: 0;
+    color: var(--hz8-hero-text);
+    font: 600 13.5px/1.3 Arial,sans-serif !important;
+    text-shadow: 0 1px 1px rgba(12, 18, 9, .5), 0 2px 10px rgba(12, 18, 9, .3);
+  }
+  .hz8-hero__microtrust::before {
+    content: "";
     position: absolute;
-    z-index: 3;
-    left: 0;
-    right: 0;
-    bottom: -28px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    width: min(780px, 100% - 48px);
-    min-height: 56px;
-    margin: 0 auto;
-    padding: 0 8px;
-    list-style: none;
-    border: 1px solid color-mix(in srgb, #fff 60%, transparent);
-    border-radius: 16px;
-    background: color-mix(in srgb, #fbf4ea 90%, transparent);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    backdrop-filter: blur(14px) saturate(150%);
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--hz8-ink) 16%, transparent);
-    color: var(--hz8-olive);
+    z-index: -1;
+    inset: -32px -150px -28px -60px;
+    background: radial-gradient(ellipse 62% 100% at 50% 55%, color-mix(in srgb, var(--hz8-hero-dusk) 72%, transparent), transparent 100%);
+    pointer-events: none;
   }
-  .hz8-hero__shelf li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 6px;
-    color: var(--hz8-olive) !important;
-    font: 600 15px/1.2 Arial,sans-serif !important;
-    white-space: nowrap;
-  }
-  .hz8-hero__shelf li + li { border-left: 1px solid color-mix(in srgb, var(--hz8-olive) 22%, transparent); }
-  .hz8-hero__shelf svg { flex: none; width: 22px; height: 22px; }
+  .hz8-hero__microtrust span { gap: 9px; padding: 2px 18px; white-space: nowrap; }
+  .hz8-hero__microtrust span:first-child { padding-left: 0; }
+  .hz8-hero__microtrust span + span { border-left: 1px solid color-mix(in srgb, var(--hz8-hero-text) 34%, transparent); }
+  .hz8-hero__microtrust svg { width: 20px; height: 20px; color: #f0a76a; }
 }
 @media (min-width: 768px) and (min-aspect-ratio: 3/2) {
   .hz8-hero__background {
     background-image:
-      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      radial-gradient(ellipse 64% 74% at 16% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 78%, transparent), transparent 76%),
       url("assets/hero-desktop-a-1440x900-v1.webp");
     background-position: 0 0, 70% 82%;
   }
@@ -424,7 +411,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 @media (min-width: 768px) and (min-aspect-ratio: 17/10) {
   .hz8-hero__background {
     background-image:
-      radial-gradient(ellipse 58% 72% at 15% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 70%, transparent), transparent 74%),
+      radial-gradient(ellipse 64% 74% at 16% 44%, color-mix(in srgb, var(--hz8-hero-dusk) 78%, transparent), transparent 76%),
       url("assets/hero-desktop-a-1920x1080-v1.webp");
     background-position: 0 0, 70% 74%;
   }
