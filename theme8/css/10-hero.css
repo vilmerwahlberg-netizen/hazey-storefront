@@ -112,6 +112,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 /* Pekaryta: hela 44 px-raden öppnar profilen. Dold för tangentbord och
    skärmläsare, som använder widgetens egen länk (med betyget i text). */
 .hz8-hero__tp-hit { position: absolute; top: 0; left: 0; width: 200px; height: 44px; z-index: 1; }
+/* Ren länk under 300 px (se 10-hero.js); dold annars. */
+.hz8-hero__tp-fallback { display: none; }
 .hz8-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .hz8-hero a { text-decoration: none !important; }
 
@@ -324,6 +326,16 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
    24 px ovanför fönstret, så rubriken hamnar 12 px under headern. */
 @media (max-width: 299px) {
   .hz8-hero__copy { padding-top: calc(var(--hz8-top-clear) + 24px); }
+  /* Trustpilot-widgeten ryms inte: ingen beskuren iframe, bara länken.
+     Raden behåller sina 44 px (samma höjd), så inget skifte. */
+  .hz8-hero__tp-widget, .hz8-hero__tp-hit { display: none; }
+  .hz8-hero__tp { margin-top: 6px; }
+  .hz8-hero__tp-fallback {
+    display: inline-flex; align-items: center; min-height: 44px;
+    color: var(--hz8-hero-text) !important; font: 600 13.5px/1.2 Arial,sans-serif !important;
+    text-decoration: underline !important; text-underline-offset: 3px;
+  }
+  .hz8-hero__tp-fallback:focus-visible { outline: 2px solid var(--hz8-hero-text); outline-offset: 2px; border-radius: 4px; }
 }
 
 /* ======================================================================

@@ -8,6 +8,17 @@
      innan den finns i DOM:en. */
   function mountTrustbox(widget) {
     if (!widget) return;
+    /* Under 300 px laddas widgeten inte alls (fallback-länken visas);
+       startas om fönstret blir bredare. */
+    var narrow = window.matchMedia && window.matchMedia("(max-width: 299px)");
+    if (narrow && narrow.matches) {
+      if (narrow.addEventListener) narrow.addEventListener("change", function once() {
+        if (narrow.matches) return;
+        narrow.removeEventListener("change", once);
+        mountTrustbox(widget);
+      });
+      return;
+    }
     widget.classList.add("trustpilot-widget");
     if (!document.querySelector("script[src*='tp.widget.bootstrap']")) {
       var s = document.createElement("script");
@@ -56,6 +67,9 @@
       + '    <div class="hz8-hero__tp">'
       + '      <div class="hz8-hero__tp-widget" data-locale="sv-SE" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="' + tpUnit + '" data-style-height="24px" data-style-width="100%" data-theme="dark"><a href="' + tpHref + '" target="_blank" rel="noopener">Omdömen på Trustpilot<span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a></div>'
       + '      <a class="hz8-hero__tp-hit" href="' + tpHref + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>'
+      /* Under 300 px (t.ex. 200 % zoom) ryms inte widgeten -- då visas i
+         stället den här rena länken, utan betyg. */
+      + '      <a class="hz8-hero__tp-fallback" href="' + tpHref + '" target="_blank" rel="noopener">Omdömen på Trustpilot<span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a>'
       + '    </div>'
       + '    <div class="hz8-hero__actions">'
       + '      <a class="hz8-hero__primary" href="/sv/categories/thcb"><span>Handla THCA-B</span>' + arrow + '</a>'

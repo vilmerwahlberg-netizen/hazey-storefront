@@ -669,20 +669,25 @@ html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8
 .hz8-serie > .hz8-rail__item:focus-visible,
 .hz8-serie__open:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--hz8-olive); outline-offset: 2px; }
 
-/* Från 768 px: valraden radbryts i stället för att trycka ihop korten --
-   varje kort minst 220 px så namn och antal ryms bredvid miniatyren. */
+/* Från 768 px: valraden är en enda horisontell räls (streaminghylla)
+   med fasta kortbredder -- nästa kort skymtar när fler finns. Scroll med
+   touch, styrplatta, Shift+hjul eller Tab (fokus scrollar kortet i bild).
+   Högerkanten tonas bara när det finns mer att scrolla (is-more, 80-
+   category.js). */
 @media (min-width: 768px) {
   html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__list:has(.hz8-serie) {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-auto-columns: auto;
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
+    grid-auto-columns: 236px;
     padding-right: 2px;
+  }
+  html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__list:has(.hz8-serie).is-more {
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 48px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 48px), transparent 100%);
   }
   html.hz8[data-hz8-page="category"] .hz8-serie > .hz8-rail__item { min-height: 64px; padding: 8px 12px 8px 8px; }
 }
+/* Långa serienamn: högst två rader i kortet, så rälsen inte växer.
+   Hela namnet finns kvar i DOM:en (skärmläsare). */
+.hz8-serie .hz8-rail__label { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 
 /* Kompakt statusrad: "2 serier valda · 4 produkter · Rensa". Knapparna
    har 44 px tryckyta men ser ut som textlänkar. */
@@ -722,4 +727,8 @@ html.hz8[data-hz8-page="category"] .hz8-filter-hidden { display: none !important
 @media (max-width: 767px) {
   /* Rälsarna går kant till kant med egen inre marginal -- samma 16 px här. */
   html.hz8[data-hz8-page="category"] .hz8-series-status { padding-inline: 16px; }
+}
+@media (max-width: 299px) {
+  /* 200 % zoom: ett kort ryms helt i rälsen, nästa skymtar. */
+  html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__list:has(.hz8-serie) { grid-auto-columns: calc(100% - 28px); }
 }

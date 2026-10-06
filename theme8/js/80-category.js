@@ -661,6 +661,47 @@
       });
     }).catch(function () {});
 
+    /* Scrollsignal på desktop: tona högerkanten bara när rälsen har mer. */
+    var list = nav.querySelector(".hz8-rail__list");
+    function syncMore() {
+      if (!list) return;
+      var more = list.scrollWidth - list.clientWidth - list.scrollLeft > 4;
+      if (list.classList.contains("is-more") !== more) list.classList.toggle("is-more", more);
+    }
+    if (list) {
+      /* Shift + mushjul scrollar rälsen i sidled även där webbläsaren
+         inte själv gör om lodrät rullning till vågrät. */
+      list.addEventListener("wheel", function (e) {
+        if (!e.shiftKey || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+        if (list.scrollWidth <= list.clientWidth) return;
+        e.preventDefault();
+        list.scrollBy({ left: e.deltaY, behavior: "auto" });
+      }, { passive: false });
+      /* Tangentbord: fokus i ett kort scrollar hela kortet i bild, linjerat
+         mot ett snap-läge (annars drar scroll-snap tillbaka rälsen så att
+         det fokuserade elementet hamnar delvis utanför). */
+      list.addEventListener("focusin", function (e) {
+        var card = e.target.closest(".hz8-serie");
+        if (!card) return;
+        var lr = list.getBoundingClientRect(), cr = card.getBoundingClientRect();
+        if (cr.left >= lr.left - 1 && cr.right <= lr.right + 1) return;
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var delta = cr.left < lr.left ? cr.left - lr.left - 2 : cr.right - lr.right + 2;
+        /* Kortet hamnar vid närmaste kortstart som visar hela kortet. */
+        if (cr.right > lr.right) {
+          var cards = Array.prototype.slice.call(list.querySelectorAll(".hz8-serie"));
+          for (var i = 0; i < cards.length; i += 1) {
+            var r = cards[i].getBoundingClientRect();
+            if (r.left - lr.left >= delta - 1) { delta = r.left - lr.left - 2; break; }
+          }
+        }
+        list.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
+      });
+      list.addEventListener("scroll", function () { window.requestAnimationFrame(syncMore); }, { passive: true });
+      window.addEventListener("resize", syncMore);
+      HZ8.watch(syncMore);
+    }
+
     render(read());
     return {
       sync: function () { render(read()); },
