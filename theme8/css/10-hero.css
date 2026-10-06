@@ -106,8 +106,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   color: var(--hz8-hero-text) !important;
   font: 600 14px/1.3 Arial,sans-serif !important;
 }
-.hz8-hero__trust:hover span:not(.hz8-hero__stars) { text-decoration: underline; text-underline-offset: 3px; }
-.hz8-hero__stars { color: var(--hz8-stars); font-size: 18px; letter-spacing: 1px; }
+.hz8-hero__trust:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.hz8-hero__star { flex: none; width: 20px; height: 20px; color: var(--hz8-stars); }
 .hz8-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .hz8-hero a { text-decoration: none !important; }
 
@@ -220,30 +220,36 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
      Synlig hero 0-650 px; trusthyllan ligger över kanten (631-669). */
   .hz8-hero { min-height: 674px; overflow: visible; }
   .hz8-hero__inner { width: 100%; min-height: 674px; }
-  /* Tre lager i ett element:
-     1. olivton: nästan heltäckande överst (bakom texten), helt täckande där
-        huvudbildens överkant ligger (vp ~252), sedan bort till 0 vid
-        bussens tak (vp ~445) -- buss, bräda och solnedgång orörda;
-     2. huvudbilden: fast höjd 418 px, vänsterförankrad -> solen i vänster-
-        kanten, bussen och brädan hela till höger, hjulen vid vp ~615;
-     3. samma bild förstorad och vänsterförankrad bakom tonen: palmkronor
-        som siluetter i kvällshimlen överst (brädan hamnar utanför bild),
-        så tonen inte blir ett platt färgblock. */
+  /* En enda förekomst av fotot (ingen upprepad bild -> ingen dubbel palm):
+     - fotot i full bredd (100% auto, skala = bredd/1000): bussen ~0,63 x
+       bredden, mer strand och solnedgång synligt, hjulen vid vp ~605;
+     - ovanför fotots överkant: ett varmt kvällsfält (djup oliv överst ->
+       varmare oliv vid överkanten, svag glöd till höger som är helt borta
+       före fältets underkant), bara lika högt som området ovanför fotot;
+     - toningen över fotot börjar helt täckande exakt vid fotots överkant
+       (ingen söm) och är borta 170 px längre ned, före bussens tak.
+     Fotots överkant i hero-y = 681px - 90.8vw (bildhöjd = 0,908 x bredden,
+     botten 7 px under heron); de 16 första pixlarna täcker även en
+     eventuell rullist-differens. */
+  .hz8-hero {
+    --hz8-hero-photo-top: calc(681px - 90.8vw);
+    --hz8-hero-dusk-deep: #26301c;
+    --hz8-hero-dusk-warm: #3b4026;
+  }
   .hz8-hero__background {
     background-image:
       linear-gradient(180deg,
-        color-mix(in srgb, var(--hz8-hero-dusk) 80%, transparent) 0%,
-        color-mix(in srgb, var(--hz8-hero-dusk) 86%, transparent) 33%,
-        var(--hz8-hero-dusk) 39%,
-        var(--hz8-hero-dusk) 44%,
-        color-mix(in srgb, var(--hz8-hero-dusk) 85%, transparent) 51%,
-        color-mix(in srgb, var(--hz8-hero-dusk) 55%, transparent) 58.5%,
-        color-mix(in srgb, var(--hz8-hero-dusk) 22%, transparent) 64.5%,
-        transparent 69.5%),
-      url("assets/hero-scene-mobile-van.webp"),
+        var(--hz8-hero-dusk-warm) 0,
+        var(--hz8-hero-dusk-warm) 16px,
+        color-mix(in srgb, var(--hz8-hero-dusk-warm) 74%, transparent) 46px,
+        color-mix(in srgb, var(--hz8-hero-dusk-warm) 42%, transparent) 86px,
+        color-mix(in srgb, var(--hz8-hero-dusk-warm) 14%, transparent) 132px,
+        transparent 170px),
+      radial-gradient(60% 42% at 100% 52%, color-mix(in srgb, #a8692f 26%, transparent), transparent 100%),
+      linear-gradient(180deg, var(--hz8-hero-dusk-deep) 0%, var(--hz8-hero-dusk-deep) 30%, var(--hz8-hero-dusk-warm) 100%),
       url("assets/hero-scene-mobile-van.webp");
-    background-size: 100% 100%, auto 418px, auto 760px;
-    background-position: 0 0, left bottom -20px, left -60px;
+    background-size: 100% 170px, 100% var(--hz8-hero-photo-top), 100% var(--hz8-hero-photo-top), 100% auto;
+    background-position: 0 var(--hz8-hero-photo-top), 0 0, 0 0, left bottom -7px;
     background-repeat: no-repeat;
   }
   .hz8-hero__copy { width: auto; padding: 120px 30px 0; }
@@ -262,7 +268,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   /* B5 bryter före sista meningen. */
   .hz8-hero__lede-end { display: block; }
   .hz8-hero__trust { margin: -2px 0 2px; gap: 9px; font-size: 13.5px !important; font-weight: 500 !important; }
-  .hz8-hero__stars { font-size: 17px; letter-spacing: 1.5px; }
+  .hz8-hero__star { width: 19px; height: 19px; }
   .hz8-hero__actions { flex-direction: column; align-items: stretch; gap: 8px; width: min(100%, 262px); }
   .hz8-hero__primary, .hz8-hero__secondary {
     min-height: 48px; padding: 0 16px 0 18px;
@@ -343,7 +349,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
   .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 14px; }
   .hz8-hero__trust { font-size: 16px !important; margin-bottom: 14px; }
-  .hz8-hero__stars { font-size: 21px; }
+  .hz8-hero__star { width: 23px; height: 23px; }
   .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 28px 26px; font-size: 18px !important; }
   .hz8-hero__cta-icon { width: 22px; height: 22px; }
   .hz8-hero__more { font-size: 16px !important; }

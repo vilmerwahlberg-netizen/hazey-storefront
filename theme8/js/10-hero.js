@@ -7,8 +7,8 @@
 
     /* Trustpilot: länken återanvänds från adminens egen TrustBox-widget
        om den finns i DOM:en. Widgeten är en iframe -- betyget går inte
-       att läsa, så raden visar inget tal eller omdöme ("Utmärkt"),
-       bara en neutral text. Stjärnorna är dekorativa. */
+       att läsa, så raden visar inget tal eller omdöme ("Utmärkt") och
+       en enda dekorativ stjärna -- fem fyllda skulle läsas som 5/5. */
     var tpLink = document.querySelector(".trustpilot-widget a[href*='trustpilot.com']");
     var tpHref = tpLink ? tpLink.href : "https://se.trustpilot.com/review/hazey.se";
     var arrow = '<svg class="hz8-hero__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
@@ -27,7 +27,7 @@
          cannabinoider" -- styrs av H1:ns maxbredd i 10-hero.css. */
       + '    <h1 id="hz8-hero-title"><span class="hz8-hero__title-line" data-line="1">Sveriges #1 för</span> <span class="hz8-hero__title-line" data-line="2">lagliga cannabinoider</span></h1>'
       + '    <p class="hz8-hero__lede">Noggrant testade och lagliga i Sverige – vi följer lagstiftningen löpande. <span class="hz8-hero__lede-end">Din trygghet först.</span></p>'
-      + '    <a class="hz8-hero__trust" href="' + tpHref + '" target="_blank" rel="noopener"><span class="hz8-hero__stars" aria-hidden="true">★★★★★</span><span>Omdömen på Trustpilot</span><span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a>'
+      + '    <a class="hz8-hero__trust" href="' + tpHref + '" target="_blank" rel="noopener"><svg class="hz8-hero__star" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.6l2.8 6.1 6.7.7-5 4.5 1.4 6.6L12 17.1l-5.9 3.4 1.4-6.6-5-4.5 6.7-.7z"/></svg><span>Omdömen på Trustpilot</span><span class="hz8-visually-hidden"> (öppnas i ny flik)</span></a>'
       + '    <div class="hz8-hero__actions">'
       + '      <a class="hz8-hero__primary" href="/sv/categories/thcb"><span>Handla THCA-B</span>' + arrow + '</a>'
       + '      <a class="hz8-hero__secondary" href="/sv/categories/magic-sauce"><span>Upptäck Magic Sauce</span>' + arrow + '</a>'
