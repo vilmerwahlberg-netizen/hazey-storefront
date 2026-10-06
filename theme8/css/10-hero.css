@@ -71,6 +71,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 .hz8-hero__title-line,
 .hz8-hero__lede,
 .hz8-hero__trust,
+.hz8-hero__tp,
 .hz8-hero__actions,
 .hz8-hero__more,
 .hz8-hero__microtrust,
@@ -188,8 +189,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 .hz8-hero__microtrust span { display: inline-flex; align-items: center; gap: 6px; }
 .hz8-hero__microtrust svg { width: 15px; height: 15px; color: #f0a76a; }
 
-/* Trusthyllan finns bara på mobil (se nedan). */
-.hz8-hero__shelf { display: none; }
+/* Trusthyllan och TrustBox-raden finns bara på mobil (se nedan). */
+.hz8-hero__shelf, .hz8-hero__tp { display: none; }
 
 /* Entré: kort och tidig, så text och CTA är läsbara/klickbara direkt.
    Bakgrunden tonar in från samma mörka ton (ingen ljus blinkning). */
@@ -198,7 +199,7 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: .12s; }
 .hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: .2s; }
 .hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .5s var(--hz8-ease) .28s both; }
-.hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .45s var(--hz8-ease) .34s both; }
+.hz8-hero.is-entering :is(.hz8-hero__trust, .hz8-hero__tp) { animation: hz8-fade-blur .45s var(--hz8-ease) .34s both; }
 .hz8-hero.is-entering .hz8-hero__actions { animation: hz8-fade .45s var(--hz8-ease) .38s both; }
 .hz8-hero.is-entering .hz8-hero__more,
 .hz8-hero.is-entering .hz8-hero__microtrust,
@@ -220,36 +221,20 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
      Synlig hero 0-650 px; trusthyllan ligger över kanten (631-669). */
   .hz8-hero { min-height: 674px; overflow: visible; }
   .hz8-hero__inner { width: 100%; min-height: 674px; }
-  /* En enda förekomst av fotot (ingen upprepad bild -> ingen dubbel palm):
-     - fotot i full bredd (100% auto, skala = bredd/1000): bussen ~0,63 x
-       bredden, mer strand och solnedgång synligt, hjulen vid vp ~605;
-     - ovanför fotots överkant: ett varmt kvällsfält (djup oliv överst ->
-       varmare oliv vid överkanten, svag glöd till höger som är helt borta
-       före fältets underkant), bara lika högt som området ovanför fotot;
-     - toningen över fotot börjar helt täckande exakt vid fotots överkant
-       (ingen söm) och är borta 170 px längre ned, före bussens tak.
-     Fotots överkant i hero-y = 681px - 90.8vw (bildhöjd = 0,908 x bredden,
-     botten 7 px under heron); de 16 första pixlarna täcker även en
-     eventuell rullist-differens. */
-  .hz8-hero {
-    --hz8-hero-photo-top: calc(681px - 90.8vw);
-    --hz8-hero-dusk-deep: #26301c;
-    --hz8-hero-dusk-warm: #3b4026;
-  }
+  /* Specialkomponerad mobilbild (941x1672) med riktig grön kvällshimmel
+     upptill, solnedgång i mitten och bussen nederst -- EN bild från herons
+     över- till nederkant, inga färgfält eller extra lager. 740 px hög
+     (skala 0,443): bussens tak hamnar under andra CTA:n (vp ~438) och
+     hjulen strax ovanför trusthyllan (vp ~623); 12 px beskärs per sida.
+     Endast en lokal ellips-toning läggs över (se nedan). */
   .hz8-hero__background {
+    /* Diskret mjuk ellips bakom ingress och Trustpilot-rad (vp ~225-315):
+       där löper orange molnstråk som annars sänker kontrasten under 4,5:1. */
     background-image:
-      linear-gradient(180deg,
-        var(--hz8-hero-dusk-warm) 0,
-        var(--hz8-hero-dusk-warm) 16px,
-        color-mix(in srgb, var(--hz8-hero-dusk-warm) 74%, transparent) 46px,
-        color-mix(in srgb, var(--hz8-hero-dusk-warm) 42%, transparent) 86px,
-        color-mix(in srgb, var(--hz8-hero-dusk-warm) 14%, transparent) 132px,
-        transparent 170px),
-      radial-gradient(60% 42% at 100% 52%, color-mix(in srgb, #a8692f 26%, transparent), transparent 100%),
-      linear-gradient(180deg, var(--hz8-hero-dusk-deep) 0%, var(--hz8-hero-dusk-deep) 30%, var(--hz8-hero-dusk-warm) 100%),
-      url("assets/hero-scene-mobile-van.webp");
-    background-size: 100% 170px, 100% var(--hz8-hero-photo-top), 100% var(--hz8-hero-photo-top), 100% auto;
-    background-position: 0 var(--hz8-hero-photo-top), 0 0, 0 0, left bottom -7px;
+      radial-gradient(75% 11% at 26% 46%, color-mix(in srgb, var(--hz8-hero-dusk) 42%, transparent), transparent 100%),
+      url("assets/hero-mobile-b5-green-sky-v1.webp");
+    background-size: 100% 100%, auto 740px;
+    background-position: 0 0, center top;
     background-repeat: no-repeat;
   }
   .hz8-hero__copy { width: auto; padding: 120px 30px 0; }
@@ -267,7 +252,24 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__lede { max-width: 268px; margin-bottom: 0; font-size: 15px !important; line-height: 1.22 !important; }
   /* B5 bryter före sista meningen. */
   .hz8-hero__lede-end { display: block; }
-  .hz8-hero__trust { margin: -2px 0 2px; gap: 9px; font-size: 13.5px !important; font-weight: 500 !important; }
+  /* Mobil: officiell TrustBox (Micro TrustScore, live-betyg) i stället för
+     den neutrala länken. Raden reserverar 44 px från start (ingen layout
+     shift när iframen laddar). Widgeten centrerar sitt innehåll, så den är
+     250 px bred och flyttad 31 px åt vänster -- "Utmärkt" linjerar med texten. */
+  .hz8-hero__trust { display: none; }
+  .hz8-hero__tp { display: block; position: relative; height: 44px; margin: -2px 0 2px; }
+  .hz8-hero__tp-widget { position: absolute; top: 10px; left: -31px; width: 250px; height: 24px; }
+  .hz8-hero__tp-widget iframe { display: block; }
+  /* Tangentbordsfokus ligger i widgetens egen länk (i iframen). */
+  .hz8-hero__tp:focus-within { outline: 2px solid var(--hz8-hero-text); outline-offset: 2px; border-radius: 6px; }
+  /* Fallback om Trustpilot inte laddar: neutral länk, inget betyg. */
+  .hz8-hero__tp-widget > a {
+    display: inline-flex; align-items: center; min-height: 24px; padding-left: 31px;
+    color: var(--hz8-hero-text) !important; font: 500 13.5px/1.3 Arial,sans-serif !important;
+  }
+  /* Pekaryta: hela 44 px-raden öppnar profilen. Dold för tangentbord och
+     skärmläsare, som använder widgetens egen länk (med betyget i text). */
+  .hz8-hero__tp-hit { position: absolute; top: 0; left: 0; width: 200px; height: 44px; z-index: 1; }
   .hz8-hero__star { width: 19px; height: 19px; }
   .hz8-hero__actions { flex-direction: column; align-items: stretch; gap: 8px; width: min(100%, 262px); }
   .hz8-hero__primary, .hz8-hero__secondary {
@@ -314,6 +316,16 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   .hz8-hero__shelf svg { flex: none; width: 17px; height: 17px; }
 }
 
+/* 414-767 px: bilden måste fylla bredden (100% auto, höjd 1,777 x bredden)
+   och flyttas upp så att hjulen (87,5 % av bildhöjden) ligger kvar på samma
+   ställe som vid 393 px: 647 px - 0,875 x 1,777 x bredden (vid 430: -22 px). */
+@media (min-width: 414px) and (max-width: 767px) {
+  .hz8-hero__background {
+    background-size: 100% 100%, 100% auto;
+    background-position: 0 0, center calc(647px - 155.5vw);
+  }
+}
+
 /* Under 360 px (t.ex. 200 % zoom): knappar och hyllans texter får brytas
    i stället för att skapa horisontell scroll. */
 @media (max-width: 359px) {
@@ -357,8 +369,8 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hz8-hero.is-entering :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf),
-  .hz8-hero :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf) {
+  .hz8-hero.is-entering :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf),
+  .hz8-hero :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__tp, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf) {
     animation: none !important;
     opacity: 1;
     transform: none;
