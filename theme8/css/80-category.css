@@ -615,16 +615,17 @@ html.hz8[data-hz8-page="category"] .hz8-portal-popular .hz8-prail__title { font-
 
 /* ---------- Flerval av serier (80-category.js, seriesPicker) ----------
    Produkttyp primärt (formatkorten, orange aktiv ram), serier sekundärt
-   (kompakta växlare, oliv när valda), egenskapsfilter i filterpanelen. */
+   (kompakta växlare, oliv + bock när valda), egenskapsfilter i panelen.
+   Varje serie = knapp (val) + liten syskonlänk till seriens sida. */
 .hz8-rail__hint { margin-left: .35em; letter-spacing: .04em; text-transform: none; font-weight: 600; }
 /* Mobilens rubrikrad (space-between för "dra"-ledtråden) ska inte skjuta
    ledtråden "välj flera" till högerkanten. */
 html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8-rail__hint) { justify-content: flex-start; }
-.hz8-rail--series .hz8-rail__item--toggle { cursor: pointer; }
+.hz8-serie { position: relative; display: grid; min-width: 0; scroll-snap-align: start; }
+.hz8-serie > .hz8-rail__item { width: 100%; padding-right: 44px; font: inherit; text-align: left; cursor: pointer; }
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"] { background: var(--hz8-olive); border-color: var(--hz8-olive); box-shadow: none; }
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"] :is(.hz8-rail__label, .hz8-rail__count) { color: var(--hz8-text-on-dark) !important; }
-/* Bock på miniatyren: vald status syns även utan färg, utan att täcka
-   etiketten. */
+/* Bock på miniatyren: vald status syns även utan färg. */
 .hz8-rail--series .hz8-rail__item--toggle[aria-pressed="true"]::after {
   content: "";
   position: absolute;
@@ -635,34 +636,31 @@ html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8
   border-radius: 50%;
   background: var(--hz8-text-on-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.4l2.5 2.4L12 5.4' fill='none' stroke='%23323d25' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
-
-.hz8-series-picked { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: -6px; }
-.hz8-series-picked[hidden] { display: none; }
-.hz8-series-picked__count { margin: 0 6px 0 0; color: var(--hz8-text-muted); font: 600 13px/1.2 var(--hz8-font-ui) !important; }
-.hz8-series-picked__count:empty { display: none; }
-.hz8-series-picked__tags { display: contents; list-style: none; margin: 0; padding: 0; }
-.hz8-series-picked__tags li { display: contents; }
-.hz8-series-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 10px 0 14px;
-  border: 1px solid var(--hz8-line-strong);
-  border-radius: var(--hz8-radius-m);
-  background: var(--hz8-secondary-soft);
-  color: var(--hz8-olive);
-  font: 600 13.5px/1 var(--hz8-font-ui) !important;
-  cursor: pointer;
+/* Länken till seriens egen sida: 44 x 44 yta i kortets högra hörn,
+   visuellt en liten pil. Syskon till knappen, aldrig inuti den. */
+.hz8-serie__open {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--hz8-text-muted) !important;
+  text-decoration: none !important;
 }
-.hz8-series-tag:hover { border-color: var(--hz8-olive); }
-.hz8-series-tag__x { position: relative; width: 14px; height: 14px; }
-.hz8-series-tag__x::before,
-.hz8-series-tag__x::after { content: ""; position: absolute; left: 6px; top: 1px; width: 2px; height: 12px; border-radius: 1px; background: currentColor; transform: rotate(45deg); }
-.hz8-series-tag__x::after { transform: rotate(-45deg); }
-.hz8-series-picked__clear {
+.hz8-serie__open svg { width: 16px; height: 16px; }
+.hz8-serie__open:hover { color: var(--hz8-olive) !important; }
+.hz8-serie.is-selected .hz8-serie__open { color: var(--hz8-text-on-dark) !important; }
+
+/* Kompakt statusrad: "2 serier valda · 4 produkter · Rensa". Knapparna
+   har 44 px tryckyta men ser ut som textlänkar. */
+.hz8-series-status { display: flex; flex-wrap: wrap; align-items: center; gap: 0 14px; min-height: 24px; margin: -12px 0 -10px; color: var(--hz8-text-muted); font: 600 13px/1.3 var(--hz8-font-ui) !important; }
+.hz8-series-status[hidden] { display: none; }
+.hz8-series-status :is(.hz8-series-status__clear, .hz8-series-status__action) {
   min-height: 44px;
-  padding: 0 6px;
+  padding: 0 4px;
+  margin: -10px -4px;
   border: 0;
   background: none;
   color: var(--hz8-olive);
@@ -671,23 +669,26 @@ html.hz8[data-hz8-page="category"] .hz8-rail--series .hz8-rail__heading:has(.hz8
   text-underline-offset: 4px;
   cursor: pointer;
 }
-.hz8-series-picked__clear[hidden] { display: none; }
+.hz8-series-status button[hidden] { display: none; }
 
 /* Unionsresultat i stället för native grid/paginering, bara medan valet
    skiljer sig från sidans eget innehåll. */
 html.hz8-series-union[data-hz8-page="category"] :is(#category-products, .designer-category .pagination, .category-sort #products_count, .hz8-cat-popular, .designer-category .hz8-cat-empty:not(.hz8-series-results *)) { display: none !important; }
 html.hz8[data-hz8-page="category"] .hz8-series-results { scroll-margin-top: calc(var(--hz8-top-clear) + 12px); margin: 0 0 8px; transition: opacity .18s var(--hz8-ease); }
 html.hz8[data-hz8-page="category"] .hz8-series-results[hidden] { display: none; }
-html.hz8[data-hz8-page="category"] .hz8-series-results.is-loading { opacity: .5; pointer-events: none; }
+/* Under laddning ligger sidans egen grid kvar, dämpad, tills hela
+   resultatmängden finns. */
+html.hz8[data-hz8-page="category"] .designer-category.hz8-series-pending #category-products { opacity: .5; transition: opacity .18s var(--hz8-ease); }
+html.hz8[data-hz8-page="category"] .hz8-series-results__more { display: flex; margin: 8px auto 24px; }
 html.hz8[data-hz8-page="category"] .hz8-series-results .hz8-cat-empty { margin: 8px 0 24px; }
 
 /* Filtergrupper som inte skiljer produkter åt (se syncFilterGroups). */
 html.hz8[data-hz8-page="category"] .hz8-filter-hidden { display: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
-  html.hz8[data-hz8-page="category"] .hz8-series-results { transition: none; }
+  html.hz8[data-hz8-page="category"] :is(.hz8-series-results, .designer-category #category-products) { transition: none; }
 }
 @media (max-width: 767px) {
   /* Rälsarna går kant till kant med egen inre marginal -- samma 16 px här. */
-  html.hz8[data-hz8-page="category"] .hz8-series-picked { padding-inline: 16px; }
+  html.hz8[data-hz8-page="category"] .hz8-series-status { padding-inline: 16px; }
 }

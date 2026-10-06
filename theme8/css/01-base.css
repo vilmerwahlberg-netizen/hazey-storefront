@@ -477,6 +477,11 @@ html.hz8:not([data-hz8-page="home"]) #store-main .tags .tag a:hover { border-col
 
 html.hz8 [class*="hz8-"][hidden] { display: none !important; }
 
+/* Nyehandel sätter min-width: 300px på <html>. Vid 200 % zoom på en
+   393 px-telefon (~196 CSS-px) breddade det hela dokumentet med en
+   horisontell scroll; Theme 8:s layout klarar smalare bredder. */
+html.hz8 { min-width: 0 !important; }
+
 .hz8-visually-hidden {
   position: absolute !important;
   width: 1px; height: 1px;

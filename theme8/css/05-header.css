@@ -512,6 +512,14 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
   html.hz8 #store-header .brand.header-logo a{ min-height:44px; align-items:center; }
 }
 
+/* Under 300 px (t.ex. 200 % zoom) ryms inte logga + fyra 44 px-ikoner på
+   en rad: loggan får en egen rad överst, ikonerna behåller sina ytor. */
+@media (max-width:299px){
+  html.hz8 #store-header .main{ height:auto; min-height:var(--hz8-header-height-mobile, 60px); }
+  html.hz8 #store-header .main .container{ flex-wrap:wrap; justify-content:space-between; padding:2px 6px; }
+  html.hz8 #store-header .brand.header-logo a{ order:-1; flex-basis:100%; min-height:36px; justify-content:center; }
+}
+
 /* Bakgrundsscroll-lås medan mobil-drawern är öppen (se lockBodyScroll i
    05-header.js) -- body.position=fixed kollapsar annars sin egen bredd
    till innehållets naturliga bredd i vissa browsers, width:100% håller

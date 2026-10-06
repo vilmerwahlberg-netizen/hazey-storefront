@@ -219,7 +219,9 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
   /* B5-komposition, 390-430 px. Heron börjar 24 px ovanför viewporten
      (native #store-main-kompensation i 05-header.css), så hero-y = vp-y + 24.
      Synlig hero 0-650 px; trusthyllan ligger över kanten (631-669). */
-  .hz8-hero { min-height: 674px; overflow: visible; }
+  /* overflow-x: clip -- trusthyllan får sticka ut nedåt, men inget i
+     heron (t.ex. TrustBox-iframen vid extremt smal bredd) kan bredda sidan. */
+  .hz8-hero { min-height: 674px; overflow: visible; overflow-x: clip; }
   .hz8-hero__inner { width: 100%; min-height: 674px; }
   /* Specialkomponerad mobilbild (941x1672) med riktig grön kvällshimmel
      upptill, solnedgång i mitten och bussen nederst -- EN bild från herons
@@ -330,9 +332,14 @@ html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .mai
    i stället för att skapa horisontell scroll. */
 @media (max-width: 359px) {
   .hz8-hero__copy { padding-inline: 20px; }
+  .hz8-hero__tp-widget { left: 0; width: 100%; }
   .hz8-hero__trust { flex-wrap: wrap; row-gap: 0; }
   .hz8-hero__primary, .hz8-hero__secondary { white-space: normal; padding-block: 8px; line-height: 1.15 !important; }
   .hz8-hero__shelf li { flex-direction: column; gap: 3px; padding: 7px 2px; white-space: normal; text-align: center; font-size: 11px !important; }
+}
+/* Under 300 px är headern två rader (05-header.css). */
+@media (max-width: 299px) {
+  .hz8-hero__copy { padding-top: 156px; }
 }
 
 /* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo above. */

@@ -217,21 +217,14 @@
     var slist = snav.querySelector(".hz8-rail__list");
     var formatKey = ctx.format && ctx.format.key;
     if (ctx.type === "format" || ctx.type === "combo") {
-      /* Flerval (seriesPicker nedan): varje serie är en växlare som också
-         är en riktig länk till serie x format-sidan (crawlbar, öppnas i
-         ny flik med modifierartangent). Serier med 0 produkter i typen
-         försvinner (railItem). */
+      /* Flerval (seriesPicker nedan): varje serie är en riktig knapp
+         (aria-pressed) med en separat, riktig länk till serie x format-
+         sidan bredvid -- inga nästlade interaktiva element. */
       if (ctx.format && !ctx.format.seriesless) {
         snav.querySelector(".hz8-rail__heading").innerHTML = 'Serier <span class="hz8-rail__hint">· välj flera</span>';
         snav.setAttribute("aria-label", "Serier, välj en eller flera");
         HZ8.catalog.seriesWithFormat(formatKey).forEach(function (s) {
-          var it = railItem({ label: s.name, href: s.routes[formatKey] }, current, "series");
-          it.removeAttribute("aria-current");
-          it.classList.add("hz8-rail__item--toggle");
-          it.setAttribute("role", "button");
-          it.setAttribute("aria-pressed", "false");
-          it.setAttribute("data-hz8-series", s.name);
-          slist.appendChild(it);
+          slist.appendChild(seriesToggle(s, s.routes[formatKey], ctx.format));
         });
       }
     } else {
@@ -249,9 +242,34 @@
         slist.appendChild(it);
       });
     }
-    var isPicker = !!slist.querySelector("[data-hz8-series]");
+    var isPicker = !!slist.querySelector(".hz8-serie");
     if (isPicker ? slist.children.length : slist.children.length > 1) wrap.appendChild(snav);
     return wrap;
+  }
+
+  /* Serieväxlare: knapp (val) + länk (seriens egen sida) som syskon.
+     Bild från seriens riktiga sida; antalet räknas inom produkttypen av
+     seriesPicker. */
+  function seriesToggle(series, route, format) {
+    var item = document.createElement("div");
+    item.className = "hz8-serie";
+    item.setAttribute("data-hz8-series", series.name);
+    item.innerHTML = '<button type="button" class="hz8-rail__item hz8-rail__item--series hz8-rail__item--toggle is-loading" aria-pressed="false">' +
+      '<span class="hz8-rail__media" aria-hidden="true"></span>' +
+      '<span class="hz8-rail__text"><span class="hz8-rail__label">' + HZ8.esc(series.name) + '</span><span class="hz8-rail__count"></span></span></button>' +
+      '<a class="hz8-serie__open" href="' + HZ8.esc(HZ8.link(route)) + '" aria-label="Öppna sidan ' + HZ8.esc(series.name + " " + format.label) + '">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>';
+    var button = item.querySelector("button");
+    HZ8.fetchPage(route, HZ8.categoryInfo).then(function (info) {
+      button.classList.remove("is-loading");
+      if (info.count === 0) { item.remove(); return; }
+      if (info.image) {
+        var img = document.createElement("img");
+        img.src = info.image; img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 160; img.height = 160;
+        item.querySelector(".hz8-rail__media").appendChild(img);
+      }
+    }).catch(function () { button.classList.remove("is-loading"); });
+    return item;
   }
 
   /* ======================================================================
@@ -263,19 +281,21 @@
      D10, THCV och HHCPM är egna kategorier. Unionen byggs därför av
      riktiga sidor:
      - medlemmar = produkterna på varje vald series riktiga serie x
-       format-route (alla sidor);
+       format-route;
      - lista     = typens egen sida med aktuell sortering och övriga native
-       filter (Serie-värden borttagna), alla sidor, filtrerad på
-       medlemmarna -> samma ordning och filter som native. Typens sida
-       avgör produkttypen; seriechipens antal räknas på samma sätt.
-     Motsvarar valet sidans eget innehåll (inget val på formatsidan,
-     sidans serie på serie x format-sidan) visas Nyehandels egen grid och
-     paginering som vanligt. Valet ligger i ?serie= (delbart, bakåt/
-     framåt); canonical är plattformens och pekar alltid på basidan, så
-     kombinationer blir inga egna indexerade sidor.
+       filter (Serie-värden borttagna), filtrerad på medlemmarna -> samma
+       ordning och filter som native. Typens sida avgör produkttypen.
+     Fullständighet: varje källa hämtas med Nyehandels egen paginering och
+     antalet unika kort måste stämma med sidans egen räknare. Stämmer det
+     inte, eller blir en källa större än MAX_PAGES sidor, visas inget
+     ofullständigt resultat -- native grid ligger kvar och statusraden
+     säger varför. Native grid/paginering döljs först när hela mängden är
+     laddad; resultatet visas sedan stegvis ("Visa fler").
+     Valet ligger i ?serie= (delbart, bakåt/framåt); canonical är
+     plattformens och pekar alltid på basidan.
      ====================================================================== */
-  var PAGE_SIZE = 25;
-  var MAX_PAGES = 8;
+  var MAX_PAGES = 40;      // per källa, ~1000 produkter med Nyehandels 25 per sida
+  var SHOW_STEP = 24;
 
   function cardPath(html) {
     var m = html.match(/href="([^"]*\/products\/[^"]+)"/);
@@ -287,13 +307,29 @@
     return href + (href.indexOf("?") === -1 ? "?" : "&") + "page=" + page;
   }
 
-  /* Alla produktkort på en kategorisida, alla sidor (Nyehandels paginering). */
+  function Incomplete(reason) { this.reason = reason; }
+
+  /* Alla produktkort på en kategorisida (alla sidor). Avvisar med
+     Incomplete om mängden inte kan laddas fullständigt. */
   function allCards(href) {
-    return HZ8.fetchPage(href, HZ8.categoryInfo).then(function (info) {
-      var pages = Math.min(MAX_PAGES, Math.max(1, Math.ceil((info.count || 0) / PAGE_SIZE)));
+    return Promise.all([HZ8.fetchPage(href, HZ8.categoryInfo), HZ8.fetchPage(href, HZ8.categoryCards)]).then(function (first) {
+      var total = first[0].count;
+      var page1 = first[1];
+      if (total == null) throw new Incomplete("count");
+      if (total <= page1.length) return page1;
+      var size = page1.length;
+      if (!size) throw new Incomplete("count");
+      var pages = Math.ceil(total / size);
+      if (pages > MAX_PAGES) throw new Incomplete("size");
       var jobs = [];
-      for (var p = 1; p <= pages; p += 1) jobs.push(HZ8.fetchPage(withPage(href, p), HZ8.categoryCards));
-      return Promise.all(jobs).then(function (lists) { return [].concat.apply([], lists); });
+      for (var p = 2; p <= pages; p += 1) jobs.push(HZ8.fetchPage(withPage(href, p), HZ8.categoryCards));
+      return Promise.all(jobs).then(function (lists) {
+        var all = page1.concat.apply(page1, lists);
+        var seen = {};
+        all.forEach(function (c) { var path = cardPath(c.html); if (path) seen[path] = true; });
+        if (Object.keys(seen).length !== total) throw new Incomplete("count");
+        return all;
+      });
     });
   }
 
@@ -306,8 +342,8 @@
   function seriesPicker(root, ctx, nav) {
     var formatKey = ctx.format.key;
     var param = HZ8.catalog.seriesParam;
-    var chips = Array.prototype.slice.call(nav.querySelectorAll("[data-hz8-series]"));
-    if (!chips.length) return null;
+    var items = Array.prototype.slice.call(nav.querySelectorAll(".hz8-serie[data-hz8-series]"));
+    if (!items.length) return null;
     var byName = {};
     HZ8.catalog.seriesWithFormat(formatKey).forEach(function (s) { byName[s.name] = s; });
     /* Sidans eget innehåll: serie x format-sidans serie plus serier som
@@ -321,17 +357,18 @@
     var designer = root.querySelector(".designer-category");
     var token = 0;
     var shownKey = null;
+    var unionCount = null;
 
-    var picked = document.createElement("div");
-    picked.className = "hz8-series-picked";
-    picked.hidden = true;
-    picked.innerHTML = '<p class="hz8-series-picked__count" role="status" aria-live="polite"></p>' +
-      '<ul class="hz8-series-picked__tags" aria-label="Valda serier"></ul>' +
-      '<button type="button" class="hz8-series-picked__clear">Rensa alla</button>';
-    nav.parentNode.insertBefore(picked, nav.nextSibling);
-    var countEl = picked.querySelector(".hz8-series-picked__count");
-    var tagList = picked.querySelector(".hz8-series-picked__tags");
-    var clearBtn = picked.querySelector(".hz8-series-picked__clear");
+    var status = document.createElement("p");
+    status.className = "hz8-series-status";
+    status.hidden = true;
+    status.innerHTML = '<span class="hz8-series-status__text" role="status" aria-live="polite"></span>' +
+      '<button type="button" class="hz8-series-status__action" hidden></button>' +
+      '<button type="button" class="hz8-series-status__clear">Rensa</button>';
+    nav.parentNode.insertBefore(status, nav.nextSibling);
+    var statusText = status.querySelector(".hz8-series-status__text");
+    var actionBtn = status.querySelector(".hz8-series-status__action");
+    var clearBtn = status.querySelector(".hz8-series-status__clear");
 
     var results = document.createElement("section");
     results.className = "hz8-series-results";
@@ -339,6 +376,7 @@
     results.setAttribute("aria-label", "Produkter i valda serier");
     results.hidden = true;
 
+    function buttons() { return items.filter(function (it) { return it.isConnected; }).map(function (it) { return it.querySelector("button"); }); }
     function slugToName(slug) {
       var names = Object.keys(byName);
       for (var i = 0; i < names.length; i += 1) if (HZ8.catalog.seriesSlug(byName[names[i]]) === slug) return names[i];
@@ -352,11 +390,12 @@
     function sameSet(a, b) { return a.length === b.length && a.every(function (x) { return b.indexOf(x) !== -1; }); }
     function isNative(sel) { return sameSet(sel, defaults); }
     function ordered(sel) { return Object.keys(byName).filter(function (n) { return sel.indexOf(n) !== -1; }); }
+    function slugs(sel) { return ordered(sel).map(function (n) { return HZ8.catalog.seriesSlug(byName[n]); }).join(","); }
 
     function write(sel) {
       var url = new URL(location.href);
       if (isNative(sel)) url.searchParams.delete(param);
-      else url.searchParams.set(param, ordered(sel).map(function (n) { return HZ8.catalog.seriesSlug(byName[n]); }).join(","));
+      else url.searchParams.set(param, slugs(sel));
       if (url.href !== location.href) history.pushState(history.state, "", url.pathname + url.search + url.hash);
     }
 
@@ -364,55 +403,87 @@
     function syncTypeLinks(sel) {
       nav.parentNode.querySelectorAll("[data-hz8-format]").forEach(function (a) {
         var f = HZ8.catalog.formatByKey(a.getAttribute("data-hz8-format"));
-        if (!f) return;
-        var carry = f.key === formatKey || f.seriesless ? [] : ordered(sel).filter(function (n) {
-          var s = HZ8.catalog.build().series.filter(function (x) { return x.name === n; })[0];
-          return s && s.routes[f.key];
-        });
+        if (!f || f.key === formatKey) return;
+        var carry = f.seriesless ? [] : HZ8.catalog.build().series.filter(function (x) { return sel.indexOf(x.name) !== -1 && x.routes[f.key]; });
         var href = f.href;
-        if (carry.length) {
-          href += (href.indexOf("?") === -1 ? "?" : "&") + param + "=" + carry.map(function (n) {
-            return HZ8.catalog.seriesSlug({ name: n });
-          }).join(",");
-        }
-        if (f.key !== formatKey) a.setAttribute("href", HZ8.link(href));
+        if (carry.length) href += (href.indexOf("?") === -1 ? "?" : "&") + param + "=" + carry.map(HZ8.catalog.seriesSlug).join(",");
+        a.setAttribute("href", HZ8.link(href));
       });
     }
 
+    function setStatus(sel, text) {
+      var n = sel.length;
+      var base = n ? n + (n === 1 ? " serie vald" : " serier valda") : "Inga serier valda";
+      statusText.textContent = text ? base + " · " + text : base;
+      clearBtn.hidden = !n;
+      status.hidden = !n && isNative(sel) && actionBtn.hidden;
+    }
+
     function renderControls(sel) {
-      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(sel.indexOf(c.getAttribute("data-hz8-series")) !== -1)); });
-      tagList.innerHTML = ordered(sel).map(function (n) {
-        return '<li><button type="button" class="hz8-series-tag" data-name="' + HZ8.esc(n) + '" aria-label="Ta bort ' + HZ8.esc(n) + '">' +
-          HZ8.esc(n) + '<span aria-hidden="true" class="hz8-series-tag__x"></span></button></li>';
-      }).join("");
-      clearBtn.hidden = !sel.length;
-      picked.hidden = !sel.length && isNative(sel);
+      items.forEach(function (it) {
+        var on = sel.indexOf(it.getAttribute("data-hz8-series")) !== -1;
+        it.querySelector("button").setAttribute("aria-pressed", String(on));
+        it.classList.toggle("is-selected", on);
+      });
       syncTypeLinks(sel);
     }
 
     function deactivate() {
       token += 1;
       shownKey = null;
+      unionCount = null;
       document.documentElement.classList.remove("hz8-series-union");
       results.hidden = true;
       results.innerHTML = "";
       root.removeAttribute("aria-busy");
-      countEl.textContent = "";
+      if (designer) designer.classList.remove("hz8-series-pending");
     }
 
     function resultKey(sel) { return ordered(sel).join("|") + "#" + nativeFilterTokens().join("~") + "#" + (new URLSearchParams(location.search).get("sort") || ""); }
+
+    function renderPage(out, limit) {
+      var grid = results.querySelector(".hz8-series-results__grid");
+      if (!grid) {
+        grid = document.createElement("div");
+        grid.className = "products hz8-series-results__grid";
+        results.appendChild(grid);
+      }
+      out.slice(grid.children.length, limit).forEach(function (c) {
+        var cell = document.createElement("div");
+        cell.innerHTML = c.html;
+        cell.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+        grid.appendChild(cell);
+      });
+      var more = results.querySelector(".hz8-series-results__more");
+      var left = out.length - Math.min(limit, out.length);
+      if (left > 0) {
+        if (!more) {
+          more = document.createElement("button");
+          more.type = "button";
+          more.className = "hz8-btn hz8-btn--secondary hz8-series-results__more";
+          results.appendChild(more);
+        }
+        more.textContent = "Visa fler (" + left + " kvar)";
+        more.onclick = function () {
+          var firstNew = grid.children.length;
+          renderPage(out, limit + SHOW_STEP);
+          var link = grid.children[firstNew] && grid.children[firstNew].querySelector("a[href]");
+          if (link) link.focus({ preventScroll: true });
+        };
+      } else if (more) {
+        more.remove();
+      }
+    }
 
     function showUnion(sel) {
       var key = resultKey(sel);
       if (key === shownKey) return;
       shownKey = key;
       var mine = ++token;
-      document.documentElement.classList.add("hz8-series-union");
-      if (designer && results.parentNode !== designer) designer.appendChild(results);
-      results.hidden = false;
       root.setAttribute("aria-busy", "true");
-      results.classList.add("is-loading");
-      countEl.textContent = "Uppdaterar …";
+      if (designer) designer.classList.add("hz8-series-pending");
+      actionBtn.hidden = true;
+      setStatus(sel, "uppdaterar …");
 
       var params = new URLSearchParams();
       var filters = nativeFilterTokens();
@@ -427,7 +498,7 @@
         var set = null;
         if (res[0]) {
           set = {};
-          res[0].forEach(function (list) { list.forEach(function (c) { var path = cardPath(c.html); if (path) set[path] = c; }); });
+          res[0].forEach(function (list) { list.forEach(function (c) { var path = cardPath(c.html); if (path) set[path] = true; }); });
         }
         var seen = {};
         var out = [];
@@ -437,82 +508,68 @@
           seen[path] = true;
           out.push(c);
         });
-        /* Produkter som bara finns på seriens sida men inte på typens egen
-           sida läggs INTE till: typens sida avgör produkttypen (m-s-vapes
-           innehåller t.ex. en 1 ml cart som inte hör till Vapes). */
 
         results.innerHTML = "";
+        if (designer && results.parentNode !== designer) designer.appendChild(results);
         if (!out.length) {
           results.innerHTML = '<div class="hz8-state hz8-cat-empty" role="status"><h2>Inga produkter matchar</h2><p>Valda serier har inga produkter med de här filtren.</p></div>';
           var b = document.createElement("button");
           b.type = "button";
           b.className = "hz8-btn hz8-btn--secondary";
           b.textContent = "Rensa serierna";
-          b.addEventListener("click", function () { apply([], clearBtn); });
+          b.addEventListener("click", function () { apply([]); });
           results.firstChild.appendChild(b);
         } else {
-          var grid = document.createElement("div");
-          grid.className = "products hz8-series-results__grid";
-          out.forEach(function (c) {
-            var cell = document.createElement("div");
-            cell.innerHTML = c.html;
-            cell.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
-            grid.appendChild(cell);
-          });
-          results.appendChild(grid);
+          renderPage(out, SHOW_STEP);
         }
-        countEl.textContent = out.length + (out.length === 1 ? " produkt" : " produkter");
-        results.classList.remove("is-loading");
+        unionCount = out.length;
+        results.hidden = false;
+        document.documentElement.classList.add("hz8-series-union");
+        if (designer) designer.classList.remove("hz8-series-pending");
         root.removeAttribute("aria-busy");
-      }).catch(function () {
+        setStatus(sel, out.length + (out.length === 1 ? " produkt" : " produkter"));
+      }).catch(function (err) {
         if (mine !== token) return;
-        /* Utan data: tillbaka till sidans eget innehåll, inget gissat. */
         deactivate();
-        countEl.textContent = "Kunde inte uppdatera urvalet just nu.";
-        picked.hidden = false;
+        var tooBig = err instanceof Incomplete && err.reason === "size";
+        actionBtn.hidden = false;
+        if (tooBig) {
+          var first = ordered(sel)[0];
+          actionBtn.textContent = "Öppna " + first;
+          actionBtn.onclick = function () { location.href = HZ8.link(byName[first].routes[formatKey]); };
+        } else {
+          actionBtn.textContent = "Försök igen";
+          actionBtn.onclick = function () { shownKey = null; showUnion(read()); };
+        }
+        setStatus(sel, tooBig ? "urvalet är för stort för att kombineras här" : "kunde inte kombineras just nu, sidans egna produkter visas");
       });
     }
 
     function render(sel) {
       renderControls(sel);
-      if (isNative(sel)) deactivate();
+      if (isNative(sel)) { deactivate(); actionBtn.hidden = true; setStatus(sel, ""); }
       else showUnion(sel);
     }
 
-    function apply(sel, focusFrom) {
+    function apply(sel) {
       write(sel);
       render(sel);
-      if (focusFrom && (!document.body.contains(focusFrom) || focusFrom.hidden)) {
-        var next = tagList.querySelector(".hz8-series-tag") || chips.filter(function (c) { return c.isConnected; })[0];
-        if (next) next.focus({ preventScroll: true });
-      }
     }
 
-    function toggle(chip) {
-      var name = chip.getAttribute("data-hz8-series");
-      var sel = read();
-      var i = sel.indexOf(name);
-      if (i === -1) sel.push(name); else sel.splice(i, 1);
-      apply(sel);
-    }
-
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function (e) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return; // riktig länk: öppna sidan
-        e.preventDefault();
-        toggle(chip);
-      });
-      chip.addEventListener("keydown", function (e) {
-        if (e.key === " " || e.key === "Spacebar") { e.preventDefault(); toggle(chip); }
+    items.forEach(function (it) {
+      it.querySelector("button").addEventListener("click", function () {
+        var name = it.getAttribute("data-hz8-series");
+        var sel = read();
+        var i = sel.indexOf(name);
+        if (i === -1) sel.push(name); else sel.splice(i, 1);
+        apply(sel);
       });
     });
-    tagList.addEventListener("click", function (e) {
-      var tag = e.target.closest(".hz8-series-tag");
-      if (!tag) return;
-      var name = tag.getAttribute("data-name");
-      apply(read().filter(function (n) { return n !== name; }), tag);
+    clearBtn.addEventListener("click", function () {
+      apply([]);
+      var first = buttons()[0];
+      if (first) first.focus({ preventScroll: true });
     });
-    clearBtn.addEventListener("click", function () { apply([], clearBtn); });
 
     /* Native filter/sortering byter URL med pushState: räkna om unionen,
        och lägg tillbaka ?serie= om plattformen tappade den. */
@@ -521,37 +578,41 @@
       var hasParam = new URLSearchParams(location.search).has(param);
       if (!hasParam && !isNative(lastSel) && shownKey) {
         var url = new URL(location.href);
-        url.searchParams.set(param, ordered(lastSel).map(function (n) { return HZ8.catalog.seriesSlug(byName[n]); }).join(","));
+        url.searchParams.set(param, slugs(lastSel));
         history.replaceState(history.state, "", url.pathname + url.search + url.hash);
       }
       lastSel = read();
       if (!isNative(lastSel)) {
-        if (designer && results.parentNode !== designer) designer.appendChild(results);
+        if (designer && unionCount !== null && results.parentNode !== designer) designer.appendChild(results);
         showUnion(lastSel);
       }
     });
 
-    /* Seriechipens antal = seriens produkter som finns på typens egen
-       sida (samma mängd som unionen visar). 0 -> serien döljs. */
+    /* Antal per serie = seriens produkter som finns på typens egen sida
+       (samma mängd som unionen visar). 0 -> serien döljs. */
     allCards(ctx.format.href).then(function (typeCards) {
       var inType = {};
       typeCards.forEach(function (c) { var path = cardPath(c.html); if (path) inType[path] = true; });
-      chips.forEach(function (chip) {
-        var s = byName[chip.getAttribute("data-hz8-series")];
+      items.forEach(function (it) {
+        var s = byName[it.getAttribute("data-hz8-series")];
         if (!s) return;
         allCards(s.routes[formatKey]).then(function (list) {
           var n = {};
           list.forEach(function (c) { var path = cardPath(c.html); if (path && inType[path]) n[path] = true; });
           var count = Object.keys(n).length;
-          if (!count && chip.getAttribute("aria-pressed") !== "true") { chip.remove(); chips = chips.filter(function (c) { return c !== chip; }); return; }
-          var el = chip.querySelector(".hz8-rail__count");
+          if (!count && it.querySelector("button").getAttribute("aria-pressed") !== "true") { it.remove(); return; }
+          var el = it.querySelector(".hz8-rail__count");
           if (el) el.textContent = count + (count === 1 ? " produkt" : " produkter");
         }).catch(function () {});
       });
     }).catch(function () {});
 
     render(read());
-    return { sync: function () { render(read()); }, active: function () { return !!shownKey; }, count: function () { return shownKey ? countEl.textContent : null; } };
+    return {
+      sync: function () { render(read()); },
+      active: function () { return unionCount !== null; },
+      count: function () { return unionCount === null ? null : unionCount + (unionCount === 1 ? " produkt" : " produkter"); }
+    };
   }
 
   function buildHero(h1, root) {
@@ -870,13 +931,20 @@
     var h1 = root && root.querySelector("article.category-description h1");
     if (!root || !h1 || root.querySelector(".hz8-cat-hero")) return;
     var h1Text = h1.textContent.trim();
-    /* Kategoritexten i katalogen innehåller ibland en egen <h1> --
-       exponeras som nivå 2 för hjälpmedel så sidan har ett enda H1.
-       Texten och elementet lämnas orörda. */
-    root.querySelectorAll("article.category-description .readmore__content h1").forEach(function (extra) {
-      extra.setAttribute("role", "heading");
-      extra.setAttribute("aria-level", "2");
-    });
+    /* Kategoritexten i katalogen innehåller ibland en egen <h1> (t.ex.
+       Alla produkter, Alla Vapes). Den blir ett riktigt <h2> med samma
+       text, attribut och utseende, så sidan har exakt ett H1 -- även för
+       sökmotorer som renderar sidan. Körs om om texten ritas om. */
+    function demoteExtraH1() {
+      root.querySelectorAll("article.category-description .readmore__content h1").forEach(function (extra) {
+        var h2 = document.createElement("h2");
+        Array.prototype.forEach.call(extra.attributes, function (a) { if (a.name !== "role" && a.name !== "aria-level") h2.setAttribute(a.name, a.value); });
+        while (extra.firstChild) h2.appendChild(extra.firstChild);
+        extra.parentNode.replaceChild(h2, extra);
+      });
+    }
+    demoteExtraH1();
+    HZ8.watch(demoteExtraH1);
 
     buildHero(h1, root);
     var ctx = HZ8.catalog ? HZ8.catalog.contextFor(location.href) : null;
@@ -887,7 +955,7 @@
       root.appendChild(navWrap);
       root.setAttribute("data-hz8-nav", ctx.type);
       var seriesNav = navWrap.querySelector(".hz8-rail--series");
-      if (seriesNav && seriesNav.querySelector("[data-hz8-series]")) picker = seriesPicker(root, ctx, seriesNav);
+      if (seriesNav && seriesNav.querySelector(".hz8-serie")) picker = seriesPicker(root, ctx, seriesNav);
       if (picker) { document.documentElement.classList.add("hz8-series-picker"); activePicker = picker; }
     } else {
       /* Sidor som relationskartan inte beskriver (CBD-familjen,
