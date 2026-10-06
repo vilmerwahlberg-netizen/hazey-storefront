@@ -501,6 +501,15 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
   html.hz8 #store-header #mobile-search-trigger{ order:2; display:flex!important; }
   html.hz8 #store-header .account-button{ order:3; }
   html.hz8 #store-header .basket-icon{ order:4; }
+  /* 44 px tryckytor (var 38x40), samma regel som kompaktläget ovan;
+     ikonerna behåller sin storlek. Logolänken får samma höjd. */
+  html.hz8 #store-header .hamburger,
+  html.hz8 #store-header #mobile-search-trigger,
+  html.hz8 #store-header .account-button,
+  html.hz8 #store-header .basket-icon .cart-button{
+    min-width:44px; min-height:44px; justify-content:center; align-items:center;
+  }
+  html.hz8 #store-header .brand.header-logo a{ min-height:44px; align-items:center; }
 }
 
 /* Bakgrundsscroll-lås medan mobil-drawern är öppen (se lockBodyScroll i

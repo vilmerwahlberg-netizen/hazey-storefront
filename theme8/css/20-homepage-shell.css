@@ -21,7 +21,8 @@ html.hz8 .hz8-native-footer-hidden { display: none !important; }
 .hz8-home__head a, .hz8-home__head > span { font: 700 12px/1.2 Arial, sans-serif !important; }
 
 @media (max-width: 767px) {
-  .hz8-home { padding: 22px 14px 0; }
+  /* 32: heroens trusthylla sticker ut 19 px under heron (10-hero.css). */
+  .hz8-home { padding: 32px 14px 0; }
   .hz8-home__section { padding-bottom: 28px; }
   .hz8-home__head h2 { font-size: 24px !important; }
 }

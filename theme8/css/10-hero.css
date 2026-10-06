@@ -1,33 +1,39 @@
-/* Homepage hero. Native Nyehandel header stays outside this module. */
+/* Homepage hero. Native Nyehandel header stays outside this module.
+
+   Visuellt facit 2026-10-06 (mobil, 1:1):
+   theme8/review/hero-shape-2026-10/concept-b5-transition-trust-shelf-393x852.png
+   Riktig bild med lokal mörk olivton bakom texten -- ingen ljus toning
+   över hela bilden (den tidigare 90°-krämgradienten 94 -> 12 % var
+   orsaken till det mjölkiga uttrycket). Desktop följer samma familj. */
 html.hz8 .hz8-native-hero-hidden { display: none !important; }
 
 .hz8-hero {
+  /* Kvällston bakom texten; mörk även innan bilden laddat, så det blir
+     ingen blinkning ljust -> mörkt och texten är läsbar om bilden faller bort. */
+  --hz8-hero-dusk: color-mix(in srgb, var(--hz8-olive) 76%, #000);
+  --hz8-hero-text: #fff8ee;
   position: relative;
-  /* 540 -> 570 (+30px): gives the bottom-anchored .hz8-hero__microtrust
-     (position:absolute; bottom:32px, unchanged) room to move down along
-     with the rest of the copy group without becoming flush against the
-     section's own bottom edge -- its 32px offset from the edge is
-     unchanged, only its absolute position shifts as the section grows.
-     570 -> 630 (+60px, 2026-09-25): the new H1 copy wraps to 3 lines
-     instead of 2 -- without this, the extra line pushed "Populära
-     serier" down far enough to overlap the microtrust row by 15.6px
-     at 1440px (measured). +60px gives real clearance, not just enough
-     to avoid touching. */
+  /* 630: H1 på 3 rader + CTA + bottenförankrad mikrotrust (uppmätt). */
   min-height: 630px;
   overflow: hidden;
-  background: var(--hz8-cream);
-  color: var(--hz8-ink);
+  background: var(--hz8-hero-dusk);
+  color: var(--hz8-hero-text);
 }
 
-/* Entrance was a "curtain": .hz8-hero__bar swept in via scaleX and
-   .hz8-hero__background dropped in via scaleY -- removed per explicit
-   request (no bar element at all anymore, no scaling/movement on the
-   background). Background now does a plain opacity fade only. */
+/* Headerns glaspanel blir grå över den mörka heron -- tätare varm ton på
+   startsidan tills headern scrollat (då tar den egna scrolled-tonen över). */
+html.hz8[data-hz8-page="home"] body:not(.hz8-header-scrolled) #store-header .main {
+  --hz8-glass-bg: color-mix(in srgb, #fbf4ea 90%, transparent);
+  --hz8-glass-border: color-mix(in srgb, #fff 55%, transparent);
+}
+
+/* Desktop: tomma scenen + olivton över textkolumnen. Tonen är borta vid
+   52 % av bredden, där bussen i .hz8-hero__van-photo börjar. */
 .hz8-hero__background {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg,color-mix(in srgb, var(--hz8-bg) 90%, transparent) 0%,color-mix(in srgb, var(--hz8-bg) 74%, transparent) 29%,color-mix(in srgb, var(--hz8-bg) 12%, transparent) 53%,transparent 70%),
+    linear-gradient(90deg, color-mix(in srgb, var(--hz8-hero-dusk) 92%, transparent) 0%, color-mix(in srgb, var(--hz8-hero-dusk) 82%, transparent) 30%, color-mix(in srgb, var(--hz8-hero-dusk) 52%, transparent) 40%, color-mix(in srgb, var(--hz8-hero-dusk) 16%, transparent) 47%, transparent 52%),
     url("assets/hero-scene-desktop-empty.webp");
   background-size: cover;
   /* Keep the street/sand visible at the bottom so the van has a ground plane. */
@@ -37,18 +43,9 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 }
 
 /* Desktop-only hero photo hybrid (>=768px, see media query below): a
-   second full-bleed photo of the SAME scene with the van already in it
-   (real camera lighting/shadow/perspective, no cutout compositing),
-   masked to reveal only its right portion and faded in during the
-   entrance timeline. Verified via pixel-diffing the two AI-generated
-   plates that the region left of the mask's feather is effectively
-   identical between them, and that the feather zone (41-47%) sits
-   safely after all copy text (max 39.7% width) and before the van's
-   own real content (from ~50%) -- an earlier, wider feather (18-46%)
-   caused a real, visible lightening across "Sveriges bredaste" from
-   a subtle global exposure difference between the two plates.
-   display:none by default; enabled only inside the >=768px query so it
-   can never affect the mobile layout below. */
+   second full-bleed photo of the SAME scene with the van already in it,
+   its edge mask baked into the image's alpha (invisible 0-41 %, feather
+   41-47 %, visible 47-100 %), faded in during the entrance. */
 .hz8-hero__van-photo {
   display: none;
   position: absolute;
@@ -62,31 +59,26 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   position: relative;
   z-index: 2;
   width: min(100% - 48px, 1316px);
-  /* Must match .hz8-hero's min-height above: .hz8-hero__microtrust is
-     positioned against THIS box, so leaving it at 570 while the section
-     grew to 630 made the "Populära serier" pill overlap microtrust. */
+  /* Must match .hz8-hero's min-height: .hz8-hero__microtrust is
+     positioned against THIS box. */
   min-height: 630px;
   margin: 0 auto;
 }
 
-/* Clear the floating header without leaving an empty strip above the hero.
-   120 -> 144 (+24px): the previous fix only cleared the header (16px
-   gap, header bottom to H1); this pushes the whole copy group (H1/lede/
-   trust/CTAs/pill) down further for real breathing room underneath it,
-   moving as one block since they're all normal-flow siblings below this
-   padding. */
+/* Clears the floating header (144 = header + breathing room under it). */
 .hz8-hero__copy { width: min(560px, 47vw); padding-top: 144px; }
 
 .hz8-hero__title-line,
 .hz8-hero__lede,
 .hz8-hero__trust,
-.hz8-hero__secondary,
+.hz8-hero__actions,
 .hz8-hero__more,
-.hz8-hero__microtrust { opacity: 0; }
+.hz8-hero__microtrust,
+.hz8-hero__shelf { opacity: 0; }
 
 .hz8-hero h1 {
   margin: 0 0 22px;
-  color: var(--hz8-text-heading);
+  color: var(--hz8-hero-text);
   font-family: "Iowan Old Style", Georgia, serif !important;
   font-size: clamp(48px, 4vw, 58px) !important;
   font-weight: 600 !important;
@@ -98,92 +90,89 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 
 .hz8-hero__lede {
   max-width: 510px;
-  margin: 0 0 15px;
-  color: var(--hz8-text-muted);
+  margin: 0 0 10px;
+  color: color-mix(in srgb, var(--hz8-hero-text) 88%, transparent);
   font: 400 17px/1.38 Arial,sans-serif !important;
 }
 
+/* Trustpilot-raden är en länk (riktig profil) med 44 px tryckyta; den
+   visuella raden är bara textraden, marginalerna äter upp resten. */
 .hz8-hero__trust {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin: 0 0 16px;
-  font: 650 13px/1.3 Arial,sans-serif !important;
+  gap: 10px;
+  min-height: 44px;
+  margin: 0 0 6px;
+  color: var(--hz8-hero-text) !important;
+  font: 600 14px/1.3 Arial,sans-serif !important;
 }
-
-.hz8-hero__stars { color: var(--hz8-stars); letter-spacing: 1px; }
+.hz8-hero__trust:hover span:not(.hz8-hero__stars) { text-decoration: underline; text-underline-offset: 3px; }
+.hz8-hero__stars { color: var(--hz8-stars); font-size: 18px; letter-spacing: 1px; }
 .hz8-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
 .hz8-hero a { text-decoration: none !important; }
 
+/* CTA: mjukt rektangulära (13 px), inte piller. Scopat till heron --
+   sajtens övriga pillerknappar ses över i en senare runda. */
 .hz8-hero__primary,
 .hz8-hero__secondary {
   display: inline-flex;
   min-height: 54px;
   align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0 24px;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 13px;
+  padding: 0 20px 0 22px;
   font: 700 15px/1 Arial,sans-serif !important;
+  transition: background-color .16s var(--hz8-ease), border-color .16s var(--hz8-ease), box-shadow .16s var(--hz8-ease);
 }
+.hz8-hero__cta-icon { flex: none; width: 19px; height: 19px; transition: transform .16s var(--hz8-ease); }
 
-/* Glassy CTA treatment: kept the same brand colors (border/text), just
-   added translucency + blur so the pills pick up a touch of the scene
-   behind them instead of sitting as flat, opaque shapes, plus a soft
-   drop shadow on both and a restrained orange glow on the primary. */
-/* Glass turned up: lower background opacity + stronger blur (16-20px)
-   make the pick-up-the-scene effect actually visible instead of reading
-   as near-solid. Blur raised alongside opacity dropped deliberately --
-   a heavier blur homogenizes whatever sits behind the pill into a flat
-   average tone before it blends in, which is what keeps white-on-orange
-   and dark-on-glass legible at lower opacity instead of picking up
-   sharp light/dark patches from the photo unpredictably. Checked
-   against both the lightest (sky/sand, where these sit) and darkest
-   (van body colour, sampled separately) tones in the hero photo. */
 .hz8-hero__primary {
-  border: 1.5px solid var(--hz8-orange);
-  background: color-mix(in srgb, var(--hz8-cta-fill) 80%, transparent);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
-  color: var(--hz8-text-on-dark) !important;
-  opacity: 0;
-  box-shadow: 0 10px 22px color-mix(in srgb, var(--hz8-ink) 20%, transparent), 0 0 22px 2px color-mix(in srgb, var(--hz8-cta) 38%, transparent);
+  border: 1px solid color-mix(in srgb, #ffb36b 55%, var(--hz8-cta));
+  background: var(--hz8-cta-fill);
+  color: var(--hz8-cta-text) !important;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 26%, transparent), 0 8px 20px color-mix(in srgb, #000 24%, transparent);
 }
+.hz8-hero__primary:hover { background: var(--hz8-cta-hover); }
+.hz8-hero__primary:active { background: color-mix(in srgb, var(--hz8-cta) 58%, var(--hz8-ink)); }
 
 .hz8-hero__secondary {
-  border: 1.5px solid var(--hz8-text-heading);
-  color: var(--hz8-text-heading) !important;
-  background: color-mix(in srgb, #fff 24%, transparent);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--hz8-ink) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--hz8-hero-text) 62%, transparent);
+  background: color-mix(in srgb, var(--hz8-hero-dusk) 62%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--hz8-hero-text) !important;
+}
+.hz8-hero__secondary:hover { background: color-mix(in srgb, var(--hz8-hero-dusk) 82%, transparent); border-color: var(--hz8-hero-text); }
+.hz8-hero__secondary:active { background: var(--hz8-hero-dusk); }
+@media (hover: hover) {
+  .hz8-hero__primary:hover .hz8-hero__cta-icon,
+  .hz8-hero__secondary:hover .hz8-hero__cta-icon { transform: translateX(3px); }
 }
 
-/* Small pill CTA -- more retiring than the two primary/secondary
-   buttons (smaller padding/font, no glow, lighter shadow) but still
-   clearly a clickable button rather than a plain underlined link. */
+.hz8-hero :is(.hz8-hero__trust, .hz8-hero__primary, .hz8-hero__secondary, .hz8-hero__more):focus-visible {
+  outline: 2px solid var(--hz8-hero-text);
+  outline-offset: 3px;
+}
+
+/* Liten sekundär länk -- 10 px radie i samma familj som CTA:erna. */
 .hz8-hero__more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: max-content;
+  min-height: 44px;
   margin-top: 12px;
-  padding: 7px 18px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--hz8-olive) 28%, transparent);
-  background: color-mix(in srgb, #fff 28%, transparent);
-  -webkit-backdrop-filter: blur(8px) saturate(140%);
-  backdrop-filter: blur(8px) saturate(140%);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--hz8-ink) 10%, transparent);
-  color: var(--hz8-text-heading) !important;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--hz8-hero-text) 34%, transparent);
+  background: color-mix(in srgb, var(--hz8-hero-dusk) 40%, transparent);
+  color: var(--hz8-hero-text) !important;
   font: 650 13px/1 Arial,sans-serif !important;
   text-decoration: none !important;
 }
 
-/* Bottom-anchored to .hz8-hero__inner (position:relative ancestor)
-   instead of following normal flow -- .hz8-hero__inner's min-height is
-   taller than the copy's own content, so in-flow the row was landing
-   163px above the section's bottom edge. Absolute positioning decouples
-   it from the copy's flow height without moving H1/lede/CTA above it. */
+/* Bottom-anchored to .hz8-hero__inner, decoupled from the copy's flow. */
 .hz8-hero__microtrust {
   position: absolute;
   left: 0;
@@ -192,105 +181,144 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   display: flex;
   flex-wrap: wrap;
   gap: 8px 22px;
-  color: var(--hz8-text-muted);
+  color: color-mix(in srgb, var(--hz8-hero-text) 86%, transparent);
   font: 600 12px/1.3 Arial,sans-serif !important;
 }
 
 .hz8-hero__microtrust span { display: inline-flex; align-items: center; gap: 6px; }
-.hz8-hero__microtrust svg { width: 15px; height: 15px; color: var(--hz8-cta-fill); }
+.hz8-hero__microtrust svg { width: 15px; height: 15px; color: #f0a76a; }
 
-.hz8-hero.is-entering .hz8-hero__background { animation: hz8-fade .6s var(--hz8-ease) .18s both; }
-.hz8-hero.is-entering .hz8-hero__title-line { animation: hz8-fade-blur .62s var(--hz8-ease) both; }
-.hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: 1.18s; }
-.hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: 1.34s; }
-.hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .56s var(--hz8-ease) 1.54s both; }
-.hz8-hero.is-entering .hz8-hero__van-photo { animation: hz8-fade .82s var(--hz8-ease) 1.67s both; }
-.hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .5s var(--hz8-ease) 1.72s both; }
-.hz8-hero.is-entering .hz8-hero__secondary,
-.hz8-hero.is-entering .hz8-hero__more { animation: hz8-fade-blur .52s var(--hz8-ease) 1.88s both; }
-.hz8-hero.is-entering .hz8-hero__microtrust { animation: hz8-fade-blur .52s var(--hz8-ease) 2s both; }
-.hz8-hero.is-entering .hz8-hero__primary { animation: hz8-fade .58s var(--hz8-ease) 2.04s both; }
+/* Trusthyllan finns bara på mobil (se nedan). */
+.hz8-hero__shelf { display: none; }
+
+/* Entré: kort och tidig, så text och CTA är läsbara/klickbara direkt.
+   Bakgrunden tonar in från samma mörka ton (ingen ljus blinkning). */
+.hz8-hero.is-entering .hz8-hero__background { animation: hz8-fade .5s var(--hz8-ease) both; }
+.hz8-hero.is-entering .hz8-hero__title-line { animation: hz8-fade-blur .5s var(--hz8-ease) both; }
+.hz8-hero.is-entering .hz8-hero__title-line[data-line="1"] { animation-delay: .12s; }
+.hz8-hero.is-entering .hz8-hero__title-line[data-line="2"] { animation-delay: .2s; }
+.hz8-hero.is-entering .hz8-hero__lede { animation: hz8-fade-blur .5s var(--hz8-ease) .28s both; }
+.hz8-hero.is-entering .hz8-hero__trust { animation: hz8-fade-blur .45s var(--hz8-ease) .34s both; }
+.hz8-hero.is-entering .hz8-hero__actions { animation: hz8-fade .45s var(--hz8-ease) .38s both; }
+.hz8-hero.is-entering .hz8-hero__more,
+.hz8-hero.is-entering .hz8-hero__microtrust,
+.hz8-hero.is-entering .hz8-hero__shelf { animation: hz8-fade-blur .5s var(--hz8-ease) .46s both; }
+.hz8-hero.is-entering .hz8-hero__van-photo { animation: hz8-fade .8s var(--hz8-ease) .6s both; }
 
 @keyframes hz8-fade { from { opacity: 0; } to { opacity: 1; } }
 /* KORRIGERING (2026-09-25): filter:blur borttaget ur denna in-animation.
-   Bekräftat på riktig iPhone/Safari (WebKit): en `filter:blur(7px)->
-   blur(0)`-animation lämnade H1 och (icke-deterministiskt, olika kort
-   varje gång) ett av bästsäljarkorten kvar SUDDIGA efter att animationen
-   redan var klar -- Safari målar inte alltid om lagret skarpt efter att
-   ett animerat filter når sitt sluttillstånd. opacity+transform ensamma
-   ger samma upplevda "mjuk intoning"-känsla utan den risken. */
+   Safari lämnade H1 och ibland ett bästsäljarkort suddiga efter ett
+   animerat filter. opacity+transform ger samma mjuka intoning. */
 @keyframes hz8-fade-blur {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
 }
 
 @media (max-width: 767px) {
-  /* Höjd höjd (410->520px) för att rymma den återinsatta sekundära
-     CTA:n (Magic Sauce) samt det ökade avståndet under headern utan
-     att bakgrundsbilden/kopian klipps av i botten. */
-  .hz8-hero { min-height: 520px; }
-  .hz8-hero__inner { width: 100%; min-height: 520px; }
-  /* KORRIGERING (2026-09-25): padding-top höjt 90px -> 132px. Uppmätt
-     live: mobilheadern slutar vid y=72px (12px marginal + 60px hög),
-     men en separat, native -24px-kompensation (se #store-main i
-     05-header.css, satt av en helt annan anledning) drog effektivt UPP
-     hela hero-sektionen 24px också -- nettoresultatet blev H1:s
-     överkant vid y=66px, dvs 6px INUTI headerns glaspanel, inte 18px
-     under den som avsett. 132px padding-top ger nu H1 vid y=132-24=108,
-     ett verkligt fritt utrymme på 108-72=36px (uppdragets krav: minst
-     ~24px). Verifierat via getBoundingClientRect, inte gissat. */
-  .hz8-hero__copy { width: auto; padding: 132px 20px 0; }
-  /* Brödtextens bredd sänkt 340->300px: den nya bakgrunden visar bussen
-     tydligare mot höger (se .hz8-hero__background nedan), och 300px
-     håller lede-texten inom den vänstra, mörkare/kräm-tonade delen av
-     gradient-overlayn så den aldrig går in över bussens siluett. */
-  .hz8-hero h1 { max-width: 350px; margin-bottom: 14px; font-size: 45px !important; line-height: 1.02 !important; }
-  .hz8-hero__lede { max-width: 225px; font-size: 15px !important; }
-  .hz8-hero__trust, .hz8-hero__more { display: none; }
-  /* Sekundär-CTA:n (Magic Sauce) tillbaka på mobil (var dold helt) --
-     staplad i full bredd under primärknappen (inte 50/50) eftersom dess
-     längre text ("Upptäck Magic Sauce") annars riskerar radbryta vid
-     smala bredder; full bredd garanterar en rad oavsett textlängd. */
-  .hz8-hero__actions { align-items: stretch; flex-direction: column; }
+  /* B5-komposition, 390-430 px. Heron börjar 24 px ovanför viewporten
+     (native #store-main-kompensation i 05-header.css), så hero-y = vp-y + 24.
+     Synlig hero 0-650 px; trusthyllan ligger över kanten (631-669). */
+  .hz8-hero { min-height: 674px; overflow: visible; }
+  .hz8-hero__inner { width: 100%; min-height: 674px; }
+  /* Tre lager i ett element:
+     1. olivton: nästan heltäckande överst (bakom texten), helt täckande där
+        huvudbildens överkant ligger (vp ~252), sedan bort till 0 vid
+        bussens tak (vp ~445) -- buss, bräda och solnedgång orörda;
+     2. huvudbilden: fast höjd 418 px, vänsterförankrad -> solen i vänster-
+        kanten, bussen och brädan hela till höger, hjulen vid vp ~615;
+     3. samma bild förstorad och vänsterförankrad bakom tonen: palmkronor
+        som siluetter i kvällshimlen överst (brädan hamnar utanför bild),
+        så tonen inte blir ett platt färgblock. */
+  .hz8-hero__background {
+    background-image:
+      linear-gradient(180deg,
+        color-mix(in srgb, var(--hz8-hero-dusk) 80%, transparent) 0%,
+        color-mix(in srgb, var(--hz8-hero-dusk) 86%, transparent) 33%,
+        var(--hz8-hero-dusk) 39%,
+        var(--hz8-hero-dusk) 44%,
+        color-mix(in srgb, var(--hz8-hero-dusk) 85%, transparent) 51%,
+        color-mix(in srgb, var(--hz8-hero-dusk) 55%, transparent) 58.5%,
+        color-mix(in srgb, var(--hz8-hero-dusk) 22%, transparent) 64.5%,
+        transparent 69.5%),
+      url("assets/hero-scene-mobile-van.webp"),
+      url("assets/hero-scene-mobile-van.webp");
+    background-size: 100% 100%, auto 418px, auto 760px;
+    background-position: 0 0, left bottom -20px, left -60px;
+    background-repeat: no-repeat;
+  }
+  .hz8-hero__copy { width: auto; padding: 120px 30px 0; }
+  .hz8-hero h1 {
+    /* 300 px: "Sveriges #1 för" ryms, "lagliga cannabinoider" bryts (B5). */
+    max-width: 300px;
+    margin-bottom: 10px;
+    /* 40 px vid 390-430; skalar ned vid 200 % zoom (~196 px) så
+       "cannabinoider" aldrig blir bredare än spalten. */
+    font-size: clamp(20px, 10.25vw, 40px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -.02em !important;
+    line-height: 1 !important;
+  }
+  .hz8-hero__lede { max-width: 268px; margin-bottom: 0; font-size: 15px !important; line-height: 1.22 !important; }
+  /* B5 bryter före sista meningen. */
+  .hz8-hero__lede-end { display: block; }
+  .hz8-hero__trust { margin: -2px 0 2px; gap: 9px; font-size: 13.5px !important; font-weight: 500 !important; }
+  .hz8-hero__stars { font-size: 17px; letter-spacing: 1.5px; }
+  .hz8-hero__actions { flex-direction: column; align-items: stretch; gap: 8px; width: min(100%, 262px); }
   .hz8-hero__primary, .hz8-hero__secondary {
-    display: inline-flex; width: 100%;
-    min-height: 48px; padding: 0 18px; font-size: 13px !important;
+    min-height: 48px; padding: 0 16px 0 18px;
+    font-size: 15.5px !important; font-weight: 600 !important;
     white-space: nowrap;
   }
-  .hz8-hero__microtrust { display: none; }
-  /* KORRIGERING (2026-09-25): mobil hade tidigare en flat strandbild
-     (hero-beach-mobile-v2) + en separat urklippt bussbild inklistrad
-     ovanpå -- bytt mot ETT riktigt beskuret fotoutsnitt av samma äkta
-     desktop-scen (hero-scene-mobile-van.webp, ~1000px bred, genererat
-     från hero-scene-desktop-van.png) där bussen redan står naturligt på
-     vägen. background-position:right hjälper hålla bussen synlig i
-     högerkanten medan gradienten till vänster (samma som förut) håller
-     textzonen läsbar. */
-  .hz8-hero__background {
-    background-position: right bottom;
-    /* Gradienten håller hög opacitet ända till ~80% av bredden (där
-       lede-texten faktiskt slutar, uppmätt) innan den öppnar upp för
-       bussen i den sista femtedelen -- en tidigare, snabbare avtoning
-       lämnade lede-textens högra del med under 1,2:1 kontrast (uppmätt
-       med riktig pixel-sampling, inte gissat). */
-    background-image:
-      linear-gradient(90deg,color-mix(in srgb, var(--hz8-bg) 94%, transparent) 0%,color-mix(in srgb, var(--hz8-bg) 88%, transparent) 60%,color-mix(in srgb, var(--hz8-bg) 50%, transparent) 80%,color-mix(in srgb, var(--hz8-bg) 12%, transparent) 98%),
-      url("assets/hero-scene-mobile-van.webp");
+  .hz8-hero__cta-icon { width: 18px; height: 18px; }
+  .hz8-hero__more, .hz8-hero__microtrust { display: none; }
+
+  .hz8-hero__shelf {
+    position: absolute;
+    z-index: 3;
+    left: 10px;
+    right: 10px;
+    bottom: -19px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    min-height: 38px;
+    margin: 0;
+    padding: 0 4px;
+    list-style: none;
+    border: 1px solid color-mix(in srgb, #fff 60%, transparent);
+    border-radius: 14px;
+    background: color-mix(in srgb, #fbf4ea 88%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--hz8-ink) 14%, transparent);
+    color: var(--hz8-olive);
   }
+  .hz8-hero__shelf li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 0;
+    padding: 9px 2px;
+    font: 500 12.5px/1.15 Arial,sans-serif !important;
+    color: var(--hz8-olive) !important;
+    white-space: nowrap;
+  }
+  .hz8-hero__shelf li + li { border-left: 1px solid color-mix(in srgb, var(--hz8-olive) 22%, transparent); }
+  .hz8-hero__shelf svg { flex: none; width: 17px; height: 17px; }
 }
 
-/* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo declaration
-   above for the full rationale. */
+/* Under 360 px (t.ex. 200 % zoom): knappar och hyllans texter får brytas
+   i stället för att skapa horisontell scroll. */
+@media (max-width: 359px) {
+  .hz8-hero__copy { padding-inline: 20px; }
+  .hz8-hero__trust { flex-wrap: wrap; row-gap: 0; }
+  .hz8-hero__primary, .hz8-hero__secondary { white-space: normal; padding-block: 8px; line-height: 1.15 !important; }
+  .hz8-hero__shelf li { flex-direction: column; gap: 3px; padding: 7px 2px; white-space: normal; text-align: center; font-size: 11px !important; }
+}
+
+/* Desktop-only hero photo hybrid -- see .hz8-hero__van-photo above. */
 @media (min-width: 768px) {
-  /* KORRIGERING (scroll-prestanda, 2026-09-25): mask-image tvingade
-     Chrome att beräkna om masken varje gång detta lager kompositerades
-     om (t.ex. vid scroll om en förälder animerar, eller vid resize) --
-     en extra, löpande kostnad ovanpå bilden själv. Samma exakta
-     övertoning (osynlig 0-41%, mjuk kant 41-47%, helt synlig 47-100%)
-     är nu inbakad direkt i bildens EGEN alfakanal
-     (hero-scene-desktop-van-masked.webp, genererad från samma källa
-     som hero-scene-desktop-van.webp) -- pixelidentiskt resultat, men
-     ingen mask-image kvar att räkna om. */
   .hz8-hero__van-photo {
     display: block;
     background-image: url("assets/hero-scene-desktop-van-masked.webp");
@@ -299,33 +327,35 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   }
 }
 
+/* Surfplatta: textspalten (47vw) är för smal för två knappar i rad, så
+   de staplas -- högre hero så "Populära serier" inte når mikrotrust-raden. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hz8-hero, .hz8-hero__inner { min-height: 700px; }
+  .hz8-hero__copy { padding-top: 124px; }
+  .hz8-hero h1 { font-size: 44px !important; margin-bottom: 18px; }
+  .hz8-hero__lede { max-width: 330px; font-size: 16px !important; }
+}
+
 @media (min-width: 1600px) {
-  /* +30px, samma motivering/mekanism som basvariantens 540->570. */
   .hz8-hero, .hz8-hero__inner { min-height: 740px; }
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
-  /* padding-top höjt 78px -> 130px -> 154px (+24px), samma orsak/mekanism som basvarianten ovan. */
   .hz8-hero__copy { width: 760px; padding-top: 154px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }
-  .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 22px; }
-  .hz8-hero__trust { font-size: 16px !important; margin-bottom: 20px; }
-  .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 31px; font-size: 18px !important; }
-  .hz8-hero__more { font-size: 17px !important; }
+  .hz8-hero__lede { max-width: 680px; font-size: 23px !important; margin-bottom: 14px; }
+  .hz8-hero__trust { font-size: 16px !important; margin-bottom: 14px; }
+  .hz8-hero__stars { font-size: 21px; }
+  .hz8-hero__primary, .hz8-hero__secondary { min-height: 68px; padding-inline: 28px 26px; font-size: 18px !important; }
+  .hz8-hero__cta-icon { width: 22px; height: 22px; }
+  .hz8-hero__more { font-size: 16px !important; }
   .hz8-hero__microtrust { width: 760px; font-size: 15px !important; gap: 10px 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hz8-hero.is-entering .hz8-hero__background,
-  .hz8-hero.is-entering .hz8-hero__title-line,
-  .hz8-hero.is-entering .hz8-hero__lede,
-  .hz8-hero.is-entering .hz8-hero__van-photo,
-  .hz8-hero.is-entering .hz8-hero__trust,
-  .hz8-hero.is-entering .hz8-hero__secondary,
-  .hz8-hero.is-entering .hz8-hero__more,
-  .hz8-hero.is-entering .hz8-hero__microtrust,
-  .hz8-hero.is-entering .hz8-hero__primary {
+  .hz8-hero.is-entering :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf),
+  .hz8-hero :is(.hz8-hero__background, .hz8-hero__title-line, .hz8-hero__lede, .hz8-hero__van-photo, .hz8-hero__trust, .hz8-hero__actions, .hz8-hero__more, .hz8-hero__microtrust, .hz8-hero__shelf) {
     animation: none !important;
     opacity: 1;
-    filter: none;
     transform: none;
   }
+  .hz8-hero__cta-icon { transition: none; }
 }
