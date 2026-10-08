@@ -97,3 +97,72 @@
   .hz8-product small { font-size: 14px !important; }
   .hz8-product strong { margin-top: 13px; font-size: 20px !important; }
 }
+
+/* ======================================================================
+   Startsidans serier (40-catalog.js, 2026-10-08): fyra bildvärldar med
+   produktkorrekta kompositer, text i egen panel (aldrig över
+   förpackningarna). Desktop: förskjutet rutnät 7/5 + 5/7 så blocken inte
+   blir fyra identiska banners. Mobil: ett block per serie.
+   ====================================================================== */
+.hz8-series2__head { align-items: flex-end; }
+.hz8-series2__head h2 { margin: 0; }
+.hz8-series2__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.hz8-serie-block {
+  --hz8-sb-bg: #1d2716; --hz8-sb-text: #fff8ee; --hz8-sb-muted: color-mix(in srgb, #fff8ee 78%, transparent); --hz8-sb-accent: #f0a76a;
+  --hz8-sb-focus-x: 62%; --hz8-sb-focus-y: 58%;
+  display: grid; grid-template-rows: auto 1fr; min-width: 0;
+  border-radius: 13px; background: var(--hz8-sb-bg); color: var(--hz8-sb-text); overflow: hidden;
+  box-shadow: 0 10px 30px color-mix(in srgb, #3a2410 14%, transparent);
+}
+.hz8-serie-block--thcab { grid-column: span 7; --hz8-sb-bg: #17121d; --hz8-sb-accent: #e7c06a; --hz8-sb-focus-x: 64%; }
+.hz8-serie-block--thcba { grid-column: span 5; --hz8-sb-bg: #e9e2d4; --hz8-sb-text: #1d1a2c; --hz8-sb-muted: #4a4658; --hz8-sb-accent: #7b5a1d; --hz8-sb-focus-x: 64%; }
+.hz8-serie-block--magic { grid-column: span 5; --hz8-sb-bg: #3a1f10; --hz8-sb-accent: #ffb469; --hz8-sb-focus-x: 60%; }
+.hz8-serie-block--nano { grid-column: span 7; --hz8-sb-bg: #101b33; --hz8-sb-accent: #9fc3ff; --hz8-sb-focus-x: 72%; }
+.hz8-serie-block__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: color-mix(in srgb, var(--hz8-sb-bg) 70%, #000); }
+.hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 4 / 3.15; }
+.hz8-serie-block__media img { width: 100%; height: 100%; object-fit: cover; object-position: var(--hz8-sb-focus-x) var(--hz8-sb-focus-y); transition: transform .6s var(--hz8-ease); }
+@media (hover: hover) { .hz8-serie-block:hover .hz8-serie-block__media img { transform: scale(1.02); } }
+.hz8-serie-block__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 22px 20px; }
+.hz8-serie-block__meta { margin: 0; color: var(--hz8-sb-muted) !important; font: 700 11px/1.2 Arial, sans-serif !important; letter-spacing: .16em; text-transform: uppercase; }
+.hz8-serie-block__title { margin: 0; color: var(--hz8-sb-text) !important; font: 700 30px/1.05 "Iowan Old Style", Georgia, serif !important; }
+.hz8-serie-block__text { margin: 0; color: var(--hz8-sb-muted) !important; font: 400 14.5px/1.45 Arial, sans-serif !important; }
+.hz8-serie-block__actions { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 8px; }
+.hz8-serie-block__actions a { display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 0 16px 0 18px; border-radius: 12px; font: 700 14.5px/1 Arial, sans-serif !important; text-decoration: none !important; transition: background-color .16s var(--hz8-ease), border-color .16s var(--hz8-ease), color .16s var(--hz8-ease); }
+.hz8-serie-block__actions svg { width: 17px; height: 17px; flex: none; transition: transform .16s var(--hz8-ease); }
+@media (hover: hover) { .hz8-serie-block__actions a:hover svg { transform: translateX(3px); } }
+/* Primär: "Läs om" (fylld). Sekundär: "Utforska" (kantlinje). Utan en
+   informationssida är "Utforska" ensam och får den fyllda stilen. */
+.hz8-serie-block__read,
+.hz8-serie-block__actions:not(.has-info) .hz8-serie-block__explore { background: var(--hz8-sb-text); color: var(--hz8-sb-bg) !important; border: 1.5px solid var(--hz8-sb-text); }
+.hz8-serie-block__actions.has-info .hz8-serie-block__explore { background: transparent; color: var(--hz8-sb-text) !important; border: 1.5px solid color-mix(in srgb, var(--hz8-sb-text) 58%, transparent); }
+@media (hover: hover) {
+  .hz8-serie-block__read:hover, .hz8-serie-block__actions:not(.has-info) .hz8-serie-block__explore:hover { background: color-mix(in srgb, var(--hz8-sb-text) 86%, var(--hz8-sb-bg)); }
+  .hz8-serie-block__actions.has-info .hz8-serie-block__explore:hover { border-color: var(--hz8-sb-text); }
+}
+.hz8-serie-block__actions a:focus-visible { outline: 2px solid var(--hz8-sb-accent); outline-offset: 3px; }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hz8-serie-block--thcab, .hz8-serie-block--thcba, .hz8-serie-block--magic, .hz8-serie-block--nano { grid-column: span 6; }
+  .hz8-serie-block__media, .hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 4 / 3; }
+  .hz8-serie-block__title { font-size: 26px !important; }
+}
+@media (max-width: 767px) {
+  .hz8-series2__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .hz8-serie-block--thcab, .hz8-serie-block--thcba, .hz8-serie-block--magic, .hz8-serie-block--nano { grid-column: auto; }
+  .hz8-serie-block__media, .hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 16 / 10; }
+  /* Nano11: bredare bild än de andra -- förankras höger så att påsen inte beskärs. */
+  .hz8-serie-block--nano { --hz8-sb-focus-x: 100%; }
+  .hz8-serie-block__body { padding: 14px 16px 16px; gap: 4px; }
+  .hz8-serie-block__title { font-size: 24px !important; }
+  .hz8-serie-block__text { font-size: 13.5px !important; }
+  .hz8-serie-block__actions { margin-top: 6px; }
+  .hz8-serie-block__actions a { min-height: 44px; font-size: 14px !important; }
+}
+@media (min-width: 1600px) {
+  .hz8-serie-block__title { font-size: 36px !important; }
+  .hz8-serie-block__text { font-size: 16px !important; }
+  .hz8-serie-block__body { padding: 24px 28px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz8-serie-block__media img, .hz8-serie-block__actions svg { transition: none !important; }
+}
