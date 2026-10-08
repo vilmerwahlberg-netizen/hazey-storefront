@@ -176,7 +176,7 @@
     return h;
   };
   HZ8.productState = function (productUrl) {
-    var key = "state3:" + HZ8.path(productUrl);
+    var key = "state4:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     var page = null;
@@ -212,6 +212,9 @@
           variants: variants.length,
           buyable: sv.buyable !== false && sv.in_stock !== false && sv.active !== false && inStock,
           inStock: inStock,
+          /* Högsta antal som kan läggas i korgen (Nyehandel svarar 406 över
+             lagret). Visas aldrig som siffra. null = ingen gräns. */
+          maxQty: sv.track_inventory && !sv.always_orderable ? Math.max(0, sv.available_stock || 0) : null,
           stockLabel: status && status.name ? status.name : (inStock ? "I lager" : "Slut i lager"),
           image: images[0] && images[0].image_url ? images[0].image_url : null,
           imageAlt: images[0] && images[0].alt ? images[0].alt : "",
@@ -255,7 +258,7 @@
     var payload = { product_variant_id: Number(variantId), quantity: Math.max(1, parseInt(quantity, 10) || 1), meta: null };
     if (store && store._actions && store._actions["cart/addVariant"]) return Promise.resolve(store.dispatch("cart/addVariant", payload));
     return fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify(payload) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+      .then(function (r) { if (!r.ok) { var e = new Error(r.status); e.status = r.status; throw e; } return r.json(); });
   };
 
   /* ---- Overlay-hjälp: scroll-lås + fokusfälla + Escape ---- */
