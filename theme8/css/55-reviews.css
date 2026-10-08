@@ -1,0 +1,226 @@
+/* Kundomdömen (55-reviews.js, 2026-10-08): mörkt trustband i en varm
+   Hazey-miljö. Överst Trustpilots officiella livewidget (reserverad höjd,
+   ingen förskjutning när den laddar) och de riktiga länkarna i en glasyta;
+   under en tydligt avgränsad räls med godkända produktomdömen från
+   hazey.se på pappersobjekt.
+
+   Lager (bakifrån): 1 solid djup oliv (syns om bilden inte laddas)
+   2 miljöplåt (assets/trust-environment-2026-10, desktop resp. mobil)
+   3 olivton över bilden  4 läsbarhetsgradient bakom rubriken  5 vertikal
+   toning till helt solid oliv mot sektionens över- och nederkant
+   6 vinjett  7 lokal varm glow vid widgeten  8 mycket svagt brus.
+   Bildlagret är ett absolut placerat pseudo-element i full fönsterbredd;
+   #store-main (overflow-x: hidden) klipper det, så ingen sidscroll.
+   Plåten sätts först med .is-lit (när sektionen närmar sig, 55-reviews.js). */
+.hz8-rv {
+  --hz8-rv-bg: #26331e;
+  --hz8-rv-bg-a0: color-mix(in srgb, var(--hz8-rv-bg) 0%, transparent);
+  --hz8-rv-muted: color-mix(in srgb, #fff 74%, transparent);
+  --hz8-rv-line: color-mix(in srgb, #fff 17%, transparent);
+  --hz8-rv-paper: color-mix(in srgb, var(--hz8-beige) 60%, #fff8ec);
+  --hz8-rv-paper-edge: color-mix(in srgb, var(--hz8-beige) 70%, #7a5a36);
+  --hz8-rv-glow: color-mix(in srgb, #f2b061 22%, transparent);
+  --hz8-rv-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --hz8-rv-plate: none;
+  --hz8-rv-plate-pos: center 68%;
+  --hz8-rv-plate-size: cover;
+  position: relative; isolation: isolate;
+  margin-bottom: 34px; padding: 52px 0 46px;
+  color: var(--hz8-text-on-dark);
+}
+.hz8-rv.is-lit { --hz8-rv-plate: url("assets/trust-environment-2026-10/trust-environment-desktop-v1.webp"); }
+.hz8-rv::before, .hz8-rv::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); pointer-events: none;
+}
+.hz8-rv::before {
+  z-index: -2;
+  background:
+    /* 5 vertikal toning: helt solid i över- och nederkant, inga bildkanter */
+    linear-gradient(180deg, var(--hz8-rv-bg) 0, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent) 8%, var(--hz8-rv-bg-a0) 20%, var(--hz8-rv-bg-a0) 80%, color-mix(in srgb, var(--hz8-rv-bg) 72%, transparent) 93%, var(--hz8-rv-bg) 100%),
+    /* 4 läsbarhet bakom rubrik och ingress */
+    radial-gradient(60% 55% at 22% 24%, color-mix(in srgb, var(--hz8-rv-bg) 82%, transparent), var(--hz8-rv-bg-a0) 72%),
+    /* 6 vinjett mot sidorna */
+    linear-gradient(90deg, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent) 0, var(--hz8-rv-bg-a0) 12%, var(--hz8-rv-bg-a0) 88%, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent) 100%),
+    /* 3 olivton */
+    linear-gradient(color-mix(in srgb, var(--hz8-rv-bg) 18%, transparent), color-mix(in srgb, var(--hz8-rv-bg) 18%, transparent)),
+    /* 2 miljöplåt */
+    var(--hz8-rv-plate) var(--hz8-rv-plate-pos) / var(--hz8-rv-plate-size) no-repeat,
+    /* 1 solid grund */
+    var(--hz8-rv-bg);
+}
+.hz8-rv::after {
+  z-index: -1;
+  background:
+    /* 7 lokal varm glow vid Trustpilot-ytan */
+    radial-gradient(28% 34% at 78% 22%, var(--hz8-rv-glow), transparent 70%),
+    /* 8 mycket svagt brus */
+    var(--hz8-rv-noise) 0 0 / 160px 160px;
+  opacity: .9; mix-blend-mode: soft-light;
+}
+.hz8-rv a { color: var(--hz8-text-on-dark) !important; }
+.hz8-rv svg { width: 16px; height: 16px; flex: none; }
+.hz8-rv a:focus-visible, .hz8-rv__btn:focus-visible { outline: 2px solid var(--hz8-text-on-dark) !important; outline-offset: 3px; border-radius: 3px; }
+
+/* Övre trustytan */
+.hz8-rv__top { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, auto); gap: 20px 64px; align-items: center; padding-bottom: 28px; }
+/* Mjuk avdelare mot rälsen: linjen tonar ut i båda ändar. */
+.hz8-rv__top::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--hz8-rv-line) 18%, var(--hz8-rv-line) 82%, transparent); }
+.hz8-rv__eyebrow { margin: 0 0 12px; color: var(--hz8-rv-muted) !important; font: 700 12px/1 Arial, sans-serif !important; letter-spacing: .2em; text-transform: uppercase; }
+.hz8-rv__title { margin: 0; color: var(--hz8-text-on-dark) !important; font: 600 46px/1.04 "Iowan Old Style", Georgia, serif !important; letter-spacing: -.01em; text-shadow: 0 2px 24px color-mix(in srgb, #000 35%, transparent); }
+.hz8-rv__lead { margin: 12px 0 0; color: var(--hz8-rv-muted) !important; font: 400 15px/1.5 Arial, sans-serif !important; }
+/* Glasyta för Trustpilot: transparent mörk oliv, tunn ljus kant, inre
+   highlight och mjuk skugga. Utan backdrop-filter blir ytan tätare. */
+.hz8-rv__score {
+  min-width: 0; padding: 12px 18px 8px 18px; border-radius: 14px;
+  border: 1px solid color-mix(in srgb, #fff 13%, transparent);
+  background: linear-gradient(160deg, color-mix(in srgb, #fff 7%, transparent), color-mix(in srgb, #fff 1%, transparent) 45%), color-mix(in srgb, var(--hz8-rv-bg) 62%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 12%, transparent), 0 24px 48px -18px color-mix(in srgb, #000 55%, transparent), 0 0 60px -10px var(--hz8-rv-glow);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15); backdrop-filter: blur(14px) saturate(1.15);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hz8-rv__score { background: color-mix(in srgb, var(--hz8-rv-bg) 90%, transparent); }
+}
+/* Trustpilot centrerar Mini-innehållet i sin iframe -- rutan hålls i
+   widgetens naturliga bredd så att den linjerar med länkarna. */
+.hz8-rv__tp-box { position: relative; width: min(100%, 300px); height: 120px; margin-left: -8px; }
+.hz8-rv__tp-box iframe { display: block; }
+.hz8-rv__tp-fallback { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 700 15px/1.2 Arial, sans-serif !important; text-decoration: underline !important; text-underline-offset: 4px; }
+.hz8-rv__links { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 4px 0 0; }
+.hz8-rv__links { padding-top: 6px; border-top: 1px solid color-mix(in srgb, #fff 10%, transparent); }
+.hz8-rv__links a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font: 700 14.5px/1.2 Arial, sans-serif !important; text-decoration: underline !important; text-underline-offset: 4px; text-decoration-thickness: 1px !important; }
+/* "Läs alla" är huvudlänken, "Skriv ett omdöme" sekundär. */
+.hz8-rv__links a:first-child { font-size: 15.5px !important; }
+.hz8-rv .hz8-rv__links a:last-child { color: var(--hz8-rv-muted) !important; font-weight: 400 !important; text-decoration-color: color-mix(in srgb, #fff 35%, transparent) !important; }
+@media (hover: hover) { .hz8-rv__links a:hover { text-decoration-thickness: 2px !important; } }
+
+/* Rälsen med produktomdömen från hazey.se */
+.hz8-rv__rail { padding-top: 28px; }
+.hz8-rv__rail-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 18px; }
+.hz8-rv__rail-title { margin: 0; color: var(--hz8-text-on-dark) !important; font: 600 24px/1.15 "Iowan Old Style", Georgia, serif !important; }
+.hz8-rv__rail-src { margin: 5px 0 0; color: var(--hz8-rv-muted) !important; font: 400 13.5px/1.35 Arial, sans-serif !important; }
+.hz8-rv__ctrl { display: flex; align-items: center; gap: 12px; flex: none; }
+.hz8-rv__btn {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+  border: 1.5px solid color-mix(in srgb, #fff 55%, transparent); border-radius: 50%;
+  background: transparent; color: var(--hz8-text-on-dark); cursor: pointer;
+  transition: background-color .16s var(--hz8-ease), opacity .16s var(--hz8-ease);
+}
+.hz8-rv__btn svg { width: 20px; height: 20px; }
+@media (hover: hover) { .hz8-rv__btn:not(:disabled):hover { background: color-mix(in srgb, #fff 12%, transparent); } }
+.hz8-rv__btn:disabled { opacity: .35; cursor: default; }
+.hz8-rv-pos { margin: 0; }
+.hz8-rv-pos__text { display: inline-block; min-width: 64px; color: var(--hz8-text-on-dark) !important; font: 700 13px/1 Arial, sans-serif !important; font-variant-numeric: tabular-nums; text-align: center; }
+.hz8-rv__rail[data-state="loading"] .hz8-rv__ctrl, .hz8-rv__rail.is-static .hz8-rv__ctrl { visibility: hidden; }
+
+.hz8-rv-track {
+  --hz8-rv-per: 4;
+  position: relative; /* containing block: abs.-positionerade skärmläsartexter i korten klipps av rälsen i stället för att bredda sidan */
+  display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - (var(--hz8-rv-per) - 1) * 16px) / var(--hz8-rv-per)); gap: 16px;
+  margin: 0; padding: 4px 0 18px; list-style: none;
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
+}
+.hz8-rv-track::-webkit-scrollbar { display: none; }
+.hz8-rv-card {
+  /* Minhöjden rymmer de godkända texterna: laddningsplatserna och de
+     färdiga korten blir lika höga, så inget under flyttar sig. */
+  display: flex; flex-direction: column; min-width: 0; min-height: 316px; margin: 0; padding: 20px 20px 18px;
+  /* Papper: varm ton, svag fiber (brus + mjukt ljusfall), tunn varm kant,
+     inre highlight och en kontaktskugga nära underkanten. */
+  border: 1px solid var(--hz8-rv-paper-edge); border-radius: 3px; color: var(--hz8-ink);
+  background:
+    var(--hz8-rv-noise) 0 0 / 160px 160px,
+    radial-gradient(120% 80% at 20% 0, color-mix(in srgb, #fff 45%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in srgb, var(--hz8-rv-paper) 92%, #fff), var(--hz8-rv-paper) 55%, color-mix(in srgb, var(--hz8-rv-paper) 90%, #b98f62));
+  background-blend-mode: soft-light, normal, normal;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent), 0 1px 1px color-mix(in srgb, #000 22%, transparent), 0 14px 16px -12px color-mix(in srgb, #000 55%, transparent), 0 26px 40px -24px color-mix(in srgb, #1a1206 60%, transparent);
+  scroll-snap-align: start;
+}
+/* Desktop: små, kontrollerade nivåskillnader (transform -- påverkar inte
+   layout, läsordning eller CLS). */
+@media (min-width: 1024px) { .hz8-rv-card:nth-child(even):not(.is-skeleton) { transform: translateY(8px); } }
+.hz8-rv-card.is-skeleton { border-color: color-mix(in srgb, #fff 10%, transparent); background: color-mix(in srgb, #fff 6%, transparent); box-shadow: none; }
+.hz8-rv-card__stars { margin: 0 0 12px; line-height: 0; }
+.hz8-rv-card__stars > span[aria-hidden] {
+  display: inline-block; width: 85px; height: 16px;
+  background: linear-gradient(90deg, var(--hz8-olive) var(--hz8-fill), color-mix(in srgb, var(--hz8-ink) 18%, transparent) var(--hz8-fill));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 16'%3E%3Cpath d='M8.5 .8l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4L4 14.6l.9-5-3.6-3.5 5-.7z'/%3E%3C/svg%3E") 0 0 / 17px 16px repeat-x;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 16'%3E%3Cpath d='M8.5 .8l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4L4 14.6l.9-5-3.6-3.5 5-.7z'/%3E%3C/svg%3E") 0 0 / 17px 16px repeat-x;
+}
+/* Kundens text ordagrant, radbrytningar bevarade, aldrig kapad. */
+.hz8-rv-card__text { margin: 0; white-space: pre-line; color: var(--hz8-ink) !important; font: 600 17px/1.38 "Iowan Old Style", Georgia, serif !important; }
+.hz8-rv-card__foot { margin-top: auto; padding-top: 14px; border-top: 1px solid color-mix(in srgb, var(--hz8-rv-paper-edge) 45%, transparent); }
+.hz8-rv-card__who { margin: 0; color: var(--hz8-ink) !important; font: 700 13px/1.3 Arial, sans-serif !important; }
+.hz8-rv-card__who time { color: var(--hz8-text-muted); font-weight: 400; }
+.hz8-rv-card__about { margin: 2px 0 0; }
+.hz8-rv .hz8-rv-card__about a {
+  display: inline-flex; align-items: center; min-height: 44px; margin: -6px 0 -8px;
+  color: var(--hz8-olive) !important; font: 400 13px/1.3 Arial, sans-serif !important; text-decoration: underline !important; text-underline-offset: 3px;
+}
+.hz8-rv .hz8-rv-card a:focus-visible { outline-color: var(--hz8-olive) !important; }
+.hz8-rv-card__src { margin: 6px 0 0; color: color-mix(in srgb, var(--hz8-text-muted) 85%, #7a5a36) !important; font: 700 11px/1 Arial, sans-serif !important; letter-spacing: .12em; text-transform: uppercase; }
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .hz8-rv { padding: 44px 0 40px; }
+  .hz8-rv__top { grid-template-columns: 1fr; }
+  .hz8-rv__title { font-size: 38px !important; }
+  .hz8-rv-track { --hz8-rv-per: 2; }
+  .hz8-rv-card { min-height: 296px; }
+}
+/* Mobil: sammanfattningen först, sedan ett helt kort och en antydan av
+   nästa; kontrollerna under rälsen. */
+@media (max-width: 599px) {
+  .hz8-rv { margin-bottom: 28px; padding: 34px 0 28px; --hz8-rv-plate-pos: center -340px; --hz8-rv-plate-size: auto 1180px; }
+  .hz8-rv.is-lit { --hz8-rv-plate: url("assets/trust-environment-2026-10/trust-environment-mobile-v1.webp"); }
+  /* Mobil: plåtens mörka yta bakom rubrik och widget; vinylmiljön kommer
+     fram vid övergången mot rälsen och tonar till solid oliv i botten. */
+  .hz8-rv::before {
+    background:
+      linear-gradient(180deg, var(--hz8-rv-bg) 0, var(--hz8-rv-bg-a0) 8%, var(--hz8-rv-bg-a0) 76%, color-mix(in srgb, var(--hz8-rv-bg) 76%, transparent) 92%, var(--hz8-rv-bg) 100%),
+      linear-gradient(90deg, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent), var(--hz8-rv-bg-a0) 30%, var(--hz8-rv-bg-a0) 70%, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent)),
+      linear-gradient(color-mix(in srgb, var(--hz8-rv-bg) 14%, transparent), color-mix(in srgb, var(--hz8-rv-bg) 14%, transparent)),
+      var(--hz8-rv-plate) var(--hz8-rv-plate-pos) / var(--hz8-rv-plate-size) no-repeat,
+      var(--hz8-rv-bg);
+  }
+  /* Två lokala ljusfält bryter den mörka kolumnen: vid widgeten och vid
+     övergången mot rälsen. */
+  .hz8-rv::after { background: radial-gradient(70% 18% at 30% 34%, var(--hz8-rv-glow), transparent 70%), radial-gradient(80% 16% at 78% 52%, var(--hz8-rv-glow), transparent 70%), var(--hz8-rv-noise) 0 0 / 160px 160px; }
+  .hz8-rv__score { padding: 10px 14px 4px; }
+  .hz8-rv__top { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-bottom: 20px; }
+  .hz8-rv__eyebrow { margin-bottom: 10px; font-size: 11px !important; }
+  .hz8-rv__title { font-size: 29px !important; }
+  .hz8-rv__lead { margin-top: 8px; font-size: 14px !important; }
+  .hz8-rv__links { gap: 0 18px; margin-top: 0; }
+  .hz8-rv__links a { font-size: 14px !important; }
+  .hz8-rv__rail { display: flex; flex-direction: column; padding-top: 22px; }
+  .hz8-rv__rail-head { display: contents; }
+  .hz8-rv__rail-intro { order: 0; margin-bottom: 14px; }
+  .hz8-rv__rail-title { font-size: 21px !important; }
+  .hz8-rv__rail-src { font-size: 13px !important; }
+  .hz8-rv-track { order: 1; grid-auto-columns: 84%; gap: 12px; margin-inline: -14px; padding-inline: 14px; scroll-padding-inline: 14px; }
+  .hz8-rv__ctrl { order: 2; justify-content: space-between; margin-top: 12px; }
+  .hz8-rv-card { min-height: 306px; padding: 18px 18px 16px; }
+  .hz8-rv-card__text { font-size: 16.5px !important; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hz8-rv-track { --hz8-rv-per: 3; }
+}
+@media (max-width: 359px) {
+  .hz8-rv-card { min-height: 380px; }
+}
+@media (min-width: 1600px) {
+  .hz8-rv { padding: 68px 0 60px; }
+  .hz8-rv__title { font-size: 58px !important; }
+  .hz8-rv__lead { font-size: 17px !important; }
+  .hz8-rv__links a { font-size: 16.5px !important; }
+  .hz8-rv__rail-title { font-size: 30px !important; }
+  .hz8-rv__rail-src { font-size: 15px !important; }
+  .hz8-rv-track { gap: 20px; grid-auto-columns: calc((100% - 3 * 20px) / 4); }
+  .hz8-rv-card { min-height: 360px; padding: 26px 26px 22px; }
+  .hz8-rv-card__text { font-size: 21px !important; }
+  .hz8-rv-card__who { font-size: 15px !important; }
+  .hz8-rv .hz8-rv-card__about a { font-size: 14.5px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz8-rv__btn { transition: none !important; }
+  .hz8-rv-track { scroll-behavior: auto !important; }
+}

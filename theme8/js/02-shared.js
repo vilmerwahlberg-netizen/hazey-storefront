@@ -176,7 +176,7 @@
     return h;
   };
   HZ8.productState = function (productUrl) {
-    var key = "state4:" + HZ8.path(productUrl);
+    var key = "state5:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     var page = null;
@@ -220,12 +220,28 @@
           imageAlt: images[0] && images[0].alt ? images[0].alt : "",
           /* Första riktiga stycket i produktens korta beskrivning. */
           intro: page ? firstParagraph(page.querySelector(".short-description")) : "",
-          category: crumbs.length ? crumbs[crumbs.length - 1] : ""
+          category: crumbs.length ? crumbs[crumbs.length - 1] : "",
+          /* Snittbetyg och antal ur produktens JSON-LD (Nyehandels egna
+             produktomdömen). null när omdömen saknas -- aldrig antaget. */
+          rating: page ? productRating(page) : null
         };
         cacheSet(key, value);
         return value;
       });
   };
+  function productRating(doc) {
+    var scripts = doc.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < scripts.length; i += 1) {
+      try {
+        var data = JSON.parse(scripts[i].textContent);
+        var agg = data && data["@type"] === "Product" ? data.aggregateRating : null;
+        var value = agg ? parseFloat(agg.ratingValue) : NaN;
+        var count = agg ? parseInt(agg.reviewCount, 10) : 0;
+        if (!isNaN(value) && count > 0) return { value: value, count: count };
+      } catch (e) { /* annan JSON-LD */ }
+    }
+    return null;
+  }
   function firstParagraph(root) {
     if (!root) return "";
     var ps = root.querySelectorAll("p");
