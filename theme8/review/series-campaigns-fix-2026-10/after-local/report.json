@@ -1,0 +1,1622 @@
+{
+ "393": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-mobile-lifestyle:Mer än produkter– en livsstil",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 14,
+    "y": 1410,
+    "w": 365,
+    "h": 177
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 0,
+      "y": 1447,
+      "w": 80,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|80.2344px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|31.25px|73.2344px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 88,
+      "y": 1447,
+      "w": 80,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|80.2344px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|58.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 176,
+      "y": 1447,
+      "w": 80,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|80.2344px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|34.25px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 265,
+      "y": 1447,
+      "w": 80,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|80.2344px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|70.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 353,
+      "y": 1447,
+      "w": 80,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|80.2344px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|47.4062px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 14,
+   "y": 1587,
+   "w": 365,
+   "h": 383
+  },
+  "campaigns": {
+   "x": 14,
+   "y": 1970,
+   "w": 365,
+   "h": 959
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 14,
+     "y": 1970,
+     "w": 365,
+     "h": 222
+    },
+    "img": {
+     "x": 80,
+     "y": 1970,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 188,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 153,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 14,
+     "y": 2202,
+     "w": 365,
+     "h": 222
+    },
+    "img": {
+     "x": 80,
+     "y": 2202,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 188,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 153,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 14,
+     "y": 2434,
+     "w": 365,
+     "h": 235
+    },
+    "img": {
+     "x": 80,
+     "y": 2434,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 153,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 188,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 14,
+     "y": 2679,
+     "w": 365,
+     "h": 222
+    },
+    "img": {
+     "x": 58,
+     "y": 2679,
+     "w": 277,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 185,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 156,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":393,\"h\":72}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":393,\"h\":674}",
+   ".hz8-bestsellers {\"x\":14,\"y\":682,\"w\":365,\"h\":728}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "430": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-mobile-lifestyle:Mer än produkter– en livsstil",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 14,
+    "y": 1439,
+    "w": 402,
+    "h": 177
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 0,
+      "y": 1476,
+      "w": 89,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|89.1562px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|31.25px|82.1562px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 97,
+      "y": 1476,
+      "w": 89,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|89.1562px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|58.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 194,
+      "y": 1476,
+      "w": 89,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|89.1562px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|34.25px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 291,
+      "y": 1476,
+      "w": 89,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|89.1562px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|70.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 389,
+      "y": 1476,
+      "w": 89,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|89.1562px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|47.4062px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 14,
+   "y": 1616,
+   "w": 402,
+   "h": 365
+  },
+  "campaigns": {
+   "x": 14,
+   "y": 1981,
+   "w": 402,
+   "h": 946
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 14,
+     "y": 1981,
+     "w": 402,
+     "h": 222
+    },
+    "img": {
+     "x": 98,
+     "y": 1981,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 225,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 153,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 14,
+     "y": 2213,
+     "w": 402,
+     "h": 222
+    },
+    "img": {
+     "x": 98,
+     "y": 2213,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 225,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 153,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 14,
+     "y": 2445,
+     "w": 402,
+     "h": 222
+    },
+    "img": {
+     "x": 98,
+     "y": 2445,
+     "w": 234,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 190,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 188,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 14,
+     "y": 2677,
+     "w": 402,
+     "h": 222
+    },
+    "img": {
+     "x": 76,
+     "y": 2677,
+     "w": 277,
+     "h": 156
+    },
+    "imgFullyInside": true,
+    "headingRight": 222,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 156,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":430,\"h\":72}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":430,\"h\":674}",
+   ".hz8-bestsellers {\"x\":14,\"y\":682,\"w\":402,\"h\":757}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "768": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 24,
+    "y": 2021,
+    "w": 720,
+    "h": 554
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 24,
+      "y": 2063,
+      "w": 356,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|356px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|165px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 388,
+      "y": 2063,
+      "w": 356,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|356px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|97.125px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 24,
+      "y": 2225,
+      "w": 356,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|356px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|56.4219px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 388,
+      "y": 2225,
+      "w": 356,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|356px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|116.875px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 24,
+      "y": 2387,
+      "w": 720,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|720px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|78.0781px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 24,
+   "y": 2575,
+   "w": 720,
+   "h": 881
+  },
+  "campaigns": {
+   "x": 24,
+   "y": 3455,
+   "w": 720,
+   "h": 910
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 24,
+     "y": 3455,
+     "w": 720,
+     "h": 210
+    },
+    "img": {
+     "x": 429,
+     "y": 3455,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 192,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 164,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 24,
+     "y": 3677,
+     "w": 720,
+     "h": 210
+    },
+    "img": {
+     "x": 429,
+     "y": 3677,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 135,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 165,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 24,
+     "y": 3899,
+     "w": 720,
+     "h": 210
+    },
+    "img": {
+     "x": 429,
+     "y": 3899,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 205,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 203,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 24,
+     "y": 4121,
+     "w": 720,
+     "h": 210
+    },
+    "img": {
+     "x": 371,
+     "y": 4121,
+     "w": 373,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 139,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 167,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":768,\"h\":80}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":768,\"h\":761}",
+   ".hz8-bestsellers {\"x\":24,\"y\":775,\"w\":720,\"h\":1245}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "1024": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 24,
+    "y": 1322,
+    "w": 976,
+    "h": 230
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 24,
+      "y": 1364,
+      "w": 189,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|188.797px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|165px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 221,
+      "y": 1364,
+      "w": 189,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|188.797px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|97.125px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 418,
+      "y": 1364,
+      "w": 189,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|188.797px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|56.4219px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 614,
+      "y": 1364,
+      "w": 189,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|188.797px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|116.875px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 811,
+      "y": 1364,
+      "w": 189,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|188.812px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|78.0781px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 24,
+   "y": 1552,
+   "w": 976,
+   "h": 367
+  },
+  "campaigns": {
+   "x": 24,
+   "y": 1919,
+   "w": 976,
+   "h": 446
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 24,
+     "y": 1919,
+     "w": 482,
+     "h": 200
+    },
+    "img": {
+     "x": 206,
+     "y": 1919,
+     "w": 300,
+     "h": 200
+    },
+    "imgFullyInside": true,
+    "headingRight": 188,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 164,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 518,
+     "y": 1919,
+     "w": 482,
+     "h": 200
+    },
+    "img": {
+     "x": 700,
+     "y": 1919,
+     "w": 300,
+     "h": 200
+    },
+    "imgFullyInside": true,
+    "headingRight": 137,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 165,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 24,
+     "y": 2131,
+     "w": 482,
+     "h": 200
+    },
+    "img": {
+     "x": 206,
+     "y": 2131,
+     "w": 300,
+     "h": 200
+    },
+    "imgFullyInside": true,
+    "headingRight": 188,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 203,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 518,
+     "y": 2131,
+     "w": 482,
+     "h": 200
+    },
+    "img": {
+     "x": 645,
+     "y": 2131,
+     "w": 355,
+     "h": 200
+    },
+    "imgFullyInside": true,
+    "headingRight": 141,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 167,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":1024,\"h\":80}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":1024,\"h\":580}",
+   ".hz8-bestsellers {\"x\":24,\"y\":594,\"w\":976,\"h\":728}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "1440": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 60,
+    "y": 1524,
+    "w": 1320,
+    "h": 230
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 60,
+      "y": 1566,
+      "w": 258,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|257.594px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|165px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 326,
+      "y": 1566,
+      "w": 258,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|257.594px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|97.125px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 591,
+      "y": 1566,
+      "w": 258,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|257.609px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|56.4219px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 857,
+      "y": 1566,
+      "w": 258,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|257.594px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|116.875px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 1122,
+      "y": 1566,
+      "w": 258,
+      "h": 154
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|154px|257.609px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|28px|600|rgb(255, 255, 255)|25.75px|78.0781px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 60,
+   "y": 1754,
+   "w": 1320,
+   "h": 367
+  },
+  "campaigns": {
+   "x": 60,
+   "y": 2121,
+   "w": 1320,
+   "h": 536
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 60,
+     "y": 2121,
+     "w": 654,
+     "h": 245
+    },
+    "img": {
+     "x": 347,
+     "y": 2121,
+     "w": 367,
+     "h": 245
+    },
+    "imgFullyInside": true,
+    "headingRight": 194,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 164,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 726,
+     "y": 2121,
+     "w": 654,
+     "h": 245
+    },
+    "img": {
+     "x": 1013,
+     "y": 2121,
+     "w": 367,
+     "h": 245
+    },
+    "imgFullyInside": true,
+    "headingRight": 137,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 165,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 60,
+     "y": 2378,
+     "w": 654,
+     "h": 245
+    },
+    "img": {
+     "x": 347,
+     "y": 2378,
+     "w": 367,
+     "h": 245
+    },
+    "imgFullyInside": true,
+    "headingRight": 207,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 203,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 726,
+     "y": 2378,
+     "w": 654,
+     "h": 245
+    },
+    "img": {
+     "x": 945,
+     "y": 2378,
+     "w": 435,
+     "h": 245
+    },
+    "imgFullyInside": true,
+    "headingRight": 141,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 167,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":1440,\"h\":80}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":1440,\"h\":672}",
+   ".hz8-bestsellers {\"x\":60,\"y\":686,\"w\":1320,\"h\":838}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "1920": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 80,
+    "y": 1868,
+    "w": 1760,
+    "h": 306
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 80,
+      "y": 1924,
+      "w": 343,
+      "h": 205
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|205px|343.188px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|37px|600|rgb(255, 255, 255)|34.0312px|218.031px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 434,
+      "y": 1924,
+      "w": 343,
+      "h": 205
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|205px|343.203px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|37px|600|rgb(255, 255, 255)|34.0312px|128.328px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 788,
+      "y": 1924,
+      "w": 343,
+      "h": 205
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|205px|343.203px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|37px|600|rgb(255, 255, 255)|34.0312px|74.5469px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 1143,
+      "y": 1924,
+      "w": 343,
+      "h": 205
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|205px|343.203px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|37px|600|rgb(255, 255, 255)|34.0312px|154.438px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 1497,
+      "y": 1924,
+      "w": 343,
+      "h": 205
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|205px|343.203px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|37px|600|rgb(255, 255, 255)|34.0312px|103.172px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 80,
+   "y": 2174,
+   "w": 1760,
+   "h": 470
+  },
+  "campaigns": {
+   "x": 80,
+   "y": 2645,
+   "w": 1760,
+   "h": 681
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 80,
+     "y": 2645,
+     "w": 872,
+     "h": 310
+    },
+    "img": {
+     "x": 487,
+     "y": 2645,
+     "w": 465,
+     "h": 310
+    },
+    "imgFullyInside": true,
+    "headingRight": 241,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 188,
+      "h": 52,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 968,
+     "y": 2645,
+     "w": 872,
+     "h": 310
+    },
+    "img": {
+     "x": 1375,
+     "y": 2645,
+     "w": 465,
+     "h": 310
+    },
+    "imgFullyInside": true,
+    "headingRight": 185,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 189,
+      "h": 52,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 80,
+     "y": 2971,
+     "w": 872,
+     "h": 310
+    },
+    "img": {
+     "x": 487,
+     "y": 2971,
+     "w": 465,
+     "h": 310
+    },
+    "imgFullyInside": true,
+    "headingRight": 280,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 231,
+      "h": 52,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 968,
+     "y": 2971,
+     "w": 872,
+     "h": 310
+    },
+    "img": {
+     "x": 1290,
+     "y": 2971,
+     "w": 550,
+     "h": 310
+    },
+    "imgFullyInside": true,
+    "headingRight": 190,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 191,
+      "h": 52,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":1920,\"h\":80}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":1920,\"h\":802}",
+   ".hz8-bestsellers {\"x\":80,\"y\":830,\"w\":1760,\"h\":1039}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ },
+ "1440@200%": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series:Våra populära serier",
+   "hz8-products:Våra produkter",
+   "hz8-series-campaigns:Utvalda serier",
+   "hz8-mobile-lifestyle:Mer än produkter– en livsstil",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": {
+   "rect": {
+    "x": 14,
+    "y": 1629,
+    "w": 692,
+    "h": 177
+   },
+   "html": "<section class=\"hz8-home__section hz8-series\"><div class=\"hz8-home__head\"><h2 class=\"hz8-reveal is-visible\">Våra populära serier</h2><a href=\"/sv/categories/alla-produkter\">Visa alla</a></div><div class=\"hz8-series__grid hz8-reveal-group is-visible\"><a class=\"hz8-series-card\" href=\"/sv/categories/magic-sauce\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-magic.webp\" alt=\"\" loading=\"eager\"><b>Magic Sauce</b><span>Smak. Effekt. Balans.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thcb\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thcab.jpg\" alt=\"\" loading=\"eager\"><b>THCaB</b><span>Kraftfullt. Rent. Äkta.</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-vapes\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hero-venice-background.webp\" alt=\"\" loading=\"eager\"><b>D10</b><span>West Coast</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/alla-produkter\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-nano.jpg\" alt=\"\" loading=\"eager\"><b>Nano-11</b><span>Nästa generation</span></a><a class=\"hz8-series-card\" href=\"/sv/categories/thca\"><img src=\"https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/campaign-thca.jpg\" alt=\"\" loading=\"eager\"><b>THCa</b><span>Premium flower</span></a></div></section>",
+   "cards": [
+    {
+     "r": {
+      "x": 0,
+      "y": 1666,
+      "w": 159,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|159.031px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|100.188px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/magic-sauce"
+    },
+    {
+     "r": {
+      "x": 167,
+      "y": 1666,
+      "w": 159,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|159.031px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|58.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thcb"
+    },
+    {
+     "r": {
+      "x": 334,
+      "y": 1666,
+      "w": 159,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|159.031px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|34.25px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-vapes"
+    },
+    {
+     "r": {
+      "x": 501,
+      "y": 1666,
+      "w": 159,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|159.031px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|70.9688px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/alla-produkter"
+    },
+    {
+     "r": {
+      "x": 668,
+      "y": 1666,
+      "w": 159,
+      "h": 108
+     },
+     "s": "Roboto, sans-serif|16px|400|rgb(255, 255, 255)|108px|159.031px|6px|rgb(50, 61, 37)",
+     "b": "\"Iowan Old Style\", Georgia, serif|17px|600|rgb(255, 255, 255)|15.625px|47.4062px|0px|rgba(0, 0, 0, 0)",
+     "href": "/sv/categories/thca"
+    }
+   ]
+  },
+  "products": {
+   "x": 14,
+   "y": 1806,
+   "w": 692,
+   "h": 365
+  },
+  "campaigns": {
+   "x": 14,
+   "y": 2170,
+   "w": 692,
+   "h": 904
+  },
+  "cards": [
+   {
+    "name": "THCaB",
+    "rect": {
+     "x": 14,
+     "y": 2170,
+     "w": 692,
+     "h": 210
+    },
+    "img": {
+     "x": 391,
+     "y": 2170,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 192,
+    "imgOk": true,
+    "alt": "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCaB",
+      "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+      "w": 164,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "THCbA",
+    "rect": {
+     "x": 14,
+     "y": 2392,
+     "w": 692,
+     "h": 210
+    },
+    "img": {
+     "x": 391,
+     "y": 2392,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 135,
+    "imgOk": true,
+    "alt": "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska THCbA",
+      "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+      "w": 165,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Magic Sauce",
+    "rect": {
+     "x": 14,
+     "y": 2614,
+     "w": 692,
+     "h": 210
+    },
+    "img": {
+     "x": 391,
+     "y": 2614,
+     "w": 315,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 205,
+    "imgOk": true,
+    "alt": "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Magic Sauce",
+      "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "w": 203,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Vapes, buds, hasch och carts",
+    "imgTransition": "1e-05s"
+   },
+   {
+    "name": "Nano11",
+    "rect": {
+     "x": 14,
+     "y": 2836,
+     "w": 692,
+     "h": 210
+    },
+    "img": {
+     "x": 333,
+     "y": 2836,
+     "w": 373,
+     "h": 210
+    },
+    "imgFullyInside": true,
+    "headingRight": 139,
+    "imgOk": true,
+    "alt": "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning",
+    "backdropAlt": "",
+    "links": [
+     {
+      "text": "Utforska Nano11",
+      "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+      "w": 167,
+      "h": 44,
+      "transition": "1e-05s"
+     }
+    ],
+    "text": "Buds",
+    "imgTransition": "1e-05s"
+   }
+  ],
+  "oldCampaigns": false,
+  "wrongLayout": false,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":720,\"h\":72}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":720,\"h\":674}",
+   ".hz8-bestsellers {\"x\":14,\"y\":682,\"w\":692,\"h\":947}"
+  ],
+  "errors": [],
+  "focus": {
+   "cls": "hz8-series-campaign__cta hz8-series-campaign__cta--explore",
+   "matches": true,
+   "outline": "solid 2px rgb(255, 255, 255)"
+  }
+ }
+}

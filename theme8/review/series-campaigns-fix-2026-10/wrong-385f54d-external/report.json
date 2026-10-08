@@ -1,0 +1,65 @@
+{
+ "393": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series2:Våra serier",
+   "hz8-products:Våra produkter",
+   "hz8-mobile-lifestyle:Mer än produkter– en livsstil",
+   "hz8-campaigns",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": null,
+  "products": {
+   "x": 14,
+   "y": 3048,
+   "w": 365,
+   "h": 383
+  },
+  "campaigns": null,
+  "cards": null,
+  "oldCampaigns": true,
+  "wrongLayout": true,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":393,\"h\":72}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":393,\"h\":674}",
+   ".hz8-bestsellers {\"x\":14,\"y\":682,\"w\":365,\"h\":728}"
+  ],
+  "errors": []
+ },
+ "1440": {
+  "order": [
+   "hz8-bestsellers:Bästsäljare",
+   "hz8-series2:Våra serier",
+   "hz8-products:Våra produkter",
+   "hz8-campaigns",
+   "hz8-reviews:Vad våra kunder säger",
+   "hz8-faq:Har du fler frågor?Vi hjälper dig gärna.",
+   "hz8-footer"
+  ],
+  "h1": 1,
+  "overflow": 0,
+  "series": null,
+  "products": {
+   "x": 60,
+   "y": 2846,
+   "w": 1320,
+   "h": 367
+  },
+  "campaigns": null,
+  "cards": null,
+  "oldCampaigns": true,
+  "wrongLayout": true,
+  "hrefHash": 0,
+  "topSig": [
+   "#store-header {\"x\":0,\"y\":0,\"w\":1440,\"h\":80}",
+   ".hz8-hero {\"x\":0,\"y\":-24,\"w\":1440,\"h\":672}",
+   ".hz8-bestsellers {\"x\":60,\"y\":686,\"w\":1320,\"h\":838}"
+  ],
+  "errors": []
+ }
+}

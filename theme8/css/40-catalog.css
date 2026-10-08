@@ -99,70 +99,103 @@
 }
 
 /* ======================================================================
-   Startsidans serier (40-catalog.js, 2026-10-08): fyra bildvärldar med
-   produktkorrekta kompositer, text i egen panel (aldrig över
-   förpackningarna). Desktop: förskjutet rutnät 7/5 + 5/7 så blocken inte
-   blir fyra identiska banners. Mobil: ett block per serie.
+   Kampanjmodul efter "Våra produkter" (40-catalog.js, 2026-10-08): fyra
+   låga banners, 2x2 från 1024 px, en kolumn under. Egen klassfamilj --
+   .hz8-series ovan hör till "Våra populära serier" och rörs inte.
+   Bilden ligger två gånger: suddad fyllnad över hela kortet och skarp i
+   full kortshöjd mot högerkanten, så att förpackningarna aldrig beskärs
+   fast kortet är lågt. Texten står till vänster på en mjuk gradient,
+   aldrig över produkterna.
    ====================================================================== */
-.hz8-series2__head { align-items: flex-end; }
-.hz8-series2__head h2 { margin: 0; }
-.hz8-series2__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
-.hz8-serie-block {
-  --hz8-sb-bg: #1d2716; --hz8-sb-text: #fff8ee; --hz8-sb-muted: color-mix(in srgb, #fff8ee 78%, transparent); --hz8-sb-accent: #f0a76a;
-  --hz8-sb-focus-x: 62%; --hz8-sb-focus-y: 58%;
-  display: grid; grid-template-rows: auto 1fr; min-width: 0;
-  border-radius: 13px; background: var(--hz8-sb-bg); color: var(--hz8-sb-text); overflow: hidden;
-  box-shadow: 0 10px 30px color-mix(in srgb, #3a2410 14%, transparent);
+.hz8-series-campaigns__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.hz8-series-campaign {
+  position: relative; min-width: 0; height: 210px; overflow: hidden; isolation: isolate;
+  border-radius: 12px; background: var(--hz8-ink); color: var(--hz8-text-on-dark);
 }
-.hz8-serie-block--thcab { grid-column: span 7; --hz8-sb-bg: #17121d; --hz8-sb-accent: #e7c06a; --hz8-sb-focus-x: 64%; }
-.hz8-serie-block--thcba { grid-column: span 5; --hz8-sb-bg: #e9e2d4; --hz8-sb-text: #1d1a2c; --hz8-sb-muted: #4a4658; --hz8-sb-accent: #7b5a1d; --hz8-sb-focus-x: 64%; }
-.hz8-serie-block--magic { grid-column: span 5; --hz8-sb-bg: #3a1f10; --hz8-sb-accent: #ffb469; --hz8-sb-focus-x: 60%; }
-.hz8-serie-block--nano { grid-column: span 7; --hz8-sb-bg: #101b33; --hz8-sb-accent: #9fc3ff; --hz8-sb-focus-x: 72%; }
-.hz8-serie-block__media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: color-mix(in srgb, var(--hz8-sb-bg) 70%, #000); }
-.hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 4 / 3.15; }
-.hz8-serie-block__media img { width: 100%; height: 100%; object-fit: cover; object-position: var(--hz8-sb-focus-x) var(--hz8-sb-focus-y); transition: transform .6s var(--hz8-ease); }
-@media (hover: hover) { .hz8-serie-block:hover .hz8-serie-block__media img { transform: scale(1.02); } }
-.hz8-serie-block__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 22px 20px; }
-.hz8-serie-block__meta { margin: 0; color: var(--hz8-sb-muted) !important; font: 700 11px/1.2 Arial, sans-serif !important; letter-spacing: .16em; text-transform: uppercase; }
-.hz8-serie-block__title { margin: 0; color: var(--hz8-sb-text) !important; font: 700 30px/1.05 "Iowan Old Style", Georgia, serif !important; }
-.hz8-serie-block__text { margin: 0; color: var(--hz8-sb-muted) !important; font: 400 14.5px/1.45 Arial, sans-serif !important; }
-.hz8-serie-block__actions { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 8px; }
-.hz8-serie-block__actions a { display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: 0 16px 0 18px; border-radius: 12px; font: 700 14.5px/1 Arial, sans-serif !important; text-decoration: none !important; transition: background-color .16s var(--hz8-ease), border-color .16s var(--hz8-ease), color .16s var(--hz8-ease); }
-.hz8-serie-block__actions svg { width: 17px; height: 17px; flex: none; transition: transform .16s var(--hz8-ease); }
-@media (hover: hover) { .hz8-serie-block__actions a:hover svg { transform: translateX(3px); } }
-/* Primär: "Läs om" (fylld). Sekundär: "Utforska" (kantlinje). Utan en
-   informationssida är "Utforska" ensam och får den fyllda stilen. */
-.hz8-serie-block__read,
-.hz8-serie-block__actions:not(.has-info) .hz8-serie-block__explore { background: var(--hz8-sb-text); color: var(--hz8-sb-bg) !important; border: 1.5px solid var(--hz8-sb-text); }
-.hz8-serie-block__actions.has-info .hz8-serie-block__explore { background: transparent; color: var(--hz8-sb-text) !important; border: 1.5px solid color-mix(in srgb, var(--hz8-sb-text) 58%, transparent); }
+.hz8-series-campaign__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.hz8-series-campaign__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--hz8-ink) 70%, transparent) 0, color-mix(in srgb, var(--hz8-ink) 42%, transparent) 34%, transparent 60%);
+}
+.hz8-home img.hz8-series-campaign__backdrop {
+  position: absolute; inset: -28px; width: calc(100% + 56px); max-width: none; height: calc(100% + 56px);
+  object-fit: cover; filter: blur(18px) brightness(.72) saturate(1.1);
+}
+.hz8-home img.hz8-series-campaign__img {
+  position: absolute; top: 0; right: 0; width: auto; height: 100%; max-width: 100%;
+  object-fit: contain; object-position: right center;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%);
+  transition: transform .6s var(--hz8-ease); transform-origin: 70% 60%;
+}
+@media (hover: hover) { .hz8-series-campaign:hover .hz8-series-campaign__img { transform: scale(1.025); } }
+.hz8-series-campaign__body {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  height: 100%; max-width: 46%; padding: 20px 22px;
+}
+.hz8-series-campaign__title { margin: 0; color: var(--hz8-text-on-dark) !important; font: 600 31px/1 "Iowan Old Style", Georgia, serif !important; }
+.hz8-series-campaign__text { margin: 6px 0 0; color: var(--hz8-text-on-dark-muted) !important; font: 400 13px/1.35 Arial, sans-serif !important; }
+.hz8-series-campaign__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.hz8-series-campaign__cta {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 16px;
+  border: 1.5px solid var(--hz8-surface); border-radius: 12px; white-space: nowrap;
+  font: 700 14px/1 Arial, sans-serif !important; text-decoration: none !important;
+  transition: background-color .16s var(--hz8-ease), color .16s var(--hz8-ease);
+}
+.hz8-series-campaign__cta svg { width: 17px; height: 17px; flex: none; transition: transform .16s var(--hz8-ease); }
+/* Primär "Läs om" (fylld). "Utforska" är kantlinje bredvid den, men fylld
+   när den står ensam (ingen informationssida). */
+.hz8-series-campaign__cta--read,
+.hz8-series-campaign__actions:not(.has-info) .hz8-series-campaign__cta--explore { background: var(--hz8-surface); color: var(--hz8-olive) !important; }
+.hz8-series-campaign__actions.has-info .hz8-series-campaign__cta--explore { background: transparent; color: var(--hz8-text-on-dark) !important; }
 @media (hover: hover) {
-  .hz8-serie-block__read:hover, .hz8-serie-block__actions:not(.has-info) .hz8-serie-block__explore:hover { background: color-mix(in srgb, var(--hz8-sb-text) 86%, var(--hz8-sb-bg)); }
-  .hz8-serie-block__actions.has-info .hz8-serie-block__explore:hover { border-color: var(--hz8-sb-text); }
+  .hz8-series-campaign__cta:hover svg { transform: translateX(3px); }
+  .hz8-series-campaign__cta--read:hover,
+  .hz8-series-campaign__actions:not(.has-info) .hz8-series-campaign__cta--explore:hover { background: var(--hz8-beige); }
 }
-.hz8-serie-block__actions a:focus-visible { outline: 2px solid var(--hz8-sb-accent); outline-offset: 3px; }
+/* !important: Nyehandels egen fokusring (blå, 4 px) vinner annars. */
+.hz8-series-campaign__cta:focus-visible { outline: 2px solid var(--hz8-text-on-dark) !important; outline-offset: 3px !important; box-shadow: 0 0 0 5px color-mix(in srgb, var(--hz8-ink) 55%, transparent) !important; }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hz8-serie-block--thcab, .hz8-serie-block--thcba, .hz8-serie-block--magic, .hz8-serie-block--nano { grid-column: span 6; }
-  .hz8-serie-block__media, .hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 4 / 3; }
-  .hz8-serie-block__title { font-size: 26px !important; }
+@media (min-width: 1024px) {
+  .hz8-series-campaigns__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hz8-series-campaign { height: clamp(200px, 17vw, 250px); }
+  .hz8-series-campaign__body { max-width: 44%; padding: 22px 24px; }
 }
-@media (max-width: 767px) {
-  .hz8-series2__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .hz8-serie-block--thcab, .hz8-serie-block--thcba, .hz8-serie-block--magic, .hz8-serie-block--nano { grid-column: auto; }
-  .hz8-serie-block__media, .hz8-serie-block--thcba .hz8-serie-block__media, .hz8-serie-block--magic .hz8-serie-block__media { aspect-ratio: 16 / 10; }
-  /* Nano11: bredare bild än de andra -- förankras höger så att påsen inte beskärs. */
-  .hz8-serie-block--nano { --hz8-sb-focus-x: 100%; }
-  .hz8-serie-block__body { padding: 14px 16px 16px; gap: 4px; }
-  .hz8-serie-block__title { font-size: 24px !important; }
-  .hz8-serie-block__text { font-size: 13.5px !important; }
-  .hz8-serie-block__actions { margin-top: 6px; }
-  .hz8-serie-block__actions a { min-height: 44px; font-size: 14px !important; }
+/* Mobil: bildremsa överst (hela förpackningarna synliga), namn och knapp
+   på en rad under -- texten hamnar aldrig över produkterna. */
+@media (max-width: 599px) {
+  .hz8-series-campaigns__grid { gap: 10px; }
+  .hz8-series-campaign { display: flex; flex-direction: column; height: auto; }
+  .hz8-series-campaign__media { position: relative; inset: auto; z-index: auto; height: 156px; overflow: visible; }
+  .hz8-series-campaign__media::after { content: none; }
+  .hz8-home img.hz8-series-campaign__backdrop { position: absolute; inset: -28px -28px auto; height: calc(100% + 140px); z-index: -1; }
+  .hz8-home img.hz8-series-campaign__img {
+    left: 0; right: 0; margin-inline: auto; object-position: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent), linear-gradient(180deg, #000 82%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent), linear-gradient(180deg, #000 82%, transparent);
+    mask-composite: intersect;
+  }
+  .hz8-series-campaign__body {
+    flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px;
+    max-width: none; height: auto; padding: 10px 12px 12px 14px;
+    flex-wrap: nowrap; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--hz8-ink) 40%, transparent) 45%);
+  }
+  .hz8-series-campaign__heading { flex: 1 1 0; min-width: 0; }
+  .hz8-series-campaign__title { font-size: 22px !important; }
+  .hz8-series-campaign__text { margin-top: 3px; font-size: 12px !important; }
+  .hz8-series-campaign__actions { margin-top: 0; }
+  .hz8-series-campaign__cta { padding: 0 12px 0 14px; font-size: 13px !important; }
 }
 @media (min-width: 1600px) {
-  .hz8-serie-block__title { font-size: 36px !important; }
-  .hz8-serie-block__text { font-size: 16px !important; }
-  .hz8-serie-block__body { padding: 24px 28px 26px; }
+  .hz8-series-campaigns__grid { gap: 16px; }
+  .hz8-series-campaign { height: 310px; border-radius: 14px; }
+  .hz8-series-campaign__body { padding: 30px 32px; }
+  .hz8-series-campaign__title { font-size: 42px !important; }
+  .hz8-series-campaign__text { margin-top: 9px; font-size: 16px !important; }
+  .hz8-series-campaign__cta { min-height: 52px; padding: 0 18px 0 20px; font-size: 16px !important; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hz8-serie-block__media img, .hz8-serie-block__actions svg { transition: none !important; }
+  .hz8-series-campaign__img, .hz8-series-campaign__cta, .hz8-series-campaign__cta svg { transition: none !important; }
+  .hz8-series-campaign:hover .hz8-series-campaign__img { transform: none; }
+  .hz8-series-campaign__cta:hover svg { transform: none !important; }
 }
