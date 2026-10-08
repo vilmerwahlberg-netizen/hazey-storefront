@@ -207,3 +207,9 @@
 @media (prefers-reduced-motion: reduce) {
   .hz8-fb__type, .hz8-fb__submit { transition: none !important; }
 }
+
+/* Läsbarhet mot bladskuggorna i bakgrundsbilden: en mjuk, ljus
+   sandskugga bakom rubrik, överrubrik och ingress (2026-10-08). */
+.hz8-fb__eyebrow, .hz8-fb__title, .hz8-fb__lead {
+  text-shadow: 0 0 2px #f6ead6, 0 0 3px #f6ead6, 0 0 6px rgba(246, 234, 214, .95), 0 0 10px rgba(246, 234, 214, .9), 0 0 18px rgba(246, 234, 214, .75);
+}
