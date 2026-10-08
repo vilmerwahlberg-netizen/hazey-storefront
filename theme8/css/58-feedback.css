@@ -1,0 +1,209 @@
+/* "Hjälp oss göra Hazey bättre" (58-feedback.js, 2026-10-08), mot
+   feedback-approved-postcard. Varm sandmiljö i full bredd (bakgrundsplåt
+   bakom mjuka toningar; solid sand om bilden inte laddas). Textkolumnen i
+   plåtens lugna del med handskriven fras och sol; till höger ett kraftigt
+   pappersark med valflikar på överkanten och ett grönt tyg som kommer in
+   nedifrån höger och lägger en vikning över arkets nedre högra hörn.
+   Lager i kortet: ark (1) < tyg (2) < formulär (3). Bildlagret är ett
+   absolut pseudo-element i full fönsterbredd; #store-main (overflow-x:
+   hidden) klipper det och tyget, så ingen sidscroll. */
+.hz8-fb {
+  --hz8-fb-sand: #e6d2b5;
+  --hz8-fb-paper: #f5eee2;
+  --hz8-fb-edge: color-mix(in srgb, #a9865a 48%, transparent);
+  --hz8-fb-ink: #23231d;
+  --hz8-fb-olive: #26331e;
+  --hz8-fb-muted: color-mix(in srgb, var(--hz8-fb-ink) 68%, transparent);
+  --hz8-fb-tab-lift: 40px;      /* hur långt flikarna sticker upp över arket */
+  --hz8-fb-pad: 36px;           /* arkets inre sidmarginal */
+  --hz8-fb-pad-b: 100px;        /* sektionens nederkant -- tyget når hit */
+  --hz8-fb-plate: none;
+  --hz8-fb-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 50%); gap: 40px 44px; align-items: start;
+  margin-bottom: 34px; padding: 70px 0 var(--hz8-fb-pad-b);
+  color: var(--hz8-fb-ink);
+}
+.hz8-fb.is-lit { --hz8-fb-plate: url("assets/feedback-collector-2026-10/feedback-background-desktop-v1.webp"); }
+.hz8-fb::before {
+  content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); pointer-events: none;
+  background:
+    /* toning mot sektionens överkant: ingen bildkant */
+    linear-gradient(180deg, var(--hz8-fb-sand) 0, color-mix(in srgb, var(--hz8-fb-sand) 0%, transparent) 8%),
+    /* mycket diskret lokal sandton bakom rubriken */
+    radial-gradient(26% 34% at 27% 34%, color-mix(in srgb, #ecdcc2 55%, transparent), transparent 80%),
+    var(--hz8-fb-plate) left bottom / cover no-repeat,
+    var(--hz8-fb-sand);
+}
+
+/* Textkolumnen: ca 10 % från kanten, i plåtens ljusa mitt. */
+.hz8-fb__intro { position: relative; max-width: 520px; margin-left: clamp(0px, 7vw, 132px); padding-top: 20px; }
+.hz8-fb__eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; color: var(--hz8-fb-muted) !important; font: 700 12px/1 Arial, sans-serif !important; letter-spacing: .24em; text-transform: uppercase; }
+.hz8-fb__eyebrow::after { content: ""; width: 64px; height: 1px; background: color-mix(in srgb, var(--hz8-fb-ink) 38%, transparent); }
+.hz8-fb__title { margin: 0; color: var(--hz8-fb-ink) !important; font: 600 66px/1 "Iowan Old Style", Georgia, serif !important; letter-spacing: -.02em; }
+.hz8-fb__lead { margin: 22px 0 0; color: var(--hz8-fb-ink) !important; font: 400 20px/1.5 Arial, sans-serif !important; }
+
+/* Handskriven fras + sol (dekor, aria-hidden). Systemens egna skript-
+   typsnitt -- inget nytt externt fontberoende. */
+.hz8-fb__script {
+  position: absolute; left: 238px; top: calc(100% + 26px); display: flex; flex-direction: column; margin: 0;
+  transform: rotate(-24deg); transform-origin: 0 0; pointer-events: none;
+  color: color-mix(in srgb, var(--hz8-fb-ink) 78%, transparent) !important;
+  font: 400 30px/1.02 "Snell Roundhand", "Segoe Script", "Bradley Hand", "Apple Chancery", cursive !important;
+}
+.hz8-fb__script span:nth-child(2) { padding-left: 14px; }
+.hz8-fb__script span:nth-child(3) { padding-left: 26px; }
+.hz8-fb__script span:nth-child(4) { padding-left: 38px; }
+.hz8-fb__sun { width: 62px; height: auto; margin: 6px 0 0 70px; transform: rotate(24deg); color: color-mix(in srgb, var(--hz8-fb-ink) 70%, transparent); }
+
+/* ---- Pappersarket ---- */
+.hz8-fb__card { position: relative; width: calc(100% - 36px); margin-right: 36px; }
+.hz8-fb__sheet {
+  position: absolute; z-index: 1; left: 0; right: 0; top: var(--hz8-fb-tab-lift); bottom: 0; border-radius: 3px; pointer-events: none;
+  border: 1px solid var(--hz8-fb-edge);
+  background: var(--hz8-fb-noise) 0 0 / 160px 160px, linear-gradient(172deg, color-mix(in srgb, var(--hz8-fb-paper) 86%, #fff), var(--hz8-fb-paper) 58%, color-mix(in srgb, var(--hz8-fb-paper) 92%, #c9a777));
+  background-blend-mode: soft-light, normal;
+  /* kraftigt ark på bordet: tunn kontaktskugga + mjuk, bred skugga */
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 80%, transparent), inset 0 -2px 0 color-mix(in srgb, #b8935f 18%, transparent),
+    0 1px 1px color-mix(in srgb, #5a3d1c 26%, transparent), 0 6px 8px -5px color-mix(in srgb, #5a3d1c 38%, transparent), 0 30px 46px -26px color-mix(in srgb, #3a2410 48%, transparent);
+}
+/* Tyget: kommer in nedifrån höger (överlägget vänt lodrätt) och lägger en
+   vikning över arkets nedre högra hörn; når sektionens nederkant och
+   fortsätter ut över högerkanten. Ovanför arket (z 2), under formuläret (z 3). */
+.hz8-fb__fabric {
+  /* Geometri (uppmätt ur bildens alfakanal, vänd bild): tygets vänsterkant
+     ligger vid ca 64 % av bredden på 80 % höjd, 78 % på 70 % och 80 % på
+     60 %. Med 700 px bredd och nederkant i sektionens nederkant korsar
+     kanten arkets nederkant ca 120 px in och arkets högerkant ca 85 px upp;
+     resten fortsätter ut över fönsterkanten. */
+  position: absolute; z-index: 2; right: -118px; bottom: calc(-1 * var(--hz8-fb-pad-b)); width: 700px; aspect-ratio: 3 / 2; pointer-events: none;
+  background: none 0 0 / 100% 100% no-repeat; transform: scaleY(-1);
+  filter: drop-shadow(-4px -5px 5px color-mix(in srgb, #2a1a08 32%, transparent)) drop-shadow(-12px -14px 18px color-mix(in srgb, #2a1a08 18%, transparent));
+  /* Rasterkanten vid sektionens nederkant mjukas upp (bilden är vänd: överkanten ligger nere). */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 7%); mask-image: linear-gradient(180deg, transparent 0, #000 7%);
+}
+.hz8-fb.is-lit .hz8-fb__fabric { background-image: url("assets/feedback-collector-2026-10/feedback-fabric-overlay-v1.webp"); }
+
+.hz8-fb__form { position: relative; z-index: 3; display: grid; gap: 16px; margin: 0; padding: 0 var(--hz8-fb-pad) 28px; }
+
+/* Valflikar: breda pappersflikar på arkets överkant, nästan hela bredden. */
+.hz8-fb__types { position: relative; z-index: 4; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 calc(-1 * var(--hz8-fb-pad) + 12px) 8px; padding: 0; border: 0; min-width: 0; }
+.hz8-fb__type {
+  position: relative; display: flex; align-items: center; gap: 16px; min-height: 66px; padding: 0 24px; cursor: pointer;
+  border: 1px solid var(--hz8-fb-edge); border-radius: 4px;
+  background: var(--hz8-fb-noise) 0 0 / 160px 160px, linear-gradient(180deg, #ecdcc1, #e3cfae);
+  background-blend-mode: soft-light, normal;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 45%, transparent), 0 1px 1px color-mix(in srgb, #5a3d1c 18%, transparent), 0 3px 5px -4px color-mix(in srgb, #5a3d1c 40%, transparent);
+  font: 600 17.5px/1.2 Arial, sans-serif !important; color: var(--hz8-fb-ink);
+  transition: transform .2s var(--hz8-ease), box-shadow .2s var(--hz8-ease), border-color .2s var(--hz8-ease);
+}
+.hz8-fb__type input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.hz8-fb__radio { position: relative; flex: none; width: 24px; height: 24px; border: 1.5px solid color-mix(in srgb, var(--hz8-fb-ink) 72%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--hz8-fb-paper) 70%, #fff); }
+/* Vald flik: lyfts ca 6 px, ljusare papper, mörk oliv kontur, kontaktskugga, framför den andra. */
+.hz8-fb__type:has(input:checked) {
+  z-index: 1; transform: translateY(-6px);
+  border: 2px solid var(--hz8-fb-olive);
+  background: var(--hz8-fb-noise) 0 0 / 160px 160px, linear-gradient(180deg, #fffaf1, #f5ecdc);
+  background-blend-mode: soft-light, normal;
+  box-shadow: inset 0 1px 0 #fff, 0 2px 2px color-mix(in srgb, #3a2410 26%, transparent), 0 14px 16px -9px color-mix(in srgb, #3a2410 48%, transparent);
+}
+.hz8-fb__type input:checked + .hz8-fb__radio { border: 2px solid var(--hz8-fb-olive); }
+.hz8-fb__type input:checked + .hz8-fb__radio::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--hz8-fb-olive); }
+.hz8-fb__type:has(input:focus-visible) { outline: 2px solid var(--hz8-cta); outline-offset: 3px; }
+@media (hover: hover) { .hz8-fb__type:not(:has(input:checked)):hover { transform: translateY(-2px); } }
+
+.hz8-fb__field { display: grid; gap: 7px; }
+.hz8-fb__label { color: var(--hz8-fb-ink) !important; font: 700 14px/1.2 Arial, sans-serif !important; letter-spacing: .02em; }
+/* Fälten ligger nedsänkta i pappret. */
+.hz8-fb__input {
+  width: 100%; box-sizing: border-box; min-height: 56px; padding: 14px 16px; border-radius: 3px;
+  border: 1px solid color-mix(in srgb, #8a6a3e 30%, transparent);
+  background: color-mix(in srgb, var(--hz8-fb-paper) 45%, #fffdf8); color: var(--hz8-fb-ink) !important;
+  font: 400 17px/1.4 Arial, sans-serif !important;
+  box-shadow: inset 0 2px 3px color-mix(in srgb, #5a3d1c 14%, transparent), inset 0 0 0 1px color-mix(in srgb, #fff 40%, transparent), 0 1px 0 color-mix(in srgb, #fff 70%, transparent);
+}
+.hz8-fb__message { min-height: 176px; resize: vertical; }
+.hz8-fb__input::placeholder { color: color-mix(in srgb, var(--hz8-fb-ink) 50%, transparent); }
+.hz8-fb__input:focus-visible { outline: 2px solid var(--hz8-cta) !important; outline-offset: 1px; border-color: var(--hz8-fb-ink); }
+.hz8-fb__input[aria-invalid="true"] { border-color: #a3341f; box-shadow: inset 0 0 0 1px #a3341f; }
+.hz8-fb__error { margin: 0; color: #8a2a17 !important; font: 700 13px/1.35 Arial, sans-serif !important; }
+.hz8-fb__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.hz8-fb__submit {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 60px; margin-top: 4px;
+  border: 0; border-radius: 4px; background: var(--hz8-fb-olive); color: var(--hz8-fb-paper) !important; cursor: pointer;
+  font: 700 17px/1 Arial, sans-serif !important; box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 12%, transparent), 0 3px 5px -3px color-mix(in srgb, #000 55%, transparent);
+  transition: background-color .16s var(--hz8-ease);
+}
+.hz8-fb__submit svg { width: 20px; height: 20px; }
+@media (hover: hover) { .hz8-fb__submit:not(:disabled):hover { background: color-mix(in srgb, var(--hz8-fb-olive) 82%, #000); } }
+.hz8-fb__submit:focus-visible { outline: 2px solid var(--hz8-cta) !important; outline-offset: 3px; }
+.hz8-fb__submit[aria-busy="true"] { cursor: progress; opacity: .85; }
+.hz8-fb__privacy { margin: 0; text-align: center; color: var(--hz8-fb-muted) !important; font: 400 14px/1.4 Arial, sans-serif !important; }
+.hz8-fb__privacy a { display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; color: var(--hz8-fb-ink) !important; text-decoration: underline !important; text-underline-offset: 3px; }
+.hz8-fb__privacy a:focus-visible { outline: 2px solid var(--hz8-cta) !important; outline-offset: 2px; border-radius: 3px; }
+/* Statusmeddelanden som separata små papperslappar. */
+.hz8-fb__status { margin: 0; font: 600 14px/1.45 Arial, sans-serif !important; }
+.hz8-fb__status:empty { display: none; }
+.hz8-fb__status:not(:empty) { padding: 11px 14px; border-radius: 3px; border: 1px solid var(--hz8-fb-edge); background: var(--hz8-fb-noise) 0 0 / 160px 160px, #fbf6ec; background-blend-mode: soft-light, normal; box-shadow: 0 1px 1px color-mix(in srgb, #5a3d1c 18%, transparent), 0 6px 10px -8px color-mix(in srgb, #5a3d1c 50%, transparent); }
+.hz8-fb__status.is-info { border-left: 3px solid #b8865a; color: var(--hz8-fb-ink); }
+.hz8-fb__status.is-error { border-left: 3px solid #a3341f; color: #8a2a17; }
+.hz8-fb__status.is-success { border-left: 3px solid var(--hz8-fb-olive); color: var(--hz8-fb-olive); }
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hz8-fb__title { font-size: 54px !important; }
+  .hz8-fb__intro { margin-left: 2vw; }
+  .hz8-fb__script { left: 180px; font-size: 26px !important; }
+  .hz8-fb__type { padding: 0 16px; font-size: 16px !important; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hz8-fb { grid-template-columns: minmax(0, 1fr); padding-top: 64px; gap: 34px; }
+  .hz8-fb__intro { margin-left: 4vw; }
+  .hz8-fb__title { font-size: 52px !important; }
+  .hz8-fb__script { display: none; }
+  .hz8-fb__card { width: min(100%, 640px); margin-left: auto; margin-right: 4vw; }
+}
+@media (max-width: 767px) {
+  .hz8-fb { --hz8-fb-tab-lift: 34px; --hz8-fb-pad: 18px; --hz8-fb-pad-b: 60px; grid-template-columns: minmax(0, 1fr); gap: 32px; margin-bottom: 28px; padding-top: 50px; }
+  .hz8-fb.is-lit { --hz8-fb-plate: url("assets/feedback-collector-2026-10/feedback-background-mobile-v1.webp"); }
+  .hz8-fb::before {
+    background:
+      linear-gradient(180deg, var(--hz8-fb-sand) 0, color-mix(in srgb, var(--hz8-fb-sand) 0%, transparent) 6%),
+      /* mjuk sandton bakom rubriken: bladskuggorna ramar in men går inte genom bokstäverna */
+      radial-gradient(85% 21% at 40% 17%, color-mix(in srgb, #ecdcc2 86%, transparent), transparent 84%),
+      var(--hz8-fb-plate) center top / cover no-repeat,
+      var(--hz8-fb-sand);
+  }
+  .hz8-fb__intro { margin-left: 0; padding-top: 0; }
+  .hz8-fb__eyebrow { margin-bottom: 12px; font-size: 11px !important; }
+  .hz8-fb__eyebrow::after { width: 48px; }
+  .hz8-fb__title { font-size: 38px !important; }
+  .hz8-fb__lead { margin-top: 12px; font-size: 16px !important; }
+  .hz8-fb__script { display: none; }
+  .hz8-fb__card { width: auto; margin: 0 4px; }
+  .hz8-fb__form { gap: 13px; padding-bottom: 18px; }
+  .hz8-fb__types { gap: 8px; margin: 0 calc(-1 * var(--hz8-fb-pad) + 8px) 4px; }
+  .hz8-fb__type { gap: 10px; min-height: 58px; padding: 0 12px; font-size: 15px !important; }
+  .hz8-fb__type:has(input:checked) { transform: translateY(-5px); }
+  .hz8-fb__radio { width: 20px; height: 20px; }
+  .hz8-fb__message { min-height: 132px; }
+  .hz8-fb__input { min-height: 52px; font-size: 16px !important; }
+  .hz8-fb__submit { min-height: 56px; }
+  /* Mobil: bara en kontrollerad del av tyget längs nedre högra kanten. */
+  .hz8-fb__fabric { right: -24px; width: 380px; }
+}
+@media (max-width: 359px) {
+  .hz8-fb__type { padding: 0 9px; gap: 8px; font-size: 14px !important; }
+}
+@media (min-width: 1600px) {
+  .hz8-fb { --hz8-fb-pad: 44px; --hz8-fb-pad-b: 120px; padding-top: 88px; }
+  .hz8-fb__title { font-size: 80px !important; }
+  .hz8-fb__lead { font-size: 23px !important; }
+  .hz8-fb__script { left: 300px; font-size: 36px !important; }
+  .hz8-fb__type { min-height: 76px; font-size: 20px !important; }
+  .hz8-fb__message { min-height: 210px; }
+  .hz8-fb__fabric { width: 900px; right: -158px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz8-fb__type, .hz8-fb__submit { transition: none !important; }
+}

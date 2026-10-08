@@ -16,74 +16,6 @@
     return '<a class="hz8-series-card" href="' + item.href + '"><img src="' + assetBase + item.asset + '" alt=""><b>' + item.name + '</b><span>' + item.label + '</span></a>';
   }
 
-  /* Kampanjmodul efter "Våra produkter" (2026-10-08): fyra låga banners,
-     egen klassfamilj (.hz8-series-campaigns) -- "Våra populära serier"
-     ovan (.hz8-series) är en annan sektion och rörs inte.
-     - "Utforska <serie>" = seriens katalogsida ur relationskartan
-       (06-catalog-map.js: THCaB = gamla THC-A -> /thca, THCbA = gamla
-       THC-B -> /thcb, se namnbytet i 05-header.js). Saknas serien i
-       kartan visas inget kort.
-     - Primär "Läs om <serie>" visas bara när `info` är satt till en
-       verifierad, publicerad informationssida. Ingen finns ännu
-       (sitemap + /sv/posts kontrollerade 2026-10-08), så alla är null --
-       ingen gissad adress, inget "#". Sekundär "Utforska utbudet" =
-       seriens katalogsida.
-     - Formatraden räknas fram ur relationskartan, inga produktantal.
-     `catalog` = seriens namn i relationskartan. */
-  var CAMPAIGNS = [
-    { key: "thcab", name: "THCaB", catalog: "THCaB", info: null, asset: "series-thcab-v1.webp", w: 1600, h: 1067,
-      alt: "THCaB från Faraoh: vape Sour Candy Strawberry och cart Super Lemon Haze i en mörk egyptisk miljö" },
-    { key: "thcba", name: "THCbA", catalog: "THCbA", info: null, asset: "series-thcba-v1.webp", w: 1600, h: 1067,
-      alt: "THCbA från Faraoh: vape Cranberry Frost Cream i månljus på blek sand" },
-    { key: "magic", name: "Magic Sauce", catalog: "Magic Sauce", info: null, asset: "series-magic-sauce-v1.webp", w: 1600, h: 1067,
-      alt: "Magic Sauce från Magic Farmers: refillvätska Yoda, cart Tinky Winky, vape Kowa Bunga och buds Gorilla Cookies i solnedgång" },
-    { key: "nano", name: "Nano11", catalog: "Nano-11", info: null, asset: "series-nano11-v1.webp", w: 1600, h: 901,
-      alt: "Nano11 från Tatra Hemp: pre-roll-förpackning och påse vid havet i blå skymning" }
-  ];
-
-  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
-
-  function formatList(series) {
-    var labels = Object.keys(series.routes).map(function (k) { var f = HZ8.catalog.formatByKey(k); return f ? f.short || f.label : null; }).filter(Boolean);
-    if (!labels.length) return "";
-    var lower = labels.map(function (l) { return l.toLowerCase(); });
-    return lower.length > 1 ? lower.slice(0, -1).join(", ") + " och " + lower[lower.length - 1] : lower[0];
-  }
-
-  /* Bilden visas två gånger: suddad som fyllnad över hela kortet och
-     skarp i full höjd längs högerkanten, så att de höga förpackningarna
-     aldrig beskärs i ett lågt kort. Samma fil, en nedladdning. */
-  function campaignCard(item, assetBase, series) {
-    var hub = series && (series.hub || HZ8.catalog.landingFor(series));
-    if (!hub) return "";
-    var src = assetBase + item.asset;
-    var formats = formatList(series);
-    var id = "hz8-sc-" + item.key;
-    var actions = (item.info ? '<a class="hz8-series-campaign__cta hz8-series-campaign__cta--read" href="' + HZ8.esc(HZ8.link(item.info)) + '">Läs om ' + HZ8.esc(item.name) + ARROW + '</a>' : '') +
-      '<a class="hz8-series-campaign__cta hz8-series-campaign__cta--explore" href="' + HZ8.esc(HZ8.link(hub)) + '" aria-label="Utforska utbudet i ' + HZ8.esc(item.name) + '">Utforska utbudet' + ARROW + '</a>';
-    return '<article class="hz8-series-campaign hz8-series-campaign--' + item.key + '" aria-labelledby="' + id + '">' +
-      '<div class="hz8-series-campaign__media">' +
-      '<img class="hz8-series-campaign__backdrop" src="' + src + '" alt="" loading="lazy" decoding="async">' +
-      '<img class="hz8-series-campaign__img" src="' + src + '" alt="' + HZ8.esc(item.alt) + '" loading="lazy" decoding="async" width="' + item.w + '" height="' + item.h + '">' +
-      '</div>' +
-      '<div class="hz8-series-campaign__body">' +
-      '<div class="hz8-series-campaign__heading"><h3 class="hz8-series-campaign__title" id="' + id + '">' + HZ8.esc(item.name) + '</h3>' +
-      (formats ? '<p class="hz8-series-campaign__text">' + HZ8.esc(formats.charAt(0).toUpperCase() + formats.slice(1)) + '</p>' : '') + '</div>' +
-      '<div class="hz8-series-campaign__actions' + (item.info ? ' has-info' : '') + '">' + actions + '</div>' +
-      '</div></article>';
-  }
-
-  function campaignSection(assetBase) {
-    if (!HZ8.catalog) return "";
-    var map = HZ8.catalog.build();
-    var cards = CAMPAIGNS.map(function (item) {
-      var series = map.series.filter(function (x) { return x.name === item.catalog; })[0];
-      return campaignCard(item, assetBase, series);
-    }).join("");
-    if (!cards) return "";
-    return '<section class="hz8-home__section hz8-series-campaigns" aria-labelledby="hz8-series-campaigns-title"><h2 class="hz8-visually-hidden" id="hz8-series-campaigns-title">Utvalda serier</h2><div class="hz8-series-campaigns__grid">' + cards + '</div></section>';
-  }
-
   /* ---- "Våra produkter" (2026-10-08): kategorihylla + riktiga produktkort.
      Data: Nyehandels egna listor sorterade "Mest populära" -- "Alla" =
      katalogportalen, övriga = formatens sidor ur relationskartan
@@ -391,7 +323,6 @@
     var products = productsSection();
     section.innerHTML = '<section class="hz8-home__section hz8-series"><div class="hz8-home__head"><h2 class="hz8-reveal">Våra populära serier</h2><a href="/sv/categories/alla-produkter">Visa alla</a></div><div class="hz8-series__grid hz8-reveal-group">' + series.map(function (item) { return seriesCard(item, context.assetBase); }).join("") + '</div></section>'
       + products.html
-      + campaignSection(context.assetBase)
       + '<section class="hz8-mobile-lifestyle"><h2>Mer än produkter<br>– en livsstil</h2><p>Kvalitet. Gemenskap. Frihet.<br>Välkommen till Hazey.</p><a href="/sv/categories/alla-produkter">Utforska våra serier</a></section>';
     while (section.firstChild) context.home.appendChild(section.firstChild);
 

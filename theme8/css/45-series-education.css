@@ -1,0 +1,165 @@
+/* "Utvalda serier" (45-series-education.js, 2026-10-08): education-first,
+   mot concept-b-editorial-split. Desktop: redaktionella uppslag i 2x2,
+   ca 59 % produktmiljö / 41 % djup oliv informationspanel; första raden
+   bild vänster, andra raden panel vänster. Mobil (< 768): karusell, ett
+   kort i taget -- bild överst, varm pappersbiljett under. */
+.hz8-sedu {
+  --hz8-sedu-ink: #24301c;
+  --hz8-sedu-ink-2: #1c2616;
+  --hz8-sedu-paper: color-mix(in srgb, var(--hz8-beige) 52%, #fff8ec);
+  --hz8-sedu-sand: color-mix(in srgb, var(--hz8-beige) 46%, #fff6e8);
+  --hz8-sedu-muted: color-mix(in srgb, #f3e6cf 72%, transparent);
+  --hz8-sedu-rule: color-mix(in srgb, #f3e6cf 26%, transparent);
+  --hz8-sedu-gold: color-mix(in srgb, #c9a46a 78%, transparent);
+  --hz8-sedu-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hz8-sedu__head { display: flex; align-items: center; gap: 28px; margin-bottom: 18px; }
+.hz8-sedu__head h2 { margin: 0; flex: none; color: var(--hz8-ink) !important; font: 600 40px/1 "Iowan Old Style", Georgia, serif !important; }
+.hz8-sedu__head::after { content: ""; flex: 1; height: 1px; background: color-mix(in srgb, var(--hz8-ink) 30%, transparent); }
+
+.hz8-sedu__stage { position: relative; }
+.hz8-sedu__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.hz8-sedu__slide { display: flex; min-width: 0; margin: 0; }
+/* Uppslaget: höjden följer bredden (1.95:1) så att båda korten i en rad
+   blir exakt lika höga; längre innehåll växer kortet i stället för att
+   knuffa ut knapparna. */
+.hz8-sedu-card {
+  flex: 1; display: grid; grid-template-columns: minmax(0, 59fr) minmax(0, 41fr); aspect-ratio: 1.95 / 1;
+  overflow: hidden; border-radius: 9px; background: var(--hz8-sedu-ink);
+  box-shadow: 0 1px 1px color-mix(in srgb, #1a1206 22%, transparent), 0 10px 14px -12px color-mix(in srgb, #1a1206 55%, transparent);
+}
+.hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card { grid-template-columns: minmax(0, 41fr) minmax(0, 59fr); }
+.hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card__media { order: 2; }
+.hz8-sedu-card__media { position: relative; min-width: 0; overflow: hidden; background: color-mix(in srgb, var(--hz8-sedu-ink) 80%, #000); }
+.hz8-home .hz8-sedu-card__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.hz8-sedu-card__media.is-missing { background: radial-gradient(80% 80% at 50% 40%, color-mix(in srgb, var(--hz8-beige) 14%, transparent), transparent), color-mix(in srgb, var(--hz8-sedu-ink) 80%, #000); }
+
+/* Informationspanelen: djup oliv med tryckstruktur, redaktionell linje,
+   seriemärkning, motiv och en luftig kolumn med CTA:erna i botten. */
+.hz8-sedu-card__info {
+  position: relative; display: flex; flex-direction: column; min-width: 0; padding: 26px 26px 22px;
+  container-type: inline-size; isolation: isolate;
+  background:
+    var(--hz8-sedu-noise) 0 0 / 160px 160px,
+    radial-gradient(110% 70% at 100% 0, color-mix(in srgb, #c9a46a 12%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--hz8-sedu-ink), var(--hz8-sedu-ink-2));
+  background-blend-mode: soft-light, normal, normal;
+  color: #f6eedf;
+}
+.hz8-sedu-card__top { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 16px; }
+.hz8-sedu-card__eyebrow { flex: none; margin-top: 7px; color: var(--hz8-sedu-muted) !important; font: 700 10px/1 Arial, sans-serif !important; letter-spacing: .2em; text-transform: uppercase; }
+.hz8-sedu-card__top::after { content: ""; order: 1; flex: 1; height: 1px; margin-top: 11px; background: var(--hz8-sedu-rule); }
+.hz8-sedu-card__num { order: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: none; color: var(--hz8-sedu-muted) !important; font: 700 9.5px/1 Arial, sans-serif !important; letter-spacing: .18em; text-transform: uppercase; }
+.hz8-sedu-card__motif { width: 30px; height: 30px; color: var(--hz8-sedu-gold); }
+.hz8-sedu-card__name { margin: -14px 0 0; color: #fbf4e6 !important; font: 600 38px/1 "Iowan Old Style", Georgia, serif !important; font-size: clamp(30px, 14.4cqi, 58px) !important; letter-spacing: -.01em; white-space: nowrap; }
+.hz8-sedu-card__formats { margin: 10px 0 0; color: var(--hz8-sedu-muted) !important; font: 400 17px/1.35 "Iowan Old Style", Georgia, serif !important; font-size: clamp(15px, 6.2cqi, 22px) !important; }
+.hz8-sedu-card__scene { position: absolute; z-index: -1; right: 14px; bottom: 12px; width: min(46%, 150px); height: auto; color: var(--hz8-sedu-gold); opacity: .38; pointer-events: none; }
+.hz8-sedu-card__actions { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-top: auto; padding-top: 18px; }
+.hz8-sedu .hz8-sedu-card__read {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 6px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hz8-sedu-sand) 92%, #fff), var(--hz8-sedu-sand));
+  color: var(--hz8-sedu-ink) !important; border: 1px solid color-mix(in srgb, #a07b4c 35%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 75%, transparent), 0 1px 1px color-mix(in srgb, #000 28%, transparent), 0 6px 10px -8px color-mix(in srgb, #000 70%, transparent);
+  font: 700 14.5px/1 Arial, sans-serif !important; text-decoration: none !important; white-space: nowrap;
+  transition: background-color .16s var(--hz8-ease), filter .16s var(--hz8-ease);
+}
+.hz8-sedu-card__read svg { width: 17px; height: 17px; flex: none; transition: transform .16s var(--hz8-ease); }
+.hz8-sedu .hz8-sedu-card__shop { display: inline-flex; align-items: center; min-height: 44px; color: #f6eedf !important; font: 400 14px/1 Arial, sans-serif !important; text-decoration: underline !important; text-decoration-color: color-mix(in srgb, #f6eedf 45%, transparent) !important; text-underline-offset: 4px; }
+/* Utan informationssida (utanför previewn) blir "Se produkter" ensam och får knappformen. */
+.hz8-sedu .hz8-sedu-card__actions.no-info .hz8-sedu-card__shop { min-height: 44px; padding: 0 18px; border-radius: 6px; background: var(--hz8-sedu-sand); color: var(--hz8-sedu-ink) !important; font-weight: 700 !important; text-decoration: none !important; }
+@media (hover: hover) {
+  .hz8-sedu .hz8-sedu-card__read:hover { filter: brightness(1.04); }
+  .hz8-sedu-card__read:hover svg { transform: translateX(3px); }
+  .hz8-sedu .hz8-sedu-card__shop:hover { text-decoration-color: currentColor !important; }
+}
+.hz8-sedu a:focus-visible, .hz8-sedu button:focus-visible, .hz8-sedu__viewport:focus-visible { outline: 2px solid var(--hz8-cta) !important; outline-offset: 3px; border-radius: 6px; }
+
+/* Karusellkontroller används bara på mobil. */
+.hz8-sedu__arrow, .hz8-sedu__ctrl { display: none; }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hz8-sedu__track { grid-template-columns: minmax(0, 1fr); }
+  .hz8-sedu-card { aspect-ratio: 2.35 / 1; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); }
+  .hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); }
+  .hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card__media { order: 0; }
+  .hz8-sedu__slide:nth-child(even) .hz8-sedu-card { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); }
+  .hz8-sedu__slide:nth-child(even) .hz8-sedu-card__media { order: 2; }
+}
+
+@media (max-width: 767px) {
+  .hz8-sedu__head { gap: 16px; margin-bottom: 12px; }
+  .hz8-sedu__head h2 { font-size: 28px !important; }
+  .hz8-sedu__viewport { overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; border-radius: 10px; }
+  .hz8-sedu__viewport::-webkit-scrollbar { display: none; }
+  .hz8-sedu__track { display: flex; gap: 0; }
+  .hz8-sedu__slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+  /* Biljetten: fast höjd så att inget hoppar mellan slides. */
+  .hz8-sedu-card, .hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card {
+    display: grid; grid-template-columns: none; grid-template-rows: 106px minmax(0, 1fr); aspect-ratio: auto; height: 226px;
+    background: var(--hz8-sedu-paper); border-radius: 10px;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, #a07b4c 22%, transparent), 0 1px 1px color-mix(in srgb, #5a3d1c 18%, transparent), 0 10px 14px -12px color-mix(in srgb, #5a3d1c 50%, transparent);
+  }
+  .hz8-sedu__slide:nth-child(n+3) .hz8-sedu-card__media { order: 0; }
+  .hz8-sedu-card__info {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "eyebrow num" "name num" "formats num" "actions actions";
+    align-content: start; column-gap: 12px; padding: 9px 12px 9px 14px; container-type: normal;
+    background: var(--hz8-sedu-noise) 0 0 / 160px 160px, linear-gradient(180deg, color-mix(in srgb, var(--hz8-sedu-paper) 88%, #fff), var(--hz8-sedu-paper));
+    background-blend-mode: soft-light, normal; color: var(--hz8-ink);
+  }
+  .hz8-sedu-card__top { display: contents; }
+  .hz8-sedu-card__top::after { display: none; }
+  .hz8-sedu-card__eyebrow::after { content: ""; flex: 1; height: 1px; background: color-mix(in srgb, var(--hz8-ink) 22%, transparent); }
+  .hz8-sedu-card__eyebrow { grid-area: eyebrow; display: flex; align-items: center; gap: 8px; margin: 0; color: color-mix(in srgb, var(--hz8-ink) 58%, transparent) !important; font-size: 8.5px !important; letter-spacing: .18em; }
+  /* Diskret vertikal avdelare före serienumret. */
+  .hz8-sedu-card__num { grid-area: num; align-self: start; flex-direction: row; gap: 6px; margin-top: 2px; padding-left: 11px; border-left: 1px solid color-mix(in srgb, var(--hz8-ink) 20%, transparent); color: color-mix(in srgb, var(--hz8-ink) 55%, transparent) !important; font-size: 8.5px !important; }
+  .hz8-sedu-card__motif { width: 20px; height: 20px; color: color-mix(in srgb, #8a6a3e 80%, transparent); }
+  .hz8-sedu-card__scene { display: none; }
+  .hz8-sedu-card__name { grid-area: name; margin: 3px 0 0; color: var(--hz8-ink) !important; font-size: 22px !important; }
+  .hz8-sedu-card__formats { grid-area: formats; margin-top: 2px; color: color-mix(in srgb, var(--hz8-ink) 70%, transparent) !important; font-size: 13.5px !important; }
+  /* Fast korthöjd i karusellen: namn och formatrad hålls på en rad. */
+  .hz8-sedu-card__name, .hz8-sedu-card__formats { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .hz8-sedu-card__actions { grid-area: actions; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; padding-top: 0; }
+  .hz8-sedu .hz8-sedu-card__read { min-height: 44px; padding: 0 14px; border: 0; background: var(--hz8-sedu-ink); color: #f6eedf !important; font-size: 14px !important; box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 12%, transparent), 0 6px 10px -8px color-mix(in srgb, #000 70%, transparent); }
+  .hz8-sedu .hz8-sedu-card__shop { min-height: 44px; color: var(--hz8-ink) !important; font-size: 13.5px !important; text-decoration-color: color-mix(in srgb, var(--hz8-ink) 45%, transparent) !important; }
+  .hz8-sedu .hz8-sedu-card__actions.no-info .hz8-sedu-card__shop { background: var(--hz8-sedu-ink); color: #f6eedf !important; }
+
+  /* Pilar centrerade över bildytans vänster-/högerkant. */
+  .hz8-sedu__arrow {
+    position: absolute; top: 31px; z-index: 2; display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+    border: 0; background: none; color: #fff; cursor: pointer;
+  }
+  .hz8-sedu__arrow::before { content: ""; position: absolute; inset: 4px; border: 1px solid color-mix(in srgb, #fff 55%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--hz8-sedu-ink) 66%, transparent); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: 0 4px 10px -4px color-mix(in srgb, #000 60%, transparent); }
+  .hz8-sedu__arrow svg { position: relative; width: 18px; height: 18px; }
+  .hz8-sedu__arrow--prev { left: -2px; }
+  .hz8-sedu__arrow--next { right: -2px; }
+
+  /* Fyra indikatorer centrerat under kortet, play/paus till höger. */
+  .hz8-sedu__ctrl { position: relative; display: flex; align-items: center; justify-content: center; margin-top: 6px; }
+  .hz8-sedu__dots { display: flex; }
+  .hz8-sedu__dot { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+  .hz8-sedu__dot span { display: block; width: 9px; height: 9px; border-radius: 5px; background: color-mix(in srgb, #8a7a62 45%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hz8-ink) 12%, transparent); transition: background-color .2s var(--hz8-ease), width .2s var(--hz8-ease); }
+  .hz8-sedu__dot[aria-current="true"] span { width: 24px; background: var(--hz8-olive); box-shadow: none; }
+  .hz8-sedu__play {
+    position: absolute; right: 0; top: 0; display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0;
+    border: 0; border-radius: 50%; background: none; color: color-mix(in srgb, var(--hz8-ink) 75%, transparent); cursor: pointer;
+  }
+  .hz8-sedu__play::before { content: ""; position: absolute; inset: 8px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--hz8-ink) 22%, transparent); }
+  .hz8-sedu__play svg { position: relative; width: 13px; height: 13px; }
+}
+@media (max-width: 359px) {
+  .hz8-sedu .hz8-sedu-card__read { padding: 0 11px; font-size: 13px !important; }
+  .hz8-sedu-card__name { font-size: 20px !important; }
+}
+@media (min-width: 1600px) {
+  .hz8-sedu__head h2 { font-size: 50px !important; }
+  .hz8-sedu__track { gap: 18px; }
+  .hz8-sedu-card__info { padding: 34px 34px 28px; }
+  .hz8-sedu-card__eyebrow, .hz8-sedu-card__num { font-size: 11.5px !important; }
+  .hz8-sedu-card__motif { width: 38px; height: 38px; }
+  .hz8-sedu .hz8-sedu-card__read { min-height: 52px; font-size: 17px !important; }
+  .hz8-sedu .hz8-sedu-card__shop { font-size: 16px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz8-sedu__viewport { scroll-behavior: auto !important; }
+  .hz8-sedu-card__read, .hz8-sedu-card__read svg, .hz8-sedu__dot span { transition: none !important; }
+}
