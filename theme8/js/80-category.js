@@ -1611,15 +1611,8 @@
   var pilotPausedReady = null;
   function loadCardData(ctx) {
     var key = ctx.format.key;
-    allCards(ctx.format.href + "?filters=" + STOCK_TOKEN).then(function (cards) {
-      var set = {};
-      cards.forEach(function (c) { var p = cardPath(c.html); if (p) set[p] = true; });
-      pilotStock = set;
-      syncPilotCards();
-    }).catch(function () {
-      /* Okänd lagerstatus: ingen rad (reserverad plats ligger kvar tom,
-         osynlig), köpknappen avgör vid klick. */
-    });
+    /* Först i kön: döljningen av pausade kort ska vara klar innan kunden
+       hunnit scrolla (annars flyttar sig synliga kort). */
     /* Pausade serier (PILOT_PAUSED) klassas med samma källa som övriga
        serier: produkterna på seriens riktiga route i formatet. Misslyckas
        hämtningen döljs inget (ingen gissning på namn). */
@@ -1631,6 +1624,15 @@
       syncPilotCards();
       if (pilotPausedReady) pilotPausedReady();
     }).catch(function () {});
+    allCards(ctx.format.href + "?filters=" + STOCK_TOKEN).then(function (cards) {
+      var set = {};
+      cards.forEach(function (c) { var p = cardPath(c.html); if (p) set[p] = true; });
+      pilotStock = set;
+      syncPilotCards();
+    }).catch(function () {
+      /* Okänd lagerstatus: ingen rad (reserverad plats ligger kvar tom,
+         osynlig), köpknappen avgör vid klick. */
+    });
     HZ8.catalog.seriesWithFormat(key).filter(shown).forEach(function (s) {
       allCards(s.routes[key]).then(function (cards) {
         cards.forEach(function (c) {
@@ -1670,6 +1672,7 @@
       variantsIcon: ARROW
     };
     if (HZ8.relabelCards) HZ8.relabelCards();
+    loadCardData(ctx);
     var countEl = pilotMasthead(root, ctx);
     pilotDecor(root);
     var picker = null;
@@ -2067,7 +2070,6 @@
     window.addEventListener("scroll", function () { window.requestAnimationFrame(syncStuck); }, { passive: true });
     window.addEventListener("resize", syncStuck);
     syncStuck();
-    loadCardData(ctx);
     seriesBand(root, ctx);
     return picker;
   }
