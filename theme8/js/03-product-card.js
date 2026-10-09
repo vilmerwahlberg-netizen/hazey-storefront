@@ -6,6 +6,28 @@
   "use strict";
 
   var HZ8 = window.HZ8;
+  /* Etiketter kan bytas per sida (kategoripiloten sätter HZ8.cardLabels
+     till "Lägg i varukorg" / "Välj alternativ" och kör relabelCards). */
+  function labels() {
+    var l = HZ8.cardLabels || {};
+    function pair(long, short, before, after) {
+      return (before || "") + '<span class="hz8-pill-long">' + HZ8.esc(long) + '</span><span class="hz8-pill-short" aria-hidden="true">' + HZ8.esc(short) + "</span>" + (after || "");
+    }
+    return {
+      add: l.add ? pair(l.add, l.addShort || l.add, l.addIcon) : pair("+ Lägg till", "Lägg till"),
+      variants: l.variants ? pair(l.variants, l.variantsShort || l.variants, "", l.variantsIcon) : pair("Välj variant", "Välj"),
+      variantsAria: l.variants || "Välj variant"
+    };
+  }
+  HZ8.relabelCards = function () {
+    var L = labels();
+    document.querySelectorAll("#store-main .hz8-card-pill").forEach(function (pill) {
+      if (pill.getAttribute("aria-busy") === "true") return;
+      var isVariant = pill.tagName === "A";
+      pill.innerHTML = isVariant ? L.variants : L.add;
+      if (isVariant) pill.setAttribute("aria-label", L.variantsAria + ": " + (pill.getAttribute("aria-label") || "").replace(/^[^:]*:\s*/, ""));
+    });
+  };
 
   function enhance(card) {
     if (card.querySelector(".hz8-card-pill")) return;
@@ -25,13 +47,12 @@
     if (variants) {
       pill = document.createElement("a");
       pill.href = href;
-      pill.innerHTML = '<span class="hz8-pill-long">Välj variant</span><span class="hz8-pill-short" aria-hidden="true">Välj</span>';
-      pill.setAttribute("aria-label", "Välj variant: " + name);
+      pill.innerHTML = labels().variants;
+      pill.setAttribute("aria-label", labels().variantsAria + ": " + name);
     } else {
       pill = document.createElement("button");
       pill.type = "button";
-      var ADD = '<span class="hz8-pill-long">+ Lägg till</span><span class="hz8-pill-short" aria-hidden="true">Lägg till</span>';
-      pill.innerHTML = ADD;
+      pill.innerHTML = labels().add;
       pill.setAttribute("aria-label", "Lägg i varukorgen: " + name);
       pill.addEventListener("click", function () {
         if (pill.getAttribute("aria-busy") === "true") return;
@@ -41,7 +62,7 @@
           if (!state.variantId || !state.buyable || state.variants > 1) { location.href = HZ8.link(href); return null; }
           return HZ8.addVariant(state.variantId).then(function () {
             pill.textContent = "Tillagd";
-            window.setTimeout(function () { pill.innerHTML = ADD; }, 1800);
+            window.setTimeout(function () { pill.innerHTML = labels().add; }, 1800);
           });
         }).catch(function () {
           location.href = HZ8.link(href);
