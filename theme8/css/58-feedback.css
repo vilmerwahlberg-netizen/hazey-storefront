@@ -213,3 +213,9 @@
 .hz8-fb__eyebrow, .hz8-fb__title, .hz8-fb__lead {
   text-shadow: 0 1px 2px rgba(250, 242, 228, .55);
 }
+/* Ingressen är tunnare än rubriken: något tätare ljus skugga och en
+   hårfin kontur i textfärgen (Arial saknar halvfet vikt). */
+.hz8-fb__lead {
+  text-shadow: 0 1px 2px rgba(250, 242, 228, .8), 0 0 1px rgba(250, 242, 228, .6);
+  -webkit-text-stroke: .3px currentColor;
+}
