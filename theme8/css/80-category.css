@@ -959,8 +959,9 @@ html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool {
   z-index: 14;
   margin: 0 0 16px;
 }
-/* Headern scrollad (68 px fullbreddsbar): raden direkt under den. */
-html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 76px; }
+/* Headern scrollad (68 px fullbreddsbar, 56 px mobil): raden ligger
+   kant i kant med headern -- ingen glipa där produkter skymtar. */
+html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 68px; }
 /* Tunn varm kontrollremsa mellan hero och katalog (07). */
 html.hz8-cat-pilot .hz8-ptool__desk {
   display: flex;
@@ -1493,7 +1494,7 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   html.hz8-cat-pilot .hz8-pguide__steps { font-size: 11px !important; }
   html.hz8-cat-pilot .hz8-pdecor__seal { display: none; }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { grid-row: 6; top: calc(var(--hz8-top-clear) - 16px); margin: 14px 0 12px; }
-  html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 64px; }
+  html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 56px; }
   /* Mobil: ingen fullbreddsremsa i vila -- bara sandbakgrund när raden
      sitter fast, så att produkter inte syns runt höljet. */
   html.hz8-cat-pilot .hz8-ptool::before { top: -8px; bottom: -8px; border: 0; background: var(--hz8-pilot-paper); opacity: 0; }
