@@ -322,8 +322,7 @@
     var section = document.createElement("div");
     var products = productsSection();
     section.innerHTML = '<section class="hz8-home__section hz8-series"><div class="hz8-home__head"><h2 class="hz8-reveal">Våra populära serier</h2><a href="/sv/categories/alla-produkter">Visa alla</a></div><div class="hz8-series__grid hz8-reveal-group">' + series.map(function (item) { return seriesCard(item, context.assetBase); }).join("") + '</div></section>'
-      + products.html
-      + '<section class="hz8-mobile-lifestyle"><h2>Mer än produkter<br>– en livsstil</h2><p>Kvalitet. Gemenskap. Frihet.<br>Välkommen till Hazey.</p><a href="/sv/categories/alla-produkter">Utforska våra serier</a></section>';
+      + products.html;
     while (section.firstChild) context.home.appendChild(section.firstChild);
 
     var productsEl = context.home.querySelector(".hz8-products");

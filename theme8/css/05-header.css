@@ -317,6 +317,17 @@ html.hz8 #store-header .search-field{
 html.hz8 #store-header .search-field input{
   background:transparent!important; border:0!important; height:38px;
 }
+/* Sökikonen (Nyehandels <i role="button" class="fas fa-search">) satt
+   nativt top/right:10px mot fel referens -- 4,5 px för högt i pillen.
+   Den blir en tryckyta i pillens fulla höjd (44 x 40) längs högerkanten
+   med glyfen centrerad i båda led. */
+html.hz8 #store-header .search-field{ position:relative; }
+html.hz8 #store-header .search-field i.fa-search{
+  position:absolute!important; top:0!important; right:0!important; bottom:0!important; left:auto!important;
+  display:flex!important; align-items:center; justify-content:center;
+  width:44px!important; height:auto!important; margin:0!important; padding:0!important; transform:none!important;
+  line-height:1!important; border-radius:0 999px 999px 0;
+}
 html.hz8 body.hz8-header-scrolled #store-header .search-field{
   background:var(--hz8-surface);
 }

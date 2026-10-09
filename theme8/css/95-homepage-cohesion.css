@@ -78,15 +78,17 @@ html[data-hz8-page="home"] .hz8-products { box-shadow: inset 0 0 0 1px rgba(160,
    feedbackens topp. Den grå marginalremsan mellan dem tas bort. ---- */
 html[data-hz8-page="home"] .hz8-rv { margin-bottom: 0; }
 html[data-hz8-page="home"] .hz8-fb { padding-top: 96px; }
-/* Trust -> feedback: övergången börjar 40 px upp i Trusts tomma nederkant
-   (under omdömena) och slutar i feedbackbildens egen sandton. EN
-   kontinuerlig gradient utan transparenta stopp; först när den nått
-   sanden löses den mjukt upp i fotot (samma ton, inget band). Ingen
-   radial glow. Trust-tonen är den renderade nederkanten (#1e2616). */
+/* Trust -> feedback: kort fotografisk dissolve i stället för färgramp.
+   Feedbackens bakgrund (sandfotot) börjar 56 px upp i Trusts tomma
+   nederkant och maskas in över Trusts egen bokhyllemiljö; där de möts
+   mörkas sandfotot med Trusts faktiskt renderade nederkantston
+   (#1a130a, varm brun, uppmätt 2026-10-09) som klingar av över ca
+   120 px. Inga mellanfärger, ingen platå. */
 html[data-hz8-page="home"] .hz8-fb::before {
-  top: -40px;
+  top: -56px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 56px); mask-image: linear-gradient(180deg, transparent 0, #000 56px);
   background:
-    linear-gradient(180deg, #1e2616 0, #262b19 22px, #3a3622 46px, #5b4f36 70px, #8a7656 94px, #b39b78 118px, #cdb48f 140px, #d6bc97 156px, color-mix(in srgb, #d6bc97 0%, transparent) 260px),
+    linear-gradient(180deg, rgba(26, 19, 10, .94) 0, rgba(26, 19, 10, .8) 48px, rgba(40, 30, 17, .42) 92px, rgba(40, 30, 17, 0) 150px),
     /* nederkant: sand -> FAQ:s elfenben */
     linear-gradient(0deg, var(--hz8-co-faq) 0, color-mix(in srgb, var(--hz8-co-faq) 62%, #e2c8a3) 26px, color-mix(in srgb, #e2c8a3 0%, transparent) 70px),
     radial-gradient(26% 34% at 27% 38%, color-mix(in srgb, #ecdcc2 55%, transparent), transparent 80%),
@@ -118,19 +120,28 @@ html[data-hz8-page="home"] .hz8-footer { position: relative; }
 
 /* ---- Mobil ---- */
 @media (max-width: 767px) {
-  /* Utvalda serier -> "Mer än produkter" -> Trust: blocket tonas in upptill
-     och ut i Trusts oliv nedtill; innehåll och storlek oförändrade. */
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle { position: relative; isolation: isolate; }
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle > * { position: relative; z-index: 1; }
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle::before,
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle::after { content: ""; position: absolute; left: 0; right: 0; z-index: 0; pointer-events: none; }
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle::before { top: 0; height: 30px; background: linear-gradient(180deg, var(--hz8-co-sand), color-mix(in srgb, var(--hz8-co-sand) 0%, transparent)); }
-  html[data-hz8-page="home"] .hz8-mobile-lifestyle::after { bottom: 0; height: 48px; background: linear-gradient(0deg, var(--hz8-co-trust), color-mix(in srgb, var(--hz8-co-trust) 0%, transparent)); }
-  html[data-hz8-page="home"] .hz8-fb { padding-top: 70px; }
-  html[data-hz8-page="home"] .hz8-fb::before {
-    top: -24px;
+  /* Utvalda serier -> Trust: kort övergång (ca 62 px) som ägs av Trusts
+     topp och ligger över seriernas egen nederkantsluft (ingen extra höjd).
+     Toner uppmätta: sand #f0e4d2 ovanför, Trust-oliv #1d2817 nedanför.
+     Lagren under är 55-reviews.css mobila bakgrund, oförändrade. */
+  html[data-hz8-page="home"] .hz8-rv::before { top: calc(-1 * var(--hz8-co-gap)); }
+  html[data-hz8-page="home"] .hz8-rv::before {
     background:
-      linear-gradient(180deg, #1e2616 0, #2c2e1c 16px, #4a4330 34px, #7e6c4f 52px, #ad9572 70px, #cdb48f 86px, #d6bc97 98px, color-mix(in srgb, #d6bc97 0%, transparent) 190px),
+      linear-gradient(180deg, #f0e4d2 0, #cfbd9e 14px, #8a7d5f 30px, #4a4a33 46px, #1d2817 62px, rgba(29, 40, 23, 0) 112px),
+      linear-gradient(180deg, var(--hz8-rv-bg) 0, var(--hz8-rv-bg-a0) 8%, var(--hz8-rv-bg-a0) 76%, color-mix(in srgb, var(--hz8-rv-bg) 76%, transparent) 92%, var(--hz8-rv-bg) 100%),
+      linear-gradient(90deg, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent), var(--hz8-rv-bg-a0) 30%, var(--hz8-rv-bg-a0) 70%, color-mix(in srgb, var(--hz8-rv-bg) 55%, transparent)),
+      linear-gradient(color-mix(in srgb, var(--hz8-rv-bg) 14%, transparent), color-mix(in srgb, var(--hz8-rv-bg) 14%, transparent)),
+      var(--hz8-rv-plate) var(--hz8-rv-plate-pos) / var(--hz8-rv-plate-size) no-repeat,
+      var(--hz8-rv-bg);
+  }
+  html[data-hz8-page="home"] .hz8-rv::after { top: calc(-1 * var(--hz8-co-gap)); -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 62px); mask-image: linear-gradient(180deg, transparent 0, #000 62px); }
+  html[data-hz8-page="home"] .hz8-fb { padding-top: 70px; }
+  /* Samma dissolve, kortare; Trusts mobila nederkant är oliv (#1e2817). */
+  html[data-hz8-page="home"] .hz8-fb::before {
+    top: -36px;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px); mask-image: linear-gradient(180deg, transparent 0, #000 36px);
+    background:
+      linear-gradient(180deg, rgba(30, 40, 23, .94) 0, rgba(30, 40, 23, .78) 30px, rgba(44, 42, 26, .4) 60px, rgba(44, 42, 26, 0) 100px),
       linear-gradient(0deg, var(--hz8-co-faq) 0, color-mix(in srgb, #e2c8a3 0%, transparent) 52px),
       radial-gradient(85% 21% at 40% 17%, color-mix(in srgb, #ecdcc2 86%, transparent), transparent 84%),
       var(--hz8-fb-plate) center top / cover no-repeat,
