@@ -747,9 +747,12 @@ html.hz8[data-hz8-page="category"] .hz8-filter-hidden { display: none !important
    10+  kundservice, kategorins egen text
    ====================================================================== */
 html.hz8-cat-pilot {
-  /* Pappersfältets ton, uppmätt i heroassetens vänstra fält (#f9ead0),
-     så att sidan och bildens papper möts utan skarv. */
-  --hz8-pilot-paper: #f8ead2;
+  /* Materialförlopp: heroassetens papper (#f9ead0, bara som reservfärg
+     bakom bilden) -> cream verktygszon -> sandfärgad butiksyta. */
+  --hz8-pilot-hero-paper: #f8ead2;
+  --hz8-pilot-cream: #fffdf8;
+  --hz8-pilot-paper: #faf3e9;
+  --hz8-pilot-rule: #ebe1d1;
   --hz8-pilot-green: #2c3620; /* Hazeys etablerade mörkgröna (H1, quiz, dekor) */
   --hz8-pilot-line: color-mix(in srgb, #8a6a3c 22%, transparent);
   --hz8-pilot-sand-glass: color-mix(in srgb, color-mix(in srgb, var(--hz8-beige) 55%, #fff) 64%, transparent);
@@ -766,8 +769,11 @@ html.hz8.hz8-cat-pilot #store-main { background: var(--hz8-pilot-paper) !importa
 html.hz8-cat-pilot[data-hz8-page="category"] :is(.hz8-cat-actions, .hz8-cat-rails, .hz8-cat-popular, .hz8-filter-shortcuts, .category-sort) { display: none !important; }
 
 /* ---------- Kusthero (facit 07) ----------
-   Färdiga assets i assets/category-vapes-hero-2026-10/: 1440 för vanliga
-   skärmar, 1920 från 1600 px, separat mobilbild under 768 px. Bara den
+   Header-anpassade v2-assets i assets/category-vapes-hero-2026-10/: 1440
+   för vanliga skärmar, 1920 från 1600 px, separat mobilbild under 768 px.
+   Desktopbilderna har samma proportion som heron (8:3) och visas i sin
+   bredd (minimal cover-zoom); förankrade nedtill så att blommorna syns
+   och himlen bakom headern beskärs. Bara den
    matchande regeln laddar sin bild. Pappersfältet finns i bilden. Ingen
    vertikal fade: fotot behåller kontrast ända ned till herons underkant,
    som möter filterremsan med en ren kant. Enda toningen är horisontell
@@ -775,19 +781,18 @@ html.hz8-cat-pilot[data-hz8-page="category"] :is(.hz8-cat-actions, .hz8-cat-rail
 html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero {
   grid-row: 1 / 5;
   margin: 0;
-  background: var(--hz8-pilot-paper);
-  box-shadow: inset 0 -1px 0 color-mix(in srgb, #5c3a07 22%, transparent);
+  background: var(--hz8-pilot-hero-paper);
 }
 html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__art {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--hz8-pilot-paper) 42%, transparent) 0, color-mix(in srgb, var(--hz8-pilot-paper) 14%, transparent) 26%, transparent 38%),
-    url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1440.webp") left 58% / cover no-repeat;
+    linear-gradient(90deg, rgba(248, 234, 210, .42) 0, rgba(248, 234, 210, .14) 26%, rgba(248, 234, 210, 0) 38%),
+    url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1440-v2.webp") left 72% / cover no-repeat;
 }
 @media (min-width: 1600px) {
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__art {
     background:
-      linear-gradient(90deg, color-mix(in srgb, var(--hz8-pilot-paper) 42%, transparent) 0, color-mix(in srgb, var(--hz8-pilot-paper) 14%, transparent) 26%, transparent 38%),
-      url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1920.webp") left 58% / cover no-repeat;
+      linear-gradient(90deg, rgba(248, 234, 210, .42) 0, rgba(248, 234, 210, .14) 26%, rgba(248, 234, 210, 0) 38%),
+      url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1920-v2.webp") left 72% / cover no-repeat;
   }
 }
 html.hz8-cat-pilot[data-hz8-page="category"] :is(.designer-category, .hz8-pchips, .hz8-pstatus, .hz8-pseries) { position: relative; z-index: 1; }
@@ -860,7 +865,7 @@ html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pguide {
   align-items: center;
   gap: 0 13px;
   width: 388px;
-  margin: 0 0 80px 44%;
+  margin: 0 0 80px 41.5%;
   padding: 16px 20px 14px 16px;
   /* Glaset i lager: mörk Hazey-oliv i centrum/vänster, varmare oliv mot
      kanterna, gyllene kantljus -- aldrig opacity på hela kortet. */
@@ -895,10 +900,11 @@ html.hz8-cat-pilot .hz8-pguide__title { margin: 0; color: #fffdf8; font: 600 22p
 html.hz8-cat-pilot .hz8-pguide__row { grid-column: 1 / -1; display: grid; justify-items: center; gap: 8px; margin-top: 13px; }
 html.hz8-cat-pilot .hz8-pguide .hz8-pguide__cta {
   width: auto; min-width: 0; min-height: 44px; padding: 0 30px; border-radius: 8px !important;
-  background: #d9782f; font-size: 15px !important;
+  background: var(--hz8-cta-fill); font-size: 15px !important;
   box-shadow: inset 0 1px 0 rgba(255, 230, 190, .25), 0 8px 16px -10px rgba(110, 50, 8, .7);
 }
-html.hz8-cat-pilot .hz8-pguide .hz8-pguide__cta:hover { background: #c96b25; }
+html.hz8-cat-pilot .hz8-pguide .hz8-pguide__cta:hover,
+html.hz8-cat-pilot .hz8-pguide .hz8-pguide__cta:active { background: var(--hz8-cta-hover); }
 html.hz8-cat-pilot .hz8-pguide .hz8-pguide__cta:focus-visible { outline: 2px solid #fffdf8 !important; outline-offset: 3px !important; }
 html.hz8-cat-pilot .hz8-pguide__steps { margin: 0; text-align: center; color: rgba(250, 243, 233, .86); font: 500 12px/1.3 var(--hz8-font-ui) !important; letter-spacing: .04em; }
 
@@ -947,27 +953,31 @@ html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool {
   grid-row: 5;
   position: sticky;
   top: calc(var(--hz8-top-clear) - 18px);
-  z-index: 30;
+  /* Under den fasta headern (z-index 15) -- tidigare 30, vilket lät
+     radens bakgrund måla över headern vid scroll. Popovers ligger ändå
+     över produktgridet (z-index 1). */
+  z-index: 14;
   margin: 0 0 16px;
 }
+/* Headern scrollad (68 px fullbreddsbar): raden direkt under den. */
+html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 76px; }
 /* Tunn varm kontrollremsa mellan hero och katalog (07). */
 html.hz8-cat-pilot .hz8-ptool__desk {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 12px 0;
-  border-bottom: 1px solid var(--hz8-pilot-line);
-  background: var(--hz8-pilot-paper);
+  background: transparent;
 }
 html.hz8-cat-pilot .hz8-ptool__desk { gap: 10px; }
 html.hz8-cat-pilot .hz8-ptool__desk .hz8-ptool__btn {
-  min-height: 42px; padding: 0 17px; border-color: #ebe1d1; background: #fffdf8;
+  min-height: 42px; padding: 0 17px; border-color: var(--hz8-pilot-rule); background: var(--hz8-pilot-cream);
   color: var(--hz8-pilot-green) !important; font-size: 14px !important;
   box-shadow: 0 3px 8px -5px rgba(92, 58, 7, .28);
 }
 html.hz8-cat-pilot .hz8-ptool__desk .hz8-ptool__btn:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 40%, #ebe1d1); background: #fffdf8; }
 /* Sortering: samma materialfamilj, lägre vikt. */
-html.hz8-cat-pilot .hz8-ptool__desk [data-pt="sort"] { background: #faf3e9; box-shadow: none; font-weight: 500 !important; }
+html.hz8-cat-pilot .hz8-ptool__desk [data-pt="sort"] { background: var(--hz8-pilot-paper); box-shadow: none; font-weight: 500 !important; }
 html.hz8-cat-pilot .hz8-ptool__mob { display: none; }
 html.hz8-cat-pilot .hz8-ptool__slot { position: relative; }
 html.hz8-cat-pilot .hz8-ptool__sort { margin-left: auto; }
@@ -1013,23 +1023,24 @@ html.hz8-cat-pilot .hz8-pswitch__track::after {
 }
 html.hz8-cat-pilot .hz8-pswitch[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
 html.hz8-cat-pilot .hz8-pswitch[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
-/* Fastnad verktygsrad: papperston bakom och ovanför. */
+/* Verktygszon: egen fullbredds cream-remsa exakt lika hög som raden --
+   aldrig högre (den gamla 120 px-bakgrunden täckte headern). Fastnad:
+   låg varm skugga under. */
 html.hz8-cat-pilot .hz8-ptool::before {
   content: "";
   position: absolute;
   left: 50%;
   width: 100vw;
-  top: -120px;
-  bottom: -10px;
+  top: 0;
+  bottom: 0;
   z-index: -1;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, var(--hz8-pilot-paper) 0, var(--hz8-pilot-paper) calc(100% - 10px), color-mix(in srgb, var(--hz8-pilot-paper) 0%, transparent) 100%);
-  opacity: 0;
+  border-bottom: 1px solid var(--hz8-pilot-rule);
+  background: var(--hz8-pilot-cream);
   pointer-events: none;
-  transition: opacity .16s var(--hz8-ease);
+  transition: box-shadow .16s var(--hz8-ease);
 }
-html.hz8-cat-pilot .hz8-ptool.is-stuck::before { opacity: 1; }
-html.hz8-cat-pilot .hz8-ptool.is-stuck .hz8-ptool__desk { box-shadow: 0 10px 18px -16px color-mix(in srgb, #4a2c08 40%, transparent); }
+html.hz8-cat-pilot .hz8-ptool.is-stuck::before { box-shadow: 0 10px 16px -12px rgba(74, 44, 8, .28); }
 html.hz8-cat-pilot .hz8-ptool { transition: opacity .18s var(--hz8-ease), visibility 0s linear 0s; }
 html.hz8-cat-pilot .hz8-ptool.is-past { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s var(--hz8-ease), visibility 0s linear .18s; }
 
@@ -1224,6 +1235,8 @@ html.hz8-cat-pilot .hz8-pstock {
   color: var(--hz8-olive); font: 600 12.5px/1.2 var(--hz8-font-ui) !important; white-space: nowrap;
 }
 html.hz8-cat-pilot .hz8-pstock::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--hz8-success-dot); box-shadow: 0 0 0 1.5px var(--hz8-olive); }
+/* Pausade serier (80-category.js, pilotPaused): hela gridcellen döljs. */
+html.hz8-cat-pilot[data-hz8-page="category"] #store-main :is(.hz8-paused-cell, .product-card.hz8-paused) { display: none !important; }
 html.hz8-cat-pilot .hz8-pstock.is-pending { visibility: hidden; }
 html.hz8-cat-pilot .hz8-pstock.is-pending::after { content: "\00a0"; }
 html.hz8-cat-pilot .hz8-pstock.is-out { color: var(--hz8-text-muted); }
@@ -1281,7 +1294,7 @@ html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pseries {
   border-radius: 16px;
   background:
     linear-gradient(100deg, color-mix(in srgb, var(--hz8-pilot-green) 96%, transparent) 0%, color-mix(in srgb, var(--hz8-pilot-green) 86%, transparent) 50%, color-mix(in srgb, var(--hz8-pilot-green) 62%, transparent) 100%),
-    url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1440.webp") 100% 92% / 190% auto no-repeat,
+    url("assets/category-vapes-hero-2026-10/category-vapes-hero-desktop-1440-v2.webp") 100% 92% / 190% auto no-repeat,
     var(--hz8-pilot-green);
   color: var(--hz8-text-on-dark);
   overflow: hidden;
@@ -1446,10 +1459,13 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
      och staket/blommor ramar in nedtill. Ingen dimma -- bara en lokal
      sandton bakom rubriktexten. */
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero { grid-row: 1 / 6; margin: 0; box-shadow: none; }
+  /* v2-bilden fyller bredden från överkanten (himmel bakom headern,
+     solen under den) och beskärs nedtill -- blomförgrunden får bara en
+     smal remsa under quizet. */
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__art {
     background:
-      radial-gradient(92% 24% at 4% 25%, rgba(248, 227, 192, .72) 0%, rgba(248, 227, 192, .36) 58%, rgba(248, 227, 192, 0) 100%),
-      url("assets/category-vapes-hero-2026-10/category-vapes-hero-mobile-768.webp") 34% 100% / auto 118% no-repeat;
+      radial-gradient(92% 28% at 4% 30%, rgba(248, 227, 192, .62) 0%, rgba(248, 227, 192, .3) 58%, rgba(248, 227, 192, 0) 100%),
+      url("assets/category-vapes-hero-2026-10/category-vapes-hero-mobile-768-v2.webp") 50% 0 / cover no-repeat;
   }
   html.hz8-cat-pilot[data-hz8-page="category"] .designer-breadcrumbs { padding-top: calc(var(--hz8-top-clear) + 2px) !important; }
   html.hz8-cat-pilot[data-hz8-page="category"] .designer-breadcrumbs :is(a, li, span) { font-size: 12.5px !important; }
@@ -1465,7 +1481,7 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
     grid-template-columns: 26px minmax(0, 1fr);
     gap: 0 9px;
     width: min(326px, 100%);
-    margin: 0 0 clamp(170px, 62vw, 290px);
+    margin: 0 0 98px;
     padding: 12px 14px 11px;
   }
   html.hz8-cat-pilot .hz8-pguide__emblem { width: 26px; height: 26px; }
@@ -1476,7 +1492,12 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   html.hz8-cat-pilot .hz8-pguide__cta .hz8-icon { width: 15px; height: 15px; }
   html.hz8-cat-pilot .hz8-pguide__steps { font-size: 11px !important; }
   html.hz8-cat-pilot .hz8-pdecor__seal { display: none; }
-  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { grid-row: 6; top: calc(var(--hz8-top-clear) - 16px); margin: 16px 0 12px; }
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { grid-row: 6; top: calc(var(--hz8-top-clear) - 16px); margin: 14px 0 12px; }
+  html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 64px; }
+  /* Mobil: ingen fullbreddsremsa i vila -- bara sandbakgrund när raden
+     sitter fast, så att produkter inte syns runt höljet. */
+  html.hz8-cat-pilot .hz8-ptool::before { top: -8px; bottom: -8px; border: 0; background: var(--hz8-pilot-paper); opacity: 0; }
+  html.hz8-cat-pilot .hz8-ptool.is-stuck::before { opacity: 1; box-shadow: none; }
 }
 @media (max-width: 359px) {
   html.hz8-cat-pilot .hz8-pguide__title { font-size: 14px !important; }
@@ -1487,8 +1508,8 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   /* En gemensam cream-behållare med tunn avdelare -- två halvor. */
   html.hz8-cat-pilot .hz8-ptool__mob {
     display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 3px;
-    border: 1px solid #ebe1d1; border-radius: 14px;
-    background: linear-gradient(#ebe1d1, #ebe1d1) 50% 50% / 1px 24px no-repeat, #fffdf8;
+    border: 1px solid var(--hz8-pilot-rule); border-radius: 14px;
+    background: linear-gradient(var(--hz8-pilot-rule), var(--hz8-pilot-rule)) 50% 50% / 1px 24px no-repeat, var(--hz8-pilot-cream);
     box-shadow: 0 6px 14px -10px rgba(92, 58, 7, .35);
   }
   html.hz8-cat-pilot .hz8-ptool__mob .hz8-ptool__btn {
@@ -1497,7 +1518,7 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   }
   html.hz8-cat-pilot .hz8-ptool__mob .hz8-ptool__btn:hover { background: #faf3e9; }
   html.hz8-cat-pilot .hz8-ptool__mob .hz8-ptool__btn > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  html.hz8-cat-pilot .hz8-ptool__mob .hz8-ptool__filter.is-active { color: color-mix(in srgb, #d9782f 78%, var(--hz8-pilot-green)) !important; font-weight: 700 !important; }
+  html.hz8-cat-pilot .hz8-ptool__mob .hz8-ptool__filter.is-active { color: var(--hz8-cta-hover) !important; font-weight: 700 !important; }
   /* Aktiva filter bryts naturligt (ingen dold horisontell scroll). */
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pchips { grid-row: 7; margin: 0 0 14px; }
   html.hz8-cat-pilot .hz8-pchips__label { display: none; }
