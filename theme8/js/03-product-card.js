@@ -16,7 +16,7 @@
     return {
       add: l.add ? pair(l.add, l.addShort || l.add, l.addIcon) : pair("+ Lägg till", "Lägg till"),
       variants: l.variants ? pair(l.variants, l.variantsShort || l.variants, "", l.variantsIcon) : pair("Välj variant", "Välj"),
-      variantsAria: l.variants || "Välj variant"
+      variantsAria: l.variantsAria || l.variants || "Välj variant"
     };
   }
   HZ8.relabelCards = function () {
