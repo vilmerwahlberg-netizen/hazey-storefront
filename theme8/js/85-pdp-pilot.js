@@ -57,7 +57,11 @@
     chev: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
     doc: '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 15.5h7M9 9h3"/></svg>',
-    star: '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg>'
+    star: '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg>',
+    leaf: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21V11M12 11c0-4 2.5-7 7-8 0 5-2.5 8-7 8zM12 14c0-3.2-2-5.6-6-6.4 0 4 2 6.4 6 6.4z"/></svg>',
+    list: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 11h7M9 14.5h7M9 18h4"/></svg>',
+    flask: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3h6M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7.2 15h9.6"/></svg>',
+    ret: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4M12 8v4l2.5 2"/></svg>'
   };
 
   /* ---------------- Data ---------------- */
@@ -226,9 +230,12 @@
     var count = (((document.querySelector(".product-detail__information .price-features .rating") || {}).textContent || "").match(/(\d+)\s*omdöm/) || [])[1];
     var avg = stars ? parseFloat(stars.getAttribute("title")) : NaN;
     var html = "";
+    /* Betyg som text + riktig ankarlänk till omdömessektionen (bara när
+       sektionen finns, dvs. när Nyehandels omdömen faktiskt laddats). */
     if (!isNaN(avg) && count) {
       var a = avg.toFixed(1).replace(".", ",");
-      html = '<a class="hz8-pp__rating" href="#hz8-pr" aria-label="Betyg ' + a + " av 5, " + count + ' omdömen"><span class="hz8-pp__stars" aria-hidden="true"><span style="width:' + Math.round(avg * 20) + '%"></span></span><span aria-hidden="true">' + a + " (" + count + ")</span></a>";
+      html = '<p class="hz8-pp__rating"><span class="hz8-pp__stars" aria-hidden="true"><span style="width:' + Math.round(avg * 20) + '%"></span></span><span class="hz8-visually-hidden">Betyg ' + a + " av 5, " + count + ' omdömen</span><span aria-hidden="true">' + a + " (" + count + ")</span></p>" +
+        (document.getElementById("omdomen") ? '<a class="hz8-pp__revlink" href="#omdomen">Visa ' + count + (+count === 1 ? " omdöme" : " omdömen") + "</a>" : "");
     }
     if (meta.innerHTML !== html) meta.innerHTML = html;
     meta.hidden = !html;
@@ -705,12 +712,22 @@
       if (past !== sticky.__past) { sticky.__past = past; syncSticky(); }
     };
     window.addEventListener("scroll", function () { if (!sraf) sraf = window.requestAnimationFrame(check); }, { passive: true });
+    /* Tangentbordsfokus under baren: flytta upp kontrollen ovanför den
+       (Chrome räknar inte scroll-padding vid fokusnavigering). Nästa frame:
+       efter browserns egen fokusscroll, som också kan tända baren. */
+    document.addEventListener("focusin", function () { window.requestAnimationFrame(uncoverFocus); });
     window.addEventListener("resize", function () { if (!sraf) sraf = window.requestAnimationFrame(check); }, { passive: true });
     check();
     /* Meny/varukorg öppnas via klassbyten -- följ dem (throttlat). */
     var raf = 0;
     new MutationObserver(function () { if (!raf) raf = window.requestAnimationFrame(function () { raf = 0; syncSticky(); }); })
       .observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class", "aria-modal", "open", "inert"] });
+  }
+  function uncoverFocus() {
+    var el = document.activeElement;
+    if (!sticky || !sticky.classList.contains("is-on") || !el || el === document.body || sticky.contains(el)) return;
+    var r = el.getBoundingClientRect(), top = sticky.getBoundingClientRect().top;
+    if (r.bottom > top - 8 && r.top < window.innerHeight) window.scrollBy({ top: r.bottom - top + 16, behavior: "instant" });
   }
   function syncSticky() {
     if (!sticky) return;
@@ -721,6 +738,7 @@
       sticky.classList.toggle("is-on", show);
       sticky.setAttribute("aria-hidden", show ? "false" : "true");
       sticky.inert = !show;
+      if (show) uncoverFocus();
     }
     document.documentElement.classList.toggle("hz8-pp-sticky-on", show);
     if (!st) return;
@@ -822,12 +840,12 @@
     /* Innehåll: produktens egna innehållsrader när de finns, annars det
        som går att läsa ur namnet. Aldrig båda (konkurrerande värden). */
     if (kind === "content" && S.contentSpecs && S.contentSpecs.length) return S.contentSpecs;
-    var rows = kind === "overview" ? [
-      [specLabels.indexOf("produkttyp") !== -1 ? "" : "Produkttyp", np.type],
+    /* Produktfakta: varumärke + produkttextens egna rader (produkttyp,
+       produktnamn). Vald strain/antal strains står redan i köpstationen. */
+    var rows = kind === "facts" ? [
       ["Varumärke", brand ? brand.textContent.trim() : "", brand ? brand.getAttribute("href") : ""],
-      [S.values.length > 1 ? (label() === "strain" ? "Vald strain" : "Vald " + S.optionName) : "", S.values.length > 1 ? valueName(currentValue()) : ""],
-      [S.values.length > 1 ? (label() === "strain" ? "Antal strains" : "Antal alternativ") : "", S.values.length > 1 ? String(S.values.length) : ""]
-    ] : [
+      [specLabels.indexOf("produkttyp") !== -1 ? "" : "Produkttyp", np.type]
+    ].concat(S.otherSpecs || []) : [
       ["Cannabinoid", np.content],
       [/g$/i.test(np.size) ? "Vikt" : "Volym", np.size]
     ];
@@ -844,41 +862,79 @@
       if (box) box.hidden = !html;
     });
   }
-  /* Mobil: kapitel med knapp-rubrik (aria-expanded). Desktop: öppet,
-     ren rubrik. Samma DOM-innehåll i båda lägena (hidden växlas). */
+  /* Kapitel: H2 med desktop- och mobilrubrik (V4: "Produktöversikt" /
+     "Om produkten", "Produktinformation" / "Produktfakta"). Mobil:
+     disclosure-rader (knapp-rubrik, aria-expanded); desktop: öppet. */
   var MOBILE = window.matchMedia("(max-width: 767px)");
-  function chapter(id, title, cls, collapsible) {
+  function chapter(id, title, cls, opts) {
+    opts = opts || {};
     var sec = node("section", "hz8-ppc__sec " + cls);
     sec.id = id;
     sec.setAttribute("aria-labelledby", id + "-h");
-    sec.innerHTML = '<h2 class="hz8-ppc__h" id="' + id + '-h"><span class="hz8-ppc__htext">' + esc(title) + "</span></h2>" + '<div class="hz8-ppc__body" id="' + id + '-b"></div>';
-    if (collapsible) sec.setAttribute("data-collapsible", "");
+    sec.setAttribute("data-t-d", title);
+    sec.setAttribute("data-t-m", opts.mobile || title);
+    if (opts.icon) sec.setAttribute("data-ico", opts.icon);
+    if (opts.collapsible) sec.setAttribute("data-collapsible", "");
+    sec.innerHTML = '<h2 class="hz8-ppc__h" id="' + id + '-h"></h2><div class="hz8-ppc__body" id="' + id + '-b"></div>';
     return sec;
   }
-  function syncCollapsibles() {
-    document.querySelectorAll(".hz8-ppc__sec[data-collapsible]").forEach(function (sec) {
-      var h = sec.querySelector(".hz8-ppc__h"), body = sec.querySelector(".hz8-ppc__body"), btn = h.querySelector("button");
-      if (MOBILE.matches && !btn) {
-        var t = h.textContent;
-        h.innerHTML = '<button type="button" class="hz8-ppc__toggle" aria-expanded="false" aria-controls="' + body.id + '"><span class="hz8-ppc__htext">' + esc(t) + "</span>" + ICON.chev + "</button>";
-        body.hidden = true;
-      } else if (!MOBILE.matches && btn) {
-        h.innerHTML = '<span class="hz8-ppc__htext">' + esc(btn.textContent) + "</span>";
-        body.hidden = false;
-      }
-    });
+  function setHead(sec, mobile) {
+    var h = sec.querySelector(".hz8-ppc__h"), body = sec.querySelector(".hz8-ppc__body");
+    var t = sec.getAttribute(mobile ? "data-t-m" : "data-t-d"), ico = sec.getAttribute("data-ico");
+    var coll = mobile && sec.hasAttribute("data-collapsible");
+    var key = (coll ? "c:" : "o:") + t;
+    if (h.__key === key) return;
+    var btn = h.querySelector("button"), open = !!btn && btn.getAttribute("aria-expanded") === "true";
+    h.__key = key;
+    var inner = (ico && ICON[ico] ? '<span class="hz8-ppc__ico">' + ICON[ico] + "</span>" : "") + '<span class="hz8-ppc__htext">' + esc(t) + "</span>";
+    if (coll) { h.innerHTML = '<button type="button" class="hz8-ppc__toggle" aria-expanded="' + open + '" aria-controls="' + body.id + '">' + inner + ICON.chev + "</button>"; body.hidden = !open; }
+    else { h.innerHTML = inner; body.hidden = false; }
+  }
+  /* Samma noder, två kompositioner: desktop = produkttexten under
+     Produktinformation och fakta i översikten; mobil = texten under Om
+     produkten och fakta i Produktfakta-raden. Bara statiska noder flyttas. */
+  function syncLayout() {
+    var m = MOBILE.matches;
+    document.querySelectorAll(".hz8-ppc__sec").forEach(function (s) { setHead(s, m); });
+    var text = document.getElementById("hz8-ppc-textwrap"), facts = document.getElementById("hz8-ppc-facts");
+    var ovBody = document.getElementById("hz8-ppc-oversikt-b"), infoBody = document.getElementById("hz8-ppc-info-b");
+    if (infoBody) {
+      var textHome = m ? ovBody : infoBody, factsHome = m ? infoBody : ovBody;
+      if (text && text.parentNode !== textHome) { if (m) textHome.appendChild(text); else textHome.insertBefore(text, textHome.firstChild); }
+      if (facts && facts.parentNode !== factsHome) factsHome.appendChild(facts);
+    }
+    balance();
+  }
+  /* Desktop: produkttexten klipps så att Produktinformation slutar i höjd
+     med Innehåll och analys (kolumnerna delar topp och botten). */
+  function balance() {
+    var text = document.querySelector(".hz8-ppc__text"), more = document.querySelector(".hz8-ppc__more");
+    if (!text || !more) return;
+    var grid = document.querySelector(".hz8-ppc__grid"), ana = document.getElementById("hz8-ppc-analys"), info = document.getElementById("hz8-ppc-info");
+    var target = MOBILE.matches ? 300 : 420;
+    if (!MOBILE.matches && grid && ana && info && getComputedStyle(grid).gridTemplateColumns.split(" ").length > 1) {
+      var h = function (el) { return el ? el.getBoundingClientRect().height : 0; };
+      var natural = h(ana.querySelector(".hz8-ppc__h")) + h(ana.querySelector(".hz8-ppc__body"));
+      target = Math.max(200, Math.round(natural - h(info.querySelector(".hz8-ppc__h")) - h(more) - 12));
+    }
+    text.style.setProperty("--pp-clamp", target + "px");
+    var long = text.scrollHeight > target + 48;
+    more.hidden = !long;
+    text.classList.toggle("is-clamped", long && more.getAttribute("aria-expanded") !== "true");
   }
   function deliveryHtml() {
     var R = HZ8.commerce && HZ8.commerce.rules, lines = HZ8.commerce && HZ8.commerce.deliveryLines ? HZ8.commerce.deliveryLines() : [];
     var free = lines.filter(function (l) { return /^Fri frakt/.test(l); })[0], fee = lines.filter(function (l) { return /frakt under/.test(l); })[0];
+    var se = lines.some(function (l) { return /Sverige/.test(l); });
     var items = [];
-    /* Omformulerat ur butikens verifierade regler (HZ8.commerce) och
-       köp- och leveransvillkoren -- inga nya löften eller leveranstider. */
-    if (free && R) items.push(["Frakt", "Fraktfritt från " + R.freeShippingFrom + " kr" + (fee && R.shippingFee ? ", annars " + R.shippingFee + " kr." : ".")]);
-    if (lines.some(function (l) { return /Sverige/.test(l); })) items.push(["Leverans", "Vi skickar från Sverige och levererar endast inom Sverige."]);
-    if (lines.some(function (l) { return /^Diskret/.test(l); })) items.push(["Förpackning", "Paketet är diskret förpackat."]);
-    items.push(["Retur", "14 dagars ångerrätt enligt distansavtalslagen. Returfrakten betalas av kunden."]);
-    return '<dl class="hz8-ppc__dl">' + items.map(function (r) { return "<div><dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd></div>"; }).join("") + "</dl>" +
+    /* Nästa informationsnivå efter köpstationens korta rader: samma
+       verifierade regler (HZ8.commerce, köp- och leveransvillkoren), inga
+       nya löften eller leveranstider. */
+    var ship = (free && R ? "Fraktfritt från " + R.freeShippingFrom + " kr" + (fee && R.shippingFee ? ", annars " + R.shippingFee + " kr." : ".") : "") + (se ? (free ? " " : "") + "Vi skickar från Sverige och levererar endast inom Sverige." : "");
+    if (ship) items.push(["truck", "Frakt och leverans", ship]);
+    if (lines.some(function (l) { return /^Diskret/.test(l); })) items.push(["parcel", "Förpackning", "Paketet är diskret förpackat."]);
+    items.push(["ret", "Retur", "14 dagars ångerrätt enligt distansavtalslagen. Returfrakten betalas av kunden."]);
+    return '<ul class="hz8-ppc__del">' + items.map(function (r) { return '<li><span class="hz8-ppc__delico">' + ICON[r[0]] + "</span><div><h3>" + esc(r[1]) + "</h3><p>" + esc(r[2]) + "</p></div></li>"; }).join("") + "</ul>" +
       '<p class="hz8-ppc__links"><a href="' + esc(HZ8.link("/sv/page/kop-och-leveransvillkor")) + '">Köp- och leveransvillkor</a><a href="' + esc(HZ8.link("/sv/page/faq")) + '">Vanliga frågor</a></p>';
   }
   /* Produkttextens egna rubriker hamnar under H2 Produktinformation: en
@@ -916,12 +972,27 @@
     });
     return rows;
   }
+  /* Produkttextens "Produktinformation:"-lista visas som fakta/innehåll --
+     listan (och dess etikett) döljs i texten när varje rad blivit en
+     faktarad, annars samma uppgifter två gånger. */
+  function hideSpecList(article) {
+    article.querySelectorAll("ul, ol").forEach(function (list) {
+      var lis = list.querySelectorAll(":scope > li");
+      if (!lis.length || Array.prototype.some.call(lis, function (li) { return !li.querySelector("strong, b"); })) return;
+      list.hidden = true;
+      var prev = list.previousElementSibling;
+      while (prev && prev.tagName === "BR") prev = prev.previousElementSibling;
+      if (prev && /^(produktinformation|specifikationer|fakta)\s*:?$/i.test(prev.textContent.trim())) prev.hidden = true;
+    });
+  }
   function buildChapters(detail) {
     if (document.querySelector(".hz8-ppc")) return;
     var host = node("div", "hz8-ppc");
     detail.parentNode.insertBefore(host, detail.nextSibling);
+    var chap = node("div", "hz8-ppc__chapter"); host.appendChild(chap);
 
-    /* 1. Översikt: kort befintlig ingress + kompakta fakta. */
+    /* 1. Produktöversikt: befintlig ingress + produktfakta, ett botaniskt
+       bildmoment (befintlig asset, dekorativ). */
     var shortDesc = document.querySelector(".product-detail__information .short-description");
     var article = document.querySelector("#product-information article.product-description");
     /* Ingress = första riktiga stycket (kort beskrivning i första hand).
@@ -929,47 +1000,60 @@
        tidigare -- dess specifikationsrader finns i produkttexten. */
     var firstP = function (root) { return root ? Array.prototype.filter.call(root.querySelectorAll("p"), function (p) { return p.textContent.trim().length > 40; })[0] || null : null; };
     var lead = firstP(shortDesc) || firstP(article);
-    var ov = node("div", "hz8-ppc__overview");
-    ov.setAttribute("role", "region"); ov.setAttribute("aria-label", "Produktöversikt");
-    ov.innerHTML = '<div class="hz8-ppc__intro"></div><div class="hz8-ppc__facts" data-hz8-hide-empty><dl data-hz8-facts="overview"></dl></div>';
-    if (lead) { lead.classList.add("hz8-ppc__lead"); ov.querySelector(".hz8-ppc__intro").appendChild(lead); } else ov.querySelector(".hz8-ppc__intro").remove();
-    host.appendChild(ov);
+    var ov = chapter("hz8-ppc-oversikt", "Produktöversikt", "hz8-ppc--overview", { mobile: "Om produkten", icon: "leaf" });
+    var ovBody = ov.querySelector(".hz8-ppc__body");
+    if (lead) { lead.classList.add("hz8-ppc__lead"); ovBody.appendChild(lead); }
+    if (ASSET_BASE) ov.insertAdjacentHTML("beforeend", '<figure class="hz8-ppc__ovimg" aria-hidden="true"><img src="' + esc(ASSET_BASE + "campaign-thca.jpg") + '" alt="" width="800" height="800" loading="lazy" decoding="async"></figure>');
+    chap.appendChild(ov);
 
-    /* 2-4. Produktinformation (+ Innehåll och analys, Leverans och retur
-       som högerkolumn på desktop -- DOM-ordningen är densamma). */
-    var grid = node("div", "hz8-ppc__grid"); host.appendChild(grid);
+    /* 2-3. Produktinformation | Innehåll och analys (en rad på desktop). */
+    var grid = node("div", "hz8-ppc__grid"); chap.appendChild(grid);
+    var facts = node("div", "hz8-ppc__facts"); facts.id = "hz8-ppc-facts"; facts.setAttribute("data-hz8-hide-empty", "");
+    facts.innerHTML = '<dl data-hz8-facts="facts" aria-label="Produktfakta"></dl>';
     if (article) {
-      var info = chapter("hz8-ppc-info", "Produktinformation", "hz8-ppc--info", false);
+      var info = chapter("hz8-ppc-info", "Produktinformation", "hz8-ppc--info", { mobile: "Produktfakta", icon: "list", collapsible: true });
       adoptDescription(article, lead);
-      var body = info.querySelector(".hz8-ppc__body");
-      var text = node("div", "hz8-ppc__text"); text.id = "hz8-ppc-text"; text.appendChild(article); body.appendChild(text);
-      body.insertAdjacentHTML("beforeend", '<button type="button" class="hz8-ppc__more" aria-expanded="false" aria-controls="hz8-ppc-text" hidden>Visa mer</button>');
       /* Produkttextens egna "Etikett: värde"-rader. Innehållsrader
          (halt, mängd, förvaring) visas under Innehåll och analys; rader
-         som upprepar översikten (varumärke) visas inte igen. */
+         som upprepar varumärket visas inte igen. */
       var brandTxt = ((document.querySelector(".product-detail__information .brand a") || {}).textContent || "").trim().toLowerCase();
       var specs = specRows(article).filter(function (r) { return r[1].trim().toLowerCase() !== brandTxt; });
       S.contentSpecs = specs.filter(function (r) { return CONTENT_LABEL.test(r[0]); });
       S.otherSpecs = specs.filter(function (r) { return !CONTENT_LABEL.test(r[0]); });
-      if (S.otherSpecs.length) body.insertAdjacentHTML("beforeend", '<div class="hz8-ppc__specs"><h3>Specifikationer</h3><dl class="hz8-ppc__dl">' + dlHtml(S.otherSpecs) + "</dl></div>");
+      hideSpecList(article);
+      var wrap = node("div", "hz8-ppc__textwrap"); wrap.id = "hz8-ppc-textwrap";
+      var text = node("div", "hz8-ppc__text"); text.id = "hz8-ppc-text"; text.appendChild(article); wrap.appendChild(text);
+      wrap.insertAdjacentHTML("beforeend", '<button type="button" class="hz8-ppc__more" aria-expanded="false" aria-controls="hz8-ppc-text" hidden><span>Visa mer om produkten</span>' + ICON.arrow + "</button>");
+      info.querySelector(".hz8-ppc__body").appendChild(wrap);
       grid.appendChild(info);
     }
-    var ana = chapter("hz8-ppc-analys", "Innehåll och analys", "hz8-ppc--analys", true);
+    ovBody.appendChild(facts);
+    var ana = chapter("hz8-ppc-analys", "Innehåll och analys", "hz8-ppc--analys", { icon: "flask", collapsible: true });
     var a = analysisLink();
+    /* Rapportlänk bara när produkten har en verklig rapport; ingen batch,
+       inget datum eller labb som inte finns i datan. */
     ana.querySelector(".hz8-ppc__body").innerHTML = '<dl class="hz8-ppc__dl" data-hz8-facts="content"></dl>' +
-      (a ? '<p class="hz8-ppc__report"><a class="hz8-ppc__reportlink" href="' + esc(a.href) + '" target="_blank" rel="noopener">' + ICON.doc + "<span>Visa " + (/labbrapport/i.test(a.textContent) ? "labbrapport" : "analys") + (/\.pdf(\?|$)/i.test(a.href) ? " (PDF)" : "") + "</span>" + ICON.arrow + "</a></p>" : "");
+      (a ? '<p class="hz8-ppc__report"><a class="hz8-ppc__reportlink" href="' + esc(a.href) + '" target="_blank" rel="noopener">' + ICON.doc + "<span>Visa " + (/labbrapport/i.test(a.textContent) ? "labbrapport" : "full analys") + (/\.pdf(\?|$)/i.test(a.href) ? " (PDF)" : "") + "</span>" + ICON.arrow + "</a></p>" : "");
     if (factRows("content").length || a) grid.appendChild(ana);
-    var del = chapter("hz8-ppc-leverans", "Leverans och retur", "hz8-ppc--leverans", true);
+    /* 4. Leverans och retur: en tunn rad i full bredd. */
+    var del = chapter("hz8-ppc-leverans", "Leverans och retur", "hz8-ppc--leverans", { icon: "truck", collapsible: true });
     del.querySelector(".hz8-ppc__body").innerHTML = deliveryHtml();
-    grid.appendChild(del);
+    chap.appendChild(del);
     syncLedger();
 
-    /* 5. Omdömen (fylls när Nyehandels omdömen laddats). */
-    var rev = node("div", "hz8-ppc__reviews"); host.appendChild(rev);
+    /* 5. Passar till (kompletterande tillbehör, före omdömena -- bara när
+       83-pdp-purchase hittar verifierad kompatibilitet; asynkront). */
+    var fit = node("div", "hz8-ppc__fit"); host.appendChild(fit);
+    var moveCompat = function () { var c = document.querySelector(".hz8-pdp-compat"); if (c && c.parentNode !== fit) { fit.appendChild(c); var t = c.querySelector(".hz8-prail__title, h2"); if (t) t.textContent = "Passar till"; } };
+    moveCompat(); window.setTimeout(moveCompat, 2500); window.setTimeout(moveCompat, 5000);
+
+    /* 6. Omdömen (fylls när Nyehandels omdömen laddats). Stabilt ID för
+       ankarlänken vid betyget ovanför vecket. */
+    var rev = node("div", "hz8-ppc__reviews"); rev.id = "omdomen"; host.appendChild(rev);
     var count = +((((document.querySelector(".accordion-button#product-reviews") || {}).textContent || "").match(/\((\d+)\)/) || [])[1] || 0);
     loadReviews(count).then(function (list) {
       var html = list && list.length ? reviewsHtml(list) : "";
-      if (!html) { rev.remove(); return; }
+      if (!html) { rev.remove(); syncStation(); return; }
       rev.innerHTML = html;
       var cta = document.querySelector(".nh-review-cta a[href]");
       if (cta) rev.querySelector(".hz8-pr__foot").insertAdjacentHTML("beforeend", '<a class="hz8-pr__leave" href="' + esc(cta.getAttribute("href")) + '" target="_blank" rel="noopener">' + esc(cta.textContent.trim()) + "</a>");
@@ -980,15 +1064,11 @@
         full.hidden = open; all.setAttribute("aria-expanded", String(!open));
         all.firstChild.textContent = open ? "Läs alla " + list.length + " omdömen " : "Visa färre omdömen ";
       });
+      syncStation();
     });
 
-    /* 6. Passar till (kompatibla tillbehör -- bara när 83-pdp-purchase
-       hittar verifierad kompatibilitet; dyker upp asynkront). */
-    var fit = node("div", "hz8-ppc__fit"); host.appendChild(fit);
-    var moveCompat = function () { var c = document.querySelector(".hz8-pdp-compat"); if (c && c.parentNode !== fit) { fit.appendChild(c); var t = c.querySelector(".hz8-prail__title, h2"); if (t) t.textContent = "Passar till"; } };
-    moveCompat(); window.setTimeout(moveCompat, 2500); window.setTimeout(moveCompat, 5000);
-
-    /* 7. Liknande produkter: bara alternativ i samma produkttyp. */
+    /* 7. Liknande produkter: bara alternativ i samma produkttyp, efter
+       omdömena (kunden leds inte bort innan förtroendet etablerats). */
     var sim = document.querySelector(".product-page-lists__similar-products");
     if (sim) {
       host.appendChild(sim);
@@ -1045,19 +1125,31 @@
       rec.hidden = others < 2;
     };
     syncRecent(); window.setTimeout(syncRecent, 3000);
-    /* Visa mer: samma sektion expanderas (texten finns redan i DOM). */
+    /* Visa mer: samma text expanderas på plats (finns redan i DOM). */
     var textEl = document.getElementById("hz8-ppc-text"), more = document.querySelector(".hz8-ppc__more");
     if (textEl && more) {
-      var fit2 = function () { var long = textEl.scrollHeight > 560; more.hidden = !long; textEl.classList.toggle("is-clamped", long && more.getAttribute("aria-expanded") !== "true"); };
-      more.addEventListener("click", function () { var o = more.getAttribute("aria-expanded") === "true"; more.setAttribute("aria-expanded", String(!o)); more.textContent = o ? "Visa mer" : "Visa mindre"; textEl.classList.toggle("is-clamped", o); if (o) textEl.scrollIntoView({ block: "start", behavior: reduced() ? "auto" : "smooth" }); });
-      fit2(); window.setTimeout(fit2, 1500);
+      more.addEventListener("click", function () {
+        var o = more.getAttribute("aria-expanded") === "true";
+        more.setAttribute("aria-expanded", String(!o));
+        more.firstChild.textContent = o ? (MOBILE.matches ? "Läs mer" : "Visa mer om produkten") : "Visa mindre";
+        textEl.classList.toggle("is-clamped", o);
+        if (o && textEl.getBoundingClientRect().top < 0) textEl.scrollIntoView({ block: "start", behavior: reduced() ? "auto" : "smooth" });
+      });
     }
-    syncCollapsibles();
-    MOBILE.addEventListener("change", syncCollapsibles);
+    syncLayout();
+    if (more && more.getAttribute("aria-expanded") !== "true") more.firstChild.textContent = MOBILE.matches ? "Läs mer" : "Visa mer om produkten";
+    window.setTimeout(balance, 1500);
+    var rt = 0;
+    window.addEventListener("resize", function () { window.clearTimeout(rt); rt = window.setTimeout(balance, 150); }, { passive: true });
+    MOBILE.addEventListener("change", function () {
+      syncLayout();
+      if (more && more.getAttribute("aria-expanded") !== "true") more.firstChild.textContent = MOBILE.matches ? "Läs mer" : "Visa mer om produkten";
+    });
     host.addEventListener("click", function (e) {
       var b = e.target.closest(".hz8-ppc__toggle"); if (!b) return;
       var body = document.getElementById(b.getAttribute("aria-controls")); var o = b.getAttribute("aria-expanded") === "true";
       b.setAttribute("aria-expanded", String(!o)); body.hidden = o;
+      if (!o) balance();
     });
   }
 
@@ -1112,7 +1204,8 @@
   /* Analys/batch: bara med en verklig produktspecifik rapportlänk i
      produktens egen text (länktext eller adress nämner analys/COA/lab). */
   function analysisLink() {
-    var links = document.querySelectorAll("#product-page .short-description a[href], #product-information a[href]");
+    /* Produkttexten kan redan ha flyttats in i kapitlet (.hz8-ppc__text). */
+    var links = document.querySelectorAll("#product-page .short-description a[href], #product-information a[href], .hz8-ppc__text a[href]");
     return Array.prototype.filter.call(links, function (a) {
       return /(analys|labbrapport|certifikat|\bcoa\b|certificate of analysis)/i.test(a.textContent + " " + a.getAttribute("href")) && !/folkhalsomyndigheten/i.test(a.href);
     })[0] || null;
@@ -1151,8 +1244,10 @@
     ["popstate", "pageshow"].forEach(function (ev) { window.addEventListener(ev, function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 120); }); });
   }
 
+  var ASSET_BASE = "";
   HZ8.register("pdp-pilot", function (context) {
     if (context.page !== "product" || !HZ8.isPdpPilot()) return;
+    ASSET_BASE = context.assetBase || "";
     document.documentElement.classList.add("hz8-pdp-pilot");
     domValues();
     build();
