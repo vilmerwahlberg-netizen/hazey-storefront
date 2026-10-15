@@ -48,22 +48,16 @@ html.hz8-pdp-pilot :is(.hz8-strain-chips, #hz8-buybar, .hz8-pdp-sticky, .nh-revi
 /* Före första datasynk: dolt men layoutat (inget synligt hopp). */
 html.hz8-pdp-pilot:not(.hz8-pp-ready) :is(.hz8-pp, .hz8-ppc, .hz8-ppsum, .product-detail__media .product-image-slider__main) { visibility: hidden; }
 
-/* ---------- Header (V5): Hazey-grön list i hela bredden ----------
-   Headerns eget mörka läge (hz8-header--on-dark i 05-header.css: ljus
-   logga, nav, ikoner, sökfält och fokus) med solid grön yta i stället
-   för glas-pillen. Bara på piloten; samma header-DOM och funktioner. */
-html.hz8.hz8-pdp-pilot #store-header .main { margin: 0 !important; max-width: 100% !important; height: 68px !important; }
-html.hz8.hz8-pdp-pilot #store-header .main::before { border-radius: 0 !important; background: linear-gradient(180deg, #323d26 0%, #2a3320 100%) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; border-width: 0 0 1px !important; border-color: rgba(244, 233, 220, .12) !important; box-shadow: 0 10px 24px -16px rgba(16, 22, 10, .7) !important; }
-html.hz8.hz8-pdp-pilot #store-header .main .container { padding-inline: calc((100% - var(--hz8-content)) / 2) !important; }
-
 /* ---------- Köpdelen (V5): bildscen | köpstation, Kort om produkten
    under scenen ----------
    Scenen (djupgrön botanisk miljö, befintlig asset) går ut till fönstrets
    vänsterkant (::before åt vänster ger ingen scroll); köpstationens
-   elfenbensyta går ut till högerkanten (box-shadow + clip-path). Båda
-   når upp till headern bara visuellt (--pp-lift, mätt i JS): sidans
-   layoutpositioner är desamma som temats vanliga, så laddningen ger
-   inget större layoutskift. Den riktiga produktbilden är motivet,
+   elfenbensyta går ut till högerkanten (box-shadow + clip-path).
+   --pp-lift (JS) lyfter köpstationen visuellt mot sidans topp; --pp-reach
+   (JS) är hur långt ytorna målas uppåt -- högst till den delade headerns
+   underkant, så att headern (glas) har samma bakgrund som på övriga
+   sidor. Layoutpositionerna är temats vanliga (inget större
+   laddningsskift). Den riktiga produktbilden är motivet,
    oförändrad och hel. */
 @media (min-width: 768px) {
   html.hz8-pdp-pilot[data-hz8-page="product"] .designer-breadcrumbs { position: relative; z-index: 5; pointer-events: none; }
@@ -110,6 +104,9 @@ html.hz8.hz8-pdp-pilot #store-header .main .container { padding-inline: calc((10
     position: absolute;
     z-index: -1;
     top: calc(-1 * var(--pp-lift, 72px)); right: 0; bottom: 0; left: -100vw;
+    /* Samma box (och bakgrundsskala) som tidigare; bara toppen klipps vid
+       den delade headerns underkant. */
+    clip-path: inset(calc(var(--pp-lift, 72px) - var(--pp-reach, 0px)) 0 0 0);
     background:
       linear-gradient(180deg, rgba(16, 22, 10, .62) 0, rgba(16, 22, 10, 0) 96px),
       radial-gradient(48% 62% at 82% 6%, rgba(255, 206, 128, .30), rgba(255, 206, 128, 0) 72%),
@@ -134,13 +131,13 @@ html.hz8.hz8-pdp-pilot #store-header .main .container { padding-inline: calc((10
     box-shadow: 0 0 0 100vmax var(--pp-ivory) !important;
     /* Upp mot headern med transform (räknas inte som layoutskift); ytan
        förlängs nedåt lika mycket så att kolumnen förblir hel. */
-    clip-path: inset(calc(-1 * var(--pp-lift, 72px)) -100vmax 0 0);
+    clip-path: inset(calc(-1 * var(--pp-reach, 0px)) -100vmax 0 0);
   }
   /* Upp mot headern först när sidan är klar: en transform efter temats
      laddningsskift räknas inte som layoutskift (en transform redan vid
      boot gör det). Ytan förlängs då nedåt i stället för uppåt. Titeln
      visas först i slutläget (som resten av köpstationen). */
-  html.hz8-pdp-pilot.hz8-pp-ready[data-hz8-page="product"] .product-detail__information { transform: translateY(calc(-1 * var(--pp-lift, 72px))); clip-path: inset(0 -100vmax calc(-1 * var(--pp-lift, 72px)) 0); }
+  html.hz8-pdp-pilot.hz8-pp-ready[data-hz8-page="product"] .product-detail__information { transform: translateY(calc(-1 * var(--pp-lift, 72px))); clip-path: inset(calc(var(--pp-lift, 72px) - var(--pp-reach, 0px)) -100vmax calc(-1 * var(--pp-lift, 72px)) 0); }
   html.hz8-pdp-pilot:not(.hz8-pp-ready)[data-hz8-page="product"] .product-detail__information > h1 { visibility: hidden; }
 }
 html.hz8-pdp-pilot { --pp-ivory: #fcf8f0; }
@@ -673,7 +670,6 @@ html.hz8-pdp-pilot.hz8-pp-sticky-on { scroll-padding-bottom: calc(88px + env(saf
   html.hz8-pdp-pilot .hz8-ppc .product-page-lists__similar-products > .container:has(> .hz8-pp-brandlink) { grid-template-columns: minmax(0, 1fr); }
   html.hz8-pdp-pilot .hz8-ppc .product-page-lists__similar-products > .container > h2 { margin-bottom: 0 !important; }
   html.hz8-pdp-pilot .hz8-ppc .product-page-lists__similar-products > .container > .hz8-pp-brandlink { justify-self: start; margin-bottom: 8px; }
-  html.hz8.hz8-pdp-pilot #store-header .main { height: 56px !important; }
   html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail {
     grid-template-columns: minmax(0, 1fr) !important;
     grid-template-areas: "media" "info" "summary";

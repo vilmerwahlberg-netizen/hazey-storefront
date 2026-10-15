@@ -1200,10 +1200,6 @@
     var h1 = info && info.querySelector("h1");
     if (!info || !detail || !h1 || info.querySelector(".hz8-pp")) return;
     document.documentElement.classList.add("hz8-pdp-pilot");
-    /* V5: mörk Hazey-grön header på piloten -- headerns eget, etablerade
-       mörka läge (05-header.css), ingen egen header. */
-    var hdr = document.getElementById("store-header");
-    if (hdr) hdr.classList.add("hz8-header--on-dark");
     /* Nyehandel dubbelkodar "&" i vissa namn -- visa den riktiga texten. */
     if (h1.textContent.indexOf("&amp;") !== -1) h1.textContent = h1.textContent.replace(/&amp;/g, "&");
     /* Radbrytning: bindestrecket följer ordet före ("45% -" / "Faraoh"),
@@ -1242,14 +1238,17 @@
     ["popstate", "pageshow"].forEach(function (ev) { window.addEventListener(ev, function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 120); }); });
   }
 
-  /* Avståndet mellan headerns underkant och köpdelens topp: scenen och
-     köpstationens yta målas upp dit (CSS --pp-lift), utan att layouten
-     flyttas. Mäts när sidan ligger i toppläge. */
+  /* --pp-lift: köpstationen lyfts visuellt så att dess topp ligger 68 px
+     från sidans topp (kompositionen sedan f104a9e). --pp-reach: scenen
+     och köpstationens yta målas uppåt högst till den delade headerns
+     underkant (mäts i oscrollat läge) -- headern själv rörs aldrig. */
+  var LIFT_TOP = 68;
   function syncLift() {
     var d = document.querySelector(".product-detail"), m = document.querySelector("#store-header .main");
-    if (!d || !m) return;
-    var lift = Math.max(0, Math.round(d.getBoundingClientRect().top + window.scrollY - m.offsetHeight));
-    d.style.setProperty("--pp-lift", lift + "px");
+    if (!d) return;
+    var top = d.getBoundingClientRect().top + window.scrollY;
+    d.style.setProperty("--pp-lift", Math.max(0, Math.round(top - LIFT_TOP)) + "px");
+    if (m && window.scrollY === 0 && !document.body.classList.contains("hz8-header-scrolled")) d.style.setProperty("--pp-reach", Math.max(0, Math.round(top - m.getBoundingClientRect().bottom)) + "px");
   }
   window.addEventListener("resize", function () { window.requestAnimationFrame(syncLift); }, { passive: true });
   var ASSET_BASE = "";
