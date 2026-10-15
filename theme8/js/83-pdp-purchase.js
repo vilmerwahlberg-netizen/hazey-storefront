@@ -418,6 +418,9 @@
 
   HZ8.register("pdp-purchase", function (context) {
     if (context.page !== "product") return;
+    /* Produktsidespiloten (85-pdp-pilot.js) har egen köpstation, sticky
+       köpzon och paketbyggare -- här bara "Passar bra med" (carts). */
+    if (HZ8.isPdpPilot && HZ8.isPdpPilot()) { window.setTimeout(compatRail, 1200); return; }
     loadVariants().then(function () {
       buildBuybar();
       HZ8.watch(function () { syncStock(); renderBuilder(); syncBuybar(); });
