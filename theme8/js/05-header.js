@@ -44,13 +44,124 @@
   var ANIM_STAGGER = 50;     // ms -- inom kravet 45-70ms
   var ANIM_SAFETY_TIMEOUT = 1600; // ms -- gott om marginal över ~950ms total animation
 
-  /* Andel av .hz8-hero:s höjd som ska scrollas förbi innan headern går
-     till fullbreddsläge (2026-09-25) -- byt bara detta tal för att
-     justera hur länge glaspanelen svävar. 0.7 = headern blir fullbredd
-     efter att 70% av heron passerat. */
-  var HERO_SCROLL_FRACTION = 0.7;
-  var HEADER_SCROLL_FALLBACK = 40; // px -- samma fasta tröskel som förut, används på sidor UTAN hero
-  var HEADER_SCROLL_HYSTERESIS = 10; // px -- förhindrar flimmer om scrollpositionen står still exakt vid tröskeln
+  /* Semi-sticky header (2026-10-16). Samma bubbla och material hela
+     tiden -- scrollen styr bara om den syns:
+     - inom TOP_ZONE från toppen syns den alltid;
+     - döljs först efter HIDE_AFTER sammanhängande px nedåt bortom
+       TOP_ZONE, kommer tillbaka efter SHOW_AFTER sammanhängande px uppåt;
+     - riktningsbyte nollställer den ackumulerade rörelsen (inget fladder);
+     - ett hopp större än JUMP i en bildruta (ankare, återställd scroll)
+       räknas inte som en rörelse. */
+  var TOP_ZONE = 180;   // px
+  var HIDE_AFTER = 72;  // px nedåt
+  var SHOW_AFTER = 30;  // px uppåt
+  var JUMP = 320;       // px per bildruta
+  /* Materiallägen: sektioner där headern ska vara mörk (varmvitt innehåll
+     på olivglas). Allt annat = ljust (fallback). Sektioner kan också
+     sätta data-hz8-tone="light|dark|photo" själva. photo = mörkt läge. */
+  var TONE_SECTIONS = [
+    ["[data-hz8-tone]", null],
+    [".hz8-hero", "photo"],                          // startsidans hero (10-hero.js)
+    [".hz8-rv", "photo"],                            // omdömen: mörk olivbotten + miljöplåt (55-reviews)
+    ["html.hz8-series-hub .hz8-cat-hero", "dark"],   // seriehubbens masthead (81-series-hub)
+    [".hz8-svc-mast--photo, .hz8-svc-mast--band", "photo"], // servicesidornas foto-/olivmasthead (89-service)
+    [".hz8-footer", "dark"]                          // footern (läses, ändras inte)
+  ];
+
+  /* Låst synlig: sök, dropdown, mobilmeny, varukorg, fokus i headern,
+     scroll-lås (dialog/overlay). */
+  function headerLocked(header) {
+    var a = document.activeElement;
+    return !!(
+      (a && a !== document.body && header.contains(a)) ||
+      document.body.classList.contains("hz8-scroll-locked") ||
+      header.querySelector(".hz8-header-nav .is-open") ||
+      document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active")
+    );
+  }
+  function initHeaderScroll(header) {
+    var html = document.documentElement;
+    var lastY = Math.max(0, window.scrollY), acc = 0, dir = 0, hidden = false, ticking = false;
+    function setHidden(h) {
+      if (h === hidden) return;
+      hidden = h;
+      html.classList.toggle("hz8-header-hidden", h);
+    }
+    /* Headerns synliga underkant (för fasta element under den, t.ex.
+       kategorisidans verktygsrad). Mäts i vila; ändras bara vid resize. */
+    function syncReserve() {
+      var m = header.querySelector(".main");
+      if (m) html.style.setProperty("--hz8-header-reserve", Math.round(m.offsetTop + m.offsetHeight) + "px");
+    }
+    function sync() {
+      ticking = false;
+      var y = Math.max(0, window.scrollY), dy = y - lastY;
+      lastY = y;
+      if (y <= TOP_ZONE || headerLocked(header) || Math.abs(dy) > JUMP) { acc = 0; dir = 0; setHidden(false); return; }
+      var d = dy > 0 ? 1 : dy < 0 ? -1 : 0;
+      if (!d) return;
+      if (d !== dir) { dir = d; acc = 0; }
+      acc += Math.abs(dy);
+      if (d > 0 && !hidden && acc >= HIDE_AFTER) { setHidden(true); acc = 0; }
+      else if (d < 0 && hidden && acc >= SHOW_AFTER) { setHidden(false); acc = 0; }
+    }
+    function schedule() { if (!ticking) { ticking = true; window.requestAnimationFrame(sync); } }
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", function () { window.requestAnimationFrame(function () { syncReserve(); sync(); }); }, { passive: true });
+    /* Fokus i headern (Tab) eller en öppnad meny/sök/varukorg visar den
+       direkt och kräver en ny nedåtrörelse innan den får döljas igen. */
+    header.addEventListener("focusin", function () { acc = 0; dir = 0; setHidden(false); });
+    var raf = 0;
+    new MutationObserver(function () {
+      if (raf) return;
+      raf = window.requestAnimationFrame(function () { raf = 0; if (headerLocked(header)) { acc = 0; dir = 0; setHidden(false); } });
+    }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class"] });
+    syncReserve();
+    sync();
+  }
+  /* Materialläge efter sektionen under headerns mittlinje: en
+     IntersectionObserver med en 1 px hög mätlinje i headerns höjd. Ingen
+     pixelanalys, ingen scrollloop. Fallback = ljust. */
+  function initHeaderTone(header) {
+    header.setAttribute("data-hz8-tone", "light");
+    if (!("IntersectionObserver" in window)) return;
+    var active = new Set(), io = null, tracked = new Set();
+    function toneOf(el) {
+      var t = el.getAttribute("data-hz8-tone");
+      if (!t) for (var i = 1; i < TONE_SECTIONS.length; i++) if (el.matches(TONE_SECTIONS[i][0])) { t = TONE_SECTIONS[i][1]; break; }
+      return t === "dark" || t === "photo" ? "dark" : "light";
+    }
+    function apply() {
+      var tone = "light", best = -Infinity;
+      active.forEach(function (el) { var top = el.getBoundingClientRect().top; if (top > best) { best = top; tone = toneOf(el); } });
+      if (header.getAttribute("data-hz8-tone") !== tone) header.setAttribute("data-hz8-tone", tone);
+    }
+    function build() {
+      if (io) io.disconnect();
+      active.clear(); tracked.clear();
+      var m = header.querySelector(".main"), line = m ? Math.round(m.offsetTop + m.offsetHeight / 2) : 40;
+      io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) active.add(e.target); else active.delete(e.target); });
+        apply();
+      }, { rootMargin: "-" + line + "px 0px -" + Math.max(0, window.innerHeight - line - 1) + "px 0px", threshold: 0 });
+      observe();
+    }
+    function observe() {
+      TONE_SECTIONS.forEach(function (t) {
+        document.querySelectorAll(t[0]).forEach(function (el) { if (el !== header && !header.contains(el) && !tracked.has(el)) { tracked.add(el); io.observe(el); } });
+      });
+    }
+    build();
+    /* Sektioner som byggs senare (hero, omdömen, footer) plockas upp när
+       de läggs i DOM:en (strypt till en gång per bildruta); resize bygger
+       om mätlinjen. */
+    var mraf = 0;
+    new MutationObserver(function () { if (!mraf) mraf = window.requestAnimationFrame(function () { mraf = 0; observe(); }); })
+      .observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("load", observe);
+    var rt = 0;
+    window.addEventListener("resize", function () { window.clearTimeout(rt); rt = window.setTimeout(build, 200); }, { passive: true });
+  }
 
   function initHeaderEntrance(header) {
     var html = document.documentElement;
@@ -779,62 +890,7 @@
     var searchTrigger = document.getElementById("mobile-search-trigger");
     if (searchTrigger) window.HZ8.mobileNav.initSearch(searchTrigger, CATEGORIES.filter(function (c) { return !c.campaign; }));
 
-    /* Glasig flytande header (vila) -> fullbredds sticky bar (scrollat).
-       KORRIGERING (2026-09-25): tröskeln var tidigare ett fast 40px-tal
-       -- bytt mot HERO_SCROLL_FRACTION (70%) av den riktiga herons
-       höjd, så headern svävar längre på sidor med en hög hero. Räknas
-       om vid resize (herons höjd ändras vid varje brytpunkt: 410/520/
-       570/740px). Sidor utan hero (kategori/produkt) faller tillbaka
-       till samma fasta 40px som förut. */
-    var threshold = HEADER_SCROLL_FALLBACK;
-    function computeThreshold() {
-      var hero = document.querySelector(".hz8-hero");
-      threshold = hero ? hero.getBoundingClientRect().height * HERO_SCROLL_FRACTION : HEADER_SCROLL_FALLBACK;
-    }
-
-    var ticking = false;
-    var scrolled = false;
-    /* Hysteres (±10px runt tröskeln): utan den skulle scrollY som ligger
-       still på pixeln exakt vid tröskeln kunna växla klassen fram och
-       tillbaka varje litet, ofrivilliga scroll-jitter (t.ex. adressfält
-       som döljs/visas på mobil) -- klassen byter bara läge när
-       scrollpositionen passerat tydligt förbi tröskeln åt endera hållet. */
-    function syncScroll() {
-      var y = window.scrollY;
-      if (!scrolled && y > threshold + HEADER_SCROLL_HYSTERESIS) scrolled = true;
-      else if (scrolled && y < threshold - HEADER_SCROLL_HYSTERESIS) scrolled = false;
-      document.body.classList.toggle("hz8-header-scrolled", scrolled);
-      ticking = false;
-    }
-    window.addEventListener("scroll", function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(syncScroll);
-    }, { passive: true });
-
-    var resizeTicking = false;
-    window.addEventListener("resize", function () {
-      if (resizeTicking) return;
-      resizeTicking = true;
-      window.requestAnimationFrame(function () {
-        computeThreshold();
-        syncScroll();
-        resizeTicking = false;
-      });
-    });
-
-    /* .hz8-hero injiceras av 10-hero.js, ett SENARE modul i uppstarts-
-       ordningen (se 00-bootstrap.js: modulerna monteras i registrerings-
-       ordning, och 05-header.js registrerar sig FÖRE 10-hero.js) -- vid
-       denna punkt i körningen finns heron alltså ännu inte i DOM:en.
-       Den omedelbara syncScroll() nedan använder därför fallback-värdet
-       (ofarligt, korrigeras direkt i nästa bildruta). Den riktiga,
-       hero-medvetna uträkningen görs i en rAF som körs EFTER att hela
-       uppstarts-loopen (och därmed 10-hero.js) hunnit köra klart. */
-    syncScroll();
-    window.requestAnimationFrame(function () {
-      computeThreshold();
-      syncScroll();
-    });
+    initHeaderScroll(header);
+    initHeaderTone(header);
   });
 })();

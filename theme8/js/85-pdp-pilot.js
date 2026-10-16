@@ -1238,19 +1238,6 @@
     ["popstate", "pageshow"].forEach(function (ev) { window.addEventListener(ev, function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 120); }); });
   }
 
-  /* --pp-lift: köpstationen lyfts visuellt så att dess topp ligger 68 px
-     från sidans topp (kompositionen sedan f104a9e). --pp-reach: scenen
-     och köpstationens yta målas uppåt högst till den delade headerns
-     underkant (mäts i oscrollat läge) -- headern själv rörs aldrig. */
-  var LIFT_TOP = 68;
-  function syncLift() {
-    var d = document.querySelector(".product-detail"), m = document.querySelector("#store-header .main");
-    if (!d) return;
-    var top = d.getBoundingClientRect().top + window.scrollY;
-    d.style.setProperty("--pp-lift", Math.max(0, Math.round(top - LIFT_TOP)) + "px");
-    if (m && window.scrollY === 0 && !document.body.classList.contains("hz8-header-scrolled")) d.style.setProperty("--pp-reach", Math.max(0, Math.round(top - m.getBoundingClientRect().bottom)) + "px");
-  }
-  window.addEventListener("resize", function () { window.requestAnimationFrame(syncLift); }, { passive: true });
   var ASSET_BASE = "";
   HZ8.register("pdp-pilot", function (context) {
     if (context.page !== "product" || !HZ8.isPdpPilot()) return;
@@ -1267,7 +1254,6 @@
       syncStation();
       var sf0 = document.querySelector(".hz8-pp__strains");
       if (sf0) { revealSelected(sf0, false); syncCarousel(sf0); }
-      syncLift();
       window.requestAnimationFrame(function () { document.documentElement.classList.add("hz8-pp-ready"); });
     };
     var t0 = Date.now();

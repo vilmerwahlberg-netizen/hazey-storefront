@@ -14,7 +14,7 @@
       egen hylla per annan verklig serie (HZ8.relatedByManufacturer,
       samma kodväg för alla serier/tillverkare). Även på serie x
       format-sidor.
-   5. Mörk masthead + headerns kontrastlägen (hz8-header--on-dark). */
+   5. Mörk masthead (headerns mörka läge styrs av 05-header.js TONE_SECTIONS). */
 (function () {
   "use strict";
 
@@ -217,24 +217,8 @@
     io.observe(el);
   }
 
-  /* ---- Headerns kontrastlägen över seriens mörka masthead ----
-     Explicit state-klass på #store-header (ingen mix-blend-mode):
-     hz8-header--on-dark när headern ligger över mastheaden, annars
-     ljust läge. Styrs av mastheadens faktiska position (IO med en
-     rootMargin lika med headerns höjd). Defaultläge vid start = mörkt
-     (sidan laddas med mastheaden överst). */
-  function initHeaderContrast(masthead) {
-    var header = document.getElementById("store-header");
-    if (!header || !masthead) return;
-    header.classList.add("hz8-header--on-dark");
-    if (!("IntersectionObserver" in window)) return;
-    var headerH = 84;
-    var io = new IntersectionObserver(function (entries) {
-      var e = entries[0];
-      header.classList.toggle("hz8-header--on-dark", e.isIntersecting);
-    }, { rootMargin: "-" + headerH + "px 0px 0px 0px", threshold: 0 });
-    io.observe(masthead);
-  }
+  /* Headerns kontrastläge över mastheaden ägs av 05-header.js
+     (TONE_SECTIONS: html.hz8-series-hub .hz8-cat-hero = mörkt läge). */
 
   /* Serie x format-sida (t.ex. THCA Vapes): samma relation efter
      Nyehandels grid. */
@@ -261,7 +245,6 @@
     rule.className = "hz8-masthead__rule";
     rule.setAttribute("aria-hidden", "true");
     root.appendChild(rule);
-    initHeaderContrast(masthead);
     var hub = document.createElement("div");
     hub.className = "hz8-hub";
     hub.setAttribute("data-hz8-cat", "hub");

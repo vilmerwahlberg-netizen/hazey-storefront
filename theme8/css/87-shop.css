@@ -150,14 +150,7 @@ html.hz8 #store-main .hz8-shop__help-links li { margin: 0; border-bottom: 1px so
 html.hz8 #store-main .hz8-shop__help-links a { display: flex; align-items: center; justify-content: space-between; min-height: 52px; color: var(--hz8-ink) !important; font: 600 16px/1.2 var(--hz8-font-ui) !important; text-decoration: none !important; }
 html.hz8 #store-main .hz8-shop__help-links a .hz8-icon { width: 18px; height: 18px; color: var(--hz8-cta-fill); }
 
-@media (min-width: 1180px) { html.hz8.hz8-shop-page #store-header .brand.header-logo img { height: 26px; } }
-@media (max-width: 767px) { html.hz8.hz8-shop-page #store-header .brand.header-logo img { height: 19px; } }
-/* Header över mastheaden: krämpanel som på servicesidorna. */
-html.hz8.hz8-shop-page body:not(.hz8-header-scrolled) #store-header .main::before {
-  background: color-mix(in srgb, var(--shop-paper) 94%, transparent);
-  border-color: color-mix(in srgb, var(--hz8-ink) 8%, transparent);
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-}
+/* Headern: samma delade komponent som övriga sidor (05-header.*). */
 
 /* ---------- Mellanbredder ---------- */
 @media (max-width: 1179px) {

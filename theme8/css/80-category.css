@@ -194,7 +194,9 @@ html.hz8[data-hz8-page="category"] .category-sort {
   border-bottom: 1px solid var(--hz8-line);
   background: var(--hz8-bg);
 }
-html.hz8[data-hz8-page="category"] body.hz8-header-scrolled .category-sort { top: 64px; }
+/* Headern döljs vid scroll nedåt (05-header.js): raden går då upp mot
+   fönsterkanten. */
+html.hz8.hz8-header-hidden[data-hz8-page="category"] .category-sort { top: 8px; }
 html.hz8[data-hz8-page="category"] .category-sort > .mobile-filter { display: contents !important; }
 html.hz8[data-hz8-page="category"] .category-sort .vue-portal-target { display: contents; }
 html.hz8[data-hz8-page="category"] .category-sort .vue-portal-target > ul { order: 1; display: flex; margin: 0; padding: 0; list-style: none; }
@@ -608,8 +610,7 @@ html.hz8[data-hz8-page="category"] .hz8-cat-empty--nogrid { grid-row: 7; margin:
    overflow:clip klipper lika (ingen horisontell scroll) utan att bryta. */
 html.hz8[data-hz8-page="category"] #store-main { overflow: clip !important; }
 html.hz8[data-hz8-page="category"] #store-instance.main-wrapper { overflow: clip !important; }
-html.hz8[data-hz8-page="category"] body.hz8-header-scrolled .category-sort { top: 76px; }
-@media (max-width: 767px) { html.hz8[data-hz8-page="category"] body.hz8-header-scrolled .category-sort { top: 64px; } }
+
 html.hz8[data-hz8-page="category"] .hz8-portal-popular { grid-row: 6; margin: 4px 0 28px; }
 html.hz8[data-hz8-page="category"] .hz8-portal-popular .hz8-prail__title { font-size: clamp(22px, 2vw, 28px) !important; }
 
@@ -1074,7 +1075,11 @@ html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool {
 }
 /* Headern scrollad (68 px fullbreddsbar, 56 px mobil): raden ligger
    kant i kant med headern -- ingen glipa där produkter skymtar. */
-html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 68px; }
+/* När headern döljs (05-header.js) följer den fasta raden med upp, med
+   samma rörelse (transform, inget layoutskift). */
+html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { transition: transform 240ms cubic-bezier(.25,.46,.45,.94); }
+html.hz8-cat-pilot.hz8-header-hidden[data-hz8-page="category"] .hz8-ptool.is-stuck { transform: translate3d(0, calc(-1 * var(--hz8-header-reserve, 80px)), 0); transition-duration: 300ms; }
+@media (prefers-reduced-motion: reduce) { html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { transition-duration: 1ms; } }
 /* Tunn varm kontrollremsa mellan hero och katalog (07). */
 html.hz8-cat-pilot .hz8-ptool__desk {
   display: flex;
@@ -1676,7 +1681,6 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   html.hz8-cat-pilot .hz8-pguide__steps { font-size: 11.5px !important; }
   html.hz8-cat-pilot .hz8-pdecor__seal { display: none; }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { grid-row: 6; top: calc(var(--hz8-top-clear) - 16px); margin: 14px 0 12px; }
-  html.hz8-cat-pilot[data-hz8-page="category"] body.hz8-header-scrolled .hz8-ptool { top: 56px; }
   /* Mobil: ingen fullbreddsremsa i vila -- bara sandbakgrund när raden
      sitter fast, så att produkter inte syns runt höljet. */
   html.hz8-cat-pilot .hz8-ptool::before { top: -8px; bottom: -8px; border: 0; background: var(--hz8-pilot-paper); opacity: 0; }

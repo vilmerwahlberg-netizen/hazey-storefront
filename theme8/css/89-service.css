@@ -107,18 +107,7 @@ html.hz8.hz8-svc-faq { --svc-mast-pos: 60% 36%; }
 html.hz8.hz8-svc-search { --svc-mast-pos: 60% 40%; }
 html.hz8.hz8-svc-dlv { --svc-mast-pos: 56% 34%; }
 
-/* Header över servicemastheaden: samma varma krämyta som innehållet,
-   så att den hör till kompositionen (bara servicesidorna). */
-html.hz8.hz8-svc body:not(.hz8-header-scrolled) #store-header .main::before {
-  background: color-mix(in srgb, var(--svc-paper) 94%, transparent);
-  border-color: color-mix(in srgb, var(--hz8-ink) 8%, transparent);
-  box-shadow: 0 10px 30px -18px color-mix(in srgb, var(--hz8-ink) 70%, transparent);
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-}
-html.hz8.hz8-svc #store-header .main { border-radius: 14px; }
-html.hz8.hz8-svc #store-header .main::before { border-radius: 14px; }
-@media (min-width: 1180px) { html.hz8.hz8-svc #store-header .brand.header-logo img { height: 26px; } }
-@media (max-width: 767px) { html.hz8.hz8-svc #store-header .brand.header-logo img { height: 19px; } }
+/* Headern: samma delade komponent som övriga sidor (05-header.*). */
 
 /* Punkter under ingressen (kontakt) */
 html.hz8 #store-main .hz8-svc-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 34px 0 0; padding: 0; list-style: none; }

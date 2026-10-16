@@ -10,18 +10,8 @@
        mastheadens nederkant
    6   formathyllor + "Mer <format> från <tillverkare>"-band */
 
-/* ---------- Header: två uttryckliga kontrastlägen ---------- */
-html.hz8.hz8-series-hub #store-header .main::before,
-html.hz8.hz8-series-hub #store-header :is(.account-button, .cart-button, #mobile-search-trigger, .hamburger, .hz8-header-nav > a, .hz8-header-nav > .hz8-cat, .search-field),
-html.hz8.hz8-series-hub #store-header .brand.header-logo img {
-  transition: background-color .2s var(--hz8-ease), background .2s var(--hz8-ease), color .2s var(--hz8-ease),
-              border-color .2s var(--hz8-ease), box-shadow .2s var(--hz8-ease), filter .2s var(--hz8-ease) !important;
-}
-/* Mörkt underlag: headerns ljusa kontrastläge (hz8-header--on-dark) ägs av
-   05-header.css -- samma regler som startsidans hero-läge. */
-@media (prefers-reduced-motion: reduce) {
-  html.hz8.hz8-series-hub #store-header * , html.hz8.hz8-series-hub #store-header .main::before { transition: none !important; }
-}
+/* Headerns material och kontrastläge över mastheaden ägs helt av
+   05-header.css/05-header.js (TONE_SECTIONS) -- inga sidregler här. */
 
 /* ---------- Masthead ---------- */
 html.hz8.hz8-series-hub[data-hz8-page="category"] .hz8-cat-hero {
