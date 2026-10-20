@@ -747,7 +747,7 @@
     var st = document.querySelector(".hz8-pp");
     var cta = st && st.querySelector(".hz8-pp__cta");
     /* Längre ned tar kapitelnavigeringen över platsen -- aldrig båda. */
-    var show = !!(sticky.__past && cta && !cta.hidden && window.matchMedia("(max-width: 1023px)").matches && !overlayOpen() && !document.documentElement.classList.contains("hz8-ppnav-deep"));
+    var show = !!(sticky.__past && cta && !cta.hidden && window.matchMedia("(max-width: 1023px)").matches && !overlayOpen() && !document.documentElement.classList.contains("hz8-ppnav-deep") && !document.documentElement.classList.contains("hz8-pp-nearfoot") && !document.documentElement.classList.contains("hz8-pp-to-product"));
     if (sticky.classList.contains("is-on") !== show) {
       sticky.classList.toggle("is-on", show);
       sticky.setAttribute("aria-hidden", show ? "false" : "true");
@@ -1073,7 +1073,45 @@
             '<span class="hz8-ppbest__txt"><span class="hz8-ppbest__brand">' + esc(r.brand) + '</span><span class="hz8-ppbest__name">' + esc(r.name) + '</span><span class="hz8-ppbest__price">' + esc(r.price) + "</span></span></a></li>";
         }).join("") + "</ul>";
       box.hidden = false;
+      bindBestNav(box);
     }).catch(function () { box.remove(); });
+  }
+
+  /* Bästsäljarraden: två små pilar i rubrikraden (före "Alla bästsäljare"),
+     ett kort + gap per steg, avstängda vid kanterna, dolda utan overflow. */
+  function bindBestNav(box) {
+    var list = box.querySelector(".hz8-ppbest__list"), head = box.querySelector(".hz8-ppbest__head"), all = box.querySelector(".hz8-ppbest__all");
+    if (!list || !head || box.querySelector(".hz8-ppbest__nav")) return;
+    var navEl = node("div", "hz8-ppbest__nav");
+    navEl.setAttribute("role", "group"); navEl.setAttribute("aria-label", "Bläddra bland bästsäljare");
+    navEl.innerHTML = '<button type="button" class="hz8-ppbest__btn" data-dir="-1" aria-label="Föregående bästsäljare" aria-controls="hz8-ppbest-list">' + ICON.arrow + "</button>" +
+      '<button type="button" class="hz8-ppbest__btn" data-dir="1" aria-label="Nästa bästsäljare" aria-controls="hz8-ppbest-list">' + ICON.arrow + "</button>";
+    list.id = "hz8-ppbest-list";
+    head.insertBefore(navEl, all || null);
+    var btns = navEl.querySelectorAll("button"), reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    function step() { var li = list.querySelector("li"); if (!li) return list.clientWidth; var gap = parseFloat(getComputedStyle(list).columnGap) || 0; return li.getBoundingClientRect().width + gap; }
+    function syncBest() {
+      var max = list.scrollWidth - list.clientWidth;
+      navEl.hidden = max <= 2;
+      var had = document.activeElement;
+      btns[0].disabled = list.scrollLeft <= 2;
+      btns[1].disabled = list.scrollLeft >= max - 2;
+      /* En avstängd knapp tappar fokus -- lämna det till den andra pilen. */
+      if (had === btns[0] && btns[0].disabled && !btns[1].disabled) btns[1].focus();
+      else if (had === btns[1] && btns[1].disabled && !btns[0].disabled) btns[0].focus();
+    }
+    Array.prototype.forEach.call(btns, function (b) {
+      b.addEventListener("click", function () {
+        var dir = +b.getAttribute("data-dir"), st = step();
+        var target = Math.round((list.scrollLeft + dir * st) / st) * st;
+        list.scrollTo({ left: Math.max(0, target), behavior: reduce.matches ? "auto" : "smooth" });
+      });
+    });
+    var r = 0; var later = function () { if (!r) r = window.requestAnimationFrame(function () { r = 0; syncBest(); }); };
+    list.addEventListener("scroll", later, { passive: true });
+    window.addEventListener("resize", later, { passive: true });
+    list.querySelectorAll("img").forEach(function (im) { im.addEventListener("load", later); });
+    syncBest(); window.setTimeout(syncBest, 400);
   }
 
   /* ---- Kapitelnavigering + Till toppen ----
@@ -1082,12 +1120,26 @@
      läge); mobil/platta -> kompakt rad längst ned som ersätter köpbaren
      (aldrig båda). Aldrig över footer, dialog, meny eller varukorg.
      Till toppen efter ~1,75 vyer, ovanför eventuell bottenkontroll. */
+  /* Stabilt, unikt ankare direkt före produktytan (Vue-ägd .product-detail
+     -- ankaret ligger utanför den och läggs tillbaka om en omritning tar
+     bort det). */
+  function ensureProductAnchor() {
+    var detail = document.querySelector(".product-detail");
+    if (!detail || !detail.parentNode) return null;
+    var a = document.getElementById("produkt");
+    if (!a) { a = node("span", "hz8-pp-anchor"); a.id = "produkt"; a.setAttribute("aria-hidden", "true"); }
+    if (a.nextElementSibling !== detail) detail.parentNode.insertBefore(a, detail);
+    return a;
+  }
   function bindChapterNav(host) {
     var nav = document.getElementById("hz8-ppnav");
     if (!nav) return;
     var html = document.documentElement;
+    /* "Produkt" är vägen tillbaka till bild, val, pris och huvud-CTA
+       (ersätter Översikt; Kort om produkten ligger kvar i flödet). */
+    ensureProductAnchor();
     var items = [
-      ["hz8-ppsum", "Översikt", "oversikt"],
+      ["produkt", "Produkt", "produkt"],
       ["hz8-acc-produktfakta", "Fakta", "fakta"],
       ["omdomen", "Omdömen", "omdomen"],
       ["liknande", "Liknande", "liknande"]
@@ -1117,6 +1169,7 @@
       var t = document.getElementById(a.getAttribute("href").slice(1)); if (!t) return;
       e.preventDefault();
       if (location.hash !== a.getAttribute("href")) history.pushState(null, "", a.getAttribute("href"));
+      if (a.getAttribute("data-k") === "produkt") { toProduct(true); setActive("produkt"); return; }
       t.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
       var f = t.querySelector("summary, h2") || t; if (f.tagName !== "SUMMARY" && !f.hasAttribute("tabindex")) f.setAttribute("tabindex", "-1"); f.focus({ preventScroll: true });
       setActive(a.getAttribute("data-k"));
@@ -1127,25 +1180,93 @@
       if (k === active) return; active = k;
       [nav, dock].forEach(function (n) { n.querySelectorAll(".hz8-ppnav__a").forEach(function (a) { if (a.getAttribute("data-k") === k) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); }); });
     }
-    var inLine = new Set(), spy = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) inLine.add(x.target); else inLine.delete(x.target); });
-      var cur = have.filter(function (it) { return inLine.has(document.getElementById(it[0])); }).pop();
-      setActive(cur ? cur[2] : "");
-    }, { rootMargin: "-35% 0px -64% 0px" });
-    var watched = new Set();
-    function observe() { have.forEach(function (it) { var el = document.getElementById(it[0]); if (el && !watched.has(el)) { watched.add(el); spy.observe(el); } }); }
+    /* Aktivt kapitel = sista kapitlet vars topp passerat en linje 40 % ned
+       i vyn (beräknat ur läget; en låg stängd accordion missades annars). */
+    function spy() {
+      /* Närmast ovanför linjen vinner (navigeringens ordning skiljer sig
+         från sidans: Liknande ligger före Omdömen). */
+      var line = window.innerHeight * .4, cur = "", best = -Infinity;
+      have.forEach(function (it) { var el = document.getElementById(it[0]); if (!el) return; var t = el.getBoundingClientRect().top; if (t <= line && t > best) { best = t; cur = it[2]; } });
+      setActive(cur);
+    }
+    function observe() { spy(); }
+    window.addEventListener("scroll", function () { window.requestAnimationFrame(spy); }, { passive: true });
     observe();
-    var gone = false, nearFoot = false;
+    /* Mobil/platta: ett bottenlager åt gången, styrt av ett tillstånd med
+       hysteres (inte av en ögonblicksmätning mitt i en smooth scroll):
+       - köp: köpbaren enligt sin egen logik (ordinarie CTA ovanför vyn);
+       - kapitel: docken. Går in när översikten är passerad (dess botten
+         ovanför headerlinjen) eller direkt vid klick på en kapitellänk /
+         laddning med kapitelankare; går ut först när översiktens topp åter
+         ligger under 60 % av vyn (användaren har scrollat upp ovanför
+         kapitlet). Ankarhopp nedåt kan därför aldrig vända läget.
+       - nearFoot: footern närmar sig -> båda döljs. Overlays döljer båda.
+       Desktop: ingen docka. */
+    var deep = false, nearFoot = false;
+    var sumEl = document.getElementById("hz8-ppsum") || nav;
+    var HDR = 80;
+    new IntersectionObserver(function (en) {
+      var e = en[0]; if (!e.isIntersecting && e.boundingClientRect.bottom < HDR) { deep = true; sync(); }
+    }, { rootMargin: "-" + HDR + "px 0px 0px 0px" }).observe(sumEl);
+    new IntersectionObserver(function (en) {
+      var e = en[0]; if (!e.isIntersecting && e.boundingClientRect.top > 0 && Date.now() > lockUntil) { deep = false; sync(); }
+    }, { rootMargin: "0px 0px -40% 0px" }).observe(sumEl);
+    var chapterIds = items.map(function (it) { return it[0]; }).filter(function (id) { return id !== "produkt"; });
+    /* Tillbaka till produkten: köpbaren hålls borta under hela hoppet
+       (annars passerar CTA:n "ovanför vyn" på vägen upp och baren blinkar);
+       docken lämnar när översikten passerat 60 %-gränsen. Läget släpps när
+       scrollen stannat -- därefter visas köpbaren först när användaren på
+       nytt scrollar förbi den ordinarie CTA:n. */
+    var settle = 0;
+    function toProduct(smooth) {
+      var anchor = ensureProductAnchor(); if (!anchor) return;
+      html.classList.add("hz8-pp-to-product");
+      lockUntil = 0;
+      anchor.scrollIntoView({ behavior: smooth && !reduce.matches ? "smooth" : "auto", block: "start" });
+      var h1 = document.querySelector(".product-detail__information h1");
+      if (h1) { if (!h1.hasAttribute("tabindex")) h1.setAttribute("tabindex", "-1"); h1.focus({ preventScroll: true }); }
+      window.clearTimeout(settle); settle = window.setTimeout(release, 2200);
+      sync();
+    }
+    function release() { window.clearTimeout(settle); html.classList.remove("hz8-pp-to-product"); sync(); }
+    window.addEventListener("scroll", function () {
+      if (!html.classList.contains("hz8-pp-to-product")) return;
+      window.clearTimeout(settle); settle = window.setTimeout(release, 180);
+    }, { passive: true });
+    /* Klick/hash: kapitelläget hålls under hela ankarscrollen (även uppåt
+       mot Översikt, där översiktens topp kortvarigt kan ligga under 60 %). */
+    var lockUntil = 0;
+    function enterChapters() { deep = true; lockUntil = Date.now() + 1500; sync(); }
+    var chapterClick = function (e) { var a = e.target.closest(".hz8-ppnav__a"); if (a && a.getAttribute("data-k") !== "produkt") enterChapters(); };
+    nav.addEventListener("click", chapterClick, true);
+    dock.addEventListener("click", chapterClick, true);
+    function fromHash() {
+      if (location.hash === "#produkt") { toProduct(false); return; }
+      if (chapterIds.indexOf(location.hash.slice(1)) !== -1) enterChapters();
+    }
+    /* Direktladdning med #produkt: ankaret skapas av skriptet, efter
+       webbläsarens egen hashscroll. */
+    if (location.hash === "#produkt") { window.setTimeout(function () { toProduct(false); }, 250); window.setTimeout(function () { toProduct(false); }, 900); }
+    window.addEventListener("hashchange", fromHash);
+    window.addEventListener("popstate", fromHash);
+    window.setTimeout(function () {
+      var r = sumEl.getBoundingClientRect();
+      if (r.bottom < HDR || (chapterIds.indexOf(location.hash.slice(1)) !== -1 && r.top < window.innerHeight * .6)) enterChapters();
+    }, 0);
     function sync() {
-      // Mobil: originalnavet är dolt (rect 0) -- mät mot översiktskapitlet i stället.
-      var ref = nav.offsetParent ? nav : (document.getElementById("hz8-ppsum") || nav);
-      gone = !!ref.offsetParent && ref.getBoundingClientRect().bottom <= 0;
-      var on = gone && !nearFoot && !overlayOpen();
+      /* Samma två gränser, kontrollerade geometriskt: ett direkt hopp förbi
+         en gräns (Home/End, ankare, återställd scroll) korsar den aldrig och
+         ger då ingen observerhändelse. Hysteresen gör att inget vänder mitt
+         i ett hopp: in under headerlinjen, ut först under 60 %. */
+      var sr = sumEl.getBoundingClientRect();
+      if (!deep && sr.bottom < HDR) deep = true;
+      else if (deep && sr.top > window.innerHeight * .6 && Date.now() > lockUntil) deep = false;
+      var on = narrow.matches && deep && !nearFoot && !overlayOpen();
       if (dock.classList.contains("is-on") !== on) {
         dock.classList.toggle("is-on", on); dock.setAttribute("aria-hidden", on ? "false" : "true"); dock.inert = !on;
       }
-      /* Förbi översikten: köpbaren lämnar plats permanent (även nära footern, där docken släcks). */
-      html.classList.toggle("hz8-ppnav-deep", gone && narrow.matches);
+      html.classList.toggle("hz8-ppnav-deep", deep && narrow.matches);
+      html.classList.toggle("hz8-pp-nearfoot", nearFoot);
       var y = window.scrollY, showTop = y > window.innerHeight * 1.75 && !overlayOpen() && !nearFoot;
       if (top.classList.contains("is-on") !== showTop) { top.classList.toggle("is-on", showTop); top.setAttribute("aria-hidden", showTop ? "false" : "true"); top.tabIndex = showTop ? 0 : -1; }
       if (typeof syncSticky === "function") syncSticky();
@@ -1154,6 +1275,7 @@
     if (foot) new IntersectionObserver(function (en) { nearFoot = en[0].isIntersecting; sync(); }, { rootMargin: "0px 0px 24px 0px" }).observe(foot);
     var raf = 0;
     window.addEventListener("scroll", function () { if (!raf) raf = window.requestAnimationFrame(function () { raf = 0; sync(); }); }, { passive: true });
+    if (narrow.addEventListener) narrow.addEventListener("change", sync);
     new MutationObserver(function () { window.requestAnimationFrame(sync); }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class", "aria-modal", "open"] });
     top.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" });
@@ -1415,6 +1537,7 @@
       var d = document.querySelector(".product-detail");
       var hostEl = document.querySelector(".hz8-ppc");
       if (S.summary && hostEl && !hostEl.contains(S.summary)) hostEl.insertBefore(S.summary, hostEl.firstChild);
+      if (document.getElementById("hz8-ppnav")) ensureProductAnchor();
     });
     var sel = nativeSelect();
     if (sel) sel.addEventListener("change", function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 60); });
