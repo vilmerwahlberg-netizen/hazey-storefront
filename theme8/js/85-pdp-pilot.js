@@ -302,7 +302,10 @@
       var best = tiers.reduce(function (a, b) { return b.unit < a.unit ? b : a; });
       var html = tiers.map(function (t) {
         var total = t.min * t.unit, saved = t.min * (base - t.unit), pct = Math.round((1 - t.unit / base) * 100);
-        var badge = t === best && t !== tiers[0] ? '<span class="hz8-pp__badge is-best">Bäst värde</span>' : pct >= 1 ? '<span class="hz8-pp__badge">Spara ' + pct + " %</span>" : "";
+        /* Högst ett märke: "Bäst värde" (lägsta styckpris i Nyehandels
+           pristrappa). "Populärast" kräver försäljningsdata som saknas;
+           besparingen står i kortet. */
+        var badge = t === best && t !== tiers[0] ? '<span class="hz8-pp__badge is-best">Bäst värde</span>' : "";
         return '<button type="button" role="radio" class="hz8-pp__pack" data-qty="' + t.min + '" aria-checked="' + (t.min === B.pack) + '" tabindex="' + (t.min === B.pack ? 0 : -1) + '">' + badge +
           '<span class="hz8-pp__pack-qty">' + t.min + ' st</span><span class="hz8-pp__pack-total">' + kr(total) + '</span><span class="hz8-pp__pack-unit">' + kr(t.unit) + "/st</span>" +
           (saved >= 0.5 ? '<span class="hz8-pp__pack-save">Spara ' + kr(saved) + "</span>" : '<span class="hz8-pp__pack-save is-empty" aria-hidden="true"></span>') + "</button>";
@@ -743,7 +746,8 @@
     if (!sticky) return;
     var st = document.querySelector(".hz8-pp");
     var cta = st && st.querySelector(".hz8-pp__cta");
-    var show = !!(sticky.__past && cta && !cta.hidden && window.matchMedia("(max-width: 767px)").matches && !overlayOpen());
+    /* Längre ned tar kapitelnavigeringen över platsen -- aldrig båda. */
+    var show = !!(sticky.__past && cta && !cta.hidden && window.matchMedia("(max-width: 1023px)").matches && !overlayOpen() && !document.documentElement.classList.contains("hz8-ppnav-deep"));
     if (sticky.classList.contains("is-on") !== show) {
       sticky.classList.toggle("is-on", show);
       sticky.setAttribute("aria-hidden", show ? "false" : "true");
@@ -792,9 +796,30 @@
       });
       media.appendChild(z);
     }
+    /* A Light: dekorativt eko av den aktiva riktiga bilden bakom den skarpa
+       (oskarp, blek, maskad i CSS) -- samma URL, ingen ny storlek, ingen
+       egen nätverkshämtning (webbläsarens cache återanvänds). */
+    var slider = media.querySelector(".product-image-slider");
+    if (slider && !media.querySelector(".hz8-pp-stage-echo")) {
+      var echo = document.createElement("img");
+      echo.className = "hz8-pp-stage-echo";
+      echo.alt = "";
+      echo.setAttribute("aria-hidden", "true");
+      echo.setAttribute("draggable", "false");
+      echo.decoding = "async";
+      echo.addEventListener("error", function () { echo.hidden = true; });
+      slider.parentNode.insertBefore(echo, slider);
+      /* Bildbyte (miniatyr, pil, svep) ändrar bara klassen på sliden --
+         följ användarens egna händelser i stället för en ny observer. */
+      var echoRaf = 0;
+      var later = function () { if (!echoRaf) echoRaf = window.requestAnimationFrame(function () { echoRaf = 0; syncStageEcho(media); }); };
+      ["click", "keyup", "transitionend"].forEach(function (ev) { media.addEventListener(ev, later, { passive: true }); });
+      if (STAGE_MQ.addEventListener) STAGE_MQ.addEventListener("change", function () { syncStageEcho(media); });
+    }
+    syncStageEcho(media);
     /* Trasig/saknad bild: neutral brunn med samma mått (ingen ersättningsbild). */
     media.querySelectorAll("#product-slides img").forEach(function (img) {
-      var mark = function () { media.classList.add("hz8-pp-img-broken"); };
+      var mark = function () { media.classList.add("hz8-pp-img-broken"); syncStageEcho(media); };
       img.addEventListener("error", mark);
       if (img.complete && !img.naturalWidth) mark();
     });
@@ -830,6 +855,20 @@
     };
     probe.onerror = function () { media.setAttribute("data-hz8-media", "contained-unverified"); };
     probe.src = src;
+  }
+  /* Ekot används bara på desktop i contained-läge (CSS döljer det annars);
+     src sätts bara när den aktiva bildens URL faktiskt ändrats. */
+  var STAGE_MQ = window.matchMedia("(min-width: 1024px)");
+  function syncStageEcho(media) {
+    media = media || document.querySelector(".hz8-pp-theatre");
+    var echo = media && media.querySelector(".hz8-pp-stage-echo");
+    if (!echo) return;
+    if (!STAGE_MQ.matches || media.classList.contains("hz8-pp-immersive") || media.classList.contains("hz8-pp-img-broken")) { echo.hidden = true; return; }
+    var img = media.querySelector("#product-slides .slide.is-active img, #product-slides .slide.active img") || media.querySelector("#product-slides .slide img");
+    var src = img && (img.currentSrc || img.src);
+    if (!src) { echo.hidden = true; return; }
+    if (echo.src !== src) { echo.hidden = false; echo.src = src; }
+    else if (echo.hidden && echo.complete && echo.naturalWidth) echo.hidden = false;
   }
   function syncThumbs() {
     document.querySelectorAll(".hz8-pp-theatre #product-thumbnails .thumb").forEach(function (t) { t.setAttribute("aria-pressed", t.classList.contains("active") ? "true" : "false"); });
@@ -954,7 +993,11 @@
     if (t) cues.push(["box", t]);
     return cues.slice(0, 3);
   }
-  function buildSummary(detail, lead) {
+  /* Miljöbild för Kort om produkten (generell botanisk miljö, aldrig
+     produktbild). Övergången görs med CSS-mask, inte i bilden. */
+  /* Kort om produkten bär ingen egen bild längre: plantan och dess
+     kastskugga är CSS-lager (85-pdp-pilot.css, samma WebP för båda). */
+  function buildSummary(host, lead) {
     var text = lead ? excerpt(lead.textContent) : "";
     var cues = cueRows();
     if (!text && !cues.length) return null;
@@ -963,9 +1006,9 @@
     sum.setAttribute("aria-labelledby", "hz8-ppsum-h");
     sum.innerHTML = '<h2 class="hz8-ppsum__h" id="hz8-ppsum-h"><span class="hz8-ppsum__ico">' + ICON.leaf + "</span>Kort om produkten</h2>" +
       (text ? '<p class="hz8-ppsum__lead">' + esc(text) + "</p>" : "") +
-      (cues.length ? '<ul class="hz8-ppsum__cues" aria-label="I korthet">' + cues.map(function (c) { return "<li>" + ICON[c[0]] + "<span>" + esc(c[1]) + "</span></li>"; }).join("") + "</ul>" : "") +
-      (ASSET_BASE ? '<figure class="hz8-ppsum__accent" aria-hidden="true"><img src="' + esc(ASSET_BASE + "campaign-thca.jpg") + '" alt="" width="800" height="800" loading="lazy" decoding="async"></figure>' : "");
-    detail.appendChild(sum);
+      (cues.length ? '<ul class="hz8-ppsum__cues" aria-label="I korthet">' + cues.map(function (c) { return "<li>" + ICON[c[0]] + "<span>" + esc(c[1]) + "</span></li>"; }).join("") + "</ul>" : "");
+    sum.innerHTML = '<div class="hz8-ppsum__text">' + sum.innerHTML + "</div>";
+    host.appendChild(sum);
     return sum;
   }
   /* En disclosure: <details> med H2 i <summary>. Innehållet ligger i DOM
@@ -999,6 +1042,126 @@
       }).join("") + "</ul>" + '<p class="hz8-acc__links"><a href="' + esc(HZ8.link("/sv/page/faq")) + '">Alla vanliga frågor</a></p>';
     }).catch(function () { box.remove(); });
   }
+  /* ---- Bästsäljare just nu (se buildBelow) ---- */
+  function loadBestsellers(box, sim) {
+    if (!HZ8.bestsellerSource) { box.remove(); return; }
+    var here = HZ8.path(location.href).split("?")[0].replace(/\/\d+$/, "");
+    var pathOf = function (href) { return HZ8.path(href || "").split("?")[0].replace(/\/\d+$/, ""); };
+    HZ8.fetchPage("/sv/page/vara-bastsaljare", HZ8.bestsellerSource).then(function (bs) {
+      var src = bs.cat ? "/sv/categories/" + bs.cat : bs.source;
+      if (!src) throw new Error("ingen källa");
+      if (!bs.fixed) src += (src.indexOf("?") === -1 ? "?" : "&") + "sort=popular";
+      return HZ8.fetchPage(src, HZ8.categoryCards);
+    }).then(function (cards) {
+      var taken = {}; taken[here] = true;
+      if (sim) sim.querySelectorAll(".product-card a[href*='/products/']").forEach(function (a) { taken[pathOf(a.getAttribute("href"))] = true; });
+      var rows = [];
+      cards.forEach(function (c) {
+        var d = document.createElement("div"); d.innerHTML = c.html;
+        var a = d.querySelector("a[href*='/products/']"), name = d.querySelector(".name"), brand = d.querySelector(".brand"), price = d.querySelector(".price ins, .price"), img = d.querySelector("img");
+        if (!a || !name || !brand || !price) return;
+        var path = pathOf(a.getAttribute("href")), nm = name.textContent.replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+        if (taken[path] || /frakt|avgift|presentkort|batteri/i.test(nm)) return;
+        taken[path] = true;
+        rows.push({ href: a.getAttribute("href"), name: nm, brand: brand.textContent.trim(), price: price.textContent.replace(/\s+/g, " ").trim(), img: img ? img.getAttribute("src") : "" });
+      });
+      rows = rows.slice(0, 6);
+      if (rows.length < 2) { box.remove(); return; }
+      box.innerHTML = '<div class="hz8-ppbest__head"><h2 class="hz8-ppbest__h" id="hz8-ppbest-h">Bästsäljare just nu</h2><a class="hz8-ppbest__all" href="' + esc(HZ8.link("/sv/page/vara-bastsaljare")) + '">Alla bästsäljare' + ICON.arrow + "</a></div>" +
+        '<ul class="hz8-ppbest__list" role="list">' + rows.map(function (r) {
+          return '<li><a class="hz8-ppbest__item" href="' + esc(r.href) + '">' + (r.img ? '<span class="hz8-ppbest__img"><img src="' + esc(r.img) + '" alt="" width="56" height="56" loading="lazy" decoding="async"></span>' : "") +
+            '<span class="hz8-ppbest__txt"><span class="hz8-ppbest__brand">' + esc(r.brand) + '</span><span class="hz8-ppbest__name">' + esc(r.name) + '</span><span class="hz8-ppbest__price">' + esc(r.price) + "</span></span></a></li>";
+        }).join("") + "</ul>";
+      box.hidden = false;
+    }).catch(function () { box.remove(); });
+  }
+
+  /* ---- Kapitelnavigering + Till toppen ----
+     Originalraden ligger efter Kort om produkten. När den lämnat vyn:
+     desktop -> kompakt kopia under headern (följer headerns semisticky
+     läge); mobil/platta -> kompakt rad längst ned som ersätter köpbaren
+     (aldrig båda). Aldrig över footer, dialog, meny eller varukorg.
+     Till toppen efter ~1,75 vyer, ovanför eventuell bottenkontroll. */
+  function bindChapterNav(host) {
+    var nav = document.getElementById("hz8-ppnav");
+    if (!nav) return;
+    var html = document.documentElement;
+    var items = [
+      ["hz8-ppsum", "Översikt", "oversikt"],
+      ["hz8-acc-produktfakta", "Fakta", "fakta"],
+      ["omdomen", "Omdömen", "omdomen"],
+      ["liknande", "Liknande", "liknande"]
+    ];
+    var render = function () {
+      var have = items.filter(function (it) { return document.getElementById(it[0]); });
+      var h = have.map(function (it) { return '<li><a class="hz8-ppnav__a" href="#' + it[0] + '" data-k="' + it[2] + '">' + esc(it[1]) + "</a></li>"; }).join("");
+      [nav, dock].forEach(function (n) { var ul = n.querySelector("ul"); if (ul.__h !== h) { ul.innerHTML = h; ul.__h = h; } });
+      return have;
+    };
+    var dock = node("div", "hz8-ppnav-dock");
+    dock.innerHTML = '<nav class="hz8-ppnav hz8-ppnav--dock" aria-label="Kapitel på sidan (snabbval)"><ul class="hz8-ppnav__list" role="list"></ul></nav>';
+    dock.setAttribute("aria-hidden", "true"); dock.inert = true;
+    document.body.appendChild(dock);
+    var top = node("button", "hz8-totop");
+    top.type = "button"; top.setAttribute("aria-label", "Till toppen"); top.innerHTML = ICON.chev;
+    top.setAttribute("aria-hidden", "true"); top.tabIndex = -1;
+    document.body.appendChild(top);
+    var have = render();
+    /* Omdömen och Liknande kommer asynkront. */
+    var rt = 0; HZ8.watch(function () { window.clearTimeout(rt); rt = window.setTimeout(function () { have = render(); observe(); }, 120); });
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var narrow = window.matchMedia("(max-width: 1023px)");
+    function go(e) {
+      var a = e.target.closest && e.target.closest(".hz8-ppnav__a");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var t = document.getElementById(a.getAttribute("href").slice(1)); if (!t) return;
+      e.preventDefault();
+      if (location.hash !== a.getAttribute("href")) history.pushState(null, "", a.getAttribute("href"));
+      t.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" });
+      var f = t.querySelector("summary, h2") || t; if (f.tagName !== "SUMMARY" && !f.hasAttribute("tabindex")) f.setAttribute("tabindex", "-1"); f.focus({ preventScroll: true });
+      setActive(a.getAttribute("data-k"));
+    }
+    nav.addEventListener("click", go); dock.addEventListener("click", go);
+    var active = "";
+    function setActive(k) {
+      if (k === active) return; active = k;
+      [nav, dock].forEach(function (n) { n.querySelectorAll(".hz8-ppnav__a").forEach(function (a) { if (a.getAttribute("data-k") === k) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); }); });
+    }
+    var inLine = new Set(), spy = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) inLine.add(x.target); else inLine.delete(x.target); });
+      var cur = have.filter(function (it) { return inLine.has(document.getElementById(it[0])); }).pop();
+      setActive(cur ? cur[2] : "");
+    }, { rootMargin: "-35% 0px -64% 0px" });
+    var watched = new Set();
+    function observe() { have.forEach(function (it) { var el = document.getElementById(it[0]); if (el && !watched.has(el)) { watched.add(el); spy.observe(el); } }); }
+    observe();
+    var gone = false, nearFoot = false;
+    function sync() {
+      // Mobil: originalnavet är dolt (rect 0) -- mät mot översiktskapitlet i stället.
+      var ref = nav.offsetParent ? nav : (document.getElementById("hz8-ppsum") || nav);
+      gone = !!ref.offsetParent && ref.getBoundingClientRect().bottom <= 0;
+      var on = gone && !nearFoot && !overlayOpen();
+      if (dock.classList.contains("is-on") !== on) {
+        dock.classList.toggle("is-on", on); dock.setAttribute("aria-hidden", on ? "false" : "true"); dock.inert = !on;
+      }
+      /* Förbi översikten: köpbaren lämnar plats permanent (även nära footern, där docken släcks). */
+      html.classList.toggle("hz8-ppnav-deep", gone && narrow.matches);
+      var y = window.scrollY, showTop = y > window.innerHeight * 1.75 && !overlayOpen() && !nearFoot;
+      if (top.classList.contains("is-on") !== showTop) { top.classList.toggle("is-on", showTop); top.setAttribute("aria-hidden", showTop ? "false" : "true"); top.tabIndex = showTop ? 0 : -1; }
+      if (typeof syncSticky === "function") syncSticky();
+    }
+    var foot = document.querySelector(".hz8-footer, footer.page-footer");
+    if (foot) new IntersectionObserver(function (en) { nearFoot = en[0].isIntersecting; sync(); }, { rootMargin: "0px 0px 24px 0px" }).observe(foot);
+    var raf = 0;
+    window.addEventListener("scroll", function () { if (!raf) raf = window.requestAnimationFrame(function () { raf = 0; sync(); }); }, { passive: true });
+    new MutationObserver(function () { window.requestAnimationFrame(sync); }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class", "aria-modal", "open"] });
+    top.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" });
+      var h1 = document.querySelector(".product-detail__information h1");
+      if (h1) { if (!h1.hasAttribute("tabindex")) h1.setAttribute("tabindex", "-1"); h1.focus({ preventScroll: true }); }
+    });
+  }
+
   function buildBelow(detail) {
     if (document.querySelector(".hz8-ppc")) return;
     var host = node("div", "hz8-ppc");
@@ -1016,7 +1179,10 @@
       S.otherSpecs = specs.filter(function (r) { return !CONTENT_LABEL.test(r[0]); });
       hideSpecList(article);
     }
-    S.summary = buildSummary(detail, lead);
+    S.summary = buildSummary(host, lead);
+    /* In-page navigation: riktiga ankare till kapitlen (sticky-kopian
+       byggs i bindChapterNav). */
+    host.insertAdjacentHTML("beforeend", '<nav class="hz8-ppnav" id="hz8-ppnav" aria-label="Kapitel på sidan"><ul class="hz8-ppnav__list" role="list"></ul></nav>');
 
     /* Fyra disclosures. Innehåll och analys är kapitlets gröna material
        och står öppen på desktop. */
@@ -1043,31 +1209,17 @@
     list.appendChild(faq); loadFaq(faq);
     syncLedger();
 
-    /* Passar till (kompletterande tillbehör, före omdömena -- bara när
-       83-pdp-purchase hittar verifierad kompatibilitet; asynkront). */
-    var fit = node("div", "hz8-ppc__fit"); host.appendChild(fit);
-    var moveCompat = function () { var c = document.querySelector(".hz8-pdp-compat"); if (c && c.parentNode !== fit) { fit.appendChild(c); var t = c.querySelector(".hz8-prail__title, h2"); if (t) t.textContent = "Passar till"; } };
+    /* Bra tillsammans med: i köpstationen, bara när 83-pdp-purchase hittar
+       verifierad kompatibilitet (cart -> CCELL-batteri). Aldrig för
+       engångsvapes (ingen sådan relation finns i datan). Dold vid 3/5-pack. */
+    var fit = node("div", "hz8-pp__fit"); fit.hidden = true;
+    var st0 = document.querySelector(".hz8-pp"); if (st0) st0.appendChild(fit);
+    var moveCompat = function () {
+      var c = document.querySelector(".hz8-pdp-compat"); if (!c || c.parentNode === fit) return;
+      fit.appendChild(c); fit.hidden = false;
+      var t = c.querySelector(".hz8-prail__title, h2"); if (t) t.textContent = "Bra tillsammans med";
+    };
     moveCompat(); window.setTimeout(moveCompat, 2500); window.setTimeout(moveCompat, 5000);
-
-    /* Omdömen (fylls när Nyehandels omdömen laddats). Stabilt ID för
-       ankarlänken vid betyget ovanför vecket. */
-    var rev = node("div", "hz8-ppc__reviews"); rev.id = "omdomen"; host.appendChild(rev);
-    var count = +((((document.querySelector(".accordion-button#product-reviews") || {}).textContent || "").match(/\((\d+)\)/) || [])[1] || 0);
-    loadReviews(count).then(function (list2) {
-      var html = list2 && list2.length ? reviewsHtml(list2) : "";
-      if (!html) { rev.remove(); syncStation(); return; }
-      rev.innerHTML = html;
-      var cta = document.querySelector(".nh-review-cta a[href]");
-      if (cta) rev.querySelector(".hz8-pr__foot").insertAdjacentHTML("beforeend", '<a class="hz8-pr__leave" href="' + esc(cta.getAttribute("href")) + '" target="_blank" rel="noopener">' + esc(cta.textContent.trim()) + "</a>");
-      var all = rev.querySelector(".hz8-pr__all"), full = rev.querySelector(".hz8-pr__full");
-      all.addEventListener("click", function () {
-        var open = all.getAttribute("aria-expanded") === "true";
-        if (!full.__done) { full.innerHTML = list2.map(reviewItem).join(""); full.__done = true; }
-        full.hidden = open; all.setAttribute("aria-expanded", String(!open));
-        all.firstChild.textContent = open ? "Läs alla " + list2.length + " omdömen " : "Visa färre omdömen ";
-      });
-      syncStation();
-    });
 
     /* Liknande produkter: bara alternativ i samma produkttyp, efter
        omdömena (kunden leds inte bort innan förtroendet etablerats).
@@ -1077,6 +1229,7 @@
     var brandName = ((document.querySelector(".product-detail__information .brand a") || {}).textContent || "").trim();
     if (sim) {
       host.appendChild(sim);
+      if (!sim.id) sim.id = "liknande";
       var simHead = sim.querySelector("h2");
       if (simHead && band && brandName) simHead.insertAdjacentHTML("afterend", '<a class="hz8-pp-brandlink" href="' + esc(band.getAttribute("href")) + '">Alla produkter från ' + esc(brandName) + ICON.arrow + "</a>");
       var typeWord = function (n) { return (nameParts(n).type.split(/\s+/)[0] || "").toLowerCase(); };
@@ -1098,6 +1251,36 @@
       };
       filterSim(); window.setTimeout(filterSim, 1500);
     }
+    /* Bästsäljare just nu: butikens egna bästsäljarurval (/page/vara-
+       bastsaljare, Nyehandels sortering "Mest populära" -- samma källa
+       som startsidan). Bara kort med pris och varumärke, utan aktuell
+       produkt och utan produkter som redan står i Liknande produkter.
+       Ingen källa -> ingen sektion. */
+    var bestBox = node("section", "hz8-ppbest"); bestBox.id = "hz8-ppbest"; bestBox.hidden = true;
+    bestBox.setAttribute("aria-labelledby", "hz8-ppbest-h");
+    host.appendChild(bestBox);
+    loadBestsellers(bestBox, sim);
+
+    /* Omdömen (fylls när Nyehandels omdömen laddats). Stabilt ID för
+       ankarlänken vid betyget ovanför vecket. */
+    var rev = node("div", "hz8-ppc__reviews"); rev.id = "omdomen"; host.appendChild(rev);
+    var count = +((((document.querySelector(".accordion-button#product-reviews") || {}).textContent || "").match(/\((\d+)\)/) || [])[1] || 0);
+    loadReviews(count).then(function (list2) {
+      var html = list2 && list2.length ? reviewsHtml(list2) : "";
+      if (!html) { rev.remove(); syncStation(); return; }
+      rev.innerHTML = html;
+      var cta = document.querySelector(".nh-review-cta a[href]");
+      if (cta) rev.querySelector(".hz8-pr__foot").insertAdjacentHTML("beforeend", '<a class="hz8-pr__leave" href="' + esc(cta.getAttribute("href")) + '" target="_blank" rel="noopener">' + esc(cta.textContent.trim()) + "</a>");
+      var all = rev.querySelector(".hz8-pr__all"), full = rev.querySelector(".hz8-pr__full");
+      all.addEventListener("click", function () {
+        var open = all.getAttribute("aria-expanded") === "true";
+        if (!full.__done) { full.innerHTML = list2.map(reviewItem).join(""); full.__done = true; }
+        full.hidden = open; all.setAttribute("aria-expanded", String(!open));
+        all.firstChild.textContent = open ? "Läs alla " + list2.length + " omdömen " : "Visa färre omdömen ";
+      });
+      syncStation();
+    });
+
     /* Kategorier (riktiga <a href>). Kategori vars namn är ett formats
        namn men pekar på en annan route än formatets etablerade sida (t.ex.
        "Vapes" -> vapes-ny när Vapes = alla-vapes) döljs -- annars två
@@ -1134,6 +1317,7 @@
       if (lists) lists.hidden = rec.hidden && !Array.prototype.some.call(lists.querySelectorAll(".product-card"), function (c) { return c.offsetParent && !rec.contains(c); });
     };
     syncRecent(); window.setTimeout(syncRecent, 3000);
+    bindChapterNav(host);
   }
 
   /* Utvalda omdömen: det senaste högst betygsatta och det senaste med
@@ -1225,11 +1409,12 @@
     buildSticky();
     syncStation();
     HZ8.watch(function () {
-      syncStation(); syncThumbs(); syncLedger();
+      syncStation(); syncThumbs(); syncStageEcho(); syncLedger();
       /* Kort om produkten ligger i Vue-ägda .product-detail: tillbaka om
          en omritning tar bort den. */
       var d = document.querySelector(".product-detail");
-      if (S.summary && d && !d.contains(S.summary)) d.appendChild(S.summary);
+      var hostEl = document.querySelector(".hz8-ppc");
+      if (S.summary && hostEl && !hostEl.contains(S.summary)) hostEl.insertBefore(S.summary, hostEl.firstChild);
     });
     var sel = nativeSelect();
     if (sel) sel.addEventListener("change", function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 60); });
