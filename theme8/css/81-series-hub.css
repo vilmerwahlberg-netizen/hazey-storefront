@@ -253,6 +253,11 @@ html.hz8-sh-pilot {
   --hz8-pilot-shadow: 0 18px 36px -26px color-mix(in srgb, var(--hz8-ink) 55%, transparent);
   --hz8-pilot-r: 10px;
 }
+/* Breddkalibrering 2026-10-21: seriehubbens innehållslinje följer Faraoh-
+   PDP:ns sidluftskurva (~40 px vid 1280, 64 vid 1440, 68 vid 1512) med en
+   centrerad maxbredd på 1392 px. Hero/bakgrunder förblir full bleed.
+   Under 1024 px gäller de accepterade mobil-/plattmåtten. */
+@media (min-width: 1024px) { html.hz8-sh-pilot { --hz8-content: min(100% - 2 * max(24px, min(15vw - 152px, 5.556vw - 16px)), 1392px); } }
 html.hz8-sh-pilot { --sh-line: color-mix(in srgb, #8a6a3c 16%, transparent); --sh-sun-x: 88%; --sh-sun-side: 1; --sh-band: #fcf7ef; }
 html.hz8.hz8-sh-pilot body,
 html.hz8.hz8-sh-pilot #store-main { background: var(--hz8-pilot-shop) !important; }
@@ -550,7 +555,9 @@ html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf .hz8-prail__btn .hz8-icon { widt
 html.hz8-sh-pilot .hz8-sh-shelf__sub { grid-area: sub; margin: 4px 0 0 !important; color: color-mix(in srgb, var(--hz8-ink) 66%, transparent) !important; font: 400 13.5px/1.35 var(--hz8-font-ui) !important; }
 html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf .hz8-prail__list { grid-auto-columns: calc((100% - 3 * 20px) / 4); gap: 20px !important; }
 html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf.is-single .hz8-prail__list { grid-auto-columns: calc((100% - 3 * 20px) / 4); }
-@media (min-width: 1600px) { html.hz8.hz8-sh-pilot #store-main :is(.hz8-sh-shelf, .hz8-sh-shelf.is-single) .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 20px) / 5); } }
+/* Breddkalibrering 2026-10-21: innehållet är max 1392 px även på stora
+   skärmar -- fyra kort per vy (samma kortproportion som vid 1440/1512)
+   i stället för fem smalare. */
 @media (max-width: 1023px) { html.hz8.hz8-sh-pilot #store-main :is(.hz8-sh-shelf, .hz8-sh-shelf.is-single) .hz8-prail__list { grid-auto-columns: calc((100% - 2 * 14px) / 2.7); gap: 14px !important; } }
 @media (max-width: 767px) { html.hz8.hz8-sh-pilot #store-main :is(.hz8-sh-shelf, .hz8-sh-shelf.is-single) .hz8-prail__list { grid-auto-columns: calc((100% - 32px - 12px) / 2.12); gap: 12px !important; margin: 0 -16px !important; padding: 2px 16px 10px !important; scroll-padding-inline: 16px; } }
 /* Plattformens ul.products-li har egen padding -- korten ska ligga i

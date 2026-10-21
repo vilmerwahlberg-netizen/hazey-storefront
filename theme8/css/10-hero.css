@@ -52,6 +52,7 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
   position: relative;
   z-index: 2;
   width: min(100% - 48px, 1316px);
+  /* Breddkalibrering 2026-10-21: samma linje som startsidans sektioner. */
   /* Must match .hz8-hero's min-height: .hz8-hero__microtrust is
      positioned against THIS box. */
   min-height: 630px;
@@ -470,11 +471,15 @@ html.hz8 .hz8-native-hero-hidden { display: none !important; }
 }
 /* Stående surfplatta: bilden förankras i högerkanten så att Hazey-brädan
    aldrig beskärs. */
+@media (min-width: 1024px) { .hz8-hero__inner { width: min(100% - 2 * max(24px, min(15vw - 152px, 5.556vw - 16px)), 1392px); } }
 @media (min-width: 768px) and (max-aspect-ratio: 1/1) {
   .hz8-hero__background { background-position: 0 0, 100% 80%; }
 }
 
 @media (min-width: 1600px) {
+  /* Medvetet undantag (breddkalibrering 2026-10-21): heroinnehållet behåller
+     sin breda linje här -- texten är komponerad mot fotot (bussen till
+     höger); med 1392 px hamnade H1 över motivet. Bakgrunden är full bleed. */
   .hz8-hero__inner { width: min(100% - 80px, 1760px); }
   .hz8-hero__copy { width: 760px; padding-top: 154px; }
   .hz8-hero h1 { font-size: 78px !important; margin-bottom: 28px; }

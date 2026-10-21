@@ -16,6 +16,10 @@ html.hz8 .hz8-native-footer-hidden { display: none !important; }
 .hz8-home a { color: inherit; text-decoration: none; }
 .hz8-home button { font: inherit; cursor: pointer; }
 .hz8-home__section { width: min(100%, 1320px); margin: 0 auto; padding: 0 0 34px; }
+/* Breddkalibrering 2026-10-21: samma redaktionella sidluftskurva som
+   Faraoh-PDP:n och en maxbredd på 1392 px (tidigare 1320 px och därefter
+   ett språng till 1760 px vid 1600). Bakgrunder förblir full bleed. */
+@media (min-width: 1024px) { .hz8-home__section { width: min(100%, 100vw - 2 * max(24px, min(15vw - 152px, 5.556vw - 16px)), 1392px); } }
 .hz8-home__head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 13px; }
 .hz8-home__head h2 { margin: 0; color: var(--hz8-ink); font: 600 29px/1 "Iowan Old Style", Georgia, serif !important; }
 .hz8-home__head a, .hz8-home__head > span { font: 700 12px/1.2 Arial, sans-serif !important; }
@@ -29,7 +33,7 @@ html.hz8 .hz8-native-footer-hidden { display: none !important; }
 
 @media (min-width: 1600px) {
   .hz8-home { padding-top: 52px; }
-  .hz8-home__section { width: min(100%, 1760px); padding-bottom: 45px; }
+  .hz8-home__section { padding-bottom: 45px; }
   .hz8-home__head { margin-bottom: 17px; }
   .hz8-home__head h2 { font-size: 39px !important; }
   .hz8-home__head a, .hz8-home__head > span { font-size: 16px !important; }

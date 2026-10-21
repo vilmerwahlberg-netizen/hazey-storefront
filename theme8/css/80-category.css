@@ -22,6 +22,12 @@ html.hz8[data-hz8-page="category"] #store-main {
 @media (min-width: 1600px) {
   html.hz8[data-hz8-page="category"] #store-main { --hz8-content-w: 1640px; }
 }
+/* Breddkalibrering 2026-10-21 (bara Alla Vapes-piloten): samma sidluftskurva
+   som Faraoh-PDP:n och en katalogmaxbredd på 1520 px i stället för språnget
+   till 1640 px. vw (inte %) eftersom putsens --pe räknar med 100cqw. */
+@media (min-width: 1024px) {
+  html.hz8-cat-pilot[data-hz8-page="category"] #store-main { --hz8-content-w: min(100vw - 2 * max(24px, min(15vw - 152px, 5.556vw - 16px)), 1520px); }
+}
 @media (max-width: 767px) {
   html.hz8[data-hz8-page="category"] #store-main { grid-template-columns: 16px minmax(0, 1fr) 16px; }
 }
