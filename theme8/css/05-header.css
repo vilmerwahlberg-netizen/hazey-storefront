@@ -34,13 +34,18 @@
      bakgrunden syns igenom; blur separerar navigationen. Konstant
      oavsett scrollposition -- bara bakgrunden under headern väljer
      ljust eller mörkt läge. */
-  --hz8-glass-bg: color-mix(in srgb, #fbf3e6 58%, transparent);
-  --hz8-glass-blur: blur(20px) saturate(1.35);
-  --hz8-glass-border: color-mix(in srgb, #b39c76 42%, transparent);
-  --hz8-glass-shadow: 0 14px 34px -16px rgba(72, 52, 29, .32), inset 0 1px 0 rgba(255, 252, 244, .5);
+  /* Kompakt varmt glas (2026-10-21): tätare elfenben/sand (70 %), mjukare
+     mättnad, tunn ljus varm kant, inre toppreflex och låg varm skugga. */
+  --hz8-glass-bg: color-mix(in srgb, #faf2e4 70%, transparent);
+  --hz8-glass-blur: blur(22px) saturate(1.28);
+  --hz8-glass-border: color-mix(in srgb, #c7b08a 46%, transparent);
+  --hz8-glass-shadow: 0 10px 26px -16px rgba(72, 52, 29, .30), 0 1px 2px rgba(72, 52, 29, .06), inset 0 1px 0 rgba(255, 253, 247, .78);
+  /* Utan backdrop-filter: nästan täckande samma ton (läsbart utan blur). */
+  --hz8-glass-fallback-bg: color-mix(in srgb, #faf2e4 95%, transparent);
   --hz8-header-fg: #2c3620;
   /* Mörkt/fotografiskt läge: samma form, lätt mörkare olivglas. */
-  --hz8-glass-dark-bg: color-mix(in srgb, #222c18 50%, transparent);
+  --hz8-glass-dark-bg: color-mix(in srgb, #222c18 56%, transparent);
+  --hz8-glass-dark-fallback-bg: color-mix(in srgb, #222c18 92%, transparent);
   --hz8-glass-dark-border: color-mix(in srgb, #fff8ea 24%, transparent);
   --hz8-glass-dark-shadow: 0 14px 34px -16px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 248, 234, .16);
   --hz8-header-tone-ms: 220ms;
@@ -184,11 +189,11 @@ html.hz8 #store-header .main .container{
    ändras) och kommer tillbaka vid scroll uppåt. Styrs av 05-header.js
    (html.hz8-header-hidden); scrollposition påverkar aldrig materialet. */
 html.hz8 #store-header{
-  transition:transform 240ms cubic-bezier(.25,.46,.45,.94);
+  transition:transform 260ms cubic-bezier(.22, 1, .36, 1);
 }
 html.hz8.hz8-header-hidden #store-header{
   transform:translate3d(0, calc(-100% - 48px), 0);
-  transition-duration:300ms;
+  transition-duration:240ms;
 }
 @media (prefers-reduced-motion:reduce){
   html.hz8 #store-header, html.hz8.hz8-header-hidden #store-header{ transition-duration:1ms; }
@@ -203,6 +208,11 @@ html.hz8 #store-header[data-hz8-tone="dark"] .main::before{
   background:var(--hz8-glass-dark-bg);
   border-color:var(--hz8-glass-dark-border);
   box-shadow:var(--hz8-glass-dark-shadow);
+}
+/* Utan backdrop-filter: tätare glas så att text och ikoner läses ändå. */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  html.hz8 #store-header .main::before{ background:var(--hz8-glass-fallback-bg); }
+  html.hz8 #store-header[data-hz8-tone="dark"] .main::before{ background:var(--hz8-glass-dark-fallback-bg); }
 }
 html.hz8 #store-header[data-hz8-tone="dark"] .brand.header-logo img{ filter:brightness(0) invert(1) sepia(.12) saturate(1.2); }
 html.hz8 #store-header[data-hz8-tone="dark"] :is(.account-button, .basket-icon .cart-button, #mobile-search-trigger, .hamburger){ color:#fffaf0 !important; }
@@ -512,12 +522,24 @@ html.hz8 .hz8-header-nav .hz8-cat-item[data-hz8-cat="cbd"].is-open .hz8-dropdown
 /* Desktop-bara: göm mobilens hamburgare + mobil-sök-trigger */
 @media (min-width:1180px){
   html.hz8 #store-header .hamburger{ display:none!important; }
-  /* KORRIGERING (ojämna mellanrum): uppmätt nav->sök = 137px, sök->konto
-     = 137px (redan i samklang), men konto->varukorg bara 94px -- bröt
-     den annars konsekventa rytmen. Jämnar ut till samma ~137px genom
-     att bara knuffa varukorgen, utan att röra de två redan korrekta
-     gapen eller native kontot/varukorgens egen storlek/funktion. */
-  html.hz8 #store-header .basket-icon{ margin-left:43px; }
+  /* Kompakt gruppering (2026-10-21): vänster = logga + nav, höger = sök,
+     konto, varukorg. Nyehandels space-between spred tidigare ut allt med
+     lika stora hål (104 px). Nu bär bara mittglappet den fria bredden.
+     Höger inner-luft 21 px: varukorgsglyfen (38 px i en 44 px tryckyta)
+     slutar då 24 px från kanten, samma optiska luft som före loggan. */
+  /* Bubblan max 1280 px, centrerad (1440: x 80-1360). Under 1328 px
+     krymper den med 24 px sidluft som tidigare. Nav-avstånden växer
+     1180 -> 1328 och är sedan konstanta, så mittglappet Kampanjer -> sök
+     är ~106 px från 1328 px och uppåt. */
+  html.hz8 #store-header .main{ max-width:1280px; margin-left:max(24px, calc((100% - 1280px) / 2)); margin-right:max(24px, calc((100% - 1280px) / 2)); }
+  html.hz8 #store-header .main .container{ justify-content:flex-start; gap:0; padding:0 21px 0 24px; }
+  html.hz8 .hz8-header-nav{ margin-left:clamp(32px, 8.108vw - 63.68px, 44px); gap:clamp(18px, 7.432vw - 69.70px, 29px); }
+  html.hz8 #store-header #search-container{ flex:0 1 296px; min-width:220px; margin-left:auto; padding-left:32px; box-sizing:content-box; }
+  html.hz8 #store-header #search-container .store-search{ width:100%; }
+  html.hz8 #store-header .account-button,
+  html.hz8 #store-header .basket-icon .cart-button{ width:44px; min-width:44px; padding:0!important; }
+  html.hz8 #store-header .account-button{ margin-left:14px; }
+  html.hz8 #store-header .basket-icon{ margin-left:12px; }
 }
 
 /* ============ KOMPAKT (surfplatta) 768–1179 px ============ */

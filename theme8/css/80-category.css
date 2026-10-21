@@ -1821,3 +1821,144 @@ html.hz8.hz8-cat-pilot[data-hz8-page="category"] #store-main .product-card :is(.
   height: max(100%, 44px);
   transform: translateY(-50%);
 }
+
+/* ============================================================
+   Filterdocka (2026-10-21, från 768 px)
+   Den ordinarie raden ligger kvar i flödet efter heron (ingen fast
+   fullbreddsrad längre). När den helt lämnat vyn glider en liten
+   glasknapp in från vänster under headern; den öppnar en kompakt
+   panel ovanpå sidan (fixed -- flyttar aldrig gridet, ändrar aldrig
+   dokumentbredden). Mobilens fasta rad och filterark är oförändrade.
+   ============================================================ */
+@media (min-width: 768px) {
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { position: relative; top: auto; transform: none !important; }
+}
+html.hz8-cat-pilot .hz8-pdock {
+  position: fixed;
+  z-index: 14; /* under headern (15), över gridet */
+  top: calc(var(--hz8-header-reserve, 80px) + 12px);
+  left: 22px;
+  pointer-events: none;
+  /* Följer headerns semi-sticky rörelse (samma kurva, bara transform). */
+  transition: transform 260ms cubic-bezier(.22, 1, .36, 1);
+}
+html.hz8-cat-pilot.hz8-header-hidden .hz8-pdock { transform: translate3d(0, calc(-1 * var(--hz8-header-reserve, 80px)), 0); transition-duration: 240ms; }
+html.hz8-cat-pilot .hz8-pdock [hidden] { display: none !important; }
+html.hz8-cat-pilot .hz8-pdock__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 108px;
+  height: 42px;
+  padding: 0 16px 0 14px;
+  border: 1px solid color-mix(in srgb, #c7b08a 50%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, #f7ecda 74%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  backdrop-filter: blur(22px) saturate(1.2);
+  box-shadow: 0 10px 22px -14px rgba(72, 52, 29, .42), 0 1px 2px rgba(72, 52, 29, .07), inset 0 1px 0 rgba(255, 253, 247, .8);
+  color: var(--hz8-pilot-green) !important;
+  font: 600 14px/1 var(--hz8-font-ui) !important;
+  white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
+  /* Utgångsläge: utanför vänsterkanten, osynlig och utan klickyta. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(calc(-100% - 24px));
+  transition: transform 240ms cubic-bezier(.22, 1, .36, 1), opacity 240ms cubic-bezier(.22, 1, .36, 1), visibility 0s linear 240ms, background-color .16s var(--hz8-ease);
+}
+html.hz8-cat-pilot .hz8-pdock.is-shown .hz8-pdock__btn { opacity: 1; visibility: visible; transform: translateX(0); transition-delay: 0s; }
+html.hz8-cat-pilot .hz8-pdock.is-row-in:not(.is-shown) .hz8-pdock__btn { transition: none; }
+html.hz8-cat-pilot .hz8-pdock__btn:hover,
+html.hz8-cat-pilot .hz8-pdock__btn[aria-expanded="true"] { background: color-mix(in srgb, #fffaf0 88%, transparent); }
+html.hz8-cat-pilot .hz8-pdock__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-cat-pilot .hz8-pdock__btn .hz8-icon { flex: none; }
+html.hz8-cat-pilot .hz8-pdock__n {
+  display: inline-grid; place-items: center; min-width: 21px; height: 21px; padding: 0 6px; margin-left: auto;
+  border-radius: 99px; background: var(--hz8-cta-fill); color: #fff !important; font: 700 11.5px/1 var(--hz8-font-ui) !important;
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  html.hz8-cat-pilot .hz8-pdock__btn { background: color-mix(in srgb, #faf2e4 96%, transparent); }
+  html.hz8-cat-pilot .hz8-pdock__panel { background: color-mix(in srgb, #faf2e4 98%, transparent) !important; }
+}
+
+/* Panelen: tätare varmt glas, tunna avdelare, liten varm skugga. Ingen
+   mörk bakgrund och inget scroll-lås -- sidan bakom är orörd. */
+html.hz8-cat-pilot .hz8-pdock__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 308px;
+  max-width: calc(100vw - 44px);
+  max-height: 456px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 14px 18px 18px;
+  /* Varmt sandglas (78 %): bakgrunden anas, texten behåller full kontrast. */
+  border: 1px solid color-mix(in srgb, #c4a97c 44%, transparent);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 238, .16), rgba(255, 250, 238, 0) 42px),
+    color-mix(in srgb, #f7ecda 78%, transparent);
+  -webkit-backdrop-filter: blur(23px) saturate(1.2);
+  backdrop-filter: blur(23px) saturate(1.2);
+  box-shadow: 0 18px 36px -22px rgba(72, 52, 29, .42), 0 2px 6px -2px rgba(72, 52, 29, .09), inset 0 1px 0 rgba(255, 252, 243, .72);
+  color: var(--hz8-pilot-green);
+  pointer-events: auto;
+  scrollbar-width: thin;
+}
+html.hz8-cat-pilot .hz8-pdock__panel[hidden] { display: none; }
+html.hz8-cat-pilot .hz8-pdock__head { display: flex; align-items: center; gap: 10px; min-height: 40px; padding-bottom: 6px; border-bottom: 1px solid color-mix(in srgb, #8a6a3c 18%, transparent); }
+html.hz8-cat-pilot .hz8-pdock__title { margin: 0 !important; color: var(--hz8-pilot-green) !important; font: 700 18px/1.1 var(--hz8-font-ui) !important; letter-spacing: 0 !important; }
+html.hz8-cat-pilot .hz8-pdock__head .hz8-pdock__n { margin-left: 0; }
+html.hz8-cat-pilot .hz8-pdock__clear { margin-left: auto; min-height: 40px; text-decoration: none; color: var(--hz8-cta-hover) !important; font-size: 13.5px !important; }
+html.hz8-cat-pilot .hz8-pdock__clear:hover { text-decoration: underline; }
+html.hz8-cat-pilot .hz8-pdock__sec { border-bottom: 1px solid color-mix(in srgb, #8a6a3c 18%, transparent); }
+html.hz8-cat-pilot .hz8-pdock__h { margin: 0 !important; font: inherit !important; }
+html.hz8-cat-pilot .hz8-pdock__row {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 46px; padding: 0 2px;
+  border: 0; background: transparent; color: var(--hz8-pilot-green) !important;
+  font: 600 14.5px/1.2 var(--hz8-font-ui) !important; text-align: left; cursor: pointer;
+}
+html.hz8-cat-pilot .hz8-pdock__row:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; border-radius: 6px; }
+html.hz8-cat-pilot .hz8-pdock__lbl { flex: 1 1 auto; min-width: 0; }
+html.hz8-cat-pilot .hz8-pdock__val { flex: 0 1 auto; min-width: 0; overflow: hidden; color: color-mix(in srgb, var(--hz8-pilot-green) 72%, transparent); font: 500 13px/1.2 var(--hz8-font-ui) !important; white-space: nowrap; text-overflow: ellipsis; max-width: 130px; }
+html.hz8-cat-pilot .hz8-pdock__row .hz8-pchev { flex: none; }
+html.hz8-cat-pilot .hz8-pdock__body { padding: 0 0 12px; }
+/* Produkttyp och volym som kompakta valchips (samma knappar och motor). */
+html.hz8-cat-pilot .hz8-pdock [data-pt-dim] { display: flex; flex-wrap: wrap; gap: 8px; }
+html.hz8-cat-pilot .hz8-pdock [data-pt-dim] .hz8-popt__btn {
+  display: inline-flex; gap: 7px; width: auto; min-height: 36px; padding: 0 11px;
+  border: 1px solid color-mix(in srgb, #8a6a3c 28%, transparent); border-radius: 10px;
+  background: color-mix(in srgb, #fffdf8 70%, transparent); font-size: 13.5px !important;
+}
+html.hz8-cat-pilot .hz8-pdock [data-pt-dim] .hz8-popt__box { width: 15px; height: 15px; border-radius: 50%; }
+html.hz8-cat-pilot .hz8-pdock [data-pt-dim] .hz8-popt__btn[aria-pressed="true"] { border-color: color-mix(in srgb, var(--hz8-cta-fill) 55%, transparent); background: color-mix(in srgb, var(--hz8-cta-fill) 9%, #fffdf8); font-weight: 600 !important; }
+html.hz8-cat-pilot .hz8-pdock [data-pt-dim] .hz8-popt__btn[aria-pressed="true"] .hz8-popt__box { background-size: 10px; }
+/* Serielistan rullar internt om den är lång. */
+html.hz8-cat-pilot .hz8-pdock [data-pt-series] { max-height: 196px; overflow: auto; overscroll-behavior: contain; margin: 0 -6px; scrollbar-width: thin; }
+html.hz8-cat-pilot .hz8-pdock [data-pt-series] .hz8-popt__btn { min-height: 38px; font-size: 14px !important; }
+html.hz8-cat-pilot .hz8-pdock .hz8-psort { width: 100%; min-height: 38px; font-size: 14px !important; }
+html.hz8-cat-pilot .hz8-pdock__switch { justify-content: space-between; }
+html.hz8-cat-pilot .hz8-pdock__switch[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
+html.hz8-cat-pilot .hz8-pdock__switch[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
+html.hz8-cat-pilot .hz8-pdock__foot { padding-top: 14px; }
+html.hz8-cat-pilot .hz8-pdock__show { width: 100%; min-height: 44px; background: var(--hz8-pilot-green); color: #fffaf0 !important; font-size: 14.5px !important; }
+html.hz8-cat-pilot .hz8-pdock__show:hover { background: color-mix(in srgb, var(--hz8-pilot-green) 88%, #000); }
+@media (max-width: 767px) {
+  html.hz8-cat-pilot .hz8-pdock { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8-cat-pilot :is(.hz8-pdock, .hz8-pdock__btn) { transition: none !important; }
+}
+
+/* Hero ≥ 1800 px (2026-10-21): bara den redaktionella textgruppen
+   (brödsmulor, H1, ingress, antal, handskrift) flyttas ut mot kanten --
+   textens vänsterkant = min(sidluft, 168 px). Gridet, filterraden,
+   fotot, putsen, emblemet och quizet ligger kvar på 1520-linjen.
+   translate (ingen layoutpåverkan, ingen CLS); 1440/1512 orörda. */
+@media (min-width: 1800px) {
+  html.hz8-cat-pilot[data-hz8-page="category"] #store-main { --hz8-ptext-shift: min(0px, 168px - (100vw - var(--hz8-content-w)) / 2); }
+  html.hz8-cat-pilot[data-hz8-page="category"] :is(.designer-breadcrumbs, article.category-description h1, .hz8-cat-lead, .hz8-pcount, .hz8-pdecor__script) { translate: var(--hz8-ptext-shift) 0; }
+}

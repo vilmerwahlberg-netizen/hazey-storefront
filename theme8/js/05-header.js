@@ -53,8 +53,8 @@
      - ett hopp större än JUMP i en bildruta (ankare, återställd scroll)
        räknas inte som en rörelse. */
   var TOP_ZONE = 180;   // px
-  var HIDE_AFTER = 72;  // px nedåt
-  var SHOW_AFTER = 30;  // px uppåt
+  var HIDE_AFTER = 108; // px nedåt (2026-10-21: 96-120)
+  var SHOW_AFTER = 28;  // px uppåt (24-32)
   var JUMP = 320;       // px per bildruta
   /* Materiallägen: sektioner där headern ska vara mörk (varmvitt innehåll
      på olivglas). Allt annat = ljust (fallback). Sektioner kan också
@@ -68,15 +68,20 @@
     [".hz8-footer", "dark"]                          // footern (läses, ändras inte)
   ];
 
-  /* Låst synlig: sök, dropdown, mobilmeny, varukorg, fokus i headern,
-     scroll-lås (dialog/overlay). */
+  /* Låst synlig: sök (fokus eller öppna förslag), dropdown, mobilmeny,
+     varukorg, fokus i headern, pekaren över headern, kategorisidans
+     öppna filterpanel, scroll-lås (dialog/overlay). */
+  var pointerIn = false;
   function headerLocked(header) {
     var a = document.activeElement;
+    var drop = header.querySelector(".store-search__dropdown");
     return !!(
+      pointerIn ||
       (a && a !== document.body && header.contains(a)) ||
       document.body.classList.contains("hz8-scroll-locked") ||
       header.querySelector(".hz8-header-nav .is-open") ||
-      document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active")
+      (drop && drop.getClientRects().length) ||
+      document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active, .hz8-pdock.is-open")
     );
   }
   function initHeaderScroll(header) {
@@ -111,6 +116,10 @@
     /* Fokus i headern (Tab) eller en öppnad meny/sök/varukorg visar den
        direkt och kräver en ny nedåtrörelse innan den får döljas igen. */
     header.addEventListener("focusin", function () { acc = 0; dir = 0; setHidden(false); });
+    /* Mus/penna över headern = interaktion pågår (aldrig touch: där är
+       pekaren kvar efter ett tryck). */
+    header.addEventListener("pointerenter", function (e) { if (e.pointerType !== "touch") pointerIn = true; });
+    header.addEventListener("pointerleave", function () { pointerIn = false; });
     var raf = 0;
     new MutationObserver(function () {
       if (raf) return;
@@ -266,8 +275,13 @@
         {
           heading: "SERIER",
           links: [
-            /* Egen, dedikerad kategorisida -- verifierad live. */
-            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/m-s-vapes" },
+            /* Egen, dedikerad kategorisida -- verifierad live. href är
+               relationskartans route (06-catalog-map läser den); navHref
+               är vart headerlänken går (2026-10-21): Alla Vapes med Magic
+               Sauce förvald (vapes + carts i serien). ?serie= är Alla
+               Vapes-pilotens eget, verifierade flervalsstate (80-category)
+               -- ingen ny sida, canonical är fortfarande /alla-vapes. */
+            { label: "Magic Sauce", href: "https://hazeyse.nyehandel.se/sv/categories/m-s-vapes", navHref: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?serie=magic-sauce" },
             /* THCaB = gamla "THC-A". Egen kategorisida (thca-vapes,
                8 produkter) -- verifierad live 2026-09-24. */
             { label: "THCaB", href: "https://hazeyse.nyehandel.se/sv/categories/thca-vapes" },
@@ -525,7 +539,7 @@
       return '<li><span class="' + listClass + '__missing" aria-disabled="true">'
         + link.label + ' <em>(kommer snart)</em></span></li>';
     }
-    return '<li><a href="' + link.href + '">' + link.label + '</a></li>';
+    return '<li><a href="' + (link.navHref || link.href) + '">' + link.label + '</a></li>';
   }
 
   function renderProductCard(product, variant) {

@@ -1850,6 +1850,37 @@
     var ss = sheet("hz8-psortsheet", "Sortera", "sort");
     ss.body.innerHTML = '<div class="hz8-psorts"></div><p class="hz8-psort-note" hidden>Popularitet och datum kan inte jämföras mellan vapes och carts.</p>';
 
+    /* Filterdocka (desktop/surfplatta, 2026-10-21): den ordinarie raden
+       ligger kvar i flödet; när den helt lämnat vyn glider en liten
+       Filter-knapp in från vänster och öppnar en kompakt panel. Samma
+       alternativ, antal och motor som raden och arket (renderDims,
+       flervalet, syncSort) -- ingen egen filterlogik. */
+    function dockSec(key, title, body) {
+      return '<section class="hz8-pdock__sec" data-pd-sec="' + key + '"><h3 class="hz8-pdock__h"><button type="button" class="hz8-pdock__row" aria-expanded="false" aria-controls="hz8-pd-' + key + '">' +
+        '<span class="hz8-pdock__lbl">' + HZ8.esc(title) + '</span><span class="hz8-pdock__val"></span>' + CHEV + '</button></h3>' +
+        '<div class="hz8-pdock__body" id="hz8-pd-' + key + '" hidden>' + body + '</div></section>';
+    }
+    var dock = node("div", "hz8-pdock");
+    dock.setAttribute("inert", "");
+    dock.innerHTML =
+      '<button type="button" class="hz8-pdock__btn" aria-haspopup="dialog">' + SLIDERS + '<span>Filter</span><span class="hz8-pdock__n" aria-hidden="true" hidden></span></button>' +
+      '<div class="hz8-pdock__panel" id="hz8-pdock-panel" role="dialog" aria-labelledby="hz8-pdock-title">' +
+        '<div class="hz8-pdock__head"><h2 class="hz8-pdock__title" id="hz8-pdock-title">Filter</h2><span class="hz8-pdock__n" aria-hidden="true" hidden></span>' +
+          '<button type="button" class="hz8-plink hz8-pdock__clear" data-pd="clear" hidden>Rensa</button></div>' +
+        dockSec("type", "Produkttyp", '<div class="hz8-popts" data-pt-dim="typ"></div>') +
+        dockSec("series", "Cannabinoid / serie", '<div class="hz8-popts" data-pt-series></div>') +
+        dockSec("volume", "Volym", '<div class="hz8-popts" data-pt-dim="volym"></div>') +
+        '<div class="hz8-pdock__sec hz8-pdock__sec--stock" data-pd-sec="stock" hidden><button type="button" class="hz8-pdock__row hz8-pdock__switch" role="switch" aria-checked="false" data-pd="stock"><span class="hz8-pdock__lbl">I lager</span><span class="hz8-pswitch__track" aria-hidden="true"></span></button></div>' +
+        dockSec("sort", "Sortera", '<div class="hz8-psorts"></div>') +
+        '<div class="hz8-pdock__foot"><button type="button" class="hz8-pcta hz8-pshow hz8-pdock__show" data-pd="show">Visa produkter</button></div>' +
+      '</div>';
+    document.body.appendChild(dock);
+    var dockBtn = dock.querySelector(".hz8-pdock__btn");
+    var dockPanel = dock.querySelector(".hz8-pdock__panel");
+    dock.querySelector("[data-pt-series]").innerHTML = seriesOptions(ctx);
+    dock.querySelector('[data-pd-sec="type"]').hidden = true;
+    dock.querySelector('[data-pd-sec="volume"]').hidden = true;
+
     /* Innehåll som finns i både popover och ark. */
     [tool.querySelector("#hz8-ppop-series"), fs.el.querySelector('[data-acc="series"]')].forEach(function (scope) {
       scope.querySelector("[data-pt-series]").innerHTML = seriesOptions(ctx);
@@ -1935,6 +1966,8 @@
       tool.querySelector(".hz8-ptool__type").hidden = !hasType;
       fs.body.querySelector('[data-acc="type"]').hidden = !hasType;
       fs.body.querySelector('[data-acc="volume"]').hidden = !hasVol;
+      dock.querySelector('[data-pd-sec="type"]').hidden = !hasType;
+      dock.querySelector('[data-pd-sec="volume"]').hidden = !hasVol;
     }
     function applyDims(map) {
       var w = {};
@@ -1947,7 +1980,7 @@
     function applyType(key) { applyDims({ typ: [key] }); }
     document.addEventListener("click", function (e) {
       var row = e.target.closest("[data-hz8-dim]");
-      if (!row || !row.closest(".hz8-ptool, #hz8-pfilter")) return;
+      if (!row || !row.closest(".hz8-ptool, #hz8-pfilter, .hz8-pdock")) return;
       var d = row.getAttribute("data-hz8-dim"), k = row.getAttribute("data-value");
       var sel = valid(d);
       var i = sel.indexOf(k);
@@ -2011,7 +2044,7 @@
     var guide = pilotGuide(root, quiz.steps(), function () { quiz.open(); });
 
     /* Flervalsmotorn (samma som övriga formatsidor). */
-    var seriesRoots = [tool.querySelector("[data-pt-series]"), fs.el.querySelector("[data-pt-series]")];
+    var seriesRoots = [tool.querySelector("[data-pt-series]"), fs.el.querySelector("[data-pt-series]"), dock.querySelector("[data-pt-series]")];
     if (seriesRoots[0].children.length) {
       picker = seriesPicker(root, ctx, seriesRoots[0], {
         roots: seriesRoots,
@@ -2040,6 +2073,64 @@
       series: popover(tool.querySelector('[data-pt="series"]'), tool.querySelector("#hz8-ppop-series")),
       sort: popover(tool.querySelector('[data-pt="sort"]'), tool.querySelector("#hz8-ppop-sort"))
     };
+    /* Dockans panel: samma popover-beteende (Escape och klick utanför
+       stänger, Escape lämnar fokus på knappen, en öppen åt gången,
+       intern scroll om fönstret är lågt). is-open håller headern synlig. */
+    var dockPop = popover(dockBtn, dockPanel);
+    var popShow = dockPop.show, popClose = dockPop.close;
+    dockPop.show = function () {
+      dock.classList.add("is-open");
+      popShow();
+      /* Valt alternativ i en hopfälld sektion kan inte ta fokus: första
+         synliga kontrollen i panelen i stället. */
+      var a = document.activeElement;
+      if (!dockPanel.contains(a) || !a.getClientRects().length) {
+        var f = Array.prototype.find.call(dockPanel.querySelectorAll("button"), function (x) { return x.getClientRects().length; });
+        if (f) f.focus({ preventScroll: true });
+      }
+    };
+    dockPop.close = function (focus) { popClose(focus); dock.classList.toggle("is-open", !dockPanel.hidden); };
+    dockPanel.addEventListener("click", function (e) {
+      var row = e.target.closest(".hz8-pdock__row[aria-controls]");
+      if (row) {
+        var open = row.getAttribute("aria-expanded") !== "true";
+        dockPanel.querySelectorAll(".hz8-pdock__row[aria-controls]").forEach(function (r) {
+          var on = open && r === row;
+          r.setAttribute("aria-expanded", String(on));
+          document.getElementById(r.getAttribute("aria-controls")).hidden = !on;
+        });
+        return;
+      }
+      var b = e.target.closest("[data-pd]");
+      if (!b) return;
+      var k = b.getAttribute("data-pd");
+      if (k === "stock") { var o = stockOption(); if (o) toggleNative(STOCK_GROUP, o.label); }
+      else if (k === "clear") { clearAll(); var f = dockPanel.querySelector(".hz8-pdock__row"); if (f) f.focus({ preventScroll: true }); }
+      else if (k === "show") { dockPop.close(false); dockBtn.focus({ preventScroll: true }); scrollToProducts(); }
+    });
+    function syncFilterDock(data, sel, tsel, vsel, so) {
+      var n = data.length;
+      dock.querySelectorAll(".hz8-pdock__n").forEach(function (el) {
+        el.hidden = !n;
+        if (el.textContent !== (n ? String(n) : "")) el.textContent = n ? String(n) : "";
+      });
+      dockBtn.setAttribute("aria-label", n ? "Filter, " + n + (n === 1 ? " aktivt filter" : " aktiva filter") : "Filter");
+      dockBtn.classList.toggle("is-active", !!n);
+      dock.querySelector(".hz8-pdock__clear").hidden = !n;
+      function val(key, text) {
+        var el = dock.querySelector('[data-pd-sec="' + key + '"] .hz8-pdock__val');
+        if (el && el.textContent !== text) el.textContent = text;
+      }
+      val("type", tsel.length ? tsel.map(function (k) { return optLabel("typ", k); }).join(", ") : "Alla");
+      val("series", sel.length === 1 ? sel[0] : sel.length ? sel.length + " val" : "Alla");
+      val("volume", vsel.length ? vsel.map(function (k) { return optLabel("volym", k); }).join(", ") : "Alla");
+      var cur = currentSort();
+      val("sort", cur && SORT_LABELS[cur] ? SORT_LABELS[cur] : "Standard");
+      dock.querySelector('[data-pd-sec="sort"]').hidden = !sortOptions().length;
+      var sw = dock.querySelector('[data-pd="stock"]');
+      dock.querySelector('[data-pd-sec="stock"]').hidden = !so;
+      sw.setAttribute("aria-checked", String(!!(so && so.checked)));
+    }
 
     /* Antal: unionens resultat, annars Nyehandels räknare minus dolda
        pausade kort på sidan (alla Alla Vapes-produkter ryms på en sida). */
@@ -2225,6 +2316,7 @@
       sopt.setAttribute("aria-pressed", String(!!(so && so.checked)));
       fs.body.querySelector('[data-acc="stock"]').hidden = !so;
       setSum(fs.body.querySelector('[data-acc="stock"]'), so && so.checked ? "Valt: I lager" : "Visa bara produkter i lager", so && so.checked);
+      syncFilterDock(data, sel, tsel, vsel, so);
       if (n != null && lastLive !== null && n !== lastLive) live.textContent = plural(n) + " visas";
       if (n != null) lastLive = n;
       syncMirror();
@@ -2238,7 +2330,10 @@
        den lämnar skärmen när produktområdet är slut (seriebandet och
        kundservice ska inte ligga under den). */
     var area = root.querySelector(".designer-category");
+    var deskMQ = window.matchMedia("(min-width: 768px)");
     function syncStuck() {
+      /* Från 768 px ligger raden kvar i flödet (dockan tar över). */
+      if (deskMQ.matches) { tool.classList.remove("is-stuck", "is-past"); return; }
       var top = parseFloat(window.getComputedStyle(tool).top) || 0;
       var r = tool.getBoundingClientRect();
       var stuck = window.scrollY > 0 && r.top <= top + .5;
@@ -2252,6 +2347,43 @@
     window.addEventListener("scroll", function () { window.requestAnimationFrame(syncStuck); }, { passive: true });
     window.addEventListener("resize", syncStuck);
     syncStuck();
+    /* Dockan visas när raden helt lämnat vyn uppåt och produktområdet
+       fortfarande syns under knappen; aldrig samtidigt som raden. Raden
+       räknas som "nära" redan 96 px ovanför vyn, så att dockans
+       utglidning (240 ms) är klar innan raden syns igen. */
+    var rowAbove = false, areaOn = false;
+    function setDock() {
+      var on = deskMQ.matches && rowAbove && areaOn;
+      if (dock.classList.contains("is-shown") === on) return;
+      dock.classList.toggle("is-shown", on);
+      if (on) {
+        dock.removeAttribute("inert");
+        if (openPop && tool.contains(openPop.panel)) openPop.close(false);
+      } else {
+        var had = dock.contains(document.activeElement);
+        dockPop.close(false);
+        dock.setAttribute("inert", "");
+        if (had) tool.querySelector('[data-pt="all"]').focus({ preventScroll: true });
+      }
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        var e = entries[entries.length - 1];
+        rowAbove = !e.isIntersecting && e.boundingClientRect.bottom <= 0;
+        setDock();
+      }, { rootMargin: "96px 0px 0px 0px" }).observe(tool);
+      /* Säkring vid mycket snabb scroll: syns raden faktiskt i vyn medan
+         knappen fortfarande glider ut, försvinner knappen direkt. */
+      new IntersectionObserver(function (entries) {
+        dock.classList.toggle("is-row-in", entries[entries.length - 1].isIntersecting);
+      }).observe(tool);
+      if (area) new IntersectionObserver(function (entries) {
+        areaOn = entries[entries.length - 1].isIntersecting;
+        setDock();
+      }, { rootMargin: "-180px 0px 0px 0px" }).observe(area);
+      var onMQ = function () { setDock(); };
+      if (deskMQ.addEventListener) deskMQ.addEventListener("change", onMQ); else deskMQ.addListener(onMQ);
+    }
     seriesBand(root, ctx);
     return picker;
   }
