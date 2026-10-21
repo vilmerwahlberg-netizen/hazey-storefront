@@ -266,8 +266,10 @@
         mobile: ["magic-sauce-hero-v4-mobile-900x1802.webp", 900, 1802]
       },
       formats: ["vapes", "carts", "buds", "hasch", "prerolls"],
-      /* Tillverkarens övriga produkter i formatet, direkt efter hyllan. */
-      related: ["vapes"],
+      /* Syskonserie hos samma tillverkare, direkt efter formatets hylla.
+         Medlemskap = plattformens Serie-attribut (verifierad relation),
+         inte namn/varumärke/cannabinoidkategori. Tomt -> ingen rad. */
+      siblings: [{ series: "D10", format: "vapes" }],
       guide: { title: "Hitta ditt format", text: "Samma serie – olika sätt att hitta rätt.", cta: "Utforska formaten" },
       seal: "MAGIC SAUCE · HAZEY.SE · MAGIC SAUCE ·",
       script: ["Sunsets &", "Higher Horizons"]
@@ -328,28 +330,28 @@
     });
   }
 
-  /* Tillverkarens övriga produkter i formatet (utanför serien), per
-     annan verklig serie i relationskartan. Inga påhittade namn. */
-  function manufacturerExtras(series, formatKey, own, inSeries) {
-    var format = HZ8.catalog.formatByKey(formatKey);
+  /* Syskonserie (t.ex. D10) hos seriens egen tillverkare, i ett format.
+     Verifierat medlemskap = formatets sida filtrerad på plattformens
+     Serie-attribut (samma mekanism som seriens egna carts/hasch-routes).
+     Dessutom: samma varumärke som seriens egna produkter i formatet, rätt
+     produkttyp, och inget som redan finns i serien. Inga träffar -> null
+     (raden döljs). En cannabinoidkategori som 10-oh-thc-vapes räknas inte. */
+  function siblingSeries(sib, own, inSeries) {
+    var format = HZ8.catalog.formatByKey(sib.format);
     var counts = {};
     own.forEach(function (c) { var b = cardBrand(c.html); if (b && !HZ8.catalog.isHouseBrand(b)) counts[b] = (counts[b] || 0) + 1; });
     var brand = Object.keys(counts).sort(function (x, y) { return counts[y] - counts[x]; })[0];
     if (!format || !brand) return Promise.resolve(null);
-    var others = HZ8.catalog.build().series.filter(function (t) { return t !== series && t.routes[formatKey]; });
-    return Promise.all([allPages(brandRouteFor(format, brand))].concat(others.map(function (t) { return allPages(t.routes[formatKey]); }))).then(function (res) {
-      var cards = (res[0] || []).filter(function (c) {
+    var route = withParam(format.href, "filters=" + encodeURIComponent("Serie_" + sib.series));
+    return allPages(route).then(function (list) {
+      var seen = {};
+      var cards = (list || []).filter(function (c) {
         var p = productPath(c.html);
-        return validCard(c) && !inSeries[p] && cardBrand(c.html) === brand && (typeOf(cardName(c.html)) || formatKey) === formatKey;
+        if (!validCard(c) || inSeries[p] || seen[p]) return false;
+        seen[p] = true;
+        return cardBrand(c.html) === brand && (typeOf(cardName(c.html)) || sib.format) === sib.format;
       });
-      if (!cards.length) return null;
-      var named = [];
-      others.forEach(function (t, i) {
-        var set = {};
-        (res[i + 1] || []).forEach(function (c) { set[productPath(c.html)] = true; });
-        if (cards.some(function (c) { return set[productPath(c.html)]; })) named.push(t.name);
-      });
-      return { brand: brand, format: format, cards: cards, series: named };
+      return cards.length ? { brand: brand, format: format, cards: cards, series: [sib.series] } : null;
     });
   }
 
@@ -480,13 +482,15 @@
     var base = "hz8-sh-more-" + shUid;
     var fmt = extra.format.label.toLowerCase();
     var title = "Fler " + fmt + " från " + extra.brand;
-    var support = "Upptäck fler produkter från " + extra.brand + " utanför " + series.name + "-serien." + (extra.series.length ? " Innehåller " + joinSv(extra.series) + "." : "");
+    var support = "Upptäck " + joinSv(extra.series) + "-serien från " + extra.brand + ".";
     /* Små seriemärken (t.ex. D10) bara för verkliga serier i datan. */
     var tags = extra.series.slice(0, 2).map(function (n) { return '<span class="hz8-sh-more__tag">' + HZ8.esc(n) + "</span>"; }).join("");
     var sec = document.createElement("section");
     sec.className = "hz8-sh-more";
     sec.setAttribute("aria-labelledby", base + "-t");
-    var peek = extra.cards.slice(0, 3).map(function (c) { var s = firstImage(c.html); return s ? '<span class="hz8-sh-more__peek-i"><img src="' + HZ8.esc(s) + '" alt="" width="64" height="64" loading="lazy" decoding="async"></span>' : ""; }).join("");
+    /* Vänsteridentitet: en riktig produktbild ur raden (ingen logotyp
+       finns verifierad). */
+    var peek = extra.cards.slice(0, 1).map(function (c) { var s = firstImage(c.html); return s ? '<span class="hz8-sh-more__peek-i"><img src="' + HZ8.esc(s) + '" alt="" width="64" height="64" loading="lazy" decoding="async"></span>' : ""; }).join("");
     sec.innerHTML =
       '<h3 class="hz8-sh-more__h"><button type="button" class="hz8-sh-more__btn" aria-expanded="false" aria-controls="' + base + '" aria-labelledby="' + base + '-t" aria-describedby="' + base + '-s">' +
         (peek ? '<span class="hz8-sh-more__peek" aria-hidden="true">' + peek + "</span>" : "") +
@@ -635,15 +639,15 @@
         var t = rail.querySelector(".hz8-prail__title");
         if (t && f.sub) t.insertAdjacentHTML("afterend", '<p class="hz8-sh-shelf__sub">' + HZ8.esc(f.sub.replace("{s}", series.name)) + "</p>");
         shelves.appendChild(rail);
-        if (cfg.related.indexOf(k) !== -1) {
+        (cfg.siblings || []).filter(function (sb) { return sb.format === k; }).forEach(function (sb) {
           var slot = document.createElement("div");
           slot.className = "hz8-sh-more-slot";
           shelves.appendChild(slot);
-          manufacturerExtras(series, k, u.byFormat[k], u.paths).then(function (extra) {
+          siblingSeries(sb, u.byFormat[k], u.paths).then(function (extra) {
             if (extra) slot.appendChild(shMore(extra, series, function () { return stock; }));
             else slot.remove();
           }).catch(function () { slot.remove(); });
-        }
+        });
       });
       decorateCards(shelves, null);
       /* Lager: Nyehandels I lager-filter på seriens hubb (alla sidor). */
