@@ -38,33 +38,35 @@ eller medicinska effekter, inte ens indirekt via segmentnamn.
 
 ## 2. Färgroller
 
-Hazey har EN varm, jordnära palett. Roller (inte bara hex-värden):
+Hazey har EN varm, jordnära Theme 8-palett. De kanoniska primitiverna
+finns i `theme8/css/00-foundation.css`; filens namngivna tokens vinner
+alltid över äldre, lokalt hårdkodade värden och gamla facitnoteringar.
 
-| Roll | Värde | Användning |
+| Token/roll | Kanoniskt värde | Användning |
 |---|---|---|
-| Brand-grön (mörk, text/yta) | `#2c3620` | Rubriktext på ljus botten, mörk sektionsbakgrund, primär CTA-yta |
-| Grön, dov (ikoner) | `#6f7a52` (olive) / `#4d7042` (leaf) | Ikoner, sekundära accenter |
-| Terra/kopparbrun | `#96683f` (deep) / `#b8865a` (ljus) | Länkar, sekundär CTA-text, stjärnor |
-| CTA-orange | `#d9782f` | Primär, säljande CTA (nyhetsbrev, hero) — använd sparsamt, en till två per vy |
-| Beige (yta) | `#e4d1bf` | Native/äldre plattformsyta — ANVÄND INTE för nya komponenter, se §9 |
-| Sand (kortyta, ljus) | `#faf3e9` → `#fffdf8` (gradient) | Standard ljust kort på sidbakgrund |
-| Sidbakgrund | `#efe9df` | `.store-startpage`, aldrig vit |
-| Linje/kant (ljus) | `#ebe1d1` | Kort-kant på ljus botten |
-| Linje/kant (mörk botten) | `rgba(228,209,191,.16–.55)` | Kort-kant på mörkgrön botten |
-| Off-white (text på mörk botten) | `#fffdf8` / `#f4e9dc` | Rubrik/text på mörkgrön botten — ALDRIG `#2c3620` på mörk botten (se §9, vanligaste kontrastbuggen i hela projektet) |
-| Ink (brödtext) | `#26261f` / `#38381f` | Brödtext på ljus botten |
-| Ink, dov (sekundär text) | `#5f5c50` / `#9a9280` | Metadata, tidsstämplar, sekundär text |
+| `--hz8-ink` | `#23231d` | Primär text, djup, stark kontrast och mycket mörka ytor |
+| `--hz8-olive` | `#323d25` | Varumärkesgrön, rubriker, mörka ytor och sekundära kontroller |
+| `--hz8-neutral` | `#ede9e8` | Ljus bas; blandas till sidbakgrunder och ytor |
+| `--hz8-beige` | `#e4d1bf` | Varm redaktionell råton; används genom rolltokens och `color-mix`, inte som automatiskt helsidesskikt |
+| `--hz8-cta` | `#d2691e` | Kontrollerad orange konverteringsaccent, ringar och glöd |
+| `--hz8-accent-red` | `#f03322` | Mycket sparsam rea-/felaccent, aldrig dekorativ huvudfärg |
+| `--hz8-success` | `#cdfc9f` | Sparsam lager-/successaccent med tillräcklig omgivande kontrast |
 
-**Regel:** en yta har ANTINGEN mörkgrön botten + ljus text ELLER ljus/
-sand botten + mörkgrön text. Aldrig mörk text på mörk botten (den
-vanligaste, mest återkommande buggen i det här projektet — se
-"Parity-workflow" i `CLAUDE.md`).
+Ytor, text, linjer, CTA-fyllning, hover och statusfärger ska använda de
+semantiska `--hz8-*`-rolltokens som räknas fram i samma fil. Särskilt
+`--hz8-cta-fill` är en kontrastsäkrad blandning och ska normalt användas
+för vit knapptext i stället för ren `--hz8-cta`.
 
-**Plattformens egna, separata, likaledes etablerade färger** (`#323d25`
-+ Roboto, ~271 träffar över 19 CSS-filer i checkout/PDP/kategorisidor)
-är en ANNAN, äldre, sajtomfattande konvention — rör den inte för att
-"matcha" reskinnet, den hör till plattformens eget, redan fungerande
-lager. Se §9.
+**Fördelning:** varma ljusa fält bär vanlig browsing, olivgrönt förankrar
+varumärke och hierarki, och orange ska vara tillräckligt sällsynt för att
+markera den primära kommersiella handlingen. West Coast-känslan skapas
+av ljus, material, fotografi, tonvariation och komposition — inte genom
+att öka mättnaden.
+
+**Kontrastregel:** en yta har antingen mörkgrön/mörk botten + ljus text
+eller ljus/sandfärgad botten + mörk text. Aldrig mörk text på mörk botten.
+Native Nyehandel-element utanför Theme 8 kan ha egna plattformsfärger;
+ändra dem inte globalt som en bieffekt av en visuell sida-runda.
 
 ## 3. Typografi
 
@@ -141,9 +143,11 @@ lager. Se §9.
 
 ## 8. CTA-hierarki
 
-1. **Primär:** fylld, CTA-orange (`#d9782f`) ELLER mörkgrön
-   (`#2c3620`)-yta med off-white text — en per vy/sektion.
-2. **Sekundär:** outline eller ren länk i terra (`#96683f`), 650 vikt.
+1. **Primär:** fylld `--hz8-cta-fill` ELLER `--hz8-olive` med
+   `--hz8-cta-text`/`--hz8-on-secondary` — normalt en per vy/sektion.
+2. **Sekundär:** outline eller ren länk med `--hz8-olive` eller en
+   kontextuellt kontrastsäkrad `--hz8-cta`; inför inte en fristående
+   terrakottapalett i en enskild komponent.
 3. **Tertiär/informativ:** ren textlänk, ingen knappyta, används för
    "läs mer om X"-rader under ett primärt grid.
 

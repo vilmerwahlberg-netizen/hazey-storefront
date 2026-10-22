@@ -39,6 +39,23 @@ Do not implement during a critique-only request.
 
 Write a short motion thesis first: focal moment, continuity, feedback, performance budget. Prototype and record the highest-risk interaction. Obtain acceptance before distributing motion across the page.
 
+## Systemize
+
+1. Name the accepted pilot and the visual/behavioral parts that are locked.
+2. Separate reusable structure from route data, product facts, imagery, optional sections, and assortment size.
+3. Define rules for zero, one, normal, and large result sets; missing ratings, discounts, imagery, analysis data, and stock states; and long Swedish names.
+4. Keep authored hubs and campaign pages as controlled variants of the system rather than exceptions made from unrelated markup.
+5. Verify at least one control route before rollout. A reusable template is not proven by the pilot it was copied from.
+6. Roll out in bounded route groups and stop for visual review before changing every category or PDP.
+
+## Handoff to another agent
+
+A build prompt should point to this skill and the exact accepted references instead of restating the entire design philosophy. Include only: scope, locked components, target routes, accepted reference files, current defects, data rules, verification widths/states, and whether commit/push is authorized. Explicitly freeze unrelated global components.
+
+## Durable learning
+
+After explicit human acceptance or rejection, append one concise entry to `decisions.md`. Periodically consolidate repeated accepted behavior into `component-language.md`; do not accumulate every bug report or one-off pixel correction in the skill.
+
 ## Cost control
 
 Use one inspection pass, one batched correction pass, and one confirmation pass. Do not spend hours repeatedly updating snapshots while the human has not accepted the direction. A fresh golden baseline records an accepted result; it does not prove one.

@@ -10,12 +10,13 @@ Core trust considerations include truthful analysis/content transparency, domest
 
 The storefront is a CSS/JavaScript reskin over Nyehandel's Vue/Vuex DOM. Preserve native search, account, navigation, cart, product data, checkout, and accessibility behavior. Work with current integration points documented in repository `CLAUDE.md`; do not replace the platform with a parallel application shell.
 
-The project uses ordered CSS sources and modular vanilla JavaScript that build to generated bundles. Edit owning source files, not generated outputs or accumulated final-fix blocks. Respect existing later-file override order.
+The current storefront work lives in ordered `theme8/css/` sources and modular `theme8/js/` vanilla JavaScript, built with `npm run build:theme8` into `dist/theme8/`. Edit owning source files, not generated outputs or accumulated final-fix blocks. Respect existing later-file override order.
 
 ## Environments
 
-- Theme 6/dev is the design and verification environment.
-- Themes 3 and 5 and the production loader stay untouched.
+- Theme 8's external preview on `origin/dev` is the current design and verification environment.
+- Themes 3, 5, and 6 and the production loader stay untouched.
+- A successful push is not visual proof. Wait for the external Theme 8 preview assets to match the pushed build and verify there without local injection.
 - Never click PUBLICERA without separate explicit authorization.
 - Admin/catalog changes are a separate workflow from storefront code.
 
