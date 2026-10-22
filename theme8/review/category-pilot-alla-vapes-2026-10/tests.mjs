@@ -120,11 +120,11 @@ for (const [w, h] of [[393, 852], [430, 932], [320, 640]]) {
   const types = await p.evaluate(() => ({ shown: !document.querySelector(".hz8-ptool__type").hidden, opts: [...document.querySelectorAll('#hz8-ppop-type [data-hz8-dim="typ"]')].map(e => e.getAttribute("data-value")), vols: [...document.querySelectorAll('#hz8-pfilter [data-hz8-dim="volym"]')].map(e => e.getAttribute("data-value")) }));
   await p.click('[data-pt="type"]'); await p.waitForTimeout(300);
   await p.click('#hz8-ppop-type [data-value="carts"] button'); await p.waitForTimeout(6000);
-  const r1 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => e.textContent.trim()), count: document.querySelector(".hz8-pcount").textContent, chips: [...document.querySelectorAll(".hz8-pchip")].map(c => c.textContent) }));
+  const r1 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => (e.getAttribute("data-hz8-full") || e.textContent).trim()), count: document.querySelector(".hz8-pcount").textContent, chips: [...document.querySelectorAll(".hz8-pchip")].map(c => c.textContent) }));
   ok("producttype-filter", types.shown && types.opts.join() === "vapes,carts" && /typ=carts/.test(r1.url) && r1.names.length > 0 && r1.names.every(n => /^Cart/.test(n)) && r1.count === r1.names.length + (r1.names.length === 1 ? " produkt" : " produkter") && r1.chips.some(c => /Carts/.test(c)), { types, r1 });
   await p.keyboard.press("Escape");
   await p.click('[data-pt="series"]'); await p.click('#hz8-ppop-series [data-hz8-series="THCaB"] button'); await p.waitForTimeout(6000); await p.keyboard.press("Escape");
-  const r2 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => e.textContent.trim()) }));
+  const r2 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => (e.getAttribute("data-hz8-full") || e.textContent).trim()) }));
   ok("producttype-combined-series", /typ=carts/.test(r2.url) && /serie=thcab/.test(r2.url) && r2.names.length >= 1 && r2.names.every(n => /^Cart/.test(n) && /THC-A/.test(n)), r2);
   await p.evaluate(() => { window.__noReload = 1; history.back(); }); await p.waitForTimeout(7000);
   const r3 = await p.evaluate(() => ({ url: location.search, n: document.querySelectorAll(".hz8-series-results .product-card").length, sameDoc: window.__noReload === 1 }));
@@ -136,7 +136,7 @@ for (const [w, h] of [[393, 852], [430, 932], [320, 640]]) {
   await p.click('[data-pt="all"]'); await p.waitForTimeout(500);
   await p.evaluate(() => document.querySelector('#hz8-pfilter [data-acc="volume"] .hz8-pacc__btn').click()); await p.waitForTimeout(300);
   await p.click('#hz8-pfilter [data-hz8-dim="volym"][data-value="2ml"] button'); await p.waitForTimeout(6000);
-  const r5 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => e.textContent.trim()), count: document.querySelector(".hz8-pcount").textContent }));
+  const r5 = await p.evaluate(() => ({ url: location.search, names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => (e.getAttribute("data-hz8-full") || e.textContent).trim()), count: document.querySelector(".hz8-pcount").textContent }));
   ok("volume-filter", types.vols.includes("1ml") && types.vols.includes("2ml") && /volym=2ml/.test(r5.url) && r5.names.length > 0 && r5.names.every(n => /2\s*ml$/i.test(n)) && r5.count === r5.names.length + " produkter", { vols: types.vols, r5 });
   await p.keyboard.press("Escape");
   await p.reload({ waitUntil: "domcontentloaded" }); await p.waitForTimeout(9000);
@@ -144,7 +144,7 @@ for (const [w, h] of [[393, 852], [430, 932], [320, 640]]) {
   ok("volume-reload", /volym=2ml/.test(r6.url) && r6.n === r5.names.length && r6.chips.some(c => /2 ml/.test(c)), r6);
   await ctx.close(); }
 { const { p, ctx } = await page(393, 852, "typ=carts&volym=1ml", { wait: 9000 });
-  const r = await p.evaluate(() => ({ names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => e.textContent.trim()), count: document.querySelector(".hz8-pcount").textContent, chips: [...document.querySelectorAll(".hz8-pchip")].map(c => c.textContent) }));
+  const r = await p.evaluate(() => ({ names: [...document.querySelectorAll(".hz8-series-results .product-card .name")].map(e => (e.getAttribute("data-hz8-full") || e.textContent).trim()), count: document.querySelector(".hz8-pcount").textContent, chips: [...document.querySelectorAll(".hz8-pchip")].map(c => c.textContent) }));
   ok("direct-load-type-volume", r.names.length > 0 && r.names.every(n => /^Cart/.test(n) && /1\s*ml$/i.test(n)) && r.chips.length === 2 && r.count === r.names.length + " produkter", r);
   await ctx.close(); }
 // v8: ärlig sortering + träffantal ur det sammanslagna underlaget

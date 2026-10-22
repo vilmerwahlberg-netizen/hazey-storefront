@@ -19,7 +19,7 @@ const state = p => p.evaluate(() => { const c = HZ8.catalog.contextFor(location.
     rails: !!document.querySelector(".hz8-cat-rails:not([hidden])") && getComputedStyle(document.querySelector(".hz8-cat-rails")).display !== "none",
     popular: !!document.querySelector(".hz8-cat-popular"), canon: (document.querySelector("link[rel=canonical]") || {}).href, title: document.title,
     crumbs: [...document.querySelectorAll(".designer-breadcrumbs a")].map(a => a.textContent.trim()).filter((v, i, a) => a.indexOf(v) === i),
-    ov: document.documentElement.scrollWidth - innerWidth }; });
+    url: location.search, shell: document.documentElement.getAttribute("data-hz8-shell"), ov: document.documentElement.scrollWidth - innerWidth }; });
 
 // ---------- 0. route-matchning (ren logik, i sidans kontext) ----------
 if (run("match")) { const { p, ctx } = await page(1440, 900, "/sv/categories/alla-vapes", "", { wait: 6000 });
@@ -42,7 +42,8 @@ if (run("match")) { const { p, ctx } = await page(1440, 900, "/sv/categories/all
 // ---------- 1. rutter och dataintegritet ----------
 const ROUTES = [
   ["/sv/categories/m-s-vapes", "", "Magic Sauce", "vapes", "Magic Sauce Vapes"], ["/sv/categories/m-s-buds", "", "Magic Sauce", "buds", "Magic Sauce Buds"],
-  ["/sv/categories/alla-cartridges", "filters=Serie_Magic%20Sauce", "Magic Sauce", "carts", null], ["/sv/categories/hasch", "filters=Serie_Magic%20Sauce", "Magic Sauce", "hasch", null],
+  /* Filtrerade vyer (/hasch?filters=Serie_...) är breda kategorier sedan
+     2026-10-22 -- testas i category-filter-shelf-fix-2026-10/tests.mjs. */
   ["/sv/categories/thca-vapes", "", "THCaB", "vapes", "THCaB Vapes"], ["/sv/categories/thca-carts", "", "THCaB", "carts", "THCaB Carts"], ["/sv/categories/thca-blommor", "", "THCaB", "buds", "THCaB Buds"], ["/sv/categories/thca-hash", "", "THCaB", "hasch", "THCaB Hasch"],
   ["/sv/categories/thcb-vapes", "", "THCbA", "vapes", "THCbA Vapes"], ["/sv/categories/thcb-carts", "", "THCbA", "carts", "THCbA Carts"], ["/sv/categories/10-oh-thc-vapes", "", "D10", "vapes", "D10 Vapes"],
   ["/sv/categories/nano11-blommor", "", "Nano-11", "buds", "Nano-11 Buds"], ["/sv/categories/thcv-vape", "", "THCV", "vapes", "THCV Vapes"], ["/sv/categories/thcv-carts", "", "THCV", "carts", "THCV Carts"],
@@ -77,14 +78,18 @@ if (run("control")) for (const path of ["/sv/categories/alla-cartridges", "/sv/c
   await ctx.close(); }
 
 // ---------- 3. query-filtret: omladdning, bakåt, framåt ----------
-if (run("history")) { const { p, ctx } = await page(1440, 900, "/sv/categories/hasch", "filters=Serie_Magic%20Sauce", { wait: 10000 });
+if (run("history")) { const { p, ctx } = await page(1440, 900, "/sv/categories/m-s-vapes", "", { wait: 10000 });
   const a = await state(p);
+  /* Hasch-fliken leder (tills en riktig Magic Sauce Hasch-kategori finns)
+     till den breda kategorin med Magic Sauce-filtret -- ingen landning. */
+  await p.locator(".hz8-sf-tab", { hasText: "Hasch" }).first().click(); await p.waitForLoadState("domcontentloaded"); await p.waitForTimeout(10000); const h = await state(p);
   await p.reload({ waitUntil: "domcontentloaded" }); await p.waitForTimeout(10000); const r = await state(p);
-  await p.locator(".hz8-sf-tab", { hasText: "Buds" }).first().click(); await p.waitForLoadState("domcontentloaded"); await p.waitForTimeout(10000); const buds = await state(p);
   await p.goBack({ waitUntil: "domcontentloaded" }); await p.waitForTimeout(10000); const back = await state(p);
   await p.goForward({ waitUntil: "domcontentloaded" }); await p.waitForTimeout(10000); const fwd = await state(p);
-  const isMSH = s => s.sf && s.ctx && s.ctx.join() === "combo,Magic Sauce,hasch,true";
-  ok("history-query-view", isMSH(a) && isMSH(r) && buds.ctx.join() === "combo,Magic Sauce,buds,false" && isMSH(back) && fwd.ctx.join() === "combo,Magic Sauce,buds,false" && back.native === a.native, { a: a.ctx, r: r.ctx, buds: buds.ctx, back: back.ctx, fwd: fwd.ctx, n: [a.native, back.native] });
+  /* Den breda sidan visar Magic Sauce-valet i sitt eget skal (data-hz8-shell="broad"). */
+  const broad = s => !s.sf && s.shell === "broad" && s.h1.join() === "Allt Hasch" && /serie=magic-sauce|Serie_Magic/.test(decodeURIComponent(s.url || "").replace(/\+/g, " ")) && !s.eyebrow;
+  const msv = s => s.sf && s.ctx && s.ctx.join() === "combo,Magic Sauce,vapes,false";
+  ok("history-query-view", msv(a) && broad(h) && broad(r) && msv(back) && broad(fwd) && h.native === fwd.native, { a: a.ctx, h: [h.sf, h.h1], r: [r.sf, r.h1], back: back.ctx, fwd: [fwd.sf, fwd.h1], n: [h.native, fwd.native] });
   await ctx.close(); }
 
 // ---------- 4. layoutregel 0/1/2/3/4/många + kortbredd ----------

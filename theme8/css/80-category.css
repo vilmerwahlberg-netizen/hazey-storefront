@@ -1962,3 +1962,284 @@ html.hz8-cat-pilot .hz8-pdock__show:hover { background: color-mix(in srgb, var(-
   html.hz8-cat-pilot[data-hz8-page="category"] #store-main { --hz8-ptext-shift: min(0px, 168px - (100vw - var(--hz8-content-w)) / 2); }
   html.hz8-cat-pilot[data-hz8-page="category"] :is(.designer-breadcrumbs, article.category-description h1, .hz8-cat-lead, .hz8-pcount, .hz8-pdecor__script) { translate: var(--hz8-ptext-shift) 0; }
 }
+
+/* ======================================================================
+   Universell kategorihylla (2026-10-22): R3-filterhyllans material på
+   breda formatsidor (html.hz8-catshelf utan .hz8-sf) och Alla Vapes-piloten.
+   Ersätter den vita/grå fullbreda verktygsremsan. Glastokens:
+   --hz8-sf-glass-* (80b-series-format.css, delade). Funktionen är
+   oförändrat Nyehandels egen (filter, sortering, antal, URL-state).
+   ====================================================================== */
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort {
+  top: auto;
+  /* Eget lager ovanför produktgridet (hyllans öppna panel ligger i det). */
+  z-index: 6;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  min-height: 60px;
+  margin: 0 0 22px !important;
+  padding: 9px 12px 9px 18px !important;
+  border: 1px solid var(--hz8-sf-glass-border) !important;
+  border-radius: var(--hz8-sf-glass-r);
+  background: transparent !important;
+  box-shadow: var(--hz8-sf-glass-shadow);
+  /* Glaset ligger i ett eget lager: backdrop-filter direkt på raden skulle
+     göra den till containing block för Nyehandels fasta filterpanel
+     (#sidebar ligger inuti raden) och klämma in panelen i hyllan. */
+  position: relative;
+  isolation: isolate;
+}
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--hz8-sf-glass-bg);
+  -webkit-backdrop-filter: var(--hz8-sf-glass-blur);
+  backdrop-filter: var(--hz8-sf-glass-blur);
+  pointer-events: none;
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort::before { background: var(--hz8-sf-glass-fallback); }
+}
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort > * { order: 3; }
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort #products_count { order: -2; margin-right: auto !important; color: var(--hz8-pilot-green, #2c3620) !important; font: 500 14.5px/1.2 var(--hz8-font-ui) !important; }
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .hz8-sf-stock { order: 1; }
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts { order: 2 !important; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 !important; padding: 0 !important; }
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort > div:has(.sort-control) { order: 4; }
+/* Små genomskinliga glaskontroller (samma som R3), 44 px träffyta. */
+html.hz8-catshelf:not(.hz8-sf) .hz8-sf-stock,
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip,
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .sort-control :is(button, .dropdown-trigger button) {
+  position: relative;
+  min-height: var(--hz8-sf-ctl-h) !important;
+  border: 1px solid var(--hz8-sf-ctl-border) !important;
+  border-radius: 999px !important;
+  background: var(--hz8-sf-ctl-bg) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6) !important;
+  color: var(--hz8-pilot-green, #2c3620) !important;
+}
+html.hz8-catshelf:not(.hz8-sf) .hz8-sf-stock::after,
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+/* Aktiva filter: diskret fortsättning i samma hylla (egen rad under en
+   tunn avdelare), aldrig en separat grå/vit remsa. */
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .selected-filters {
+  order: 10;
+  flex: 1 0 100%;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin: 2px 0 0 !important;
+  padding: 8px 0 0 !important;
+  border-top: 1px solid color-mix(in srgb, #8a6a3c 16%, transparent);
+  background: transparent !important;
+}
+html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .selected-filters-item:not(.no-chip) {
+  min-height: 34px;
+  border: 1px solid color-mix(in srgb, var(--hz8-cta-fill) 38%, transparent) !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, #fffaf0 55%, transparent) !important;
+  color: var(--hz8-pilot-green, #2c3620) !important;
+}
+@media (min-width: 768px) {
+  html.hz8-catshelf.hz8-sf-has-shortcuts:not(.hz8-sf)[data-hz8-page="category"] .category-sort .product-filter-button { display: none !important; }
+}
+/* Mobil: en kompakt "Filter & sortera" (80b, delad), antal till vänster,
+   aktiva filter kompakt under -- i flödet, aldrig sticky. */
+@media (max-width: 767px) {
+  html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort { min-height: 52px; gap: 8px; padding: 4px 4px 4px 14px !important; border-radius: 16px; flex-wrap: wrap; }
+  html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort #products_count { font-size: 14px !important; }
+  html.hz8-catshelf:not(.hz8-sf)[data-hz8-page="category"] .category-sort .selected-filters { margin: 0 !important; padding: 6px 10px 6px 0 !important; }
+}
+
+/* ---- Alla Vapes: samma hylla i stället för den krämvita remsan ---- */
+@media (min-width: 768px) {
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool::before { content: none; }
+  html.hz8-cat-pilot .hz8-ptool__desk {
+    padding: 9px 12px;
+    margin: 10px 0 0;
+    border: 1px solid var(--hz8-sf-glass-border);
+    border-radius: var(--hz8-sf-glass-r);
+    background: var(--hz8-sf-glass-bg);
+    -webkit-backdrop-filter: var(--hz8-sf-glass-blur);
+    backdrop-filter: var(--hz8-sf-glass-blur);
+    box-shadow: var(--hz8-sf-glass-shadow);
+  }
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    html.hz8-cat-pilot .hz8-ptool__desk { background: var(--hz8-sf-glass-fallback); }
+  }
+  html.hz8-cat-pilot .hz8-ptool__desk .hz8-ptool__btn {
+    border-color: var(--hz8-sf-ctl-border);
+    background: var(--hz8-sf-ctl-bg);
+    box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6);
+  }
+  html.hz8-cat-pilot .hz8-ptool__desk [data-pt="sort"] { background: var(--hz8-sf-ctl-bg); }
+  html.hz8-cat-pilot .hz8-ptool__desk .hz8-ptool__btn:hover { background: color-mix(in srgb, #fffaf0 70%, transparent); }
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pchips { margin: 10px 0 16px; padding: 0 8px; }
+}
+
+/* ---- Kategoritext: diskret disclosure före kundservice ----
+   Ordning: produkter -> kategoritext -> kundservice -> footer. */
+html.hz8.hz8-seo[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 8; margin: 12px 0 10px; }
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description :is(.readmore, .nh-cat-box) { grid-row: 9; margin: 0 0 48px !important; }
+html.hz8.hz8-seo[data-hz8-page="category"] .hz8-cat-guide { grid-row: 10; }
+html.hz8.hz8-seo.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 9; }
+html.hz8.hz8-seo.hz8-sf[data-hz8-page="category"] article.category-description :is(.readmore, .nh-cat-box) { grid-row: 10; }
+html.hz8.hz8-seo.hz8-sf[data-hz8-page="category"] .hz8-cat-guide { grid-row: 11; }
+html.hz8.hz8-seo.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
+html.hz8.hz8-seo.hz8-cat-pilot[data-hz8-page="category"] article.category-description :is(.readmore, .nh-cat-box) { grid-row: 11; }
+html.hz8.hz8-seo.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-guide { grid-row: 12; }
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description .readmore { position: relative; }
+/* Hopfälld: textens början med mjuk toning; plattformens höjdstyrning och
+   egen knapp ersätts (texten finns kvar i DOM, crawlbar). */
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description .readmore__content {
+  height: auto !important;
+  max-height: 12.5em !important;
+  overflow: hidden !important;
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+  mask-image: linear-gradient(180deg, #000 55%, transparent);
+}
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description .readmore.hz8-seo-open .readmore__content { max-height: none !important; -webkit-mask-image: none; mask-image: none; }
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description .readmore__content .editor-content > :first-child { margin-top: 0 !important; }
+html.hz8.hz8-seo[data-hz8-page="category"] article.category-description .readmore__toggle { display: none !important; }
+html.hz8.hz8-seo[data-hz8-page="category"] .hz8-seo-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 18px;
+  border: 1.5px solid var(--hz8-olive);
+  border-radius: var(--hz8-radius-pill);
+  background: transparent;
+  color: var(--hz8-olive) !important;
+  font: 700 13px/1 var(--hz8-font-ui) !important;
+  cursor: pointer;
+}
+html.hz8.hz8-seo[data-hz8-page="category"] .hz8-seo-toggle:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 3px; }
+/* Utan riktig kategoritext: hela blocket bort. */
+html.hz8.hz8-seo-empty[data-hz8-page="category"] :is(.hz8-cat-about-head, article.category-description .nh-cat-box, article.category-description .readmore) { display: none !important; }
+
+/* ---- Produktkort: försiktig täthet (Alla Vapes + serie x format) ---- */
+@media (min-width: 768px) {
+  html.hz8.hz8-cat-pilot[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 11px !important; }
+  html.hz8-cat-pilot .hz8-pcardchips { margin-top: 6px; }
+  html.hz8.hz8-cat-pilot[data-hz8-page="category"] #store-main .product-card .rating { margin-top: 6px; }
+  html.hz8-cat-pilot .hz8-pstock { margin: 8px 0 4px; }
+}
+@media (max-width: 767px) {
+  html.hz8.hz8-cat-pilot[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 8px !important; }
+  html.hz8-cat-pilot .hz8-pstock { margin: 6px 0 2px; }
+}
+
+/* ======================================================================
+   Bred formatsida (2026-10-22): html[data-hz8-shell="broad"] -- Allt Hasch
+   och Alla Buds. Alla Vapes-pilotens makro (hero, quiz, kort, docka) med
+   serieflikar som primär hylla. Skalet väljs ur pathname och ändras aldrig
+   av filter. Facit: review/launch-task-queue-2026-10/02-universal-broad-
+   category/references/approved/.
+   ====================================================================== */
+/* Seriedropdownen ersätts av flikarna (motorn och dess rader ligger kvar
+   i DOM som flikarnas källa). */
+html[data-hz8-shell="broad"] .hz8-ptool__desk .hz8-ptool__slot:has([data-pt="series"]) { display: none; }
+html[data-hz8-shell="broad"] .hz8-ptool__desk { align-items: center; gap: 10px; }
+html[data-hz8-shell="broad"] .hz8-pfam {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+html[data-hz8-shell="broad"] .hz8-pfam::-webkit-scrollbar { display: none; }
+html[data-hz8-shell="broad"] .hz8-pfam__tab {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: color-mix(in srgb, var(--hz8-pilot-green) 86%, transparent) !important;
+  font: 500 15px/1 var(--hz8-font-ui) !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .16s var(--hz8-ease), color .16s var(--hz8-ease);
+}
+html[data-hz8-shell="broad"] .hz8-pfam__tab:hover { background: color-mix(in srgb, #fffaf0 46%, transparent); color: var(--hz8-pilot-green) !important; }
+html[data-hz8-shell="broad"] .hz8-pfam__tab[aria-pressed="true"] { color: var(--hz8-pilot-green) !important; font-weight: 650 !important; }
+html[data-hz8-shell="broad"] .hz8-pfam__tab[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--hz8-sf-active-line, var(--hz8-cta-fill));
+}
+html[data-hz8-shell="broad"] .hz8-pfam__tab:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; }
+html[data-hz8-shell="broad"] .hz8-ptool__count {
+  flex: none;
+  margin: 0 4px 0 0;
+  padding: 0 0 0 18px;
+  border-left: 1px solid color-mix(in srgb, #8a6a3c 26%, transparent);
+  color: color-mix(in srgb, var(--hz8-pilot-green) 84%, transparent);
+  font: 500 14.5px/1.2 var(--hz8-font-ui) !important;
+  white-space: nowrap;
+}
+html[data-hz8-shell="broad"] .hz8-ptool__count:empty { visibility: hidden; }
+html[data-hz8-shell="broad"] .hz8-ptool__desk .hz8-ptool__sort { margin-left: 0; }
+@media (min-width: 768px) and (max-width: 1179px) {
+  html[data-hz8-shell="broad"] .hz8-ptool__desk { flex-wrap: wrap; }
+  html[data-hz8-shell="broad"] .hz8-pfam { flex: 1 0 100%; margin-right: 0; }
+  html[data-hz8-shell="broad"] .hz8-ptool__count { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-hz8-shell="broad"] .hz8-pfam__tab { transition: none; }
+}
+/* Mobil: flikarna i en svepbar glashylla, sedan antal + "Filter &
+   sortera" -- i flödet, aldrig sticky. */
+@media (max-width: 767px) {
+  html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-ptool { position: relative; top: auto; }
+  html.hz8-cat-pilot[data-hz8-shell="broad"] .hz8-ptool::before { content: none; }
+  html[data-hz8-shell="broad"] .hz8-ptool__desk {
+    display: flex !important;
+    padding: 4px 6px;
+    margin: 0 0 12px;
+    border: 1px solid var(--hz8-sf-glass-border);
+    border-radius: 18px;
+    background: var(--hz8-sf-glass-bg);
+    -webkit-backdrop-filter: var(--hz8-sf-glass-blur);
+    backdrop-filter: var(--hz8-sf-glass-blur);
+    box-shadow: var(--hz8-sf-glass-shadow);
+  }
+  html[data-hz8-shell="broad"] .hz8-ptool__desk > :not(.hz8-pfam) { display: none !important; }
+  html[data-hz8-shell="broad"] .hz8-pfam { margin: 0; padding-right: 18px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); }
+  html[data-hz8-shell="broad"] .hz8-pfam__tab { padding: 0 13px; font-size: 14px !important; }
+  html[data-hz8-shell="broad"] .hz8-pfam__tab[aria-pressed="true"]::after { left: 13px; right: 13px; }
+  html[data-hz8-shell="broad"] .hz8-ptool__mob { display: flex !important; align-items: center; justify-content: space-between; gap: 10px; padding: 0 0 0 2px !important; border: 0 !important; background: none !important; box-shadow: none !important; }
+  html[data-hz8-shell="broad"] .hz8-ptool__mob .hz8-ptool__filter { flex: none; width: auto; border: 1px solid var(--hz8-sf-ctl-border) !important; border-radius: 999px !important; box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6); }
+  html[data-hz8-shell="broad"] .hz8-ptool__count--mob { padding: 0; border: 0; font-size: 14px !important; }
+  /* Hyllan i herons nedre toning (facit 393: understrykning y~560, korten
+     i första vyn). Quizkortets ärvda nedmarginal (Alla Vapes) bestämde
+     herons höjd; här kortare hero och en hylla som överlappar dess
+     toning. Herons innehåll ligger kvar på samma plats. */
+  html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-pguide { margin-bottom: 40px; }
+  html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-ptool { z-index: 2; margin-top: -29px; }
+  html[data-hz8-shell="broad"] .hz8-ptool__desk { margin-bottom: 10px; }
+  html[data-hz8-shell="broad"] .hz8-pchips.hz8-pchips--fam-only { display: none !important; }
+  html[data-hz8-shell="broad"] .hz8-ptool__mob .hz8-ptool__filter { min-height: 44px; padding: 0 14px; border-color: var(--hz8-sf-ctl-border); background: var(--hz8-sf-ctl-bg); }
+}
+/* Sammanslaget serieresultat på bred sida: Nyehandels "Visa fler"/
+   förloppsrad hör till den dolda native-listan (Alla Buds har flera
+   sidor) och visas inte ovanför resultatet, i alla bredder. Ofiltrerat
+   (ingen .hz8-series-union) ligger Nyehandels "Visa fler" kvar. */
+html.hz8-series-union[data-hz8-shell="broad"][data-hz8-page="category"] .designer-category .load-more-products { display: none !important; }

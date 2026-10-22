@@ -190,7 +190,7 @@ html.hz8-sf[data-hz8-page="category"] .category-sort > div:has(.sort-control) { 
 /* Mobil: antal | Filtrera (Nyehandels panel med lager och övriga
    filter) | sortering -- genvägar och växel ryms inte på en rad. */
 @media (max-width: 767px) {
-  html.hz8-sf[data-hz8-page="category"] .category-sort :is(.hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
+  html.hz8-catshelf[data-hz8-page="category"] .category-sort :is(.hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
   html.hz8-sf[data-hz8-page="category"] .category-sort { gap: 8px; flex-wrap: nowrap; }
   html.hz8-sf[data-hz8-page="category"] .category-sort #products_count { font-size: 14px !important; white-space: nowrap; }
 }
@@ -201,7 +201,7 @@ html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-
 @media (min-width: 768px) {
   html.hz8-sf.hz8-sf-has-shortcuts[data-hz8-page="category"] .category-sort .product-filter-button { display: none !important; }
 }
-html.hz8-sf .hz8-sf-stock {
+html.hz8-catshelf .hz8-sf-stock {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -214,19 +214,19 @@ html.hz8-sf .hz8-sf-stock {
   font: 600 14px/1 var(--hz8-font-ui) !important;
   cursor: pointer;
 }
-html.hz8-sf .hz8-sf-stock[hidden] { display: none; }
-html.hz8-sf .hz8-sf-stock:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
-html.hz8-sf .hz8-sf-stock .hz8-pswitch__track {
+html.hz8-catshelf .hz8-sf-stock[hidden] { display: none; }
+html.hz8-catshelf .hz8-sf-stock:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-catshelf .hz8-sf-stock .hz8-pswitch__track {
   position: relative; width: 32px; height: 18px; border-radius: 99px;
   background: color-mix(in srgb, var(--hz8-ink) 20%, var(--hz8-neutral));
   transition: background-color .16s var(--hz8-ease);
 }
-html.hz8-sf .hz8-sf-stock .hz8-pswitch__track::after {
+html.hz8-catshelf .hz8-sf-stock .hz8-pswitch__track::after {
   content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
   background: #fff; box-shadow: var(--hz8-shadow-s); transition: transform .16s var(--hz8-ease);
 }
-html.hz8-sf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
-html.hz8-sf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
+html.hz8-catshelf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
+html.hz8-catshelf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
 
 /* Gridet: Alla Vapes-kortet, fyra balanserade kolumner. Värden kommer
    bara från Nyehandels kort. */
@@ -415,7 +415,7 @@ html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
   html.hz8-sf .hz8-sf-tab { padding: 0 16px; font-size: 13.5px !important; }
   html.hz8-sf[data-hz8-page="category"] .designer-category { margin-top: 12px !important; }
   html.hz8-sf[data-hz8-page="category"] #store-main #category-products { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 26px 14px !important; }
-  html.hz8-sf .hz8-sf-stock { min-height: 40px; padding: 0 12px; font-size: 13px !important; }
+  html.hz8-catshelf .hz8-sf-stock { min-height: 40px; padding: 0 12px; font-size: 13px !important; }
   /* Panelen efter korten som låg redaktionell remsa. */
   html.hz8-sf .hz8-sf-more { margin: 22px 0 0; padding: 20px 18px; }
   html.hz8-sf .hz8-sf-more__body { max-width: none; }
@@ -439,7 +439,7 @@ html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
 
 /* Aktuell serie är redan vald (Serie-chippet döljs i 80-category.js);
    "Rensa alla filter" visas bara när ett annat filter faktiskt är aktivt. */
-html.hz8-sf[data-hz8-page="category"] .selected-filters:not(:has(.selected-filters-item:not(.no-chip):not(.hz8-filter-hidden))) { display: none !important; }
+html.hz8-catshelf[data-hz8-page="category"] .selected-filters:not(:has(.selected-filters-item:not(.no-chip):not(.hz8-filter-hidden))) { display: none !important; }
 
 /* ======================================================================
    R2 (2026-10-21): glashylla, tätare kort, lugnare panel, serie-rail.
@@ -447,7 +447,9 @@ html.hz8-sf[data-hz8-page="category"] .selected-filters:not(:has(.selected-filte
    Materialet ligger i lokala tokens (--hz8-sf-glass-*) så att samma värden
    senare kan flyttas till en gemensam kategoritoken.
    ====================================================================== */
-html.hz8-sf {
+/* Glastokens delas av hela kategorihyllan: serie x format, breda
+   formatsidor (.hz8-catshelf) och Alla Vapes-piloten. */
+html:is(.hz8-sf, .hz8-catshelf, .hz8-cat-pilot) {
   --hz8-sf-glass-bg: color-mix(in srgb, #fbf3e4 63%, transparent);
   --hz8-sf-glass-fallback: color-mix(in srgb, #fbf3e4 95%, transparent);
   --hz8-sf-glass-blur: blur(20px) saturate(1.14);
@@ -513,7 +515,7 @@ html.hz8-sf .hz8-sf-tab:focus-visible { outline: 2px solid var(--hz8-olive) !imp
 
 /* ---- Verktygskontroller: små genomskinliga glaskontroller ---- */
 html.hz8-sf[data-hz8-page="category"] .category-sort { border-bottom: 0 !important; padding-bottom: 0 !important; min-height: 52px; }
-html.hz8-sf .hz8-sf-stock,
+html.hz8-catshelf .hz8-sf-stock,
 html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip,
 html.hz8-sf[data-hz8-page="category"] .category-sort .sort-control :is(button, .dropdown-trigger button) {
   position: relative;
@@ -525,9 +527,9 @@ html.hz8-sf[data-hz8-page="category"] .category-sort .sort-control :is(button, .
   color: var(--hz8-pilot-green) !important;
 }
 /* 44 px träffyta runt de visuellt 40 px höga kontrollerna. */
-html.hz8-sf .hz8-sf-stock::after,
+html.hz8-catshelf .hz8-sf-stock::after,
 html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
-html.hz8-sf .hz8-sf-stock:hover,
+html.hz8-catshelf .hz8-sf-stock:hover,
 html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip:hover { background: color-mix(in srgb, #fffaf0 70%, transparent) !important; }
 html.hz8-sf[data-hz8-page="category"] .category-sort #products_count { font-size: 14.5px !important; }
 
@@ -568,19 +570,19 @@ html.hz8-sf[data-hz8-page="category"] .category-sort #products_count { font-size
 }
 
 /* ---- Mobil "Filter & sortera" ---- */
-html.hz8-sf .hz8-sf-fs { display: none; position: relative; order: 5; margin-left: auto; }
-html.hz8-sf .hz8-sf-fs__btn {
+html.hz8-catshelf .hz8-sf-fs { display: none; position: relative; order: 5; margin-left: auto; }
+html.hz8-catshelf .hz8-sf-fs__btn {
   display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
   border: 1px solid var(--hz8-sf-ctl-border); border-radius: 999px; background: var(--hz8-sf-ctl-bg);
   box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6);
   color: var(--hz8-pilot-green) !important; font: 600 13.5px/1 var(--hz8-font-ui) !important; white-space: nowrap; cursor: pointer;
 }
-html.hz8-sf .hz8-sf-fs__btn .hz8-icon { flex: none; }
-html.hz8-sf .hz8-sf-fs__btn[aria-expanded="true"] .hz8-pchev { transform: rotate(180deg); }
-html.hz8-sf .hz8-sf-fs__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
-html.hz8-sf .hz8-sf-fs__n { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 99px; background: var(--hz8-cta-fill); color: #fff !important; font: 700 11px/1 var(--hz8-font-ui) !important; }
-html.hz8-sf .hz8-sf-fs__n[hidden] { display: none; }
-html.hz8-sf .hz8-sf-fs__panel {
+html.hz8-catshelf .hz8-sf-fs__btn .hz8-icon { flex: none; }
+html.hz8-catshelf .hz8-sf-fs__btn[aria-expanded="true"] .hz8-pchev { transform: rotate(180deg); }
+html.hz8-catshelf .hz8-sf-fs__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-catshelf .hz8-sf-fs__n { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 99px; background: var(--hz8-cta-fill); color: #fff !important; font: 700 11px/1 var(--hz8-font-ui) !important; }
+html.hz8-catshelf .hz8-sf-fs__n[hidden] { display: none; }
+html.hz8-catshelf .hz8-sf-fs__panel {
   position: absolute; top: calc(100% + 8px); right: 0; z-index: 40;
   width: min(300px, calc(100vw - 32px)); padding: 12px;
   border: 1px solid var(--hz8-sf-glass-border); border-radius: 14px;
@@ -588,35 +590,35 @@ html.hz8-sf .hz8-sf-fs__panel {
   -webkit-backdrop-filter: var(--hz8-sf-glass-blur); backdrop-filter: var(--hz8-sf-glass-blur);
   box-shadow: 0 18px 36px -22px rgba(72, 52, 29, .45);
 }
-html.hz8-sf .hz8-sf-fs__panel[hidden] { display: none; }
-html.hz8-sf .hz8-sf-fs__h { margin: 10px 6px 4px; color: var(--hz8-text-muted); font: 700 10.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: .14em; text-transform: uppercase; }
-html.hz8-sf .hz8-sf-fs__sorts { display: grid; gap: 2px; }
-html.hz8-sf .hz8-sf-fs__sort {
+html.hz8-catshelf .hz8-sf-fs__panel[hidden] { display: none; }
+html.hz8-catshelf .hz8-sf-fs__h { margin: 10px 6px 4px; color: var(--hz8-text-muted); font: 700 10.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: .14em; text-transform: uppercase; }
+html.hz8-catshelf .hz8-sf-fs__sorts { display: grid; gap: 2px; }
+html.hz8-catshelf .hz8-sf-fs__sort {
   min-height: 44px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; text-align: left;
   color: var(--hz8-text) !important; font: 500 14.5px/1.2 var(--hz8-font-ui) !important; cursor: pointer;
 }
-html.hz8-sf .hz8-sf-fs__sort[aria-current="true"] { color: var(--hz8-olive) !important; font-weight: 700 !important; background: color-mix(in srgb, var(--hz8-olive) 8%, transparent); }
-html.hz8-sf .hz8-sf-fs__sort[aria-current="true"]::after { content: " ✓"; }
-html.hz8-sf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all) {
+html.hz8-catshelf .hz8-sf-fs__sort[aria-current="true"] { color: var(--hz8-olive) !important; font-weight: 700 !important; background: color-mix(in srgb, var(--hz8-olive) 8%, transparent); }
+html.hz8-catshelf .hz8-sf-fs__sort[aria-current="true"]::after { content: " ✓"; }
+html.hz8-catshelf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all) {
   display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 44px; padding: 0 10px;
   border: 0; border-radius: 8px; background: transparent; color: var(--hz8-pilot-green) !important; font: 600 14.5px/1 var(--hz8-font-ui) !important; cursor: pointer;
 }
-html.hz8-sf .hz8-sf-fs__all { justify-content: flex-start; margin-top: 6px; border-top: 1px solid var(--hz8-pilot-rule); border-radius: 0; }
-html.hz8-sf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all)[hidden] { display: none; }
-html.hz8-sf .hz8-sf-fs__stock .hz8-pswitch__track { position: relative; width: 32px; height: 18px; border-radius: 99px; background: color-mix(in srgb, var(--hz8-ink) 20%, var(--hz8-neutral)); }
-html.hz8-sf .hz8-sf-fs__stock .hz8-pswitch__track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: var(--hz8-shadow-s); transition: transform .16s var(--hz8-ease); }
-html.hz8-sf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
-html.hz8-sf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
-html.hz8-sf .hz8-sf-fs :is(button):focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; }
+html.hz8-catshelf .hz8-sf-fs__all { justify-content: flex-start; margin-top: 6px; border-top: 1px solid var(--hz8-pilot-rule); border-radius: 0; }
+html.hz8-catshelf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all)[hidden] { display: none; }
+html.hz8-catshelf .hz8-sf-fs__stock .hz8-pswitch__track { position: relative; width: 32px; height: 18px; border-radius: 99px; background: color-mix(in srgb, var(--hz8-ink) 20%, var(--hz8-neutral)); }
+html.hz8-catshelf .hz8-sf-fs__stock .hz8-pswitch__track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: var(--hz8-shadow-s); transition: transform .16s var(--hz8-ease); }
+html.hz8-catshelf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
+html.hz8-catshelf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
+html.hz8-catshelf .hz8-sf-fs :is(button):focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; }
 
 /* ---- Produktkort: lokal densitetsvariant (samma data) ---- */
 html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card__image { aspect-ratio: 6 / 5 !important; }
 html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card__image img { inset: 6% 8% !important; width: 84% !important; height: 88% !important; object-fit: contain !important; }
-html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 11px !important; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 8px !important; }
 html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .brand { margin-bottom: 3px; }
-html.hz8-sf .hz8-pcardchips { margin-top: 6px; }
-html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .rating { margin-top: 5px; }
-html.hz8-sf .hz8-pstock { margin: 7px 0 4px; }
+html.hz8-sf .hz8-pcardchips { margin-top: 4px; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .rating { margin-top: 4px; }
+html.hz8-sf .hz8-pstock { margin: 5px 0 2px; }
 html.hz8.hz8-sf[data-hz8-page="category"] #store-main #category-products { row-gap: 30px !important; }
 
 /* ---- Lågantalspanel: pappersgradient, korn, produktionsdekor ---- */
@@ -728,9 +730,9 @@ html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill)
   html.hz8-sf[data-hz8-page="category"] #store-main .designer-category { margin-top: 10px !important; }
   html.hz8-sf[data-hz8-page="category"] .category-sort { min-height: 48px; margin-bottom: 10px !important; }
   /* En samlad kontroll; native knapp/sortering finns kvar men döljs. */
-  html.hz8-sf .hz8-sf-fs { display: block; }
-  html.hz8-sf[data-hz8-page="category"] .category-sort :is(.product-filter-button, .sort-control, .hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
-  html.hz8-sf[data-hz8-page="category"] .category-sort > div:has(.sort-control) { display: none !important; }
+  html.hz8-catshelf .hz8-sf-fs { display: block; }
+  html.hz8-catshelf[data-hz8-page="category"] .category-sort :is(.product-filter-button, .sort-control, .hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
+  html.hz8-catshelf[data-hz8-page="category"] .category-sort > div:has(.sort-control) { display: none !important; }
   html.hz8.hz8-sf[data-hz8-page="category"] #store-main #category-products { row-gap: 22px !important; }
   /* Panel: låg landskapsremsa, länkar på en svepbar rad. */
   html.hz8-sf .hz8-sf-more { margin-top: 18px; padding: 18px 18px 16px; min-height: 0; }
@@ -749,7 +751,7 @@ html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill)
   html.hz8-sf .hz8-sf-row__all { font-size: 13.5px !important; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html.hz8-sf :is(.hz8-sf-fs__stock .hz8-pswitch__track::after, .hz8-sf-fs__btn .hz8-pchev, .hz8-sf-tab) { transition: none !important; }
+  html.hz8-catshelf :is(.hz8-sf-fs__stock .hz8-pswitch__track::after, .hz8-sf-fs__btn .hz8-pchev, .hz8-sf-tab) { transition: none !important; }
 }
 /* Luft mellan herons antal och den överlappande hyllan. */
 html.hz8-sf .hz8-sf-count { margin-bottom: calc(var(--hz8-sf-shelf-overlap) + 18px); }
@@ -757,7 +759,7 @@ html.hz8-sf .hz8-sf-count { margin-bottom: calc(var(--hz8-sf-shelf-overlap) + 18
 /* Genvägarna skapas först efter verktygsraden och flyttas sedan in i den
    (80-category.js) -- dolda så länge de ligger utanför, annars ett
    40 px layoutskift under laddning. */
-html.hz8-sf[data-hz8-page="category"] :not(.category-sort) > .hz8-filter-shortcuts { display: none !important; }
+html.hz8-catshelf[data-hz8-page="category"] :not(.category-sort) > .hz8-filter-shortcuts { display: none !important; }
 
 /* ======================================================================
    R3 (2026-10-22): art-directed lågantalspanel och seriekort.
