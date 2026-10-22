@@ -102,6 +102,49 @@
     return pa === pb;
   }
 
+  /* Route-matchning (2026-10-21). En route i kartan är antingen en
+     dedikerad kategori (bara pathname, t.ex. /thca-vapes) eller en
+     filtrerad vy av en formatrot (/hasch?filters=Serie_Magic%20Sauce).
+     - pathname måste vara lika (utan avslutande /);
+     - varje query-parameter som routen KRÄVER måste finnas i URL:en med
+       samma värde; för filters= räcker att routens filtervärden finns
+       bland URL:ens (Nyehandel lägger fler filter efter "~");
+     - övriga parametrar (sort, page, preview, fler filter ...) är tillåtna.
+     Värden avkodas (%20 och + = mellanslag), så Nyehandels och
+     URLSearchParams olika kodning av samma värde matchar. En formatrot
+     utan seriens filter matchar därför aldrig en filtrerad serie-route. */
+  function decodeParam(v) {
+    try { return decodeURIComponent(String(v).replace(/\+/g, " ")); } catch (e) { return String(v); }
+  }
+  function queryOf(href) {
+    var out = {};
+    try {
+      var q = new URL(href, location.origin).search.replace(/^\?/, "");
+      if (!q) return out;
+      q.split("&").forEach(function (kv) {
+        if (!kv) return;
+        var i = kv.indexOf("=");
+        var k = decodeParam(i === -1 ? kv : kv.slice(0, i)), v = i === -1 ? "" : decodeParam(kv.slice(i + 1));
+        if (k !== "preview") out[k] = v;
+      });
+    } catch (e) { /* tom */ }
+    return out;
+  }
+  function pathOnly(href) {
+    try { return new URL(href, location.origin).pathname.replace(/\/+$/, ""); } catch (e) { return ""; }
+  }
+  function routeMatches(route, href) {
+    if (!route || !href || pathOnly(route) !== pathOnly(href)) return false;
+    var need = queryOf(route), have = queryOf(href);
+    return Object.keys(need).every(function (k) {
+      if (!(k in have)) return false;
+      if (k !== "filters") return have[k] === need[k];
+      var got = have[k].split("~");
+      return need[k].split("~").every(function (t) { return got.indexOf(t) !== -1; });
+    });
+  }
+  function needsQuery(route) { return Object.keys(queryOf(route)).length > 0; }
+
   /* Vilken kontext beskriver den aktuella URL:en?
      - "series-hub": seriens egen sida (t.ex. /magic-sauce)
      - "combo": serie x format (t.ex. /thca-vapes, /hasch?filters=Serie_...)
@@ -112,12 +155,18 @@
     href = withoutSeriesState(href);
     var i, j, keys;
     if (map.all && samePath(map.all.href, href)) return { type: "all", series: null, format: null };
-    for (i = 0; i < map.series.length; i += 1) {
-      var s = map.series[i];
-      if (s.hub && samePath(s.hub, href)) return { type: "series-hub", series: s, format: null };
-      keys = Object.keys(s.routes);
-      for (j = 0; j < keys.length; j += 1) {
-        if (samePath(s.routes[keys[j]], href)) return { type: "combo", series: s, format: formatByKey(keys[j]) };
+    /* Serie x format med obligatoriska filter först (mest specifika),
+       sedan dedikerade kategorier. route + query följer med kontexten så
+       att mallen vet om sidan är en riktig kategori eller en filtrerad vy. */
+    for (var pass = 0; pass < 2; pass += 1) {
+      for (i = 0; i < map.series.length; i += 1) {
+        var s = map.series[i];
+        if (pass === 1 && s.hub && samePath(s.hub, href)) return { type: "series-hub", series: s, format: null };
+        keys = Object.keys(s.routes);
+        for (j = 0; j < keys.length; j += 1) {
+          var r = s.routes[keys[j]];
+          if (needsQuery(r) === (pass === 0) && routeMatches(r, href)) return { type: "combo", series: s, format: formatByKey(keys[j]), route: r, query: pass === 0 };
+        }
       }
     }
     for (i = 0; i < map.formats.length; i += 1) {
@@ -222,6 +271,7 @@
     familyLabel: familyLabel,
     build: build,
     contextFor: contextFor,
+    routeMatches: routeMatches,
     formatByKey: formatByKey,
     seriesWithFormat: seriesWithFormat,
     landingFor: landingFor,

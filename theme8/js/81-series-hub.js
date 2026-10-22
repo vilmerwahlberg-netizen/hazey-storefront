@@ -299,6 +299,11 @@
     return "";
   }
   function fmtDef(key) { return FORMAT_TYPES.filter(function (f) { return f.key === key; })[0]; }
+  /* Delas med serie x format-mallen (80-category.js): produkttyp ur
+     produktnamnet och seriens godkända formatrad ("Våra vapes i
+     {s}-serien.") -- en källa, ingen andra lista. */
+  HZ8.cardTypeOf = typeOf;
+  HZ8.formatSub = function (key, seriesName) { var f = fmtDef(key); return f ? f.sub.replace("{s}", seriesName) : ""; };
   function sizeOf(name) {
     var m = decode(name).match(/(\d+(?:[.,]\d+)?)\s*(ml|g|gram)\b/i);
     return m ? m[1] + " " + (/^g/i.test(m[2]) ? "g" : "ml") : "";

@@ -1,0 +1,896 @@
+/* ======================================================================
+   Serie x format-mall (2026-10-21) -- html.hz8-sf, satt av 80-category.js
+   bara när kategorikartan säkert identifierar en combo-kontext.
+   Facit: theme8/review/universal-series-format-template-2026-10/
+   (01 lågantal desktop, 02 standard desktop, 03 lågantal mobil).
+
+   Rad  Innehåll
+   1-5  kompakt kusthero (delad med Alla Vapes: samma foto/puts-assets)
+        1 brödsmulor  2 eyebrow  3 H1  4 ingress  5 antal
+   6    kontextflikar (Alla <serie> + seriens format)
+   7    Nyehandels verktygsrad + produktgrid (+ lågantalspanel) + paginering
+   8    Fortsätt i serien / Andra serier i <format>
+   9+   kundservice, kategorins egen text
+   Kortstilen är Alla Vapes-kortet (80-category.css, :is(..., .hz8-sf)).
+   ====================================================================== */
+html.hz8-sf {
+  --hz8-sf-tab-h: 42px;
+  --hz8-sf-hero-text: min(640px, 52%);
+}
+html.hz8.hz8-sf body,
+html.hz8.hz8-sf #store-main { background: var(--hz8-pilot-shop) !important; }
+@media (min-width: 1024px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main { --hz8-content-w: min(100vw - 2 * max(24px, min(15vw - 152px, 5.556vw - 16px)), 1520px); }
+}
+/* Ersatta delar av standardkategorin (byggs inte i mallen; reserv om
+   en äldre nod ligger kvar). */
+html.hz8-sf[data-hz8-page="category"] :is(.hz8-cat-actions, .hz8-cat-rails, .hz8-cat-popular, .hz8-combo-related) { display: none !important; }
+
+/* ---------- 1-5: kompakt kusthero ---------- */
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero {
+  grid-row: 1 / 6;
+  margin: 0;
+  background: var(--hz8-pilot-hero-paper);
+  overflow: hidden;
+}
+/* Fotot (samma asset som Alla Vapes per brytpunkt) till höger; papperet
+   tar över mot texten med en mjuk, lite oregelbunden övergång. */
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero .hz8-cat-hero__art {
+  position: absolute;
+  inset: 0 0 0 38%;
+  background: url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-1512.webp") 58% 34% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .35) 9%, #000 26%);
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .35) 9%, #000 26%);
+}
+@media (min-width: 1600px) {
+  html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero .hz8-cat-hero__art { background-image: url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-1920.webp"); }
+}
+/* Papper: varm sand med svagt bärnstensljus och Alla Vapes-putsens
+   textur (delad tile), aldrig platt vit. */
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero__paper {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(42% 90% at 34% 18%, rgba(250, 212, 146, .22), rgba(250, 212, 146, 0) 70%),
+    linear-gradient(90deg, #f3e5cd 0, color-mix(in srgb, #f3e5cd 94%, transparent) 30%, color-mix(in srgb, #f3e5cd 40%, transparent) 46%, transparent 60%);
+  pointer-events: none;
+}
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero__paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  right: 40%;
+  background: url("assets/category-vapes-hero-2026-10/category-vapes-plaster-v1.webp") 0 0 / 640px 640px repeat;
+  opacity: .34;
+  -webkit-mask-image: linear-gradient(90deg, #000 60%, transparent);
+  mask-image: linear-gradient(90deg, #000 60%, transparent);
+}
+html.hz8-sf[data-hz8-page="category"] :is(.designer-breadcrumbs, article.category-description h1, .hz8-sf-eyebrow, .hz8-sf-lead, .hz8-sf-count, .hz8-sf-seal) { position: relative; z-index: 1; }
+html.hz8-sf[data-hz8-page="category"] .designer-breadcrumbs { grid-row: 1; padding-top: calc(var(--hz8-top-clear) - 2px) !important; }
+html.hz8-sf[data-hz8-page="category"] .designer-breadcrumbs :is(a, li, span) { color: color-mix(in srgb, var(--hz8-pilot-green) 80%, transparent) !important; font-size: 13px !important; }
+html.hz8-sf[data-hz8-page="category"] .designer-breadcrumbs li.is-active :is(a, span) { color: var(--hz8-pilot-green) !important; font-weight: 600 !important; }
+html.hz8-sf .hz8-sf-eyebrow {
+  grid-row: 2;
+  margin: 22px 0 0;
+  color: color-mix(in srgb, var(--hz8-pilot-green) 78%, transparent);
+  font: 600 11.5px/1.2 var(--hz8-font-ui) !important;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+html.hz8-sf[data-hz8-page="category"] article.category-description h1 {
+  grid-row: 3;
+  max-width: var(--hz8-sf-hero-text);
+  margin: 8px 0 8px !important;
+  color: var(--hz8-pilot-green) !important;
+  font-size: clamp(42px, 4.4vw, 68px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.03em !important;
+  text-wrap: balance;
+}
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-lead {
+  grid-row: 4;
+  display: block;
+  max-width: min(52ch, var(--hz8-sf-hero-text));
+  margin: 0 0 6px;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  color: color-mix(in srgb, var(--hz8-pilot-green) 92%, #000) !important;
+  font: 400 clamp(16px, 1.25vw, 19px)/1.42 var(--hz8-font-ui) !important;
+}
+html.hz8-sf .hz8-sf-count {
+  grid-row: 5;
+  min-height: 1.4em;
+  margin: 0 0 30px;
+  color: color-mix(in srgb, var(--hz8-pilot-green) 80%, transparent);
+  font: 400 15px/1.4 var(--hz8-font-ui) !important;
+}
+/* Emblem vid papperskanten (dekor, samma linjespråk som Alla Vapes). */
+html.hz8-sf .hz8-sf-seal {
+  grid-row: 1 / 6;
+  align-self: center;
+  justify-self: start;
+  width: 104px;
+  height: 104px;
+  margin: calc(var(--hz8-top-clear) - 60px) 0 0 min(46%, 640px);
+  color: var(--hz8-pilot-green);
+  opacity: .72;
+  pointer-events: none;
+}
+html.hz8-sf .hz8-sf-seal svg { display: block; width: 100%; height: 100%; }
+html.hz8-sf .hz8-sf-seal text { font-family: var(--hz8-font-ui); font-weight: 600; }
+@media (max-width: 1279px) { html.hz8-sf .hz8-sf-seal { display: none; } }
+
+/* ---------- 6: kontextflikar ---------- */
+html.hz8-sf .hz8-sf-tabs {
+  grid-row: 6;
+  position: relative;
+  z-index: 2;
+  padding: 12px 0;
+}
+html.hz8-sf .hz8-sf-tabs__list {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+html.hz8-sf .hz8-sf-tabs__list::-webkit-scrollbar { display: none; }
+html.hz8-sf .hz8-sf-tabs__list li { flex: none; }
+html.hz8-sf .hz8-sf-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--hz8-sf-tab-h);
+  padding: 0 20px;
+  border: 1px solid color-mix(in srgb, #8a6a3c 26%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, #fffdf8 80%, transparent);
+  box-shadow: 0 2px 6px -4px rgba(92, 58, 7, .25);
+  color: var(--hz8-pilot-green) !important;
+  font: 500 14px/1 var(--hz8-font-ui) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: border-color .16s var(--hz8-ease), background-color .16s var(--hz8-ease), transform .16s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-tab:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 40%, transparent); background: #fffdf8; }
+html.hz8-sf .hz8-sf-tab[aria-current="page"] {
+  border: 1.5px solid var(--hz8-cta-fill);
+  background: #fffdf8;
+  font-weight: 700 !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hz8-cta-fill) 9%, transparent), 0 2px 6px -4px rgba(92, 58, 7, .25);
+}
+html.hz8-sf .hz8-sf-tab:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+
+/* ---------- 7: verktygsrad (Nyehandels egen) + grid ---------- */
+html.hz8-sf[data-hz8-page="category"] .designer-category { grid-row: 7; margin-top: 18px !important; }
+html.hz8-sf[data-hz8-page="category"] .category-sort {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  margin: 0 0 14px !important;
+  padding: 0 0 12px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--hz8-pilot-rule) !important;
+  background: transparent !important;
+}
+html.hz8-sf[data-hz8-page="category"] .category-sort #products_count {
+  order: -2;
+  margin-right: auto !important;
+  color: var(--hz8-pilot-green) !important;
+  font: 500 15px/1.2 var(--hz8-font-ui) !important;
+}
+/* Återstående relevanta filter (t.ex. Varumärke) som låga dropdown-
+   genvägar till Nyehandels panel; Serie och Lagerstatus döljs här. */
+html.hz8-sf[data-hz8-page="category"] .category-sort > * { order: 3; }
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-sf-stock { order: 1; }
+html.hz8-sf[data-hz8-page="category"] .category-sort > div:has(.sort-control) { order: 4; }
+/* Mobil: antal | Filtrera (Nyehandels panel med lager och övriga
+   filter) | sortering -- genvägar och växel ryms inte på en rad. */
+@media (max-width: 767px) {
+  html.hz8-sf[data-hz8-page="category"] .category-sort :is(.hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
+  html.hz8-sf[data-hz8-page="category"] .category-sort { gap: 8px; flex-wrap: nowrap; }
+  html.hz8-sf[data-hz8-page="category"] .category-sort #products_count { font-size: 14px !important; white-space: nowrap; }
+}
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts { order: 2 !important; display: flex; gap: 8px; margin: 0 !important; padding: 0 !important; }
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip { min-height: 42px; border-color: var(--hz8-pilot-rule); background: var(--hz8-pilot-cream); color: var(--hz8-pilot-green) !important; }
+/* Desktop: genvägarna öppnar Nyehandels panel vid rätt grupp -- den
+   allmänna "Filtrera"-knappen behövs då inte (mobil behåller den). */
+@media (min-width: 768px) {
+  html.hz8-sf.hz8-sf-has-shortcuts[data-hz8-page="category"] .category-sort .product-filter-button { display: none !important; }
+}
+html.hz8-sf .hz8-sf-stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 14px 0 16px;
+  border: 1px solid var(--hz8-pilot-rule);
+  border-radius: 999px;
+  background: var(--hz8-pilot-cream);
+  color: var(--hz8-pilot-green) !important;
+  font: 600 14px/1 var(--hz8-font-ui) !important;
+  cursor: pointer;
+}
+html.hz8-sf .hz8-sf-stock[hidden] { display: none; }
+html.hz8-sf .hz8-sf-stock:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-sf .hz8-sf-stock .hz8-pswitch__track {
+  position: relative; width: 32px; height: 18px; border-radius: 99px;
+  background: color-mix(in srgb, var(--hz8-ink) 20%, var(--hz8-neutral));
+  transition: background-color .16s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-stock .hz8-pswitch__track::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; box-shadow: var(--hz8-shadow-s); transition: transform .16s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
+html.hz8-sf .hz8-sf-stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
+
+/* Gridet: Alla Vapes-kortet, fyra balanserade kolumner. Värden kommer
+   bara från Nyehandels kort. */
+html.hz8-sf[data-hz8-page="category"] #store-main #category-products {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 36px 24px !important;
+}
+@media (max-width: 1023px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main #category-products { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+/* Lågantal (1-3 produkter, desktop): korten behåller exakt en fjärdedels
+   bredd; resterande kolumner = kontextpanelen. Behållaren (Nyehandels
+   sektion runt gridet) blir ett 4-kolumnsgrid -- inga noder flyttas. */
+@media (min-width: 1024px) {
+  html.hz8-sf.hz8-sf-low[data-hz8-page="category"] #store-main section:has(> #category-products) {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  html.hz8-sf.hz8-sf-low[data-hz8-page="category"] #store-main section:has(> #category-products) > * { grid-column: 1 / -1; }
+  html.hz8-sf.hz8-sf-low[data-hz8-page="category"] #store-main section:has(> #category-products) > #category-products { grid-column: span var(--hz8-sf-cols, 2); grid-template-columns: repeat(var(--hz8-sf-cols, 2), minmax(0, 1fr)) !important; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="1"] { --hz8-sf-cols: 1; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="2"] { --hz8-sf-cols: 2; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] { --hz8-sf-cols: 3; }
+  html.hz8-sf.hz8-sf-low[data-hz8-page="category"] #store-main section:has(> #category-products) > .hz8-sf-more { grid-column: 3 / -1; align-self: stretch; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="1"][data-hz8-page="category"] #store-main section:has(> #category-products) > .hz8-sf-more { grid-column: 2 / -1; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"][data-hz8-page="category"] #store-main section:has(> #category-products) > .hz8-sf-more { grid-column: 4 / -1; }
+}
+
+/* ---------- Kontextpanel (lågantal) ---------- */
+html.hz8-sf .hz8-sf-more {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  padding: 30px 28px;
+  border: 1px solid color-mix(in srgb, #c4a97c 34%, transparent);
+  border-radius: 14px;
+  background:
+    radial-gradient(60% 70% at 85% 72%, rgba(244, 196, 120, .20), rgba(244, 196, 120, 0) 70%),
+    linear-gradient(180deg, color-mix(in srgb, #f7ecda 80%, transparent), color-mix(in srgb, #f1e3cb 70%, transparent));
+  box-shadow: inset 0 1px 0 rgba(255, 252, 243, .7), 0 14px 30px -26px rgba(72, 52, 29, .45);
+}
+html.hz8-sf .hz8-sf-more[hidden] { display: none; }
+html.hz8-sf .hz8-sf-more { container-type: inline-size; }
+html.hz8-sf .hz8-sf-more__body { position: relative; z-index: 1; max-width: 300px; }
+/* Bred panel (1 produkt): text till vänster, större dekor till höger. */
+@container (min-width: 560px) {
+  .hz8-sf-more__body { max-width: 340px; }
+  .hz8-sf-more__art { width: min(52%, 420px) !important; opacity: .6 !important; }
+}
+html.hz8-sf .hz8-sf-more__title {
+  margin: 0 0 18px !important;
+  color: var(--hz8-pilot-green) !important;
+  font-family: var(--hz8-font-display) !important;
+  font-size: clamp(26px, 2.2vw, 34px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.02em !important;
+}
+html.hz8-sf .hz8-sf-more__list { margin: 0; padding: 0; list-style: none; }
+html.hz8-sf .hz8-sf-more__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  border-bottom: 1px solid color-mix(in srgb, #8a6a3c 22%, transparent);
+  color: var(--hz8-pilot-green) !important;
+  font: 400 18px/1.2 var(--hz8-font-display) !important;
+  text-decoration: none !important;
+}
+html.hz8-sf .hz8-sf-more__link .hz8-icon { flex: none; color: var(--hz8-cta-fill); transition: transform .16s var(--hz8-ease); }
+html.hz8-sf .hz8-sf-more__link:hover .hz8-icon { transform: translateX(3px); }
+html.hz8-sf .hz8-sf-more__link:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; border-radius: 4px; }
+/* Tunn linjedekor (palm + sol + vågor), CSS/SVG, aldrig klickbar. */
+html.hz8-sf .hz8-sf-more__art {
+  position: absolute;
+  right: -10px;
+  bottom: -6px;
+  width: min(62%, 300px);
+  aspect-ratio: 1;
+  opacity: .52;
+  pointer-events: none;
+  background: url("assets/series-format-r2/coast-botanical-line-art-r2.webp") right bottom / contain no-repeat;
+}
+
+/* ---------- 8: efter sortimentet ---------- */
+html.hz8-sf[data-hz8-page="category"] .hz8-sf-after { grid-row: 8; display: grid; gap: 26px; margin: 34px 0 44px; }
+html.hz8-sf .hz8-sf-after > [hidden] { display: none; }
+html.hz8-sf .hz8-sf-cont { display: flex; align-items: center; gap: 24px; padding: 22px 0 0; border-top: 1px solid var(--hz8-pilot-rule); }
+html.hz8-sf .hz8-sf-row__title {
+  margin: 0 !important;
+  color: var(--hz8-pilot-green) !important;
+  font-family: var(--hz8-font-display) !important;
+  font-size: clamp(24px, 2vw, 30px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -.02em !important;
+  white-space: nowrap;
+}
+html.hz8-sf .hz8-sf-chips { display: flex; gap: 8px; margin: 0; padding: 2px; list-style: none; overflow-x: auto; scrollbar-width: none; }
+html.hz8-sf .hz8-sf-chips::-webkit-scrollbar { display: none; }
+html.hz8-sf .hz8-sf-chips li { flex: none; }
+html.hz8-sf .hz8-sf-chip {
+  display: inline-flex; align-items: center; min-height: 42px; padding: 0 20px;
+  border: 1px solid color-mix(in srgb, #8a6a3c 26%, transparent); border-radius: 999px;
+  background: color-mix(in srgb, #fffdf8 80%, transparent);
+  color: var(--hz8-pilot-green) !important; font: 500 14px/1 var(--hz8-font-ui) !important; text-decoration: none !important; white-space: nowrap;
+}
+html.hz8-sf .hz8-sf-chip:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 40%, transparent); background: #fffdf8; }
+html.hz8-sf .hz8-sf-others { display: grid; gap: 16px; padding: 22px 0 0; border-top: 1px solid var(--hz8-pilot-rule); }
+html.hz8-sf .hz8-sf-series {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html.hz8-sf .hz8-sf-serie {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 84px;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid color-mix(in srgb, #8a6a3c 20%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, #fffdf8 62%, transparent);
+  box-shadow: 0 6px 14px -12px rgba(72, 52, 29, .4);
+  color: var(--hz8-pilot-green) !important;
+  text-decoration: none !important;
+  transition: border-color .16s var(--hz8-ease), transform .16s var(--hz8-ease), background-color .16s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-serie:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 36%, transparent); background: #fffdf8; transform: translateY(-1px); }
+html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-sf .hz8-sf-serie__media { display: block; width: 64px; height: 64px; overflow: hidden; border-radius: 8px; background: var(--hz8-pilot-well); }
+html.hz8-sf .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; }
+html.hz8-sf .hz8-sf-serie__text { display: grid; gap: 4px; min-width: 0; }
+html.hz8-sf .hz8-sf-serie__name { font: 400 17px/1.2 var(--hz8-font-display) !important; overflow-wrap: anywhere; }
+html.hz8-sf .hz8-sf-serie__count { color: color-mix(in srgb, var(--hz8-pilot-green) 70%, transparent); font: 500 12.5px/1.2 var(--hz8-font-ui) !important; }
+html.hz8-sf .hz8-sf-serie .hz8-icon { color: var(--hz8-cta-fill); }
+html.hz8-sf[data-hz8-page="category"] .hz8-cat-guide { grid-row: 9; }
+html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
+
+/* Diskret, progressiv rörelse: intro och verktygsrad tonar in. */
+@media (prefers-reduced-motion: no-preference) {
+  html.hz8-sf :is(.hz8-sf-eyebrow, .hz8-sf-lead, .hz8-sf-tabs) { animation: hz8-sf-in .5s cubic-bezier(.25, .46, .45, .94) both; }
+  html.hz8-sf[data-hz8-page="category"] article.category-description h1 { animation: hz8-sf-in .5s cubic-bezier(.25, .46, .45, .94) .04s both; }
+}
+@keyframes hz8-sf-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html.hz8-sf :is(.hz8-sf-tab, .hz8-sf-serie, .hz8-sf-more__link .hz8-icon, .hz8-sf-stock .hz8-pswitch__track, .hz8-sf-stock .hz8-pswitch__track::after) { transition: none !important; }
+}
+
+/* ---------- Surfplatta ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero .hz8-cat-hero__art { left: 30%; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 767px) {
+  html.hz8-sf { --hz8-sf-hero-text: 100%; --hz8-sf-tab-h: 40px; }
+  html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero .hz8-cat-hero__art {
+    inset: 0 0 0 30%;
+    background-image: url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-mobile.webp");
+    background-position: 62% 30%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .4) 20%, #000 52%);
+    mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .4) 20%, #000 52%);
+  }
+  html.hz8-sf[data-hz8-page="category"] .hz8-sf-hero__paper {
+    background:
+      radial-gradient(70% 60% at 20% 30%, rgba(250, 212, 146, .2), rgba(250, 212, 146, 0) 70%),
+      linear-gradient(90deg, #f3e5cd 0, color-mix(in srgb, #f3e5cd 88%, transparent) 46%, color-mix(in srgb, #f3e5cd 30%, transparent) 70%, transparent 86%);
+  }
+  html.hz8-sf[data-hz8-page="category"] .designer-breadcrumbs { padding-top: calc(var(--hz8-top-clear) + 2px) !important; }
+  html.hz8-sf[data-hz8-page="category"] .designer-breadcrumbs :is(a, li, span) { font-size: 12.5px !important; }
+  html.hz8-sf .hz8-sf-eyebrow { margin-top: 16px; font-size: 10.5px !important; }
+  html.hz8-sf[data-hz8-page="category"] article.category-description h1 { max-width: 15ch; margin: 6px 0 6px !important; font-size: clamp(34px, 10vw, 44px) !important; }
+  html.hz8-sf[data-hz8-page="category"] .hz8-sf-lead { max-width: 30ch; font-size: 15px !important; }
+  html.hz8-sf .hz8-sf-count { margin-bottom: 22px; font-size: 14px !important; }
+  /* Svepbar rad med synlig fortsättning (sista fliken kapas av kanten). */
+  html.hz8-sf .hz8-sf-tabs { padding: 10px 0; margin-right: -16px; }
+  html.hz8-sf .hz8-sf-tabs__list { padding-right: 16px; scroll-snap-type: x proximity; }
+  html.hz8-sf .hz8-sf-tabs__list li { scroll-snap-align: start; }
+  html.hz8-sf .hz8-sf-tab { padding: 0 16px; font-size: 13.5px !important; }
+  html.hz8-sf[data-hz8-page="category"] .designer-category { margin-top: 12px !important; }
+  html.hz8-sf[data-hz8-page="category"] #store-main #category-products { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 26px 14px !important; }
+  html.hz8-sf .hz8-sf-stock { min-height: 40px; padding: 0 12px; font-size: 13px !important; }
+  /* Panelen efter korten som låg redaktionell remsa. */
+  html.hz8-sf .hz8-sf-more { margin: 22px 0 0; padding: 20px 18px; }
+  html.hz8-sf .hz8-sf-more__body { max-width: none; }
+  html.hz8-sf .hz8-sf-more__title { margin-bottom: 8px !important; font-size: 24px !important; max-width: 14ch; }
+  html.hz8-sf .hz8-sf-more__s { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  html.hz8-sf .hz8-sf-more__list { position: relative; z-index: 1; }
+  html.hz8-sf .hz8-sf-more__list li + li { padding-left: 18px; border-left: 1px solid color-mix(in srgb, #8a6a3c 24%, transparent); }
+  html.hz8-sf .hz8-sf-more__list { display: flex; flex-wrap: wrap; gap: 0 18px; }
+  html.hz8-sf .hz8-sf-more__link { gap: 8px; min-height: 44px; border-bottom: 0; font-size: 17px !important; }
+  html.hz8-sf .hz8-sf-more__art { width: 44%; right: -18px; bottom: -14px; opacity: .38; }
+  html.hz8-sf .hz8-sf-cont { flex-direction: column; align-items: flex-start; gap: 12px; }
+  html.hz8-sf .hz8-sf-cont .hz8-sf-chips { max-width: 100%; }
+  html.hz8-sf .hz8-sf-series { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 359px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main #category-products { gap: 22px 10px !important; }
+  html.hz8-sf .hz8-sf-more__list { gap: 0 12px; }
+  html.hz8-sf .hz8-sf-more__list li + li { padding-left: 12px; }
+  html.hz8-sf .hz8-sf-more__link { gap: 6px; font-size: 15.5px !important; }
+}
+
+/* Aktuell serie är redan vald (Serie-chippet döljs i 80-category.js);
+   "Rensa alla filter" visas bara när ett annat filter faktiskt är aktivt. */
+html.hz8-sf[data-hz8-page="category"] .selected-filters:not(:has(.selected-filters-item:not(.no-chip):not(.hz8-filter-hidden))) { display: none !important; }
+
+/* ======================================================================
+   R2 (2026-10-21): glashylla, tätare kort, lugnare panel, serie-rail.
+   Facit: review/series-format-template-r2-2026-10/. Allt under html.hz8-sf.
+   Materialet ligger i lokala tokens (--hz8-sf-glass-*) så att samma värden
+   senare kan flyttas till en gemensam kategoritoken.
+   ====================================================================== */
+html.hz8-sf {
+  --hz8-sf-glass-bg: color-mix(in srgb, #fbf3e4 63%, transparent);
+  --hz8-sf-glass-fallback: color-mix(in srgb, #fbf3e4 95%, transparent);
+  --hz8-sf-glass-blur: blur(20px) saturate(1.14);
+  --hz8-sf-glass-border: color-mix(in srgb, #c6ad86 44%, transparent);
+  --hz8-sf-glass-shadow: 0 12px 26px -22px rgba(72, 52, 29, .5), inset 0 1px 0 rgba(255, 253, 247, .78);
+  --hz8-sf-glass-r: 20px;
+  --hz8-sf-ctl-bg: color-mix(in srgb, #fffaf0 44%, transparent);
+  --hz8-sf-ctl-border: color-mix(in srgb, #8a6a3c 24%, transparent);
+  --hz8-sf-ctl-h: 40px;
+  --hz8-sf-active-line: var(--hz8-cta-fill);
+  --hz8-sf-shelf-h: 60px;
+  --hz8-sf-shelf-overlap: 30px;
+}
+
+/* ---- Glashylla: formatflikar (alla bredder) ---- */
+html.hz8-sf .hz8-sf-tabs {
+  margin-top: calc(-1 * var(--hz8-sf-shelf-overlap));
+  padding: 8px 12px;
+  border: 1px solid var(--hz8-sf-glass-border);
+  border-radius: var(--hz8-sf-glass-r);
+  background: var(--hz8-sf-glass-bg);
+  -webkit-backdrop-filter: var(--hz8-sf-glass-blur);
+  backdrop-filter: var(--hz8-sf-glass-blur);
+  box-shadow: var(--hz8-sf-glass-shadow);
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  html.hz8-sf .hz8-sf-tabs { background: var(--hz8-sf-glass-fallback); }
+}
+html.hz8-sf .hz8-sf-tabs__list { gap: 2px; padding: 0; }
+/* Rena textflikar: ingen pill. Aktiv = semibold + kort terrakottalinje. */
+html.hz8-sf .hz8-sf-tab {
+  position: relative;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+  color: color-mix(in srgb, var(--hz8-pilot-green) 86%, transparent) !important;
+  font: 500 14.5px/1 var(--hz8-font-ui) !important;
+  transition: background-color .16s var(--hz8-ease), color .16s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-tab:hover { border: 0; background: color-mix(in srgb, #fffaf0 46%, transparent); color: var(--hz8-pilot-green) !important; }
+html.hz8-sf .hz8-sf-tab[aria-current="page"] {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--hz8-pilot-green) !important;
+  font-weight: 650 !important;
+}
+html.hz8-sf .hz8-sf-tab[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 32px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--hz8-sf-active-line);
+  transform: translateX(-50%);
+}
+html.hz8-sf .hz8-sf-tab:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; }
+
+/* ---- Verktygskontroller: små genomskinliga glaskontroller ---- */
+html.hz8-sf[data-hz8-page="category"] .category-sort { border-bottom: 0 !important; padding-bottom: 0 !important; min-height: 52px; }
+html.hz8-sf .hz8-sf-stock,
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip,
+html.hz8-sf[data-hz8-page="category"] .category-sort .sort-control :is(button, .dropdown-trigger button) {
+  position: relative;
+  min-height: var(--hz8-sf-ctl-h) !important;
+  border: 1px solid var(--hz8-sf-ctl-border) !important;
+  border-radius: 999px !important;
+  background: var(--hz8-sf-ctl-bg) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6) !important;
+  color: var(--hz8-pilot-green) !important;
+}
+/* 44 px träffyta runt de visuellt 40 px höga kontrollerna. */
+html.hz8-sf .hz8-sf-stock::after,
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+html.hz8-sf .hz8-sf-stock:hover,
+html.hz8-sf[data-hz8-page="category"] .category-sort .hz8-filter-shortcuts .hz8-chip:hover { background: color-mix(in srgb, #fffaf0 70%, transparent) !important; }
+html.hz8-sf[data-hz8-page="category"] .category-sort #products_count { font-size: 14.5px !important; }
+
+/* ---- En rad (desktop, standard från första renderingen = ingen CLS;
+        80-category.js sätter .hz8-sf-stack bara om raden inte ryms):
+        flikar vänster, antal + kontroller höger i samma hylla. ---- */
+@media (min-width: 1280px) {
+  html.hz8-sf:not(.hz8-sf-stack) .hz8-sf-tabs { min-height: var(--hz8-sf-shelf-h); padding-top: 7px; padding-bottom: 7px; }
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] #store-main .designer-category { margin-top: calc(-1 * var(--hz8-sf-shelf-h) - 2px) !important; }
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] .category-sort {
+    position: relative;
+    top: auto !important;
+    z-index: 3;
+    justify-content: flex-end;
+    min-height: calc(var(--hz8-sf-shelf-h) + 2px);
+    margin: 0 0 22px !important;
+    padding: 0 14px 0 0 !important;
+    pointer-events: none;
+  }
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] .category-sort * { pointer-events: auto; }
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] .category-sort .mobile-filter,
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] .category-sort .vue-portal-target { pointer-events: none; }
+  html.hz8-sf:not(.hz8-sf-stack)[data-hz8-page="category"] .category-sort #products_count {
+    order: 0;
+    margin: 0 4px 0 0 !important;
+    padding: 0 0 0 18px;
+    border-left: 1px solid color-mix(in srgb, #8a6a3c 26%, transparent);
+    color: color-mix(in srgb, var(--hz8-pilot-green) 84%, transparent) !important;
+  }
+}
+/* Två rader i samma material: 1024-1279 alltid, från 1280 bara om raden
+   inte ryms (t.ex. med flera aktiva filterchips). */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .designer-category { margin-top: 12px !important; }
+}
+@media (min-width: 1280px) {
+  html.hz8-sf.hz8-sf-stack[data-hz8-page="category"] #store-main .designer-category { margin-top: 12px !important; }
+}
+
+/* ---- Mobil "Filter & sortera" ---- */
+html.hz8-sf .hz8-sf-fs { display: none; position: relative; order: 5; margin-left: auto; }
+html.hz8-sf .hz8-sf-fs__btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px;
+  border: 1px solid var(--hz8-sf-ctl-border); border-radius: 999px; background: var(--hz8-sf-ctl-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 253, 247, .6);
+  color: var(--hz8-pilot-green) !important; font: 600 13.5px/1 var(--hz8-font-ui) !important; white-space: nowrap; cursor: pointer;
+}
+html.hz8-sf .hz8-sf-fs__btn .hz8-icon { flex: none; }
+html.hz8-sf .hz8-sf-fs__btn[aria-expanded="true"] .hz8-pchev { transform: rotate(180deg); }
+html.hz8-sf .hz8-sf-fs__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-sf .hz8-sf-fs__n { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 99px; background: var(--hz8-cta-fill); color: #fff !important; font: 700 11px/1 var(--hz8-font-ui) !important; }
+html.hz8-sf .hz8-sf-fs__n[hidden] { display: none; }
+html.hz8-sf .hz8-sf-fs__panel {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 40;
+  width: min(300px, calc(100vw - 32px)); padding: 12px;
+  border: 1px solid var(--hz8-sf-glass-border); border-radius: 14px;
+  background: color-mix(in srgb, #faf2e4 92%, transparent);
+  -webkit-backdrop-filter: var(--hz8-sf-glass-blur); backdrop-filter: var(--hz8-sf-glass-blur);
+  box-shadow: 0 18px 36px -22px rgba(72, 52, 29, .45);
+}
+html.hz8-sf .hz8-sf-fs__panel[hidden] { display: none; }
+html.hz8-sf .hz8-sf-fs__h { margin: 10px 6px 4px; color: var(--hz8-text-muted); font: 700 10.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: .14em; text-transform: uppercase; }
+html.hz8-sf .hz8-sf-fs__sorts { display: grid; gap: 2px; }
+html.hz8-sf .hz8-sf-fs__sort {
+  min-height: 44px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; text-align: left;
+  color: var(--hz8-text) !important; font: 500 14.5px/1.2 var(--hz8-font-ui) !important; cursor: pointer;
+}
+html.hz8-sf .hz8-sf-fs__sort[aria-current="true"] { color: var(--hz8-olive) !important; font-weight: 700 !important; background: color-mix(in srgb, var(--hz8-olive) 8%, transparent); }
+html.hz8-sf .hz8-sf-fs__sort[aria-current="true"]::after { content: " ✓"; }
+html.hz8-sf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all) {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 44px; padding: 0 10px;
+  border: 0; border-radius: 8px; background: transparent; color: var(--hz8-pilot-green) !important; font: 600 14.5px/1 var(--hz8-font-ui) !important; cursor: pointer;
+}
+html.hz8-sf .hz8-sf-fs__all { justify-content: flex-start; margin-top: 6px; border-top: 1px solid var(--hz8-pilot-rule); border-radius: 0; }
+html.hz8-sf :is(.hz8-sf-fs__stock, .hz8-sf-fs__all)[hidden] { display: none; }
+html.hz8-sf .hz8-sf-fs__stock .hz8-pswitch__track { position: relative; width: 32px; height: 18px; border-radius: 99px; background: color-mix(in srgb, var(--hz8-ink) 20%, var(--hz8-neutral)); }
+html.hz8-sf .hz8-sf-fs__stock .hz8-pswitch__track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: var(--hz8-shadow-s); transition: transform .16s var(--hz8-ease); }
+html.hz8-sf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track { background: var(--hz8-olive); }
+html.hz8-sf .hz8-sf-fs__stock[aria-checked="true"] .hz8-pswitch__track::after { transform: translateX(14px); }
+html.hz8-sf .hz8-sf-fs :is(button):focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px; }
+
+/* ---- Produktkort: lokal densitetsvariant (samma data) ---- */
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card__image { aspect-ratio: 6 / 5 !important; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card__image img { inset: 6% 8% !important; width: 84% !important; height: 88% !important; object-fit: contain !important; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 11px !important; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .brand { margin-bottom: 3px; }
+html.hz8-sf .hz8-pcardchips { margin-top: 6px; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main .product-card .rating { margin-top: 5px; }
+html.hz8-sf .hz8-pstock { margin: 7px 0 4px; }
+html.hz8.hz8-sf[data-hz8-page="category"] #store-main #category-products { row-gap: 30px !important; }
+
+/* ---- Lågantalspanel: pappersgradient, korn, produktionsdekor ---- */
+html.hz8-sf .hz8-sf-more {
+  padding: 28px 30px;
+  border: 1px solid color-mix(in srgb, #c4a97c 30%, transparent);
+  background:
+    radial-gradient(55% 75% at 88% 78%, rgba(244, 196, 120, .16), rgba(244, 196, 120, 0) 72%),
+    linear-gradient(165deg, #f8efdf 0%, #f4e8d3 55%, #efe1c8 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 252, 243, .72), 0 12px 26px -24px rgba(72, 52, 29, .45);
+}
+html.hz8-sf .hz8-sf-more::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/category-vapes-hero-2026-10/category-vapes-plaster-v1.webp") 0 0 / 640px 640px repeat;
+  opacity: .16;
+  pointer-events: none;
+}
+html.hz8-sf .hz8-sf-more__body { max-width: 330px; }
+html.hz8-sf .hz8-sf-more__title { margin-bottom: 8px !important; font-size: clamp(24px, 2vw, 29px) !important; }
+html.hz8-sf .hz8-sf-more__lead { margin: 0 0 14px; color: color-mix(in srgb, var(--hz8-pilot-green) 82%, transparent); font: 400 15px/1.4 var(--hz8-font-ui) !important; }
+html.hz8-sf .hz8-sf-more__link { min-height: 45px; font-size: 17px !important; }
+html.hz8-sf .hz8-sf-more__art {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  width: min(66%, 470px);
+  height: auto;
+  aspect-ratio: 2 / 1;
+  opacity: .9;
+  background-position: right bottom;
+  background-size: contain;
+}
+@container (min-width: 560px) {
+  .hz8-sf-more__art { width: min(62%, 520px) !important; opacity: .9 !important; }
+}
+/* Tre produkter (desktop): en kolumn kvar -- förenklad vertikal variant. */
+@media (min-width: 1024px) {
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more { padding: 24px 22px; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__title { font-size: 22px !important; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__lead { display: none; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__link { font-size: 16px !important; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__art { width: 130%; right: -30%; opacity: .5; }
+}
+
+/* ---- Andra serier: visuell rail ---- */
+html.hz8-sf .hz8-sf-others { gap: 14px; padding-top: 18px; border-top: 0; }
+html.hz8-sf .hz8-sf-row__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+html.hz8-sf .hz8-sf-row__all { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--hz8-cta-hover) !important; font: 600 14px/1 var(--hz8-font-ui) !important; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+html.hz8-sf .hz8-sf-row__all:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+html.hz8-sf .hz8-sf-series {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: none;
+  grid-auto-columns: calc((100% - 4 * 14px) / 5);
+  gap: 14px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding: 2px;
+  margin: -2px;
+}
+html.hz8-sf .hz8-sf-series::-webkit-scrollbar { display: none; }
+html.hz8-sf .hz8-sf-series li { scroll-snap-align: start; }
+html.hz8-sf .hz8-sf-serie {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 104px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, #2c3620 30%, transparent);
+  border-radius: 12px;
+  background: linear-gradient(120deg, #26301b 0%, #3a4628 60%, #5b4c30 100%);
+  box-shadow: 0 10px 20px -16px rgba(40, 30, 12, .6);
+  color: #fffaf0 !important;
+}
+html.hz8-sf .hz8-sf-serie:hover { transform: translateY(-1px); border-color: color-mix(in srgb, #2c3620 50%, transparent); background: linear-gradient(120deg, #26301b 0%, #3a4628 60%, #5b4c30 100%); }
+/* Riktig seriebild (kategorins första produkt) som ljus bakgrund till höger. */
+html.hz8-sf .hz8-sf-serie__media {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: auto;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: radial-gradient(120% 90% at 50% 18%, #fcf8f0 0%, #f4e8d6 70%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 6px 14px -10px rgba(0, 0, 0, .5);
+}
+html.hz8-sf .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+html.hz8-sf .hz8-sf-serie__text { position: relative; z-index: 1; max-width: calc(100% - 96px); gap: 3px; }
+html.hz8-sf .hz8-sf-serie__name { color: #fffaf0; font-size: 18px !important; line-height: 1.1 !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .25); }
+html.hz8-sf .hz8-sf-serie__count { color: color-mix(in srgb, #fffaf0 82%, transparent); }
+html.hz8-sf .hz8-sf-serie > .hz8-icon { position: absolute; z-index: 1; right: 12px; bottom: 12px; display: none; }
+html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill) !important; outline-offset: 2px; }
+@media (max-width: 1279px) { html.hz8-sf .hz8-sf-series { grid-auto-columns: calc((100% - 3 * 14px) / 4); } }
+@media (max-width: 1023px) { html.hz8-sf .hz8-sf-series { grid-auto-columns: calc((100% - 2 * 14px) / 3); } }
+
+/* ---- Mobil R2 ---- */
+@media (max-width: 767px) {
+  html.hz8-sf { --hz8-sf-shelf-overlap: 14px; }
+  html.hz8-sf .hz8-sf-tabs { margin-right: 0; padding: 4px 6px; border-radius: 18px; }
+  html.hz8-sf .hz8-sf-tabs__list { padding-right: 22px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); }
+  html.hz8-sf .hz8-sf-tab { padding: 0 13px; font-size: 14px !important; }
+  html.hz8-sf[data-hz8-page="category"] #store-main .designer-category { margin-top: 10px !important; }
+  html.hz8-sf[data-hz8-page="category"] .category-sort { min-height: 48px; margin-bottom: 10px !important; }
+  /* En samlad kontroll; native knapp/sortering finns kvar men döljs. */
+  html.hz8-sf .hz8-sf-fs { display: block; }
+  html.hz8-sf[data-hz8-page="category"] .category-sort :is(.product-filter-button, .sort-control, .hz8-sf-stock, .hz8-filter-shortcuts) { display: none !important; }
+  html.hz8-sf[data-hz8-page="category"] .category-sort > div:has(.sort-control) { display: none !important; }
+  html.hz8.hz8-sf[data-hz8-page="category"] #store-main #category-products { row-gap: 22px !important; }
+  /* Panel: låg landskapsremsa, länkar på en svepbar rad. */
+  html.hz8-sf .hz8-sf-more { margin-top: 18px; padding: 18px 18px 16px; min-height: 0; }
+  html.hz8-sf .hz8-sf-more__title { font-size: 24px !important; max-width: 13ch; }
+  html.hz8-sf .hz8-sf-more__lead { max-width: 24ch; margin-bottom: 8px; font-size: 14px !important; }
+  html.hz8-sf .hz8-sf-more__list { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  html.hz8-sf .hz8-sf-more__list::-webkit-scrollbar { display: none; }
+  html.hz8-sf .hz8-sf-more__list li { flex: none; }
+  /* Dekoren uppe till höger bredvid rubriken -- aldrig bakom länkarna. */
+  html.hz8-sf .hz8-sf-more__art { top: -6px; bottom: auto; width: 58%; right: -16%; opacity: .5; }
+  html.hz8-sf .hz8-sf-more__body { position: relative; z-index: 1; }
+  /* Serie-rail: svepbar, nästa kort syns. */
+  html.hz8-sf .hz8-sf-series { grid-auto-columns: 76%; scroll-snap-type: x proximity; scroll-padding-inline: 2px; }
+  html.hz8-sf .hz8-sf-serie { min-height: 96px; }
+  html.hz8-sf .hz8-sf-row__title { font-size: 22px !important; }
+  html.hz8-sf .hz8-sf-row__all { font-size: 13.5px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8-sf :is(.hz8-sf-fs__stock .hz8-pswitch__track::after, .hz8-sf-fs__btn .hz8-pchev, .hz8-sf-tab) { transition: none !important; }
+}
+/* Luft mellan herons antal och den överlappande hyllan. */
+html.hz8-sf .hz8-sf-count { margin-bottom: calc(var(--hz8-sf-shelf-overlap) + 18px); }
+@media (max-width: 767px) { html.hz8-sf .hz8-sf-count { margin-bottom: calc(var(--hz8-sf-shelf-overlap) + 14px); } }
+/* Genvägarna skapas först efter verktygsraden och flyttas sedan in i den
+   (80-category.js) -- dolda så länge de ligger utanför, annars ett
+   40 px layoutskift under laddning. */
+html.hz8-sf[data-hz8-page="category"] :not(.category-sort) > .hz8-filter-shortcuts { display: none !important; }
+
+/* ======================================================================
+   R3 (2026-10-22): art-directed lågantalspanel och seriekort.
+   Facit: review/series-format-template-r3-assets-2026-10/preview-r3*.
+   Bilderna är färdiga WebP i assets/series-format-r3/ -- ingen text i
+   bilderna; rubrik, ingress, länkar, namn och antal är riktig HTML.
+   ====================================================================== */
+html.hz8-sf {
+  --hz8-sf-more-ink: #29351f;
+  --hz8-sf-more-eyebrow: #81552c;
+  --hz8-sf-more-arrow: #c55d19;
+}
+/* Panelen ÄR bilden (en per formfaktor); samma yttre mått som R2. */
+html.hz8-sf .hz8-sf-more {
+  container-type: normal;
+  padding: 32px 34px;
+  border: 1px solid rgba(143, 105, 53, .2);
+  border-radius: 14px;
+  background-color: #f7eddd;
+  background-image:
+    linear-gradient(90deg, rgba(247, 237, 221, .42) 0%, rgba(247, 237, 221, .18) 38%, rgba(247, 237, 221, 0) 58%),
+    url("assets/series-format-r3/explore-panel-standard-r3.webp");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62), 0 18px 36px -31px rgba(59, 39, 14, .72);
+}
+html.hz8-sf .hz8-sf-more::before { content: none; }
+html.hz8-sf .hz8-sf-more__art { display: none !important; }
+html.hz8-sf.hz8-sf-low[data-hz8-sf-n="1"] .hz8-sf-more { background-image: linear-gradient(90deg, rgba(247, 237, 221, .42) 0%, rgba(247, 237, 221, .18) 30%, rgba(247, 237, 221, 0) 48%), url("assets/series-format-r3/explore-panel-wide-r3.webp"); }
+html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more { background-image: linear-gradient(180deg, rgba(247, 237, 221, .3) 0%, rgba(247, 237, 221, 0) 55%), url("assets/series-format-r3/explore-panel-narrow-r3.webp"); }
+/* Textkolumn ~47 % av panelens yttre bredd (procent räknas av
+   innehållsytan, därav 53 % / 50 %). */
+html.hz8-sf .hz8-sf-more__body { width: 53%; max-width: none; }
+html.hz8-sf.hz8-sf-low[data-hz8-sf-n="1"] .hz8-sf-more__body { width: 50%; }
+html.hz8-sf .hz8-sf-more__eyebrow {
+  margin: 0 0 13px;
+  color: var(--hz8-sf-more-eyebrow);
+  font: 700 10px/1.2 var(--hz8-font-ui) !important;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+html.hz8-sf .hz8-sf-more__title {
+  max-width: 12ch;
+  margin: 0 0 13px !important;
+  color: var(--hz8-sf-more-ink) !important;
+  font-size: 30px !important;
+  line-height: 1.03 !important;
+  letter-spacing: -.025em !important;
+}
+html.hz8-sf .hz8-sf-more__lead { max-width: 25ch; margin: 0 0 16px; color: color-mix(in srgb, var(--hz8-sf-more-ink) 78%, transparent); font: 400 14px/1.45 var(--hz8-font-ui) !important; }
+/* Redaktionella textlänkar: formatnamnet syns, serienamnet finns kvar för
+   skärmläsare (det står redan i rubriken). */
+html.hz8-sf .hz8-sf-more__s { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.hz8-sf .hz8-sf-more__list { display: grid; gap: 0; }
+html.hz8-sf .hz8-sf-more__list li + li { padding-left: 0; border-left: 0; }
+html.hz8-sf .hz8-sf-more__link {
+  min-height: 46px;
+  border-bottom: 1px solid rgba(67, 74, 43, .18);
+  color: var(--hz8-sf-more-ink) !important;
+  font: 650 15px/1 var(--hz8-font-ui) !important;
+}
+html.hz8-sf .hz8-sf-more__link .hz8-icon { color: var(--hz8-sf-more-arrow); }
+/* Tre produkter: smal specialkomponerad bakgrund, full textbredd. */
+@media (min-width: 1024px) {
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more { padding: 26px 22px; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__body { width: 74%; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__title { font-size: 21.5px !important; max-width: 14ch; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__lead { display: block; font-size: 13.5px !important; margin-bottom: 10px; }
+  html.hz8-sf.hz8-sf-low[data-hz8-sf-n="3"] .hz8-sf-more__link { font-size: 14.5px !important; }
+}
+@media (max-width: 767px) {
+  html.hz8-sf .hz8-sf-more {
+    margin-top: 18px;
+    min-height: 216px;
+    padding: 19px 18px 16px;
+    background-image: linear-gradient(90deg, rgba(247, 237, 221, .45) 0%, rgba(247, 237, 221, .2) 46%, rgba(247, 237, 221, 0) 62%), url("assets/series-format-r3/explore-panel-mobile-r3.webp") !important;
+  }
+  html.hz8-sf .hz8-sf-more__body { width: 64%; } /* ~58 % av panelen */
+  html.hz8-sf .hz8-sf-more__eyebrow { margin-bottom: 8px; font-size: 8.5px !important; }
+  html.hz8-sf .hz8-sf-more__title { max-width: 12ch; margin-bottom: 7px !important; font-size: 23.5px !important; }
+  html.hz8-sf .hz8-sf-more__lead { max-width: none; margin-bottom: 5px; font-size: 12.5px !important; line-height: 1.35; }
+  html.hz8-sf .hz8-sf-more__list { display: grid; flex-wrap: initial; overflow: visible; }
+  html.hz8-sf .hz8-sf-more__list li + li { padding-left: 0; border-left: 0; }
+  html.hz8-sf .hz8-sf-more__link { justify-content: space-between; min-height: 35px; font-size: 13px !important; border-bottom: 1px solid rgba(67, 74, 43, .18); }
+  html.hz8-sf .hz8-sf-more__link::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+  html.hz8-sf .hz8-sf-more__link { position: relative; }
+}
+
+/* ---- Seriekort med godkänd R3-bild ---- */
+html.hz8-sf .hz8-sf-serie.has-art {
+  padding: 15px 16px;
+  border: 1px solid rgba(24, 32, 16, .25);
+  border-radius: 12px;
+  background-color: #26301b;
+  background-image: none;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 12px 25px -18px rgba(29, 25, 16, .8);
+  transition: transform .18s var(--hz8-ease), box-shadow .18s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-serie[data-hz8-series-art="magic-sauce"] { background-image: url("assets/series-format-r3/series-magic-sauce-vapes-r3.webp"); }
+html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcab"] { background-image: url("assets/series-format-r3/series-thcab-vapes-r3.webp"); }
+html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcba"] { background-image: url("assets/series-format-r3/series-thcba-vapes-r3.webp"); }
+html.hz8-sf .hz8-sf-serie[data-hz8-series-art="core"] { background-image: url("assets/series-format-r3/series-core-vapes-r3.webp"); }
+html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcv"] { background-image: url("assets/series-format-r3/series-thcv-vapes-r3.webp"); }
+/* Toning: mörkast bakom texten, nästan genomskinlig vid högerkanten. */
+html.hz8-sf .hz8-sf-serie.has-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 24, 19, .81) 0%, rgba(19, 27, 20, .54) 46%, rgba(14, 20, 14, .05) 84%);
+  transition: opacity .18s var(--hz8-ease);
+}
+html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__media { display: none; }
+html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__text { max-width: 78%; gap: 4px; }
+html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__name { font-size: 18px !important; line-height: 1.08 !important; text-shadow: 0 1px 3px rgba(0, 0, 0, .32); }
+html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__count { color: rgba(255, 250, 240, .84); font: 600 12.25px/1.2 var(--hz8-font-ui) !important; }
+html.hz8-sf .hz8-sf-serie.has-art:hover {
+  transform: translateY(-1px);
+  background-color: #26301b;
+  box-shadow: 0 14px 26px -18px rgba(29, 25, 16, .85);
+}
+html.hz8-sf .hz8-sf-serie.has-art:hover::before { opacity: .9; }
+@media (prefers-reduced-motion: reduce) {
+  html.hz8-sf .hz8-sf-serie.has-art, html.hz8-sf .hz8-sf-serie.has-art::before { transition: none; }
+  html.hz8-sf .hz8-sf-serie.has-art:hover { transform: none; }
+}
+
+/* Verktygsraden ligger i flödet (2026-10-22): den generiska kategoriregeln
+   gör .category-sort sticky, men mallen ger den genomskinlig bakgrund --
+   den flöt då ovanpå produktnamnen vid scroll (mobil och 1024-1279).
+   Ingen ny sticky kontroll; enradsläget från 1280 behåller sin relativa
+   position i glashyllan (högre specificitet). */
+html.hz8-sf[data-hz8-page="category"] .category-sort { position: static; top: auto; }

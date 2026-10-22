@@ -753,7 +753,7 @@ html.hz8[data-hz8-page="category"] .hz8-filter-hidden { display: none !important
    9    Utforska våra serier
    10+  kundservice, kategorins egen text
    ====================================================================== */
-html.hz8-cat-pilot {
+html:is(.hz8-cat-pilot, .hz8-sf) {
   /* Materialförlopp: heroassetens papper (#f9ead0, bara som reservfärg
      bakom bilden) -> cream verktygszon -> sandfärgad butiksyta. */
   --hz8-pilot-hero-paper: #f8ead2;
@@ -1328,19 +1328,19 @@ html.hz8-cat-pilot[data-hz8-page="category"] #store-main :is(#category-products,
 @media (min-width: 1800px) {
   html.hz8-cat-pilot[data-hz8-page="category"] #store-main :is(#category-products, .hz8-series-results__grid) { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card {
   border: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
   overflow: visible;
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card:hover { box-shadow: none !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card:hover { box-shadow: none !important; }
 /* Bildbrunn: lugn, ljusare än butiksytan, tunn kant + låg kontaktskugga,
    förpackningen med luft runt om (contain, ingen beskärning). */
 /* Bildbrunn: varm elfenben med svag ljusgradient och fint korn (en
    delad SVG-tile), tunn varm kant, inre toppljus och låg kontaktskugga.
    Samma mått/radie på alla kort; förpackningen alltid contain. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card__image {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card__image {
   margin: 0 !important;
   border: 1px solid rgba(138, 106, 60, .14);
   border-radius: 10px;
@@ -1349,19 +1349,19 @@ html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main
     radial-gradient(120% 90% at 50% 18%, #fcf8f0 0%, #f8f0e3 56%, #f1e5d2 100%) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .72), inset 0 -14px 22px -20px rgba(120, 88, 48, .30), 0 12px 22px -18px rgba(74, 44, 8, .40);
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card__image img { inset: 7% !important; width: 86% !important; height: 86% !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card__image img { inset: 7% !important; width: 86% !important; height: 86% !important; }
 /* Generiska bildetiketter bort: "Köp mer - betala mindre" visas på
    samtliga produkter (24 av 24, inventerat 2026-10-13) och är ingen
    beslutsinformation; rabattprocenten upprepar det överstrukna priset. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card :is(.buy-more-pay-less, .has-variants, .nh-ribbon-row, .ribbon) { display: none !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card :is(.buy-more-pay-less, .has-variants, .nh-ribbon-row, .ribbon) { display: none !important; }
 /* Trasig bild: neutral bildbrunn med diskret märke, samma mått. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card__image.hz8-img-broken img { visibility: hidden; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card__image.hz8-img-broken::after {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card__image.hz8-img-broken img { visibility: hidden; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card__image.hz8-img-broken::after {
   content: ""; position: absolute; inset: 0; opacity: .42;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%238a6a3c' stroke-width='1.1' stroke-linecap='round'%3E %3Ccircle cx='24' cy='24' r='15.5'/%3E%3Cpath d='M13.5 27.5c3.5-2.6 6.9-2.6 10.4 0s6.9 2.6 10.4 0M15.5 22c2.8-2 5.6-2 8.4 0s5.6 2 8.4 0'/%3E%3C/svg%3E") center / 40px 40px no-repeat;
 }
 
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .details-wrapper {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .details-wrapper {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas: "brand brand" "name name" "chips chips" "rating rating" ". ." "stock stock" "offer action";
@@ -1371,56 +1371,56 @@ html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main
   row-gap: 0;
   padding: 14px 1px 0 !important;
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .details { display: contents !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .brand { grid-area: brand; margin-bottom: 5px; color: color-mix(in srgb, var(--hz8-pilot-green) 62%, #8a7a62) !important; font: 600 11.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: .06em; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .details > a { grid-area: name; min-width: 0; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .name { display: -webkit-box !important; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 2.46em; color: var(--hz8-pilot-green) !important; font-size: 17px !important; line-height: 1.23 !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .details { display: contents !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .brand { grid-area: brand; margin-bottom: 5px; color: color-mix(in srgb, var(--hz8-pilot-green) 62%, #8a7a62) !important; font: 600 11.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: .06em; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .details > a { grid-area: name; min-width: 0; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .name { display: -webkit-box !important; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: 2.46em; color: var(--hz8-pilot-green) !important; font-size: 17px !important; line-height: 1.23 !important; }
 /* Egenskapschips: produkttyp + volym (+ serie på desktop). Höjden är
    reserverad även innan datan kommit (inget layoutskift). */
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchips { grid-area: chips; display: flex; flex-wrap: nowrap; gap: 4px; min-height: 22px; margin: 8px 0 0; overflow: hidden; }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchip {
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchips { grid-area: chips; display: flex; flex-wrap: nowrap; gap: 4px; min-height: 22px; margin: 8px 0 0; overflow: hidden; }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchip {
   flex: none; padding: 1px 6px; border: 1px solid rgba(138, 106, 60, .2); border-radius: 3px;
   background: rgba(255, 251, 243, .42); color: color-mix(in srgb, var(--hz8-pilot-green) 90%, transparent);
   font: 500 11px/1.5 var(--hz8-font-ui) !important; white-space: nowrap;
 }
 /* Serien (tredje chipet) är sekundär: utan ram, dämpad. */
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchip.is-extra { border-color: transparent; background: transparent; padding-inline: 3px; color: color-mix(in srgb, var(--hz8-pilot-green) 62%, #8a7a62); }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchip.is-extra { border-color: transparent; background: transparent; padding-inline: 3px; color: color-mix(in srgb, var(--hz8-pilot-green) 62%, #8a7a62); }
 /* Fast höjd: betygsskriptet ritar om stjärnorna efter laddning och
    ändrade annars radhöjden (layoutskift). Tom = inga omdömen = ingen rad. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .rating { grid-area: rating; justify-self: start; height: 18px; min-height: 0 !important; margin-top: 7px; overflow: visible; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .rating:not(:has(*)) { height: 0; margin: 0; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .rating { gap: 0; align-items: center; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .nh-stars { gap: 1.5px; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .nh-star { font-size: 11px !important; color: color-mix(in srgb, var(--hz8-ink) 16%, #e6d8c2); }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .nh-star.is-on { color: color-mix(in srgb, var(--hz8-cta) 90%, var(--hz8-ink)); }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-prate { margin-left: 7px; color: color-mix(in srgb, var(--hz8-ink) 84%, transparent); font: 600 12px/1 var(--hz8-font-ui) !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .nh-stars__count { margin-left: 4px; color: color-mix(in srgb, var(--hz8-ink) 60%, transparent); font: 400 11.5px/1 var(--hz8-font-ui) !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .offer { grid-area: offer; align-self: center; min-width: 0; margin: 0 !important; padding: 0 !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .price { margin: 0 !important; color: var(--hz8-ink) !important; font-size: 19px !important; font-weight: 700 !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .price del { color: color-mix(in srgb, var(--hz8-ink) 72%, transparent) !important; font-size: 13px !important; font-weight: 400 !important; text-decoration-thickness: 1px; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .rating { grid-area: rating; justify-self: start; height: 18px; min-height: 0 !important; margin-top: 7px; overflow: visible; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .rating:not(:has(*)) { height: 0; margin: 0; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .rating { gap: 0; align-items: center; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .nh-stars { gap: 1.5px; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .nh-star { font-size: 11px !important; color: color-mix(in srgb, var(--hz8-ink) 16%, #e6d8c2); }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .nh-star.is-on { color: color-mix(in srgb, var(--hz8-cta) 90%, var(--hz8-ink)); }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-prate { margin-left: 7px; color: color-mix(in srgb, var(--hz8-ink) 84%, transparent); font: 600 12px/1 var(--hz8-font-ui) !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .nh-stars__count { margin-left: 4px; color: color-mix(in srgb, var(--hz8-ink) 60%, transparent); font: 400 11.5px/1 var(--hz8-font-ui) !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .offer { grid-area: offer; align-self: center; min-width: 0; margin: 0 !important; padding: 0 !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .price { margin: 0 !important; color: var(--hz8-ink) !important; font-size: 19px !important; font-weight: 700 !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .price del { color: color-mix(in srgb, var(--hz8-ink) 72%, transparent) !important; font-size: 13px !important; font-weight: 400 !important; text-decoration-thickness: 1px; }
 /* Reapris i Hazeys terrakotta (inte standardrött), ~4,9:1 mot ytan. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .price.has-comparison ins { color: var(--hz8-cta-hover) !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .price.has-comparison ins { color: var(--hz8-cta-hover) !important; }
 /* Lager: liten fylld punkt + dämpad text. Ingen ring, ingen ljusgrön
    kärna. Slutsåld i dämpad terrakotta. */
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock {
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock {
   grid-area: stock; justify-self: start; display: inline-flex; align-items: center; gap: 7px; margin: 10px 0 6px;
   color: color-mix(in srgb, var(--hz8-pilot-green) 82%, #6f7a52); font: 500 12px/1.2 var(--hz8-font-ui) !important; white-space: nowrap;
 }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: #5d6b40; }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: #5d6b40; }
 /* Sammanslaget resultat under omberäkning: dämpat tills nya listan finns. */
 html.hz8-cat-pilot[data-hz8-page="category"] .designer-category.hz8-series-pending .hz8-series-results { opacity: .5; transition: opacity .18s var(--hz8-ease); }
 /* Pausade serier (80-category.js, pilotPaused): hela gridcellen döljs. */
 html.hz8-cat-pilot[data-hz8-page="category"] #store-main :is(.hz8-paused-cell, .product-card.hz8-paused) { display: none !important; }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock.is-pending { visibility: hidden; }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock.is-pending::after { content: "\00a0"; }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock.is-out { color: color-mix(in srgb, var(--hz8-cta) 62%, var(--hz8-ink)); }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock.is-pending { visibility: hidden; }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock.is-pending::after { content: "\00a0"; }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock.is-out { color: color-mix(in srgb, var(--hz8-cta) 62%, var(--hz8-ink)); }
 html.hz8-cat-pilot .hz8-pseries__item.is-loading .hz8-pseries__card { min-height: 118px; background: color-mix(in srgb, var(--hz8-pilot-paper) 30%, transparent); border-color: color-mix(in srgb, #fff 18%, transparent); box-shadow: none; }
-html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock.is-out::before { background: currentColor; opacity: .85; }
+html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock.is-out::before { background: currentColor; opacity: .85; }
 
 /* Köpval: kompakt rektangulär textknapp i Hazey-grönt (aldrig plus-
    only, aldrig pill). Slutsåld = inaktiv etikett i samma plats. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card :is(.offer, .hz8-card-pill, .hz8-psold) { align-self: baseline; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card :is(.hz8-card-pill, .hz8-psold) {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card :is(.offer, .hz8-card-pill, .hz8-psold) { align-self: baseline; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card :is(.hz8-card-pill, .hz8-psold) {
   grid-area: action;
   justify-self: end;
   display: inline-flex;
@@ -1438,23 +1438,23 @@ html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main
 }
 /* Samma gröna som sajtens övriga gröna CTA:er (--hz8-olive); levande
    genom en svag toppreflex och låg varm skugga, inte en ny ton. */
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill {
   border: 1px solid var(--hz8-olive) !important;
   background: linear-gradient(180deg, rgba(255, 246, 225, .08), rgba(255, 246, 225, 0) 55%), var(--hz8-olive) !important;
   color: #fffdf8 !important;
   box-shadow: inset 0 1px 0 rgba(255, 246, 225, .14), 0 6px 12px -9px rgba(60, 40, 12, .55);
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill:hover { background: linear-gradient(180deg, rgba(255, 246, 225, .14), rgba(255, 246, 225, 0) 60%), var(--hz8-olive) !important; box-shadow: inset 0 1px 0 rgba(255, 246, 225, .2), 0 8px 14px -9px rgba(60, 40, 12, .6); }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 3px !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-icon { flex: none; width: 14px; height: 14px; stroke-width: 1.5; opacity: .9; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-pill-short { display: none !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-pill-long { display: inline !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card.hz8-is-soldout .hz8-card-pill { display: none !important; }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .hz8-psold {
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill:hover { background: linear-gradient(180deg, rgba(255, 246, 225, .14), rgba(255, 246, 225, 0) 60%), var(--hz8-olive) !important; box-shadow: inset 0 1px 0 rgba(255, 246, 225, .2), 0 8px 14px -9px rgba(60, 40, 12, .6); }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 3px !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-icon { flex: none; width: 14px; height: 14px; stroke-width: 1.5; opacity: .9; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-pill-short { display: none !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-card-pill .hz8-pill-long { display: inline !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card.hz8-is-soldout .hz8-card-pill { display: none !important; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .hz8-psold {
   border: 1px solid rgba(138, 106, 60, .26) !important; background: rgba(255, 251, 243, .35) !important;
   color: color-mix(in srgb, var(--hz8-ink) 66%, transparent) !important; font-weight: 500 !important; cursor: default;
 }
-html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card.hz8-is-soldout .product-card__image img { opacity: .74; }
+html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card.hz8-is-soldout .product-card__image img { opacity: .74; }
 
 /* ---------- Utforska våra serier ---------- */
 html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pseries {
@@ -1723,20 +1723,20 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   html.hz8-cat-pilot .hz8-pchips__list { gap: 10px 8px; }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pstatus { grid-row: 7; }
   html.hz8-cat-pilot[data-hz8-page="category"] #store-main :is(#category-products, .hz8-series-results__grid) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px !important; }
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 10px !important; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .details-wrapper { padding-top: 10px !important; }
   /* Mobil: pris och kompakt textknapp på samma nedre köprad (07) --
      knappen 44 px hög men smal; fullbreddsstaplar gjorde gridet tungt
      (jämförelse: v8-mobile-393-cta-compare.png). Max två namnrader
      (hela namnet finns kvar i DOM/länken), två chips. */
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .details-wrapper { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand brand" "name name" "chips chips" "rating rating" ". ." "stock stock" "offer action"; grid-template-rows: auto auto auto auto 1fr auto 44px; column-gap: 6px; padding-top: 10px !important; }
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .name { -webkit-line-clamp: 2; font-size: 14.5px !important; }
-  html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchip.is-extra { display: none; }
-  html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchips { margin-top: 6px; min-height: 21px; }
-  html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pcardchip { padding: 2px 6px; font-size: 10.5px !important; }
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .price { font-size: 16.5px !important; gap: 0 6px; }
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card .price del { font-size: 12px !important; }
-  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot)[data-hz8-page="category"] #store-main .product-card :is(.hz8-card-pill, .hz8-psold) { min-width: 0; min-height: 44px; padding: 0 11px !important; font-size: 13px !important; }
-  html:is(.hz8-cat-pilot, .hz8-sh-pilot) .hz8-pstock { margin: 8px 0 4px; font-size: 11.5px !important; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .details-wrapper { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand brand" "name name" "chips chips" "rating rating" ". ." "stock stock" "offer action"; grid-template-rows: auto auto auto auto 1fr auto 44px; column-gap: 6px; padding-top: 10px !important; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .name { -webkit-line-clamp: 2; font-size: 14.5px !important; }
+  html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchip.is-extra { display: none; }
+  html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchips { margin-top: 6px; min-height: 21px; }
+  html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pcardchip { padding: 2px 6px; font-size: 10.5px !important; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .price { font-size: 16.5px !important; gap: 0 6px; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card .price del { font-size: 12px !important; }
+  html.hz8:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf)[data-hz8-page="category"] #store-main .product-card :is(.hz8-card-pill, .hz8-psold) { min-width: 0; min-height: 44px; padding: 0 11px !important; font-size: 13px !important; }
+  html:is(.hz8-cat-pilot, .hz8-sh-pilot, .hz8-sf) .hz8-pstock { margin: 8px 0 4px; font-size: 11.5px !important; }
 
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-pseries { grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 36px -16px 0; padding: 24px 0 20px; border-radius: 0; background-size: auto, cover, auto; background-position: 0 0, 78% 88%, 0 0; }
   html.hz8-cat-pilot .hz8-pseries__head { padding: 0 16px; }
