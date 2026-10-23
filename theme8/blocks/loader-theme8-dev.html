@@ -13,16 +13,38 @@
     return;
   }
 
+  /* Boot mask: Nyehandel shows <body> on DOMContentLoaded, long before
+     Theme 8 CSS/JS arrive. Until 00-bootstrap.js removes hz8-boot, only
+     the plain Theme 8 canvas (--hz8-bg) is painted -- no native or legacy
+     layout. Fail-open: CSS error, JS error, a bundle that never boots or
+     the timeout all release the mask. */
+  var mask = document.createElement("style");
+  mask.setAttribute("data-hz8-boot", "1");
+  mask.textContent = "html.hz8-boot{background:#ede9e8!important}" +
+    "html.hz8-boot body{visibility:hidden!important;opacity:0!important}";
+  document.head.appendChild(mask);
   html.classList.add("hz8-boot");
-  setTimeout(function () { html.classList.remove("hz8-boot"); }, 2500);
+
+  function release() { html.classList.remove("hz8-boot"); }
+  setTimeout(release, 6000);
 
   function loadScript() {
     if (document.querySelector("[data-hz8-dev-js]")) return;
     var script = document.createElement("script");
     script.setAttribute("data-hz8-dev-js", "1");
     script.src = BASE + "hazey-theme8.min.js" + BUST;
+    script.onload = function () {
+      /* 00-bootstrap.js boots on DOMContentLoaded (or the next tick) and
+         removes hz8-boot itself; if the bundle threw before that, release. */
+      function check() { setTimeout(release, 100); }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", check, { once: true });
+      } else {
+        check();
+      }
+    };
     script.onerror = function () {
-      html.classList.remove("hz8-boot");
+      release();
       console.error("[Hazey Theme 8] JavaScript could not be loaded.");
     };
     document.head.appendChild(script);
@@ -34,8 +56,10 @@
   link.href = BASE + "hazey-theme8.css" + BUST;
   link.onload = loadScript;
   link.onerror = function () {
+    /* Without its CSS, Theme 8 JS would inject unstyled markup on top of
+       the native page; show the plain native page instead. */
+    release();
     console.error("[Hazey Theme 8] CSS could not be loaded; native page remains available.");
-    loadScript();
   };
   document.head.appendChild(link);
 })();

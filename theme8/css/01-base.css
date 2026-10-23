@@ -490,6 +490,10 @@ html.hz8 { min-width: 0 !important; }
   overflow: hidden; clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+/* Varukorgens live-region (84-cart.js) läggs sist i <body>. Absolut utan
+   top hamnade den efter footern och förlängde dokumentet 1 px; fast
+   position bidrar aldrig till dokumenthöjden. */
+html.hz8 #hz8-cart-live { position: fixed !important; top: 0 !important; left: 0 !important; }
 
 /* Äldre kontraktor-bundle (Oliverforss8, laddas fortfarande via Theme 8:s
    Head-fält) injicerar egna köpknappar/USP-rader på kort och sidor.

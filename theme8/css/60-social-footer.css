@@ -151,3 +151,21 @@
   .hz8-footer__disclaimer p, .hz8-footer__bottom { font-size: 12.5px !important; line-height: 1.6 !important; }
   .hz8-footer__trustrow span { font-size: 12.5px !important; }
 }
+
+/* Footerns slut (TASK 01, 2026-10-22): footern är dokumentets sista
+   målade yta. Startsidan bär footern inuti #store-main, vars egen
+   Nyehandel-padding (32 px) annars lämnade en ljus remsa efter den.
+   Övriga sidor: footern möter sidytan direkt (samma regel som den
+   accepterade Faraoh-PDP:n), och skalets eventuella reserv för fasta
+   köpkontroller (82-product.css) målas i footerns färg i stället för
+   att synas som en beige yta efter footern. */
+html.hz8 #store-main:has(.hz8-footer) { padding-bottom: 0 !important; }
+html.hz8 .hz8-footer-shell { background-color: var(--hz8-footer-bg); }
+html.hz8 .hz8-footer-shell > .hz8-footer { margin-top: 0; }
+/* Vanlig mobil-PDP: den fasta köpraden (82-product.css, 110 px + iOS
+   safe area) täckte footerns sista rad, eftersom reserven 76 px vann
+   över den avsedda 120 px-regeln på specificitet. Samma 120 px, plus
+   safe area, i footerfärg. Faraoh-piloten behåller sin egen nollregel. */
+@media (max-width: 767px) {
+  html.hz8.hz8-has-buybar[data-hz8-page="product"] .hz8-footer-shell { padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
+}
