@@ -658,7 +658,7 @@
     var wrap = document.createElement("div");
     wrap.className = "hz8-mobile-drawer";
     wrap.id = "hz8MobileDrawer";
-    var logoSrc = assetBase ? assetBase + "hazey-logo.png" : "";
+    var logoSrc = assetBase ? assetBase + "hazey-logo.webp" : "";
     /* Trust: bara stabila, verifierade uppgifter (ingen leveranstid,
        transportör eller betyg). Fri frakt följer samma lanseringsspärr
        som minicarten (HZ8.commerce.goalsEnabled). */
@@ -880,7 +880,7 @@
        påverkas inte. */
     var logoImg = header.querySelector(".brand.header-logo img");
     if (logoImg && context.assetBase) {
-      logoImg.src = context.assetBase + "hazey-logo.png";
+      logoImg.src = context.assetBase + "hazey-logo.webp";
     }
 
     /* Mobil-drawer: ersätter INTE native #mobile-menu i DOM:en (den
