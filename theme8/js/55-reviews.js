@@ -195,7 +195,13 @@
       section.classList.add("is-lit");
       mountTrustbox(section.querySelector(".hz8-rv__tp-box"));
       var rail = section.querySelector(".hz8-rv__rail");
+      /* Säkert reservläge: utan svar inom rimlig tid tas rälsen bort
+         (samma läge som när inga godkända omdömen finns). 45 s ger långsamma
+         mobilnät god marginal. */
+      var deadline = window.setTimeout(function () { if (rail.getAttribute("data-state") === "loading") rail.remove(); }, 45000);
       approved().then(function (rows) {
+        window.clearTimeout(deadline);
+        if (!rail.isConnected) return;
         if (!rows.length) { rail.remove(); return; }
         rail.querySelector(".hz8-rv-track").innerHTML = rows.map(function (row, i) { return cardHtml(row, i, rows.length); }).join("");
         rail.setAttribute("data-state", "ready");

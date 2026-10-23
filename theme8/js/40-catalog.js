@@ -230,7 +230,8 @@
   }
 
   function hydrate(grid) {
-    grid.querySelectorAll(".hz8-pcard").forEach(function (card) {
+    /* Bara riktiga kort -- platshållarna saknar data-src (gav /null-anrop). */
+    grid.querySelectorAll(".hz8-pcard[data-src]").forEach(function (card) {
       HZ8.productState(card.getAttribute("data-src")).then(function (st) { if (card.isConnected) applyState(card, st); })
         .catch(function () { var row = card.querySelector(".hz8-pcard__rating"); if (row) row.remove(); });
     });
@@ -278,7 +279,14 @@
         all.href = HZ8.link(routes[key]);
         if (announce) status.textContent = "Visar " + (key === "all" ? "alla produkter" : section.querySelector('[data-hz8-shelf="' + key + '"] span').textContent);
         if (visible) hydrate(grid);
-      }).catch(function () { grid.setAttribute("aria-busy", "false"); });
+      }).catch(function () {
+        grid.setAttribute("aria-busy", "false");
+        /* Första laddningen misslyckades och inga riktiga kort finns: hela
+           sektionen döljs (samma reservläge som bästsäljarna) i stället
+           för en tom ruta. Misslyckas ett senare filterklick ligger de
+           redan visade korten kvar. */
+        if (!grid.querySelector(".hz8-pcard[data-src]")) section.remove();
+      });
     }
 
     opts.forEach(function (btn) {

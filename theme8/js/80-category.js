@@ -1586,10 +1586,17 @@
        flyttas när seriedatan kommer (ingen layoutskift). */
     for (var i = 0; i < Math.min(MAX, list.length); i += 1) ul.insertAdjacentHTML("beforeend", '<li class="hz8-pseries__item is-loading" aria-hidden="true"><span class="hz8-pseries__card"></span></li>');
     root.appendChild(band);
+    /* Säkert reservläge: kommer ingen seriedata inom rimlig tid tas
+       bandet bort (samma läge som när ingen serie har produkter) --
+       aldrig kvarvarande platshållare. Varje anrop har dessutom egen timeout
+       (02-shared.js); 45 s ger långsamma mobilnät god marginal. */
+    var deadline = window.setTimeout(function () { if (ul.querySelector(".is-loading")) band.remove(); }, 45000);
     Promise.all(list.map(function (s) {
       var href = HZ8.catalog.landingFor(s, key);
       return HZ8.fetchPage(href, HZ8.categoryInfo).then(function (info) { return { s: s, href: href, info: info }; }).catch(function () { return null; });
     })).then(function (rows) {
+      window.clearTimeout(deadline);
+      if (!band.isConnected) return;
       rows = rows.filter(function (r) { return r && r.info && r.info.count > 0; }).slice(0, MAX);
       ul.querySelectorAll(".is-loading").forEach(function (li) { li.remove(); });
       if (!rows.length) { band.remove(); return; }

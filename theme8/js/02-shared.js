@@ -82,43 +82,90 @@
   function cacheSet(key, value) {
     try { sessionStorage.setItem("hz8:" + key, JSON.stringify({ t: Date.now(), v: value })); } catch (e) { /* privat läge */ }
   }
-  /* Nyehandel svarar 429 vid många samtidiga sidhämtningar -- därför en
-     gemensam kö (max MAX_PARALLEL samtidigt) och omförsök med backoff
-     vid 429/503. */
+  /* Nyehandel svarar 429 (och dess proxy "upstream ... overflow" 503)
+     vid många samtidiga sidhämtningar -- därför köer med begränsad
+     samtidighet och omförsök med backoff vid 429/503. Två köer: sidor
+     (kategorier, recensioner m.m.) och produktdata (HZ8.productState),
+     och köpklick startar direkt (se userInitiated).
+     Varje försök avbryts efter FETCH_TIMEOUT så att en hängande
+     anslutning varken låser en plats i kön eller lämnar skeletons kvar. */
   var MAX_PARALLEL = 3;
-  var active = 0;
-  var queue = [];
-  function pump() {
-    while (active < MAX_PARALLEL && queue.length) {
-      var job = queue.shift();
-      active += 1;
-      job().finally(function () { active -= 1; pump(); });
-    }
+  var FETCH_TIMEOUT = 15000;
+  function lane(max) { return { max: max, active: 0, queue: [] }; }
+  var PAGES = lane(MAX_PARALLEL);
+  var STATES = lane(3);
+  function start(l, job) {
+    l.active += 1;
+    job.run().finally(function () { l.active -= 1; pump(l); });
   }
-  function queuedFetch(url) {
+  function pump(l) {
+    while (l.active < l.max && l.queue.length) start(l, l.queue.shift());
+  }
+  /* Direkt efter en användarhandling (klick/tangent) startar anropet
+     genast, förbi kön -- ett köpklick väntar aldrig på bakgrundsdata. */
+  function userInitiated() {
+    return !!(navigator.userActivation && navigator.userActivation.isActive);
+  }
+  function promote(url) {
+    [PAGES, STATES].forEach(function (l) {
+      for (var i = 0; i < l.queue.length; i += 1) {
+        if (l.queue[i].url === url) { start(l, l.queue.splice(i, 1)[0]); return; }
+      }
+    });
+  }
+  function withTimeout(run) {
+    var ctl = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = ctl ? window.setTimeout(function () { ctl.abort(); }, FETCH_TIMEOUT) : 0;
+    return run(ctl ? ctl.signal : undefined).finally(function () { window.clearTimeout(timer); });
+  }
+  function queuedFetch(url, l, priority) {
+    l = l || PAGES;
     return new Promise(function (resolve, reject) {
       function attempt(n) {
-        queue.push(function () {
-          return fetch(url, { credentials: "same-origin" }).then(function (res) {
-            if ((res.status === 429 || res.status === 503) && n < 3) {
-              window.setTimeout(function () { attempt(n + 1); }, 700 * Math.pow(2, n));
-              return;
-            }
-            if (!res.ok) throw new Error(res.status);
-            return res.text().then(resolve);
+        var job = { url: url, run: function () {
+          return withTimeout(function (signal) {
+            return fetch(url, { credentials: "same-origin", signal: signal }).then(function (res) {
+              if ((res.status === 429 || res.status === 503) && n < 3) {
+                window.setTimeout(function () { attempt(n + 1); }, 700 * Math.pow(2, n));
+                return;
+              }
+              if (!res.ok) throw new Error(res.status);
+              return res.text().then(resolve);
+            });
           }).catch(reject);
-        });
-        pump();
+        } };
+        if (priority) start(l, job);
+        else { l.queue.push(job); pump(l); }
       }
       attempt(0);
     });
   }
+  /* Samma URL hämtas en gång även när flera extraktorer (t.ex.
+     categoryInfo + categoryCards) eller productState vill ha den.
+     Texten sparas kort i minnet (inte DOM:en) för sekventiella anrop.
+     Bara lyckade svar sparas; fel och avbrott lämnar ingen cache. */
+  var TEXT_TTL = 60 * 1000;
+  var htmlInflight = {};
+  var htmlRecent = [];
+  function pageText(url, l, priority) {
+    var now = Date.now();
+    htmlRecent = htmlRecent.filter(function (h) { return now - h.t < TEXT_TTL; });
+    for (var i = 0; i < htmlRecent.length; i += 1) if (htmlRecent[i].url === url) return Promise.resolve(htmlRecent[i].text);
+    if (htmlInflight[url]) { if (priority) promote(url); return htmlInflight[url]; }
+    htmlInflight[url] = queuedFetch(url, l, priority).then(function (text) {
+      htmlRecent.push({ url: url, text: text, t: Date.now() });
+      if (htmlRecent.length > 12) htmlRecent.shift();
+      return text;
+    }).finally(function () { delete htmlInflight[url]; });
+    return htmlInflight[url];
+  }
   HZ8.fetchPage = function (href, extract) {
+    if (!href) return Promise.reject(new Error("no href"));
     var key = extract.key + ":" + HZ8.path(href);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     if (inflight[key]) return inflight[key];
-    inflight[key] = queuedFetch(HZ8.link(href))
+    inflight[key] = pageText(HZ8.link(href))
       .then(function (text) {
         var doc = new DOMParser().parseFromString(text, "text/html");
         var value = extract.run(doc);
@@ -175,25 +222,30 @@
     if (m) h["X-XSRF-TOKEN"] = decodeURIComponent(m[1]);
     return h;
   };
+  var stateInflight = {};
   HZ8.productState = function (productUrl) {
+    if (!productUrl) return Promise.reject(new Error("no product url"));
     var key = "state5:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
+    var priority = userInitiated();
+    if (stateInflight[key]) { if (priority) promote(HZ8.link(productUrl)); return stateInflight[key]; }
     var page = null;
-    return fetch(HZ8.link(productUrl), { credentials: "same-origin" })
-      .then(function (r) { return r.text(); })
+    stateInflight[key] = pageText(HZ8.link(productUrl), STATES, priority)
       .then(function (html) {
         var m = html.match(/window\.visitor\.viewProduct\('(\d+)'\)/);
         if (!m) throw new Error("no product id");
         page = new DOMParser().parseFromString(html, "text/html");
-        return fetch("/frontend-api/product/state", {
-          method: "POST",
-          credentials: "same-origin",
-          headers: HZ8.apiHeaders(),
-          body: JSON.stringify({ product_id: parseInt(m[1], 10), variant_ids: [null] })
+        return withTimeout(function (signal) {
+          return fetch("/frontend-api/product/state", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: HZ8.apiHeaders(),
+            body: JSON.stringify({ product_id: parseInt(m[1], 10), variant_ids: [null] }),
+            signal: signal
+          }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
         });
       })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
         var sv = data.selected_variant || {};
         var product = data.product || {};
@@ -227,7 +279,9 @@
         };
         cacheSet(key, value);
         return value;
-      });
+      })
+      .finally(function () { delete stateInflight[key]; });
+    return stateInflight[key];
   };
   function productRating(doc) {
     var scripts = doc.querySelectorAll('script[type="application/ld+json"]');
