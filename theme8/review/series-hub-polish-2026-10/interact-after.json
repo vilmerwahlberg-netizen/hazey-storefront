@@ -1,0 +1,630 @@
+[
+ {
+  "n": "anchor-buds-393",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "cur": [
+    "buds",
+    "buds"
+   ],
+   "headerBottom": 0,
+   "backHash": ""
+  }
+ },
+ {
+  "n": "deeplink-plain-393",
+  "pass": true,
+  "info": {
+   "top": 90,
+   "want": 90,
+   "headerHidden": false,
+   "headerBottom": 72,
+   "visibleHeaderBottom": 72
+  }
+ },
+ {
+  "n": "deeplink-cookie-393",
+  "pass": true,
+  "info": {
+   "top": 90,
+   "want": 90,
+   "headerHidden": false,
+   "headerBottom": 72,
+   "visibleHeaderBottom": 72
+  }
+ },
+ {
+  "n": "deeplink-header-visible-393",
+  "pass": true,
+  "info": {
+   "top": 150,
+   "want": 90,
+   "headerHidden": false,
+   "headerBottom": 72,
+   "visibleHeaderBottom": 72
+  }
+ },
+ {
+  "n": "deeplink-header-hidden-393",
+  "pass": true,
+  "info": {
+   "top": 90,
+   "want": 90,
+   "headerHidden": true,
+   "headerBottom": -48,
+   "visibleHeaderBottom": 0
+  }
+ },
+ {
+  "n": "rail-no-scrollbar-393",
+  "pass": true,
+  "info": {
+   "sl": 0,
+   "sb": "none",
+   "wk": "none",
+   "snap": "x mandatory",
+   "gap": 0
+  }
+ },
+ {
+  "n": "rail-arrow-393",
+  "pass": true,
+  "info": {
+   "arrow": null,
+   "mobileNoArrows": true
+  }
+ },
+ {
+  "n": "rail-trackpad-wheel-393",
+  "pass": true,
+  "info": {
+   "wheel": 485
+  }
+ },
+ {
+  "n": "rail-keyboard-focus-393",
+  "pass": true,
+  "info": {
+   "sl": 919,
+   "inView": true,
+   "focused": true
+  }
+ },
+ {
+  "n": "single-carts-not-stretched-393",
+  "pass": true,
+  "info": {
+   "cartsW": 150,
+   "budsW": 150
+  }
+ },
+ {
+  "n": "nav-shelf-393",
+  "pass": true,
+  "info": {
+   "radius": "18px",
+   "blur": "blur(20px) saturate(1.14)",
+   "minH": 44,
+   "listSb": "none",
+   "listOverflow": 0,
+   "toggle": 0,
+   "gridHidden": true,
+   "seriesCount": 9,
+   "curHasHref": false,
+   "curTabbable": false,
+   "curName": "Magic Sauce12 produkter",
+   "curImg": true,
+   "others": 8,
+   "ov": 0,
+   "visAll": [
+    "/sv/categories/m-s-vapes",
+    "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+   ]
+  }
+ },
+ {
+  "n": "nav-focus-visible-393",
+  "pass": true,
+  "info": {
+   "inNav": true,
+   "outline": "solid 2px"
+  }
+ },
+ {
+  "n": "no-duplicate-grid-toggle-393",
+  "pass": true,
+  "info": {
+   "toggle": 0,
+   "gridHidden": true
+  }
+ },
+ {
+  "n": "series-current-not-linked-393",
+  "pass": true,
+  "info": {
+   "cur": "Magic Sauce12 produkter",
+   "img": true,
+   "others": 8
+  }
+ },
+ {
+  "n": "format-visa-alla-kept-393",
+  "pass": true,
+  "info": [
+   "/sv/categories/m-s-vapes",
+   "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+   "/sv/categories/m-s-buds",
+   "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+  ]
+ },
+ {
+  "n": "series-current-inert-393",
+  "pass": true,
+  "info": {
+   "before": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "hovered": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "other": {
+    "href": true,
+    "cursor": "pointer"
+   }
+  }
+ },
+ {
+  "n": "series-to-service-gap-393",
+  "pass": true,
+  "info": {
+   "gap": 48
+  }
+ },
+ {
+  "n": "no-overflow-393",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "mobile-nav-scrolls",
+  "pass": true,
+  "info": {
+   "max": 0,
+   "after": 0
+  }
+ },
+ {
+  "n": "mobile-dock-midpage-and-hidden-at-footer",
+  "pass": true,
+  "info": {
+   "dock": {
+    "on": true,
+    "cur": "Buds8, 8 produkter"
+   },
+   "dockAtFooter": false
+  }
+ },
+ {
+  "n": "no-console-errors-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "anchor-buds-1440",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 98,
+   "cur": [
+    "buds",
+    "buds"
+   ],
+   "headerBottom": 0,
+   "backHash": ""
+  }
+ },
+ {
+  "n": "deeplink-plain-1440",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-cookie-1440",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-header-visible-1440",
+  "pass": true,
+  "info": {
+   "top": 158,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-header-hidden-1440",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": true,
+   "headerBottom": -48,
+   "visibleHeaderBottom": 0
+  }
+ },
+ {
+  "n": "rail-no-scrollbar-1440",
+  "pass": true,
+  "info": {
+   "sl": 0,
+   "sb": "none",
+   "wk": "none",
+   "snap": "x mandatory",
+   "gap": 0
+  }
+ },
+ {
+  "n": "rail-arrow-1440",
+  "pass": true,
+  "info": {
+   "arrow": 1328,
+   "mobileNoArrows": false
+  }
+ },
+ {
+  "n": "rail-trackpad-wheel-1440",
+  "pass": true,
+  "info": {
+   "wheel": 664
+  }
+ },
+ {
+  "n": "rail-keyboard-focus-1440",
+  "pass": true,
+  "info": {
+   "sl": 1328,
+   "inView": true,
+   "focused": true
+  }
+ },
+ {
+  "n": "single-carts-not-stretched-1440",
+  "pass": true,
+  "info": {
+   "cartsW": 312,
+   "budsW": 312
+  }
+ },
+ {
+  "n": "nav-shelf-1440",
+  "pass": true,
+  "info": {
+   "radius": "20px",
+   "blur": "blur(20px) saturate(1.14)",
+   "minH": 44,
+   "listSb": "none",
+   "listOverflow": 0,
+   "toggle": 0,
+   "gridHidden": true,
+   "seriesCount": 9,
+   "curHasHref": false,
+   "curTabbable": false,
+   "curName": "Magic Sauce12 produkter",
+   "curImg": true,
+   "others": 8,
+   "ov": 0,
+   "visAll": [
+    "/sv/categories/m-s-vapes",
+    "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+   ]
+  }
+ },
+ {
+  "n": "nav-focus-visible-1440",
+  "pass": true,
+  "info": {
+   "inNav": true,
+   "outline": "solid 2px"
+  }
+ },
+ {
+  "n": "no-duplicate-grid-toggle-1440",
+  "pass": true,
+  "info": {
+   "toggle": 0,
+   "gridHidden": true
+  }
+ },
+ {
+  "n": "series-current-not-linked-1440",
+  "pass": true,
+  "info": {
+   "cur": "Magic Sauce12 produkter",
+   "img": true,
+   "others": 8
+  }
+ },
+ {
+  "n": "format-visa-alla-kept-1440",
+  "pass": true,
+  "info": [
+   "/sv/categories/m-s-vapes",
+   "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+   "/sv/categories/m-s-buds",
+   "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+  ]
+ },
+ {
+  "n": "series-current-inert-1440",
+  "pass": true,
+  "info": {
+   "before": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "hovered": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "other": {
+    "href": true,
+    "cursor": "pointer"
+   }
+  }
+ },
+ {
+  "n": "series-to-service-gap-1440",
+  "pass": true,
+  "info": {
+   "gap": 62
+  }
+ },
+ {
+  "n": "no-overflow-1440",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "no-console-errors-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "anchor-buds-1920",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 98,
+   "cur": [
+    "buds",
+    "buds"
+   ],
+   "headerBottom": 0,
+   "backHash": ""
+  }
+ },
+ {
+  "n": "deeplink-plain-1920",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-cookie-1920",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-header-visible-1920",
+  "pass": true,
+  "info": {
+   "top": 158,
+   "want": 98,
+   "headerHidden": false,
+   "headerBottom": 80,
+   "visibleHeaderBottom": 80
+  }
+ },
+ {
+  "n": "deeplink-header-hidden-1920",
+  "pass": true,
+  "info": {
+   "top": 98,
+   "want": 98,
+   "headerHidden": true,
+   "headerBottom": -48,
+   "visibleHeaderBottom": 0
+  }
+ },
+ {
+  "n": "rail-no-scrollbar-1920",
+  "pass": true,
+  "info": {
+   "sl": 0,
+   "sb": "none",
+   "wk": "none",
+   "snap": "x mandatory",
+   "gap": 0
+  }
+ },
+ {
+  "n": "rail-arrow-1920",
+  "pass": true,
+  "info": {
+   "arrow": 1408,
+   "mobileNoArrows": false
+  }
+ },
+ {
+  "n": "rail-trackpad-wheel-1920",
+  "pass": true,
+  "info": {
+   "wheel": 352
+  }
+ },
+ {
+  "n": "rail-keyboard-focus-1920",
+  "pass": true,
+  "info": {
+   "sl": 1408,
+   "inView": true,
+   "focused": true
+  }
+ },
+ {
+  "n": "single-carts-not-stretched-1920",
+  "pass": true,
+  "info": {
+   "cartsW": 332,
+   "budsW": 332
+  }
+ },
+ {
+  "n": "nav-shelf-1920",
+  "pass": true,
+  "info": {
+   "radius": "20px",
+   "blur": "blur(20px) saturate(1.14)",
+   "minH": 44,
+   "listSb": "none",
+   "listOverflow": 0,
+   "toggle": 0,
+   "gridHidden": true,
+   "seriesCount": 9,
+   "curHasHref": false,
+   "curTabbable": false,
+   "curName": "Magic Sauce12 produkter",
+   "curImg": true,
+   "others": 8,
+   "ov": 0,
+   "visAll": [
+    "/sv/categories/m-s-vapes",
+    "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+   ]
+  }
+ },
+ {
+  "n": "nav-focus-visible-1920",
+  "pass": true,
+  "info": {
+   "inNav": true,
+   "outline": "solid 2px"
+  }
+ },
+ {
+  "n": "no-duplicate-grid-toggle-1920",
+  "pass": true,
+  "info": {
+   "toggle": 0,
+   "gridHidden": true
+  }
+ },
+ {
+  "n": "series-current-not-linked-1920",
+  "pass": true,
+  "info": {
+   "cur": "Magic Sauce12 produkter",
+   "img": true,
+   "others": 8
+  }
+ },
+ {
+  "n": "format-visa-alla-kept-1920",
+  "pass": true,
+  "info": [
+   "/sv/categories/m-s-vapes",
+   "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+   "/sv/categories/m-s-buds",
+   "/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n"
+  ]
+ },
+ {
+  "n": "series-current-inert-1920",
+  "pass": true,
+  "info": {
+   "before": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "hovered": {
+    "border": "rgb(210, 105, 30)",
+    "shadow": "color(srgb 0.823529 0.411765 0.117647 / 0.7) 0px -2px 0px 0px inset",
+    "bg": "linear-gradient(rgb(255, 248, 238), rgb(252, 241, 227))",
+    "cursor": "default",
+    "pe": "none"
+   },
+   "other": {
+    "href": true,
+    "cursor": "pointer"
+   }
+  }
+ },
+ {
+  "n": "series-to-service-gap-1920",
+  "pass": true,
+  "info": {
+   "gap": 62
+  }
+ },
+ {
+  "n": "no-overflow-1920",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "no-console-errors-1920",
+  "pass": true,
+  "info": []
+ }
+]

@@ -525,6 +525,43 @@
       document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active, .hz8-choice, .hz8-sheet.is-open"));
   }
 
+  /* Djuplänk till ett format: asynkront innehåll ovanför målet (bilder,
+     syskonrader) ändrar höjd efter första scrollen, så målet hamnade för
+     högt -- under en synlig header. Hubbens faktiska layout bevakas
+     (ResizeObserver) och målet justeras till sin scroll-margin-top
+     (headerreserv + luft) vid varje storleksändring. Avslutas när layouten
+     varit stilla en kort stund eller direkt när besökaren själv scrollar
+     (hjul, touchdrag, tangentbord) -- ett klick, t.ex. på cookiebannern,
+     avbryter inte. Taket är bara en säkerhetsspärr. */
+  function holdAnchor(target) {
+    var area = target.closest(".hz8-sh") || document.body;
+    var done = false, quiet = 0, cap = 0, raf = 0, ro = null;
+    var INPUT = ["wheel", "touchmove", "keydown"];
+    function align() {
+      raf = 0;
+      if (done) return;
+      var want = parseFloat(window.getComputedStyle(target).scrollMarginTop) || 0;
+      var delta = target.getBoundingClientRect().top - want;
+      if (Math.abs(delta) > 1) window.scrollTo({ top: window.scrollY + delta, behavior: "instant" });
+    }
+    function stop() {
+      if (done) return;
+      done = true;
+      if (ro) ro.disconnect();
+      window.clearTimeout(quiet); window.clearTimeout(cap);
+      INPUT.forEach(function (ev) { window.removeEventListener(ev, stop, true); });
+    }
+    function settle() { window.clearTimeout(quiet); quiet = window.setTimeout(stop, 600); }
+    INPUT.forEach(function (ev) { window.addEventListener(ev, stop, { capture: true, passive: true }); });
+    target.scrollIntoView({ block: "start", behavior: "instant" });
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(function () { if (!raf) raf = window.requestAnimationFrame(align); settle(); });
+      ro.observe(area);
+    }
+    settle();
+    cap = window.setTimeout(stop, 8000);
+  }
+
   function seriesHubPilot(root, ctx, cfg) {
     var series = ctx.series;
     var html = document.documentElement;
@@ -549,25 +586,24 @@
     shelves.id = "hz8-sh-shelves";
     shelves.setAttribute("aria-busy", "true");
     wrap.appendChild(shelves);
-    /* Övriga serier (befintlig serienavigering) och hela sortimentet
-       (Nyehandels grid med filter) ligger kvar efter hyllorna. */
+    /* Övriga serier (befintlig serienavigering) ligger kvar efter
+       hyllorna. Formathyllorna är hubbens kompletta sortiment, så
+       Nyehandels dubblerade grid förblir dold och ingen "Visa hela
+       sortimentet"-knapp skapas. Den aktuella serien visas som "här är
+       du" utan länk tillbaka till samma sida. */
     var seriesRail = root.querySelector(".hz8-cat-rails .hz8-rail--series");
     var after = document.createElement("div");
     after.className = "hz8-sh-after";
-    if (seriesRail) after.appendChild(seriesRail);
-    var counter = document.getElementById("products_count");
-    var total = counter && (counter.textContent.match(/(\d+)/) || [])[1];
-    var allLabel = "Visa hela sortimentet i " + series.name + (total ? " (" + total + ")" : "");
-    var gridToggle = document.createElement("div");
-    gridToggle.className = "hz8-hub__grid-toggle";
-    gridToggle.innerHTML = '<button type="button" class="hz8-sh-allbtn" aria-expanded="false" aria-controls="category-products"><span>' + HZ8.esc(allLabel) + "</span>" + ARROW_SVG + "</button>";
-    gridToggle.querySelector("button").addEventListener("click", function (e) {
-      var open = html.classList.toggle("hz8-hub-grid-open");
-      e.currentTarget.setAttribute("aria-expanded", String(open));
-      e.currentTarget.querySelector("span").textContent = open ? "Dölj hela sortimentet" : allLabel;
-      if (open) { var grid = document.querySelector(".designer-category"); if (grid) grid.scrollIntoView({ block: "start" }); }
-    });
-    after.appendChild(gridToggle);
+    if (seriesRail) {
+      after.appendChild(seriesRail);
+      Array.prototype.forEach.call(seriesRail.querySelectorAll("a.hz8-rail__item[href]"), function (a) {
+        if (HZ8.path(a.getAttribute("href")).split("?")[0].replace(/\/$/, "") !== location.pathname.replace(/\/$/, "")) return;
+        /* Samma element (80-category.js fyller bild och antal i det
+           asynkront); utan href är det varken länk eller tabbstopp. */
+        a.removeAttribute("href");
+        a.setAttribute("aria-current", "page");
+      });
+    }
     wrap.appendChild(after);
     root.insertBefore(wrap, root.firstChild);
 
@@ -628,7 +664,8 @@
       var slug = (series.hub ? HZ8.path(series.hub).split("/").pop() : series.name.toLowerCase().replace(/\s+/g, "-"));
       var items = [{ key: "all", id: "hz8-sh-shelves", label: "Alla", n: u.total }].concat(keys.map(function (k) { return { key: k, id: slug + "-" + k, label: fmtDef(k).label, n: u.byFormat[k].length }; }));
       navItems(nav.querySelector("ul"), items);
-      navItems(dock.querySelector("ul"), items);
+      /* Dockan: bara formaten (sidans egen rad har Alla). */
+      navItems(dock.querySelector("ul"), items.filter(function (it) { return it.key !== "all"; }));
       keys.forEach(function (k) {
         var f = fmtDef(k), route = series.routes[k];
         var rail = HZ8.productRail({
@@ -723,11 +760,12 @@
       spy();
 
       /* Dock: bara mobil, först när hela originalraden lämnat vyn uppåt,
-         aldrig samtidigt med den, inte över footern, inte bakom
-         overlays. */
-      var navGone = false, nearFoot = false;
+         aldrig samtidigt med den, inte bakom overlays. Den lämnar så fort
+         hubbens slut (efter serieraden) kommer in i vyn, så den aldrig
+         ligger över kundservice eller footern. */
+      var navGone = false, nearFoot = false, pastEnd = false;
       function syncDock() {
-        var show = mobile.matches && navGone && !nearFoot && !overlayOpen();
+        var show = mobile.matches && navGone && !nearFoot && !pastEnd && !overlayOpen();
         if (dock.classList.contains("is-on") === show) return;
         dock.classList.toggle("is-on", show);
         dock.setAttribute("aria-hidden", show ? "false" : "true");
@@ -735,13 +773,18 @@
         html.classList.toggle("hz8-sh-dock-on", show);
       }
       new IntersectionObserver(function (en) { var e = en[0]; navGone = !e.isIntersecting && e.boundingClientRect.bottom <= 0; syncDock(); }, { threshold: 0 }).observe(nav);
+      var end = document.createElement("div");
+      end.className = "hz8-sh-end";
+      end.setAttribute("aria-hidden", "true");
+      wrap.appendChild(end);
+      new IntersectionObserver(function (en) { var e = en[0]; pastEnd = e.isIntersecting || e.boundingClientRect.top < 0; syncDock(); }, { threshold: 0 }).observe(end);
       var foot = document.querySelector(".hz8-footer, footer.page-footer");
       if (foot) new IntersectionObserver(function (en) { nearFoot = en[0].isIntersecting; syncDock(); }, { rootMargin: "0px 0px 40px 0px", threshold: 0 }).observe(foot);
       var raf = 0;
       new MutationObserver(function () { if (!raf) raf = window.requestAnimationFrame(function () { raf = 0; syncDock(); }); })
         .observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class", "aria-modal", "hidden"] });
       mobile.addEventListener("change", syncDock);
-      if (location.hash && document.getElementById(location.hash.slice(1))) window.setTimeout(function () { document.getElementById(location.hash.slice(1)).scrollIntoView({ block: "start" }); }, 300);
+      if (location.hash && document.getElementById(location.hash.slice(1))) window.setTimeout(function () { holdAnchor(document.getElementById(location.hash.slice(1))); }, 300);
       /* Efter webbläsarens egen scrollåterställning (annars skrivs ankaret
          över vid framåt/bakåt). */
       window.addEventListener("popstate", function () { window.setTimeout(function () { var t = location.hash && document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView({ block: "start" }); }, 60); });

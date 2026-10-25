@@ -1,0 +1,2018 @@
+[
+ {
+  "n": "dock-hidden-at-top-320-motion",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-320-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "vapes",
+   "navCur": "vapes",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 580,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-320-motion",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-320-motion",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-320-motion",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-320-motion",
+  "pass": true,
+  "info": {
+   "dur": "0.24s, 0.24s, 0s",
+   "chipDur": "0.2s"
+  }
+ },
+ {
+  "n": "dock-sr-label-320-motion",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-320-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-320-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1023,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-320-motion",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-320-motion",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 1,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1133,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-320-motion",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-320-motion",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-320-motion",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-320-motion",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-320-motion",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "dock-hidden-at-top-320-reduce",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-320-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "vapes",
+   "navCur": "vapes",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 580,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-320-reduce",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 73,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-320-reduce",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-320-reduce",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-320-reduce",
+  "pass": true,
+  "info": {
+   "dur": "1e-05s",
+   "chipDur": "1e-05s"
+  }
+ },
+ {
+  "n": "dock-sr-label-320-reduce",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-320-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-320-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1023,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-320-reduce",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-320-reduce",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 1,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1133,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-320-reduce",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-320-reduce",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-320-reduce",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-320-reduce",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-320-reduce",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "dock-hidden-at-top-393-motion",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-393-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "carts",
+   "navCur": "carts",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 603,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-393-motion",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-393-motion",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-393-motion",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-393-motion",
+  "pass": true,
+  "info": {
+   "dur": "0.24s, 0.24s, 0s",
+   "chipDur": "0.2s"
+  }
+ },
+ {
+  "n": "dock-sr-label-393-motion",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-393-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-393-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1004,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-393-motion",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-393-motion",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1114,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-393-motion",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-393-motion",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-393-motion",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-393-motion",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-393-motion",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "dock-hidden-at-top-393-reduce",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-393-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "carts",
+   "navCur": "carts",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 603,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-393-reduce",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 91,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-393-reduce",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-393-reduce",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-393-reduce",
+  "pass": true,
+  "info": {
+   "dur": "1e-05s",
+   "chipDur": "1e-05s"
+  }
+ },
+ {
+  "n": "dock-sr-label-393-reduce",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-393-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-393-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1004,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-393-reduce",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-393-reduce",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1114,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-393-reduce",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-393-reduce",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-393-reduce",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-393-reduce",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-393-reduce",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "dock-hidden-at-top-430-motion",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-430-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "carts",
+   "navCur": "carts",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 640,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-430-motion",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-430-motion",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-430-motion",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-430-motion",
+  "pass": true,
+  "info": {
+   "dur": "0.24s, 0.24s, 0s",
+   "chipDur": "0.2s"
+  }
+ },
+ {
+  "n": "dock-sr-label-430-motion",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 0,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-430-motion",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-430-motion",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1064,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-430-motion",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-430-motion",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 1,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1174,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-430-motion",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-430-motion",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-430-motion",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-430-motion",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-430-motion",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "dock-hidden-at-top-430-reduce",
+  "pass": true,
+  "info": {
+   "on": false,
+   "dock": [
+    866,
+    918,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": null,
+   "navCur": "all",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": true,
+   "ariaHidden": "true",
+   "inert": true,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-shows-after-nav-430-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "carts",
+   "navCur": "carts",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 640,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-four-format-segments-430-reduce",
+  "pass": true,
+  "info": [
+   {
+    "k": "vapes",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "carts",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "buds",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   },
+   {
+    "k": "hasch",
+    "w": 101,
+    "h": 44,
+    "clip": false
+   }
+  ]
+ },
+ {
+  "n": "dock-compact-430-reduce",
+  "pass": true,
+  "info": [
+   790,
+   842,
+   52
+  ]
+ },
+ {
+  "n": "dock-no-scrollbar-430-reduce",
+  "pass": true,
+  "info": {
+   "sbw": "none",
+   "sbH": 0,
+   "listOv": 0
+  }
+ },
+ {
+  "n": "dock-reduced-motion-430-reduce",
+  "pass": true,
+  "info": {
+   "dur": "1e-05s",
+   "chipDur": "1e-05s"
+  }
+ },
+ {
+  "n": "dock-sr-label-430-reduce",
+  "pass": true,
+  "info": "Snabbval: Magic Sauce efter format"
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-hidden-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": true,
+   "hdrBottom": 0,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-buds-hdr-visible-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-buds",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "buds",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-hasch-hdr-visible-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-hasch",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "hasch",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": false,
+   "endVisible": true
+  }
+ },
+ {
+  "n": "dock-anchor-carts-hdr-visible-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-carts",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "carts",
+   "hitsBuy": 0,
+   "on": true,
+   "navVisible": false,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-anchor-vapes-hdr-visible-430-reduce",
+  "pass": true,
+  "info": {
+   "hash": "#magic-sauce-vapes",
+   "top": 90,
+   "want": 90,
+   "focus": true,
+   "hdrBefore": false,
+   "hdrBottom": 72,
+   "dockCur": "vapes",
+   "hitsBuy": 0,
+   "on": false,
+   "navVisible": true,
+   "endVisible": false
+  }
+ },
+ {
+  "n": "dock-with-visible-header-430-reduce",
+  "pass": true,
+  "info": {
+   "on": true,
+   "dock": [
+    790,
+    842,
+    52
+   ],
+   "hdrBottom": 72,
+   "hdrHidden": false,
+   "dockCur": "buds",
+   "navCur": "buds",
+   "hitsHeader": false,
+   "hitsService": false,
+   "hitsFooter": false,
+   "hitsBuy": 0,
+   "endVisible": false,
+   "navVisible": false,
+   "ariaHidden": "false",
+   "inert": false,
+   "y": 1064,
+   "ov": 0
+  }
+ },
+ {
+  "n": "dock-scrollspy-430-reduce",
+  "pass": true,
+  "info": [
+   "vapes",
+   "carts",
+   "buds",
+   "hasch"
+  ]
+ },
+ {
+  "n": "dock-rapid-scroll-430-reduce",
+  "pass": true,
+  "info": {
+   "mid": {
+    "on": true,
+    "dock": [
+     790,
+     842,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": "buds",
+    "navCur": "buds",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 1,
+    "endVisible": false,
+    "navVisible": false,
+    "ariaHidden": "false",
+    "inert": false,
+    "y": 1174,
+    "ov": 0
+   },
+   "top": {
+    "on": false,
+    "dock": [
+     866,
+     918,
+     52
+    ],
+    "hdrBottom": 72,
+    "hdrHidden": false,
+    "dockCur": null,
+    "navCur": "all",
+    "hitsHeader": false,
+    "hitsService": false,
+    "hitsFooter": false,
+    "hitsBuy": 0,
+    "endVisible": false,
+    "navVisible": true,
+    "ariaHidden": "true",
+    "inert": true,
+    "y": 0,
+    "ov": 0
+   }
+  }
+ },
+ {
+  "n": "dock-keyboard-430-reduce",
+  "pass": true,
+  "info": {
+   "f": {
+    "k": "buds",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "cur": "buds"
+  }
+ },
+ {
+  "n": "dock-no-overlap-service-footer-header-430-reduce",
+  "pass": true,
+  "info": {
+   "bad": [],
+   "endOn": false
+  }
+ },
+ {
+  "n": "no-overflow-430-reduce",
+  "pass": true,
+  "info": 0
+ },
+ {
+  "n": "info-buy-buttons-passing-under-dock-430-reduce",
+  "pass": true,
+  "info": 2
+ },
+ {
+  "n": "no-console-errors-430-reduce",
+  "pass": true,
+  "info": []
+ }
+]
