@@ -34,9 +34,10 @@
      bakgrunden syns igenom; blur separerar navigationen. Konstant
      oavsett scrollposition -- bara bakgrunden under headern väljer
      ljust eller mörkt läge. */
-  /* Kompakt varmt glas (2026-10-21): tätare elfenben/sand (70 %), mjukare
-     mättnad, tunn ljus varm kant, inre toppreflex och låg varm skugga. */
-  --hz8-glass-bg: color-mix(in srgb, #faf2e4 70%, transparent);
+  /* Kompakt varmt glas (2026-10-21): elfenben/sand, mjukare mättnad, tunn
+     ljus varm kant, inre toppreflex och låg varm skugga. 2026-10-26 (TASK
+     01F): godkänd blandning 60 % elfenben / 40 % transparent (var 70 %). */
+  --hz8-glass-bg: color-mix(in srgb, #faf2e4 60%, transparent);
   --hz8-glass-blur: blur(22px) saturate(1.28);
   --hz8-glass-border: color-mix(in srgb, #c7b08a 46%, transparent);
   --hz8-glass-shadow: 0 10px 26px -16px rgba(72, 52, 29, .30), 0 1px 2px rgba(72, 52, 29, .06), inset 0 1px 0 rgba(255, 253, 247, .78);
@@ -188,12 +189,18 @@ html.hz8 #store-header .main .container{
 /* ---- Semi-sticky: bubblan glider upp ur vyn (transform, inget annat
    ändras) och kommer tillbaka vid scroll uppåt. Styrs av 05-header.js
    (html.hz8-header-hidden); scrollposition påverkar aldrig materialet. */
+/* TASK 01F: den tidigare kurvan cubic-bezier(.22,1,.36,1) var så framtung
+   att ~80 % av sträckan avverkades på de första ~70 ms (uppmätt per ram) --
+   på telefon såg det ut som att bubblan försvann utan animation. Nu en
+   lugn glidning: ut 280 ms med mjuk start, in 300 ms med Hazeys
+   ease-out-quad. Bara transform; geometri och trösklar är oförändrade. */
 html.hz8 #store-header{
-  transition:transform 260ms cubic-bezier(.22, 1, .36, 1);
+  transition:transform 300ms cubic-bezier(.25, .46, .45, .94);
 }
 html.hz8.hz8-header-hidden #store-header{
   transform:translate3d(0, calc(-100% - 48px), 0);
-  transition-duration:240ms;
+  transition-duration:280ms;
+  transition-timing-function:cubic-bezier(.4, 0, .2, 1);
 }
 @media (prefers-reduced-motion:reduce){
   html.hz8 #store-header, html.hz8.hz8-header-hidden #store-header{ transition-duration:1ms; }

@@ -1,0 +1,1202 @@
+[
+ {
+  "which": "after",
+  "route": "home",
+  "w": 393,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "dark",
+    "hidden": false,
+    "p05": 0.023,
+    "p50": 0.026,
+    "p95": 0.028,
+    "worstRatio": 12.89,
+    "medianRatio": 13.3
+   },
+   {
+    "pos": "y520",
+    "tone": "dark",
+    "hidden": false,
+    "p05": 0.017,
+    "p50": 0.024,
+    "p95": 0.06,
+    "worstRatio": 9.18,
+    "medianRatio": 13.72
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.684,
+    "p50": 0.861,
+    "p95": 0.904,
+    "worstRatio": 8.87,
+    "medianRatio": 11.01
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.463,
+    "p50": 0.581,
+    "p95": 0.696,
+    "worstRatio": 6.19,
+    "medianRatio": 7.62
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -120,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 67,
+    "p50": 84,
+    "p90": 167,
+    "p100": 251,
+    "maxStep": 18.800000000000004
+   },
+   "show": {
+    "toggleAtY": 636,
+    "p25": 34,
+    "p50": 84,
+    "p90": 200,
+    "p100": 284,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -104.7,
+    "maxStep": 18.800000000000004,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 18.900000000000006
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 4px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "home",
+  "w": 1440,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "dark",
+    "hidden": false,
+    "p05": 0.029,
+    "p50": 0.043,
+    "p95": 0.098,
+    "worstRatio": 6.82,
+    "medianRatio": 10.88
+   },
+   {
+    "pos": "y520",
+    "tone": "dark",
+    "hidden": false,
+    "p05": 0.034,
+    "p50": 0.043,
+    "p95": 0.124,
+    "worstRatio": 5.81,
+    "medianRatio": 10.81
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.49,
+    "p50": 0.87,
+    "p95": 0.897,
+    "worstRatio": 6.52,
+    "medianRatio": 11.12
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.802,
+    "p50": 0.829,
+    "p95": 0.844,
+    "worstRatio": 10.3,
+    "medianRatio": 10.62
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -128,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 83,
+    "p50": 100,
+    "p90": 183,
+    "p100": 277,
+    "maxStep": 20.699999999999996
+   },
+   "show": {
+    "toggleAtY": 636,
+    "p25": 34,
+    "p50": 84,
+    "p90": 200,
+    "p100": 284,
+    "maxStep": 13.399999999999991
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -112,
+    "maxStep": 20.7,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 20.099999999999994
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 4px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 393,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.645,
+    "p50": 0.668,
+    "p95": 0.721,
+    "worstRatio": 8.4,
+    "medianRatio": 8.68
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.431,
+    "p50": 0.476,
+    "p95": 0.549,
+    "worstRatio": 5.81,
+    "medianRatio": 6.35
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.483,
+    "p50": 0.579,
+    "p95": 0.797,
+    "worstRatio": 6.43,
+    "medianRatio": 7.6
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.487,
+    "p50": 0.726,
+    "p95": 0.806,
+    "worstRatio": 6.48,
+    "medianRatio": 9.37
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -120,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 67,
+    "p50": 83,
+    "p90": 166,
+    "p100": 250,
+    "maxStep": 18.700000000000003
+   },
+   "show": {
+    "toggleAtY": 636,
+    "p25": 36,
+    "p50": 68,
+    "p90": 200,
+    "p100": 283,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -104.7,
+    "maxStep": 18.700000000000003,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 18.700000000000003
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 1440,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.584,
+    "p50": 0.788,
+    "p95": 0.843,
+    "worstRatio": 7.65,
+    "medianRatio": 10.12
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.855,
+    "p50": 0.864,
+    "p95": 0.879,
+    "worstRatio": 10.93,
+    "medianRatio": 11.05
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.646,
+    "p50": 0.828,
+    "p95": 0.894,
+    "worstRatio": 8.41,
+    "medianRatio": 10.6
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.747,
+    "p50": 0.838,
+    "p95": 0.855,
+    "worstRatio": 9.62,
+    "medianRatio": 10.73
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -128,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 82,
+    "p50": 99,
+    "p90": 183,
+    "p100": 266,
+    "maxStep": 21.299999999999997
+   },
+   "show": {
+    "toggleAtY": 642,
+    "p25": 29,
+    "p50": 80,
+    "p90": 196,
+    "p100": 280,
+    "maxStep": 13.099999999999994
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -111.7,
+    "maxStep": 20.099999999999994,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 20.099999999999994
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 393,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.645,
+    "p50": 0.668,
+    "p95": 0.721,
+    "worstRatio": 8.4,
+    "medianRatio": 8.68
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.739,
+    "p50": 0.853,
+    "p95": 0.881,
+    "worstRatio": 9.54,
+    "medianRatio": 10.9
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.474,
+    "p50": 0.722,
+    "p95": 0.871,
+    "worstRatio": 6.33,
+    "medianRatio": 9.33
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.495,
+    "p50": 0.738,
+    "p95": 0.855,
+    "worstRatio": 6.58,
+    "medianRatio": 9.52
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -120,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 65,
+    "p50": 82,
+    "p90": 166,
+    "p100": 249,
+    "maxStep": 18.900000000000006
+   },
+   "show": {
+    "toggleAtY": 636,
+    "p25": 33,
+    "p50": 84,
+    "p90": 200,
+    "p100": 283,
+    "maxStep": 12.5
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -104.7,
+    "maxStep": 18.299999999999997,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 18.700000000000003
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 1440,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.488,
+    "p50": 0.795,
+    "p95": 0.843,
+    "worstRatio": 6.5,
+    "medianRatio": 10.21
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.511,
+    "p50": 0.871,
+    "p95": 0.901,
+    "worstRatio": 6.78,
+    "medianRatio": 11.12
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.508,
+    "p50": 0.805,
+    "p95": 0.887,
+    "worstRatio": 6.74,
+    "medianRatio": 10.33
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.78,
+    "p50": 0.831,
+    "p95": 0.857,
+    "worstRatio": 10.03,
+    "medianRatio": 10.64
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -128,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 66,
+    "p50": 83,
+    "p90": 166,
+    "p100": 250,
+    "maxStep": 20.099999999999994
+   },
+   "show": {
+    "toggleAtY": 642,
+    "p25": 32,
+    "p50": 82,
+    "p90": 197,
+    "p100": 282,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -111.7,
+    "maxStep": 20,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 20
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 393,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.724,
+    "p50": 0.75,
+    "p95": 0.825,
+    "worstRatio": 9.35,
+    "medianRatio": 9.66
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.863,
+    "p50": 0.871,
+    "p95": 0.879,
+    "worstRatio": 11.02,
+    "medianRatio": 11.13
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.623,
+    "p50": 0.869,
+    "p95": 0.888,
+    "worstRatio": 8.13,
+    "medianRatio": 11.11
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.88,
+    "p50": 0.885,
+    "p95": 0.888,
+    "worstRatio": 11.23,
+    "medianRatio": 11.3
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -120,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 66,
+    "p50": 83,
+    "p90": 166,
+    "p100": 250,
+    "maxStep": 18.700000000000003
+   },
+   "show": {
+    "toggleAtY": 642,
+    "p25": 34,
+    "p50": 68,
+    "p90": 202,
+    "p100": 285,
+    "maxStep": 13.200000000000003
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -104.7,
+    "maxStep": 20,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 18.900000000000006
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1440,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.594,
+    "p50": 0.701,
+    "p95": 0.856,
+    "worstRatio": 7.78,
+    "medianRatio": 9.07
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.797,
+    "p50": 0.887,
+    "p95": 0.887,
+    "worstRatio": 10.23,
+    "medianRatio": 11.32
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.624,
+    "p50": 0.887,
+    "p95": 0.887,
+    "worstRatio": 8.14,
+    "medianRatio": 11.32
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.639,
+    "p50": 0.887,
+    "p95": 0.91,
+    "worstRatio": 8.32,
+    "medianRatio": 11.32
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -128,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 67,
+    "p50": 83,
+    "p90": 168,
+    "p100": 251,
+    "maxStep": 20
+   },
+   "show": {
+    "toggleAtY": 636,
+    "p25": 33,
+    "p50": 83,
+    "p90": 199,
+    "p100": 282,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -111.7,
+    "maxStep": 20,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 20
+   },
+   "jumpShows": false,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "pdp",
+  "w": 393,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.862,
+    "p50": 0.863,
+    "p95": 0.869,
+    "worstRatio": 11.02,
+    "medianRatio": 11.03
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.87,
+    "p50": 0.87,
+    "p95": 0.872,
+    "worstRatio": 11.11,
+    "medianRatio": 11.11
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.773,
+    "p50": 0.869,
+    "p95": 0.88,
+    "worstRatio": 9.95,
+    "medianRatio": 11.1
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.715,
+    "p50": 0.814,
+    "p95": 0.852,
+    "worstRatio": 9.25,
+    "medianRatio": 10.44
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -120,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 67,
+    "p50": 84,
+    "p90": 167,
+    "p100": 250,
+    "maxStep": 19.200000000000003
+   },
+   "show": {
+    "toggleAtY": 642,
+    "p25": 33,
+    "p50": 83,
+    "p90": 200,
+    "p100": 283,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -104.7,
+    "maxStep": 18.800000000000004,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 18.800000000000004
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "pdp",
+  "w": 1440,
+  "contrast": [
+   {
+    "pos": "top",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.863,
+    "p50": 0.863,
+    "p95": 0.863,
+    "worstRatio": 11.03,
+    "medianRatio": 11.03
+   },
+   {
+    "pos": "y520",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.48,
+    "p50": 0.829,
+    "p95": 0.886,
+    "worstRatio": 6.4,
+    "medianRatio": 10.61
+   },
+   {
+    "pos": "y1150",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.804,
+    "p50": 0.863,
+    "p95": 0.863,
+    "worstRatio": 10.31,
+    "medianRatio": 11.03
+   },
+   {
+    "pos": "y1900",
+    "tone": "light",
+    "hidden": false,
+    "p05": 0.863,
+    "p50": 0.863,
+    "p95": 0.863,
+    "worstRatio": 11.03,
+    "medianRatio": 11.03
+   }
+  ],
+  "locks": {
+   "search": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "menu": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   },
+   "cart": {
+    "opened": true,
+    "hiddenWhileOpen": false,
+    "closedAfter": true
+   }
+  },
+  "motion": {
+   "hiddenTy": -128,
+   "hide": {
+    "toggleAtY": 534,
+    "p25": 67,
+    "p50": 84,
+    "p90": 168,
+    "p100": 251,
+    "maxStep": 20.300000000000004
+   },
+   "show": {
+    "toggleAtY": 642,
+    "p25": 33,
+    "p50": 83,
+    "p90": 199,
+    "p100": 283,
+    "maxStep": 13.299999999999997
+   },
+   "reversal": {
+    "hideFrame": 16,
+    "showFrame": 26,
+    "tyAtReverse": -111.6,
+    "maxStep": 20.099999999999994,
+    "endTy": 0,
+    "toggles": 2
+   },
+   "fast": {
+    "toggles": 1,
+    "endHidden": true,
+    "maxStep": 20.000000000000004
+   },
+   "jumpShows": true,
+   "topZoneNeverHidden": true
+  },
+  "keyboard": {
+   "hiddenBeforeTab": true,
+   "tabsToHeader": 2,
+   "hiddenAfterFocus": false,
+   "focused": "A.",
+   "focusVisible": "solid 2px"
+  },
+  "reduced": {
+   "duration": "1e-05s",
+   "intermediateFrames": 0,
+   "hidOnce": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "css": {
+   "transition": "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   "glassBg": "color(srgb 0.980392 0.94902 0.894118 / 0.6)",
+   "backdrop": "blur(22px) saturate(1.28)",
+   "border": "color(srgb 0.780392 0.690196 0.541176 / 0.46)",
+   "shadow": "rgba(72, 52, 29, 0.3) 0px 10px 26px -16px, rgba(72, 52, 29, 0.06) 0px 1px 2px 0px, rgba(25"
+  },
+  "errors": []
+ }
+]
