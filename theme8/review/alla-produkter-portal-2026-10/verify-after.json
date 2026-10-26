@@ -1,0 +1,1135 @@
+[
+ {
+  "n": "initial-393",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": null,
+   "filters": null,
+   "sort": null,
+   "serie": null,
+   "input": "",
+   "tabs": [
+    "Alla"
+   ],
+   "count": "104 produkter",
+   "cards": 24,
+   "more": "Visar 24 av 104 produkter",
+   "names": [
+    "Hash – CBD 15% – Primero – 1 gram",
+    "Buds – THCA 22% – Orange Small Buds – 5 gram",
+    "Hash – THCA 25% – Ketama – 5 gram",
+    "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – THCA 23% – Amnesia Infused – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – HighLife THCNM – GSC – 5 gram",
+    "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+    "Vape - THCX 19% - Core - 2ml",
+    "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+    "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
+    "Cart - THC-A 45% - Faraoh - 1ml",
+    "Vape - Magic Sauce 99% - 2ml",
+    "Cart - Magic Sauce 99% - 1ml",
+    "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+    "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+    "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+    "Vape - THC-A 45% - Faraoh - 2ml",
+    "Buds – THCA 23% – Amnesia – 5 gram",
+    "Buds – THCA 20% – White Widow – 5 gram"
+   ],
+   "chips": [
+    "Hasch",
+    "Buds",
+    "Cart",
+    "Vape"
+   ],
+   "h1": [
+    "Alla produkter"
+   ],
+   "empty": false,
+   "emptyBtns": [],
+   "live": "",
+   "mark": 0,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "hybrid-h-top-393",
+  "pass": true,
+  "info": {
+   "ph": "Sök bland 104 produkter",
+   "role": "combobox",
+   "sortBtn": "Nyast",
+   "gridSort": "Sorterat på nyast",
+   "guideCta": false,
+   "seal": false
+  }
+ },
+ {
+  "n": "page-order-393",
+  "pass": true,
+  "info": {
+   "search": 375,
+   "tool": 483,
+   "head": 630,
+   "grid": 694,
+   "routes": 5489,
+   "about": 5958,
+   "foot": 6240,
+   "service": null
+  }
+ },
+ {
+  "n": "format-tabs-reachable-393",
+  "pass": true,
+  "info": {
+   "n": 6,
+   "labels": [
+    "Alla",
+    "Vapes",
+    "Carts",
+    "Buds",
+    "Hasch",
+    "Tillbehör"
+   ],
+   "startMore": true,
+   "endMore": false,
+   "lastVisible": true,
+   "sbH": 0
+  }
+ },
+ {
+  "n": "no-errors-load-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "search-basic-393",
+  "pass": true,
+  "info": {
+   "q": "magic sauce",
+   "cards": 12,
+   "count": "12 produkter",
+   "live": "12 produkter visas"
+  }
+ },
+ {
+  "n": "search-no-network-per-key-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "suggestions-keyboard-393",
+  "pass": true,
+  "info": {
+   "expanded": "true",
+   "ad": "hz8-pq-opt-1",
+   "n": 5,
+   "sel": [
+    "hz8-pq-opt-1"
+   ],
+   "names": [
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - Magic Sauce 99% - 2ml"
+   ]
+  }
+ },
+ {
+  "n": "suggestions-escape-keeps-text-393",
+  "pass": true,
+  "info": {
+   "hidden": true,
+   "value": "magic sauce",
+   "expanded": "false"
+  }
+ },
+ {
+  "n": "suggestion-mouse-and-back-393",
+  "pass": true,
+  "info": {
+   "pdp": "https://hazeyse.nyehandel.se/sv/products/hash-magic-sauce-50-charas-5-gram?preview=v9kzdmqz4w60l5n",
+   "target": "Hash – Magic Sauce 50% – Charas – 5 gram",
+   "q": "magic sauce",
+   "input": "magic sauce",
+   "cards": 12
+  }
+ },
+ {
+  "n": "search-clear-393",
+  "pass": true,
+  "info": {
+   "q": null,
+   "cards": 24,
+   "focusAfter": "hz8-pq-input"
+  }
+ },
+ {
+  "n": "search-one-history-step-393",
+  "pass": true,
+  "info": {
+   "historyLength": 3
+  }
+ },
+ {
+  "n": "no-errors-search-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "combined-search-format-stock-sort-393",
+  "pass": true,
+  "info": {
+   "q": "thca",
+   "typ": "buds",
+   "filters": "smart-filter_in-stock",
+   "sort": "price_low",
+   "cards": 9,
+   "count": "9 produkter",
+   "sold": 0,
+   "prices": [
+    495,
+    545,
+    545,
+    565,
+    695,
+    745
+   ]
+  }
+ },
+ {
+  "n": "reload-restores-393",
+  "pass": true,
+  "info": {
+   "s": {
+    "q": "thca",
+    "typ": "buds",
+    "sort": "price_low",
+    "count": "9 produkter",
+    "input": "thca"
+   },
+   "before": "9 produkter"
+  }
+ },
+ {
+  "n": "no-errors-combined-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "back-forward-393",
+  "pass": true,
+  "info": {
+   "a": [
+    "magic",
+    "carts",
+    1
+   ],
+   "b1": [
+    "magic",
+    null,
+    "magic"
+   ],
+   "b2": [
+    null,
+    null,
+    ""
+   ],
+   "f1": [
+    "magic",
+    null,
+    "magic",
+    1
+   ]
+  }
+ },
+ {
+  "n": "no-errors-history-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "empty-state-393",
+  "pass": true,
+  "info": {
+   "empty": true,
+   "btns": [
+    "Rensa sökning",
+    "Ta bort Buds",
+    "Rensa alla filter"
+   ],
+   "count": "0 produkter"
+  }
+ },
+ {
+  "n": "empty-clear-search-393",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": "buds",
+   "cards": 24
+  }
+ },
+ {
+  "n": "empty-remove-last-filter-393",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": "zzqxy",
+   "btns": [
+    "Rensa sökning"
+   ]
+  }
+ },
+ {
+  "n": "empty-clear-all-393",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": null,
+   "cards": 24
+  }
+ },
+ {
+  "n": "no-errors-empty-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "show-more-step-393",
+  "pass": true,
+  "info": {
+   "first": 24,
+   "after": 48,
+   "more": "Visar 48 av 104 produkter"
+  }
+ },
+ {
+  "n": "product-back-restores-393",
+  "pass": true,
+  "info": {
+   "cards": 48,
+   "expected": 48,
+   "before": {
+    "y": 5411,
+    "cardTop": 246,
+    "grid": 694,
+    "tool": 483,
+    "head": 630
+   },
+   "after": {
+    "y": 5411,
+    "cardTop": 246,
+    "grid": 694,
+    "tool": 483,
+    "head": 630
+   }
+  }
+ },
+ {
+  "n": "mobile-no-sticky-tool-393",
+  "pass": true,
+  "info": {
+   "pos": "relative",
+   "dock": false
+  }
+ },
+ {
+  "n": "keyboard-focus-393",
+  "pass": true,
+  "info": {
+   "f": {
+    "cls": "hz8-pfam__tab",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "field": "solid 3px"
+  }
+ },
+ {
+  "n": "no-errors-more-393",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "initial-1440",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": null,
+   "filters": null,
+   "sort": null,
+   "serie": null,
+   "input": "",
+   "tabs": [
+    "Alla"
+   ],
+   "count": "104 produkter",
+   "cards": 48,
+   "more": "Visar 48 av 104 produkter",
+   "names": [
+    "Hash – CBD 15% – Primero – 1 gram",
+    "Buds – THCA 22% – Orange Small Buds – 5 gram",
+    "Hash – THCA 25% – Ketama – 5 gram",
+    "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – THCA 23% – Amnesia Infused – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – HighLife THCNM – GSC – 5 gram",
+    "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+    "Vape - THCX 19% - Core - 2ml",
+    "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+    "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
+    "Cart - THC-A 45% - Faraoh - 1ml",
+    "Vape - Magic Sauce 99% - 2ml",
+    "Cart - Magic Sauce 99% - 1ml",
+    "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+    "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+    "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+    "Vape - THC-A 45% - Faraoh - 2ml",
+    "Buds – THCA 23% – Amnesia – 5 gram",
+    "Buds – THCA 20% – White Widow – 5 gram",
+    "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+    "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+    "Hash – THCA 40% – Northern Lights – 5 gram",
+    "Blommor – HHCPM 15% – Amnesia – 5 gram",
+    "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+    "Vape - HHCPM 15% - Canntropy - 2ml",
+    "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise - 1+1ml",
+    "Cart - CBD 60% - Cookies - 1ml",
+    "Vape - THCV - Euphoria - 2ml",
+    "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+    "CCELL M3b – Vape Batteri – 510",
+    "Vape - THC-V 20% - Tatra Hemp - 2ml",
+    "Isolat – THCA 99% – Isolate – 5 gram",
+    "Buds – CBD 30% – Cereal Milk – 3,5 gram",
+    "Vape - THC-B 35% - Faraoh - 1ml",
+    "CCELL M3 Plus – Vape Batteri – 510",
+    "Vape - CBN 89% - Canapuff - 1ml",
+    "CCELL Palm Pro – Vape Batteri – 510",
+    "Vape - THC-V 20% - CBD Group - 2ml",
+    "Fraktändring",
+    "CCELL M4 – Vape Batteri – 510",
+    "Hash – THCA 25% – La Mousse – 5 gram",
+    "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+    "Buds – 7% Nano11 – Amnezia Haze – 5 gram"
+   ],
+   "chips": [
+    "Hasch",
+    "Buds",
+    "Cart",
+    "Vape",
+    "Tillbehör"
+   ],
+   "h1": [
+    "Alla produkter"
+   ],
+   "empty": false,
+   "emptyBtns": [],
+   "live": "",
+   "mark": 0,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "hybrid-h-top-1440",
+  "pass": true,
+  "info": {
+   "ph": "Sök bland 104 produkter",
+   "role": "combobox",
+   "sortBtn": "Nyast",
+   "gridSort": "Sorterat på nyast",
+   "guideCta": false,
+   "seal": false
+  }
+ },
+ {
+  "n": "page-order-1440",
+  "pass": true,
+  "info": {
+   "search": 168,
+   "tool": 325,
+   "head": 417,
+   "grid": 477,
+   "routes": 7239,
+   "about": 7485,
+   "foot": 7741,
+   "service": null
+  }
+ },
+ {
+  "n": "format-tabs-reachable-1440",
+  "pass": true,
+  "info": {
+   "n": 6,
+   "labels": [
+    "Alla",
+    "Vapes",
+    "Carts",
+    "Buds",
+    "Hasch",
+    "Tillbehör"
+   ],
+   "startMore": false,
+   "endMore": false,
+   "lastVisible": true,
+   "sbH": 0
+  }
+ },
+ {
+  "n": "no-errors-load-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "search-basic-1440",
+  "pass": true,
+  "info": {
+   "q": "magic sauce",
+   "cards": 12,
+   "count": "12 produkter",
+   "live": "12 produkter visas"
+  }
+ },
+ {
+  "n": "search-no-network-per-key-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "suggestions-keyboard-1440",
+  "pass": true,
+  "info": {
+   "expanded": "true",
+   "ad": "hz8-pq-opt-1",
+   "n": 5,
+   "sel": [
+    "hz8-pq-opt-1"
+   ],
+   "names": [
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - Magic Sauce 99% - 2ml"
+   ]
+  }
+ },
+ {
+  "n": "suggestions-escape-keeps-text-1440",
+  "pass": true,
+  "info": {
+   "hidden": true,
+   "value": "magic sauce",
+   "expanded": "false"
+  }
+ },
+ {
+  "n": "suggestion-mouse-and-back-1440",
+  "pass": true,
+  "info": {
+   "pdp": "https://hazeyse.nyehandel.se/sv/products/hash-magic-sauce-50-charas-5-gram?preview=v9kzdmqz4w60l5n",
+   "target": "Hash – Magic Sauce 50% – Charas – 5 gram",
+   "q": "magic sauce",
+   "input": "magic sauce",
+   "cards": 12
+  }
+ },
+ {
+  "n": "search-clear-1440",
+  "pass": true,
+  "info": {
+   "q": null,
+   "cards": 48,
+   "focusAfter": "hz8-pq-input"
+  }
+ },
+ {
+  "n": "search-one-history-step-1440",
+  "pass": true,
+  "info": {
+   "historyLength": 3
+  }
+ },
+ {
+  "n": "no-errors-search-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "combined-search-format-stock-sort-1440",
+  "pass": true,
+  "info": {
+   "q": "thca",
+   "typ": "buds",
+   "filters": "smart-filter_in-stock",
+   "sort": "price_low",
+   "cards": 9,
+   "count": "9 produkter",
+   "sold": 0,
+   "prices": [
+    495,
+    545,
+    545,
+    565,
+    695,
+    745
+   ]
+  }
+ },
+ {
+  "n": "reload-restores-1440",
+  "pass": true,
+  "info": {
+   "s": {
+    "q": "thca",
+    "typ": "buds",
+    "sort": "price_low",
+    "count": "9 produkter",
+    "input": "thca"
+   },
+   "before": "9 produkter"
+  }
+ },
+ {
+  "n": "no-errors-combined-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "back-forward-1440",
+  "pass": true,
+  "info": {
+   "a": [
+    "magic",
+    "carts",
+    1
+   ],
+   "b1": [
+    "magic",
+    null,
+    "magic"
+   ],
+   "b2": [
+    null,
+    null,
+    ""
+   ],
+   "f1": [
+    "magic",
+    null,
+    "magic",
+    1
+   ]
+  }
+ },
+ {
+  "n": "no-errors-history-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "empty-state-1440",
+  "pass": true,
+  "info": {
+   "empty": true,
+   "btns": [
+    "Rensa sökning",
+    "Ta bort Buds",
+    "Rensa alla filter"
+   ],
+   "count": "0 produkter"
+  }
+ },
+ {
+  "n": "empty-clear-search-1440",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": "buds",
+   "cards": 48
+  }
+ },
+ {
+  "n": "empty-remove-last-filter-1440",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": "zzqxy",
+   "btns": [
+    "Rensa sökning"
+   ]
+  }
+ },
+ {
+  "n": "empty-clear-all-1440",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": null,
+   "cards": 48
+  }
+ },
+ {
+  "n": "no-errors-empty-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "show-more-step-1440",
+  "pass": true,
+  "info": {
+   "first": 48,
+   "after": 96,
+   "more": "Visar 96 av 104 produkter"
+  }
+ },
+ {
+  "n": "product-back-restores-1440",
+  "pass": true,
+  "info": {
+   "cards": 96,
+   "expected": 96,
+   "before": {
+    "y": 6812,
+    "cardTop": 196,
+    "grid": 477,
+    "tool": 325,
+    "head": 417
+   },
+   "after": {
+    "y": 6812,
+    "cardTop": 196,
+    "grid": 477,
+    "tool": 325,
+    "head": 417
+   }
+  }
+ },
+ {
+  "n": "desktop-dock-no-overlap-1440",
+  "pass": true,
+  "info": {
+   "top": false,
+   "mid": {
+    "shown": true,
+    "toolBottom": -688
+   }
+  }
+ },
+ {
+  "n": "keyboard-focus-1440",
+  "pass": true,
+  "info": {
+   "f": {
+    "cls": "hz8-pfam__tab",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "field": "solid 3px"
+  }
+ },
+ {
+  "n": "no-errors-more-1440",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "initial-1920",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": null,
+   "filters": null,
+   "sort": null,
+   "serie": null,
+   "input": "",
+   "tabs": [
+    "Alla"
+   ],
+   "count": "104 produkter",
+   "cards": 48,
+   "more": "Visar 48 av 104 produkter",
+   "names": [
+    "Hash – CBD 15% – Primero – 1 gram",
+    "Buds – THCA 22% – Orange Small Buds – 5 gram",
+    "Hash – THCA 25% – Ketama – 5 gram",
+    "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – THCA 23% – Amnesia Infused – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – HighLife THCNM – GSC – 5 gram",
+    "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+    "Vape - THCX 19% - Core - 2ml",
+    "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+    "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
+    "Cart - THC-A 45% - Faraoh - 1ml",
+    "Vape - Magic Sauce 99% - 2ml",
+    "Cart - Magic Sauce 99% - 1ml",
+    "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+    "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+    "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+    "Vape - THC-A 45% - Faraoh - 2ml",
+    "Buds – THCA 23% – Amnesia – 5 gram",
+    "Buds – THCA 20% – White Widow – 5 gram",
+    "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+    "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+    "Hash – THCA 40% – Northern Lights – 5 gram",
+    "Blommor – HHCPM 15% – Amnesia – 5 gram",
+    "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+    "Vape - HHCPM 15% - Canntropy - 2ml",
+    "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise - 1+1ml",
+    "Cart - CBD 60% - Cookies - 1ml",
+    "Vape - THCV - Euphoria - 2ml",
+    "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+    "CCELL M3b – Vape Batteri – 510",
+    "Vape - THC-V 20% - Tatra Hemp - 2ml",
+    "Isolat – THCA 99% – Isolate – 5 gram",
+    "Buds – CBD 30% – Cereal Milk – 3,5 gram",
+    "Vape - THC-B 35% - Faraoh - 1ml",
+    "CCELL M3 Plus – Vape Batteri – 510",
+    "Vape - CBN 89% - Canapuff - 1ml",
+    "CCELL Palm Pro – Vape Batteri – 510",
+    "Vape - THC-V 20% - CBD Group - 2ml",
+    "Fraktändring",
+    "CCELL M4 – Vape Batteri – 510",
+    "Hash – THCA 25% – La Mousse – 5 gram",
+    "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+    "Buds – 7% Nano11 – Amnezia Haze – 5 gram"
+   ],
+   "chips": [
+    "Hasch",
+    "Buds",
+    "Cart",
+    "Vape",
+    "Tillbehör"
+   ],
+   "h1": [
+    "Alla produkter"
+   ],
+   "empty": false,
+   "emptyBtns": [],
+   "live": "",
+   "mark": 0,
+   "y": 0,
+   "ov": 0
+  }
+ },
+ {
+  "n": "hybrid-h-top-1920",
+  "pass": true,
+  "info": {
+   "ph": "Sök bland 104 produkter",
+   "role": "combobox",
+   "sortBtn": "Nyast",
+   "gridSort": "Sorterat på nyast",
+   "guideCta": false,
+   "seal": false
+  }
+ },
+ {
+  "n": "page-order-1920",
+  "pass": true,
+  "info": {
+   "search": 195,
+   "tool": 381,
+   "head": 473,
+   "grid": 539,
+   "routes": 5961,
+   "about": 6207,
+   "foot": 6464,
+   "service": null
+  }
+ },
+ {
+  "n": "format-tabs-reachable-1920",
+  "pass": true,
+  "info": {
+   "n": 6,
+   "labels": [
+    "Alla",
+    "Vapes",
+    "Carts",
+    "Buds",
+    "Hasch",
+    "Tillbehör"
+   ],
+   "startMore": false,
+   "endMore": false,
+   "lastVisible": true,
+   "sbH": 0
+  }
+ },
+ {
+  "n": "no-errors-load-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "search-basic-1920",
+  "pass": true,
+  "info": {
+   "q": "magic sauce",
+   "cards": 12,
+   "count": "12 produkter",
+   "live": "12 produkter visas"
+  }
+ },
+ {
+  "n": "search-no-network-per-key-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "suggestions-keyboard-1920",
+  "pass": true,
+  "info": {
+   "expanded": "true",
+   "ad": "hz8-pq-opt-1",
+   "n": 5,
+   "sel": [
+    "hz8-pq-opt-1"
+   ],
+   "names": [
+    "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "Vape - Magic Sauce 99% - 2ml"
+   ]
+  }
+ },
+ {
+  "n": "suggestions-escape-keeps-text-1920",
+  "pass": true,
+  "info": {
+   "hidden": true,
+   "value": "magic sauce",
+   "expanded": "false"
+  }
+ },
+ {
+  "n": "suggestion-mouse-and-back-1920",
+  "pass": true,
+  "info": {
+   "pdp": "https://hazeyse.nyehandel.se/sv/products/hash-magic-sauce-50-charas-5-gram?preview=v9kzdmqz4w60l5n",
+   "target": "Hash – Magic Sauce 50% – Charas – 5 gram",
+   "q": "magic sauce",
+   "input": "magic sauce",
+   "cards": 12
+  }
+ },
+ {
+  "n": "search-clear-1920",
+  "pass": true,
+  "info": {
+   "q": null,
+   "cards": 48,
+   "focusAfter": "hz8-pq-input"
+  }
+ },
+ {
+  "n": "search-one-history-step-1920",
+  "pass": true,
+  "info": {
+   "historyLength": 3
+  }
+ },
+ {
+  "n": "no-errors-search-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "combined-search-format-stock-sort-1920",
+  "pass": true,
+  "info": {
+   "q": "thca",
+   "typ": "buds",
+   "filters": "smart-filter_in-stock",
+   "sort": "price_low",
+   "cards": 9,
+   "count": "9 produkter",
+   "sold": 0,
+   "prices": [
+    495,
+    545,
+    545,
+    565,
+    695,
+    745
+   ]
+  }
+ },
+ {
+  "n": "reload-restores-1920",
+  "pass": true,
+  "info": {
+   "s": {
+    "q": "thca",
+    "typ": "buds",
+    "sort": "price_low",
+    "count": "9 produkter",
+    "input": "thca"
+   },
+   "before": "9 produkter"
+  }
+ },
+ {
+  "n": "no-errors-combined-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "back-forward-1920",
+  "pass": true,
+  "info": {
+   "a": [
+    "magic",
+    "carts",
+    1
+   ],
+   "b1": [
+    "magic",
+    null,
+    "magic"
+   ],
+   "b2": [
+    null,
+    null,
+    ""
+   ],
+   "f1": [
+    "magic",
+    null,
+    "magic",
+    1
+   ]
+  }
+ },
+ {
+  "n": "no-errors-history-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "empty-state-1920",
+  "pass": true,
+  "info": {
+   "empty": true,
+   "btns": [
+    "Rensa sökning",
+    "Ta bort Buds",
+    "Rensa alla filter"
+   ],
+   "count": "0 produkter"
+  }
+ },
+ {
+  "n": "empty-clear-search-1920",
+  "pass": true,
+  "info": {
+   "q": null,
+   "typ": "buds",
+   "cards": 48
+  }
+ },
+ {
+  "n": "empty-remove-last-filter-1920",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": "zzqxy",
+   "btns": [
+    "Rensa sökning"
+   ]
+  }
+ },
+ {
+  "n": "empty-clear-all-1920",
+  "pass": true,
+  "info": {
+   "typ": null,
+   "q": null,
+   "cards": 48
+  }
+ },
+ {
+  "n": "no-errors-empty-1920",
+  "pass": true,
+  "info": []
+ },
+ {
+  "n": "show-more-step-1920",
+  "pass": true,
+  "info": {
+   "first": 48,
+   "after": 96,
+   "more": "Visar 96 av 104 produkter"
+  }
+ },
+ {
+  "n": "product-back-restores-1920",
+  "pass": true,
+  "info": {
+   "cards": 96,
+   "expected": 96,
+   "before": {
+    "y": 5430,
+    "cardTop": 299,
+    "grid": 539,
+    "tool": 381,
+    "head": 473
+   },
+   "after": {
+    "y": 5430,
+    "cardTop": 299,
+    "grid": 539,
+    "tool": 381,
+    "head": 473
+   }
+  }
+ },
+ {
+  "n": "desktop-dock-no-overlap-1920",
+  "pass": true,
+  "info": {
+   "top": false,
+   "mid": {
+    "shown": true,
+    "toolBottom": -694
+   }
+  }
+ },
+ {
+  "n": "keyboard-focus-1920",
+  "pass": true,
+  "info": {
+   "f": {
+    "cls": "hz8-pfam__tab",
+    "outline": "solid 2px",
+    "fv": true
+   },
+   "field": "solid 3px"
+  }
+ },
+ {
+  "n": "no-errors-more-1920",
+  "pass": true,
+  "info": []
+ }
+]
