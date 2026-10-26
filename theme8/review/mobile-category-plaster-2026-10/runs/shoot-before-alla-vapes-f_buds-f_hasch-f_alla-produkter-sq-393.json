@@ -1,0 +1,234 @@
+[
+ {
+  "which": "before",
+  "route": "alla-vapes-f",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-cat-pilot",
+  "shell": "vapes",
+  "hero": {
+   "top": 0,
+   "bottom": 647,
+   "left": 0,
+   "width": 393,
+   "height": 647
+  },
+  "art": {
+   "top": 0,
+   "bottom": 647,
+   "left": 0,
+   "width": 393,
+   "height": 647
+  },
+  "guide": {
+   "top": 373,
+   "bottom": 506,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 422,
+   "bottom": 468,
+   "left": 86,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 661,
+   "bottom": 713,
+   "left": 16,
+   "width": 361,
+   "height": 52
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "linear-gradient(rgb(0, 0, 0) calc(100% - 96px), rgba(0, 0, 0, 0.55) calc(100% - ",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "none",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "1 produkt",
+  "hits": [
+   "guideCta:ok",
+   "filterBtn:BLOCKED "
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "buds-f",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 497,
+   "left": 0,
+   "width": 393,
+   "height": 497
+  },
+  "art": {
+   "top": 0,
+   "bottom": 497,
+   "left": 0,
+   "width": 393,
+   "height": 497
+  },
+  "guide": {
+   "top": 324,
+   "bottom": 457,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 373,
+   "bottom": 419,
+   "left": 86,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 468,
+   "bottom": 576,
+   "left": 16,
+   "width": 361,
+   "height": 108
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "linear-gradient(rgb(0, 0, 0) calc(100% - 96px), rgba(0, 0, 0, 0.55) calc(100% - ",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "none",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "7 produkter",
+  "hits": [
+   "guideCta:ok",
+   "filterBtn:ok"
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "hasch-f",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 546,
+   "left": 0,
+   "width": 393,
+   "height": 546
+  },
+  "art": {
+   "top": 0,
+   "bottom": 546,
+   "left": 0,
+   "width": 393,
+   "height": 546
+  },
+  "guide": {
+   "top": 373,
+   "bottom": 506,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 422,
+   "bottom": 468,
+   "left": 86,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 517,
+   "bottom": 625,
+   "left": 16,
+   "width": 361,
+   "height": 108
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "linear-gradient(rgb(0, 0, 0) calc(100% - 96px), rgba(0, 0, 0, 0.55) calc(100% - ",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "none",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "2 produkter",
+  "hits": [
+   "guideCta:ok",
+   "filterBtn:ok"
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "alla-produkter-sq",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-cat-portal hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "left": 0,
+   "width": 393,
+   "height": 483
+  },
+  "art": {
+   "top": 0,
+   "bottom": 483,
+   "left": 0,
+   "width": 393,
+   "height": 483
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": {
+   "top": 483,
+   "bottom": 602,
+   "left": 16,
+   "width": 361,
+   "height": 119
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "linear-gradient(rgb(0, 0, 0) calc(100% - 96px), rgba(0, 0, 0, 0.55) calc(100% - ",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "none",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "1 produkt",
+  "hits": [
+   "guideCta:none",
+   "filterBtn:ok"
+  ],
+  "errors": []
+ }
+]

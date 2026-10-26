@@ -1,0 +1,29 @@
+{
+ "fmt": {
+  "buds": "/sv/categories/blommor-buds",
+  "hasch": "/sv/categories/hasch",
+  "vapes": "/sv/categories/alla-vapes"
+ },
+ "ctxs": {
+  "/sv/categories/alla-vapes": {
+   "key": "vapes",
+   "href": "/sv/categories/alla-vapes"
+  },
+  "/sv/categories/alla-cartridges": {
+   "key": "carts",
+   "href": "/sv/categories/alla-cartridges"
+  },
+  "/sv/categories/pennor": {
+   "key": "batterier",
+   "href": "/sv/categories/pennor"
+  },
+  "/sv/categories/blommor-buds": {
+   "key": "buds",
+   "href": "/sv/categories/blommor-buds"
+  },
+  "/sv/categories/hasch": {
+   "key": "hasch",
+   "href": "/sv/categories/hasch"
+  }
+ }
+}

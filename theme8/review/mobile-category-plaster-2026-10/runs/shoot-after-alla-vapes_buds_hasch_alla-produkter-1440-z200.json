@@ -1,0 +1,238 @@
+[
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "vapes",
+  "hero": {
+   "top": 0,
+   "bottom": 682,
+   "left": 0,
+   "width": 720,
+   "height": 682
+  },
+  "art": {
+   "top": 0,
+   "bottom": 682,
+   "left": 0,
+   "width": 720,
+   "height": 682
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 696,
+   "bottom": 748,
+   "left": 16,
+   "width": 688,
+   "height": 52
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "29 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:BLOCKED "
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 517,
+   "left": 0,
+   "width": 720,
+   "height": 517
+  },
+  "art": {
+   "top": 0,
+   "bottom": 517,
+   "left": 0,
+   "width": 720,
+   "height": 517
+  },
+  "guide": {
+   "top": 345,
+   "bottom": 477,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 393,
+   "bottom": 439,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 488,
+   "bottom": 596,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 608,
+   "bottom": 1132,
+   "left": 16,
+   "width": 338,
+   "height": 523
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "54 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:ok",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 566,
+   "left": 0,
+   "width": 720,
+   "height": 566
+  },
+  "art": {
+   "top": 0,
+   "bottom": 566,
+   "left": 0,
+   "width": 720,
+   "height": 566
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 537,
+   "bottom": 645,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 657,
+   "bottom": 1155,
+   "left": 16,
+   "width": 338,
+   "height": 498
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "16 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-portal hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 492,
+   "left": 0,
+   "width": 720,
+   "height": 492
+  },
+  "art": {
+   "top": 0,
+   "bottom": 492,
+   "left": 0,
+   "width": 720,
+   "height": 492
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": {
+   "top": 492,
+   "bottom": 611,
+   "left": 16,
+   "width": 688,
+   "height": 119
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "104 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ }
+]
