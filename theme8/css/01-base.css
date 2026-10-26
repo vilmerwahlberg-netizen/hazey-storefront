@@ -32,6 +32,12 @@
 html.hz8.hz8-scroll-locked,
 html.hz8.hz8-scroll-locked body { overflow: hidden !important; }
 
+/* Beredskapsmask (TASK 01C): samma varma yta som loaderns boot-mask,
+   från boot tills 00-bootstrap.js bedömer sidan visuellt klar (tak
+   2,5 s). Ingen vit yta, ingen halvfärdig sida. */
+html.hz8-settling { background: var(--hz8-bg) !important; }
+html.hz8-settling body { visibility: hidden !important; opacity: 0 !important; }
+
 /* ---------- Sidram (P) ---------- */
 html.hz8:not([data-hz8-page="home"]) body {
   font-family: var(--hz8-font-ui);

@@ -421,9 +421,25 @@
     /* Produktsidespiloten (85-pdp-pilot.js) har egen köpstation, sticky
        köpzon och paketbyggare -- här bara "Passar bra med" (carts). */
     if (HZ8.isPdpPilot && HZ8.isPdpPilot()) { window.setTimeout(compatRail, 1200); return; }
+    /* Köpzonen räknas som ofärdig tills variantdatan är hämtad: lager per
+       variant, paketbyggaren och köpbaren byggs först då och flyttar
+       annars köpraden efter att sidan visats (TASK 01C, läses av
+       beredskapen i 00-bootstrap.js). loadVariants() rejectar aldrig.
+       Har produkten flera varianter väntar zonen också på att Nyehandels
+       egen Vue-komponent har renderat variantväljaren -- den kommer
+       ibland först efter Theme 8:s boot. */
+    /* Markören sitter på informationsblocket (har alltid en höjd) --
+       #product-variants är tomt och 0 px högt innan Vue har renderat. */
+    var zone = document.querySelector(".product-detail__information") || document.querySelector(".buy-form");
+    if (zone) zone.setAttribute("aria-busy", "true");
+    function zoneSettled() {
+      if (!zone || !zone.hasAttribute("aria-busy")) return;
+      if (state.variants.length > 1 && !select()) return;
+      zone.removeAttribute("aria-busy");
+    }
     loadVariants().then(function () {
       buildBuybar();
-      HZ8.watch(function () { syncStock(); renderBuilder(); syncBuybar(); });
+      HZ8.watch(function () { syncStock(); renderBuilder(); syncBuybar(); zoneSettled(); });
       window.setTimeout(compatRail, 1200);
     });
     document.addEventListener("click", function (e) {

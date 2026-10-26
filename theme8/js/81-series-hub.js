@@ -457,7 +457,10 @@
       if (!stock.known[path]) { st.hidden = true; return; }
       var inStock = !!stock.in[path];
       st.classList.remove("is-pending"); st.removeAttribute("aria-hidden");
-      st.textContent = inStock ? "I lager" : "Slutsåld";
+      /* Bara vid ändring -- en ovillkorlig skrivning är en DOM-mutation
+         som startar nästa HZ8.watch-omgång i en evig loop (TASK 01C). */
+      var label = inStock ? "I lager" : "Slutsåld";
+      if (st.textContent !== label) st.textContent = label;
       st.classList.toggle("is-out", !inStock);
       card.classList.toggle("hz8-is-soldout", !inStock);
       if (!inStock && !wrapper.querySelector(".hz8-psold")) {
@@ -585,6 +588,11 @@
     shelves.className = "hz8-sh-shelves is-loading";
     shelves.id = "hz8-sh-shelves";
     shelves.setAttribute("aria-busy", "true");
+    /* Hyllornas innehåll (bilder, lagerrader med reserverad höjd,
+       syskonserier) håller inte sidan bakom beredskapsmasken -- bara
+       hyllcontainerns egen markör, som släpps samtidigt som heroantal,
+       ingress och formatraden fylls (TASK 01C, se 00-bootstrap.js). */
+    shelves.setAttribute("data-hz8-defer", "");
     wrap.appendChild(shelves);
     /* Övriga serier (befintlig serienavigering) ligger kvar efter
        hyllorna. Formathyllorna är hubbens kompletta sortiment, så

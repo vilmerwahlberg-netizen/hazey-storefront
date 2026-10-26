@@ -58,6 +58,9 @@
     });
     observer.observe(root, { childList: true, subtree: true });
   };
+  /* Läses av beredskapskontraktet i 00-bootstrap.js: en väntande
+     watch-omgång betyder att synliga kontroller ännu kan flyttas. */
+  HZ8.watchBusy = function () { return !!pending; };
 
   /* ---- Nyehandels Vuex-store (samma integrationspunkt som Theme 6) ---- */
   HZ8.store = function () {

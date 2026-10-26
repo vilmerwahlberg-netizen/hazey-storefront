@@ -1,0 +1,37 @@
+[
+ {
+  "which": "after",
+  "sc": "zoom200",
+  "route": "pdp",
+  "w": 1440,
+  "vw": 720,
+  "firstPaint": 809,
+  "readyAt": 809,
+  "sigT": 810,
+  "pendingPaintedMs": 0,
+  "nativePaintedMs": 0,
+  "sidebarPx": 0,
+  "sidebarShadowPx": 0,
+  "overflowX": false,
+  "ctrlAtPaint": 4,
+  "ctrlChanged": 0,
+  "ctrlChangedSig": 0,
+  "ctrlAdded": 0,
+  "ctrlChangedList": [],
+  "readyMs": 1265,
+  "readyReason": "settled",
+  "bootMs": 882,
+  "final": {
+   "cls": "hz8",
+   "bodyVisible": true,
+   "links": 271,
+   "text": 4980,
+   "scrollY": 0,
+   "hz8Header": true,
+   "sidebarInert": null
+  },
+  "navErr": null,
+  "errors": [],
+  "docRewritten": 1
+ }
+]

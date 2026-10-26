@@ -286,6 +286,14 @@ html.hz8 #sidebar.sidebar {
   transition: transform .28s var(--hz8-ease) !important;
 }
 html.hz8 #sidebar.sidebar.is-active { transform: none; }
+/* Stängd panel: helt dold och inert (inga fokuserbara kontroller, ingen
+   skugga in i viewporten) -- synligheten släpps först när stängningen
+   har glidit klart. Medan sidan är maskad (html.hz8-settling, se
+   00-bootstrap.js) finns ingen övergång alls, så att panelen hamnar
+   direkt i stängt läge när Theme 8-CSS:en tar över Nyehandels
+   left:-500px (TASK 01C). */
+html.hz8 #sidebar.sidebar:not(.is-active) { visibility: hidden !important; transition: transform .28s var(--hz8-ease), visibility 0s linear .28s !important; }
+html.hz8.hz8-settling #sidebar.sidebar.sidebar { transition: none !important; }
 html.hz8 #sidebar .sidebar__header {
   display: flex;
   align-items: center;

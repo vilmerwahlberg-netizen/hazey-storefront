@@ -175,7 +175,11 @@
   function initHeaderEntrance(header) {
     var html = document.documentElement;
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
+    /* Efter en maskerad boot (html.hz8-settling, 00-bootstrap.js) visas
+       headern komplett direkt när masken släpps -- ingen tom bubbla som
+       växer innan innehållet kommer (TASK 01C). */
+    var maskedBoot = html.classList.contains("hz8-settling") || html.classList.contains("hz8-boot");
+    if (reduceMotion || maskedBoot) {
       /* Ingen "priming"-klass läggs alls -- default-CSS:en (panel full
          bredd, allt innehåll synligt) gäller direkt, exakt kravet
          "visa den färdiga headern omedelbart utan skala, stagger eller

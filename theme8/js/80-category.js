@@ -817,17 +817,24 @@
   }
 
   var activePicker = null;
+  /* Skriver bara vid ändring: syncCount körs i HZ8.watch, och en
+     ovillkorlig textContent-skrivning är själv en DOM-mutation som
+     startade nästa watch-omgång var 140:e ms för evigt (TASK 01C). */
+  function setCta(btn, text, href) {
+    if (btn.textContent !== text) btn.textContent = text;
+    if (btn.getAttribute("href") !== href) btn.setAttribute("href", href);
+  }
   function syncCount(actions) {
     var union = activePicker && activePicker.active() && activePicker.count();
     if (union && /\d/.test(union)) {
       var b = actions && actions.querySelector("a");
-      if (b) { b.textContent = "Visa " + union; b.setAttribute("href", "#hz8-series-results"); }
+      if (b) setCta(b, "Visa " + union, "#hz8-series-results");
       return;
     }
     var counter = document.getElementById("products_count");
     var match = counter && counter.textContent.match(/(\d+)/);
     var btn = actions && actions.querySelector("a");
-    if (btn) { btn.textContent = match ? "Visa " + match[1] + " produkter" : "Visa produkterna"; btn.setAttribute("href", "#category-products"); }
+    if (btn) setCta(btn, match ? "Visa " + match[1] + " produkter" : "Visa produkterna", "#category-products");
   }
 
   /* ---- Filtergrupper: bara de som skiljer produkter åt ----
@@ -2272,6 +2279,12 @@
        flervalsmotor som popover/ark (picker.apply) -- ingen egen filterlogik.
        Alternativen speglar motorns egna rader (serier utan produkter i
        formatet tas bort av motorn = inga döda val). */
+    /* Desktopraden väntar på typ-/volymdatan (loadDims): utan markören
+       dyker "Produkttyp" upp efter att sidan visats och knuffar raden
+       ~140 px åt höger (TASK 01C, läses av beredskapen i 00-bootstrap).
+       Portalen har typerna som flikar och väntar inte på datan. */
+    if (!portal) tool.querySelector(".hz8-ptool__desk").setAttribute("aria-busy", "true");
+    function dimsSettled() { tool.querySelector(".hz8-ptool__desk").removeAttribute("aria-busy"); }
     var tabs = null, toolCount = null;
     if (broad) {
       tabs = node("div", "hz8-pfam");
@@ -2581,9 +2594,10 @@
         dims.typ.opts = (portal ? portalFormats() : sources).filter(function (s) { return typeCount[s.key] > 0; }).map(function (s) { return { key: s.key, label: s.label }; });
         dims.volym.opts = Object.keys(vols).map(function (k) { return vols[k]; }).sort(function (a, b) { return a.order - b.order; });
         renderDims();
+        dimsSettled();
         if (picker) picker.sync();
         schedule();
-      }).catch(function () { /* utan fullständiga listor: inga typ-/volymval */ });
+      }).catch(function () { dimsSettled(); /* utan fullständiga listor: inga typ-/volymval */ });
     }
     pilotPausedReady = function () { loadDims(); if (picker) picker.sync(); schedule(); };
 
