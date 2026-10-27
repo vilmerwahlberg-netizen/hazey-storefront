@@ -1,0 +1,69 @@
+{
+ "which": "after",
+ "route": "thcab",
+ "w": 1440,
+ "dataMs": 25,
+ "chips": [
+  {
+   "href": "#hz8-sh-shelves",
+   "key": "all"
+  },
+  {
+   "href": "#thca-vapes",
+   "key": "vapes"
+  },
+  {
+   "href": "#thca-carts",
+   "key": "carts"
+  },
+  {
+   "href": "#thca-buds",
+   "key": "buds"
+  },
+  {
+   "href": "#thca-hasch",
+   "key": "hasch"
+  }
+ ],
+ "click": {
+  "hash": "#thca-hasch",
+  "top": 98,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "hasch"
+ },
+ "back": {
+  "hash": "",
+  "top": null,
+  "headerBottom": 80,
+  "focus": "hz8-prail__title",
+  "current": "all"
+ },
+ "forward": {
+  "hash": "#thca-hasch",
+  "top": 98,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "hasch"
+ },
+ "keyboard": {
+  "hash": "#hz8-sh-nav",
+  "focus": "hz8-sh-chip",
+  "navTop": 92
+ },
+ "viewAll": [
+  "/sv/categories/thca-vapes",
+  "/sv/categories/thca-carts",
+  "/sv/categories/thca-blommor",
+  "/sv/categories/thca-hash"
+ ],
+ "errors": [],
+ "deep": {
+  "hash": "#thca-hasch",
+  "top": 98,
+  "headerBottom": 80,
+  "focus": "has-fixed-header",
+  "current": "hasch"
+ },
+ "deepErrors": []
+}

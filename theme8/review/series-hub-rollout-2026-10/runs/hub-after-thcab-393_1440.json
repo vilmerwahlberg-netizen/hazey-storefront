@@ -1,0 +1,154 @@
+[
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 393,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "THC-A",
+  "lead": "En serie. Flera format.",
+  "count": "",
+  "guide": "Hitta ditt format",
+  "guideText": "Samma serie – olika sätt att hitta rätt.",
+  "cta": "Utforska formaten",
+  "seal": false,
+  "script": null,
+  "heroImg": "thcab-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "height": 483
+  },
+  "chips": [],
+  "shelves": [],
+  "uniqueProducts": 0,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce",
+   "THCaB30 produkter*",
+   "THCbA",
+   "Core",
+   "D10",
+   "Nano-11",
+   "THCV",
+   "HHCPM",
+   "THCNM"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3314,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 1440,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "THC-A",
+  "lead": "En serie. Flera format. Utforska vapes, carts, buds och hasch.",
+  "count": "30 produkter",
+  "guide": "Hitta ditt format",
+  "guideText": "Samma serie – olika sätt att hitta rätt.",
+  "cta": "Utforska formaten",
+  "seal": false,
+  "script": null,
+  "heroImg": "thcab-hero-1512x664.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 446,
+   "height": 446
+  },
+  "chips": [
+   "Alla30, 30 produkter*",
+   "Vapes3, 3 produkter",
+   "Carts2, 2 produkter",
+   "Buds16, 16 produkter",
+   "Hasch9, 9 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "thca-vapes",
+    "title": "THCaB Vapes",
+    "cards": 3,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THC-A 45% - Faraoh - 2ml",
+     "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+     "Vape - THC-A 50% Live Resin - Faraoh - 1ml"
+    ]
+   },
+   {
+    "key": "carts",
+    "id": "thca-carts",
+    "title": "THCaB Carts",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thca-carts?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+     "Cart - THC-A 45% - Faraoh - 1ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "thca-buds",
+    "title": "THCaB Buds",
+    "cards": 16,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thca-blommor?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – THCA 22% – Orange Small Buds – 5 gram",
+     "Buds – THCA 23% – Amnesia Infused – 5 gram",
+     "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "thca-hasch",
+    "title": "THCaB Hasch",
+    "cards": 9,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thca-hash?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Hash – THCA 25% – Ketama – 5 gram",
+     "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+     "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 30,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter*",
+   "THCbA4 produkter",
+   "Core1 produkt",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3608,
+  "errors": []
+ }
+]

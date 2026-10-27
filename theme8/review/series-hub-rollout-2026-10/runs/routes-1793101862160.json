@@ -1,0 +1,49 @@
+[
+ {
+  "route": "/sv/categories/alla-vapes?filters=Serie_Core",
+  "count": 1,
+  "cards": [
+   "Vape - THCX 19% - Core - 2ml [Hero]"
+  ]
+ },
+ {
+  "route": "/sv/categories/blommor-buds?filters=Serie_High%20Life",
+  "count": null,
+  "cards": []
+ },
+ {
+  "route": "/sv/categories/hasch?filters=Serie_High%20Life",
+  "count": null,
+  "cards": []
+ },
+ {
+  "route": "/sv/categories/blommor-buds?filters=Serie_El%20Gringo",
+  "count": null,
+  "cards": []
+ },
+ {
+  "route": "/sv/categories/hasch?filters=Serie_El%20Gringo",
+  "count": null,
+  "cards": []
+ },
+ {
+  "route": "/sv/categories/thcnm",
+  "count": 4,
+  "cards": [
+   "Buds – HighLife THCNM – GSC – 5 gram [Hazey.se]",
+   "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram [Hazey.se]",
+   "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram [Hazey.se]",
+   "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram [Hazey.se]"
+  ]
+ },
+ {
+  "route": "/sv/categories/hhcpm",
+  "count": 4,
+  "cards": [
+   "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram [Hazey.se]",
+   "Blommor – HHCPM 15% – Amnesia – 5 gram [Hazey.se]",
+   "Blommor – HHCPM 15% – Durban Poison – 5 gram [Hazey.se]",
+   "Vape - HHCPM 15% - Canntropy - 2ml [Canntropy]"
+  ]
+ }
+]

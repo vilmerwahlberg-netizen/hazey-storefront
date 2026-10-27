@@ -1,0 +1,330 @@
+[
+ {
+  "route": "thcab",
+  "ctx": {
+   "type": "series-hub",
+   "series": "THCaB"
+  },
+  "series": [
+   {
+    "name": "Magic Sauce",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+    "routes": {
+     "vapes": "/sv/categories/m-s-vapes",
+     "buds": "/sv/categories/m-s-buds",
+     "hasch": "/sv/categories/hasch?filters=Serie_Magic%20Sauce",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges?filters=Serie_Magic%20Sauce"
+    }
+   },
+   {
+    "name": "THCaB",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thca",
+    "routes": {
+     "vapes": "/sv/categories/thca-vapes",
+     "buds": "/sv/categories/thca-blommor",
+     "hasch": "/sv/categories/thca-hash",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thca-carts"
+    }
+   },
+   {
+    "name": "THCbA",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcb",
+    "routes": {
+     "vapes": "/sv/categories/thcb-vapes",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcb-carts"
+    }
+   },
+   {
+    "name": "Core",
+    "hub": null,
+    "routes": {
+     "vapes": "/sv/categories/alla-vapes?filters=Serie_Core"
+    }
+   },
+   {
+    "name": "D10",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/10-oh-thc",
+    "routes": {
+     "vapes": "/sv/categories/10-oh-thc-vapes"
+    }
+   },
+   {
+    "name": "Nano-11",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/nano-11",
+    "routes": {
+     "buds": "/sv/categories/nano11-blommor"
+    }
+   },
+   {
+    "name": "THCV",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcv",
+    "routes": {
+     "vapes": "/sv/categories/thcv-vape",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcv-carts"
+    }
+   },
+   {
+    "name": "HHCPM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/hhcpm",
+    "routes": {
+     "vapes": "/sv/categories/hhcpm-vapes",
+     "buds": "/sv/categories/hhcpm-blommor"
+    }
+   },
+   {
+    "name": "THCNM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcnm",
+    "routes": {
+     "buds": "/sv/categories/thcnm-blommor",
+     "hasch": "/sv/categories/thcnm-hash"
+    }
+   }
+  ]
+ },
+ {
+  "route": "thcba",
+  "ctx": {
+   "type": "series-hub",
+   "series": "THCbA"
+  },
+  "series": [
+   {
+    "name": "Magic Sauce",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+    "routes": {
+     "vapes": "/sv/categories/m-s-vapes",
+     "buds": "/sv/categories/m-s-buds",
+     "hasch": "/sv/categories/hasch?filters=Serie_Magic%20Sauce",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges?filters=Serie_Magic%20Sauce"
+    }
+   },
+   {
+    "name": "THCaB",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thca",
+    "routes": {
+     "vapes": "/sv/categories/thca-vapes",
+     "buds": "/sv/categories/thca-blommor",
+     "hasch": "/sv/categories/thca-hash",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thca-carts"
+    }
+   },
+   {
+    "name": "THCbA",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcb",
+    "routes": {
+     "vapes": "/sv/categories/thcb-vapes",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcb-carts"
+    }
+   },
+   {
+    "name": "Core",
+    "hub": null,
+    "routes": {
+     "vapes": "/sv/categories/alla-vapes?filters=Serie_Core"
+    }
+   },
+   {
+    "name": "D10",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/10-oh-thc",
+    "routes": {
+     "vapes": "/sv/categories/10-oh-thc-vapes"
+    }
+   },
+   {
+    "name": "Nano-11",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/nano-11",
+    "routes": {
+     "buds": "/sv/categories/nano11-blommor"
+    }
+   },
+   {
+    "name": "THCV",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcv",
+    "routes": {
+     "vapes": "/sv/categories/thcv-vape",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcv-carts"
+    }
+   },
+   {
+    "name": "HHCPM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/hhcpm",
+    "routes": {
+     "vapes": "/sv/categories/hhcpm-vapes",
+     "buds": "/sv/categories/hhcpm-blommor"
+    }
+   },
+   {
+    "name": "THCNM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcnm",
+    "routes": {
+     "buds": "/sv/categories/thcnm-blommor",
+     "hasch": "/sv/categories/thcnm-hash"
+    }
+   }
+  ]
+ },
+ {
+  "route": "d10",
+  "ctx": {
+   "type": "series-hub",
+   "series": "D10"
+  },
+  "series": [
+   {
+    "name": "Magic Sauce",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+    "routes": {
+     "vapes": "/sv/categories/m-s-vapes",
+     "buds": "/sv/categories/m-s-buds",
+     "hasch": "/sv/categories/hasch?filters=Serie_Magic%20Sauce",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges?filters=Serie_Magic%20Sauce"
+    }
+   },
+   {
+    "name": "THCaB",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thca",
+    "routes": {
+     "vapes": "/sv/categories/thca-vapes",
+     "buds": "/sv/categories/thca-blommor",
+     "hasch": "/sv/categories/thca-hash",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thca-carts"
+    }
+   },
+   {
+    "name": "THCbA",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcb",
+    "routes": {
+     "vapes": "/sv/categories/thcb-vapes",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcb-carts"
+    }
+   },
+   {
+    "name": "Core",
+    "hub": null,
+    "routes": {
+     "vapes": "/sv/categories/alla-vapes?filters=Serie_Core"
+    }
+   },
+   {
+    "name": "D10",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/10-oh-thc",
+    "routes": {
+     "vapes": "/sv/categories/10-oh-thc-vapes"
+    }
+   },
+   {
+    "name": "Nano-11",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/nano-11",
+    "routes": {
+     "buds": "/sv/categories/nano11-blommor"
+    }
+   },
+   {
+    "name": "THCV",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcv",
+    "routes": {
+     "vapes": "/sv/categories/thcv-vape",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcv-carts"
+    }
+   },
+   {
+    "name": "HHCPM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/hhcpm",
+    "routes": {
+     "vapes": "/sv/categories/hhcpm-vapes",
+     "buds": "/sv/categories/hhcpm-blommor"
+    }
+   },
+   {
+    "name": "THCNM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcnm",
+    "routes": {
+     "buds": "/sv/categories/thcnm-blommor",
+     "hasch": "/sv/categories/thcnm-hash"
+    }
+   }
+  ]
+ },
+ {
+  "route": "nano11",
+  "ctx": {
+   "type": "series-hub",
+   "series": "Nano-11"
+  },
+  "series": [
+   {
+    "name": "Magic Sauce",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+    "routes": {
+     "vapes": "/sv/categories/m-s-vapes",
+     "buds": "/sv/categories/m-s-buds",
+     "hasch": "/sv/categories/hasch?filters=Serie_Magic%20Sauce",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges?filters=Serie_Magic%20Sauce"
+    }
+   },
+   {
+    "name": "THCaB",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thca",
+    "routes": {
+     "vapes": "/sv/categories/thca-vapes",
+     "buds": "/sv/categories/thca-blommor",
+     "hasch": "/sv/categories/thca-hash",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thca-carts"
+    }
+   },
+   {
+    "name": "THCbA",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcb",
+    "routes": {
+     "vapes": "/sv/categories/thcb-vapes",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcb-carts"
+    }
+   },
+   {
+    "name": "Core",
+    "hub": null,
+    "routes": {
+     "vapes": "/sv/categories/alla-vapes?filters=Serie_Core"
+    }
+   },
+   {
+    "name": "D10",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/10-oh-thc",
+    "routes": {
+     "vapes": "/sv/categories/10-oh-thc-vapes"
+    }
+   },
+   {
+    "name": "Nano-11",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/nano-11",
+    "routes": {
+     "buds": "/sv/categories/nano11-blommor"
+    }
+   },
+   {
+    "name": "THCV",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcv",
+    "routes": {
+     "vapes": "/sv/categories/thcv-vape",
+     "carts": "https://hazeyse.nyehandel.se/sv/categories/thcv-carts"
+    }
+   },
+   {
+    "name": "HHCPM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/hhcpm",
+    "routes": {
+     "vapes": "/sv/categories/hhcpm-vapes",
+     "buds": "/sv/categories/hhcpm-blommor"
+    }
+   },
+   {
+    "name": "THCNM",
+    "hub": "https://hazeyse.nyehandel.se/sv/categories/thcnm",
+    "routes": {
+     "buds": "/sv/categories/thcnm-blommor",
+     "hasch": "/sv/categories/thcnm-hash"
+    }
+   }
+  ]
+ }
+]

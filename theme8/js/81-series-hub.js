@@ -238,7 +238,7 @@
   /* ======================================================================
      Seriehubb, ny riktning (pilot). Återanvändbar komponent som styrs av
      SERIES_PILOTS -- aktiv bara för serier som har en post där (i den här
-     rundan: Magic Sauce). Övriga seriehubbar använder HZ8.seriesHub ovan.
+     rundan: Magic Sauce, THCaB). Övriga seriehubbar använder HZ8.seriesHub ovan.
 
      Data (inget hårdkodat): seriens produkter = union av seriens egen hubb
      (alla sidor) och alla serie x format-routes i relationskartan,
@@ -273,6 +273,26 @@
       guide: { title: "Hitta ditt format", text: "Samma serie – olika sätt att hitta rätt.", cta: "Utforska formaten" },
       seal: "MAGIC SAUCE · HAZEY.SE · MAGIC SAUCE ·",
       script: ["Sunsets &", "Higher Horizons"]
+    },
+    /* TASK 04C-B: samma komponent, egen hero och copy. Formaten visas
+       bara när riktiga produkter finns; ingen sigill/skript-dekor (bara
+       Magic Sauce har en godkänd). */
+    "THCaB": {
+      lead: "En serie. Flera format.",
+      hero: {
+        dir: "series-thcab-hero-2026-10/",
+        wide: ["thcab-hero-1920x744.webp", 1920, 744],
+        desk: ["thcab-hero-1512x664.webp", 1512, 664],
+        mobile: ["thcab-hero-mobile-900x1802.webp", 900, 1802],
+        /* Produkterna ligger högre i bilden än i Magic Sauce: vertikal
+           fokus på desktop/wide, och mobilingressen slutar före paketen
+           (uppmätt kontrast). */
+        pos: "50% 34%",
+        posTablet: "50% 68%",
+        leadMobile: "min(21ch, 46vw)"
+      },
+      formats: ["vapes", "carts", "buds", "hasch"],
+      guide: { title: "Hitta ditt format", text: "Samma serie – olika sätt att hitta rätt.", cta: "Utforska formaten" }
     }
   };
   var SH_MAX_PAGES = 8;
@@ -382,13 +402,19 @@
           '<div class="hz8-sh-guide__body"><p class="hz8-sh-guide__title" id="hz8-sh-guide-title">' + HZ8.esc(cfg.guide.title) + "</p>" +
           '<p class="hz8-sh-guide__text">' + HZ8.esc(cfg.guide.text) + "</p>" +
           '<a class="hz8-sh-cta" href="#hz8-sh-nav"><span>' + HZ8.esc(cfg.guide.cta) + "</span>" + ARROW_SVG + "</a></div></aside>" +
-        '<div class="hz8-sh-decor" aria-hidden="true">' +
+        /* Dekor (sigill + skript) bara för serier med godkänd sådan. */
+        (cfg.seal && cfg.script ? '<div class="hz8-sh-decor" aria-hidden="true">' +
           '<svg class="hz8-sh-decor__seal" viewBox="0 0 120 120" focusable="false"><defs><path id="hz8-sh-ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>' +
             '<circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55"/>' +
             '<text font-size="9.2" letter-spacing="2.4" fill="currentColor"><textPath href="#hz8-sh-ring" startOffset="2%">' + HZ8.esc(cfg.seal) + "</textPath></text>" +
             '<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M46 80c4-20 14-36 30-44-2 18-12 34-30 44z"/><path d="M46 80l22-34M55 66l-6-4M61 57l-7-3M65 50l-6-1"/></g></svg>' +
-          '<p class="hz8-sh-decor__script">' + cfg.script.map(HZ8.esc).join("<br>") + "</p></div>" +
+          '<p class="hz8-sh-decor__script">' + cfg.script.map(HZ8.esc).join("<br>") + "</p></div>" : "") +
       "</div>";
+    /* Valfri seriespecifik bildfokus och mobil ingressbredd (data, inte
+       en CSS-fork); utan värden gäller Magic Sauce-standarden. */
+    if (h.pos) hero.style.setProperty("--sh-art-pos", h.pos);
+    if (h.posTablet) hero.style.setProperty("--sh-art-pos-t", h.posTablet);
+    if (h.leadMobile) hero.style.setProperty("--sh-lead-m", h.leadMobile);
     var copy = hero.querySelector(".hz8-sh-hero__copy");
     /* Brödsmulor: Nyehandels egna länkar (klon -- originalet i plattformens
        DOM rörs inte, döljs bara i piloten). */

@@ -228,7 +228,7 @@ html.hz8 #store-main .hz8-more .hz8-more__shelf .hz8-prail__title { font-family:
 
 /* ======================================================================
    SERIEHUBB, NY RIKTNING (pilot, html.hz8-sh-pilot -- 81-series-hub.js
-   seriesHubPilot, aktiv för serier i SERIES_PILOTS: Magic Sauce).
+   seriesHubPilot, aktiv för serier i SERIES_PILOTS: Magic Sauce, THCaB).
    Samma familj som Alla Vapes-piloten (80-category.css): kusthero med
    separat kalkputslager, rökt olivglas-quiz, produktkort och köpknappar
    (kortreglerna i 80-category.css gäller båda piloterna). Egen logik:
@@ -287,7 +287,7 @@ html.hz8-sh-pilot .hz8-sh-hero__art, html.hz8-sh-pilot .hz8-sh-hero__art img { p
 html.hz8-sh-pilot .hz8-sh-hero__art { overflow: hidden; }
 /* Lägre scen -> produktgruppen förstoras lite (förankrad i produkternas
    hörn), samt en mycket svag tonkorrigering mot facit. */
-html.hz8-sh-pilot .hz8-sh-hero__art img { object-fit: cover; object-position: 50% 100%; filter: saturate(.92) contrast(.98); transform: scale(1.08); transform-origin: 86% 96%; }
+html.hz8-sh-pilot .hz8-sh-hero__art img { object-fit: cover; object-position: var(--sh-art-pos, 50% 100%); filter: saturate(.92) contrast(.98); transform: scale(1.08); transform-origin: 86% 96%; }
 html.hz8-sh-pilot .hz8-sh-hero__plaster {
   position: absolute;
   inset: 0;
@@ -880,7 +880,7 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   html.hz8-sh-pilot .hz8-sh-hero__inner { display: flex; flex-direction: column; padding-bottom: 14px; }
   html.hz8-sh-pilot .hz8-sh-hero__copy { max-width: 100%; }
   html.hz8.hz8-sh-pilot #store-main .hz8-sh-hero h1 { margin: 16px 0 10px !important; font-size: clamp(40px, 11.7vw, 47px) !important; }
-  html.hz8-sh-pilot .hz8-sh-hero__lead { max-width: 33ch; margin-bottom: 8px !important; font-size: 15px !important; }
+  html.hz8-sh-pilot .hz8-sh-hero__lead { max-width: var(--sh-lead-m, 33ch); margin-bottom: 8px !important; font-size: 15px !important; }
   html.hz8-sh-pilot .hz8-sh-hero__count { color: var(--hz8-pilot-green) !important; font-size: 14px !important; }
   /* Mobil: lite fylligare lokal ljuskontrast (fotot är ljusare bakom texten). */
   html.hz8-sh-pilot :is(.hz8-sh-hero__lead, .hz8-sh-hero__count) { text-shadow: 0 0 12px rgba(252, 241, 222, .9), 0 0 4px rgba(252, 241, 222, .8), 0 0 1px rgba(252, 241, 222, .9); }
@@ -912,6 +912,12 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   html.hz8-sh-pilot .hz8-sh-more__region { padding: 0 14px 14px; }
   html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__item { min-height: 48px; }
   html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__label { font-size: 16px !important; }
+}
+/* Bred mobil/200 % zoom (480-767): mobilbilden blir så hög att en
+   bottenförankrad crop bara visar förgrunden. Seriens egen fokus
+   (SERIES_PILOTS hero.posTablet); utan värde oförändrat. */
+@media (min-width: 480px) and (max-width: 767px) {
+  html.hz8-sh-pilot .hz8-sh-hero__art img { object-position: var(--sh-art-pos-t, 50% 100%); }
 }
 @media (max-width: 359px) {
   /* Smal telefon: ~1,85 kort per vy så att pris + köpknapp får plats. */
