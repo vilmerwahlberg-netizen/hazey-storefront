@@ -1,0 +1,3114 @@
+{
+ "schema": "hazey.task04.route-matrix/1",
+ "generated": "2026-10-27T16:58:16.408Z",
+ "sourceCommit": "8a7132e (dev) + live Nyehandel 2026-10-27",
+ "extraRoutes": [
+  {
+   "route": "/sv/search?query={q}",
+   "family": "search result",
+   "kind": "native search",
+   "h1Native": null,
+   "canonical": "/sv/search",
+   "robots": "noindex, nofollow",
+   "desiredTemplate": "search results page (Task 09)",
+   "rolloutBatch": "Task 09 → Batch D",
+   "note": "no H1, no server count; 'core' → 2 products, 'magic sauce' → 13"
+  },
+  {
+   "route": "/sv/categories/alla-produkter?typ={format}&q={q}",
+   "family": "Alla produkter portal",
+   "kind": "Theme 8 client state",
+   "desiredTemplate": "Alla produkter portal (C07)",
+   "rolloutBatch": "control (C07)",
+   "note": "portal tabs/search state, not a route"
+  },
+  {
+   "route": "/sv/page/kampanjer",
+   "family": "campaign/special",
+   "kind": "native page",
+   "desiredTemplate": "campaign page (outside category scope)",
+   "rolloutBatch": "outside Task 04C",
+   "note": "header + footer link"
+  },
+  {
+   "route": "/sv/page/vara-bastsaljare",
+   "family": "campaign/special",
+   "kind": "native page",
+   "desiredTemplate": "bestsellers landing (Task 11)",
+   "rolloutBatch": "Task 11",
+   "note": "header + footer link"
+  }
+ ],
+ "routes": [
+  {
+   "route": "/sv/categories/alla-produkter",
+   "path": "/sv/categories/alla-produkter",
+   "query": null,
+   "family": "Alla produkter portal",
+   "kind": "dedicated",
+   "context": "whole catalog",
+   "status": 200,
+   "categoryId": 1,
+   "h1Native": "Alla produkter",
+   "h1Theme8": null,
+   "count": 104,
+   "pages": 5,
+   "canonical": "/sv/categories/alla-produkter",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla produkter",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CCELL",
+      "CBD Group",
+      "Canapuff",
+      "Hazey.se",
+      "Canntropy",
+      "Trinacria Hemp",
+      "Euphoria",
+      "Tatra Hemp",
+      "Faraoh",
+      "Magic Farmers",
+      "Cookies",
+      "Hero"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11",
+      "Magic Sauce",
+      "Core"
+     ]
+    }
+   ],
+   "theme8Family": "portal",
+   "theme8Shell": null,
+   "desiredTemplate": "Alla produkter portal (C07)",
+   "controlRoute": "self",
+   "rolloutBatch": "control (C07 done)",
+   "dependency": "—",
+   "adminGap": "Fraktändring is a listed product; 2 THCA products missing from category",
+   "visualFunctionalDebt": "non-product in grid",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)",
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "hash-cbd-15-primero-1-gram",
+    "buds-thca-22-orange-small-buds-5-gram",
+    "hash-thca-25-ketama-5-gram",
+    "cart-thc-a-50-live-resin-faraoh-1ml",
+    "hash-magic-sauce-50-charas-5-gram",
+    "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "buds-thca-23-amnesia-infused-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-highlife-thcnm-gsc-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "vape-thcx-19-core-2ml",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "blommor-cbd-30-tequila-sunrise-35-gram",
+    "cart-thc-a-45-faraoh-1ml",
+    "vape-magic-sauce-99-2ml",
+    "cart-magic-sauce-99-1ml",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-thca-25-bubbelgum-og-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "vape-thc-a-45-faraoh-2ml",
+    "buds-thca-23-amnesia-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram",
+    "blommor-hhcpm-15-amnesia-5-gram",
+    "blommor-hhcpm-15-durban-poison-5-gram",
+    "vape-hhcpm-15-canntropy-2ml",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "cart-cbd-60-cookies-1ml",
+    "vape-thcv-euphoria-2ml",
+    "buds-15-cbd-10-gram-russian-roulette",
+    "ccell-m3b-vape-batteri-510",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "isolat-thca-99-isolate-5-gram",
+    "buds-cbd-30-cereal-milk-35-gram",
+    "vape-thc-b-35-faraoh-1ml",
+    "ccell-m3-plus-vape-batteri-510",
+    "vape-cbn-89-canapuff-1ml",
+    "ccell-palm-pro-vape-batteri-510",
+    "vape-thc-v-20-cbd-group-2ml",
+    "fraktandring",
+    "ccell-m4-vape-batteri-510",
+    "hash-thca-25-la-mousse-5-gram",
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "buds-thca-24-zkittles-indoor-5-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "buds-cbd-purple-haze-5-gram",
+    "buds-cbd-strawberry-haze-5-gram",
+    "buds-cbd-trim-royal-10-gram",
+    "vape-10-oh-thc-95-canapuff-1ml",
+    "prerolled-cbd-tequila-sunrise-1-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "buds-thca-22-kitty-indoor-5-gram",
+    "buds-thca-22-og-kush-small-buds-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-thca-24-ice-indoor-5-gram",
+    "hash-thca-50-bubble-hash-5-gram",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "prerolled-cbd-blue-raz-1-gram",
+    "prerolled-cbd-apples-amp-bananas-1-gram",
+    "hash-thca-30-dry-static-5-gram",
+    "prerolled-thca-22-bangkok-1-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram",
+    "buds-thca-18-strawberry-og-5-gram",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "cart-thc-b-20-tatra-hemp-1ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "cart-thc-v-20-tatra-hemp-1ml",
+    "ccell-fino-vape-batteri-510",
+    "ccell-sandwave-vape-batteri-510",
+    "buds-cbd-30-triple-scoop-35-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "hash-thca-30-dry-sift-5-gram",
+    "buds-thca-23-orange-indoor-5-gram",
+    "buds-7-nano11-lemon-purple-5-gram",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "hazeyse-merch-nyckelring",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "blommor-cbd-3g-purple-haze-trinacria-hemp",
+    "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+    "blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+    "vape-cbd-46-hazey-1ml",
+    "blommor-cbn-10-great-white-shark",
+    "buds-h4cbd-30-kusher-kush-5-gram",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/alla-vapes",
+   "path": "/sv/categories/alla-vapes",
+   "query": null,
+   "family": "broad format",
+   "kind": "dedicated",
+   "context": "format: vapes (+carts/refill/batteries filters)",
+   "status": 200,
+   "categoryId": 5,
+   "h1Native": "Alla Vapes",
+   "h1Theme8": null,
+   "count": 24,
+   "pages": 1,
+   "canonical": "/sv/categories/alla-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Vapes",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CBD Group",
+      "Canapuff",
+      "Canntropy",
+      "Hazey.se",
+      "Euphoria",
+      "Tatra Hemp",
+      "Faraoh",
+      "Hero",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Core",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "vapes-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G)",
+   "controlRoute": "self (pilot)",
+   "rolloutBatch": "control",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thcx-19-core-2ml",
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "vape-magic-sauce-99-2ml",
+    "vape-thc-a-45-faraoh-2ml",
+    "vape-hhcpm-15-canntropy-2ml",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "vape-thcv-euphoria-2ml",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "vape-thc-b-35-faraoh-1ml",
+    "vape-cbn-89-canapuff-1ml",
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-10-oh-thc-95-canapuff-1ml",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "vape-cbd-46-hazey-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/blommor-buds",
+   "path": "/sv/categories/blommor-buds",
+   "query": null,
+   "family": "broad format",
+   "kind": "dedicated",
+   "context": "format: buds",
+   "status": 200,
+   "categoryId": 13,
+   "h1Native": "Alla Buds",
+   "h1Theme8": null,
+   "count": 54,
+   "pages": 3,
+   "canonical": "/sv/categories/blommor-buds",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Buds",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Trinacria Hemp",
+      "Hazey.se",
+      "Tatra Hemp",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "broad",
+   "theme8Shell": null,
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G)",
+   "controlRoute": "self",
+   "rolloutBatch": "Batch A control",
+   "dependency": "—",
+   "adminGap": "NOW (legacy Nyehandel): 4 legacy pre-rolls, 2 legacy isolates and 1 hash (CBN Yellowstone) listed; the pre-rolls/isolates leave with the WooCommerce migration. TARGET: Buds holds buds + buds-based pre-rolls (secondary)",
+   "visualFunctionalDebt": "off-format legacy products",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-thca-22-orange-small-buds-5-gram",
+    "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "buds-thca-23-amnesia-infused-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-highlife-thcnm-gsc-5-gram",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "blommor-cbd-30-tequila-sunrise-35-gram",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-thca-25-bubbelgum-og-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "buds-thca-23-amnesia-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "blommor-hhcpm-15-amnesia-5-gram",
+    "blommor-hhcpm-15-durban-poison-5-gram",
+    "buds-15-cbd-10-gram-russian-roulette",
+    "isolat-thca-99-isolate-5-gram",
+    "buds-cbd-30-cereal-milk-35-gram",
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "buds-thca-24-zkittles-indoor-5-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "buds-thca-25-raspberry-5-gram",
+    "buds-cbd-purple-haze-5-gram",
+    "buds-cbd-strawberry-haze-5-gram",
+    "buds-cbd-trim-royal-10-gram",
+    "prerolled-cbd-tequila-sunrise-1-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "buds-thca-22-kitty-indoor-5-gram",
+    "buds-thca-22-og-kush-small-buds-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-thca-24-ice-indoor-5-gram",
+    "prerolled-cbd-blue-raz-1-gram",
+    "prerolled-cbd-apples-amp-bananas-1-gram",
+    "prerolled-thca-22-bangkok-1-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram",
+    "buds-thca-18-strawberry-og-5-gram",
+    "buds-cbd-30-triple-scoop-35-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "buds-thca-23-orange-indoor-5-gram",
+    "buds-7-nano11-lemon-purple-5-gram",
+    "blommor-cbd-3g-purple-haze-trinacria-hemp",
+    "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+    "blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+    "blommor-cbn-10-great-white-shark",
+    "buds-h4cbd-30-kusher-kush-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/hasch",
+   "path": "/sv/categories/hasch",
+   "query": null,
+   "family": "broad format",
+   "kind": "dedicated",
+   "context": "format: hasch",
+   "status": 200,
+   "categoryId": 18,
+   "h1Native": "Allt Hasch",
+   "h1Theme8": null,
+   "count": 16,
+   "pages": 1,
+   "canonical": "/sv/categories/hasch",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Allt Hasch",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "broad",
+   "theme8Shell": null,
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G)",
+   "controlRoute": "/blommor-buds",
+   "rolloutBatch": "Batch A control",
+   "dependency": "—",
+   "adminGap": "NOW (legacy): 2 legacy isolates listed, leaving with the migration. TARGET: Hasch holds hash + hash-based pre-rolls (secondary)",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-cbd-15-primero-1-gram",
+    "hash-thca-25-ketama-5-gram",
+    "hash-magic-sauce-50-charas-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram",
+    "isolat-thca-99-isolate-5-gram",
+    "hash-thca-25-la-mousse-5-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "hash-thca-60-piatella-hash-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "hash-thca-50-bubble-hash-5-gram",
+    "hash-thca-30-dry-static-5-gram",
+    "hash-thca-30-dry-sift-5-gram",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/h4cbd",
+   "path": "/sv/categories/h4cbd",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid: CBD/H4CBD family (header 'CBD')",
+   "status": 200,
+   "categoryId": 3,
+   "h1Native": "H4CBD",
+   "h1Theme8": null,
+   "count": 29,
+   "pages": 2,
+   "canonical": "/sv/categories/h4cbd",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "H4CBD",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CBD Group",
+      "Canapuff",
+      "Canntropy",
+      "Trinacria Hemp",
+      "Hazey.se",
+      "Tatra Hemp",
+      "Cookies",
+      "Magic Farmers"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "H1 'H4CBD' vs header label 'CBD'",
+   "visualFunctionalDebt": "legacy description copy",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-cbd-15-primero-1-gram",
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "blommor-cbd-30-tequila-sunrise-35-gram",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "cart-cbd-60-cookies-1ml",
+    "buds-15-cbd-10-gram-russian-roulette",
+    "buds-cbd-30-cereal-milk-35-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "buds-cbd-purple-haze-5-gram",
+    "buds-cbd-strawberry-haze-5-gram",
+    "buds-cbd-trim-royal-10-gram",
+    "prerolled-cbd-tequila-sunrise-1-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "prerolled-cbd-blue-raz-1-gram",
+    "prerolled-cbd-apples-amp-bananas-1-gram",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "buds-cbd-30-triple-scoop-35-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "blommor-cbd-3g-purple-haze-trinacria-hemp",
+    "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+    "blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+    "vape-cbd-46-hazey-1ml",
+    "buds-h4cbd-30-kusher-kush-5-gram",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/m-s-vapes",
+   "path": "/sv/categories/m-s-vapes",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "Magic Sauce × vapes",
+   "status": 200,
+   "categoryId": 45,
+   "h1Native": "M.S Vapes",
+   "h1Theme8": "Magic Sauce Vapes",
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/m-s-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "M.S Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts hz8-sf-low",
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A (control)",
+   "dependency": "—",
+   "adminGap": "contains the Magic Sauce cart (off-format)",
+   "visualFunctionalDebt": "2 products, 1 is a cart",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-magic-sauce-99-2ml",
+    "cart-magic-sauce-99-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/alla-vapes?serie=magic-sauce",
+   "path": "/sv/categories/alla-vapes",
+   "query": "serie=magic-sauce",
+   "family": "broad format",
+   "kind": "Theme 8 client state",
+   "context": "vapes filtered to Magic Sauce (Theme 8 ?serie=)",
+   "status": 200,
+   "categoryId": 5,
+   "h1Native": "Alla Vapes",
+   "h1Theme8": null,
+   "count": 24,
+   "pages": 1,
+   "canonical": "/sv/categories/alla-vapes",
+   "canonicalSelf": false,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Vapes",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CBD Group",
+      "Canapuff",
+      "Canntropy",
+      "Hazey.se",
+      "Euphoria",
+      "Tatra Hemp",
+      "Faraoh",
+      "Hero",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Core",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "vapes-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G)",
+   "controlRoute": "/alla-vapes",
+   "rolloutBatch": "Task 08 (state contract)",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "server ignores ?serie= (count 24); header navHref only",
+   "linkSources": [
+    "Theme 8 header"
+   ],
+   "products": [
+    "vape-thcx-19-core-2ml",
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "vape-magic-sauce-99-2ml",
+    "vape-thc-a-45-faraoh-2ml",
+    "vape-hhcpm-15-canntropy-2ml",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "vape-thcv-euphoria-2ml",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "vape-thc-b-35-faraoh-1ml",
+    "vape-cbn-89-canapuff-1ml",
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-10-oh-thc-95-canapuff-1ml",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "vape-cbd-46-hazey-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thca-vapes",
+   "path": "/sv/categories/thca-vapes",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCaB × vapes",
+   "status": 200,
+   "categoryId": 32,
+   "h1Native": "THCA Vapes",
+   "h1Theme8": "THCaB Vapes",
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/thca-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCA Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Faraoh"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "self (accepted THCaB control)",
+   "rolloutBatch": "Batch A control",
+   "dependency": "—",
+   "adminGap": "contains 1 cart (THC-A 45%)",
+   "visualFunctionalDebt": "off-format product",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-a-45-faraoh-1ml",
+    "vape-thc-a-45-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcb-vapes",
+   "path": "/sv/categories/thcb-vapes",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCbA × vapes",
+   "status": 200,
+   "categoryId": 20,
+   "h1Native": "THCB Vapes",
+   "h1Theme8": null,
+   "count": 3,
+   "pages": 1,
+   "canonical": "/sv/categories/thcb-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCB Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp",
+      "Faraoh"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thc-b-35-faraoh-1ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/alla-vapes?filters=Serie_Core",
+   "path": "/sv/categories/alla-vapes",
+   "query": "filters=Serie_Core",
+   "family": "manufacturer/filter state",
+   "kind": "filtered/shared",
+   "context": "vapes filtered to Core",
+   "status": 200,
+   "categoryId": 5,
+   "h1Native": "Alla Vapes",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/alla-vapes",
+   "canonicalSelf": false,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Vapes",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hero"
+     ]
+    },
+    {
+     "Serie": [
+      "Core",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "vapes-pilot (rewritten to ?serie=core)",
+   "theme8Shell": null,
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G)",
+   "controlRoute": "/alla-vapes",
+   "rolloutBatch": "Task 08; header link decision in 04A/04C",
+   "dependency": "Core hub /core",
+   "adminGap": "decide header Core target: /core hub vs vapes filter",
+   "visualFunctionalDebt": "1 product",
+   "linkSources": [
+    "Theme 8 header"
+   ],
+   "products": [
+    "vape-thcx-19-core-2ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/10-oh-thc-vapes",
+   "path": "/sv/categories/10-oh-thc-vapes",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy product category",
+   "context": "10-OH-THC × vapes legacy — NOT D10 × vapes",
+   "status": 200,
+   "categoryId": 43,
+   "h1Native": "10-OH-THC Vapes",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/10-oh-thc-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "10-OH-THC Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (not a D10 destination)",
+   "controlRoute": "—",
+   "rolloutBatch": "on hold (removed from Batch A)",
+   "dependency": "migration: real D10 products/category",
+   "adminGap": "must not be used for Delta-10",
+   "visualFunctionalDebt": "header D10 link currently points here (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-10-oh-thc-95-canapuff-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcv-vape",
+   "path": "/sv/categories/thcv-vape",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy / on hold",
+   "context": "THCV × vapes — THCV not in the planned new assortment",
+   "status": 200,
+   "categoryId": 11,
+   "h1Native": "THCV Vapes",
+   "h1Theme8": null,
+   "count": 6,
+   "pages": 1,
+   "canonical": "/sv/categories/thcv-vape",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCV Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff",
+      "Canntropy",
+      "CBD Group",
+      "Euphoria",
+      "Tatra Hemp"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (on hold until real THCV products exist in the new assortment)",
+   "controlRoute": "—",
+   "rolloutBatch": "on hold (removed from Batch A/B)",
+   "dependency": "new-assortment THCV products",
+   "adminGap": "build/expose no new THCV pages; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently linked by Theme 8 header/catalog map (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thcv-euphoria-2ml",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/hhcpm-vapes",
+   "path": "/sv/categories/hhcpm-vapes",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy HHCPM × vapes",
+   "status": 200,
+   "categoryId": 41,
+   "h1Native": "HHCPM Vapes",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/hhcpm-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "HHCPM Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canntropy"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (do not mass-produce series × format pages)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch A)",
+   "dependency": "migration",
+   "adminGap": "Canntropy HHCPM vape: legacy, not Core family; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently in Theme 8 header SERIER (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-hhcpm-15-canntropy-2ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/alla-cartridges",
+   "path": "/sv/categories/alla-cartridges",
+   "query": null,
+   "family": "broad format",
+   "kind": "dedicated",
+   "context": "format: carts",
+   "status": 200,
+   "categoryId": 22,
+   "h1Native": "Alla Carts",
+   "h1Theme8": "Alla Carts",
+   "count": 7,
+   "pages": 1,
+   "canonical": "/sv/categories/alla-cartridges",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Carts",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp",
+      "Cookies",
+      "Faraoh",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "format-legacy (nav=format)",
+   "theme8Shell": "hz8-series-picker hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "broad format family — Carts adaptation (Task 05)",
+   "controlRoute": "/alla-vapes",
+   "rolloutBatch": "Task 05 → Batch D",
+   "dependency": "Task 05 decision",
+   "adminGap": "—",
+   "visualFunctionalDebt": "not in accepted broad family",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-a-50-live-resin-faraoh-1ml",
+    "cart-thc-a-45-faraoh-1ml",
+    "cart-magic-sauce-99-1ml",
+    "cart-cbd-60-cookies-1ml",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "cart-thc-b-20-tatra-hemp-1ml",
+    "cart-thc-v-20-tatra-hemp-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/pennor",
+   "path": "/sv/categories/pennor",
+   "query": null,
+   "family": "accessory/battery",
+   "kind": "dedicated",
+   "context": "batteries/accessories",
+   "status": 200,
+   "categoryId": 2,
+   "h1Native": "Pennor/Batteri",
+   "h1Theme8": null,
+   "count": 6,
+   "pages": 1,
+   "canonical": "/sv/categories/pennor",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Pennor/Batteri",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CCELL"
+     ]
+    }
+   ],
+   "theme8Family": "format-legacy (nav=format)",
+   "theme8Shell": null,
+   "desiredTemplate": "accessory/battery template (Task 07)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 07 → Batch D",
+   "dependency": "Task 07",
+   "adminGap": "H1 'Pennor/Batteri' is legacy wording",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "ccell-m3b-vape-batteri-510",
+    "ccell-m3-plus-vape-batteri-510",
+    "ccell-palm-pro-vape-batteri-510",
+    "ccell-m4-vape-batteri-510",
+    "ccell-fino-vape-batteri-510",
+    "ccell-sandwave-vape-batteri-510"
+   ]
+  },
+  {
+   "route": "/sv/categories/m-s-buds",
+   "path": "/sv/categories/m-s-buds",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "Magic Sauce × buds",
+   "status": 200,
+   "categoryId": 34,
+   "h1Native": "M.S Buds",
+   "h1Theme8": "Magic Sauce Buds",
+   "count": 9,
+   "pages": 1,
+   "canonical": "/sv/categories/m-s-buds",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "M.S Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A (after admin fix)",
+   "dependency": "04B admin",
+   "adminGap": "contains 2 Magic Sauce hash; missing La Chupacabra",
+   "visualFunctionalDebt": "wrong membership",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-magic-sauce-50-charas-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thca-blommor",
+   "path": "/sv/categories/thca-blommor",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCaB × buds",
+   "status": 200,
+   "categoryId": 27,
+   "h1Native": "THCA Buds",
+   "h1Theme8": null,
+   "count": 16,
+   "pages": 1,
+   "canonical": "/sv/categories/thca-blommor",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCA Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "NOW (legacy): legacy pre-roll Bangkok + legacy THCA isolate listed; both leave with the migration (no investigation needed)",
+   "visualFunctionalDebt": "legacy off-format products",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-thca-22-orange-small-buds-5-gram",
+    "buds-thca-23-amnesia-infused-5-gram",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "buds-thca-25-bubbelgum-og-5-gram",
+    "buds-thca-23-amnesia-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "isolat-thca-99-isolate-5-gram",
+    "buds-thca-24-zkittles-indoor-5-gram",
+    "buds-thca-25-raspberry-5-gram",
+    "buds-thca-22-kitty-indoor-5-gram",
+    "buds-thca-22-og-kush-small-buds-5-gram",
+    "buds-thca-24-ice-indoor-5-gram",
+    "prerolled-thca-22-bangkok-1-gram",
+    "buds-thca-18-strawberry-og-5-gram",
+    "buds-thca-23-orange-indoor-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/nano11-blommor",
+   "path": "/sv/categories/nano11-blommor",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "Nano-11 × buds",
+   "status": 200,
+   "categoryId": 30,
+   "h1Native": "Nano11 Buds",
+   "h1Theme8": null,
+   "count": 8,
+   "pages": 1,
+   "canonical": "/sv/categories/nano11-blommor",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Nano11 Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "identical assortment to /nano-11 hub (8/8)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "buds-7-nano11-lemon-purple-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/hhcpm-blommor",
+   "path": "/sv/categories/hhcpm-blommor",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy HHCPM × buds",
+   "status": 200,
+   "categoryId": 40,
+   "h1Native": "HHCPM Buds",
+   "h1Theme8": null,
+   "count": 3,
+   "pages": 1,
+   "canonical": "/sv/categories/hhcpm-blommor",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "HHCPM Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (do not mass-produce series × format pages)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch A)",
+   "dependency": "migration",
+   "adminGap": "Wedding Cake → Core family; Amnesia/Durban Poison legacy; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently in Theme 8 header SERIER (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "blommor-hhcpm-15-amnesia-5-gram",
+    "blommor-hhcpm-15-durban-poison-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcnm-blommor",
+   "path": "/sv/categories/thcnm-blommor",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy THCNM × buds",
+   "status": 200,
+   "categoryId": 37,
+   "h1Native": "THCNM Buds",
+   "h1Theme8": null,
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/thcnm-blommor",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCNM Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (do not mass-produce series × format pages)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch A)",
+   "dependency": "migration",
+   "adminGap": "GSC + Black Widow (High Life) → Core family candidates; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently in Theme 8 header SERIER (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-highlife-thcnm-gsc-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/hasch?filters=Serie_Magic Sauce",
+   "path": "/sv/categories/hasch",
+   "query": "filters=Serie_Magic Sauce",
+   "family": "series × format",
+   "kind": "filtered/shared (NOT dedicated)",
+   "context": "Magic Sauce × hasch",
+   "status": 200,
+   "categoryId": 18,
+   "h1Native": "Allt Hasch",
+   "h1Theme8": "Allt Hasch",
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/hasch",
+   "canonicalSelf": false,
+   "robots": "noindex, nofollow",
+   "titleTag": "Allt Hasch",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "broad (correct, filter chip)",
+   "theme8Shell": "hz8-cat-pilot hz8-series-picker hz8-series-union",
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G) until dedicated route exists",
+   "controlRoute": "/hasch",
+   "rolloutBatch": "Batch C after 04B admin",
+   "dependency": "04B admin: m-s-hasch",
+   "adminGap": "dedicated category missing; products currently filed in m-s-buds",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header"
+   ],
+   "products": [
+    "hash-magic-sauce-50-charas-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thca-hash",
+   "path": "/sv/categories/thca-hash",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCaB × hasch",
+   "status": 200,
+   "categoryId": 28,
+   "h1Native": "THCA Hash",
+   "h1Theme8": null,
+   "count": 10,
+   "pages": 1,
+   "canonical": "/sv/categories/thca-hash",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCA Hash",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "NOW (legacy): legacy THCA isolate listed; leaves with the migration",
+   "visualFunctionalDebt": "legacy off-format product",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-thca-25-ketama-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram",
+    "isolat-thca-99-isolate-5-gram",
+    "hash-thca-25-la-mousse-5-gram",
+    "hash-thca-60-piatella-hash-5-gram",
+    "hash-thca-50-bubble-hash-5-gram",
+    "hash-thca-30-dry-static-5-gram",
+    "hash-thca-30-dry-sift-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcnm-hash",
+   "path": "/sv/categories/thcnm-hash",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy THCNM × hasch",
+   "status": 200,
+   "categoryId": 38,
+   "h1Native": "THCNM Hash",
+   "h1Theme8": null,
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/thcnm-hash",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCNM Hash",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (do not mass-produce series × format pages)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch A)",
+   "dependency": "migration",
+   "adminGap": "Malaga Magic (High Life) + Royal Gorilla (hero-vapes grouping) → Core family candidates; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently in Theme 8 header SERIER (code debt, later task)",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/cbn",
+   "path": "/sv/categories/cbn",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid: CBN",
+   "status": 200,
+   "categoryId": 8,
+   "h1Native": "CBN",
+   "h1Theme8": null,
+   "count": 8,
+   "pages": 1,
+   "canonical": "/sv/categories/cbn",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "CBN",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff",
+      "Canntropy",
+      "Hazey.se",
+      "Magic Farmers"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "also holds CBG9 product (CBG has no route)",
+   "visualFunctionalDebt": "legacy description copy",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "vape-cbn-89-canapuff-1ml",
+    "hash-cbn-40-yellowstone-5-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "vape-thc-v-20-canntropy-1ml",
+    "blommor-cbn-10-great-white-shark",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/cbd-buds",
+   "path": "/sv/categories/cbd-buds",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid × buds",
+   "status": 200,
+   "categoryId": 12,
+   "h1Native": "CBD Buds",
+   "h1Theme8": null,
+   "count": 15,
+   "pages": 1,
+   "canonical": "/sv/categories/cbd-buds",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "CBD Buds",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Trinacria Hemp",
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "NOW (legacy): 3 legacy pre-rolls + 1 legacy isolate (leave with migration); 1 hash (Primero) misfiled",
+   "visualFunctionalDebt": "off-format products",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-cbd-15-primero-1-gram",
+    "blommor-cbd-30-tequila-sunrise-35-gram",
+    "buds-15-cbd-10-gram-russian-roulette",
+    "buds-cbd-30-cereal-milk-35-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "buds-cbd-purple-haze-5-gram",
+    "buds-cbd-strawberry-haze-5-gram",
+    "buds-cbd-trim-royal-10-gram",
+    "prerolled-cbd-tequila-sunrise-1-gram",
+    "prerolled-cbd-blue-raz-1-gram",
+    "prerolled-cbd-apples-amp-bananas-1-gram",
+    "buds-cbd-30-triple-scoop-35-gram",
+    "blommor-cbd-3g-purple-haze-trinacria-hemp",
+    "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+    "blommor-cbd-3g-lemon-skunk-trinacria-hemp"
+   ]
+  },
+  {
+   "route": "/sv/categories/h4cbd-hasch",
+   "path": "/sv/categories/h4cbd-hasch",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid × hasch",
+   "status": 200,
+   "categoryId": 17,
+   "h1Native": "H4CBD Hasch",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/h4cbd-hasch",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "H4CBD Hasch",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "1 product",
+   "visualFunctionalDebt": "single-item",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/h4cbd-vape",
+   "path": "/sv/categories/h4cbd-vape",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid × vapes",
+   "status": 200,
+   "categoryId": 4,
+   "h1Native": "H4CBD Vapes",
+   "h1Theme8": null,
+   "count": 9,
+   "pages": 1,
+   "canonical": "/sv/categories/h4cbd-vape",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "H4CBD Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CBD Group",
+      "Canapuff",
+      "Canntropy",
+      "Hazey.se",
+      "Tatra Hemp",
+      "Cookies",
+      "Magic Farmers"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "contains 2 CBD carts (off-format); slug singular",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 header",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "cart-cbd-60-cookies-1ml",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "vape-cbd-46-hazey-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/magic-sauce",
+   "path": "/sv/categories/magic-sauce",
+   "query": null,
+   "family": "series hub",
+   "kind": "dedicated",
+   "context": "series: Magic Sauce",
+   "status": 200,
+   "categoryId": 33,
+   "h1Native": "Magic Sauce",
+   "h1Theme8": null,
+   "count": 12,
+   "pages": 1,
+   "canonical": "/sv/categories/magic-sauce",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Magic Sauce",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "hub-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "series hub system (Magic Sauce pilot, 04C-B)",
+   "controlRoute": "self (pilot)",
+   "rolloutBatch": "Batch B control",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-magic-sauce-50-charas-5-gram",
+    "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "vape-magic-sauce-99-2ml",
+    "cart-magic-sauce-99-1ml",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thca",
+   "path": "/sv/categories/thca",
+   "query": null,
+   "family": "series hub",
+   "kind": "dedicated",
+   "context": "series: THCaB",
+   "status": 200,
+   "categoryId": 26,
+   "h1Native": "THC-A",
+   "h1Theme8": null,
+   "count": 30,
+   "pages": 2,
+   "canonical": "/sv/categories/thca",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THC-A",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Faraoh"
+     ]
+    }
+   ],
+   "theme8Family": "hub-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "series hub system (Magic Sauce pilot, 04C-B)",
+   "controlRoute": "/magic-sauce",
+   "rolloutBatch": "Batch B (done ceb240a, review)",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-thca-22-orange-small-buds-5-gram",
+    "hash-thca-25-ketama-5-gram",
+    "cart-thc-a-50-live-resin-faraoh-1ml",
+    "buds-thca-23-amnesia-infused-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "cart-thc-a-45-faraoh-1ml",
+    "buds-thca-25-bubbelgum-og-5-gram",
+    "vape-thc-a-45-faraoh-2ml",
+    "buds-thca-23-amnesia-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram",
+    "isolat-thca-99-isolate-5-gram",
+    "hash-thca-25-la-mousse-5-gram",
+    "hash-thca-60-piatella-hash-5-gram",
+    "buds-thca-24-zkittles-indoor-5-gram",
+    "buds-thca-25-raspberry-5-gram",
+    "buds-thca-22-kitty-indoor-5-gram",
+    "buds-thca-22-og-kush-small-buds-5-gram",
+    "buds-thca-24-ice-indoor-5-gram",
+    "hash-thca-50-bubble-hash-5-gram",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "hash-thca-30-dry-static-5-gram",
+    "prerolled-thca-22-bangkok-1-gram",
+    "buds-thca-18-strawberry-og-5-gram",
+    "hash-thca-30-dry-sift-5-gram",
+    "buds-thca-23-orange-indoor-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcb",
+   "path": "/sv/categories/thcb",
+   "query": null,
+   "family": "series hub",
+   "kind": "dedicated",
+   "context": "series: THCbA",
+   "status": 200,
+   "categoryId": 19,
+   "h1Native": "THC-B",
+   "h1Theme8": null,
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/thcb",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THC-B",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp",
+      "Faraoh"
+     ]
+    }
+   ],
+   "theme8Family": "hub-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "series hub system (Magic Sauce pilot, 04C-B)",
+   "controlRoute": "/magic-sauce",
+   "rolloutBatch": "Batch B (done ce18e40, review)",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thc-b-35-faraoh-1ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "cart-thc-b-20-tatra-hemp-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/10-oh-thc",
+   "path": "/sv/categories/10-oh-thc",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy product category",
+   "context": "10-OH-THC legacy product (1 vape) — NOT Delta-10",
+   "status": 200,
+   "categoryId": 42,
+   "h1Native": "10-OH-THC",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/10-oh-thc",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "10-OH-THC",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff"
+     ]
+    }
+   ],
+   "theme8Family": "hub-legacy",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (D10 hub waits for real D10 products + migrated category)",
+   "controlRoute": "—",
+   "rolloutBatch": "on hold: D10 hub after migration (removed from Batch B)",
+   "dependency": "migration: real D10 products/category",
+   "adminGap": "must not be the data source or customer destination for D10; keep D10 hub material for the future page",
+   "visualFunctionalDebt": "Theme 8 catalog map currently maps D10 hub → /10-oh-thc and header D10 → 10-oh-thc-vapes (code debt, later task)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-10-oh-thc-95-canapuff-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/nano-11",
+   "path": "/sv/categories/nano-11",
+   "query": null,
+   "family": "series hub",
+   "kind": "dedicated",
+   "context": "series: Nano-11",
+   "status": 200,
+   "categoryId": 29,
+   "h1Native": "Nano-11",
+   "h1Theme8": null,
+   "count": 8,
+   "pages": 1,
+   "canonical": "/sv/categories/nano-11",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Nano-11",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11"
+     ]
+    }
+   ],
+   "theme8Family": "hub-pilot",
+   "theme8Shell": null,
+   "desiredTemplate": "series hub system (Magic Sauce pilot, 04C-B)",
+   "controlRoute": "/magic-sauce",
+   "rolloutBatch": "Batch B (done 8a7132e, review)",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "buds-7-nano11-lemon-purple-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcv",
+   "path": "/sv/categories/thcv",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy / on hold",
+   "context": "THCV hub — THCV not in the planned new assortment",
+   "status": 200,
+   "categoryId": 10,
+   "h1Native": "THC-V",
+   "h1Theme8": "THC-V",
+   "count": 7,
+   "pages": 1,
+   "canonical": "/sv/categories/thcv",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THC-V",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff",
+      "Canntropy",
+      "CBD Group",
+      "Euphoria",
+      "Tatra Hemp"
+     ]
+    }
+   ],
+   "theme8Family": "hub-legacy",
+   "theme8Shell": "hz8-series-hub",
+   "desiredTemplate": "none — not a customer destination (on hold until real THCV products exist in the new assortment)",
+   "controlRoute": "—",
+   "rolloutBatch": "on hold (removed from Batch A/B)",
+   "dependency": "new-assortment THCV products",
+   "adminGap": "build/expose no new THCV pages; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently linked by Theme 8 header/catalog map (code debt, later task)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thcv-euphoria-2ml",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "cart-thc-v-20-tatra-hemp-1ml",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/hhcpm",
+   "path": "/sv/categories/hhcpm",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy HHCPM taxonomy — NOT a future series",
+   "status": 200,
+   "categoryId": 39,
+   "h1Native": "HHCPM",
+   "h1Theme8": null,
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/hhcpm",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "HHCPM",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Canntropy"
+     ]
+    }
+   ],
+   "theme8Family": "hub-legacy",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (no hub; Core family relevant products → /core)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch B)",
+   "dependency": "migration",
+   "adminGap": "Wedding Cake (El Gringo packaging) → Core family; Amnesia/Durban Poison (Blommor HHCPM 15%) and Canntropy HHCPM vape are not Core-family legacy items; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently linked by Theme 8 header/catalog map (code debt, later task)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "blommor-hhcpm-15-amnesia-5-gram",
+    "blommor-hhcpm-15-durban-poison-5-gram",
+    "vape-hhcpm-15-canntropy-2ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcnm",
+   "path": "/sv/categories/thcnm",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy category",
+   "context": "legacy THCNM taxonomy — NOT a future series",
+   "status": 200,
+   "categoryId": 36,
+   "h1Native": "THC-NM",
+   "h1Theme8": null,
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/thcnm",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THC-NM",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "hub-legacy",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (no hub; Core family → /core)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration (removed from Batch B)",
+   "dependency": "migration",
+   "adminGap": "all 4 are Core-family candidates: GSC (HighLife in name), Black Widow and Malaga Magic (High Life packaging observed), Royal Gorilla (grouped in legacy hero-vapes); final membership from migration data; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently linked by Theme 8 header/catalog map (code debt, later task)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-highlife-thcnm-gsc-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/alla-cartridges?filters=Serie_Magic Sauce",
+   "path": "/sv/categories/alla-cartridges",
+   "query": "filters=Serie_Magic Sauce",
+   "family": "series × format",
+   "kind": "filtered/shared (NOT dedicated)",
+   "context": "Magic Sauce × carts",
+   "status": 200,
+   "categoryId": 22,
+   "h1Native": "Alla Carts",
+   "h1Theme8": "Alla Carts",
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/alla-cartridges",
+   "canonicalSelf": false,
+   "robots": "noindex, nofollow",
+   "titleTag": "Alla Carts",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "format-legacy (filter)",
+   "theme8Shell": "hz8-series-picker hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "broad format family — Carts adaptation (Task 05)",
+   "controlRoute": "/alla-cartridges",
+   "rolloutBatch": "Batch C (only if 04B approves) else Task 08",
+   "dependency": "04B decision: 1 product",
+   "adminGap": "Magic Sauce cart also filed in m-s-vapes",
+   "visualFunctionalDebt": "1 product",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)"
+   ],
+   "products": [
+    "cart-magic-sauce-99-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thca-carts",
+   "path": "/sv/categories/thca-carts",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCaB × carts",
+   "status": 200,
+   "categoryId": 44,
+   "h1Native": "THCA Carts",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/thca-carts",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCA Carts",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Faraoh"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "missing THC-A 50% Live Resin cart",
+   "visualFunctionalDebt": "1 product (thin)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-a-45-faraoh-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcb-carts",
+   "path": "/sv/categories/thcb-carts",
+   "query": null,
+   "family": "series × format",
+   "kind": "dedicated",
+   "context": "THCbA × carts",
+   "status": 200,
+   "categoryId": 23,
+   "h1Native": "THCB Carts",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/thcb-carts",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCB Carts",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "series × format template (C04/80b)",
+   "controlRoute": "/thca-vapes",
+   "rolloutBatch": "Batch A",
+   "dependency": "—",
+   "adminGap": "—",
+   "visualFunctionalDebt": "1 product (thin)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-b-20-tatra-hemp-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/thcv-carts",
+   "path": "/sv/categories/thcv-carts",
+   "query": null,
+   "family": "legacy taxonomy (pending migration)",
+   "kind": "legacy / on hold",
+   "context": "THCV × carts — THCV not in the planned new assortment",
+   "status": 200,
+   "categoryId": 24,
+   "h1Native": "THCV Carts",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/thcv-carts",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "THCV Carts",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp"
+     ]
+    }
+   ],
+   "theme8Family": "series-format",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (on hold until real THCV products exist in the new assortment)",
+   "controlRoute": "—",
+   "rolloutBatch": "on hold (removed from Batch A/B)",
+   "dependency": "new-assortment THCV products",
+   "adminGap": "build/expose no new THCV pages; never auto-generate visible nav from this route; redirect/canonical decided after migration",
+   "visualFunctionalDebt": "currently linked by Theme 8 header/catalog map (code debt, later task)",
+   "linkSources": [
+    "Theme 8 catalog map (hub/extra)",
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-v-20-tatra-hemp-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/core",
+   "path": "/sv/categories/core",
+   "query": null,
+   "family": "series hub",
+   "kind": "dedicated",
+   "context": "series: Core family = Core + High Life + El Gringo (target: single customer destination)",
+   "status": 200,
+   "categoryId": 67,
+   "h1Native": "Core",
+   "h1Theme8": "Core",
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/core",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Core",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Hero"
+     ]
+    },
+    {
+     "Serie": [
+      "Core"
+     ]
+    }
+   ],
+   "theme8Family": "hub-pilot (committed 9d65a85 on dev)",
+   "theme8Shell": "hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "series hub system (Magic Sauce pilot, 04C-B)",
+   "controlRoute": "/magic-sauce",
+   "rolloutBatch": "Batch B (built; review); membership grows at migration",
+   "dependency": "migration: High Life/El Gringo products assigned to Core family",
+   "adminGap": "NOW: 4 products (Core vape, Wedding Cake, Malaga Magic, Northern Lights); legacy hero-vapes groups 8 family candidates; duplicate /core-1",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "self-link only",
+    "human-verified seed"
+   ],
+   "products": [
+    "vape-thcx-19-core-2ml",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/core-1",
+   "path": "/sv/categories/core-1",
+   "query": null,
+   "family": "legacy duplicate",
+   "kind": "dedicated (empty)",
+   "context": "duplicate 'Core'",
+   "status": 200,
+   "categoryId": null,
+   "h1Native": "Core",
+   "h1Theme8": null,
+   "count": 0,
+   "pages": 1,
+   "canonical": "/sv/categories/core-1",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Core",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup",
+   "dependency": "admin",
+   "adminGap": "empty duplicate of /core: hide/delete/redirect",
+   "visualFunctionalDebt": "0 products",
+   "linkSources": [
+    "self-link only",
+    "human-verified seed"
+   ],
+   "products": []
+  },
+  {
+   "route": "/sv/categories/hero-vapes",
+   "path": "/sv/categories/hero-vapes",
+   "query": null,
+   "family": "manufacturer/filter state",
+   "kind": "dedicated",
+   "context": "legacy grouping of the Core family (Hero/High Life/El Gringo + Core vape)",
+   "status": 200,
+   "categoryId": 35,
+   "h1Native": "Hero Vapes",
+   "h1Theme8": "Hero Vapes",
+   "count": 8,
+   "pages": 1,
+   "canonical": "/sv/categories/hero-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Hero Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Hero"
+     ]
+    },
+    {
+     "Serie": [
+      "Core"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": "hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "manufacturer/filter-state contract (Task 08)",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup at migration; family → /core",
+   "dependency": "migration",
+   "adminGap": "H1/slug 'Hero Vapes' but 7 of 8 are High Life/El Gringo buds/hash; all 8 are Core-family candidates (White Widow, GSC, Black Widow, Royal Gorilla, Malaga Magic, Northern Lights, Wedding Cake, Core vape)",
+   "visualFunctionalDebt": "misleading H1; empty bento image",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-highlife-thcnm-gsc-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "vape-thcx-19-core-2ml",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/faraoh",
+   "path": "/sv/categories/faraoh",
+   "query": null,
+   "family": "manufacturer/filter state",
+   "kind": "dedicated",
+   "context": "manufacturer: Faraoh",
+   "status": 200,
+   "categoryId": 31,
+   "h1Native": "Faraoh",
+   "h1Theme8": null,
+   "count": 8,
+   "pages": 1,
+   "canonical": "/sv/categories/faraoh",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Faraoh",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Faraoh",
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "manufacturer/filter-state contract (Task 08)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 08 → Batch D",
+   "dependency": "Task 08",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "cart-thc-a-50-live-resin-faraoh-1ml",
+    "cart-thc-a-45-faraoh-1ml",
+    "vape-thc-a-45-faraoh-2ml",
+    "vape-thc-b-35-faraoh-1ml",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "prerolled-thca-22-bangkok-1-gram",
+    "buds-thca-18-strawberry-og-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/tatra-hemp",
+   "path": "/sv/categories/tatra-hemp",
+   "query": null,
+   "family": "manufacturer/filter state",
+   "kind": "dedicated",
+   "context": "manufacturer: Tatra Hemp",
+   "status": 200,
+   "categoryId": 21,
+   "h1Native": "Tatra Hemp",
+   "h1Theme8": null,
+   "count": 16,
+   "pages": 1,
+   "canonical": "/sv/categories/tatra-hemp",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Tatra Hemp",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Tatra Hemp",
+      "Hazey.se"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "manufacturer/filter-state contract (Task 08)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 08 → Batch D",
+   "dependency": "Task 08",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "isolat-cbd-99-isolate-15-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "cart-thc-b-20-tatra-hemp-1ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "cart-thc-v-20-tatra-hemp-1ml",
+    "buds-7-nano11-lemon-purple-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/magic-farmers",
+   "path": "/sv/categories/magic-farmers",
+   "query": null,
+   "family": "manufacturer/filter state",
+   "kind": "dedicated",
+   "context": "manufacturer: Magic Farmers",
+   "status": 200,
+   "categoryId": 15,
+   "h1Native": "Magic Farmers",
+   "h1Theme8": null,
+   "count": 18,
+   "pages": 1,
+   "canonical": "/sv/categories/magic-farmers",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Magic Farmers",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "manufacturer/filter-state contract (Task 08)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 08 → Batch D",
+   "dependency": "Task 08",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hash-magic-sauce-50-charas-5-gram",
+    "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "vape-magic-sauce-99-2ml",
+    "cart-magic-sauce-99-1ml",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "blommor-cbn-10-great-white-shark",
+    "buds-h4cbd-30-kusher-kush-5-gram",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/cbn-vapes",
+   "path": "/sv/categories/cbn-vapes",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid × vapes (CBN)",
+   "status": 200,
+   "categoryId": 9,
+   "h1Native": "CBN Vapes",
+   "h1Theme8": null,
+   "count": 3,
+   "pages": 1,
+   "canonical": "/sv/categories/cbn-vapes",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "CBN Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Canapuff",
+      "Canntropy",
+      "Magic Farmers"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "not in Theme 8 header",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "vape-cbn-89-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/merch",
+   "path": "/sv/categories/merch",
+   "query": null,
+   "family": "accessory/battery",
+   "kind": "dedicated",
+   "context": "merch",
+   "status": 200,
+   "categoryId": 7,
+   "h1Native": "Merch",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/merch",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Merch",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "accessory/battery template (Task 07)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 07 → Batch D",
+   "dependency": "Task 07 IA",
+   "adminGap": "1 product; duplicate of merch-ny",
+   "visualFunctionalDebt": "single-item",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "hazeyse-merch-nyckelring"
+   ]
+  },
+  {
+   "route": "/sv/categories/cbd-group",
+   "path": "/sv/categories/cbd-group",
+   "query": null,
+   "family": "manufacturer/filter state",
+   "kind": "dedicated",
+   "context": "manufacturer: CBD Group",
+   "status": 200,
+   "categoryId": 6,
+   "h1Native": "CBD Group",
+   "h1Theme8": null,
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/cbd-group",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "CBD Group",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CBD Group"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "manufacturer/filter-state contract (Task 08)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 08 → Batch D",
+   "dependency": "Task 08",
+   "adminGap": "—",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-h4cbd-97-cbd-group-2ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/h4cbd-buds",
+   "path": "/sv/categories/h4cbd-buds",
+   "query": null,
+   "family": "cannabinoid family",
+   "kind": "dedicated",
+   "context": "cannabinoid × buds (H4CBD)",
+   "status": 200,
+   "categoryId": 16,
+   "h1Native": "H4CBD Buds",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/h4cbd-buds",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "H4CBD Buds",
+   "metaDescription": "present (legacy copy)",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "cannabinoid family (Task 06 decision)",
+   "controlRoute": "—",
+   "rolloutBatch": "Task 06 → Batch D",
+   "dependency": "Task 06",
+   "adminGap": "overlaps cbd-buds; 1 product",
+   "visualFunctionalDebt": "single-item",
+   "linkSources": [
+    "native navbar DOM (visually replaced by Theme 8 header)"
+   ],
+   "products": [
+    "buds-h4cbd-30-kusher-kush-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/hazey-v2",
+   "path": "/sv/categories/hazey-v2",
+   "query": null,
+   "family": "orphan",
+   "kind": "structural (hidden)",
+   "context": "breadcrumb root of every product",
+   "status": 200,
+   "categoryId": null,
+   "h1Native": "Hazey V2",
+   "h1Theme8": null,
+   "count": 0,
+   "pages": 1,
+   "canonical": "/sv/categories/hazey-v2",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Hazey V2",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin decision",
+   "dependency": "admin",
+   "adminGap": "PDP breadcrumb exposes hidden tree",
+   "visualFunctionalDebt": "0 products",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": []
+  },
+  {
+   "route": "/sv/categories/hash-ny",
+   "path": "/sv/categories/hash-ny",
+   "query": null,
+   "family": "orphan",
+   "kind": "structural (hidden)",
+   "context": "breadcrumb: Hash",
+   "status": 200,
+   "categoryId": 49,
+   "h1Native": "Hash",
+   "h1Theme8": null,
+   "count": 14,
+   "pages": 1,
+   "canonical": "/sv/categories/hash-ny",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Hash",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin decision",
+   "dependency": "admin",
+   "adminGap": "PDP breadcrumb link to hidden page",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "hash-cbd-15-primero-1-gram",
+    "hash-thca-25-ketama-5-gram",
+    "hash-magic-sauce-50-charas-5-gram",
+    "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "hash-thca-40-northern-lights-5-gram",
+    "hash-thca-25-la-mousse-5-gram",
+    "hash-thca-60-piatella-hash-5-gram",
+    "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "hash-cbn-40-yellowstone-5-gram",
+    "hash-thca-50-bubble-hash-5-gram",
+    "hash-thca-30-dry-static-5-gram",
+    "hash-thca-30-dry-sift-5-gram",
+    "hash-h4cbd-20-cbn-20-h-bomb-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/buds-ny",
+   "path": "/sv/categories/buds-ny",
+   "query": null,
+   "family": "orphan",
+   "kind": "structural (hidden)",
+   "context": "breadcrumb: Buds",
+   "status": 200,
+   "categoryId": 48,
+   "h1Native": "Buds",
+   "h1Theme8": null,
+   "count": 47,
+   "pages": 2,
+   "canonical": "/sv/categories/buds-ny",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Buds",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Trinacria Hemp",
+      "Hazey.se",
+      "Tatra Hemp",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Nano11",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin decision",
+   "dependency": "admin",
+   "adminGap": "PDP breadcrumb link to hidden page",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "buds-thca-22-orange-small-buds-5-gram",
+    "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "buds-thca-23-amnesia-infused-5-gram",
+    "buds-magic-sauce-50-tinky-winky-5-gram",
+    "buds-highlife-thcnm-gsc-5-gram",
+    "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "buds-magic-sauce-50-samurai-jack-5-gram",
+    "blommor-cbd-30-tequila-sunrise-35-gram",
+    "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "buds-thca-25-bubbelgum-og-5-gram",
+    "buds-magic-sauce-50-crazy-dog-5-gram",
+    "buds-thca-23-amnesia-5-gram",
+    "buds-thca-20-white-widow-5-gram",
+    "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "blommor-hhcpm-15-amnesia-5-gram",
+    "blommor-hhcpm-15-durban-poison-5-gram",
+    "buds-15-cbd-10-gram-russian-roulette",
+    "buds-cbd-30-cereal-milk-35-gram",
+    "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "buds-7-nano11-amnezia-haze-5-gram",
+    "buds-7-nano11-super-skunk-5-gram",
+    "buds-thca-24-zkittles-indoor-5-gram",
+    "buds-7-nano11-raspberry-popcorn-5-gram",
+    "buds-7-nano11-cali-grape-5-gram",
+    "buds-7-nano11-bruce-banner-5-gram",
+    "buds-7-nano11-apple-fritter-5-gram",
+    "buds-thca-25-raspberry-5-gram",
+    "buds-cbd-purple-haze-5-gram",
+    "buds-cbd-strawberry-haze-5-gram",
+    "buds-cbd-trim-royal-10-gram",
+    "buds-thca-22-kitty-indoor-5-gram",
+    "buds-thca-22-og-kush-small-buds-5-gram",
+    "buds-magic-sauce-50-donny-burger-5-gram",
+    "buds-thca-24-ice-indoor-5-gram",
+    "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "buds-magic-sauce-50-gorilla-cookies-5-gram",
+    "buds-thca-18-strawberry-og-5-gram",
+    "buds-cbd-30-triple-scoop-35-gram",
+    "buds-cbg9-60-snow-ice",
+    "buds-cbn-30-malibu-skittelz-5-gram",
+    "buds-thca-23-orange-indoor-5-gram",
+    "buds-7-nano11-lemon-purple-5-gram",
+    "blommor-cbd-3g-purple-haze-trinacria-hemp",
+    "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+    "blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+    "blommor-cbn-10-great-white-shark",
+    "buds-h4cbd-30-kusher-kush-5-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/vapes-ny",
+   "path": "/sv/categories/vapes-ny",
+   "query": null,
+   "family": "orphan",
+   "kind": "structural (hidden)",
+   "context": "breadcrumb: Vapes",
+   "status": 200,
+   "categoryId": 47,
+   "h1Native": "Vapes",
+   "h1Theme8": null,
+   "count": 39,
+   "pages": 2,
+   "canonical": "/sv/categories/vapes-ny",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Vapes",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "CCELL",
+      "CBD Group",
+      "Canapuff",
+      "Canntropy",
+      "Hazey.se",
+      "Euphoria",
+      "Tatra Hemp",
+      "Faraoh",
+      "Cookies",
+      "Hero",
+      "Magic Farmers"
+     ]
+    },
+    {
+     "Serie": [
+      "Core",
+      "Magic Sauce"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin decision",
+   "dependency": "admin",
+   "adminGap": "holds 2 THC-H vapes found nowhere else",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "cart-thc-a-50-live-resin-faraoh-1ml",
+    "vape-thcx-19-core-2ml",
+    "vape-cbd-25-cbn-35-magic-farmers-2ml",
+    "cart-thc-a-45-faraoh-1ml",
+    "vape-magic-sauce-99-2ml",
+    "cart-magic-sauce-99-1ml",
+    "vape-thc-a-45-faraoh-2ml",
+    "vape-hhcpm-15-canntropy-2ml",
+    "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+    "cart-cbd-60-cookies-1ml",
+    "vape-thcv-euphoria-2ml",
+    "ccell-m3b-vape-batteri-510",
+    "vape-thc-v-20-tatra-hemp-2ml",
+    "vape-thc-b-35-faraoh-1ml",
+    "ccell-m3-plus-vape-batteri-510",
+    "vape-cbn-89-canapuff-1ml",
+    "ccell-palm-pro-vape-batteri-510",
+    "vape-thc-v-20-cbd-group-2ml",
+    "vape-thc-h-20-hazey-2ml-500puffs",
+    "ccell-m4-vape-batteri-510",
+    "vape-10-oh-thc-95-canapuff-1ml",
+    "vape-thc-a-50-live-resin-faraoh-2ml",
+    "vape-thc-a-50-live-resin-faraoh-1ml",
+    "cart-cbd-60-tatra-hemp-05ml",
+    "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+    "vape-thc-h-20-hazey-2ml-600puffs",
+    "vape-thc-b-20-tatra-hemp-2ml",
+    "vape-thc-b-20-tatra-hemp-1ml",
+    "cart-thc-b-20-tatra-hemp-1ml",
+    "vape-thc-v-20-tatra-hemp-1ml",
+    "cart-thc-v-20-tatra-hemp-1ml",
+    "ccell-fino-vape-batteri-510",
+    "ccell-sandwave-vape-batteri-510",
+    "vape-h4cbd-97-cbd-group-2ml",
+    "vape-h4cbd-96-canapuff-1ml",
+    "vape-thc-v-79-canapuff-1ml",
+    "vape-thc-v-20-canntropy-1ml",
+    "vape-h4cbd-95-canntropy-1ml",
+    "vape-cbd-46-hazey-1ml"
+   ]
+  },
+  {
+   "route": "/sv/categories/isolat",
+   "path": "/sv/categories/isolat",
+   "query": null,
+   "family": "legacy duplicate",
+   "kind": "dormant",
+   "context": "Isolat — no isolate in the new assortment",
+   "status": 200,
+   "categoryId": 71,
+   "h1Native": "Isolat",
+   "h1Theme8": null,
+   "count": 2,
+   "pages": 1,
+   "canonical": "/sv/categories/isolat",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Isolat",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination (dormant; reactivate only when a real isolate product exists)",
+   "controlRoute": "—",
+   "rolloutBatch": "none (dormant)",
+   "dependency": "—",
+   "adminGap": "NOW (legacy): 2 legacy isolates leave with the migration; their extra memberships in Buds/Hasch/THCA/CBD disappear with them. Never link /isolat",
+   "visualFunctionalDebt": "no visible Theme 8/native nav link (verified)",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "isolat-thca-99-isolate-5-gram",
+    "isolat-cbd-99-isolate-15-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/prerolled",
+   "path": "/sv/categories/prerolled",
+   "query": null,
+   "family": "broad format",
+   "kind": "dedicated (activate now)",
+   "context": "PRIMARY FORMAT: Pre-rolls (slug kept, customer name 'Pre-rolls'). NOW: 4 legacy sold-out products leaving with migration. TARGET: migrated pre-rolls",
+   "status": 200,
+   "categoryId": 70,
+   "h1Native": "PreRolled",
+   "h1Theme8": "PreRolled",
+   "count": 4,
+   "pages": 1,
+   "canonical": "/sv/categories/prerolled",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "PreRolled",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": "hz8-catshelf hz8-sf-has-shortcuts",
+   "desiredTemplate": "broad format family (Alla Vapes macro, 01G) — Pre-rolls adaptation (0/1/many/sold-out/new products, data-driven)",
+   "controlRoute": "/blommor-buds",
+   "rolloutBatch": "Batch C — activate page + header link now; migration/stock NOT a blocker",
+   "dependency": "admin: publish + rename; 04C-C code",
+   "adminGap": "hidden today; header shows Pre-rolls as 'kommer snart' (href null)",
+   "visualFunctionalDebt": "must render a truthful empty state (likely 0 products right after migration)",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "prerolled-cbd-tequila-sunrise-1-gram",
+    "prerolled-cbd-blue-raz-1-gram",
+    "prerolled-cbd-apples-amp-bananas-1-gram",
+    "prerolled-thca-22-bangkok-1-gram"
+   ]
+  },
+  {
+   "route": "/sv/categories/merch-ny",
+   "path": "/sv/categories/merch-ny",
+   "query": null,
+   "family": "legacy duplicate",
+   "kind": "structural (hidden)",
+   "context": "duplicate merch",
+   "status": 200,
+   "categoryId": 52,
+   "h1Native": "Merch",
+   "h1Theme8": null,
+   "count": 1,
+   "pages": 1,
+   "canonical": "/sv/categories/merch-ny",
+   "canonicalSelf": true,
+   "robots": "noindex, nofollow",
+   "titleTag": "Merch",
+   "metaDescription": "missing",
+   "seoProductionDomain": "unknown — verify in Nyehandel admin",
+   "facets": [
+    {
+     "Varumärke": [
+      "Hazey.se"
+     ]
+    }
+   ],
+   "theme8Family": "legacy-shell",
+   "theme8Shell": null,
+   "desiredTemplate": "none — not a customer destination",
+   "controlRoute": "—",
+   "rolloutBatch": "admin cleanup",
+   "dependency": "admin",
+   "adminGap": "duplicate of /merch",
+   "visualFunctionalDebt": "—",
+   "linkSources": [
+    "PDP breadcrumb"
+   ],
+   "products": [
+    "hazeyse-merch-nyckelring"
+   ]
+  }
+ ]
+}

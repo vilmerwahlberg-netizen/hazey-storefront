@@ -1,0 +1,1321 @@
+[
+ {
+  "series": "10-OH-THC",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-10-oh-thc-95-canapuff-1ml",
+    "name": "Vape - 10-OH-THC 95% - Canapuff - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/10-oh-thc-vapes",
+    "kind": "dedicated",
+    "h1": "10-OH-THC Vapes",
+    "count": 1,
+    "members": [
+     {
+      "slug": "vape-10-oh-thc-95-canapuff-1ml",
+      "name": "Vape - 10-OH-THC 95% - Canapuff - 1ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "Core",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "Core",
+  "format": "hasch",
+  "products": [
+   {
+    "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-40-northern-lights-5-gram",
+    "name": "Hash – THCA 40% – Northern Lights – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "Core",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-thcx-19-core-2ml",
+    "name": "Vape - THCX 19% - Core - 2ml",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/alla-vapes?filters=Serie_Core",
+    "kind": "filter",
+    "h1": "Alla Vapes",
+    "count": 1,
+    "members": [
+     {
+      "slug": "vape-thcx-19-core-2ml",
+      "name": "Vape - THCX 19% - Core - 2ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "HHCPM",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "blommor-hhcpm-15-amnesia-5-gram",
+    "name": "Blommor – HHCPM 15% – Amnesia – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "blommor-hhcpm-15-durban-poison-5-gram",
+    "name": "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/hhcpm-blommor",
+    "kind": "dedicated",
+    "h1": "HHCPM Buds",
+    "count": 3,
+    "members": [
+     {
+      "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+      "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "blommor-hhcpm-15-amnesia-5-gram",
+      "name": "Blommor – HHCPM 15% – Amnesia – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "blommor-hhcpm-15-durban-poison-5-gram",
+      "name": "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+      "format": "buds"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "HHCPM",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-hhcpm-15-canntropy-2ml",
+    "name": "Vape - HHCPM 15% - Canntropy - 2ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/hhcpm-vapes",
+    "kind": "dedicated",
+    "h1": "HHCPM Vapes",
+    "count": 1,
+    "members": [
+     {
+      "slug": "vape-hhcpm-15-canntropy-2ml",
+      "name": "Vape - HHCPM 15% - Canntropy - 2ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "Magic Sauce",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-magic-sauce-50-la-chupacabra-5-gram",
+    "name": "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-tinky-winky-5-gram",
+    "name": "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-samurai-jack-5-gram",
+    "name": "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-khalifa-kush-5-gram",
+    "name": "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+    "name": "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-donny-burger-5-gram",
+    "name": "Buds – Magic Sauce 50% – Donny Burger – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+    "name": "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-magic-sauce-50-gorilla-cookies-5-gram",
+    "name": "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/m-s-buds",
+    "kind": "dedicated",
+    "h1": "M.S Buds",
+    "count": 9,
+    "members": [
+     {
+      "slug": "hash-magic-sauce-50-charas-5-gram",
+      "name": "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "buds-magic-sauce-50-tinky-winky-5-gram",
+      "name": "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-magic-sauce-50-samurai-jack-5-gram",
+      "name": "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-magic-sauce-50-khalifa-kush-5-gram",
+      "name": "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+      "name": "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+      "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "buds-magic-sauce-50-donny-burger-5-gram",
+      "name": "Buds – Magic Sauce 50% – Donny Burger – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+      "name": "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-magic-sauce-50-gorilla-cookies-5-gram",
+      "name": "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram",
+      "format": "buds"
+     }
+    ],
+    "offFormat": [
+     {
+      "slug": "hash-magic-sauce-50-charas-5-gram",
+      "name": "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+      "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+      "format": "hasch"
+     }
+    ],
+    "missing": [
+     "buds-magic-sauce-50-la-chupacabra-5-gram"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "Magic Sauce",
+  "format": "carts",
+  "products": [
+   {
+    "slug": "cart-magic-sauce-99-1ml",
+    "name": "Cart - Magic Sauce 99% - 1ml",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/alla-cartridges?filters=Serie_Magic Sauce",
+    "kind": "filter",
+    "h1": "Alla Carts",
+    "count": 1,
+    "members": [
+     {
+      "slug": "cart-magic-sauce-99-1ml",
+      "name": "Cart - Magic Sauce 99% - 1ml",
+      "format": "carts"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "Magic Sauce",
+  "format": "hasch",
+  "products": [
+   {
+    "slug": "hash-magic-sauce-50-charas-5-gram",
+    "name": "Hash – Magic Sauce 50% – Charas – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+    "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/hasch?filters=Serie_Magic Sauce",
+    "kind": "filter",
+    "h1": "Allt Hasch",
+    "count": 2,
+    "members": [
+     {
+      "slug": "hash-magic-sauce-50-charas-5-gram",
+      "name": "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+      "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+      "format": "hasch"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "Magic Sauce",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-magic-sauce-99-2ml",
+    "name": "Vape - Magic Sauce 99% - 2ml",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/m-s-vapes",
+    "kind": "dedicated",
+    "h1": "M.S Vapes",
+    "count": 2,
+    "members": [
+     {
+      "slug": "vape-magic-sauce-99-2ml",
+      "name": "Vape - Magic Sauce 99% - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "cart-magic-sauce-99-1ml",
+      "name": "Cart - Magic Sauce 99% - 1ml",
+      "format": "carts"
+     }
+    ],
+    "offFormat": [
+     {
+      "slug": "cart-magic-sauce-99-1ml",
+      "name": "Cart - Magic Sauce 99% - 1ml",
+      "format": "carts"
+     }
+    ],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "Nano-11",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-7-nano11-sweet-karma-popcorn-5-gram",
+    "name": "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-amnezia-haze-5-gram",
+    "name": "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-super-skunk-5-gram",
+    "name": "Buds – 7% Nano11 – Super Skunk – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-raspberry-popcorn-5-gram",
+    "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-cali-grape-5-gram",
+    "name": "Buds – 7% Nano11 – Cali Grape – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-bruce-banner-5-gram",
+    "name": "Buds – 7% Nano11 – Bruce Banner – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-apple-fritter-5-gram",
+    "name": "Buds – 7% Nano11 – Apple Fritter – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   },
+   {
+    "slug": "buds-7-nano11-lemon-purple-5-gram",
+    "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+    "via": [
+     "hub",
+     "attr"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/nano11-blommor",
+    "kind": "dedicated",
+    "h1": "Nano11 Buds",
+    "count": 8,
+    "members": [
+     {
+      "slug": "buds-7-nano11-sweet-karma-popcorn-5-gram",
+      "name": "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-amnezia-haze-5-gram",
+      "name": "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-super-skunk-5-gram",
+      "name": "Buds – 7% Nano11 – Super Skunk – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-raspberry-popcorn-5-gram",
+      "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-cali-grape-5-gram",
+      "name": "Buds – 7% Nano11 – Cali Grape – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-bruce-banner-5-gram",
+      "name": "Buds – 7% Nano11 – Bruce Banner – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-apple-fritter-5-gram",
+      "name": "Buds – 7% Nano11 – Apple Fritter – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-7-nano11-lemon-purple-5-gram",
+      "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+      "format": "buds"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-thca-22-orange-small-buds-5-gram",
+    "name": "Buds – THCA 22% – Orange Small Buds – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-23-amnesia-infused-5-gram",
+    "name": "Buds – THCA 23% – Amnesia Infused – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+    "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-25-bubbelgum-og-5-gram",
+    "name": "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-23-amnesia-5-gram",
+    "name": "Buds – THCA 23% – Amnesia – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-20-white-widow-5-gram",
+    "name": "Buds – THCA 20% – White Widow – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "name": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-24-zkittles-indoor-5-gram",
+    "name": "Buds – THCA 24% – Zkittles Indoor – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-22-kitty-indoor-5-gram",
+    "name": "Buds – THCA 22% – Kitty Indoor – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-22-og-kush-small-buds-5-gram",
+    "name": "Buds – THCA 22% – OG Kush Small Buds – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-24-ice-indoor-5-gram",
+    "name": "Buds – THCA 24% – Ice indoor – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-18-strawberry-og-5-gram",
+    "name": "Buds – THCA 18% – Strawberry OG – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-23-orange-indoor-5-gram",
+    "name": "Buds – THCA 23% – Orange Indoor – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-25-raspberry-5-gram",
+    "name": "Buds – THCA 25% – Raspberry – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thca-blommor",
+    "kind": "dedicated",
+    "h1": "THCA Buds",
+    "count": 16,
+    "members": [
+     {
+      "slug": "buds-thca-22-orange-small-buds-5-gram",
+      "name": "Buds – THCA 22% – Orange Small Buds – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-23-amnesia-infused-5-gram",
+      "name": "Buds – THCA 23% – Amnesia Infused – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+      "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-25-bubbelgum-og-5-gram",
+      "name": "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-23-amnesia-5-gram",
+      "name": "Buds – THCA 23% – Amnesia – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-20-white-widow-5-gram",
+      "name": "Buds – THCA 20% – White Widow – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-20-thcnm-10-black-widow-5-gram",
+      "name": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "isolat-thca-99-isolate-5-gram",
+      "name": "Isolat – THCA 99% – Isolate – 5 gram",
+      "format": "isolat"
+     },
+     {
+      "slug": "buds-thca-24-zkittles-indoor-5-gram",
+      "name": "Buds – THCA 24% – Zkittles Indoor – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-25-raspberry-5-gram",
+      "name": "Buds – THCA 25% – Raspberry – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-22-kitty-indoor-5-gram",
+      "name": "Buds – THCA 22% – Kitty Indoor – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-22-og-kush-small-buds-5-gram",
+      "name": "Buds – THCA 22% – OG Kush Small Buds – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-24-ice-indoor-5-gram",
+      "name": "Buds – THCA 24% – Ice indoor – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "prerolled-thca-22-bangkok-1-gram",
+      "name": "PreRolled – THCA 22% – Bangkok – 1 gram",
+      "format": "prerolls"
+     },
+     {
+      "slug": "buds-thca-18-strawberry-og-5-gram",
+      "name": "Buds – THCA 18% – Strawberry OG – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-23-orange-indoor-5-gram",
+      "name": "Buds – THCA 23% – Orange Indoor – 5 gram",
+      "format": "buds"
+     }
+    ],
+    "offFormat": [
+     {
+      "slug": "isolat-thca-99-isolate-5-gram",
+      "name": "Isolat – THCA 99% – Isolate – 5 gram",
+      "format": "isolat"
+     },
+     {
+      "slug": "prerolled-thca-22-bangkok-1-gram",
+      "name": "PreRolled – THCA 22% – Bangkok – 1 gram",
+      "format": "prerolls"
+     }
+    ],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "carts",
+  "products": [
+   {
+    "slug": "cart-thc-a-50-live-resin-faraoh-1ml",
+    "name": "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "cart-thc-a-45-faraoh-1ml",
+    "name": "Cart - THC-A 45% - Faraoh - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thca-carts",
+    "kind": "dedicated",
+    "h1": "THCA Carts",
+    "count": 1,
+    "members": [
+     {
+      "slug": "cart-thc-a-45-faraoh-1ml",
+      "name": "Cart - THC-A 45% - Faraoh - 1ml",
+      "format": "carts"
+     }
+    ],
+    "offFormat": [],
+    "missing": [
+     "cart-thc-a-50-live-resin-faraoh-1ml"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "hasch",
+  "products": [
+   {
+    "slug": "hash-thca-25-ketama-5-gram",
+    "name": "Hash – THCA 25% – Ketama – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "name": "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-40-northern-lights-5-gram",
+    "name": "Hash – THCA 40% – Northern Lights – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-25-la-mousse-5-gram",
+    "name": "Hash – THCA 25% – La Mousse – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-50-bubble-hash-5-gram",
+    "name": "Hash – THCA 50% – Bubble Hash – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-30-dry-static-5-gram",
+    "name": "Hash – THCA 30% – Dry Static – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-30-dry-sift-5-gram",
+    "name": "Hash – THCA 30% – Dry Sift – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-60-piatella-hash-5-gram",
+    "name": "Hash – THCA 60% – Piatella Hash – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thca-hash",
+    "kind": "dedicated",
+    "h1": "THCA Hash",
+    "count": 10,
+    "members": [
+     {
+      "slug": "hash-thca-25-ketama-5-gram",
+      "name": "Hash – THCA 25% – Ketama – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+      "name": "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+      "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-40-northern-lights-5-gram",
+      "name": "Hash – THCA 40% – Northern Lights – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "isolat-thca-99-isolate-5-gram",
+      "name": "Isolat – THCA 99% – Isolate – 5 gram",
+      "format": "isolat"
+     },
+     {
+      "slug": "hash-thca-25-la-mousse-5-gram",
+      "name": "Hash – THCA 25% – La Mousse – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-60-piatella-hash-5-gram",
+      "name": "Hash – THCA 60% – Piatella Hash – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-50-bubble-hash-5-gram",
+      "name": "Hash – THCA 50% – Bubble Hash – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-30-dry-static-5-gram",
+      "name": "Hash – THCA 30% – Dry Static – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-30-dry-sift-5-gram",
+      "name": "Hash – THCA 30% – Dry Sift – 5 gram",
+      "format": "hasch"
+     }
+    ],
+    "offFormat": [
+     {
+      "slug": "isolat-thca-99-isolate-5-gram",
+      "name": "Isolat – THCA 99% – Isolate – 5 gram",
+      "format": "isolat"
+     }
+    ],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "isolat",
+  "products": [
+   {
+    "slug": "isolat-thca-99-isolate-5-gram",
+    "name": "Isolat – THCA 99% – Isolate – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "prerolls",
+  "products": [
+   {
+    "slug": "prerolled-thca-22-bangkok-1-gram",
+    "name": "PreRolled – THCA 22% – Bangkok – 1 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ]
+ },
+ {
+  "series": "THCaB",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-thc-a-45-faraoh-2ml",
+    "name": "Vape - THC-A 45% - Faraoh - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-a-50-live-resin-faraoh-2ml",
+    "name": "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-a-50-live-resin-faraoh-1ml",
+    "name": "Vape - THC-A 50% Live Resin - Faraoh - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thca-vapes",
+    "kind": "dedicated",
+    "h1": "THCA Vapes",
+    "count": 4,
+    "members": [
+     {
+      "slug": "cart-thc-a-45-faraoh-1ml",
+      "name": "Cart - THC-A 45% - Faraoh - 1ml",
+      "format": "carts"
+     },
+     {
+      "slug": "vape-thc-a-45-faraoh-2ml",
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-a-50-live-resin-faraoh-2ml",
+      "name": "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-a-50-live-resin-faraoh-1ml",
+      "name": "Vape - THC-A 50% Live Resin - Faraoh - 1ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [
+     {
+      "slug": "cart-thc-a-45-faraoh-1ml",
+      "name": "Cart - THC-A 45% - Faraoh - 1ml",
+      "format": "carts"
+     }
+    ],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCbA",
+  "format": "carts",
+  "products": [
+   {
+    "slug": "cart-thc-b-20-tatra-hemp-1ml",
+    "name": "Cart - THC-B 20% - Tatra Hemp - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcb-carts",
+    "kind": "dedicated",
+    "h1": "THCB Carts",
+    "count": 1,
+    "members": [
+     {
+      "slug": "cart-thc-b-20-tatra-hemp-1ml",
+      "name": "Cart - THC-B 20% - Tatra Hemp - 1ml",
+      "format": "carts"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCbA",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-thc-b-35-faraoh-1ml",
+    "name": "Vape - THC-B 35% - Faraoh - 1ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-b-20-tatra-hemp-2ml",
+    "name": "Vape - THC-B 20% - Tatra Hemp - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-b-20-tatra-hemp-1ml",
+    "name": "Vape - THC-B 20% - Tatra Hemp - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcb-vapes",
+    "kind": "dedicated",
+    "h1": "THCB Vapes",
+    "count": 3,
+    "members": [
+     {
+      "slug": "vape-thc-b-35-faraoh-1ml",
+      "name": "Vape - THC-B 35% - Faraoh - 1ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-b-20-tatra-hemp-2ml",
+      "name": "Vape - THC-B 20% - Tatra Hemp - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-b-20-tatra-hemp-1ml",
+      "name": "Vape - THC-B 20% - Tatra Hemp - 1ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCNM",
+  "format": "buds",
+  "products": [
+   {
+    "slug": "buds-highlife-thcnm-gsc-5-gram",
+    "name": "Buds – HighLife THCNM – GSC – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "buds-thca-20-thcnm-10-black-widow-5-gram",
+    "name": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcnm-blommor",
+    "kind": "dedicated",
+    "h1": "THCNM Buds",
+    "count": 2,
+    "members": [
+     {
+      "slug": "buds-highlife-thcnm-gsc-5-gram",
+      "name": "Buds – HighLife THCNM – GSC – 5 gram",
+      "format": "buds"
+     },
+     {
+      "slug": "buds-thca-20-thcnm-10-black-widow-5-gram",
+      "name": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+      "format": "buds"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCNM",
+  "format": "hasch",
+  "products": [
+   {
+    "slug": "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+    "name": "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+    "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcnm-hash",
+    "kind": "dedicated",
+    "h1": "THCNM Hash",
+    "count": 2,
+    "members": [
+     {
+      "slug": "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+      "name": "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+      "format": "hasch"
+     },
+     {
+      "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+      "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+      "format": "hasch"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCV",
+  "format": "carts",
+  "products": [
+   {
+    "slug": "cart-thc-v-20-tatra-hemp-1ml",
+    "name": "Cart - THC-V 20% - Tatra Hemp - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcv-carts",
+    "kind": "dedicated",
+    "h1": "THCV Carts",
+    "count": 1,
+    "members": [
+     {
+      "slug": "cart-thc-v-20-tatra-hemp-1ml",
+      "name": "Cart - THC-V 20% - Tatra Hemp - 1ml",
+      "format": "carts"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ },
+ {
+  "series": "THCV",
+  "format": "vapes",
+  "products": [
+   {
+    "slug": "vape-thcv-euphoria-2ml",
+    "name": "Vape - THCV - Euphoria - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-v-20-tatra-hemp-2ml",
+    "name": "Vape - THC-V 20% - Tatra Hemp - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-v-20-cbd-group-2ml",
+    "name": "Vape - THC-V 20% - CBD Group - 2ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-v-20-tatra-hemp-1ml",
+    "name": "Vape - THC-V 20% - Tatra Hemp - 1ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-v-79-canapuff-1ml",
+    "name": "Vape - THC-V 79% - Canapuff - 1ml",
+    "via": [
+     "hub"
+    ]
+   },
+   {
+    "slug": "vape-thc-v-20-canntropy-1ml",
+    "name": "Vape - THC-V 20% - Canntropy - 1ml",
+    "via": [
+     "hub"
+    ]
+   }
+  ],
+  "routes": [
+   {
+    "route": "/sv/categories/thcv-vape",
+    "kind": "dedicated",
+    "h1": "THCV Vapes",
+    "count": 6,
+    "members": [
+     {
+      "slug": "vape-thcv-euphoria-2ml",
+      "name": "Vape - THCV - Euphoria - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-v-20-tatra-hemp-2ml",
+      "name": "Vape - THC-V 20% - Tatra Hemp - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-v-20-cbd-group-2ml",
+      "name": "Vape - THC-V 20% - CBD Group - 2ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-v-20-tatra-hemp-1ml",
+      "name": "Vape - THC-V 20% - Tatra Hemp - 1ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-v-79-canapuff-1ml",
+      "name": "Vape - THC-V 79% - Canapuff - 1ml",
+      "format": "vapes"
+     },
+     {
+      "slug": "vape-thc-v-20-canntropy-1ml",
+      "name": "Vape - THC-V 20% - Canntropy - 1ml",
+      "format": "vapes"
+     }
+    ],
+    "offFormat": [],
+    "missing": []
+   }
+  ]
+ }
+]

@@ -1,0 +1,2129 @@
+{
+ "generated": "2026-10-27T14:34:53.733Z",
+ "serieValues": [
+  "Nano11",
+  "Magic Sauce",
+  "Core"
+ ],
+ "attr": {
+  "Nano11": {
+   "/sv/categories/alla-produkter": {
+    "slugs": [
+     "buds-7-nano11-sweet-karma-popcorn-5-gram",
+     "buds-7-nano11-amnezia-haze-5-gram",
+     "buds-7-nano11-super-skunk-5-gram",
+     "buds-7-nano11-raspberry-popcorn-5-gram",
+     "buds-7-nano11-cali-grape-5-gram",
+     "buds-7-nano11-bruce-banner-5-gram",
+     "buds-7-nano11-apple-fritter-5-gram",
+     "buds-7-nano11-lemon-purple-5-gram"
+    ],
+    "count": 8
+   },
+   "/sv/categories/vapes-ny": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/buds-ny": {
+    "slugs": [
+     "buds-7-nano11-sweet-karma-popcorn-5-gram",
+     "buds-7-nano11-amnezia-haze-5-gram",
+     "buds-7-nano11-super-skunk-5-gram",
+     "buds-7-nano11-raspberry-popcorn-5-gram",
+     "buds-7-nano11-cali-grape-5-gram",
+     "buds-7-nano11-bruce-banner-5-gram",
+     "buds-7-nano11-apple-fritter-5-gram",
+     "buds-7-nano11-lemon-purple-5-gram"
+    ],
+    "count": 8
+   },
+   "/sv/categories/hash-ny": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/alla-cartridges": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/alla-vapes": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/blommor-buds": {
+    "slugs": [
+     "buds-7-nano11-sweet-karma-popcorn-5-gram",
+     "buds-7-nano11-amnezia-haze-5-gram",
+     "buds-7-nano11-super-skunk-5-gram",
+     "buds-7-nano11-raspberry-popcorn-5-gram",
+     "buds-7-nano11-cali-grape-5-gram",
+     "buds-7-nano11-bruce-banner-5-gram",
+     "buds-7-nano11-apple-fritter-5-gram",
+     "buds-7-nano11-lemon-purple-5-gram"
+    ],
+    "count": 8
+   },
+   "/sv/categories/hasch": {
+    "slugs": [],
+    "count": 0
+   }
+  },
+  "Magic Sauce": {
+   "/sv/categories/alla-produkter": {
+    "slugs": [
+     "hash-magic-sauce-50-charas-5-gram",
+     "buds-magic-sauce-50-la-chupacabra-5-gram",
+     "buds-magic-sauce-50-tinky-winky-5-gram",
+     "buds-magic-sauce-50-samurai-jack-5-gram",
+     "vape-magic-sauce-99-2ml",
+     "cart-magic-sauce-99-1ml",
+     "buds-magic-sauce-50-khalifa-kush-5-gram",
+     "buds-magic-sauce-50-crazy-dog-5-gram",
+     "hash-magic-sauce-50-marrakesh-dream-5-gram",
+     "buds-magic-sauce-50-donny-burger-5-gram",
+     "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+     "buds-magic-sauce-50-gorilla-cookies-5-gram"
+    ],
+    "count": 12
+   },
+   "/sv/categories/vapes-ny": {
+    "slugs": [
+     "vape-magic-sauce-99-2ml",
+     "cart-magic-sauce-99-1ml"
+    ],
+    "count": 2
+   },
+   "/sv/categories/buds-ny": {
+    "slugs": [
+     "buds-magic-sauce-50-la-chupacabra-5-gram",
+     "buds-magic-sauce-50-tinky-winky-5-gram",
+     "buds-magic-sauce-50-samurai-jack-5-gram",
+     "buds-magic-sauce-50-khalifa-kush-5-gram",
+     "buds-magic-sauce-50-crazy-dog-5-gram",
+     "buds-magic-sauce-50-donny-burger-5-gram",
+     "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+     "buds-magic-sauce-50-gorilla-cookies-5-gram"
+    ],
+    "count": 8
+   },
+   "/sv/categories/hash-ny": {
+    "slugs": [
+     "hash-magic-sauce-50-charas-5-gram",
+     "hash-magic-sauce-50-marrakesh-dream-5-gram"
+    ],
+    "count": 2
+   },
+   "/sv/categories/alla-cartridges": {
+    "slugs": [
+     "cart-magic-sauce-99-1ml"
+    ],
+    "count": 1
+   },
+   "/sv/categories/alla-vapes": {
+    "slugs": [
+     "vape-magic-sauce-99-2ml"
+    ],
+    "count": 1
+   },
+   "/sv/categories/blommor-buds": {
+    "slugs": [
+     "buds-magic-sauce-50-la-chupacabra-5-gram",
+     "buds-magic-sauce-50-tinky-winky-5-gram",
+     "buds-magic-sauce-50-samurai-jack-5-gram",
+     "buds-magic-sauce-50-khalifa-kush-5-gram",
+     "buds-magic-sauce-50-crazy-dog-5-gram",
+     "buds-magic-sauce-50-donny-burger-5-gram",
+     "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+     "buds-magic-sauce-50-gorilla-cookies-5-gram"
+    ],
+    "count": 8
+   },
+   "/sv/categories/hasch": {
+    "slugs": [
+     "hash-magic-sauce-50-charas-5-gram",
+     "hash-magic-sauce-50-marrakesh-dream-5-gram"
+    ],
+    "count": 2
+   }
+  },
+  "Core": {
+   "/sv/categories/alla-produkter": {
+    "slugs": [
+     "vape-thcx-19-core-2ml"
+    ],
+    "count": 1
+   },
+   "/sv/categories/vapes-ny": {
+    "slugs": [
+     "vape-thcx-19-core-2ml"
+    ],
+    "count": 1
+   },
+   "/sv/categories/buds-ny": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/hash-ny": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/alla-cartridges": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/alla-vapes": {
+    "slugs": [
+     "vape-thcx-19-core-2ml"
+    ],
+    "count": 1
+   },
+   "/sv/categories/blommor-buds": {
+    "slugs": [],
+    "count": 0
+   },
+   "/sv/categories/hasch": {
+    "slugs": [],
+    "count": 0
+   }
+  }
+ },
+ "products": [
+  {
+   "slug": "hash-cbd-15-primero-1-gram",
+   "name": "Hash – CBD 15% – Primero – 1 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – CBD 15% – Primero – 1 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-22-orange-small-buds-5-gram",
+   "name": "Buds – THCA 22% – Orange Small Buds – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 22% – Orange Small Buds – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-25-ketama-5-gram",
+   "name": "Hash – THCA 25% – Ketama – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 25% – Ketama – 5 gram"
+   ]
+  },
+  {
+   "slug": "cart-thc-a-50-live-resin-faraoh-1ml",
+   "name": "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - THC-A 50% Live Resin - Faraoh - 1ml"
+   ]
+  },
+  {
+   "slug": "hash-magic-sauce-50-charas-5-gram",
+   "name": "Hash – Magic Sauce 50% – Charas – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/hasch?filters=Serie_Magic Sauce",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – Magic Sauce 50% – Charas – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-la-chupacabra-5-gram",
+   "name": "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-23-amnesia-infused-5-gram",
+   "name": "Buds – THCA 23% – Amnesia Infused – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 23% – Amnesia Infused – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-tinky-winky-5-gram",
+   "name": "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Tinky Winky – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-highlife-thcnm-gsc-5-gram",
+   "name": "Buds – HighLife THCNM – GSC – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thcnm-blommor",
+    "/sv/categories/thcnm",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – HighLife THCNM – GSC – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+   "name": "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thcnm-hash",
+    "/sv/categories/thca",
+    "/sv/categories/thcnm",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 30% + THCNM 10% – Royal Gorilla – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-thcx-19-core-2ml",
+   "name": "Vape - THCX 19% - Core - 2ml",
+   "serieAttr": [
+    "Core"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/alla-vapes?filters=Serie_Core",
+    "/sv/categories/core",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THCX 19% - Core - 2ml"
+   ]
+  },
+  {
+   "slug": "buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+   "name": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/hhcpm-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/hhcpm",
+    "/sv/categories/core",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-samurai-jack-5-gram",
+   "name": "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-cbd-25-cbn-35-magic-farmers-2ml",
+   "name": "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/cbn",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/cbn-vapes",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml"
+   ]
+  },
+  {
+   "slug": "blommor-cbd-30-tequila-sunrise-35-gram",
+   "name": "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram"
+   ]
+  },
+  {
+   "slug": "cart-thc-a-45-faraoh-1ml",
+   "name": "Cart - THC-A 45% - Faraoh - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/thca-vapes",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/thca",
+    "/sv/categories/thca-carts",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - THC-A 45% - Faraoh - 1ml"
+   ]
+  },
+  {
+   "slug": "vape-magic-sauce-99-2ml",
+   "name": "Vape - Magic Sauce 99% - 2ml",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/m-s-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - Magic Sauce 99% - 2ml"
+   ]
+  },
+  {
+   "slug": "cart-magic-sauce-99-1ml",
+   "name": "Cart - Magic Sauce 99% - 1ml",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/m-s-vapes",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/alla-cartridges?filters=Serie_Magic Sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - Magic Sauce 99% - 1ml"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-khalifa-kush-5-gram",
+   "name": "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-25-bubbelgum-og-5-gram",
+   "name": "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 25% – Bubbelgum OG – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+   "name": "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Crazy Dog – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-thc-a-45-faraoh-2ml",
+   "name": "Vape - THC-A 45% - Faraoh - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thca-vapes",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-A 45% - Faraoh - 2ml"
+   ]
+  },
+  {
+   "slug": "buds-thca-23-amnesia-5-gram",
+   "name": "Buds – THCA 23% – Amnesia – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 23% – Amnesia – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-20-white-widow-5-gram",
+   "name": "Buds – THCA 20% – White Widow – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 20% – White Widow – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-20-thcnm-10-black-widow-5-gram",
+   "name": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thcnm-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/thcnm",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-20-thcnm-20-malaga-magic-5-gram",
+   "name": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thcnm-hash",
+    "/sv/categories/thca",
+    "/sv/categories/thcnm",
+    "/sv/categories/core",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-40-northern-lights-5-gram",
+   "name": "Hash – THCA 40% – Northern Lights – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/core",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 40% – Northern Lights – 5 gram"
+   ]
+  },
+  {
+   "slug": "blommor-hhcpm-15-amnesia-5-gram",
+   "name": "Blommor – HHCPM 15% – Amnesia – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hhcpm-blommor",
+    "/sv/categories/hhcpm",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – HHCPM 15% – Amnesia – 5 gram"
+   ]
+  },
+  {
+   "slug": "blommor-hhcpm-15-durban-poison-5-gram",
+   "name": "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hhcpm-blommor",
+    "/sv/categories/hhcpm",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – HHCPM 15% – Durban Poison – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-hhcpm-15-canntropy-2ml",
+   "name": "Vape - HHCPM 15% - Canntropy - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/hhcpm-vapes",
+    "/sv/categories/hhcpm",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - HHCPM 15% - Canntropy - 2ml"
+   ]
+  },
+  {
+   "slug": "vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+   "name": "Vape Dual - CBD 56% - Blueberry Banana &amp; Tequila Sunrise - 1+1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape Dual - CBD 56% - Blueberry Banana &amp; Tequila Sunrise - 1+1ml"
+   ]
+  },
+  {
+   "slug": "cart-cbd-60-cookies-1ml",
+   "name": "Cart - CBD 60% - Cookies - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - CBD 60% - Cookies - 1ml"
+   ]
+  },
+  {
+   "slug": "vape-thcv-euphoria-2ml",
+   "name": "Vape - THCV - Euphoria - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/thcv",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THCV - Euphoria - 2ml"
+   ]
+  },
+  {
+   "slug": "buds-15-cbd-10-gram-russian-roulette",
+   "name": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – ≈15% CBD – 10 gram - Russian Roulette"
+   ]
+  },
+  {
+   "slug": "ccell-m3b-vape-batteri-510",
+   "name": "CCELL M3b – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL M3b – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "vape-thc-v-20-tatra-hemp-2ml",
+   "name": "Vape - THC-V 20% - Tatra Hemp - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/thcv",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-V 20% - Tatra Hemp - 2ml"
+   ]
+  },
+  {
+   "slug": "isolat-thca-99-isolate-5-gram",
+   "name": "Isolat – THCA 99% – Isolate – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/isolat"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Isolat",
+    "Isolat – THCA 99% – Isolate – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-cbd-30-cereal-milk-35-gram",
+   "name": "Buds – CBD 30% – Cereal Milk – 3,5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBD 30% – Cereal Milk – 3,5 gram"
+   ]
+  },
+  {
+   "slug": "vape-thc-b-35-faraoh-1ml",
+   "name": "Vape - THC-B 35% - Faraoh - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcb-vapes",
+    "/sv/categories/thcb",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-B 35% - Faraoh - 1ml"
+   ]
+  },
+  {
+   "slug": "ccell-m3-plus-vape-batteri-510",
+   "name": "CCELL M3 Plus – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL M3 Plus – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "vape-cbn-89-canapuff-1ml",
+   "name": "Vape - CBN 89% - Canapuff - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/cbn",
+    "/sv/categories/cbn-vapes",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - CBN 89% - Canapuff - 1ml"
+   ]
+  },
+  {
+   "slug": "ccell-palm-pro-vape-batteri-510",
+   "name": "CCELL Palm Pro – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL Palm Pro – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "vape-thc-v-20-cbd-group-2ml",
+   "name": "Vape - THC-V 20% - CBD Group - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/thcv",
+    "/sv/categories/cbd-group",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-V 20% - CBD Group - 2ml"
+   ]
+  },
+  {
+   "slug": "fraktandring",
+   "name": "Fraktändring",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter"
+   ],
+   "breadcrumb": [
+    "Alla produkter",
+    "Fraktändring"
+   ]
+  },
+  {
+   "slug": "ccell-m4-vape-batteri-510",
+   "name": "CCELL M4 – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL M4 – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "hash-thca-25-la-mousse-5-gram",
+   "name": "Hash – THCA 25% – La Mousse – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 25% – La Mousse – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-sweet-karma-popcorn-5-gram",
+   "name": "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-amnezia-haze-5-gram",
+   "name": "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Amnezia Haze – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-super-skunk-5-gram",
+   "name": "Buds – 7% Nano11 – Super Skunk – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Super Skunk – 5 gram"
+   ]
+  },
+  {
+   "slug": "isolat-cbd-99-isolate-15-gram",
+   "name": "Isolat – CBD 99% – Isolate – 15 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hasch",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/isolat"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Isolat",
+    "Isolat – CBD 99% – Isolate – 15 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-24-zkittles-indoor-5-gram",
+   "name": "Buds – THCA 24% – Zkittles Indoor – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 24% – Zkittles Indoor – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-raspberry-popcorn-5-gram",
+   "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-cali-grape-5-gram",
+   "name": "Buds – 7% Nano11 – Cali Grape – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Cali Grape – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-bruce-banner-5-gram",
+   "name": "Buds – 7% Nano11 – Bruce Banner – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Bruce Banner – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-apple-fritter-5-gram",
+   "name": "Buds – 7% Nano11 – Apple Fritter – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Apple Fritter – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+   "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/hasch?filters=Serie_Magic Sauce",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-cbd-purple-haze-5-gram",
+   "name": "Buds – CBD – Purple Haze – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBD – Purple Haze – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-cbd-strawberry-haze-5-gram",
+   "name": "Buds – CBD – Strawberry Haze – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBD – Strawberry Haze – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-cbd-trim-royal-10-gram",
+   "name": "Buds – CBD – Trim Royal – 10 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBD – Trim Royal – 10 gram"
+   ]
+  },
+  {
+   "slug": "vape-10-oh-thc-95-canapuff-1ml",
+   "name": "Vape - 10-OH-THC 95% - Canapuff - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/10-oh-thc-vapes",
+    "/sv/categories/10-oh-thc",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - 10-OH-THC 95% - Canapuff - 1ml"
+   ]
+  },
+  {
+   "slug": "prerolled-cbd-tequila-sunrise-1-gram",
+   "name": "PreRolled – CBD – Tequila Sunrise – 1 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/prerolled"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "PreRolled",
+    "PreRolled – CBD – Tequila Sunrise – 1 gram"
+   ]
+  },
+  {
+   "slug": "hash-cbn-40-yellowstone-5-gram",
+   "name": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hasch",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbn",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – CBN+ 40% – Yellowstone - 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-22-kitty-indoor-5-gram",
+   "name": "Buds – THCA 22% – Kitty Indoor – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 22% – Kitty Indoor – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-22-og-kush-small-buds-5-gram",
+   "name": "Buds – THCA 22% – OG Kush Small Buds – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 22% – OG Kush Small Buds – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-donny-burger-5-gram",
+   "name": "Buds – Magic Sauce 50% – Donny Burger – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Donny Burger – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-24-ice-indoor-5-gram",
+   "name": "Buds – THCA 24% – Ice indoor – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 24% – Ice indoor – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-50-bubble-hash-5-gram",
+   "name": "Hash – THCA 50% – Bubble Hash – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 50% – Bubble Hash – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-thc-a-50-live-resin-faraoh-2ml",
+   "name": "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thca-vapes",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-A 50% Live Resin - Faraoh - 2ml"
+   ]
+  },
+  {
+   "slug": "vape-thc-a-50-live-resin-faraoh-1ml",
+   "name": "Vape - THC-A 50% Live Resin - Faraoh - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thca-vapes",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-A 50% Live Resin - Faraoh - 1ml"
+   ]
+  },
+  {
+   "slug": "prerolled-cbd-blue-raz-1-gram",
+   "name": "PreRolled – CBD – Blue Raz – 1 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/prerolled"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "PreRolled",
+    "PreRolled – CBD – Blue Raz – 1 gram"
+   ]
+  },
+  {
+   "slug": "prerolled-cbd-apples-amp-bananas-1-gram",
+   "name": "PreRolled – CBD – Apples &amp; Bananas – 1 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/prerolled"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "PreRolled",
+    "PreRolled – CBD – Apples &amp; Bananas – 1 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-30-dry-static-5-gram",
+   "name": "Hash – THCA 30% – Dry Static – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 30% – Dry Static – 5 gram"
+   ]
+  },
+  {
+   "slug": "prerolled-thca-22-bangkok-1-gram",
+   "name": "PreRolled – THCA 22% – Bangkok – 1 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/prerolled"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "PreRolled",
+    "PreRolled – THCA 22% – Bangkok – 1 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+   "name": "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-magic-sauce-50-gorilla-cookies-5-gram",
+   "name": "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram",
+   "serieAttr": [
+    "Magic Sauce"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/m-s-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-18-strawberry-og-5-gram",
+   "name": "Buds – THCA 18% – Strawberry OG – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/faraoh",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 18% – Strawberry OG – 5 gram"
+   ]
+  },
+  {
+   "slug": "cart-cbd-60-tatra-hemp-05ml",
+   "name": "Cart - CBD 60% - Tatra Hemp - 0,5ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - CBD 60% - Tatra Hemp - 0,5ml"
+   ]
+  },
+  {
+   "slug": "vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+   "name": "Vape Dual - CBD 57% - Hana Butter &amp; Long Island - 1+1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape Dual - CBD 57% - Hana Butter &amp; Long Island - 1+1ml"
+   ]
+  },
+  {
+   "slug": "vape-thc-b-20-tatra-hemp-2ml",
+   "name": "Vape - THC-B 20% - Tatra Hemp - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcb-vapes",
+    "/sv/categories/thcb",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-B 20% - Tatra Hemp - 2ml"
+   ]
+  },
+  {
+   "slug": "vape-thc-b-20-tatra-hemp-1ml",
+   "name": "Vape - THC-B 20% - Tatra Hemp - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcb-vapes",
+    "/sv/categories/thcb",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-B 20% - Tatra Hemp - 1ml"
+   ]
+  },
+  {
+   "slug": "cart-thc-b-20-tatra-hemp-1ml",
+   "name": "Cart - THC-B 20% - Tatra Hemp - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/thcb",
+    "/sv/categories/thcb-carts",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - THC-B 20% - Tatra Hemp - 1ml"
+   ]
+  },
+  {
+   "slug": "vape-thc-v-20-tatra-hemp-1ml",
+   "name": "Vape - THC-V 20% - Tatra Hemp - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/thcv",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-V 20% - Tatra Hemp - 1ml"
+   ]
+  },
+  {
+   "slug": "cart-thc-v-20-tatra-hemp-1ml",
+   "name": "Cart - THC-V 20% - Tatra Hemp - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/thcv",
+    "/sv/categories/thcv-carts",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Cart - THC-V 20% - Tatra Hemp - 1ml"
+   ]
+  },
+  {
+   "slug": "ccell-fino-vape-batteri-510",
+   "name": "CCELL Fino – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL Fino – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "ccell-sandwave-vape-batteri-510",
+   "name": "CCELL Sandwave – Vape Batteri – 510",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/pennor",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "CCELL Sandwave – Vape Batteri – 510"
+   ]
+  },
+  {
+   "slug": "buds-cbd-30-triple-scoop-35-gram",
+   "name": "Buds – CBD 30% – Triple Scoop – 3,5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBD 30% – Triple Scoop – 3,5 gram"
+   ]
+  },
+  {
+   "slug": "buds-cbg9-60-snow-ice",
+   "name": "Buds – CBG9 60% – Snow Ice",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbn",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBG9 60% – Snow Ice"
+   ]
+  },
+  {
+   "slug": "buds-cbn-30-malibu-skittelz-5-gram",
+   "name": "Buds – CBN+ 30% – Malibu Skittelz - 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbn",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – CBN+ 30% – Malibu Skittelz - 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-30-dry-sift-5-gram",
+   "name": "Hash – THCA 30% – Dry Sift – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 30% – Dry Sift – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-23-orange-indoor-5-gram",
+   "name": "Buds – THCA 23% – Orange Indoor – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 23% – Orange Indoor – 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-7-nano11-lemon-purple-5-gram",
+   "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+   "serieAttr": [
+    "Nano11"
+   ],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano11-blommor",
+    "/sv/categories/nano-11",
+    "/sv/categories/tatra-hemp",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – 7% Nano11 – Lemon Purple – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-h4cbd-97-cbd-group-2ml",
+   "name": "Vape - H4CBD 97% - CBD Group - 2ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/cbd-group",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - H4CBD 97% - CBD Group - 2ml"
+   ]
+  },
+  {
+   "slug": "vape-h4cbd-96-canapuff-1ml",
+   "name": "Vape - H4CBD 96% - Canapuff - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - H4CBD 96% - Canapuff - 1ml"
+   ]
+  },
+  {
+   "slug": "hazeyse-merch-nyckelring",
+   "name": "Hazey.se Merch - Nyckelring",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/merch",
+    "/sv/categories/merch-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Merch",
+    "Hazey.se Merch - Nyckelring"
+   ]
+  },
+  {
+   "slug": "vape-thc-v-79-canapuff-1ml",
+   "name": "Vape - THC-V 79% - Canapuff - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/thcv",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-V 79% - Canapuff - 1ml"
+   ]
+  },
+  {
+   "slug": "vape-thc-v-20-canntropy-1ml",
+   "name": "Vape - THC-V 20% - Canntropy - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/thcv-vape",
+    "/sv/categories/cbn",
+    "/sv/categories/thcv",
+    "/sv/categories/cbn-vapes",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - THC-V 20% - Canntropy - 1ml"
+   ]
+  },
+  {
+   "slug": "vape-h4cbd-95-canntropy-1ml",
+   "name": "Vape - H4CBD 95% - Canntropy - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - H4CBD 95% - Canntropy - 1ml"
+   ]
+  },
+  {
+   "slug": "blommor-cbd-3g-purple-haze-trinacria-hemp",
+   "name": "Blommor – CBD – 3g - Purple Haze - Trinacria Hemp",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – CBD  – 3g - Purple Haze - Trinacria Hemp"
+   ]
+  },
+  {
+   "slug": "blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+   "name": "Blommor – CBD – 3g - Gorilla Glue - Trinacria Hemp",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – CBD  – 3g - Gorilla Glue - Trinacria Hemp"
+   ]
+  },
+  {
+   "slug": "blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+   "name": "Blommor – CBD – 3g - Lemon Skunk - Trinacria Hemp",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – CBD  – 3g - Lemon Skunk - Trinacria Hemp"
+   ]
+  },
+  {
+   "slug": "vape-cbd-46-hazey-1ml",
+   "name": "Vape - CBD 46% - Hazey - 1ml",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/h4cbd",
+    "/sv/categories/alla-vapes?serie=magic-sauce",
+    "/sv/categories/h4cbd-vape",
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Vapes",
+    "Vape - CBD 46% - Hazey - 1ml"
+   ]
+  },
+  {
+   "slug": "blommor-cbn-10-great-white-shark",
+   "name": "Blommor – CBN 10% – Great White Shark",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/cbn",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Blommor – CBN 10% – Great White Shark"
+   ]
+  },
+  {
+   "slug": "buds-h4cbd-30-kusher-kush-5-gram",
+   "name": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/h4cbd",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/h4cbd-buds",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – H4CBD 30% – Kusher Kush – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+   "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/hasch",
+    "/sv/categories/h4cbd",
+    "/sv/categories/cbn",
+    "/sv/categories/h4cbd-hasch",
+    "/sv/categories/magic-farmers",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram"
+   ]
+  },
+  {
+   "slug": "buds-thca-25-raspberry-5-gram",
+   "name": "Buds – THCA 25% – Raspberry – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/blommor-buds",
+    "/sv/categories/thca-blommor",
+    "/sv/categories/thca",
+    "/sv/categories/buds-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Buds",
+    "Buds – THCA 25% – Raspberry – 5 gram"
+   ]
+  },
+  {
+   "slug": "hash-thca-60-piatella-hash-5-gram",
+   "name": "Hash – THCA 60% – Piatella Hash – 5 gram",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/hasch",
+    "/sv/categories/thca-hash",
+    "/sv/categories/thca",
+    "/sv/categories/hash-ny"
+   ],
+   "breadcrumb": [
+    "Hazey V2",
+    "Hash",
+    "Hash – THCA 60% – Piatella Hash – 5 gram"
+   ]
+  },
+  {
+   "slug": "vape-thc-h-20-hazey-2ml-500puffs",
+   "name": "Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": []
+  },
+  {
+   "slug": "vape-thc-h-20-hazey-2ml-600puffs",
+   "name": "Vape - THC-H 20% - Hazey - 2ml ≈ 600puffs",
+   "serieAttr": [],
+   "categories": [
+    "/sv/categories/vapes-ny"
+   ],
+   "breadcrumb": []
+  }
+ ]
+}

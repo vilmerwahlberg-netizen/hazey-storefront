@@ -1,0 +1,112 @@
+[
+ {
+  "name": "control-m-s-vapes",
+  "route": "/sv/categories/m-s-vapes",
+  "note": "dedikerad serie x format (kontroll) -- innehåller en cart",
+  "h1": "Magic Sauce Vapes",
+  "h1Count": 1,
+  "shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts hz8-sf-low",
+  "nav": "series-format",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "anomaly-m-s-buds",
+  "route": "/sv/categories/m-s-buds",
+  "note": "M.S Buds innehåller 2 hasch, saknar La Chupacabra",
+  "h1": "Magic Sauce Buds",
+  "h1Count": 1,
+  "shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": "series-format",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "filtered-ms-hasch",
+  "route": "/sv/categories/hasch?filters=Serie_Magic+Sauce",
+  "note": "Magic Sauce Hasch = filtrerad bred sida",
+  "h1": "Allt Hasch",
+  "h1Count": 1,
+  "shell": "hz8-cat-pilot hz8-series-picker hz8-series-union",
+  "nav": "pilot",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "filtered-ms-carts",
+  "route": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+  "note": "Magic Sauce Carts = filtrerad Alla Carts",
+  "h1": "Alla Carts",
+  "h1Count": 1,
+  "shell": "hz8-series-picker hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": "format",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "control-thca-vapes",
+  "route": "/sv/categories/thca-vapes",
+  "note": "serie x format-mall (THCaB-kontroll)",
+  "h1": "THCaB Vapes",
+  "h1Count": 1,
+  "shell": "hz8-sf hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": "series-format",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "legacy-hero-vapes",
+  "route": "/sv/categories/hero-vapes",
+  "note": "tillverkarkategori med missvisande H1, äldre skal",
+  "h1": "Hero Vapes",
+  "h1Count": 1,
+  "shell": "hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": null,
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "hub-core",
+  "route": "/sv/categories/core",
+  "note": "Core-hubb i extern preview (lokal Core-build ej pushad)",
+  "h1": "Core",
+  "h1Count": 1,
+  "shell": "hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": null,
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "legacy-thcv-hub",
+  "route": "/sv/categories/thcv",
+  "note": "seriehubb på äldre HZ8.seriesHub",
+  "h1": "THC-V",
+  "h1Count": 1,
+  "shell": "hz8-series-hub",
+  "nav": "series-hub",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "broad-alla-carts",
+  "route": "/sv/categories/alla-cartridges",
+  "note": "Alla Carts -- ej i bred familj (Task 05)",
+  "h1": "Alla Carts",
+  "h1Count": 1,
+  "shell": "hz8-series-picker hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": "format",
+  "overflowX": 0,
+  "attempt": 0
+ },
+ {
+  "name": "hidden-prerolled",
+  "route": "/sv/categories/prerolled",
+  "note": "dold strukturkategori med 4 pre-rolls",
+  "h1": "PreRolled",
+  "h1Count": 1,
+  "shell": "hz8-catshelf hz8-sf-has-shortcuts",
+  "nav": null,
+  "overflowX": 0,
+  "attempt": 0
+ }
+]
