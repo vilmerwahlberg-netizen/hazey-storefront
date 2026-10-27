@@ -228,7 +228,7 @@ html.hz8 #store-main .hz8-more .hz8-more__shelf .hz8-prail__title { font-family:
 
 /* ======================================================================
    SERIEHUBB, NY RIKTNING (pilot, html.hz8-sh-pilot -- 81-series-hub.js
-   seriesHubPilot, aktiv för serier i SERIES_PILOTS: Magic Sauce, THCaB, THCbA).
+   seriesHubPilot, aktiv för serier i SERIES_PILOTS: Magic Sauce, THCaB, THCbA, Nano-11).
    Samma familj som Alla Vapes-piloten (80-category.css): kusthero med
    separat kalkputslager, rökt olivglas-quiz, produktkort och köpknappar
    (kortreglerna i 80-category.css gäller båda piloterna). Egen logik:
@@ -399,6 +399,8 @@ html.hz8-sh-pilot .hz8-sh-guide {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   html.hz8-sh-pilot .hz8-sh-guide { background: rgba(44, 54, 32, .88); }
 }
+/* Serie med ett enda format: inget formatval i heron (81-series-hub.js). */
+html.hz8-sh-pilot .hz8-sh-guide[hidden] { display: none !important; }
 /* Varm gulgrön solreflex mot övre/högra kanten (inte en orange hinna). */
 html.hz8-sh-pilot .hz8-sh-guide::before {
   content: "";

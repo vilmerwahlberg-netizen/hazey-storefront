@@ -238,7 +238,7 @@
   /* ======================================================================
      Seriehubb, ny riktning (pilot). Återanvändbar komponent som styrs av
      SERIES_PILOTS -- aktiv bara för serier som har en post där (i den här
-     rundan: Magic Sauce, THCaB, THCbA). Övriga seriehubbar använder HZ8.seriesHub ovan.
+     rundan: Magic Sauce, THCaB, THCbA, Nano-11). Övriga seriehubbar använder HZ8.seriesHub ovan.
 
      Data (inget hårdkodat): seriens produkter = union av seriens egen hubb
      (alla sidor) och alla serie x format-routes i relationskartan,
@@ -309,6 +309,22 @@
       },
       formats: ["vapes", "carts"],
       guide: { title: "Hitta ditt format", text: "Utforska serien efter format.", cta: "Utforska formaten" }
+    },
+    /* Avsett sortiment: 5 g buds + pre-rolls. Bara format med riktiga
+       produkter visas; med ett enda format döljs guidekortet. */
+    "Nano-11": {
+      lead: "{formats} från Nano-11-serien.",
+      hero: {
+        dir: "series-nano11-hero-2026-10/",
+        wide: ["nano11-hero-1920x744.webp", 1920, 744],
+        desk: ["nano11-hero-1512x664.webp", 1512, 664],
+        mobile: ["nano11-hero-mobile-900x1802.webp", 900, 1802],
+        pos: "50% 45%",
+        posTablet: "50% 78%",
+        leadMobile: "min(21ch, 46vw)"
+      },
+      formats: ["buds", "prerolls"],
+      guide: { title: "Upptäck serien", text: "Hela Nano-11 samlat efter format.", cta: "Se produkterna" }
     }
   };
   var SH_MAX_PAGES = 8;
@@ -711,6 +727,10 @@
         return;
       }
       count.textContent = HZ8.countLabel(u.total);
+      /* Guidekortet (formatval) bara när serien har minst två format med
+         produkter (designkontraktet) -- annars pekar det på en rad med ett
+         enda val. Sätts under beredskapsmasken, inget hopp efter reveal. */
+      if (keys.length < 2) { var guideEl = hero.querySelector(".hz8-sh-guide"); if (guideEl) guideEl.hidden = true; hero.classList.add("is-one-format"); }
       var labels = keys.map(function (k) { return fmtDef(k).label.toLowerCase(); });
       var fl = joinSv(labels);
       hero.querySelector(".hz8-sh-hero__lead").textContent = cfg.lead.indexOf("{formats}") === -1 ? cfg.lead + " Utforska " + fl + "." :

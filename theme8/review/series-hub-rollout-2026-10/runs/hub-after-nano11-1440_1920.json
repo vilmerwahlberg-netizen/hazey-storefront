@@ -1,0 +1,132 @@
+[
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 1440,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 26,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Nano-11",
+  "lead": "Buds från Nano-11-serien.",
+  "count": "8 produkter",
+  "guide": "Upptäck serien",
+  "guideText": "Hela Nano-11 samlat efter format.",
+  "cta": "Se produkterna",
+  "seal": false,
+  "script": null,
+  "heroImg": "nano11-hero-1512x664.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 446,
+   "height": 446
+  },
+  "chips": [
+   "Alla8, 8 produkter*",
+   "Buds8, 8 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "buds",
+    "id": "nano-11-buds",
+    "title": "Nano-11 Buds",
+    "cards": 8,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/nano11-blommor?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+     "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+     "Buds – 7% Nano11 – Super Skunk – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 8,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core1 produkt",
+   "D101 produkt",
+   "Nano-118 produkter*",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 2308,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 1920,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 21,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Nano-11",
+  "lead": "Buds från Nano-11-serien.",
+  "count": "8 produkter",
+  "guide": "Upptäck serien",
+  "guideText": "Hela Nano-11 samlat efter format.",
+  "cta": "Se produkterna",
+  "seal": false,
+  "script": null,
+  "heroImg": "nano11-hero-1920x744.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 518,
+   "height": 518
+  },
+  "chips": [
+   "Alla8, 8 produkter*",
+   "Buds8, 8 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "buds",
+    "id": "nano-11-buds",
+    "title": "Nano-11 Buds",
+    "cards": 8,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/nano11-blommor?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+     "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+     "Buds – 7% Nano11 – Super Skunk – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 8,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core1 produkt",
+   "D101 produkt",
+   "Nano-118 produkter*",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 2468,
+  "errors": []
+ }
+]

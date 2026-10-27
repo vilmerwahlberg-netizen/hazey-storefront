@@ -1,13 +1,13 @@
 [
  {
   "f": "alla-vapes-1440.png",
-  "changedPx": 6564,
-  "pct": 0.19,
+  "changedPx": 3871,
+  "pct": 0.112,
   "box": [
    1092,
    593,
    1357,
-   861
+   860
   ]
  },
  {
@@ -72,13 +72,25 @@
  },
  {
   "f": "thcab-393.png",
-  "changedPx": 195,
-  "pct": 0.005,
+  "changedPx": 6207,
+  "pct": 0.165,
   "box": [
-   418,
-   1296,
-   581,
-   1474
+   411,
+   1292,
+   597,
+   1476
   ]
+ },
+ {
+  "f": "thcba-1440.png",
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
+ },
+ {
+  "f": "thcba-393.png",
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  }
 ]

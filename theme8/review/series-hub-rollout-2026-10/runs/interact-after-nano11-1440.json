@@ -1,0 +1,54 @@
+{
+ "which": "after",
+ "route": "nano11",
+ "w": 1440,
+ "dataMs": 33,
+ "chips": [
+  {
+   "href": "#hz8-sh-shelves",
+   "key": "all"
+  },
+  {
+   "href": "#nano-11-buds",
+   "key": "buds"
+  }
+ ],
+ "click": {
+  "hash": "#nano-11-buds",
+  "top": 98,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "buds"
+ },
+ "back": {
+  "hash": "",
+  "top": null,
+  "headerBottom": 80,
+  "focus": "hz8-prail__title",
+  "current": "all"
+ },
+ "forward": {
+  "hash": "#nano-11-buds",
+  "top": 98,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "buds"
+ },
+ "keyboard": {
+  "hash": "#nano-11-buds",
+  "focus": "hz8-prail__title",
+  "navTop": 432
+ },
+ "viewAll": [
+  "/sv/categories/nano11-blommor"
+ ],
+ "errors": [],
+ "deep": {
+  "hash": "#nano-11-buds",
+  "top": 98,
+  "headerBottom": 80,
+  "focus": "has-fixed-header",
+  "current": "buds"
+ },
+ "deepErrors": []
+}

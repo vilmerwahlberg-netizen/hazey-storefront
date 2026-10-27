@@ -18,7 +18,8 @@ for (const route of rs.split(",")) for (const w of ws.split(",").map(Number)) {
       if (req.resourceType() === "document") return r.fallback();
       const u = new URL(req.url());
       // fail: första serie x format-routen (inte hubben själv) avbryts.
-      if (mode === "fail" && u.pathname !== new URL("https://x" + ROUTES[route]).pathname && !failed) failed = u.pathname;
+      // FAIL_PATH väljer en bestämd källa; annars första icke-hubb-kategorin.
+      if (mode === "fail" && !failed && (process.env.FAIL_PATH ? u.pathname === process.env.FAIL_PATH : u.pathname !== new URL("https://x" + ROUTES[route]).pathname)) failed = u.pathname;
       if (mode === "fail" && u.pathname === failed) return r.abort("failed");
       if (mode === "slow") await new Promise(res => setTimeout(res, 2500));
       return r.fallback();
