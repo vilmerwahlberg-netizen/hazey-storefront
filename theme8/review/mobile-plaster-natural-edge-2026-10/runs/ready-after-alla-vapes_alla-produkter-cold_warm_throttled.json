@@ -1,0 +1,110 @@
+[
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "cold",
+  "w": 393,
+  "firstPainted": {
+   "t": 1499,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "warm",
+  "w": 393,
+  "firstPainted": {
+   "t": 1239,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "throttled",
+  "w": 393,
+  "firstPainted": {
+   "t": 14892,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "cold",
+  "w": 393,
+  "firstPainted": {
+   "t": 863,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "warm",
+  "w": 393,
+  "firstPainted": {
+   "t": 713,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "throttled",
+  "w": 393,
+  "firstPainted": {
+   "t": 12704,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ }
+]

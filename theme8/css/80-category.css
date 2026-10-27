@@ -1651,18 +1651,18 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
     mask-image: none;
     background: radial-gradient(78% 150px at 30% calc(var(--hz8-top-clear) + 120px), rgba(247, 240, 229, .12), rgba(247, 240, 229, .06) 55%, rgba(247, 240, 229, 0) 100%);
   }
-  /* TASK 01D-R (2026-10-27, facit concept-b-eroded-plaster-edge.png):
-     kalkputskanten är ett art-directed bildmaterial med riktig
-     transparens (category-mobile-plaster-edge-v2.webp, 2048x768) som
-     ligger ovanpå liveheron -- ingen procedurmask, inga CSS-sprickor,
-     inget separat brus. En regel för hela hz8-cat-pilot-familjen.
-     Beskärning: bilden är 200 % av herons bredd (max 860 px) och
-     förankrad nere till höger, så att den lugnare, låga högerhalvan av
-     konturen syns (vänsterhalvan sluttar brant). Proportionerna behålls
-     alltid (auto-höjd); 26 px av den jämna putsen nedtill skjuts under
-     herons kant så att konturen landar en bit under guidekortet.
-     Längst ned tonar putsen över i butiksytans egen ton (två nästan
-     identiska kalktoner, #f4e6d1 -> #f1e6d5) -- ingen vit gradient. */
+  /* TASK 01D-R3 (2026-10-27): kalkputskanten är ett art-directed
+     bildmaterial med riktig transparens (category-mobile-plaster-edge-v3
+     .webp, 1800x750) ovanpå liveheron -- ingen procedurmask, inga
+     CSS-sprickor, inget separat brus. En regel för hela
+     hz8-cat-pilot-familjen. Hela den ritade silhuetten visas: 100 %
+     bredd, auto-höjd, centrerad (ingen beskärning) -- högst längst till
+     vänster, en bred sluttning, lägst i mitten/höger.
+     Vertikalt: konturens vänstra topp (7,2 % av bildhöjden = 7,17vw)
+     landar ~50 px under guidekortet, men aldrig så lågt att den lägsta
+     zonen (26vw ned) hamnar bakom hyllans 29 px överlapp
+     (min(...) nedan). Längst ned tonar putsen över i butiksytans egen
+     ton (två nästan identiska kalktoner) -- ingen vit gradient. */
   html.hz8-cat-pilot {
     /* Utrymmet mellan herons sista element och dess nederkant: där
        syns foto -> bruten kant -> puts innan hyllan (facit 393: ~155 px
@@ -1671,10 +1671,10 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
   }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::before {
     inset: auto 0 0 0;
-    height: min(42vw, 190px);
+    height: 42vw;
     background:
       linear-gradient(180deg, transparent calc(100% - 34px), var(--hz8-pilot-shop)),
-      url("assets/category-vapes-hero-2026-10/category-mobile-plaster-edge-v2.webp") 100% calc(100% + min(6.6vw, 28px)) / min(200%, 860px) auto no-repeat;
+      url("assets/category-vapes-hero-2026-10/category-mobile-plaster-edge-v3.webp") 50% calc(100% + min(34.5vw - var(--hz8-mplaster-gap) + 50px, 15.67vw - 49px)) / 100% auto no-repeat;
     opacity: 1;  /* desktopens 0.9 skulle låta fotot lysa igenom */
   }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::after { content: none; }

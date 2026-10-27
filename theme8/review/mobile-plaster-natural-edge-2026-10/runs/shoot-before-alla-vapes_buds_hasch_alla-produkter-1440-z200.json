@@ -1,0 +1,266 @@
+[
+ {
+  "which": "before",
+  "route": "alla-vapes",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "anchor": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "art": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 689,
+   "bottom": 797,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "29 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "buds",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "anchor": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "art": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 689,
+   "bottom": 797,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 809,
+   "bottom": 1332,
+   "left": 16,
+   "width": 338,
+   "height": 523
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "54 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "hasch",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "anchor": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "art": {
+   "top": 0,
+   "bottom": 718,
+   "left": 0,
+   "width": 720,
+   "height": 718
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 689,
+   "bottom": 797,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 809,
+   "bottom": 1307,
+   "left": 16,
+   "width": 338,
+   "height": 498
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "16 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "alla-produkter",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-portal hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 601,
+   "left": 0,
+   "width": 720,
+   "height": 601
+  },
+  "anchor": {
+   "top": 384,
+   "bottom": 438,
+   "left": 16,
+   "width": 688,
+   "height": 54
+  },
+  "art": {
+   "top": 0,
+   "bottom": 601,
+   "left": 0,
+   "width": 720,
+   "height": 601
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": {
+   "top": 601,
+   "bottom": 720,
+   "left": 16,
+   "width": 688,
+   "height": 119
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "104 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ }
+]
