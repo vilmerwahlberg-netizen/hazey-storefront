@@ -1,0 +1,71 @@
+[
+ {
+  "which": "before",
+  "route": "alla-vapes",
+  "w": 1440,
+  "zoom": true,
+  "cls": "hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 566,
+   "left": 0,
+   "width": 720,
+   "height": 566
+  },
+  "anchor": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "art": {
+   "top": 0,
+   "bottom": 566,
+   "left": 0,
+   "width": 720,
+   "height": 566
+  },
+  "guide": {
+   "top": 393,
+   "bottom": 526,
+   "left": 188,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": {
+   "top": 442,
+   "bottom": 488,
+   "left": 249,
+   "width": 264,
+   "height": 46
+  },
+  "tool": {
+   "top": 537,
+   "bottom": 645,
+   "left": 16,
+   "width": 688,
+   "height": 108
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "29 produkter",
+  "vw": 720,
+  "hits": [
+   "guideCta:BLOCKED null",
+   "filterBtn:offscreen"
+  ],
+  "errors": []
+ }
+]

@@ -1,0 +1,59 @@
+[
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-cat-portal hz8-cat-pilot",
+  "shell": "broad",
+  "hero": {
+   "top": 0,
+   "bottom": 576,
+   "left": 0,
+   "width": 393,
+   "height": 576
+  },
+  "anchor": {
+   "top": 375,
+   "bottom": 429,
+   "left": 16,
+   "width": 361,
+   "height": 54
+  },
+  "art": {
+   "top": 0,
+   "bottom": 576,
+   "left": 0,
+   "width": 393,
+   "height": 576
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": {
+   "top": 576,
+   "bottom": 695,
+   "left": 16,
+   "width": 361,
+   "height": 119
+  },
+  "card": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "artMask": "none",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": "\"\"",
+  "plasterMask": "none",
+  "overflowX": false,
+  "count": "104 produkter",
+  "vw": 393,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:ok"
+  ],
+  "errors": []
+ }
+]

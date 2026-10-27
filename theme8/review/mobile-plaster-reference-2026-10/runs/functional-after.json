@@ -1,0 +1,260 @@
+{
+ "allavapes-filter-history-sort": {
+  "s1": {
+   "url": "?serie=thcab,thcba&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "THCbA×",
+    "I lager×"
+   ],
+   "n": 3,
+   "count": "3 produkter"
+  },
+  "s2": {
+   "url": "?serie=thcab&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "I lager×"
+   ],
+   "n": 2,
+   "count": "2 produkter"
+  },
+  "s3": {
+   "url": "?serie=thcab,thcba&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "THCbA×",
+    "I lager×"
+   ],
+   "n": 3,
+   "count": "3 produkter"
+  },
+  "s4": {
+   "url": "?serie=thcab&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "I lager×"
+   ],
+   "n": 2,
+   "count": "2 produkter"
+  },
+  "s5": {
+   "url": "?filters=",
+   "chips": [],
+   "n": 29,
+   "count": "29 produkter"
+  },
+  "s6": {
+   "url": "?filters=&sort=price_low",
+   "prices": [
+    299,
+    299,
+    329,
+    329,
+    349,
+    349,
+    365,
+    365
+   ],
+   "ascending": true
+  },
+  "errs": []
+ },
+ "allavapes-mobile-sort": {
+  "error": "TimeoutError: page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-pt=\"sort-sheet\"]')\u001b[22m\n"
+ },
+ "hasch-tabs-history": {
+  "tabs": [],
+  "before": {
+   "url": "?",
+   "chips": [],
+   "n": 0,
+   "count": "16 produkter"
+  },
+  "clicked": null,
+  "after": {
+   "url": "?",
+   "chips": [],
+   "n": 0,
+   "count": "16 produkter"
+  },
+  "back": {
+   "url": "",
+   "chips": [],
+   "n": 0
+  }
+ },
+ "hasch-family-tabs": {
+  "tabs": [
+   "Allt Hasch",
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "before": {
+   "url": "?",
+   "pressed": "Allt Hasch",
+   "count": "16 produkter",
+   "cards": 16
+  },
+  "clicked": "Magic Sauce",
+  "after": {
+   "url": "?&serie=magic-sauce",
+   "pressed": "Magic Sauce",
+   "count": "2 produkter",
+   "cards": 2
+  },
+  "back": {
+   "url": "?",
+   "pressed": "Allt Hasch",
+   "count": "16 produkter",
+   "cards": 16
+  }
+ },
+ "buds-family-tabs": {
+  "tabs": [
+   "Alla Buds",
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM",
+   "THCNM"
+  ],
+  "before": {
+   "url": "?",
+   "pressed": "Alla Buds",
+   "count": "54 produkter",
+   "cards": 25
+  },
+  "clicked": "Magic Sauce",
+  "after": {
+   "url": "?&serie=magic-sauce",
+   "pressed": "Magic Sauce",
+   "count": "7 produkter",
+   "cards": 7
+  },
+  "back": {
+   "url": "?",
+   "pressed": "Alla Buds",
+   "count": "54 produkter",
+   "cards": 25
+  }
+ },
+ "home-quick-add": {
+  "has": 1,
+  "name": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+  "label": "Tillagd ✓",
+  "clickToResultMs": 606,
+  "cartPosts": [
+   200
+  ],
+  "bestsellerCards": 4,
+  "productCards": 6,
+  "errs": []
+ },
+ "pdp-core-buy": {
+  "stock": [
+   "Jämförelsepris 695 kr 495 kr",
+   "30 + Finns i lager"
+  ],
+  "buy": {
+   "text": "Lägg i varukorgen",
+   "disabled": false
+  },
+  "price": "Jämförelsepris 695 kr 495 kr",
+  "cartPosts": [
+   200
+  ],
+  "errs": []
+ },
+ "pdp-faraoh": {
+  "reviews": 0,
+  "reviewText": "Omdömen4,9 (42)5 ★ stjärnor93 % (39 omdömen)4 ★ stjärnor5 % (2 omdömen)3 ★ stjär",
+  "variants": 11,
+  "stock": [
+   "I lager"
+  ],
+  "similar": 7,
+  "errs": []
+ },
+ "magic-sauce-hub": {
+  "loading": false,
+  "error": false,
+  "cards": 12,
+  "nav": [
+   "Alla12, 12 produkter",
+   "Vapes1, 1 produkt",
+   "Carts1, 1 produkt",
+   "Buds8, 8 produkter",
+   "Hasch2, 2 produkter",
+   "Vapes1, 1 produkt",
+   "Carts1, 1 produkt",
+   "Buds8, 8 produkter",
+   "Hasch2, 2 produkter"
+  ],
+  "count": "12 produkter",
+  "errs": []
+ },
+ "header-nav": {
+  "href": "/sv/categories/alla-produkter",
+  "landed": "/sv/categories/alla-produkter"
+ },
+ "mobile-menu": {
+  "open": true,
+  "links": 37,
+  "logo": "hazey-logo.webp",
+  "closedByEscape": true,
+  "errs": []
+ },
+ "mobile-search": {
+  "opened": true,
+  "results": 9,
+  "landed": "/sv/search?query=vape",
+  "errs": []
+ },
+ "desktop-search": {
+  "input": true,
+  "suggestions": 4,
+  "landed": "/sv/search",
+  "resultCards": 25,
+  "errs": []
+ },
+ "cart-checkout": {
+  "name": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+  "cartPosts": [
+   200
+  ],
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "text": "Varukorg (1) Buds – ≈15% CBD – 10 gram - Russian Roulette 375 kr / Styck - + 375 kr Uppgradera till 3 st för 581,25 kr till · du sparar 168,75 kr till · ger fri fraktUppgradera 124 kr kvar till fri fr"
+  },
+  "checkout": {
+   "hasProduct": true,
+   "url": "/sv/checkout",
+   "hasForm": false
+  },
+  "errs": []
+ },
+ "faraoh-variant-buy": {
+  "tiles": 7,
+  "before": {
+   "stock": "I lager",
+   "price": "745 kr",
+   "selected": "Platinum OG",
+   "url": "?"
+  },
+  "after": {
+   "stock": "I lager",
+   "price": "745 kr",
+   "selected": "Blueberry Dream",
+   "url": "?"
+  },
+  "changed": true,
+  "cartPosts": [
+   200
+  ],
+  "msg": "Blueberry Dream har lagts i varukorgen.",
+  "errs": []
+ }
+}

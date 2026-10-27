@@ -1,0 +1,35 @@
+[
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "cold",
+  "firstPaint": 4763,
+  "photoEnd": 2942,
+  "plasterEnd": 2957,
+  "photoBeforePlasterMs": 15,
+  "frames": 12,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "warm",
+  "firstPaint": 3394,
+  "photoEnd": 2303,
+  "plasterEnd": 2303,
+  "photoBeforePlasterMs": 0,
+  "frames": 12,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "sc": "throttled",
+  "firstPaint": null,
+  "photoEnd": 13750,
+  "plasterEnd": 13749,
+  "photoBeforePlasterMs": -1,
+  "frames": 47,
+  "errors": []
+ }
+]

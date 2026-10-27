@@ -1634,14 +1634,14 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
      heron, från viewportens överkant -- den rundade headern ligger på
      himlen. Ingen beige fade och ingen blur över fotot. Texten ligger i
      den lugna himlen; solen syns under texten och leder ned mot quizet.
-     Nederkanten möter butiksytan i en låg kalkputskant (TASK 01D, se
-     ::before/::after nedan) så att filterraden börjar utan färgskarv. */
+     Nederkanten möter butiksytan i en bildbaserad kalkputskant (TASK
+     01D-R, se ::before nedan) så att hyllan börjar utan färgskarv. */
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero { grid-row: 1 / 6; margin: 0; box-shadow: none; background: var(--hz8-pilot-shop); }
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__art {
     left: 0;
     background: url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-mobile.webp") 50% 0 / cover no-repeat;
-    /* TASK 01D: ingen genomskinlig fade längre -- putskanten nedan äger
-       övergången, fotot är helt täckande ända fram till kanten. */
+    /* Ingen genomskinlig fade -- putskanten nedan äger övergången, fotot
+       är helt täckande ända fram till kanten. */
     -webkit-mask-image: none;
     mask-image: none;
   }
@@ -1650,52 +1650,34 @@ html.hz8-cat-pilot .hz8-pquiz__opt[aria-pressed="true"] .hz8-pquiz__check { opac
     -webkit-mask-image: none;
     mask-image: none;
     background: radial-gradient(78% 150px at 30% calc(var(--hz8-top-clear) + 120px), rgba(247, 240, 229, .12), rgba(247, 240, 229, .06) 55%, rgba(247, 240, 229, 0) 100%);
-    /* TASK 01D: putskantens tjocklek -- en hårfin varm skugga längs
-       konturen (följer maskerna på ::before/::after). */
-    filter: drop-shadow(0 -1px 1.5px rgba(74, 52, 28, .26));
   }
-  /* TASK 01D (2026-10-26, accepterat koncept B): låg, oregelbundet
-     eroderad kalkputskant i stället för den mjölkiga fotofaden. En enda
-     delad regel för hela hz8-cat-pilot-familjen (Alla Vapes, Buds, Hasch,
-     Alla produkter). Kanten reser sig ~40-85 px över herons nederkant
-     (under guidekortet), putsen har exakt butiksytans ton längst ned och
-     textur/sprickor tunnas ut mot den -- ingen skarv mot produktytan.
-     Silhuetten är en SVG-mask (turbulensförskjuten kontur + några lösa
-     flagor); ingen bild per route, ingen rörelse. */
+  /* TASK 01D-R (2026-10-27, facit concept-b-eroded-plaster-edge.png):
+     kalkputskanten är ett art-directed bildmaterial med riktig
+     transparens (category-mobile-plaster-edge-v2.webp, 2048x768) som
+     ligger ovanpå liveheron -- ingen procedurmask, inga CSS-sprickor,
+     inget separat brus. En regel för hela hz8-cat-pilot-familjen.
+     Beskärning: bilden är 200 % av herons bredd (max 860 px) och
+     förankrad nere till höger, så att den lugnare, låga högerhalvan av
+     konturen syns (vänsterhalvan sluttar brant). Proportionerna behålls
+     alltid (auto-höjd); 26 px av den jämna putsen nedtill skjuts under
+     herons kant så att konturen landar en bit under guidekortet.
+     Längst ned tonar putsen över i butiksytans egen ton (två nästan
+     identiska kalktoner, #f4e6d1 -> #f1e6d5) -- ingen vit gradient. */
   html.hz8-cat-pilot {
-    --hz8-mplaster-h: 104px;
-    --hz8-mplaster-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 104' preserveAspectRatio='none'%3E%3Cfilter id='e' x='-2%25' y='-20%25' width='104%25' height='180%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.09 .14' numOctaves='2' seed='5' result='t'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='t' scale='7' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeGaussianBlur in='d' stdDeviation='.55'/%3E%3C/filter%3E%3Cpath filter='url(%23e)' d='M-4 150V56L0 56L8 57L19 57L25 53L36 52L49 54L60 56L71 52L79 45L85 40L93 34L101 41L112 48L125 56L134 63L147 58L153 61L164 58L177 51L186 52L197 44L205 38L214 36L227 36L238 37L246 33L252 35L265 31L271 21L279 21L285 24L294 21L300 32L311 39L317 41L325 44L333 42L342 38L355 41L366 38L377 42L383 47L391 47L400 47L404 47V150ZM36.0 30.0a1.6 1.3 0 1 0 .1 0ZM92.0 18.0a1.2 1.0 0 1 0 .1 0ZM141.0 34.0a1.4 1.1 0 1 0 .1 0ZM208.0 28.0a1.1 0.9 0 1 0 .1 0ZM266.0 10.0a1.5 1.2 0 1 0 .1 0ZM301.0 16.0a1.0 0.8 0 1 0 .1 0ZM352.0 30.0a1.3 1.0 0 1 0 .1 0Z'/%3E%3C/svg%3E");
+    /* Utrymmet mellan herons sista element och dess nederkant: där
+       syns foto -> bruten kant -> puts innan hyllan (facit 393: ~155 px
+       från quizkortet till filterraden). */
+    --hz8-mplaster-gap: clamp(140px, 44.8vw, 192px);
   }
-  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::before,
-  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: var(--hz8-mplaster-h);
-    -webkit-mask: var(--hz8-mplaster-edge) 0 0 / 100% 100% no-repeat;
-    mask: var(--hz8-mplaster-edge) 0 0 / 100% 100% no-repeat;
-  }
-  /* Putsytan: butiksytans ton, en aning ljusare kalk vid kanten,
-     två återhållna hårfina sprickor. */
   html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::before {
+    inset: auto 0 0 0;
+    height: min(42vw, 190px);
     background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='%23fffaf0' stroke-opacity='.42' stroke-width='.9' transform='translate(.5 .6)' d='M3 44l17-4 10 5 19-9 13 2 16-11 18-3 12-9M62 38l7 12-2 8M110 25l9-13'/%3E%3Cpath stroke='%236b5234' stroke-opacity='.2' stroke-width='.7' d='M3 44l17-4 10 5 19-9 13 2 16-11 18-3 12-9M62 38l7 12-2 8M110 25l9-13'/%3E%3C/g%3E%3C/svg%3E") 5% calc(100% - 10px) / 168px 50px no-repeat,
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 50'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='%23fffaf0' stroke-opacity='.38' stroke-width='.85' transform='translate(.5 .6)' d='M4 12l15 7 8-3 17 11 19 1 11 9 18-2 14 9M56 29l-4 13'/%3E%3Cpath stroke='%236b5234' stroke-opacity='.18' stroke-width='.65' d='M4 12l15 7 8-3 17 11 19 1 11 9 18-2 14 9M56 29l-4 13'/%3E%3C/g%3E%3C/svg%3E") 88% calc(100% - 22px) / 118px 42px no-repeat,
-      linear-gradient(180deg, color-mix(in srgb, #fbf3e6 70%, var(--hz8-pilot-shop)) 0, var(--hz8-pilot-shop) 62%);
+      linear-gradient(180deg, transparent calc(100% - 34px), var(--hz8-pilot-shop)),
+      url("assets/category-vapes-hero-2026-10/category-mobile-plaster-edge-v2.webp") 100% calc(100% + min(6.6vw, 28px)) / min(200%, 860px) auto no-repeat;
     opacity: 1;  /* desktopens 0.9 skulle låta fotot lysa igenom */
   }
-  /* Mineralstruktur: samma kalkputstextur som desktop + fint brus, tonar
-     ut mot nederkanten (snitt med en vertikal gradient). */
-  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::after {
-    background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='1' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .29 0 0 0 0 .19 0 0 0 2.2 -1.4'/%3E%3C/filter%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .42 0 0 0 0 .26 0 0 0 1.4 -.72'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23m)' opacity='.45'/%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E") 0 0 / 300px 300px repeat,
-      url("assets/category-vapes-hero-2026-10/category-vapes-plaster-v1.webp") 0 0 / 420px 420px repeat;
-    opacity: .55;
-    -webkit-mask: var(--hz8-mplaster-edge) 0 0 / 100% 100% no-repeat, linear-gradient(180deg, #000 30%, transparent 92%);
-    -webkit-mask-composite: source-in;
-    mask: var(--hz8-mplaster-edge) 0 0 / 100% 100% no-repeat, linear-gradient(180deg, #000 30%, transparent 92%);
-    mask-composite: intersect;
-  }
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-hero__plaster::after { content: none; }
   html.hz8-cat-pilot[data-hz8-page="category"] .designer-breadcrumbs { padding-top: calc(var(--hz8-top-clear) + 6px) !important; }
   html.hz8-cat-pilot[data-hz8-page="category"] .designer-breadcrumbs :is(a, li, span) { font-size: 12.5px !important; color: var(--hz8-pilot-green) !important; }
   html.hz8-cat-pilot[data-hz8-page="category"] article.category-description h1 { margin: 14px 0 10px !important; font-size: clamp(42px, 11.6vw, 52px) !important; line-height: .98 !important; }
@@ -2276,7 +2258,9 @@ html[data-hz8-shell="broad"] .hz8-ptool__desk .hz8-ptool__sort { margin-left: 0;
      i första vyn). Quizkortets ärvda nedmarginal (Alla Vapes) bestämde
      herons höjd; här kortare hero och en hylla som överlappar dess
      toning. Herons innehåll ligger kvar på samma plats. */
-  html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-pguide { margin-bottom: 40px; }
+  /* TASK 01D-R: under quizkortet ligger putsövergången (foto -> kant ->
+     puts); hyllan överlappar fortfarande herons sista 29 px. */
+  html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-pguide { margin-bottom: var(--hz8-mplaster-gap); }
   html.hz8-cat-pilot[data-hz8-shell="broad"][data-hz8-page="category"] .hz8-ptool { z-index: 2; margin-top: -29px; }
   html[data-hz8-shell="broad"] .hz8-ptool__desk { margin-bottom: 10px; }
   html[data-hz8-shell="broad"] .hz8-pchips.hz8-pchips--fam-only { display: none !important; }
@@ -2464,6 +2448,14 @@ html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-pq {
   position: relative;
   z-index: 4;
   margin: 0 0 54px;
+}
+/* TASK 01D-R: samma synliga putsövergång under sökfältet som under
+   formatsidornas quizkort (där överlappar hyllan heron med 29 px).
+   Antalet delar rad 4 med sökfältet (align-self: end) och flyttas upp
+   lika mycket, så att det fortfarande ligger ovanför fältet. */
+@media (max-width: 767px) {
+  html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-pq { margin-bottom: calc(var(--hz8-mplaster-gap) - 29px); }
+  html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-pcount { margin-bottom: calc(116px + var(--hz8-mplaster-gap) - 29px - 54px); }
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-pcount { margin-bottom: 150px; }

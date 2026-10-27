@@ -1,0 +1,56 @@
+[
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "cold",
+  "w": 393,
+  "firstPainted": {
+   "t": 1183,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "warm",
+  "w": 393,
+  "firstPainted": {
+   "t": 928,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "sc": "throttled",
+  "w": 393,
+  "firstPainted": {
+   "t": 13259,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ }
+]

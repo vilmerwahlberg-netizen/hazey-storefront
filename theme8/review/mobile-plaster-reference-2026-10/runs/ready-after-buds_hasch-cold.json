@@ -1,0 +1,38 @@
+[
+ {
+  "which": "after",
+  "route": "buds",
+  "sc": "cold",
+  "w": 393,
+  "firstPainted": {
+   "t": 2083,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 386,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "sc": "cold",
+  "w": 393,
+  "firstPainted": {
+   "t": 1209,
+   "pilot": true,
+   "art": true,
+   "artMask": "none",
+   "plaster": true,
+   "edge": true
+  },
+  "paintedFrames": 400,
+  "retiredFadeFrames": 0,
+  "artWithoutEdgeFrames": 0,
+  "errors": []
+ }
+]

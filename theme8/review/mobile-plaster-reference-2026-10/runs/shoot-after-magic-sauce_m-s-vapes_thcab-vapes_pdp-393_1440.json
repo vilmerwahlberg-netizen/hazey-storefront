@@ -1,0 +1,338 @@
+[
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-sh-pilot",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 643,
+   "bottom": 886,
+   "left": 16,
+   "width": 150,
+   "height": 243
+  },
+  "artMask": "none",
+  "artBg": "hero-scene-mobile-van.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 393,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1440,
+  "zoom": false,
+  "cls": "hz8-sh-pilot",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 0,
+   "left": 0,
+   "width": 0,
+   "height": 0
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 597,
+   "bottom": 918,
+   "left": 66,
+   "width": 312,
+   "height": 322
+  },
+  "artMask": "none",
+  "artBg": "hero-scene-desktop-empty.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 1440,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-sf hz8-sf-has-shortcuts hz8-sf-low",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 295,
+   "left": 0,
+   "width": 393,
+   "height": 295
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 295,
+   "left": 118,
+   "width": 275,
+   "height": 295
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 403,
+   "bottom": 725,
+   "left": 16,
+   "width": 174,
+   "height": 322
+  },
+  "artMask": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.4) 20%, rgb(0, 0, 0",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 393,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 1440,
+  "zoom": false,
+  "cls": "hz8-sf hz8-sf-has-shortcuts hz8-sf-low",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 343,
+   "left": 0,
+   "width": 1440,
+   "height": 343
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 343,
+   "left": 547,
+   "width": 893,
+   "height": 343
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 395,
+   "bottom": 837,
+   "left": 64,
+   "width": 310,
+   "height": 443
+  },
+  "artMask": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.35) 9%, rgb(0, 0, 0",
+  "artBg": "category-vapes-sunset-v4-1512.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 1440,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 393,
+  "zoom": false,
+  "cls": "hz8-sf hz8-sf-has-shortcuts",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 269,
+   "left": 0,
+   "width": 393,
+   "height": 269
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 269,
+   "left": 118,
+   "width": 275,
+   "height": 269
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 377,
+   "bottom": 699,
+   "left": 16,
+   "width": 174,
+   "height": 322
+  },
+  "artMask": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.4) 20%, rgb(0, 0, 0",
+  "artBg": "category-vapes-sunset-v4-mobile.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 393,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "zoom": false,
+  "cls": "hz8-sf hz8-sf-has-shortcuts",
+  "shell": null,
+  "hero": {
+   "top": 0,
+   "bottom": 343,
+   "left": 0,
+   "width": 1440,
+   "height": 343
+  },
+  "anchor": null,
+  "art": {
+   "top": 0,
+   "bottom": 343,
+   "left": 547,
+   "width": 893,
+   "height": 343
+  },
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 395,
+   "bottom": 837,
+   "left": 64,
+   "width": 310,
+   "height": 443
+  },
+  "artMask": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.35) 9%, rgb(0, 0, 0",
+  "artBg": "category-vapes-sunset-v4-1512.webp\")",
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 1440,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "pdp",
+  "w": 393,
+  "zoom": false,
+  "cls": "",
+  "shell": null,
+  "hero": null,
+  "anchor": null,
+  "art": null,
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 2458,
+   "bottom": 2802,
+   "left": 16,
+   "width": 177,
+   "height": 344
+  },
+  "artMask": null,
+  "artBg": null,
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 393,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "pdp",
+  "w": 1440,
+  "zoom": false,
+  "cls": "",
+  "shell": null,
+  "hero": null,
+  "anchor": null,
+  "art": null,
+  "guide": null,
+  "guideCta": null,
+  "tool": null,
+  "card": {
+   "top": 2037,
+   "bottom": 2408,
+   "left": 60,
+   "width": 236,
+   "height": 372
+  },
+  "artMask": null,
+  "artBg": null,
+  "plasterBefore": null,
+  "plasterMask": null,
+  "overflowX": false,
+  "count": "",
+  "vw": 1440,
+  "hits": [
+   "guideCta:none",
+   "filterBtn:none"
+  ],
+  "errors": []
+ }
+]
