@@ -1,0 +1,42 @@
+[
+ {
+  "route": "core",
+  "sc": "cold",
+  "frames": 727,
+  "firstPaint": 1025,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "core",
+  "sc": "throttled",
+  "frames": 1616,
+  "firstPaint": 10645,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "thcba",
+  "sc": "cold",
+  "frames": 721,
+  "firstPaint": 1379,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "thcba",
+  "sc": "throttled",
+  "frames": 1709,
+  "firstPaint": 10802,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ }
+]

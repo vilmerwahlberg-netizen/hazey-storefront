@@ -23,7 +23,9 @@ for (const r of rs.split(",")) for (const w of ws.split(",").map(Number)) {
   const p = await open(ctx, ROUTES[r]); await ready(p, 6000);
   await p.waitForSelector("#hz8-sh-nav .hz8-sh-chip, .hz8-sh-shelves .hz8-state", { timeout: 20000 }).catch(() => {});
   await p.evaluate(async () => { for (let y = 0; y < 2600; y += 500) { scrollTo({ top: y, behavior: "instant" }); await new Promise(r => setTimeout(r, 200)); } scrollTo({ top: 0, behavior: "instant" }); });
-  await p.waitForTimeout(2000);
+  // Asynkron lager-/serierad-data: vänta tills inga väntande lagerrader finns kvar.
+  await p.waitForFunction(() => !document.querySelector(".hz8-pstock.is-pending:not([hidden])"), null, { timeout: 20000 }).catch(() => {});
+  await p.waitForTimeout(2500);
   const h = await p.evaluate(() => Math.min(2400, document.documentElement.scrollHeight));
   await p.screenshot({ path: `${OUT}/${which}-${r}-${w}.png`, clip: { x: 0, y: 0, width: w, height: h }, fullPage: true });
   console.log(which, r, w, h, p.errors.length);

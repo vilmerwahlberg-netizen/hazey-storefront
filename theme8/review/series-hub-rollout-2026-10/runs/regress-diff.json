@@ -18,13 +18,13 @@
  },
  {
   "f": "alla-vapes-1440.png",
-  "changedPx": 1,
-  "pct": 0,
+  "changedPx": 109,
+  "pct": 0.003,
   "box": [
-   1158,
-   671,
-   1158,
-   671
+   1092,
+   610,
+   1356,
+   841
   ]
  },
  {
@@ -34,26 +34,16 @@
   "box": null
  },
  {
-  "f": "butik-1440.png",
-  "changedPx": 398812,
-  "pct": 11.54,
-  "box": [
-   16,
-   981,
-   1423,
-   2399
-  ]
+  "f": "core-1440.png",
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  },
  {
-  "f": "butik-393.png",
-  "changedPx": 1299,
-  "pct": 0.034,
-  "box": [
-   411,
-   1262,
-   585,
-   1408
-  ]
+  "f": "core-1920.png",
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  },
  {
   "f": "core-vapes-1440.png",
@@ -93,41 +83,25 @@
  },
  {
   "f": "magic-sauce-1440.png",
-  "changedPx": 65,
-  "pct": 0.002,
-  "box": [
-   658,
-   2357,
-   719,
-   2365
-  ]
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  },
  {
-  "f": "magic-sauce-393.png",
+  "f": "magic-sauce-1920.png",
   "changedPx": 0,
   "pct": 0,
   "box": null
  },
  {
   "f": "nano11-1440.png",
-  "changedPx": 65,
-  "pct": 0.002,
+  "changedPx": 370,
+  "pct": 0.011,
   "box": [
-   658,
-   1049,
-   719,
-   1057
-  ]
- },
- {
-  "f": "nano11-393.png",
-  "changedPx": 525,
-  "pct": 0.014,
-  "box": [
-   440,
-   1296,
-   575,
-   1474
+   1159,
+   604,
+   1278,
+   767
   ]
  },
  {
@@ -144,39 +118,12 @@
  },
  {
   "f": "thcab-1440.png",
-  "changedPx": 65,
-  "pct": 0.002,
-  "box": [
-   658,
-   2357,
-   719,
-   2365
-  ]
- },
- {
-  "f": "thcab-393.png",
-  "changedPx": 195,
-  "pct": 0.005,
-  "box": [
-   418,
-   1296,
-   581,
-   1474
-  ]
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  },
  {
   "f": "thcba-1440.png",
-  "changedPx": 65,
-  "pct": 0.002,
-  "box": [
-   658,
-   1485,
-   719,
-   1493
-  ]
- },
- {
-  "f": "thcba-393.png",
   "changedPx": 0,
   "pct": 0,
   "box": null

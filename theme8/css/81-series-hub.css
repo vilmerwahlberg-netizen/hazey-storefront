@@ -876,9 +876,49 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
      65-70 % hamnade hela gruppen bakom kortet, bottenförankrat syns
      påsen och vapesens överdel ovanför glaset. */
   html.hz8-sh-pilot .hz8-sh-hero__art img { object-position: 50% 100%; transform: none; }
-  /* Lokal, transparent ljusning bakom texten (mätt kontrast) -- ingen
-     beige rektangel. */
-  html.hz8-sh-pilot .hz8-sh-hero__scrim { display: block; position: absolute; z-index: -2; left: 0; right: 0; top: 0; height: 330px; background: radial-gradient(120% 92% at 14% 52%, rgba(252, 241, 222, .56) 0%, rgba(252, 241, 222, .5) 34%, rgba(252, 241, 222, .3) 60%, rgba(252, 241, 222, 0) 88%); -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 80%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 80%, transparent 100%); }
+  /* Kontraststöd bara bakom textblocket (brödsmula, H1, ingress, antal):
+     ett varmt, halvtransparent lager som följer textblockets egen ruta och
+     tonar ut mot kanterna -- ingen bred hinna över fotot, produkterna
+     eller guidekortet (som har egen mörk yta). Samma regel för alla
+     seriehubbar; storleken följer texten, inte serien. Statiskt (ingen
+     animation), så kall laddning visar aldrig en vit yta före fotot. */
+  html.hz8-sh-pilot .hz8-sh-hero__scrim { display: none; }
+  html.hz8-sh-pilot .hz8-sh-hero__copy::before,
+  html.hz8-sh-pilot .hz8-sh-hero__copy::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -14px;
+    font-size: 15px;
+    pointer-events: none;
+    background: rgba(250, 239, 221, var(--sh-scrim-a, .6));
+  }
+  /* Huvudlagret: ingressens radbredd (samma variabel som ingressen) +
+     64 px utfasning -- slutar där motivet/produkterna börjar. */
+  html.hz8-sh-pilot .hz8-sh-hero__copy::before {
+    bottom: -24px;
+    left: -24px;
+    width: calc(min(100%, var(--sh-lead-m, 33ch)) + 88px);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 64px), transparent), linear-gradient(180deg, transparent, #000 14px, #000 calc(100% - 34px), transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 64px), transparent), linear-gradient(180deg, transparent, #000 14px, #000 calc(100% - 34px), transparent);
+    mask-composite: intersect;
+  }
+  /* Brödsmulans rad (ofta bredare än ingressen): en tunn remsa från
+     huvudlagrets utfasning till radens slut. Utfasningarna är
+     komplementära (samma 64 px), så ingen ljusare skarv. */
+  html.hz8-sh-pilot .hz8-sh-hero__copy::after {
+    top: -16px;
+    height: 56px;
+    left: min(100%, var(--sh-lead-m, 33ch));
+    right: -56px;
+    /* Svagare än huvudlagret: radens glyfhalo bär resten. */
+    opacity: .78;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent), linear-gradient(180deg, transparent, #000 40%, #000 60%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent), linear-gradient(180deg, transparent, #000 40%, #000 60%, transparent);
+    mask-composite: intersect;
+  }
   html.hz8-sh-pilot .hz8-sh-hero__inner { display: flex; flex-direction: column; padding-bottom: 14px; }
   html.hz8-sh-pilot .hz8-sh-hero__copy { max-width: 100%; }
   html.hz8.hz8-sh-pilot #store-main .hz8-sh-hero h1 { margin: 16px 0 10px !important; font-size: clamp(40px, 11.7vw, 47px) !important; }
@@ -886,6 +926,9 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   html.hz8-sh-pilot .hz8-sh-hero__count { color: var(--hz8-pilot-green) !important; font-size: 14px !important; }
   /* Mobil: lite fylligare lokal ljuskontrast (fotot är ljusare bakom texten). */
   html.hz8-sh-pilot :is(.hz8-sh-hero__lead, .hz8-sh-hero__count) { text-shadow: 0 0 12px rgba(252, 241, 222, .9), 0 0 4px rgba(252, 241, 222, .8), 0 0 1px rgba(252, 241, 222, .9); }
+  /* Samma glyfnära halo på brödsmula och H1: text som löper utanför
+     kontrastlagret behåller sin kontrast utan en hinna över fotot. */
+  html.hz8.hz8-sh-pilot #store-main .hz8-sh-hero :is(.breadcrumb a, .breadcrumb li + li::before, h1) { text-shadow: 0 0 12px rgba(252, 241, 222, .9), 0 0 4px rgba(252, 241, 222, .8), 0 0 1px rgba(252, 241, 222, .9) !important; }
   /* Quiz: symbol + rubrik + stödtext, bred CTA på egen rad. */
   html.hz8-sh-pilot .hz8-sh-guide { position: relative; left: auto; bottom: auto; width: 100%; margin: auto 0 0; padding: 12px 14px 14px; grid-template-columns: 32px minmax(0, 1fr); gap: 0 10px; }
   html.hz8-sh-pilot .hz8-sh-guide__emblem { grid-row: 1 / 3; width: 32px; height: 32px; }

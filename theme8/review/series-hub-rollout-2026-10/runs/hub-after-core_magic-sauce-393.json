@@ -1,0 +1,192 @@
+[
+ {
+  "which": "after",
+  "route": "core",
+  "w": 393,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 42,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Core",
+  "lead": "Vapes, buds och hasch från Core-familjen.",
+  "count": "4 produkter",
+  "guide": "Utforska familjen",
+  "guideText": "Hela familjen samlad efter format.",
+  "cta": "Se sortimentet",
+  "seal": false,
+  "script": null,
+  "heroImg": "core-family-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "height": 483
+  },
+  "chips": [
+   "Alla4, 4 produkter*",
+   "Vapes1, 1 produkt",
+   "Buds1, 1 produkt",
+   "Hasch2, 2 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "core-vapes",
+    "title": "Core Vapes",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THCX 19% - Core - 2ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "core-buds",
+    "title": "Core Buds",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "core-hasch",
+    "title": "Core Hasch",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+     "Hash – THCA 40% – Northern Lights – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 4,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter*",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3053,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 393,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 57,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Magic Sauce",
+  "lead": "En serie. Flera format. Utforska vapes, carts, buds och hasch.",
+  "count": "12 produkter",
+  "guide": "Hitta ditt format",
+  "guideText": "Samma serie – olika sätt att hitta rätt.",
+  "cta": "Utforska formaten",
+  "seal": true,
+  "script": "Sunsets &Higher Horizons",
+  "heroImg": "magic-sauce-hero-v4-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "height": 483
+  },
+  "chips": [
+   "Alla12, 12 produkter*",
+   "Vapes1, 1 produkt",
+   "Carts1, 1 produkt",
+   "Buds8, 8 produkter",
+   "Hasch2, 2 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "magic-sauce-vapes",
+    "title": "Magic Sauce Vapes",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - Magic Sauce 99% - 2ml"
+    ]
+   },
+   {
+    "key": "carts",
+    "id": "magic-sauce-carts",
+    "title": "Magic Sauce Carts",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Cart - Magic Sauce 99% - 1ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "magic-sauce-buds",
+    "title": "Magic Sauce Buds",
+    "cards": 8,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/m-s-buds?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+     "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "magic-sauce-hasch",
+    "title": "Magic Sauce Hasch",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/hasch?filters=Serie_Magic+Sauce&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Hash – Magic Sauce 50% – Charas – 5 gram",
+     "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 12,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter*",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3411,
+  "errors": []
+ }
+]

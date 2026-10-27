@@ -179,6 +179,25 @@
         if (!list.children.length) sec.hidden = true;
       }).catch(function () {});
       HZ8.fetchPage(withSort(s.hub), HZ8.categoryCards).then(function (cards) {
+        /* Formatraden ur hubbens egna produkter (samma produkttyp-tolkning
+           som seriehubben, HZ8.cardTypeOf) i katalogens formatordning,
+           unionerad med seriens dedikerade format-routes -- en hubb utan
+           egna format-routes (t.ex. Core: buds/hasch) visar ändå sina
+           riktiga format. Inga nya länkar. */
+        if (HZ8.cardTypeOf) {
+          /* Befintlig ordning (seriens routes) först, format som bara
+             finns i hubbens produkter läggs till i katalogens ordning. */
+          var keys = Object.keys(s.routes), found = {};
+          cards.forEach(function (c) { var m = c.html.match(/class="name"[^>]*>\s*([^<]+)/); var k = m && HZ8.cardTypeOf(m[1]); if (k) found[k] = true; });
+          map.formats.forEach(function (f) { if (found[f.key] && keys.indexOf(f.key) === -1) keys.push(f.key); });
+          var labels = keys.map(function (k) { var f = HZ8.catalog.formatByKey(k); return f ? (f.short || f.label) : null; }).filter(Boolean);
+          var fmEl = li.querySelector(".hz8-shop__sformats");
+          if (labels.length) {
+            if (!fmEl) { fmEl = document.createElement("span"); fmEl.className = "hz8-shop__sformats"; li.querySelector(".hz8-shop__sname").insertAdjacentElement("afterend", fmEl); }
+            var txt = labels.join(" · ");
+            if (fmEl.textContent !== txt) fmEl.textContent = txt;
+          }
+        }
         var url = firstImage(cards);
         if (url) { li.querySelector(".hz8-shop__simg").style.backgroundImage = 'url("' + url.replace(/"/g, "%22") + '")'; li.classList.add("has-img"); }
         else li.classList.add("is-plain");

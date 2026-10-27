@@ -1,0 +1,308 @@
+[
+ {
+  "which": "after",
+  "route": "core",
+  "w": 320,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 31,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Core",
+  "lead": "Vapes, buds och hasch från Core-familjen.",
+  "count": "4 produkter",
+  "guide": "Utforska familjen",
+  "guideText": "Hela familjen samlad efter format.",
+  "cta": "Se sortimentet",
+  "seal": false,
+  "script": null,
+  "heroImg": "core-family-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 460,
+   "height": 460
+  },
+  "chips": [
+   "Alla4, 4 produkter*",
+   "Vapes1, 1 produkt",
+   "Buds1, 1 produkt",
+   "Hasch2, 2 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "core-vapes",
+    "title": "Core Vapes",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THCX 19% - Core - 2ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "core-buds",
+    "title": "Core Buds",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "core-hasch",
+    "title": "Core Hasch",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+     "Hash – THCA 40% – Northern Lights – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 4,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter*",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3131,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 393,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 30,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Core",
+  "lead": "Vapes, buds och hasch från Core-familjen.",
+  "count": "4 produkter",
+  "guide": "Utforska familjen",
+  "guideText": "Hela familjen samlad efter format.",
+  "cta": "Se sortimentet",
+  "seal": false,
+  "script": null,
+  "heroImg": "core-family-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "height": 483
+  },
+  "chips": [
+   "Alla4, 4 produkter*",
+   "Vapes1, 1 produkt",
+   "Buds1, 1 produkt",
+   "Hasch2, 2 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "core-vapes",
+    "title": "Core Vapes",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THCX 19% - Core - 2ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "core-buds",
+    "title": "Core Buds",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "core-hasch",
+    "title": "Core Hasch",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+     "Hash – THCA 40% – Northern Lights – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 4,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter*",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3053,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 320,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 56,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Nano-11",
+  "lead": "Buds från Nano-11-serien.",
+  "count": "8 produkter",
+  "guide": "Upptäck serien",
+  "guideText": "Hela Nano-11 samlat efter format.",
+  "cta": "Se produkterna",
+  "seal": false,
+  "script": null,
+  "heroImg": "nano11-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 460,
+   "height": 460
+  },
+  "chips": [
+   "Alla8, 8 produkter*",
+   "Buds8, 8 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "buds",
+    "id": "nano-11-buds",
+    "title": "Nano-11 Buds",
+    "cards": 8,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/nano11-blommor?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+     "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+     "Buds – 7% Nano11 – Super Skunk – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 8,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter",
+   "D101 produkt",
+   "Nano-118 produkter*",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 2832,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 393,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 21,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Nano-11",
+  "lead": "Buds från Nano-11-serien.",
+  "count": "8 produkter",
+  "guide": "Upptäck serien",
+  "guideText": "Hela Nano-11 samlat efter format.",
+  "cta": "Se produkterna",
+  "seal": false,
+  "script": null,
+  "heroImg": "nano11-hero-mobile-900x1802.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 483,
+   "height": 483
+  },
+  "chips": [
+   "Alla8, 8 produkter*",
+   "Buds8, 8 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "buds",
+    "id": "nano-11-buds",
+    "title": "Nano-11 Buds",
+    "cards": 8,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/nano11-blommor?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+     "Buds – 7% Nano11 – Amnezia Haze – 5 gram",
+     "Buds – 7% Nano11 – Super Skunk – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 8,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter",
+   "D101 produkt",
+   "Nano-118 produkter*",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 2751,
+  "errors": []
+ }
+]

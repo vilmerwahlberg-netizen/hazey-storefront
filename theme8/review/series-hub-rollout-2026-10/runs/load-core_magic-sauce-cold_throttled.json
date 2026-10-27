@@ -1,0 +1,42 @@
+[
+ {
+  "route": "core",
+  "sc": "cold",
+  "frames": 748,
+  "firstPaint": 1368,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "core",
+  "sc": "throttled",
+  "frames": 1606,
+  "firstPaint": 10747,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "magic-sauce",
+  "sc": "cold",
+  "frames": 733,
+  "firstPaint": 1779,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ },
+ {
+  "route": "magic-sauce",
+  "sc": "throttled",
+  "frames": 1703,
+  "firstPaint": 12508,
+  "imgReadyAtFirstPaint": true,
+  "scrimWithoutPhotoFrames": 0,
+  "heroWithoutPhotoFrames": 0,
+  "errors": []
+ }
+]

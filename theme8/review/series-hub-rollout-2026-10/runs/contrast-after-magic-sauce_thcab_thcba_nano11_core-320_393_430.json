@@ -1,0 +1,332 @@
+[
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 320,
+  "crumb": {
+   "p10": 8.17,
+   "median": 9.48
+  },
+  "h1": {
+   "p10": 6.87,
+   "median": 8.3
+  },
+  "lead": {
+   "p10": 9.98,
+   "median": 10.92
+  },
+  "count": {
+   "p10": 4.96,
+   "median": 6.52
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 393,
+  "crumb": {
+   "p10": 6.76,
+   "median": 7.68
+  },
+  "h1": {
+   "p10": 6.25,
+   "median": 7.22
+  },
+  "lead": {
+   "p10": 9.14,
+   "median": 11.13
+  },
+  "count": {
+   "p10": 5.81,
+   "median": 6.91
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 430,
+  "crumb": {
+   "p10": 6.76,
+   "median": 7.6
+  },
+  "h1": {
+   "p10": 6.38,
+   "median": 7.23
+  },
+  "lead": {
+   "p10": 9.36,
+   "median": 10.95
+  },
+  "count": {
+   "p10": 5.31,
+   "median": 6.09
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 320,
+  "crumb": {
+   "p10": 5.88,
+   "median": 7.42
+  },
+  "h1": {
+   "p10": 5.45,
+   "median": 6.92
+  },
+  "lead": {
+   "p10": 8.17,
+   "median": 9.91
+  },
+  "count": {
+   "p10": 4.11,
+   "median": 5.73
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 393,
+  "crumb": {
+   "p10": 5.53,
+   "median": 7.78
+  },
+  "h1": {
+   "p10": 5.35,
+   "median": 6.91
+  },
+  "lead": {
+   "p10": 7.78,
+   "median": 10.27
+  },
+  "count": {
+   "p10": 4.39,
+   "median": 6.03
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 430,
+  "crumb": {
+   "p10": 5.46,
+   "median": 7.65
+  },
+  "h1": {
+   "p10": 5.41,
+   "median": 6.89
+  },
+  "lead": {
+   "p10": 7.81,
+   "median": 10.38
+  },
+  "count": {
+   "p10": 4.41,
+   "median": 6.22
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba",
+  "w": 320,
+  "crumb": {
+   "p10": 7.69,
+   "median": 9
+  },
+  "h1": {
+   "p10": 6.62,
+   "median": 8.54
+  },
+  "lead": {
+   "p10": 9.44,
+   "median": 10.64
+  },
+  "count": {
+   "p10": 5.09,
+   "median": 6.3
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba",
+  "w": 393,
+  "crumb": {
+   "p10": 6.64,
+   "median": 7.99
+  },
+  "h1": {
+   "p10": 6.23,
+   "median": 7.23
+  },
+  "lead": {
+   "p10": 8.43,
+   "median": 10.41
+  },
+  "count": {
+   "p10": 5.68,
+   "median": 7.19
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba",
+  "w": 430,
+  "crumb": {
+   "p10": 7.06,
+   "median": 8.08
+  },
+  "h1": {
+   "p10": 6.26,
+   "median": 7.26
+  },
+  "lead": {
+   "p10": 9.54,
+   "median": 10.96
+  },
+  "count": {
+   "p10": 5.06,
+   "median": 5.98
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 320,
+  "crumb": {
+   "p10": 5.9,
+   "median": 7.97
+  },
+  "h1": {
+   "p10": 5.71,
+   "median": 6.66
+  },
+  "lead": {
+   "p10": 8.65,
+   "median": 10.4
+  },
+  "count": {
+   "p10": 4.68,
+   "median": 6.68
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 393,
+  "crumb": {
+   "p10": 5.65,
+   "median": 6.95
+  },
+  "h1": {
+   "p10": 5.56,
+   "median": 6.86
+  },
+  "lead": {
+   "p10": 8.42,
+   "median": 10.1
+  },
+  "count": {
+   "p10": 4.91,
+   "median": 6.48
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 430,
+  "crumb": {
+   "p10": 5.65,
+   "median": 6.95
+  },
+  "h1": {
+   "p10": 5.65,
+   "median": 6.88
+  },
+  "lead": {
+   "p10": 8.34,
+   "median": 10.1
+  },
+  "count": {
+   "p10": 4.72,
+   "median": 5.46
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 320,
+  "crumb": {
+   "p10": 6.07,
+   "median": 8.26
+  },
+  "h1": {
+   "p10": 6.76,
+   "median": 8.64
+  },
+  "lead": {
+   "p10": 7.72,
+   "median": 9.12
+  },
+  "count": {
+   "p10": 3.79,
+   "median": 4.6
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 393,
+  "crumb": {
+   "p10": 5.13,
+   "median": 8.11
+  },
+  "h1": {
+   "p10": 5.64,
+   "median": 8.11
+  },
+  "lead": {
+   "p10": 7.42,
+   "median": 7.99
+  },
+  "count": {
+   "p10": 4.17,
+   "median": 5.33
+  },
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 430,
+  "crumb": {
+   "p10": 5.6,
+   "median": 8.23
+  },
+  "h1": {
+   "p10": 6.05,
+   "median": 8.25
+  },
+  "lead": {
+   "p10": 7.43,
+   "median": 8.17
+  },
+  "count": {
+   "p10": 4.04,
+   "median": 4.77
+  },
+  "errors": []
+ }
+]
