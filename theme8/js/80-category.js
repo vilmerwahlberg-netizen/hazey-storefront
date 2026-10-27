@@ -1963,13 +1963,25 @@
   /* Volym/konfiguration: egen dimension, inte produkttyp. Nyehandel har
      ingen strukturerad volymdata för de här produkterna, så den läses ur
      produktnamnets verifierbara format ("- 2ml", "- 0,5ml", "Dual ...
-     1+1ml"). Utan säker volym: ingen klassning (finns under Alla). */
+     1+1ml"). Utan säker volym: ingen klassning (finns under Alla).
+     TASK 01E: en dual-produkt klassas på sin totala volym ("1+1ml" = 2 ml)
+     -- ingen egen "1+1 ml"-rad eller URL-värde. Produktens namn ändras inte. */
   var TYPE_PARAM = "typ";
   var VOLUME_PARAM = "volym";
+  /* TASK 01E: kundvalbara volymer på Alla Vapes (godkända 2026-10-26). En
+     produkt med annan tolkad volym (t.ex. äldre 0,5 ml) klassas inte och
+     finns kvar under Alla; ett godkänt värde utan riktig produkt visas inte. */
+  var VAPES_VOLUMES = { "1ml": true, "2ml": true, "5ml": true };
+  var SERIES_SEARCH_MIN = 12;  /* fler serier än så: sökfältet behövs */
   function cardVolume(name) {
     var n = String(name || "").replace(/&amp;/g, "&");
     var dual = n.match(/(\d+(?:[.,]\d+)?)\s*\+\s*(\d+(?:[.,]\d+)?)\s*ml\b/i);
-    if (dual) return { key: dual[1].replace(",", "-") + "+" + dual[2].replace(",", "-") + "ml", label: dual[1].replace(".", ",") + "+" + dual[2].replace(".", ",") + " ml", order: parseFloat(dual[1].replace(",", ".")) + parseFloat(dual[2].replace(",", ".")) + .01 };
+    if (dual) {
+      var total = Math.round((parseFloat(dual[1].replace(",", ".")) + parseFloat(dual[2].replace(",", "."))) * 100) / 100;
+      if (!(total > 0)) return null;
+      var t = String(total);
+      return { key: t.replace(".", "-") + "ml", label: t.replace(".", ",") + " ml", order: total };
+    }
     var all = n.match(/(\d+(?:[.,]\d+)?)\s*ml\b/gi);
     if (!all) return null;
     var v = all[all.length - 1].replace(/\s*ml/i, "");
@@ -2399,6 +2411,7 @@
       '</div>';
     document.body.appendChild(dock);
     var dockBtn = dock.querySelector(".hz8-pdock__btn");
+    var mdock = mobileDock();
     var dockPanel = dock.querySelector(".hz8-pdock__panel");
     dock.querySelector("[data-pt-series]").innerHTML = seriesOptions(ctx);
     dock.querySelector('[data-pd-sec="type"]').hidden = true;
@@ -2407,6 +2420,9 @@
     /* Innehåll som finns i både popover och ark. */
     [tool.querySelector("#hz8-ppop-series"), fs.el.querySelector('[data-acc="series"]')].forEach(function (scope) {
       scope.querySelector("[data-pt-series]").innerHTML = seriesOptions(ctx);
+      /* TASK 01E: hela den korta listan syns redan -- mobilarket visar då
+         ingen lokal sökning (CSS, data-hz8-short). Desktop oförändrat. */
+      if (scope.querySelectorAll(".hz8-popt[data-hz8-series]").length <= SERIES_SEARCH_MIN) scope.setAttribute("data-hz8-short", "");
       var otherGroup = scope.querySelector(".hz8-ppop__other");
       otherFormats(ctx, scope.querySelector(".hz8-pothers"), otherGroup);
       /* Lokal sökning i listan -- filtrerar bara vilka rader som syns,
@@ -2457,7 +2473,7 @@
           var types = portal ? portalTypes[cardPath(c.html)] || [] : [c.src];
           if (!types.some(function (k) { return t.indexOf(k) !== -1; })) return false;
         }
-        if (v.length) { var vol = cardUnit(cardName(c.html)); if (!vol || v.indexOf(vol.key) === -1) return false; }
+        if (v.length) { var vol = cardUnit(cardName(c.html)); if (!vol || v.indexOf(vol.key) === -1 || (!broad && !portal && !VAPES_VOLUMES[vol.key])) return false; }
         return true;
       }
     };
@@ -2585,6 +2601,7 @@
             if (portal) (portalTypes[p] || []).forEach(function (k) { typeCount[k] = (typeCount[k] || 0) + 1; });
             else typeCount[sources[i].key] = (typeCount[sources[i].key] || 0) + 1;
             var cv = cardUnit(cardName(c.html));
+            if (cv && !broad && !portal && !VAPES_VOLUMES[cv.key]) cv = null;
             base.push({ p: p, src: sources[i].key, vol: cv ? cv.key : null, name: cardName(c.html), brand: cardBrand(c.html), href: cardLink(c.html) });
             if (cv) vols[cv.key] = vols[cv.key] || cv;
           });
@@ -2746,6 +2763,7 @@
         if (el.textContent !== (n ? String(n) : "")) el.textContent = n ? String(n) : "";
       });
       dockBtn.setAttribute("aria-label", n ? "Filter, " + n + (n === 1 ? " aktivt filter" : " aktiva filter") : "Filter");
+      if (mdock) mdock.sync(n);
       dockBtn.classList.toggle("is-active", !!n);
       dock.querySelector(".hz8-pdock__clear").hidden = !n;
       function val(key, text) {
@@ -3051,17 +3069,10 @@
     var area = root.querySelector(".designer-category");
     var deskMQ = window.matchMedia("(min-width: 768px)");
     function syncStuck() {
-      /* Från 768 px ligger raden kvar i flödet (dockan tar över). */
-      if (deskMQ.matches || broad) { tool.classList.remove("is-stuck", "is-past"); return; }
-      var top = parseFloat(window.getComputedStyle(tool).top) || 0;
-      var r = tool.getBoundingClientRect();
-      var stuck = window.scrollY > 0 && r.top <= top + .5;
-      var past = stuck && !!area && area.getBoundingClientRect().bottom < r.bottom + 24;
-      if (tool.classList.contains("is-stuck") !== stuck) tool.classList.toggle("is-stuck", stuck);
-      if (tool.classList.contains("is-past") !== past) {
-        tool.classList.toggle("is-past", past);
-        if (past && openPop) openPop.close(false);
-      }
+      /* Från 768 px ligger raden kvar i flödet (dockan tar över). TASK 01E:
+         även mobilraden ligger i flödet och sitter aldrig fast under
+         headern -- bottendockan (mobileDock) tar över där. */
+      tool.classList.remove("is-stuck", "is-past");
     }
     window.addEventListener("scroll", function () { window.requestAnimationFrame(syncStuck); }, { passive: true });
     window.addEventListener("resize", syncStuck);
@@ -3103,9 +3114,88 @@
       var onMQ = function () { setDock(); };
       if (deskMQ.addEventListener) deskMQ.addEventListener("change", onMQ); else deskMQ.addListener(onMQ);
     }
+    mdock.start();
     if (portal) portalLower(root, tool);
     else seriesBand(root, ctx);
     return picker;
+
+    /* ---- TASK 01E: mobil bottendocka (<=767 px) ----
+       Filter + Sortera i ett lågt varmt glas nära nederkanten. Visas först
+       när den vanliga raden helt lämnat vyn uppåt (96 px marginal, så att
+       dockan hunnit glida ut innan raden syns igen), aldrig samtidigt som
+       raden, och viker undan före sidans slut (produktområdets nederkant),
+       när ett ark/en meny/varukorgen är öppen och när cookierutan visas.
+       Knapparna öppnar de befintliga arken (samma motor och tillstånd). */
+    function mobileDock() {
+      var el = node("div", "hz8-mdock");
+      el.setAttribute("role", "group");
+      el.setAttribute("aria-label", "Filter och sortering");
+      el.setAttribute("inert", "");
+      el.innerHTML = '<button type="button" class="hz8-mdock__btn" data-md="filter" aria-haspopup="dialog">' + SLIDERS + '<span>Filter</span><span class="hz8-mdock__n" aria-hidden="true" hidden></span></button>' +
+        '<span class="hz8-mdock__div" aria-hidden="true"></span>' +
+        '<button type="button" class="hz8-mdock__btn" data-md="sort" aria-haspopup="dialog">' + SORTICON + '<span>Sortera</span></button>';
+      document.body.appendChild(el);
+      var fBtn = el.querySelector('[data-md="filter"]');
+      var mobMQ = window.matchMedia("(max-width: 767px)");
+      var shown = false, ticking = false;
+      el.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-md]");
+        if (!b) return;
+        if (picker && picker.loadCounts) picker.loadCounts();
+        if (b.getAttribute("data-md") === "filter") { openSection(portal ? "type" : picker ? "series" : null); fs.open(); }
+        else if (broad) { openSection("sort"); fs.open(); }
+        else ss.open();
+        update();
+      });
+      function blocked() {
+        var h = document.documentElement;
+        return h.classList.contains("hz8-scroll-locked") || h.classList.contains("show--consent") || fs.isOpen() || ss.isOpen() ||
+          !!document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active");
+      }
+      function update() {
+        ticking = false;
+        var vh = window.innerHeight;
+        var rowBottom = tool.getBoundingClientRect().bottom;
+        var rowAbove = rowBottom <= -96;
+        /* Säkring vid mycket snabb scroll: syns raden faktiskt i vyn medan
+           dockan fortfarande glider ut, försvinner dockan direkt. */
+        el.classList.toggle("is-row-in", rowBottom > 0);
+        var areaOn = !!area && area.getBoundingClientRect().bottom > vh + 40;
+        var want = mobMQ.matches && rowAbove && areaOn;
+        /* Ark/meny öppen: dockan viker undan men behåller fokusbarheten, så
+           att arkets fokusretur kan landa på knappen som öppnade det. */
+        var yieldNow = want && blocked();
+        el.classList.toggle("is-yield", yieldNow);
+        if (want === shown) return;
+        shown = want;
+        el.classList.toggle("is-shown", want);
+        if (want) el.removeAttribute("inert");
+        else {
+          var had = el.contains(document.activeElement);
+          el.setAttribute("inert", "");
+          if (had) { var f = tool.querySelector(".hz8-ptool__filter"); if (f) f.focus({ preventScroll: true }); }
+        }
+      }
+      function schedule() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+      return {
+        start: function () {
+          window.addEventListener("scroll", schedule, { passive: true });
+          window.addEventListener("resize", schedule, { passive: true });
+          if (mobMQ.addEventListener) mobMQ.addEventListener("change", schedule); else mobMQ.addListener(schedule);
+          HZ8.watch(schedule);
+          new MutationObserver(schedule).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+          update();
+        },
+        sync: function (n) {
+          var b = el.querySelector(".hz8-mdock__n");
+          b.hidden = !n;
+          if (b.textContent !== (n ? String(n) : "")) b.textContent = n ? String(n) : "";
+          fBtn.classList.toggle("is-active", !!n);
+          var label = n ? "Filter, " + n + (n === 1 ? " aktivt filter" : " aktiva filter") : "Filter";
+          if (fBtn.getAttribute("aria-label") !== label) fBtn.setAttribute("aria-label", label);
+        }
+      };
+    }
   }
 
   /* ======================================================================

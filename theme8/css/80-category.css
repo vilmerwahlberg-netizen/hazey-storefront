@@ -2552,3 +2552,100 @@ html.hz8-cat-portal[data-hz8-shell="broad"] .hz8-pfam.is-more { -webkit-mask-ima
   html.hz8-cat-portal .hz8-pq__list { top: calc(54px + 6px); }
   html.hz8-cat-portal .hz8-pq__hint { display: none; }
 }
+
+/* ============================================================
+   TASK 01E (2026-10-26): mobil filtersanning + bottendocka
+   (hz8-cat-pilot: Alla Vapes, Buds, Hasch, Alla produkter; <=767 px).
+   - Filterarket innehåller bara valbara värden på sidan: ingen lokal
+     sökning när hela den korta serielistan redan syns (data-hz8-short,
+     80-category.js) och inga navigationsrader "Finns i andra format"
+     (korsformat ägs av upptäcktsmodulen längre ned).
+   - Filter/Sortera-raden ligger i flödet och sitter aldrig fast under
+     headern. När den lämnat vyn tar en låg glasdocka över (.hz8-mdock).
+   Desktop (>=768 px) är oförändrat.
+   ============================================================ */
+.hz8-mdock { display: none; }
+@media (max-width: 767px) {
+  html.hz8-cat-pilot #hz8-pfilter [data-acc="series"][data-hz8-short] :is(.hz8-psearch, .hz8-psearch__empty) { display: none !important; }
+  html.hz8-cat-pilot #hz8-pfilter .hz8-ppop__other { display: none !important; }
+
+  html.hz8-cat-pilot[data-hz8-page="category"] .hz8-ptool { position: relative; top: auto; transform: none !important; }
+  html.hz8-cat-pilot .hz8-ptool::before { opacity: 0 !important; }
+
+  /* Samma varma glas som headern (60 % elfenben, blur, tunn varm kant,
+     liten varm skugga) -- aldrig en vit fullbreddsbar. */
+  html.hz8-cat-pilot .hz8-mdock {
+    position: fixed;
+    z-index: 13; /* under headern (15) och alla ark/lådor */
+    left: 50%;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: stretch;
+    width: min(320px, calc(100% - 32px));
+    height: 50px;
+    padding: 3px;
+    border: 1px solid var(--hz8-glass-border);
+    border-radius: 16px;
+    background: var(--hz8-glass-bg);
+    -webkit-backdrop-filter: var(--hz8-glass-blur);
+    backdrop-filter: var(--hz8-glass-blur);
+    box-shadow: var(--hz8-glass-shadow);
+    transform: translate3d(-50%, calc(100% + 28px), 0);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 280ms cubic-bezier(.25, .46, .45, .94), opacity 200ms var(--hz8-ease), visibility 0s linear 280ms;
+  }
+  html.hz8-cat-pilot .hz8-mdock.is-shown {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+  /* Ark/meny/varukorg öppen: undan, men kvar som fokusmål för arkets
+     fokusretur (inte visibility:hidden). */
+  html.hz8-cat-pilot .hz8-mdock.is-shown.is-yield {
+    transform: translate3d(-50%, calc(100% + 28px), 0);
+    opacity: 0;
+    pointer-events: none;
+  }
+  html.hz8-cat-pilot .hz8-mdock.is-row-in { opacity: 0; visibility: hidden; transition: none; }
+  html.hz8-cat-pilot .hz8-mdock__btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 13px;
+    background: transparent;
+    color: var(--hz8-header-fg) !important;
+    font: 700 14.5px/1 var(--hz8-font-ui) !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html.hz8-cat-pilot .hz8-mdock__btn:active { background: color-mix(in srgb, #c7b08a 18%, transparent); }
+  html.hz8-cat-pilot .hz8-mdock__btn:focus-visible { outline: 2px solid var(--hz8-pilot-green); outline-offset: -2px; }
+  html.hz8-cat-pilot .hz8-mdock__div { flex: none; width: 1px; margin: 11px 0; background: color-mix(in srgb, #8a7556 34%, transparent); }
+  html.hz8-cat-pilot .hz8-mdock__n {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: var(--hz8-pilot-green);
+    color: #fffaf0 !important;
+    font: 700 11px/18px var(--hz8-font-ui) !important;
+    text-align: center;
+  }
+  html.hz8-cat-pilot .hz8-mdock__n[hidden] { display: none; }
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    html.hz8-cat-pilot .hz8-mdock { background: var(--hz8-glass-fallback-bg); }
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  html.hz8-cat-pilot .hz8-mdock { transition-duration: 1ms; }
+}

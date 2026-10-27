@@ -1,0 +1,107 @@
+[
+ {
+  "which": "before",
+  "route": "alla-vapes",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": null,
+   "areaBottom": 6415,
+   "vh": 852,
+   "n": null,
+   "toolPos": "sticky",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": true,
+   "otherFormats": [
+    "Nano-11"
+   ],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "THCV "
+   ],
+   "volumeSection": true,
+   "volumes": [
+    "0,5 ml 1",
+    "1 ml 16",
+    "2 ml 10",
+    "1+1 ml 2"
+   ],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 55,
+   "both": 0,
+   "dockOnAt": 0,
+   "dockBeyondArea": 0,
+   "stuck": 50,
+   "toolPos": "sticky"
+  },
+  "fast": {
+   "frames": 110,
+   "both": 0
+  },
+  "overflowX": false
+ },
+ {
+  "which": "before",
+  "route": "alla-produkter",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": null,
+   "areaBottom": 5449,
+   "vh": 852,
+   "n": null,
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": true,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "D10 ",
+    "Nano-11 ",
+    "THCV ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 44,
+   "both": 0,
+   "dockOnAt": 0,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative"
+  },
+  "fast": {
+   "frames": 109,
+   "both": 0
+  },
+  "overflowX": false
+ }
+]

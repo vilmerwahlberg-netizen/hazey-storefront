@@ -1,0 +1,1654 @@
+[
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 320,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 5816,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "THCV "
+   ],
+   "volumeSection": true,
+   "volumes": [
+    "1 ml 16",
+    "2 ml 12"
+   ],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 51,
+   "both": 0,
+   "dockOnAt": 30,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 4900
+  },
+  "dockRect": [
+   16,
+   790,
+   288,
+   50
+  ],
+  "pageEnd": {
+   "y": 5180,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 636,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 111,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": false,
+   "sortOpen": true,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 6415,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "THCV "
+   ],
+   "volumeSection": true,
+   "volumes": [
+    "1 ml 16",
+    "2 ml 12"
+   ],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 55,
+   "both": 0,
+   "dockOnAt": 34,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 5460
+  },
+  "dockRect": [
+   37,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 5740,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 675,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 108,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": false,
+   "sortOpen": true,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 430,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 6721,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "THCV "
+   ],
+   "volumeSection": true,
+   "volumes": [
+    "1 ml 16",
+    "2 ml 12"
+   ],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 57,
+   "both": 0,
+   "dockOnAt": 36,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 5740
+  },
+  "dockRect": [
+   55,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 6020,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 701,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 108,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": false,
+   "sortOpen": true,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 720,
+  "zoom": true,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 8902,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "THCV "
+   ],
+   "volumeSection": true,
+   "volumes": [
+    "1 ml 16",
+    "2 ml 12"
+   ],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 75,
+   "both": 0,
+   "dockOnAt": 54,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 980,
+   "lastDockY": 8400
+  },
+  "dockRect": [
+   200,
+   388,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 8680,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 222,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 108,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": false,
+   "sortOpen": true,
+   "sortSectionOpen": null,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 320,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 4994,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "D10 ",
+    "Nano-11 ",
+    "THCV ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 41,
+   "both": 0,
+   "dockOnAt": 25,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 4060
+  },
+  "dockRect": [
+   16,
+   790,
+   288,
+   50
+  ],
+  "pageEnd": {
+   "y": 4340,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 654,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 111,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 5449,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "D10 ",
+    "Nano-11 ",
+    "THCV ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 44,
+   "both": 0,
+   "dockOnAt": 28,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 4480
+  },
+  "dockRect": [
+   37,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 4760,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 689,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 109,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 430,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 5681,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "D10 ",
+    "Nano-11 ",
+    "THCV ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 46,
+   "both": 0,
+   "dockOnAt": 29,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 4760
+  },
+  "dockRect": [
+   55,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 5040,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 641,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 110,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 720,
+  "zoom": true,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 7421,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCbA ",
+    "Core ",
+    "D10 ",
+    "Nano-11 ",
+    "THCV ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 61,
+   "both": 0,
+   "dockOnAt": 44,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 6860
+  },
+  "dockRect": [
+   200,
+   388,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 7140,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 281,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 106,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 320,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 5224,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "Nano-11 ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 47,
+   "both": 0,
+   "dockOnAt": 26,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 4200
+  },
+  "dockRect": [
+   16,
+   790,
+   288,
+   50
+  ],
+  "pageEnd": {
+   "y": 4480,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 744,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 109,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 5711,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "Nano-11 ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 50,
+   "both": 0,
+   "dockOnAt": 30,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 4760
+  },
+  "dockRect": [
+   37,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 5040,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 671,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 109,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 430,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 5966,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "Nano-11 ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 51,
+   "both": 0,
+   "dockOnAt": 32,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 5040
+  },
+  "dockRect": [
+   55,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 5320,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 646,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 110,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 720,
+  "zoom": true,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 7856,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "Nano-11 ",
+    "HHCPM ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 67,
+   "both": 0,
+   "dockOnAt": 48,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 7280
+  },
+  "dockRect": [
+   200,
+   388,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 7560,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 296,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 107,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 320,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 3285,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 33,
+   "both": 0,
+   "dockOnAt": 13,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 700,
+   "lastDockY": 2380
+  },
+  "dockRect": [
+   16,
+   790,
+   288,
+   50
+  ],
+  "pageEnd": {
+   "y": 2660,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    16,
+    868,
+    288,
+    50
+   ],
+   "areaBottom": 625,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 111,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 393,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 3607,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 35,
+   "both": 0,
+   "dockOnAt": 14,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 2660
+  },
+  "dockRect": [
+   37,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 2940,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    37,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 667,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 110,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 430,
+  "zoom": false,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": true,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 3771,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 36,
+   "both": 0,
+   "dockOnAt": 15,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 2800
+  },
+  "dockRect": [
+   55,
+   790,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 3080,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    55,
+    868,
+    320,
+    50
+   ],
+   "areaBottom": 691,
+   "vh": 852,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 110,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 720,
+  "zoom": true,
+  "errors": [],
+  "atTop": {
+   "y": 0,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 4936,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "truth": {
+   "sheetOpen": true,
+   "search": false,
+   "otherFormats": [],
+   "series": [
+    "Magic Sauce ",
+    "THCaB ",
+    "THCNM "
+   ],
+   "volumeSection": false,
+   "volumes": [],
+   "focusInSheet": true,
+   "focusBackOnRow": true
+  },
+  "scan": {
+   "n": 46,
+   "both": 0,
+   "dockOnAt": 26,
+   "dockBeyondArea": 0,
+   "stuck": 0,
+   "toolPos": "relative",
+   "firstDockY": 840,
+   "lastDockY": 4340
+  },
+  "dockRect": [
+   200,
+   388,
+   320,
+   50
+  ],
+  "pageEnd": {
+   "y": 4620,
+   "rowVisible": false,
+   "dockOn": false,
+   "dockRect": [
+    200,
+    466,
+    320,
+    50
+   ],
+   "areaBottom": 316,
+   "vh": 450,
+   "n": "",
+   "toolPos": "relative",
+   "stuck": false
+  },
+  "fast": {
+   "frames": 105,
+   "both": 0
+  },
+  "open_filter": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": false,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Filter",
+    "dockOn": true
+   }
+  },
+  "open_sort": {
+   "filterOpen": true,
+   "sortOpen": false,
+   "sortSectionOpen": true,
+   "focusInDialog": true,
+   "dockYield": true,
+   "focusStillInDialog": true,
+   "afterClose": {
+    "focusOnDock": true,
+    "focused": "Sortera",
+    "dockOn": true
+   }
+  },
+  "overflowX": false
+ }
+]

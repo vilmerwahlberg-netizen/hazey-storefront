@@ -1,0 +1,120 @@
+{
+ "which": "after",
+ "start": {
+  "search": "?preview=v9kzdmqz4w60l5n",
+  "count": "29 produkter",
+  "badge": "",
+  "badgeHidden": true,
+  "pressed": []
+ },
+ "has2ml": 1,
+ "after2ml": {
+  "search": "?preview=v9kzdmqz4w60l5n&volym=2ml",
+  "count": "12 produkter",
+  "badge": "1",
+  "badgeHidden": false,
+  "pressed": [
+   "2ml"
+  ],
+  "dock": {
+   "on": true,
+   "n": "1"
+  },
+  "names": [
+   "Vape - THCX 19% - Core",
+   "Vape - CBD 25% + CBN 35% - Magic Farmers",
+   "Vape - Magic Sauce 99%",
+   "Vape - THC-A 45% - Faraoh",
+   "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise",
+   "Vape - THCV - Euphoria",
+   "Vape - THC-V 20% - Tatra Hemp",
+   "Vape - THC-V 20% - CBD Group",
+   "Vape - THC-A 50% Live Resin - Faraoh",
+   "Vape Dual - CBD 57% - Hana Butter & Long Island",
+   "Vape - THC-B 20% - Tatra Hemp",
+   "Vape - H4CBD 97% - CBD Group"
+  ],
+  "dualListed": [
+   "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise",
+   "Vape Dual - CBD 57% - Hana Butter & Long Island"
+  ]
+ },
+ "back": {
+  "search": "?preview=v9kzdmqz4w60l5n",
+  "count": "29 produkter",
+  "badge": "",
+  "badgeHidden": true,
+  "pressed": [],
+  "dock": {
+   "on": true,
+   "n": ""
+  }
+ },
+ "forward": {
+  "search": "?preview=v9kzdmqz4w60l5n&volym=2ml",
+  "count": "12 produkter",
+  "badge": "1",
+  "badgeHidden": false,
+  "pressed": [
+   "2ml"
+  ],
+  "dock": {
+   "on": true,
+   "n": "1"
+  }
+ },
+ "reload": {
+  "search": "?preview=v9kzdmqz4w60l5n&volym=2ml",
+  "count": "12 produkter",
+  "badge": "1",
+  "badgeHidden": false,
+  "pressed": [
+   "2ml"
+  ],
+  "dock": {
+   "on": true,
+   "n": "1"
+  }
+ },
+ "legacy_1+1ml": {
+  "search": "?volym=1%2B1ml&preview=v9kzdmqz4w60l5n",
+  "count": "29 produkter",
+  "badge": "",
+  "badgeHidden": true,
+  "pressed": [],
+  "dock": {
+   "on": true,
+   "n": ""
+  }
+ },
+ "legacy_0-5ml": {
+  "search": "?volym=0-5ml&preview=v9kzdmqz4w60l5n",
+  "count": "29 produkter",
+  "badge": "",
+  "badgeHidden": true,
+  "pressed": [],
+  "dock": {
+   "on": true,
+   "n": ""
+  }
+ },
+ "errors": [],
+ "cookie": {
+  "htmlCls": [
+   "show--consent"
+  ],
+  "banner": [],
+  "dockWithBanner": {
+   "shown": true,
+   "yield": true,
+   "rect": [
+    868,
+    918
+   ]
+  },
+  "dockAfterAccept": {
+   "shown": true,
+   "yield": false
+  }
+ }
+}

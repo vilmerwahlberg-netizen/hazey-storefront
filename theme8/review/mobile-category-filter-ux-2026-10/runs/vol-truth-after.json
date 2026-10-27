@@ -1,0 +1,244 @@
+{
+ "srcs": [
+  {
+   "key": "vapes",
+   "href": "/sv/categories/alla-vapes"
+  },
+  {
+   "key": "carts",
+   "href": "/sv/categories/alla-cartridges"
+  },
+  {
+   "key": "batterier",
+   "href": "/sv/categories/pennor"
+  }
+ ],
+ "out": [
+  {
+   "src": "vapes",
+   "name": "Vape - THCX 19% - Core - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - Magic Sauce 99% - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-A 45% - Faraoh - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - HHCPM 15% - Canntropy - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape Dual - CBD 56% - Blueberry Banana &amp; Tequila Sunrise - 1+1ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THCV - Euphoria - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-V 20% - Tatra Hemp - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-B 35% - Faraoh - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - CBN 89% - Canapuff - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-V 20% - CBD Group - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - 10-OH-THC 95% - Canapuff - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-A 50% Live Resin - Faraoh - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape Dual - CBD 57% - Hana Butter &amp; Long Island - 1+1ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-B 20% - Tatra Hemp - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-B 20% - Tatra Hemp - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-V 20% - Tatra Hemp - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - H4CBD 97% - CBD Group - 2ml",
+   "key": "2ml",
+   "label": "2 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - H4CBD 96% - Canapuff - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-V 79% - Canapuff - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - THC-V 20% - Canntropy - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - H4CBD 95% - Canntropy - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "vapes",
+   "name": "Vape - CBD 46% - Hazey - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - THC-A 45% - Faraoh - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - Magic Sauce 99% - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - CBD 60% - Cookies - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - CBD 60% - Tatra Hemp - 0,5ml",
+   "key": "0-5ml",
+   "label": "0,5 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - THC-B 20% - Tatra Hemp - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "carts",
+   "name": "Cart - THC-V 20% - Tatra Hemp - 1ml",
+   "key": "1ml",
+   "label": "1 ml"
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL M3b – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL M3 Plus – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL Palm Pro – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL M4 – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL Fino – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  },
+  {
+   "src": "batterier",
+   "name": "CCELL Sandwave – Vape Batteri – 510",
+   "key": null,
+   "label": null
+  }
+ ],
+ "opts": [
+  "1ml",
+  "2ml"
+ ]
+}
