@@ -1,0 +1,90 @@
+[
+ {
+  "which": "after",
+  "route": "core",
+  "w": 1920,
+  "zoom": false,
+  "mode": "",
+  "failed": null,
+  "dataMs": 29,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "Core",
+  "lead": "Vapes, buds och hasch från Core-familjen.",
+  "count": "4 produkter",
+  "guide": "Utforska familjen",
+  "guideText": "Hela familjen samlad efter format.",
+  "cta": "Se sortimentet",
+  "seal": false,
+  "script": null,
+  "heroImg": "core-family-hero-1920x744.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 518,
+   "height": 518
+  },
+  "chips": [
+   "Alla4, 4 produkter*",
+   "Vapes1, 1 produkt",
+   "Buds1, 1 produkt",
+   "Hasch2, 2 produkter"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "core-vapes",
+    "title": "Core Vapes",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THCX 19% - Core - 2ml"
+    ]
+   },
+   {
+    "key": "buds",
+    "id": "core-buds",
+    "title": "Core Buds",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram"
+    ]
+   },
+   {
+    "key": "hasch",
+    "id": "core-hasch",
+    "title": "Core Hasch",
+    "cards": 2,
+    "dupes": 0,
+    "viewAll": null,
+    "names": [
+     "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+     "Hash – THCA 40% – Northern Lights – 5 gram"
+    ]
+   }
+  ],
+  "uniqueProducts": 4,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce12 produkter",
+   "THCaB30 produkter",
+   "THCbA4 produkter",
+   "Core4 produkter*",
+   "D101 produkt",
+   "Nano-118 produkter",
+   "THCV7 produkter",
+   "HHCPM4 produkter",
+   "THCNM4 produkter"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 3012,
+  "errors": []
+ }
+]

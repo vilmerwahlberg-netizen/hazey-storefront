@@ -50,7 +50,9 @@
     { name: "Magic Sauce", attr: "Magic Sauce", hub: "magic-sauce", extra: { carts: "alla-cartridges?filters=Serie_Magic%20Sauce" } },
     { name: "THCaB", hub: "thca", extra: { carts: "thca-carts" } },
     { name: "THCbA", hub: "thcb", extra: { carts: "thcb-carts" } },
-    { name: "Core", attr: "Core", hub: null },
+    /* Core-familjens hubb (Core-vapes + familjens buds/hasch), verifierad
+       2026-10-27: /core, H1 "Core". Dubbletten /core-1 används inte. */
+    { name: "Core", attr: "Core", hub: "core" },
     { name: "D10", hub: "10-oh-thc" },
     { name: "Nano-11", aliases: ["Nano11"], attr: "Nano11", hub: "nano-11" },
     { name: "THCV", hub: "thcv", extra: { carts: "thcv-carts" } },

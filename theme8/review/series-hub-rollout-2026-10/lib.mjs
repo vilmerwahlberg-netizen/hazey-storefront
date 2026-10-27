@@ -36,7 +36,11 @@ export const ROUTES = {
   thcab: "/sv/categories/thca",
   thcba: "/sv/categories/thcb",
   d10: "/sv/categories/10-oh-thc",
-  nano11: "/sv/categories/nano-11"
+  nano11: "/sv/categories/nano-11",
+  core: "/sv/categories/core",
+  "core-vapes": "/sv/categories/alla-vapes?filters=Serie_Core",
+  "alla-buds": "/sv/categories/blommor-buds",
+  butik: "/sv/page/butik"
 };
 // TASK 04C-B: en hash (djuplänk) läggs efter preview-parametern.
 export const url = p0 => { const [p, h] = p0.split("#"); return `https://hazeyse.nyehandel.se${p}${p.includes("?") ? "&" : "?"}preview=${PREVIEW}${h ? "#" + h : ""}`; };

@@ -238,7 +238,7 @@
   /* ======================================================================
      Seriehubb, ny riktning (pilot). Återanvändbar komponent som styrs av
      SERIES_PILOTS -- aktiv bara för serier som har en post där (i den här
-     rundan: Magic Sauce, THCaB, THCbA, Nano-11). Övriga seriehubbar använder HZ8.seriesHub ovan.
+     rundan: Magic Sauce, THCaB, THCbA, Nano-11, Core). Övriga seriehubbar använder HZ8.seriesHub ovan.
 
      Data (inget hårdkodat): seriens produkter = union av seriens egen hubb
      (alla sidor) och alla serie x format-routes i relationskartan,
@@ -325,6 +325,24 @@
       },
       formats: ["buds", "prerolls"],
       guide: { title: "Upptäck serien", text: "Hela Nano-11 samlat efter format.", cta: "Se produkterna" }
+    },
+    /* Core-familjen: Core-vapes och familjens buds/hasch i Nyehandels
+       Core-kategori. Copyn namnger inga varumärken som inte finns live. */
+    "Core": {
+      lead: "{formats} från Core-familjen.",
+      hero: {
+        dir: "series-core-family-hero-2026-10/",
+        wide: ["core-family-hero-1920x744.webp", 1920, 744],
+        desk: ["core-family-hero-1512x664.webp", 1512, 664],
+        mobile: ["core-family-hero-mobile-900x1802.webp", 900, 1802],
+        /* Bred produktgrupp (20-77 % av höjden på desktop, från 37 % av
+           bredden på mobil): högre fokus och smalare mobilingress. */
+        pos: "50% 8%",
+        posTablet: "50% 70%",
+        leadMobile: "min(21ch, 33vw)"
+      },
+      formats: ["vapes", "buds", "hasch"],
+      guide: { title: "Utforska familjen", text: "Hela familjen samlad efter format.", cta: "Se sortimentet" }
     }
   };
   var SH_MAX_PAGES = 8;

@@ -1,0 +1,24 @@
+[
+ {
+  "route": "/sv/categories/core",
+  "count": 4,
+  "cards": [
+   "Vape - THCX 19% - Core - 2ml [Hero]",
+   "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram [Hazey.se]",
+   "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram [Hazey.se]",
+   "Hash – THCA 40% – Northern Lights – 5 gram [Hazey.se]"
+  ]
+ },
+ {
+  "route": "/sv/categories/core-1",
+  "count": null,
+  "cards": []
+ },
+ {
+  "route": "/sv/categories/alla-vapes?filters=Serie_Core",
+  "count": 1,
+  "cards": [
+   "Vape - THCX 19% - Core - 2ml [Hero]"
+  ]
+ }
+]
