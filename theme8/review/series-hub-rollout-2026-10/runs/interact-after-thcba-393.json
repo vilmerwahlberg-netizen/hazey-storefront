@@ -1,0 +1,64 @@
+{
+ "which": "after",
+ "route": "thcba",
+ "w": 393,
+ "dataMs": 28,
+ "chips": [
+  {
+   "href": "#hz8-sh-shelves",
+   "key": "all"
+  },
+  {
+   "href": "#thcb-vapes",
+   "key": "vapes"
+  },
+  {
+   "href": "#thcb-carts",
+   "key": "carts"
+  }
+ ],
+ "click": {
+  "hash": "#thcb-carts",
+  "top": 90,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "carts"
+ },
+ "back": {
+  "hash": "",
+  "top": null,
+  "headerBottom": 72,
+  "focus": "hz8-prail__title",
+  "current": "all"
+ },
+ "forward": {
+  "hash": "#thcb-carts",
+  "top": 90,
+  "headerBottom": -48,
+  "focus": "hz8-prail__title",
+  "current": "carts"
+ },
+ "keyboard": {
+  "hash": "#hz8-sh-nav",
+  "focus": "hz8-sh-chip",
+  "navTop": 84
+ },
+ "viewAll": [
+  "/sv/categories/thcb-vapes",
+  "/sv/categories/thcb-carts"
+ ],
+ "dock": {
+  "samples": 18,
+  "dockOn": 0,
+  "both": 0
+ },
+ "errors": [],
+ "deep": {
+  "hash": "#thcb-carts",
+  "top": 90,
+  "headerBottom": 72,
+  "focus": "has-fixed-header",
+  "current": "carts"
+ },
+ "deepErrors": []
+}

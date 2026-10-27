@@ -238,7 +238,7 @@
   /* ======================================================================
      Seriehubb, ny riktning (pilot). Återanvändbar komponent som styrs av
      SERIES_PILOTS -- aktiv bara för serier som har en post där (i den här
-     rundan: Magic Sauce, THCaB). Övriga seriehubbar använder HZ8.seriesHub ovan.
+     rundan: Magic Sauce, THCaB, THCbA). Övriga seriehubbar använder HZ8.seriesHub ovan.
 
      Data (inget hårdkodat): seriens produkter = union av seriens egen hubb
      (alla sidor) och alla serie x format-routes i relationskartan,
@@ -293,6 +293,22 @@
       },
       formats: ["vapes", "carts", "buds", "hasch"],
       guide: { title: "Hitta ditt format", text: "Samma serie – olika sätt att hitta rätt.", cta: "Utforska formaten" }
+    },
+    /* Ingressen namnger formaten ur livedatan ({formats}) -- aldrig en
+       fast formatlista i copyn. */
+    "THCbA": {
+      lead: "{formats} samlade i en tydlig serieöversikt.",
+      hero: {
+        dir: "series-thcba-hero-2026-10/",
+        wide: ["thcba-hero-1920x744.webp", 1920, 744],
+        desk: ["thcba-hero-1512x664.webp", 1512, 664],
+        mobile: ["thcba-hero-mobile-900x1802.webp", 900, 1802],
+        pos: "50% 45%",
+        posTablet: "50% 78%",
+        leadMobile: "min(21ch, 46vw)"
+      },
+      formats: ["vapes", "carts"],
+      guide: { title: "Hitta ditt format", text: "Utforska serien efter format.", cta: "Utforska formaten" }
     }
   };
   var SH_MAX_PAGES = 8;
@@ -428,7 +444,9 @@
     /* Sidans enda H1 (kategorins egen, serverrenderade) flyttas in. */
     var h1 = root.querySelector("article.category-description h1");
     if (h1) { h1.id = "hz8-sh-h1"; copy.insertBefore(h1, copy.querySelector(".hz8-sh-hero__lead")); }
-    hero.querySelector(".hz8-sh-hero__lead").textContent = cfg.lead;
+    /* En mall med {formats} fylls först när datan finns (under
+       beredskapsmasken, samtidigt som antalet). */
+    hero.querySelector(".hz8-sh-hero__lead").textContent = cfg.lead.indexOf("{formats}") === -1 ? cfg.lead : "";
     return hero;
   }
 
@@ -694,7 +712,9 @@
       }
       count.textContent = HZ8.countLabel(u.total);
       var labels = keys.map(function (k) { return fmtDef(k).label.toLowerCase(); });
-      hero.querySelector(".hz8-sh-hero__lead").textContent = cfg.lead + " Utforska " + joinSv(labels) + ".";
+      var fl = joinSv(labels);
+      hero.querySelector(".hz8-sh-hero__lead").textContent = cfg.lead.indexOf("{formats}") === -1 ? cfg.lead + " Utforska " + fl + "." :
+        cfg.lead.replace("{formats}", cfg.lead.indexOf("{formats}") === 0 ? fl.charAt(0).toUpperCase() + fl.slice(1) : fl);
       var slug = (series.hub ? HZ8.path(series.hub).split("/").pop() : series.name.toLowerCase().replace(/\s+/g, "-"));
       var items = [{ key: "all", id: "hz8-sh-shelves", label: "Alla", n: u.total }].concat(keys.map(function (k) { return { key: k, id: slug + "-" + k, label: fmtDef(k).label, n: u.byFormat[k].length }; }));
       navItems(nav.querySelector("ul"), items);

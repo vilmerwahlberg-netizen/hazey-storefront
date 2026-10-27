@@ -1,0 +1,79 @@
+[
+ {
+  "which": "after",
+  "route": "thcba",
+  "w": 1440,
+  "zoom": false,
+  "mode": "slow",
+  "failed": null,
+  "dataMs": 17,
+  "pilot": true,
+  "h1s": 1,
+  "h1": "THC-B",
+  "lead": "Vapes och carts samlade i en tydlig serieöversikt.",
+  "count": "4 produkter",
+  "guide": "Hitta ditt format",
+  "guideText": "Utforska serien efter format.",
+  "cta": "Utforska formaten",
+  "seal": false,
+  "script": null,
+  "heroImg": "thcba-hero-1512x664.webp",
+  "heroImgOk": true,
+  "hero": {
+   "top": 0,
+   "bottom": 446,
+   "height": 446
+  },
+  "chips": [
+   "Alla4, 4 produkter*",
+   "Vapes3, 3 produkter",
+   "Carts1, 1 produkt"
+  ],
+  "shelves": [
+   {
+    "key": "vapes",
+    "id": "thcb-vapes",
+    "title": "THCbA Vapes",
+    "cards": 3,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Vape - THC-B 35% - Faraoh - 1ml",
+     "Vape - THC-B 20% - Tatra Hemp - 2ml",
+     "Vape - THC-B 20% - Tatra Hemp - 1ml"
+    ]
+   },
+   {
+    "key": "carts",
+    "id": "thcb-carts",
+    "title": "THCbA Carts",
+    "cards": 1,
+    "dupes": 0,
+    "viewAll": "https://hazeyse.nyehandel.se/sv/categories/thcb-carts?preview=v9kzdmqz4w60l5n",
+    "names": [
+     "Cart - THC-B 20% - Tatra Hemp - 1ml"
+    ]
+   }
+  ],
+  "uniqueProducts": 4,
+  "crossDupes": 0,
+  "more": [],
+  "lower": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA4 produkter*",
+   "Core",
+   "D10",
+   "Nano-11",
+   "THCV",
+   "HHCPM",
+   "THCNM"
+  ],
+  "state": null,
+  "footer": true,
+  "service": false,
+  "overflowX": false,
+  "docH": 2389,
+  "errors": []
+ }
+]

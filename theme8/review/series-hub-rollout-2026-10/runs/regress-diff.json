@@ -1,13 +1,13 @@
 [
  {
   "f": "alla-vapes-1440.png",
-  "changedPx": 1,
-  "pct": 0,
+  "changedPx": 6564,
+  "pct": 0.19,
   "box": [
-   1158,
-   671,
-   1158,
-   671
+   1092,
+   593,
+   1357,
+   861
   ]
  },
  {
@@ -24,14 +24,9 @@
  },
  {
   "f": "home-393.png",
-  "changedPx": 921,
-  "pct": 0.024,
-  "box": [
-   363,
-   1521,
-   523,
-   1679
-  ]
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
  },
  {
   "f": "m-s-vapes-1440.png",
@@ -58,12 +53,6 @@
   "box": null
  },
  {
-  "f": "magic-sauce-600.png",
-  "changedPx": 0,
-  "pct": 0,
-  "box": null
- },
- {
   "f": "pdp-1440.png",
   "changedPx": 0,
   "pct": 0,
@@ -74,5 +63,22 @@
   "changedPx": 0,
   "pct": 0,
   "box": null
+ },
+ {
+  "f": "thcab-1440.png",
+  "changedPx": 0,
+  "pct": 0,
+  "box": null
+ },
+ {
+  "f": "thcab-393.png",
+  "changedPx": 195,
+  "pct": 0.005,
+  "box": [
+   418,
+   1296,
+   581,
+   1474
+  ]
  }
 ]
