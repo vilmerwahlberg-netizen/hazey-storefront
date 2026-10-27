@@ -2365,7 +2365,7 @@ html.hz8.hz8-cat-portal.hz8-cat-pilot .hz8-pmore__back { min-height: 44px; font-
 @media (prefers-reduced-motion: reduce) { html.hz8-cat-portal.hz8-cat-pilot .hz8-pmore__fill { transition: none; } }
 
 /* ---- Formatvägar (Hybrid C): lätta, riktiga länkar ---- */
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes {
+html.hz8-cat-pilot .hz8-proutes {
   display: grid;
   grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
   align-items: center;
@@ -2375,11 +2375,11 @@ html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes {
   border-top: 1px solid var(--hz8-pilot-line);
   border-bottom: 1px solid var(--hz8-pilot-line);
 }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__head .hz8-kicker { margin: 0 0 8px; color: color-mix(in srgb, var(--hz8-pilot-green) 76%, transparent) !important; }
-html.hz8.hz8-cat-portal.hz8-cat-pilot .hz8-proutes h2 { margin: 0 0 10px !important; color: var(--hz8-pilot-green) !important; font: 600 clamp(28px, 2.4vw, 36px)/1.06 var(--hz8-font-display) !important; letter-spacing: -.015em !important; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__lead { margin: 0; color: color-mix(in srgb, var(--hz8-pilot-green) 82%, transparent); font: 400 14.5px/1.5 var(--hz8-font-ui) !important; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card {
+html.hz8-cat-pilot .hz8-proutes__head .hz8-kicker { margin: 0 0 8px; color: color-mix(in srgb, var(--hz8-pilot-green) 76%, transparent) !important; }
+html.hz8.hz8-cat-pilot .hz8-proutes h2 { margin: 0 0 10px !important; color: var(--hz8-pilot-green) !important; font: 600 clamp(28px, 2.4vw, 36px)/1.06 var(--hz8-font-display) !important; letter-spacing: -.015em !important; }
+html.hz8-cat-pilot .hz8-proutes__lead { margin: 0; color: color-mix(in srgb, var(--hz8-pilot-green) 82%, transparent); font: 400 14.5px/1.5 var(--hz8-font-ui) !important; }
+html.hz8-cat-pilot .hz8-proutes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+html.hz8-cat-pilot .hz8-proutes__card {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2395,14 +2395,14 @@ html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card {
   text-decoration: none !important;
   transition: border-color .16s var(--hz8-ease), box-shadow .16s var(--hz8-ease);
 }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 36%, transparent); box-shadow: 0 12px 24px -18px rgba(72, 52, 29, .6), inset 0 1px 0 rgba(255, 253, 247, .8); }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card:focus-visible { outline: 2px solid var(--hz8-olive); outline-offset: 2px; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__text { display: grid; gap: 5px; min-width: 0; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__name { font: 600 20px/1.15 var(--hz8-font-display) !important; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__sub { color: color-mix(in srgb, var(--hz8-pilot-green) 74%, transparent); font: 400 13px/1.35 var(--hz8-font-ui) !important; }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__arrow { flex: none; display: inline-flex; color: var(--hz8-cta-fill); }
-html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__arrow .hz8-icon { width: 20px; height: 20px; }
-@media (prefers-reduced-motion: reduce) { html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card { transition: none; } }
+html.hz8-cat-pilot .hz8-proutes__card:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 36%, transparent); box-shadow: 0 12px 24px -18px rgba(72, 52, 29, .6), inset 0 1px 0 rgba(255, 253, 247, .8); }
+html.hz8-cat-pilot .hz8-proutes__card:focus-visible { outline: 2px solid var(--hz8-olive); outline-offset: 2px; }
+html.hz8-cat-pilot .hz8-proutes__text { display: grid; gap: 5px; min-width: 0; }
+html.hz8-cat-pilot .hz8-proutes__name { font: 600 20px/1.15 var(--hz8-font-display) !important; }
+html.hz8-cat-pilot .hz8-proutes__sub { color: color-mix(in srgb, var(--hz8-pilot-green) 74%, transparent); font: 400 13px/1.35 var(--hz8-font-ui) !important; }
+html.hz8-cat-pilot .hz8-proutes__arrow { flex: none; display: inline-flex; color: var(--hz8-cta-fill); }
+html.hz8-cat-pilot .hz8-proutes__arrow .hz8-icon { width: 20px; height: 20px; }
+@media (prefers-reduced-motion: reduce) { html.hz8-cat-pilot .hz8-proutes__card { transition: none; } }
 
 /* ---- Kategoritext (Hybrid C): rubrik vänster, text + Visa mer höger ---- */
 html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-about-head { align-self: start; width: 300px; margin: 44px 0 0; }
@@ -2443,14 +2443,14 @@ html.hz8.hz8-cat-portal.hz8-seo[data-hz8-page="category"] .hz8-seo-toggle { min-
   html.hz8-cat-portal.hz8-cat-pilot .hz8-pmore { margin-top: 32px; }
   html.hz8-cat-portal.hz8-cat-pilot .hz8-pmore__bar { width: 100%; }
   html.hz8.hz8-cat-portal.hz8-cat-pilot .hz8-pmore__btn { width: 100%; }
-  html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 40px; padding: 32px 0; }
-  html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes__card { min-height: 64px; padding: 14px 16px; }
+  html.hz8-cat-pilot .hz8-proutes { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 40px; padding: 32px 0; }
+  html.hz8-cat-pilot .hz8-proutes__list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  html.hz8-cat-pilot .hz8-proutes__card { min-height: 64px; padding: 14px 16px; }
   html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-about-head { width: auto; margin: 32px 0 12px; }
   html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] article.category-description :is(.readmore, .nh-cat-box) { grid-row: 12; margin: 0 0 48px !important; }
 }
 @media (min-width: 768px) and (max-width: 1179px) {
-  html.hz8-cat-portal.hz8-cat-pilot .hz8-proutes { grid-template-columns: minmax(0, 1fr); }
+  html.hz8-cat-pilot .hz8-proutes { grid-template-columns: minmax(0, 1fr); }
   html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] .hz8-cat-about-head { width: auto; margin: 40px 0 12px; }
   html.hz8.hz8-cat-portal.hz8-cat-pilot[data-hz8-page="category"] article.category-description :is(.readmore, .nh-cat-box) { grid-row: 12; margin: 0 0 56px !important; }
 }
@@ -2649,3 +2649,19 @@ html.hz8-cat-portal[data-hz8-shell="broad"] .hz8-pfam.is-more { -webkit-mask-ima
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   html.hz8-cat-pilot .hz8-mdock { transition-duration: 1ms; }
 }
+
+/* ============================================================
+   TASK 01G (2026-10-26): breda formatsidor som EN familj.
+   Alla Vapes har nu samma skal som Alla Buds/Allt Hasch
+   (data-hz8-shell="broad", 80-category.js): serieflikar som primär
+   hylla, Produkttyp och Volym under "Filter & sortera"/"Alla filter",
+   och nedre formatvägar (.hz8-proutes, tidigare bara portalen) i
+   seriebandets rad. Produktkorten är oförändrade.
+   ============================================================ */
+html[data-hz8-shell="broad"] .hz8-ptool__desk .hz8-ptool__type { display: none; }
+html.hz8-cat-pilot[data-hz8-page="category"] .hz8-proutes { grid-row: 9; }
+/* Samma hero-rytm i hela familjen: saknar sidan beskrivningstext (Alla
+   Buds har ingen ingress i Nyehandel) reserveras ingressens två rader --
+   tom och osynlig, ingen påhittad text -- så att hero, guidekort, hylla
+   och gridstart hamnar på samma höjd som Alla Vapes/Allt Hasch. */
+html.hz8-cat-pilot[data-hz8-shell="broad"]:not(.hz8-cat-portal)[data-hz8-page="category"] .hz8-cat-lead[hidden] { display: block !important; visibility: hidden; min-height: 2lh; }

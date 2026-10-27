@@ -1,0 +1,732 @@
+[
+ {
+  "which": "before",
+  "r": "vapes",
+  "w": 393,
+  "st": "normal",
+  "shell": "vapes",
+  "h1": "Alla Vapes",
+  "h1Size": "45.588px",
+  "lead": "Alla våra vapes på ett ställe. Filtrera på cannabinoid, serie och lagerstatus.",
+  "count": "29 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 647,
+   "left": 0,
+   "width": 393,
+   "height": 647
+  },
+  "h1Rect": {
+   "top": 132,
+   "bottom": 177,
+   "left": 16,
+   "width": 361,
+   "height": 45
+  },
+  "guide": {
+   "top": 373,
+   "bottom": 506,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": "Hitta rätt vape",
+  "shelf": {
+   "top": 661,
+   "bottom": 713,
+   "left": 16,
+   "width": 361,
+   "height": 52
+  },
+  "shelfStyle": {
+   "radius": "14px",
+   "bg": "rgb(255, 253, 248)",
+   "border": "rgb(235, 225, 209)",
+   "blur": "none"
+  },
+  "tabs": [],
+  "shelfControls": [
+   "Filter",
+   "Sortera"
+  ],
+  "firstCard": {
+   "top": 725,
+   "bottom": 1060,
+   "left": 16,
+   "width": 175,
+   "height": 335
+  },
+  "cards": 29,
+  "status": "Alla produkter · 29 produkterRensa",
+  "lower": {
+   "top": 6451,
+   "bottom": 6748,
+   "left": 0,
+   "width": 393,
+   "height": 297
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA",
+   "Core"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "vapes",
+  "w": 1440,
+  "st": "normal",
+  "shell": "vapes",
+  "h1": "Alla Vapes",
+  "h1Size": "90.72px",
+  "lead": "Alla våra vapes på ett ställe. Filtrera på cannabinoid, serie och lagerstatus.",
+  "count": "29 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 481,
+   "left": 0,
+   "width": 1440,
+   "height": 481
+  },
+  "h1Rect": {
+   "top": 182,
+   "bottom": 269,
+   "left": 64,
+   "width": 1312,
+   "height": 87
+  },
+  "guide": {
+   "top": 244,
+   "bottom": 403,
+   "left": 512,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt vape",
+  "shelf": {
+   "top": 491,
+   "bottom": 553,
+   "left": 64,
+   "width": 1312,
+   "height": 62
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [],
+  "shelfControls": [
+   "Produkttyp",
+   "Cannabinoid / serie",
+   "I lager",
+   "Alla filter",
+   "Sortera"
+  ],
+  "firstCard": {
+   "top": 569,
+   "bottom": 1077,
+   "left": 64,
+   "width": 310,
+   "height": 508
+  },
+  "cards": 29,
+  "status": "Alla produkter · 29 produkterRensa",
+  "lower": {
+   "top": 4942,
+   "bottom": 5222,
+   "left": 64,
+   "width": 1312,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA",
+   "Core"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "vapes",
+  "w": 1920,
+  "st": "normal",
+  "shell": "vapes",
+  "h1": "Alla Vapes",
+  "h1Size": "108px",
+  "lead": "Alla våra vapes på ett ställe. Filtrera på cannabinoid, serie och lagerstatus.",
+  "count": "29 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 524,
+   "left": 0,
+   "width": 1920,
+   "height": 524
+  },
+  "h1Rect": {
+   "top": 189,
+   "bottom": 293,
+   "left": 168,
+   "width": 1520,
+   "height": 104
+  },
+  "guide": {
+   "top": 273,
+   "bottom": 432,
+   "left": 764,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt vape",
+  "shelf": {
+   "top": 534,
+   "bottom": 596,
+   "left": 200,
+   "width": 1520,
+   "height": 62
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [],
+  "shelfControls": [
+   "Produkttyp",
+   "Cannabinoid / serie",
+   "I lager",
+   "Alla filter",
+   "Sortera"
+  ],
+  "firstCard": {
+   "top": 612,
+   "bottom": 1095,
+   "left": 200,
+   "width": 285,
+   "height": 483
+  },
+  "cards": 29,
+  "status": "Alla produkter · 29 produkterRensa",
+  "lower": {
+   "top": 3746,
+   "bottom": 4026,
+   "left": 200,
+   "width": 1520,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA",
+   "Core"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "buds",
+  "w": 393,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Alla Buds",
+  "h1Size": "45.588px",
+  "lead": "",
+  "count": "54 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 497,
+   "left": 0,
+   "width": 393,
+   "height": 497
+  },
+  "h1Rect": {
+   "top": 132,
+   "bottom": 177,
+   "left": 16,
+   "width": 361,
+   "height": 45
+  },
+  "guide": {
+   "top": 324,
+   "bottom": 457,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": "Hitta rätt buds",
+  "shelf": {
+   "top": 468,
+   "bottom": 522,
+   "left": 16,
+   "width": 361,
+   "height": 54
+  },
+  "shelfStyle": {
+   "radius": "18px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Alla Buds*",
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM",
+   "THCNM"
+  ],
+  "shelfControls": [],
+  "firstCard": {
+   "top": 588,
+   "bottom": 948,
+   "left": 16,
+   "width": 175,
+   "height": 360
+  },
+  "cards": 25,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 5747,
+   "bottom": 6044,
+   "left": 0,
+   "width": 393,
+   "height": 297
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "buds",
+  "w": 1440,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Alla Buds",
+  "h1Size": "90.72px",
+  "lead": "",
+  "count": "54 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 403,
+   "left": 0,
+   "width": 1440,
+   "height": 403
+  },
+  "h1Rect": {
+   "top": 182,
+   "bottom": 269,
+   "left": 64,
+   "width": 1312,
+   "height": 87
+  },
+  "guide": {
+   "top": 167,
+   "bottom": 326,
+   "left": 512,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt buds",
+  "shelf": {
+   "top": 413,
+   "bottom": 477,
+   "left": 64,
+   "width": 1312,
+   "height": 64
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Alla Buds*",
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM",
+   "THCNM"
+  ],
+  "shelfControls": [
+   "I lager",
+   "Alla filter",
+   "Sortera: Nyast"
+  ],
+  "firstCard": {
+   "top": 493,
+   "bottom": 1002,
+   "left": 64,
+   "width": 310,
+   "height": 508
+  },
+  "cards": 25,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 4497,
+   "bottom": 4777,
+   "left": 64,
+   "width": 1312,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "buds",
+  "w": 1920,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Alla Buds",
+  "h1Size": "108px",
+  "lead": "",
+  "count": "54 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 444,
+   "left": 0,
+   "width": 1920,
+   "height": 444
+  },
+  "h1Rect": {
+   "top": 189,
+   "bottom": 293,
+   "left": 168,
+   "width": 1520,
+   "height": 104
+  },
+  "guide": {
+   "top": 193,
+   "bottom": 352,
+   "left": 764,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt buds",
+  "shelf": {
+   "top": 454,
+   "bottom": 518,
+   "left": 200,
+   "width": 1520,
+   "height": 64
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Alla Buds*",
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM",
+   "THCNM"
+  ],
+  "shelfControls": [
+   "I lager",
+   "Alla filter",
+   "Sortera: Nyast"
+  ],
+  "firstCard": {
+   "top": 534,
+   "bottom": 1017,
+   "left": 200,
+   "width": 285,
+   "height": 483
+  },
+  "cards": 25,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 3341,
+   "bottom": 3621,
+   "left": 200,
+   "width": 1520,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "Nano-11",
+   "HHCPM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "hasch",
+  "w": 393,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Allt Hasch",
+  "h1Size": "45.588px",
+  "lead": "Upptäck Laglig Cannabis med Vårt Exceptionella Utbud av Hasch",
+  "count": "16 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 546,
+   "left": 0,
+   "width": 393,
+   "height": 546
+  },
+  "h1Rect": {
+   "top": 132,
+   "bottom": 177,
+   "left": 16,
+   "width": 361,
+   "height": 45
+  },
+  "guide": {
+   "top": 373,
+   "bottom": 506,
+   "left": 25,
+   "width": 344,
+   "height": 133
+  },
+  "guideCta": "Hitta rätt hasch",
+  "shelf": {
+   "top": 517,
+   "bottom": 571,
+   "left": 16,
+   "width": 361,
+   "height": 54
+  },
+  "shelfStyle": {
+   "radius": "18px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Allt Hasch*",
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "shelfControls": [],
+  "firstCard": {
+   "top": 637,
+   "bottom": 971,
+   "left": 16,
+   "width": 175,
+   "height": 335
+  },
+  "cards": 16,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 3643,
+   "bottom": 3941,
+   "left": 0,
+   "width": 393,
+   "height": 297
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "hasch",
+  "w": 1440,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Allt Hasch",
+  "h1Size": "90.72px",
+  "lead": "Upptäck Laglig Cannabis med Vårt Exceptionella Utbud av Hasch",
+  "count": "16 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 481,
+   "left": 0,
+   "width": 1440,
+   "height": 481
+  },
+  "h1Rect": {
+   "top": 182,
+   "bottom": 269,
+   "left": 64,
+   "width": 1312,
+   "height": 87
+  },
+  "guide": {
+   "top": 244,
+   "bottom": 403,
+   "left": 512,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt hasch",
+  "shelf": {
+   "top": 491,
+   "bottom": 555,
+   "left": 64,
+   "width": 1312,
+   "height": 64
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Allt Hasch*",
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "shelfControls": [
+   "I lager",
+   "Alla filter",
+   "Sortera: Nyast"
+  ],
+  "firstCard": {
+   "top": 571,
+   "bottom": 1061,
+   "left": 64,
+   "width": 310,
+   "height": 490
+  },
+  "cards": 16,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 2741,
+   "bottom": 3021,
+   "left": 64,
+   "width": 1312,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ },
+ {
+  "which": "before",
+  "r": "hasch",
+  "w": 1920,
+  "st": "normal",
+  "shell": "broad",
+  "h1": "Allt Hasch",
+  "h1Size": "108px",
+  "lead": "Upptäck Laglig Cannabis med Vårt Exceptionella Utbud av Hasch",
+  "count": "16 produkter",
+  "hero": {
+   "top": 0,
+   "bottom": 524,
+   "left": 0,
+   "width": 1920,
+   "height": 524
+  },
+  "h1Rect": {
+   "top": 189,
+   "bottom": 293,
+   "left": 168,
+   "width": 1520,
+   "height": 104
+  },
+  "guide": {
+   "top": 273,
+   "bottom": 432,
+   "left": 764,
+   "width": 446,
+   "height": 159
+  },
+  "guideCta": "Hitta rätt hasch",
+  "shelf": {
+   "top": 534,
+   "bottom": 598,
+   "left": 200,
+   "width": 1520,
+   "height": 64
+  },
+  "shelfStyle": {
+   "radius": "20px",
+   "bg": "color(srgb 0.984314 0.952941 0.894118 / 0.63)",
+   "border": "color(srgb 0.776471 0.678431 0.52549 / 0.44)",
+   "blur": "blur(20px) saturate(1.14)"
+  },
+  "tabs": [
+   "Allt Hasch*",
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "shelfControls": [
+   "I lager",
+   "Alla filter",
+   "Sortera: Nyast"
+  ],
+  "firstCard": {
+   "top": 614,
+   "bottom": 1079,
+   "left": 200,
+   "width": 285,
+   "height": 465
+  },
+  "cards": 16,
+  "status": "Inga serier valdaRensa",
+  "lower": {
+   "top": 2684,
+   "bottom": 2964,
+   "left": 200,
+   "width": 1520,
+   "height": 280
+  },
+  "lowerKind": "series",
+  "lowerItems": [
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "overflowX": false,
+  "url": "",
+  "errors": []
+ }
+]

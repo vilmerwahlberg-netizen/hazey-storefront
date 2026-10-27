@@ -1,0 +1,74 @@
+{
+ "vapes": [
+  {
+   "q": "?serie=magic-sauce&filters=smart-filter_in-stock",
+   "count": "2 produkter",
+   "cards": 2,
+   "status": "1 serie vald · 2 produkterRensa"
+  },
+  {
+   "q": "?serie=thcab&filters=smart-filter_in-stock",
+   "count": "2 produkter",
+   "cards": 2,
+   "status": "1 serie vald · 2 produkterRensa"
+  },
+  {
+   "q": "?serie=thcba&filters=smart-filter_in-stock",
+   "count": "1 produkt",
+   "cards": 1,
+   "status": "1 serie vald · 1 produktRensa"
+  },
+  {
+   "q": "?serie=core&filters=smart-filter_in-stock",
+   "count": "1 produkt",
+   "cards": 1,
+   "status": "1 serie vald · 1 produktRensa"
+  },
+  {
+   "q": "?serie=thcv&filters=smart-filter_in-stock",
+   "count": "3 produkter",
+   "cards": 3,
+   "status": "1 serie vald · 3 produkterRensa"
+  }
+ ],
+ "buds": [
+  {
+   "q": "?serie=magic-sauce&filters=smart-filter_in-stock",
+   "count": "4 produkter",
+   "cards": 4,
+   "status": "1 serie vald · 4 produkterRensa"
+  },
+  {
+   "q": "?serie=thcab&filters=smart-filter_in-stock",
+   "count": "9 produkter",
+   "cards": 9,
+   "status": "1 serie vald · 9 produkterRensa"
+  },
+  {
+   "q": "?serie=nano-11&filters=smart-filter_in-stock",
+   "count": "0 produkter",
+   "cards": 0,
+   "status": "1 serie vald · 0 produkterRensa"
+  }
+ ],
+ "hasch": [
+  {
+   "q": "?serie=magic-sauce&filters=smart-filter_in-stock",
+   "count": "1 produkt",
+   "cards": 1,
+   "status": "1 serie vald · 1 produktRensa"
+  },
+  {
+   "q": "?serie=thcab&filters=smart-filter_in-stock",
+   "count": "5 produkter",
+   "cards": 5,
+   "status": "1 serie vald · 5 produkterRensa"
+  },
+  {
+   "q": "?serie=thcnm&filters=smart-filter_in-stock",
+   "count": "2 produkter",
+   "cards": 2,
+   "status": "1 serie vald · 2 produkterRensa"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "/sv/categories/alla-vapes": {
+  "url": "?&sort=price_high",
+  "sheetClosed": true,
+  "prices": [
+   985,
+   985,
+   745,
+   745,
+   725,
+   725,
+   649,
+   649
+  ],
+  "descending": true,
+  "errors": []
+ },
+ "/sv/categories/blommor-buds": {
+  "url": "?&sort=price_high",
+  "sheetClosed": true,
+  "prices": [],
+  "descending": false,
+  "errors": []
+ }
+}
