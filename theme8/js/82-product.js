@@ -490,8 +490,8 @@
       renderSpec(spec);
       syncBuyLabel();
       syncSticky(sticky);
-      var stock = document.getElementById("stock");
-      document.documentElement.classList.toggle("hz8-pdp-out", !!(stock && stock.classList.contains("is-negative")));
+      /* html.hz8-pdp-out (slutsålt) ägs av 83-pdp-purchase.js: Nyehandels
+         #stock-klass säger is-positive även när varianten har 0 i lager. */
     });
   });
 })();

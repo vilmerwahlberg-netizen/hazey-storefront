@@ -141,8 +141,17 @@ html.hz8[data-hz8-page="product"] #stock::before {
   background: var(--hz8-success-dot);
   box-shadow: 0 0 0 1.5px var(--hz8-success-ring);
 }
-html.hz8[data-hz8-page="product"] #stock:not(.is-positive)::before { background: transparent; box-shadow: 0 0 0 1.5px var(--hz8-text-muted); }
-html.hz8[data-hz8-page="product"] #stock:not(.is-positive) { color: var(--hz8-text-muted) !important; }
+html.hz8[data-hz8-page="product"] #stock:not(.is-positive)::before,
+html.hz8.hz8-pdp-out[data-hz8-page="product"] #stock::before { background: transparent; box-shadow: 0 0 0 1.5px var(--hz8-text-muted); }
+html.hz8[data-hz8-page="product"] #stock:not(.is-positive),
+html.hz8.hz8-pdp-out[data-hz8-page="product"] #stock { color: var(--hz8-text-muted) !important; }
+/* Slutsålt (html.hz8-pdp-out, 83-pdp-purchase.js): "Slutsåld" i stället för
+   lagerstatusens text -- Nyehandel skriver "Slut på lager" även på köpbara
+   varianter -- och ingen antal/köprad. Nyehandels egen "Bevaka" och
+   pristrappan ligger utanför köpraden och påverkas inte. */
+html.hz8.hz8-pdp-out[data-hz8-page="product"] #stock { gap: 0; font-size: 0 !important; }
+html.hz8.hz8-pdp-out[data-hz8-page="product"] #stock::after { content: "Slutsåld" / "" !important; display: inline !important; margin-left: 9px; font: 600 13px/1.2 var(--hz8-font-ui); }
+html.hz8.hz8-pdp-out[data-hz8-page="product"] .buy-form { display: none !important; }
 
 html.hz8[data-hz8-page="product"] .buy-controls { margin: 0 !important; }
 html.hz8[data-hz8-page="product"] .buy-form__controls { display: flex !important; align-items: stretch; gap: 12px; }
@@ -550,7 +559,8 @@ html.hz8[data-hz8-page="product"] #stock {
   background: color-mix(in srgb, var(--hz8-success) 26%, var(--hz8-surface));
   font-size: 13px !important;
 }
-html.hz8[data-hz8-page="product"] #stock:not(.is-positive) { background: var(--hz8-error-soft); color: var(--hz8-error) !important; }
+html.hz8[data-hz8-page="product"] #stock:not(.is-positive),
+html.hz8.hz8-pdp-out[data-hz8-page="product"] #stock { background: var(--hz8-error-soft); color: var(--hz8-error) !important; }
 /* Paketkort varmare. */
 html.hz8[data-hz8-page="product"] .hz8-package { border-radius: 14px; background: var(--hz8-surface); border-color: color-mix(in srgb, var(--hz8-ink) 14%, transparent); }
 html.hz8[data-hz8-page="product"] .hz8-package[aria-pressed="true"] { border-color: var(--hz8-olive); background: color-mix(in srgb, var(--hz8-olive) 9%, var(--hz8-surface)); }

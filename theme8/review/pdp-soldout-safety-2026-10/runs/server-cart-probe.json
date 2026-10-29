@@ -1,0 +1,20 @@
+[
+ {
+  "label": "17 Great White Shark 1 g (buyable:false)",
+  "status": 406,
+  "body": "{\"available\":0}"
+ },
+ {
+  "label": "58 Bangkok (buyable:false)",
+  "status": 406,
+  "body": "{\"available\":0}"
+ },
+ {
+  "label": "20 Fraktändring (always_orderable, 0 i lager)",
+  "status": 200,
+  "body": "{\"data\":{\"total\":{\"money\":{\"value\":1351920,\"currency\":\"SEK\"},\"value\":1351920,\"vat\":0,\"currency\":null,\"currency_rate\":null,\"model\":null,\"key\":null,\"fixed\":false}"
+ },
+ {
+  "cartRows": []
+ }
+]

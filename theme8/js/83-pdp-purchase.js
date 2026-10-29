@@ -9,6 +9,12 @@
      i lager". Byter huvudbild bara om Nyehandel har en variantbild.
    - Mobil köpbar (#hz8-buybar): alltid synlig utom när huvudköpraden är
      synlig; -/antal/+ och CTA styr de native kontrollerna.
+   - Slutsålt (TASK 10B-0): köpbart = HZ8.variantOrderable (02-shared.js),
+     samma definition som korten. Nyehandel gör vissa varianter köpbara
+     med 0 i lager och statusen "Slut på lager" -- de visas som slutsålda.
+     Utan köpbar vald variant: html.hz8-pdp-out (82-product.css:
+     "Slutsåld", ingen köprad) och ingen köpbar. Köp av "alltid
+     beställbara" varianter kontrolleras mot färsk product/state först.
    - Strainbyggare för blandade paket: komplett UI men AVSTÄNGD
      (HZ8.flags.mixedPacks). Nyehandels pristrappa gäller per variantrad,
      så blandade strains skulle bli fel prissatta. Kan förhandsvisas med
@@ -47,7 +53,25 @@
 
   function select() { return document.querySelector("#product-variants select"); }
   function variantFor(optionValue) { return state.byOption[String(optionValue)] || null; }
-  function isBuyable(v) { return !!(v && v.buyable && v.available_stock > 0); }
+  function isBuyable(v) { return HZ8.variantOrderable(v); }
+  /* Vald variant: selectens värde, annars produktens enda variant. */
+  function currentVariant() {
+    var sel = select();
+    if (sel && sel.value) return variantFor(sel.value);
+    return state.variants.length === 1 ? state.variants[0] : null;
+  }
+  /* Slutsålt = ingen native köpknapp (Nyehandel visar då "Bevaka") eller
+     vald variant utan köpbart lager. Knappens disabled räknas inte --
+     Nyehandel stänger av den medan ett köp pågår. Utan variantdata
+     (API-fel) gäller Nyehandels egen knapp. */
+  function soldOut() {
+    var nb = nativeBuy();
+    if (!nb) return true;
+    if (!state.variants.length) return false;
+    var v = currentVariant();
+    return !!v && !isBuyable(v);
+  }
+  HZ8.pdpSoldOut = soldOut;
 
   function chooseOption(value) {
     var sel = select();
@@ -151,7 +175,7 @@
   }
 
   function buildBuybar() {
-    if (document.getElementById("hz8-buybar") || !nativeBuy()) return null;
+    if (document.getElementById("hz8-buybar")) return null;
     var bar = document.createElement("div");
     bar.id = "hz8-buybar";
     bar.className = "hz8-buybar";
@@ -166,13 +190,13 @@
         "</div>" +
       "</div>" +
       '<ul class="hz8-buybar__trust">' + trustItems().map(function (t) { return '<li aria-label="' + esc(t.long) + '"><span aria-hidden="true">' + esc(t.short) + "</span></li>"; }).join("") + "</ul>";
+    bar.hidden = true;
     document.body.appendChild(bar);
-    document.documentElement.classList.add("hz8-has-buybar");
     bar.querySelector(".hz8-buybar__cta").addEventListener("click", function () {
       if (bar.getAttribute("data-block")) { focusFirstMissing(); return; }
       var b = nativeBuy();
-      if (b && !b.disabled) b.click();
-      else { var info = document.querySelector(".product-detail__information"); if (info) info.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      if (b && !soldOut()) b.click();
+      else syncBuybar();
     });
     bar.querySelectorAll(".hz8-buybar__qty button").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -186,18 +210,35 @@
       var cart = document.querySelector("#store-header .basket-icon .cart-button, #store-header .basket-icon button, #store-header .basket-icon a");
       if (cart) cart.click();
     });
-    var form = document.querySelector(".buy-form");
-    if ("IntersectionObserver" in window && form) {
-      new IntersectionObserver(function (entries) {
-        bar.classList.toggle("is-main-visible", entries[0].isIntersecting);
-      }, { threshold: 0.6 }).observe(form);
-    }
     return bar;
   }
+  /* Huvudköpraden kan saknas vid start (slutsåld vald variant) och komma
+     när en köpbar variant väljs -- observeras när den finns. */
+  var formObserved = null;
+  function observeForm(bar) {
+    var form = document.querySelector(".buy-form");
+    if (!form || form === formObserved || !("IntersectionObserver" in window)) return;
+    formObserved = form;
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle("is-main-visible", entries[0].isIntersecting);
+    }, { threshold: 0.6 }).observe(form);
+  }
 
+  function syncSoldOut() {
+    var out = soldOut();
+    var root = document.documentElement;
+    if (root.classList.contains("hz8-pdp-out") !== out) root.classList.toggle("hz8-pdp-out", out);
+    return out;
+  }
   function syncBuybar() {
+    var out = syncSoldOut();
     var bar = document.getElementById("hz8-buybar");
     if (!bar) return;
+    /* Slutsåld: ingen mobil köpzon alls (inte en avstängd knapp). */
+    if (bar.hidden !== out) bar.hidden = out;
+    document.documentElement.classList.toggle("hz8-has-buybar", !out);
+    if (out) return;
+    observeForm(bar);
     var span = document.querySelector(".buy-form .button.buy span");
     var nb = nativeBuy();
     var q = nativeQty();
@@ -439,6 +480,7 @@
     }
     loadVariants().then(function () {
       buildBuybar();
+      syncBuybar();
       HZ8.watch(function () { syncStock(); renderBuilder(); syncBuybar(); zoneSettled(); });
       window.setTimeout(compatRail, 1200);
     });
@@ -451,6 +493,38 @@
       if (raf) return;
       raf = window.requestAnimationFrame(function () { raf = 0; syncBuybar(); });
     }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class"] });
+    /* Köpklick (huvudknapp, köpbar, Enter i antalsfältet). Slutsålt ->
+       stoppas. Variant som Nyehandel säljer även utan lager
+       (always_orderable) -> först färsk product/state, så att en variant
+       som tagit slut efter sidladdningen aldrig läggs i korgen; köpbar ->
+       klicket släpps igenom. Övriga varianter stoppar Nyehandels server
+       själv vid slutsålt -- klicket går direkt (ingen fördröjning) och
+       sidans lagerdata läses om efteråt så att köpraden blir "Slutsåld".
+       API-fel -> Nyehandels egen kontroll gäller. */
+    var released = false;
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest && e.target.closest(".buy-form .button.buy");
+      if (!b || (builderEnabled() && builder.size >= 2)) return;
+      if (released) { released = false; return; }
+      if (soldOut()) { e.preventDefault(); e.stopImmediatePropagation(); syncBuybar(); return; }
+      var v = currentVariant();
+      if (!(v && v.track_inventory && v.always_orderable)) {
+        window.setTimeout(function () { loadVariants().then(function () { syncStock(); syncBuybar(); }); }, 1500);
+        return;
+      }
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.getAttribute("aria-busy") === "true") return;
+      b.setAttribute("aria-busy", "true");
+      loadVariants().then(function (fresh) {
+        b.removeAttribute("aria-busy");
+        syncStock(); syncBuybar();
+        if (fresh && soldOut()) return;
+        if (!b.isConnected || b.disabled) return;
+        released = true;
+        b.click();
+        released = false;
+      });
+    }, true);
     /* Ofullständigt blandat paket: native köpknapp får inte lägga en
        standardvariant i korgen. */
     document.addEventListener("click", function (e) {

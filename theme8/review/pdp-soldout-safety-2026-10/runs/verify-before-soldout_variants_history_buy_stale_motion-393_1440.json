@@ -1,0 +1,759 @@
+{
+ "soldout-17-393": {
+  "top": {
+   "out": true,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "40",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Blommor – CBN 10% – Great White Shark\" [level=1]\n- insertion: 99 kr\n- paragraph\n- heading \"10% CBN GREAT WHIE SHARK Buds från Magic Farmers.\" [level=1]:\n  - strong: 10% CBN GREAT WHIE SHARK Buds från Magic Farmers.\n- strong: CBN Buds\n- text: som kommer från Magic Farmers garanterar dig en hög-kvalitativ upplevelse av laglig cannabis. Denna variant är av den strainen Great white Shark, en gigantisk och farlig fisk… Nääää skämt åsido är det en etablerad strain som också är känd som ”Peacemaker”. GWS har en örtig doft och tog hem vinsten i Cannabis cup 1997.\n- strong: \"Produktinformation:\"\n- list:\n  - listitem:\n    - strong: \"Strain:\"\n    - text: Great White Shark\n  - listitem:\n    - strong: \"Tillverkare:\"\n    - text: Magic Farmers\n  - listitem:\n    - strong: \"Cannabinoidinnehåll:\"\n    - text: 10% CBN | 12% CBD | CBG+CBC~1% | <0,2% THC\n  - listitem:\n    - strong: \"Innehållsmängd:\"\n    - text: 1g / 7g / 20 gram\n  - listitem:\n    - strong: \"Ursprung:\"\n    - text: Södra Europa\n- link \"» Läs mer\":\n  - /url: \"#product-information\"\n- paragraph\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: vikt\n- combobox:\n  - option \"1 gram\" [selected]\n  - option \"7 gram\"\n  - option \"20 gram\"\n- text: Slut på lager\n- button \"Bevaka\"\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 99 kr 99 kr / st\" [pressed]\n  - button \"3 st 297 kr 252,45 kr 84,15 kr / st Spara 44,55 kr\":\n    - text: 3 st\n    - deletion: 297 kr\n    - text: 252,45 kr 84,15 kr / st Spara 44,55 kr\n  - button \"Prisvärdast 5 st 495 kr 396 kr 79,20 kr / st Spara 99 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 495 kr\n    - text: 396 kr 79,20 kr / st Spara 99 kr\n- paragraph: 0 av 3 strains i lager",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Läs mer",
+   "Läs hela beskrivningen",
+   "1 gram 7 gram 20 gram",
+   "Bevaka",
+   "1 st99 kr99 kr / st",
+   "3 st297 kr252,45 kr84,15 kr / stSp",
+   "Prisvärdast5 st495 kr396 kr79,20 k"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-17-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "40",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Blommor – CBN 10% – Great White Shark\" [level=1]\n- insertion: 99 kr\n- paragraph\n- heading \"10% CBN GREAT WHIE SHARK Buds från Magic Farmers.\" [level=1]:\n  - strong: 10% CBN GREAT WHIE SHARK Buds från Magic Farmers.\n- strong: CBN Buds\n- text: som kommer från Magic Farmers garanterar dig en hög-kvalitativ upplevelse av laglig cannabis. Denna variant är av den strainen Great white Shark, en gigantisk och farlig fisk… Nääää skämt åsido är det en etablerad strain som också är känd som ”Peacemaker”. GWS har en örtig doft och tog hem vinsten i Cannabis cup 1997.\n- strong: \"Produktinformation:\"\n- list:\n  - listitem:\n    - strong: \"Strain:\"\n    - text: Great White Shark\n  - listitem:\n    - strong: \"Tillverkare:\"\n    - text: Magic Farmers\n  - listitem:\n    - strong: \"Cannabinoidinnehåll:\"\n    - text: 10% CBN | 12% CBD | CBG+CBC~1% | <0,2% THC\n  - listitem:\n    - strong: \"Innehållsmängd:\"\n    - text: 1g / 7g / 20 gram\n  - listitem:\n    - strong: \"Ursprung:\"\n    - text: Södra Europa\n- link \"» Läs mer\":\n  - /url: \"#product-information\"\n- paragraph\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: vikt\n- combobox:\n  - option \"1 gram\" [selected]\n  - option \"7 gram\"\n  - option \"20 gram\"\n- group \"Välj vikt\":\n  - button \"1 gram – Slut i lager\" [pressed]: 1 gram\n  - button \"7 gram – Slut i lager\": 7 gram\n  - button \"20 gram – Slut i lager\": 20 gram\n- text: Slut på lager\n- button \"Bevaka\"\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 99 kr 99 kr / st\" [pressed]\n  - button \"3 st 297 kr 252,45 kr 84,15 kr / st Spara 44,55 kr\":\n    - text: 3 st\n    - deletion: 297 kr\n    - text: 252,45 kr 84,15 kr / st Spara 44,55 kr\n  - button \"Prisvärdast 5 st 495 kr 396 kr 79,20 kr / st Spara 99 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 495 kr\n    - text: 396 kr 79,20 kr / st Spara 99 kr\n- paragraph: 0 av 3 strains i lager",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Läs mer",
+   "Läs hela beskrivningen",
+   "1 gram 7 gram 20 gram",
+   "1 gram",
+   "7 gram",
+   "20 gram",
+   "Bevaka",
+   "1 st99 kr99 kr / st",
+   "3 st297 kr252,45 kr84,15 kr / stSp",
+   "Prisvärdast5 st495 kr396 kr79,20 k"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-20-393": {
+  "top": {
+   "out": false,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "168,99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 168,99 kr",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [
+    "button buy"
+   ],
+   "enabledBuyFocusable": [
+    "button buy",
+    "hz8-buybar__cta"
+   ],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 168,99 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- heading \"Fraktändring\" [level=1]\n- insertion: 168,99 kr\n- text: Slut på lager\n- button \"Minska antalet\": \"-\"\n- textbox \"Valt antal\": \"1\"\n- button \"Öka antalet\": +\n- button \"Lägg i varukorgen – 168,99 kr\": Lägg i varukorgenLägg i korgen – 168,99 kr\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 168,99 kr 168,99 kr / st\" [pressed]\n  - button \"3 st 506,97 kr 430,92 kr 143,64 kr / st Spara 76,05 kr\":\n    - text: 3 st\n    - deletion: 506,97 kr\n    - text: 430,92 kr 143,64 kr / st Spara 76,05 kr\n  - button \"Prisvärdast 5 st 844,95 kr 675,95 kr 135,19 kr / st Spara 169 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 844,95 kr\n    - text: 675,95 kr 135,19 kr / st Spara 169 kr",
+  "tabBuy": [
+   {
+    "tag": "button",
+    "cls": "button buy",
+    "text": "Lägg i varukorgen",
+    "buy": true,
+    "inInfo": true,
+    "bar": false,
+    "fv": true
+   }
+  ],
+  "tabsInInfo": [
+   "-",
+   "input",
+   "+",
+   "Lägg i varukorgen",
+   "1 st168,99 kr168,99 kr / st",
+   "3 st506,97 kr430,92 kr143,64 kr / ",
+   "Prisvärdast5 st844,95 kr675,95 kr1"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 2,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-20-1440": {
+  "top": {
+   "out": false,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "168,99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 168,99 kr",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [
+    "button buy"
+   ],
+   "enabledBuyFocusable": [
+    "button buy"
+   ],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 168,99 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- heading \"Fraktändring\" [level=1]\n- insertion: 168,99 kr\n- text: Slut på lager\n- button \"Minska antalet\": \"-\"\n- textbox \"Valt antal\": \"1\"\n- button \"Öka antalet\": +\n- button \"Lägg i varukorgen – 168,99 kr\": Lägg i varukorgenLägg i varukorgen – 168,99 kr\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 168,99 kr 168,99 kr / st\" [pressed]\n  - button \"3 st 506,97 kr 430,92 kr 143,64 kr / st Spara 76,05 kr\":\n    - text: 3 st\n    - deletion: 506,97 kr\n    - text: 430,92 kr 143,64 kr / st Spara 76,05 kr\n  - button \"Prisvärdast 5 st 844,95 kr 675,95 kr 135,19 kr / st Spara 169 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 844,95 kr\n    - text: 675,95 kr 135,19 kr / st Spara 169 kr",
+  "tabBuy": [
+   {
+    "tag": "button",
+    "cls": "button buy",
+    "text": "Lägg i varukorgen",
+    "buy": true,
+    "inInfo": true,
+    "bar": false,
+    "fv": true
+   }
+  ],
+  "tabsInInfo": [
+   "-",
+   "input",
+   "+",
+   "Lägg i varukorgen",
+   "1 st168,99 kr168,99 kr / st",
+   "3 st506,97 kr430,92 kr143,64 kr / ",
+   "Prisvärdast5 st844,95 kr675,95 kr1"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 2,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-15-393": {
+  "top": {
+   "out": false,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "799 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 799 kr",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [
+    "hz8-buybar__cta"
+   ],
+   "enabledBuyFocusable": [
+    "button buy",
+    "hz8-buybar__cta"
+   ],
+   "selected": "36",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 799 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs\" [level=1]\n- insertion: 799 kr\n- link \" \":\n  - /url: \"#product-reviews\"\n- paragraph\n- heading \"Letar du efter marknadens bästa och mest värda THCH vape?\" [level=2]:\n  - strong: Letar du efter marknadens bästa och mest värda THCH vape?\n- heading \"Sluta leta, vi på Hazey har tagit fram det du söker.\" [level=4]\n- text: Denna 2ml vape med 20% THCH i kombination med CBD-live resin som bärare och naturliga terpener får du en naturlig och kvalitativ doft vart du än är. Vi har valt att doftsätta med Bubble Gum OG och Golden Pineapple som var våra bästsäljare och favoriter under sommaren när HHC var tillgängligt.Sammanfattningsvis bjuder vi in dig att utforska cannabinoidens höjder genom Hazey THCH 2ml Vape.Med fokus på kvalitet, pålitlighet och en smidighet är våra vapes det perfekta sättet att dofta THC-H.\n- list:\n  - listitem:\n    - paragraph: \"Produktinformation:\"\n    - list:\n      - listitem:\n        - strong: \"Varumärke:\"\n        - text: Hazey\n      - listitem:\n        - strong: \"Innehåll:\"\n        - text: 20% THC-H | 70% CBD live resin | 10% Terpener\n      - listitem:\n        - strong: \"Innehållsmängd:\"\n        - text: 2 ml\n      - listitem:\n        - strong: \"Vape:\"\n        - text: CCELL Ridge\n- paragraph: \"Strains:\"\n- list:\n  - listitem: Bubble Gum OG - Terpener\n  - listitem: Golden Pineapple - Terpener\n- link \"» Läs mer\":\n  - /url: \"#product-information\"\n- paragraph\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: doft\n- combobox:\n  - option \"Golden Pineapple\" [selected]\n  - option \"Bubble Gum OG\"\n- text: Slut på lager\n- button \"Minska antalet\": \"-\"\n- textbox \"Valt antal\": \"1\"\n- button \"Öka antalet\": +\n- button \"Lägg i varukorgen – 799 kr\": Lägg i varukorgenLägg i korgen – 799 kr\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 799 kr 799 kr / st\" [pressed]\n  - button \"3 st 2 397 kr 2 037,45 kr 679,15 kr / st Spara 359,55 kr\":\n    - text: 3 st\n    - deletion: 2 397 kr\n    - text: 2 037,45 kr 679,15 kr / st Spara 359,55 kr\n  - button \"Prisvärdast 5 st 3 995 kr 3 196 kr 639,20 kr / st Spara 799 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 3 995 kr\n    - text: 3 196 kr 639,20 kr / st Spara 799 kr\n- paragraph: 0 av 2 strains i lager",
+  "tabBuy": [
+   {
+    "tag": "button",
+    "cls": "button buy",
+    "text": "Lägg i varukorgen",
+    "buy": true,
+    "inInfo": true,
+    "bar": false,
+    "fv": true
+   }
+  ],
+  "tabsInInfo": [
+   "1 omdömen",
+   "Läs mer",
+   "Läs hela beskrivningen",
+   "Golden Pineapple Bubble Gum OG",
+   "-",
+   "input",
+   "+",
+   "Lägg i varukorgen",
+   "1 st799 kr799 kr / st",
+   "3 st2 397 kr2 037,45 kr679,15 kr /",
+   "Prisvärdast5 st3 995 kr3 196 kr639"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 2,
+  "errors": [],
+  "shifts": [
+   {
+    "v": 0.0059,
+    "t": 6617,
+    "src": [
+     "cart aside"
+    ]
+   }
+  ]
+ },
+ "soldout-15-1440": {
+  "top": {
+   "out": false,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "799 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 799 kr",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [
+    "button buy"
+   ],
+   "enabledBuyFocusable": [
+    "button buy"
+   ],
+   "selected": "36",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 799 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs\" [level=1]\n- insertion: 799 kr\n- link \"  1 omdömen\":\n  - /url: \"#product-reviews\"\n- paragraph\n- heading \"Letar du efter marknadens bästa och mest värda THCH vape?\" [level=2]:\n  - strong: Letar du efter marknadens bästa och mest värda THCH vape?\n- heading \"Sluta leta, vi på Hazey har tagit fram det du söker.\" [level=4]\n- text: Denna 2ml vape med 20% THCH i kombination med CBD-live resin som bärare och naturliga terpener får du en naturlig och kvalitativ doft vart du än är. Vi har valt att doftsätta med Bubble Gum OG och Golden Pineapple som var våra bästsäljare och favoriter under sommaren när HHC var tillgängligt.Sammanfattningsvis bjuder vi in dig att utforska cannabinoidens höjder genom Hazey THCH 2ml Vape.Med fokus på kvalitet, pålitlighet och en smidighet är våra vapes det perfekta sättet att dofta THC-H.\n- list:\n  - listitem:\n    - paragraph: \"Produktinformation:\"\n    - list:\n      - listitem:\n        - strong: \"Varumärke:\"\n        - text: Hazey\n      - listitem:\n        - strong: \"Innehåll:\"\n        - text: 20% THC-H | 70% CBD live resin | 10% Terpener\n      - listitem:\n        - strong: \"Innehållsmängd:\"\n        - text: 2 ml\n      - listitem:\n        - strong: \"Vape:\"\n        - text: CCELL Ridge\n- paragraph: \"Strains:\"\n- list:\n  - listitem: Bubble Gum OG - Terpener\n  - listitem: Golden Pineapple - Terpener\n- link \"» Läs mer\":\n  - /url: \"#product-information\"\n- paragraph\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: doft\n- combobox:\n  - option \"Golden Pineapple\" [selected]\n  - option \"Bubble Gum OG\"\n- group \"Välj doft\":\n  - button \"Golden Pineapple – Slut i lager\" [pressed]: Golden Pineapple\n  - button \"Bubble Gum OG – Slut i lager\": Bubble Gum OG\n- text: Slut på lager\n- button \"Minska antalet\": \"-\"\n- textbox \"Valt antal\": \"1\"\n- button \"Öka antalet\": +\n- button \"Lägg i varukorgen – 799 kr\": Lägg i varukorgenLägg i varukorgen – 799 kr\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 799 kr 799 kr / st\" [pressed]\n  - button \"3 st 2 397 kr 2 037,45 kr 679,15 kr / st Spara 359,55 kr\":\n    - text: 3 st\n    - deletion: 2 397 kr\n    - text: 2 037,45 kr 679,15 kr / st Spara 359,55 kr\n  - button \"Prisvärdast 5 st 3 995 kr 3 196 kr 639,20 kr / st Spara 799 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 3 995 kr\n    - text: 3 196 kr 639,20 kr / st Spara 799 kr\n- paragraph: 0 av 2 strains i lager",
+  "tabBuy": [
+   {
+    "tag": "button",
+    "cls": "button buy",
+    "text": "Lägg i varukorgen",
+    "buy": true,
+    "inInfo": true,
+    "bar": false,
+    "fv": true
+   }
+  ],
+  "tabsInInfo": [
+   "1 omdömen",
+   "Läs mer",
+   "Läs hela beskrivningen",
+   "Golden Pineapple Bubble Gum OG",
+   "Golden Pineapple",
+   "Bubble Gum OG",
+   "-",
+   "input",
+   "+",
+   "Lägg i varukorgen",
+   "1 st799 kr799 kr / st",
+   "3 st2 397 kr2 037,45 kr679,15 kr /",
+   "Prisvärdast5 st3 995 kr3 196 kr639"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 2,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-58-393": {
+  "top": {
+   "out": true,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "198,99 kr",
+   "descr": true,
+   "similar": 12,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"PreRolled – THCA 22% – Bangkok – 1 gram\" [level=1]\n- insertion: 198,99 kr\n- paragraph: Faraoh är tillbaka med en ny PreRolled – laddad med hela 22 % THCA och framtagen med kompromisslös precision. Kända för sin exklusiva approach till cannabinoidformuleringar, kombinerar Faraoh råkraft och teknisk perfektion i varje produkt. Den här gången får du en strikt balanserad THC-A 1g pre-roll med strainen Bangkok – en välkurerad upplevelse för samlare och entusiaster med blick för kvalitet.\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: Slut på lager\n- button \"Bevaka\"\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 198,99 kr 198,99 kr / st\" [pressed]\n  - button \"3 st 596,97 kr 507,42 kr 169,14 kr / st Spara 89,55 kr\":\n    - text: 3 st\n    - deletion: 596,97 kr\n    - text: 507,42 kr 169,14 kr / st Spara 89,55 kr\n  - button \"Prisvärdast 5 st 994,95 kr 795,95 kr 159,19 kr / st Spara 199 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 994,95 kr\n    - text: 795,95 kr 159,19 kr / st Spara 199 kr",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Läs hela beskrivningen",
+   "Bevaka",
+   "1 st198,99 kr198,99 kr / st",
+   "3 st596,97 kr507,42 kr169,14 kr / ",
+   "Prisvärdast5 st994,95 kr795,95 kr1"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-58-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slut på lager",
+   "badgeVisible": true,
+   "price": "198,99 kr",
+   "descr": true,
+   "similar": 12,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"PreRolled – THCA 22% – Bangkok – 1 gram\" [level=1]\n- insertion: 198,99 kr\n- paragraph: Faraoh är tillbaka med en ny PreRolled – laddad med hela 22 % THCA och framtagen med kompromisslös precision. Kända för sin exklusiva approach till cannabinoidformuleringar, kombinerar Faraoh råkraft och teknisk perfektion i varje produkt. Den här gången får du en strikt balanserad THC-A 1g pre-roll med strainen Bangkok – en välkurerad upplevelse för samlare och entusiaster med blick för kvalitet.\n- link \"Läs hela beskrivningen\":\n  - /url: \"#hz8-pdp-about\"\n- text: Slut på lager\n- button \"Bevaka\"\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 198,99 kr 198,99 kr / st\" [pressed]\n  - button \"3 st 596,97 kr 507,42 kr 169,14 kr / st Spara 89,55 kr\":\n    - text: 3 st\n    - deletion: 596,97 kr\n    - text: 507,42 kr 169,14 kr / st Spara 89,55 kr\n  - button \"Prisvärdast 5 st 994,95 kr 795,95 kr 159,19 kr / st Spara 199 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 994,95 kr\n    - text: 795,95 kr 159,19 kr / st Spara 199 kr",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Läs hela beskrivningen",
+   "Bevaka",
+   "1 st198,99 kr198,99 kr / st",
+   "3 st596,97 kr507,42 kr169,14 kr / ",
+   "Prisvärdast5 st994,95 kr795,95 kr1"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "variants-91-393": {
+  "error": "Error: page.evaluate: TypeError: HZ8.variantOrderable is not a function\n    at eval (eval at evaluate (:311:30), <anonymous>:1:429)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:326)\n    at async <anonymous>:337:30"
+ },
+ "variants-91-1440": {
+  "error": "Error: page.evaluate: TypeError: HZ8.variantOrderable is not a function\n    at eval (eval at evaluate (:311:30), <anonymous>:1:429)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:326)\n    at async <anonymous>:337:30"
+ },
+ "variants-78-393": {
+  "error": "Error: page.evaluate: TypeError: HZ8.variantOrderable is not a function\n    at eval (eval at evaluate (:311:30), <anonymous>:1:429)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:326)\n    at async <anonymous>:337:30"
+ },
+ "variants-78-1440": {
+  "error": "Error: page.evaluate: TypeError: HZ8.variantOrderable is not a function\n    at eval (eval at evaluate (:311:30), <anonymous>:1:429)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:326)\n    at async <anonymous>:337:30"
+ },
+ "history-393": {
+  "load20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "reload20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "go84": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "nativeVisible": false,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "back20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "forward84": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "nativeVisible": false,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "cartPosts": 0,
+  "errors": []
+ },
+ "history-1440": {
+  "load20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "reload20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "go84": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "back20": {
+   "out": false,
+   "badge": "Slut på lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "forward84": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "nativeVisible": true,
+   "buybarHidden": false,
+   "enabledBuyVisible": 1
+  },
+  "cartPosts": 0,
+  "errors": []
+ },
+ "buy-84-393": {
+  "chose": null,
+  "via": "buybar",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 96,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-84-1440": {
+  "chose": null,
+  "via": "native",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 84,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-87-393": {
+  "chose": "Tart Apricot",
+  "via": "buybar",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 475 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 81,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-87-1440": {
+  "chose": "Tart Apricot",
+  "via": "native",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 475 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 93,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "stale-state-zero-393": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "buybar (synlig: Lägg i varukorgen – 495 kr)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "errors": []
+ },
+ "stale-button-removed-393": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "buybar (synlig: Lägg i varukorgen)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [],
+  "errors": []
+ },
+ "stale-state-zero-1440": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "native",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": [
+    "button buy"
+   ]
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "errors": []
+ },
+ "stale-button-removed-1440": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "native (saknas/dold)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [],
+  "errors": []
+ },
+ "motion-393": {
+  "instockBuybarTransition": "1e-05s",
+  "soldoutBuybar": {
+   "hidden": false,
+   "shown": false,
+   "cta": "Lägg i varukorgen – 168,99 kr",
+   "ctaDisabled": false
+  },
+  "soldoutOut": false
+ }
+}

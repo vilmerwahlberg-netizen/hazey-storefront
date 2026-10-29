@@ -225,10 +225,21 @@
     if (m) h["X-XSRF-TOKEN"] = decodeURIComponent(m[1]);
     return h;
   };
+  /* Beställbar variant -- EN definition för kort, snabbköp och produkt-
+     sidan (83-pdp-purchase.js). Med 0 i lager räknas "alltid beställbar"
+     bara när lagerstatusen Nyehandel då visar (negative_inventory_status)
+     själv är beställbar, t.ex. en restorderstatus. Fraktändring och
+     THC-H 500 puffs är "alltid beställbara" men visar "Slut på lager"
+     (orderable: false) -- de är slutsålda (TASK 10B-0). */
+  HZ8.variantOrderable = function (v) {
+    if (!v || v.buyable === false || v.in_stock === false || v.active === false) return false;
+    if (!v.track_inventory || (v.available_stock || 0) > 0) return true;
+    return !!v.always_orderable && !(v.negative_inventory_status && v.negative_inventory_status.orderable === false);
+  };
   var stateInflight = {};
   HZ8.productState = function (productUrl) {
     if (!productUrl) return Promise.reject(new Error("no product url"));
-    var key = "state5:" + HZ8.path(productUrl);
+    var key = "state6:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     var priority = userInitiated();
@@ -255,8 +266,8 @@
         var variants = product.variants || [];
         var images = product.images || [];
         /* Lager enligt Nyehandels egna fält -- inget antal visas. */
-        var inStock = !sv.track_inventory || sv.always_orderable || (sv.available_stock || 0) > 0;
-        var status = inStock ? sv.positive_inventory_status : sv.negative_inventory_status;
+        var inStock = HZ8.variantOrderable(sv);
+        var status = !sv.track_inventory || (sv.available_stock || 0) > 0 ? sv.positive_inventory_status : sv.negative_inventory_status;
         /* Kategori = sista brödsmulan före produkten (produktnamnet och
            "Hem" räknas inte). */
         var name = product.name || "";
@@ -265,7 +276,7 @@
         var value = {
           variantId: sv.id || null,
           variants: variants.length,
-          buyable: sv.buyable !== false && sv.in_stock !== false && sv.active !== false && inStock,
+          buyable: inStock,
           inStock: inStock,
           /* Högsta antal som kan läggas i korgen (Nyehandel svarar 406 över
              lagret). Visas aldrig som siffra. null = ingen gräns. */

@@ -1,0 +1,110 @@
+{
+ "buy-84-393": {
+  "chose": null,
+  "via": "buybar",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 123,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-84-1440": {
+  "chose": null,
+  "via": "native",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 188,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-87-393": {
+  "chose": "Tart Apricot",
+  "via": "buybar",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 475 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 111,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ },
+ "buy-87-1440": {
+  "chose": "Tart Apricot",
+  "via": "native",
+  "pre": {
+   "out": false,
+   "nativeBuy": {
+    "visible": true,
+    "focusable": true
+   },
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 475 kr",
+    "ctaDisabled": false
+   }
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "clickToPostMs": 65,
+  "drawer": {
+   "open": true,
+   "rows": 1,
+   "hasProduct": true
+  },
+  "errors": []
+ }
+}

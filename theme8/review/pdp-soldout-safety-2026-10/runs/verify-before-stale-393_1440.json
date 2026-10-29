@@ -1,0 +1,176 @@
+{
+ "stale-state-zero-393": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "buybar (synlig: Lägg i varukorgen – 495 kr)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "cartRows": 1,
+  "errors": []
+ },
+ "stale-sold-normal-393": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "buybar (synlig: Lägg i varukorgen – 495 kr)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": [
+    "hz8-buybar__cta"
+   ]
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "cartRows": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 406 (Not Acceptable)"
+  ]
+ },
+ "stale-button-removed-393": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": true,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "buybar (synlig: Lägg i varukorgen)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [],
+  "cartRows": 0,
+  "errors": []
+ },
+ "stale-state-zero-1440": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "native",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": [
+    "button buy"
+   ]
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "cartRows": 1,
+  "errors": []
+ },
+ "stale-sold-normal-1440": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "native",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": [
+    "button buy"
+   ]
+  },
+  "cartPosts": [
+   "/cart/item"
+  ],
+  "cartRows": 0,
+  "errors": [
+   "Failed to load resource: the server responded with a status of 406 (Not Acceptable)"
+  ]
+ },
+ "stale-button-removed-1440": {
+  "pre": {
+   "out": false,
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen – 495 kr",
+    "ctaDisabled": false
+   }
+  },
+  "via": "native (saknas/dold)",
+  "after": {
+   "out": false,
+   "badge": "30 + Finns i lager",
+   "buybar": {
+    "hidden": false,
+    "shown": false,
+    "cta": "Lägg i varukorgen",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "cartPosts": [],
+  "cartRows": 0,
+  "errors": []
+ }
+}

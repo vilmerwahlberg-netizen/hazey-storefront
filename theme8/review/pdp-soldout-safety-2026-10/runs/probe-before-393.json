@@ -1,0 +1,571 @@
+[
+ {
+  "which": "before",
+  "id": "17",
+  "w": 393,
+  "state": {
+   "id": 17,
+   "variants": [
+    {
+     "id": 44,
+     "name": "1 gram",
+     "buyable": false,
+     "track": 1,
+     "stock": 0
+    },
+    {
+     "id": 45,
+     "name": "7 gram",
+     "buyable": false,
+     "track": 1,
+     "stock": 0
+    },
+    {
+     "id": 46,
+     "name": "20 gram",
+     "buyable": false,
+     "track": 1,
+     "stock": 0
+    }
+   ]
+  },
+  "top": {
+   "pilot": false,
+   "h1": "Blommor – CBN 10% – Great White Shark",
+   "price": "99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-negative"
+   },
+   "htmlOut": true,
+   "ldAvailability": [
+    "schema.org/OutOfStock"
+   ],
+   "native": null,
+   "nativeExists": false,
+   "buyForm": false,
+   "qty": false,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": {
+    "value": "40",
+    "options": [
+     "1 gram",
+     "7 gram",
+     "20 gram"
+    ]
+   },
+   "buybar": null,
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "scrolled": {
+   "pilot": false,
+   "h1": "Blommor – CBN 10% – Great White Shark",
+   "price": "99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-negative"
+   },
+   "htmlOut": true,
+   "ldAvailability": [
+    "schema.org/OutOfStock"
+   ],
+   "native": null,
+   "nativeExists": false,
+   "buyForm": false,
+   "qty": false,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": {
+    "value": "40",
+    "options": [
+     "1 gram",
+     "7 gram",
+     "20 gram"
+    ]
+   },
+   "buybar": null,
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "errors": []
+ },
+ {
+  "which": "before",
+  "id": "20",
+  "w": 393,
+  "state": {
+   "id": 20,
+   "variants": [
+    {
+     "id": 49,
+     "buyable": true,
+     "track": 1,
+     "stock": 0
+    }
+   ]
+  },
+  "top": {
+   "pilot": false,
+   "h1": "Fraktändring",
+   "price": "168,99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-positive"
+   },
+   "htmlOut": false,
+   "ldAvailability": [
+    "schema.org/InStock"
+   ],
+   "native": {
+    "text": "Lägg i varukorgen",
+    "aria": "Lägg i varukorgen – 168,99 kr",
+    "disabled": false,
+    "ariaDisabled": null,
+    "tabindex": null,
+    "visible": true,
+    "cursor": "pointer",
+    "opacity": "1",
+    "bg": "rgb(50, 61, 37)"
+   },
+   "nativeExists": true,
+   "buyForm": true,
+   "qty": true,
+   "qtyVisible": true,
+   "packages": 3,
+   "select": null,
+   "buybar": {
+    "cls": "hz8-buybar is-main-visible",
+    "cta": {
+     "text": "Lägg i varukorgen – 168,99 kr",
+     "aria": "Lägg i varukorgen – 168,99 kr",
+     "disabled": false,
+     "ariaDisabled": null,
+     "tabindex": null,
+     "visible": false,
+     "cursor": "pointer",
+     "opacity": "1",
+     "bg": "rgb(50, 61, 37)"
+    },
+    "qtyBtns": [
+     {
+      "text": "−",
+      "aria": "Minska antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": false,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     },
+     {
+      "text": "+",
+      "aria": "Öka antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": false,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     }
+    ],
+    "inViewport": false,
+    "transform": "matrix(1, 0, 0, 1, 0, 121.327)",
+    "display": "grid"
+   },
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [
+    {
+     "cls": "button buy",
+     "text": "Lägg i varukorgen",
+     "visible": true
+    },
+    {
+     "cls": "hz8-buybar__cta",
+     "text": "Lägg i varukorgen – 168,99 kr",
+     "visible": false
+    }
+   ],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "scrolled": {
+   "pilot": false,
+   "h1": "Fraktändring",
+   "price": "168,99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-positive"
+   },
+   "htmlOut": false,
+   "ldAvailability": [
+    "schema.org/InStock"
+   ],
+   "native": {
+    "text": "Lägg i varukorgen",
+    "aria": "Lägg i varukorgen – 168,99 kr",
+    "disabled": false,
+    "ariaDisabled": null,
+    "tabindex": null,
+    "visible": false,
+    "cursor": "pointer",
+    "opacity": "1",
+    "bg": "rgb(50, 61, 37)"
+   },
+   "nativeExists": true,
+   "buyForm": true,
+   "qty": true,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": null,
+   "buybar": {
+    "cls": "hz8-buybar",
+    "cta": {
+     "text": "Lägg i varukorgen – 168,99 kr",
+     "aria": "Lägg i varukorgen – 168,99 kr",
+     "disabled": false,
+     "ariaDisabled": null,
+     "tabindex": null,
+     "visible": true,
+     "cursor": "pointer",
+     "opacity": "1",
+     "bg": "rgb(50, 61, 37)"
+    },
+    "qtyBtns": [
+     {
+      "text": "−",
+      "aria": "Minska antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     },
+     {
+      "text": "+",
+      "aria": "Öka antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     }
+    ],
+    "inViewport": true,
+    "transform": "none",
+    "display": "grid"
+   },
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [
+    {
+     "cls": "button buy",
+     "text": "Lägg i varukorgen",
+     "visible": false
+    },
+    {
+     "cls": "hz8-buybar__cta",
+     "text": "Lägg i varukorgen – 168,99 kr",
+     "visible": true
+    }
+   ],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "errors": []
+ },
+ {
+  "which": "before",
+  "id": "15",
+  "w": 393,
+  "state": {
+   "id": 15,
+   "variants": [
+    {
+     "id": 40,
+     "name": "Golden Pineapple",
+     "buyable": true,
+     "track": 1,
+     "stock": 0
+    },
+    {
+     "id": 41,
+     "name": "Bubble Gum OG",
+     "buyable": true,
+     "track": 1,
+     "stock": 0
+    }
+   ]
+  },
+  "top": {
+   "pilot": false,
+   "h1": "Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs",
+   "price": "799 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-positive"
+   },
+   "htmlOut": false,
+   "ldAvailability": [
+    "schema.org/InStock"
+   ],
+   "native": {
+    "text": "Lägg i varukorgen",
+    "aria": "Lägg i varukorgen – 799 kr",
+    "disabled": false,
+    "ariaDisabled": null,
+    "tabindex": null,
+    "visible": false,
+    "cursor": "pointer",
+    "opacity": "1",
+    "bg": "rgb(50, 61, 37)"
+   },
+   "nativeExists": true,
+   "buyForm": true,
+   "qty": true,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": {
+    "value": "36",
+    "options": [
+     "Golden Pineapple",
+     "Bubble Gum OG"
+    ]
+   },
+   "buybar": {
+    "cls": "hz8-buybar",
+    "cta": {
+     "text": "Lägg i varukorgen – 799 kr",
+     "aria": "Lägg i varukorgen – 799 kr",
+     "disabled": false,
+     "ariaDisabled": null,
+     "tabindex": null,
+     "visible": true,
+     "cursor": "pointer",
+     "opacity": "1",
+     "bg": "rgb(50, 61, 37)"
+    },
+    "qtyBtns": [
+     {
+      "text": "−",
+      "aria": "Minska antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     },
+     {
+      "text": "+",
+      "aria": "Öka antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     }
+    ],
+    "inViewport": true,
+    "transform": "none",
+    "display": "grid"
+   },
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [
+    {
+     "cls": "button buy",
+     "text": "Lägg i varukorgen",
+     "visible": false
+    },
+    {
+     "cls": "hz8-buybar__cta",
+     "text": "Lägg i varukorgen – 799 kr",
+     "visible": true
+    }
+   ],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "scrolled": {
+   "pilot": false,
+   "h1": "Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs",
+   "price": "799 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-positive"
+   },
+   "htmlOut": false,
+   "ldAvailability": [
+    "schema.org/InStock"
+   ],
+   "native": {
+    "text": "Lägg i varukorgen",
+    "aria": "Lägg i varukorgen – 799 kr",
+    "disabled": false,
+    "ariaDisabled": null,
+    "tabindex": null,
+    "visible": false,
+    "cursor": "pointer",
+    "opacity": "1",
+    "bg": "rgb(50, 61, 37)"
+   },
+   "nativeExists": true,
+   "buyForm": true,
+   "qty": true,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": {
+    "value": "36",
+    "options": [
+     "Golden Pineapple",
+     "Bubble Gum OG"
+    ]
+   },
+   "buybar": {
+    "cls": "hz8-buybar",
+    "cta": {
+     "text": "Lägg i varukorgen – 799 kr",
+     "aria": "Lägg i varukorgen – 799 kr",
+     "disabled": false,
+     "ariaDisabled": null,
+     "tabindex": null,
+     "visible": true,
+     "cursor": "pointer",
+     "opacity": "1",
+     "bg": "rgb(50, 61, 37)"
+    },
+    "qtyBtns": [
+     {
+      "text": "−",
+      "aria": "Minska antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     },
+     {
+      "text": "+",
+      "aria": "Öka antalet",
+      "disabled": false,
+      "ariaDisabled": null,
+      "tabindex": null,
+      "visible": true,
+      "cursor": "pointer",
+      "opacity": "1",
+      "bg": "rgba(0, 0, 0, 0)"
+     }
+    ],
+    "inViewport": true,
+    "transform": "none",
+    "display": "grid"
+   },
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [
+    {
+     "cls": "button buy",
+     "text": "Lägg i varukorgen",
+     "visible": false
+    },
+    {
+     "cls": "hz8-buybar__cta",
+     "text": "Lägg i varukorgen – 799 kr",
+     "visible": true
+    }
+   ],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "errors": []
+ },
+ {
+  "which": "before",
+  "id": "58",
+  "w": 393,
+  "state": {
+   "id": 58,
+   "variants": [
+    {
+     "id": 138,
+     "buyable": false,
+     "track": 1,
+     "stock": 0
+    }
+   ]
+  },
+  "top": {
+   "pilot": false,
+   "h1": "PreRolled – THCA 22% – Bangkok – 1 gram",
+   "price": "198,99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-negative"
+   },
+   "htmlOut": true,
+   "ldAvailability": [
+    "schema.org/OutOfStock"
+   ],
+   "native": null,
+   "nativeExists": false,
+   "buyForm": false,
+   "qty": false,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": null,
+   "buybar": null,
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "scrolled": {
+   "pilot": false,
+   "h1": "PreRolled – THCA 22% – Bangkok – 1 gram",
+   "price": "198,99 kr",
+   "stock": {
+    "text": "Slut på lager",
+    "cls": "stock-info is-negative"
+   },
+   "htmlOut": true,
+   "ldAvailability": [
+    "schema.org/OutOfStock"
+   ],
+   "native": null,
+   "nativeExists": false,
+   "buyForm": false,
+   "qty": false,
+   "qtyVisible": false,
+   "packages": 3,
+   "select": null,
+   "buybar": null,
+   "sticky": null,
+   "pilotSticky": null,
+   "activeBuyCtas": [],
+   "overflowX": false,
+   "h1s": 1
+  },
+  "errors": []
+ }
+]

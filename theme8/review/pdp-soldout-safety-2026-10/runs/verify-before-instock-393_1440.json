@@ -1,0 +1,70 @@
+{
+ "instock-84-393": {
+  "out": false,
+  "badge": "30 + Finns i lager",
+  "nativeBuy": {
+   "visible": false,
+   "focusable": true
+  },
+  "buybarScrolled": {
+   "hidden": false,
+   "shown": true,
+   "cta": "Lägg i varukorgen – 495 kr",
+   "ctaDisabled": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "errors": []
+ },
+ "instock-84-1440": {
+  "out": false,
+  "badge": "30 + Finns i lager",
+  "nativeBuy": {
+   "visible": true,
+   "focusable": true
+  },
+  "buybarScrolled": {
+   "hidden": false,
+   "shown": false,
+   "cta": "Lägg i varukorgen – 495 kr",
+   "ctaDisabled": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "errors": []
+ },
+ "instock-87-393": {
+  "out": false,
+  "badge": "20 + Finns i lager",
+  "nativeBuy": {
+   "visible": false,
+   "focusable": true
+  },
+  "buybarScrolled": {
+   "hidden": false,
+   "shown": true,
+   "cta": "Lägg i varukorgen – 475 kr",
+   "ctaDisabled": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "errors": []
+ },
+ "instock-87-1440": {
+  "out": false,
+  "badge": "20 + Finns i lager",
+  "nativeBuy": {
+   "visible": true,
+   "focusable": true
+  },
+  "buybarScrolled": {
+   "hidden": false,
+   "shown": false,
+   "cta": "Lägg i varukorgen – 475 kr",
+   "ctaDisabled": false
+  },
+  "cls": 0,
+  "overflowX": false,
+  "errors": []
+ }
+}
