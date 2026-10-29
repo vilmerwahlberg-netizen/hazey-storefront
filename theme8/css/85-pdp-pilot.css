@@ -647,6 +647,19 @@ html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta)[data-state="added"] { 
 /* Inaktiv (val saknas/slutsåld): varm taupe, läsbar (6,25:1), ingen hover. */
 html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta)[aria-disabled="true"] { border-color: #cfc3b1; background: #e2d8c8; color: #4f4a3f !important; box-shadow: none; cursor: not-allowed; transform: none; }
 html.hz8-pdp-pilot .hz8-pp__cta[hidden] { display: none; }
+/* Antal + köpknapp (TASK 10B): utan riktiga paket väljs antal här.
+   Stegaren har samma ivory/linne-material som valkorten, CTA:n behåller
+   hela sin hierarki. Dold när ett paket styr antalet eller när den valda
+   varianten är slutsåld (då visas Nyehandels "Bevaka"). */
+html.hz8-pdp-pilot .hz8-pp__buy { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: stretch; }
+html.hz8-pdp-pilot .hz8-pp__buy[hidden], html.hz8-pdp-pilot .hz8-pp__qty[hidden] { display: none; }
+html.hz8-pdp-pilot .hz8-pp__buy:has(> .hz8-pp__qty[hidden]) { grid-template-columns: minmax(0, 1fr); }
+html.hz8-pdp-pilot .hz8-pp__qty { display: flex; align-items: center; min-height: var(--pp-cta-h); border: 1px solid #dcc8ae; border-radius: 9px; background: linear-gradient(180deg, rgba(255, 251, 243, .9), rgba(251, 242, 228, .55)), #fdf6ea; box-shadow: inset 0 1px rgba(255, 255, 255, .6); }
+html.hz8-pdp-pilot .hz8-pp__qbtn { display: grid; place-items: center; width: 44px; height: 100%; min-height: 44px; padding: 0; border: 0; background: none; color: var(--pp-ink); font: 500 20px/1 var(--hz8-font-ui) !important; cursor: pointer; }
+html.hz8-pdp-pilot .hz8-pp__qbtn:disabled { color: color-mix(in srgb, var(--pp-ink) 32%, transparent); cursor: default; }
+html.hz8-pdp-pilot .hz8-pp__qbtn:focus-visible { outline: 3px solid var(--pp-green); outline-offset: -3px; border-radius: 8px; }
+html.hz8-pdp-pilot .hz8-pp__qval { min-width: 22px; color: var(--pp-ink); font: 700 16px/1 var(--hz8-font-ui) !important; text-align: center; }
+html.hz8-pdp-pilot.hz8-pp-soldout .hz8-pp__fit { display: none !important; }
 html.hz8-pdp-pilot .hz8-pp__msg { margin: 8px 0 0; color: var(--pp-green); font: 400 13.5px/1.4 var(--hz8-font-ui) !important; }
 html.hz8-pdp-pilot .hz8-pp__msg:empty { margin: 0; }
 html.hz8-pdp-pilot .hz8-pp__msg.is-warn { color: #7a3b12; }

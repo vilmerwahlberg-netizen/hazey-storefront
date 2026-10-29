@@ -324,11 +324,15 @@
     });
     var brandLink = info.querySelector(".brand a");
     var brandName = brandLink ? brandLink.textContent.trim() : "";
+    /* Universella adaptern (85-pdp-pilot.js, TASK 10B) äger köpstation,
+       variantval, analys, kapitel, omdömen och relaterat -- här byggs då
+       bara kundservicepanelen (som adaptern placerar). */
+    var adapter = !!(HZ8.isPdpPilot && HZ8.isPdpPilot());
 
     /* Kort "Läs mer" till den fullständiga beskrivningen längre ned. */
     var shortDesc = info.querySelector(".short-description");
-    markLead(shortDesc);
-    if (shortDesc) {
+    if (!adapter) markLead(shortDesc);
+    if (shortDesc && !adapter) {
       var more = document.createElement("a");
       more.className = "hz8-link hz8-pdp-more";
       more.href = "#hz8-pdp-about";
@@ -358,7 +362,7 @@
     /* Leveranspunkter = butikens verifierade regler (HZ8.commerce), inte
        USP-radens leveranstid/transportör som motsäger andra källor. */
     var usps = HZ8.commerce.deliveryLines();
-    extra.innerHTML =
+    extra.innerHTML = (adapter ? "" :
       '<div class="hz8-pdp-acc hz8-accordion" id="hz8-pdp-spec">' +
         '<details class="hz8-pdp-spec" open><summary>Specifikation</summary><dl></dl></details>' +
         (docs ? '<details class="hz8-pdp-docs"><summary>Innehåll och analys</summary><p>' + HZ8.esc(docs) + ' <a href="mailto:hej@hazey.se">hej@hazey.se</a></p></details>' : "") +
@@ -367,12 +371,15 @@
       "</div>" +
       (brandName ? '<section class="hz8-band hz8-pdp-brand" aria-labelledby="hz8-pdp-brand-title"><div class="hz8-pdp-brand__copy"><span class="hz8-kicker">Varumärke</span><h2 id="hz8-pdp-brand-title">Mer från ' + HZ8.esc(brandName) +
         '</h2><p>Se alla produkter från ' + HZ8.esc(brandName) + ' i vårt sortiment.</p><a class="hz8-btn hz8-btn--light" href="' + HZ8.esc(HZ8.link(brandLink.getAttribute("href"))) + '">Visa ' + HZ8.esc(brandName) +
-        '</a></div><div class="hz8-pdp-brand__art" aria-hidden="true"></div></section>' : "") +
+        '</a></div><div class="hz8-pdp-brand__art" aria-hidden="true"></div></section>' : "")) +
       '<section class="hz8-pdp-help" id="hz8-pdp-help" aria-labelledby="hz8-pdp-help-title"><div><span class="hz8-kicker">Kundservice</span><h2 id="hz8-pdp-help-title">Har du frågor om produkten?</h2>' +
       '<p>Läs svaren på vanliga frågor om leverans, betalning och sortiment, eller kontakta oss direkt.</p></div>' +
       '<div class="hz8-pdp-help__actions"><a class="hz8-btn hz8-btn--primary" href="' + HZ8.esc(HZ8.link("/sv/page/faq")) + '">Vanliga frågor</a><a class="hz8-btn hz8-btn--secondary" href="' + HZ8.esc(HZ8.link("/sv/page/kontakt")) + '">Kontakta oss</a></div></section>';
 
-    if (detailInfo) {
+    if (adapter) {
+      /* Bara kundservicepanelen; adaptern flyttar den till sin plats. */
+      (detailInfo || article).parentNode.insertBefore(extra, (detailInfo || article).nextSibling);
+    } else if (detailInfo) {
       detailInfo.parentNode.insertBefore(nav, detailInfo);
       var aboutAnchor = document.createElement("span");
       aboutAnchor.id = "hz8-pdp-about";
@@ -387,7 +394,7 @@
       var art = extra.querySelector(".hz8-pdp-brand__art");
       if (art) art.classList.add("is-magic");
     }
-    if (hasReviews) {
+    if (hasReviews && !adapter) {
       var reviewsItem = document.querySelector(".accordion-button#product-reviews");
       var anchor = document.createElement("span");
       anchor.id = "hz8-pdp-reviews";
@@ -398,7 +405,7 @@
         if (btn && !btn.classList.contains("active")) btn.click();
       });
     }
-    if (similar) {
+    if (similar && !adapter) {
       var simAnchor = document.createElement("span");
       simAnchor.id = "hz8-pdp-similar";
       simAnchor.className = "hz8-pdp-anchor";
@@ -412,7 +419,7 @@
     var reviewsContent = document.querySelector(".accordion-content #product-reviews.product-reviews, #product-reviews.product-reviews");
     var nhStars = ratingEl && ratingEl.querySelector(".nh-stars[title]");
     var avgFromTitle = nhStars ? parseFloat((nhStars.getAttribute("title").match(/([\d.,]+)/) || [])[1]) : NaN;
-    if ((starsInner || !isNaN(avgFromTitle)) && countTxt && reviewsContent && !document.querySelector(".hz8-review-summary")) {
+    if (!adapter && (starsInner || !isNaN(avgFromTitle)) && countTxt && reviewsContent && !document.querySelector(".hz8-review-summary")) {
       var pct = !isNaN(avgFromTitle) ? avgFromTitle * 20 : (parseFloat(starsInner.style.width) || 0);
       var avg = Math.round(pct / 20 * 10) / 10;
       var sum = document.createElement("div");
@@ -448,7 +455,7 @@
       var k = c.format.key, l = c.format.label.toLowerCase();
       return typeWord && (k.indexOf(typeWord) === 0 || l.indexOf(typeWord) === 0 || typeWord.indexOf(k.replace(/s$/, "")) === 0);
     })[0] || combos[0] || null;
-    if (combo && HZ8.productRail) {
+    if (combo && HZ8.productRail && !adapter) {
       var here = HZ8.path(location.href).split("?")[0].replace(/\/\d+$/, "");
       var comboRoute = combo.series.routes[combo.format.key];
       var seriesRail = HZ8.productRail({
@@ -471,20 +478,23 @@
 
     /* Antalsfältets värde ändras utan DOM-mutation -- synka paketvalet
        när antal-väljaren används. */
-    document.addEventListener("click", function (e) {
-      if (e.target.closest && e.target.closest(".buy-form .amount-input")) window.setTimeout(function () { syncPackages(); syncBuyLabel(); syncSticky(sticky); }, 60);
-    });
-    document.addEventListener("input", function (e) {
-      if (e.target.closest && e.target.closest(".buy-form .amount-input")) { syncPackages(); syncBuyLabel(); }
-    });
-    document.addEventListener("change", function (e) {
-      if (e.target.closest && e.target.closest(".buy-form .amount-input")) { syncPackages(); syncBuyLabel(); }
-    });
+    if (!adapter) {
+      document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest(".buy-form .amount-input")) window.setTimeout(function () { syncPackages(); syncBuyLabel(); syncSticky(sticky); }, 60);
+      });
+      document.addEventListener("input", function (e) {
+        if (e.target.closest && e.target.closest(".buy-form .amount-input")) { syncPackages(); syncBuyLabel(); }
+      });
+      document.addEventListener("change", function (e) {
+        if (e.target.closest && e.target.closest(".buy-form .amount-input")) { syncPackages(); syncBuyLabel(); }
+      });
+    }
 
     var spec = extra.querySelector(".hz8-pdp-spec");
     /* Sticky bar på alla bredder (inte bara mobil) -- se 82-product.css. */
     var sticky = null; // ersatt av 83-pdp-purchase.js (delad köpstate)
     HZ8.watch(function () {
+      if (adapter) return;
       syncVariants();
       syncPackages();
       renderSpec(spec);

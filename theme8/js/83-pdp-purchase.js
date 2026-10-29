@@ -429,15 +429,22 @@
     });
   }
 
-  /* ---- "Passar bra med": cart vars egen text nämner ett varumärke som
-     finns bland Batterier & tillbehör (t.ex. "CCELL Cart" -> CCELL-
-     batterier). Datadriven ur båda sidornas riktiga data. ---- */
+  /* ---- "Passar bra med": cart (medlem i formatet Carts enligt
+     produktens egna kategorier -- aldrig produktnamnet) vars egen text
+     nämner ett varumärke som finns bland Batterier & tillbehör (t.ex.
+     "CCELL Cart" -> CCELL-batterier). Bara när produkten går att köpa
+     (TASK 10B-0/10B: inget "Passar bra med" på slutsålda). ---- */
+  function inFormat(key) {
+    return Array.prototype.some.call(document.querySelectorAll(".related-categories a[href]"), function (a) {
+      var c = HZ8.catalog.contextFor(a.href);
+      return !!c && ((c.type === "format" && c.format && c.format.key === key) || (c.type === "combo" && c.format && c.format.key === key));
+    });
+  }
   function compatRail() {
     if (!HZ8.catalog || !HZ8.productRail || document.querySelector(".hz8-pdp-compat")) return;
-    var title = (document.querySelector(".product-detail__information h1") || {}).textContent || "";
     var bat = HZ8.catalog.formatByKey("batterier");
     var extra = document.querySelector(".hz8-pdp-extra");
-    if (!/^\s*cart\b/i.test(title) || !bat || !extra) return;
+    if (!bat || !extra || !inFormat("carts") || !state.variants.some(isBuyable)) return;
     var text = (document.getElementById("product-page") || {}).textContent || "";
     HZ8.fetchPage(bat.href, HZ8.categoryCards).then(function (cards) {
       var brands = {};
@@ -457,11 +464,60 @@
     }).catch(function () {});
   }
 
+  /* Slutsåld-skyddet (TASK 10B-0) gäller alla produktsidor, även den
+     universella adaptern (85-pdp-pilot.js), som köper via samma native
+     köpknapp. */
+  /* Ny lagerdata: generiska mallen synkar chips/köpbar, adaptern sin
+     egen station (HZ8.pdpRefresh i 85-pdp-pilot.js). */
+  function afterStock() {
+    if (HZ8.isPdpPilot && HZ8.isPdpPilot()) { syncSoldOut(); if (HZ8.pdpRefresh) HZ8.pdpRefresh(); return; }
+    syncStock(); syncBuybar();
+  }
+  function guardBuyClicks() {
+    /* Köpklick (huvudknapp, köpbar, Enter i antalsfältet). Slutsålt ->
+       stoppas. Variant som Nyehandel säljer även utan lager
+       (always_orderable) -> först färsk product/state, så att en variant
+       som tagit slut efter sidladdningen aldrig läggs i korgen; köpbar ->
+       klicket släpps igenom. Övriga varianter stoppar Nyehandels server
+       själv vid slutsålt -- klicket går direkt (ingen fördröjning) och
+       sidans lagerdata läses om efteråt så att köpraden blir "Slutsåld".
+       API-fel -> Nyehandels egen kontroll gäller. */
+    var released = false;
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest && e.target.closest(".buy-form .button.buy");
+      if (!b || (builderEnabled() && builder.size >= 2)) return;
+      if (released) { released = false; return; }
+      if (soldOut()) { e.preventDefault(); e.stopImmediatePropagation(); syncBuybar(); return; }
+      var v = currentVariant();
+      if (!(v && v.track_inventory && v.always_orderable)) {
+        window.setTimeout(function () { loadVariants().then(afterStock); }, 1500);
+        return;
+      }
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (b.getAttribute("aria-busy") === "true") return;
+      b.setAttribute("aria-busy", "true");
+      loadVariants().then(function (fresh) {
+        b.removeAttribute("aria-busy");
+        afterStock();
+        if (fresh && soldOut()) return;
+        if (!b.isConnected || b.disabled) return;
+        released = true;
+        b.click();
+        released = false;
+      });
+    }, true);
+  }
+
   HZ8.register("pdp-purchase", function (context) {
     if (context.page !== "product") return;
-    /* Produktsidespiloten (85-pdp-pilot.js) har egen köpstation, sticky
-       köpzon och paketbyggare -- här bara "Passar bra med" (carts). */
-    if (HZ8.isPdpPilot && HZ8.isPdpPilot()) { window.setTimeout(compatRail, 1200); return; }
+    /* Universella adaptern (85-pdp-pilot.js) äger köpstation, strainval,
+       sticky köpzon och paket -- här bara slutsåld-skyddet (html.hz8-pdp-
+       out + köpklicksspärren) och "Passar bra med". */
+    if (HZ8.isPdpPilot && HZ8.isPdpPilot()) {
+      loadVariants().then(function () { syncSoldOut(); HZ8.watch(syncSoldOut); window.setTimeout(compatRail, 600); });
+      guardBuyClicks();
+      return;
+    }
     /* Köpzonen räknas som ofärdig tills variantdatan är hämtad: lager per
        variant, paketbyggaren och köpbaren byggs först då och flyttar
        annars köpraden efter att sidan visats (TASK 01C, läses av
@@ -493,38 +549,7 @@
       if (raf) return;
       raf = window.requestAnimationFrame(function () { raf = 0; syncBuybar(); });
     }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ["class"] });
-    /* Köpklick (huvudknapp, köpbar, Enter i antalsfältet). Slutsålt ->
-       stoppas. Variant som Nyehandel säljer även utan lager
-       (always_orderable) -> först färsk product/state, så att en variant
-       som tagit slut efter sidladdningen aldrig läggs i korgen; köpbar ->
-       klicket släpps igenom. Övriga varianter stoppar Nyehandels server
-       själv vid slutsålt -- klicket går direkt (ingen fördröjning) och
-       sidans lagerdata läses om efteråt så att köpraden blir "Slutsåld".
-       API-fel -> Nyehandels egen kontroll gäller. */
-    var released = false;
-    document.addEventListener("click", function (e) {
-      var b = e.target.closest && e.target.closest(".buy-form .button.buy");
-      if (!b || (builderEnabled() && builder.size >= 2)) return;
-      if (released) { released = false; return; }
-      if (soldOut()) { e.preventDefault(); e.stopImmediatePropagation(); syncBuybar(); return; }
-      var v = currentVariant();
-      if (!(v && v.track_inventory && v.always_orderable)) {
-        window.setTimeout(function () { loadVariants().then(function () { syncStock(); syncBuybar(); }); }, 1500);
-        return;
-      }
-      e.preventDefault(); e.stopImmediatePropagation();
-      if (b.getAttribute("aria-busy") === "true") return;
-      b.setAttribute("aria-busy", "true");
-      loadVariants().then(function (fresh) {
-        b.removeAttribute("aria-busy");
-        syncStock(); syncBuybar();
-        if (fresh && soldOut()) return;
-        if (!b.isConnected || b.disabled) return;
-        released = true;
-        b.click();
-        released = false;
-      });
-    }, true);
+    guardBuyClicks();
     /* Ofullständigt blandat paket: native köpknapp får inte lägga en
        standardvariant i korgen. */
     document.addEventListener("click", function (e) {

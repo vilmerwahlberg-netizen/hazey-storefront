@@ -1,7 +1,18 @@
-/* Produktsidespilot (PDP MASTER V1, 2026-10-13): adaptiv köpstation på
-   Nyehandels riktiga produktdata. Aktiv på pilotprodukten (PILOT_IDS)
-   och, för lokal granskning av adaptiva lägen, på valfri produktsida
-   med ?hz8-pdp=1. Övriga produktsidor är orörda.
+/* Universell produktsida (TASK 10B, från Faraoh-piloten PDP MASTER V1,
+   2026-10-13): EN kapabilitetsstyrd mall på Nyehandels riktiga
+   produktdata för varje kundvänd produkt. Vakt: produkten har ett
+   varumärke (.brand a) -- tjänsteposter och olistade poster utan
+   varumärke lämnas till plattformen (82/83). ?hz8-pdp=0 stänger av
+   adaptern för jämförelse. Klassnamnen (hz8-pdp-pilot, hz8-pp*) är
+   kvar från piloten.
+
+   Kapabilitetsprofil (HZ8.pdpProfile): variantmodell (simple / strain /
+   size / color / generic) och etikett (doft + strain = "Strain", farg =
+   "Färg", vikt = "Vikt"), lager (in-stock / partial / sold-out) ur
+   HZ8.variantOrderable (02-shared.js, samma definition som korten och
+   83:s slutsåld-skydd från TASK 10B-0), analys (verifierad PDF per
+   produkt eller vald variant, annars "Labbrapport skickas på
+   begäran") och paket (endast riktiga paketprodukter, se PACKAGES).
 
    Allt härleds live ur /frontend-api/product/state (varianter, lager,
    pristrappa, bilder), sidans egen DOM (namn, betyg, varumärke) och
@@ -19,7 +30,6 @@
   "use strict";
 
   var HZ8 = window.HZ8;
-  var PILOT_IDS = { 57: true }; // Vape - THC-A 45% - Faraoh - 2ml
   /* Blandade paket (3/5 valfria strains). Byggaren visas alltid vid 3/5,
      men KÖP av en blandning är spärrat tills Nyehandel har en riktig
      prisregel som ger paketrabatten över flera varianter (verifierat
@@ -37,10 +47,14 @@
     if (productId === null) productId = +(document.documentElement.innerHTML.match(/viewProduct\(.(\d+)/) || [])[1] || 0;
     return productId;
   }
+  var ADAPTER_OFF = /[?&]hz8-pdp=0/.test(location.search);
+  /* Kundvänd produkt = varumärke i Nyehandels serverrenderade köpdel.
+     (Namnet på funktionen är kvar från piloten; 82/83 läser den.) */
   HZ8.isPdpPilot = function () {
-    if (!/\/products\//.test(location.pathname)) return false;
-    return /[?&]hz8-pdp=1/.test(location.search) || !!PILOT_IDS[readProductId()];
+    if (!/\/products\//.test(location.pathname) || ADAPTER_OFF) return false;
+    return !!document.querySelector(".product-detail__information .brand a");
   };
+  HZ8.isPdpAdapter = HZ8.isPdpPilot;
 
   function esc(v) { return HZ8.esc(v); }
   function parseKr(t) { var m = String(t || "").replace(/\s/g, "").match(/(\d+(?:,\d+)?)/); return m ? parseFloat(m[1].replace(",", ".")) : null; }
@@ -118,11 +132,14 @@
   function nativeSelect() { return document.querySelector("#product-variants select"); }
   function nativeQty() { return document.querySelector(".buy-form .amount-input .input"); }
   function nativeBuy() { return document.querySelector(".buy-form .button.buy"); }
+  /* Ett köpbarhetsbeslut för station, strainval, sticky och paket:
+     HZ8.variantOrderable (02-shared.js; TASK 10B-0). Före API-svaret:
+     sidans egen lagerstatus. */
   function isBuyable(v) {
-    if (!S.product) return !document.querySelector("#stock:not(.is-positive)"); // före API-svaret: sidans egen lagerstatus
-    return !!(v && v.buyable && (v.track_inventory === false || !v.track_inventory || v.available_stock > 0));
+    if (!S.product) return !document.querySelector("#stock:not(.is-positive)");
+    return HZ8.variantOrderable(v);
   }
-  function stockOf(v) { return !v ? 0 : (!v.track_inventory ? Infinity : Math.max(0, v.available_stock || 0)); }
+  function stockOf(v) { return !v || !isBuyable(v) ? 0 : (!v.track_inventory || v.always_orderable ? Infinity : Math.max(0, v.available_stock || 0)); }
   function currentValue() { var s = nativeSelect(); return s && s.value ? s.value : (S.values[0] && S.values[0].id) || ""; }
   function currentVariant() {
     if (S.values.length) return S.byOption[currentValue()] || null;
@@ -138,14 +155,37 @@
   function valueName(id) { var x = S.values.filter(function (v) { return v.id === id; })[0]; return x ? x.name : ""; }
   /* Hjälptext: bara verifierbara påståenden (pris jämförs ur trappan). */
   function strainHelp() {
+    if (variantModel() !== "strain") return "";
     var t = "Strains är varianter av samma produkt – inte olika " + (nameParts(((document.querySelector(".product-detail__information h1") || {}).textContent || "").replace(/\u00a0/g, " ")).type.toLowerCase() || "produkt") + "produkter.";
     if (S.product && S.values.length > 1) {
-      var sigs = S.values.map(function (x) { return tiersOf(x.variant).map(function (t) { return t.min + ":" + t.unit; }).join("|"); });
-      if (sigs.every(function (g) { return g && g === sigs[0]; })) t += " Pris och paketpris är desamma för alla " + label() + "s.";
+      var sigs = S.values.map(function (x) { var u = x.variant && x.variant.price ? x.variant.price.formatted_price : ""; return u; });
+      if (sigs.every(function (g) { return g && g === sigs[0]; })) t += " Priset är detsamma för alla strains.";
     }
     return t;
   }
-  function label() { return /^strain$/i.test(S.optionName) ? "strain" : S.optionName.toLowerCase(); }
+  /* Variantmodell ur alternativets namn i Nyehandel (aldrig ur produkt-
+     namnet): doft och strain visas båda som strain (beslut 2026-10-29),
+     farg som färg, vikt/storlek/volym som storlek med pris per värde. */
+  function optionKey() { return String(S.optionName || "").toLowerCase().replace(/[^a-zåäö]/g, ""); }
+  function variantModel() {
+    if (S.values.length < 2) return "simple";
+    var k = optionKey();
+    if (/^(strain|doft)$/.test(k)) return "strain";
+    if (/^(vikt|storlek|volym)$/.test(k)) return "size";
+    if (/^(farg|färg)$/.test(k)) return "color";
+    return "generic";
+  }
+  var LABELS = { strain: ["strain", "strains"], color: ["färg", "färger"], vikt: ["vikt", "vikter"], storlek: ["storlek", "storlekar"], volym: ["volym", "volymer"] };
+  function labelPair() {
+    var m = variantModel(), k = optionKey();
+    if (m === "strain" || m === "simple" && /^(strain|doft)$/.test(k)) return LABELS.strain;
+    if (m === "color") return LABELS.color;
+    if (LABELS[k]) return LABELS[k];
+    var n = String(S.optionName || "").trim().toLowerCase();
+    return n ? [n, "alternativ"] : ["alternativ", "alternativ"];
+  }
+  function label() { return labelPair()[0]; }
+  function labelPlural() { return labelPair()[1]; }
 
   /* Produktnamnets verifierbara delar: "Vape - THC-A 45% - Faraoh - 2ml". */
   function nameParts(name) {
@@ -159,13 +199,14 @@
   }
 
   /* ---------------- Köpstation ---------------- */
-  var B = { pack: 1, slots: [], busy: false, msg: "", manual: false };
+  var B = { pack: 1, qty: 1, slots: [], busy: false, msg: "", manual: false };
 
-  function packTiers() {
-    var v = currentVariant();
-    var t = tiersOf(v);
-    return t.length > 1 ? t : [];
-  }
+  /* Paketsteg kommer ENDAST ur riktiga paketprodukter (se PACKAGES).
+     Nyehandels −15/−20 %-trappa per variantrad är legacy (beslut
+     2026-10-29) och visas aldrig som paket, steg eller besparing. */
+  function packTiers() { return []; }
+  /* Antal (utan paket): högst lagret, aldrig fler än 99. */
+  function maxQty() { var n = stockOf(currentVariant()); return Math.max(1, Math.min(99, n === Infinity ? 99 : n)); }
   function buyableValues() { return S.values.filter(function (x) { return isBuyable(x.variant); }); }
   function builderActive() { return B.pack > 1 && buyableValues().length > 1; }
   /* Förvald strain fyller alla platser -- men bara tills kunden själv
@@ -208,7 +249,8 @@
     h += '<div class="hz8-pp__builder" role="group" aria-labelledby="hz8-pp-builder-title" hidden><div class="hz8-pp__bhead"><button type="button" class="hz8-pp__btoggle" aria-expanded="true" aria-controls="hz8-pp-bslots">' + ICON.box + '<span class="hz8-pp__btoggle-t"></span>' + ICON.chev + '</button><p id="hz8-pp-builder-title" class="hz8-pp__btitle"></p><span class="hz8-pp__count" aria-live="polite"></span><button type="button" class="hz8-pp__fill"></button></div>' +
       '<ol class="hz8-pp__slots" id="hz8-pp-bslots"></ol><p class="hz8-pp__mixnote" hidden></p></div>';
     h += '<div class="hz8-pp__sum"><p class="hz8-pp__total"><span class="hz8-pp__price"></span><del class="hz8-pp__cmp" hidden></del><span class="hz8-pp__unit"></span><span class="hz8-pp__save"></span></p></div>';
-    h += '<button type="button" class="hz8-pp__cta">Lägg i varukorgen</button><p class="hz8-pp__msg" role="status" aria-live="polite"></p>';
+    h += '<div class="hz8-pp__buy"><div class="hz8-pp__qty" role="group" aria-label="Antal"><button type="button" class="hz8-pp__qbtn" data-step="-1" aria-label="Minska antalet">−</button><output class="hz8-pp__qval" aria-live="polite">1</output><button type="button" class="hz8-pp__qbtn" data-step="1" aria-label="Öka antalet">+</button></div>' +
+      '<button type="button" class="hz8-pp__cta">Lägg i varukorgen</button></div><p class="hz8-pp__msg" role="status" aria-live="polite"></p>';
     var trust = trustItems();
     if (trust.length) h += '<ul class="hz8-pp__trust">' + trust.map(function (t) { return "<li>" + t[0] + "<span>" + esc(t[1]) + "</span></li>"; }).join("") + "</ul>";
     return h;
@@ -255,9 +297,10 @@
     /* Lager */
     var stock = st.querySelector(".hz8-pp__stock");
     var inStock = buyableValues().length;
-    var stTxt = !anyBuyable ? "Slut i lager" : isBuyable(v) ? (S.values.length > 1 && S.product && inStock < S.values.length ? "I lager · " + inStock + " av " + S.values.length + " " + label() + "s" : "I lager") : valueName(cur) + " är slut i lager";
+    var nativeOut = document.documentElement.classList.contains("hz8-pdp-out");
+    var stTxt = !anyBuyable || nativeOut && isBuyable(v) ? "Slutsåld" : isBuyable(v) ? (S.values.length > 1 && S.product && inStock < S.values.length ? "I lager · " + inStock + " av " + S.values.length + " " + labelPlural() : "I lager") : valueName(cur) + " är slut i lager";
     if (stock.textContent !== stTxt) stock.textContent = stTxt;
-    stock.classList.toggle("is-out", !isBuyable(v));
+    stock.classList.toggle("is-out", !isBuyable(v) || nativeOut);
     /* Strainval: bara med minst två strains (en strain = ingen väljare). */
     var sf = st.querySelector(".hz8-pp__strains");
     sf.hidden = S.values.length < 2;
@@ -271,6 +314,8 @@
     }
     var help = sf.querySelector(".hz8-pp__help"), ht = strainHelp();
     if (help.textContent !== ht) help.textContent = ht;
+    var infoBtn = sf.querySelector(".hz8-pp__info");
+    if (infoBtn.hidden !== !ht) { infoBtn.hidden = !ht; if (!ht) { help.hidden = true; infoBtn.setAttribute("aria-expanded", "false"); } }
     var focused = document.activeElement && document.activeElement.classList && document.activeElement.classList.contains("hz8-pp__tile") ? document.activeElement : null;
     st.querySelectorAll(".hz8-pp__tile").forEach(function (b) {
       var x = S.byOption[b.getAttribute("data-value")];
@@ -282,7 +327,9 @@
       b.classList.toggle("is-out", out);
       b.setAttribute("aria-disabled", out ? "true" : "false");
       var s = b.querySelector(".hz8-pp__tile-stock");
-      var t = out ? "Slut i lager" : "";
+      /* Storlek: värdets eget pris (storlekar har egna priser). Övriga:
+         lagerstatus. Bara känd status -- före API-svaret ingen rad. */
+      var t = out ? "Slut" : !S.product ? "" : variantModel() === "size" && x && x.price ? x.price.formatted_price : "I lager";
       if (s.textContent !== t) s.textContent = t;
       b.setAttribute("aria-label", valueName(b.getAttribute("data-value")) + (out ? ", slut i lager" : ""));
     });
@@ -319,6 +366,7 @@
     renderBuilder(st);
     renderSum(st, tiers);
     renderCta(st, anyBuyable);
+    syncAnalysis();
   }
 
   function renderBuilder(st) {
@@ -369,7 +417,7 @@
       if (active != null) { var again = ol.querySelector('select[data-slot="' + active + '"]'); if (again) again.focus({ preventScroll: true }); }
     }
     var note = host.querySelector(".hz8-pp__mixnote");
-    var nt = ps.mixed ? (mixedBuyAllowed() ? "Testläge: blandat paket läggs som en rad per " + label() + " till varukorgens ordinarie pris." : "Blandade " + label() + "s kan inte köpas till paketpris ännu. Paketpriset gäller när alla platser har samma " + label() + ".") : "";
+    var nt = ps.mixed ? (mixedBuyAllowed() ? "Testläge: blandat paket läggs som en rad per " + label() + " till varukorgens ordinarie pris." : "Blandade " + labelPlural() + " kan inte köpas till paketpris ännu. Paketpriset gäller när alla platser har samma " + label() + ".") : "";
     if (note.textContent !== nt) note.textContent = nt;
     note.hidden = !nt;
   }
@@ -377,7 +425,9 @@
   function renderSum(st, tiers) {
     var v = currentVariant();
     var price = st.querySelector(".hz8-pp__price"), unit = st.querySelector(".hz8-pp__unit"), save = st.querySelector(".hz8-pp__save"), cmp = st.querySelector(".hz8-pp__cmp");
-    var qty = B.pack, u = tierUnit(v, qty);
+    /* Utan paket: valt antal. Summan är det Nyehandels varukorg tar för
+       raden (plattformens eget pris för antalet) -- ingen besparing visas. */
+    var qty = builderActive() ? B.pack : B.qty, u = tierUnit(v, qty);
     if (builderActive()) {
       var ps = packState();
       if (ps.single) u = tierUnit(S.byOption[ps.single], qty);
@@ -391,14 +441,11 @@
       }
     }
     if (u == null) u = parseKr((document.getElementById("product-price") || {}).textContent);
-    var base = tiers.length ? tiers[0].unit : u;
-    var saved = qty * (base - u);
     var priceTxt = u != null ? kr(u * qty) : "";
     if (price.textContent !== priceTxt) price.textContent = priceTxt;
-    var unitTxt = qty > 1 && u != null ? "(" + kr(u) + "/st)" : "";
+    var unitTxt = qty > 1 && u != null && builderActive() ? "(" + kr(u) + "/st)" : "";
     if (unit.textContent !== unitTxt) unit.textContent = unitTxt;
-    var saveTxt = qty > 1 && saved >= 0.5 ? "Spara " + kr(saved) : "";
-    if (save.textContent !== saveTxt) save.textContent = saveTxt;
+    if (save.textContent) save.textContent = "";
     /* Jämförelsepris bara när Nyehandel har ett (rea) -- för 1 st. */
     var hasCmp = qty === 1 && v && v.price && v.price.has_compare_price;
     cmp.hidden = !hasCmp;
@@ -427,11 +474,28 @@
   function renderCta(st, anyBuyable) {
     var cta = st.querySelector(".hz8-pp__cta");
     var buyControls = document.querySelector(".product-detail__information .buy-controls");
-    /* Helt slutsåld: Nyehandels egen bevakning ("Bevaka") visas i stället. */
-    var soldOut = !anyBuyable;
+    /* Slutsåld (hela produkten eller vald variant): ingen köpknapp, inget
+       antal, ingen sticky köpzon -- Nyehandels egen bevakning ("Bevaka")
+       visas i stället (TASK 10B-0/10B, R4). */
+    /* 83-pdp-purchase.js:s slutsåld-beslut (html.hz8-pdp-out: ingen native
+       köpknapp, eller vald variant utan köpbart lager) gäller också här --
+       t.ex. när Nyehandel ersatt köpknappen efter att sidan laddats. */
+    var nativeOut = document.documentElement.classList.contains("hz8-pdp-out");
+    var soldOut = !anyBuyable || nativeOut || (!builderActive() && !isBuyable(currentVariant()));
     document.documentElement.classList.toggle("hz8-pp-soldout", soldOut);
+    var buyRow = st.querySelector(".hz8-pp__buy");
+    if (buyRow) buyRow.hidden = soldOut;
     cta.hidden = soldOut;
     if (buyControls) buyControls.classList.toggle("hz8-pp-monitor", soldOut);
+    /* Antal: dolt när ett paket styr antalet. */
+    var q = st.querySelector(".hz8-pp__qty");
+    if (q) {
+      q.hidden = builderActive();
+      if (B.qty > maxQty()) B.qty = maxQty();
+      var out = q.querySelector("output"); if (out.textContent !== String(B.qty)) out.textContent = String(B.qty);
+      var bs = q.querySelectorAll("button");
+      bs[0].disabled = B.qty <= 1; bs[1].disabled = B.qty >= maxQty();
+    }
     var reason = blockReason();
     cta.setAttribute("aria-disabled", reason && !B.busy ? "true" : "false");
     cta.classList.toggle("is-blocked", !!reason);
@@ -446,6 +510,14 @@
     syncSticky();
   }
 
+  /* Förval = första köpbara värdet, när Nyehandel förvalt ett slutsålt
+     och URL:en inte pekar ut en variant (/products/<slug>/<variant-id>). */
+  function preferBuyable() {
+    if (!S.values.length || /\/products\/[^/?#]+\/\d+/.test(location.pathname)) return;
+    if (isBuyable(currentVariant())) return;
+    var first = S.values.filter(function (x) { return isBuyable(x.variant); })[0];
+    if (first) chooseValue(first.id);
+  }
   function chooseValue(id) {
     var sel = nativeSelect();
     if (!sel || sel.value === String(id)) return;
@@ -488,7 +560,7 @@
     }
     if (builderActive() && packState().mixed) return buyMixed(packState().groups);
     var target = builderActive() ? packState().single : currentValue();
-    var qty = B.pack;
+    var qty = builderActive() ? B.pack : B.qty;
     /* Bekräftelse ur Nyehandels egen varukorg (Vuex): "Tillagd" bara när
        antalet faktiskt ökat. Utan store: native-knappens eget flöde. */
     var store = HZ8.store && HZ8.store();
@@ -513,11 +585,19 @@
       B.busy = false; B.tried = false; B.added = true;
       window.clearTimeout(B.addedT);
       B.addedT = window.setTimeout(function () { B.added = false; syncStation(); }, 2600);
-      B.msg = (qty > 1 ? qty + " st " : "") + (target && S.values.length ? valueName(target) + " " : "") + "har lagts i varukorgen.";
+      var what = (qty > 1 ? qty + " st " : "") + (target && S.values.length ? valueName(target) : "");
+      B.msg = (what.trim() ? what.trim() + " har" : "Produkten har") + " lagts i varukorgen.";
       syncStation();
       window.setTimeout(function () { B.msg = ""; syncStation(); }, 5000);
     }).catch(function () {
-      B.busy = false; B.msg = "Det gick inte att lägga i varukorgen. Försök igen."; syncStation();
+      /* Läs om lagret: tog varan slut under tiden säger köpzonen det i
+         stället för "försök igen" (TASK 10B-0-skyddet stoppade köpet). */
+      B.busy = false; B.msg = ""; syncStation();
+      loadState().then(function () {
+        var gone = !isBuyable(target && S.values.length ? S.byOption[target] : currentVariant()) || document.documentElement.classList.contains("hz8-pdp-out");
+        B.msg = gone ? (target && S.values.length ? valueName(target) : "Produkten") + " har tagit slut och kunde inte läggas i varukorgen." : "Det gick inte att lägga i varukorgen. Försök igen.";
+        syncStation();
+      }, function () { B.msg = "Det gick inte att lägga i varukorgen. Försök igen."; syncStation(); });
     });
     if (st) st.setAttribute("data-last", String(qty));
   }
@@ -563,7 +643,7 @@
         window.clearTimeout(B.addedT); B.addedT = window.setTimeout(function () { B.added = false; syncStation(); }, 2600);
         B.msg = B.pack + "-pack har lagts i varukorgen.";
       } else {
-        B.msg = ok.length ? "Bara " + ok.length + " av " + rows.length + " " + label() + "s lades i varukorgen. Kontrollera varukorgen och försök igen." : "Det gick inte att lägga paketet i varukorgen. Försök igen.";
+        B.msg = ok.length ? "Bara " + ok.length + " av " + rows.length + " " + labelPlural() + " lades i varukorgen. Kontrollera varukorgen och försök igen." : "Det gick inte att lägga paketet i varukorgen. Försök igen.";
       }
       syncStation();
     });
@@ -652,6 +732,8 @@
         if (n > 1 && !B.manual && isBuyable(currentVariant())) fillSlots(currentValue(), false);
         syncStation(); return;
       }
+      var qb = e.target.closest(".hz8-pp__qbtn");
+      if (qb) { B.qty = Math.max(1, Math.min(maxQty(), B.qty + +qb.getAttribute("data-step"))); B.msg = ""; B.added = false; syncStation(); return; }
       var info = e.target.closest(".hz8-pp__info");
       if (info) { var hp = st.querySelector(".hz8-pp__help"); hp.hidden = !hp.hidden; info.setAttribute("aria-expanded", String(!hp.hidden)); return; }
       if (e.target.closest(".hz8-pp__fill")) { fillSlots(currentValue(), true); B.msg = ""; syncStation(); return; }
@@ -764,7 +846,7 @@
     /* Val: strain och paket ur stationens state (ingen egen tolkning). */
     var parts = [];
     if (S.values.length > 1 && !(builderActive() && packState().mixed)) parts.push(valueName(builderActive() && packState().single ? packState().single : currentValue()));
-    if (B.pack > 1) parts.push(B.pack + " st");
+    if (builderActive() ? B.pack > 1 : B.qty > 1) parts.push((builderActive() ? B.pack : B.qty) + " st");
     var sel = parts.join(" · "), se = sticky.querySelector(".hz8-pp-sticky__sel");
     if (se.textContent !== sel) se.textContent = sel;
     var b = sticky.querySelector("button");
@@ -1314,13 +1396,15 @@
     if (article) { var text = node("div", "hz8-acc__text"); text.appendChild(article); fb.appendChild(text); }
     fb.insertAdjacentHTML("beforeend", '<div class="hz8-acc__facts" data-hz8-hide-empty><h3>Specifikationer</h3><dl class="hz8-acc__dl" data-hz8-facts="facts"></dl></div>');
     list.appendChild(facts);
-    var a = analysisLink();
-    if (factRows("content").length || a) {
+    /* Innehåll och analys finns alltid: verifierad PDF (per produkt eller
+       vald strain) eller "Labbrapport skickas på begäran". Ingen batch,
+       inget datum eller labb som inte finns i datan. */
+    S.analysis = analysisProfile();
+    hideUnverifiedDocs(S.analysis);
+    {
       var ana = acc("analys", "Innehåll och analys", "flask", !MOBILE.matches);
-      /* Rapportlänk bara när produkten har en verklig rapport; ingen
-         batch, inget datum eller labb som inte finns i datan. */
-      ana.querySelector(".hz8-acc__body").innerHTML = '<dl class="hz8-acc__dl" data-hz8-facts="content"></dl>' +
-        (a ? '<p class="hz8-acc__report"><a class="hz8-ppc__reportlink" href="' + esc(a.href) + '" target="_blank" rel="noopener">' + ICON.doc + "<span>Visa " + (/labbrapport/i.test(a.textContent) ? "labbrapport" : "full analys") + (/\.pdf(\?|$)/i.test(a.href) ? " (PDF)" : "") + "</span>" + ICON.arrow + "</a></p>" : "") +
+      ana.querySelector(".hz8-acc__body").innerHTML = '<dl class="hz8-acc__dl" data-hz8-facts="content" data-hz8-hide-empty-self></dl>' +
+        '<p class="hz8-acc__report" aria-live="polite"></p>' +
         (ASSET_BASE ? '<figure class="hz8-acc__leaf" aria-hidden="true"><img src="' + esc(ASSET_BASE + "trust-environment-2026-10/trust-environment-desktop-v1.webp") + '" alt="" width="1672" height="941" loading="lazy" decoding="async"></figure>' : "");
       list.appendChild(ana);
     }
@@ -1490,14 +1574,83 @@
       '<ul class="hz8-pr__full" id="hz8-pr-full" hidden></ul></section>';
   }
 
-  /* Analys/batch: bara med en verklig produktspecifik rapportlänk i
-     produktens egen text (länktext eller adress nämner analys/COA/lab). */
-  function analysisLink() {
-    /* Produkttexten kan redan ha flyttats in i kapitlet (.hz8-ppc__text). */
-    var links = document.querySelectorAll("#product-page .short-description a[href], #product-information a[href], .hz8-ppc__text a[href]");
-    return Array.prototype.filter.call(links, function (a) {
-      return /(analys|labbrapport|certifikat|\bcoa\b|certificate of analysis)/i.test(a.textContent + " " + a.getAttribute("href")) && !/folkhalsomyndigheten/i.test(a.href);
-    })[0] || null;
+  /* ---- Analys (TASK 10B §7) ----
+     En PDF visas bara när den är VERIFIERAD för just den här produkten
+     (eller vald variant): Nyehandel-filen är byte-identisk med en
+     WooCommerce-fil vars filnamn anger samma strain
+     (theme8/review/universal-pdp-build-2026-10/ANALYSIS-VERIFIED.md,
+     ur Task 10A ANALYSIS-DOCUMENT-MAP.md). Batch-/destillatfiler (copy-
+     beslut saknas), fel strain, okända filer, bloggartiklar och
+     myndighetsrapporter visas aldrig som analys. Saknas verifierad PDF:
+     "Labbrapport skickas på begäran". Länken läses alltid ur produktens
+     egen text -- tas den bort i admin försvinner den här också. */
+  var VERIFIED_DOCS = {
+    37: { doc: "19rrcW2L5Gf6AXf1779352050.pdf" },
+    59: { doc: "ojo0zzScCBGu6gy1779352051.pdf" },
+    60: { doc: "NmUchonZgUwJb4P1779352051.pdf" },
+    65: { doc: "p4vCO2OvP0y3dEE1779352051.pdf" },
+    74: { doc: "zg59nv2Auft0UWR1779352050.pdf" },
+    84: { doc: "lY1pJXgHfxFM8b01779352053.pdf" },
+    93: { doc: ["wNRiFbSXRo9DRuj1779352055.pdf", "LBfA221dWjqNjmj1779352424.pdf"] },
+    96: { doc: ["zTOE7RpoyYkKHa61779352055.pdf", "eKNuDapPT4zdWjE1779352424.pdf"] },
+    100: { doc: ["PYwtgHnnWw3vv4d1779352055.pdf", "KrCA5frGLYWCSqT1779352424.pdf"] },
+    91: { variants: { "Crazy Dog": "l0NgRCtAD74iTGE1779352423.pdf", "Gorilla Cookies": "NXar8ZZ3wR5QrOP1779352054.pdf", "High Pepito": "BtF0HZ3iAmGEopJ1779352054.pdf", "Samurai Jack": "GgJNCiH47aEpW8P1779352423.pdf", "Yoda Ice Cream": "V1funsKGwRGyh8N1779352054.pdf" } },
+    92: { variants: { "Crazy Dog": "l0NgRCtAD74iTGE1779352423.pdf", "Gorilla Cookies": "NXar8ZZ3wR5QrOP1779352054.pdf", "High Pepito": "BtF0HZ3iAmGEopJ1779352054.pdf", "Samurai Jack": "1tlHW9YYyoLxZJd1779352054.pdf", "Yoda Ice Cream": "V1funsKGwRGyh8N1779352054.pdf" } }
+  };
+  var DOC_LINK = /\.pdf(\?|#|$)/i;
+  /* Labbdokument = PDF vars länktext är en analys (LABBTEST, LABBRAPPORT,
+     Labbtestat destillat, COA, certifikat). Andra PDF:er (t.ex.
+     Folkhälsomyndighetens rapport) är inte analys och lämnas orörda. */
+  var LAB_TEXT = /labb|analys|\bcoa\b|certifikat|certificate/i;
+  function textLinks() {
+    return Array.prototype.slice.call(document.querySelectorAll("#product-page .short-description a[href], #product-information a[href], .hz8-acc__text a[href], .hz8-acc__lead a[href]"));
+  }
+  function fileOf(href) { return String(href || "").split(/[?#]/)[0].split("/").pop(); }
+  /* Klassning: "variant" (PDF följer vald strain), "product" (en PDF för
+     produkten) eller "request" (Labbrapport skickas på begäran). */
+  function analysisProfile() {
+    var rule = VERIFIED_DOCS[readProductId()] || null;
+    var links = textLinks().filter(function (a) { return DOC_LINK.test(a.getAttribute("href")) && LAB_TEXT.test(a.textContent) && !/folkhalsomyndigheten/i.test(a.href); });
+    var byFile = {}; links.forEach(function (a) { if (!byFile[fileOf(a.href)]) byFile[fileOf(a.href)] = a; });
+    if (rule && rule.variants) {
+      var map = {};
+      Object.keys(rule.variants).forEach(function (k) { if (byFile[rule.variants[k]]) map[k] = byFile[rule.variants[k]].href; });
+      if (Object.keys(map).length) return { kind: "variant", byValue: map, links: links };
+    }
+    if (rule && rule.doc) {
+      var hit = [].concat(rule.doc).map(function (f) { return byFile[f]; }).filter(Boolean)[0];
+      if (hit) return { kind: "product", href: hit.href, links: links };
+    }
+    return { kind: "request", links: links };
+  }
+  function analysisHref(prof) {
+    prof = prof || S.analysis;
+    if (!prof) return "";
+    if (prof.kind === "product") return prof.href;
+    if (prof.kind === "variant") return prof.byValue[valueName(currentValue())] || "";
+    return "";
+  }
+  /* Overifierade PDF-länkar i produkttexten (fel strain, batch, okänt)
+     döljs -- de är inte produktens analys. Verifierade ligger kvar. */
+  function hideUnverifiedDocs(prof) {
+    var ok = {};
+    if (prof.kind === "product") ok[fileOf(prof.href)] = true;
+    if (prof.kind === "variant") Object.keys(prof.byValue).forEach(function (k) { ok[fileOf(prof.byValue[k])] = true; });
+    prof.links.forEach(function (a) {
+      if (ok[fileOf(a.href)]) return;
+      a.hidden = true; a.setAttribute("data-hz8-unverified-doc", "");
+      /* Listpunkt/stycke som bara bar länken döljs också. */
+      var box = a.closest("li, p");
+      if (box && box.textContent.replace(/\s+/g, " ").trim() === a.textContent.replace(/\s+/g, " ").trim()) box.hidden = true;
+    });
+  }
+  function syncAnalysis() {
+    var box = document.querySelector(".hz8-acc__report");
+    if (!box || !S.analysis) return;
+    var href = analysisHref();
+    var html = href ? '<a class="hz8-ppc__reportlink" href="' + esc(href) + '" target="_blank" rel="noopener">' + ICON.doc + "<span>Visa labbrapport (PDF)" + (S.analysis.kind === "variant" ? '<span class="hz8-ppc__reportfor"> · ' + esc(valueName(currentValue())) + "</span>" : "") + "</span>" + ICON.arrow + "</a>"
+      : '<span class="hz8-ppc__request">' + ICON.doc + "<span>Labbrapport skickas på begäran</span></span>";
+    if (box.__html !== html) { box.innerHTML = html; box.__html = html; }
   }
 
   function build() {
@@ -1541,10 +1694,34 @@
     });
     var sel = nativeSelect();
     if (sel) sel.addEventListener("change", function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 60); });
+    /* Slutsåld-beslutet från 83 (klass på <html>) ändrar köpzonen direkt. */
+    var wasOut = null;
+    new MutationObserver(function () {
+      var out = document.documentElement.classList.contains("hz8-pdp-out");
+      if (out !== wasOut) { wasOut = out; syncStation(); }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     window.addEventListener("resize", syncSticky, { passive: true });
     /* Bakåt/framåt och bfcache: stationen följer Nyehandels variant-URL. */
     ["popstate", "pageshow"].forEach(function (ev) { window.addEventListener(ev, function () { window.setTimeout(function () { syncStation(); syncLedger(); }, 120); }); });
   }
+
+  /* Kapabilitetsprofilen (läses av granskningsskripten och 10C-batcherna). */
+  HZ8.pdpProfile = function () {
+    var vs = S.values.length ? S.values.map(function (x) { return x.variant; }) : ((S.product && S.product.variants) || []);
+    var n = vs.filter(isBuyable).length;
+    return {
+      id: readProductId(), adapter: true, loaded: !!S.product,
+      variantModel: variantModel(), optionName: S.optionName, optionLabel: label(),
+      stock: !vs.length ? "unknown" : n === 0 ? "sold-out" : n < vs.length ? "partial" : "in-stock",
+      selected: valueName(currentValue()) || null, selectedBuyable: isBuyable(currentVariant()),
+      analysis: S.analysis ? S.analysis.kind : null, analysisHref: analysisHref() || null,
+      packages: packageProfile ? packageProfile() : null
+    };
+  };
+  var packageProfile = null;
+
+  /* 83-pdp-purchase.js (slutsåld-skyddet) läser om lagret efter ett köp. */
+  HZ8.pdpRefresh = function () { return loadState().then(function () { syncStation(); }).catch(function () {}); };
 
   var ASSET_BASE = "";
   HZ8.register("pdp-pilot", function (context) {
@@ -1575,6 +1752,6 @@
     })();
     /* API-svaret förfinar lager per strain, pristrappa per variant och
        variantnamn; misslyckas det fortsätter stationen på sidans egen data. */
-    loadState().then(function () { syncStation(); syncLedger(); }).catch(function () {});
+    loadState().then(function () { preferBuyable(); syncStation(); syncLedger(); }).catch(function () {});
   });
 })();
