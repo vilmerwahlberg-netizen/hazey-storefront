@@ -20,28 +20,14 @@
    sanningen: strainval = native <select>, antal = native +/-, köp =
    native köpknapp (Vue:s egen cart/addVariant).
 
-   Flerpack: Nyehandels pristrappa gäller per variantrad (verifierat
-   2026-10-13, theme8/review/pdp-pilot-2026-10/carttest-*.json). Ett
-   paket med EN strain blir en rad med antal N -> korrekt paketpris och
-   köpbart. Ett blandat paket kan inte läggas i varukorgen till rätt pris
-   förrän Nyehandel har en paketprodukt (theme8/blocks/MIXED-PACKS.md) --
-   byggaren fungerar då som granskningsläge och köpet spärras. */
+   Paket (TASK 10B-3): bara riktiga, verifierade paketprodukter i
+   Nyehandel (is_package, fast pris) -- se PACKAGE_PRODUCTS. Saknas de
+   visas inga paket; ?hz8-pkg-review=1 visar migreringsplanen spärrad
+   (BLOCKED). Nyehandels −15/−20 %-trappa är legacy och används aldrig. */
 (function () {
   "use strict";
 
   var HZ8 = window.HZ8;
-  /* Blandade paket (3/5 valfria strains). Byggaren visas alltid vid 3/5,
-     men KÖP av en blandning är spärrat tills Nyehandel har en riktig
-     prisregel som ger paketrabatten över flera varianter (verifierat
-     2026-10-15: pristrappan gäller per variantrad, ingen paketprodukt,
-     se review/pdp-pilot-2026-10/carttest-*.json). När regeln finns sätts
-     MIXED_PACK_RULE = true -- först då får en blandning köpas, och priset
-     som visas ska då vara varukorgens. ?hz8-mixed-buy=1 slår på det
-     blandade varukorgsflödet ENDAST för verifiering i previewn, och visar
-     då varukorgens verkliga pris (utan paketrabatt). */
-  var MIXED_PACK_RULE = false;
-  var MIXED_TEST = /[?&]hz8-mixed-buy=1/.test(location.search);
-  function mixedBuyAllowed() { return MIXED_PACK_RULE || MIXED_TEST; }
   var productId = null;
   function readProductId() {
     if (productId === null) productId = +(document.documentElement.innerHTML.match(/viewProduct\(.(\d+)/) || [])[1] || 0;
@@ -201,14 +187,126 @@
   /* ---------------- Köpstation ---------------- */
   var B = { pack: 1, qty: 1, slots: [], busy: false, msg: "", manual: false };
 
-  /* Paketsteg kommer ENDAST ur riktiga paketprodukter (se PACKAGES).
-     Nyehandels −15/−20 %-trappa per variantrad är legacy (beslut
-     2026-10-29) och visas aldrig som paket, steg eller besparing. */
-  function packTiers() { return []; }
+  /* ---------------- Paket (TASK 10B-3) ----------------
+     Paketsteg kommer ENDAST ur riktiga paketprodukter i Nyehandel
+     (product.is_package) med fast pris, verifierade i varukorg och kassa
+     (pris, rader, lagerdrag). Varje paketprodukt läses live ur
+     product/state: is_package, köpbar variant och pris -- inget pris
+     beräknas och ingen procentregel finns. Nyehandels −15/−20 %-trappa
+     per variantrad är legacy (beslut 2026-10-29) och används aldrig.
+
+     Modeller (data, inte UI-fall): same (samma variant × N), strain
+     (blandade strains ur produktens egna varianter, en plats per enhet),
+     family (strains ur separata produkter i en familj), collection (en av
+     varje), threeForTwo. Steg som 1/3/5, 1/3/5/10, 1/5/10, Hela
+     kollektionen och 3 för 2 är bara olika rader i datan.
+
+     PACKAGE_PRODUCTS: produkt-id -> [{ kind, qty, packageId, verified }].
+     Tom tills paketprodukterna är skapade i admin OCH verifierade; bara
+     verified: true visas och kan köpas. Utan dem: ingen paketväljare.
+
+     Granskningsläge (?hz8-pkg-review=1): migreringsplanen (PACKAGE_PLAN,
+     ur WooCommerce -- bara modell och stegstruktur, aldrig priser) visas
+     spärrad: "Paketprodukt saknas", byggaren med en plats per enhet,
+     slutsålda synliga men inte valbara, köpknappen avstängd. */
+  var PKG_REVIEW = /[?&]hz8-pkg-review=1/.test(location.search);
+  var PACKAGE_PRODUCTS = {};
+  /* Familjer (WooCommerce "familjebyggare") med Nyehandel-motsvarighet
+     (Task 10A woo-pdp-matrix.json, match "säker"). Medlemmarnas namn och
+     lager läses live. */
+  var FAMILIES = {
+    ms50: { name: "Magic Sauce 50 % – 5 g", members: {
+      84: "/sv/products/buds-magic-sauce-50-samurai-jack-5-gram", 59: "/sv/products/buds-magic-sauce-50-yoda-ice-cream-5-gram",
+      60: "/sv/products/buds-magic-sauce-50-gorilla-cookies-5-gram", 74: "/sv/products/buds-magic-sauce-50-tinky-winky-5-gram",
+      93: "/sv/products/buds-magic-sauce-50-khalifa-kush-5-gram", 96: "/sv/products/buds-magic-sauce-50-donny-burger-5-gram",
+      100: "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram", 120: "/sv/products/buds-magic-sauce-50-la-chupacabra-5-gram",
+      77: "/sv/products/hash-magic-sauce-50-marrakesh-dream-5-gram", 119: "/sv/products/hash-magic-sauce-50-charas-5-gram" } },
+    nano11: { name: "Nano11 – 5 g", members: { 41: "/sv/products/buds-7-nano11-lemon-purple-5-gram", 112: "/sv/products/buds-7-nano11-raspberry-popcorn-5-gram" } }
+  };
+  /* Stegkod: "3" = 3 st, "9K" = hela kollektionen (9 st), "3F2" = 3 för 2. */
+  var PACKAGE_PLAN = (function () {
+    var plan = { 91: { model: "strain", steps: ["3", "5", "9K"] }, 92: { model: "strain", steps: ["3", "5", "9K"] } };
+    [84, 59, 60, 74, 93, 96, 100, 120, 77, 119].forEach(function (id) { plan[id] = { model: "family", family: "ms50", steps: ["3", "5", "10"] }; });
+    [41, 112].forEach(function (id) { plan[id] = { model: "family", family: "nano11", steps: ["3", "5", "10"] }; });
+    return plan;
+  })();
+  var PK = { steps: [], plan: null, family: [], loaded: false };
+  function stepOf(code, model) {
+    var m = String(code).match(/^(\d+)(K|F2)?$/);
+    var kind = m[2] === "K" ? "collection" : m[2] === "F2" ? "threeForTwo" : model;
+    return { qty: +m[1], kind: kind, review: false };
+  }
+  function fetchState(id) {
+    return fetch("/frontend-api/product/state", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify({ product_id: +id, variant_ids: [null] }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function loadFamily(key) {
+    var fam = FAMILIES[key];
+    if (!fam) return Promise.resolve();
+    return Promise.all(Object.keys(fam.members).map(function (id) {
+      return fetchState(id).then(function (d) {
+        var P2 = d.product || {}, v = (P2.variants || [])[0];
+        return v ? { id: String(id), name: String(P2.name || "").replace(/&amp;/g, "&"), route: fam.members[id], variant: v, ok: HZ8.variantOrderable(v) } : null;
+      }, function () { return null; });
+    })).then(function (rows) {
+      PK.family = rows.filter(Boolean); PK.familyName = fam.name;
+      /* Kort namn i byggaren: led som alla medlemmar delar ("Magic Sauce
+         50%", "5 gram") tas bort -- kvar blir t.ex. "Buds · Samurai Jack". */
+      var parts = PK.family.map(function (m) { return m.name.split(/\s+[-–]\s+/); });
+      var common = parts.length > 1 ? parts[0].filter(function (seg) { return parts.every(function (p2) { return p2.indexOf(seg) !== -1; }); }) : [];
+      PK.family.forEach(function (m, i) { var rest = parts[i].filter(function (seg) { return common.indexOf(seg) === -1; }); m.short = rest.length ? rest.join(" · ") : m.name; });
+    });
+  }
+  function loadPackages() {
+    var pid = readProductId();
+    var list = PACKAGE_PRODUCTS[pid] || [];
+    return Promise.all(list.map(function (e) {
+      return fetchState(e.packageId).then(function (d) {
+        var P2 = d && d.product, v = P2 && (P2.variants || [])[0];
+        if (!P2 || P2.is_package !== true || !v || !HZ8.variantOrderable(v) || !v.price) return null;
+        return { qty: +e.qty, kind: e.kind, packageId: e.packageId, variantId: v.id, price: parseKr(v.price.formatted_price), formatted: v.price.formatted_price, verified: e.verified === true, review: false };
+      }, function () { return null; });
+    })).then(function (rows) {
+      var steps = rows.filter(function (x) { return x && x.verified; }).sort(function (a, b) { return a.qty - b.qty; });
+      PK.plan = PACKAGE_PLAN[pid] || null;
+      /* Kollektion = en av varje av produktens egna strains i Nyehandel
+         (planens antal kommer från WooCommerce och kan skilja -- då
+         rapporteras avvikelsen, platserna följer Nyehandels sortiment). */
+      if (!steps.length && PKG_REVIEW && PK.plan) steps = PK.plan.steps.map(function (c) {
+        var st = stepOf(c, PK.plan.model); st.review = true;
+        if (st.kind === "collection" && S.values.length > 1) { st.plannedQty = st.qty; st.qty = S.values.length; }
+        return st;
+      });
+      /* Stegen visas först när familjens produkter är lästa. */
+      var fam = steps.some(function (x) { return x.kind === "family"; }) && PK.plan && PK.plan.family;
+      return (fam ? loadFamily(PK.plan.family) : Promise.resolve()).then(function () { PK.steps = steps; });
+    }).then(function () { PK.loaded = true; syncStation(); }, function () { PK.loaded = true; });
+  }
+  /* Steg identifieras av modell + antal (en kollektion kan ha samma antal
+     som ett vanligt steg). B.step = vald nyckel, B.pack = dess antal. */
+  function stepKey(x) { return x.one ? "1" : x.kind + ":" + x.qty; }
+  function currentStep() { return B.step ? PK.steps.filter(function (x) { return stepKey(x) === B.step; })[0] || null : null; }
+  function reviewPack() { var c = currentStep(); return !!(c && c.review); }
+  packageProfile = function () {
+    var real = PK.steps.filter(function (x) { return !x.review; }), plan = PACKAGE_PLAN[readProductId()] || null;
+    return { model: plan ? plan.model : null, plannedSteps: plan ? plan.steps : [], verifiedSteps: real.map(function (x) { return x.qty; }),
+      status: real.length ? "PASS" : plan ? "BLOCKED" : "none", review: PKG_REVIEW,
+      collectionMismatch: PK.steps.filter(function (x) { return x.plannedQty && x.plannedQty !== x.qty; }).map(function (x) { return "plan " + x.plannedQty + " st (WooCommerce), Nyehandel " + x.qty + " strains"; })[0] || null, family: PK.family.map(function (m) { return m.name + (m.ok ? "" : " (slut)"); }) };
+  };
+  /* Byggarens alternativ: hela sortimentet, slutsålda synliga men inte
+     valbara. Familj = familjens produkter, annars produktens varianter. */
+  function builderOptions() {
+    var c = currentStep();
+    if (c && c.kind === "family") return PK.family.map(function (m) { return { id: m.id, name: m.short || m.name, ok: m.ok, stock: m.ok ? stockOf(m.variant) : 0, variant: m.variant }; });
+    return S.values.map(function (x) { return { id: x.id, name: x.name, ok: isBuyable(x.variant), stock: stockOf(x.variant), variant: x.variant }; });
+  }
+  function optName(id) { var o = builderOptions().filter(function (x) { return x.id === id; })[0]; return o ? o.name : valueName(id); }
   /* Antal (utan paket): högst lagret, aldrig fler än 99. */
   function maxQty() { var n = stockOf(currentVariant()); return Math.max(1, Math.min(99, n === Infinity ? 99 : n)); }
   function buyableValues() { return S.values.filter(function (x) { return isBuyable(x.variant); }); }
-  function builderActive() { return B.pack > 1 && buyableValues().length > 1; }
+  /* Ett valt paketsteg styr köpzonen direkt -- även innan byggarens
+     alternativ hunnit laddas (då är köpet spärrat, aldrig 1 st i tysthet). */
+  function builderActive() { return !!currentStep(); }
   /* Förvald strain fyller alla platser -- men bara tills kunden själv
      ändrat en plats (B.manual); manuella val skrivs aldrig över tyst. */
   function fillSlots(id, force) {
@@ -226,13 +324,6 @@
     var distinct = Object.keys(groups);
     return { size: size, done: filled.length, missing: missing, groups: groups, mixed: distinct.length > 1, single: distinct.length === 1 && !missing.length ? distinct[0] : null };
   }
-  /* Vad Nyehandel faktiskt tar för valet (en rad per strain, egen nivå). */
-  function nyehandelPrice(groups) {
-    var sum = 0;
-    for (var k in groups) { var u = tierUnit(S.byOption[k], groups[k]); if (u == null) return null; sum += u * groups[k]; }
-    return sum;
-  }
-
   function stationHtml() {
     /* Lager + betyg på en rad under H1 (Faraoh-referensen). */
     var h = '<div class="hz8-pp__status"><p class="hz8-pp__stock" aria-live="polite"></p><div class="hz8-pp__meta"></div></div>';
@@ -244,7 +335,7 @@
       '<div class="hz8-pp__tiles" id="hz8-pp-tiles" role="group"></div>' +
       '<button type="button" class="hz8-pp__carbtn" data-dir="1" aria-label="Nästa strains" aria-controls="hz8-pp-tiles">' + ICON.chev + '</button></div>' +
       '<p class="hz8-pp__carstatus" aria-hidden="true"></p></fieldset>';
-    h += '<fieldset class="hz8-pp__group hz8-pp__packs" hidden><legend class="hz8-pp__legend">Välj förpackning</legend><div class="hz8-pp__packlist" role="radiogroup" aria-label="Välj förpackning"></div></fieldset>';
+    h += '<fieldset class="hz8-pp__group hz8-pp__packs" hidden><legend class="hz8-pp__legend">Välj förpackning</legend><div class="hz8-pp__packlist" role="radiogroup" aria-label="Välj förpackning"></div><p class="hz8-pp__pknote" hidden></p></fieldset>';
     /* Byggare: en rad per position (nummer, strain, Ändra). Ingen H2 --
        den hör till köpformuläret, inte sidans kapitelstruktur. */
     h += '<div class="hz8-pp__builder" role="group" aria-labelledby="hz8-pp-builder-title" hidden><div class="hz8-pp__bhead"><button type="button" class="hz8-pp__btoggle" aria-expanded="true" aria-controls="hz8-pp-bslots">' + ICON.box + '<span class="hz8-pp__btoggle-t"></span>' + ICON.chev + '</button><p id="hz8-pp-builder-title" class="hz8-pp__btitle"></p><span class="hz8-pp__count" aria-live="polite"></span><button type="button" class="hz8-pp__fill"></button></div>' +
@@ -343,32 +434,42 @@
     if (cs.textContent !== ct) cs.textContent = ct;
     if (sf.__cur !== cur) { sf.__cur = cur; revealSelected(sf, false); }
     syncCarousel(sf);
-    /* Förpackning */
-    var tiers = packTiers();
+    /* Förpackning: 1 st + riktiga paketsteg (eller spärrad plan i
+       granskningsläge). Inget steg -> ingen väljare, bara antal. */
+    var steps = PK.steps;
     var packs = st.querySelector(".hz8-pp__packs");
-    packs.hidden = !tiers.length || !anyBuyable;
-    if (!tiers.some(function (t) { return t.min === B.pack; })) B.pack = 1;
-    if (tiers.length) {
-      var base = tiers[0].unit;
-      var best = tiers.reduce(function (a, b) { return b.unit < a.unit ? b : a; });
-      var html = tiers.map(function (t) {
-        var total = t.min * t.unit, saved = t.min * (base - t.unit), pct = Math.round((1 - t.unit / base) * 100);
-        /* Högst ett märke: "Bäst värde" (lägsta styckpris i Nyehandels
-           pristrappa). "Populärast" kräver försäljningsdata som saknas;
-           besparingen står i kortet. */
-        var badge = t === best && t !== tiers[0] ? '<span class="hz8-pp__badge is-best">Bäst värde</span>' : "";
-        return '<button type="button" role="radio" class="hz8-pp__pack" data-qty="' + t.min + '" aria-checked="' + (t.min === B.pack) + '" tabindex="' + (t.min === B.pack ? 0 : -1) + '">' + badge +
-          '<span class="hz8-pp__pack-qty">' + t.min + ' st</span><span class="hz8-pp__pack-total">' + kr(total) + '</span><span class="hz8-pp__pack-unit">' + kr(t.unit) + "/st</span>" +
-          (saved >= 0.5 ? '<span class="hz8-pp__pack-save">Spara ' + kr(saved) + "</span>" : '<span class="hz8-pp__pack-save is-empty" aria-hidden="true"></span>') + "</button>";
+    packs.hidden = !steps.length || !anyBuyable;
+    packs.classList.toggle("is-review", steps.some(function (x) { return x.review; }));
+    if (B.step && !currentStep()) { B.step = ""; B.pack = 1; }
+    if (steps.length) {
+      var unit1 = tierUnit(v, 1);
+      var stepName = function (x) { return x.kind === "collection" ? "Hela kollektionen" : x.kind === "threeForTwo" ? "3 för 2" : x.qty + " st"; };
+      var cards = [{ qty: 1, one: true }].concat(steps);
+      var html = cards.map(function (x) {
+        var on = stepKey(x) === (B.step || "1"), body, aria;
+        if (x.one) { body = '<span class="hz8-pp__pack-qty">1 st</span><span class="hz8-pp__pack-total">' + (unit1 != null ? kr(unit1) : "") + "</span>"; aria = "1 st"; }
+        else if (x.review) {
+          body = '<span class="hz8-pp__pack-qty">' + esc(stepName(x)) + "</span>" + (x.kind === "collection" ? '<span class="hz8-pp__pack-unit">' + x.qty + " st, en av varje</span>" : "") + '<span class="hz8-pp__pack-missing">Paketprodukt saknas</span>';
+          aria = stepName(x) + ", paketprodukt saknas, kan inte köpas än";
+        } else {
+          var saved = unit1 != null ? x.qty * unit1 - x.price : 0;
+          body = '<span class="hz8-pp__pack-qty">' + esc(stepName(x)) + '</span><span class="hz8-pp__pack-total">' + esc(x.formatted) + '</span><span class="hz8-pp__pack-unit">' + kr(x.price / x.qty) + "/st</span>" + (saved >= 0.5 ? '<span class="hz8-pp__pack-save">Spara ' + kr(saved) + "</span>" : "");
+          aria = stepName(x) + ", " + x.formatted;
+        }
+        return '<button type="button" role="radio" class="hz8-pp__pack' + (x.review ? " is-review" : "") + '" data-qty="' + x.qty + '" data-key="' + esc(stepKey(x)) + '" aria-checked="' + on + '" tabindex="' + (on ? 0 : -1) + '" aria-label="' + esc(aria) + '">' + body + "</button>";
       }).join("");
       var list = packs.querySelector(".hz8-pp__packlist");
       if (list.__html !== html) { list.innerHTML = html; list.__html = html; }
+      var note = packs.querySelector(".hz8-pp__pknote");
+      var nt = packs.classList.contains("is-review") ? "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel." : "";
+      if (note.textContent !== nt) note.textContent = nt;
+      note.hidden = !nt;
     }
     /* Byte i strainkarusellen fyller platserna så länge kunden inte själv
        ändrat någon plats. */
     if (builderActive() && B.__cur !== cur) { B.__cur = cur; if (isBuyable(v)) fillSlots(cur, false); }
     renderBuilder(st);
-    renderSum(st, tiers);
+    renderSum(st);
     renderCta(st, anyBuyable);
     syncAnalysis();
   }
@@ -379,15 +480,19 @@
     host.hidden = !on;
     if (!on) return;
     var size = B.pack;
-    var opts = buyableValues();
-    var cur = currentValue();
-    if (!B.slots.length) fillSlots(isBuyable(S.byOption[cur]) ? cur : (opts[0] && opts[0].id), true);
-    while (B.slots.length < size) B.slots.push(B.manual ? "" : (B.slots[0] || ""));
+    var step = currentStep();
+    var all = builderOptions(), opts = all.filter(function (o) { return o.ok; });
+    var cur = step.kind === "family" ? String(readProductId()) : currentValue();
+    var curOpt = all.filter(function (o) { return o.id === cur; })[0];
+    if (step.kind === "collection") B.slots = all.map(function (o) { return o.id; }).slice(0, size);
+    if (!B.slots.length) fillSlots(curOpt && curOpt.ok ? cur : (opts[0] && opts[0].id), true);
+    while (step.kind !== "collection" && B.slots.length < size) B.slots.push(B.manual ? "" : (B.slots[0] || ""));
     B.slots = B.slots.slice(0, size);
     /* Val som inte längre är köpbara töms; aldrig fler av en strain än lagret. */
-    B.slots = B.slots.map(function (val) { return val && opts.some(function (o) { return o.id === val; }) ? val : ""; });
+    if (step.kind !== "collection") B.slots = B.slots.map(function (val) { return val && opts.some(function (o) { return o.id === val; }) ? val : ""; });
     var ps = packState();
-    host.querySelector(".hz8-pp__btitle").textContent = "Ditt " + size + "-pack";
+    host.classList.toggle("is-review", !!step.review);
+    host.querySelector(".hz8-pp__btitle").textContent = step.kind === "collection" ? "Hela kollektionen · " + size + " st" : (step.kind === "family" && PK.familyName ? PK.familyName + " · " : "") + "Ditt " + size + "-pack";
     /* Mobil (V5): byggaren hopfälld som "Bygg ditt N-pack" när paketet är
        komplett med en strain; öppen så fort något kräver ett val. */
     var attention = ps.missing.length > 0 || ps.mixed || B.manual;
@@ -399,20 +504,27 @@
     var cnt = host.querySelector(".hz8-pp__count"), t = ps.done + " av " + size + " valda";
     if (cnt.textContent !== t) cnt.textContent = t;
     var fill = host.querySelector(".hz8-pp__fill");
-    var curOk = isBuyable(S.byOption[cur]) && stockOf(S.byOption[cur]) >= size;
-    var ft = "Alla som " + valueName(cur);
+    var curOk = !!(curOpt && curOpt.ok && curOpt.stock >= size) && step.kind !== "collection";
+    var ft = "Alla som " + (curOpt ? curOpt.name : "");
     if (fill.textContent !== ft) fill.textContent = ft;
     fill.hidden = !curOk || (ps.single === cur && !ps.missing.length);
     var ol = host.querySelector(".hz8-pp__slots");
     var html = B.slots.map(function (val, idx) {
+      var nm = val ? optName(val) : "Välj " + label();
+      /* Kollektion: en av varje -- ingen väljare per plats. */
+      if (step.kind === "collection") {
+        var o0 = all.filter(function (o) { return o.id === val; })[0];
+        return '<li class="hz8-pp__slot is-set is-fixed' + (o0 && !o0.ok ? " is-out" : "") + '"><span class="hz8-pp__slotnum" aria-hidden="true">' + (idx + 1) + '</span><span class="hz8-pp__slotname">' + esc(nm) + (o0 && !o0.ok ? " (slut i lager)" : "") + "</span></li>";
+      }
       return '<li class="hz8-pp__slot' + (val ? " is-set" : "") + '"><span class="hz8-pp__slotnum" aria-hidden="true">' + (idx + 1) + "</span>" +
-        '<span class="hz8-pp__slotname" aria-hidden="true">' + (val ? esc(valueName(val)) : "Välj " + esc(label())) + "</span>" +
+        '<span class="hz8-pp__slotname" aria-hidden="true">' + esc(nm) + "</span>" +
         '<span class="hz8-pp__slotedit" aria-hidden="true">' + (val ? "Ändra" : "Välj") + ICON.chev + "</span>" +
         '<select id="hz8-pp-slot-' + idx + '" data-slot="' + idx + '" aria-label="Plats ' + (idx + 1) + " av " + size + ", " + esc(label()) + '">' + '<option value="">Välj ' + esc(label()) + "</option>" +
-        opts.map(function (o) {
+        all.map(function (o) {
           var used = B.slots.filter(function (x, j) { return x === o.id && j !== idx; }).length;
-          var full = o.id !== val && used >= stockOf(o.variant);
-          return '<option value="' + esc(o.id) + '"' + (o.id === val ? " selected" : "") + (full ? " disabled" : "") + ">" + esc(o.name) + (full ? " (inga fler i lager)" : "") + "</option>";
+          var full = o.ok && o.id !== val && used >= o.stock;
+          var off = !o.ok || full;
+          return '<option value="' + esc(o.id) + '"' + (o.id === val ? " selected" : "") + (off ? " disabled" : "") + ">" + esc(o.name) + (!o.ok ? " (slut i lager)" : full ? " (inga fler i lager)" : "") + "</option>";
         }).join("") + "</select></li>";
     }).join("");
     if (ol.__html !== html) {
@@ -421,34 +533,36 @@
       if (active != null) { var again = ol.querySelector('select[data-slot="' + active + '"]'); if (again) again.focus({ preventScroll: true }); }
     }
     var note = host.querySelector(".hz8-pp__mixnote");
-    var nt = ps.mixed ? (mixedBuyAllowed() ? "Testläge: blandat paket läggs som en rad per " + label() + " till varukorgens ordinarie pris." : "Blandade " + labelPlural() + " kan inte köpas till paketpris ännu. Paketpriset gäller när alla platser har samma " + label() + ".") : "";
+    var nt = step.review ? "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel." : "";
     if (note.textContent !== nt) note.textContent = nt;
     note.hidden = !nt;
   }
 
-  function renderSum(st, tiers) {
+  function renderSum(st) {
     var v = currentVariant();
     var price = st.querySelector(".hz8-pp__price"), unit = st.querySelector(".hz8-pp__unit"), save = st.querySelector(".hz8-pp__save"), cmp = st.querySelector(".hz8-pp__cmp");
+    var step = builderActive() ? currentStep() : null;
+    price.classList.toggle("is-missing", !!(step && step.review));
+    if (step) {
+      /* Paket: paketproduktens eget pris -- eller inget pris alls när
+         paketprodukten saknas (granskningsläge). Aldrig beräknat. */
+      var u1 = tierUnit(v, 1);
+      var pt = step.review ? "Paketpris saknas" : step.formatted;
+      if (price.textContent !== pt) price.textContent = pt;
+      var ut = step.review ? "" : "(" + kr(step.price / step.qty) + "/st)";
+      if (unit.textContent !== ut) unit.textContent = ut;
+      var sv = !step.review && u1 != null && step.qty * u1 - step.price >= 0.5 ? "Spara " + kr(step.qty * u1 - step.price) : "";
+      if (save.textContent !== sv) save.textContent = sv;
+      cmp.hidden = true;
+      return;
+    }
     /* Utan paket: valt antal. Summan är det Nyehandels varukorg tar för
        raden (plattformens eget pris för antalet) -- ingen besparing visas. */
-    var qty = builderActive() ? B.pack : B.qty, u = tierUnit(v, qty);
-    if (builderActive()) {
-      var ps = packState();
-      if (ps.single) u = tierUnit(S.byOption[ps.single], qty);
-      /* Blandning: aldrig paketpris -- visa vad varukorgen faktiskt tar
-         (en rad per strain med sin egen nivå), utan besparing. */
-      if (ps.mixed && !MIXED_PACK_RULE) {
-        var real = nyehandelPrice(ps.groups), pt = real != null ? kr(real) : "";
-        if (price.textContent !== pt) price.textContent = pt;
-        unit.textContent = ""; save.textContent = ""; cmp.hidden = true;
-        return;
-      }
-    }
+    var qty = B.qty, u = tierUnit(v, qty);
     if (u == null) u = parseKr((document.getElementById("product-price") || {}).textContent);
     var priceTxt = u != null ? kr(u * qty) : "";
     if (price.textContent !== priceTxt) price.textContent = priceTxt;
-    var unitTxt = qty > 1 && u != null && builderActive() ? "(" + kr(u) + "/st)" : "";
-    if (unit.textContent !== unitTxt) unit.textContent = unitTxt;
+    if (unit.textContent) unit.textContent = "";
     if (save.textContent) save.textContent = "";
     /* Jämförelsepris bara när Nyehandel har ett (rea) -- för 1 st. */
     var hasCmp = qty === 1 && v && v.price && v.price.has_compare_price;
@@ -459,9 +573,10 @@
   function blockReason() {
     var v = currentVariant();
     if (!builderActive()) return isBuyable(v) ? "" : valueName(currentValue()) + " är slut i lager. Välj en annan " + label() + ".";
+    if (reviewPack()) return "Paketet kan inte köpas än – paketprodukten saknas i Nyehandel.";
+    if (!builderOptions().some(function (o) { return o.ok; })) return "Inget alternativ i paketet finns i lager.";
     var ps = packState();
     if (ps.missing.length) return "Välj " + label() + " för plats " + ps.missing.join(", ").replace(/, (\d+)$/, " och $1") + ".";
-    if (ps.mixed && !mixedBuyAllowed()) return "Blandade paket kan inte köpas ännu. Välj samma " + label() + " på alla platser för paketpriset.";
     return "";
   }
   /* En enda källa för köpknappens text och läge -- ordinarie CTA och
@@ -470,8 +585,8 @@
     if (B.busy) return "Lägger till…";
     if (B.added) return "Tillagd ✓";
     if (!anyBuyable) return "Slutsåld";
+    if (builderActive() && reviewPack()) return "Paket kan inte köpas än";
     if (builderActive() && packState().missing.length) return "Välj alternativ";
-    if (builderActive() && packState().mixed && !mixedBuyAllowed()) return "Blandat paket – ej köpbart än";
     if (!builderActive() && !isBuyable(currentVariant())) return "Slutsåld";
     return "Lägg i varukorgen";
   }
@@ -502,11 +617,15 @@
     }
     var reason = blockReason();
     cta.setAttribute("aria-disabled", reason && !B.busy ? "true" : "false");
+    /* Spärrat paket (granskningsläge): riktigt avstängd -- inte klickbar,
+       inte fokuserbar, inget varukorgsanrop. */
+    var blockedPack = builderActive() && reviewPack();
+    if (cta.disabled !== blockedPack) cta.disabled = blockedPack;
     cta.classList.toggle("is-blocked", !!reason);
     cta.setAttribute("aria-busy", B.busy ? "true" : "false");
     var lbl = ctaLabel(anyBuyable);
     if (cta.textContent !== lbl) cta.textContent = lbl;
-    cta.setAttribute("data-state", B.busy ? "busy" : B.added ? "added" : !anyBuyable || (!builderActive() && !isBuyable(currentVariant())) ? "soldout" : builderActive() && packState().mixed && !mixedBuyAllowed() ? "blocked" : reason ? "missing" : "ready");
+    cta.setAttribute("data-state", B.busy ? "busy" : B.added ? "added" : !anyBuyable || (!builderActive() && !isBuyable(currentVariant())) ? "soldout" : blockedPack ? "blocked" : reason ? "missing" : "ready");
     var msg = st.querySelector(".hz8-pp__msg");
     var m = B.msg || (reason && B.tried ? reason : "");
     if (msg.textContent !== m) msg.textContent = m;
@@ -562,7 +681,7 @@
       if (builderActive() && packState().missing.length) focusFirstMissing();
       return;
     }
-    if (builderActive() && packState().mixed) return buyMixed(packState().groups);
+    if (builderActive()) { var step = currentStep(); if (!step || step.review) return; return buyPackage(step); }
     var target = builderActive() ? packState().single : currentValue();
     var qty = builderActive() ? B.pack : B.qty;
     /* Bekräftelse ur Nyehandels egen varukorg (Vuex): "Tillagd" bara när
@@ -606,51 +725,33 @@
     if (st) st.setAttribute("data-last", String(qty));
   }
 
-  /* Blandat paket (bara när mixedBuyAllowed): en rad per strain med rätt
-     antal via samma varukorgsintegration som resten av temat
-     (HZ8.addVariant -> Nyehandels cart/addVariant), en i taget.
-     "Tillagd" först när VARJE variants antal i Nyehandels egen varukorg
-     ökat med rätt mängd; delvis fel rapporteras som delvis fel och
-     kundens val ligger kvar. */
-  function cartQtyByVariant() {
-    var store = HZ8.store && HZ8.store(); var c = store && store.state && store.state.cart && store.state.cart.cart;
-    if (!c) return null;
-    var m = {}; (c.items || []).forEach(function (i) { m[i.variant_id] = (m[i.variant_id] || 0) + (+i.quantity || 0); }); return m;
-  }
-  function buyMixed(groups) {
-    if (B.busy) return;
-    var rows = Object.keys(groups).map(function (id) { return { id: id, variant: S.byOption[id], qty: groups[id] }; });
-    if (rows.some(function (r) { return !r.variant || !isBuyable(r.variant); })) { B.msg = "En vald " + label() + " är slut i lager."; syncStation(); return; }
-    var before = cartQtyByVariant();
+  /* Paket: EN rad i Nyehandels varukorg -- paketproduktens variant med
+     valda platser (packageProductVariants), så att Nyehandel sätter
+     paketpriset och drar lagret. Bara för steg som verifierats i varukorg
+     och kassa (PACKAGE_PRODUCTS verified: true). "Tillagd" först när
+     varukorgens antal faktiskt ökat. */
+  function buyPackage(step) {
+    if (B.busy || !step || step.review || !step.verified) return;
+    var all = builderOptions();
+    var rows = B.slots.map(function (id) { var o = all.filter(function (x) { return x.id === id; })[0]; return o && o.ok ? o.variant.id : null; });
+    if (rows.some(function (x) { return !x; })) { B.tried = true; syncStation(); return; }
+    var store = HZ8.store && HZ8.store();
+    var count = function () { var c = store && store.state && store.state.cart && store.state.cart.cart; return c ? +(c.quantity_count || 0) : null; };
+    var before = count();
     B.busy = true; B.added = false; B.msg = ""; syncStation();
-    /* En rad i taget; nästa skickas först när Nyehandels varukorg visar
-       föregående (annars ignoreras samtidiga anrop). */
-    var waitFor = function (r) {
-      var base = (before && before[r.variant.id]) || 0, tries = 0;
-      return new Promise(function (resolve, reject) {
-        (function poll() {
-          var now = cartQtyByVariant();
-          if (now && (now[r.variant.id] || 0) - base >= r.qty) return resolve();
-          if (++tries > 40) return reject(new Error("timeout"));
-          window.setTimeout(poll, 150);
-        })();
-      });
-    };
-    rows.reduce(function (p, r) {
-      return p.then(function () { return Promise.resolve(HZ8.addVariant(r.variant.id, r.qty)).then(function () { return waitFor(r); }); });
-    }, Promise.resolve()).catch(function () {}).then(function () { return wait(300); }).then(function () {
-      var after = cartQtyByVariant();
-      var ok = rows.filter(function (r) { return after && before && (after[r.variant.id] || 0) - (before[r.variant.id] || 0) >= r.qty; });
-      B.busy = false;
-      if (after && ok.length === rows.length) {
-        B.added = true; B.tried = false;
+    fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(),
+      body: JSON.stringify({ product_variant_id: step.variantId, quantity: 1, meta: { data: { packageProductVariants: rows.map(function (vid, i) { return { slot: i, product_variant_id: vid }; }) } } }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return store && store.dispatch ? store.dispatch("cart/reload") : null; })
+      .then(function () { return wait(300); })
+      .then(function () {
+        B.busy = false;
+        if (before !== null && !(count() > before)) throw new Error("not-added");
+        B.added = true; B.tried = false; B.msg = (step.kind === "collection" ? "Hela kollektionen" : step.qty + "-pack") + " har lagts i varukorgen.";
         window.clearTimeout(B.addedT); B.addedT = window.setTimeout(function () { B.added = false; syncStation(); }, 2600);
-        B.msg = B.pack + "-pack har lagts i varukorgen.";
-      } else {
-        B.msg = ok.length ? "Bara " + ok.length + " av " + rows.length + " " + labelPlural() + " lades i varukorgen. Kontrollera varukorgen och försök igen." : "Det gick inte att lägga paketet i varukorgen. Försök igen.";
-      }
-      syncStation();
-    });
+        syncStation();
+        if (store && store.dispatch) store.dispatch("cart/open");
+      })
+      .catch(function () { B.busy = false; B.msg = "Det gick inte att lägga paketet i varukorgen. Försök igen."; syncStation(); });
   }
 
   /* ---- Strainkarusell ---- */
@@ -731,9 +832,9 @@
       }
       var pack = e.target.closest(".hz8-pp__pack");
       if (pack) {
-        var n = +pack.getAttribute("data-qty");
-        B.pack = n; B.msg = ""; B.tried = false;
-        if (n > 1 && !B.manual && isBuyable(currentVariant())) fillSlots(currentValue(), false);
+        var n = +pack.getAttribute("data-qty"), key = pack.getAttribute("data-key") || String(n);
+        B.pack = n; B.step = key === "1" ? "" : key; B.msg = ""; B.tried = false;
+        B.slots = []; B.manual = false;
         syncStation(); return;
       }
       var qb = e.target.closest(".hz8-pp__qbtn");
@@ -757,7 +858,7 @@
       var i = items.indexOf(item), d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
       var nx = items[(i + d + items.length) % items.length];
       if (!nx) return;
-      e.preventDefault(); nx.click(); window.setTimeout(function () { var again = group.querySelector('[data-value="' + nx.getAttribute("data-value") + '"], [data-qty="' + nx.getAttribute("data-qty") + '"]'); (again || nx).focus(); }, 80);
+      e.preventDefault(); nx.click(); window.setTimeout(function () { var again = group.querySelector('[data-value="' + nx.getAttribute("data-value") + '"], [data-key="' + nx.getAttribute("data-key") + '"]'); (again || nx).focus(); }, 80);
     });
   }
 
@@ -833,7 +934,7 @@
     var st = document.querySelector(".hz8-pp");
     var cta = st && st.querySelector(".hz8-pp__cta");
     /* Längre ned tar kapitelnavigeringen över platsen -- aldrig båda. */
-    var show = !!(sticky.__past && cta && !cta.hidden && window.matchMedia("(max-width: 1023px)").matches && !overlayOpen() && !document.documentElement.classList.contains("hz8-ppnav-deep") && !document.documentElement.classList.contains("hz8-pp-nearfoot") && !document.documentElement.classList.contains("hz8-pp-to-product"));
+    var show = !!(sticky.__past && cta && !cta.hidden && cta.getAttribute("data-state") !== "blocked" && window.matchMedia("(max-width: 1023px)").matches && !overlayOpen() && !document.documentElement.classList.contains("hz8-ppnav-deep") && !document.documentElement.classList.contains("hz8-pp-nearfoot") && !document.documentElement.classList.contains("hz8-pp-to-product"));
     if (sticky.classList.contains("is-on") !== show) {
       sticky.classList.toggle("is-on", show);
       sticky.setAttribute("aria-hidden", show ? "false" : "true");
@@ -1750,7 +1851,7 @@
       packages: packageProfile ? packageProfile() : null
     };
   };
-  var packageProfile = null;
+  var packageProfile; // sätts av paketdelen ovan (TASK 10B-3)
 
   /* 83-pdp-purchase.js (slutsåld-skyddet) läser om lagret efter ett köp. */
   HZ8.pdpRefresh = function () { return loadState().then(function () { syncStation(); }).catch(function () {}); };
@@ -1784,6 +1885,6 @@
     })();
     /* API-svaret förfinar lager per strain, pristrappa per variant och
        variantnamn; misslyckas det fortsätter stationen på sidans egen data. */
-    loadState().then(function () { preferBuyable(); syncStation(); syncLedger(); }).catch(function () {});
+    loadState().then(function () { preferBuyable(); syncStation(); syncLedger(); return loadPackages(); }).catch(function () {});
   });
 })();

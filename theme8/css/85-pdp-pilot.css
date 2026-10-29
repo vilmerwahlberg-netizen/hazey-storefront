@@ -693,6 +693,19 @@ html.hz8.hz8-pdp-pilot[data-hz8-page="product"] .buy-controls.hz8-pp-monitor .mo
 html.hz8-pdp-pilot .hz8-ppc__request { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--pp-ink) !important; font: 500 14.5px/1.35 var(--hz8-font-ui) !important; }
 html.hz8-pdp-pilot .hz8-ppc__request svg { flex: none; width: 22px; height: 22px; color: var(--pp-green); }
 html.hz8-pdp-pilot .hz8-ppc__reportfor { font-weight: 400; }
+/* Paket (TASK 10B-3). Granskningsläge (?hz8-pkg-review=1): stegen syns
+   men ser inte köpbara ut -- streckad kant, dämpad yta, "Paketprodukt
+   saknas" i stället för pris; köpknappen är avstängd. */
+html.hz8-pdp-pilot .hz8-pp__pknote { margin: 8px 0 0; padding: 8px 10px; border-left: 2px solid var(--pp-orange); background: rgba(217, 120, 47, .07); color: #6b3713; font: 400 13px/1.45 var(--hz8-font-ui) !important; }
+html.hz8-pdp-pilot .hz8-pp__pknote[hidden] { display: none; }
+html.hz8-pdp-pilot .hz8-pp__pack.is-review { border-style: dashed !important; background: #f6eee2 !important; box-shadow: none !important; }
+html.hz8-pdp-pilot .hz8-pp__pack.is-review[aria-checked="true"] { border-color: #b98a5c !important; }
+html.hz8-pdp-pilot .hz8-pp__pack-missing { color: #6b5a44; font: 500 12px/1.25 var(--hz8-font-ui) !important; }
+html.hz8-pdp-pilot .hz8-pp__price.is-missing { color: #6b5a44; font-size: 18px !important; font-weight: 600 !important; }
+html.hz8-pdp-pilot .hz8-pp__builder.is-review .hz8-pp__slot { background: #f6eee2; }
+html.hz8-pdp-pilot .hz8-pp__slot.is-fixed { cursor: default; }
+html.hz8-pdp-pilot .hz8-pp__slot.is-fixed.is-out .hz8-pp__slotname { color: #8d4417; }
+html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta):disabled { border-color: #cfc3b1; background: #e2d8c8; color: #4f4a3f !important; box-shadow: none; cursor: not-allowed; transform: none; }
 html.hz8-pdp-pilot .hz8-pp-similar .hz8-prail__head { flex-wrap: wrap; }
 /* Kortens "Köp mer – betala mindre"-band är Nyehandels legacy-trappa
    (beslut 2026-10-29) -- visas inte på produktsidan. Fyra kort på desktop. */
