@@ -1,0 +1,310 @@
+{
+ "soldout-17-393": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "99 kr",
+   "descr": true,
+   "similar": 8,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "40",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Blommor – CBN 10% – Great White Shark\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - group \"Välj vikt\":\n    - text: Välj vikt\n    - group \"Välj vikt, 3 alternativ\":\n      - button \"1 gram, slut i lager\" [disabled] [pressed]: 1 gram Slut\n      - button \"7 gram, slut i lager\" [disabled]: 7 gram Slut\n      - button \"20 gram, slut i lager\" [disabled]: 20 gram Slut\n  - paragraph: 99 kr\n  - status\n- button \"Bevaka\"",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "1 gramSlut",
+   "Bevaka"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-17-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "99 kr",
+   "descr": true,
+   "similar": 8,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "40",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Blommor – CBN 10% – Great White Shark\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - group \"Välj vikt\":\n    - text: Välj vikt\n    - button \"Föregående strains\" [disabled]\n    - group \"Välj vikt, 3 alternativ\":\n      - button \"1 gram, slut i lager\" [disabled] [pressed]: 1 gram Slut\n      - button \"7 gram, slut i lager\" [disabled]: 7 gram Slut\n      - button \"20 gram, slut i lager\" [disabled]: 20 gram Slut\n    - button \"Nästa strains\" [disabled]\n  - paragraph: 99 kr\n  - status\n- button \"Bevaka\"",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "1 gramSlut",
+   "Bevaka"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-20-393": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": true,
+   "price": "168,99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": false
+   },
+   "buybar": {
+    "hidden": true,
+    "shown": false,
+    "cta": "",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": true,
+    "shown": false,
+    "cta": "",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- heading \"Fraktändring\" [level=1]\n- insertion: 168,99 kr\n- text: Slut på lager\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 168,99 kr 168,99 kr / st\" [pressed]\n  - button \"3 st 506,97 kr 430,92 kr 143,64 kr / st Spara 76,05 kr\":\n    - text: 3 st\n    - deletion: 506,97 kr\n    - text: 430,92 kr 143,64 kr / st Spara 76,05 kr\n  - button \"Prisvärdast 5 st 844,95 kr 675,95 kr 135,19 kr / st Spara 169 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 844,95 kr\n    - text: 675,95 kr 135,19 kr / st Spara 169 kr",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "1 st168,99 kr168,99 kr / st",
+   "3 st506,97 kr430,92 kr143,64 kr / ",
+   "Prisvärdast5 st844,95 kr675,95 kr1"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-20-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": true,
+   "price": "168,99 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": false
+   },
+   "buybar": {
+    "hidden": true,
+    "shown": false,
+    "cta": "",
+    "ctaDisabled": false
+   },
+   "bevaka": false,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": {
+    "hidden": true,
+    "shown": false,
+    "cta": "",
+    "ctaDisabled": false
+   },
+   "enabledBuyVisible": []
+  },
+  "a11y": "- heading \"Fraktändring\" [level=1]\n- insertion: 168,99 kr\n- text: Slut på lager\n- list:\n  - listitem: Fri frakt från 499 kr\n  - listitem: Diskreta paket\n- paragraph: Köp mer - Betala mindre\n- group \"Köp mer - Betala mindre\":\n  - button \"1 st 168,99 kr 168,99 kr / st\" [pressed]\n  - button \"3 st 506,97 kr 430,92 kr 143,64 kr / st Spara 76,05 kr\":\n    - text: 3 st\n    - deletion: 506,97 kr\n    - text: 430,92 kr 143,64 kr / st Spara 76,05 kr\n  - button \"Prisvärdast 5 st 844,95 kr 675,95 kr 135,19 kr / st Spara 169 kr\":\n    - text: Prisvärdast 5 st\n    - deletion: 844,95 kr\n    - text: 675,95 kr 135,19 kr / st Spara 169 kr",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "1 st168,99 kr168,99 kr / st",
+   "3 st506,97 kr430,92 kr143,64 kr / ",
+   "Prisvärdast5 st844,95 kr675,95 kr1"
+  ],
+  "tries": [
+   "native.click",
+   "buybar.click"
+  ],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-15-393": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "799 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": false
+   },
+   "buybar": null,
+   "bevaka": false,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "36",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - paragraph: Betyg 5,0 av 5, 1 omdömen\n  - link \"Visa 1 omdöme\":\n    - /url: \"#omdomen\"\n  - group \"Välj strain Vad är en strain?\":\n    - text: Välj strain\n    - button \"Vad är en strain?\"\n    - group \"Välj strain, 2 alternativ\":\n      - button \"Golden Pineapple, slut i lager\" [disabled] [pressed]: Golden Pineapple Slut\n      - button \"Bubble Gum OG, slut i lager\" [disabled]: Bubble Gum OG Slut\n  - paragraph: 799 kr\n  - status",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Visa 1 omdöme",
+   "Vad är en strain?",
+   "Golden PineappleSlut"
+  ],
+  "tries": [
+   "native.click"
+  ],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-15-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "799 kr",
+   "descr": true,
+   "similar": 0,
+   "nativeBuy": {
+    "visible": false,
+    "focusable": false
+   },
+   "buybar": null,
+   "bevaka": false,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": "36",
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - paragraph: Betyg 5,0 av 5, 1 omdömen\n  - link \"Visa 1 omdöme\":\n    - /url: \"#omdomen\"\n  - group \"Välj strain Vad är en strain?\":\n    - text: Välj strain\n    - button \"Vad är en strain?\"\n    - button \"Föregående strains\" [disabled]\n    - group \"Välj strain, 2 alternativ\":\n      - button \"Golden Pineapple, slut i lager\" [disabled] [pressed]: Golden Pineapple Slut\n      - button \"Bubble Gum OG, slut i lager\" [disabled]: Bubble Gum OG Slut\n    - button \"Nästa strains\" [disabled]\n  - paragraph: 799 kr\n  - status",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Visa 1 omdöme",
+   "Vad är en strain?",
+   "Golden PineappleSlut"
+  ],
+  "tries": [
+   "native.click"
+  ],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-58-393": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "198,99 kr",
+   "descr": true,
+   "similar": 8,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"PreRolled – THCA 22% – Bangkok – 1 gram\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - paragraph: 198,99 kr\n  - status\n- button \"Bevaka\"",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Bevaka"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ },
+ "soldout-58-1440": {
+  "top": {
+   "out": true,
+   "badge": "Slutsåld / ",
+   "badgeVisible": false,
+   "price": "198,99 kr",
+   "descr": true,
+   "similar": 8,
+   "nativeBuy": null,
+   "buybar": null,
+   "bevaka": true,
+   "enabledBuyVisible": [],
+   "enabledBuyFocusable": [],
+   "selected": null,
+   "overflowX": false,
+   "h1": 1,
+   "cls": 0
+  },
+  "scrolled": {
+   "buybar": null,
+   "enabledBuyVisible": []
+  },
+  "a11y": "- link \"Hazey.se\":\n  - /url: https://hazeyse.nyehandel.se/sv/brand/hazeyse\n- heading \"PreRolled – THCA 22% – Bangkok – 1 gram\" [level=1]\n- region \"Köp\":\n  - paragraph: Slutsåld\n  - paragraph: 198,99 kr\n  - status\n- button \"Bevaka\"",
+  "tabBuy": [],
+  "tabsInInfo": [
+   "Bevaka"
+  ],
+  "tries": [],
+  "cartPosts": 0,
+  "errors": [],
+  "shifts": []
+ }
+}

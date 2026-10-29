@@ -1,0 +1,51 @@
+{
+ "88-qty2-1440": {
+  "key": "88-qty2-1440",
+  "station": {
+   "price": "870 kr",
+   "qty": "2",
+   "cta": "Lägg i varukorgen",
+   "selected": null
+  },
+  "msg": "2 st har lagts i varukorgen.",
+  "cart": {
+   "count": 2,
+   "items": [
+    "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×2.00 "
+   ]
+  },
+  "posts": [
+   {
+    "url": "/cart/item",
+    "status": 200,
+    "body": "{\"product_variant_id\":183,\"quantity\":2,\"meta\":null}"
+   }
+  ],
+  "errors": []
+ },
+ "84-sticky-393": {
+  "key": "84-sticky-393",
+  "station": {
+   "price": "495 kr",
+   "qty": "1",
+   "cta": "Lägg i varukorgen",
+   "selected": null
+  },
+  "stickyOn": true,
+  "msg": "Produkten har lagts i varukorgen.",
+  "cart": {
+   "count": 1,
+   "items": [
+    "Buds – Magic Sauce 50% – Samurai Jack – 5 gram ×1.00 "
+   ]
+  },
+  "posts": [
+   {
+    "url": "/cart/item",
+    "status": 200,
+    "body": "{\"product_variant_id\":177,\"quantity\":1,\"meta\":null}"
+   }
+  ],
+  "errors": []
+ }
+}

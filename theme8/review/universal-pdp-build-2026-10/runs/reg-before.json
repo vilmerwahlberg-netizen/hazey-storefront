@@ -1,0 +1,53 @@
+{
+ "category-393": {
+  "h1": 1,
+  "cards": 53,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "category-1440": {
+  "h1": 1,
+  "cards": 53,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "hub-393": {
+  "h1": 1,
+  "cards": 24,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "hub-1440": {
+  "h1": 1,
+  "cards": 24,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "search-393": {
+  "h1": 1,
+  "cards": 25,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "search-1440": {
+  "h1": 1,
+  "cards": 25,
+  "overflowX": false,
+  "adapter": false,
+  "errors": []
+ },
+ "cart": {
+  "open": true,
+  "rows": 0,
+  "errors": []
+ },
+ "checkout": {
+  "url": "/sv/checkout",
+  "items": false
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "state-zero-393": {
+  "via": "sticky synlig",
+  "posts": [],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "Produkten har tagit slut och kunde inte läggas i varukorgen.",
+  "errors": []
+ },
+ "sold-normal-393": {
+  "via": "sticky synlig",
+  "posts": [
+   406
+  ],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "Produkten har tagit slut och kunde inte läggas i varukorgen.",
+  "errors": []
+ },
+ "button-removed-393": {
+  "via": "sticky dold",
+  "posts": [],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "",
+  "errors": []
+ },
+ "state-zero-1440": {
+  "via": "cta synlig",
+  "posts": [],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "Produkten har tagit slut och kunde inte läggas i varukorgen.",
+  "errors": []
+ },
+ "sold-normal-1440": {
+  "via": "cta synlig",
+  "posts": [
+   406
+  ],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "Produkten har tagit slut och kunde inte läggas i varukorgen.",
+  "errors": []
+ },
+ "button-removed-1440": {
+  "via": "cta dold",
+  "posts": [],
+  "cartCount": 0,
+  "stock": "Slutsåld",
+  "ctaVisible": false,
+  "qtyVisible": false,
+  "stickyOn": false,
+  "bevaka": false,
+  "msg": "",
+  "errors": []
+ }
+}

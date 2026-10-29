@@ -1,0 +1,152 @@
+{
+ "sticky": {
+  "rest": {
+   "sticky": false,
+   "dock": false,
+   "stickyCta": "Lägg i varukorgen"
+  },
+  "pastCta": {
+   "sticky": true,
+   "dock": false,
+   "stickyCta": "Lägg i varukorgen"
+  },
+  "chapters": {
+   "sticky": true,
+   "dock": false,
+   "stickyCta": "Lägg i varukorgen"
+  },
+  "nearFooter": {
+   "sticky": false,
+   "dock": false,
+   "stickyCta": "Lägg i varukorgen"
+  },
+  "menuOpen": {
+   "sticky": false,
+   "dock": false,
+   "stickyCta": "Lägg i varukorgen"
+  },
+  "variantOut": {
+   "sticky": false,
+   "dock": true,
+   "stickyCta": "Slutsåld"
+  },
+  "errors": []
+ },
+ "variantOut-393": {
+  "stock": "Gorilla Cookies är slut i lager",
+  "ctaVisible": false,
+  "qty": false,
+  "bevaka": true,
+  "report": "Visa labbrapport (PDF) · Gorilla Cookies"
+ },
+ "variantOut-1440": {
+  "stock": "Gorilla Cookies är slut i lager",
+  "ctaVisible": false,
+  "qty": false,
+  "bevaka": true,
+  "report": "Visa labbrapport (PDF) · Gorilla Cookies"
+ },
+ "keyboard-91": {
+  "seen": [
+   {
+    "el": "a.hz8-pp__revlink",
+    "text": "Visa 13 omdömen",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__info",
+    "text": "Vad är en strain?",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__tile",
+    "text": "High PepitoI lager",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__carbtn",
+    "text": "",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__qbtn",
+    "text": "+",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__cta",
+    "text": "Lägg i varukorgen",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "a.hz8-ppnav__a",
+    "text": "Produkt",
+    "fv": true,
+    "inStation": false
+   }
+  ],
+  "arrow": "Samurai JackI lager",
+  "errors": []
+ },
+ "keyboard-17": {
+  "seen": [
+   {
+    "el": "button.hz8-pp__tile",
+    "text": "1 gramSlut",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.button",
+    "text": "Bevaka",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "a.hz8-ppnav__a",
+    "text": "Produkt",
+    "fv": true,
+    "inStation": false
+   }
+  ],
+  "arrow": null,
+  "errors": []
+ },
+ "keyboard-88": {
+  "seen": [
+   {
+    "el": "button.hz8-pp__qbtn",
+    "text": "+",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "button.hz8-pp__cta",
+    "text": "Lägg i varukorgen",
+    "fv": true,
+    "inStation": true
+   },
+   {
+    "el": "a.hz8-ppnav__a",
+    "text": "Produkt",
+    "fv": true,
+    "inStation": false
+   }
+  ],
+  "arrow": null,
+  "errors": []
+ },
+ "reduced": [
+  "hz8-pp__cta:0s",
+  "hz8-pp__tile:0s",
+  "hz8-pp-sticky:1e-05s",
+  "hz8-ppnav-dock:1e-05s",
+  "hz8-totop:1e-05s"
+ ]
+}

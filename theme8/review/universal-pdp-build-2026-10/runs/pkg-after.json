@@ -1,0 +1,1026 @@
+{
+ "normal-91-393": {
+  "profile": {
+   "model": "strain",
+   "plannedSteps": [
+    "3",
+    "5",
+    "9K"
+   ],
+   "verifiedSteps": [],
+   "status": "BLOCKED",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "595 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 310,
+  "overflowX": false,
+  "errors": []
+ },
+ "normal-84-393": {
+  "profile": {
+   "model": "family",
+   "plannedSteps": [
+    "3",
+    "5",
+    "10"
+   ],
+   "verifiedSteps": [],
+   "status": "BLOCKED",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "495 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 310,
+  "overflowX": false,
+  "errors": []
+ },
+ "normal-88-393": {
+  "profile": {
+   "model": null,
+   "plannedSteps": [],
+   "verifiedSteps": [],
+   "status": "none",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "435 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 310,
+  "overflowX": false,
+  "errors": []
+ },
+ "review-91-393": {
+  "base": {
+   "profile": {
+    "model": "strain",
+    "plannedSteps": [
+     "3",
+     "5",
+     "9K"
+    ],
+    "verifiedSteps": [],
+    "status": "BLOCKED",
+    "review": true,
+    "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+    "family": []
+   },
+   "packs": [
+    "1 st595 kr [vald]",
+    "3 stPaketprodukt saknas",
+    "5 stPaketprodukt saknas",
+    "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+   ],
+   "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+   "builder": null,
+   "price": "595 kr",
+   "qtyVisible": true,
+   "cta": {
+    "text": "Lägg i varukorgen",
+    "disabled": false,
+    "ariaDisabled": "false",
+    "state": "ready",
+    "focusable": true
+   },
+   "galleryH": 310,
+   "overflowX": false
+  },
+  "steps": [
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas [vald]",
+     "5 stPaketprodukt saknas",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Ditt 3-pack",
+     "slots": 3,
+     "options": [
+      "Välj strain",
+      "Gorilla Cookies (slut i lager) [låst]",
+      "Crazy Dog (slut i lager) [låst]",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager) [låst]"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas [vald]",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Ditt 5-pack",
+     "slots": 5,
+     "options": [
+      "Välj strain",
+      "Gorilla Cookies (slut i lager) [låst]",
+      "Crazy Dog (slut i lager) [låst]",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager) [låst]"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas [vald]"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Hela kollektionen · 5 st",
+     "slots": 5,
+     "options": [],
+     "fixed": [
+      "Gorilla Cookies (slut i lager)",
+      "Crazy Dog (slut i lager)",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager)"
+     ],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   }
+  ],
+  "cartPosts": [],
+  "errors": []
+ },
+ "review-84-393": {
+  "base": {
+   "profile": {
+    "model": "family",
+    "plannedSteps": [
+     "3",
+     "5",
+     "10"
+    ],
+    "verifiedSteps": [],
+    "status": "BLOCKED",
+    "review": true,
+    "collectionMismatch": null,
+    "family": [
+     "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+     "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+     "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+     "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+     "Hash – Magic Sauce 50% – Charas – 5 gram",
+     "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+    ]
+   },
+   "packs": [
+    "1 st495 kr [vald]",
+    "3 stPaketprodukt saknas",
+    "5 stPaketprodukt saknas",
+    "10 stPaketprodukt saknas"
+   ],
+   "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+   "builder": null,
+   "price": "495 kr",
+   "qtyVisible": true,
+   "cta": {
+    "text": "Lägg i varukorgen",
+    "disabled": false,
+    "ariaDisabled": "false",
+    "state": "ready",
+    "focusable": true
+   },
+   "galleryH": 310,
+   "overflowX": false
+  },
+  "steps": [
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas [vald]",
+     "5 stPaketprodukt saknas",
+     "10 stPaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 3-pack",
+     "slots": 3,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas [vald]",
+     "10 stPaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 5-pack",
+     "slots": 5,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas",
+     "10 stPaketprodukt saknas [vald]"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 10-pack",
+     "slots": 10,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 310,
+    "overflowX": false,
+    "stickyOn": false
+   }
+  ],
+  "cartPosts": [],
+  "errors": []
+ },
+ "normal-91-1440": {
+  "profile": {
+   "model": "strain",
+   "plannedSteps": [
+    "3",
+    "5",
+    "9K"
+   ],
+   "verifiedSteps": [],
+   "status": "BLOCKED",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "595 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 540,
+  "overflowX": false,
+  "errors": []
+ },
+ "normal-84-1440": {
+  "profile": {
+   "model": "family",
+   "plannedSteps": [
+    "3",
+    "5",
+    "10"
+   ],
+   "verifiedSteps": [],
+   "status": "BLOCKED",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "495 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 540,
+  "overflowX": false,
+  "errors": []
+ },
+ "normal-88-1440": {
+  "profile": {
+   "model": null,
+   "plannedSteps": [],
+   "verifiedSteps": [],
+   "status": "none",
+   "review": false,
+   "collectionMismatch": null,
+   "family": []
+  },
+  "packs": [],
+  "note": null,
+  "builder": null,
+  "price": "435 kr",
+  "qtyVisible": true,
+  "cta": {
+   "text": "Lägg i varukorgen",
+   "disabled": false,
+   "ariaDisabled": "false",
+   "state": "ready",
+   "focusable": true
+  },
+  "galleryH": 540,
+  "overflowX": false,
+  "errors": []
+ },
+ "review-91-1440": {
+  "base": {
+   "profile": {
+    "model": "strain",
+    "plannedSteps": [
+     "3",
+     "5",
+     "9K"
+    ],
+    "verifiedSteps": [],
+    "status": "BLOCKED",
+    "review": true,
+    "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+    "family": []
+   },
+   "packs": [
+    "1 st595 kr [vald]",
+    "3 stPaketprodukt saknas",
+    "5 stPaketprodukt saknas",
+    "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+   ],
+   "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+   "builder": null,
+   "price": "595 kr",
+   "qtyVisible": true,
+   "cta": {
+    "text": "Lägg i varukorgen",
+    "disabled": false,
+    "ariaDisabled": "false",
+    "state": "ready",
+    "focusable": true
+   },
+   "galleryH": 540,
+   "overflowX": false
+  },
+  "steps": [
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas [vald]",
+     "5 stPaketprodukt saknas",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Ditt 3-pack",
+     "slots": 3,
+     "options": [
+      "Välj strain",
+      "Gorilla Cookies (slut i lager) [låst]",
+      "Crazy Dog (slut i lager) [låst]",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager) [låst]"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas [vald]",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Ditt 5-pack",
+     "slots": 5,
+     "options": [
+      "Välj strain",
+      "Gorilla Cookies (slut i lager) [låst]",
+      "Crazy Dog (slut i lager) [låst]",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager) [låst]"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "strain",
+     "plannedSteps": [
+      "3",
+      "5",
+      "9K"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": "plan 9 st (WooCommerce), Nyehandel 5 strains",
+     "family": []
+    },
+    "packs": [
+     "1 st595 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas",
+     "Hela kollektionen5 st, en av varjePaketprodukt saknas [vald]"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Hela kollektionen · 5 st",
+     "slots": 5,
+     "options": [],
+     "fixed": [
+      "Gorilla Cookies (slut i lager)",
+      "Crazy Dog (slut i lager)",
+      "High Pepito",
+      "Samurai Jack",
+      "Yoda Ice Cream (slut i lager)"
+     ],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   }
+  ],
+  "cartPosts": [],
+  "errors": []
+ },
+ "review-84-1440": {
+  "base": {
+   "profile": {
+    "model": "family",
+    "plannedSteps": [
+     "3",
+     "5",
+     "10"
+    ],
+    "verifiedSteps": [],
+    "status": "BLOCKED",
+    "review": true,
+    "collectionMismatch": null,
+    "family": [
+     "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+     "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+     "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+     "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+     "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+     "Hash – Magic Sauce 50% – Charas – 5 gram",
+     "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+    ]
+   },
+   "packs": [
+    "1 st495 kr [vald]",
+    "3 stPaketprodukt saknas",
+    "5 stPaketprodukt saknas",
+    "10 stPaketprodukt saknas"
+   ],
+   "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+   "builder": null,
+   "price": "495 kr",
+   "qtyVisible": true,
+   "cta": {
+    "text": "Lägg i varukorgen",
+    "disabled": false,
+    "ariaDisabled": "false",
+    "state": "ready",
+    "focusable": true
+   },
+   "galleryH": 540,
+   "overflowX": false
+  },
+  "steps": [
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas [vald]",
+     "5 stPaketprodukt saknas",
+     "10 stPaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 3-pack",
+     "slots": 3,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas [vald]",
+     "10 stPaketprodukt saknas"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 5-pack",
+     "slots": 5,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   },
+   {
+    "profile": {
+     "model": "family",
+     "plannedSteps": [
+      "3",
+      "5",
+      "10"
+     ],
+     "verifiedSteps": [],
+     "status": "BLOCKED",
+     "review": true,
+     "collectionMismatch": null,
+     "family": [
+      "Buds – Magic Sauce 50% – Yoda Ice Cream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+      "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Samurai Jack – 5 gram",
+      "Buds – Magic Sauce 50% – Khalifa Kush – 5 gram",
+      "Buds – Magic Sauce 50% – Donny Burger – 5 gram (slut)",
+      "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+      "Hash – Magic Sauce 50% – Charas – 5 gram",
+      "Buds – Magic Sauce 50% – La Chupacabra – 5 gram"
+     ]
+    },
+    "packs": [
+     "1 st495 kr",
+     "3 stPaketprodukt saknas",
+     "5 stPaketprodukt saknas",
+     "10 stPaketprodukt saknas [vald]"
+    ],
+    "note": "Granskningsläge: paketen kan inte köpas än – paketprodukterna finns inte i Nyehandel.",
+    "builder": {
+     "title": "Magic Sauce 50 % – 5 g · Ditt 10-pack",
+     "slots": 10,
+     "options": [
+      "Välj alternativ",
+      "Buds · Yoda Ice Cream (slut i lager) [låst]",
+      "Buds · Gorilla Cookies (slut i lager) [låst]",
+      "Buds · Tinky Winky",
+      "Hash · Marrakesh Dream (slut i lager) [låst]",
+      "Buds · Samurai Jack",
+      "Buds · Khalifa Kush",
+      "Buds · Donny Burger (slut i lager) [låst]",
+      "Buds · Crazy Dog",
+      "Hash · Charas",
+      "Buds · La Chupacabra"
+     ],
+     "fixed": [],
+     "mixnote": "Granskningsläge: paketet kan inte köpas än. Paketprodukten saknas i Nyehandel."
+    },
+    "price": "Paketpris saknas",
+    "qtyVisible": false,
+    "cta": {
+     "text": "Paket kan inte köpas än",
+     "disabled": true,
+     "ariaDisabled": "true",
+     "state": "blocked",
+     "focusable": false
+    },
+    "galleryH": 540,
+    "overflowX": false,
+    "stickyOn": false
+   }
+  ],
+  "cartPosts": [],
+  "errors": []
+ }
+}
