@@ -1,0 +1,150 @@
+[
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1440,
+  "zoom": true,
+  "nanoLoaded": [
+   1000,
+   384
+  ],
+  "overflowX": false,
+  "errors": 0,
+  "cards": [
+   {
+    "name": "THCaB",
+    "art": "thcab",
+    "hasArt": true,
+    "bg": "series-thcab-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.009,
+    "contrastMean": 17.7,
+    "contrastWorst": 16.9
+   },
+   {
+    "name": "THCbA",
+    "art": "thcba",
+    "hasArt": true,
+    "bg": "series-thcba-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.013,
+    "contrastMean": 16.8,
+    "contrastWorst": 15.2
+   },
+   {
+    "name": "Core",
+    "art": "core",
+    "hasArt": true,
+    "bg": "series-core-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.025,
+    "contrastMean": 14,
+    "contrastWorst": 12.1
+   },
+   {
+    "name": "Nano-11",
+    "art": "nano11",
+    "hasArt": true,
+    "bg": "series-nano11-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.023,
+    "contrastMean": 14.5,
+    "contrastWorst": 9.7
+   }
+  ]
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 1440,
+  "zoom": true,
+  "nanoLoaded": [
+   1000,
+   384
+  ],
+  "overflowX": false,
+  "errors": 0,
+  "cards": [
+   {
+    "name": "Magic Sauce",
+    "art": "magic-sauce",
+    "hasArt": true,
+    "bg": "series-magic-sauce-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.012,
+    "contrastMean": 16.9,
+    "contrastWorst": 14.3
+   },
+   {
+    "name": "THCaB",
+    "art": "thcab",
+    "hasArt": true,
+    "bg": "series-thcab-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.009,
+    "contrastMean": 17.7,
+    "contrastWorst": 16.9
+   },
+   {
+    "name": "THCbA",
+    "art": "thcba",
+    "hasArt": true,
+    "bg": "series-thcba-vapes-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.013,
+    "contrastMean": 16.8,
+    "contrastWorst": 15.2
+   },
+   {
+    "name": "Nano-11",
+    "art": "nano11",
+    "hasArt": true,
+    "bg": "series-nano11-r3.webp",
+    "w": 523,
+    "h": 96,
+    "material": "1px | rgba(24, 32, 16, 0.25) | 12px | rgba(29, 25, 16, 0.8) 0px 12px 25px -18px | cover",
+    "innerMediaVisible": false,
+    "nameColor": "rgb(255, 250, 240)",
+    "textFits": true,
+    "bgLumMean": 0.023,
+    "contrastMean": 14.5,
+    "contrastWorst": 9.7
+   }
+  ]
+ }
+]

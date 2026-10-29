@@ -318,7 +318,7 @@ html.hz8-sf .hz8-sf-more__art {
 html.hz8-sf[data-hz8-page="category"] .hz8-sf-after { grid-row: 8; display: grid; gap: 26px; margin: 34px 0 44px; }
 html.hz8-sf .hz8-sf-after > [hidden] { display: none; }
 html.hz8-sf .hz8-sf-cont { display: flex; align-items: center; gap: 24px; padding: 22px 0 0; border-top: 1px solid var(--hz8-pilot-rule); }
-html.hz8-sf .hz8-sf-row__title {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__title {
   margin: 0 !important;
   color: var(--hz8-pilot-green) !important;
   font-family: var(--hz8-font-display) !important;
@@ -337,8 +337,8 @@ html.hz8-sf .hz8-sf-chip {
   color: var(--hz8-pilot-green) !important; font: 500 14px/1 var(--hz8-font-ui) !important; text-decoration: none !important; white-space: nowrap;
 }
 html.hz8-sf .hz8-sf-chip:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 40%, transparent); background: #fffdf8; }
-html.hz8-sf .hz8-sf-others { display: grid; gap: 16px; padding: 22px 0 0; border-top: 1px solid var(--hz8-pilot-rule); }
-html.hz8-sf .hz8-sf-series {
+:is(html.hz8-sf .hz8-sf-others, html .hz8-sf-others.hz8-xd) { display: grid; gap: 16px; padding: 22px 0 0; border-top: 1px solid var(--hz8-pilot-rule); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-series {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 14px;
@@ -346,7 +346,7 @@ html.hz8-sf .hz8-sf-series {
   padding: 0;
   list-style: none;
 }
-html.hz8-sf .hz8-sf-serie {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie {
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) auto;
   align-items: center;
@@ -361,14 +361,14 @@ html.hz8-sf .hz8-sf-serie {
   text-decoration: none !important;
   transition: border-color .16s var(--hz8-ease), transform .16s var(--hz8-ease), background-color .16s var(--hz8-ease);
 }
-html.hz8-sf .hz8-sf-serie:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 36%, transparent); background: #fffdf8; transform: translateY(-1px); }
-html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
-html.hz8-sf .hz8-sf-serie__media { display: block; width: 64px; height: 64px; overflow: hidden; border-radius: 8px; background: var(--hz8-pilot-well); }
-html.hz8-sf .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; }
-html.hz8-sf .hz8-sf-serie__text { display: grid; gap: 4px; min-width: 0; }
-html.hz8-sf .hz8-sf-serie__name { font: 400 17px/1.2 var(--hz8-font-display) !important; overflow-wrap: anywhere; }
-html.hz8-sf .hz8-sf-serie__count { color: color-mix(in srgb, var(--hz8-pilot-green) 70%, transparent); font: 500 12.5px/1.2 var(--hz8-font-ui) !important; }
-html.hz8-sf .hz8-sf-serie .hz8-icon { color: var(--hz8-cta-fill); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie:hover { border-color: color-mix(in srgb, var(--hz8-pilot-green) 36%, transparent); background: #fffdf8; transform: translateY(-1px); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__media { display: block; width: 64px; height: 64px; overflow: hidden; border-radius: 8px; background: var(--hz8-pilot-well); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__text { display: grid; gap: 4px; min-width: 0; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__name { font: 400 17px/1.2 var(--hz8-font-display) !important; overflow-wrap: anywhere; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__count { color: color-mix(in srgb, var(--hz8-pilot-green) 70%, transparent); font: 500 12.5px/1.2 var(--hz8-font-ui) !important; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie .hz8-icon { color: var(--hz8-cta-fill); }
 html.hz8-sf[data-hz8-page="category"] .hz8-cat-guide { grid-row: 9; }
 html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
 
@@ -380,6 +380,7 @@ html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
 @keyframes hz8-sf-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   html.hz8-sf :is(.hz8-sf-tab, .hz8-sf-serie, .hz8-sf-more__link .hz8-icon, .hz8-sf-stock .hz8-pswitch__track, .hz8-sf-stock .hz8-pswitch__track::after) { transition: none !important; }
+  html .hz8-xd .hz8-sf-serie { transition: none !important; }
 }
 
 /* ---------- Surfplatta ---------- */
@@ -428,7 +429,7 @@ html.hz8-sf[data-hz8-page="category"] .hz8-cat-about-head { grid-row: 10; }
   html.hz8-sf .hz8-sf-more__art { width: 44%; right: -18px; bottom: -14px; opacity: .38; }
   html.hz8-sf .hz8-sf-cont { flex-direction: column; align-items: flex-start; gap: 12px; }
   html.hz8-sf .hz8-sf-cont .hz8-sf-chips { max-width: 100%; }
-  html.hz8-sf .hz8-sf-series { grid-template-columns: minmax(0, 1fr); }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-series { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 359px) {
   html.hz8-sf[data-hz8-page="category"] #store-main #category-products { gap: 22px 10px !important; }
@@ -666,11 +667,11 @@ html.hz8-sf .hz8-sf-more__art {
 }
 
 /* ---- Andra serier: visuell rail ---- */
-html.hz8-sf .hz8-sf-others { gap: 14px; padding-top: 18px; border-top: 0; }
-html.hz8-sf .hz8-sf-row__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-html.hz8-sf .hz8-sf-row__all { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--hz8-cta-hover) !important; font: 600 14px/1 var(--hz8-font-ui) !important; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
-html.hz8-sf .hz8-sf-row__all:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
-html.hz8-sf .hz8-sf-series {
+:is(html.hz8-sf .hz8-sf-others, html .hz8-sf-others.hz8-xd) { gap: 14px; padding-top: 18px; border-top: 0; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__all { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--hz8-cta-hover) !important; font: 600 14px/1 var(--hz8-font-ui) !important; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__all:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: 2px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-series {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: none;
@@ -683,9 +684,9 @@ html.hz8-sf .hz8-sf-series {
   padding: 2px;
   margin: -2px;
 }
-html.hz8-sf .hz8-sf-series::-webkit-scrollbar { display: none; }
-html.hz8-sf .hz8-sf-series li { scroll-snap-align: start; }
-html.hz8-sf .hz8-sf-serie {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-series::-webkit-scrollbar { display: none; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-series li { scroll-snap-align: start; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -698,9 +699,9 @@ html.hz8-sf .hz8-sf-serie {
   box-shadow: 0 10px 20px -16px rgba(40, 30, 12, .6);
   color: #fffaf0 !important;
 }
-html.hz8-sf .hz8-sf-serie:hover { transform: translateY(-1px); border-color: color-mix(in srgb, #2c3620 50%, transparent); background: linear-gradient(120deg, #26301b 0%, #3a4628 60%, #5b4c30 100%); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie:hover { transform: translateY(-1px); border-color: color-mix(in srgb, #2c3620 50%, transparent); background: linear-gradient(120deg, #26301b 0%, #3a4628 60%, #5b4c30 100%); }
 /* Riktig seriebild (kategorins första produkt) som ljus bakgrund till höger. */
-html.hz8-sf .hz8-sf-serie__media {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__media {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -712,14 +713,24 @@ html.hz8-sf .hz8-sf-serie__media {
   background: radial-gradient(120% 90% at 50% 18%, #fcf8f0 0%, #f4e8d6 70%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 6px 14px -10px rgba(0, 0, 0, .5);
 }
-html.hz8-sf .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
-html.hz8-sf .hz8-sf-serie__text { position: relative; z-index: 1; max-width: calc(100% - 96px); gap: 3px; }
-html.hz8-sf .hz8-sf-serie__name { color: #fffaf0; font-size: 18px !important; line-height: 1.1 !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .25); }
-html.hz8-sf .hz8-sf-serie__count { color: color-mix(in srgb, #fffaf0 82%, transparent); }
-html.hz8-sf .hz8-sf-serie > .hz8-icon { position: absolute; z-index: 1; right: 12px; bottom: 12px; display: none; }
-html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill) !important; outline-offset: 2px; }
-@media (max-width: 1279px) { html.hz8-sf .hz8-sf-series { grid-auto-columns: calc((100% - 3 * 14px) / 4); } }
-@media (max-width: 1023px) { html.hz8-sf .hz8-sf-series { grid-auto-columns: calc((100% - 2 * 14px) / 3); } }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__media img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__text { position: relative; z-index: 1; max-width: calc(100% - 96px); gap: 3px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__name { color: #fffaf0; font-size: 18px !important; line-height: 1.1 !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .25); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie__count { color: color-mix(in srgb, #fffaf0 82%, transparent); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie > .hz8-icon { position: absolute; z-index: 1; right: 12px; bottom: 12px; display: none; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill) !important; outline-offset: 2px; }
+/* TASK 04A: längre rubrik ("Utforska andra format") + "Visa alla" bryts
+   till två rader när de inte ryms -- länken kapas aldrig av kanten. */
+html .hz8-xd .hz8-sf-row__head { flex-wrap: wrap; row-gap: 0; }
+/* Ett långt namn gör alla kort i raden lika höga (kortet fyller cellen). */
+html .hz8-xd .hz8-sf-series li { display: grid; }
+/* TASK 04A: fler kort än railen visar (desktop/surfplatta, där inget
+   nästa kort skymtar): högerkanten tonar ut. Mobil visar redan nästa kort. */
+@media (min-width: 768px) {
+  html .hz8-xd.is-more .hz8-sf-series { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent); }
+}
+@media (max-width: 1279px) { :is(html.hz8-sf, html .hz8-xd) .hz8-sf-series { grid-auto-columns: calc((100% - 3 * 14px) / 4); } }
+@media (max-width: 1023px) { :is(html.hz8-sf, html .hz8-xd) .hz8-sf-series { grid-auto-columns: calc((100% - 2 * 14px) / 3); } }
 
 /* ---- Mobil R2 ---- */
 @media (max-width: 767px) {
@@ -745,10 +756,10 @@ html.hz8-sf .hz8-sf-serie:focus-visible { outline: 2px solid var(--hz8-cta-fill)
   html.hz8-sf .hz8-sf-more__art { top: -6px; bottom: auto; width: 58%; right: -16%; opacity: .5; }
   html.hz8-sf .hz8-sf-more__body { position: relative; z-index: 1; }
   /* Serie-rail: svepbar, nästa kort syns. */
-  html.hz8-sf .hz8-sf-series { grid-auto-columns: 76%; scroll-snap-type: x proximity; scroll-padding-inline: 2px; }
-  html.hz8-sf .hz8-sf-serie { min-height: 96px; }
-  html.hz8-sf .hz8-sf-row__title { font-size: 22px !important; }
-  html.hz8-sf .hz8-sf-row__all { font-size: 13.5px !important; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-series { grid-auto-columns: 76%; scroll-snap-type: x proximity; scroll-padding-inline: 2px; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie { min-height: 96px; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__title { font-size: 22px !important; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-row__all { font-size: 13.5px !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   html.hz8-catshelf :is(.hz8-sf-fs__stock .hz8-pswitch__track::after, .hz8-sf-fs__btn .hz8-pchev, .hz8-sf-tab) { transition: none !important; }
@@ -850,7 +861,7 @@ html.hz8-sf .hz8-sf-more__link .hz8-icon { color: var(--hz8-sf-more-arrow); }
 }
 
 /* ---- Seriekort med godkänd R3-bild ---- */
-html.hz8-sf .hz8-sf-serie.has-art {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art {
   padding: 15px 16px;
   border: 1px solid rgba(24, 32, 16, .25);
   border-radius: 12px;
@@ -862,32 +873,33 @@ html.hz8-sf .hz8-sf-serie.has-art {
   box-shadow: 0 12px 25px -18px rgba(29, 25, 16, .8);
   transition: transform .18s var(--hz8-ease), box-shadow .18s var(--hz8-ease);
 }
-html.hz8-sf .hz8-sf-serie[data-hz8-series-art="magic-sauce"] { background-image: url("assets/series-format-r3/series-magic-sauce-vapes-r3.webp"); }
-html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcab"] { background-image: url("assets/series-format-r3/series-thcab-vapes-r3.webp"); }
-html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcba"] { background-image: url("assets/series-format-r3/series-thcba-vapes-r3.webp"); }
-html.hz8-sf .hz8-sf-serie[data-hz8-series-art="core"] { background-image: url("assets/series-format-r3/series-core-vapes-r3.webp"); }
-html.hz8-sf .hz8-sf-serie[data-hz8-series-art="thcv"] { background-image: url("assets/series-format-r3/series-thcv-vapes-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="magic-sauce"] { background-image: url("assets/series-format-r3/series-magic-sauce-vapes-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="thcab"] { background-image: url("assets/series-format-r3/series-thcab-vapes-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="thcba"] { background-image: url("assets/series-format-r3/series-thcba-vapes-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="core"] { background-image: url("assets/series-format-r3/series-core-vapes-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="nano11"] { background-image: url("assets/series-format-r3/series-nano11-r3.webp"); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie[data-hz8-series-art="thcv"] { background-image: url("assets/series-format-r3/series-thcv-vapes-r3.webp"); }
 /* Toning: mörkast bakom texten, nästan genomskinlig vid högerkanten. */
-html.hz8-sf .hz8-sf-serie.has-art::before {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(15, 24, 19, .81) 0%, rgba(19, 27, 20, .54) 46%, rgba(14, 20, 14, .05) 84%);
   transition: opacity .18s var(--hz8-ease);
 }
-html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__media { display: none; }
-html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__text { max-width: 78%; gap: 4px; }
-html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__name { font-size: 18px !important; line-height: 1.08 !important; text-shadow: 0 1px 3px rgba(0, 0, 0, .32); }
-html.hz8-sf .hz8-sf-serie.has-art .hz8-sf-serie__count { color: rgba(255, 250, 240, .84); font: 600 12.25px/1.2 var(--hz8-font-ui) !important; }
-html.hz8-sf .hz8-sf-serie.has-art:hover {
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art .hz8-sf-serie__media { display: none; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art .hz8-sf-serie__text { max-width: 78%; gap: 4px; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art .hz8-sf-serie__name { font-size: 18px !important; line-height: 1.08 !important; text-shadow: 0 1px 3px rgba(0, 0, 0, .32); }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art .hz8-sf-serie__count { color: rgba(255, 250, 240, .84); font: 600 12.25px/1.2 var(--hz8-font-ui) !important; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art:hover {
   transform: translateY(-1px);
   background-color: #26301b;
   box-shadow: 0 14px 26px -18px rgba(29, 25, 16, .85);
 }
-html.hz8-sf .hz8-sf-serie.has-art:hover::before { opacity: .9; }
+:is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art:hover::before { opacity: .9; }
 @media (prefers-reduced-motion: reduce) {
-  html.hz8-sf .hz8-sf-serie.has-art, html.hz8-sf .hz8-sf-serie.has-art::before { transition: none; }
-  html.hz8-sf .hz8-sf-serie.has-art:hover { transform: none; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art, :is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art::before { transition: none; }
+  :is(html.hz8-sf, html .hz8-xd) .hz8-sf-serie.has-art:hover { transform: none; }
 }
 
 /* Verktygsraden ligger i flödet (2026-10-22): den generiska kategoriregeln

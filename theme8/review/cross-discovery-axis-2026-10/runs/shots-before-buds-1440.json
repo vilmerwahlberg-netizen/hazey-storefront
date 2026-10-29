@@ -1,0 +1,45 @@
+[
+ {
+  "which": "before",
+  "route": "buds",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 6048,
+  "module": {
+   "cls": "hz8-proutes",
+   "axis": null,
+   "n": null,
+   "title": "Fortsätt i ett annat format",
+   "x": 64,
+   "y": 4582,
+   "w": 1312,
+   "h": 238
+  },
+  "cards": [
+   {
+    "t": "Alla VapesJämför vapes och styrkor",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": false,
+    "x": 412,
+    "y": 4662,
+    "w": 313,
+    "h": 80
+   },
+   {
+    "t": "Allt HaschSe hela haschsortimentet",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": false,
+    "x": 737,
+    "y": 4662,
+    "w": 313,
+    "h": 80
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ }
+]

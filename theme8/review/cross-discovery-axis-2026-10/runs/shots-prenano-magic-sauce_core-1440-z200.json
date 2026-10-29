@@ -1,0 +1,140 @@
+[
+ {
+  "which": "prenano",
+  "route": "magic-sauce",
+  "w": 1440,
+  "zoom": true,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3803,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 16,
+   "y": 2393,
+   "w": 688,
+   "h": 173
+  },
+  "rail": {
+   "scrollW": 2138,
+   "clientW": 692,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 2462,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 553,
+    "y": 2462,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 1090,
+    "y": 2462,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 1627,
+    "y": 2462,
+    "w": 523,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "prenano",
+  "route": "core",
+  "w": 1440,
+  "zoom": true,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3343,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 16,
+   "y": 1932,
+   "w": 688,
+   "h": 173
+  },
+  "rail": {
+   "scrollW": 2138,
+   "clientW": 692,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Magic Sauce12 produkter",
+    "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+    "art": "magic-sauce",
+    "img": false,
+    "x": 16,
+    "y": 2002,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 553,
+    "y": 2002,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 1090,
+    "y": 2002,
+    "w": 523,
+    "h": 96
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 1627,
+    "y": 2002,
+    "w": 523,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ }
+]

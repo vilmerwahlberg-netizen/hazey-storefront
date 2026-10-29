@@ -768,6 +768,7 @@ html.hz8-sh-pilot .hz8-sh-after { position: relative; width: var(--hz8-content);
 /* Mjuk övergång ned mot kundserviceblocket. */
 html.hz8-sh-pilot .hz8-sh-after::after { content: ""; position: absolute; left: 50%; top: 100%; width: 100vw; height: 40px; transform: translateX(-50%); background: linear-gradient(180deg, rgba(240, 228, 210, 0), rgba(240, 228, 210, .7)); pointer-events: none; z-index: -1; }
 html.hz8-sh-pilot .hz8-sh-after .hz8-rail--series { padding-top: 26px; border-top: 1px solid var(--sh-line); }
+html.hz8-sh-pilot .hz8-sh-after .hz8-xd { padding-top: 26px; border-top: 1px solid var(--sh-line); }
 html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail__heading { margin-bottom: 12px; color: color-mix(in srgb, var(--hz8-pilot-green) 80%, transparent) !important; font: 700 11px/1.2 var(--hz8-font-ui) !important; letter-spacing: .14em; text-transform: uppercase; }
 html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__list { gap: 10px; }
 html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__item {

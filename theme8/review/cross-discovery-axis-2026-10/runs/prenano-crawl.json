@@ -1,0 +1,158 @@
+[
+ {
+  "mode": "slow",
+  "route": "thcab-vapes",
+  "hidden": false,
+  "links": [
+   {
+    "t": "Magic Sauce Vapes",
+    "href": "/sv/categories/m-s-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes",
+    "href": "/sv/categories/thcb-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Core Vapes",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ },
+ {
+  "mode": "slow",
+  "route": "buds",
+  "hidden": false,
+  "links": [
+   {
+    "t": "Alla Vapes",
+    "href": "/sv/categories/alla-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Allt Hasch",
+    "href": "/sv/categories/hasch",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ },
+ {
+  "mode": "slow",
+  "route": "magic-sauce",
+  "hidden": false,
+  "links": [
+   {
+    "t": "THCaB",
+    "href": "/sv/categories/thca",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "THCbA",
+    "href": "/sv/categories/thcb",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Core",
+    "href": "/sv/categories/core",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Nano-11",
+    "href": "/sv/categories/nano-11",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ },
+ {
+  "mode": "fail",
+  "route": "thcab-vapes",
+  "hidden": false,
+  "links": [
+   {
+    "t": "Magic Sauce Vapes",
+    "href": "/sv/categories/m-s-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes",
+    "href": "/sv/categories/thcb-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Core Vapes",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ },
+ {
+  "mode": "fail",
+  "route": "buds",
+  "hidden": false,
+  "links": [
+   {
+    "t": "Alla Vapes",
+    "href": "/sv/categories/alla-vapes",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Allt Hasch",
+    "href": "/sv/categories/hasch",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ },
+ {
+  "mode": "fail",
+  "route": "magic-sauce",
+  "hidden": false,
+  "links": [
+   {
+    "t": "THCaB",
+    "href": "/sv/categories/thca",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "THCbA",
+    "href": "/sv/categories/thcb",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Core",
+    "href": "/sv/categories/core",
+    "count": "",
+    "h": 104
+   },
+   {
+    "t": "Nano-11",
+    "href": "/sv/categories/nano-11",
+    "count": "",
+    "h": 104
+   }
+  ],
+  "errors": []
+ }
+]

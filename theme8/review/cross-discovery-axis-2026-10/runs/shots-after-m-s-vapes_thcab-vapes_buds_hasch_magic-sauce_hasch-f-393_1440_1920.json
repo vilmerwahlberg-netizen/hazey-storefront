@@ -1,0 +1,1004 @@
+[
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2598,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd is-more",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 16,
+   "y": 1040,
+   "w": 361,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 855,
+   "clientW": 365,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "THCaB Vapes4 produkter",
+    "href": "/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 1116,
+    "w": 274,
+    "h": 96
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 304,
+    "y": 1116,
+    "w": 274,
+    "h": 96
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 593,
+    "y": 1116,
+    "w": 274,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 1968,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 64,
+   "y": 871,
+   "w": 1312,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "THCaB Vapes4 produkter",
+    "href": "/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 64,
+    "y": 947,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 329,
+    "y": 947,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 594,
+    "y": 947,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2091,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 200,
+   "y": 921,
+   "w": 1520,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1524,
+   "clientW": 1524,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "THCaB Vapes4 produkter",
+    "href": "/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 200,
+    "y": 997,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 507,
+    "y": 997,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 814,
+    "y": 997,
+    "w": 293,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2766,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd is-more",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 16,
+   "y": 1208,
+   "w": 379,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 897,
+   "clientW": 383,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Magic Sauce Vapes2 produkter",
+    "href": "/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "magic-sauce",
+    "img": false,
+    "x": 16,
+    "y": 1284,
+    "w": 288,
+    "h": 96
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 318,
+    "y": 1284,
+    "w": 288,
+    "h": 96
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 621,
+    "y": 1284,
+    "w": 288,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2063,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 64,
+   "y": 966,
+   "w": 1312,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Magic Sauce Vapes2 produkter",
+    "href": "/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "magic-sauce",
+    "img": false,
+    "x": 64,
+    "y": 1042,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 329,
+    "y": 1042,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 594,
+    "y": 1042,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2186,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 200,
+   "y": 1016,
+   "w": 1520,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1524,
+   "clientW": 1524,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Magic Sauce Vapes2 produkter",
+    "href": "/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "magic-sauce",
+    "img": false,
+    "x": 200,
+    "y": 1092,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 507,
+    "y": 1092,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 814,
+    "y": 1092,
+    "w": 293,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 7792,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd is-more",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 16,
+   "y": 5931,
+   "w": 361,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 601,
+   "clientW": 388,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 16,
+    "y": 6007,
+    "w": 292,
+    "h": 96
+   },
+   {
+    "t": "Allt Hasch16 produkter",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 322,
+    "y": 6007,
+    "w": 292,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 5990,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 64,
+   "y": 4574,
+   "w": 1312,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 64,
+    "y": 4650,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Allt Hasch16 produkter",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 329,
+    "y": 4650,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 4911,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 200,
+   "y": 3422,
+   "w": 1520,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1524,
+   "clientW": 1524,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 200,
+    "y": 3498,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "Allt Hasch16 produkter",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 507,
+    "y": 3498,
+    "w": 293,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 5640,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd is-more",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 16,
+   "y": 3779,
+   "w": 361,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 601,
+   "clientW": 388,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 16,
+    "y": 3855,
+    "w": 292,
+    "h": 96
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 322,
+    "y": 3855,
+    "w": 292,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 4157,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 64,
+   "y": 2741,
+   "w": 1312,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 64,
+    "y": 2817,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 329,
+    "y": 2817,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 4174,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 200,
+   "y": 2684,
+   "w": 1520,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1524,
+   "clientW": 1524,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 200,
+    "y": 2760,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 507,
+    "y": 2760,
+    "w": 293,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3460,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 16,
+   "y": 1945,
+   "w": 361,
+   "h": 173
+  },
+  "rail": {
+   "scrollW": 1143,
+   "clientW": 365,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 2014,
+    "w": 274,
+    "h": 96
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 304,
+    "y": 2014,
+    "w": 274,
+    "h": 96
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 593,
+    "y": 2014,
+    "w": 274,
+    "h": 96
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 881,
+    "y": 2014,
+    "w": 274,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3329,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 64,
+   "y": 2268,
+   "w": 1312,
+   "h": 189
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 64,
+    "y": 2345,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 329,
+    "y": 2345,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 594,
+    "y": 2345,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 860,
+    "y": 2345,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3532,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 264,
+   "y": 2395,
+   "w": 1392,
+   "h": 190
+  },
+  "rail": {
+   "scrollW": 1396,
+   "clientW": 1396,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 264,
+    "y": 2473,
+    "w": 267,
+    "h": 104
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 545,
+    "y": 2473,
+    "w": 267,
+    "h": 104
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 826,
+    "y": 2473,
+    "w": 267,
+    "h": 104
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 1108,
+    "y": 2473,
+    "w": 267,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch-f",
+  "w": 393,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3037,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd is-more",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 16,
+   "y": 1176,
+   "w": 361,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 601,
+   "clientW": 388,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 16,
+    "y": 1252,
+    "w": 292,
+    "h": 96
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 322,
+    "y": 1252,
+    "w": 292,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch-f",
+  "w": 1440,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2621,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 64,
+   "y": 1205,
+   "w": 1312,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1316,
+   "clientW": 1316,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 64,
+    "y": 1281,
+    "w": 251,
+    "h": 104
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 329,
+    "y": 1281,
+    "w": 251,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch-f",
+  "w": 1920,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2713,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 200,
+   "y": 1223,
+   "w": 1520,
+   "h": 180
+  },
+  "rail": {
+   "scrollW": 1524,
+   "clientW": 1524,
+   "scrollbarH": 0,
+   "more": false
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 200,
+    "y": 1299,
+    "w": 293,
+    "h": 104
+   },
+   {
+    "t": "Alla Buds54 produkter",
+    "href": "/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 507,
+    "y": 1299,
+    "w": 293,
+    "h": 104
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ }
+]

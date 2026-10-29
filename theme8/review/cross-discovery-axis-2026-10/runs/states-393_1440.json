@@ -1,0 +1,774 @@
+[
+ {
+  "test": "real-3",
+  "route": "thcab-vapes",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "3",
+  "more": true,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Magic Sauce Vapes",
+    "c": "2 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "THCbA Vapes",
+    "c": "3 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-2",
+  "route": "thcab-vapes",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "2",
+  "more": true,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "THCbA Vapes",
+    "c": "3 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-1",
+  "route": "thcab-vapes",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "1",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-0",
+  "route": "thcab-vapes",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": true,
+  "visible": false,
+  "n": "0",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [],
+  "railW": 0,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-0-format",
+  "route": "buds",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": true,
+  "visible": false,
+  "n": "0",
+  "more": false,
+  "title": "Utforska andra format",
+  "all": "Visa alla produkter",
+  "cards": [],
+  "railW": 0,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "fixture-4",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "many",
+  "more": true,
+  "title": "Fixtur: 4 destinationer",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Fixtur A",
+    "c": "2 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur B",
+    "c": "3 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur C",
+    "c": "4 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur D",
+    "c": "9 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0
+ },
+ {
+  "test": "fixture-6",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "many",
+  "more": true,
+  "title": "Fixtur: 6 destinationer",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Fixtur A",
+    "c": "2 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur B",
+    "c": "3 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur C",
+    "c": "4 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur D",
+    "c": "9 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur E",
+    "c": "16 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur F",
+    "c": "8 produkter",
+    "w": 288,
+    "h": 96,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0
+ },
+ {
+  "test": "fixture-long",
+  "w": 393,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "3",
+  "more": true,
+  "title": "Andra serier i Hasch och Charas",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Magic Sauce Hasch och Charas från Marrakech",
+    "c": "2 produkter",
+    "w": 288,
+    "h": 107,
+    "nameLines": 3,
+    "nameFits": true
+   },
+   {
+    "t": "Nano-11 Buds i storpack – utvalda sorter",
+    "c": "3 produkter",
+    "w": 288,
+    "h": 107,
+    "nameLines": 2,
+    "nameFits": true
+   },
+   {
+    "t": "THCbA Vapes engångs 2 ml",
+    "c": "4 produkter",
+    "w": 288,
+    "h": 107,
+    "nameLines": 2,
+    "nameFits": true
+   }
+  ],
+  "railW": 383,
+  "scrollbarH": 0
+ },
+ {
+  "test": "keyboard",
+  "w": 393,
+  "fixture6": [
+   {
+    "t": "Visa alla vapes",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur A2 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur B3 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur C4 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur D9 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur E16 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur F8 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   }
+  ],
+  "tabOrder": [
+   {
+    "t": "Visa alla vapes",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Magic Sauce Vapes2 produkter",
+    "href": "/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Visa alla vapes",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   }
+  ]
+ },
+ {
+  "test": "reduced-motion",
+  "route": "magic-sauce",
+  "w": 393,
+  "cards": [
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   }
+  ]
+ },
+ {
+  "test": "real-3",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "3",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Magic Sauce Vapes",
+    "c": "2 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "THCbA Vapes",
+    "c": "3 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-2",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "2",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "THCbA Vapes",
+    "c": "3 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-1",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "1",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Core Vapes",
+    "c": "1 produkt",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-0",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": true,
+  "visible": false,
+  "n": "0",
+  "more": false,
+  "title": "Andra serier i Vapes",
+  "all": "Visa alla vapes",
+  "cards": [],
+  "railW": 0,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "real-0-format",
+  "route": "buds",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": true,
+  "visible": false,
+  "n": "0",
+  "more": false,
+  "title": "Utforska andra format",
+  "all": "Visa alla produkter",
+  "cards": [],
+  "railW": 0,
+  "scrollbarH": 0,
+  "errors": []
+ },
+ {
+  "test": "fixture-4",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "many",
+  "more": false,
+  "title": "Fixtur: 4 destinationer",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Fixtur A",
+    "c": "2 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur B",
+    "c": "3 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur C",
+    "c": "4 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur D",
+    "c": "9 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0
+ },
+ {
+  "test": "fixture-6",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "many",
+  "more": true,
+  "title": "Fixtur: 6 destinationer",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Fixtur A",
+    "c": "2 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur B",
+    "c": "3 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur C",
+    "c": "4 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur D",
+    "c": "9 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur E",
+    "c": "16 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   },
+   {
+    "t": "Fixtur F",
+    "c": "8 produkter",
+    "w": 251,
+    "h": 104,
+    "nameLines": 1,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0
+ },
+ {
+  "test": "fixture-long",
+  "w": 1440,
+  "overflowX": false,
+  "present": true,
+  "hidden": false,
+  "visible": true,
+  "n": "3",
+  "more": false,
+  "title": "Andra serier i Hasch och Charas",
+  "all": "Visa alla vapes",
+  "cards": [
+   {
+    "t": "Magic Sauce Hasch och Charas från Marrakech",
+    "c": "2 produkter",
+    "w": 251,
+    "h": 127,
+    "nameLines": 4,
+    "nameFits": true
+   },
+   {
+    "t": "Nano-11 Buds i storpack – utvalda sorter",
+    "c": "3 produkter",
+    "w": 251,
+    "h": 127,
+    "nameLines": 3,
+    "nameFits": true
+   },
+   {
+    "t": "THCbA Vapes engångs 2 ml",
+    "c": "4 produkter",
+    "w": 251,
+    "h": 127,
+    "nameLines": 2,
+    "nameFits": true
+   }
+  ],
+  "railW": 1316,
+  "scrollbarH": 0
+ },
+ {
+  "test": "keyboard",
+  "w": 1440,
+  "fixture6": [
+   {
+    "t": "Visa alla vapes",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur A2 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur B3 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur C4 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur D9 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur E16 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   },
+   {
+    "t": "Fixtur F8 produkter",
+    "inRail": true,
+    "focusVisible": false,
+    "docScrollX": 0
+   }
+  ],
+  "tabOrder": [
+   {
+    "t": "Visa alla vapes",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Magic Sauce Vapes2 produkter",
+    "href": "/sv/categories/m-s-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "fv": true
+   },
+   {
+    "t": "Visa alla vapes",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "fv": true
+   }
+  ]
+ },
+ {
+  "test": "reduced-motion",
+  "route": "magic-sauce",
+  "w": 1440,
+  "cards": [
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   },
+   {
+    "tr": "0s",
+    "rm": true
+   }
+  ]
+ }
+]

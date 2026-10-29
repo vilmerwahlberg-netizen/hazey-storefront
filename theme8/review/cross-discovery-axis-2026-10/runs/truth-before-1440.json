@@ -1,0 +1,115 @@
+[
+ {
+  "which": "before",
+  "route": "thcv-vapes",
+  "w": 1440,
+  "url": "/sv/categories/thcv-vape",
+  "h1": "THCV Vapes",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCV",
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Vapes",
+    "top": 1439,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 1344,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla THCV",
+      "href": "/sv/categories/thcv",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/thcv-carts",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "alla-vapes-f",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes&serie=core",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "proutes",
+    "title": "Fortsätt i ett annat format",
+    "top": 1195,
+    "h": 238,
+    "links": [
+     {
+      "t": "Alla BudsUtforska buds och serier",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt HaschSe hela haschsortimentet",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ }
+]

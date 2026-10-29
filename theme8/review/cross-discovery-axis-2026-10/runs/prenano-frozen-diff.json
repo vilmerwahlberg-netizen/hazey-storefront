@@ -1,0 +1,206 @@
+[
+ {
+  "key": "buds-1440",
+  "dpr": 1,
+  "docH": [
+   6048,
+   5990
+  ],
+  "module": [
+   "4582-4820",
+   "4574-4754"
+  ],
+  "abovePx": 4574,
+  "aboveDiff": 161,
+  "belowPx": 1228,
+  "belowDiff": 233,
+  "belowBestShift": 46266
+ },
+ {
+  "key": "buds-393",
+  "dpr": 2,
+  "docH": [
+   15900,
+   15632
+  ],
+  "module": [
+   "5935-6265",
+   "5931-6127"
+  ],
+  "abovePx": 11862,
+  "aboveDiff": 0,
+  "belowPx": 3370,
+  "belowDiff": 63130,
+  "belowBestShift": 39519
+ },
+ {
+  "key": "hasch-1440",
+  "dpr": 1,
+  "docH": [
+   4215,
+   4157
+  ],
+  "module": [
+   "2749-2987",
+   "2741-2921"
+  ],
+  "abovePx": 2741,
+  "aboveDiff": 0,
+  "belowPx": 1228,
+  "belowDiff": 233,
+  "belowBestShift": 42287
+ },
+ {
+  "key": "hasch-393",
+  "dpr": 2,
+  "docH": [
+   11596,
+   11330
+  ],
+  "module": [
+   "3783-4113",
+   "3779-3976"
+  ],
+  "abovePx": 7558,
+  "aboveDiff": 0,
+  "belowPx": 3370,
+  "belowDiff": 10895,
+  "belowBestShift": 42738
+ },
+ {
+  "key": "hasch-f-1440",
+  "dpr": 1,
+  "docH": [
+   2679,
+   2621
+  ],
+  "module": [
+   "1213-1451",
+   "1205-1385"
+  ],
+  "abovePx": 1205,
+  "aboveDiff": 0,
+  "belowPx": 1228,
+  "belowDiff": 130,
+  "belowBestShift": 42393
+ },
+ {
+  "key": "hasch-f-393",
+  "dpr": 2,
+  "docH": [
+   6390,
+   6124
+  ],
+  "module": [
+   "1180-1510",
+   "1176-1373"
+  ],
+  "abovePx": 2352,
+  "aboveDiff": 0,
+  "belowPx": 3370,
+  "belowDiff": 19756,
+  "belowBestShift": 42737
+ },
+ {
+  "key": "m-s-vapes-1440",
+  "dpr": 1,
+  "docH": [
+   1968,
+   1968
+  ],
+  "module": [
+   "871-1051",
+   "871-1051"
+  ],
+  "abovePx": 871,
+  "aboveDiff": 0,
+  "belowPx": 917,
+  "belowDiff": 213,
+  "belowBestShift": 36503
+ },
+ {
+  "key": "m-s-vapes-393",
+  "dpr": 2,
+  "docH": [
+   5196,
+   5196
+  ],
+  "module": [
+   "1040-1212",
+   "1040-1212"
+  ],
+  "abovePx": 2080,
+  "aboveDiff": 0,
+  "belowPx": 2772,
+  "belowDiff": 0,
+  "belowBestShift": 39461
+ },
+ {
+  "key": "magic-sauce-1440",
+  "dpr": 1,
+  "docH": [
+   3261,
+   3329
+  ],
+  "module": [
+   "2268-2388",
+   "2268-2457"
+  ],
+  "abovePx": 2268,
+  "aboveDiff": 0,
+  "belowPx": 872,
+  "belowDiff": 31767,
+  "belowBestShift": 4706
+ },
+ {
+  "key": "magic-sauce-393",
+  "dpr": 2,
+  "docH": [
+   6822,
+   6920
+  ],
+  "module": [
+   "1945-2069",
+   "1945-2118"
+  ],
+  "abovePx": 3890,
+  "aboveDiff": 0,
+  "belowPx": 2684,
+  "belowDiff": 0,
+  "belowBestShift": 39460
+ },
+ {
+  "key": "thcab-vapes-1440",
+  "dpr": 1,
+  "docH": [
+   2063,
+   2063
+  ],
+  "module": [
+   "966-1146",
+   "966-1146"
+  ],
+  "abovePx": 966,
+  "aboveDiff": 0,
+  "belowPx": 917,
+  "belowDiff": 213,
+  "belowBestShift": 36503
+ },
+ {
+  "key": "thcab-vapes-393",
+  "dpr": 2,
+  "docH": [
+   5532,
+   5532
+  ],
+  "module": [
+   "1208-1380",
+   "1208-1380"
+  ],
+  "abovePx": 2416,
+  "aboveDiff": 0,
+  "belowPx": 2772,
+  "belowDiff": 0,
+  "belowBestShift": 39469
+ }
+]

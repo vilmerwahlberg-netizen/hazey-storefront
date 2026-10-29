@@ -1,0 +1,179 @@
+[
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2704,
+  "module": {
+   "cls": "hz8-xd--series-format hz8-sf-others hz8-xd is-more",
+   "axis": "series-format",
+   "n": "3",
+   "title": "Andra serier i Vapes",
+   "x": 16,
+   "y": 1016,
+   "w": 288,
+   "h": 196
+  },
+  "rail": {
+   "scrollW": 689,
+   "clientW": 292,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "THCaB Vapes4 produkter",
+    "href": "/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 1116,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 249,
+    "y": 1116,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 482,
+    "y": 1116,
+    "w": 219,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 7427,
+  "module": {
+   "cls": "hz8-xd--format hz8-sf-others hz8-xd is-more",
+   "axis": "format",
+   "n": "2",
+   "title": "Utforska andra format",
+   "x": 16,
+   "y": 5412,
+   "w": 288,
+   "h": 196
+  },
+  "rail": {
+   "scrollW": 456,
+   "clientW": 292,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "Alla Vapes24 produkter",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 16,
+    "y": 5512,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "Allt Hasch16 produkter",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 249,
+    "y": 5512,
+    "w": 219,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3627,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": "series",
+   "n": "many",
+   "title": "Utforska andra serier",
+   "x": 16,
+   "y": 2007,
+   "w": 288,
+   "h": 173
+  },
+  "rail": {
+   "scrollW": 922,
+   "clientW": 292,
+   "scrollbarH": 0,
+   "more": true
+  },
+  "cards": [
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 2076,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 249,
+    "y": 2076,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 482,
+    "y": 2076,
+    "w": 219,
+    "h": 96
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 715,
+    "y": 2076,
+    "w": 219,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ }
+]

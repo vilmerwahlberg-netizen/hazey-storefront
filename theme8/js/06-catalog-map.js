@@ -53,11 +53,16 @@
     /* Core-familjens hubb (Core-vapes + familjens buds/hasch), verifierad
        2026-10-27: /core, H1 "Core". Dubbletten /core-1 används inte. */
     { name: "Core", attr: "Core", hub: "core" },
-    { name: "D10", hub: "10-oh-thc" },
+    /* `legacy` (TASK 04, beslut 2026-10-27): kategorin finns kvar men är
+       ingen kunddestination -- D10 pekar i dag på 10-OH-THC (inte D10),
+       THCV är pausad, HHCPM/THCNM går upp i Core-familjen vid migrationen.
+       Används bara av upptäcktsmodulen (inga automatiska nya länkar dit);
+       headerns och filtrens länkar är en egen, senare uppgift. */
+    { name: "D10", hub: "10-oh-thc", legacy: true },
     { name: "Nano-11", aliases: ["Nano11"], attr: "Nano11", hub: "nano-11" },
-    { name: "THCV", hub: "thcv", extra: { carts: "thcv-carts" } },
-    { name: "HHCPM", hub: "hhcpm" },
-    { name: "THCNM", hub: "thcnm" }
+    { name: "THCV", hub: "thcv", extra: { carts: "thcv-carts" }, legacy: true },
+    { name: "HHCPM", hub: "hhcpm", legacy: true },
+    { name: "THCNM", hub: "thcnm", legacy: true }
   ];
 
   function norm(label) { return String(label || "").toLowerCase().replace(/[^a-z0-9åäö]/g, ""); }
@@ -89,7 +94,7 @@
         });
       });
       Object.keys(d.extra || {}).forEach(function (k) { routes[k] = abs(d.extra[k]); });
-      return { name: d.name, attr: d.attr || null, hub: d.hub ? abs(d.hub) : null, routes: routes };
+      return { name: d.name, attr: d.attr || null, hub: d.hub ? abs(d.hub) : null, routes: routes, legacy: !!d.legacy };
     }).filter(function (s) { return Object.keys(s.routes).length || s.hub; });
 
     /* Katalogportalen = headerns första icke-dropdown kategorilänk med
@@ -215,6 +220,9 @@
     return build().series.filter(function (s) { return s.routes[formatKey] && s !== except; });
   }
 
+  /* Serier som upptäcktsmodulen får rekommendera (inte `legacy`). */
+  function discoverable(series) { return !!series && !series.legacy; }
+
   /* Seriens mest relevanta landningssida: egen hubb, annars samma format
      som nu, annars första tillgängliga format. */
   function landingFor(series, formatKey) {
@@ -276,6 +284,7 @@
     routeMatches: routeMatches,
     formatByKey: formatByKey,
     seriesWithFormat: seriesWithFormat,
+    discoverable: discoverable,
     landingFor: landingFor,
     manufacturerRoute: manufacturerRoute,
     familyFormats: familyFormats,

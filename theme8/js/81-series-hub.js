@@ -672,24 +672,17 @@
        ingress och formatraden fylls (TASK 01C, se 00-bootstrap.js). */
     shelves.setAttribute("data-hz8-defer", "");
     wrap.appendChild(shelves);
-    /* Övriga serier (befintlig serienavigering) ligger kvar efter
-       hyllorna. Formathyllorna är hubbens kompletta sortiment, så
-       Nyehandels dubblerade grid förblir dold och ingen "Visa hela
-       sortimentet"-knapp skapas. Den aktuella serien visas som "här är
-       du" utan länk tillbaka till samma sida. */
+    /* Efter hyllorna: andra serier (TASK 04A, upptäcktsaxeln). Hubben
+       visar redan seriens alla format, så nedre upptäckt = övriga riktiga
+       serier, aktuell serie utesluten. Formathyllorna är hubbens kompletta
+       sortiment, så Nyehandels dubblerade grid förblir dold och ingen
+       "Visa hela sortimentet"-knapp skapas. Den äldre serierälsen (alla
+       serier inklusive aktuell och pausade) används inte längre. */
     var seriesRail = root.querySelector(".hz8-cat-rails .hz8-rail--series");
+    if (seriesRail) seriesRail.remove();
     var after = document.createElement("div");
     after.className = "hz8-sh-after";
-    if (seriesRail) {
-      after.appendChild(seriesRail);
-      Array.prototype.forEach.call(seriesRail.querySelectorAll("a.hz8-rail__item[href]"), function (a) {
-        if (HZ8.path(a.getAttribute("href")).split("?")[0].replace(/\/$/, "") !== location.pathname.replace(/\/$/, "")) return;
-        /* Samma element (80-category.js fyller bild och antal i det
-           asynkront); utan href är det varken länk eller tabbstopp. */
-        a.removeAttribute("href");
-        a.setAttribute("aria-current", "page");
-      });
-    }
+    if (HZ8.crossDiscovery) after.appendChild(HZ8.crossDiscovery.otherSeries(series));
     wrap.appendChild(after);
     root.insertBefore(wrap, root.firstChild);
 

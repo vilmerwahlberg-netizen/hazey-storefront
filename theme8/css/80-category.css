@@ -2652,6 +2652,11 @@ html.hz8-cat-portal[data-hz8-shell="broad"] .hz8-pfam.is-more { -webkit-mask-ima
    ============================================================ */
 html[data-hz8-shell="broad"] .hz8-ptool__desk .hz8-ptool__type { display: none; }
 html.hz8-cat-pilot[data-hz8-page="category"] .hz8-proutes { grid-row: 9; }
+/* TASK 04A: breda formatsidor slutar med den delade upptäcktsmodulen
+   (andra format) i samma rad -- THCaB:s kompakta kortspråk, 80b. */
+html.hz8-cat-pilot[data-hz8-page="category"] .hz8-xd { grid-row: 9; margin: 48px 0 40px; }
+html .hz8-xd[hidden] { display: none !important; }
+@media (max-width: 767px) { html.hz8-cat-pilot[data-hz8-page="category"] .hz8-xd { margin: 36px 0 28px; } }
 /* Samma hero-rytm i hela familjen: saknar sidan beskrivningstext (Alla
    Buds har ingen ingress i Nyehandel) reserveras ingressens två rader --
    tom och osynlig, ingen påhittad text -- så att hero, guidekort, hylla

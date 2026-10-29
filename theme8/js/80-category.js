@@ -1827,24 +1827,24 @@
     { key: "buds", group: "buds", sub: "Utforska buds och serier" },
     { key: "hasch", group: "hasch", sub: "Se hela haschsortimentet" }
   ];
+  /* Namnet ur headerns egen länk ("Alla vapes" -> "Alla Vapes"). */
+  function routeName(r, f) {
+    var cta = (HZ8.navContent || {})[r.group] && HZ8.navContent[r.group].cta;
+    return cta && cta.label ? cta.label.replace(/(\s)(\S+)$/, function (m, sp, w) { return sp + w.charAt(0).toUpperCase() + w.slice(1); }) : f.label;
+  }
   function portalLower(root, except) {
-    var nav = HZ8.navContent || {};
-    var onFormat = !!except;
-    var rows = PORTAL_ROUTES.filter(function (r) { return !onFormat || except.indexOf(r.key) === -1; }).map(function (r) {
+    /* Breda formatsidor (TASK 04A): den delade upptäcktsmodulen med andra
+       format. Portalen behåller sina godkända formatvägar nedan. */
+    if (except) { root.appendChild(xdOtherFormats(except)); return; }
+    var rows = PORTAL_ROUTES.map(function (r) {
       var f = HZ8.catalog.formatByKey(r.key);
-      var cta = nav[r.group] && nav[r.group].cta;
       if (!f || !f.href) return null;
-      /* Namnet ur headerns egen länk ("Alla vapes" -> "Alla Vapes"). */
-      var name = cta && cta.label ? cta.label.replace(/(\s)(\S+)$/, function (m, sp, w) { return sp + w.charAt(0).toUpperCase() + w.slice(1); }) : f.label;
-      return { f: f, name: name, sub: r.sub };
+      return { f: f, name: routeName(r, f), sub: r.sub };
     }).filter(Boolean);
     if (rows.length) {
       var sec = node("section", "hz8-proutes");
       sec.setAttribute("aria-labelledby", "hz8-proutes-title");
-      sec.innerHTML = onFormat
-        ? '<div class="hz8-proutes__head"><p class="hz8-kicker">Fler format</p><h2 id="hz8-proutes-title">Fortsätt i ett annat format</h2>' +
-          '<p class="hz8-proutes__lead">Öppna en fokuserad kategori för en annan produkttyp.</p></div><ul class="hz8-proutes__list" role="list"></ul>'
-        : '<div class="hz8-proutes__head"><p class="hz8-kicker">Fortsätt i ett format</p><h2 id="hz8-proutes-title">Jämför enklare</h2>' +
+      sec.innerHTML = '<div class="hz8-proutes__head"><p class="hz8-kicker">Fortsätt i ett format</p><h2 id="hz8-proutes-title">Jämför enklare</h2>' +
           '<p class="hz8-proutes__lead">Öppna en fokuserad kategori när du vet vilken produkttyp du söker.</p></div><ul class="hz8-proutes__list" role="list"></ul>';
       var ul = sec.querySelector("ul");
       rows.forEach(function (r) {
@@ -1856,7 +1856,7 @@
       });
       root.appendChild(sec);
     }
-    var desc = onFormat ? null : root.querySelector("article.category-description .readmore, article.category-description .nh-cat-box");
+    var desc = root.querySelector("article.category-description .readmore, article.category-description .nh-cat-box");
     if (desc) {
       var about = node("div", "hz8-cat-about-head hz8-pabout");
       about.setAttribute("data-hz8-cat", "about-head");
@@ -3156,7 +3156,7 @@
   var SF_LOW = 3;           // 1-3 produkter = lågantalsläge (kontextpanel)
   /* R3: godkända seriebilder (assets/series-format-r3/) -- ren bildnyckel
      per verifierat serienamn. Serier utan post behåller produktbilden. */
-  var SF_SERIES_ART = { "Magic Sauce": "magic-sauce", "THCaB": "thcab", "THCbA": "thcba", "Core": "core", "THCV": "thcv" };
+  var SF_SERIES_ART = { "Magic Sauce": "magic-sauce", "THCaB": "thcab", "THCbA": "thcba", "Core": "core", "Nano-11": "nano11", "THCV": "thcv" };
   function sfTitle(ctx) { return ctx.series.name + " " + ctx.format.label; }
   function sfFormats(ctx) {
     return HZ8.catalog.build().formats.filter(function (f) { return !f.seriesless && ctx.series.routes[f.key]; });
@@ -3186,6 +3186,104 @@
     if (current) a.setAttribute("aria-current", "page");
     return a;
   }
+
+  /* ======================================================================
+     TASK 04A: kontextuell upptäcktsaxel (beslut 2026-10-23). EN modul för
+     kategorins slut; axeln följer sidans familj, som väljs ur pathname --
+     aldrig ur query/filter:
+       bred formatsida  -> andra format          ("Utforska andra format")
+       seriehubb        -> andra serier           ("Utforska andra serier")
+       serie x format   -> andra serier i formatet ("Andra serier i Vapes")
+     Komponenten är THCaB:s godkända kompakta landskapskort (.hz8-sf-serie).
+     Destinationerna är relationskartans riktiga routes och skrivs in som
+     länkar direkt (crawlbara, tabbordning klar); antal och bild läses ur
+     respektive sida. 0 produkter = kortet tas bort, inga kort kvar =
+     ingen modul. Okänt svar (nätfel) = länken står kvar utan antal.
+     items: [{ name, href, art }]; all: { href, label } | null.
+     ====================================================================== */
+  function xdModule(o) {
+    var id = "hz8-xd-" + o.axis + "-title";
+    var sec = node("section", (o.cls ? o.cls + " " : "") + "hz8-sf-others hz8-xd");
+    sec.setAttribute("aria-labelledby", id);
+    sec.setAttribute("data-hz8-xd", o.axis);
+    sec.innerHTML = '<div class="hz8-sf-row__head"><h2 class="hz8-sf-row__title" id="' + id + '">' + HZ8.esc(o.title) + '</h2></div><ul class="hz8-sf-series" role="list"></ul>';
+    if (o.all && o.all.href && !HZ8.catalog.routeMatches(o.all.href, location.href)) {
+      sec.querySelector(".hz8-sf-row__head").appendChild(sfLink(o.all.href, "hz8-sf-row__all", HZ8.esc(o.all.label) + ARROW, false));
+    }
+    var ul = sec.querySelector("ul");
+    function size() {
+      var n = ul.children.length;
+      sec.setAttribute("data-hz8-xd-n", n > 3 ? "many" : String(n));
+      sec.hidden = n === 0;
+      /* Fler kort än railen visar: kanten tonar ut (ingen synlig
+         scrollbar), så att det syns att det finns mer. */
+      sec.classList.toggle("is-more", ul.scrollWidth > ul.clientWidth + 1);
+    }
+    var jobs = o.items.map(function (it) {
+      var li = node("li");
+      var a = sfLink(it.href, "hz8-sf-serie" + (it.art ? " has-art" : ""), '<span class="hz8-sf-serie__media" aria-hidden="true"></span><span class="hz8-sf-serie__text"><span class="hz8-sf-serie__name">' + HZ8.esc(it.name) + '</span><span class="hz8-sf-serie__count"></span></span>' + ARROW, false);
+      if (it.art) a.setAttribute("data-hz8-series-art", it.art);
+      li.appendChild(a);
+      ul.appendChild(li);
+      return HZ8.fetchPage(it.href, HZ8.categoryInfo).then(function (info) {
+        if (!info || info.count === 0) { li.remove(); return; }
+        if (info.count != null) a.querySelector(".hz8-sf-serie__count").textContent = plural(info.count);
+        if (!it.art && info.image) {
+          var img = document.createElement("img");
+          img.src = info.image; img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 120; img.height = 120;
+          a.querySelector(".hz8-sf-serie__media").appendChild(img);
+        }
+      }).catch(function () { /* okänt: länken står kvar utan antal */ }).then(size);
+    });
+    size();
+    /* Tangentbord: fokuserat kort scrollas in i railen (bara railen,
+       aldrig dokumentet i sidled). */
+    ul.addEventListener("focusin", function (e) {
+      var a = e.target.closest("a");
+      if (!a) return;
+      var lr = ul.getBoundingClientRect(), ar = a.getBoundingClientRect();
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (ar.left < lr.left || ar.right > lr.right) ul.scrollTo({ left: ul.scrollLeft + (ar.left < lr.left ? ar.left - lr.left - 2 : ar.right - lr.right + 2), behavior: reduce ? "auto" : "smooth" });
+    });
+    window.addEventListener("resize", function () { window.requestAnimationFrame(size); }, { passive: true });
+    sec.ready = Promise.all(jobs).then(function () { size(); return sec; });
+    return sec;
+  }
+  function xdSeriesArt(series) { return SF_SERIES_ART[series.name] || null; }
+  /* Andra serier i samma format (serie x format). */
+  function xdSeriesInFormat(series, format) {
+    return xdModule({
+      axis: "series-format", cls: "hz8-xd--series-format", title: "Andra serier i " + format.label,
+      all: format.href ? { href: format.href, label: "Visa alla " + format.label.toLowerCase() } : null,
+      items: HZ8.catalog.seriesWithFormat(format.key, series).filter(HZ8.catalog.discoverable).map(function (s) {
+        return { name: s.name + " " + format.label, href: s.routes[format.key], art: xdSeriesArt(s) };
+      })
+    });
+  }
+  /* Andra serier (seriehubb): seriernas egna landningssidor, utom aktuell. */
+  function xdOtherSeries(series) {
+    return xdModule({
+      axis: "series", cls: "hz8-xd--series", title: "Utforska andra serier", all: null,
+      items: HZ8.catalog.build().series.filter(function (s) { return s !== series && HZ8.catalog.discoverable(s) && HZ8.catalog.landingFor(s); }).map(function (s) {
+        return { name: s.name, href: HZ8.catalog.landingFor(s), art: xdSeriesArt(s) };
+      })
+    });
+  }
+  /* Andra format (bred formatsida): de breda formatsidorna utom sidans
+     egna källor, med headerns namn ("Alla Vapes", "Allt Hasch"). */
+  function xdOtherFormats(except) {
+    var all = HZ8.catalog.build().all;
+    return xdModule({
+      axis: "format", cls: "hz8-xd--format", title: "Utforska andra format",
+      all: all ? { href: all.href, label: "Visa alla produkter" } : null,
+      items: PORTAL_ROUTES.filter(function (r) { return except.indexOf(r.key) === -1; }).map(function (r) {
+        var f = HZ8.catalog.formatByKey(r.key);
+        if (!f || !f.href) return null;
+        return { name: routeName(r, f), href: f.href, art: null };
+      }).filter(Boolean)
+    });
+  }
+  HZ8.crossDiscovery = { module: xdModule, otherSeries: xdOtherSeries, seriesInFormat: xdSeriesInFormat, otherFormats: xdOtherFormats };
 
   /* ======================================================================
      Kategorihylla (2026-10-22): R3-filterhyllans beteende för alla
@@ -3390,14 +3488,10 @@
       '<span class="hz8-sf-more__art" aria-hidden="true"></span>';
     /* -- Efter sortimentet. -- */
     var after = node("div", "hz8-sf-after");
-    after.innerHTML = '<section class="hz8-sf-cont" aria-labelledby="hz8-sf-cont-title" hidden><h2 class="hz8-sf-row__title" id="hz8-sf-cont-title">Fortsätt i serien</h2><ul class="hz8-sf-chips" role="list"></ul></section>' +
-      '<section class="hz8-sf-others" aria-labelledby="hz8-sf-others-title" hidden><div class="hz8-sf-row__head"><h2 class="hz8-sf-row__title" id="hz8-sf-others-title">Andra serier i ' + HZ8.esc(format.label) + '</h2></div><ul class="hz8-sf-series" role="list"></ul></section>';
-    /* "Visa alla" = formatets egen sida (alla serier i formatet) -- bara
-       när den finns och inte är sidan själv. */
-    if (format.href && !HZ8.catalog.routeMatches(format.href, location.href)) {
-      var allLink = sfLink(format.href, "hz8-sf-row__all", "Visa alla " + HZ8.esc(format.label.toLowerCase()) + ARROW, false);
-      after.querySelector(".hz8-sf-others .hz8-sf-row__head").appendChild(allLink);
-    }
+    after.innerHTML = '<section class="hz8-sf-cont" aria-labelledby="hz8-sf-cont-title" hidden><h2 class="hz8-sf-row__title" id="hz8-sf-cont-title">Fortsätt i serien</h2><ul class="hz8-sf-chips" role="list"></ul></section>';
+    /* Upptäcktsaxeln (TASK 04A): andra serier i samma format. "Visa alla"
+       = formatets egen sida, bara när den finns och inte är sidan själv. */
+    after.appendChild(xdSeriesInFormat(series, format));
     root.appendChild(after);
 
     var cardsN = null, siblings = null;
@@ -3434,43 +3528,6 @@
       siblings.forEach(function (d) { var li = node("li"); li.appendChild(sfLink(d.href, "hz8-sf-chip", HZ8.esc(d.label), false)); chips.appendChild(li); });
       layout();
     });
-
-    /* Andra serier i samma format: kartans serier med route i formatet,
-       utom aktuell och pausade (STATUS: juridik ej klar), med riktig bild
-       och riktigt antal från respektive sida (0 = dold). */
-    var others = HZ8.catalog.seriesWithFormat(format.key, series).filter(shown);
-    if (others.length) {
-      Promise.all(others.map(function (o) {
-        var r = o.routes[format.key];
-        return HZ8.fetchPage(r, HZ8.categoryInfo).then(function (info) { return { s: o, href: r, info: info }; }).catch(function () { return null; });
-      })).then(function (rows) {
-        rows = rows.filter(function (x) { return x && x.info && x.info.count > 0; });
-        if (!rows.length) return;
-        var ul = after.querySelector(".hz8-sf-series");
-        rows.forEach(function (x) {
-          var li = node("li");
-          var a = sfLink(x.href, "hz8-sf-serie" + (SF_SERIES_ART[x.s.name] ? " has-art" : ""), '<span class="hz8-sf-serie__media" aria-hidden="true"></span><span class="hz8-sf-serie__text"><span class="hz8-sf-serie__name">' + HZ8.esc(x.s.name + " " + format.label) + '</span><span class="hz8-sf-serie__count">' + HZ8.esc(plural(x.info.count)) + "</span></span>" + ARROW, false);
-          if (SF_SERIES_ART[x.s.name]) a.setAttribute("data-hz8-series-art", SF_SERIES_ART[x.s.name]);
-          else if (x.info.image) {
-            var img = document.createElement("img");
-            img.src = x.info.image; img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 120; img.height = 120;
-            a.querySelector(".hz8-sf-serie__media").appendChild(img);
-          }
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
-        after.querySelector(".hz8-sf-others").hidden = false;
-        /* Tangentbord: fokuserat kort scrollas in i railen (bara railen,
-           aldrig dokumentet i sidled). */
-        ul.addEventListener("focusin", function (e) {
-          var a = e.target.closest("a");
-          if (!a) return;
-          var lr = ul.getBoundingClientRect(), ar = a.getBoundingClientRect();
-          var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          if (ar.left < lr.left || ar.right > lr.right) ul.scrollTo({ left: ul.scrollLeft + (ar.left < lr.left ? ar.left - lr.left - 2 : ar.right - lr.right + 2), behavior: reduce ? "auto" : "smooth" });
-        });
-      });
-    }
 
     /* -- Desktop: flikar och verktygsrad i EN glashylla när båda ryms på
           en rad (mäts på riktiga bredder; annars två rader i samma

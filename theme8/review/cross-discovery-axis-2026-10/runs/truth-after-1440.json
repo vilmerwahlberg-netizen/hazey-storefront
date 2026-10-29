@@ -1,0 +1,2465 @@
+[
+ {
+  "which": "after",
+  "route": "home",
+  "w": 1440,
+  "url": "/",
+  "h1": "Sveriges #1 för lagliga cannabinoider",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": null,
+  "ctx": null,
+  "mods": [],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter",
+  "w": 1440,
+  "url": "/sv/categories/alla-produkter",
+  "h1": "Alla produkter",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "all",
+   "series": null,
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "proutes",
+    "title": "Jämför enklare",
+    "top": 7239,
+    "h": 201,
+    "links": [
+     {
+      "t": "Alla VapesJämför vapes och styrkor",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla BudsUtforska buds och serier",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt HaschSe hela haschsortimentet",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 4944,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 4944,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch",
+  "w": 1440,
+  "url": "/sv/categories/hasch",
+  "h1": "Allt Hasch",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "hasch",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 2741,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 2741,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "magic-sauce",
+  "w": 1440,
+  "url": "/sv/categories/magic-sauce",
+  "h1": "Magic Sauce",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": true,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "Magic Sauce",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra serier",
+    "top": 2272,
+    "h": 177,
+    "links": [
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "hub-after",
+    "title": "Utforska andra serier",
+    "top": 2268,
+    "h": 189,
+    "links": [
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra serier",
+    "top": 2272,
+    "h": 177,
+    "links": [
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "m-s-vapes",
+  "w": 1440,
+  "url": "/sv/categories/m-s-vapes",
+  "h1": "Magic Sauce Vapes",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "Magic Sauce",
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Vapes",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Vapes",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "ms-carts",
+  "w": 1440,
+  "url": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+  "h1": "Alla Carts",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": "format",
+  "ctx": {
+   "type": "combo",
+   "series": "Magic Sauce",
+   "format": "carts",
+   "query": true
+  },
+  "mods": [
+   {
+    "name": "cat-rails",
+    "title": "Produkttyp",
+    "top": 332,
+    "h": 268,
+    "links": [
+     {
+      "t": "Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes?serie=magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "Carts7 produkter",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": "page"
+     },
+     {
+      "t": "Batterier & tillbehör6 produkter",
+      "href": "/sv/categories/pennor",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     },
+     {
+      "t": "THCbA1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thcb-carts",
+      "cur": null
+     },
+     {
+      "t": "THCV1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thcv-carts",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "pdp",
+  "w": 1440,
+  "url": "/sv/products/vape-thcx-19-core-2ml/165",
+  "h1": "Vape - THCX 19% - Core - 2ml",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": null,
+  "ctx": null,
+  "mods": [],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes-f",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes&serie=core",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1187,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1187,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds",
+  "w": 1440,
+  "url": "/sv/categories/blommor-buds",
+  "h1": "Alla Buds",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 4574,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 4574,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "buds-f",
+  "w": 1440,
+  "url": "/sv/categories/blommor-buds&serie=magic-sauce",
+  "h1": "Alla Buds",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1749,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1749,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "hasch-f",
+  "w": 1440,
+  "url": "/sv/categories/hasch&serie=magic-sauce",
+  "h1": "Allt Hasch",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "hasch",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-produkter-sq",
+  "w": 1440,
+  "url": "/sv/categories/alla-produkter?typ=vapes&q=core",
+  "h1": "Alla produkter",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": null,
+  "mods": [
+   {
+    "name": "proutes",
+    "title": "Jämför enklare",
+    "top": 1167,
+    "h": 201,
+    "links": [
+     {
+      "t": "Alla VapesJämför vapes och styrkor",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Alla BudsUtforska buds och serier",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt HaschSe hela haschsortimentet",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-vapes",
+  "w": 1440,
+  "url": "/sv/categories/thca-vapes",
+  "h1": "THCaB Vapes",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCaB",
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Vapes",
+    "top": 966,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 871,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla THCaB",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     },
+     {
+      "t": "Buds",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     },
+     {
+      "t": "Hasch",
+      "href": "/sv/categories/thca-hash",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Vapes",
+    "top": 966,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab",
+  "w": 1440,
+  "url": "/sv/categories/thca",
+  "h1": "THC-A",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": true,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "THCaB",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra serier",
+    "top": 2272,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "hub-after",
+    "title": "Utforska andra serier",
+    "top": 2268,
+    "h": 189,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra serier",
+    "top": 2272,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba",
+  "w": 1440,
+  "url": "/sv/categories/thcb",
+  "h1": "THC-B",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": true,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "THCbA",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra serier",
+    "top": 1400,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "hub-after",
+    "title": "Utforska andra serier",
+    "top": 1396,
+    "h": 189,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra serier",
+    "top": 1400,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "d10",
+  "w": 1440,
+  "url": "/sv/categories/10-oh-thc",
+  "h1": "10-OH-THC",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "D10",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "cat-rails",
+    "title": "Format",
+    "top": 242,
+    "h": 310,
+    "links": [
+     {
+      "t": "Alla D101 produkt",
+      "href": "/sv/categories/10-oh-thc",
+      "cur": "page"
+     },
+     {
+      "t": "Vapes1 produkt",
+      "href": "/sv/categories/10-oh-thc",
+      "cur": null
+     },
+     {
+      "t": "CartsFinns inte i D10Finns i 4 andra serier",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "BudsFinns inte i D10Finns i 5 andra serier",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "HaschFinns inte i D10Finns i 3 andra serier",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     },
+     {
+      "t": "D101 produkt",
+      "href": "/sv/categories/10-oh-thc",
+      "cur": "page"
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     },
+     {
+      "t": "THCV7 produkter",
+      "href": "/sv/categories/thcv",
+      "cur": null
+     },
+     {
+      "t": "HHCPM4 produkter",
+      "href": "/sv/categories/hhcpm",
+      "cur": null
+     },
+     {
+      "t": "THCNM4 produkter",
+      "href": "/sv/categories/thcnm",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11",
+  "w": 1440,
+  "url": "/sv/categories/nano-11",
+  "h1": "Nano-11",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": true,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "Nano-11",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra serier",
+    "top": 964,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "hub-after",
+    "title": "Utforska andra serier",
+    "top": 960,
+    "h": 189,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra serier",
+    "top": 964,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Core4 produkter",
+      "href": "/sv/categories/core",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core",
+  "w": 1440,
+  "url": "/sv/categories/core",
+  "h1": "Core",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": true,
+  "nav": "series-hub",
+  "ctx": {
+   "type": "series-hub",
+   "series": "Core",
+   "format": null,
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra serier",
+    "top": 1836,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "hub-after",
+    "title": "Utforska andra serier",
+    "top": 1832,
+    "h": 189,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra serier",
+    "top": 1836,
+    "h": 177,
+    "links": [
+     {
+      "t": "Magic Sauce12 produkter",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB30 produkter",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "THCbA4 produkter",
+      "href": "/sv/categories/thcb",
+      "cur": null
+     },
+     {
+      "t": "Nano-118 produkter",
+      "href": "/sv/categories/nano-11",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "core-vapes",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes&serie=core",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1187,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1187,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-buds",
+  "w": 1440,
+  "url": "/sv/categories/blommor-buds",
+  "h1": "Alla Buds",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 4574,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 4574,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "butik",
+  "w": 1440,
+  "url": "/sv/page/butik",
+  "h1": "Hitta rätt i sortimentet",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": null,
+  "ctx": null,
+  "mods": [],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-buds",
+  "w": 1440,
+  "url": "/sv/categories/thca-blommor",
+  "h1": "THCaB Buds",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCaB",
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Buds",
+    "top": 2366,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Buds9 produkter",
+      "href": "/sv/categories/m-s-buds",
+      "cur": null
+     },
+     {
+      "t": "Nano-11 Buds8 produkter",
+      "href": "/sv/categories/nano11-blommor",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 2271,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla THCaB",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Vapes",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     },
+     {
+      "t": "Hasch",
+      "href": "/sv/categories/thca-hash",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Buds",
+    "top": 2366,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Buds9 produkter",
+      "href": "/sv/categories/m-s-buds",
+      "cur": null
+     },
+     {
+      "t": "Nano-11 Buds8 produkter",
+      "href": "/sv/categories/nano11-blommor",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-hash",
+  "w": 1440,
+  "url": "/sv/categories/thca-hash",
+  "h1": "THCaB Hasch",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCaB",
+   "format": "hasch",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Hasch",
+    "top": 1911,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla hasch",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Hasch2 produkter",
+      "href": "/sv/categories/hasch?filters=Serie_Magic+Sauce",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 1816,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla THCaB",
+      "href": "/sv/categories/thca",
+      "cur": null
+     },
+     {
+      "t": "Vapes",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     },
+     {
+      "t": "Buds",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Hasch",
+    "top": 1911,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla hasch",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Hasch2 produkter",
+      "href": "/sv/categories/hasch?filters=Serie_Magic+Sauce",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcab-carts",
+  "w": 1440,
+  "url": "/sv/categories/thca-carts",
+  "h1": "THCaB Carts",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCaB",
+   "format": "carts",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Carts",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla carts",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Carts1 produkt",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCbA Carts1 produkt",
+      "href": "/sv/categories/thcb-carts",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Carts",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla carts",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Carts1 produkt",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCbA Carts1 produkt",
+      "href": "/sv/categories/thcb-carts",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba-vapes",
+  "w": 1440,
+  "url": "/sv/categories/thcb-vapes",
+  "h1": "THCbA Vapes",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCbA",
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Vapes",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Vapes",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcba-carts",
+  "w": 1440,
+  "url": "/sv/categories/thcb-carts",
+  "h1": "THCbA Carts",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCbA",
+   "format": "carts",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Carts",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla carts",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Carts1 produkt",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB Carts1 produkt",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Carts",
+    "top": 871,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla carts",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Carts1 produkt",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB Carts1 produkt",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "ms-buds",
+  "w": 1440,
+  "url": "/sv/categories/m-s-buds",
+  "h1": "Magic Sauce Buds",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "Magic Sauce",
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Buds",
+    "top": 1911,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "THCaB Buds16 produkter",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     },
+     {
+      "t": "Nano-11 Buds8 produkter",
+      "href": "/sv/categories/nano11-blommor",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 1816,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla Magic Sauce",
+      "href": "/sv/categories/magic-sauce",
+      "cur": null
+     },
+     {
+      "t": "Vapes",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "Hasch",
+      "href": "/sv/categories/hasch?filters=Serie_Magic+Sauce",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Buds",
+    "top": 1911,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "THCaB Buds16 produkter",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     },
+     {
+      "t": "Nano-11 Buds8 produkter",
+      "href": "/sv/categories/nano11-blommor",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "nano11-buds",
+  "w": 1440,
+  "url": "/sv/categories/nano11-blommor",
+  "h1": "Nano-11 Buds",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "Nano-11",
+   "format": "buds",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Buds",
+    "top": 1344,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Buds9 produkter",
+      "href": "/sv/categories/m-s-buds",
+      "cur": null
+     },
+     {
+      "t": "THCaB Buds16 produkter",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Buds",
+    "top": 1344,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla buds",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Buds9 produkter",
+      "href": "/sv/categories/m-s-buds",
+      "cur": null
+     },
+     {
+      "t": "THCaB Buds16 produkter",
+      "href": "/sv/categories/thca-blommor",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes-ms",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes&serie=magic-sauce",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-vapes-serie",
+  "w": 1440,
+  "url": "/sv/categories/alla-vapes?serie=magic-sauce",
+  "h1": "Alla Vapes",
+  "shell": "broad",
+  "pilot": true,
+  "sf": false,
+  "hub": false,
+  "nav": "pilot",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Utforska andra format",
+    "top": 1205,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla produkter",
+      "href": "/sv/categories/alla-produkter",
+      "cur": null
+     },
+     {
+      "t": "Alla Buds54 produkter",
+      "href": "/sv/categories/blommor-buds",
+      "cur": null
+     },
+     {
+      "t": "Allt Hasch16 produkter",
+      "href": "/sv/categories/hasch",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "alla-carts",
+  "w": 1440,
+  "url": "/sv/categories/alla-cartridges",
+  "h1": "Alla Carts",
+  "shell": null,
+  "pilot": false,
+  "sf": false,
+  "hub": false,
+  "nav": "format",
+  "ctx": {
+   "type": "format",
+   "series": null,
+   "format": "carts",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "cat-rails",
+    "title": "Produkttyp",
+    "top": 332,
+    "h": 248,
+    "links": [
+     {
+      "t": "Vapes24 produkter",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Carts7 produkter",
+      "href": "/sv/categories/alla-cartridges",
+      "cur": "page"
+     },
+     {
+      "t": "Batterier & tillbehör6 produkter",
+      "href": "/sv/categories/pennor",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/alla-cartridges?filters=Serie_Magic+Sauce",
+      "cur": null
+     },
+     {
+      "t": "THCaB1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thca-carts",
+      "cur": null
+     },
+     {
+      "t": "THCbA1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thcb-carts",
+      "cur": null
+     },
+     {
+      "t": "THCV1 produkt",
+      "href": null,
+      "cur": null
+     },
+     {
+      "t": "",
+      "href": "/sv/categories/thcv-carts",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ },
+ {
+  "which": "after",
+  "route": "thcv-vapes",
+  "w": 1440,
+  "url": "/sv/categories/thcv-vape",
+  "h1": "THCV Vapes",
+  "shell": null,
+  "pilot": false,
+  "sf": true,
+  "hub": false,
+  "nav": "series-format",
+  "ctx": {
+   "type": "combo",
+   "series": "THCV",
+   "format": "vapes",
+   "query": false
+  },
+  "mods": [
+   {
+    "name": "sf-others",
+    "title": "Andra serier i Vapes",
+    "top": 1439,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "sf-cont",
+    "title": "Fortsätt i serien",
+    "top": 1344,
+    "h": 69,
+    "links": [
+     {
+      "t": "Alla THCV",
+      "href": "/sv/categories/thcv",
+      "cur": null
+     },
+     {
+      "t": "Carts",
+      "href": "/sv/categories/thcv-carts",
+      "cur": null
+     }
+    ]
+   },
+   {
+    "name": "xd",
+    "title": "Andra serier i Vapes",
+    "top": 1439,
+    "h": 180,
+    "links": [
+     {
+      "t": "Visa alla vapes",
+      "href": "/sv/categories/alla-vapes",
+      "cur": null
+     },
+     {
+      "t": "Magic Sauce Vapes2 produkter",
+      "href": "/sv/categories/m-s-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCaB Vapes4 produkter",
+      "href": "/sv/categories/thca-vapes",
+      "cur": null
+     },
+     {
+      "t": "THCbA Vapes3 produkter",
+      "href": "/sv/categories/thcb-vapes",
+      "cur": null
+     },
+     {
+      "t": "Core Vapes1 produkt",
+      "href": "/sv/categories/alla-vapes?filters=Serie_Core",
+      "cur": null
+     }
+    ]
+   }
+  ],
+  "overflowX": false,
+  "errors": []
+ }
+]

@@ -1,0 +1,226 @@
+[
+ {
+  "which": "before",
+  "route": "m-s-vapes",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 2679,
+  "module": {
+   "cls": "hz8-sf-others",
+   "axis": null,
+   "n": null,
+   "title": "Andra serier i Vapes",
+   "x": 16,
+   "y": 1016,
+   "w": 336,
+   "h": 172
+  },
+  "rail": {
+   "scrollW": 1068,
+   "clientW": 340,
+   "scrollbarH": 0
+  },
+  "cards": [
+   {
+    "t": "THCaB Vapes4 produkter",
+    "href": "/sv/categories/thca-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcab",
+    "img": false,
+    "x": 16,
+    "y": 1092,
+    "w": 255,
+    "h": 96
+   },
+   {
+    "t": "THCbA Vapes3 produkter",
+    "href": "/sv/categories/thcb-vapes?preview=v9kzdmqz4w60l5n",
+    "art": "thcba",
+    "img": false,
+    "x": 285,
+    "y": 1092,
+    "w": 255,
+    "h": 96
+   },
+   {
+    "t": "Core Vapes1 produkt",
+    "href": "/sv/categories/alla-vapes?filters=Serie_Core&preview=v9kzdmqz4w60l5n",
+    "art": "core",
+    "img": false,
+    "x": 555,
+    "y": 1092,
+    "w": 255,
+    "h": 96
+   },
+   {
+    "t": "THCV Vapes6 produkter",
+    "href": "/sv/categories/thcv-vape?preview=v9kzdmqz4w60l5n",
+    "art": "thcv",
+    "img": false,
+    "x": 824,
+    "y": 1092,
+    "w": 255,
+    "h": 96
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "buds",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 7588,
+  "module": {
+   "cls": "hz8-proutes",
+   "axis": null,
+   "n": null,
+   "title": "Fortsätt i ett annat format",
+   "x": 16,
+   "y": 5416,
+   "w": 288,
+   "h": 381
+  },
+  "cards": [
+   {
+    "t": "Alla VapesJämför vapes och styrkor",
+    "href": "/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": false,
+    "x": 16,
+    "y": 5603,
+    "w": 288,
+    "h": 76
+   },
+   {
+    "t": "Allt HaschSe hela haschsortimentet",
+    "href": "/sv/categories/hasch?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": false,
+    "x": 16,
+    "y": 5689,
+    "w": 288,
+    "h": 76
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ },
+ {
+  "which": "before",
+  "route": "magic-sauce",
+  "w": 320,
+  "zoom": false,
+  "h1s": 1,
+  "overflowX": false,
+  "docH": 3578,
+  "module": {
+   "cls": "hz8-sh-after",
+   "axis": null,
+   "n": null,
+   "title": "Serier",
+   "x": 16,
+   "y": 2007,
+   "w": 288,
+   "h": 124
+  },
+  "cards": [
+   {
+    "t": "Magic Sauce12 produkter",
+    "href": null,
+    "art": null,
+    "img": true,
+    "x": 32,
+    "y": 2065,
+    "w": 161,
+    "h": 52
+   },
+   {
+    "t": "THCaB30 produkter",
+    "href": "/sv/categories/thca?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 203,
+    "y": 2065,
+    "w": 142,
+    "h": 52
+   },
+   {
+    "t": "THCbA4 produkter",
+    "href": "/sv/categories/thcb?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 354,
+    "y": 2065,
+    "w": 135,
+    "h": 52
+   },
+   {
+    "t": "Core4 produkter",
+    "href": "/sv/categories/core?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 499,
+    "y": 2065,
+    "w": 135,
+    "h": 52
+   },
+   {
+    "t": "D101 produkt",
+    "href": "/sv/categories/10-oh-thc?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 644,
+    "y": 2065,
+    "w": 125,
+    "h": 52
+   },
+   {
+    "t": "Nano-118 produkter",
+    "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 779,
+    "y": 2065,
+    "w": 136,
+    "h": 52
+   },
+   {
+    "t": "THCV7 produkter",
+    "href": "/sv/categories/thcv?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 925,
+    "y": 2065,
+    "w": 135,
+    "h": 52
+   },
+   {
+    "t": "HHCPM4 produkter",
+    "href": "/sv/categories/hhcpm?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 1070,
+    "y": 2065,
+    "w": 135,
+    "h": 52
+   },
+   {
+    "t": "THCNM4 produkter",
+    "href": "/sv/categories/thcnm?preview=v9kzdmqz4w60l5n",
+    "art": null,
+    "img": true,
+    "x": 1215,
+    "y": 2065,
+    "w": 135,
+    "h": 52
+   }
+  ],
+  "overlap": [],
+  "errors": []
+ }
+]
