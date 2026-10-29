@@ -1471,29 +1471,40 @@
     });
   }
 
-  /* Produktens plats i katalogkartan ur dess egna kategorilänkar: format
-     (Alla Vapes, Alla Buds ...) och serie x format (M.S Vapes ...). */
+  /* Produktens plats i katalogkartan ur dess egna kategorilänkar:
+     format (Alla Vapes, Alla Carts ...) och serie (seriehubb eller serie x
+     format). Formatet kommer i första hand ur formatlänken, annars ur en
+     serie x format-länk. Seriedestinationen är katalogkartans etablerade
+     route för serie + format -- även när den är en filtrerad formatsida
+     (t.ex. Magic Sauce Carts = Alla Carts filtrerad på serien). Legacy-
+     serier (HZ8.catalog.discoverable) och påhittade destinationer används
+     aldrig. Aldrig ur produktnamnet. */
   function productContexts() {
-    var formats = {}, combos = [];
-    if (!HZ8.catalog) return { formats: [], combo: null };
+    var formats = {}, series = {}, comboFormats = [];
+    if (!HZ8.catalog) return { formats: [], series: null, format: null, route: null };
     document.querySelectorAll(".related-categories a[href]").forEach(function (a) {
       var c = HZ8.catalog.contextFor(a.href);
-      if (!c || !c.format) return;
-      if (c.type === "format") formats[c.format.key] = c.format;
-      if (c.type === "combo" && !c.query) combos.push(c);
+      if (!c) return;
+      if (c.type === "format" && c.format) formats[c.format.key] = c.format;
+      if (c.type === "combo" && c.format) comboFormats.push(c.format);
+      if ((c.type === "combo" || c.type === "series-hub") && c.series && HZ8.catalog.discoverable(c.series)) series[c.series.name] = c.series;
     });
-    var keys = Object.keys(formats);
-    var combo = combos.filter(function (c) { return formats[c.format.key]; })[0] || (keys.length ? null : combos[0]) || null;
-    return { formats: keys.map(function (k) { return formats[k]; }), combo: combo };
+    var fmts = Object.keys(formats).map(function (k) { return formats[k]; });
+    var format = fmts[0] || comboFormats[0] || null;
+    var names = Object.keys(series);
+    var s = names.length === 1 ? series[names[0]] : null; // flera serier = ingen säker serie
+    var route = s && format && s.routes[format.key] ? s.routes[format.key] : null;
+    return { formats: fmts, series: s, format: format, route: route };
   }
   function buildSimilar(host, brandName, band) {
     var ctxs = productContexts();
     var here = HZ8.path(location.href).split("?")[0].replace(/\/\d+$/, "");
     var other = function (c) { var m = c.html.match(/href="([^"]*\/products\/[^"]+)"/); return !m || HZ8.path(m[1]).split("?")[0].replace(/\/\d+$/, "") !== here; };
+    /* 1) samma serie x samma format (minst två andra), 2) samma format. */
     var sources = [];
-    if (ctxs.combo && ctxs.combo.series.routes[ctxs.combo.format.key]) sources.push({ href: ctxs.combo.series.routes[ctxs.combo.format.key], kicker: "Fler i serien", all: "Alla " + ctxs.combo.series.name + " " + ctxs.combo.format.label.toLowerCase() });
-    var f = ctxs.combo ? ctxs.combo.format : ctxs.formats[0];
-    if (f && f.href) sources.push({ href: f.href, kicker: "", all: "Alla " + f.label.toLowerCase() });
+    if (ctxs.route) sources.push({ href: ctxs.route, kicker: "Fler i serien", title: "Fler i serien", all: "Alla " + ctxs.series.name + " " + ctxs.format.label.toLowerCase(), kind: "series" });
+    var f = ctxs.format;
+    if (f && f.href) sources.push({ href: f.href, kicker: "", title: "Liknande produkter", all: "Alla " + f.label.toLowerCase(), kind: "format" });
     if (!sources.length || !HZ8.productRail) return Promise.resolve(null);
     var slot = node("div", "hz8-pp-similar-slot"); host.appendChild(slot);
     function tryNext(i) {
@@ -1502,9 +1513,12 @@
       return HZ8.fetchPage(src.href, HZ8.categoryCards).then(function (cards) {
         cards = cards.filter(other);
         if (cards.length < 2) return tryNext(i + 1);
-        var rail = HZ8.productRail({ id: "liknande", className: "hz8-pp-similar", title: "Liknande produkter", href: HZ8.link(src.href), allLabel: src.all, hideCount: true, cards: cards, limit: 8, eager: true });
+        /* Rubrik och kicker följer innehållet: serie -> "Fler i serien" med
+           seriens namn som kicker; format -> "Liknande produkter". */
+        var rail = HZ8.productRail({ id: "liknande", className: "hz8-pp-similar", title: src.title, href: HZ8.link(src.href), allLabel: src.all, hideCount: true, cards: cards, limit: 8, eager: true });
+        rail.setAttribute("data-hz8-similar", src.kind);
         var head = rail.querySelector(".hz8-prail__title");
-        if (src.kicker && head) head.insertAdjacentHTML("beforebegin", '<p class="hz8-pp-similar__kicker">' + esc(src.kicker) + "</p>");
+        if (src.kind === "series" && head) head.insertAdjacentHTML("beforebegin", '<p class="hz8-pp-similar__kicker">' + esc(ctxs.series.name + " · " + ctxs.format.label) + "</p>");
         slot.replaceWith(rail);
         return rail;
       }, function () { return tryNext(i + 1); });

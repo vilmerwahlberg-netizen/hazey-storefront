@@ -1,0 +1,969 @@
+[
+ {
+  "route": "/sv/products/blommor-cbd-30-tequila-sunrise-35-gram",
+  "id": 88,
+  "h1": "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+  "id": 14,
+  "h1": "Blommor – CBD  – 3g - Lemon Skunk - Trinacria Hemp",
+  "brand": "Trinacria Hemp",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/blommor-cbn-10-great-white-shark",
+  "id": 17,
+  "h1": "Blommor – CBN 10% – Great White Shark",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/blommor-hhcpm-15-durban-poison-5-gram",
+  "id": 69,
+  "h1": "Blommor – HHCPM 15% – Durban Poison – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/blommor-nano10-20-bz1-5-gram",
+  "id": 43,
+  "h1": "Blommor – Nano10 20% – BZ1 – 5 gram",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "unlisted",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/blommor-nano10-20-jack-herer-5-gram",
+  "id": 51,
+  "h1": "Blommor – Nano10 20% – Jack Herer – 5 gram",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "unlisted",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/blommor-nano10-20-og-kush-5-gram",
+  "id": 48,
+  "h1": "Blommor – Nano10 20% – OG Kush – 5 gram",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "unlisted",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/buds-15-cbd-10-gram-russian-roulette",
+  "id": 22,
+  "h1": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-7-nano11-apple-fritter-5-gram",
+  "id": 115,
+  "h1": "Buds – 7% Nano11 – Apple Fritter – 5 gram",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-7-nano11-cali-grape-5-gram",
+  "id": 113,
+  "h1": "Buds – 7% Nano11 – Cali Grape – 5 gram",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-7-nano11-raspberry-popcorn-5-gram",
+  "id": 112,
+  "h1": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-7-nano11-sweet-karma-popcorn-5-gram",
+  "id": 104,
+  "h1": "Buds – 7% Nano11 – Sweet Karma Popcorn – 5 gram",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-cbd-30-triple-scoop-35-gram",
+  "id": 34,
+  "h1": "Buds – CBD 30% – Triple Scoop – 3,5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-cbd-strawberry-haze-5-gram",
+  "id": 80,
+  "h1": "Buds – CBD – Strawberry Haze – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-cbg9-60-snow-ice",
+  "id": 35,
+  "h1": "Buds – CBG9 60% – Snow Ice",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-h4cbd-30-kusher-kush-5-gram",
+  "id": 18,
+  "h1": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+  "id": 100,
+  "h1": "Buds – Magic Sauce 50% – Crazy Dog – 5 gram",
+  "brand": "Magic Farmers",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-magic-sauce-50-gorilla-cookies-5-gram",
+  "id": 60,
+  "h1": "Buds – Magic Sauce 50% – Gorilla Cookies – 5 gram",
+  "brand": "Magic Farmers",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-magic-sauce-50-la-chupacabra-5-gram",
+  "id": 120,
+  "h1": "Buds – Magic Sauce 50% – La Chupacabra – 5 gram",
+  "brand": "Magic Farmers",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-magic-sauce-50-tinky-winky-5-gram",
+  "id": 74,
+  "h1": "Buds – Magic Sauce 50% – Tinky Winky – 5 gram",
+  "brand": "Magic Farmers",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-18-strawberry-og-5-gram",
+  "id": 62,
+  "h1": "Buds – THCA 18% – Strawberry OG – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-20-white-widow-5-gram",
+  "id": 64,
+  "h1": "Buds – THCA 20% – White Widow – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-22-og-kush-small-buds-5-gram",
+  "id": 95,
+  "h1": "Buds – THCA 22% – OG Kush Small Buds – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-23-amnesia-5-gram",
+  "id": 61,
+  "h1": "Buds – THCA 23% – Amnesia – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+  "id": 82,
+  "h1": "Buds – THCA 23% + HHCPM 12% – Wedding Cake – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-24-ice-indoor-5-gram",
+  "id": 98,
+  "h1": "Buds – THCA 24% – Ice indoor – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/buds-thca-25-bubbelgum-og-5-gram",
+  "id": 97,
+  "h1": "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Buds"
+ },
+ {
+  "route": "/sv/products/cart-cbd-60-cookies-1ml",
+  "id": 73,
+  "h1": "Cart - CBD 60% - Cookies - 1ml",
+  "brand": "Cookies",
+  "formats": [
+   "carts"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Cart"
+ },
+ {
+  "route": "/sv/products/cart-magic-sauce-99-1ml",
+  "id": 92,
+  "h1": "Cart - Magic Sauce 99% - 1ml",
+  "brand": "Magic Farmers",
+  "formats": [
+   "vapes",
+   "carts"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Cart"
+ },
+ {
+  "route": "/sv/products/cart-thc-a-45-faraoh-1ml",
+  "id": 90,
+  "h1": "Cart - THC-A 45% - Faraoh - 1ml",
+  "brand": "Faraoh",
+  "formats": [
+   "vapes",
+   "carts"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Cart"
+ },
+ {
+  "route": "/sv/products/cart-thc-b-20-tatra-hemp-1ml",
+  "id": 27,
+  "h1": "Cart - THC-B 20% - Tatra Hemp - 1ml",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "carts"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Cart"
+ },
+ {
+  "route": "/sv/products/ccell-fino-vape-batteri-510",
+  "id": 32,
+  "h1": "CCELL Fino – Vape Batteri – 510",
+  "brand": "CCELL",
+  "formats": [
+   "batterier"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Batteri"
+ },
+ {
+  "route": "/sv/products/ccell-m3b-vape-batteri-510",
+  "id": 24,
+  "h1": "CCELL M3b – Vape Batteri – 510",
+  "brand": "CCELL",
+  "formats": [
+   "batterier"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Batteri"
+ },
+ {
+  "route": "/sv/products/ccell-palm-pro-vape-batteri-510",
+  "id": 10,
+  "h1": "CCELL Palm Pro – Vape Batteri – 510",
+  "brand": "CCELL",
+  "formats": [
+   "batterier"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Batteri"
+ },
+ {
+  "route": "/sv/products/crumble-nano10-20-raspberry-5-gram",
+  "id": 47,
+  "h1": "Crumble – Nano10 20% – Raspberry – 5 gram",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "unlisted",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/fraktandring",
+  "id": 20,
+  "h1": "Fraktändring",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/hash-cbn-40-yellowstone-5-gram",
+  "id": 86,
+  "h1": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds",
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-magic-sauce-50-charas-5-gram",
+  "id": 119,
+  "h1": "Hash – Magic Sauce 50% – Charas – 5 gram",
+  "brand": "Magic Farmers",
+  "formats": [
+   "buds",
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-nano10-20-zkittlez-mousse-5-gram",
+  "id": 44,
+  "h1": "Hash – Nano10 20% – Zkittlez Mousse – 5 gram",
+  "brand": null,
+  "formats": [],
+  "adapter": false,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "unlisted",
+  "format10a": ""
+ },
+ {
+  "route": "/sv/products/hash-thca-20-thcnm-20-malaga-magic-5-gram",
+  "id": 66,
+  "h1": "Hash – THCA 20% + THCNM 20% – Malaga Magic – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-thca-25-la-mousse-5-gram",
+  "id": 103,
+  "h1": "Hash – THCA 25% – La Mousse – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-thca-30-dry-static-5-gram",
+  "id": 55,
+  "h1": "Hash – THCA 30% – Dry Static – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-thca-40-northern-lights-5-gram",
+  "id": 67,
+  "h1": "Hash – THCA 40% – Northern Lights – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/hash-thca-60-piatella-hash-5-gram",
+  "id": 109,
+  "h1": "Hash – THCA 60% – Piatella Hash – 5 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed-not-in-alla-produkter",
+  "format10a": "Hasch"
+ },
+ {
+  "route": "/sv/products/isolat-cbd-99-isolate-15-gram",
+  "id": 107,
+  "h1": "Isolat – CBD 99% – Isolate – 15 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds",
+   "hasch"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Isolat"
+ },
+ {
+  "route": "/sv/products/prerolled-cbd-apples-amp-bananas-1-gram",
+  "id": 54,
+  "h1": "PreRolled – CBD – Apples & Bananas – 1 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Pre-roll"
+ },
+ {
+  "route": "/sv/products/prerolled-cbd-tequila-sunrise-1-gram",
+  "id": 85,
+  "h1": "PreRolled – CBD – Tequila Sunrise – 1 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Pre-roll"
+ },
+ {
+  "route": "/sv/products/prerolled-thca-22-bangkok-1-gram",
+  "id": 58,
+  "h1": "PreRolled – THCA 22% – Bangkok – 1 gram",
+  "brand": "Hazey.se",
+  "formats": [
+   "buds"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Pre-roll"
+ },
+ {
+  "route": "/sv/products/vape-cbd-25-cbn-35-magic-farmers-2ml",
+  "id": 87,
+  "h1": "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml",
+  "brand": "Magic Farmers",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-cbn-89-canapuff-1ml",
+  "id": 6,
+  "h1": "Vape - CBN 89% - Canapuff - 1ml",
+  "brand": "Canapuff",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+  "id": 71,
+  "h1": "Vape Dual - CBD 57% - Hana Butter & Long Island - 1+1ml",
+  "brand": "Hazey.se",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-h4cbd-96-canapuff-1ml",
+  "id": 4,
+  "h1": "Vape - H4CBD 96% - Canapuff - 1ml",
+  "brand": "Canapuff",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-hhcpm-15-canntropy-2ml",
+  "id": 70,
+  "h1": "Vape - HHCPM 15% - Canntropy - 2ml",
+  "brand": "Canntropy",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-a-45-faraoh-2ml",
+  "id": 57,
+  "h1": "Vape - THC-A 45% - Faraoh - 2ml",
+  "brand": "Faraoh",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-a-50-live-resin-faraoh-2ml",
+  "id": 101,
+  "h1": "Vape - THC-A 50% Live Resin - Faraoh - 2ml",
+  "brand": "Faraoh",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-b-20-tatra-hemp-2ml",
+  "id": 25,
+  "h1": "Vape - THC-B 20% - Tatra Hemp - 2ml",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-h-20-hazey-2ml-500puffs",
+  "id": 15,
+  "h1": "Vape - THC-H 20% - Hazey - 2ml ≈ 500puffs",
+  "brand": "Hazey.se",
+  "formats": [],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed-not-in-alla-produkter",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-v-20-canntropy-1ml",
+  "id": 8,
+  "h1": "Vape - THC-V 20% - Canntropy - 1ml",
+  "brand": "Canntropy",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-v-20-tatra-hemp-1ml",
+  "id": 29,
+  "h1": "Vape - THC-V 20% - Tatra Hemp - 1ml",
+  "brand": "Tatra Hemp",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thc-v-79-canapuff-1ml",
+  "id": 7,
+  "h1": "Vape - THC-V 79% - Canapuff - 1ml",
+  "brand": "Canapuff",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": true,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ },
+ {
+  "route": "/sv/products/vape-thcx-19-core-2ml",
+  "id": 78,
+  "h1": "Vape - THCX 19% - Core - 2ml",
+  "brand": "Hero",
+  "formats": [
+   "vapes"
+  ],
+  "adapter": true,
+  "pdpOut": false,
+  "h1s": 1,
+  "overflowX": false,
+  "errors": 0,
+  "listing": "listed",
+  "format10a": "Vape"
+ }
+]
