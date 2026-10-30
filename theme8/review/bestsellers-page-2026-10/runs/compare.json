@@ -1,0 +1,674 @@
+{
+ "home-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   6449,
+   6449
+  ],
+  "px": {
+   "size": [
+    "786x12898",
+    "786x12898"
+   ],
+   "diff": 2067,
+   "pct": 0.02
+  }
+ },
+ "home-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   6328,
+   6328
+  ],
+  "px": {
+   "size": [
+    "1440x6328",
+    "1440x6328"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "butik-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3601,
+   3601
+  ],
+  "px": {
+   "size": [
+    "786x7202",
+    "786x7202"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "butik-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3268,
+   3268
+  ],
+  "px": {
+   "size": [
+    "1440x3268",
+    "1440x3268"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-core-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3285,
+   3285
+  ],
+  "px": {
+   "size": [
+    "786x6570",
+    "786x6570"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-core-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3086,
+   3086
+  ],
+  "px": {
+   "size": [
+    "1440x3086",
+    "1440x3086"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "kampanjer-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3854,
+   3854
+  ],
+  "px": {
+   "size": [
+    "786x7708",
+    "786x7708"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "kampanjer-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   2684,
+   2684
+  ],
+  "px": {
+   "size": [
+    "1440x2684",
+    "1440x2684"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "faq-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   1997,
+   1997
+  ],
+  "px": {
+   "size": [
+    "786x3994",
+    "786x3994"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "faq-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   1906,
+   1906
+  ],
+  "px": {
+   "size": [
+    "1440x1906",
+    "1440x1906"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "portal-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   7075,
+   7075
+  ],
+  "px": {
+   "size": [
+    "786x14150",
+    "786x14150"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "portal-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   8123,
+   8123
+  ],
+  "px": {
+   "size": [
+    "1440x8123",
+    "1440x8123"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "portal-hasch-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   5423,
+   5423
+  ],
+  "px": {
+   "size": [
+    "786x10846",
+    "786x10846"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "portal-hasch-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3683,
+   3683
+  ],
+  "px": {
+   "size": [
+    "1440x3683",
+    "1440x3683"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "alla-vapes-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   8407,
+   8407
+  ],
+  "px": {
+   "size": [
+    "786x16814",
+    "786x16814"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "alla-vapes-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   6392,
+   6392
+  ],
+  "px": {
+   "size": [
+    "1440x6392",
+    "1440x6392"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "buds-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   7840,
+   7840
+  ],
+  "px": {
+   "size": [
+    "786x15680",
+    "786x15680"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "buds-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   6022,
+   6022
+  ],
+  "px": {
+   "size": [
+    "1440x6022",
+    "1440x6022"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "hasch-f-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3086,
+   3086
+  ],
+  "px": {
+   "size": [
+    "786x6172",
+    "786x6172"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "hasch-f-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   2653,
+   2653
+  ],
+  "px": {
+   "size": [
+    "1440x2653",
+    "1440x2653"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "m-s-vapes-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   2598,
+   2598
+  ],
+  "px": {
+   "size": [
+    "786x5196",
+    "786x5196"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "m-s-vapes-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   1968,
+   1968
+  ],
+  "px": {
+   "size": [
+    "1440x1968",
+    "1440x1968"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "magic-sauce-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3460,
+   3460
+  ],
+  "px": {
+   "size": [
+    "786x6920",
+    "786x6920"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "magic-sauce-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3329,
+   3329
+  ],
+  "px": {
+   "size": [
+    "1440x3329",
+    "1440x3329"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "core-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3102,
+   3102
+  ],
+  "px": {
+   "size": [
+    "786x6204",
+    "786x6204"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "core-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   2893,
+   2893
+  ],
+  "px": {
+   "size": [
+    "1440x2893",
+    "1440x2893"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "search-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3503,
+   3503
+  ],
+  "px": {
+   "size": [
+    "786x7006",
+    "786x7006"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "search-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   2296,
+   2296
+  ],
+  "px": {
+   "size": [
+    "1440x2296",
+    "1440x2296"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-91-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   4094,
+   4094
+  ],
+  "px": {
+   "size": [
+    "786x8188",
+    "786x8188"
+   ],
+   "diff": 10492,
+   "pct": 0.163
+  }
+ },
+ "pdp-91-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3480,
+   3480
+  ],
+  "px": {
+   "size": [
+    "1440x3480",
+    "1440x3480"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-92-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3931,
+   3931
+  ],
+  "px": {
+   "size": [
+    "786x7862",
+    "786x7862"
+   ],
+   "diff": 9471,
+   "pct": 0.153
+  }
+ },
+ "pdp-92-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3412,
+   3412
+  ],
+  "px": {
+   "size": [
+    "1440x3412",
+    "1440x3412"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-57-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   4037,
+   4037
+  ],
+  "px": {
+   "size": [
+    "786x8074",
+    "786x8074"
+   ],
+   "diff": 11084,
+   "pct": 0.175
+  }
+ },
+ "pdp-57-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3478,
+   3478
+  ],
+  "px": {
+   "size": [
+    "1440x3478",
+    "1440x3478"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-84-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3964,
+   3964
+  ],
+  "px": {
+   "size": [
+    "786x7928",
+    "786x7928"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-84-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3419,
+   3419
+  ],
+  "px": {
+   "size": [
+    "1440x3419",
+    "1440x3419"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-88-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3222,
+   3222
+  ],
+  "px": {
+   "size": [
+    "786x6444",
+    "786x6444"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-88-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3044,
+   3044
+  ],
+  "px": {
+   "size": [
+    "1440x3044",
+    "1440x3044"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-17-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3254,
+   3254
+  ],
+  "px": {
+   "size": [
+    "786x6508",
+    "786x6508"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "pdp-17-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   3044,
+   3044
+  ],
+  "px": {
+   "size": [
+    "1440x3044",
+    "1440x3044"
+   ],
+   "diff": 0,
+   "pct": 0
+  }
+ },
+ "cart-393": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   null,
+   null
+  ],
+  "px": {
+   "size": [
+    "786x1704",
+    "786x1704"
+   ],
+   "diff": 15,
+   "pct": 0.001
+  }
+ },
+ "cart-1440": {
+  "domEqual": true,
+  "diff": {},
+  "height": [
+   null,
+   null
+  ],
+  "px": {
+   "size": [
+    "1440x900",
+    "1440x900"
+   ],
+   "diff": 1375,
+   "pct": 0.106
+  }
+ }
+}

@@ -1,0 +1,1004 @@
+{
+ "seq-393": {
+  "steps": [
+   {
+    "url": "",
+    "hist": 2,
+    "y": 0,
+    "cells": 12,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 12 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "BODY",
+    "fv": false,
+    "headTop": 518,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?visa=24",
+    "hist": 2,
+    "y": 2497,
+    "cells": 24,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 24 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#12",
+    "fv": false,
+    "headTop": -1979,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ],
+    "yBefore": 2497
+   },
+   {
+    "url": "?visa=36",
+    "hist": 2,
+    "y": 4774,
+    "cells": 36,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 36 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#24",
+    "fv": false,
+    "headTop": -4256,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ],
+    "yBefore": 4774
+   },
+   {
+    "url": "",
+    "hist": 2,
+    "y": 434,
+    "cells": 12,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 12 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "list-heading",
+    "fv": false,
+    "headTop": 84,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   }
+  ],
+  "same": true,
+  "errors": [],
+  "ok": true
+ },
+ "buds-393": {
+  "steps": [
+   {
+    "url": "?typ=buds",
+    "hist": 2,
+    "y": 0,
+    "cells": 12,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 12 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "BODY",
+    "fv": false,
+    "headTop": 518,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=24",
+    "hist": 2,
+    "y": 2497,
+    "cells": 24,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 24 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#12",
+    "fv": false,
+    "headTop": -1979,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=36",
+    "hist": 2,
+    "y": 4724,
+    "cells": 36,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 36 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#24",
+    "fv": false,
+    "headTop": -4206,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=48",
+    "hist": 2,
+    "y": 6952,
+    "cells": 48,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 48 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#36",
+    "fv": false,
+    "headTop": -6434,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=60",
+    "hist": 2,
+    "y": 9204,
+    "cells": 53,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 53 av 53",
+     "more": null,
+     "moreExp": "true",
+     "moreVisible": false,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#48",
+    "fv": false,
+    "headTop": -8686,
+    "reserve": 72,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   }
+  ],
+  "total": 53,
+  "counts": [
+   12,
+   24,
+   36,
+   48,
+   53
+  ],
+  "errors": [],
+  "same": true,
+  "ok": true
+ },
+ "carts-393": {
+  "url": "?typ=carts",
+  "hist": 2,
+  "y": 0,
+  "cells": 7,
+  "tab": "Carts",
+  "control": null,
+  "focus": "BODY",
+  "fv": false,
+  "headTop": 518,
+  "reserve": 72,
+  "h1": [
+   "nh-bs-hero__title title|Bästsäljare|hero"
+  ],
+  "errors": [],
+  "ok": true
+ },
+ "history-393": {
+  "reload36": {
+   "url": "?visa=36",
+   "hist": 2,
+   "y": 0,
+   "cells": 36,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 36 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 518,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "reloadAgain": {
+   "url": "?visa=36",
+   "hist": 2,
+   "y": 0,
+   "cells": 36,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 36 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 518,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "alla24": {
+   "url": "?visa=24",
+   "hist": 2,
+   "y": 2497,
+   "cells": 24,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 24 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "cell#12",
+   "fv": false,
+   "headTop": -1979,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "buds12": {
+   "url": "?typ=buds",
+   "hist": 3,
+   "y": 0,
+   "cells": 12,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 12 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "button.hz8-pfam__tab",
+   "fv": false,
+   "headTop": 518,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "buds24": {
+   "url": "?typ=buds&visa=24",
+   "hist": 3,
+   "y": 2497,
+   "cells": 24,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 24 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "cell#12",
+   "fv": false,
+   "headTop": -1979,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "back": {
+   "url": "?visa=24",
+   "hist": 3,
+   "y": 0,
+   "cells": 24,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 24 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 518,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "fwd": {
+   "url": "?typ=buds&visa=24",
+   "hist": 3,
+   "y": 2497,
+   "cells": 24,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 24 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": -1979,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "same": true,
+  "errors": [],
+  "ok": true
+ },
+ "h1-393": {
+  "on": {
+   "url": "",
+   "hist": 2,
+   "y": 0,
+   "cells": 12,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 12 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 518,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ],
+   "h1Style": "\"Iowan Old Style\" 49.518px 600 48.5276px -1.48554px rgb(44, 54, 32)"
+  },
+  "adminIntact": {
+   "hero": true,
+   "heroInner": 2,
+   "filters": 10,
+   "source": 9
+  },
+  "fail-abort": {
+   "h1": [
+    "nh-bs-hero__title|Bästsäljare|true"
+   ],
+   "adminHero": true,
+   "adminFilters": true,
+   "products": 0,
+   "bsPage": false
+  },
+  "fail-syntax": {
+   "h1": [
+    "nh-bs-hero__title|Bästsäljare|true"
+   ],
+   "adminHero": true,
+   "adminFilters": true,
+   "products": 0,
+   "bsPage": false
+  },
+  "ok": false
+ },
+ "reduced-393": {
+  "y40": 434,
+  "after": {
+   "url": "",
+   "hist": 2,
+   "y": 434,
+   "cells": 12,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 12 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "list-heading",
+   "fv": false,
+   "headTop": 84,
+   "reserve": 72,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "errors": [],
+  "ok": true
+ },
+ "seq-1440": {
+  "steps": [
+   {
+    "url": "",
+    "hist": 2,
+    "y": 0,
+    "cells": 12,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 12 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "BODY",
+    "fv": false,
+    "headTop": 421,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?visa=24",
+    "hist": 2,
+    "y": 1713,
+    "cells": 24,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 24 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#12",
+    "fv": false,
+    "headTop": -1292,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ],
+    "yBefore": 1713
+   },
+   {
+    "url": "?visa=36",
+    "hist": 2,
+    "y": 3345,
+    "cells": 36,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 36 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#24",
+    "fv": false,
+    "headTop": -2924,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ],
+    "yBefore": 3345
+   },
+   {
+    "url": "",
+    "hist": 2,
+    "y": 329,
+    "cells": 12,
+    "tab": "Alla",
+    "control": {
+     "text": "Visar 12 av 103",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "list-heading",
+    "fv": false,
+    "headTop": 92,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   }
+  ],
+  "same": true,
+  "errors": [],
+  "ok": true
+ },
+ "buds-1440": {
+  "steps": [
+   {
+    "url": "?typ=buds",
+    "hist": 2,
+    "y": 0,
+    "cells": 12,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 12 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "false",
+     "moreVisible": true,
+     "less": null,
+     "lessVisible": false
+    },
+    "focus": "BODY",
+    "fv": false,
+    "headTop": 421,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=24",
+    "hist": 2,
+    "y": 1713,
+    "cells": 24,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 24 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#12",
+    "fv": false,
+    "headTop": -1292,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=36",
+    "hist": 2,
+    "y": 3327,
+    "cells": 36,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 36 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#24",
+    "fv": false,
+    "headTop": -2906,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=48",
+    "hist": 2,
+    "y": 4960,
+    "cells": 48,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 48 av 53",
+     "more": "Visa fler bästsäljare",
+     "moreExp": "true",
+     "moreVisible": true,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#36",
+    "fv": false,
+    "headTop": -4539,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   },
+   {
+    "url": "?typ=buds&visa=60",
+    "hist": 2,
+    "y": 6575,
+    "cells": 53,
+    "tab": "Buds",
+    "control": {
+     "text": "Visar 53 av 53",
+     "more": null,
+     "moreExp": "true",
+     "moreVisible": false,
+     "less": "Visa färre",
+     "lessVisible": true
+    },
+    "focus": "cell#48",
+    "fv": false,
+    "headTop": -6154,
+    "reserve": 80,
+    "h1": [
+     "nh-bs-hero__title title|Bästsäljare|hero"
+    ]
+   }
+  ],
+  "total": 53,
+  "counts": [
+   12,
+   24,
+   36,
+   48,
+   53
+  ],
+  "errors": [],
+  "same": true,
+  "ok": true
+ },
+ "carts-1440": {
+  "url": "?typ=carts",
+  "hist": 2,
+  "y": 0,
+  "cells": 7,
+  "tab": "Carts",
+  "control": null,
+  "focus": "BODY",
+  "fv": false,
+  "headTop": 421,
+  "reserve": 80,
+  "h1": [
+   "nh-bs-hero__title title|Bästsäljare|hero"
+  ],
+  "errors": [],
+  "ok": true
+ },
+ "history-1440": {
+  "reload36": {
+   "url": "?visa=36",
+   "hist": 2,
+   "y": 0,
+   "cells": 36,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 36 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 421,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "reloadAgain": {
+   "url": "?visa=36",
+   "hist": 2,
+   "y": 0,
+   "cells": 36,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 36 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 421,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "alla24": {
+   "url": "?visa=24",
+   "hist": 2,
+   "y": 1713,
+   "cells": 24,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 24 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "cell#12",
+   "fv": false,
+   "headTop": -1292,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "buds12": {
+   "url": "?typ=buds",
+   "hist": 3,
+   "y": 0,
+   "cells": 12,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 12 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "button.hz8-pfam__tab",
+   "fv": false,
+   "headTop": 421,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "buds24": {
+   "url": "?typ=buds&visa=24",
+   "hist": 3,
+   "y": 1713,
+   "cells": 24,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 24 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "cell#12",
+   "fv": false,
+   "headTop": -1292,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "back": {
+   "url": "?visa=24",
+   "hist": 3,
+   "y": 0,
+   "cells": 24,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 24 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 421,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "fwd": {
+   "url": "?typ=buds&visa=24",
+   "hist": 3,
+   "y": 1713,
+   "cells": 24,
+   "tab": "Buds",
+   "control": {
+    "text": "Visar 24 av 53",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": -1292,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "same": true,
+  "errors": [],
+  "ok": true
+ },
+ "h1-1440": {
+  "on": {
+   "url": "",
+   "hist": 2,
+   "y": 0,
+   "cells": 12,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 12 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "BODY",
+   "fv": false,
+   "headTop": 421,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ],
+   "h1Style": "\"Iowan Old Style\" 64.8px 600 64.8px -1.944px rgb(44, 54, 32)"
+  },
+  "adminIntact": {
+   "hero": true,
+   "heroInner": 2,
+   "filters": 10,
+   "source": 9
+  },
+  "fail-abort": {
+   "h1": [
+    "nh-bs-hero__title|Bästsäljare|true"
+   ],
+   "adminHero": true,
+   "adminFilters": true,
+   "products": 0,
+   "bsPage": false
+  },
+  "fail-syntax": {
+   "h1": [
+    "nh-bs-hero__title|Bästsäljare|true"
+   ],
+   "adminHero": true,
+   "adminFilters": true,
+   "products": 0,
+   "bsPage": false
+  },
+  "ok": false
+ },
+ "reduced-1440": {
+  "y40": 329,
+  "after": {
+   "url": "",
+   "hist": 2,
+   "y": 329,
+   "cells": 12,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 12 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "list-heading",
+   "fv": false,
+   "headTop": 92,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "errors": [],
+  "ok": true
+ },
+ "keyboard": {
+  "enterMore": {
+   "url": "?visa=24",
+   "hist": 2,
+   "y": 2,
+   "cells": 24,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 24 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "true",
+    "moreVisible": true,
+    "less": "Visa färre",
+    "lessVisible": true
+   },
+   "focus": "cell#12",
+   "fv": true,
+   "headTop": 419,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "tabOrder": [
+   "hz8-bs-more__less|Visa färre|fv=true|ring=true",
+   "hz8-proutes__card|VapesVapes i flera volym|fv=true|ring=true"
+  ],
+  "spaceLess": {
+   "url": "",
+   "hist": 2,
+   "y": 2340,
+   "cells": 12,
+   "tab": "Alla",
+   "control": {
+    "text": "Visar 12 av 103",
+    "more": "Visa fler bästsäljare",
+    "moreExp": "false",
+    "moreVisible": true,
+    "less": null,
+    "lessVisible": false
+   },
+   "focus": "list-heading",
+   "fv": true,
+   "headTop": -1919,
+   "reserve": 80,
+   "h1": [
+    "nh-bs-hero__title title|Bästsäljare|hero"
+   ]
+  },
+  "errors": [],
+  "ok": true
+ }
+}

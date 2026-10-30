@@ -1,0 +1,369 @@
+{
+ "empty-393": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Inga bästsäljare just nu.",
+  "action": [
+   "Alla produkter -> /sv/categories/alla-produkter"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "ok": true
+ },
+ "empty-format-393": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Inga bästsäljare i det här formatet just nu.Välj ett annat format eller visa hela listan.",
+  "action": [
+   "Visa alla bästsäljare"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla",
+   "Hasch"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "afterReset": {
+   "url": "",
+   "cells": 12,
+   "tab": "Alla",
+   "stock": "false"
+  },
+  "errors": [],
+  "ok": true
+ },
+ "error-393": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Bästsäljarna kunde inte laddas. Försök igen om en stund.",
+  "action": [
+   "Försök igen"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla",
+   "Vapes",
+   "Carts",
+   "Buds",
+   "Hasch"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "retry": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": "Visar 12 av 103",
+   "guide": true,
+   "tabs": [
+    "Alla",
+    "Vapes",
+    "Carts",
+    "Buds",
+    "Hasch"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "errors": [],
+  "ok": true
+ },
+ "short3-393": {
+  "cells": 3,
+  "skel": 0,
+  "busy": null,
+  "state": null,
+  "action": [],
+  "more": null,
+  "guide": true,
+  "tabs": [
+   "Alla",
+   "Vapes"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "expected": 3,
+  "ok": true
+ },
+ "short7-393": {
+  "cells": 6,
+  "skel": 0,
+  "busy": null,
+  "state": null,
+  "action": [],
+  "more": null,
+  "guide": true,
+  "tabs": [
+   "Alla",
+   "Vapes"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "expected": 6,
+  "ok": true
+ },
+ "skeleton-393": {
+  "during": {
+   "cells": 0,
+   "skel": 12,
+   "busy": "true",
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "geoDuring": {
+   "gridTop": 521,
+   "cellW": 175,
+   "cellH": 360,
+   "guideTop": 0
+  },
+  "lowerDuring": 2852,
+  "after": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "geoAfter": {
+   "gridTop": 521,
+   "cellW": 175,
+   "cellH": 360,
+   "guideTop": 0
+  },
+  "lowerAfter": 2848,
+  "shifts": [
+   {
+    "v": 0.0002147782584839936,
+    "t": 5302,
+    "src": [
+     "offer",
+     "offer"
+    ]
+   }
+  ],
+  "cls": 0.0002,
+  "listShift": 0,
+  "errors": [],
+  "ok": true
+ },
+ "cold-393": {
+  "frames": 1369,
+  "adminFrames": 0,
+  "firstPaint": 11667,
+  "firstPaintHasPage": true,
+  "firstPage": 11667,
+  "firstCards": 11702,
+  "paintedWithoutPage": 0,
+  "errors": [],
+  "ok": true
+ },
+ "empty-1440": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Inga bästsäljare just nu.",
+  "action": [
+   "Alla produkter -> /sv/categories/alla-produkter"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "ok": true
+ },
+ "empty-format-1440": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Inga bästsäljare i det här formatet just nu.Välj ett annat format eller visa hela listan.",
+  "action": [
+   "Visa alla bästsäljare"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla",
+   "Hasch"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "afterReset": {
+   "url": "",
+   "cells": 12,
+   "tab": "Alla",
+   "stock": "false"
+  },
+  "errors": [],
+  "ok": true
+ },
+ "error-1440": {
+  "cells": 0,
+  "skel": 0,
+  "busy": null,
+  "state": "Bästsäljarna kunde inte laddas. Försök igen om en stund.",
+  "action": [
+   "Försök igen"
+  ],
+  "more": null,
+  "guide": false,
+  "tabs": [
+   "Alla",
+   "Vapes",
+   "Carts",
+   "Buds",
+   "Hasch"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "retry": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": "Visar 12 av 103",
+   "guide": true,
+   "tabs": [
+    "Alla",
+    "Vapes",
+    "Carts",
+    "Buds",
+    "Hasch"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "errors": [],
+  "ok": true
+ },
+ "short3-1440": {
+  "cells": 3,
+  "skel": 0,
+  "busy": null,
+  "state": null,
+  "action": [],
+  "more": null,
+  "guide": true,
+  "tabs": [
+   "Alla",
+   "Vapes"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "expected": 3,
+  "ok": true
+ },
+ "short7-1440": {
+  "cells": 6,
+  "skel": 0,
+  "busy": null,
+  "state": null,
+  "action": [],
+  "more": null,
+  "guide": true,
+  "tabs": [
+   "Alla",
+   "Vapes"
+  ],
+  "lower": 3,
+  "h1": 1,
+  "errors": [],
+  "expected": 6,
+  "ok": true
+ },
+ "skeleton-1440": {
+  "during": {
+   "cells": 0,
+   "skel": 12,
+   "busy": "true",
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "geoDuring": {
+   "gridTop": 481,
+   "cellW": 310,
+   "cellH": 507,
+   "guideTop": 0
+  },
+  "lowerDuring": 2137,
+  "after": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 1
+  },
+  "geoAfter": {
+   "gridTop": 481,
+   "cellW": 310,
+   "cellH": 508,
+   "guideTop": 0
+  },
+  "lowerAfter": 2141,
+  "shifts": [],
+  "cls": 0,
+  "listShift": 0,
+  "errors": [],
+  "ok": true
+ },
+ "cold-1440": {
+  "frames": 1369,
+  "adminFrames": 0,
+  "firstPaint": 11689,
+  "firstPaintHasPage": true,
+  "firstPage": 11689,
+  "firstCards": 11735,
+  "paintedWithoutPage": 0,
+  "errors": [],
+  "ok": true
+ }
+}

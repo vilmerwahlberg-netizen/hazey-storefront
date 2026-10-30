@@ -1,0 +1,109 @@
+{
+ "skeleton-393": {
+  "during": {
+   "cells": 0,
+   "skel": 12,
+   "busy": "true",
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 2
+  },
+  "geoDuring": {
+   "gridTop": 521,
+   "cellW": 175,
+   "cellH": 360,
+   "guideTop": 0
+  },
+  "lowerDuring": 2852,
+  "after": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 2
+  },
+  "geoAfter": {
+   "gridTop": 521,
+   "cellW": 175,
+   "cellH": 360,
+   "guideTop": 0
+  },
+  "lowerAfter": 2848,
+  "shifts": [
+   {
+    "v": 0.0002147782584839936,
+    "t": 8702,
+    "src": [
+     "offer",
+     "offer"
+    ]
+   }
+  ],
+  "cls": 0.0002,
+  "listShift": 0,
+  "errors": [],
+  "ok": true
+ },
+ "skeleton-1440": {
+  "during": {
+   "cells": 0,
+   "skel": 12,
+   "busy": "true",
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 2
+  },
+  "geoDuring": {
+   "gridTop": 481,
+   "cellW": 310,
+   "cellH": 507,
+   "guideTop": 0
+  },
+  "lowerDuring": 2137,
+  "after": {
+   "cells": 12,
+   "skel": 0,
+   "busy": null,
+   "state": null,
+   "action": [],
+   "more": null,
+   "guide": false,
+   "tabs": [
+    "Alla"
+   ],
+   "lower": 3,
+   "h1": 2
+  },
+  "geoAfter": {
+   "gridTop": 481,
+   "cellW": 310,
+   "cellH": 508,
+   "guideTop": 0
+  },
+  "lowerAfter": 2141,
+  "shifts": [],
+  "cls": 0,
+  "listShift": 0,
+  "errors": [],
+  "ok": true
+ }
+}

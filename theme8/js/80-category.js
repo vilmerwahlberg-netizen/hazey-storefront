@@ -1269,10 +1269,10 @@
   function searchHit(hay, tokens) {
     return tokens.every(function (t) { return hay.text.indexOf(t) !== -1 || hay.compact.indexOf(t) !== -1; });
   }
-  function cardUnit(name) {
+  function cardUnit(name, weights) {
     var v = cardVolume(name);
     if (v) { v.unit = "ml"; return v; }
-    return portalOn ? cardWeight(name) : null;
+    return portalOn || weights ? cardWeight(name) : null;
   }
 
   function node(tag, cls, html) {
@@ -1948,114 +1948,128 @@
     var a = card.querySelector("a.product-card__image[href], .details a[href]");
     return a ? HZ8.path(a.getAttribute("href")).split("?")[0].replace(/\/\d+$/, "") : "";
   }
+  /* Kategoriernas kortdata -> den delade, rena kortdekoreringen nedan. */
   function syncPilotCards() {
     document.querySelectorAll("#category-products .product-card, .hz8-series-results .product-card").forEach(function (card) {
       var path = cardHref(card);
-      var details = card.querySelector(".details");
-      var wrapper = card.querySelector(".details-wrapper");
-      if (!path || !details || !wrapper) return;
-      var paused = !!(pilotPaused && pilotPaused[path]);
-      if (card.classList.contains("hz8-paused") !== paused) card.classList.toggle("hz8-paused", paused);
-      var cell = card.parentNode;
-      if (cell && cell !== document.body && cell.classList.contains("hz8-paused-cell") !== paused) cell.classList.toggle("hz8-paused-cell", paused);
-      /* Egenskapschips: produkttyp + volym (+ serie på desktop). Bara
-         verifierad data; tom rad reserverar höjd (inget layoutskift). */
-      var nameEl = card.querySelector(".name");
-      /* Nyehandel dubbelkodar "&" i vissa namn ("&amp;amp;" i källan ->
-         "&amp;" på skärmen). Visa den avkodade riktiga texten, även i
-         bildens alt/title och köpknappens tillgängliga namn. */
-      if (nameEl && nameEl.textContent.indexOf("&amp;") !== -1) {
-        nameEl.textContent = nameEl.textContent.replace(/&amp;/g, "&");
-        card.querySelectorAll("img[alt], img[title], [aria-label]").forEach(function (el) {
-          ["alt", "title", "aria-label"].forEach(function (a) { var v = el.getAttribute(a); if (v && v.indexOf("&amp;") !== -1) el.setAttribute(a, v.replace(/&amp;/g, "&")); });
-        });
-      }
-      /* Betyg: det riktiga snittet (stjärnornas title) som decimal mellan
-         stjärnor och antal. Ingen rad utan omdömen. */
-      var stars = card.querySelector(".rating .nh-stars[title]");
-      if (stars) {
-        var avg = parseFloat(stars.getAttribute("title"));
-        var rate = stars.parentNode.querySelector(".hz8-prate");
-        var txt = avg > 0 ? avg.toFixed(1).replace(".", ",") : "";
-        if (txt && !rate) { rate = node("span", "hz8-prate"); stars.insertAdjacentElement("afterend", rate); }
-        if (rate && rate.textContent !== txt) rate.textContent = txt;
-      }
-      /* Hela namnet är källan även när titeln visuellt kortats nedan. */
-      var shortName = nameEl && nameEl.getAttribute("data-hz8-short");
-      var fullName = nameEl ? (shortName && nameEl.textContent === shortName ? nameEl.getAttribute("data-hz8-full") : nameEl.textContent.trim()) : "";
-      var vol = cardUnit(fullName);
-      var chips = [];
-      if (pilotType[path]) chips.push([TYPE_ONE[pilotType[path]] || pilotType[path], ""]);
-      if (vol) chips.push([vol.label, ""]);
-      (pilotSeries[path] || []).slice(0, 1).forEach(function (n) { chips.push([n, " is-extra"]); });
-      /* Täthet (2026-10-22): avslutande "- 2ml" i den synliga titeln när
-         exakt samma volym redan står som tagg. Produktens riktiga namn,
-         länk, H1 och metadata rörs inte; länken bär hela namnet. */
-      if (nameEl && vol) {
-        var trimmed = fullName.replace(/\s*[-–]\s*\d+(?:[.,]\d+)?(?:\s*\+\s*\d+(?:[.,]\d+)?)?\s*ml\s*$/i, "");
-        var endVol = trimmed !== fullName ? cardVolume(fullName.slice(trimmed.length)) : null;
-        if (vol.unit === "g") endVol = null;
-        if (endVol && endVol.key === vol.key && trimmed.length >= 8) {
-          if (nameEl.textContent !== trimmed) {
-            nameEl.setAttribute("data-hz8-full", fullName);
-            nameEl.setAttribute("data-hz8-short", trimmed);
-            nameEl.textContent = trimmed;
-          }
-          var nameLink = nameEl.closest("a");
-          if (nameLink && nameLink.getAttribute("aria-label") !== fullName) nameLink.setAttribute("aria-label", fullName);
-          /* Köpknappens tillgängliga namn (03-product-card) ska också bära
-             hela produktnamnet om den skapades efter kortningen. */
-          card.querySelectorAll(".hz8-card-pill[aria-label]").forEach(function (pill) {
-            var l = pill.getAttribute("aria-label");
-            if (l.indexOf(fullName) === -1 && l.slice(-trimmed.length) === trimmed) pill.setAttribute("aria-label", l.slice(0, l.length - trimmed.length) + fullName);
-          });
-        }
-      }
-      var row = details.querySelector(".hz8-pcardchips");
-      if (!row) { row = node("p", "hz8-pcardchips"); details.appendChild(row); }
-      var sig = chips.map(function (c) { return c[0]; }).join("|");
-      if (row.getAttribute("data-sig") !== sig) {
-        row.setAttribute("data-sig", sig);
-        row.innerHTML = chips.map(function (c) { return '<span class="hz8-pcardchip' + c[1] + '">' + HZ8.esc(c[0]) + "</span>"; }).join("");
-      }
-      /* Trasig produktbild: neutral bildbrunn (samma mått, inget skift). */
-      var img = card.querySelector(".product-card__image img");
-      if (img && !img.hasAttribute("data-hz8-watch")) {
-        img.setAttribute("data-hz8-watch", "");
-        var broken = function () { var a = img.closest(".product-card__image"); if (a) a.classList.add("hz8-img-broken"); };
-        img.addEventListener("error", broken);
-        if (img.complete && !img.naturalWidth && img.getAttribute("src")) broken();
-      }
-
-      /* Lagerraden finns från start (tom, reserverad höjd) så att kortet
-         inte växer när lagerdatan kommer -- annars layoutskift. */
-      var stock = details.querySelector(".hz8-pstock");
-      if (!stock) { stock = node("p", "hz8-pstock is-pending"); stock.setAttribute("aria-hidden", "true"); details.appendChild(stock); }
-      if (!pilotStock) return;
+      if (!path || !card.querySelector(".details") || !card.querySelector(".details-wrapper")) return;
       /* Lagerstatus bara när produktens källa är känd och laddad (en enkel
-         formatsida utan källor: sidans egen lista räcker). */
-      var srcKey = portalOn ? "all" : pilotType[path];
-      if (Object.keys(pilotStockKnown).length && (!srcKey || !pilotStockKnown[srcKey])) return;
-      var inStock = !!pilotStock[path];
-      stock.classList.remove("is-pending");
-      stock.removeAttribute("aria-hidden");
-      var label = inStock ? "I lager" : "Slutsåld";
-      if (stock.textContent !== label) stock.textContent = label;
-      stock.classList.toggle("is-out", !inStock);
-      card.classList.toggle("hz8-is-soldout", !inStock);
-      var sold = wrapper.querySelector(".hz8-psold");
-      /* Slutsåld: inaktiv etikett i knappens plats; bild och namn är
-         fortsatt riktiga länkar till produkten. */
-      if (!inStock && !sold) {
-        var name = card.querySelector(".name");
-        sold = node("span", "hz8-psold", "Slutsåld");
-        sold.setAttribute("role", "button");
-        sold.setAttribute("aria-disabled", "true");
-        sold.setAttribute("aria-label", "Slutsåld: " + (name ? (name.getAttribute("data-hz8-full") || name.textContent.trim()) : ""));
-        wrapper.appendChild(sold);
-      } else if (inStock && sold) sold.remove();
+         formatsida utan källor: sidans egen lista räcker). null = okänd. */
+      var stock = null;
+      if (pilotStock) {
+        var srcKey = portalOn ? "all" : pilotType[path];
+        if (!(Object.keys(pilotStockKnown).length && (!srcKey || !pilotStockKnown[srcKey]))) stock = !!pilotStock[path];
+      }
+      decorateCard(card, { paused: !!(pilotPaused && pilotPaused[path]), type: pilotType[path], series: pilotSeries[path] || [], stock: stock });
     });
   }
+  /* Portalkortets dekorering (chips, betyg, kortad titel, bildfel, lager-
+     rad, slutsåld-etikett) som ren funktion av kortet och dess data:
+     { paused, type (formatnyckel), series (namn), stock (true/false/null) }.
+     Delas med Bästsäljare (88a-bestsellers.js, TASK 11) -- samma kort, samma
+     markup. */
+  function decorateCard(card, data) {
+    var details = card.querySelector(".details");
+    var wrapper = card.querySelector(".details-wrapper");
+    if (!details || !wrapper) return;
+    var paused = !!data.paused;
+    if (card.classList.contains("hz8-paused") !== paused) card.classList.toggle("hz8-paused", paused);
+    var cell = card.parentNode;
+    if (cell && cell !== document.body && cell.classList.contains("hz8-paused-cell") !== paused) cell.classList.toggle("hz8-paused-cell", paused);
+    /* Egenskapschips: produkttyp + volym (+ serie på desktop). Bara
+       verifierad data; tom rad reserverar höjd (inget layoutskift). */
+    var nameEl = card.querySelector(".name");
+    /* Nyehandel dubbelkodar "&" i vissa namn ("&amp;amp;" i källan ->
+       "&amp;" på skärmen). Visa den avkodade riktiga texten, även i
+       bildens alt/title och köpknappens tillgängliga namn. */
+    if (nameEl && nameEl.textContent.indexOf("&amp;") !== -1) {
+      nameEl.textContent = nameEl.textContent.replace(/&amp;/g, "&");
+      card.querySelectorAll("img[alt], img[title], [aria-label]").forEach(function (el) {
+        ["alt", "title", "aria-label"].forEach(function (a) { var v = el.getAttribute(a); if (v && v.indexOf("&amp;") !== -1) el.setAttribute(a, v.replace(/&amp;/g, "&")); });
+      });
+    }
+    /* Betyg: det riktiga snittet (stjärnornas title) som decimal mellan
+       stjärnor och antal. Ingen rad utan omdömen. */
+    var stars = card.querySelector(".rating .nh-stars[title]");
+    if (stars) {
+      var avg = parseFloat(stars.getAttribute("title"));
+      var rate = stars.parentNode.querySelector(".hz8-prate");
+      var txt = avg > 0 ? avg.toFixed(1).replace(".", ",") : "";
+      if (txt && !rate) { rate = node("span", "hz8-prate"); stars.insertAdjacentElement("afterend", rate); }
+      if (rate && rate.textContent !== txt) rate.textContent = txt;
+    }
+    /* Hela namnet är källan även när titeln visuellt kortats nedan. */
+    var shortName = nameEl && nameEl.getAttribute("data-hz8-short");
+    var fullName = nameEl ? (shortName && nameEl.textContent === shortName ? nameEl.getAttribute("data-hz8-full") : nameEl.textContent.trim()) : "";
+    var vol = cardUnit(fullName, data.weights);
+    var chips = [];
+    if (data.type) chips.push([TYPE_ONE[data.type] || data.type, ""]);
+    if (vol) chips.push([vol.label, ""]);
+    (data.series || []).slice(0, 1).forEach(function (n) { chips.push([n, " is-extra"]); });
+    /* Täthet (2026-10-22): avslutande "- 2ml" i den synliga titeln när
+       exakt samma volym redan står som tagg. Produktens riktiga namn,
+       länk, H1 och metadata rörs inte; länken bär hela namnet. */
+    if (nameEl && vol) {
+      var trimmed = fullName.replace(/\s*[-–]\s*\d+(?:[.,]\d+)?(?:\s*\+\s*\d+(?:[.,]\d+)?)?\s*ml\s*$/i, "");
+      var endVol = trimmed !== fullName ? cardVolume(fullName.slice(trimmed.length)) : null;
+      if (vol.unit === "g") endVol = null;
+      if (endVol && endVol.key === vol.key && trimmed.length >= 8) {
+        if (nameEl.textContent !== trimmed) {
+          nameEl.setAttribute("data-hz8-full", fullName);
+          nameEl.setAttribute("data-hz8-short", trimmed);
+          nameEl.textContent = trimmed;
+        }
+        var nameLink = nameEl.closest("a");
+        if (nameLink && nameLink.getAttribute("aria-label") !== fullName) nameLink.setAttribute("aria-label", fullName);
+        /* Köpknappens tillgängliga namn (03-product-card) ska också bära
+           hela produktnamnet om den skapades efter kortningen. */
+        card.querySelectorAll(".hz8-card-pill[aria-label]").forEach(function (pill) {
+          var l = pill.getAttribute("aria-label");
+          if (l.indexOf(fullName) === -1 && l.slice(-trimmed.length) === trimmed) pill.setAttribute("aria-label", l.slice(0, l.length - trimmed.length) + fullName);
+        });
+      }
+    }
+    var row = details.querySelector(".hz8-pcardchips");
+    if (!row) { row = node("p", "hz8-pcardchips"); details.appendChild(row); }
+    var sig = chips.map(function (c) { return c[0]; }).join("|");
+    if (row.getAttribute("data-sig") !== sig) {
+      row.setAttribute("data-sig", sig);
+      row.innerHTML = chips.map(function (c) { return '<span class="hz8-pcardchip' + c[1] + '">' + HZ8.esc(c[0]) + "</span>"; }).join("");
+    }
+    /* Trasig produktbild: neutral bildbrunn (samma mått, inget skift). */
+    var img = card.querySelector(".product-card__image img");
+    if (img && !img.hasAttribute("data-hz8-watch")) {
+      img.setAttribute("data-hz8-watch", "");
+      var broken = function () { var a = img.closest(".product-card__image"); if (a) a.classList.add("hz8-img-broken"); };
+      img.addEventListener("error", broken);
+      if (img.complete && !img.naturalWidth && img.getAttribute("src")) broken();
+    }
+
+    /* Lagerraden finns från start (tom, reserverad höjd) så att kortet
+       inte växer när lagerdatan kommer -- annars layoutskift. */
+    var stock = details.querySelector(".hz8-pstock");
+    if (!stock) { stock = node("p", "hz8-pstock is-pending"); stock.setAttribute("aria-hidden", "true"); details.appendChild(stock); }
+    if (data.stock === null || data.stock === undefined) return;
+    var inStock = !!data.stock;
+    stock.classList.remove("is-pending");
+    stock.removeAttribute("aria-hidden");
+    var label = inStock ? "I lager" : "Slutsåld";
+    if (stock.textContent !== label) stock.textContent = label;
+    stock.classList.toggle("is-out", !inStock);
+    card.classList.toggle("hz8-is-soldout", !inStock);
+    var sold = wrapper.querySelector(".hz8-psold");
+    /* Slutsåld: inaktiv etikett i knappens plats; bild och namn är
+       fortsatt riktiga länkar till produkten. */
+    if (!inStock && !sold) {
+      var name = card.querySelector(".name");
+      sold = node("span", "hz8-psold", "Slutsåld");
+      sold.setAttribute("role", "button");
+      sold.setAttribute("aria-disabled", "true");
+      sold.setAttribute("aria-label", "Slutsåld: " + (name ? (name.getAttribute("data-hz8-full") || name.textContent.trim()) : ""));
+      wrapper.appendChild(sold);
+    } else if (inStock && sold) sold.remove();
+  }
+  HZ8.decoratePortalCard = decorateCard;
   var pilotPausedReady = null;
   function loadCardData(ctx) {
     var sources = pilotSources(ctx);

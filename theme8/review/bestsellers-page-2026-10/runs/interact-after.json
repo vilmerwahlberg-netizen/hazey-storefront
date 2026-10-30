@@ -1,0 +1,1143 @@
+{
+ "expand-393": {
+  "before": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 2497,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1979,
+   "hdrBottom": 72,
+   "focus": "body.has-fixed-header",
+   "live": "Alla: 103 produkter"
+  },
+  "expanded": {
+   "url": "/sv/page/vara-bastsaljare?visa=24",
+   "hist": 2,
+   "y": 2497,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 24 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1979,
+   "hdrBottom": 72,
+   "focus": "cell#12",
+   "live": "Alla: 103 produkter"
+  },
+  "less": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 434,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 84,
+   "hdrBottom": 72,
+   "focus": "list-heading",
+   "live": "Alla: 103 produkter"
+  },
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "filter-393": {
+  "start": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "body.has-fixed-header",
+   "live": "Alla: 103 produkter"
+  },
+  "carts": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts",
+   "hist": 3,
+   "y": 0,
+   "cells": 7,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "false",
+   "more": null,
+   "state": null,
+   "soldShown": 3,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts: 7 produkter"
+  },
+  "cartsStock": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 4,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-ptool__btn",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "budsStock": {
+   "url": "/sv/page/vara-bastsaljare?typ=buds&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Buds",
+   "stock": "true",
+   "more": {
+    "text": "Visar 12 av 19",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Buds, i lager: 19 produkter"
+  },
+  "nav": 0,
+  "back1": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "back2": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts",
+   "hist": 5,
+   "y": 0,
+   "cells": 7,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "false",
+   "more": null,
+   "state": null,
+   "soldShown": 3,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts: 7 produkter"
+  },
+  "fwd": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "navHistory": 0,
+  "allKeepsStock": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 12 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 518,
+   "hdrBottom": 72,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "preReload": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock&visa=24",
+   "hist": 5,
+   "y": 2497,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 24 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1979,
+   "hdrBottom": 72,
+   "focus": "cell#12",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "reload": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock&visa=24",
+   "hist": 5,
+   "y": 2497,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 24 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1979,
+   "hdrBottom": -48,
+   "focus": "body.has-fixed-header",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "errors": [],
+  "ok": true
+ },
+ "guide-393": {
+  "y60": 2708,
+  "after": {
+   "url": "/sv/page/vara-bastsaljare?typ=hasch",
+   "hist": 3,
+   "y": 434,
+   "cells": 12,
+   "busy": null,
+   "tab": "Hasch",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 15",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 5,
+   "headTop": 84,
+   "hdrBottom": 72,
+   "focus": "list-heading",
+   "live": "Hasch: 15 produkter"
+  },
+  "y0": 2752,
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "guide-393-reduced": {
+  "y60": 434,
+  "after": {
+   "url": "/sv/page/vara-bastsaljare?typ=hasch",
+   "hist": 3,
+   "y": 434,
+   "cells": 12,
+   "busy": null,
+   "tab": "Hasch",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 15",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 5,
+   "headTop": 84,
+   "hdrBottom": 72,
+   "focus": "list-heading",
+   "live": "Hasch: 15 produkter"
+  },
+  "y0": 2752,
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "buy-393": {
+  "posts": [
+   "POST 200"
+  ],
+  "addName": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+  "cart": {
+   "drawer": true,
+   "rows": [
+    "Buds – ≈15% CBD – 10 gram - Russian Roulette 375 kr / Styck "
+   ]
+  },
+  "choose": {
+   "text": "VäljVälj",
+   "href": "/sv/products/ccell-m4-vape-batteri-510"
+  },
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "trust-393": {
+  "iframe": true,
+  "iframeH": 24,
+  "fallback": null,
+  "h": 24,
+  "errors": [],
+  "ok": true
+ },
+ "trust-393-blocked": {
+  "iframe": false,
+  "iframeH": 0,
+  "fallback": "Omdömen på Trustpilot",
+  "h": 25,
+  "errors": [
+   "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+  ],
+  "ok": true
+ },
+ "expand-1440": {
+  "before": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 1713,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1292,
+   "hdrBottom": 80,
+   "focus": "body.has-fixed-header",
+   "live": "Alla: 103 produkter"
+  },
+  "expanded": {
+   "url": "/sv/page/vara-bastsaljare?visa=24",
+   "hist": 2,
+   "y": 1713,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 24 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1292,
+   "hdrBottom": 80,
+   "focus": "cell#12",
+   "live": "Alla: 103 produkter"
+  },
+  "less": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 329,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 92,
+   "hdrBottom": 80,
+   "focus": "list-heading",
+   "live": "Alla: 103 produkter"
+  },
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "filter-1440": {
+  "start": {
+   "url": "/sv/page/vara-bastsaljare",
+   "hist": 2,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 103",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "body.has-fixed-header",
+   "live": "Alla: 103 produkter"
+  },
+  "carts": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts",
+   "hist": 3,
+   "y": 0,
+   "cells": 7,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "false",
+   "more": null,
+   "state": null,
+   "soldShown": 3,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts: 7 produkter"
+  },
+  "cartsStock": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 4,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-ptool__btn",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "budsStock": {
+   "url": "/sv/page/vara-bastsaljare?typ=buds&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Buds",
+   "stock": "true",
+   "more": {
+    "text": "Visar 12 av 19",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Buds, i lager: 19 produkter"
+  },
+  "nav": 0,
+  "back1": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "back2": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts",
+   "hist": 5,
+   "y": 0,
+   "cells": 7,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "false",
+   "more": null,
+   "state": null,
+   "soldShown": 3,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts: 7 produkter"
+  },
+  "fwd": {
+   "url": "/sv/page/vara-bastsaljare?typ=carts&filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 4,
+   "busy": null,
+   "tab": "Carts",
+   "stock": "true",
+   "more": null,
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Carts, i lager: 4 produkter"
+  },
+  "navHistory": 0,
+  "allKeepsStock": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock",
+   "hist": 5,
+   "y": 0,
+   "cells": 12,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 12 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": 421,
+   "hdrBottom": 80,
+   "focus": "button.hz8-pfam__tab",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "preReload": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock&visa=24",
+   "hist": 5,
+   "y": 1713,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 24 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1292,
+   "hdrBottom": 80,
+   "focus": "cell#12",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "reload": {
+   "url": "/sv/page/vara-bastsaljare?filters=smart-filter_in-stock&visa=24",
+   "hist": 5,
+   "y": 1713,
+   "cells": 24,
+   "busy": null,
+   "tab": "Alla",
+   "stock": "true",
+   "more": {
+    "text": "Visar 24 av 44",
+    "btn": "Visa fler bästsäljare",
+    "exp": "true",
+    "less": "Visa färre"
+   },
+   "state": null,
+   "soldShown": 0,
+   "headTop": -1292,
+   "hdrBottom": -48,
+   "focus": "body.has-fixed-header",
+   "live": "Alla, i lager: 44 produkter"
+  },
+  "errors": [],
+  "ok": true
+ },
+ "guide-1440": {
+  "y60": 1849,
+  "after": {
+   "url": "/sv/page/vara-bastsaljare?typ=hasch",
+   "hist": 3,
+   "y": 329,
+   "cells": 12,
+   "busy": null,
+   "tab": "Hasch",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 15",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 5,
+   "headTop": 92,
+   "hdrBottom": 80,
+   "focus": "list-heading",
+   "live": "Hasch: 15 produkter"
+  },
+  "y0": 1896,
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "guide-1440-reduced": {
+  "y60": 329,
+  "after": {
+   "url": "/sv/page/vara-bastsaljare?typ=hasch",
+   "hist": 3,
+   "y": 329,
+   "cells": 12,
+   "busy": null,
+   "tab": "Hasch",
+   "stock": "false",
+   "more": {
+    "text": "Visar 12 av 15",
+    "btn": "Visa fler bästsäljare",
+    "exp": "false",
+    "less": null
+   },
+   "state": null,
+   "soldShown": 5,
+   "headTop": 92,
+   "hdrBottom": 80,
+   "focus": "list-heading",
+   "live": "Hasch: 15 produkter"
+  },
+  "y0": 1896,
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "buy-1440": {
+  "posts": [
+   "POST 200"
+  ],
+  "addName": "Buds – ≈15% CBD – 10 gram - Russian Roulette",
+  "cart": {
+   "drawer": true,
+   "rows": [
+    "Buds – ≈15% CBD – 10 gram - Russian Roulette 375 kr / Styck "
+   ]
+  },
+  "choose": {
+   "text": "VäljVälj",
+   "href": "/sv/products/ccell-m4-vape-batteri-510"
+  },
+  "nav": 0,
+  "errors": [],
+  "ok": true
+ },
+ "trust-1440": {
+  "iframe": true,
+  "iframeH": 24,
+  "fallback": null,
+  "h": 24,
+  "errors": [],
+  "ok": true
+ },
+ "trust-1440-blocked": {
+  "iframe": false,
+  "iframeH": 0,
+  "fallback": "Omdömen på Trustpilot",
+  "h": 25,
+  "errors": [
+   "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+  ],
+  "ok": true
+ },
+ "keyboard": {
+  "seen": [
+   {
+    "el": "iframe.",
+    "text": "",
+    "fv": false,
+    "ring": false,
+    "vis": true,
+    "zone": "trust"
+   },
+   {
+    "el": "button.hz8-pfam__tab",
+    "text": "Alla",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "button.hz8-pfam__tab",
+    "text": "Vapes",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "button.hz8-pfam__tab",
+    "text": "Carts",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "button.hz8-pfam__tab",
+    "text": "Buds",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "button.hz8-pfam__tab",
+    "text": "Hasch",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "button.hz8-ptool__btn",
+    "text": "I lager",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "tool"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "CCELL M4 – Vape Batteri – 51",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "CCELL M3 Plus – Vape Batteri",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Vape - CBN 89% - Canapuff",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "CCELL Palm Pro – Vape Batter",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Vape - THC-V 20% - CBD Group",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Vape - THCV - Euphoria",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Buds – ≈15% CBD – 10 gram - ",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "button.hz8-add-pill",
+    "text": "Lägg tillLägg till",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "CCELL M3b – Vape Batteri – 5",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Vape - THC-V 20% - Tatra Hem",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Isolat – THCA 99% – Isolate ",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "button.hz8-add-pill",
+    "text": "Lägg tillLägg till",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Buds – CBD 30% – Cereal Milk",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "button.hz8-add-pill",
+    "text": "Lägg tillLägg till",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.product-card__image",
+    "text": "Köp mer - Betala mindre Finn",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.",
+    "text": "Vape - THC-B 35% - Faraoh",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "a.hz8-add-pill",
+    "text": "VäljVälj",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "grid"
+   },
+   {
+    "el": "button.hz8-bs-more__btn",
+    "text": "Visa fler bästsäljare",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "more"
+   },
+   {
+    "el": "button.hz8-proutes__card",
+    "text": "VapesVapes i flera volymerVi",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "guide"
+   },
+   {
+    "el": "button.hz8-proutes__card",
+    "text": "CartsCartridges i flera voly",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "guide"
+   },
+   {
+    "el": "button.hz8-proutes__card",
+    "text": "BudsBuds i flera vikterVisa ",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "guide"
+   },
+   {
+    "el": "button.hz8-proutes__card",
+    "text": "HaschHasch i flera vikterVis",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "guide"
+   },
+   {
+    "el": "summary.",
+    "text": "Hur snabbt får jag min bestä",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "lower"
+   },
+   {
+    "el": "summary.",
+    "text": "Skickar ni diskret?",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "lower"
+   },
+   {
+    "el": "summary.",
+    "text": "Hur betalar jag?",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "lower"
+   },
+   {
+    "el": "a.",
+    "text": "Alla vanliga frågor",
+    "fv": true,
+    "ring": true,
+    "vis": true,
+    "zone": "lower"
+   }
+  ],
+  "zones": [
+   "trust",
+   "tool",
+   "grid",
+   "more",
+   "guide",
+   "lower"
+  ],
+  "tabKey": "Buds",
+  "swKey": "true",
+  "det": {
+   "open": true,
+   "answer": "Vi skickar från Sverige inom 1–2 vardagar. Du får ett spårningsnummer via mail s"
+  },
+  "noRing": [],
+  "errors": [],
+  "ok": true
+ }
+}

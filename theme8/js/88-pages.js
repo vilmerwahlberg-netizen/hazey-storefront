@@ -154,6 +154,9 @@
     if (context.page !== "page" && context.page !== "faq") return;
     /* Butik ägs av 87-shop.js (katalogportal) -- inga generella listor här. */
     if (HZ8.isShopPage && HZ8.isShopPage()) return;
+    /* Bästsäljare ägs av 88a-bestsellers.js (TASK 11). Sidans native
+       adminblock lämnas orörda (HZ8.bestsellerSource läser dem). */
+    if (HZ8.isBestsellerPage && HZ8.isBestsellerPage()) return;
     var page = document.querySelector("#skip-to-main-content .store-page") || document.querySelector(".store-page");
     if (!page) return;
     var S = HZ8.service;
