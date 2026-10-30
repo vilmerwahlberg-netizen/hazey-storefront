@@ -1,0 +1,67 @@
+// Tillståndspaneler för riktning A och B (mobil 393): tom, laddar, fel, lagergräns.
+// Riktig data: Faraoh Forbidden Fruit (realdata.json), Tequila Sunrise 7 st (realdata2.json).
+import { chromium } from "playwright"; import fs from "node:fs"; import path from "node:path";
+const DIR = path.dirname(new URL(import.meta.url).pathname);
+const D = JSON.parse(fs.readFileSync(`${DIR}/runs/realdata.json`, "utf8"));
+const D2 = JSON.parse(fs.readFileSync(`${DIR}/runs/realdata2.json`, "utf8"));
+const far = D.cart.items[0], tq = D2.stock;
+const clean = s => s.replace(/&amp;/g, "&").replace(/ - /g, " – ");
+const TOK = `:root{--ink:#23231d;--olive:#323d25;--neutral:#ede9e8;--beige:#e4d1bf;--cta:#d2691e;--red:#f03322;--surface:color-mix(in srgb,var(--neutral) 38%,#fff);--sand:color-mix(in srgb,var(--beige) 26%,var(--surface));--muted:color-mix(in srgb,var(--ink) 74%,var(--neutral));--line:color-mix(in srgb,var(--ink) 13%,var(--neutral));--line-s:color-mix(in srgb,var(--ink) 28%,var(--neutral));--cta-fill:color-mix(in srgb,var(--cta) 82%,var(--ink));--err:color-mix(in srgb,var(--red) 72%,var(--ink));--err-soft:color-mix(in srgb,var(--red) 9%,var(--surface));--disp:"Iowan Old Style",Palatino,Georgia,serif;--ui:"Helvetica Neue",Arial,sans-serif}*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--ui);color:var(--ink);background:#cfc7bc;display:flex;gap:24px;padding:24px}button{font:inherit;color:inherit;border:0;background:none}
+.lab{font:700 12px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:10px}
+.ph{width:393px;height:640px;position:relative;overflow:hidden;border-radius:6px}`;
+const A_CSS = `.A{background:var(--sand);height:100%;display:flex;flex-direction:column}.A .hd{display:flex;align-items:baseline;gap:10px;padding:18px 16px 10px}.A h2{font:600 24px/1 var(--disp);color:var(--olive)}.A small{font:600 13px/1 var(--ui);color:var(--muted)}.A .x{margin-left:auto;width:44px;height:44px;font-size:20px;color:var(--olive)}
+.A .row{display:grid;grid-template-columns:64px 1fr auto;gap:4px 14px;padding:14px 16px}.A .m{grid-row:span 2;width:64px;height:64px;border-radius:10px;background:color-mix(in srgb,var(--beige) 55%,var(--surface));overflow:hidden}.A .m img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.A .n{font:600 15.5px/1.25 var(--disp)}.A .v{font:500 12.5px/1.3 var(--ui);color:var(--muted);margin-top:3px}.A .s{text-align:right;font:700 15px/1.2 var(--ui)}.A .s del{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.A .c{grid-column:2/4;display:flex;justify-content:space-between;align-items:center;margin-top:8px}.A .st{display:inline-grid;grid-template-columns:44px 36px 44px;height:40px;border:1.5px solid var(--line-s);border-radius:10px;background:var(--surface);align-items:center;text-align:center;font:700 15px/1 var(--ui)}.A .st button{height:100%;font-size:19px;color:var(--olive)}.A .st button[disabled]{color:var(--line-s)}
+.A .rm{font:600 13px/1 var(--ui);color:var(--muted);text-decoration:underline}
+.A .note{grid-column:2/4;margin-top:8px;padding:9px 11px;border-radius:9px;font:500 12.5px/1.35 var(--ui)}.A .note.err{background:var(--err-soft);color:var(--err);display:flex;justify-content:space-between;gap:8px;align-items:center}.A .note.err button{font-weight:700;text-decoration:underline;color:var(--err);flex:none;min-height:32px}.A .note.info{background:color-mix(in srgb,var(--olive) 8%,var(--surface));color:var(--olive)}
+.A .busy .st{opacity:.55}.A .spin{width:16px;height:16px;border:2px solid var(--line-s);border-top-color:var(--olive);border-radius:50%;display:inline-block;margin:auto}
+.A .ft{margin-top:auto;padding:14px 16px 18px;background:var(--surface);border-top:1px solid var(--line)}.A .ln{display:flex;justify-content:space-between;font:500 13px/1.5 var(--ui);color:var(--muted)}.A .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:4px}.A .tot span{font:700 16px/1 var(--ui)}.A .tot b{font:700 24px/1 var(--ui)}.A .tot b.dim{color:var(--muted)}
+.A .go{width:100%;height:54px;margin-top:12px;border-radius:12px;background:var(--cta-fill);color:#fff;font:700 16px/1 var(--ui)}.A .go[aria-disabled]{background:color-mix(in srgb,var(--cta-fill) 45%,var(--surface))}
+.A .meta{display:flex;justify-content:space-between;margin-top:8px;font:500 12px/1.3 var(--ui);color:var(--muted)}.A .meta a{color:var(--ink);font-weight:600;text-decoration:underline}
+.A .empty{flex:1;display:grid;align-content:center;justify-items:center;gap:12px;padding:24px;text-align:center}.A .empty h3{font:600 26px/1.1 var(--disp);color:var(--olive)}.A .empty p{color:var(--muted);font:500 14px/1.4 var(--ui)}.A .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}.A .chips a{font:600 14px/2.6 var(--ui);color:var(--ink);text-decoration:underline;text-underline-offset:4px}.A .empty .go{width:auto;padding:0 28px;background:var(--olive)}`;
+const B_CSS = `.B{background:color-mix(in srgb,var(--beige) 34%,var(--neutral));height:100%;display:flex;flex-direction:column}.B .hd{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}.B h2{font:600 24px/1 var(--disp);color:var(--olive)}.B small{font:600 13px/1 var(--ui);color:var(--muted);padding:5px 9px;border-radius:99px;background:var(--surface)}.B .x{margin-left:auto;width:44px;height:44px;border-radius:50%;background:var(--surface);color:var(--olive)}
+.B .card{margin:0 12px;background:var(--surface);border-radius:18px;padding:12px}.B .top{display:grid;grid-template-columns:64px 1fr 36px;gap:12px}.B .m{width:64px;height:64px;border-radius:12px;background:color-mix(in srgb,var(--beige) 50%,var(--surface));overflow:hidden}.B .m img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.B .n{font:600 15.5px/1.25 var(--disp)}.B .v{font:600 12px/1.3 var(--ui);color:var(--olive);margin-top:3px}.B .p{margin-top:5px;font:700 15px/1 var(--ui)}.B .p.dim{color:var(--muted)}.B .rm{width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--olive) 6%,var(--surface));color:var(--muted)}
+.B .segs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}.B .seg{display:grid;gap:2px;padding:8px 4px;border:1.5px solid var(--line);border-radius:12px;text-align:center;font:700 12.5px/1.15 var(--ui)}.B .seg small{all:unset;font:500 10.5px/1.1 var(--ui);color:var(--muted)}.B .seg.on{border-color:var(--cta-fill);box-shadow:inset 0 0 0 1px var(--cta-fill)}.B .seg.off{opacity:.4;text-decoration:line-through}.B .seg.wait{border-style:dashed}
+.B .note{margin-top:8px;padding:9px 11px;border-radius:10px;font:500 12.5px/1.35 var(--ui)}.B .note.err{background:var(--err-soft);color:var(--err)}.B .note.err button{font-weight:700;text-decoration:underline;color:var(--err)}.B .note.info{background:color-mix(in srgb,var(--olive) 8%,var(--surface));color:var(--olive)}
+.B .ft{margin-top:auto;padding:16px 16px 18px;background:var(--olive);color:#fff;border-radius:22px 22px 0 0}.B .ln{display:flex;justify-content:space-between;font:500 13px/1.6 var(--ui);color:rgba(255,255,255,.76)}.B .tot{display:flex;justify-content:space-between;align-items:baseline}.B .tot span{font:600 20px/1 var(--disp)}.B .tot b{font:700 26px/1 var(--ui)}.B .tot b.dim{opacity:.55}
+.B .go{display:flex;justify-content:space-between;align-items:center;width:100%;height:56px;margin-top:14px;padding:0 20px;border-radius:14px;background:var(--cta-fill);color:#fff;font:700 16px/1 var(--ui)}.B .go[aria-disabled]{opacity:.5}
+.B .empty{flex:1;display:grid;align-content:center;justify-items:center;gap:14px;padding:24px;text-align:center}.B .empty h3{font:600 26px/1.1 var(--disp);color:var(--olive)}.B .empty p{color:var(--muted);font:500 14px/1.4 var(--ui)}.B .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}.B .tiles a{display:flex;align-items:center;justify-content:center;height:52px;border-radius:14px;background:var(--surface);font:700 14px/1 var(--ui);color:var(--olive)}.B .empty .go{justify-content:center;background:var(--olive);border:1.5px solid color-mix(in srgb,#fff 20%,var(--olive))}`;
+const fv = far.opt[0][1];
+function A(state) {
+  const hd = `<div class="hd"><h2>Varukorg</h2>${state !== "empty" ? `<small>${state === "stock" ? 7 : state === "loading" ? 2 : 1} ${state === "error" ? "vara" : "varor"}</small>` : ""}<button class="x">✕</button></div>`;
+  if (state === "empty") return `<div class="A">${hd}<div class="empty"><h3>Din varukorg är tom</h3><p>Hitta något du gillar i sortimentet.</p><div class="chips">${D2.cats.map(c => `<a>${c}</a>`).join("")}</div><button class="go">Börja handla</button></div></div>`;
+  const it = state === "stock" ? { n: clean(tq.name), v: "", img: tq.img, q: 7, tot: tq.total, cmp: tq.cmp } : { n: clean(far.name), v: "Strain · " + fv, img: far.img, q: state === "loading" ? 2 : 1, tot: far.total };
+  const note = state === "error" ? `<p class="note err" role="alert"><span>Antalet kunde inte ändras. Varukorgen visar det som är sparat.</span><button>Försök igen</button></p>`
+    : state === "stock" ? `<p class="note info" role="status">Du har valt allt som finns i lager just nu.</p>` : "";
+  const qty = state === "loading" ? `<span class="spin" aria-label="Uppdaterar"></span>` : `<span>${it.q}</span>`;
+  const sum = state === "loading" ? `<b class="dim">${far.total}</b>` : `<b>${state === "stock" ? tq.cartTotal : far.total}</b>`;
+  return `<div class="A">${hd}<article class="row ${state === "loading" ? "busy" : ""}"><div class="m"><img src="${it.img}"></div><div><p class="n">${it.n}</p>${it.v ? `<p class="v">${it.v}</p>` : ""}</div><div class="s">${it.cmp ? `<del>${it.cmp}</del>` : ""}${state === "loading" ? `<span style="color:var(--muted)">…</span>` : it.tot}</div>
+  <div class="c"><div class="st"><button>−</button>${qty}<button ${state === "stock" ? "disabled" : ""}>+</button></div><button class="rm">Ta bort</button></div>${note}</article>
+  <footer class="ft"><div class="ln"><span>Frakt</span><span>Beräknas i kassan</span></div><div class="tot"><span>Totalt</span>${sum}</div>
+  <button class="go" ${state === "loading" ? 'aria-disabled="true"' : ""}>${state === "loading" ? "Uppdaterar…" : "Till kassan →"}</button><div class="meta"><span>Skickas från Sverige · Diskret förpackning</span><a>Fortsätt handla</a></div></footer></div>`;
+}
+function B(state) {
+  const hd = `<div class="hd"><h2>Din varukorg</h2>${state !== "empty" ? `<small>${state === "stock" ? 7 : state === "loading" ? 2 : 1} ${state === "error" ? "vara" : "varor"}</small>` : ""}<button class="x">✕</button></div>`;
+  if (state === "empty") return `<div class="B">${hd}<div class="empty"><h3>Din varukorg är tom</h3><p>Hitta något du gillar i sortimentet.</p><div class="tiles">${D2.cats.map(c => `<a>${c}</a>`).join("")}</div></div></div>`;
+  const t = D.tiers[far.id].tiers;
+  const isStock = state === "stock";
+  const name = isStock ? clean(tq.name) : clean(far.name), img = isStock ? tq.img : far.img;
+  const segs = isStock ? `<div class="segs"><div class="seg">1 st<small>435 kr/st</small></div><div class="seg">3 st<small>369,75 kr/st</small></div><div class="seg">5 st<small>348 kr/st</small></div></div><p class="custom" style="font:500 12px/1.3 var(--ui);color:var(--muted);margin-top:6px">Ditt antal: <b>7 st</b></p>`
+    : `<div class="segs">${t.map(x => `<div class="seg ${state === "loading" && x.min === 3 ? "on wait" : state !== "loading" && x.min === 1 ? "on" : ""}">${x.min} st<small>${x.unit}/st</small></div>`).join("")}</div>`;
+  const note = state === "error" ? `<p class="note err" role="alert">Det gick inte att byta till 3 st. Du har fortfarande 1 st. <button>Försök igen</button></p>`
+    : isStock ? `<p class="note info" role="status">Du har valt allt som finns i lager just nu.</p>` : state === "loading" ? `<p class="note info" role="status">Uppdaterar till 3 st…</p>` : "";
+  return `<div class="B">${hd}<article class="card"><div class="top"><div class="m"><img src="${img}"></div><div><p class="n">${name}</p>${!isStock ? `<p class="v">${fv}</p>` : ""}<p class="p ${state === "loading" ? "dim" : ""}">${isStock ? tq.total : far.total}</p></div><button class="rm">✕</button></div>${segs}${note}</article>
+  <footer class="ft"><div class="ln"><span>Frakt</span><span>Beräknas i kassan</span></div><div class="tot"><span>Totalt</span><b class="${state === "loading" ? "dim" : ""}">${isStock ? tq.cartTotal : far.total}</b></div><button class="go" ${state === "loading" ? 'aria-disabled="true"' : ""}><span>${state === "loading" ? "Uppdaterar…" : "Till kassan"}</span><span>${state === "loading" ? "" : (isStock ? tq.cartTotal : far.total) + " →"}</span></button></footer></div>`;
+}
+const b = await chromium.launch();
+for (const [k, fn] of [["A", A], ["B", B]]) {
+  const labels = { empty: "Tom", loading: "Laddar (±)", error: "Fel vid ändring", stock: "Lagergräns" };
+  const html = `<!doctype html><meta charset="utf-8"><style>${TOK}${A_CSS}${B_CSS}</style>${Object.keys(labels).map(s => `<div><p class="lab">${k} · ${labels[s]}</p><div class="ph">${fn(s)}</div></div>`).join("")}`;
+  const pg = await b.newPage({ viewport: { width: 4 * 393 + 3 * 24 + 48, height: 640 + 48 + 22 }, deviceScaleFactor: 1.5 });
+  await pg.setContent(html, { waitUntil: "networkidle" }); await pg.waitForTimeout(300);
+  fs.writeFileSync(`${DIR}/directions/${k}-states-393.html`, html);
+  await pg.screenshot({ path: `${DIR}/directions/${k}-states-393.png` }); await pg.close();
+}
+await b.close(); console.log("ok");

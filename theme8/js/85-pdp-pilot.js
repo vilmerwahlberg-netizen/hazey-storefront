@@ -230,6 +230,9 @@
     [41, 112].forEach(function (id) { plan[id] = { model: "family", family: "nano11", steps: ["3", "5", "10"] }; });
     return plan;
   })();
+  /* Minicarten (84-cart.js, TASK 15) läser SAMMA register -- en källa
+     för paketprodukter, migreringsplan och familjer, ingen kopia. */
+  HZ8.packageRegistry = { products: PACKAGE_PRODUCTS, plan: PACKAGE_PLAN, families: FAMILIES, review: PKG_REVIEW };
   var PK = { steps: [], plan: null, family: [], loaded: false };
   function stepOf(code, model) {
     var m = String(code).match(/^(\d+)(K|F2)?$/);

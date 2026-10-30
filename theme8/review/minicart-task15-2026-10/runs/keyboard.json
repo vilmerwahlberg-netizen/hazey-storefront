@@ -1,0 +1,304 @@
+{
+ "393": {
+  "scrollBefore": 600,
+  "triggerFocused": "[page] button \"Öppna varukorgen\".button",
+  "openAfterEnter": true,
+  "focusOnOpen": "[cart] button \"Stäng varukorgen\".close-cart",
+  "tab": [
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button",
+   "[cart] button \"Uppgradera\".hz8-upgrade__btn",
+   "[cart] a \"Cart - Magic Sauce 99% - 1ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button",
+   "[cart] button \"Uppgradera\".hz8-upgrade__btn",
+   "[cart] a \"Hash – Magic Sauce 50% – Charas – 5 gram\"",
+   "[cart] button \"Lägg i varukorgen: Hash – Magic Sauce 50% – Charas – 5 gram\".hz8-xsell__btn",
+   "[cart] a \"Buds – Magic Sauce 50% – La Chupacabra –\"",
+   "[cart] button \"Lägg i varukorgen: Buds – Magic Sauce 50% – La Chupacabra – 5 gram\".hz8-xsell__btn",
+   "[cart] a \"Buds – Magic Sauce 50% – Tinky Winky – 5\"",
+   "[cart] button \"Lägg i varukorgen: Buds – Magic Sauce 50% – Tinky Winky – 5 gram\".hz8-xsell__btn",
+   "[cart] button \"Dela varukorg\"",
+   "[cart] button \"Till kassan · 1 110 kr\".button",
+   "[cart] button \"Fortsätt handla\".continue-shopping",
+   "[cart] button \"Stäng varukorgen\".close-cart",
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button"
+  ],
+  "shiftTab": [
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\""
+  ],
+  "scrollAfterWheel": 600,
+  "htmlOverflow": "hidden",
+  "inertOrHidden": {
+   "mainInert": false,
+   "headerAriaHidden": null,
+   "dialogLabel": "Din varukorg",
+   "dialogLabelledby": null,
+   "closeLabel": "Stäng varukorgen"
+  },
+  "rerender": [
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1044:1:3:",
+     "1046:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1044:2:3:",
+     "1046:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1044:3:5:150 kr bonus",
+     "1046:1:3:150 kr bonus"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 5 st för 1 080,25 kr till · du sparar 186,25 kr till · ger 150 kr bonus",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till · ger 150 kr bonus"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1044:2:3:",
+     "1046:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 409,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   }
+  ],
+  "reopen": {
+   "goal": 1,
+   "count": 1,
+   "upgrade": 2,
+   "upgradeSig": [
+    "1044:2:3:",
+    "1046:1:3:"
+   ],
+   "trust": 1,
+   "xsell": 1,
+   "ship": 1,
+   "items": 2,
+   "live": 1,
+   "upText": [
+    "Uppgradera till 3 st för 409,75 kr till · du sparar 335,25 kr till",
+    "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+   ]
+  },
+  "closedAfterEsc": true,
+  "focusAfterEsc": "[page] button \"Öppna varukorgen\".button",
+  "scrollAfterClose": 600,
+  "tabAfterClose": "[page] button \"Öppna mobilmeny\".button",
+  "closedAsideVisibility": "hidden",
+  "errors": []
+ },
+ "1440": {
+  "scrollBefore": 600,
+  "triggerFocused": "[page] button \"Öppna varukorgen\".button",
+  "openAfterEnter": true,
+  "focusOnOpen": "[cart] button \"Stäng varukorgen\".close-cart",
+  "tab": [
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button",
+   "[cart] button \"Uppgradera\".hz8-upgrade__btn",
+   "[cart] a \"Cart - Magic Sauce 99% - 1ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button",
+   "[cart] button \"Uppgradera\".hz8-upgrade__btn",
+   "[cart] a \"Hash – Magic Sauce 50% – Charas – 5 gram\"",
+   "[cart] button \"Lägg i varukorgen: Hash – Magic Sauce 50% – Charas – 5 gram\".hz8-xsell__btn",
+   "[cart] a \"Buds – Magic Sauce 50% – La Chupacabra –\"",
+   "[cart] button \"Lägg i varukorgen: Buds – Magic Sauce 50% – La Chupacabra – 5 gram\".hz8-xsell__btn",
+   "[cart] a \"Buds – Magic Sauce 50% – Tinky Winky – 5\"",
+   "[cart] button \"Lägg i varukorgen: Buds – Magic Sauce 50% – Tinky Winky – 5 gram\".hz8-xsell__btn",
+   "[cart] button \"Dela varukorg\"",
+   "[cart] button \"Till kassan · 1 110 kr\".button",
+   "[cart] button \"Fortsätt handla\".continue-shopping",
+   "[cart] button \"Stäng varukorgen\".close-cart",
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\"",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Ta bort varan\".button"
+  ],
+  "shiftTab": [
+   "[cart] button \"Öka antalet\".button",
+   "[cart] button \"Minska antalet\".button",
+   "[cart] a \"Vape - THC-A 45% - Faraoh - 2ml\""
+  ],
+  "scrollAfterWheel": 600,
+  "htmlOverflow": "hidden",
+  "inertOrHidden": {
+   "mainInert": false,
+   "headerAriaHidden": null,
+   "dialogLabel": "Din varukorg",
+   "dialogLabelledby": null,
+   "closeLabel": "Stäng varukorgen"
+  },
+  "rerender": [
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1039:1:3:",
+     "1040:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1039:2:3:",
+     "1040:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1039:3:5:150 kr bonus",
+     "1040:1:3:150 kr bonus"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 5 st för 1 080,25 kr till · du sparar 186,25 kr till · ger 150 kr bonus",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till · ger 150 kr bonus"
+    ]
+   },
+   {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 2,
+    "upgradeSig": [
+     "1039:2:3:",
+     "1040:1:3:"
+    ],
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "items": 2,
+    "live": 1,
+    "upText": [
+     "Uppgradera till 3 st för 409,75 kr till · du sparar 335,25 kr till",
+     "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+    ]
+   }
+  ],
+  "reopen": {
+   "goal": 1,
+   "count": 1,
+   "upgrade": 2,
+   "upgradeSig": [
+    "1039:2:3:",
+    "1040:1:3:"
+   ],
+   "trust": 1,
+   "xsell": 1,
+   "ship": 1,
+   "items": 2,
+   "live": 1,
+   "upText": [
+    "Uppgradera till 3 st för 409,75 kr till · du sparar 335,25 kr till",
+    "Uppgradera till 3 st för 565,75 kr till · du sparar 164,25 kr till"
+   ]
+  },
+  "closedAfterEsc": true,
+  "focusAfterEsc": "[page] button \"Öppna varukorgen\".button",
+  "scrollAfterClose": 600,
+  "tabAfterClose": "[page] a \"Hem\"",
+  "closedAsideVisibility": "hidden",
+  "errors": []
+ },
+ "pdp-add-1440": {
+  "drawer": true,
+  "upsell": false,
+  "focus": "close-cart",
+  "live": "Varukorgen uppdaterad: 1 artiklar",
+  "msg": "Platinum OG har lagts i varukorgen."
+ },
+ "pdp-add-393": {
+  "drawer": true,
+  "upsell": false,
+  "focus": "close-cart",
+  "live": "Varukorgen uppdaterad: 1 artiklar",
+  "msg": "Platinum OG har lagts i varukorgen."
+ }
+}

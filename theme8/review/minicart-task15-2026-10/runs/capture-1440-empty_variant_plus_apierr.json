@@ -1,0 +1,669 @@
+{
+ "1440-empty": {
+  "key": "empty",
+  "w": "1440",
+  "before": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": null,
+   "cta": null,
+   "ctaLabel": null,
+   "ctaInFirstViewport": null,
+   "firstItem": null,
+   "tapTargets": [],
+   "qtyValues": [],
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "upgrade": 0,
+    "savings": 0,
+    "trust": 0,
+    "xsell": 0,
+    "ship": 0,
+    "emptyLinks": 1,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg",
+    "upgrades": [],
+    "xsell": [],
+    "live": "",
+    "notices": [],
+    "itemsText": []
+   },
+   "vuex": {
+    "count": 0,
+    "total": "0 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_ADDRESS_UNREACHABLE"
+  ],
+  "net": []
+ },
+ "1440-variant": {
+  "key": "variant",
+  "w": "1440",
+  "add130": 200,
+  "before": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": {
+    "x": 965,
+    "y": 576,
+    "w": 460,
+    "h": 324
+   },
+   "cta": {
+    "x": 989,
+    "y": 747,
+    "w": 412,
+    "h": 54
+   },
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaInFirstViewport": true,
+   "firstItem": {
+    "x": 989,
+    "y": 76,
+    "w": 412,
+    "h": 236
+   },
+   "tapTargets": [
+    [
+     "Minska antalet",
+     40,
+     45
+    ],
+    [
+     "Öka antalet",
+     40,
+     45
+    ],
+    [
+     "Ta bort varan",
+     42,
+     45
+    ]
+   ],
+   "qtyValues": [
+    "1"
+   ],
+   "asideScroll": [
+    917,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 1,
+    "savings": 0,
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg (1)",
+    "goal": "Fri frakt uppnådd. 1 955 kr kvar till 150 kr bonus",
+    "ship": "FraktFri frakt",
+    "sum": "Totalt 745 kr",
+    "tax": "Varav moms: 149 kr",
+    "upgrades": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till"
+    ],
+    "xsell": [
+     "Buds – THCA 22% – Orange Small Buds – 5 gram",
+     "Hash – THCA 25% – Ketama – 5 gram",
+     "Cart - THC-A 50% Live Resin - Faraoh - 1ml"
+    ],
+    "live": "Varukorgen uppdaterad: 1 artiklar",
+    "notices": [],
+    "itemsText": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [
+     {
+      "id": 965,
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "variant": "strain:Forbidden Fruit",
+      "qty": "1.00",
+      "price": "745 kr",
+      "total": "745 kr",
+      "has_compare": false,
+      "cmp": null,
+      "discount": 0,
+      "discount_type": null,
+      "max": null
+     }
+    ],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "errors": [],
+  "net": [
+   {
+    "m": "POST",
+    "u": "/cart/item",
+    "s": 200,
+    "body": "{\"product_variant_id\":130,\"quantity\":1,\"meta\":null}"
+   }
+  ]
+ },
+ "1440-plus": {
+  "key": "plus",
+  "w": "1440",
+  "add130": 200,
+  "before": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": {
+    "x": 965,
+    "y": 576,
+    "w": 460,
+    "h": 324
+   },
+   "cta": {
+    "x": 989,
+    "y": 747,
+    "w": 412,
+    "h": 54
+   },
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaInFirstViewport": true,
+   "firstItem": {
+    "x": 989,
+    "y": 76,
+    "w": 412,
+    "h": 236
+   },
+   "tapTargets": [
+    [
+     "Minska antalet",
+     40,
+     45
+    ],
+    [
+     "Öka antalet",
+     40,
+     45
+    ],
+    [
+     "Ta bort varan",
+     42,
+     45
+    ]
+   ],
+   "qtyValues": [
+    "1"
+   ],
+   "asideScroll": [
+    917,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 1,
+    "savings": 0,
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg (1)",
+    "goal": "Fri frakt uppnådd. 1 955 kr kvar till 150 kr bonus",
+    "ship": "FraktFri frakt",
+    "sum": "Totalt 745 kr",
+    "tax": "Varav moms: 149 kr",
+    "upgrades": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till"
+    ],
+    "xsell": [
+     "Buds – THCA 22% – Orange Small Buds – 5 gram",
+     "Hash – THCA 25% – Ketama – 5 gram",
+     "Cart - THC-A 50% Live Resin - Faraoh - 1ml"
+    ],
+    "live": "Varukorgen uppdaterad: 1 artiklar",
+    "notices": [],
+    "itemsText": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [
+     {
+      "id": 966,
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "variant": "strain:Forbidden Fruit",
+      "qty": "1.00",
+      "price": "745 kr",
+      "total": "745 kr",
+      "has_compare": false,
+      "cmp": null,
+      "discount": 0,
+      "discount_type": null,
+      "max": null
+     }
+    ],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": {
+    "x": 965,
+    "y": 576,
+    "w": 460,
+    "h": 324
+   },
+   "cta": {
+    "x": 989,
+    "y": 747,
+    "w": 412,
+    "h": 54
+   },
+   "ctaLabel": "Till kassan · 1 490 kr",
+   "ctaInFirstViewport": true,
+   "firstItem": {
+    "x": 989,
+    "y": 76,
+    "w": 412,
+    "h": 236
+   },
+   "tapTargets": [
+    [
+     "Minska antalet",
+     40,
+     45
+    ],
+    [
+     "Öka antalet",
+     40,
+     45
+    ],
+    [
+     "Ta bort varan",
+     42,
+     45
+    ]
+   ],
+   "qtyValues": [
+    "2"
+   ],
+   "asideScroll": [
+    917,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 1,
+    "savings": 0,
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg (2)",
+    "goal": "Fri frakt uppnådd. 1 210 kr kvar till 150 kr bonus",
+    "ship": "FraktFri frakt",
+    "sum": "Totalt 1 490 kr",
+    "tax": "Varav moms: 298 kr",
+    "upgrades": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till"
+    ],
+    "xsell": [
+     "Buds – THCA 22% – Orange Small Buds – 5 gram",
+     "Hash – THCA 25% – Ketama – 5 gram",
+     "Cart - THC-A 50% Live Resin - Faraoh - 1ml"
+    ],
+    "live": "Varukorgen uppdaterad: 2 artiklar",
+    "notices": [],
+    "itemsText": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 1 490 kr"
+    ]
+   },
+   "vuex": {
+    "count": 2,
+    "total": "1 490 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [
+     {
+      "id": 966,
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "variant": "strain:Forbidden Fruit",
+      "qty": "2.00",
+      "price": "745 kr",
+      "total": "1 490 kr",
+      "has_compare": false,
+      "cmp": null,
+      "discount": 0,
+      "discount_type": null,
+      "max": null
+     }
+    ],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "errors": [],
+  "net": [
+   {
+    "m": "POST",
+    "u": "/cart/item",
+    "s": 200,
+    "body": "{\"product_variant_id\":130,\"quantity\":1,\"meta\":null}"
+   },
+   {
+    "m": "PUT",
+    "u": "/cart/item/966",
+    "s": 200,
+    "body": "{\"id\":966,\"price\":5960000,\"product_id\":57,\"decimal\":745,\"formatted_price\":\"745 kr\",\"name\":\"Vape - TH"
+   }
+  ]
+ },
+ "1440-apierr": {
+  "key": "apierr",
+  "w": "1440",
+  "add130": 200,
+  "before": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": {
+    "x": 965,
+    "y": 576,
+    "w": 460,
+    "h": 324
+   },
+   "cta": {
+    "x": 989,
+    "y": 747,
+    "w": 412,
+    "h": 54
+   },
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaInFirstViewport": true,
+   "firstItem": {
+    "x": 989,
+    "y": 76,
+    "w": 412,
+    "h": 236
+   },
+   "tapTargets": [
+    [
+     "Minska antalet",
+     40,
+     45
+    ],
+    [
+     "Öka antalet",
+     40,
+     45
+    ],
+    [
+     "Ta bort varan",
+     42,
+     45
+    ]
+   ],
+   "qtyValues": [
+    "1"
+   ],
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 1,
+    "savings": 0,
+    "trust": 1,
+    "xsell": 0,
+    "ship": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg (1)",
+    "goal": "Fri frakt uppnådd. 1 955 kr kvar till 150 kr bonus",
+    "ship": "FraktFri frakt",
+    "sum": "Totalt 745 kr",
+    "tax": "Varav moms: 149 kr",
+    "upgrades": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till"
+    ],
+    "xsell": [],
+    "live": "Varukorgen uppdaterad: 1 artiklar",
+    "notices": [],
+    "itemsText": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [
+     {
+      "id": 967,
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "variant": "strain:Forbidden Fruit",
+      "qty": "1.00",
+      "price": "745 kr",
+      "total": "745 kr",
+      "has_compare": false,
+      "cmp": null,
+      "discount": 0,
+      "discount_type": null,
+      "max": null
+     }
+    ],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 965,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "footer": {
+    "x": 965,
+    "y": 576,
+    "w": 460,
+    "h": 324
+   },
+   "cta": {
+    "x": 989,
+    "y": 747,
+    "w": 412,
+    "h": 54
+   },
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaInFirstViewport": true,
+   "firstItem": {
+    "x": 989,
+    "y": 76,
+    "w": 412,
+    "h": 236
+   },
+   "tapTargets": [
+    [
+     "Minska antalet",
+     40,
+     45
+    ],
+    [
+     "Öka antalet",
+     40,
+     45
+    ],
+    [
+     "Ta bort varan",
+     42,
+     45
+    ]
+   ],
+   "qtyValues": [
+    "2"
+   ],
+   "asideScroll": [
+    917,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "upgrade": 1,
+    "savings": 0,
+    "trust": 1,
+    "xsell": 1,
+    "ship": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "header": "Varukorg (1)",
+    "goal": "Fri frakt uppnådd. 1 955 kr kvar till 150 kr bonus",
+    "ship": "FraktFri frakt",
+    "sum": "Totalt 745 kr",
+    "tax": "Varav moms: 149 kr",
+    "upgrades": [
+     "Uppgradera till 3 st för 1 154,75 kr till · du sparar 335,25 kr till"
+    ],
+    "xsell": [
+     "Buds – THCA 22% – Orange Small Buds – 5 gram",
+     "Hash – THCA 25% – Ketama – 5 gram",
+     "Cart - THC-A 50% Live Resin - Faraoh - 1ml"
+    ],
+    "live": "Varukorgen uppdaterad: 1 artiklar",
+    "notices": [],
+    "itemsText": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "checkout_message": null,
+    "items": [
+     {
+      "id": 967,
+      "name": "Vape - THC-A 45% - Faraoh - 2ml",
+      "variant": "strain:Forbidden Fruit",
+      "qty": 2,
+      "price": "745 kr",
+      "total": "745 kr",
+      "has_compare": false,
+      "cmp": null,
+      "discount": 0,
+      "discount_type": null,
+      "max": null
+     }
+    ],
+    "upsell": false,
+    "accessories": 0
+   }
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "net": [
+   {
+    "m": "POST",
+    "u": "/cart/item",
+    "s": 200,
+    "body": "{\"product_variant_id\":130,\"quantity\":1,\"meta\":null}"
+   },
+   {
+    "m": "PUT",
+    "u": "/cart/item/967",
+    "s": 500,
+    "body": "{\"id\":967,\"price\":5960000,\"product_id\":57,\"decimal\":745,\"formatted_price\":\"745 kr\",\"name\":\"Vape - TH"
+   }
+  ]
+ }
+}

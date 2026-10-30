@@ -1,0 +1,10 @@
+import { chromium, ctxFor, open, add, DIR } from "./lib.mjs"; import fs from "node:fs";
+const b = await chromium.launch(); const ctx = await ctxFor(b, 1440, 900);
+const p = await open(ctx, "/sv/products/vape-thc-a-45-faraoh-2ml");
+await add(p, 183, 7);
+const c = await p.evaluate(() => JSON.parse(JSON.stringify(HZ8.store().state.cart.cart)));
+const i = c.items[0];
+const cats = await p.evaluate(() => (HZ8.navCategories || []).filter(c => !c.campaign && /\/categories\//.test(c.href || "")).map(c => c.label));
+fs.writeFileSync(`${DIR}/runs/realdata2.json`, JSON.stringify({ stock: { name: i.name, qty: +i.quantity, price: i.formatted_price, total: i.formatted_total, cmp: i.has_compare ? i.formatted_comparison_row_total : null, img: i.image.thumb_url, cartTotal: c.formatted_total, vat: c.formatted_total_vat }, cats }, null, 1));
+console.log(i.name, i.quantity, i.formatted_total, c.formatted_total, cats);
+await b.close();

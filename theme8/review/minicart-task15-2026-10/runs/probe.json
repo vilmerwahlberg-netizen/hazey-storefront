@@ -1,0 +1,485 @@
+{
+ "store": {
+  "actions": [
+   "cart/load",
+   "cart/reload",
+   "cart/setCart",
+   "cart/addItem",
+   "cart/open",
+   "cart/close",
+   "cart/closeUpselling",
+   "cart/addVariant",
+   "cart/registerCheckoutMessageSettler",
+   "cart/unregisterCheckoutMessageSettler",
+   "cart/settleCheckoutMessage",
+   "cart/setCartMessage",
+   "cart/addMetaItem"
+  ],
+  "mutations": [
+   "cart/setCart",
+   "cart/setCartAnonymous",
+   "cart/setCheckoutMessage",
+   "cart/setIsOpen",
+   "cart/addItem",
+   "cart/setHasChanged",
+   "cart/setMeta",
+   "cart/setUpsellingOpen",
+   "cart/setLastAddedItem",
+   "cart/setAccessories"
+  ],
+  "cartKeys": [
+   "cart",
+   "meta",
+   "is_open",
+   "has_changed",
+   "isUpsellingOpen",
+   "lastAddedItem",
+   "accessories"
+  ],
+  "cart": [
+   "total",
+   "totals",
+   "display_vat",
+   "formatted_total",
+   "decimal_total",
+   "items_count",
+   "quantity_count",
+   "items",
+   "total_vat",
+   "formatted_total_vat",
+   "checkout_message",
+   "total_weight",
+   "cart_coupon",
+   "distributed_pet",
+   "add_ons"
+  ]
+ },
+ "triggers": [
+  {
+   "tag": "BUTTON",
+   "cls": "button cart-button",
+   "id": "cart-button",
+   "aria": "Öppna varukorgen",
+   "vis": true
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "button buy",
+   "id": "",
+   "aria": "Lägg i varukorgen",
+   "vis": false
+  },
+  {
+   "tag": "A",
+   "cls": "hz8-add-pill hz8-card-pill",
+   "id": "",
+   "aria": "Välj variant: Cart - THC-A 45% - Faraoh - 1ml",
+   "vis": true
+  },
+  {
+   "tag": "A",
+   "cls": "hz8-add-pill hz8-card-pill",
+   "id": "",
+   "aria": "Välj variant: Cart - THC-A 45% - Faraoh - 1ml",
+   "vis": false
+  },
+  {
+   "tag": "A",
+   "cls": "hz8-add-pill hz8-card-pill",
+   "id": "",
+   "aria": "Välj variant: Cart - THC-A 50% Live Resin - Faraoh - 1ml",
+   "vis": false
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "hz8-add-pill hz8-card-pill",
+   "id": "",
+   "aria": "Lägg i varukorgen: Vape Dual - CBD 57% - Hana Butter &amp; Long Island - 1+1ml",
+   "vis": false
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "close-cart",
+   "id": "",
+   "aria": "Stäng varukorgen",
+   "vis": true
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "button is-primary upselling-sidebar__footer--cart",
+   "id": "",
+   "aria": null,
+   "vis": true
+  }
+ ],
+ "emptyHTML": "<div id=\"cart-side-wrap\" aria-hidden=\"false\" class=\"cart-wrap is-active\"><div tabindex=\"0\" id=\"cartAside\" class=\"cart aside\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Din varukorg\"><div class=\"header\"><h2>Varukorg <span class=\"hz8-cart-count\"></span></h2> <button aria-label=\"Stäng varukorgen\" aria-controls=\"cart-side-wrap\" class=\"close-cart\"><span class=\"icon\"><i class=\"fas fa-times\"></i></span></button></div> <hr> <section class=\"section items\"></section> <!----> <section class=\"empty\"><div class=\"icon\"><i class=\"far fa-sad-cry\"></i></div> <h3>Din varukorg är tom </h3><p class=\"hz8-cart-empty-lead\">Hitta något du gillar i sortimentet.</p><nav class=\"hz8-cart-empty-links\" aria-label=\"Sortiment\"><a href=\"/sv/categories/alla-produkter?preview=v9kzdmqz4w60l5n\">Alla produkter</a><a href=\"/sv/categories/alla-vapes?preview=v9kzdmqz4w60l5n\">Vapes</a><a href=\"/sv/categories/blommor-buds?preview=v9kzdmqz4w60l5n\">Buds</a><a href=\"/sv/categories/hasch?preview=v9kzdmqz4w60l5n\">Hasch</a><a href=\"/sv/categories/h4cbd?preview=v9kzdmqz4w60l5n\">CBD</a></nav> <button aria-controls=\"cart-side-wrap\" aria-label=\"Börja handla\" class=\"button is-fullwidth buy\">\n                    Börja handla\n                </button></section> <!----></div> <div id=\"cart-overlay\" role=\"presentation\" aria-hidden=\"true\" class=\"cart-overlay\"></div></div>",
+ "ps57": {
+  "selected": {
+   "id": 133
+  },
+  "variants": [
+   {
+    "id": 130,
+    "opt": [
+     {
+      "id": 101,
+      "product_option_id": 28,
+      "name": "Forbidden Fruit"
+     }
+    ],
+    "stock": 70,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 131,
+    "opt": [
+     {
+      "id": 102,
+      "product_option_id": 28,
+      "name": "Blueberry Dream"
+     }
+    ],
+    "stock": 82,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 132,
+    "opt": [
+     {
+      "id": 103,
+      "product_option_id": 28,
+      "name": "Tangie"
+     }
+    ],
+    "stock": 29,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 133,
+    "opt": [
+     {
+      "id": 104,
+      "product_option_id": 28,
+      "name": "Platinum OG"
+     }
+    ],
+    "stock": 106,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 134,
+    "opt": [
+     {
+      "id": 105,
+      "product_option_id": 28,
+      "name": "Pineapple Express"
+     }
+    ],
+    "stock": 80,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 135,
+    "opt": [
+     {
+      "id": 106,
+      "product_option_id": 28,
+      "name": "Bubba Kush"
+     }
+    ],
+    "stock": 13,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 136,
+    "opt": [
+     {
+      "id": 107,
+      "product_option_id": 28,
+      "name": "Mango Jango"
+     }
+    ],
+    "stock": 58,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   },
+   {
+    "id": 137,
+    "opt": [
+     {
+      "id": 108,
+      "product_option_id": 28,
+      "name": "Zkittlez"
+     }
+    ],
+    "stock": 77,
+    "track": 1,
+    "buyable": true,
+    "prices": [
+     [
+      1,
+      "745 kr"
+     ],
+     [
+      3,
+      "633,25 kr"
+     ],
+     [
+      5,
+      "596 kr"
+     ]
+    ]
+   }
+  ]
+ },
+ "cartState": {
+  "cart": {
+   "total": {
+    "money": {
+     "value": 5960000,
+     "currency": "SEK"
+    },
+    "value": 5960000,
+    "vat": 0,
+    "currency": null,
+    "currency_rate": null,
+    "model": null,
+    "key": null,
+    "fixed": false
+   },
+   "totals": {
+    "weight": 100,
+    "vat": {
+     "money": {
+      "value": 1490000,
+      "currency": "SEK"
+     },
+     "value": 1490000,
+     "vat": 0,
+     "currency": null,
+     "currency_rate": null,
+     "model": null,
+     "key": null,
+     "fixed": false
+    },
+    "incVat": {
+     "money": {
+      "value": 7450000,
+      "currency": "SEK"
+     },
+     "value": 7450000,
+     "vat": 0,
+     "currency": null,
+     "currency_rate": null,
+     "model": null,
+     "key": null,
+     "fixed": false
+    },
+    "exVat": {
+     "money": {
+      "value": 5960000,
+      "currency": "SEK"
+     },
+     "value": 5960000,
+     "vat": 0,
+     "currency": null,
+     "currency_rate": null,
+     "model": null,
+     "key": null,
+     "fixed": false
+    }
+   },
+   "display_vat": true,
+   "formatted_total": "745 kr",
+   "decimal_total": 745,
+   "items_count": 1,
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 964,
+     "price": 5960000,
+     "product_id": 57,
+     "decimal": 745,
+     "formatted_price": "745 kr",
+     "name": "Vape - THC-A 45% - Faraoh - 2ml",
+     "variant_id": 130,
+     "variant_sku": "Vape - THC-A 45% - Faraoh - 2ml - Forbidden Fruit",
+     "package_size": 1,
+     "effective_package_size": 1,
+     "quantity": "1.00",
+     "href": "https://hazeyse.nyehandel.se/sv/products/vape-thc-a-45-faraoh-2ml",
+     "total": 5960000,
+     "image": {
+      "id": 97,
+      "title": "",
+      "alt": null,
+      "image_url": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/thca-vape-i-sverige-faraoh-thc-a-vape-thc-vape-i-sverige-laglig-vape-2ml-ccell-v-af27d133.png",
+      "thumb_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjYS12YXBlLWktc3ZlcmlnZS1mYXJhb2gtdGhjLWEtdmFwZS10aGMtdmFwZS1pLXN2ZXJpZ2UtbGFnbGlnLXZhcGUtMm1sLWNjZWxsLXYtYWYyN2QxMzMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19"
+     },
+     "image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjYS12YXBlLWktc3ZlcmlnZS1mYXJhb2gtdGhjLWEtdmFwZS10aGMtdmFwZS1pLXN2ZXJpZ2UtbGFnbGlnLXZhcGUtMm1sLWNjZWxsLXYtYWYyN2QxMzMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+     "has_compare": false,
+     "formatted_comparison_total": "0 kr",
+     "formatted_comparison_row_total": null,
+     "formatted_total": "745 kr",
+     "discount": 0,
+     "discount_type": null,
+     "decimal_total": 745,
+     "option_values": [
+      {
+       "name": "Forbidden Fruit",
+       "option": {
+        "name": "strain",
+        "option_type": {
+         "id": 0,
+         "name": "Dropdown",
+         "is_color": false,
+         "is_button": false,
+         "is_radio": false,
+         "is_dropdown": false
+        }
+       }
+      }
+     ],
+     "factorable": false,
+     "meta": [],
+     "minimum_quantity_to_order": "1.0",
+     "maximum_quantity_to_order": null,
+     "has_variants": true,
+     "unit": "Styck"
+    }
+   ],
+   "total_vat": {
+    "money": {
+     "value": 1490000,
+     "currency": "SEK"
+    },
+    "value": 1490000,
+    "vat": 0,
+    "currency": null,
+    "currency_rate": null,
+    "model": null,
+    "key": null,
+    "fixed": false
+   },
+   "formatted_total_vat": "149 kr",
+   "checkout_message": null,
+   "total_weight": 100,
+   "cart_coupon": null,
+   "distributed_pet": [],
+   "add_ons": []
+  },
+  "meta": {
+   "has_changed": false
+  },
+  "is_open": true,
+  "has_changed": null,
+  "isUpsellingOpen": false,
+  "lastAddedItem": null,
+  "accessories": null
+ },
+ "filledHTML": "<div id=\"cart-side-wrap\" aria-hidden=\"false\" class=\"cart-wrap is-active\"><div tabindex=\"0\" id=\"cartAside\" class=\"cart aside\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Din varukorg\"><div class=\"header\"><h2>Varukorg <span class=\"hz8-cart-count\">(1)</span></h2> <button aria-label=\"Stäng varukorgen\" aria-controls=\"cart-side-wrap\" class=\"close-cart\"><span class=\"icon\"><i class=\"fas fa-times\"></i></span></button></div> <hr> <section class=\"section items\"><article class=\"item\"><figure class=\"media\"><!----> <img src=\"https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGhjYS12YXBlLWktc3ZlcmlnZS1mYXJhb2gtdGhjLWEtdmFwZS10aGMtdmFwZS1pLXN2ZXJpZ2UtbGFnbGlnLXZhcGUtMm1sLWNjZWxsLXYtYWYyN2QxMzMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19\" alt=\"Vape - THC-A 45% - Faraoh - 2ml\" class=\"lazy\"></figure> <div class=\"content\"><div><a href=\"https://hazeyse.nyehandel.se/sv/products/vape-thc-a-45-faraoh-2ml\"><strong>Vape - THC-A 45% - Faraoh - 2ml</strong></a> <br> <div class=\"price\"><!---->\n                745 kr / Styck\n\n            </div> <!----> <div class=\"option\"><span>strain:</span> Forbidden Fruit\n                </div> <!----> <!----> <!----> <!----> <!----></div> <div class=\"item-amount\"><div class=\"field has-addons amount-input is-small\"><div class=\"control\"><button aria-label=\"Minska antalet\" tabindex=\"0\" class=\"button\">\n                        -\n                    </button></div> <div class=\"control\"><input autocomplete=\"off\" type=\"text\" debounce-events=\"blur\" name=\"quantity\" aria-label=\"Valt antal\" tabindex=\"-1\" class=\"input\"></div> <div class=\"control\"><button aria-label=\"Öka antalet\" tabindex=\"0\" class=\"button\">\n                        +\n                    </button></div> <div class=\"control\"><button aria-label=\"Ta bort varan\" class=\"button\"><span class=\"icon\"><i class=\"fas fa-trash-alt\"></i></span></button></div></div></div></div> <div class=\"total\">\n        745 kr\n        <!----> <!----></div><div class=\"hz8-upgrade\" data-sig=\"964:1:3:\"><p class=\"hz8-upgrade__text\">Uppgradera till <strong>3 st</strong> för 1&nbsp;154,75 kr till <span class=\"hz8-upgrade__save\">· du sparar 335,25 kr till</span></p><button type=\"button\" class=\"hz8-upgrade__btn\" data-item=\"964\" data-qty=\"3\">Uppgradera</button></div></article></section> <!----> <!----> <section class=\"section footer\"><div class=\"hz8-goal\" data-stage=\"bonus\"><p class=\"hz8-goal__text\" aria-live=\"polite\" aria-atomic=\"true\"><span class=\"hz8-goal__ok\">Fri frakt<span class=\"hz8-visually-hidden\"> uppnådd.</span></span> <span><strong>1&nbsp;955 kr</strong> kvar till 150 kr bonus</span></p><div class=\"hz8-goal__track\" aria-hidden=\"true\"><span class=\"hz8-goal__fill\" style=\"transform: scaleX(0.2759);\"></span></div></div><div class=\"total\"><div class=\"hz8-cart-shipline is-free\"><span>Frakt</span><span>Fri frakt</span></div><div class=\"sum\"><span>Totalt</span> <span>745 kr\n                        <!----></span></div> <div class=\"tax\"><span>Varav moms:</span> <span>149 kr</span></div> <!----> <div class=\"share-cart\"><button aria-label=\"Dela varukorg\" aria-controls=\"share-cart\" aria-expanded=\"false\">Dela varukorg</button> <!----></div></div> <!----> <!----> <button aria-label=\"Till kassan · 745 kr\" class=\"button is-fullwidth buy\" data-hz8-label=\"Till kassan · 745 kr\">\n                    Till Kassan\n                </button><ul class=\"hz8-cart-trust\"><li>Trygg betalning</li><li>Diskret paket</li><li>Skickas från Sverige</li></ul> <button aria-controls=\"cart-side-wrap\" aria-label=\"Fortsätt handla\" class=\"continue-shopping\">\n                    Fortsätt handla\n                </button></section></div> <div id=\"cart-overlay\" role=\"presentation\" aria-hidden=\"true\" class=\"cart-overlay\"></div></div>"
+}

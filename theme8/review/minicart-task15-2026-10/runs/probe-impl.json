@@ -1,0 +1,190 @@
+{
+ "scripts": [
+  "https://www.gstatic.com/recaptcha/releases/bSuJ2xBC8cFy7pM4Z3Hu9boH/recaptcha__sv.js",
+  "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+  "https://www.google.com/recaptcha/api.js?hl=sv",
+  "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793359327771",
+  "https://hazeyse.nyehandel.se/js/pulse-tracker.js",
+  "https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=9857d2b3871b7f723842e4891de217ea"
+ ],
+ "couponSrc": [
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: eckout-message\"),n)},patch:function(t,e){var n={};return n[t]=e,i.A.patch(\"\".concat(r,\"/\").concat(t),n)},accessories:function(t){return i.A.get(\"\".concat(r,\"/accessories/\").concat(t))}}},95611:(t,e,n)=>{\"use strict\";n.d(e,{A:()=>s});n(28706);var i=n(87350),r=\"coupon-codes\";const s={addCoupon:function(t,e){return i.A.post(\"\".concat(r),{coupon_code:t,payment_method_id:e})},removeCoupon:function(t){return i.A.delete(\"\".concat(r,\"/\").concat(t))},removeGiftcard:function(t){return i.A.delete(\"\".concat(r,\"/giftcard/\").concat(t)",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: .calculations.service.sub_total>0?n(\"div\",{staticClass:\"row\"},[n(\"span\",[e._v(e._s(e.$t(\"checkout.service-fee\")))]),e._v(\"\\n                \"+e._s(e.calculations.service.total_formatted)+\"\\n            \")]):e._e(),e._v(\" \"),e.calculations&&e.calculations.cart_coupon&&e.calculations.cart_coupon.cart_discount>0?[n(\"hr\"),e._v(\" \"),n(\"h4\",[e._v(e._s(e.$t(\"checkout.discount\")))]),e._v(\" \"),n(\"div\",{staticClass:\"row\"},[n(\"span\",{staticClass:\"row__subtitle\"},[e._v(e._s(e.calculations.cart_coupon.code))]),e._v(\"\\n               ",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea:      -\"+e._s(e.cart.display_vat?e.calculations.cart_coupon.cart_discount_formatted:e.calculations.cart_coupon.cart_discount_ex_vat_formatted)+\"\\n                \")])]:e._e(),e._v(\" \"),e.cart.display_vat?e._e():n(\"div\",{staticClass:\"row\"},[n(\"span\",[e._v(e._s(e.$t(\"vat.vat\"))),e.reverseCharge?[e._v(\" (\"+e._s(e.$t(\"vat.reverse_charge\"))+\")\")]:e._e()],2),e._v(\"\\n       ",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: (e._s(e.$t(\"checkout.giftcard-payment\")))]),e._v(\" \"),n(\"div\",{staticClass:\"tag is-primary mt-2\"},[e._v(\"\\n                            \"+e._s(t.display_code)+\"\\n                            \"),n(\"button\",{staticClass:\"delete\",attrs:{\"aria-label\":e.$t(\"checkout.coupon-code.delete\")},on:{click:function(n){return e.removeGiftcard(t.id)}}})])]),e._v(\"\\n                    -\"+e._s(t.calculated_subtraction_value.formatted)+\"\\n                \")])})),e._v(\" \"),n(\"div\",{staticClass:\"row\"},[n(\"div\",{staticClass:\"total-sum\"},[n(\"sp",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: e._s(e.$t(\"checkout.to-pay\")))])]),e._v(\" \"),n(\"span\",{staticClass:\"checkout-total\"},[e._v(\"\\n                    \"+e._s(e.calculations.to_pay.formatted)+\"\\n                    \")])])],2):e._e()],2)])],2):e._e()}),[],!1,null,null,null).exports;const Pi={name:\"coupon-code\",components:{FormInput:l.A,FormField:o.A},data:function(){return{is_active:!1,coupon_code:\"\",loading:!1,errors:null}},computed:(0,s.A)({},(0,a.L8)(\"checkout\",[\"checkout\",\"calculations\",\"selectedPayment\"])),watch:{selectedPayment:function(){this.errors=nu",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: ll}},methods:{addCoupon:function(){var t=this;return(0,r.A)((0,i.A)().mark((function e(){var n,r;return(0,i.A)().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t.loading=!0,t.errors=null,e.prev=2,e.next=5,Ai.A.addCoupon(t.coupon_code,null===(n=t.selectedPayment)||void 0===n?void 0:n.id);case 5:r=e.sent,r.data,t.$store.commit(\"checkout/calculate\"),t.coupon_code=\"\",t.loading=!1,e.next=17;break;case 12:e.prev=12,e.t0=e.catch(2),t.errors=e.t0.response,console.error(e.t0),t.loading=!1;cas",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: e 17:case\"end\":return e.stop()}}),e,null,[[2,12]])})))()},removeCoupon:function(){var t=this;return(0,r.A)((0,i.A)().mark((function e(){return(0,i.A)().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t.loading=!0,e.prev=1,e.next=4,Ai.A.removeCoupon(t.calculations.cart_coupon.id);case 4:t.$store.commit(\"checkout/calculate\"),t.loading=!1,e.next=12;break;case 8:e.prev=8,e.t0=e.catch(1),console.error(e.t0),t.loading=!1;case 12:case\"end\":return e.stop()}}),e,null,[[1,8]])})))()}}};const Ii=(0,m.A)(Pi,(functi",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: on(){var t=this,e=t._self._c;return t.calculations?e(\"div\",{staticClass:\"coupon-code\",class:{\"is-active\":t.is_active}},[e(\"div\",{staticClass:\"coupon-code__toggle is-hidden-desktop\",on:{click:function(e){t.is_active=!t.is_active}}},[t._v(\"\\n        \"+t._s(t.$t(\"checkout.coupon-code.title\"))+\"\\n        \"),e(\"span\",[e(\"i\",{staticClass:\"fas\",class:t.is_active?\"fa-chevron-up\":\"fa-chevron-down\"})])]),t._v(\" \"),",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: e(\"div\",{staticClass:\"coupon-code__form\"},[e(\"h4\",{staticClass:\"is-hidden-touch\"},[t._v(t._s(t.$t(\"checkout.coupon-code.title\")))]),t._v(\" \"),e(\"div\",{staticClass:\"coupon-code__row\"},[e(\"form-field\",{attrs:{errors:t.errors,field:\"coupon_code\"}},[e(\"form-input\",{attrs:{name:\"coupon_code\",placeholder:t.$t(\"checkout.coupon-code.placeholder\")},on:{enter:t.addCoupon},model:{value:t.coupon_code,callback:function(e){t.coupon_code=e},expression:\"coupon_code\"}})],1),t._v(\" \"),e(\"div\",[e(\"button\",{sta",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: ticClass:\"button is-primary\",class:{\"is-loading\":t.loading},attrs:{disabled:!t.coupon_code,\"aria-label\":t.$t(\"checkout.coupon-code.add\")},on:{click:t.addCoupon}},[t._v(\"\\n                    \"+t._s(t.$t(\"general.add\"))+\"\\n                \")])])],1)]),t._v(\" \"),t.calculations&&t.calculations.cart_coupon?e(\"div\",{staticClass:\"tag is-primary mt-3\"},[t._v(\"\\n      \"+t._s(t.calculations.cart_coupon.code)+\"\\n      \"),e(\"b",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: utton\",{staticClass:\"delete\",attrs:{\"aria-label\":t.$t(\"checkout.coupon-code.delete\")},on:{click:t.removeCoupon}})]):t._e()]):t._e()}),[],!1,null,null,null).exports;const Mi={components:{FormSelect:p.A,FormField:o.A,FormInput:l.A},name:\"customer-type\",data:function(){return{}},computed:(0,s.A)((0,s.A)({},(0,a.L8)(\"checkout\",[\"checkout\",\"selectedCustomerType\"])),{},{com",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: entStep?e(\"status-check\",{attrs:{reference:t.verificationReference}}):t._e(),t._v(\" \"),\"ApprovalResult\"===t.currentStep?e(\"approval-result\",{attrs:{reference:t.verificationReference}}):t._e()],1)}),[],!1,null,\"78cbf8b6\",null).exports,NewsletterSubscription:zi,CouponCode:Ii,CheckoutMessage:Si,CountrySelect:S,CustomerType:Li,CheckoutPayment:Ft,CheckoutShipping:gi,CheckoutSummary:Ei},data:function(){return{subscriber:null,updateOnEvents:[\"checkout/calculate\",\"cart/setCart\"],form:{newsletter_subscription:!1},shipping:null}},",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: heckoutError?e(\"div\",{staticClass:\"checkout-system-error\"},[t._v(\"\\n                \"+t._s(t.checkoutErrorMsg)+\"\\n            \")]):t._e()],2),t._v(\" \"),e(\"div\",{staticClass:\"column checkout-items-summary\"},[e(\"checkout-summary\"),t._v(\" \"),e(\"hr\"),t._v(\" \"),e(\"coupon-code\")],1)]):t._e()]):t._e()}),[],!1,null,null,null).exports},1372:(t,e,n)=>{\"use strict\";n.d(e,{A:()=>u});n(62010);var i=n(90675),r=n(10467),s=(n(76031),n(70610)),a=n(37849),o=n(87350);const l=function(t){return o.A.post(\"\".concat(\"contact-form\"),t)},c={comp",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: span\",{staticClass:\"vat\"},[t._v(t._s(t.$t(\"vat.ex_vat\")))])])]),t._v(\" \"),t.cart.display_vat?e(\"div\",{staticClass:\"tax\"},[e(\"span\",[t._v(t._s(t.$t(\"total.vat\"))+\":\")]),t._v(\" \"),e(\"span\",[t._v(t._s(t.cart.formatted_total_vat))])]):t._e(),t._v(\" \"),t.cart.cart_coupon&&t.cart.cart_coupon.cart_discount>0?e(\"div\",{staticClass:\"discount\"},[e(\"span\",[t._v(t._s(t.$t(\"checkout.discount\"))+\" (\"+t._s(t.cart.cart_coupon.code)+\")\")]),t._v(\" \"),e(\"span\",[t._v(\"-\"+t._s(t.cart.display_vat?t.cart.cart_coupon.cart_discount_formatted:t.ca",
+  "foundation.js?id=9857d2b3871b7f723842e4891de217ea: rt.cart_coupon.cart_discount_ex_vat_formatted))])]):t._e(),t._v(\" \"),e(\"div\",{staticClass:\"share-cart\"},[e(\"button\",{attrs:{\"aria-label\":t.$t(\"shared-cart.share\"),\"aria-controls\":\"share-cart\",\"aria-expanded\":(!!t.shared_url).toString()},on:{click:t.shareCart}},[t._v(t._s(t."
+ ],
+ "pid": 57,
+ "faraoh": {
+  "name": "Vape - THC-A 45% - Faraoh - 2ml",
+  "is_package": false,
+  "variants": [
+   {
+    "id": 130,
+    "opt": "Forbidden Fruit",
+    "stock": 70,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 131,
+    "opt": "Blueberry Dream",
+    "stock": 82,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 132,
+    "opt": "Tangie",
+    "stock": 29,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 133,
+    "opt": "Platinum OG",
+    "stock": 106,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 134,
+    "opt": "Pineapple Express",
+    "stock": 80,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 135,
+    "opt": "Bubba Kush",
+    "stock": 13,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 136,
+    "opt": "Mango Jango",
+    "stock": 58,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   },
+   {
+    "id": 137,
+    "opt": "Zkittlez",
+    "stock": 77,
+    "track": 1,
+    "price": "745 kr",
+    "tiers": [
+     "1:745 kr",
+     "3:633,25 kr",
+     "5:596 kr"
+    ],
+    "img": null
+   }
+  ],
+  "keys": [
+   "id",
+   "product_type_id",
+   "name",
+   "has_variants",
+   "has_form",
+   "ncs_color",
+   "unit",
+   "is_package",
+   "parts_buyable",
+   "primary_variant",
+   "variants",
+   "options",
+   "images",
+   "properties"
+  ]
+ },
+ "search": [
+  "/sv/products/buds-thca-23-amnesia-infused-5-gram",
+  "/sv/products/buds-magic-sauce-50-la-chupacabra-5-gram",
+  "/sv/products/hash-magic-sauce-50-charas-5-gram",
+  "/sv/products/cart-thc-a-50-live-resin-faraoh-1ml",
+  "/sv/products/hash-thca-25-ketama-5-gram",
+  "/sv/products/buds-thca-22-orange-small-buds-5-gram",
+  "/sv/products/hash-cbd-15-primero-1-gram",
+  "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+  "/sv/products/buds-thca-25-bubbelgum-og-5-gram",
+  "/sv/products/buds-magic-sauce-50-khalifa-kush-5-gram",
+  "/sv/products/cart-magic-sauce-99-1ml",
+  "/sv/products/vape-magic-sauce-99-2ml",
+  "/sv/products/cart-thc-a-45-faraoh-1ml",
+  "/sv/products/blommor-cbd-30-tequila-sunrise-35-gram",
+  "/sv/products/vape-cbd-25-cbn-35-magic-farmers-2ml",
+  "/sv/products/buds-magic-sauce-50-samurai-jack-5-gram",
+  "/sv/products/buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+  "/sv/products/vape-thcx-19-core-2ml",
+  "/sv/products/hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+  "/sv/products/buds-highlife-thcnm-gsc-5-gram",
+  "/sv/products/buds-magic-sauce-50-tinky-winky-5-gram",
+  "/sv/products/cart-cbd-60-cookies-1ml",
+  "/sv/products/vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+  "/sv/products/vape-hhcpm-15-canntropy-2ml",
+  "/sv/products/blommor-hhcpm-15-durban-poison-5-gram"
+ ],
+ "nav": [
+  "Alla produkter /sv/categories/alla-produkter",
+  "Bästsäljare /sv/page/vara-bastsaljare",
+  "Vapes /sv/categories/alla-vapes",
+  "Buds /sv/categories/blommor-buds",
+  "Hasch /sv/categories/hasch",
+  "CBD /sv/categories/h4cbd",
+  "Kampanjer /sv/page/kampanjer"
+ ]
+}

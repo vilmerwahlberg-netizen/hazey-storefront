@@ -1,0 +1,57 @@
+{
+ "393-withToast": {
+  "toastVisible": true,
+  "inline": {
+   "cls": "hz8-row-msg is-status is-deferred",
+   "role": "status",
+   "text": "Du har valt allt som finns i lager just nu.",
+   "visibleBox": false
+  },
+  "plusDisabled": "true",
+  "qty": "7"
+ },
+ "393-afterToast": {
+  "toastVisible": false,
+  "inline": {
+   "cls": "hz8-row-msg is-status",
+   "role": "status",
+   "text": "Du har valt allt som finns i lager just nu.",
+   "visibleBox": true
+  },
+  "plusDisabled": "true",
+  "qty": "7"
+ },
+ "1440-withToast": {
+  "toastVisible": true,
+  "inline": {
+   "cls": "hz8-row-msg is-status is-deferred",
+   "role": "status",
+   "text": "Du har valt allt som finns i lager just nu.",
+   "visibleBox": false
+  },
+  "plusDisabled": "true",
+  "qty": "7"
+ },
+ "1440-afterToast": {
+  "toastVisible": false,
+  "inline": {
+   "cls": "hz8-row-msg is-status",
+   "role": "status",
+   "text": "Du har valt allt som finns i lager just nu.",
+   "visibleBox": true
+  },
+  "plusDisabled": "true",
+  "qty": "7"
+ },
+ "393-noToast": {
+  "toastVisible": false,
+  "inline": {
+   "cls": "hz8-row-msg is-status",
+   "role": "status",
+   "text": "Du har valt allt som finns i lager just nu.",
+   "visibleBox": true
+  },
+  "plusDisabled": "true",
+  "qty": "1"
+ }
+}

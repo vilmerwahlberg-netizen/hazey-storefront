@@ -1,0 +1,117 @@
+{
+ "allavapes-filter-history-sort": {
+  "s1": {
+   "url": "?serie=thcab,thcba&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "THCbA×",
+    "I lager×"
+   ],
+   "n": 3,
+   "count": "3 produkter"
+  },
+  "s2": {
+   "url": "?serie=thcab&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "I lager×"
+   ],
+   "n": 2,
+   "count": "2 produkter"
+  },
+  "s3": {
+   "url": "?serie=thcab,thcba&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "THCbA×",
+    "I lager×"
+   ],
+   "n": 3,
+   "count": "3 produkter"
+  },
+  "s4": {
+   "url": "?serie=thcab&filters=smart-filter_in-stock",
+   "chips": [
+    "THCaB×",
+    "I lager×"
+   ],
+   "n": 2,
+   "count": "2 produkter"
+  },
+  "s5": {
+   "url": "?filters=",
+   "chips": [],
+   "n": 29,
+   "count": "29 produkter"
+  },
+  "s6": {
+   "url": "?filters=&sort=price_low",
+   "prices": [
+    299,
+    299,
+    329,
+    329,
+    349,
+    349,
+    365,
+    365
+   ],
+   "ascending": true
+  },
+  "errs": []
+ },
+ "allavapes-mobile-sort": {
+  "error": "TimeoutError: page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-pt=\"sort-sheet\"]')\u001b[22m\n"
+ },
+ "hasch-tabs-history": {
+  "tabs": [],
+  "before": {
+   "url": "?",
+   "chips": [],
+   "n": 0,
+   "count": "16 produkter"
+  },
+  "clicked": null,
+  "after": {
+   "url": "?",
+   "chips": [],
+   "n": 0,
+   "count": "16 produkter"
+  },
+  "back": {
+   "url": "",
+   "chips": [],
+   "n": 0
+  }
+ },
+ "hasch-family-tabs": {
+  "tabs": [
+   "Allt Hasch",
+   "Magic Sauce",
+   "THCaB",
+   "THCNM"
+  ],
+  "before": {
+   "url": "?",
+   "pressed": "Allt Hasch",
+   "count": "16 produkter",
+   "cards": 16
+  },
+  "clicked": "Magic Sauce",
+  "after": {
+   "url": "?&serie=magic-sauce",
+   "pressed": "Magic Sauce",
+   "count": "2 produkter",
+   "cards": 2
+  },
+  "back": {
+   "url": "?",
+   "pressed": "Allt Hasch",
+   "count": "16 produkter",
+   "cards": 16
+  }
+ },
+ "pdp-core-buy": {
+  "error": "TimeoutError: page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.buy-form .button.buy')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"button buy\" aria-label=\"Lägg i varu"
+ }
+}

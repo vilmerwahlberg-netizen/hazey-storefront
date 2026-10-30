@@ -1,0 +1,5525 @@
+{
+ "393-empty": {
+  "key": "empty",
+  "w": "393",
+  "note": "",
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": null,
+   "stickyPct": null,
+   "firstRowVisible": null,
+   "ctaLabel": null,
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 0,
+    "coupon": 0,
+    "trust": 0,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 1,
+    "live": 0
+   },
+   "texts": {
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "items": []
+   },
+   "plusDisabled": [],
+   "qty": [],
+   "vuex": {
+    "count": 0,
+    "total": "0 kr",
+    "coupon": null,
+    "items": []
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-simple": {
+  "key": "simple",
+  "w": "393",
+  "note": "en rad, fri frakt ej nådd",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 435 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor435 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 435 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr / Styck - + | 435 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "435 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×1.00 = 435 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-variant": {
+  "key": "variant",
+  "w": "393",
+  "note": "variant, fri frakt nådd, bonus ej nådd",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-multi": {
+  "key": "multi",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "add197": 200,
+  "add177": 200,
+  "add230": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 395 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    1386,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Cart - Magic Sauce 99% -",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Buds – Magic Sauce 50% –",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Hash – Magic Sauce 50% –",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     161,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor2 465 krFraktBeräknas i kassanDu sparar totalt70 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 395 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr",
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 730 kr",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram 495 kr / Styck - + | 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram 495 kr 425 kr / Styck - + | 425 kr 495 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "2",
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 395 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr",
+     "Cart - Magic Sauce 99% - 1ml ×2.00 = 730 kr",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram ×1.00 = 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram ×1.00 = 425 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-long": {
+  "key": "long",
+  "w": "393",
+  "note": "",
+  "add156": 200,
+  "add180": 200,
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 815 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    1072,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(3), 3 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 815 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 815 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 3 varor",
+    "items": [
+     "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise - 1+1ml 595 kr / Styck - + | 595 kr",
+     "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml 475 kr / Styck doft: Miracle Alien Cookies  | 475 kr",
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 3,
+    "total": "1 815 kr",
+    "coupon": null,
+    "items": [
+     "Vape Dual - CBD 56% - Blueberry Banana &amp; Tequila Sunrise - 1+1ml ×1.00 = 595 kr",
+     "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml ×1.00 = 475 kr",
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-sale": {
+  "key": "sale",
+  "w": "393",
+  "note": "",
+  "add165": 200,
+  "add230": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 920 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    860,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Vape - THCX 19% - Core -",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Hash – Magic Sauce 50% –",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 190 krFraktBeräknas i kassanDu sparar totalt270 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 920 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THCX 19% - Core - 2ml 695 kr 495 kr / Styck strain: Coconut Cake - + | 495 kr 695 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram 495 kr 425 kr / Styck - + | 425 kr 495 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "920 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THCX 19% - Core - 2ml ×1.00 = 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram ×1.00 = 425 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-bonus": {
+  "key": "bonus",
+  "w": "393",
+  "note": "standardläge: mål döljs (ej verifierade i kassan)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 980 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor3 725 krFraktBeräknas i kassanDu sparar totalt745 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 980 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr 596 kr / Styck strain: Forbidden Fruit - + | 2 980 kr 3 725 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "5"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 980 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×5.00 = 2 980 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-goalsShip": {
+  "key": "goalsShip",
+  "w": "393",
+  "note": "GRANSKNING ?hz8-goals-review=1: fri frakt ej nådd",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 435 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "64 kr kvar till fri frakt",
+    "ends": "499 kr · fri frakt",
+    "ledger": "Varor435 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 435 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr / Styck - + | 435 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "435 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×1.00 = 435 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-goalsBonusOpen": {
+  "key": "goalsBonusOpen",
+  "w": "393",
+  "note": "GRANSKNING: fri frakt nådd, bonus ej nådd",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt1 955 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor745 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-goalsBonusDone": {
+  "key": "goalsBonusDone",
+  "w": "393",
+  "note": "GRANSKNING: bonus nådd (Nyehandels egen mängdtrappa ger radpriset)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 980 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor3 725 krFraktOrdinarie 79 kr FriDu sparar totalt824 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 980 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr 596 kr / Styck strain: Forbidden Fruit - + | 2 980 kr 3 725 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "5"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 980 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×5.00 = 2 980 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-addonBattery": {
+  "key": "addonBattery",
+  "w": "393",
+  "note": "cart i korgen -> batteri",
+  "add197": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 365 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Cart - Magic Sauce 99% -",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     161,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor365 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 365 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 365 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "365 kr",
+    "coupon": null,
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml ×1.00 = 365 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-addonCart": {
+  "key": "addonCart",
+  "w": "393",
+  "note": "batteri i korgen -> cart",
+  "add1": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 125 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "CCELL M4 – Vape Batteri ",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Cart - THC-A 50% Live Re",
+     161,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor125 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 125 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCart - THC-A 50% Live Resin - Faraoh - 1ml649 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "CCELL M4 – Vape Batteri – 510 125 kr / Styck farg: Vit - + | 125 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "125 kr",
+    "coupon": null,
+    "items": [
+     "CCELL M4 – Vape Batteri – 510 ×1.00 = 125 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-addonNone": {
+  "key": "addonNone",
+  "w": "393",
+  "note": "inget sant tillägg -> ingen modul",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "393-couponForm": {
+  "key": "couponForm",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "INPUT ",
+  "writes": [],
+  "errors": []
+ },
+ "393-couponInvalid": {
+  "key": "couponInvalid",
+  "w": "393",
+  "note": "riktigt POST /coupon-codes med påhittad kod -> Nyehandels fel",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "Kod är ogiltigt.",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "INPUT ",
+  "writes": [
+   "POST /coupon-codes"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 422 ()"
+  ]
+ },
+ "393-couponApplied": {
+  "key": "couponApplied",
+  "w": "393",
+  "note": "SIMULERAD cart_coupon (ingen kod finns i Nyehandel)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 231,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 670,50 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassanDu sparar totalt74,50 kr",
+    "coupon": "Rabattkod · SIMULERAD10−74,50 krÄndra",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": "670,50 kr",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": "SIMULERAD10",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-plus": {
+  "key": "plus",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 490 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 490 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 490 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 1 490 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "1 490 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2.00 = 1 490 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(2), 2 varor     Vape - THC-A 45",
+  "writes": [
+   "PUT /cart/item/1678"
+  ],
+  "errors": []
+ },
+ "393-remove": {
+  "key": "remove",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "add197": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 365 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Cart - Magic Sauce 99% -",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     161,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor365 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 365 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 365 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "365 kr",
+    "coupon": null,
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml ×1.00 = 365 kr"
+    ]
+   }
+  },
+  "focus": "A Cart - Magic Sauce 99% - 1ml",
+  "writes": [
+   "DELETE /cart/item/1679"
+  ],
+  "errors": []
+ },
+ "393-removeLast": {
+  "key": "removeLast",
+  "w": "393",
+  "note": "",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": null,
+   "stickyPct": null,
+   "firstRowVisible": null,
+   "ctaLabel": null,
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 0,
+    "coupon": 0,
+    "trust": 0,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 1,
+    "live": 1
+   },
+   "texts": {
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen är tom",
+    "items": []
+   },
+   "plusDisabled": [],
+   "qty": [],
+   "vuex": {
+    "count": 0,
+    "total": "0 kr",
+    "coupon": null,
+    "items": []
+   }
+  },
+  "focus": "H2 Varukorg",
+  "writes": [
+   "DELETE /cart/item/1681"
+  ],
+  "errors": []
+ },
+ "393-stocklimit": {
+  "key": "stocklimit",
+  "w": "393",
+  "note": "",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 436 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(7), 7 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor3 045 krFraktBeräknas i kassanDu sparar totalt609 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 436 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "status: Du har valt allt som finns i lager just nu."
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 7 varor",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr 348 kr / Styck - + | 2 436 kr 3 045 kr"
+    ]
+   },
+   "plusDisabled": [
+    "true"
+   ],
+   "qty": [
+    "7"
+   ],
+   "vuex": {
+    "count": 7,
+    "total": "2 436 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×7.00 = 2 436 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(7), 7 varor     Blommor – CBD 3",
+  "writes": [
+   "PUT /cart/item/1682",
+   "PUT /cart/item/1682"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 406 ()"
+  ]
+ },
+ "393-netfail": {
+  "key": "netfail",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "alert: Antalet kunde inte ändras. Varukorgen visar det som är sparat.Försök igen"
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1683"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "TypeError: Cannot read properties of undefined (reading 'status')"
+  ]
+ },
+ "393-apierr": {
+  "key": "apierr",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "alert: Antalet kunde inte ändras. Varukorgen visar det som är sparat.Försök igen"
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1684"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ]
+ },
+ "393-apistock": {
+  "key": "apistock",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "status: Du har valt allt som finns i lager just nu."
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    "true"
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1685"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+  ]
+ },
+ "393-loading": {
+  "key": "loading",
+  "w": "393",
+  "note": "",
+  "add130": 200,
+  "during": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Uppdaterar…",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2 = 745 kr"
+    ]
+   }
+  },
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 490 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Vape - THC-A 45% - Farao",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 490 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 490 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 1 490 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "1 490 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2.00 = 1 490 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(2), 2 varor     Vape - THC-A 45",
+  "writes": [
+   "PUT /cart/item/1686"
+  ],
+  "errors": []
+ },
+ "393-pkgSingle": {
+  "key": "pkgSingle",
+  "w": "393",
+  "note": "granskningsläge, paketprodukt saknas",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    916,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     181,
+     42
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasPaketen förhandsvisas · inget läggs i varukorgen."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "393-pkg3": {
+  "key": "pkg3",
+  "w": "393",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    868,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     177,
+     37
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON 3 stPaket saknas",
+  "writes": [],
+  "errors": []
+ },
+ "393-strainComplete": {
+  "key": "strainComplete",
+  "w": "393",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    852,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "3 av 3 valda | Spara val",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "H2 Välj strains",
+  "writes": [],
+  "errors": []
+ },
+ "393-strainSlot": {
+  "key": "strainSlot",
+  "w": "393",
+  "note": "plats öppen, slutsålda strains synliga men inaktiva",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    1174,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "3 av 3 valda | Spara val",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON High Pepito",
+  "writes": [],
+  "errors": []
+ },
+ "393-strainIncomplete": {
+  "key": "strainIncomplete",
+  "w": "393",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    964,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "2 av 5 strains valdaÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "2 av 5 valda | Välj 3 strains till",
+    "live": "Hela kollektionen valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · Hela kollektionen 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "H2 Välj strains",
+  "writes": [],
+  "errors": []
+ },
+ "393-strainSaved": {
+  "key": "strainSaved",
+  "w": "393",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 393,
+   "vh": 852,
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 852
+   },
+   "stickyH": 228,
+   "stickyPct": 27,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    877,
+    852
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     177,
+     37
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "2 strains · High Pepito, Samurai JackÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Paketvalet sparades i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Ändra strains: Vape - Magic Sauce 99% - 2ml, 3-pack",
+  "writes": [],
+  "errors": []
+ },
+ "1440-empty": {
+  "key": "empty",
+  "w": "1440",
+  "note": "",
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": null,
+   "stickyPct": null,
+   "firstRowVisible": null,
+   "ctaLabel": null,
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 0,
+    "coupon": 0,
+    "trust": 0,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 1,
+    "live": 0
+   },
+   "texts": {
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "items": []
+   },
+   "plusDisabled": [],
+   "qty": [],
+   "vuex": {
+    "count": 0,
+    "total": "0 kr",
+    "coupon": null,
+    "items": []
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-simple": {
+  "key": "simple",
+  "w": "1440",
+  "note": "en rad, fri frakt ej nådd",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 435 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor435 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 435 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr / Styck - + | 435 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "435 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×1.00 = 435 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-variant": {
+  "key": "variant",
+  "w": "1440",
+  "note": "variant, fri frakt nådd, bonus ej nådd",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-multi": {
+  "key": "multi",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "add197": 200,
+  "add177": 200,
+  "add230": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 395 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    1382,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Cart - Magic Sauce 99% -",
+     224,
+     22
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     216,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor2 465 krFraktBeräknas i kassanDu sparar totalt70 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 395 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr",
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 730 kr",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram 495 kr / Styck - + | 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram 495 kr 425 kr / Styck - + | 425 kr 495 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "2",
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 395 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr",
+     "Cart - Magic Sauce 99% - 1ml ×2.00 = 730 kr",
+     "Buds – Magic Sauce 50% – Samurai Jack – 5 gram ×1.00 = 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram ×1.00 = 425 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-long": {
+  "key": "long",
+  "w": "1440",
+  "note": "",
+  "add156": 200,
+  "add180": 200,
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 815 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    1045,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(3), 3 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 815 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 815 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 3 varor",
+    "items": [
+     "Vape Dual - CBD 56% - Blueberry Banana & Tequila Sunrise - 1+1ml 595 kr / Styck - + | 595 kr",
+     "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml 475 kr / Styck doft: Miracle Alien Cookies  | 475 kr",
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 3,
+    "total": "1 815 kr",
+    "coupon": null,
+    "items": [
+     "Vape Dual - CBD 56% - Blueberry Banana &amp; Tequila Sunrise - 1+1ml ×1.00 = 595 kr",
+     "Vape - CBD 25% + CBN 35% - Magic Farmers - 2ml ×1.00 = 475 kr",
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-sale": {
+  "key": "sale",
+  "w": "1440",
+  "note": "",
+  "add165": 200,
+  "add230": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 920 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 190 krFraktBeräknas i kassanDu sparar totalt270 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 920 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THCX 19% - Core - 2ml 695 kr 495 kr / Styck strain: Coconut Cake - + | 495 kr 695 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram 495 kr 425 kr / Styck - + | 425 kr 495 kr"
+    ]
+   },
+   "plusDisabled": [
+    null,
+    null
+   ],
+   "qty": [
+    "1",
+    "1"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "920 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THCX 19% - Core - 2ml ×1.00 = 495 kr",
+     "Hash – Magic Sauce 50% – Charas – 5 gram ×1.00 = 425 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-bonus": {
+  "key": "bonus",
+  "w": "1440",
+  "note": "standardläge: mål döljs (ej verifierade i kassan)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 980 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor3 725 krFraktBeräknas i kassanDu sparar totalt745 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 980 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr 596 kr / Styck strain: Forbidden Fruit - + | 2 980 kr 3 725 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "5"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 980 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×5.00 = 2 980 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-goalsShip": {
+  "key": "goalsShip",
+  "w": "1440",
+  "note": "GRANSKNING ?hz8-goals-review=1: fri frakt ej nådd",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 435 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "64 kr kvar till fri frakt",
+    "ends": "499 kr · fri frakt",
+    "ledger": "Varor435 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 435 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr / Styck - + | 435 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "435 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×1.00 = 435 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-goalsBonusOpen": {
+  "key": "goalsBonusOpen",
+  "w": "1440",
+  "note": "GRANSKNING: fri frakt nådd, bonus ej nådd",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt1 955 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor745 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-goalsBonusDone": {
+  "key": "goalsBonusDone",
+  "w": "1440",
+  "note": "GRANSKNING: bonus nådd (Nyehandels egen mängdtrappa ger radpriset)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 980 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(5), 5 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor3 725 krFraktOrdinarie 79 kr FriDu sparar totalt824 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 980 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 5 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr 596 kr / Styck strain: Forbidden Fruit - + | 2 980 kr 3 725 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "5"
+   ],
+   "vuex": {
+    "count": 5,
+    "total": "2 980 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×5.00 = 2 980 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-addonBattery": {
+  "key": "addonBattery",
+  "w": "1440",
+  "note": "cart i korgen -> batteri",
+  "add197": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 365 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Cart - Magic Sauce 99% -",
+     224,
+     22
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     216,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor365 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 365 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 365 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "365 kr",
+    "coupon": null,
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml ×1.00 = 365 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-addonCart": {
+  "key": "addonCart",
+  "w": "1440",
+  "note": "batteri i korgen -> cart",
+  "add1": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 125 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "Cart - THC-A 50% Live Re",
+     216,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor125 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 125 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCart - THC-A 50% Live Resin - Faraoh - 1ml649 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "CCELL M4 – Vape Batteri – 510 125 kr / Styck farg: Vit - + | 125 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "125 kr",
+    "coupon": null,
+    "items": [
+     "CCELL M4 – Vape Batteri – 510 ×1.00 = 125 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-addonNone": {
+  "key": "addonNone",
+  "w": "1440",
+  "note": "inget sant tillägg -> ingen modul",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "1440-couponForm": {
+  "key": "couponForm",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "INPUT ",
+  "writes": [],
+  "errors": []
+ },
+ "1440-couponInvalid": {
+  "key": "couponInvalid",
+  "w": "1440",
+  "note": "riktigt POST /coupon-codes med påhittad kod -> Nyehandels fel",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "Kod är ogiltigt.",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "INPUT ",
+  "writes": [
+   "POST /coupon-codes"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 422 ()"
+  ]
+ },
+ "1440-couponApplied": {
+  "key": "couponApplied",
+  "w": "1440",
+  "note": "SIMULERAD cart_coupon (ingen kod finns i Nyehandel)",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 670,50 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassanDu sparar totalt74,50 kr",
+    "coupon": "Rabattkod · SIMULERAD10−74,50 krÄndra",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": "670,50 kr",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": "SIMULERAD10",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-plus": {
+  "key": "plus",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 490 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 490 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 490 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 1 490 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "1 490 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2.00 = 1 490 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(2), 2 varor     Vape - THC-A 45",
+  "writes": [
+   "PUT /cart/item/1714"
+  ],
+  "errors": []
+ },
+ "1440-remove": {
+  "key": "remove",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "add197": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 365 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Cart - Magic Sauce 99% -",
+     224,
+     22
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ],
+    [
+     "CCELL M3b – Vape Batteri",
+     216,
+     39
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 1,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor365 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 365 kr",
+    "sumOverride": null,
+    "addon": "Komplettera ordernCCELL M3b – Vape Batteri – 510198,99 krVälj",
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml 365 kr / Styck strain: Samurai Jack - + | 365 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "365 kr",
+    "coupon": null,
+    "items": [
+     "Cart - Magic Sauce 99% - 1ml ×1.00 = 365 kr"
+    ]
+   }
+  },
+  "focus": "A Cart - Magic Sauce 99% - 1ml",
+  "writes": [
+   "DELETE /cart/item/1715"
+  ],
+  "errors": []
+ },
+ "1440-removeLast": {
+  "key": "removeLast",
+  "w": "1440",
+  "note": "",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": null,
+   "stickyPct": null,
+   "firstRowVisible": null,
+   "ctaLabel": null,
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 0,
+    "coupon": 0,
+    "trust": 0,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 1,
+    "live": 1
+   },
+   "texts": {
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen är tom",
+    "items": []
+   },
+   "plusDisabled": [],
+   "qty": [],
+   "vuex": {
+    "count": 0,
+    "total": "0 kr",
+    "coupon": null,
+    "items": []
+   }
+  },
+  "focus": "H2 Varukorg",
+  "writes": [
+   "DELETE /cart/item/1717"
+  ],
+  "errors": []
+ },
+ "1440-stocklimit": {
+  "key": "stocklimit",
+  "w": "1440",
+  "note": "",
+  "add183": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 2 436 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(7), 7 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor3 045 krFraktBeräknas i kassanDu sparar totalt609 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 2 436 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "status: Du har valt allt som finns i lager just nu."
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 7 varor",
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram 435 kr 348 kr / Styck - + | 2 436 kr 3 045 kr"
+    ]
+   },
+   "plusDisabled": [
+    "true"
+   ],
+   "qty": [
+    "7"
+   ],
+   "vuex": {
+    "count": 7,
+    "total": "2 436 kr",
+    "coupon": null,
+    "items": [
+     "Blommor – CBD 30% – Tequila Sunrise – 3,5 gram ×7.00 = 2 436 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(7), 7 varor     Blommor – CBD 3",
+  "writes": [
+   "PUT /cart/item/1718",
+   "PUT /cart/item/1718"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 406 ()"
+  ]
+ },
+ "1440-netfail": {
+  "key": "netfail",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "alert: Antalet kunde inte ändras. Varukorgen visar det som är sparat.Försök igen"
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1719"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "TypeError: Cannot read properties of undefined (reading 'status')"
+  ]
+ },
+ "1440-apierr": {
+  "key": "apierr",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "alert: Antalet kunde inte ändras. Varukorgen visar det som är sparat.Försök igen"
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1720"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ]
+ },
+ "1440-apistock": {
+  "key": "apistock",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 745 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 1,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [
+     "status: Du har valt allt som finns i lager just nu."
+    ],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    "true"
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×1.00 = 745 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(1), 1 vara     Vape - THC-A 45%",
+  "writes": [
+   "PUT /cart/item/1721"
+  ],
+  "errors": [
+   "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+  ]
+ },
+ "1440-loading": {
+  "key": "loading",
+  "w": "1440",
+  "note": "",
+  "add130": 200,
+  "during": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Uppdaterar…",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor745 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 745 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 745 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "745 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2 = 745 kr"
+    ]
+   }
+  },
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 1 490 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(2), 2 varor"
+   },
+   "tap": [
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 0,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor1 490 krFraktBeräknas i kassan",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 1 490 kr",
+    "sumOverride": null,
+    "pack": [],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 2 varor",
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml 745 kr / Styck strain: Forbidden Fruit - + | 1 490 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "2"
+   ],
+   "vuex": {
+    "count": 2,
+    "total": "1 490 kr",
+    "coupon": null,
+    "items": [
+     "Vape - THC-A 45% - Faraoh - 2ml ×2.00 = 1 490 kr"
+    ]
+   }
+  },
+  "focus": "DIV Varukorg(2), 2 varor     Vape - THC-A 45",
+  "writes": [
+   "PUT /cart/item/1722"
+  ],
+  "errors": []
+ },
+ "1440-pkgSingle": {
+  "key": "pkgSingle",
+  "w": "1440",
+  "note": "granskningsläge, paketprodukt saknas",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    902,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     224,
+     22
+    ],
+    [
+     "Valt antal",
+     40,
+     44
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasPaketen förhandsvisas · inget läggs i varukorgen."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Varukorgen uppdaterad: 1 vara",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Stäng varukorgen",
+  "writes": [],
+  "errors": []
+ },
+ "1440-pkg3": {
+  "key": "pkg3",
+  "w": "1440",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     221,
+     16
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON 3 stPaket saknas",
+  "writes": [],
+  "errors": []
+ },
+ "1440-strainComplete": {
+  "key": "strainComplete",
+  "w": "1440",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "3 av 3 valda | Spara val",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "H2 Välj strains",
+  "writes": [],
+  "errors": []
+ },
+ "1440-strainSlot": {
+  "key": "strainSlot",
+  "w": "1440",
+  "note": "plats öppen, slutsålda strains synliga men inaktiva",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    1194,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "3 st · High PepitoÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "3 av 3 valda | Spara val",
+    "live": "3-pack valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON High Pepito",
+  "writes": [],
+  "errors": []
+ },
+ "1440-strainIncomplete": {
+  "key": "strainIncomplete",
+  "w": "1440",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 0,
+   "stickyPct": 0,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": "true",
+   "asideScroll": [
+    964,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [],
+   "injected": {
+    "goal": 0,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 1,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "2 av 5 strains valdaÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "2 av 5 valda | Välj 3 strains till",
+    "live": "Hela kollektionen valt i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · Hela kollektionen 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "H2 Välj strains",
+  "writes": [],
+  "errors": []
+ },
+ "1440-strainSaved": {
+  "key": "strainSaved",
+  "w": "1440",
+  "note": "",
+  "add191": 200,
+  "after": {
+   "open": true,
+   "vw": 1440,
+   "vh": 900,
+   "aside": {
+    "x": 980,
+    "y": 0,
+    "w": 460,
+    "h": 900
+   },
+   "stickyH": 231,
+   "stickyPct": 26,
+   "firstRowVisible": true,
+   "ctaLabel": "Till kassan · 595 kr",
+   "ctaDisabled": null,
+   "asideScroll": [
+    900,
+    900
+   ],
+   "hOverflow": false,
+   "htmlOverflow": "hidden",
+   "dialog": {
+    "labelledby": "hz8-cart-title",
+    "label": null,
+    "heading": "Varukorg(1), 1 vara"
+   },
+   "tap": [
+    [
+     "Vape - Magic Sauce 99% -",
+     221,
+     16
+    ]
+   ],
+   "injected": {
+    "goal": 1,
+    "count": 1,
+    "pack": 1,
+    "addon": 0,
+    "ledger": 1,
+    "coupon": 1,
+    "trust": 1,
+    "strains": 0,
+    "msgs": 0,
+    "emptyLinks": 0,
+    "live": 1
+   },
+   "texts": {
+    "goal": "Fri frakt2 105 kr kvar till 150 kr bonus",
+    "ends": "499 kr · fri frakt2 700 kr · 150 kr bonus",
+    "ledger": "Varor595 krFraktOrdinarie 79 kr FriDu sparar totalt79 kr",
+    "coupon": "RabattkodLägg till",
+    "couponErr": "",
+    "sum": "Totalt 595 kr",
+    "sumOverride": null,
+    "pack": [
+     "2 strains · High Pepito, Samurai JackÄndra1 st595 kr/st3 stPaket saknas5 stPaket saknasAlla 5Paket saknasFörhandsvisning · paketprodukten finns inte ännu. Varukorgen är oförändrad."
+    ],
+    "msgs": [],
+    "strains": "undefined | undefined",
+    "live": "Paketvalet sparades i förhandsvisningen. Varukorgen är oförändrad.",
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml · 3-pack 595 kr / Styck strain: High Pepito - + | 595 kr"
+    ]
+   },
+   "plusDisabled": [
+    null
+   ],
+   "qty": [
+    "1"
+   ],
+   "vuex": {
+    "count": 1,
+    "total": "595 kr",
+    "coupon": null,
+    "items": [
+     "Vape - Magic Sauce 99% - 2ml ×1.00 = 595 kr"
+    ]
+   }
+  },
+  "focus": "BUTTON Ändra strains: Vape - Magic Sauce 99% - 2ml, 3-pack",
+  "writes": [],
+  "errors": []
+ }
+}
