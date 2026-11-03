@@ -1,0 +1,92 @@
+{
+ "/sv/categories/hasch|393": {
+  "series": [
+   "Magic Sauce",
+   "Core",
+   "D10",
+   "Nano-11"
+  ],
+  "dims": [
+   "typ=hasch(19)",
+   "volym=1g(3)",
+   "volym=5g(14)",
+   "volym=15g(1)",
+   "volym=100g(1)"
+  ],
+  "volTitle": [
+   "Vikt"
+  ],
+  "cards": 19,
+  "overflow": 0,
+  "errors": 0
+ },
+ "/sv/categories/hasch|1440": {
+  "series": [
+   "Magic Sauce",
+   "Core",
+   "D10",
+   "Nano-11"
+  ],
+  "dims": [
+   "typ=hasch(19)",
+   "volym=1g(3)",
+   "volym=5g(14)",
+   "volym=15g(1)",
+   "volym=100g(1)"
+  ],
+  "volTitle": [
+   "Vikt"
+  ],
+  "cards": 19,
+  "overflow": 0,
+  "errors": 0
+ },
+ "/sv/categories/alla-vapes|393": {
+  "series": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA",
+   "Core",
+   "D10",
+   "THCV"
+  ],
+  "dims": [
+   "typ=vapes(37)",
+   "typ=carts(9)",
+   "typ=refill(2)",
+   "volym=1ml(18)",
+   "volym=2ml(25)",
+   "volym=5ml(3)"
+  ],
+  "volTitle": [
+   "Volym"
+  ],
+  "cards": 48,
+  "overflow": 0,
+  "errors": 0
+ },
+ "/sv/categories/alla-vapes|1440": {
+  "series": [
+   "Magic Sauce",
+   "THCaB",
+   "THCbA",
+   "Core",
+   "D10",
+   "THCV"
+  ],
+  "dims": [
+   "typ=vapes(37)",
+   "typ=carts(9)",
+   "typ=refill(2)",
+   "volym=1ml(18)",
+   "volym=2ml(25)",
+   "volym=5ml(3)"
+  ],
+  "volTitle": [
+   "Volym"
+  ],
+  "cards": 48,
+  "overflow": 0,
+  "errors": 0
+ }
+}

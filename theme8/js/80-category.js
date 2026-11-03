@@ -1893,8 +1893,23 @@
   /* Serier i någon av källorna (union, i kartans ordning). */
   function pilotSeriesList(ctx) {
     if (isPortal(ctx)) return HZ8.catalog.build().series.filter(function (s) { return Object.keys(s.routes).length > 0; });
+    /* TASK 17B: bred formatsida (Alla Buds, Allt Hasch) -- kandidater är
+       alla upptäckbara serier med en riktig hubb eller route; om de har
+       produkter i sidans underlag avgörs av datan (seriesMemberRoutes),
+       inte av att headern råkar ha en serie x format-länk. Legacy
+       (THCV/HHCPM/THCNM) är aldrig kandidater. */
+    if (isGramBroad(ctx)) return HZ8.catalog.build().series.filter(function (s) { return HZ8.catalog.discoverable(s) && (s.hub || Object.keys(s.routes).length); });
     var keys = pilotSources(ctx).map(function (s) { return s.key; });
     return HZ8.catalog.build().series.filter(function (s) { return keys.some(function (k) { return !!s.routes[k]; }); });
+  }
+  /* Bred sida i gram (Buds, Hasch): där vikt är kundens storleksmått. */
+  function isGramBroad(ctx) { return isBroad(ctx) && !isPortal(ctx) && !!ctx.format && PORTAL_UNIT[ctx.format.key] === "g"; }
+  /* TASK 17B: seriens verifierade medlemmar = produkterna på seriens egen
+     hubb och alla dess serie x format-routes (Nyehandels kategorimedlemskap
+     efter migreringen; Serie-attributet finns inte längre). Snittet med
+     sidans eget underlag ger tillhörigheten -- 0 träffar = serien döljs. */
+  function seriesMemberRoutes(s) {
+    return [s.hub].concat(Object.keys(s.routes).map(function (k) { return s.routes[k]; })).filter(function (r, i, a) { return r && a.indexOf(r) === i; });
   }
 
   /* Volym/konfiguration: egen dimension, inte produkttyp. Nyehandel har
@@ -2123,10 +2138,10 @@
       }).catch(function () { /* okänd för den här källan */ });
     });
     if (!isPortal(ctx)) pilotSeriesList(ctx).filter(shown).forEach(function (s) {
-      keys.forEach(function (k) {
-        if (!s.routes[k]) return;
+      (isGramBroad(ctx) ? seriesMemberRoutes(s) : keys.map(function (k) { return s.routes[k]; })).forEach(function (route) {
+        if (!route) return;
         pilotSeriesPending += 1;
-        allCards(s.routes[k]).then(function (cards) {
+        allCards(route).then(function (cards) {
           cards.forEach(function (c) {
             var p = cardPath(c.html);
             if (!p) return;
@@ -2413,6 +2428,9 @@
       typ: { param: TYPE_PARAM, opts: [], acc: "type" },
       volym: { param: VOLUME_PARAM, opts: [], acc: "volume" }
     };
+    /* TASK 17B: Alla Buds / Allt Hasch -- vikt ur namnet (samma parser som
+       portalen, "3,5g" / "5 gram"), samma ?volym=-state, rubrik "Vikt". */
+    var gram = isGramBroad(ctx);
     function excludePaused(path) { return !!(pilotPaused && pilotPaused[path]); }
     function valid(d) { return readList(dims[d].param).filter(function (k) { return dims[d].opts.some(function (o) { return o.key === k; }); }); }
     function optLabel(d, k) { var o = dims[d].opts.filter(function (x) { return x.key === k; })[0]; return o ? o.label : k; }
@@ -2429,7 +2447,7 @@
           var types = portal ? portalTypes[cardPath(c.html)] || [] : [c.src];
           if (!types.some(function (k) { return t.indexOf(k) !== -1; })) return false;
         }
-        if (v.length) { var vol = cardUnit(cardName(c.html)); if (!vol || v.indexOf(vol.key) === -1 || (!broad && !portal && !VAPES_VOLUMES[vol.key])) return false; }
+        if (v.length) { var vol = cardUnit(cardName(c.html), gram); if (!vol || v.indexOf(vol.key) === -1 || (!broad && !portal && !VAPES_VOLUMES[vol.key])) return false; }
         return true;
       }
     };
@@ -2475,7 +2493,9 @@
           if (off) row.hidden = true; else if (!row.hidden) nUnit += 1;
         });
         hasVol = !!unit && nUnit > 1;
-        var vt = unit === "g" ? "Vikt" : "Volym";
+      }
+      if (portal || gram) {
+        var vt = (portal ? portalUnit() : "g") === "g" ? "Vikt" : "Volym";
         document.querySelectorAll('[data-acc="volume"] .hz8-pacc__title, [data-pd-sec="volume"] .hz8-pdock__lbl').forEach(function (el) { if (el.textContent !== vt) el.textContent = vt; });
       }
       tool.querySelector(".hz8-ptool__type").hidden = !hasType;
@@ -2556,8 +2576,10 @@
             seen[p] = true;
             if (portal) (portalTypes[p] || []).forEach(function (k) { typeCount[k] = (typeCount[k] || 0) + 1; });
             else typeCount[sources[i].key] = (typeCount[sources[i].key] || 0) + 1;
-            var cv = cardUnit(cardName(c.html));
+            var cv = cardUnit(cardName(c.html), gram);
             if (cv && !broad && !portal && !VAPES_VOLUMES[cv.key]) cv = null;
+            /* Gram-sida: bara vikter (en ml-produkt bland buds klassas inte). */
+            if (cv && gram && cv.unit !== "g") cv = null;
             base.push({ p: p, src: sources[i].key, vol: cv ? cv.key : null, name: cardName(c.html), brand: cardBrand(c.html), href: cardLink(c.html) });
             if (cv) vols[cv.key] = vols[cv.key] || cv;
           });
@@ -2621,8 +2643,8 @@
         step: portal && window.matchMedia("(max-width: 767px)").matches ? 24 : 48,
         clearLabel: "Rensa alla filter",
         onClearAll: function () { clearAll(); },
-        seriesList: portal ? pilotSeriesList(ctx).filter(shown) : null,
-        memberRoutes: portal ? function (s) { return Object.keys(s.routes).map(function (k) { return s.routes[k]; }).filter(function (r, i, a) { return a.indexOf(r) === i; }); } : null,
+        seriesList: portal || isGramBroad(ctx) ? pilotSeriesList(ctx).filter(shown) : null,
+        memberRoutes: portal ? function (s) { return Object.keys(s.routes).map(function (k) { return s.routes[k]; }).filter(function (r, i, a) { return a.indexOf(r) === i; }); } : isGramBroad(ctx) ? seriesMemberRoutes : null,
         lazyCounts: portal,
         moreUi: portal ? portalMore : null,
         emptyUi: portal ? portalEmpty : null,

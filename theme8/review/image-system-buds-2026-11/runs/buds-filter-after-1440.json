@@ -1,0 +1,123 @@
+{
+ "which": "after",
+ "w": 1440,
+ "base": 64,
+ "expected": {
+  "Magic Sauce": 19,
+  "Core": 4,
+  "D10": 4,
+  "Nano-11": 21,
+  "THCaB": 0,
+  "THCbA": 0
+ },
+ "steps": [
+  {
+   "label": "serie Magic Sauce",
+   "url": "/sv/categories/blommor-buds?serie=magic-sauce",
+   "expected": 19,
+   "shown": 19,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "1 serie vald · 19 produkter"
+  },
+  {
+   "label": "serie Core",
+   "url": "/sv/categories/blommor-buds?serie=core",
+   "expected": 4,
+   "shown": 4,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "1 serie vald · 4 produkter"
+  },
+  {
+   "label": "serie D10",
+   "url": "/sv/categories/blommor-buds?serie=d10",
+   "expected": 4,
+   "shown": 4,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "1 serie vald · 4 produkter"
+  },
+  {
+   "label": "serie Nano-11",
+   "url": "/sv/categories/blommor-buds?serie=nano-11",
+   "expected": 21,
+   "shown": 21,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "1 serie vald · 21 produkter"
+  },
+  {
+   "label": "vikt 3-5g",
+   "url": "/sv/categories/blommor-buds?volym=3-5g",
+   "expected": 8,
+   "shown": 8,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "Inga serier valda · 8 produkter"
+  },
+  {
+   "label": "vikt 5g",
+   "url": "/sv/categories/blommor-buds?volym=5g",
+   "expected": 45,
+   "shown": 45,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "Inga serier valda · 45 produkter"
+  },
+  {
+   "label": "Magic Sauce + Nano-11 + 5 g",
+   "url": "/sv/categories/blommor-buds?serie=magic-sauce%2Cnano-11&volym=5g",
+   "expected": 34,
+   "shown": 34,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "2 serier valda · 34 produkter"
+  },
+  {
+   "label": "omladdning /sv/categories/blommor-buds?serie=magic-sauce%2Cnano-11&volym=5g",
+   "url": "/sv/categories/blommor-buds?serie=magic-sauce%2Cnano-11&volym=5g",
+   "expected": 34,
+   "shown": 34,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "2 serier valda · 34 produkter"
+  },
+  {
+   "label": "bakåt från PDP",
+   "url": "/sv/categories/blommor-buds?serie=magic-sauce%2Cnano-11&volym=5g",
+   "expected": 34,
+   "shown": 34,
+   "dup": 0,
+   "missing": [],
+   "extra": [],
+   "ok": true,
+   "status": "2 serier valda · 34 produkter"
+  }
+ ],
+ "options": [
+  "Magic Sauce",
+  "Core",
+  "D10",
+  "Nano-11"
+ ],
+ "forward": "/sv/products/magic-sauce-buds-grape-gasoline",
+ "errors": [],
+ "overflow": 0
+}
