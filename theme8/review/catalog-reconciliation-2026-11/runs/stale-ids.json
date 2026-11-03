@@ -1,0 +1,1656 @@
+[
+ {
+  "oldId": 1,
+  "oldRoute": "/sv/products/ccell-m4-vape-batteri-510",
+  "wooId": 231,
+  "wooName": "CCELL M4 – Vape Batteri – 510",
+  "newId": 171,
+  "newRoute": "/sv/products/ccell-m4-penna",
+  "newName": "CCELL M4 – Vape Batteri – 510",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   1152,
+   1154,
+   389842
+  ]
+ },
+ {
+  "oldId": 2,
+  "oldRoute": "/sv/products/ccell-m3-plus-vape-batteri-510",
+  "wooId": 972,
+  "wooName": "CCELL M3 Plus – Vape Batteri – 510",
+  "newId": 178,
+  "newRoute": "/sv/products/ccell-m3-plus-vape-batteri-510",
+  "newName": "CCELL M3 Plus – Vape Batteri – 510",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   328927
+  ]
+ },
+ {
+  "oldId": 3,
+  "oldRoute": "/sv/products/vape-h4cbd-97-cbd-group-2ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 182,
+   "newRoute": "/sv/products/h4cbd-vape-cbd-group-2ml",
+   "name": "H4CBD 97% – 2ml",
+   "score": 1,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 4,
+  "oldRoute": "/sv/products/vape-h4cbd-96-canapuff-1ml",
+  "wooId": 8644,
+  "wooName": "Vape – H4CBD 96% – Canapuff – 1ml",
+  "newId": 189,
+  "newRoute": "/sv/products/h4cbd-vape-canapuff-1ml",
+  "newName": "Vape - H4CBD 96% - Canapuff - 1ml",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   328984,
+   328985,
+   328986
+  ]
+ },
+ {
+  "oldId": 5,
+  "oldRoute": "/sv/products/hazeyse-merch-nyckelring",
+  "wooId": 225093,
+  "wooName": "Hazey.se Merch – Nyckelring",
+  "newId": 123,
+  "newRoute": "/sv/products/merch-nyckelring-hazey",
+  "newName": "Hazey.se Merch - Nyckelring",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   225093
+  ]
+ },
+ {
+  "oldId": 6,
+  "oldRoute": "/sv/products/vape-cbn-89-canapuff-1ml",
+  "wooId": 328617,
+  "wooName": "Vape – CBN 89% – Canapuff – 1ml",
+  "newId": 195,
+  "newRoute": "/sv/products/cbn-vape-canapuff-1ml",
+  "newName": "Vape - CBN 89% - Canapuff - 1ml",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   328618,
+   328619,
+   328620
+  ]
+ },
+ {
+  "oldId": 7,
+  "oldRoute": "/sv/products/vape-thc-v-79-canapuff-1ml",
+  "wooId": 328628,
+  "wooName": "Vape – THC-V 79% – Canapuff – 1ml",
+  "newId": 199,
+  "newRoute": "/sv/products/thcv-vape-canapuff-1ml",
+  "newName": "Vape - THC-V 79% - Canapuff - 1ml",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   328629,
+   328630
+  ]
+ },
+ {
+  "oldId": 8,
+  "oldRoute": "/sv/products/vape-thc-v-20-canntropy-1ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 202,
+   "newRoute": "/sv/products/thcv-vape-canntropy-1ml",
+   "name": "THCV 20% + CBG + CBN – 1ml",
+   "score": 0.38,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 9,
+  "oldRoute": "/sv/products/vape-h4cbd-95-canntropy-1ml",
+  "wooId": 329116,
+  "wooName": "Vape – H4CBD 95% – Canntropy – 1ml",
+  "newId": 207,
+  "newRoute": "/sv/products/h4cbd-vape-canntropy-1ml",
+  "newName": "Vape - H4CBD 95% - Canntropy - 1ml",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   329118,
+   329119,
+   329120
+  ]
+ },
+ {
+  "oldId": 10,
+  "oldRoute": "/sv/products/ccell-palm-pro-vape-batteri-510",
+  "wooId": 329187,
+  "wooName": "CCELL Palm Pro – Vape Batteri – 510",
+  "newId": 212,
+  "newRoute": "/sv/products/ccell-palm-pro-vape-batteri-510-ganga",
+  "newName": "CCELL Palm Pro – Vape Batteri – 510",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   329188,
+   329189,
+   329190
+  ]
+ },
+ {
+  "oldId": 11,
+  "oldRoute": "/sv/products/vape-thc-v-20-cbd-group-2ml",
+  "wooId": 329246,
+  "wooName": "Vape – THC-V 20% – CBD Group – 2ml",
+  "newId": 220,
+  "newRoute": "/sv/products/thcv-vape-cbd-group-2ml",
+  "newName": "Vape - THC-V 20% - CBD Group - 2ml",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   329247,
+   329250,
+   339702
+  ]
+ },
+ {
+  "oldId": 12,
+  "oldRoute": "/sv/products/blommor-cbd-3g-purple-haze-trinacria-hemp",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 13,
+  "oldRoute": "/sv/products/blommor-cbd-3g-gorilla-glue-trinacria-hemp",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 14,
+  "oldRoute": "/sv/products/blommor-cbd-3g-lemon-skunk-trinacria-hemp",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 15,
+  "oldRoute": "/sv/products/vape-thc-h-20-hazey-2ml-500puffs",
+  "wooId": 330048,
+  "wooName": "Vape – THC-H 20% – Hazey – 2ml ≈ 500puffs",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 220,
+   "newRoute": "/sv/products/thcv-vape-cbd-group-2ml",
+   "name": "Vape – THC-V 20% – CBD Group – 2ml",
+   "score": 0.3,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 16,
+  "oldRoute": "/sv/products/vape-cbd-46-hazey-1ml",
+  "wooId": 330219,
+  "wooName": "Vape – CBD 46% – Hazey – 1ml",
+  "newId": 225,
+  "newRoute": "/sv/products/cbd-vape-1ml-46-hazey",
+  "newName": "Vape - CBD 46% - Hazey - 1ml",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   330220,
+   330221
+  ]
+ },
+ {
+  "oldId": 17,
+  "oldRoute": "/sv/products/blommor-cbn-10-great-white-shark",
+  "wooId": 330332,
+  "wooName": "Blommor – CBN 10% – Great White Shark",
+  "newId": 229,
+  "newRoute": "/sv/products/cbn-buds-magic-farmers-great-white-shark-1-25-gram",
+  "newName": "Blommor – CBN 10% – Great White Shark",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   330333,
+   330336,
+   330338
+  ]
+ },
+ {
+  "oldId": 18,
+  "oldRoute": "/sv/products/buds-h4cbd-30-kusher-kush-5-gram",
+  "wooId": 330341,
+  "wooName": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+  "newId": 124,
+  "newRoute": "/sv/products/h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+  "newName": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   330341
+  ]
+ },
+ {
+  "oldId": 19,
+  "oldRoute": "/sv/products/hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+  "wooId": 330382,
+  "wooName": "Hash – H4CBD 20% + CBN 20% – H-Bomb – 5 gram",
+  "newId": 125,
+  "newRoute": "/sv/products/hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+  "newName": "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   330382
+  ]
+ },
+ {
+  "oldId": 20,
+  "oldRoute": "/sv/products/fraktandring",
+  "wooId": 331735,
+  "wooName": "Fraktändring",
+  "newId": 126,
+  "newRoute": "/sv/products/fraktandring",
+  "newName": "Fraktändring",
+  "visibilityClass": "HIDDEN/LEGACY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   331735
+  ]
+ },
+ {
+  "oldId": 21,
+  "oldRoute": "/sv/products/vape-thcv-euphoria-2ml",
+  "wooId": 331901,
+  "wooName": "Vape – THCV – Euphoria – 2ml",
+  "newId": 233,
+  "newRoute": "/sv/products/thcv-vape-euphoria-2ml",
+  "newName": "Vape - THCV - Euphoria - 2ml",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   331902,
+   331903,
+   331904
+  ]
+ },
+ {
+  "oldId": 22,
+  "oldRoute": "/sv/products/buds-15-cbd-10-gram-russian-roulette",
+  "wooId": 331936,
+  "wooName": "CBD ≈15% – Russian Roulette – 10g",
+  "newId": 127,
+  "newRoute": "/sv/products/cbd-buds-10-gram-russian-roulette",
+  "newName": "CBD ≈15% - Russian Roulette - 10g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   331936
+  ]
+ },
+ {
+  "oldId": 23,
+  "oldRoute": "/sv/products/vape-thc-h-20-hazey-2ml-600puffs",
+  "wooId": 332093,
+  "wooName": "Vape – THC-H 20% – Hazey – 2ml ≈ 600puffs",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 220,
+   "newRoute": "/sv/products/thcv-vape-cbd-group-2ml",
+   "name": "Vape – THC-V 20% – CBD Group – 2ml",
+   "score": 0.3,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 24,
+  "oldRoute": "/sv/products/ccell-m3b-vape-batteri-510",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 237,
+   "newRoute": "/sv/products/ccell-m3b-vape-batteri-510",
+   "name": "CCELL M3b Pro – Vape Batteri – 510",
+   "score": 0.8,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 25,
+  "oldRoute": "/sv/products/vape-thc-b-20-tatra-hemp-2ml",
+  "wooId": 334747,
+  "wooName": "Vape – THC-B 20% – Tatra Hemp – 2ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 220,
+   "newRoute": "/sv/products/thcv-vape-cbd-group-2ml",
+   "name": "Vape – THC-V 20% – CBD Group – 2ml",
+   "score": 0.3,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 26,
+  "oldRoute": "/sv/products/vape-thc-b-20-tatra-hemp-1ml",
+  "wooId": 334754,
+  "wooName": "Vape – THC-B 20% – Tatra Hemp – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 251,
+   "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+   "name": "Vape – THC-B 35% – Faraoh – 1ml",
+   "score": 0.38,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 27,
+  "oldRoute": "/sv/products/cart-thc-b-20-tatra-hemp-1ml",
+  "wooId": 334759,
+  "wooName": "Cart – THC-B 20% – Tatra Hemp – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 251,
+   "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+   "name": "Vape – THC-B 35% – Faraoh – 1ml",
+   "score": 0.38,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 28,
+  "oldRoute": "/sv/products/vape-thc-v-20-tatra-hemp-2ml",
+  "wooId": 334765,
+  "wooName": "Vape – THC-V 20% – Tatra Hemp – 2ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 220,
+   "newRoute": "/sv/products/thcv-vape-cbd-group-2ml",
+   "name": "Vape – THC-V 20% – CBD Group – 2ml",
+   "score": 0.44,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 29,
+  "oldRoute": "/sv/products/vape-thc-v-20-tatra-hemp-1ml",
+  "wooId": 334770,
+  "wooName": "Vape – THC-V 20% – Tatra Hemp – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 199,
+   "newRoute": "/sv/products/thcv-vape-canapuff-1ml",
+   "name": "Vape – THC-V 79% – Canapuff – 1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 30,
+  "oldRoute": "/sv/products/cart-thc-v-20-tatra-hemp-1ml",
+  "wooId": 334775,
+  "wooName": "Cart – THC-V 20% – Tatra Hemp – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 199,
+   "newRoute": "/sv/products/thcv-vape-canapuff-1ml",
+   "name": "Vape – THC-V 79% – Canapuff – 1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 31,
+  "oldRoute": "/sv/products/blommor-nano10-20-amnesia-haze-5-gram",
+  "wooId": 336550,
+  "wooName": "Blommor – Nano10 20% – Amnesia Haze – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 32,
+  "oldRoute": "/sv/products/ccell-fino-vape-batteri-510",
+  "wooId": 337290,
+  "wooName": "CCELL Fino – Vape Batteri – 510",
+  "newId": 244,
+  "newRoute": "/sv/products/ccell-fino-vape-batteri-510",
+  "newName": "CCELL Fino – Vape Batteri – 510",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   337294,
+   337295
+  ]
+ },
+ {
+  "oldId": 33,
+  "oldRoute": "/sv/products/ccell-sandwave-vape-batteri-510",
+  "wooId": 337303,
+  "wooName": "CCELL Sandwave – Vape Batteri – 510",
+  "newId": 247,
+  "newRoute": "/sv/products/ccell-sandwave-vape-batteri-510",
+  "newName": "CCELL Sandwave – Vape Batteri – 510",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   337304,
+   337305,
+   337307
+  ]
+ },
+ {
+  "oldId": 34,
+  "oldRoute": "/sv/products/buds-cbd-30-triple-scoop-35-gram",
+  "wooId": 337446,
+  "wooName": "CBD 30% – Triple Scoop – 3,5g",
+  "newId": 128,
+  "newRoute": "/sv/products/cbd-buds-triple-scoop-cookies-cannabis",
+  "newName": "CBD 30% – Triple Scoop – 3,5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   337446
+  ]
+ },
+ {
+  "oldId": 35,
+  "oldRoute": "/sv/products/buds-cbg9-60-snow-ice",
+  "wooId": 337454,
+  "wooName": "Buds – CBG9 60% – Snow Ice",
+  "newId": 249,
+  "newRoute": "/sv/products/blommor-cbg9-60-snow-ice",
+  "newName": "Buds – CBG9 60% – Snow Ice",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   337455,
+   337456,
+   337457
+  ]
+ },
+ {
+  "oldId": 36,
+  "oldRoute": "/sv/products/buds-cbn-30-malibu-skittelz-5-gram",
+  "wooId": 337510,
+  "wooName": "Buds – CBN+ 30% – Malibu Skittelz – 5 gram",
+  "newId": 129,
+  "newRoute": "/sv/products/cbn-buds-malibu-skittelz",
+  "newName": "Buds – CBN+ 30% – Malibu Skittelz - 5 gram",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   337510
+  ]
+ },
+ {
+  "oldId": 37,
+  "oldRoute": "/sv/products/isolat-thca-99-isolate-5-gram",
+  "wooId": 337939,
+  "wooName": "Isolat – THCA 99% – Isolate – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 185,
+   "newRoute": "/sv/products/isolat-cbd-isolate-15-gram",
+   "name": "Isolat – CBD 99% – Isolate – 15 gram",
+   "score": 0.43,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 38,
+  "oldRoute": "/sv/products/buds-cbd-30-cereal-milk-35-gram",
+  "wooId": 338043,
+  "wooName": "CBD 30% – Cereal Milk – 3,5g",
+  "newId": 130,
+  "newRoute": "/sv/products/cookies-cannabis-buds-cbd-cereal-milk-35-gram",
+  "newName": "CBD 30% – Cereal Milk – 3,5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   338043
+  ]
+ },
+ {
+  "oldId": 39,
+  "oldRoute": "/sv/products/hash-thca-30-dry-sift-5-gram",
+  "wooId": 338891,
+  "wooName": "Hash – THCA 30% – Dry Sift – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 129,
+   "newRoute": "/sv/products/cbn-buds-malibu-skittelz",
+   "name": "Buds – CBN+ 30% – Malibu Skittelz – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 40,
+  "oldRoute": "/sv/products/buds-thca-23-orange-indoor-5-gram",
+  "wooId": 338893,
+  "wooName": "Buds – THCA 23% – Orange Indoor – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 41,
+  "oldRoute": "/sv/products/buds-7-nano11-lemon-purple-5-gram",
+  "wooId": 338896,
+  "wooName": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+  "newId": 131,
+  "newRoute": "/sv/products/nano-buds-lemon-purple-5-gram",
+  "newName": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   338896
+  ]
+ },
+ {
+  "oldId": 42,
+  "oldRoute": "/sv/products/vape-thc-b-35-faraoh-1ml",
+  "wooId": 338933,
+  "wooName": "Vape – THC-B 35% – Faraoh – 1ml",
+  "newId": 251,
+  "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+  "newName": "Vape - THC-B 35% - Faraoh - 1ml",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   338935,
+   338936,
+   338937
+  ]
+ },
+ {
+  "oldId": 43,
+  "oldRoute": "/sv/products/blommor-nano10-20-bz1-5-gram",
+  "wooId": 339380,
+  "wooName": "Blommor – Nano10 20% – BZ1 – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 125,
+   "newRoute": "/sv/products/hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+   "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 44,
+  "oldRoute": "/sv/products/hash-nano10-20-zkittlez-mousse-5-gram",
+  "wooId": 339759,
+  "wooName": "Hash – Nano10 20% – Zkittlez Mousse – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 45,
+  "oldRoute": "/sv/products/hash-nano9-20-maroccan-hash-5-gram",
+  "wooId": 339761,
+  "wooName": "Hash – Nano9 20% – Maroccan Hash – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 125,
+   "newRoute": "/sv/products/hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+   "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 46,
+  "oldRoute": "/sv/products/crumble-nano10-20-white-runtz-5-gram",
+  "wooId": 339763,
+  "wooName": "Crumble – Nano10 20% – White Runtz – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 47,
+  "oldRoute": "/sv/products/crumble-nano10-20-raspberry-5-gram",
+  "wooId": 339767,
+  "wooName": "Crumble – Nano10 20% – Raspberry – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 48,
+  "oldRoute": "/sv/products/blommor-nano10-20-og-kush-5-gram",
+  "wooId": 339938,
+  "wooName": "Blommor – Nano10 20% – OG Kush – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 124,
+   "newRoute": "/sv/products/h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+   "name": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 49,
+  "oldRoute": "/sv/products/blommor-nano10-20-tequila-sunrise-5-gram",
+  "wooId": 339941,
+  "wooName": "Blommor – Nano10 20% – Tequila Sunrise – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 50,
+  "oldRoute": "/sv/products/blommor-nano10-20-gelato-33-5-gram",
+  "wooId": 340706,
+  "wooName": "Blommor – Nano10 20% – Gelato 33 – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 51,
+  "oldRoute": "/sv/products/blommor-nano10-20-jack-herer-5-gram",
+  "wooId": 340709,
+  "wooName": "Blommor – Nano10 20% – Jack Herer – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 52,
+  "oldRoute": "/sv/products/blommor-nano10-20-mimosa-5-gram",
+  "wooId": 340711,
+  "wooName": "Blommor – Nano10 20% – Mimosa – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 125,
+   "newRoute": "/sv/products/hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+   "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 53,
+  "oldRoute": "/sv/products/prerolled-cbd-blue-raz-1-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "OSÄKER (10A-match osäker)",
+  "note": "CBD 30% – Blue Raz – 3,5g",
+  "candidate": {
+   "newId": 230,
+   "newRoute": "/sv/products/cookies-cbd-buds-blue-raz",
+   "name": "CBD 30% – Blue Raz – 3,5g",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 54,
+  "oldRoute": "/sv/products/prerolled-cbd-apples-amp-bananas-1-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 144,
+   "newRoute": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+   "name": "CBD 56% – Triple Scoop + Apples & Bananas – 1+1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 55,
+  "oldRoute": "/sv/products/hash-thca-30-dry-static-5-gram",
+  "wooId": 341730,
+  "wooName": "Hash – THCA 30% – Dry Static – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 129,
+   "newRoute": "/sv/products/cbn-buds-malibu-skittelz",
+   "name": "Buds – CBN+ 30% – Malibu Skittelz – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 56,
+  "oldRoute": "/sv/products/cart-nano10-10-tatra-hemp-1ml",
+  "wooId": 342951,
+  "wooName": "Cart – Nano10 10% – Tatra Hemp – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 57,
+  "oldRoute": "/sv/products/vape-thc-a-45-faraoh-2ml",
+  "wooId": 343650,
+  "wooName": "Vape – THC-A 45% – Faraoh – 2ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 236,
+   "newRoute": "/sv/products/thcba-vape-faraoh-2ml",
+   "name": "THCbA 47% – Faraoh – 2ml",
+   "score": 0.29,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 58,
+  "oldRoute": "/sv/products/prerolled-thca-22-bangkok-1-gram",
+  "wooId": 344070,
+  "wooName": "PreRolled – THCA 22% – Bangkok – 1 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 165,
+   "newRoute": "/sv/products/7-nano11-prerolled-1-gram",
+   "name": "7% Nano11 – Prerolled – 1 gram",
+   "score": 0.29,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 59,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-yoda-ice-cream-5-gram",
+  "wooId": 344340,
+  "wooName": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "newId": 132,
+  "newRoute": "/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+  "newName": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   344340
+  ]
+ },
+ {
+  "oldId": 60,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-gorilla-cookies-5-gram",
+  "wooId": 344347,
+  "wooName": "Magic Sauce 50% – Gorilla Cookies – 5g",
+  "newId": 134,
+  "newRoute": "/sv/products/magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+  "newName": "Magic Sauce 50% – Gorilla Cookies – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   344347
+  ]
+ },
+ {
+  "oldId": 61,
+  "oldRoute": "/sv/products/buds-thca-23-amnesia-5-gram",
+  "wooId": 344632,
+  "wooName": "Buds – THCA 23% – Amnesia – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 62,
+  "oldRoute": "/sv/products/buds-thca-18-strawberry-og-5-gram",
+  "wooId": 345777,
+  "wooName": "Buds – THCA 18% – Strawberry OG – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 193,
+   "newRoute": "/sv/products/nano-buds-strawberry-og-5-gram",
+   "name": "7% Nano11 – Strawberry OG – 5g",
+   "score": 0.33,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 63,
+  "oldRoute": "/sv/products/cart-cbd-60-tatra-hemp-05ml",
+  "wooId": 345992,
+  "wooName": "Cart – CBD 60% – Tatra Hemp – 0,5ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 253,
+   "newRoute": "/sv/products/cbd-510-cart-cookies-1ml",
+   "name": "CBD 60% – Cookies – 1ml",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 64,
+  "oldRoute": "/sv/products/buds-thca-20-white-widow-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 135,
+   "newRoute": "/sv/products/high-life-white-widow-sativa-buds-5-gram-hero-vapes",
+   "name": "High Life – White Widow – 5g",
+   "score": 0.27,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 65,
+  "oldRoute": "/sv/products/buds-thca-20-thcnm-10-black-widow-5-gram",
+  "wooId": 346750,
+  "wooName": "Buds – THCA 20% + THCNM 10% – Black Widow – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 66,
+  "oldRoute": "/sv/products/hash-thca-20-thcnm-20-malaga-magic-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 67,
+  "oldRoute": "/sv/products/hash-thca-40-northern-lights-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 158,
+   "newRoute": "/sv/products/hash-cbn-yellowstone-5-gram",
+   "name": "Hash – CBN+ 40% – Yellowstone – 5 gram",
+   "score": 0.29,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 68,
+  "oldRoute": "/sv/products/blommor-hhcpm-15-amnesia-5-gram",
+  "wooId": 346782,
+  "wooName": "Blommor – HHCPM 15% – Amnesia – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 69,
+  "oldRoute": "/sv/products/blommor-hhcpm-15-durban-poison-5-gram",
+  "wooId": 346787,
+  "wooName": "HHCPM 15% – Durban Poison – 5g",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 70,
+  "oldRoute": "/sv/products/vape-hhcpm-15-canntropy-2ml",
+  "wooId": 346788,
+  "wooName": "Vape – HHCPM 15% – Canntropy – 2ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 71,
+  "oldRoute": "/sv/products/vape-dual-cbd-57-hana-butter-amp-long-island-11ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 136,
+   "newRoute": "/sv/products/cbd-30-long-island-35g",
+   "name": "CBD 30% – Long Island – 3,5g",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 72,
+  "oldRoute": "/sv/products/vape-dual-cbd-56-blueberry-banana-amp-tequila-sunrise-11ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 73,
+  "oldRoute": "/sv/products/cart-cbd-60-cookies-1ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 253,
+   "newRoute": "/sv/products/cbd-510-cart-cookies-1ml",
+   "name": "CBD 60% – Cookies – 1ml",
+   "score": 0.8,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 74,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-tinky-winky-5-gram",
+  "wooId": 347282,
+  "wooName": "Magic Sauce 50% – Tinky Winky – 5g",
+  "newId": 146,
+  "newRoute": "/sv/products/blommor-magic-sauce-buds-tinky-winki-5-gram",
+  "newName": "Magic Sauce 50% – Tinky Winky – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   347282
+  ]
+ },
+ {
+  "oldId": 75,
+  "oldRoute": "/sv/products/buds-highlife-thcnm-gsc-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 76,
+  "oldRoute": "/sv/products/hash-thca-30-thcnm-10-royal-gorilla-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 77,
+  "oldRoute": "/sv/products/hash-magic-sauce-50-marrakesh-dream-5-gram",
+  "wooId": 347471,
+  "wooName": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+  "newId": 152,
+  "newRoute": "/sv/products/magic-sauce-hash-marrakesh-dream-5-gram",
+  "newName": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   347471
+  ]
+ },
+ {
+  "oldId": 78,
+  "oldRoute": "/sv/products/vape-thcx-19-core-2ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 164,
+   "newRoute": "/sv/products/heros-core-2ml-kollektion",
+   "name": "Hero’s Core 2ml – Kollektion",
+   "score": 0.25,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 79,
+  "oldRoute": "/sv/products/buds-cbd-purple-haze-5-gram",
+  "wooId": 347674,
+  "wooName": "Buds – CBD – Purple Haze – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 131,
+   "newRoute": "/sv/products/nano-buds-lemon-purple-5-gram",
+   "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 80,
+  "oldRoute": "/sv/products/buds-cbd-strawberry-haze-5-gram",
+  "wooId": 347676,
+  "wooName": "Buds – CBD – Strawberry Haze – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 81,
+  "oldRoute": "/sv/products/buds-cbd-trim-royal-10-gram",
+  "wooId": 347679,
+  "wooName": "Buds – CBD – Trim Royal – 10 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 127,
+   "newRoute": "/sv/products/cbd-buds-10-gram-russian-roulette",
+   "name": "CBD ≈15% – Russian Roulette – 10g",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 82,
+  "oldRoute": "/sv/products/buds-thca-23-hhcpm-12-wedding-cake-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": ""
+ },
+ {
+  "oldId": 83,
+  "oldRoute": "/sv/products/vape-10-oh-thc-95-canapuff-1ml",
+  "wooId": 348748,
+  "wooName": "Vape – 10-OH-THC 95% – Canapuff – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 199,
+   "newRoute": "/sv/products/thcv-vape-canapuff-1ml",
+   "name": "Vape – THC-V 79% – Canapuff – 1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 84,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-samurai-jack-5-gram",
+  "wooId": 348916,
+  "wooName": "Magic Sauce 50% – Samurai Jack – 5g",
+  "newId": 155,
+  "newRoute": "/sv/products/magic-sauce-buds-samurai-jack-magic-farmers-weed",
+  "newName": "Magic Sauce 50% – Samurai Jack – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   348916
+  ]
+ },
+ {
+  "oldId": 85,
+  "oldRoute": "/sv/products/prerolled-cbd-tequila-sunrise-1-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 161,
+   "newRoute": "/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+   "name": "CBD 30% – Tequila Sunrise – 3,5g",
+   "score": 0.3,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 86,
+  "oldRoute": "/sv/products/hash-cbn-40-yellowstone-5-gram",
+  "wooId": 349930,
+  "wooName": "Hash – CBN+ 40% – Yellowstone – 5 gram",
+  "newId": 158,
+  "newRoute": "/sv/products/hash-cbn-yellowstone-5-gram",
+  "newName": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   349930
+  ]
+ },
+ {
+  "oldId": 87,
+  "oldRoute": "/sv/products/vape-cbd-25-cbn-35-magic-farmers-2ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 259,
+   "newRoute": "/sv/products/cbd-vape-cbn-vape-magic-farmers",
+   "name": "CBD 25% + CBN 35% – 2ml",
+   "score": 1,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 88,
+  "oldRoute": "/sv/products/blommor-cbd-30-tequila-sunrise-35-gram",
+  "wooId": 350421,
+  "wooName": "CBD 30% – Tequila Sunrise – 3,5g",
+  "newId": 161,
+  "newRoute": "/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+  "newName": "CBD 30% – Tequila Sunrise – 3,5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   350421
+  ]
+ },
+ {
+  "oldId": 89,
+  "oldRoute": "/sv/products/prerolled-nanox-6-strawberry-sorbet-1-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 165,
+   "newRoute": "/sv/products/7-nano11-prerolled-1-gram",
+   "name": "7% Nano11 – Prerolled – 1 gram",
+   "score": 0.25,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 90,
+  "oldRoute": "/sv/products/cart-thc-a-45-faraoh-1ml",
+  "wooId": 350937,
+  "wooName": "Cart – THC-A 45% – Faraoh – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 251,
+   "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+   "name": "Vape – THC-B 35% – Faraoh – 1ml",
+   "score": 0.43,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 91,
+  "oldRoute": "/sv/products/vape-magic-sauce-99-2ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "OSÄKER (10A-match osäker)",
+  "note": "Magic Sauce 3.0 – 2ml",
+  "candidate": {
+   "newId": 261,
+   "newRoute": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+   "name": "Magic Sauce 3.0 – 2ml",
+   "score": 0.4,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 92,
+  "oldRoute": "/sv/products/cart-magic-sauce-99-1ml",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "OSÄKER (10A-match osäker)",
+  "note": "Magic Sauce 3.0 – 1ml",
+  "candidate": {
+   "newId": 262,
+   "newRoute": "/sv/products/cart-magic-sauce-magic-farmers-1ml",
+   "name": "Magic Sauce 3.0 – 1ml",
+   "score": 0.4,
+   "visibilityClass": "PUBLIC + LISTED"
+  }
+ },
+ {
+  "oldId": 93,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-khalifa-kush-5-gram",
+  "wooId": 351589,
+  "wooName": "Magic Sauce 50% – Khalifa Kush – 5g",
+  "newId": 168,
+  "newRoute": "/sv/products/magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+  "newName": "Magic Sauce 50% – Khalifa Kush – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   351589
+  ]
+ },
+ {
+  "oldId": 94,
+  "oldRoute": "/sv/products/buds-thca-22-kitty-indoor-5-gram",
+  "wooId": 351947,
+  "wooName": "Buds – THCA 22% – Kitty Indoor – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 95,
+  "oldRoute": "/sv/products/buds-thca-22-og-kush-small-buds-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "OSÄKER (10A-match osäker)",
+  "note": "Buds – THCA 24% – OG Kush – 5 gram"
+ },
+ {
+  "oldId": 96,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-donny-burger-5-gram",
+  "wooId": 357297,
+  "wooName": "Magic Sauce 50% – Donny Burger – 5g",
+  "newId": 172,
+  "newRoute": "/sv/products/magic-sauce-buds-donny-burger-5g",
+  "newName": "Magic Sauce 50% – Donny Burger – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   357297
+  ]
+ },
+ {
+  "oldId": 97,
+  "oldRoute": "/sv/products/buds-thca-25-bubbelgum-og-5-gram",
+  "wooId": 358598,
+  "wooName": "Buds – THCA 25% – Bubbelgum OG – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 98,
+  "oldRoute": "/sv/products/buds-thca-24-ice-indoor-5-gram",
+  "wooId": 358945,
+  "wooName": "Buds – THCA 24% – Ice indoor – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 99,
+  "oldRoute": "/sv/products/hash-thca-50-bubble-hash-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "OSÄKER (10A-match osäker)",
+  "note": "Hash – THCA 56,6% –  Bubble Hash – 5g",
+  "candidate": {
+   "newId": 241,
+   "newRoute": "/sv/products/thca-b-50-faraoh-1ml-5-pack",
+   "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+   "score": 0.38,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 100,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+  "wooId": 359731,
+  "wooName": "Magic Sauce 50% – Crazy Dog – 5g",
+  "newId": 175,
+  "newRoute": "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+  "newName": "Magic Sauce 50% – Crazy Dog – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   359731
+  ]
+ },
+ {
+  "oldId": 101,
+  "oldRoute": "/sv/products/vape-thc-a-50-live-resin-faraoh-2ml",
+  "wooId": 359751,
+  "wooName": "Vape – THC-A 50% Live Resin – Faraoh – 2ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 242,
+   "newRoute": "/sv/products/thca-b-vape-faraoh-2ml",
+   "name": "THCA-B 50% – Faraoh – 2ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 102,
+  "oldRoute": "/sv/products/vape-thc-a-50-live-resin-faraoh-1ml",
+  "wooId": 359792,
+  "wooName": "Vape – THC-A 50% Live Resin – Faraoh – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 251,
+   "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+   "name": "Vape – THC-B 35% – Faraoh – 1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 103,
+  "oldRoute": "/sv/products/hash-thca-25-la-mousse-5-gram",
+  "wooId": 360855,
+  "wooName": "Hash – THCA 25% – La Mousse – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 104,
+  "oldRoute": "/sv/products/buds-7-nano11-sweet-karma-popcorn-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 187,
+   "newRoute": "/sv/products/nano-buds-raspberry-popcorn-5-gram",
+   "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 105,
+  "oldRoute": "/sv/products/buds-7-nano11-amnezia-haze-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 180,
+   "newRoute": "/sv/products/buds-nano11-abacous-5-gram",
+   "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 106,
+  "oldRoute": "/sv/products/buds-7-nano11-super-skunk-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 180,
+   "newRoute": "/sv/products/buds-nano11-abacous-5-gram",
+   "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 107,
+  "oldRoute": "/sv/products/isolat-cbd-99-isolate-15-gram",
+  "wooId": 362373,
+  "wooName": "Isolat – CBD 99% – Isolate – 15 gram",
+  "newId": 185,
+  "newRoute": "/sv/products/isolat-cbd-isolate-15-gram",
+  "newName": "Isolat – CBD 99% – Isolate – 15 gram",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   362373
+  ]
+ },
+ {
+  "oldId": 108,
+  "oldRoute": "/sv/products/hash-cbd-15-primero-1-gram",
+  "wooId": 362377,
+  "wooName": "Hash – CBD 15% – Primero – 1 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 185,
+   "newRoute": "/sv/products/isolat-cbd-isolate-15-gram",
+   "name": "Isolat – CBD 99% – Isolate – 15 gram",
+   "score": 0.29,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 109,
+  "oldRoute": "/sv/products/hash-thca-60-piatella-hash-5-gram",
+  "wooId": 362379,
+  "wooName": "Hash – THCA 60% – Piatella Hash – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 110,
+  "oldRoute": "/sv/products/buds-thca-22-orange-small-buds-5-gram",
+  "wooId": 362382,
+  "wooName": "Buds – THCA 22% – Orange Small Buds – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 111,
+  "oldRoute": "/sv/products/buds-thca-24-zkittles-indoor-5-gram",
+  "wooId": 362831,
+  "wooName": "Buds – THCA 24% – Zkittles Indoor – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 112,
+  "oldRoute": "/sv/products/buds-7-nano11-raspberry-popcorn-5-gram",
+  "wooId": 363133,
+  "wooName": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+  "newId": 187,
+  "newRoute": "/sv/products/nano-buds-raspberry-popcorn-5-gram",
+  "newName": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   363133
+  ]
+ },
+ {
+  "oldId": 113,
+  "oldRoute": "/sv/products/buds-7-nano11-cali-grape-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 180,
+   "newRoute": "/sv/products/buds-nano11-abacous-5-gram",
+   "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 114,
+  "oldRoute": "/sv/products/buds-7-nano11-bruce-banner-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 180,
+   "newRoute": "/sv/products/buds-nano11-abacous-5-gram",
+   "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 115,
+  "oldRoute": "/sv/products/buds-7-nano11-apple-fritter-5-gram",
+  "wooId": null,
+  "newId": null,
+  "newRoute": null,
+  "status": "INGEN WOO-MOTSVARIGHET",
+  "note": "",
+  "candidate": {
+   "newId": 180,
+   "newRoute": "/sv/products/buds-nano11-abacous-5-gram",
+   "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+   "score": 0.5,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 116,
+  "oldRoute": "/sv/products/hash-thca-25-ketama-5-gram",
+  "wooId": 364381,
+  "wooName": "Hash – THCA 25% – Ketama – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ },
+ {
+  "oldId": 117,
+  "oldRoute": "/sv/products/buds-thca-25-raspberry-5-gram",
+  "wooId": 365079,
+  "wooName": "Buds – THCA 25% – Raspberry – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 187,
+   "newRoute": "/sv/products/nano-buds-raspberry-popcorn-5-gram",
+   "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+   "score": 0.25,
+   "visibilityClass": "PACKAGE/CHILD PRODUCT"
+  }
+ },
+ {
+  "oldId": 118,
+  "oldRoute": "/sv/products/cart-thc-a-50-live-resin-faraoh-1ml",
+  "wooId": 367533,
+  "wooName": "Cart – THC-A 50% Live Resin – Faraoh – 1ml",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)",
+  "candidate": {
+   "newId": 251,
+   "newRoute": "/sv/products/thc-b-vape-faraoh-1ml",
+   "name": "Vape – THC-B 35% – Faraoh – 1ml",
+   "score": 0.33,
+   "visibilityClass": "PUBLIC BUT DIRECT-ONLY"
+  }
+ },
+ {
+  "oldId": 119,
+  "oldRoute": "/sv/products/hash-magic-sauce-50-charas-5-gram",
+  "wooId": 369801,
+  "wooName": "Magic Sauce 50% – Charas – 5g",
+  "newId": 196,
+  "newRoute": "/sv/products/magic-sauce-hash-charas-5-gram",
+  "newName": "Magic Sauce 50% – Charas – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   369801
+  ]
+ },
+ {
+  "oldId": 120,
+  "oldRoute": "/sv/products/buds-magic-sauce-50-la-chupacabra-5-gram",
+  "wooId": 369804,
+  "wooName": "Magic Sauce 50% – La Chupacabra – 5g",
+  "newId": 198,
+  "newRoute": "/sv/products/magic-sauce-buds-la-chupacabra-5-gram",
+  "newName": "Magic Sauce 50% – La Chupacabra – 5g",
+  "visibilityClass": "PUBLIC + LISTED",
+  "status": "MAPPAD",
+  "skuEvidence": [
+   369804
+  ]
+ },
+ {
+  "oldId": 121,
+  "oldRoute": "/sv/products/buds-thca-23-amnesia-infused-5-gram",
+  "wooId": 370618,
+  "wooName": "Buds – THCA 23% – Amnesia Infused – 5 gram",
+  "newId": null,
+  "newRoute": null,
+  "status": "PRODUKTEN FINNS INTE LÄNGRE (borttagen ur Woo och NH)"
+ }
+]

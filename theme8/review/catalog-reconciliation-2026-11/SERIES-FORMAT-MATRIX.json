@@ -1,0 +1,1944 @@
+{
+ "schema": "task17-series-format/1",
+ "generated": "2026-11-03T13:00:06.999Z",
+ "rules": {
+  "volume": "1+1 ml räknas som totalt 2 ml i volymfiltret; namnet behåller 1+1 ml",
+  "d10": "D10 ≠ 10-OH-THC",
+  "preroll": "pre-roll = eget format; tillhör även Buds eller Hasch efter innehåll (variantens (Buds)/(Hash))"
+ },
+ "cells": [
+  {
+   "series": "Magic Sauce",
+   "format": "vape",
+   "total": 7,
+   "listed": 2,
+   "directOnly": 0,
+   "packageOrChild": 5,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 2,
+   "volumes": [
+    "5 ml",
+    "2 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "magic-farmers",
+    "magic-sauce",
+    "m-s-vapes"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/ms-vapes",
+    "h1": "MS Vapes",
+    "f1": 0.64,
+    "precision": 0.47,
+    "recall": 1,
+    "count": 15
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/ms-vapes",
+    "h1": "MS Vapes",
+    "f1": 0.24,
+    "precision": 0.13,
+    "recall": 1,
+    "count": 15
+   },
+   "theme8Route": "ms-vapes",
+   "products": [
+    {
+     "nhId": 169,
+     "slug": "ms-3-0-5ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 166,
+     "slug": "ms-3-0-5ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 260,
+     "slug": "magic-sauce-vape-5ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 149,
+     "slug": "ms-30-2ml-kollektion",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 147,
+     "slug": "ms-30-2ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 145,
+     "slug": "ms-30-2ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 261,
+     "slug": "vape-magic-sauce-magic-farmers-2ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "cart",
+   "total": 4,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 3,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [
+    "alla-cartridges",
+    "magic-farmers",
+    "magic-sauce",
+    "m-s-vapes"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/alla-cartridges",
+    "h1": "Alla Carts",
+    "f1": 0.62,
+    "precision": 0.44,
+    "recall": 1,
+    "count": 9
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/alla-cartridges",
+    "h1": "Alla Carts",
+    "f1": 0.2,
+    "precision": 0.11,
+    "recall": 1,
+    "count": 9
+   },
+   "theme8Route": "ms-carts",
+   "products": [
+    {
+     "nhId": 156,
+     "slug": "ms-30-1ml-kollektion",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 153,
+     "slug": "ms-30-1ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 151,
+     "slug": "ms-30-1ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 262,
+     "slug": "cart-magic-sauce-magic-farmers-1ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "refill",
+   "total": 2,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 1,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "10 ml"
+   ],
+   "wooListedIn": [
+    "magic-sauce",
+    "m-s-vapes"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/alla-liquids",
+    "h1": "Alla Liquids",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 2
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/alla-liquids",
+    "h1": "Alla Liquids",
+    "f1": 0.67,
+    "precision": 0.5,
+    "recall": 1,
+    "count": 2
+   },
+   "theme8Route": "alla-liquids (format)",
+   "products": [
+    {
+     "nhId": 186,
+     "slug": "ms-30-10ml-kollektion",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 252,
+     "slug": "magic-sauce-10ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "buds",
+   "total": 16,
+   "listed": 13,
+   "directOnly": 0,
+   "packageOrChild": 3,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 10,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "magic-farmers",
+    "magic-sauce",
+    "m-s-buds"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/ms-buds",
+    "h1": "MS Buds",
+    "f1": 0.86,
+    "precision": 0.76,
+    "recall": 1,
+    "count": 21
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/ms-buds",
+    "h1": "MS Buds",
+    "f1": 0.76,
+    "precision": 0.62,
+    "recall": 1,
+    "count": 21
+   },
+   "theme8Route": "ms-buds",
+   "products": [
+    {
+     "nhId": 198,
+     "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 201,
+     "slug": "magic-sauce-buds-titty-sprinkles-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 168,
+     "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 175,
+     "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 231,
+     "slug": "magic-sauce-buds-grape-gasoline",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 226,
+     "slug": "magic-sauce-buds-london-lobster-ersatt-thc-a",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 221,
+     "slug": "magic-sauce-buds-kowa-bunga-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 203,
+     "slug": "magic-sauce-buds-thca-ersatt-john-lemon-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 173,
+     "slug": "ms50-5g-10-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 170,
+     "slug": "ms50-5g-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 167,
+     "slug": "ms50-5g-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 146,
+     "slug": "blommor-magic-sauce-buds-tinky-winki-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 155,
+     "slug": "magic-sauce-buds-samurai-jack-magic-farmers-weed",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 172,
+     "slug": "magic-sauce-buds-donny-burger-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 134,
+     "slug": "magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 132,
+     "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "hasch",
+   "total": 4,
+   "listed": 3,
+   "directOnly": 1,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 2,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "hasch",
+    "magic-farmers",
+    "magic-sauce",
+    "ms-hash",
+    "m-s-buds"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/ms-hash",
+    "h1": "MS Hash",
+    "f1": 0.44,
+    "precision": 0.4,
+    "recall": 0.5,
+    "count": 5
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/ms-hash",
+    "h1": "MS Hash",
+    "f1": 0.5,
+    "precision": 0.4,
+    "recall": 0.67,
+    "count": 5
+   },
+   "theme8Route": "ms-hash",
+   "products": [
+    {
+     "nhId": 228,
+     "slug": "magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 188,
+     "slug": "magic-sauce-hash-kitkat-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 196,
+     "slug": "magic-sauce-hash-charas-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 152,
+     "slug": "magic-sauce-hash-marrakesh-dream-5-gram",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "pre-roll",
+   "total": 3,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 2,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "1 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "hasch",
+    "magic-farmers",
+    "magic-sauce",
+    "m-s-buds",
+    "ms-hash"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/ms-hash",
+    "h1": "MS Hash",
+    "f1": 0.75,
+    "precision": 0.6,
+    "recall": 1,
+    "count": 5
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/ms-hash",
+    "h1": "MS Hash",
+    "f1": 0.33,
+    "precision": 0.2,
+    "recall": 1,
+    "count": 5
+   },
+   "theme8Route": "magic-sauce (hubbens Pre-rolls-format)",
+   "products": [
+    {
+     "nhId": 157,
+     "slug": "magic-sauce-50-pre-rolls-1g-10-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 154,
+     "slug": "magic-sauce-50-pre-rolls-1g-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 257,
+     "slug": "magic-sauce-pre-rolls-1g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Magic Sauce",
+   "format": "kit",
+   "total": 1,
+   "listed": 0,
+   "directOnly": 0,
+   "packageOrChild": 1,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/ms-carts",
+    "h1": "MS Carts",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 1
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": null,
+   "products": [
+    {
+     "nhId": 205,
+     "slug": "startpaket-magic-sauce-batteri",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "THCaB",
+   "format": "vape",
+   "total": 3,
+   "listed": 0,
+   "directOnly": 1,
+   "packageOrChild": 2,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "2 ml"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/thcba-vapes",
+    "h1": "THCbA Vapes",
+    "f1": 0.36,
+    "precision": 0.25,
+    "recall": 0.67,
+    "count": 8
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": "thcab-vapes",
+   "products": [
+    {
+     "nhId": 239,
+     "slug": "thca-b-50-faraoh-2ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 238,
+     "slug": "thca-b-50-faraoh-2ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 242,
+     "slug": "thca-b-vape-faraoh-2ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "THCaB",
+   "format": "cart",
+   "total": 4,
+   "listed": 0,
+   "directOnly": 1,
+   "packageOrChild": 3,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/thca-b",
+    "h1": "THCA-B",
+    "f1": 0.5,
+    "precision": 0.5,
+    "recall": 0.5,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": "thcab-vapes (carten ligger där)",
+   "products": [
+    {
+     "nhId": 256,
+     "slug": "thca-b-faraoh-carts-1ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 150,
+     "slug": "thca-b-50-faraoh-1ml-10-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 241,
+     "slug": "thca-b-50-faraoh-1ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 240,
+     "slug": "thca-b-50-faraoh-1ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "THCaB",
+   "format": "kit",
+   "total": 1,
+   "listed": 0,
+   "directOnly": 0,
+   "packageOrChild": 1,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/bundles",
+    "h1": "Bundles",
+    "f1": 0.67,
+    "precision": 0.5,
+    "recall": 1,
+    "count": 2
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": null,
+   "products": [
+    {
+     "nhId": 246,
+     "slug": "startpaket-thca-b-batteri",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "THCbA",
+   "format": "vape",
+   "total": 4,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 3,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "2 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "faraoh",
+    "thcba",
+    "thcba-vapes"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/thcba",
+    "h1": "THCbA",
+    "f1": 0.67,
+    "precision": 0.5,
+    "recall": 1,
+    "count": 8
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/faraoh",
+    "h1": "Faraoh",
+    "f1": 0.67,
+    "precision": 0.5,
+    "recall": 1,
+    "count": 2
+   },
+   "theme8Route": "thcba-vapes",
+   "products": [
+    {
+     "nhId": 236,
+     "slug": "thcba-vape-faraoh-2ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 143,
+     "slug": "faraoh-thca-b-hela-kollektionen",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 142,
+     "slug": "faraoh-thca-b-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 140,
+     "slug": "faraoh-thca-b-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "D10",
+   "format": "vape",
+   "total": 3,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 2,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "2 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "d10",
+    "d10-vapes",
+    "magic-farmers"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/d10-vapes",
+    "h1": "D10 Vapes",
+    "f1": 0.5,
+    "precision": 1,
+    "recall": 0.33,
+    "count": 1
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/d10-vapes",
+    "h1": "D10 Vapes",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 1
+   },
+   "theme8Route": "d10-vapes",
+   "products": [
+    {
+     "nhId": 245,
+     "slug": "d10-2ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 243,
+     "slug": "d10-2ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 254,
+     "slug": "d10-vape-magic-farmers",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "D10",
+   "format": "buds",
+   "total": 4,
+   "listed": 4,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "d10",
+    "d10-buds",
+    "magic-farmers"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/d10-buds",
+    "h1": "D10 Buds",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/d10-buds",
+    "h1": "D10 Buds",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "theme8Route": "d10-buds",
+   "products": [
+    {
+     "nhId": 223,
+     "slug": "d10-buds-white-widow-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 214,
+     "slug": "d10-buds-skywalker-og-magic-farmers-thcx",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 211,
+     "slug": "d10-buds-porn-star-og-magic-farmers",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 209,
+     "slug": "d10-buds-cosmic-trip-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "D10",
+   "format": "hasch",
+   "total": 4,
+   "listed": 4,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 2,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "hasch",
+    "d10",
+    "d10-hash",
+    "magic-farmers"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/d10-hash",
+    "h1": "D10 Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/d10-hash",
+    "h1": "D10 Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "theme8Route": "d10-hash",
+   "products": [
+    {
+     "nhId": 235,
+     "slug": "d10-hash-purple-storm-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 234,
+     "slug": "d10-hash-blue-diamond-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 218,
+     "slug": "d10-hash-silk-road-magic-farmers-thcx",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 216,
+     "slug": "d10-hash-rosinella-magic-farmers",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Nano-11",
+   "format": "buds",
+   "total": 18,
+   "listed": 4,
+   "directOnly": 0,
+   "packageOrChild": 14,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 4,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "nano-11",
+    "nano11-blommor",
+    "tatra-hemp"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/nano11-blommor",
+    "h1": "Nano11 Buds",
+    "f1": 0.92,
+    "precision": 0.86,
+    "recall": 1,
+    "count": 21
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/nano11-blommor",
+    "h1": "Nano11 Buds",
+    "f1": 0.32,
+    "precision": 0.19,
+    "recall": 1,
+    "count": 21
+   },
+   "theme8Route": "nano11-blommor",
+   "products": [
+    {
+     "nhId": 197,
+     "slug": "buds-nanno-11-critical-berries",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 194,
+     "slug": "nano-11-buds-thca-substitut-royal-og",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 191,
+     "slug": "nano-buds-ersatt-thca-bubba-kush-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 184,
+     "slug": "nano11-buds-10-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 181,
+     "slug": "nano11-buds-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 179,
+     "slug": "nano11-buds-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 213,
+     "slug": "nano11-naranja-popcorn-buds-5g",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 210,
+     "slug": "nano11-buds-godzilla-5g",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 208,
+     "slug": "nano-11-buds-orange-zkittlez-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 206,
+     "slug": "nano-11-buds-lemon-mandarine-5g",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 183,
+     "slug": "nano11-lemon-sorbet-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 193,
+     "slug": "nano-buds-strawberry-og-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 192,
+     "slug": "nano-buds-gary-payton-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 190,
+     "slug": "buds-nano11-crystal-snow-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 187,
+     "slug": "nano-buds-raspberry-popcorn-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 131,
+     "slug": "nano-buds-lemon-purple-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 177,
+     "slug": "buds-nano11-snow-white-popcorn-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    },
+    {
+     "nhId": 180,
+     "slug": "buds-nano11-abacous-5-gram",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "Nano-11",
+   "format": "hasch",
+   "total": 1,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "hasch",
+    "nano-11",
+    "nano11-hash",
+    "tatra-hemp"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/nano11-hash",
+    "h1": "Nano11 Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 1
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/nano11-hash",
+    "h1": "Nano11 Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 1
+   },
+   "theme8Route": "– (nano11-hash finns, ingen headerlänk)",
+   "products": [
+    {
+     "nhId": 200,
+     "slug": "nano-hash-zkittlez-mousse-ersatt-thca-hash",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Nano-11",
+   "format": "pre-roll",
+   "total": 3,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 2,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "1 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "nano-11",
+    "nano11-blommor",
+    "tatra-hemp"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/nano11-blommor",
+    "h1": "Nano11 Buds",
+    "f1": 0.25,
+    "precision": 0.14,
+    "recall": 1,
+    "count": 21
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/nano11-blommor",
+    "h1": "Nano11 Buds",
+    "f1": 0.09,
+    "precision": 0.05,
+    "recall": 1,
+    "count": 21
+   },
+   "theme8Route": "nano-11 (hubbens Pre-rolls-format)",
+   "products": [
+    {
+     "nhId": 163,
+     "slug": "nano-11-pre-rolls-1g-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 160,
+     "slug": "nano-11-pre-rolls-1g-10-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 165,
+     "slug": "7-nano11-prerolled-1-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Core",
+   "format": "vape",
+   "total": 4,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 3,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "2 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "core-vapes",
+    "hero-vapes"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/core-vapes",
+    "h1": "Core Vapes",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/core-vapes",
+    "h1": "Core Vapes",
+    "f1": 0.4,
+    "precision": 0.25,
+    "recall": 1,
+    "count": 4
+   },
+   "theme8Route": "core-vapes",
+   "products": [
+    {
+     "nhId": 164,
+     "slug": "heros-core-2ml-kollektion",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 162,
+     "slug": "heros-core-2ml-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 159,
+     "slug": "heros-core-2ml-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 255,
+     "slug": "thc-x-vape-hero-core-2ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "Core",
+   "format": "buds",
+   "total": 4,
+   "listed": 0,
+   "directOnly": 2,
+   "packageOrChild": 2,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/high-life-buds",
+    "h1": "High Life Buds",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": "– (bara sökbara i Woo)",
+   "products": [
+    {
+     "nhId": 176,
+     "slug": "high-life-5g-5-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 174,
+     "slug": "high-life-5g-3-pack",
+     "cls": "PACKAGE/CHILD PRODUCT",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 204,
+     "slug": "high-life-gelato-hero-vapes-core-5g",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 135,
+     "slug": "high-life-white-widow-sativa-buds-5-gram-hero-vapes",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "Core",
+   "format": "hasch",
+   "total": 3,
+   "listed": 3,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 3,
+   "volumes": [
+    "5 g"
+   ],
+   "wooListedIn": [
+    "hasch",
+    "hero-vapes",
+    "high-life-hash",
+    "thcx",
+    "thcx-hash"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/high-life-hash",
+    "h1": "High Life Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 3
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/high-life-hash",
+    "h1": "High Life Hash",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 3
+   },
+   "theme8Route": "high-life-hash",
+   "products": [
+    {
+     "nhId": 139,
+     "slug": "high-life-hash-northern-lights-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 137,
+     "slug": "high-life-hash-malaga-magic-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 148,
+     "slug": "el-gringo-hash-strawberry-shortcake-5g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "THCB (legacy)",
+   "format": "vape",
+   "total": 1,
+   "listed": 0,
+   "directOnly": 1,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/thcb-vapes",
+    "h1": "THCB Vapes",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 1
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": null,
+   "products": [
+    {
+     "nhId": 251,
+     "slug": "thc-b-vape-faraoh-1ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "THCV",
+   "format": "vape",
+   "total": 4,
+   "listed": 1,
+   "directOnly": 3,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "1 ml",
+    "2 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "cbd-group",
+    "thcv",
+    "thcv-vape"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/thcv-vape",
+    "h1": "THCV Vapes",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 4
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/cbd-group",
+    "h1": "CBD Group",
+    "f1": 0.67,
+    "precision": 0.5,
+    "recall": 1,
+    "count": 2
+   },
+   "theme8Route": "thcv-vape (legacy-länk i headern)",
+   "products": [
+    {
+     "nhId": 202,
+     "slug": "thcv-vape-canntropy-1ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 233,
+     "slug": "thcv-vape-euphoria-2ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 220,
+     "slug": "thcv-vape-cbd-group-2ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 199,
+     "slug": "thcv-vape-canapuff-1ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "vape",
+   "total": 9,
+   "listed": 7,
+   "directOnly": 2,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 5,
+   "volumes": [
+    "2 ml (1+1)",
+    "2 ml",
+    "1 ml"
+   ],
+   "wooListedIn": [
+    "alla-vapes",
+    "cbd",
+    "cbd-vapes",
+    "cookies",
+    "cbn",
+    "cbn-vapes",
+    "h4cbd",
+    "h4cbd-vape",
+    "cbd-group"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/cbd-vapes",
+    "h1": "CBD Vapes",
+    "f1": 0.67,
+    "precision": 0.83,
+    "recall": 0.56,
+    "count": 6
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/cbd-vapes",
+    "h1": "CBD Vapes",
+    "f1": 0.62,
+    "precision": 0.67,
+    "recall": 0.57,
+    "count": 6
+   },
+   "theme8Route": "cbd-vapes, h4cbd-vape, cbn (CBD-menyn)",
+   "products": [
+    {
+     "nhId": 215,
+     "slug": "cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 259,
+     "slug": "cbd-vape-cbn-vape-magic-farmers",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 144,
+     "slug": "cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 141,
+     "slug": "cookies-cbd-vape-adios-mother-f-miami-mint",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 189,
+     "slug": "h4cbd-vape-canapuff-1ml",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 225,
+     "slug": "cbd-vape-1ml-46-hazey",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 207,
+     "slug": "h4cbd-vape-canntropy-1ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 195,
+     "slug": "cbn-vape-canapuff-1ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 182,
+     "slug": "h4cbd-vape-cbd-group-2ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "cart",
+   "total": 1,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "1 ml"
+   ],
+   "wooListedIn": [
+    "alla-cartridges",
+    "cbd",
+    "cbd-vapes",
+    "cookies"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/cbd-vapes",
+    "h1": "CBD Vapes",
+    "f1": 0.29,
+    "precision": 0.17,
+    "recall": 1,
+    "count": 6
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/cbd-vapes",
+    "h1": "CBD Vapes",
+    "f1": 0.29,
+    "precision": 0.17,
+    "recall": 1,
+    "count": 6
+   },
+   "theme8Route": "– (ingen CBD-carts-kategori)",
+   "products": [
+    {
+     "nhId": 253,
+     "slug": "cbd-510-cart-cookies-1ml",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "buds",
+   "total": 13,
+   "listed": 12,
+   "directOnly": 1,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 8,
+   "volumes": [
+    "3.5 g",
+    "10 g",
+    "5 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "cbd",
+    "cbd-buds",
+    "cookies",
+    "cbn",
+    "magic-farmers",
+    "h4cbd",
+    "h4cbd-buds"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/cbd-buds-1",
+    "h1": "CBD Buds",
+    "f1": 0.72,
+    "precision": 0.75,
+    "recall": 0.69,
+    "count": 12
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/cbd-buds-1",
+    "h1": "CBD Buds",
+    "f1": 0.75,
+    "precision": 0.75,
+    "recall": 0.75,
+    "count": 12
+   },
+   "theme8Route": "cbd-buds-1 (CBD-menyn)",
+   "products": [
+    {
+     "nhId": 138,
+     "slug": "cookies-buds-cbd-hawaiian-rain",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 136,
+     "slug": "cbd-30-long-island-35g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 133,
+     "slug": "cbd-cookies-adios-m-f",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 232,
+     "slug": "cbd-buds-cookies-hollywood",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 230,
+     "slug": "cookies-cbd-buds-blue-raz",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 128,
+     "slug": "cbd-buds-triple-scoop-cookies-cannabis",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 127,
+     "slug": "cbd-buds-10-gram-russian-roulette",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 161,
+     "slug": "cbd-buds-cookies-tequila-sunrise-35-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 130,
+     "slug": "cookies-cannabis-buds-cbd-cereal-milk-35-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 129,
+     "slug": "cbn-buds-malibu-skittelz",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 249,
+     "slug": "blommor-cbg9-60-snow-ice",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 124,
+     "slug": "h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 229,
+     "slug": "cbn-buds-magic-farmers-great-white-shark-1-25-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "hasch",
+   "total": 3,
+   "listed": 3,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "100 g",
+    "5 g"
+   ],
+   "wooListedIn": [
+    "hasch",
+    "cbd",
+    "cbd-buds",
+    "cookies",
+    "blommor-buds",
+    "cbn",
+    "magic-farmers",
+    "h4cbd",
+    "h4cbd-hasch"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/h4cbd-hasch",
+    "h1": "H4CBD Hasch",
+    "f1": 0.5,
+    "precision": 1,
+    "recall": 0.33,
+    "count": 1
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/h4cbd-hasch",
+    "h1": "H4CBD Hasch",
+    "f1": 0.5,
+    "precision": 1,
+    "recall": 0.33,
+    "count": 1
+   },
+   "theme8Route": "h4cbd-hasch (CBD-menyn)",
+   "products": [
+    {
+     "nhId": 227,
+     "slug": "cbd-hash-london-pound-cake-100g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 158,
+     "slug": "hash-cbn-yellowstone-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    },
+    {
+     "nhId": 125,
+     "slug": "hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "pre-roll",
+   "total": 1,
+   "listed": 1,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 1,
+   "volumes": [
+    "1 g"
+   ],
+   "wooListedIn": [
+    "blommor-buds",
+    "cbd",
+    "cbd-buds",
+    "cookies"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/cbd-buds-1",
+    "h1": "CBD Buds",
+    "f1": 0.15,
+    "precision": 0.08,
+    "recall": 1,
+    "count": 12
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/cbd-buds-1",
+    "h1": "CBD Buds",
+    "f1": 0.15,
+    "precision": 0.08,
+    "recall": 1,
+    "count": 12
+   },
+   "theme8Route": "– (ingen pre-roll-kategori)",
+   "products": [
+    {
+     "nhId": 258,
+     "slug": "cbd-prerolled-cookies-1g",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "batteri",
+   "total": 7,
+   "listed": 5,
+   "directOnly": 2,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 5,
+   "volumes": [],
+   "wooListedIn": [
+    "pennor"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/pennor",
+    "h1": "Pennor/Batteri",
+    "f1": 0.88,
+    "precision": 0.78,
+    "recall": 1,
+    "count": 9
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/pennor",
+    "h1": "Pennor/Batteri",
+    "f1": 0.71,
+    "precision": 0.56,
+    "recall": 1,
+    "count": 9
+   },
+   "theme8Route": "pennor",
+   "products": [
+    {
+     "nhId": 250,
+     "slug": "ccell-stylo-vape-batteri-510",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    },
+    {
+     "nhId": 247,
+     "slug": "ccell-sandwave-vape-batteri-510",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 244,
+     "slug": "ccell-fino-vape-batteri-510",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    },
+    {
+     "nhId": 237,
+     "slug": "ccell-m3b-vape-batteri-510",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    },
+    {
+     "nhId": 212,
+     "slug": "ccell-palm-pro-vape-batteri-510-ganga",
+     "cls": "PUBLIC + LISTED",
+     "stock": "delvis"
+    },
+    {
+     "nhId": 178,
+     "slug": "ccell-m3-plus-vape-batteri-510",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 171,
+     "slug": "ccell-m4-penna",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "merch",
+   "total": 6,
+   "listed": 6,
+   "directOnly": 0,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 5,
+   "volumes": [],
+   "wooListedIn": [
+    "cookies",
+    "merch"
+   ],
+   "nhBestCategory": {
+    "route": "/sv/categories/merch",
+    "h1": "Merch",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 6
+   },
+   "nhBestCategoryListedOnly": {
+    "route": "/sv/categories/merch",
+    "h1": "Merch",
+    "f1": 1,
+    "precision": 1,
+    "recall": 1,
+    "count": 6
+   },
+   "theme8Route": "merch (ingen headerlänk)",
+   "products": [
+    {
+     "nhId": 224,
+     "slug": "cookies-v2-large-stackables",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 222,
+     "slug": "cookies-original-snapback",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 219,
+     "slug": "cookies-original-beanie",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 248,
+     "slug": "cookies-medium-metal-tray",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 217,
+     "slug": "cookies-c-bite-buds-tray",
+     "cls": "PUBLIC + LISTED",
+     "stock": "i lager"
+    },
+    {
+     "nhId": 123,
+     "slug": "merch-nyckelring-hazey",
+     "cls": "PUBLIC + LISTED",
+     "stock": "slut"
+    }
+   ]
+  },
+  {
+   "series": "(ingen serie: CBD/H4CBD/CBN/CBG m.fl.)",
+   "format": "isolat",
+   "total": 1,
+   "listed": 0,
+   "directOnly": 1,
+   "packageOrChild": 0,
+   "hidden": 0,
+   "uncertain": 0,
+   "inStockListed": 0,
+   "volumes": [
+    "15 g"
+   ],
+   "wooListedIn": [],
+   "nhBestCategory": {
+    "route": "/sv/categories/cbd-buds-1",
+    "h1": "CBD Buds",
+    "f1": 0.15,
+    "precision": 0.08,
+    "recall": 1,
+    "count": 12
+   },
+   "nhBestCategoryListedOnly": null,
+   "theme8Route": null,
+   "products": [
+    {
+     "nhId": 185,
+     "slug": "isolat-cbd-isolate-15-gram",
+     "cls": "PUBLIC BUT DIRECT-ONLY",
+     "stock": "slut"
+    }
+   ]
+  }
+ ]
+}

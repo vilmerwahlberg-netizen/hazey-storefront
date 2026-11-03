@@ -1,0 +1,806 @@
+{
+ "categories": [
+  {
+   "at": "05-header.js:21",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:23",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:24",
+   "route": "/sv/categories/blommor-buds",
+   "exists": true,
+   "count": 64,
+   "h1": "Alla Buds",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:25",
+   "route": "/sv/categories/hasch",
+   "exists": true,
+   "count": 19,
+   "h1": "Allt Hasch",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:26",
+   "route": "/sv/categories/h4cbd",
+   "exists": true,
+   "count": 5,
+   "h1": "H4CBD",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:288",
+   "route": "/sv/categories/m-s-vapes",
+   "exists": true,
+   "count": 0,
+   "h1": "M.S Vapes",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:288",
+   "route": "/sv/categories/alla-vapes?serie=magic-sauce",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:291",
+   "route": "/sv/categories/thca-vapes",
+   "exists": true,
+   "count": 0,
+   "h1": "THCA Vapes",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:294",
+   "route": "/sv/categories/thcb-vapes",
+   "exists": true,
+   "count": 1,
+   "h1": "THCB Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:298",
+   "route": "/sv/categories/alla-vapes?filters=Serie_Core",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "DÖD (filtret finns inte längre)"
+  },
+  {
+   "at": "05-header.js:301",
+   "route": "/sv/categories/10-oh-thc-vapes",
+   "exists": true,
+   "count": 0,
+   "h1": "10-OH-THC Vapes",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:305",
+   "route": "/sv/categories/thcv-vape",
+   "exists": true,
+   "count": 4,
+   "h1": "THCV Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:306",
+   "route": "/sv/categories/hhcpm-vapes",
+   "exists": true,
+   "count": 0,
+   "h1": "HHCPM Vapes",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:322",
+   "route": "/sv/categories/alla-cartridges",
+   "exists": true,
+   "count": 9,
+   "h1": "Alla Carts",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:323",
+   "route": "/sv/categories/pennor",
+   "exists": true,
+   "count": 9,
+   "h1": "Pennor/Batteri",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:330",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:350",
+   "route": "/sv/categories/m-s-buds",
+   "exists": true,
+   "count": 0,
+   "h1": "M.S Buds",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:353",
+   "route": "/sv/categories/thca-blommor",
+   "exists": true,
+   "count": 0,
+   "h1": "THCA Buds",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:364",
+   "route": "/sv/categories/nano11-blommor",
+   "exists": true,
+   "count": 21,
+   "h1": "Nano11 Buds",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:367",
+   "route": "/sv/categories/hhcpm-blommor",
+   "exists": true,
+   "count": 0,
+   "h1": "HHCPM Buds",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:368",
+   "route": "/sv/categories/thcnm-blommor",
+   "exists": true,
+   "count": 0,
+   "h1": "THCNM Buds",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:374",
+   "route": "/sv/categories/blommor-buds",
+   "exists": true,
+   "count": 64,
+   "h1": "Alla Buds",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:388",
+   "route": "/sv/categories/blommor-buds",
+   "exists": true,
+   "count": 64,
+   "h1": "Alla Buds",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:408",
+   "route": "/sv/categories/hasch?filters=Serie_Magic%20Sauce",
+   "exists": true,
+   "count": 19,
+   "h1": "Allt Hasch",
+   "status": "DÖD (filtret finns inte längre)"
+  },
+  {
+   "at": "05-header.js:411",
+   "route": "/sv/categories/thca-hash",
+   "exists": true,
+   "count": 0,
+   "h1": "THCA Hash",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:424",
+   "route": "/sv/categories/thcnm-hash",
+   "exists": true,
+   "count": 0,
+   "h1": "THCNM Hash",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:430",
+   "route": "/sv/categories/hasch",
+   "exists": true,
+   "count": 19,
+   "h1": "Allt Hasch",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:462",
+   "route": "/sv/categories/h4cbd",
+   "exists": true,
+   "count": 5,
+   "h1": "H4CBD",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:468",
+   "route": "/sv/categories/cbn",
+   "exists": true,
+   "count": 8,
+   "h1": "CBN",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:478",
+   "route": "/sv/categories/cbd-buds",
+   "exists": true,
+   "count": 0,
+   "h1": "CBD Buds",
+   "status": "TOM"
+  },
+  {
+   "at": "05-header.js:481",
+   "route": "/sv/categories/h4cbd-hasch",
+   "exists": true,
+   "count": 1,
+   "h1": "H4CBD Hasch",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:489",
+   "route": "/sv/categories/h4cbd-vape",
+   "exists": true,
+   "count": 3,
+   "h1": "H4CBD Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "05-header.js:501",
+   "route": "/sv/categories/h4cbd",
+   "exists": true,
+   "count": 5,
+   "h1": "H4CBD",
+   "status": "OK"
+  },
+  {
+   "at": "06-catalog-map.js:50",
+   "route": "/sv/categories/magic-sauce",
+   "exists": true,
+   "count": 39,
+   "h1": "Magic Sauce",
+   "status": "OK"
+  },
+  {
+   "at": "06-catalog-map.js:51",
+   "route": "/sv/categories/thca",
+   "exists": true,
+   "count": 0,
+   "h1": "THC-A",
+   "status": "TOM"
+  },
+  {
+   "at": "06-catalog-map.js:52",
+   "route": "/sv/categories/thcb",
+   "exists": true,
+   "count": 1,
+   "h1": "THC-B",
+   "status": "OK"
+  },
+  {
+   "at": "06-catalog-map.js:55",
+   "route": "/sv/categories/core",
+   "exists": true,
+   "count": 0,
+   "h1": "Core",
+   "status": "TOM"
+  },
+  {
+   "at": "06-catalog-map.js:61",
+   "route": "/sv/categories/10-oh-thc",
+   "exists": true,
+   "count": 0,
+   "h1": "10-OH-THC",
+   "status": "TOM"
+  },
+  {
+   "at": "06-catalog-map.js:62",
+   "route": "/sv/categories/nano-11",
+   "exists": true,
+   "count": 22,
+   "h1": "Nano-11",
+   "status": "OK"
+  },
+  {
+   "at": "06-catalog-map.js:63",
+   "route": "/sv/categories/thcv",
+   "exists": true,
+   "count": 4,
+   "h1": "THC-V",
+   "status": "OK"
+  },
+  {
+   "at": "06-catalog-map.js:64",
+   "route": "/sv/categories/hhcpm",
+   "exists": true,
+   "count": 0,
+   "h1": "HHCPM",
+   "status": "TOM"
+  },
+  {
+   "at": "06-catalog-map.js:65",
+   "route": "/sv/categories/thcnm",
+   "exists": true,
+   "count": 0,
+   "h1": "THC-NM",
+   "status": "TOM"
+  },
+  {
+   "at": "10-hero.js:75",
+   "route": "/sv/categories/thcb",
+   "exists": true,
+   "count": 1,
+   "h1": "THC-B",
+   "status": "OK"
+  },
+  {
+   "at": "10-hero.js:76",
+   "route": "/sv/categories/magic-sauce",
+   "exists": true,
+   "count": 39,
+   "h1": "Magic Sauce",
+   "status": "OK"
+  },
+  {
+   "at": "10-hero.js:78",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "40-catalog.js:7",
+   "route": "/sv/categories/magic-sauce",
+   "exists": true,
+   "count": 39,
+   "h1": "Magic Sauce",
+   "status": "OK"
+  },
+  {
+   "at": "40-catalog.js:8",
+   "route": "/sv/categories/thcb",
+   "exists": true,
+   "count": 1,
+   "h1": "THC-B",
+   "status": "OK"
+  },
+  {
+   "at": "40-catalog.js:9",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "40-catalog.js:10",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "40-catalog.js:11",
+   "route": "/sv/categories/thca",
+   "exists": true,
+   "count": 0,
+   "h1": "THC-A",
+   "status": "TOM"
+  },
+  {
+   "at": "40-catalog.js:332",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "45-series-education.js:33",
+   "route": "/sv/categories/thca?filters=Varum%C3%A4rke_Faraoh",
+   "exists": true,
+   "count": 0,
+   "h1": "THC-A",
+   "status": "DÖD (filtret finns inte längre)"
+  },
+  {
+   "at": "45-series-education.js:35",
+   "route": "/sv/categories/thcb?filters=Varum%C3%A4rke_Faraoh",
+   "exists": true,
+   "count": 1,
+   "h1": "THC-B",
+   "status": "DÖD (filtret finns inte längre)"
+  },
+  {
+   "at": "45-series-education.js:37",
+   "route": "/sv/categories/magic-sauce",
+   "exists": true,
+   "count": 39,
+   "h1": "Magic Sauce",
+   "status": "OK"
+  },
+  {
+   "at": "45-series-education.js:39",
+   "route": "/sv/categories/nano-11",
+   "exists": true,
+   "count": 22,
+   "h1": "Nano-11",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/thca",
+   "exists": true,
+   "count": 0,
+   "h1": "THC-A",
+   "status": "TOM"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/blommor-buds",
+   "exists": true,
+   "count": 64,
+   "h1": "Alla Buds",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/hasch",
+   "exists": true,
+   "count": 19,
+   "h1": "Allt Hasch",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/h4cbd",
+   "exists": true,
+   "count": 5,
+   "h1": "H4CBD",
+   "status": "OK"
+  },
+  {
+   "at": "60-social-footer.js:7",
+   "route": "/sv/categories/magic-sauce",
+   "exists": true,
+   "count": 39,
+   "h1": "Magic Sauce",
+   "status": "OK"
+  },
+  {
+   "at": "80-category.js:1137",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "80-category.js:1159",
+   "route": "/sv/categories/alla-vapes",
+   "exists": true,
+   "count": 37,
+   "h1": "Alla Vapes",
+   "status": "OK"
+  },
+  {
+   "at": "84-cart.js:704",
+   "route": "/sv/categories/alla-produkter?page=",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "87-shop.js:5",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "88-pages.js:136",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "88a-bestsellers.js:11",
+   "route": "/sv/categories/alla-produkter?sort=popular",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "88a-bestsellers.js:99",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "88a-bestsellers.js:180",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  },
+  {
+   "at": "89-service.js:583",
+   "route": "/sv/categories/alla-produkter",
+   "exists": true,
+   "count": 140,
+   "h1": "Alla produkter",
+   "status": "OK"
+  }
+ ],
+ "products": [
+  {
+   "at": "05-header.js:341",
+   "slug": "vape-magic-sauce-99-2ml",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "05-header.js:397",
+   "slug": "buds-thca-22-orange-small-buds-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "05-header.js:444",
+   "slug": "hash-thca-50-bubble-hash-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "05-header.js:510",
+   "slug": "blommor-cbd-30-tequila-sunrise-35-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:35",
+   "slug": "vape-magic-sauce-99-2ml",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:37",
+   "slug": "ccell-m4-vape-batteri-510",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:39",
+   "slug": "buds-cbd-30-triple-scoop-35-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:41",
+   "slug": "cart-magic-sauce-99-1ml",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:43",
+   "slug": "ccell-m3-plus-vape-batteri-510",
+   "status": "OK"
+  },
+  {
+   "at": "55-reviews.js:45",
+   "slug": "buds-thca-24-zkittles-indoor-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:47",
+   "slug": "vape-thc-a-50-live-resin-faraoh-1ml",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:49",
+   "slug": "buds-magic-sauce-50-samurai-jack-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "55-reviews.js:51",
+   "slug": "ccell-m3-plus-vape-batteri-510",
+   "status": "OK"
+  },
+  {
+   "at": "85-pdp-pilot.js:219",
+   "slug": "buds-magic-sauce-50-samurai-jack-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:219",
+   "slug": "buds-magic-sauce-50-yoda-ice-cream-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:220",
+   "slug": "buds-magic-sauce-50-gorilla-cookies-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:220",
+   "slug": "buds-magic-sauce-50-tinky-winky-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:221",
+   "slug": "buds-magic-sauce-50-khalifa-kush-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:221",
+   "slug": "buds-magic-sauce-50-donny-burger-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:222",
+   "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+   "status": "OK"
+  },
+  {
+   "at": "85-pdp-pilot.js:222",
+   "slug": "buds-magic-sauce-50-la-chupacabra-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:223",
+   "slug": "hash-magic-sauce-50-marrakesh-dream-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:223",
+   "slug": "hash-magic-sauce-50-charas-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:224",
+   "slug": "buds-7-nano11-lemon-purple-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  },
+  {
+   "at": "85-pdp-pilot.js:224",
+   "slug": "buds-7-nano11-raspberry-popcorn-5-gram",
+   "status": "SAKNAS (gammal slug)"
+  }
+ ],
+ "ids": [
+  {
+   "at": "85-pdp-pilot.js:219",
+   "id": 59,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:220",
+   "id": 74,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:221",
+   "id": 96,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:222",
+   "id": 120,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:223",
+   "id": 119,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:224",
+   "id": 41,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:224",
+   "id": 112,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:228",
+   "id": 91,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:228",
+   "id": 92,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 84,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 59,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 60,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 74,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 93,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 96,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 100,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 120,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 77,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:229",
+   "id": 119,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:230",
+   "id": 41,
+   "today": null
+  },
+  {
+   "at": "85-pdp-pilot.js:230",
+   "id": 112,
+   "today": null
+  }
+ ]
+}

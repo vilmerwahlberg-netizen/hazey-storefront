@@ -1,0 +1,5210 @@
+[
+ {
+  "nhId": 169,
+  "slug": "ms-3-0-5ml-5-pack",
+  "name": "MS 3.0 – 5ml – 5-pack",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 179116,
+  "type": "image/jpeg",
+  "file": "5-pack-bulk-magic-sauce-vapes-10ml-58a112e5.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    171,
+    151
+   ],
+   "spread": 44,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.726,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.671,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 166,
+  "slug": "ms-3-0-5ml-3-pack",
+  "name": "MS 3.0 – 5ml – 3-pack",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 149039,
+  "type": "image/jpeg",
+  "file": "3-pack-bulk-magic-sauce-vapes-6ml-4d487bc1.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    197,
+    171,
+    152
+   ],
+   "spread": 36,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.651,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.469,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 163,
+  "slug": "nano-11-pre-rolls-1g-5-pack",
+  "name": "Nano 11 Pre Rolls 1g – 5-pack",
+  "format": "pre-roll",
+  "series": "Nano-11",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 37040,
+  "type": "image/jpeg",
+  "file": "nano-11-preroll-tatra-hemp-ersatt-thca-pre-roll-5e5c8f82.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.33,
+  "bbox": {
+   "x": 0.323,
+   "y": 0.022,
+   "w": 0.495,
+   "h": 0.938
+  },
+  "bboxArea": 0.464,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 160,
+  "slug": "nano-11-pre-rolls-1g-10-pack",
+  "name": "Nano 11 Pre Rolls 1g – 10-pack",
+  "format": "pre-roll",
+  "series": "Nano-11",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 157,
+  "slug": "magic-sauce-50-pre-rolls-1g-10-pack",
+  "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+  "format": "pre-roll",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 76605,
+  "type": "image/jpeg",
+  "file": "magic-sauce-pre-rolls-magic-farmers-cannabis-joint-d7396e0d.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.256,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.223,
+   "w": 0.965,
+   "h": 0.552
+  },
+  "bboxArea": 0.533,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 154,
+  "slug": "magic-sauce-50-pre-rolls-1g-5-pack",
+  "name": "Magic Sauce 50% Pre Rolls 1g – 5-pack",
+  "format": "pre-roll",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 76605,
+  "type": "image/jpeg",
+  "file": "magic-sauce-pre-rolls-magic-farmers-cannabis-joint-4634e5e4.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.256,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.223,
+   "w": 0.965,
+   "h": 0.552
+  },
+  "bboxArea": 0.533,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 260,
+  "slug": "magic-sauce-vape-5ml",
+  "name": "Magic Sauce 3.0 - 5ml",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 6,
+  "wooCount": 1,
+  "bytes": 166008,
+  "type": "image/jpeg",
+  "file": "magic-sauce-this-is-sparta-vapes-ersatt-thc-a-5ml-magic-farmers-12a2cc0f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    127,
+    126,
+    91
+   ],
+   "spread": 129,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.901,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.754,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 257,
+  "slug": "magic-sauce-pre-rolls-1g",
+  "name": "Magic Sauce 50% – Pre Rolls – 1g",
+  "format": "pre-roll",
+  "series": "Magic Sauce",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 6,
+  "wooCount": 1,
+  "bytes": 76605,
+  "type": "image/jpeg",
+  "file": "magic-sauce-pre-rolls-magic-farmers-cannabis-joint-d654eed2.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.256,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.223,
+   "w": 0.965,
+   "h": 0.552
+  },
+  "bboxArea": 0.533,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 198,
+  "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+  "name": "Magic Sauce 50% – La Chupacabra – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 137374,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-la-chupacabra-magic-farmers-thca-buds-sverige-acb6ea6d.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.594,
+  "bbox": {
+   "x": 0.12,
+   "y": 0.033,
+   "w": 0.863,
+   "h": 0.953
+  },
+  "bboxArea": 0.822,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 201,
+  "slug": "magic-sauce-buds-titty-sprinkles-5-gram",
+  "name": "Magic Sauce 50% – Titty Sprinkles – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 144598,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-ms-titty-sprinkles-magic-farmers-thca-buds-sverige-1947fd55.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.5,
+  "bbox": {
+   "x": 0.135,
+   "y": 0.058,
+   "w": 0.813,
+   "h": 0.938
+  },
+  "bboxArea": 0.763,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 168,
+  "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+  "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 115634,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-ms-khalifa-kush-magic-farmers-thca-buds-sverige-50-7049ad42.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.538,
+  "bbox": {
+   "x": 0.2,
+   "y": 0.037,
+   "w": 0.743,
+   "h": 0.963
+  },
+  "bboxArea": 0.716,
+  "edgeTouch": 0.014,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 175,
+  "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+  "name": "Magic Sauce 50% – Crazy Dog – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 146768,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-ms-crazy-dog-buds-magic-farmers-thca-buds-sverige-50-cab7567f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.59,
+  "bbox": {
+   "x": 0.147,
+   "y": 0.035,
+   "w": 0.807,
+   "h": 0.938
+  },
+  "bboxArea": 0.757,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 246,
+  "slug": "startpaket-thca-b-batteri",
+  "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+  "format": "kit",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 97100,
+  "type": "image/jpeg",
+  "file": "thca-b-carts-batteri-faraoh-2ml-byt-ut-thca-alternativ-live-resin-terpenes-9d90d0ea.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.498,
+  "bbox": {
+   "x": 0.01,
+   "y": 0.02,
+   "w": 0.938,
+   "h": 0.97
+  },
+  "bboxArea": 0.91,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 256,
+  "slug": "thca-b-faraoh-carts-1ml",
+  "name": "THCA-B 50% - Faraoh - 1ml",
+  "format": "cart",
+  "series": "THCaB",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 168789,
+  "type": "image/jpeg",
+  "file": "thca-b-carts-faraoh-2ml-byt-ut-thca-alternativ-live-resin-terpenes-41706ed9.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.644,
+  "bbox": {
+   "x": 0.013,
+   "y": 0.058,
+   "w": 0.973,
+   "h": 0.925
+  },
+  "bboxArea": 0.9,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 150,
+  "slug": "thca-b-50-faraoh-1ml-10-pack",
+  "name": "THCA-B 50% Faraoh 1ml – 10-pack",
+  "format": "cart",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 149764,
+  "type": "image/jpeg",
+  "file": "thca-b-vape-faraoh-2ml-ersatt-thca-live-resin-terpenes-1d5fb74f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.633,
+  "bbox": {
+   "x": 0.01,
+   "y": 0.135,
+   "w": 0.98,
+   "h": 0.743
+  },
+  "bboxArea": 0.728,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 245,
+  "slug": "d10-2ml-5-pack",
+  "name": "D10 2ml – 5-pack",
+  "format": "vape",
+  "series": "D10",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 243,
+  "slug": "d10-2ml-3-pack",
+  "name": "D10 2ml – 3-pack",
+  "format": "vape",
+  "series": "D10",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 157729,
+  "type": "image/jpeg",
+  "file": "d10-vapes-2ml-magic-farmers-thcx-a16e5960.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 3,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.743,
+  "bbox": {
+   "x": 0.007,
+   "y": 0.005,
+   "w": 0.98,
+   "h": 0.99
+  },
+  "bboxArea": 0.97,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 241,
+  "slug": "thca-b-50-faraoh-1ml-5-pack",
+  "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+  "format": "cart",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 187922,
+  "type": "image/jpeg",
+  "file": "thca-b-vape-faraoh-2ml-byt-ut-thca-alternativ-live-resin-terpenes-e6c3a845.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.612,
+  "bbox": {
+   "x": 0.01,
+   "y": 0.02,
+   "w": 0.98,
+   "h": 0.968
+  },
+  "bboxArea": 0.949,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 240,
+  "slug": "thca-b-50-faraoh-1ml-3-pack",
+  "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+  "format": "cart",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 239,
+  "slug": "thca-b-50-faraoh-2ml-5-pack",
+  "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+  "format": "vape",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 187922,
+  "type": "image/jpeg",
+  "file": "thca-b-vape-faraoh-2ml-byt-ut-thca-alternativ-live-resin-terpenes-d3bfc68e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.612,
+  "bbox": {
+   "x": 0.01,
+   "y": 0.02,
+   "w": 0.98,
+   "h": 0.968
+  },
+  "bboxArea": 0.949,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 238,
+  "slug": "thca-b-50-faraoh-2ml-3-pack",
+  "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+  "format": "vape",
+  "series": "THCaB",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 235,
+  "slug": "d10-hash-purple-storm-5g",
+  "name": "D10 60% – Purple Storm – 5g",
+  "format": "hasch",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 82794,
+  "type": "image/jpeg",
+  "file": "d10-hash-purple-storm-magic-farmers-012857a6.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.582,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.838,
+   "h": 0.97
+  },
+  "bboxArea": 0.813,
+  "edgeTouch": 0.001,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 234,
+  "slug": "d10-hash-blue-diamond-5g",
+  "name": "D10 60% – Blue Diamond – 5g",
+  "format": "hasch",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 231,
+  "slug": "magic-sauce-buds-grape-gasoline",
+  "name": "Magic Sauce 50% – Grape Gasoline – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 123633,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-istallet-for-thc-a-grape-gasoline-magic-farmers-thca-buds-i-sve-55cf48ec.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.61,
+  "bbox": {
+   "x": 0.033,
+   "y": 0.025,
+   "w": 0.953,
+   "h": 0.945
+  },
+  "bboxArea": 0.901,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 228,
+  "slug": "magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+  "name": "Magic Sauce 50% – Dubai Chocolate – 5g",
+  "format": "hasch",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 140583,
+  "type": "image/jpeg",
+  "file": "magic-sauce-30-hash-dubai-chocolate-magic-farmers-thc-a-hash-sverige-0d7dec2a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.568,
+  "bbox": {
+   "x": 0.092,
+   "y": 0.015,
+   "w": 0.897,
+   "h": 0.983
+  },
+  "bboxArea": 0.882,
+  "edgeTouch": 0.003,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 226,
+  "slug": "magic-sauce-buds-london-lobster-ersatt-thc-a",
+  "name": "Magic Sauce 50% – London Lobster – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 137634,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-ersatt-thc-a-london-lobster-magic-farmers-thca-buds-i-sverige-c17e50fd.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.603,
+  "bbox": {
+   "x": 0.135,
+   "y": 0.04,
+   "w": 0.858,
+   "h": 0.94
+  },
+  "bboxArea": 0.807,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 223,
+  "slug": "d10-buds-white-widow-5g",
+  "name": "D10 50% – White Widow – 5g",
+  "format": "buds",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 89721,
+  "type": "image/jpeg",
+  "file": "d10-buds-white-widow-magic-farmers-b1d98f69.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.594,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.855,
+   "h": 0.963
+  },
+  "bboxArea": 0.823,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 221,
+  "slug": "magic-sauce-buds-kowa-bunga-5g",
+  "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 139468,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-istallet-for-thca-kowa-bunga-magic-farmers-thca-buds-i-sverige-9f0fbf95.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.566,
+  "bbox": {
+   "x": 0.193,
+   "y": 0.033,
+   "w": 0.795,
+   "h": 0.955
+  },
+  "bboxArea": 0.759,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 242,
+  "slug": "thca-b-vape-faraoh-2ml",
+  "name": "THCA-B 50% - Faraoh - 2ml",
+  "format": "vape",
+  "series": "THCaB",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 97729,
+  "type": "image/jpeg",
+  "file": "thca-b-vape-sour-candy-strawberry-faraoh-2ml-byt-ut-thca-alternativ-live-resin-t-5d18ca4c.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    127,
+    128,
+    91
+   ],
+   "spread": 128,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.873,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.73,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 218,
+  "slug": "d10-hash-silk-road-magic-farmers-thcx",
+  "name": "D10 60% – Silk Road – 5g",
+  "format": "hasch",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 86178,
+  "type": "image/jpeg",
+  "file": "d10-hash-silk-road-magic-farmers-b5f15b07.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.6,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.84,
+   "h": 0.96
+  },
+  "bboxArea": 0.806,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 216,
+  "slug": "d10-hash-rosinella-magic-farmers",
+  "name": "D10 60% – Rosinella – 5g",
+  "format": "hasch",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 87747,
+  "type": "image/jpeg",
+  "file": "d10-hash-rosinella-magic-farmers-ca750ccd.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.602,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.848,
+   "h": 0.965
+  },
+  "bboxArea": 0.818,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 214,
+  "slug": "d10-buds-skywalker-og-magic-farmers-thcx",
+  "name": "D10 50% – Skywalker OG – 5g",
+  "format": "buds",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 100928,
+  "type": "image/jpeg",
+  "file": "d10-buds-skywalker-og-magic-farmers-9bfd867b.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.619,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.84,
+   "h": 0.965
+  },
+  "bboxArea": 0.811,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 211,
+  "slug": "d10-buds-porn-star-og-magic-farmers",
+  "name": "D10 50% – Porn Star OG – 5g",
+  "format": "buds",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94512,
+  "type": "image/jpeg",
+  "file": "d10-buds-porn-star-og-magic-farmers-7fca9d0f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.609,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.84,
+   "h": 0.973
+  },
+  "bboxArea": 0.817,
+  "edgeTouch": 0.009,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 209,
+  "slug": "d10-buds-cosmic-trip-5g",
+  "name": "D10 50% – Cosmic Trip – 5g",
+  "format": "buds",
+  "series": "D10",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 99433,
+  "type": "image/jpeg",
+  "file": "d10-buds-cosmetic-trip-magic-farmers-0bf8f36b.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.604,
+  "bbox": {
+   "x": 0.138,
+   "y": 0.028,
+   "w": 0.85,
+   "h": 0.963
+  },
+  "bboxArea": 0.819,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 254,
+  "slug": "d10-vape-magic-farmers",
+  "name": "D10 - 2ml",
+  "format": "vape",
+  "series": "D10",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 4,
+  "wooCount": 1,
+  "bytes": 134666,
+  "type": "image/jpeg",
+  "file": "d10-vapes-2ml-cherry-sour-magic-farmers-thcx-fc627941.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    127,
+    127,
+    93
+   ],
+   "spread": 130,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.887,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.744,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 205,
+  "slug": "startpaket-magic-sauce-batteri",
+  "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+  "format": "kit",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 97356,
+  "type": "image/jpeg",
+  "file": "magic-sauce-carts-med-penna-thca-alternativ-1ml-magic-farmers-8783547a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.594,
+  "bbox": {
+   "x": 0.007,
+   "y": 0.013,
+   "w": 0.97,
+   "h": 0.98
+  },
+  "bboxArea": 0.951,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 203,
+  "slug": "magic-sauce-buds-thca-ersatt-john-lemon-5g",
+  "name": "Magic Sauce 50% – John Lemon – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 164882,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-thca-ersattare-john-lemon-magic-farmers-thc-buds-sverige-34c9aae5.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.551,
+  "bbox": {
+   "x": 0.125,
+   "y": 0.058,
+   "w": 0.858,
+   "h": 0.93
+  },
+  "bboxArea": 0.798,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 200,
+  "slug": "nano-hash-zkittlez-mousse-ersatt-thca-hash",
+  "name": "7% Nano11 – Zkittlez Mousse – 5g",
+  "format": "hasch",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 76470,
+  "type": "image/jpeg",
+  "file": "nano-11-hash-zkittlez-mousse-tatra-hemp-ersatt-thca-hash-344962d6.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.665,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.022,
+   "w": 0.88,
+   "h": 0.97
+  },
+  "bboxArea": 0.854,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 197,
+  "slug": "buds-nanno-11-critical-berries",
+  "name": "7% Nano11 – Critical Berries – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 165,
+  "slug": "7-nano11-prerolled-1-gram",
+  "name": "7% Nano11 – Prerolled – 1 gram",
+  "format": "pre-roll",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 37040,
+  "type": "image/jpeg",
+  "file": "nano-11-preroll-tatra-hemp-ersatt-thca-pre-roll-21c0282a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.33,
+  "bbox": {
+   "x": 0.323,
+   "y": 0.022,
+   "w": 0.495,
+   "h": 0.938
+  },
+  "bboxArea": 0.464,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 194,
+  "slug": "nano-11-buds-thca-substitut-royal-og",
+  "name": "7% Nano11 – Royal OG – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 74398,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-royal-og-tatra-hemp-ersatt-thca-b2bf65dd.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.694,
+  "bbox": {
+   "x": 0.12,
+   "y": 0.03,
+   "w": 0.835,
+   "h": 0.948
+  },
+  "bboxArea": 0.792,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 191,
+  "slug": "nano-buds-ersatt-thca-bubba-kush-5g",
+  "name": "7% Nano11 – Bubba Kush – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 188,
+  "slug": "magic-sauce-hash-kitkat-5g",
+  "name": "Magic Sauce 50% – KitKat – 5g",
+  "format": "hasch",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 82798,
+  "type": "image/jpeg",
+  "file": "magic-sauce-30-hash-kitkat-magic-farmers-thca-hash-sverige-7cfd293e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.516,
+  "bbox": {
+   "x": 0.172,
+   "y": 0.05,
+   "w": 0.7,
+   "h": 0.932
+  },
+  "bboxArea": 0.652,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 236,
+  "slug": "thcba-vape-faraoh-2ml",
+  "name": "THCbA 47% - Faraoh - 2ml",
+  "format": "vape",
+  "series": "THCbA",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 4,
+  "wooCount": 1,
+  "bytes": 152640,
+  "type": "image/jpeg",
+  "file": "thca-b-vape-super-lemon-haze-faraoh-2ml-byt-ut-thca-alternativ-live-resin-terpen-ceea1f11.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.875,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.732,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 186,
+  "slug": "ms-30-10ml-kollektion",
+  "name": "MS 3.0 – 10ml – Kollektion",
+  "format": "refill",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 86808,
+  "type": "image/jpeg",
+  "file": "magic-sauce-e-liquid-10ml-magic-farmers-2e5a09b9.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.556,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.083,
+   "w": 0.953,
+   "h": 0.82
+  },
+  "bboxArea": 0.781,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 184,
+  "slug": "nano11-buds-10-pack",
+  "name": "Nano 11 Buds 5g – 10-pack",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 66213,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-naranja-popcorn-buds-tatra-hemp-ersatt-thca-62b35104.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.68,
+  "bbox": {
+   "x": 0.122,
+   "y": 0.045,
+   "w": 0.863,
+   "h": 0.943
+  },
+  "bboxArea": 0.814,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 181,
+  "slug": "nano11-buds-5-pack",
+  "name": "Nano 11 Buds 5g – 5-pack",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 66213,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-naranja-popcorn-buds-tatra-hemp-ersatt-thca-bebd93a2.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.68,
+  "bbox": {
+   "x": 0.122,
+   "y": 0.045,
+   "w": 0.863,
+   "h": 0.943
+  },
+  "bboxArea": 0.814,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 179,
+  "slug": "nano11-buds-3-pack",
+  "name": "Nano 11 Buds 5g – 3-pack",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 66213,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-naranja-popcorn-buds-tatra-hemp-ersatt-thca-25ed1d94.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.68,
+  "bbox": {
+   "x": 0.122,
+   "y": 0.045,
+   "w": 0.863,
+   "h": 0.943
+  },
+  "bboxArea": 0.814,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 176,
+  "slug": "high-life-5g-5-pack",
+  "name": "High Life 5g – 5-pack",
+  "format": "buds",
+  "series": "Core",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94116,
+  "type": "image/jpeg",
+  "file": "high-life-hero-buds-gealto-hero-vapes-fd8a5c9c.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.574,
+  "bbox": {
+   "x": 0.177,
+   "y": 0.025,
+   "w": 0.792,
+   "h": 0.973
+  },
+  "bboxArea": 0.771,
+  "edgeTouch": 0.033,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 174,
+  "slug": "high-life-5g-3-pack",
+  "name": "High Life 5g – 3-pack",
+  "format": "buds",
+  "series": "Core",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94116,
+  "type": "image/jpeg",
+  "file": "high-life-hero-buds-gealto-hero-vapes-120ecc6a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.574,
+  "bbox": {
+   "x": 0.177,
+   "y": 0.025,
+   "w": 0.792,
+   "h": 0.973
+  },
+  "bboxArea": 0.771,
+  "edgeTouch": 0.033,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 173,
+  "slug": "ms50-5g-10-pack",
+  "name": "Magic Sauce 50% 5g – 10-pack",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 230240,
+  "type": "image/jpeg",
+  "file": "10-pack-bulk-magic-sauce-buds-50g-01751908.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    172,
+    153
+   ],
+   "spread": 48,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.678,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.707,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 170,
+  "slug": "ms50-5g-5-pack",
+  "name": "Magic Sauce 50% 5g – 5-pack",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 196550,
+  "type": "image/jpeg",
+  "file": "5-pack-bulk-magic-sauce-buds-25g-c761220d.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    171,
+    151
+   ],
+   "spread": 44,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.714,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.672,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 167,
+  "slug": "ms50-5g-3-pack",
+  "name": "Magic Sauce 50% 5g – 3-pack",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 190517,
+  "type": "image/jpeg",
+  "file": "3-pack-bulk-magic-sauce-buds-15g-205f96a3.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    197,
+    171,
+    152
+   ],
+   "spread": 36,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.626,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.477,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 164,
+  "slug": "heros-core-2ml-kollektion",
+  "name": "Hero's Core 2ml – Kollektion",
+  "format": "vape",
+  "series": "Core",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 179061,
+  "type": "image/jpeg",
+  "file": "6-pack-bulk-thcx-vapes-12ml-0ac19807.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    172,
+    153
+   ],
+   "spread": 48,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.773,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.872,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 162,
+  "slug": "heros-core-2ml-5-pack",
+  "name": "Hero's Core 2ml – 5-pack",
+  "format": "vape",
+  "series": "Core",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 159,
+  "slug": "heros-core-2ml-3-pack",
+  "name": "Hero's Core 2ml – 3-pack",
+  "format": "vape",
+  "series": "Core",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 169377,
+  "type": "image/jpeg",
+  "file": "3-pack-bulk-thcx-vapes-6ml-6e890ce8.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    197,
+    171,
+    152
+   ],
+   "spread": 36,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.69,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.338,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 156,
+  "slug": "ms-30-1ml-kollektion",
+  "name": "MS 3.0 – 1ml – Kollektion",
+  "format": "cart",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 185414,
+  "type": "image/jpeg",
+  "file": "magic-sauce-carts-thca-alternativ-1ml-magic-farmers-42da05db.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.764,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.015,
+   "w": 0.95,
+   "h": 0.978
+  },
+  "bboxArea": 0.929,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 153,
+  "slug": "ms-30-1ml-5-pack",
+  "name": "MS 3.0 – 1ml – 5-pack",
+  "format": "cart",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 185414,
+  "type": "image/jpeg",
+  "file": "magic-sauce-carts-thca-alternativ-1ml-magic-farmers-c2a86c97.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.764,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.015,
+   "w": 0.95,
+   "h": 0.978
+  },
+  "bboxArea": 0.929,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 151,
+  "slug": "ms-30-1ml-3-pack",
+  "name": "MS 3.0 – 1ml – 3-pack",
+  "format": "cart",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 185414,
+  "type": "image/jpeg",
+  "file": "magic-sauce-carts-thca-alternativ-1ml-magic-farmers-ea234ed8.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.764,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.015,
+   "w": 0.95,
+   "h": 0.978
+  },
+  "bboxArea": 0.929,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 149,
+  "slug": "ms-30-2ml-kollektion",
+  "name": "MS 3.0 – 2ml – Kollektion",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 206490,
+  "type": "image/jpeg",
+  "file": "9-pack-bulk-magic-sauce-vapes-18ml-bec99245.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    172,
+    153
+   ],
+   "spread": 48,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.765,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.697,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 147,
+  "slug": "ms-30-2ml-5-pack",
+  "name": "MS 3.0 – 2ml – 5-pack",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 181138,
+  "type": "image/jpeg",
+  "file": "5-pack-bulk-magic-sauce-vapes-10ml-84783f72.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    171,
+    151
+   ],
+   "spread": 44,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.804,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.678,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 145,
+  "slug": "ms-30-2ml-3-pack",
+  "name": "MS 3.0 – 2ml – 3-pack",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 146672,
+  "type": "image/jpeg",
+  "file": "3-pack-bulk-magic-sauce-vapes-6ml-e3279af3.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    197,
+    171,
+    152
+   ],
+   "spread": 36,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.669,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.411,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 143,
+  "slug": "faraoh-thca-b-hela-kollektionen",
+  "name": "Faraoh THCbA Vape 2ml - Hela kollektionen",
+  "format": "vape",
+  "series": "THCbA",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 197811,
+  "type": "image/jpeg",
+  "file": "8-pack-bulk-thcba-vapes-16ml-e73982d5.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    172,
+    153
+   ],
+   "spread": 48,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.754,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.713,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 142,
+  "slug": "faraoh-thca-b-5-pack",
+  "name": "Faraoh THCbA Vape 2ml - 5-pack",
+  "format": "vape",
+  "series": "THCbA",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 182482,
+  "type": "image/jpeg",
+  "file": "5-pack-bulk-thcba-vapes-10ml-1b110c54.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    202,
+    171,
+    151
+   ],
+   "spread": 44,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.715,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.671,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 140,
+  "slug": "faraoh-thca-b-3-pack",
+  "name": "Faraoh THCbA Vape 2ml - 3-pack",
+  "format": "vape",
+  "series": "THCbA",
+  "kind": "paket",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 208413,
+  "type": "image/jpeg",
+  "file": "3-pack-bulk-thcba-vapes-6ml-36d67660.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    197,
+    171,
+    152
+   ],
+   "spread": 36,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.719,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 0.463,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 202,
+  "slug": "thcv-vape-canntropy-1ml",
+  "name": "THCV 20% + CBG + CBN - 1ml",
+  "format": "vape",
+  "series": "THCV",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 131127,
+  "type": "image/jpeg",
+  "file": "thcv-vape-super-lemon-haze-cbg-och-cbn-e77f9507.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.888,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.732,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 252,
+  "slug": "magic-sauce-10ml",
+  "name": "Magic Sauce 3.0 - 10ml",
+  "format": "refill",
+  "series": "Magic Sauce",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 86808,
+  "type": "image/jpeg",
+  "file": "magic-sauce-e-liquid-10ml-magic-farmers-72a1a091.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.556,
+  "bbox": {
+   "x": 0.025,
+   "y": 0.083,
+   "w": 0.953,
+   "h": 0.82
+  },
+  "bboxArea": 0.781,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 138,
+  "slug": "cookies-buds-cbd-hawaiian-rain",
+  "name": "CBD 30% – Hawaiian Rain – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 174175,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-hawaiian-rain-cannabis-industri-hampa-357a0013.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.737,
+  "bbox": {
+   "x": 0.09,
+   "y": 0.03,
+   "w": 0.885,
+   "h": 0.955
+  },
+  "bboxArea": 0.845,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 136,
+  "slug": "cbd-30-long-island-35g",
+  "name": "CBD 30% – Long Island – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 76931,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-long-island-cannabis-industri-hampa-026785f7.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.746,
+  "bbox": {
+   "x": 0.09,
+   "y": 0.03,
+   "w": 0.887,
+   "h": 0.96
+  },
+  "bboxArea": 0.852,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 133,
+  "slug": "cbd-cookies-adios-m-f",
+  "name": "CBD 30% – Adios M.F. – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 71459,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-adios-mother-fcker-cannabis-industri-hampa-515dff82.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.747,
+  "bbox": {
+   "x": 0.095,
+   "y": 0.033,
+   "w": 0.887,
+   "h": 0.955
+  },
+  "bboxArea": 0.847,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 232,
+  "slug": "cbd-buds-cookies-hollywood",
+  "name": "CBD 30% – Hollywood – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 172922,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-hollywood-cannabis-industri-hampa-22a9870a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.732,
+  "bbox": {
+   "x": 0.102,
+   "y": 0.037,
+   "w": 0.877,
+   "h": 0.958
+  },
+  "bboxArea": 0.84,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 230,
+  "slug": "cookies-cbd-buds-blue-raz",
+  "name": "CBD 30% – Blue Raz – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 84969,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-blue-raz-cannabis-industri-hampa-32bac6a6.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.736,
+  "bbox": {
+   "x": 0.102,
+   "y": 0.04,
+   "w": 0.873,
+   "h": 0.948
+  },
+  "bboxArea": 0.828,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 250,
+  "slug": "ccell-stylo-vape-batteri-510",
+  "name": "CCELL Stylo – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 4,
+  "bytes": 106780,
+  "type": "image/jpeg",
+  "file": "ccell-stylo-svart-510-cart-batteri-dd58c84a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    127,
+    128,
+    92
+   ],
+   "spread": 129,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.878,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.741,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)",
+   "färre bilder än WooCommerce (3/4)"
+  ]
+ },
+ {
+  "nhId": 227,
+  "slug": "cbd-hash-london-pound-cake-100g",
+  "name": "CBD Hash – London Pound Cake – 100g",
+  "format": "hasch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 40108,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-hash-london-pound-cake-75-100g-2043d131.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    194,
+    176
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.306,
+  "bbox": {
+   "x": 0.068,
+   "y": 0.292,
+   "w": 0.882,
+   "h": 0.43
+  },
+  "bboxArea": 0.379,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 224,
+  "slug": "cookies-v2-large-stackables",
+  "name": "Cookies - V2 Large Stackables",
+  "format": "merch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 2,
+  "bytes": 46578,
+  "type": "image/jpeg",
+  "file": "stack-able-open-cookies-jar-1b612949.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.387,
+  "bbox": {
+   "x": 0.02,
+   "y": 0.247,
+   "w": 0.945,
+   "h": 0.642
+  },
+  "bboxArea": 0.607,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "färre bilder än WooCommerce (1/2)"
+  ]
+ },
+ {
+  "nhId": 222,
+  "slug": "cookies-original-snapback",
+  "name": "Cookies Original Snapback",
+  "format": "merch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 64891,
+  "type": "image/jpeg",
+  "file": "original-cookies-logo-snapback-343edb96.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.407,
+  "bbox": {
+   "x": 0.02,
+   "y": 0.165,
+   "w": 0.915,
+   "h": 0.645
+  },
+  "bboxArea": 0.59,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 219,
+  "slug": "cookies-original-beanie",
+  "name": "Cookies Original Beanie",
+  "format": "merch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 92191,
+  "type": "image/jpeg",
+  "file": "original-cookies-logo-embroidered-beanie-341d4adb.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.564,
+  "bbox": {
+   "x": 0.083,
+   "y": 0.072,
+   "w": 0.838,
+   "h": 0.797
+  },
+  "bboxArea": 0.668,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 248,
+  "slug": "cookies-medium-metal-tray",
+  "name": "Cookies Medium Metal Tray",
+  "format": "merch",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 58844,
+  "type": "image/jpeg",
+  "file": "cookies-medium-metal-tray-9838d47e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    219,
+    193,
+    176
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.589,
+  "bbox": {
+   "x": 0.02,
+   "y": 0.085,
+   "w": 0.95,
+   "h": 0.76
+  },
+  "bboxArea": 0.722,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 217,
+  "slug": "cookies-c-bite-buds-tray",
+  "name": "Cookies C-Bite - Buds Tray",
+  "format": "merch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 34192,
+  "type": "image/jpeg",
+  "file": "cookies-c-bite-budstrays-583b399c.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.399,
+  "bbox": {
+   "x": 0.077,
+   "y": 0.188,
+   "w": 0.863,
+   "h": 0.723
+  },
+  "bboxArea": 0.624,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 215,
+  "slug": "cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+  "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 145580,
+  "type": "image/png",
+  "file": "cookies-cereal-london-cbd-dual-chamber-2ml-cbd-vape-f518b506.png",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    173
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.549,
+  "bbox": {
+   "x": 0.072,
+   "y": 0.018,
+   "w": 0.83,
+   "h": 0.922
+  },
+  "bboxArea": 0.765,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 213,
+  "slug": "nano11-naranja-popcorn-buds-5g",
+  "name": "7% Nano11 – Naranja Pop. – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 66213,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-naranja-popcorn-buds-tatra-hemp-ersatt-thca-ba4a095e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.68,
+  "bbox": {
+   "x": 0.122,
+   "y": 0.045,
+   "w": 0.863,
+   "h": 0.943
+  },
+  "bboxArea": 0.814,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 210,
+  "slug": "nano11-buds-godzilla-5g",
+  "name": "7% Nano11 – Godzilla – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 62651,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-godzilla-tatra-hemp-ersatt-thca-e8195a87.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.68,
+  "bbox": {
+   "x": 0.135,
+   "y": 0.03,
+   "w": 0.757,
+   "h": 0.953
+  },
+  "bboxArea": 0.721,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 208,
+  "slug": "nano-11-buds-orange-zkittlez-5g",
+  "name": "7% Nano11 – Orange Zkittlez – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 63705,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-orange-zkittlez-tatra-hemp-ersatt-thca-73ef2e1b.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.647,
+  "bbox": {
+   "x": 0.117,
+   "y": 0.072,
+   "w": 0.858,
+   "h": 0.91
+  },
+  "bboxArea": 0.781,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 206,
+  "slug": "nano-11-buds-lemon-mandarine-5g",
+  "name": "7% Nano11 – Lemon Mandarine – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 60022,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-lemon-mandarine-tatra-hemp-ersatt-thca-615b0c93.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.66,
+  "bbox": {
+   "x": 0.125,
+   "y": 0.043,
+   "w": 0.828,
+   "h": 0.927
+  },
+  "bboxArea": 0.768,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 128,
+  "slug": "cbd-buds-triple-scoop-cookies-cannabis",
+  "name": "CBD 30% – Triple Scoop – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 63731,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-buds-triple-scoop-cannabis-industri-hampa-d6af6a36.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    219,
+    193,
+    176
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.719,
+  "bbox": {
+   "x": 0.107,
+   "y": 0.045,
+   "w": 0.863,
+   "h": 0.95
+  },
+  "bboxArea": 0.82,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 204,
+  "slug": "high-life-gelato-hero-vapes-core-5g",
+  "name": "High Life – Gelato – 5g",
+  "format": "buds",
+  "series": "Core",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94116,
+  "type": "image/jpeg",
+  "file": "high-life-hero-buds-gealto-hero-vapes-54f35f8f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.574,
+  "bbox": {
+   "x": 0.177,
+   "y": 0.025,
+   "w": 0.792,
+   "h": 0.973
+  },
+  "bboxArea": 0.771,
+  "edgeTouch": 0.033,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 135,
+  "slug": "high-life-white-widow-sativa-buds-5-gram-hero-vapes",
+  "name": "High Life – White Widow – 5g",
+  "format": "buds",
+  "series": "Core",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 88102,
+  "type": "image/jpeg",
+  "file": "high-life-hero-sativa-buds-white-widow-084dbc2e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.541,
+  "bbox": {
+   "x": 0.175,
+   "y": 0.035,
+   "w": 0.807,
+   "h": 0.955
+  },
+  "bboxArea": 0.771,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 262,
+  "slug": "cart-magic-sauce-magic-farmers-1ml",
+  "name": "Magic Sauce 3.0 - 1ml",
+  "format": "cart",
+  "series": "Magic Sauce",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 326923,
+  "type": "image/png",
+  "file": "magic-sauce-cart-gorilla-cookies-thca-alternativ-b2e1b16c.png",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    129,
+    128,
+    93
+   ],
+   "spread": 128,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.893,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.764,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 146,
+  "slug": "blommor-magic-sauce-buds-tinky-winki-5-gram",
+  "name": "Magic Sauce 50% – Tinky Winky – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 134699,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-thca-ersattare-tinky-winky-magic-farmers-thc-buds-sverige-4cbb4003.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.555,
+  "bbox": {
+   "x": 0.155,
+   "y": 0.035,
+   "w": 0.823,
+   "h": 0.94
+  },
+  "bboxArea": 0.774,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 155,
+  "slug": "magic-sauce-buds-samurai-jack-magic-farmers-weed",
+  "name": "Magic Sauce 50% – Samurai Jack – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 119089,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-alternativ-till-thca-samurai-jack-magic-farmers-thc-buds-i-sver-7100c06f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.54,
+  "bbox": {
+   "x": 0.182,
+   "y": 0.022,
+   "w": 0.792,
+   "h": 0.958
+  },
+  "bboxArea": 0.759,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 172,
+  "slug": "magic-sauce-buds-donny-burger-5g",
+  "name": "Magic Sauce 50% – Donny Burger – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 111331,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-istallet-for-thca-donny-burger-magic-farmers-thca-buds-i-sverig-20319240.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.527,
+  "bbox": {
+   "x": 0.205,
+   "y": 0.05,
+   "w": 0.752,
+   "h": 0.938
+  },
+  "bboxArea": 0.705,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 261,
+  "slug": "vape-magic-sauce-magic-farmers-2ml",
+  "name": "Magic Sauce 3.0 - 2ml",
+  "format": "vape",
+  "series": "Magic Sauce",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 10,
+  "wooCount": 1,
+  "bytes": 189308,
+  "type": "image/jpeg",
+  "file": "magic-sauce-vapes-ersatt-thca-2ml-magic-farmers-cf5b07fe.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.85,
+  "bbox": {
+   "x": 0.018,
+   "y": 0.007,
+   "w": 0.96,
+   "h": 0.99
+  },
+  "bboxArea": 0.95,
+  "edgeTouch": 0.193,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 134,
+  "slug": "magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+  "name": "Magic Sauce 50% – Gorilla Cookies – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 132282,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-vad-ar-thca-gorilla-cookies-magic-farmers-thc-buds-sverige-50-b3a880d3.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.518,
+  "bbox": {
+   "x": 0.198,
+   "y": 0.035,
+   "w": 0.767,
+   "h": 0.938
+  },
+  "bboxArea": 0.719,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 132,
+  "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+  "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "format": "buds",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 115704,
+  "type": "image/jpeg",
+  "file": "magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-cdcbd2c4.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.525,
+  "bbox": {
+   "x": 0.185,
+   "y": 0.037,
+   "w": 0.79,
+   "h": 0.94
+  },
+  "bboxArea": 0.743,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 183,
+  "slug": "nano11-lemon-sorbet-5-gram",
+  "name": "7% Nano11 – Lemon Sorbet – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 64329,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-lemon-sorbet-tatra-hemp-58240d78.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.717,
+  "bbox": {
+   "x": 0.107,
+   "y": 0.022,
+   "w": 0.85,
+   "h": 0.963
+  },
+  "bboxArea": 0.819,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 193,
+  "slug": "nano-buds-strawberry-og-5-gram",
+  "name": "7% Nano11 – Strawberry OG – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 62079,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-strawberry-og-tatra-hemp-3fd7cbf5.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.667,
+  "bbox": {
+   "x": 0.117,
+   "y": 0.045,
+   "w": 0.777,
+   "h": 0.935
+  },
+  "bboxArea": 0.726,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 192,
+  "slug": "nano-buds-gary-payton-5-gram",
+  "name": "7% Nano11 – Gary Payton – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 190,
+  "slug": "buds-nano11-crystal-snow-5-gram",
+  "name": "7% Nano11 – Crystal Snow – 5g",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 67477,
+  "type": "image/jpeg",
+  "file": "nano-11-buds-crystal-snow-tatra-hemp-6daf9676.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.668,
+  "bbox": {
+   "x": 0.087,
+   "y": 0.04,
+   "w": 0.9,
+   "h": 0.95
+  },
+  "bboxArea": 0.855,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 139,
+  "slug": "high-life-hash-northern-lights-5g",
+  "name": "High Life – Northern Lights – 5g",
+  "format": "hasch",
+  "series": "Core",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 73191,
+  "type": "image/jpeg",
+  "file": "hash-high-life-northern-lights-hybrid-hero-vapes-ersatt-thca-hash-f112920d.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.556,
+  "bbox": {
+   "x": 0.2,
+   "y": 0.03,
+   "w": 0.772,
+   "h": 0.96
+  },
+  "bboxArea": 0.741,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 137,
+  "slug": "high-life-hash-malaga-magic-5g",
+  "name": "High Life – Malaga Magic – 5g",
+  "format": "hasch",
+  "series": "Core",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 97655,
+  "type": "image/jpeg",
+  "file": "hash-high-life-malaga-magic-hybrid-motsvarande-thca-hash-683cad4a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.543,
+  "bbox": {
+   "x": 0.2,
+   "y": 0.043,
+   "w": 0.785,
+   "h": 0.948
+  },
+  "bboxArea": 0.744,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 148,
+  "slug": "el-gringo-hash-strawberry-shortcake-5g",
+  "name": "EL Gringo – Strawberry Shortcake – 5g",
+  "format": "hasch",
+  "series": "Core",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 93547,
+  "type": "image/jpeg",
+  "file": "hash-el-gringo-strawberry-shortcake-hybrid-hero-vapes-ersatt-thca-hash-8960e503.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.554,
+  "bbox": {
+   "x": 0.23,
+   "y": 0.025,
+   "w": 0.75,
+   "h": 0.973
+  },
+  "bboxArea": 0.73,
+  "edgeTouch": 0.006,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 255,
+  "slug": "thc-x-vape-hero-core-2ml",
+  "name": "Hero's Core - 2ml",
+  "format": "vape",
+  "series": "Core",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 6,
+  "wooCount": 1,
+  "bytes": 138697,
+  "type": "image/jpeg",
+  "file": "core-vape-gelato-hero-vapes-high-life-1a3e3c8a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.871,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.733,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 258,
+  "slug": "cbd-prerolled-cookies-1g",
+  "name": "CBD – Cookies – 1g",
+  "format": "pre-roll",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 4,
+  "wooCount": 1,
+  "bytes": 133463,
+  "type": "image/jpeg",
+  "file": "apple-bananas-cookies-cbd-preroll-c64c897a.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.853,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.733,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 196,
+  "slug": "magic-sauce-hash-charas-5-gram",
+  "name": "Magic Sauce 50% – Charas – 5g",
+  "format": "hasch",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 127,
+  "slug": "cbd-buds-10-gram-russian-roulette",
+  "name": "CBD ≈15% - Russian Roulette - 10g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 51176,
+  "type": "image/jpeg",
+  "file": "cbd-buds-industrihampa-blommor-10-gram-i-hazey-forpackning-f9291466.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    219,
+    193,
+    176
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.421,
+  "bbox": {
+   "x": 0.255,
+   "y": 0.028,
+   "w": 0.475,
+   "h": 0.938
+  },
+  "bboxArea": 0.446,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 187,
+  "slug": "nano-buds-raspberry-popcorn-5-gram",
+  "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 185,
+  "slug": "isolat-cbd-isolate-15-gram",
+  "name": "Isolat – CBD 99% – Isolate – 15 gram",
+  "format": "isolat",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 148206,
+  "type": "image/png",
+  "file": "cbd-isolat-hazey-isolate-cbd-15-grams-isolate-7a619b4b.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.554,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.985
+  },
+  "bboxArea": 0.985,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 131,
+  "slug": "nano-buds-lemon-purple-5-gram",
+  "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 98549,
+  "type": "image/png",
+  "file": "nano-11-buds-tatra-hemp-lemon-purple-e48d9b0c.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.587,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.985
+  },
+  "bboxArea": 0.985,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 177,
+  "slug": "buds-nano11-snow-white-popcorn-5-gram",
+  "name": "Buds – 7% Nano11 – Snow White Popcorn – 5 gram",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 106456,
+  "type": "image/png",
+  "file": "nano-11-buds-tatra-hemp-sweet-karma-popcorn-65362a1f.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.675,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.995
+  },
+  "bboxArea": 0.995,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 180,
+  "slug": "buds-nano11-abacous-5-gram",
+  "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+  "format": "buds",
+  "series": "Nano-11",
+  "kind": "enkel",
+  "visibilityClass": "PACKAGE/CHILD PRODUCT",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 259,
+  "slug": "cbd-vape-cbn-vape-magic-farmers",
+  "name": "CBD 25% + CBN 35% - 2ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 64761,
+  "type": "image/jpeg",
+  "file": "magic-farmers-miracle-alien-cookies-cbd-cbn-vape-2ml-02feae74.jpeg",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    131,
+    137,
+    98
+   ],
+   "spread": 136,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.912,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.751,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 161,
+  "slug": "cbd-buds-cookies-tequila-sunrise-35-gram",
+  "name": "CBD 30% – Tequila Sunrise – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 176180,
+  "type": "image/png",
+  "file": "cookies-cbd-buds-tequila-sunrise-cannabis-industri-hampa-8a9bdd00.png",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    173
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.694,
+  "bbox": {
+   "x": 0.105,
+   "y": 0.03,
+   "w": 0.868,
+   "h": 0.958
+  },
+  "bboxArea": 0.832,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 158,
+  "slug": "hash-cbn-yellowstone-5-gram",
+  "name": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+  "format": "hasch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94457,
+  "type": "image/png",
+  "file": "cbn-hash-40-magic-farmers-buds-laglig-cannabis-i-sverige-5g-cbn-laglig-hampa-bud-1452ecae.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.469,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 144,
+  "slug": "cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+  "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 140293,
+  "type": "image/png",
+  "file": "cookies-triple-apples-cbd-dual-chamber-2ml-cbd-vape-478ae53b.png",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    173
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.548,
+  "bbox": {
+   "x": 0.08,
+   "y": 0.02,
+   "w": 0.83,
+   "h": 0.92
+  },
+  "bboxArea": 0.764,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 253,
+  "slug": "cbd-510-cart-cookies-1ml",
+  "name": "CBD 60% - Cookies - 1ml",
+  "format": "cart",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 117907,
+  "type": "image/jpeg",
+  "file": "cookies-cbd-triple-scoop-cartridge-fc79bb6f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.903,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.733,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 141,
+  "slug": "cookies-cbd-vape-adios-mother-f-miami-mint",
+  "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 139809,
+  "type": "image/png",
+  "file": "cookies-miami-adios-cbd-dual-chamber-2ml-cbd-vape-2b9d000e.png",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    173
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.551,
+  "bbox": {
+   "x": 0.072,
+   "y": 0.018,
+   "w": 0.83,
+   "h": 0.922
+  },
+  "bboxArea": 0.765,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 152,
+  "slug": "magic-sauce-hash-marrakesh-dream-5-gram",
+  "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+  "format": "hasch",
+  "series": "Magic Sauce",
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 94790,
+  "type": "image/png",
+  "file": "magic-sauce-hash-ms-marrakesh-dream-magic-farmers-thc-buds-sverige-50-22113310.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.408,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.985
+  },
+  "bboxArea": 0.985,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 251,
+  "slug": "thc-b-vape-faraoh-1ml",
+  "name": "Vape - THC-B 35% - Faraoh - 1ml",
+  "format": "vape",
+  "series": "THCB (legacy)",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 172727,
+  "type": "image/jpeg",
+  "file": "tangie-cherry-faraoh-vape-d89b4b31.jpeg",
+  "w": 2048,
+  "h": 2048,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    227,
+    227,
+    230
+   ],
+   "spread": 18,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.148,
+  "bbox": {
+   "x": 0.383,
+   "y": 0.085,
+   "w": 0.212,
+   "h": 0.78
+  },
+  "bboxArea": 0.165,
+  "edgeTouch": 0,
+  "flags": [
+   "liten produkt i bild (17 % av ytan)"
+  ]
+ },
+ {
+  "nhId": 130,
+  "slug": "cookies-cannabis-buds-cbd-cereal-milk-35-gram",
+  "name": "CBD 30% – Cereal Milk – 3,5g",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 72045,
+  "type": "image/jpeg",
+  "file": "cbd-buds-cookies-cannabis-cbd-hampa-e1ad59df.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    217,
+    195,
+    174
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.649,
+  "bbox": {
+   "x": 0.125,
+   "y": 0.06,
+   "w": 0.8,
+   "h": 0.925
+  },
+  "bboxArea": 0.74,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)"
+  ]
+ },
+ {
+  "nhId": 129,
+  "slug": "cbn-buds-malibu-skittelz",
+  "name": "Buds – CBN+ 30% – Malibu Skittelz - 5 gram",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 81059,
+  "type": "image/png",
+  "file": "cbn-buds-30-magic-farmers-buds-laglig-cannabis-i-sverige-5g-cbn-laglig-hampa-bud-718ee33d.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.347,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 249,
+  "slug": "blommor-cbg9-60-snow-ice",
+  "name": "Buds – CBG9 60% – Snow Ice",
+  "format": "buds",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 79678,
+  "type": "image/png",
+  "file": "cbg-buds-60-magic-farmers-buds-laglig-cannabis-i-sverige-1-20g-cbg9-cannabis-bud-2563d202.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.362,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 247,
+  "slug": "ccell-sandwave-vape-batteri-510",
+  "name": "CCELL Sandwave – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 2,
+  "wooCount": 3,
+  "bytes": 41916,
+  "type": "image/jpeg",
+  "file": "ccell-sandwave-svart-vape-batteri-510-penna-2d2c2c76.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    254,
+    254,
+    254
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": true
+  },
+  "fill": 0.2,
+  "bbox": {
+   "x": 0.033,
+   "y": 0.02,
+   "w": 0.772,
+   "h": 0.835
+  },
+  "bboxArea": 0.645,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "vit bakgrund",
+   "färre bilder än WooCommerce (2/3)"
+  ]
+ },
+ {
+  "nhId": 244,
+  "slug": "ccell-fino-vape-batteri-510",
+  "name": "CCELL Fino – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 2,
+  "wooCount": 3,
+  "bytes": 94853,
+  "type": "image/jpeg",
+  "file": "ccell-fino-brun-vape-batteri-510-penna-33a3c103.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    255,
+    255,
+    255
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": true
+  },
+  "fill": 0.532,
+  "bbox": {
+   "x": 0.028,
+   "y": 0.02,
+   "w": 0.965,
+   "h": 0.93
+  },
+  "bboxArea": 0.897,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "vit bakgrund",
+   "färre bilder än WooCommerce (2/3)"
+  ]
+ },
+ {
+  "nhId": 123,
+  "slug": "merch-nyckelring-hazey",
+  "name": "Hazey.se Merch - Nyckelring",
+  "format": "merch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 31782,
+  "type": "image/png",
+  "file": "merch-nyckelring-71be5a7f.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    0,
+    0,
+    0
+   ],
+   "spread": 0,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.098,
+  "bbox": {
+   "x": 0.11,
+   "y": 0.415,
+   "w": 0.79,
+   "h": 0.172
+  },
+  "bboxArea": 0.136,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "liten produkt i bild (14 % av ytan)"
+  ]
+ },
+ {
+  "nhId": 189,
+  "slug": "h4cbd-vape-canapuff-1ml",
+  "name": "Vape - H4CBD 96% - Canapuff - 1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 125925,
+  "type": "image/png",
+  "file": "h4cbd-vape-canapuff-h4-cbd-vapes-489bead3.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.667,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.917
+  },
+  "bboxArea": 0.917,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 237,
+  "slug": "ccell-m3b-vape-batteri-510",
+  "name": "CCELL M3b Pro – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 51609,
+  "type": "image/jpeg",
+  "file": "ccell-m3b-pearl-green-vape-batteri-510-penna-2-e3c22ed2.jpeg",
+  "w": 672,
+  "h": 672,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    255,
+    255,
+    255
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": true
+  },
+  "fill": 0.186,
+  "bbox": {
+   "x": 0.037,
+   "y": 0.058,
+   "w": 0.922,
+   "h": 0.91
+  },
+  "bboxArea": 0.839,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "vit bakgrund"
+  ]
+ },
+ {
+  "nhId": 233,
+  "slug": "thcv-vape-euphoria-2ml",
+  "name": "Vape - THCV - Euphoria - 2ml",
+  "format": "vape",
+  "series": "THCV",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 114881,
+  "type": "image/jpeg",
+  "file": "thcv-vape-trainwreck-euphoria-thc-vape-lagliga-vapes-i-sverige-e596087f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    168,
+    172,
+    147
+   ],
+   "spread": 98,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.71,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.168,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 125,
+  "slug": "hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+  "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram",
+  "format": "hasch",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 78398,
+  "type": "image/png",
+  "file": "h4cbd-hash-20-cbn-hash-20-magic-farmers-buds-laglig-cannabis-i-sverige-5g-hampa--6e4ff0e9.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.392,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 124,
+  "slug": "h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+  "name": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+  "format": "buds",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 92695,
+  "type": "image/png",
+  "file": "h4cbd-buds-30-magic-farmers-h4-cbd-buds-laglig-cannabis-i-sverige-5g-a6eacea6.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.4,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 229,
+  "slug": "cbn-buds-magic-farmers-great-white-shark-1-25-gram",
+  "name": "Blommor – CBN 10% – Great White Shark",
+  "format": "buds",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 82092,
+  "type": "image/png",
+  "file": "cbn-buds-10-magic-farmers-cbn-buds-laglig-cannabis-i-sverige-1-20g-9a260ecf.png",
+  "w": 576,
+  "h": 576,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    115,
+    105,
+    96
+   ],
+   "spread": 229,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0.367,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 0.983
+  },
+  "bboxArea": 0.983,
+  "edgeTouch": 0.595,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 225,
+  "slug": "cbd-vape-1ml-46-hazey",
+  "name": "Vape - CBD 46% - Hazey - 1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 1,
+  "wooCount": 4,
+  "bytes": 71636,
+  "type": "image/jpeg",
+  "file": "cbd-vape-95-broad-spectrum-hazey-vapes-cannabinoid-blue-cheese-8dc29a35.jpeg",
+  "w": 864,
+  "h": 864,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    168,
+    173,
+    148
+   ],
+   "spread": 100,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.703,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.164,
+  "flags": [
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)",
+   "färre bilder än WooCommerce (1/4)"
+  ]
+ },
+ {
+  "nhId": 220,
+  "slug": "thcv-vape-cbd-group-2ml",
+  "name": "Vape - THC-V 20% - CBD Group - 2ml",
+  "format": "vape",
+  "series": "THCV",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 0,
+  "wooCount": 1,
+  "flags": [
+   "saknar bild"
+  ]
+ },
+ {
+  "nhId": 212,
+  "slug": "ccell-palm-pro-vape-batteri-510-ganga",
+  "name": "CCELL Palm Pro – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 5,
+  "wooCount": 5,
+  "bytes": 64168,
+  "type": "image/jpeg",
+  "file": "ccell-palm-pro-gron-vape-batteri-510-penna-361647bb.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    255,
+    255,
+    255
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": true
+  },
+  "fill": 0.341,
+  "bbox": {
+   "x": 0.028,
+   "y": 0.005,
+   "w": 0.955,
+   "h": 0.973
+  },
+  "bboxArea": 0.929,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "vit bakgrund"
+  ]
+ },
+ {
+  "nhId": 207,
+  "slug": "h4cbd-vape-canntropy-1ml",
+  "name": "Vape - H4CBD 95% - Canntropy - 1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 4,
+  "wooCount": 1,
+  "bytes": 62703,
+  "type": "image/jpeg",
+  "file": "h4cbd-vape-super-lemon-haze-vape-canntropy-e33efba7.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    169,
+    173,
+    147
+   ],
+   "spread": 101,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.722,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.184,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 199,
+  "slug": "thcv-vape-canapuff-1ml",
+  "name": "Vape - THC-V 79% - Canapuff - 1ml",
+  "format": "vape",
+  "series": "THCV",
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC BUT DIRECT-ONLY",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 72994,
+  "type": "image/jpeg",
+  "file": "thcv-vape-canapuff-thc-v-vapes-papaya-punch-acdc0a84.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    169,
+    173,
+    147
+   ],
+   "spread": 102,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.703,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.142,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 195,
+  "slug": "cbn-vape-canapuff-1ml",
+  "name": "Vape - CBN 89% - Canapuff - 1ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 72351,
+  "type": "image/jpeg",
+  "file": "cbn-vape-canapuff-vapes-b53bc58f.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    169,
+    173,
+    147
+   ],
+   "spread": 102,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.694,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.143,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 182,
+  "slug": "h4cbd-vape-cbd-group-2ml",
+  "name": "H4CBD 97% - 2ml",
+  "format": "vape",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 2,
+  "wooCount": 1,
+  "bytes": 33087,
+  "type": "image/jpeg",
+  "file": "7417-4-super-lemon-haze-5580887e.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    254,
+    254,
+    254
+   ],
+   "spread": 0,
+   "transparent": false,
+   "white": true
+  },
+  "fill": 0.363,
+  "bbox": {
+   "x": 0.19,
+   "y": 0.147,
+   "w": 0.575,
+   "h": 0.82
+  },
+  "bboxArea": 0.471,
+  "edgeTouch": 0,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "vit bakgrund"
+  ]
+ },
+ {
+  "nhId": 178,
+  "slug": "ccell-m3-plus-vape-batteri-510",
+  "name": "CCELL M3 Plus – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 90877,
+  "type": "image/jpeg",
+  "file": "ccell-m3-plus-gul-vape-batteri-510-penna-15e41781.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    218,
+    199,
+    177
+   ],
+   "spread": 114,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.859,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.871,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 171,
+  "slug": "ccell-m4-penna",
+  "name": "CCELL M4 – Vape Batteri – 510",
+  "format": "batteri",
+  "series": null,
+  "kind": "variabel",
+  "visibilityClass": "PUBLIC + LISTED",
+  "count": 3,
+  "wooCount": 1,
+  "bytes": 122029,
+  "type": "image/jpeg",
+  "file": "ccell-m4-vit-vape-batteri-510-penna-8964b899.jpeg",
+  "w": 768,
+  "h": 768,
+  "aspect": 1,
+  "bg": {
+   "rgb": [
+    128,
+    128,
+    93
+   ],
+   "spread": 132,
+   "transparent": false,
+   "white": false
+  },
+  "fill": 0.885,
+  "bbox": {
+   "x": 0,
+   "y": 0,
+   "w": 1,
+   "h": 1
+  },
+  "bboxArea": 1,
+  "edgeTouch": 1.733,
+  "flags": [
+   "lågupplöst (<800 px)",
+   "ojämn bakgrund/miljöbild",
+   "motiv går ut i kanten (kapas lätt)"
+  ]
+ },
+ {
+  "nhId": 126,
+  "slug": "fraktandring",
+  "name": "Fraktändring",
+  "format": "tjänst",
+  "series": null,
+  "kind": "enkel",
+  "visibilityClass": "HIDDEN/LEGACY",
+  "count": 1,
+  "wooCount": 1,
+  "bytes": 15678,
+  "type": "image/png",
+  "file": "63eb56a37b01e-7536b220.png",
+  "w": 800,
+  "h": 512,
+  "aspect": 1.563,
+  "bg": {
+   "rgb": [
+    0,
+    0,
+    0
+   ],
+   "spread": 0,
+   "transparent": true,
+   "white": false
+  },
+  "fill": 0,
+  "bbox": null,
+  "bboxArea": 0,
+  "edgeTouch": 0,
+  "flags": [
+   "liggande bild (1.563)"
+  ]
+ }
+]

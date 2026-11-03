@@ -1,0 +1,1198 @@
+[
+ {
+  "id": 146,
+  "slug": "blommor-magic-sauce-buds-tinky-winki-5-gram",
+  "name": "Magic Sauce 50% – Tinky Winky – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 175,
+  "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+  "name": "Magic Sauce 50% – Crazy Dog – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Crazy-Dog-50-MS_1160_U1A3S8G7.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Crazy-Dog",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 197,
+  "slug": "buds-nanno-11-critical-berries",
+  "name": "7% Nano11 – Critical Berries – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 180,
+  "slug": "buds-nano11-abacous-5-gram",
+  "name": "Buds – 7% Nano11 – Abacous – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 190,
+  "slug": "buds-nano11-crystal-snow-5-gram",
+  "name": "7% Nano11 – Crystal Snow – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 177,
+  "slug": "buds-nano11-snow-white-popcorn-5-gram",
+  "name": "Buds – 7% Nano11 – Snow White Popcorn – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 262,
+  "slug": "cart-magic-sauce-magic-farmers-1ml",
+  "name": "Magic Sauce 3.0 - 1ml",
+  "variants": [
+   "Gorilla Cookies",
+   "Crazy Dog"
+  ],
+  "docs": [
+   {
+    "file": "COA_Disposable-Vape-pen-Gorilla-Cookies-99-MS_1180_Y5E2S8J2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Gorilla Cookies",
+    "subject": "Disposable-Vape-pen-Gorilla-Cookies",
+    "variant": "Gorilla Cookies",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Crazy-Dog-99-MS_1180_U2H9C2M6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Crazy Dog",
+    "subject": "Disposable-Vape-pen-Crazy-Dog",
+    "variant": "Crazy Dog",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-High-Pepito-99-MS_1180_P8L7U2C4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST High Pepito",
+    "subject": "Disposable-Vape-pen-High-Pepito",
+    "variant": "High Pepito",
+    "relation": "variant saknas i NH (High Pepito)"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Samurai-Jack-99-MS_1180_O8T4F2N1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Samurai Jack",
+    "subject": "Disposable-Vape-pen-Samurai-Jack",
+    "variant": "Samurai Jack",
+    "relation": "variant saknas i NH (Samurai Jack)"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Yoda-Ice-Cream-99-MS_1180_D4A1K3S9.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Yoda Ice Cream",
+    "subject": "Disposable-Vape-pen-Yoda-Ice-Cream",
+    "variant": "Yoda Ice Cream",
+    "relation": "variant saknas i NH (Yoda Ice Cream)"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 229,
+  "slug": "cbn-buds-magic-farmers-great-white-shark-1-25-gram",
+  "name": "Blommor – CBN 10% – Great White Shark",
+  "variants": [
+   "1 gram",
+   "7 gram",
+   "20 gram"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 129,
+  "slug": "cbn-buds-malibu-skittelz",
+  "name": "Buds – CBN+ 30% – Malibu Skittelz - 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 195,
+  "slug": "cbn-vape-canapuff-1ml",
+  "name": "Vape - CBN 89% - Canapuff - 1ml",
+  "variants": [
+   "Papaya Punch",
+   "Tropical Zkittles",
+   "Watermelon"
+  ],
+  "docs": [
+   {
+    "file": "CBN-Dist-07-02-24-Gobi.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 171,
+  "slug": "ccell-m4-penna",
+  "name": "CCELL M4 – Vape Batteri – 510",
+  "variants": [
+   "Vit",
+   "Svart",
+   "Silver"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 209,
+  "slug": "d10-buds-cosmic-trip-5g",
+  "name": "D10 50% – Cosmic Trip – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Cosmic-Trip-50-D10_1190_R8A0Z6V9.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Cosmic-Trip",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 211,
+  "slug": "d10-buds-porn-star-og-magic-farmers",
+  "name": "D10 50% – Porn Star OG – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Porn-Star-OG-50-D10_1190_D7X9L1S8.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Porn-Star-OG",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 214,
+  "slug": "d10-buds-skywalker-og-magic-farmers-thcx",
+  "name": "D10 50% – Skywalker OG – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Skywalker-OG-50-D10_1190_U2M4T5N3.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Skywalker-OG",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 223,
+  "slug": "d10-buds-white-widow-5g",
+  "name": "D10 50% – White Widow – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_White-Widow-50-D10_1190_I3W6L1C2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "White-Widow",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 234,
+  "slug": "d10-hash-blue-diamond-5g",
+  "name": "D10 60% – Blue Diamond – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Blue-Diamond-60-D10_1194_T8Y0M7A3.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Blue-Diamond",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 235,
+  "slug": "d10-hash-purple-storm-5g",
+  "name": "D10 60% – Purple Storm – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Purple-Storm-60-D10_1194_D5M4I1N6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Purple-Storm",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 216,
+  "slug": "d10-hash-rosinella-magic-farmers",
+  "name": "D10 60% – Rosinella – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Rosinella-60-D10_1190_M7L5P0D2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Rosinella",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 218,
+  "slug": "d10-hash-silk-road-magic-farmers-thcx",
+  "name": "D10 60% – Silk Road – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Silk-Road-60-D10_1194_U3S8V1L4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Silk-Road",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 254,
+  "slug": "d10-vape-magic-farmers",
+  "name": "D10 - 2ml",
+  "variants": [
+   "Cherry Sour",
+   "Lemon Cheese",
+   "Cotton Candy",
+   "Maui Mango",
+   "Kiwi Sorbet"
+  ],
+  "docs": [
+   {
+    "file": "COA_Disposable-Vape-pen-Cotton-Candy-99-D10_1999_Z1C2P0K9.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Cotton Candy",
+    "subject": "Disposable-Vape-pen-Cotton-Candy",
+    "variant": "Cotton Candy",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Lemon-Cheese-99-D10_1999_D2C9P0L8.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Lemon Cheese",
+    "subject": "Disposable-Vape-pen-Lemon-Cheese",
+    "variant": "Lemon Cheese",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Maui-Mango-99-D10_1999_U9F6Z5Y2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Maui Mango",
+    "subject": "Disposable-Vape-pen-Maui-Mango",
+    "variant": "Maui Mango",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Cherry-Sour-99-D10_1999_C7I3N4R8.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Cherry Sour",
+    "subject": "Disposable-Vape-pen-Cherry-Sour",
+    "variant": "Cherry Sour",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Kiwi-Sorbet-99-D10_1999_J4E9O7G6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Kiwi Sorbet",
+    "subject": "Disposable-Vape-pen-Kiwi-Sorbet",
+    "variant": "Kiwi Sorbet",
+    "relation": "variant-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 124,
+  "slug": "h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+  "name": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 207,
+  "slug": "h4cbd-vape-canntropy-1ml",
+  "name": "Vape - H4CBD 95% - Canntropy - 1ml",
+  "variants": [
+   "Super Lemon Haze",
+   "Gorilla Glue",
+   "Sour Diesel",
+   "Jack Herer"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 182,
+  "slug": "h4cbd-vape-cbd-group-2ml",
+  "name": "H4CBD 97% - 2ml",
+  "variants": [
+   "Super Lemon Haze",
+   "Marrocan Hash",
+   "Blue Raspberry"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 158,
+  "slug": "hash-cbn-yellowstone-5-gram",
+  "name": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 125,
+  "slug": "hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+  "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 137,
+  "slug": "high-life-hash-malaga-magic-5g",
+  "name": "High Life – Malaga Magic – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "Malaga-Magic-Hash-CoA.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST / CoA",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 139,
+  "slug": "high-life-hash-northern-lights-5g",
+  "name": "High Life – Northern Lights – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "Northern-Lights-CoA.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST / CoA",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 252,
+  "slug": "magic-sauce-10ml",
+  "name": "Magic Sauce 3.0 - 10ml",
+  "variants": [
+   "Kowa Bunga",
+   "Yoda Ice Cream",
+   "Gorilla Cookies"
+  ],
+  "docs": [
+   {
+    "file": "COA_Disposable-Vape-pen-Gorilla-Cookies-99-MS_1180_Y5E2S8J2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Gorilla Cookies",
+    "subject": "Disposable-Vape-pen-Gorilla-Cookies",
+    "variant": "Gorilla Cookies",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Yoda-Ice-Cream-99-MS_1180_D4A1K3S9.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Yoda Ice Cream",
+    "subject": "Disposable-Vape-pen-Yoda-Ice-Cream",
+    "variant": "Yoda Ice Cream",
+    "relation": "variant-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 172,
+  "slug": "magic-sauce-buds-donny-burger-5g",
+  "name": "Magic Sauce 50% – Donny Burger – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Donny-Burger-50-MS_1160_R7S1Y8D4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Donny-Burger",
+    "variant": null,
+    "relation": "egen-verifierad"
+   }
+  ]
+ },
+ {
+  "id": 231,
+  "slug": "magic-sauce-buds-grape-gasoline",
+  "name": "Magic Sauce 50% – Grape Gasoline – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 221,
+  "slug": "magic-sauce-buds-kowa-bunga-5g",
+  "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 198,
+  "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+  "name": "Magic Sauce 50% – La Chupacabra – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Samourai-Jack-50-MS_1160_U8F7J3X6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Samourai-Jack",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 226,
+  "slug": "magic-sauce-buds-london-lobster-ersatt-thc-a",
+  "name": "Magic Sauce 50% – London Lobster – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 134,
+  "slug": "magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+  "name": "Magic Sauce 50% – Gorilla Cookies – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Gorilla-Cookies-50-MS_1160_F6D1R5Y1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Gorilla-Cookies",
+    "variant": null,
+    "relation": "egen-verifierad"
+   },
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 168,
+  "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+  "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Khalifa-Kush-50-MS_1160_I8Z6M0V2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Khalifa-Kush",
+    "variant": null,
+    "relation": "egen-verifierad"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 155,
+  "slug": "magic-sauce-buds-samurai-jack-magic-farmers-weed",
+  "name": "Magic Sauce 50% – Samurai Jack – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Samourai-Jack-50-MS_1160_U8F7J3X6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Samourai-Jack",
+    "variant": null,
+    "relation": "egen-verifierad"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 203,
+  "slug": "magic-sauce-buds-thca-ersatt-john-lemon-5g",
+  "name": "Magic Sauce 50% – John Lemon – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 201,
+  "slug": "magic-sauce-buds-titty-sprinkles-5-gram",
+  "name": "Magic Sauce 50% – Titty Sprinkles – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Samourai-Jack-50-MS_1160_U8F7J3X6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Samourai-Jack",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 132,
+  "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+  "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Yoda-Ice-Cream-50-MS_1160_A7W3N6C4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Yoda-Ice-Cream",
+    "variant": null,
+    "relation": "egen-verifierad"
+   },
+   {
+    "file": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Tinky-Winky",
+    "variant": null,
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 196,
+  "slug": "magic-sauce-hash-charas-5-gram",
+  "name": "Magic Sauce 50% – Charas – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Gorilla-Cookies-50-MS_1160_F6D1R5Y1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Gorilla-Cookies",
+    "variant": null,
+    "relation": "annan strain"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 152,
+  "slug": "magic-sauce-hash-marrakesh-dream-5-gram",
+  "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "COA_Gorilla-Cookies-50-MS_1160_F6D1R5Y1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBRAPPORT",
+    "subject": "Gorilla-Cookies",
+    "variant": null,
+    "relation": "annan strain"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 257,
+  "slug": "magic-sauce-pre-rolls-1g",
+  "name": "Magic Sauce 50% – Pre Rolls – 1g",
+  "variants": [
+   "Crazy Dog (Buds)",
+   "Kowa Bunga (Buds)",
+   "Bruce Banner OG (Buds)",
+   "Yoda Ice Cream (Buds)",
+   "Go Fast (Hash)"
+  ],
+  "docs": [
+   {
+    "file": "COA_Yoda-Ice-Cream-50-MS_1160_A7W3N6C4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Yoda Ice Cream",
+    "subject": "Yoda-Ice-Cream",
+    "variant": "Yoda Ice Cream (Buds)",
+    "relation": "annan strain"
+   },
+   {
+    "file": "COA_Crazy-Dog-50-MS_1160_U1A3S8G7.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Crazy Dog",
+    "subject": "Crazy-Dog",
+    "variant": "Crazy Dog (Buds)",
+    "relation": "annan strain"
+   }
+  ]
+ },
+ {
+  "id": 260,
+  "slug": "magic-sauce-vape-5ml",
+  "name": "Magic Sauce 3.0 - 5ml",
+  "variants": [
+   "This is Sparta",
+   "Kowa Bunga",
+   "La Chupacabra",
+   "Yoda Ice Cream",
+   "Bruce Banner OG"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 206,
+  "slug": "nano-11-buds-lemon-mandarine-5g",
+  "name": "7% Nano11 – Lemon Mandarine – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 208,
+  "slug": "nano-11-buds-orange-zkittlez-5g",
+  "name": "7% Nano11 – Orange Zkittlez – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 194,
+  "slug": "nano-11-buds-thca-substitut-royal-og",
+  "name": "7% Nano11 – Royal OG – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 191,
+  "slug": "nano-buds-ersatt-thca-bubba-kush-5g",
+  "name": "7% Nano11 – Bubba Kush – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 192,
+  "slug": "nano-buds-gary-payton-5-gram",
+  "name": "7% Nano11 – Gary Payton – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 131,
+  "slug": "nano-buds-lemon-purple-5-gram",
+  "name": "Buds – 7% Nano11 – Lemon Purple – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 187,
+  "slug": "nano-buds-raspberry-popcorn-5-gram",
+  "name": "Buds – 7% Nano11 – Raspberry Popcorn – 5 gram",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 193,
+  "slug": "nano-buds-strawberry-og-5-gram",
+  "name": "7% Nano11 – Strawberry OG – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 210,
+  "slug": "nano11-buds-godzilla-5g",
+  "name": "7% Nano11 – Godzilla – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 183,
+  "slug": "nano11-lemon-sorbet-5-gram",
+  "name": "7% Nano11 – Lemon Sorbet – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 213,
+  "slug": "nano11-naranja-popcorn-buds-5g",
+  "name": "7% Nano11 – Naranja Pop. – 5g",
+  "variants": [],
+  "docs": [
+   {
+    "file": "A14589_V13451-1_DEST1_ver1_ySD35ba.pdf",
+    "host": "www.hazey.se",
+    "text": "Labbtestat destillat",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 251,
+  "slug": "thc-b-vape-faraoh-1ml",
+  "name": "Vape - THC-B 35% - Faraoh - 1ml",
+  "variants": [
+   "Tangie Melody",
+   "Exotic Mango",
+   "Blueberry Dream",
+   "Pineapple Express",
+   "Bubba Kush"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 255,
+  "slug": "thc-x-vape-hero-core-2ml",
+  "name": "Hero's Core - 2ml",
+  "variants": [
+   "Gelato - Indica",
+   "Strawberry Kush - Sativa",
+   "Melon Haze",
+   "Pineapple Express -Sativa",
+   "Super Lemon Haze",
+   "Coconut Cake - Indica"
+  ],
+  "docs": [
+   {
+    "file": "CoA-THCX.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 199,
+  "slug": "thcv-vape-canapuff-1ml",
+  "name": "Vape - THC-V 79% - Canapuff - 1ml",
+  "variants": [
+   "Papaya Punch",
+   "Berry Gelato"
+  ],
+  "docs": [
+   {
+    "file": "y664d961e08bce-laboratory-analysis-d8thcv.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST",
+    "subject": null,
+    "variant": null,
+    "relation": "batch/destillat (ingen strain i filnamnet)"
+   }
+  ]
+ },
+ {
+  "id": 233,
+  "slug": "thcv-vape-euphoria-2ml",
+  "name": "Vape - THCV - Euphoria - 2ml",
+  "variants": [
+   "Trainwreck",
+   "Jack Herer",
+   "Northern Lights"
+  ],
+  "docs": [
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ },
+ {
+  "id": 261,
+  "slug": "vape-magic-sauce-magic-farmers-2ml",
+  "name": "Magic Sauce 3.0 - 2ml",
+  "variants": [
+   "Gorilla Cookies",
+   "Crazy Dog",
+   "High Pepito",
+   "Samurai Jack",
+   "Yoda Ice Cream",
+   "London Lobster",
+   "Kowa Bunga",
+   "Bruce Banner OG",
+   "Tinky Winky"
+  ],
+  "docs": [
+   {
+    "file": "COA_Disposable-Vape-pen-Gorilla-Cookies-99-MS_1180_Y5E2S8J2.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Gorilla Cookies",
+    "subject": "Disposable-Vape-pen-Gorilla-Cookies",
+    "variant": "Gorilla Cookies",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Crazy-Dog-99-MS_1180_U2H9C2M6.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Crazy Dog",
+    "subject": "Disposable-Vape-pen-Crazy-Dog",
+    "variant": "Crazy Dog",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-High-Pepito-99-MS_1180_P8L7U2C4.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST High Pepito",
+    "subject": "Disposable-Vape-pen-High-Pepito",
+    "variant": "High Pepito",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Samurai-Jack-99-MS_1180_O8T4F2N1.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Samurai Jack",
+    "subject": "Disposable-Vape-pen-Samurai-Jack",
+    "variant": "Samurai Jack",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "COA_Disposable-Vape-pen-Yoda-Ice-Cream-99-MS_1180_D4A1K3S9.pdf",
+    "host": "www.hazey.se",
+    "text": "LABBTEST Yoda Ice Cream",
+    "subject": "Disposable-Vape-pen-Yoda-Ice-Cream",
+    "variant": "Yoda Ice Cream",
+    "relation": "variant-verifierad"
+   },
+   {
+    "file": "halsomassiga-sociala-effekter-cannabisbruk-00062-2017-webb.pdf",
+    "host": "www.folkhalsomyndigheten.se",
+    "text": "Rapporten om cannabisbruks effekter",
+    "subject": null,
+    "variant": null,
+    "relation": "inte analys"
+   }
+  ]
+ }
+]
