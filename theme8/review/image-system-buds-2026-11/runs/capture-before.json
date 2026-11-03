@@ -1,0 +1,662 @@
+{
+ "393-home": {
+  "boxes": [
+   {
+    "x": 19,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   },
+   {
+    "x": 160.390625,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   },
+   {
+    "x": 301.78125,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-buds": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 202.5,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 16,
+    "y": 1131.390625,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-vapes": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 202.5,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 16,
+    "y": 1131.390625,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-hasch": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 202.5,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 16,
+    "y": 1131.390625,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-bestsellers": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 565.421875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 202.5,
+    "y": 565.421875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 16,
+    "y": 924.125,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-yoda": {
+  "boxes": [
+   {
+    "x": 12,
+    "y": 112.890625,
+    "w": 369,
+    "h": 376.0625,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "contained"
+   },
+   {
+    "x": 42,
+    "y": 1482.4375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 318,
+    "y": 1482.4375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-h4cbd-white": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 122.890625,
+    "w": 361,
+    "h": 495.796875,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 25,
+    "y": 2247.859375,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 211.875,
+    "y": 2247.859375,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-battery-env": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 149.78125,
+    "w": 361,
+    "h": 340.796875,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 25,
+    "y": 2120.765625,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 211.875,
+    "y": 2120.765625,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-transparent": {
+  "boxes": [
+   {
+    "x": 12,
+    "y": 112.890625,
+    "w": 369,
+    "h": 310.0625,
+    "cls": "product-detail__media hz8-pp-theatre",
+    "media": "contained"
+   },
+   {
+    "x": 42,
+    "y": 1339.109375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 318,
+    "y": 1339.109375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-faraoh": {
+  "boxes": [
+   {
+    "x": 12,
+    "y": 112.890625,
+    "w": 369,
+    "h": 376.0625,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "contained"
+   },
+   {
+    "x": 42,
+    "y": 1553.515625,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 318,
+    "y": 1553.515625,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-ms2ml": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 149.78125,
+    "w": 361,
+    "h": 495.796875,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 25,
+    "y": 2649.34375,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 211.875,
+    "y": 2649.34375,
+    "w": 158.875,
+    "h": 119.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-home": {
+  "boxes": [
+   {
+    "x": 72,
+    "y": 755.796875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   },
+   {
+    "x": 403,
+    "y": 755.796875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   },
+   {
+    "x": 72,
+    "y": 1123.1875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-buds": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 398,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 732,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-vapes": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 398,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 732,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-hasch": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 398,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 732,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-bestsellers": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 480.609375,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 398,
+    "y": 480.609375,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 732,
+    "y": 480.609375,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-yoda": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 138.890625,
+    "w": 647.6875,
+    "h": 540,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "contained"
+   },
+   {
+    "x": 80,
+    "y": 1752.21875,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 411,
+    "y": 1752.21875,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-h4cbd-white": {
+  "boxes": [
+   {
+    "x": 60,
+    "y": 138.890625,
+    "w": 683.3125,
+    "h": 838.3125,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 69,
+    "y": 1984.875,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 316.546875,
+    "y": 1984.875,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-battery-env": {
+  "boxes": [
+   {
+    "x": 60,
+    "y": 138.890625,
+    "w": 683.3125,
+    "h": 683.3125,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 69,
+    "y": 1869.0625,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 316.546875,
+    "y": 1869.0625,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-transparent": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 138.890625,
+    "w": 647.6875,
+    "h": 540,
+    "cls": "product-detail__media hz8-pp-theatre",
+    "media": "contained"
+   },
+   {
+    "x": 80,
+    "y": 1721.828125,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 411,
+    "y": 1721.828125,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-faraoh": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 138.890625,
+    "w": 647.6875,
+    "h": 540,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "contained"
+   },
+   {
+    "x": 80,
+    "y": 1790.234375,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   },
+   {
+    "x": 411,
+    "y": 1790.234375,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-ms2ml": {
+  "boxes": [
+   {
+    "x": 60,
+    "y": 138.890625,
+    "w": 683.3125,
+    "h": 838.3125,
+    "cls": "product-detail__media",
+    "media": null
+   },
+   {
+    "x": 69,
+    "y": 2440.875,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   },
+   {
+    "x": 316.546875,
+    "y": 2440.875,
+    "w": 217.546875,
+    "h": 163.15625,
+    "cls": "product-card__image",
+    "media": null
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ }
+}

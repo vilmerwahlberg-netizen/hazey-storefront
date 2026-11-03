@@ -1,0 +1,741 @@
+{
+ "which": "before",
+ "pages": [
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 8
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 320,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 8
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0.548,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 393,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 8
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0.501,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 430,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 9,
+   "kinds": {
+    "–": 9
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0.31,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 1440,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 9,
+   "kinds": {
+    "–": 9
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0.256,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 1920,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 9,
+   "kinds": {
+    "–": 9
+   },
+   "cropped": [
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media",
+    "hz8-bs-card__media"
+   ],
+   "cls": 0.241,
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 1440,
+   "zoom": 2
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 320,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 393,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 430,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 1440,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 1920,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 25,
+   "kinds": {
+    "–": 25
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 1440,
+   "zoom": 2
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 5
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 320,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 5
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 393,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 5
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 430,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 7
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 1440,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 7
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 1920,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 8,
+   "kinds": {
+    "–": 7
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 1440,
+   "zoom": 2
+  },
+  {
+   "overflow": 0,
+   "images": 12,
+   "kinds": {
+    "–": 12
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 393,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 12,
+   "kinds": {
+    "–": 12
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 1440,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 12,
+   "kinds": {
+    "–": 12
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 1920,
+   "zoom": 1
+  },
+  {
+   "overflow": 0,
+   "images": 12,
+   "kinds": {
+    "–": 12
+   },
+   "cropped": [],
+   "cls": 0,
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 1440,
+   "zoom": 2
+  }
+ ],
+ "gallery": [
+  {
+   "slug": "magic-sauce-pre-rolls-1g",
+   "w": 393,
+   "ownImages": 6,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wva293YS1idW5nYS1tYWdpYy1zYXVjZS1wcmUtcm9sbC1lMmVmNjRjYS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "362",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYnJ1Y2UtYmFubmVyLW9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTdkZDFlMzNjLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "363",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 3",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wveW9kYS1pY2UtY3JlYW0tbWFnaWMtc2F1Y2UtcHJlLXJvbGwtNjVkM2Y3MGQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "365",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtcHJlLXJvbGxzLW1hZ2ljLWZhcm1lcnMtY2FubmFiaXMtam9pbnQtZDY1NGVlZDIuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "360",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wva293YS1idW5nYS1tYWdpYy1zYXVjZS1wcmUtcm9sbC1lMmVmNjRjYS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "362",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "magic-sauce-pre-rolls-1g",
+   "w": 1440,
+   "ownImages": 6,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wva293YS1idW5nYS1tYWdpYy1zYXVjZS1wcmUtcm9sbC1lMmVmNjRjYS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "362",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYnJ1Y2UtYmFubmVyLW9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTdkZDFlMzNjLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "363",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 3",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wveW9kYS1pY2UtY3JlYW0tbWFnaWMtc2F1Y2UtcHJlLXJvbGwtNjVkM2Y3MGQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "365",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtcHJlLXJvbGxzLW1hZ2ljLWZhcm1lcnMtY2FubmFiaXMtam9pbnQtZDY1NGVlZDIuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "360",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY3JhenktZG9nLW1hZ2ljLXNhdWNlLXByZS1yb2xsLTk4OTA0NzQ2LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "361",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wva293YS1idW5nYS1tYWdpYy1zYXVjZS1wcmUtcm9sbC1lMmVmNjRjYS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "362",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "w": 393,
+   "ownImages": 3,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "194",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "194",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtNWQyZjdlMTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "204",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtODBlYWNiMTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "205",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "w": 1440,
+   "ownImages": 3,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "194",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "194",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtNWQyZjdlMTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "204",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtODBlYWNiMTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "205",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "cbd-prerolled-cookies-1g",
+   "w": 393,
+   "ownImages": 4,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYmx1ZS1yYXotY29va2llcy1jYmQtcHJlcm9sbC0xYzRiYjdjNy5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "357",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbGF1Z2hpbmctZ2FzLWNvb2tpZXMtY2JkLXByZXJvbGwtMmJkNDgwY2QuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "358",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 3",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGVxdWlsYS1zdW5yaXNlLWNvb2tpZXMtY2JkLXByZXJvbGwtNDZhZGFkZTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "359",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYmx1ZS1yYXotY29va2llcy1jYmQtcHJlcm9sbC0xYzRiYjdjNy5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "357",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbGF1Z2hpbmctZ2FzLWNvb2tpZXMtY2JkLXByZXJvbGwtMmJkNDgwY2QuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "358",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "cbd-prerolled-cookies-1g",
+   "w": 1440,
+   "ownImages": 4,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYmx1ZS1yYXotY29va2llcy1jYmQtcHJlcm9sbC0xYzRiYjdjNy5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "357",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbGF1Z2hpbmctZ2FzLWNvb2tpZXMtY2JkLXByZXJvbGwtMmJkNDgwY2QuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "358",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "strain 3",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvdGVxdWlsYS1zdW5yaXNlLWNvb2tpZXMtY2JkLXByZXJvbGwtNDZhZGFkZTUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "359",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 0",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYXBwbGUtYmFuYW5hcy1jb29raWVzLWNiZC1wcmVyb2xsLWM2NGM4OTdhLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgwMCwiaGVpZ2h0Ijo4MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+     "imageId": "356",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 1",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvYmx1ZS1yYXotY29va2llcy1jYmQtcHJlcm9sbC0xYzRiYjdjNy5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "357",
+     "media": "contained",
+     "mediaSrc": null
+    },
+    {
+     "step": "miniatyr 2",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbGF1Z2hpbmctZ2FzLWNvb2tpZXMtY2JkLXByZXJvbGwtMmJkNDgwY2QuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+     "imageId": "358",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "hash-cbn-yellowstone-5-gram",
+   "w": 393,
+   "ownImages": 1,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY2JuLWhhc2gtNDAtbWFnaWMtZmFybWVycy1idWRzLWxhZ2xpZy1jYW5uYWJpcy1pLXN2ZXJpZ2UtNWctY2JuLWxhZ2xpZy1oYW1wYS1idWQtMTQ1MmVjYWUucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "231",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  },
+  {
+   "slug": "hash-cbn-yellowstone-5-gram",
+   "w": 1440,
+   "ownImages": 1,
+   "steps": [
+    {
+     "step": "start",
+     "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY2JuLWhhc2gtNDAtbWFnaWMtZmFybWVycy1idWRzLWxhZ2xpZy1jYW5uYWJpcy1pLXN2ZXJpZ2UtNWctY2JuLWxhZ2xpZy1oYW1wYS1idWQtMTQ1MmVjYWUucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6ODAwLCJmaXQiOiJpbnNpZGUifX19",
+     "imageId": "231",
+     "media": "contained",
+     "mediaSrc": null
+    }
+   ],
+   "wrongProductImage": 0,
+   "mediaLagging": 0,
+   "zoomOpened": true
+  }
+ ]
+}

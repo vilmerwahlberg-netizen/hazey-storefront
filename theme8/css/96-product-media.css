@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Gemensamt bildsystem för produktbilder (TASK 17B, 2026-11-03)
+
+   Ersätter kontextens egna bildbrunnar (mörkare beige/bruna ytor, korn,
+   inre skuggor, multiply, beskärda etikettremsor och överskalning) med EN
+   behandling: bildytan ÄR kortets ljusa yta, bilden visas hel (contain,
+   egna proportioner) och behandlas efter sin verkliga bildtyp
+   (data-hz8-media, satt av 03a-product-media.js ur bildens pixlar):
+
+     transparent  frilagt packshot direkt på ytan
+     white /      kanttonen tonas ut i ytan, bara inom den uppmätta
+     embedded     marginalen utanför produkten (--hz8-mf-t/r/b/l)
+     environment  miljöbild: hel, mjukt rundad, ingen mask
+     pending /    originalet orört (ingen mask)
+     unverified
+
+   Specificitet: kontextreglerna i 03/07/80/81/85/87 har upp till
+   (1,6,1). :not(#hz8-media) höjer med ett id utan att kräva attribut, så
+   att systemet gäller redan innan bilden klassats (ingen blinkning).
+   Ingen produkt ritas om, frilägges eller beskärs.
+   ========================================================================== */
+:root {
+  --hz8-media-inset: 4%;
+  --hz8-media-radius: 6px;
+  --hz8-media-contact: color-mix(in srgb, var(--hz8-ink) 22%, transparent);
+}
+
+/* ---------- 1. Bildytor i kort och rälsar ---------- */
+html.hz8 :is(.product-card__image, .hz8-bs-card__media, .hz8-pcard__media):not(#hz8-media):not(#hz8-media) {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html.hz8 :is(.hz8-bs-card__media, .hz8-pcard__media):not(#hz8-media):not(#hz8-media)::before,
+html.hz8 .hz8-pcard__media:not(#hz8-media):not(#hz8-media) .hz8-pcard__shadow { display: none !important; }
+html.hz8 :is(.product-card__image, .hz8-bs-card__media, .hz8-pcard__media):not(#hz8-media):not(#hz8-media) img {
+  position: absolute !important;
+  inset: var(--hz8-media-inset) !important;
+  z-index: 1;
+  width: auto !important;
+  height: auto !important;
+  max-width: calc(100% - 2 * var(--hz8-media-inset)) !important;
+  max-height: calc(100% - 2 * var(--hz8-media-inset)) !important;
+  margin: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: 50% 50% !important;
+  clip-path: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+  filter: none !important;
+}
+/* Slutsåld: lagerraden och "Slutsåld" bär beskedet -- bilden tonas inte. */
+html.hz8 .product-card.hz8-is-soldout .product-card__image:not(#hz8-media):not(#hz8-media) img { opacity: 1 !important; }
+
+/* Startsidans spotlight: scenen är kvar, men bilden beskärs eller
+   maskas inte längre i en fast ellips (den kapade förpackningen). */
+html.hz8 .hz8-spot__art:not(#hz8-media):not(#hz8-media) .hz8-spot__img {
+  clip-path: none !important;
+  -webkit-mask-image: none;
+  mask-image: none;
+  object-fit: contain !important;
+}
+
+/* ---------- 2. Bildtyp ---------- */
+html.hz8 :is(.product-card__image, .hz8-bs-card__media, .hz8-pcard__media, .hz8-spot__art, .thumb)[data-hz8-media-fade]:not(#hz8-media):not(#hz8-media) img,
+html.hz8 .product-detail__media[data-hz8-media-fade]:not(#hz8-media) #product-slides img {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--hz8-mf-l, 0%), #000 calc(100% - var(--hz8-mf-r, 0%)), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--hz8-mf-t, 0%), #000 calc(100% - var(--hz8-mf-b, 0%)), transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--hz8-mf-l, 0%), #000 calc(100% - var(--hz8-mf-r, 0%)), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--hz8-mf-t, 0%), #000 calc(100% - var(--hz8-mf-b, 0%)), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+/* Miljöbild: hel bild med mjuk hörnradie, ingen ton och ingen mask. */
+html.hz8 :is(.product-card__image, .hz8-bs-card__media, .hz8-pcard__media, .hz8-spot__art, .thumb)[data-hz8-media="environment"]:not(#hz8-media):not(#hz8-media) img { border-radius: var(--hz8-media-radius); }
+
+/* ---------- 3. PDP-miniatyrer ---------- */
+/* Miniatyrerna ligger över scenens tonlager (::after, z-index 2). */
+html.hz8-pdp-pilot .product-detail__media #product-thumbnails:not(#hz8-media) { z-index: 5 !important; }
+html.hz8-pdp-pilot .product-detail__media #product-thumbnails .thumb:not(#hz8-media) { background: var(--hz8-surface) !important; }
+html.hz8-pdp-pilot .product-detail__media #product-thumbnails .thumb:not(#hz8-media) img { width: 100%; height: 100%; object-fit: contain !important; }
+
+/* ---------- 4. PDP-scenen ----------
+   Scenen (Faraohs sand, fiber, solfält och botaniska ljus/skugga-asset i
+   85-pdp-pilot.css) är oförändrad. Borttaget: den ljusa ringen + skuggan
+   runt bildkvadraten (gav en andra bildruta). R2B (transparent): produkten
+   står direkt i scenen med en låg kontaktskugga. R2A (white/embedded):
+   kanttonen tonas ut i scenen inom produktens marginal, och krämslöjan
+   bakom bilden får bildens egen kantton -- ingen brunn, ingen overlay
+   ovanpå produkten. Miljöbild: hel, rundad, med låg skugga. */
+html.hz8-pdp-pilot .product-detail__media:not(#hz8-media) .product-image-slider__main { box-shadow: none !important; }
+html.hz8-pdp-pilot .product-detail__media[data-hz8-media="transparent"]:not(#hz8-media) #product-slides img {
+  filter: drop-shadow(0 18px 18px var(--hz8-media-contact));
+}
+html.hz8-pdp-pilot .product-detail__media[data-hz8-media="environment"]:not(#hz8-media) .product-image-slider__main {
+  border-radius: 8px !important;
+  box-shadow: 0 18px 34px -26px var(--hz8-media-contact) !important;
+}
+/* R2A: tonen närmast bilden = bildens egen kantton, som klingar av ut i
+   scenen. Bildkvadraten (påsens/förpackningens inbakade bakgrund) möter
+   därmed nästan samma ton i stället för en ljusare scen -- ingen kant,
+   ingen ram, inget lager ovanpå produkten. */
+@media (min-width: 1024px) {
+  html.hz8-pdp-pilot .product-detail__media:is([data-hz8-media="white"], [data-hz8-media="embedded"]):not(#hz8-media)::after {
+    background: radial-gradient(calc(var(--pp-top-h) * .74) calc(var(--pp-top-h) * .7) at 50% 50%,
+      var(--hz8-media-edge) 0%,
+      var(--hz8-media-edge) 64%,
+      color-mix(in srgb, var(--hz8-media-edge) 55%, transparent) 80%,
+      transparent 100%);
+  }
+}
+@media (max-width: 1023px) {
+  html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail > .product-detail__media:is([data-hz8-media="white"], [data-hz8-media="embedded"]):not(#hz8-media) {
+    background: radial-gradient(72% 66% at 50% 46%, var(--hz8-media-edge) 0%, color-mix(in srgb, var(--hz8-media-edge) 70%, var(--pp-well)) 70%, var(--pp-well) 100%);
+  }
+}

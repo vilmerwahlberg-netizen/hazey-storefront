@@ -1060,8 +1060,10 @@
     var media = document.querySelector(".product-detail__media");
     if (!media || media.querySelector(".hz8-pp-zoom")) return;
     media.classList.add("hz8-pp-theatre");
-    media.setAttribute("data-hz8-media", "contained");
-    detectMediaMode(media);
+    /* TASK 17B: bildtypen (transparent/white/embedded/environment) sätts av
+       det gemensamma bildsystemet (03a-product-media.js) för den aktiva
+       bilden -- scenens R2A/R2B styrs av den i 96-product-media.css. */
+    if (HZ8.productMedia) HZ8.productMedia.sync(media, media.querySelector("#product-slides .slide img"));
     var thumbs = media.querySelectorAll("#product-thumbnails .thumb");
     media.classList.toggle("has-thumbs", thumbs.length > 1);
     var mainLink = media.querySelector("#product-slides .slide a.product-lightbox");
@@ -1075,30 +1077,12 @@
       });
       media.appendChild(z);
     }
-    /* A Light: dekorativt eko av den aktiva riktiga bilden bakom den skarpa
-       (oskarp, blek, maskad i CSS) -- samma URL, ingen ny storlek, ingen
-       egen nätverkshämtning (webbläsarens cache återanvänds). */
-    var slider = media.querySelector(".product-image-slider");
-    if (slider && !media.querySelector(".hz8-pp-stage-echo")) {
-      var echo = document.createElement("img");
-      echo.className = "hz8-pp-stage-echo";
-      echo.alt = "";
-      echo.setAttribute("aria-hidden", "true");
-      echo.setAttribute("draggable", "false");
-      echo.decoding = "async";
-      echo.addEventListener("error", function () { echo.hidden = true; });
-      slider.parentNode.insertBefore(echo, slider);
-      /* Bildbyte (miniatyr, pil, svep) ändrar bara klassen på sliden --
-         följ användarens egna händelser i stället för en ny observer. */
-      var echoRaf = 0;
-      var later = function () { if (!echoRaf) echoRaf = window.requestAnimationFrame(function () { echoRaf = 0; syncStageEcho(media); }); };
-      ["click", "keyup", "transitionend"].forEach(function (ev) { media.addEventListener(ev, later, { passive: true }); });
-      if (STAGE_MQ.addEventListener) STAGE_MQ.addEventListener("change", function () { syncStageEcho(media); });
-    }
-    syncStageEcho(media);
+    /* TASK 17B: det oskarpa "ekot" av bilden bakom den skarpa är borttaget
+       -- det gav en brun slöja runt inbakade bakgrunder. Scenens djup
+       kommer nu bara ur de godkända botaniska assetsen. */
     /* Trasig/saknad bild: neutral brunn med samma mått (ingen ersättningsbild). */
     media.querySelectorAll("#product-slides img").forEach(function (img) {
-      var mark = function () { media.classList.add("hz8-pp-img-broken"); syncStageEcho(media); };
+      var mark = function () { media.classList.add("hz8-pp-img-broken"); };
       img.addEventListener("error", mark);
       if (img.complete && !img.naturalWidth) mark();
     });
@@ -1112,42 +1096,6 @@
         t.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); t.click(); } });
       });
     }
-  }
-  /* Immersive (mörk teater) bara när bilden verifierat är frilagd:
-     transparenta hörn. Annars contained (standard i CSS). Kräver CORS för
-     pixelläsning -- utan det förblir läget contained. */
-  function detectMediaMode(media) {
-    var img = media.querySelector("#product-slides img");
-    var src = img && (img.currentSrc || img.src);
-    if (!src) return;
-    var probe = new Image();
-    probe.crossOrigin = "anonymous";
-    probe.onload = function () {
-      try {
-        var c = document.createElement("canvas"); c.width = 24; c.height = 24;
-        var x = c.getContext("2d"); x.drawImage(probe, 0, 0, 24, 24);
-        var d = x.getImageData(0, 0, 24, 24).data;
-        var corners = [0, 23, 24 * 23, 24 * 24 - 1].map(function (i) { return d[i * 4 + 3]; });
-        media.classList.toggle("hz8-pp-immersive", corners.every(function (a) { return a < 16; }));
-        media.setAttribute("data-hz8-media", corners.every(function (a) { return a < 16; }) ? "immersive" : "contained");
-      } catch (e) { media.setAttribute("data-hz8-media", "contained-unverified"); }
-    };
-    probe.onerror = function () { media.setAttribute("data-hz8-media", "contained-unverified"); };
-    probe.src = src;
-  }
-  /* Ekot används bara på desktop i contained-läge (CSS döljer det annars);
-     src sätts bara när den aktiva bildens URL faktiskt ändrats. */
-  var STAGE_MQ = window.matchMedia("(min-width: 1024px)");
-  function syncStageEcho(media) {
-    media = media || document.querySelector(".hz8-pp-theatre");
-    var echo = media && media.querySelector(".hz8-pp-stage-echo");
-    if (!echo) return;
-    if (!STAGE_MQ.matches || media.classList.contains("hz8-pp-immersive") || media.classList.contains("hz8-pp-img-broken")) { echo.hidden = true; return; }
-    var img = media.querySelector("#product-slides .slide.is-active img, #product-slides .slide.active img") || media.querySelector("#product-slides .slide img");
-    var src = img && (img.currentSrc || img.src);
-    if (!src) { echo.hidden = true; return; }
-    if (echo.src !== src) { echo.hidden = false; echo.src = src; }
-    else if (echo.hidden && echo.complete && echo.naturalWidth) echo.hidden = false;
   }
   function syncThumbs() {
     document.querySelectorAll(".hz8-pp-theatre #product-thumbnails .thumb").forEach(function (t) { t.setAttribute("aria-pressed", t.classList.contains("active") ? "true" : "false"); });
@@ -1938,7 +1886,7 @@
     buildSticky();
     syncStation();
     HZ8.watch(function () {
-      syncStation(); syncThumbs(); syncStageEcho(); syncLedger();
+      syncStation(); syncThumbs(); syncLedger();
       /* Kort om produkten ligger i Vue-ägda .product-detail: tillbaka om
          en omritning tar bort den. */
       var d = document.querySelector(".product-detail");
