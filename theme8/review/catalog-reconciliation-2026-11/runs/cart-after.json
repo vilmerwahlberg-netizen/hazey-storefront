@@ -1,0 +1,44 @@
+{
+ "393": {
+  "cart": {
+   "open": true,
+   "rows": [
+    "https://hazeyse.nyehandel.se/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram"
+   ],
+   "recs": [
+    "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "7-nano11-prerolled-1-gram"
+   ],
+   "total": "495 kr",
+   "buy": true
+  },
+  "recLeaks": [],
+  "errors": [],
+  "checkout": {
+   "url": "https://hazeyse.nyehandel.se/sv/checkout",
+   "isCheckout": true,
+   "hasYoda": false
+  }
+ },
+ "1440": {
+  "cart": {
+   "open": true,
+   "rows": [
+    "https://hazeyse.nyehandel.se/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram"
+   ],
+   "recs": [
+    "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "7-nano11-prerolled-1-gram"
+   ],
+   "total": "495 kr",
+   "buy": true
+  },
+  "recLeaks": [],
+  "errors": [],
+  "checkout": {
+   "url": "https://hazeyse.nyehandel.se/sv/checkout",
+   "isCheckout": true,
+   "hasYoda": true
+  }
+ }
+}
