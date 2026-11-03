@@ -30,13 +30,18 @@
   var TP_UNIT = "6479dc28f0b041b3c79af588";
 
   /* Godkända produktomdömen, i visningsordning. product = produktsidans
-     sökväg, name/date/text = exakt som i Nyehandels data. */
+     sökväg, name/date/text = exakt som i Nyehandels data.
+     TASK 17 (2026-11-03): efter migreringen har Nyehandels produkter inga
+     omdömen alls (0 per produkt) -- inga kort visas förrän omdömena är
+     importerade. Sökvägar bytta bara där produktidentiteten är säker
+     (gammalt id -> WooCommerce -> nytt id, STALE-ID-MAP.md); övriga är
+     kvar (produkten finns inte längre eller matchningen är osäker). */
   var WHITELIST = [
     { product: "/sv/products/vape-magic-sauce-99-2ml", name: "Josefine", date: "2026-04-08T10:01:09.000000Z",
       text: "Alltid bra grejer från hazey!\r\nHar ibland varit lite fel på vapesen men alltid bra och snabb respons samt att dom skickade en ny! \r\nHar beställde många gånger från er och kommer fortsätta med det!" },
-    { product: "/sv/products/ccell-m4-vape-batteri-510", name: "Oscar", date: "2025-05-14T15:07:44.000000Z",
+    { product: "/sv/products/ccell-m4-penna", name: "Oscar", date: "2025-05-14T15:07:44.000000Z",
       text: "För att vara så pass billig blev jag förvånad över hur bra den fungerade. Liten och kompakt passar perfekt för att ta med sig för en dagsutflykt, riktigt skön omväxling mot min vanliga." },
-    { product: "/sv/products/buds-cbd-30-triple-scoop-35-gram", name: "Aida", date: "2025-07-17T07:05:40.000000Z",
+    { product: "/sv/products/cbd-buds-triple-scoop-cookies-cannabis", name: "Aida", date: "2025-07-17T07:05:40.000000Z",
       text: "Verkligen fin doft av glass med 3 smaker" },
     { product: "/sv/products/cart-magic-sauce-99-1ml", name: "Booose", date: "2026-03-13T18:32:51.000000Z",
       text: "Fick fel produkt först, men bra support gjorde så jag fick rätt tillslut. \r\nRekommenderas stay, återkommer." },
@@ -46,7 +51,7 @@
       text: "Jag är nöjd! Skönt att kunna hitta produkter på kampanj för den fattigare." },
     { product: "/sv/products/vape-thc-a-50-live-resin-faraoh-1ml", name: "Kristoffer R", date: "2026-02-15T14:28:21.000000Z",
       text: "Kvalitet rakt igenom!" },
-    { product: "/sv/products/buds-magic-sauce-50-samurai-jack-5-gram", name: "Virre", date: "2026-02-21T00:32:48.000000Z",
+    { product: "/sv/products/magic-sauce-buds-samurai-jack-magic-farmers-weed", name: "Virre", date: "2026-02-21T00:32:48.000000Z",
       text: "Den här var helt fantastisk 😍 har testat 4 eller 5 buds från Hazey och den här är helt klart bäst." },
     { product: "/sv/products/ccell-m3-plus-vape-batteri-510", name: "O", date: "2024-05-02T14:42:55.000000Z",
       text: "riktigt bra konstruktion, lätt värt pengarna" }

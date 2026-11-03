@@ -3,11 +3,14 @@
 
   var HZ8 = window.HZ8;
 
+  /* TASK 17: seriehubbarna efter migreringen (06-catalog-map.js). THCaB
+     pekade på /thcb (THCB) och D10/Nano-11 på breda sidor. "THCa"-kortets
+     /thca är tom efter migreringen -- ägarbeslut (OWNER-DECISIONS.md). */
   var series = [
     { name: "Magic Sauce", label: "Smak. Effekt. Balans.", href: "/sv/categories/magic-sauce", asset: "campaign-magic.webp" },
-    { name: "THCaB", label: "Kraftfullt. Rent. Äkta.", href: "/sv/categories/thcb", asset: "campaign-thcab.webp" },
-    { name: "D10", label: "West Coast", href: "/sv/categories/alla-vapes", asset: "hero-venice-background.webp" },
-    { name: "Nano-11", label: "Nästa generation", href: "/sv/categories/alla-produkter", asset: "campaign-nano.webp" },
+    { name: "THCaB", label: "Kraftfullt. Rent. Äkta.", href: "/sv/categories/thca-b", asset: "campaign-thcab.webp" },
+    { name: "D10", label: "West Coast", href: "/sv/categories/d10-1", asset: "hero-venice-background.webp" },
+    { name: "Nano-11", label: "Nästa generation", href: "/sv/categories/nano-11", asset: "campaign-nano.webp" },
     { name: "THCa", label: "Premium flower", href: "/sv/categories/thca", asset: "campaign-thca.webp" }
   ];
 

@@ -211,25 +211,114 @@
      slutsålda synliga men inte valbara, köpknappen avstängd. */
   var PKG_REVIEW = /[?&]hz8-pkg-review=1/.test(location.search);
   var PACKAGE_PRODUCTS = {};
-  /* Familjer (WooCommerce "familjebyggare") med Nyehandel-motsvarighet
-     (Task 10A woo-pdp-matrix.json, match "säker"). Medlemmarnas namn och
+  /* Familjer (WooCommerce "familjebyggare": blandade strains över separata
+     produkter). TASK 17: ur WooCommerce HZY_EXTRA.familj 2026-11-03 med
+     Nyehandels nya produkt-id efter migreringen (Woo-id -> samma slug och
+     SKU HZY-WC-<id>). Medlemmar som är olistade i WooCommerce (Nano11-
+     strains som bara säljs i paket) ingår, precis som i Woo-byggaren.
+     Nyehandel har ingen familjedata -- registret är en migrerings-
+     fallback som genereras av theme8/review/catalog-reconciliation-
+     2026-11/registry.mjs (PACKAGE-REGISTRY.json). Medlemmarnas namn och
      lager läses live. */
   var FAMILIES = {
-    ms50: { name: "Magic Sauce 50 % – 5 g", members: {
-      84: "/sv/products/buds-magic-sauce-50-samurai-jack-5-gram", 59: "/sv/products/buds-magic-sauce-50-yoda-ice-cream-5-gram",
-      60: "/sv/products/buds-magic-sauce-50-gorilla-cookies-5-gram", 74: "/sv/products/buds-magic-sauce-50-tinky-winky-5-gram",
-      93: "/sv/products/buds-magic-sauce-50-khalifa-kush-5-gram", 96: "/sv/products/buds-magic-sauce-50-donny-burger-5-gram",
-      100: "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram", 120: "/sv/products/buds-magic-sauce-50-la-chupacabra-5-gram",
-      77: "/sv/products/hash-magic-sauce-50-marrakesh-dream-5-gram", 119: "/sv/products/hash-magic-sauce-50-charas-5-gram" } },
-    nano11: { name: "Nano11 – 5 g", members: { 41: "/sv/products/buds-7-nano11-lemon-purple-5-gram", 112: "/sv/products/buds-7-nano11-raspberry-popcorn-5-gram" } }
+    ms50: { name: "Magic Sauce 50% 5g", members: {
+      132: "/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+      134: "/sv/products/magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+      146: "/sv/products/blommor-magic-sauce-buds-tinky-winki-5-gram",
+      152: "/sv/products/magic-sauce-hash-marrakesh-dream-5-gram",
+      155: "/sv/products/magic-sauce-buds-samurai-jack-magic-farmers-weed",
+      168: "/sv/products/magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+      172: "/sv/products/magic-sauce-buds-donny-burger-5g",
+      175: "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+      188: "/sv/products/magic-sauce-hash-kitkat-5g",
+      196: "/sv/products/magic-sauce-hash-charas-5-gram",
+      198: "/sv/products/magic-sauce-buds-la-chupacabra-5-gram",
+      201: "/sv/products/magic-sauce-buds-titty-sprinkles-5-gram",
+      203: "/sv/products/magic-sauce-buds-thca-ersatt-john-lemon-5g",
+      221: "/sv/products/magic-sauce-buds-kowa-bunga-5g",
+      226: "/sv/products/magic-sauce-buds-london-lobster-ersatt-thc-a",
+      228: "/sv/products/magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+      231: "/sv/products/magic-sauce-buds-grape-gasoline" } },
+    nano11: { name: "Nano 11 Buds 5g", members: {
+      131: "/sv/products/nano-buds-lemon-purple-5-gram",
+      177: "/sv/products/buds-nano11-snow-white-popcorn-5-gram",
+      180: "/sv/products/buds-nano11-abacous-5-gram",
+      183: "/sv/products/nano11-lemon-sorbet-5-gram",
+      187: "/sv/products/nano-buds-raspberry-popcorn-5-gram",
+      190: "/sv/products/buds-nano11-crystal-snow-5-gram",
+      191: "/sv/products/nano-buds-ersatt-thca-bubba-kush-5g",
+      192: "/sv/products/nano-buds-gary-payton-5-gram",
+      193: "/sv/products/nano-buds-strawberry-og-5-gram",
+      194: "/sv/products/nano-11-buds-thca-substitut-royal-og",
+      197: "/sv/products/buds-nanno-11-critical-berries",
+      200: "/sv/products/nano-hash-zkittlez-mousse-ersatt-thca-hash",
+      206: "/sv/products/nano-11-buds-lemon-mandarine-5g",
+      208: "/sv/products/nano-11-buds-orange-zkittlez-5g",
+      210: "/sv/products/nano11-buds-godzilla-5g",
+      213: "/sv/products/nano11-naranja-popcorn-buds-5g" } },
+    highlife: { name: "High Life / El Gringo 5g", members: {
+      135: "/sv/products/high-life-white-widow-sativa-buds-5-gram-hero-vapes",
+      137: "/sv/products/high-life-hash-malaga-magic-5g",
+      139: "/sv/products/high-life-hash-northern-lights-5g",
+      148: "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+      204: "/sv/products/high-life-gelato-hero-vapes-core-5g" } }
   };
-  /* Stegkod: "3" = 3 st, "9K" = hela kollektionen (9 st), "3F2" = 3 för 2. */
-  var PACKAGE_PLAN = (function () {
-    var plan = { 91: { model: "strain", steps: ["3", "5", "9K"] }, 92: { model: "strain", steps: ["3", "5", "9K"] } };
-    [84, 59, 60, 74, 93, 96, 100, 120, 77, 119].forEach(function (id) { plan[id] = { model: "family", family: "ms50", steps: ["3", "5", "10"] }; });
-    [41, 112].forEach(function (id) { plan[id] = { model: "family", family: "nano11", steps: ["3", "5", "10"] }; });
-    return plan;
-  })();
+  /* Stegkod: "3" = 3 st, "9K" = hela kollektionen (9 st), "3F2" = 3 för 2.
+     TASK 17: ur WooCommerce HZY_PAKET (paketsteg per basprodukt) med nya
+     Nyehandel-id; samma generator som FAMILIES. "same" = samma variant × N
+     (Nano11 pre-roll). Magic Sauce 3.0 – 10ml: Woo kallar 3-packet
+     "Kollektion" (3 strains, prissatt som 3 för 2) -> "3K". */
+  var PACKAGE_PLAN = {
+      131: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      132: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      134: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      135: { model: "family", family: "highlife", steps: ["3","5"] },
+      137: { model: "family", family: "highlife", steps: ["3","5"] },
+      139: { model: "family", family: "highlife", steps: ["3","5"] },
+      146: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      148: { model: "family", family: "highlife", steps: ["3","5"] },
+      152: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      155: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      165: { model: "same", steps: ["5","10"] },
+      168: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      172: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      175: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      177: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      180: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      183: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      187: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      188: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      190: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      191: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      192: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      193: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      194: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      196: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      197: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      198: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      200: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      201: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      203: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      204: { model: "family", family: "highlife", steps: ["3","5"] },
+      206: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      208: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      210: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      213: { model: "family", family: "nano11", steps: ["3","5","10"] },
+      221: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      226: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      228: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      231: { model: "family", family: "ms50", steps: ["3","5","10"] },
+      236: { model: "strain", steps: ["3","5","8K"] },
+      242: { model: "strain", steps: ["3","5"] },
+      252: { model: "strain", steps: ["3K"] },
+      254: { model: "strain", steps: ["3","5"] },
+      255: { model: "strain", steps: ["3","5","6K"] },
+      256: { model: "strain", steps: ["5","10"] },
+      257: { model: "strain", steps: ["5","10"] },
+      260: { model: "strain", steps: ["3","5"] },
+      261: { model: "strain", steps: ["3","5","9K"] },
+      262: { model: "strain", steps: ["3","5","9K"] }
+  };
   /* Minicarten (84-cart.js, TASK 15) läser SAMMA register -- en källa
      för paketprodukter, migreringsplan och familjer, ingen kopia. */
   HZ8.packageRegistry = { products: PACKAGE_PRODUCTS, plan: PACKAGE_PLAN, families: FAMILIES, review: PKG_REVIEW };
@@ -1727,18 +1816,33 @@
      myndighetsrapporter visas aldrig som analys. Saknas verifierad PDF:
      "Labbrapport skickas på begäran". Länken läses alltid ur produktens
      egen text -- tas den bort i admin försvinner den här också. */
+  /* TASK 17: efter migreringen länkar produkterna nya filer (COA_<strain>-
+     <halt>-<serie>_...pdf). Verifierad = länktexten är en labbrapport och
+     filnamnets strain är produktens (enkel) eller variantens (variabel)
+     strain -- runs/docs.json, registry.mjs. Batch-/destillatfiler, fel
+     strain (bl.a. Tinky Winky-COA på andra Magic Sauce-buds) och Magic
+     Sauce 10 ml (bara engångsvape-COA:er, inte verifierat för refill)
+     ingår inte. Filerna ligger på www.hazey.se (WooCommerce) -- se
+     LAUNCH-BLOCKERS i REPORT.md. */
   var VERIFIED_DOCS = {
-    37: { doc: "19rrcW2L5Gf6AXf1779352050.pdf" },
-    59: { doc: "ojo0zzScCBGu6gy1779352051.pdf" },
-    60: { doc: "NmUchonZgUwJb4P1779352051.pdf" },
-    65: { doc: "p4vCO2OvP0y3dEE1779352051.pdf" },
-    74: { doc: "zg59nv2Auft0UWR1779352050.pdf" },
-    84: { doc: "lY1pJXgHfxFM8b01779352053.pdf" },
-    93: { doc: ["wNRiFbSXRo9DRuj1779352055.pdf", "LBfA221dWjqNjmj1779352424.pdf"] },
-    96: { doc: ["zTOE7RpoyYkKHa61779352055.pdf", "eKNuDapPT4zdWjE1779352424.pdf"] },
-    100: { doc: ["PYwtgHnnWw3vv4d1779352055.pdf", "KrCA5frGLYWCSqT1779352424.pdf"] },
-    91: { variants: { "Crazy Dog": "l0NgRCtAD74iTGE1779352423.pdf", "Gorilla Cookies": "NXar8ZZ3wR5QrOP1779352054.pdf", "High Pepito": "BtF0HZ3iAmGEopJ1779352054.pdf", "Samurai Jack": "GgJNCiH47aEpW8P1779352423.pdf", "Yoda Ice Cream": "V1funsKGwRGyh8N1779352054.pdf" } },
-    92: { variants: { "Crazy Dog": "l0NgRCtAD74iTGE1779352423.pdf", "Gorilla Cookies": "NXar8ZZ3wR5QrOP1779352054.pdf", "High Pepito": "BtF0HZ3iAmGEopJ1779352054.pdf", "Samurai Jack": "1tlHW9YYyoLxZJd1779352054.pdf", "Yoda Ice Cream": "V1funsKGwRGyh8N1779352054.pdf" } }
+    132: {"doc": "COA_Yoda-Ice-Cream-50-MS_1160_A7W3N6C4.pdf"},
+    134: {"doc": "COA_Gorilla-Cookies-50-MS_1160_F6D1R5Y1.pdf"},
+    146: {"doc": "COA_Tinky-Winky-50-MS_1160_N2I7S7A1.pdf"},
+    155: {"doc": "COA_Samourai-Jack-50-MS_1160_U8F7J3X6.pdf"},
+    168: {"doc": "COA_Khalifa-Kush-50-MS_1160_I8Z6M0V2.pdf"},
+    172: {"doc": "COA_Donny-Burger-50-MS_1160_R7S1Y8D4.pdf"},
+    175: {"doc": "COA_Crazy-Dog-50-MS_1160_U1A3S8G7.pdf"},
+    209: {"doc": "COA_Cosmic-Trip-50-D10_1190_R8A0Z6V9.pdf"},
+    211: {"doc": "COA_Porn-Star-OG-50-D10_1190_D7X9L1S8.pdf"},
+    214: {"doc": "COA_Skywalker-OG-50-D10_1190_U2M4T5N3.pdf"},
+    216: {"doc": "COA_Rosinella-60-D10_1190_M7L5P0D2.pdf"},
+    218: {"doc": "COA_Silk-Road-60-D10_1194_U3S8V1L4.pdf"},
+    223: {"doc": "COA_White-Widow-50-D10_1190_I3W6L1C2.pdf"},
+    234: {"doc": "COA_Blue-Diamond-60-D10_1194_T8Y0M7A3.pdf"},
+    235: {"doc": "COA_Purple-Storm-60-D10_1194_D5M4I1N6.pdf"},
+    254: {"variants": {"Cotton Candy": "COA_Disposable-Vape-pen-Cotton-Candy-99-D10_1999_Z1C2P0K9.pdf", "Lemon Cheese": "COA_Disposable-Vape-pen-Lemon-Cheese-99-D10_1999_D2C9P0L8.pdf", "Maui Mango": "COA_Disposable-Vape-pen-Maui-Mango-99-D10_1999_U9F6Z5Y2.pdf", "Cherry Sour": "COA_Disposable-Vape-pen-Cherry-Sour-99-D10_1999_C7I3N4R8.pdf", "Kiwi Sorbet": "COA_Disposable-Vape-pen-Kiwi-Sorbet-99-D10_1999_J4E9O7G6.pdf"}},
+    261: {"variants": {"Gorilla Cookies": "COA_Disposable-Vape-pen-Gorilla-Cookies-99-MS_1180_Y5E2S8J2.pdf", "Crazy Dog": "COA_Disposable-Vape-pen-Crazy-Dog-99-MS_1180_U2H9C2M6.pdf", "High Pepito": "COA_Disposable-Vape-pen-High-Pepito-99-MS_1180_P8L7U2C4.pdf", "Samurai Jack": "COA_Disposable-Vape-pen-Samurai-Jack-99-MS_1180_O8T4F2N1.pdf", "Yoda Ice Cream": "COA_Disposable-Vape-pen-Yoda-Ice-Cream-99-MS_1180_D4A1K3S9.pdf"}},
+    262: {"variants": {"Gorilla Cookies": "COA_Disposable-Vape-pen-Gorilla-Cookies-99-MS_1180_Y5E2S8J2.pdf", "Crazy Dog": "COA_Disposable-Vape-pen-Crazy-Dog-99-MS_1180_U2H9C2M6.pdf"}}
   };
   var DOC_LINK = /\.pdf(\?|#|$)/i;
   /* Labbdokument = PDF vars länktext är en analys (LABBTEST, LABBRAPPORT,

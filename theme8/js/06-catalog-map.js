@@ -25,13 +25,11 @@
   var BASE = "https://hazeyse.nyehandel.se/sv/categories/";
 
   /* Formatens ordning i navigationen. `from` pekar på var i headerns
-     karta formatets egen sida finns. Pre-rolls och Refill finns inte i
-     sortimentet (headern har dem som "kommer snart", href null) och
-     utelämnas därför helt. */
+     karta formatets egen sida finns. Ett format utan route i headern
+     (Pre-rolls: ingen kategori i Nyehandel än) utelämnas helt. */
   /* `family` = vilka produkttyper som är grannar i den lokala navigeringen
      på en formatsida (Alla Vapes visar Vapes/Carts/Refill/Batterier, inte
-     Buds). Refillvätska har ingen route än (headerns "Refill/Liquid 10 ml"
-     är null) och visas automatiskt när kategorin finns. Volym är aldrig en
+     Buds). Refillvätska = alla-liquids (TASK 17). Volym är aldrig en
      produkttyp -- den hör till filterpanelen. */
   var FORMAT_DEFS = [
     { key: "vapes", label: "Vapes", group: "vapes", cta: true, family: "vape" },
@@ -47,20 +45,29 @@
      kategorisida (null = ingen finns). `extra` = verifierade serie x
      format-routes som headern inte listar. */
   var SERIES_DEFS = [
-    { name: "Magic Sauce", attr: "Magic Sauce", hub: "magic-sauce", extra: { carts: "alla-cartridges?filters=Serie_Magic%20Sauce" } },
-    { name: "THCaB", hub: "thca", extra: { carts: "thca-carts" } },
-    { name: "THCbA", hub: "thcb", extra: { carts: "thcb-carts" } },
-    /* Core-familjens hubb (Core-vapes + familjens buds/hasch), verifierad
-       2026-10-27: /core, H1 "Core". Dubbletten /core-1 används inte. */
-    { name: "Core", attr: "Core", hub: "core" },
-    /* `legacy` (TASK 04, beslut 2026-10-27): kategorin finns kvar men är
-       ingen kunddestination -- D10 pekar i dag på 10-OH-THC (inte D10),
-       THCV är pausad, HHCPM/THCNM går upp i Core-familjen vid migrationen.
-       Används bara av upptäcktsmodulen (inga automatiska nya länkar dit);
-       headerns och filtrens länkar är en egen, senare uppgift. */
-    { name: "D10", hub: "10-oh-thc", legacy: true },
+    /* TASK 17 (2026-11-03): hubbar och extra routes = de importerade
+       kategorierna som speglar WooCommerce. De gamla hubbarna (thca,
+       thcb, core, 10-oh-thc) och Serie-filtren finns inte kvar som
+       kunddestinationer (tomma resp. borttagna). */
+    { name: "Magic Sauce", attr: "Magic Sauce", hub: "magic-sauce", extra: { carts: "ms-carts" } },
+    /* THCaB = WooCommerce "THCA-B". Bara vape och cart finns; carten
+       ligger i thcab-vapes (ingen egen carts-kategori). */
+    { name: "THCaB", hub: "thca-b" },
+    /* THCbA = WooCommerce "THCbA". thcb/thcb-vapes är den äldre
+       THCB-serien och används inte. */
+    { name: "THCbA", hub: "thcba" },
+    /* Core-familjen = WooCommerce "Hero Vapes" (Core-vapen, High Life,
+       El Gringo). Den gamla /core-kategorin är tom. */
+    { name: "Core", attr: "Core", hub: "hero-vapes" },
+    /* D10 = Magic Farmers egen formula, egen serie (d10-1 = importerad
+       "D10"). Aldrig 10-OH-THC: den gamla 10-oh-thc-kopplingen är borttagen. */
+    { name: "D10", hub: "d10-1" },
     { name: "Nano-11", aliases: ["Nano11"], attr: "Nano11", hub: "nano-11" },
-    { name: "THCV", hub: "thcv", extra: { carts: "thcv-carts" }, legacy: true },
+    /* `legacy` (TASK 04, beslut 2026-10-27; TASK 17): kategorin finns kvar
+       men är ingen kunddestination -- THCV är pausad (bara sökbar/slut i
+       WooCommerce), HHCPM/THCNM är tomma. Används bara av upptäckts-
+       modulen (inga automatiska nya länkar dit). */
+    { name: "THCV", hub: "thcv", legacy: true },
     { name: "HHCPM", hub: "hhcpm", legacy: true },
     { name: "THCNM", hub: "thcnm", legacy: true }
   ];

@@ -278,7 +278,9 @@
      Nyehandels native Serie-filter OR:ar värden på servern
      (filters=Serie_Core~Serie_Magic+Sauce, verifierat 2026-10-06), men
      bara Core, Magic Sauce och Nano11 finns som attribut -- THCaB, THCbA,
-     D10, THCV och HHCPM är egna kategorier. Unionen byggs därför av
+     D10, THCV och HHCPM är egna kategorier (TASK 17: efter migreringen
+     finns inget Serie-attribut alls; alla serier är kategorier). Unionen
+     byggs därför av
      riktiga sidor:
      - medlemmar = produkterna på varje vald series riktiga serie x
        format-route;
@@ -1160,11 +1162,13 @@
   var STOCK_TOKEN = "smart-filter_in-stock";
   var STOCK_GROUP = "Lagerstatus";
   var MIRROR_SKIP = { Serie: true, Lagerstatus: true };
-  /* Pausade cannabinoider (STATUS.md: THCNM, HHCPM och 10-OH-THC/D10,
-     juridik ej klar -- filtreras bort från ny navigation). Visas inte i
-     pilotens dropdown, sökning, quiz, korslänkar eller rekommendationer.
-     Ren presentationslogik; katalog, routes och produkter ändras inte. */
-  var PILOT_PAUSED = /^(thc-?nm|hhc-?pm|d10|10-?oh(-?thc)?)$/i;
+  /* Pausade cannabinoider (STATUS.md, beslut 2026-08-28: THCNM, HHCPM och
+     10-OH-THC, juridik ej klar -- filtreras bort från ny navigation). Visas
+     inte i pilotens dropdown, sökning, quiz, korslänkar eller rekommen-
+     dationer. Ren presentationslogik; katalog, routes och produkter ändras
+     inte. TASK 17: D10 är inte 10-OH-THC (Magic Farmers egen formula, egen
+     serie i WooCommerce) och omfattas inte av beslutet -- borttagen här. */
+  var PILOT_PAUSED = /^(thc-?nm|hhc-?pm|10-?oh(-?thc)?)$/i;
   /* Pausen gäller Alla Vapes-piloten och dess korslänkar. De breda
      formatsidorna (shell "broad") visar redan pausade serier i sitt eget
      sortiment och i de godkända referenserna -- inget döljs där. */

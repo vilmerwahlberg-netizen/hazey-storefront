@@ -29,10 +29,12 @@
   "use strict";
 
   var HZ8 = window.HZ8;
+  /* TASK 17: shop = seriens importerade kategori (thca-b, thcba);
+     Varumärke-filtret finns inte längre i Nyehandel. */
   var SERIES = [
-    { key: "thcab", name: "THCaB", formats: "Vapes · carts", motif: "ankh", scene: "pyramids", info: "/sv/page/thcab", shop: "/sv/categories/thca?filters=Varum%C3%A4rke_Faraoh", asset: "series-thcab-v1.webp", focus: "70% 50%",
+    { key: "thcab", name: "THCaB", formats: "Vapes · carts", motif: "ankh", scene: "pyramids", info: "/sv/page/thcab", shop: "/sv/categories/thca-b", asset: "series-thcab-v1.webp", focus: "70% 50%",
       alt: "THCaB från Faraoh: vape och cart i en mörk egyptisk miljö" },
-    { key: "thcba", name: "THCbA", formats: "Vapes", motif: "eye", scene: "pyramids", info: "/sv/page/thcba", shop: "/sv/categories/thcb?filters=Varum%C3%A4rke_Faraoh", asset: "series-thcba-v1.webp", focus: "62% 50%",
+    { key: "thcba", name: "THCbA", formats: "Vapes", motif: "eye", scene: "pyramids", info: "/sv/page/thcba", shop: "/sv/categories/thcba", asset: "series-thcba-v1.webp", focus: "62% 50%",
       alt: "THCbA från Faraoh: vape i månljus på blek sand" },
     { key: "magic", name: "Magic Sauce", formats: "Vapes · carts · buds", motif: "palm", scene: "palms", info: "/sv/page/magic-sauce", shop: "/sv/categories/magic-sauce", asset: "series-magic-sauce-v1.webp", focus: "100% 50%",
       alt: "Magic Sauce från Magic Farmers: refillvätska, cart, vape och buds i solnedgång" },

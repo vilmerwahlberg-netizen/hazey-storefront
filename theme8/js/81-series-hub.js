@@ -256,6 +256,18 @@
     { key: "hasch", label: "Hasch", one: "Hasch", test: /^(hash|hasch)\b/i, sub: "Utvalt hasch från {s}-serien." },
     { key: "prerolls", label: "Pre-rolls", one: "Pre-roll", test: /^pre-?rolls?\b/i, sub: "Våra pre-rolls i {s}-serien." }
   ];
+  /* TASK 17: efter migreringen börjar många namn med serien i stället för
+     typen ("Magic Sauce 50% – Pre Rolls – 1g", "7% Nano11 – Prerolled –
+     1 gram", "Faraoh THCbA Vape 2ml – 3-pack"). Reserv när prefixet saknas:
+     typordet som eget ord var som helst i namnet, pre-rolls först (en
+     pre-roll innehåller buds eller hasch). Inget träff -> källans format. */
+  var FORMAT_WORDS = [
+    { key: "prerolls", test: /\bpre[\s-]?rolls?\b|\bprerolled\b/i },
+    { key: "carts", test: /\b(carts?|cartridges?)\b/i },
+    { key: "vapes", test: /\bvapes?\b/i },
+    { key: "buds", test: /\b(buds?|blommor)\b/i },
+    { key: "hasch", test: /\b(hash|hasch)\b/i }
+  ];
   var SERIES_PILOTS = {
     "Magic Sauce": {
       lead: "En serie. Flera format.",
@@ -366,6 +378,7 @@
   function typeOf(name) {
     var n = decode(name);
     for (var i = 0; i < FORMAT_TYPES.length; i++) if (FORMAT_TYPES[i].test.test(n)) return FORMAT_TYPES[i].key;
+    for (var j = 0; j < FORMAT_WORDS.length; j++) if (FORMAT_WORDS[j].test.test(n)) return FORMAT_WORDS[j].key;
     return "";
   }
   function fmtDef(key) { return FORMAT_TYPES.filter(function (f) { return f.key === key; })[0]; }
@@ -417,7 +430,10 @@
     own.forEach(function (c) { var b = cardBrand(c.html); if (b && !HZ8.catalog.isHouseBrand(b)) counts[b] = (counts[b] || 0) + 1; });
     var brand = Object.keys(counts).sort(function (x, y) { return counts[y] - counts[x]; })[0];
     if (!format || !brand) return Promise.resolve(null);
-    var route = withParam(format.href, "filters=" + encodeURIComponent("Serie_" + sib.series));
+    /* TASK 17: seriens egen route i formatet (t.ex. d10-vapes) när den
+       finns; Serie-filtret finns inte längre i Nyehandel. */
+    var sibSeries = HZ8.catalog.build().series.filter(function (s) { return s.name === sib.series; })[0];
+    var route = sibSeries && sibSeries.routes[sib.format] || withParam(format.href, "filters=" + encodeURIComponent("Serie_" + sib.series));
     return allPages(route).then(function (list) {
       var seen = {};
       var cards = (list || []).filter(function (c) {
