@@ -14,8 +14,19 @@ function concatDir(name, ext) {
     .join("\n");
 }
 
+/* TASK 17C: bildmanifestet (theme8/js/03b-media-manifest.js) uppdateras
+   först -- inkrementellt, bara nya produktbilder klassas. I CI, utan nät
+   eller utan webbläsare behålls det incheckade manifestet och bygget
+   fortsätter; se theme8/tools/media-manifest.mjs. */
+function mediaManifest() {
+  const { spawnSync } = require("child_process");
+  const r = spawnSync(process.execPath, [path.join(ROOT, "tools", "media-manifest.mjs"), "--build"], { stdio: "inherit" });
+  if (r.status !== 0) console.warn("bildmanifest: generatorn misslyckades -- använder incheckat manifest");
+}
+
 async function build() {
   fs.mkdirSync(OUT, { recursive: true });
+  mediaManifest();
 
   const css = concatDir("css", ".css");
   const js = concatDir("js", ".js");

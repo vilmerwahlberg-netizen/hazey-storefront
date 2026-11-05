@@ -1,0 +1,49 @@
+[
+ {
+  "file": "cutouts/masters/yoda-ice-cream-canva-768-trim.png",
+  "size": [
+   622,
+   742
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 0.998,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "nhId": 132,
+   "imageId": 194,
+   "err": 15.75
+  },
+  "sameProductImages": [
+   194,
+   204,
+   205
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 194
+   },
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 204
+   },
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 205
+   }
+  ],
+  "nextOther": {
+   "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+   "err": 42.91
+  },
+  "ratio": 2.72,
+  "match": false,
+  "coverage": null,
+  "verdict": "ingen säker matchning"
+ }
+]

@@ -12,9 +12,18 @@
 // För white/embedded mäts produktens marginal mot varje kant (pixlar som avviker > FG från kanttonen);
 // tonzonen = marginal - SAFE, högst MAX_FADE. Produktens pixlar ändras aldrig.
 //
-// Kör:  node theme8/tools/media-manifest.mjs            (live katalog)
+// Kör:  node theme8/tools/media-manifest.mjs            (live katalog, alla bilder klassas om)
+//       node theme8/tools/media-manifest.mjs --build    (anropas av build-theme8.js, se nedan)
 //       node theme8/tools/media-manifest.mjs --file x.png (analysera en lokal bild, skriver inget)
 // Kräver playwright (repots node_modules).
+//
+// --build (det vanliga byggflödet): inkrementellt -- en bildfils hash ändras med innehållet, så redan
+// klassade hashar behålls och bara nya bilder analyseras; bilder som inte längre finns i katalogen tas
+// bort. Filen skrivs bara om innehållet ändrats (samma katalog = byte-identisk bundle). Hoppar över och
+// behåller det incheckade manifestet när: CI (Pages-bygget har ingen webbläsare -- det bygger då exakt
+// det incheckade manifestet), HZ8_MEDIA_MANIFEST=skip, senaste kontrollen < 6 h sedan
+// (theme8/tools/.media-manifest-checked, ej incheckad; HZ8_MEDIA_MANIFEST=force tvingar), eller om
+// katalogen/webbläsaren inte går att nå. En bild som saknas i manifestet visas orörd (03a: unverified).
 import fs from "node:fs"; import path from "node:path"; import { chromium } from "playwright";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
@@ -112,16 +121,41 @@ if (fi > 0) {
   const res = await classifyUrls(["data:image/" + (/\.webp$/i.test(f) ? "webp" : "png") + ";base64," + fs.readFileSync(f).toString("base64")]);
   const r = Object.values(res)[0]; console.log(JSON.stringify({ file: f, ...r, entry: r.kind === "unverified" ? null : encode(r) }));
 } else if (import.meta.url === `file://${process.argv[1]}`) {
-  const { images, products } = await catalogImages();
+  const BUILD = process.argv.includes("--build"), MODE = process.env.HZ8_MEDIA_MANIFEST || "";
+  const STAMP = path.join(ROOT, "theme8/tools/.media-manifest-checked");
+  const prev = {};
+  if (fs.existsSync(OUT)) for (const m of fs.readFileSync(OUT, "utf8").matchAll(/"([0-9a-f]{8})":"([^"]*)"/g)) prev[m[1]] = m[2];
+  const keep = why => { console.log(`bildmanifest: ${why} -- använder incheckat manifest (${Object.keys(prev).length} bilder)`); process.exit(0); };
+  if (BUILD) {
+    if (MODE === "skip") keep("HZ8_MEDIA_MANIFEST=skip");
+    if (process.env.CI && MODE !== "force") keep("CI");
+    if (MODE !== "force" && fs.existsSync(STAMP) && Date.now() - fs.statSync(STAMP).mtimeMs < 6 * 3600e3) keep("kontrollerat för mindre än 6 h sedan");
+  }
+  let cat;
+  try { cat = await catalogImages(); } catch (e) { if (BUILD) keep("katalogen gick inte att nå (" + e.message + ")"); throw e; }
+  if (!cat.products) { if (BUILD) keep("katalogen gav inga produkter"); throw new Error("inga produkter"); }
+  const { images, products } = cat;
   console.log(`\n${products} produkter, ${images.size} bilder`);
   const list = [...images.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-  const res = await classifyUrls(list.map(([, v]) => v.thumb));
-  const entries = {}, tally = {}, failed = [];
-  for (const [k, v] of list) { const r = res[v.thumb]; tally[r.kind] = (tally[r.kind] || 0) + 1; if (r.kind === "unverified") { failed.push(v.product); continue; } entries[k] = encode(r); }
+  const todo = BUILD ? list.filter(([k]) => !prev[k]) : list;
+  let res = {};
+  if (todo.length) {
+    try { res = await classifyUrls(todo.map(([, v]) => v.thumb)); } catch (e) { if (BUILD) keep("webbläsaren gick inte att starta (" + e.message.split("\n")[0] + ")"); throw e; }
+  }
+  const entries = {}, failed = [];
+  for (const [k, v] of list) {
+    if (BUILD && prev[k]) { entries[k] = prev[k]; continue; }
+    const r = res[v.thumb]; if (!r || r.kind === "unverified") { failed.push(v.product); continue; } entries[k] = encode(r);
+  }
+  const KIND = { t: "transparent", w: "white", e: "embedded", v: "environment" }, tally = {};
+  Object.values(entries).forEach(e => { const k = KIND[e[0]]; tally[k] = (tally[k] || 0) + 1; });
+  const same = JSON.stringify(entries) === JSON.stringify(Object.fromEntries(Object.entries(prev).sort((a, b) => a[0].localeCompare(b[0]))));
+  fs.writeFileSync(STAMP, new Date().toISOString() + "\n");
+  if (same) { console.log(`bildmanifest: oförändrat (${list.length} bilder, ${todo.length} nya klassade)`); process.exit(0); }
   const date = new Date().toISOString().slice(0, 10);
   const body = `/* GENERERAD av theme8/tools/media-manifest.mjs ${date} -- redigera inte för hand.
    Bildtyp per produktbild (nyckel = bildfilens 8-tecken hash), mätt ur
-   bildens pixlar: ${Object.entries(tally).map(([k, n]) => `${k} ${n}`).join(", ")} (${products} produkter).
+   bildens pixlar: ${Object.entries(tally).sort((a, b) => a[0].localeCompare(b[0])).map(([k, n]) => `${k} ${n}`).join(", ")} (${products} produkter).
    Post: "<t|w|e|v> [kantton] [tonzon topp höger botten vänster, %]".
    Bilder som saknas här (nya produkter) visas orörda tills manifestet
    genereras om. Läses av 03a-product-media.js. */
@@ -131,5 +165,6 @@ if (fi > 0) {
 })();
 `;
   fs.writeFileSync(OUT, body);
-  console.log(tally, failed.length ? "ej lästa: " + failed.join(", ") : "", "->", path.relative(ROOT, OUT), Buffer.byteLength(body), "byte");
+  const added = Object.keys(entries).filter(k => !prev[k]).length, removed = Object.keys(prev).filter(k => !entries[k]).length;
+  console.log("bildmanifest:", tally, `+${added} -${removed}`, failed.length ? "ej lästa (visas orörda): " + failed.join(", ") : "", "->", path.relative(ROOT, OUT), Buffer.byteLength(body), "byte");
 }

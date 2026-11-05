@@ -101,3 +101,18 @@ Den exakta listan finns i `ADMIN-LIST.md`. Varje rad är kontrollerad live mot N
   - Skript: `perf.mjs`, `perf-summary.mjs`, `early.mjs`, `admin-list.mjs`, `cutout-match.mjs`, `cutout-prep.mjs`, `cutout-review.mjs`, `cutout-candidates.mjs`, `lib/review-images.mjs`.
   - Bilder: `cutouts/` (master, WebP, register) och `review/10–14`.
   - Data: `runs/*`. 17B:s `runs/verify-after.json` och `capture-after.json` är bevarade; 17C:s finns i `verify-17c.json` och `capture-17c-after.json`.
+
+## 6. Slutförande för dev-granskning (samma dag)
+
+- **Yoda, beskuren ytterluft** (`cutout-trim.mjs`): mastern beskärs förlustfritt till den minsta rektangel som innehåller varje pixel med alfa > 0, så även de svagaste skugg- och kantpixlarna behålls. Den går från 692×871 till 622×742 (bort: vänster 22, topp 89, höger 48, botten 40 px).
+  - Beviset ligger i `cutouts/masters/yoda-ice-cream-canva-768-trim.json`: 0 bortskurna pixlar hade alfa > 0, och 0 kvarvarande RGBA-värden ändrades.
+  - Originalet ligger kvar orört.
+  - Den beskurna filen ärver originalets godkända matchning via beviset. En ny matchning samplar om på ett annat rutnät och ger 15,8 i fel i stället för 13,2, med samma pixlar.
+  - WebP:n är 105 kB. Bladen `review/11–13` är omtagna: påsen fyller nu bildytan som övriga produktbilder.
+- **Manifestet i byggflödet:** `node build-theme8.js` (`npm run build:theme8` / `build:all`) kör `theme8/tools/media-manifest.mjs --build` först.
+  - Det är inkrementellt: bara nya bildhashar klassas, borttagna bilder tas bort och filen skrivs bara vid ändring.
+  - Testat: en borttagen post (Yoda) lades tillbaka byte-identiskt. En oförändrad katalog ger ett byte-identiskt bundle.
+  - I CI (Pages-bygget har ingen webbläsare), med `HZ8_MEDIA_MANIFEST=skip`, inom 6 h från förra kontrollen eller utan nät/webbläsare används det incheckade manifestet. Pages bygger därmed exakt samma bundle som den lokala.
+  - **Reserv:** en bild som inte finns i manifestet får `unverified`, utan tonzon och utan mask, och visas orörd. Testat i varje vy av `final-regress.mjs`. Platshållaren `no-image.png` (produkterna 197 och 191 utan bild) visas också orörd.
+- **Slutregression** (`final-regress.mjs after`, startsida, Bästsäljare, Alla Buds och Yoda-PDP vid 393/1440): 0 överflöd, 0 fel och 0 beskurna bilder. Köpknappar och produktlänkar finns, manifestet har 198 bilder och reservtestet passerar. Alla Buds-serierna via URL ger Magic Sauce 19, Core 4, D10 4, Nano-11 21 och 5 g 45. Resultatet är ALLT OK.
+- **Yoda i produktion:** manifestet har Nyehandels nuvarande bild (`e d9c3ad …`, inbakad, R2A). Den transparenta kopplingen finns bara i `lib/review-images.mjs` och används bara av granskningsskripten.

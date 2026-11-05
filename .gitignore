@@ -13,3 +13,6 @@ tests/results/
 # step if run locally — the actual GitHub Pages deploy always builds this
 # fresh in the Actions runner, never commits it.
 _site/
+
+# Theme 8: senaste kontroll av bildmanifestet (theme8/tools/media-manifest.mjs --build)
+theme8/tools/.media-manifest-checked

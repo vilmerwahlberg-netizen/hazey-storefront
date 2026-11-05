@@ -7,10 +7,10 @@
   "matchedImageId": 194,
   "identicalTo": "byte-identisk med bild 194",
   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-cdcbd2c4.jpeg",
-  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768-trim.png",
   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
-  "webpKB": 103,
-  "masterKB": 938,
+  "webpKB": 105,
+  "masterKB": 687,
   "entry": "t",
   "match": {
    "err": 13.23,
@@ -20,7 +20,28 @@
     "t30d": 0.9998,
     "t14": 0.953,
     "t14d": 0.9949
-   }
+   },
+   "inheritedFrom": "yoda-ice-cream-canva-768.png"
+  },
+  "trim": {
+   "source": "yoda-ice-cream-canva-768.png",
+   "out": "yoda-ice-cream-canva-768-trim.png",
+   "from": [
+    692,
+    871
+   ],
+   "to": [
+    622,
+    742
+   ],
+   "removed": {
+    "left": 22,
+    "top": 89,
+    "right": 48,
+    "bottom": 40
+   },
+   "cutPixelsWithAlpha": 0,
+   "changedValues": 0
   }
  },
  "5d2f7e15": {
@@ -31,10 +52,10 @@
   "matchedImageId": 194,
   "identicalTo": "byte-identisk med bild 194",
   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-5d2f7e15.jpeg",
-  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768-trim.png",
   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
-  "webpKB": 103,
-  "masterKB": 938,
+  "webpKB": 105,
+  "masterKB": 687,
   "entry": "t",
   "match": {
    "err": 13.23,
@@ -44,7 +65,28 @@
     "t30d": 0.9998,
     "t14": 0.953,
     "t14d": 0.9949
-   }
+   },
+   "inheritedFrom": "yoda-ice-cream-canva-768.png"
+  },
+  "trim": {
+   "source": "yoda-ice-cream-canva-768.png",
+   "out": "yoda-ice-cream-canva-768-trim.png",
+   "from": [
+    692,
+    871
+   ],
+   "to": [
+    622,
+    742
+   ],
+   "removed": {
+    "left": 22,
+    "top": 89,
+    "right": 48,
+    "bottom": 40
+   },
+   "cutPixelsWithAlpha": 0,
+   "changedValues": 0
   }
  },
  "80eacb15": {
@@ -55,10 +97,10 @@
   "matchedImageId": 194,
   "identicalTo": "byte-identisk med bild 194",
   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-80eacb15.jpeg",
-  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768-trim.png",
   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
-  "webpKB": 103,
-  "masterKB": 938,
+  "webpKB": 105,
+  "masterKB": 687,
   "entry": "t",
   "match": {
    "err": 13.23,
@@ -68,7 +110,28 @@
     "t30d": 0.9998,
     "t14": 0.953,
     "t14d": 0.9949
-   }
+   },
+   "inheritedFrom": "yoda-ice-cream-canva-768.png"
+  },
+  "trim": {
+   "source": "yoda-ice-cream-canva-768.png",
+   "out": "yoda-ice-cream-canva-768-trim.png",
+   "from": [
+    692,
+    871
+   ],
+   "to": [
+    622,
+    742
+   ],
+   "removed": {
+    "left": 22,
+    "top": 89,
+    "right": 48,
+    "bottom": 40
+   },
+   "cutPixelsWithAlpha": 0,
+   "changedValues": 0
   }
  }
 }

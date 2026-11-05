@@ -1,0 +1,291 @@
+{
+ "which": "after",
+ "at": "2026-11-05T11:30:17.562Z",
+ "pages": [
+  {
+   "overflow": 0,
+   "boxes": 8,
+   "kinds": {
+    "embedded": 8
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878218985",
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 393
+  },
+  {
+   "overflow": 0,
+   "boxes": 9,
+   "kinds": {
+    "embedded": 9
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878230916",
+   "buy": 1,
+   "links": 20,
+   "errors": [],
+   "key": "home",
+   "w": 1440
+  },
+  {
+   "overflow": 0,
+   "boxes": 12,
+   "kinds": {
+    "embedded": 12
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878242566",
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 393
+  },
+  {
+   "overflow": 0,
+   "boxes": 12,
+   "kinds": {
+    "embedded": 12
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878254883",
+   "buy": 13,
+   "links": 24,
+   "errors": [],
+   "key": "bestsellers",
+   "w": 1440
+  },
+  {
+   "overflow": 0,
+   "boxes": 25,
+   "kinds": {
+    "embedded": 22,
+    "environment": 1,
+    "unverified": 2
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878267061",
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 393
+  },
+  {
+   "overflow": 0,
+   "boxes": 25,
+   "kinds": {
+    "embedded": 22,
+    "environment": 1,
+    "unverified": 2
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878280032",
+   "buy": 26,
+   "links": 52,
+   "errors": [],
+   "key": "buds",
+   "w": 1440
+  },
+  {
+   "overflow": 0,
+   "boxes": 9,
+   "kinds": {
+    "embedded": 9
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878294796",
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 393
+  },
+  {
+   "overflow": 0,
+   "boxes": 9,
+   "kinds": {
+    "embedded": 9
+   },
+   "cropped": [],
+   "fallback": {
+    "kind": "unverified",
+    "fade": false,
+    "mask": "none",
+    "filter": "none",
+    "clip": "none"
+   },
+   "manifest": {
+    "generated": "2026-11-05",
+    "images": 198,
+    "yoda": "e d9c3ad 1.9 1.1 1.1 12"
+   },
+   "bundle": "https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/hazey-theme8.min.js?t=1793878309768",
+   "buy": 9,
+   "links": 29,
+   "errors": [],
+   "key": "pdp-yoda",
+   "w": 1440
+  }
+ ],
+ "filters": [
+  {
+   "w": 393,
+   "q": "serie=magic-sauce",
+   "expected": 19,
+   "shown": 19,
+   "ok": true
+  },
+  {
+   "w": 393,
+   "q": "serie=core",
+   "expected": 4,
+   "shown": 4,
+   "ok": true
+  },
+  {
+   "w": 393,
+   "q": "serie=d10",
+   "expected": 4,
+   "shown": 4,
+   "ok": true
+  },
+  {
+   "w": 393,
+   "q": "serie=nano-11",
+   "expected": 21,
+   "shown": 21,
+   "ok": true
+  },
+  {
+   "w": 393,
+   "q": "volym=5g",
+   "expected": 45,
+   "shown": 45,
+   "ok": true
+  },
+  {
+   "w": 1440,
+   "q": "serie=magic-sauce",
+   "expected": 19,
+   "shown": 19,
+   "ok": true
+  },
+  {
+   "w": 1440,
+   "q": "serie=core",
+   "expected": 4,
+   "shown": 4,
+   "ok": true
+  },
+  {
+   "w": 1440,
+   "q": "serie=d10",
+   "expected": 4,
+   "shown": 4,
+   "ok": true
+  },
+  {
+   "w": 1440,
+   "q": "serie=nano-11",
+   "expected": 21,
+   "shown": 21,
+   "ok": true
+  },
+  {
+   "w": 1440,
+   "q": "volym=5g",
+   "expected": 45,
+   "shown": 45,
+   "ok": true
+  }
+ ],
+ "fail": 0
+}

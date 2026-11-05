@@ -1,0 +1,20 @@
+{
+ "source": "yoda-ice-cream-canva-768.png",
+ "out": "yoda-ice-cream-canva-768-trim.png",
+ "from": [
+  692,
+  871
+ ],
+ "to": [
+  622,
+  742
+ ],
+ "removed": {
+  "left": 22,
+  "top": 89,
+  "right": 48,
+  "bottom": 40
+ },
+ "cutPixelsWithAlpha": 0,
+ "changedValues": 0
+}
