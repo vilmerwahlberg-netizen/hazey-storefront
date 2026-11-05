@@ -1,0 +1,61 @@
+{
+ "which": "base",
+ "rows": [
+  {
+   "wall": 24495,
+   "cls": 0,
+   "lcp": 14716,
+   "longtasks": 7,
+   "tbt": 2091,
+   "classify": 0,
+   "scans": 0,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 0,
+   "scriptMs": 1258,
+   "taskMs": 4039,
+   "imgRequests": 9,
+   "imgNetwork": 9,
+   "imgCached": 0,
+   "imgKB": 1380,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": null,
+   "key": "home",
+   "w": 393,
+   "mode": "fast3g"
+  },
+  {
+   "wall": 24202,
+   "cls": 0,
+   "lcp": 13976,
+   "longtasks": 9,
+   "tbt": 1759,
+   "classify": 0,
+   "scans": 0,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 0,
+   "scriptMs": 1147,
+   "taskMs": 3368,
+   "imgRequests": 9,
+   "imgNetwork": 9,
+   "imgCached": 0,
+   "imgKB": 1380,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": null,
+   "key": "home",
+   "w": 1440,
+   "mode": "fast3g"
+  }
+ ]
+}

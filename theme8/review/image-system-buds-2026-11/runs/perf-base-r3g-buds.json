@@ -1,0 +1,61 @@
+{
+ "which": "base",
+ "rows": [
+  {
+   "wall": 20484,
+   "cls": 0,
+   "lcp": 0,
+   "longtasks": 5,
+   "tbt": 1328,
+   "classify": 0,
+   "scans": 0,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 2,
+   "scriptMs": 984,
+   "taskMs": 2596,
+   "imgRequests": 27,
+   "imgNetwork": 27,
+   "imgCached": 0,
+   "imgKB": 611,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": null,
+   "key": "buds",
+   "w": 393,
+   "mode": "fast3g"
+  },
+  {
+   "wall": 21916,
+   "cls": 0,
+   "lcp": 0,
+   "longtasks": 10,
+   "tbt": 2279,
+   "classify": 0,
+   "scans": 0,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 4,
+   "scriptMs": 1298,
+   "taskMs": 4083,
+   "imgRequests": 27,
+   "imgNetwork": 27,
+   "imgCached": 0,
+   "imgKB": 611,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": null,
+   "key": "buds",
+   "w": 1440,
+   "mode": "fast3g"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 # Produktbilder: bildtyp, friläggning och sekundära bilder
 
-TASK 17B · 2026-11-03 · genererad av `lists.mjs` ur `runs/media-audit.json`. Klassningen körs med **samma kod som Theme 8** (`theme8/js/03a-product-media.js`) på Nyehandels riktiga bilder (product/state, 140 produkter). Ingen bild är ändrad, frilagd eller genererad.
+TASK 17B · 2026-11-03, uppdaterad TASK 17C 2026-11-05 · genererad av `lists.mjs` ur `runs/media-audit.json`. Klassningen är **samma analys som Theme 8:s bildmanifest** (`theme8/tools/media-manifest.mjs` → `theme8/js/03b-media-manifest.js`; 127 av 127 första-bilder identiska med TASK 17B:s webbläsarklassning) på Nyehandels riktiga bilder (product/state, 140 produkter). Ingen bild är ändrad, frilagd eller genererad.
 
 ## Sammanfattning (77 kundlistade)
 
@@ -16,83 +16,83 @@ TASK 17B · 2026-11-03 · genererad av `lists.mjs` ur `runs/media-audit.json`. K
 - **Tonzon** = hur mycket av varje kant (topp/höger/botten/vänster, %) som tonas ut. Den ligger alltid utanför produktens uppmätta yta minus 1,2 % säkerhetsavstånd. 0 på en sida = produkten når kanten, ingen ton.
 - **Endast en bild:** 48 listade produkter. **Saknar bild:** 5. **Med riktiga sekundära bilder** (fler bilder än strainbilder): 12.
 
-## A. Saknar säker friläggning (alla som inte är `transparent`), kundlistade
+## A. Kräver frilagt original (alla som inte är `transparent`), kundlistade
 
-De här visas i R2A, som miljöbild eller som platshållare. För R2B behövs ett riktigt frilagt original (PNG med alfa) från produktfoto, inte från Theme 8.
+De här visas i R2A, som miljöbild eller som platshållare. Theme 8 friläggger eller maskerar dem inte. För R2B behövs ett riktigt frilagt original (PNG med alfa, t.ex. en Canva-export) som matchats mot exakt bild med `cutout-match.mjs`. Kolumnen *Canva-kandidat* visar lokala exporter med verifierad alfa och entydig bildmatchning (ännu inte godkända eller använda).
 
-| NH-id | Slug | Format | Serie | Bildtyp | Tonzon % | Bilder |
-|---:|---|---|---|---|---|---:|
-| 178 | ccell-m3-plus-vape-batteri-510 | batteri | – | environment | – | 1 |
-| 237 | ccell-m3b-vape-batteri-510 | batteri | – | white | t4 r3 b2 l2 | 3 |
-| 171 | ccell-m4-penna | batteri | – | environment | – | 3 |
-| 212 | ccell-palm-pro-vape-batteri-510-ganga | batteri | – | white | t0 r0 b0 l1 | 5 |
-| 250 | ccell-stylo-vape-batteri-510 | batteri | – | environment | – | 3 |
-| 146 | blommor-magic-sauce-buds-tinky-winki-5-gram | buds | Magic Sauce | embedded | t2 r1 b1 l12 | 1 |
-| 175 | buds-magic-sauce-50-crazy-dog-5-gram | buds | Magic Sauce | embedded | t2 r3 b2 l12 | 1 |
-| 197 | buds-nanno-11-critical-berries | buds | Nano-11 | saknar bild | – | 0 |
-| 136 | cbd-30-long-island-35g | buds | – | embedded | t2 r1 b0 l8 | 1 |
-| 127 | cbd-buds-10-gram-russian-roulette | buds | – | embedded | t1 r12 b2 l12 | 2 |
-| 232 | cbd-buds-cookies-hollywood | buds | – | embedded | t3 r0 b0 l9 | 1 |
-| 161 | cbd-buds-cookies-tequila-sunrise-35-gram | buds | – | embedded | t2 r2 b0 l10 | 1 |
-| 128 | cbd-buds-triple-scoop-cookies-cannabis | buds | – | embedded | t3 r2 b0 l10 | 1 |
-| 133 | cbd-cookies-adios-m-f | buds | – | embedded | t2 r1 b0 l8 | 1 |
-| 138 | cookies-buds-cbd-hawaiian-rain | buds | – | embedded | t2 r2 b0 l8 | 1 |
-| 130 | cookies-cannabis-buds-cbd-cereal-milk-35-gram | buds | – | embedded | t5 r7 b0 l11 | 2 |
-| 230 | cookies-cbd-buds-blue-raz | buds | – | embedded | t3 r1 b0 l9 | 1 |
-| 209 | d10-buds-cosmic-trip-5g | buds | D10 | embedded | t2 r0 b0 l12 | 1 |
-| 211 | d10-buds-porn-star-og-magic-farmers | buds | D10 | embedded | t2 r1 b0 l12 | 1 |
-| 214 | d10-buds-skywalker-og-magic-farmers-thcx | buds | D10 | embedded | t2 r1 b0 l12 | 1 |
-| 223 | d10-buds-white-widow-5g | buds | D10 | embedded | t2 r0 b0 l12 | 1 |
-| 172 | magic-sauce-buds-donny-burger-5g | buds | Magic Sauce | embedded | t3 r3 b0 l12 | 1 |
-| 231 | magic-sauce-buds-grape-gasoline | buds | Magic Sauce | embedded | t1 r0 b2 l2 | 1 |
-| 221 | magic-sauce-buds-kowa-bunga-5g | buds | Magic Sauce | embedded | t2 r0 b0 l12 | 1 |
-| 198 | magic-sauce-buds-la-chupacabra-5-gram | buds | Magic Sauce | embedded | t2 r0 b0 l11 | 1 |
-| 226 | magic-sauce-buds-london-lobster-ersatt-thc-a | buds | Magic Sauce | embedded | t3 r0 b1 l12 | 1 |
-| 134 | magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram | buds | Magic Sauce | embedded | t2 r3 b2 l12 | 1 |
-| 168 | magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram | buds | Magic Sauce | embedded | t3 r5 b0 l12 | 1 |
-| 155 | magic-sauce-buds-samurai-jack-magic-farmers-weed | buds | Magic Sauce | embedded | t1 r2 b1 l12 | 1 |
-| 203 | magic-sauce-buds-thca-ersatt-john-lemon-5g | buds | Magic Sauce | embedded | t4 r1 b0 l11 | 1 |
-| 201 | magic-sauce-buds-titty-sprinkles-5-gram | buds | Magic Sauce | embedded | t4 r4 b0 l12 | 1 |
-| 132 | magic-sauce-buds-yoda-ice-cream-5-gram | buds | Magic Sauce | embedded | t2 r1 b1 l12 | 3 |
-| 208 | nano-11-buds-orange-zkittlez-5g | buds | Nano-11 | embedded | t6 r1 b0 l11 | 1 |
-| 194 | nano-11-buds-thca-substitut-royal-og | buds | Nano-11 | embedded | t2 r3 b1 l11 | 1 |
-| 191 | nano-buds-ersatt-thca-bubba-kush-5g | buds | Nano-11 | saknar bild | – | 0 |
-| 262 | cart-magic-sauce-magic-farmers-1ml | cart | Magic Sauce | environment | – | 2 |
-| 253 | cbd-510-cart-cookies-1ml | cart | – | environment | – | 3 |
-| 227 | cbd-hash-london-pound-cake-100g | hasch | – | embedded | t12 r3 b12 l6 | 1 |
-| 234 | d10-hash-blue-diamond-5g | hasch | D10 | saknar bild | – | 0 |
-| 235 | d10-hash-purple-storm-5g | hasch | D10 | embedded | t2 r2 b0 l12 | 1 |
-| 216 | d10-hash-rosinella-magic-farmers | hasch | D10 | embedded | t2 r0 b0 l12 | 1 |
-| 218 | d10-hash-silk-road-magic-farmers-thcx | hasch | D10 | embedded | t2 r1 b0 l12 | 1 |
-| 148 | el-gringo-hash-strawberry-shortcake-5g | hasch | Core | embedded | t1 r1 b0 l12 | 1 |
-| 137 | high-life-hash-malaga-magic-5g | hasch | Core | embedded | t3 r0 b0 l12 | 1 |
-| 139 | high-life-hash-northern-lights-5g | hasch | Core | embedded | t2 r2 b0 l12 | 1 |
-| 228 | magic-sauce-dubai-chocolate-istallet-for-thc-a-hash | hasch | Magic Sauce | embedded | t0 r0 b0 l8 | 1 |
-| 196 | magic-sauce-hash-charas-5-gram | hasch | Magic Sauce | saknar bild | – | 0 |
-| 188 | magic-sauce-hash-kitkat-5g | hasch | Magic Sauce | embedded | t3 r12 b0 l12 | 1 |
-| 200 | nano-hash-zkittlez-mousse-ersatt-thca-hash | hasch | Nano-11 | embedded | t1 r8 b0 l1 | 1 |
-| 217 | cookies-c-bite-buds-tray | merch | – | embedded | t12 r5 b8 l7 | 1 |
-| 248 | cookies-medium-metal-tray | merch | – | embedded | t7 r2 b12 l1 | 1 |
-| 219 | cookies-original-beanie | merch | – | embedded | t6 r7 b12 l7 | 1 |
-| 222 | cookies-original-snapback | merch | – | embedded | t12 r5 b12 l1 | 1 |
-| 224 | cookies-v2-large-stackables | merch | – | embedded | t12 r2 b10 l0 | 1 |
-| 165 | 7-nano11-prerolled-1-gram | pre-roll | Nano-11 | embedded | t1 r12 b3 l12 | 1 |
-| 258 | cbd-prerolled-cookies-1g | pre-roll | – | environment | – | 4 |
-| 257 | magic-sauce-pre-rolls-1g | pre-roll | Magic Sauce | embedded | t12 r0 b12 l1 | 6 |
-| 252 | magic-sauce-10ml | refill | Magic Sauce | embedded | t7 r1 b9 l1 | 3 |
-| 259 | cbd-vape-cbn-vape-magic-farmers | vape | – | environment | – | 3 |
-| 195 | cbn-vape-canapuff-1ml | vape | – | environment | – | 2 |
-| 141 | cookies-cbd-vape-adios-mother-f-miami-mint | vape | – | embedded | t1 r8 b5 l7 | 1 |
-| 144 | cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas | vape | – | embedded | t1 r7 b5 l7 | 1 |
-| 215 | cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake | vape | – | embedded | t0 r8 b5 l6 | 1 |
-| 254 | d10-vape-magic-farmers | vape | D10 | environment | – | 4 |
-| 207 | h4cbd-vape-canntropy-1ml | vape | – | environment | – | 4 |
-| 182 | h4cbd-vape-cbd-group-2ml | vape | – | white | t12 r12 b2 l12 | 2 |
-| 260 | magic-sauce-vape-5ml | vape | Magic Sauce | environment | – | 6 |
-| 255 | thc-x-vape-hero-core-2ml | vape | Core | environment | – | 6 |
-| 236 | thcba-vape-faraoh-2ml | vape | THCbA | environment | – | 4 |
-| 220 | thcv-vape-cbd-group-2ml | vape | THCV | saknar bild | – | 0 |
-| 261 | vape-magic-sauce-magic-farmers-2ml | vape | Magic Sauce | environment | – | 10 |
+| NH-id | Slug | Format | Serie | Bildtyp | Tonzon % | Bilder | Canva-kandidat |
+|---:|---|---|---|---|---|---:|---|
+| 178 | ccell-m3-plus-vape-batteri-510 | batteri | – | environment | – | 1 | – |
+| 237 | ccell-m3b-vape-batteri-510 | batteri | – | white | t4 r3 b2 l2 | 3 | – |
+| 171 | ccell-m4-penna | batteri | – | environment | – | 3 | – |
+| 212 | ccell-palm-pro-vape-batteri-510-ganga | batteri | – | white | t0 r0 b0 l1 | 5 | – |
+| 250 | ccell-stylo-vape-batteri-510 | batteri | – | environment | – | 3 | – |
+| 146 | blommor-magic-sauce-buds-tinky-winki-5-gram | buds | Magic Sauce | embedded | t2 r1 b1 l12 | 1 | – |
+| 175 | buds-magic-sauce-50-crazy-dog-5-gram | buds | Magic Sauce | embedded | t2 r3 b2 l12 | 1 | – |
+| 197 | buds-nanno-11-critical-berries | buds | Nano-11 | saknar bild | – | 0 | – |
+| 136 | cbd-30-long-island-35g | buds | – | embedded | t2 r1 b0 l8 | 1 | – |
+| 127 | cbd-buds-10-gram-russian-roulette | buds | – | embedded | t1 r12 b2 l12 | 2 | – |
+| 232 | cbd-buds-cookies-hollywood | buds | – | embedded | t3 r0 b0 l9 | 1 | – |
+| 161 | cbd-buds-cookies-tequila-sunrise-35-gram | buds | – | embedded | t2 r2 b0 l10 | 1 | – |
+| 128 | cbd-buds-triple-scoop-cookies-cannabis | buds | – | embedded | t3 r2 b0 l10 | 1 | – |
+| 133 | cbd-cookies-adios-m-f | buds | – | embedded | t2 r1 b0 l8 | 1 | – |
+| 138 | cookies-buds-cbd-hawaiian-rain | buds | – | embedded | t2 r2 b0 l8 | 1 | – |
+| 130 | cookies-cannabis-buds-cbd-cereal-milk-35-gram | buds | – | embedded | t5 r7 b0 l11 | 2 | – |
+| 230 | cookies-cbd-buds-blue-raz | buds | – | embedded | t3 r1 b0 l9 | 1 | – |
+| 209 | d10-buds-cosmic-trip-5g | buds | D10 | embedded | t2 r0 b0 l12 | 1 | – |
+| 211 | d10-buds-porn-star-og-magic-farmers | buds | D10 | embedded | t2 r1 b0 l12 | 1 | – |
+| 214 | d10-buds-skywalker-og-magic-farmers-thcx | buds | D10 | embedded | t2 r1 b0 l12 | 1 | – |
+| 223 | d10-buds-white-widow-5g | buds | D10 | embedded | t2 r0 b0 l12 | 1 | – |
+| 172 | magic-sauce-buds-donny-burger-5g | buds | Magic Sauce | embedded | t3 r3 b0 l12 | 1 | – |
+| 231 | magic-sauce-buds-grape-gasoline | buds | Magic Sauce | embedded | t1 r0 b2 l2 | 1 | – |
+| 221 | magic-sauce-buds-kowa-bunga-5g | buds | Magic Sauce | embedded | t2 r0 b0 l12 | 1 | – |
+| 198 | magic-sauce-buds-la-chupacabra-5-gram | buds | Magic Sauce | embedded | t2 r0 b0 l11 | 1 | – |
+| 226 | magic-sauce-buds-london-lobster-ersatt-thc-a | buds | Magic Sauce | embedded | t3 r0 b1 l12 | 1 | – |
+| 134 | magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram | buds | Magic Sauce | embedded | t2 r3 b2 l12 | 1 | – |
+| 168 | magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram | buds | Magic Sauce | embedded | t3 r5 b0 l12 | 1 | – |
+| 155 | magic-sauce-buds-samurai-jack-magic-farmers-weed | buds | Magic Sauce | embedded | t1 r2 b1 l12 | 1 | – |
+| 203 | magic-sauce-buds-thca-ersatt-john-lemon-5g | buds | Magic Sauce | embedded | t4 r1 b0 l11 | 1 | – |
+| 201 | magic-sauce-buds-titty-sprinkles-5-gram | buds | Magic Sauce | embedded | t4 r4 b0 l12 | 1 | – |
+| 132 | magic-sauce-buds-yoda-ice-cream-5-gram | buds | Magic Sauce | embedded | t2 r1 b1 l12 | 3 | yoda-ice-cream-canva-768.png (godkänd kandidat) |
+| 208 | nano-11-buds-orange-zkittlez-5g | buds | Nano-11 | embedded | t6 r1 b0 l11 | 1 | – |
+| 194 | nano-11-buds-thca-substitut-royal-og | buds | Nano-11 | embedded | t2 r3 b1 l11 | 1 | – |
+| 191 | nano-buds-ersatt-thca-bubba-kush-5g | buds | Nano-11 | saknar bild | – | 0 | – |
+| 262 | cart-magic-sauce-magic-farmers-1ml | cart | Magic Sauce | environment | – | 2 | – |
+| 253 | cbd-510-cart-cookies-1ml | cart | – | environment | – | 3 | – |
+| 227 | cbd-hash-london-pound-cake-100g | hasch | – | embedded | t12 r3 b12 l6 | 1 | – |
+| 234 | d10-hash-blue-diamond-5g | hasch | D10 | saknar bild | – | 0 | – |
+| 235 | d10-hash-purple-storm-5g | hasch | D10 | embedded | t2 r2 b0 l12 | 1 | – |
+| 216 | d10-hash-rosinella-magic-farmers | hasch | D10 | embedded | t2 r0 b0 l12 | 1 | – |
+| 218 | d10-hash-silk-road-magic-farmers-thcx | hasch | D10 | embedded | t2 r1 b0 l12 | 1 | – |
+| 148 | el-gringo-hash-strawberry-shortcake-5g | hasch | Core | embedded | t1 r1 b0 l12 | 1 | – |
+| 137 | high-life-hash-malaga-magic-5g | hasch | Core | embedded | t3 r0 b0 l12 | 1 | – |
+| 139 | high-life-hash-northern-lights-5g | hasch | Core | embedded | t2 r2 b0 l12 | 1 | – |
+| 228 | magic-sauce-dubai-chocolate-istallet-for-thc-a-hash | hasch | Magic Sauce | embedded | t0 r0 b0 l8 | 1 | – |
+| 196 | magic-sauce-hash-charas-5-gram | hasch | Magic Sauce | saknar bild | – | 0 | – |
+| 188 | magic-sauce-hash-kitkat-5g | hasch | Magic Sauce | embedded | t3 r12 b0 l12 | 1 | – |
+| 200 | nano-hash-zkittlez-mousse-ersatt-thca-hash | hasch | Nano-11 | embedded | t1 r8 b0 l1 | 1 | nano11-buds.png (godkänd kandidat) |
+| 217 | cookies-c-bite-buds-tray | merch | – | embedded | t12 r5 b8 l7 | 1 | – |
+| 248 | cookies-medium-metal-tray | merch | – | embedded | t7 r2 b12 l1 | 1 | – |
+| 219 | cookies-original-beanie | merch | – | embedded | t6 r7 b12 l7 | 1 | – |
+| 222 | cookies-original-snapback | merch | – | embedded | t12 r5 b12 l1 | 1 | – |
+| 224 | cookies-v2-large-stackables | merch | – | embedded | t12 r2 b10 l0 | 1 | – |
+| 165 | 7-nano11-prerolled-1-gram | pre-roll | Nano-11 | embedded | t1 r12 b3 l12 | 1 | nano11-preroll.png (ingen säker matchning) |
+| 258 | cbd-prerolled-cookies-1g | pre-roll | – | environment | – | 4 | – |
+| 257 | magic-sauce-pre-rolls-1g | pre-roll | Magic Sauce | embedded | t12 r0 b12 l1 | 6 | – |
+| 252 | magic-sauce-10ml | refill | Magic Sauce | embedded | t7 r1 b9 l1 | 3 | – |
+| 259 | cbd-vape-cbn-vape-magic-farmers | vape | – | environment | – | 3 | – |
+| 195 | cbn-vape-canapuff-1ml | vape | – | environment | – | 2 | – |
+| 141 | cookies-cbd-vape-adios-mother-f-miami-mint | vape | – | embedded | t1 r8 b5 l7 | 1 | – |
+| 144 | cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas | vape | – | embedded | t1 r7 b5 l7 | 1 | – |
+| 215 | cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake | vape | – | embedded | t0 r8 b5 l6 | 1 | – |
+| 254 | d10-vape-magic-farmers | vape | D10 | environment | – | 4 | – |
+| 207 | h4cbd-vape-canntropy-1ml | vape | – | environment | – | 4 | – |
+| 182 | h4cbd-vape-cbd-group-2ml | vape | – | white | t12 r12 b2 l12 | 2 | – |
+| 260 | magic-sauce-vape-5ml | vape | Magic Sauce | environment | – | 6 | – |
+| 255 | thc-x-vape-hero-core-2ml | vape | Core | environment | – | 6 | – |
+| 236 | thcba-vape-faraoh-2ml | vape | THCbA | environment | – | 4 | – |
+| 220 | thcv-vape-cbd-group-2ml | vape | THCV | saknar bild | – | 0 | – |
+| 261 | vape-magic-sauce-magic-farmers-2ml | vape | Magic Sauce | environment | – | 10 | – |
 
 ## B. Riktigt frilagda (R2B)
 

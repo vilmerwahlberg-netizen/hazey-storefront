@@ -1,0 +1,61 @@
+{
+ "which": "runtime",
+ "rows": [
+  {
+   "wall": 24122,
+   "cls": 0,
+   "lcp": 14500,
+   "longtasks": 9,
+   "tbt": 1873,
+   "classify": 0,
+   "scans": 19,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 0,
+   "scriptMs": 1182,
+   "taskMs": 3495,
+   "imgRequests": 15,
+   "imgNetwork": 15,
+   "imgCached": 0,
+   "imgKB": 1381,
+   "dupNetwork": 1,
+   "corsProbes": 6,
+   "clicks": {
+    "classify": 0,
+    "scans": 11
+   },
+   "pdp": null,
+   "key": "home",
+   "w": 393,
+   "mode": "fast3g"
+  },
+  {
+   "wall": 24030,
+   "cls": 0,
+   "lcp": 13956,
+   "longtasks": 7,
+   "tbt": 1597,
+   "classify": 0,
+   "scans": 23,
+   "flips": 0,
+   "visibleFlips": 0,
+   "seenUntreated": 0,
+   "scriptMs": 1104,
+   "taskMs": 3187,
+   "imgRequests": 15,
+   "imgNetwork": 14,
+   "imgCached": 1,
+   "imgKB": 1380,
+   "dupNetwork": 0,
+   "corsProbes": 6,
+   "clicks": {
+    "classify": 1,
+    "scans": 12
+   },
+   "pdp": null,
+   "key": "home",
+   "w": 1440,
+   "mode": "fast3g"
+  }
+ ]
+}

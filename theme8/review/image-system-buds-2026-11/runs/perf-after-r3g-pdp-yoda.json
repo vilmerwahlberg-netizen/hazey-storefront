@@ -1,0 +1,71 @@
+{
+ "which": "after",
+ "rows": [
+  {
+   "wall": 24034,
+   "cls": 0,
+   "lcp": 10372,
+   "longtasks": 5,
+   "tbt": 1768,
+   "classify": 0,
+   "scans": 0,
+   "flips": 18,
+   "visibleFlips": 4,
+   "seenUntreated": 0,
+   "scriptMs": 1199,
+   "taskMs": 2978,
+   "imgRequests": 32,
+   "imgNetwork": 32,
+   "imgCached": 0,
+   "imgKB": 745,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": true,
+    "media": "embedded"
+   },
+   "key": "pdp-yoda",
+   "w": 393,
+   "mode": "fast3g"
+  },
+  {
+   "wall": 24747,
+   "cls": 0,
+   "lcp": 11044,
+   "longtasks": 5,
+   "tbt": 1936,
+   "classify": 0,
+   "scans": 0,
+   "flips": 18,
+   "visibleFlips": 4,
+   "seenUntreated": 0,
+   "scriptMs": 1228,
+   "taskMs": 3109,
+   "imgRequests": 35,
+   "imgNetwork": 35,
+   "imgCached": 0,
+   "imgKB": 829,
+   "dupNetwork": 0,
+   "corsProbes": 0,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": true,
+    "media": "embedded"
+   },
+   "key": "pdp-yoda",
+   "w": 1440,
+   "mode": "fast3g"
+  }
+ ]
+}

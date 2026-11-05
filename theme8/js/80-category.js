@@ -1907,9 +1907,16 @@
   /* TASK 17B: seriens verifierade medlemmar = produkterna på seriens egen
      hubb och alla dess serie x format-routes (Nyehandels kategorimedlemskap
      efter migreringen; Serie-attributet finns inte längre). Snittet med
-     sidans eget underlag ger tillhörigheten -- 0 träffar = serien döljs. */
-  function seriesMemberRoutes(s) {
-    return [s.hub].concat(Object.keys(s.routes).map(function (k) { return s.routes[k]; })).filter(function (r, i, a) { return r && a.indexOf(r) === i; });
+     sidans eget underlag ger tillhörigheten -- 0 träffar = serien döljs.
+     TASK 17C: hubben listar redan seriens alla produkter, så på en bred
+     formatsida hämtas bara hubben + routen för sidans eget format (Alla
+     Buds: 29 -> 20 hämtade sidor, samma mängder -- se
+     review/image-system-buds-2026-11/buds-filter.mjs). Utan hubb: alla
+     routes som förut. */
+  function seriesMemberRoutes(s, ctx) {
+    var own = ctx && ctx.format ? s.routes[ctx.format.key] : null;
+    var routes = s.hub ? [own] : Object.keys(s.routes).map(function (k) { return s.routes[k]; });
+    return [s.hub].concat(routes).filter(function (r, i, a) { return r && a.indexOf(r) === i; });
   }
 
   /* Volym/konfiguration: egen dimension, inte produkttyp. Nyehandel har
@@ -2138,7 +2145,7 @@
       }).catch(function () { /* okänd för den här källan */ });
     });
     if (!isPortal(ctx)) pilotSeriesList(ctx).filter(shown).forEach(function (s) {
-      (isGramBroad(ctx) ? seriesMemberRoutes(s) : keys.map(function (k) { return s.routes[k]; })).forEach(function (route) {
+      (isGramBroad(ctx) ? seriesMemberRoutes(s, ctx) : keys.map(function (k) { return s.routes[k]; })).forEach(function (route) {
         if (!route) return;
         pilotSeriesPending += 1;
         allCards(route).then(function (cards) {
@@ -2644,7 +2651,7 @@
         clearLabel: "Rensa alla filter",
         onClearAll: function () { clearAll(); },
         seriesList: portal || isGramBroad(ctx) ? pilotSeriesList(ctx).filter(shown) : null,
-        memberRoutes: portal ? function (s) { return Object.keys(s.routes).map(function (k) { return s.routes[k]; }).filter(function (r, i, a) { return a.indexOf(r) === i; }); } : isGramBroad(ctx) ? seriesMemberRoutes : null,
+        memberRoutes: portal ? function (s) { return Object.keys(s.routes).map(function (k) { return s.routes[k]; }).filter(function (r, i, a) { return a.indexOf(r) === i; }); } : isGramBroad(ctx) ? function (s) { return seriesMemberRoutes(s, ctx); } : null,
         lazyCounts: portal,
         moreUi: portal ? portalMore : null,
         emptyUi: portal ? portalEmpty : null,

@@ -1,0 +1,137 @@
+{
+ "which": "base",
+ "rows": [
+  {
+   "wall": 14509,
+   "cls": 0,
+   "lcp": 920,
+   "longtasks": 3,
+   "tbt": 191,
+   "classify": 1,
+   "scans": 0,
+   "flips": 1,
+   "visibleFlips": 0,
+   "seenUntreated": 4,
+   "scriptMs": 388,
+   "taskMs": 880,
+   "imgRequests": 35,
+   "imgNetwork": 33,
+   "imgCached": 2,
+   "imgKB": 771,
+   "dupNetwork": 0,
+   "corsProbes": 1,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": false,
+    "media": "contained"
+   },
+   "key": "pdp-yoda",
+   "w": 393,
+   "mode": "cold"
+  },
+  {
+   "wall": 17254,
+   "cls": 0,
+   "lcp": 472,
+   "longtasks": 2,
+   "tbt": 69,
+   "classify": 1,
+   "scans": 0,
+   "flips": 1,
+   "visibleFlips": 0,
+   "seenUntreated": 4,
+   "scriptMs": 372,
+   "taskMs": 774,
+   "imgRequests": 40,
+   "imgNetwork": 5,
+   "imgCached": 35,
+   "imgKB": 150,
+   "dupNetwork": 0,
+   "corsProbes": 1,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": false,
+    "media": "contained"
+   },
+   "key": "pdp-yoda",
+   "w": 393,
+   "mode": "warm"
+  },
+  {
+   "wall": 14357,
+   "cls": 0,
+   "lcp": 1404,
+   "longtasks": 4,
+   "tbt": 270,
+   "classify": 1,
+   "scans": 0,
+   "flips": 1,
+   "visibleFlips": 0,
+   "seenUntreated": 4,
+   "scriptMs": 391,
+   "taskMs": 990,
+   "imgRequests": 38,
+   "imgNetwork": 36,
+   "imgCached": 2,
+   "imgKB": 859,
+   "dupNetwork": 0,
+   "corsProbes": 1,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": false,
+    "media": "contained"
+   },
+   "key": "pdp-yoda",
+   "w": 1440,
+   "mode": "cold"
+  },
+  {
+   "wall": 17205,
+   "cls": 0,
+   "lcp": 1108,
+   "longtasks": 1,
+   "tbt": 9,
+   "classify": 1,
+   "scans": 0,
+   "flips": 1,
+   "visibleFlips": 0,
+   "seenUntreated": 4,
+   "scriptMs": 355,
+   "taskMs": 682,
+   "imgRequests": 40,
+   "imgNetwork": 2,
+   "imgCached": 38,
+   "imgKB": 62,
+   "dupNetwork": 0,
+   "corsProbes": 1,
+   "clicks": {
+    "classify": 0,
+    "scans": 0
+   },
+   "pdp": {
+    "classify": 0,
+    "scans": 0,
+    "follows": false,
+    "media": "contained"
+   },
+   "key": "pdp-yoda",
+   "w": 1440,
+   "mode": "warm"
+  }
+ ]
+}

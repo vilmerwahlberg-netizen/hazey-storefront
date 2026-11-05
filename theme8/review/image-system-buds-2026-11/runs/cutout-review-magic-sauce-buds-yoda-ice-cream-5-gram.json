@@ -1,0 +1,395 @@
+{
+ "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+ "cutouts": {
+  "cdcbd2c4": {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "nhId": 132,
+   "imageId": 194,
+   "matchedImageId": 194,
+   "identicalTo": "byte-identisk med bild 194",
+   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-cdcbd2c4.jpeg",
+   "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+   "webpKB": 103,
+   "masterKB": 938,
+   "entry": "t",
+   "match": {
+    "err": 13.23,
+    "ratio": 3.24,
+    "coverage": {
+     "t30": 0.968,
+     "t30d": 0.9998,
+     "t14": 0.953,
+     "t14d": 0.9949
+    }
+   }
+  },
+  "5d2f7e15": {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "nhId": 132,
+   "imageId": 204,
+   "matchedImageId": 194,
+   "identicalTo": "byte-identisk med bild 194",
+   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-5d2f7e15.jpeg",
+   "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+   "webpKB": 103,
+   "masterKB": 938,
+   "entry": "t",
+   "match": {
+    "err": 13.23,
+    "ratio": 3.24,
+    "coverage": {
+     "t30": 0.968,
+     "t30d": 0.9998,
+     "t14": 0.953,
+     "t14d": 0.9949
+    }
+   }
+  },
+  "80eacb15": {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "nhId": 132,
+   "imageId": 205,
+   "matchedImageId": 194,
+   "identicalTo": "byte-identisk med bild 194",
+   "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-80eacb15.jpeg",
+   "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+   "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+   "webpKB": 103,
+   "masterKB": 938,
+   "entry": "t",
+   "match": {
+    "err": 13.23,
+    "ratio": 3.24,
+    "coverage": {
+     "t30": 0.968,
+     "t30d": 0.9998,
+     "t14": 0.953,
+     "t14d": 0.9949
+    }
+   }
+  }
+ },
+ "shots": [
+  {
+   "state": "fore",
+   "w": 393,
+   "key": "pdp",
+   "media": "embedded",
+   "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 393,
+   "key": "home",
+   "found": true,
+   "rect": {
+    "x": 155.390625,
+    "y": 741,
+    "w": 131.390625,
+    "h": 243.5
+   },
+   "media": "embedded",
+   "where": "hz8-bs-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 393,
+   "key": "bestsellers",
+   "found": true,
+   "rect": {
+    "x": 16,
+    "y": 924.125,
+    "w": 174.5,
+    "h": 334.703125
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 393,
+   "key": "buds",
+   "found": true,
+   "rect": {
+    "x": 202.5,
+    "y": 5077.125,
+    "w": 174.5,
+    "h": 334.703125
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 1440,
+   "key": "pdp",
+   "media": "embedded",
+   "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 1440,
+   "key": "home",
+   "found": true,
+   "rect": {
+    "x": 395,
+    "y": 747.796875,
+    "w": 317,
+    "h": 353.390625
+   },
+   "media": "embedded",
+   "where": "hz8-bs-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 1440,
+   "key": "bestsellers",
+   "found": true,
+   "rect": {
+    "x": 732,
+    "y": 480.609375,
+    "w": 310,
+    "h": 490.203125
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 1440,
+   "key": "buds",
+   "found": true,
+   "rect": {
+    "x": 398,
+    "y": 3727.875,
+    "w": 310,
+    "h": 490.203125
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 393,
+   "key": "pdp",
+   "media": "transparent",
+   "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+   "hits": 6,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 393,
+   "key": "home",
+   "found": true,
+   "rect": {
+    "x": 155.390625,
+    "y": 741,
+    "w": 131.390625,
+    "h": 243.5
+   },
+   "media": "transparent",
+   "where": "hz8-bs-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 393,
+   "key": "bestsellers",
+   "found": true,
+   "rect": {
+    "x": 16,
+    "y": 924.125,
+    "w": 174.5,
+    "h": 334.703125
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 393,
+   "key": "buds",
+   "found": true,
+   "rect": {
+    "x": 202.5,
+    "y": 5077.125,
+    "w": 174.5,
+    "h": 334.703125
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 1440,
+   "key": "pdp",
+   "media": "transparent",
+   "src": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtYnVkcy10aGNhLWJ1ZHMteW9kYS1pY2UtY3JlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1pLXN2ZXJpZ2UtY2RjYmQyYzQuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODAwLCJoZWlnaHQiOjgwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+   "hits": 6,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 1440,
+   "key": "home",
+   "found": true,
+   "rect": {
+    "x": 395,
+    "y": 747.796875,
+    "w": 317,
+    "h": 353.390625
+   },
+   "media": "transparent",
+   "where": "hz8-bs-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 1440,
+   "key": "bestsellers",
+   "found": true,
+   "rect": {
+    "x": 732,
+    "y": 480.609375,
+    "w": 310,
+    "h": 490.203125
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 1440,
+   "key": "buds",
+   "found": true,
+   "rect": {
+    "x": 398,
+    "y": 3727.875,
+    "w": 310,
+    "h": 490.203125
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 393,
+   "key": "related",
+   "found": true,
+   "rect": {
+    "x": 1792.671875,
+    "y": 1283.96875,
+    "w": 149.515625,
+    "h": 223.671875
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "rail": "Magic Sauce Buds",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "fore",
+   "w": 1440,
+   "key": "related",
+   "found": true,
+   "rect": {
+    "x": 3718,
+    "y": 1468.375,
+    "w": 312,
+    "h": 321.671875
+   },
+   "media": "embedded",
+   "where": "product-card",
+   "rail": "Magic Sauce Buds",
+   "hits": 0,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 393,
+   "key": "related",
+   "found": true,
+   "rect": {
+    "x": 1792.671875,
+    "y": 1283.96875,
+    "w": 149.515625,
+    "h": 223.671875
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "rail": "Magic Sauce Buds",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  },
+  {
+   "state": "efter",
+   "w": 1440,
+   "key": "related",
+   "found": true,
+   "rect": {
+    "x": 3718,
+    "y": 1468.375,
+    "w": 312,
+    "h": 321.671875
+   },
+   "media": "transparent",
+   "where": "product-card",
+   "rail": "Magic Sauce Buds",
+   "hits": 1,
+   "errors": 0,
+   "overflow": 0
+  }
+ ]
+}

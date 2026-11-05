@@ -1,4 +1,5 @@
 // TASK 17B harness (kopia av TASK 17:s). before = build av f0ac3be (XD_BASE), after = arbetskopian.
+// TASK 17C: opts.review = lokal granskningskoppling (bildbyten), se lib/review-images.mjs.
 // T01C_BASE). TASK 01 harness: extern Theme 8-preview, men dokumentets inklistrade
 // dev-loader byts mot en lokal loaderfil och CSS/JS levereras från en
 // lokal build. Gör det möjligt att jämföra före (HEAD) och efter
@@ -12,6 +13,8 @@ export const SCRATCH = process.env.XD_BASE || "";
 export const BUILDS = {
   before: { build: path.join(SCRATCH, "dist/theme8"), loader: path.join(SCRATCH, "theme8/blocks/loader-theme8-dev.html") },
   after: { build: path.join(ROOT, "dist/theme8"), loader: path.join(ROOT, "theme8/blocks/loader-theme8-dev.html") },
+  // TASK 17C: runtime = build av 6f31f3e (pixelklassning i webbläsaren), XD_RUNTIME.
+  runtime: { build: path.join(process.env.XD_RUNTIME || "", "dist/theme8"), loader: path.join(process.env.XD_RUNTIME || "", "theme8/blocks/loader-theme8-dev.html") },
   // Nano-11-korrigeringen: 04A utan Nano-11-bilden (XD_PRENANO = arbetskopians build med nano11 bortplockad).
   prenano: { build: path.join(process.env.XD_PRENANO || "", "dist/theme8"), loader: path.join(process.env.XD_PRENANO || "", "theme8/blocks/loader-theme8-dev.html") }
 };
@@ -102,6 +105,7 @@ export async function ctxFor(browser, w, h, opts = {}) {
     const f = path.join(ROOT, "theme8/assets", decodeURIComponent(new URL(r.request().url()).pathname.split("/assets/")[1]));
     return fs.existsSync(f) ? r.fulfill({ path: f }) : r.continue();
   });
+  if (opts.review) await opts.review(ctx);
   return ctx;
 }
 

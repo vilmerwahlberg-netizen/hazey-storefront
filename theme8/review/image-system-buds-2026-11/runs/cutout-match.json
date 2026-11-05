@@ -1,0 +1,519 @@
+[
+ {
+  "file": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "size": [
+   692,
+   871
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "nhId": 132,
+   "imageId": 194,
+   "err": 13.23
+  },
+  "sameProductImages": [
+   194,
+   204,
+   205
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 194
+   },
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 204
+   },
+   {
+    "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+    "imageId": 205
+   }
+  ],
+  "nextOther": {
+   "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+   "err": 42.92
+  },
+  "ratio": 3.24,
+  "match": true,
+  "coverage": {
+   "t30": 0.968,
+   "t30d": 0.9998,
+   "t14": 0.953,
+   "t14d": 0.9949
+  },
+  "verdict": "godkänd kandidat"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/core-vapes.png",
+  "size": [
+   800,
+   800
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 0.701,
+   "touchesEdge": 306,
+   "ok": false
+  },
+  "best": {
+   "slug": "heros-core-2ml-3-pack",
+   "name": "Hero's Core 2ml – 3-pack",
+   "nhId": 159,
+   "imageId": 232,
+   "err": 51.38
+  },
+  "sameProductImages": [
+   232
+  ],
+  "samePhoto": [
+   {
+    "slug": "heros-core-2ml-3-pack",
+    "imageId": 232
+   }
+  ],
+  "nextOther": {
+   "slug": "ccell-stylo-vape-batteri-510",
+   "err": 52.6
+  },
+  "ratio": 1.02,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/d10-buds-hash.png",
+  "size": [
+   525,
+   777
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "d10-hash-purple-storm-5g",
+   "name": "D10 60% – Purple Storm – 5g",
+   "nhId": 235,
+   "imageId": 314,
+   "err": 59.03
+  },
+  "sameProductImages": [
+   314
+  ],
+  "samePhoto": [
+   {
+    "slug": "d10-hash-purple-storm-5g",
+    "imageId": 314
+   }
+  ],
+  "nextOther": {
+   "slug": "nano-buds-strawberry-og-5-gram",
+   "err": 60.23
+  },
+  "ratio": 1.02,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/d10-vape-cherry-sour.png",
+  "size": [
+   397,
+   694
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "7-nano11-prerolled-1-gram",
+   "name": "7% Nano11 – Prerolled – 1 gram",
+   "nhId": 165,
+   "imageId": 236,
+   "err": 93.85
+  },
+  "sameProductImages": [
+   236
+  ],
+  "samePhoto": [
+   {
+    "slug": "7-nano11-prerolled-1-gram",
+    "imageId": 236
+   },
+   {
+    "slug": "nano-11-pre-rolls-1g-5-pack",
+    "imageId": 234
+   },
+   {
+    "slug": "thc-b-vape-faraoh-1ml",
+    "imageId": 337
+   }
+  ],
+  "nextOther": {
+   "slug": "thc-b-vape-faraoh-1ml",
+   "err": 101.74
+  },
+  "ratio": 1.08,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/d10-vape-lemon-cheese.png",
+  "size": [
+   416,
+   700
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "magic-sauce-hash-kitkat-5g",
+   "name": "Magic Sauce 50% – KitKat – 5g",
+   "nhId": 188,
+   "imageId": 260,
+   "err": 83.04
+  },
+  "sameProductImages": [
+   260
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-hash-kitkat-5g",
+    "imageId": 260
+   }
+  ],
+  "nextOther": {
+   "slug": "thc-b-vape-faraoh-1ml",
+   "err": 87.16
+  },
+  "ratio": 1.05,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/el-gringo-strawberry-shortcake.png",
+  "size": [
+   657,
+   775
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "ccell-fino-vape-batteri-510",
+   "name": "CCELL Fino – Vape Batteri – 510",
+   "nhId": 244,
+   "imageId": 325,
+   "err": 74.56
+  },
+  "sameProductImages": [
+   325
+  ],
+  "samePhoto": [
+   {
+    "slug": "ccell-fino-vape-batteri-510",
+    "imageId": 325
+   }
+  ],
+  "nextOther": {
+   "slug": "ccell-sandwave-vape-batteri-510",
+   "err": 76.06
+  },
+  "ratio": 1.02,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/high-life-malaga-magic.png",
+  "size": [
+   507,
+   801
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+   "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+   "nhId": 168,
+   "imageId": 240,
+   "err": 64.1
+  },
+  "sameProductImages": [
+   240
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+    "imageId": 240
+   },
+   {
+    "slug": "magic-sauce-buds-donny-burger-5g",
+    "imageId": 243
+   }
+  ],
+  "nextOther": {
+   "slug": "magic-sauce-hash-kitkat-5g",
+   "err": 73.98
+  },
+  "ratio": 1.15,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/high-life-northern-lights.png",
+  "size": [
+   546,
+   799
+  ],
+  "alpha": {
+   "has": false,
+   "ringClear": 0,
+   "touchesEdge": 1020,
+   "ok": false
+  },
+  "best": {
+   "slug": "magic-sauce-buds-kowa-bunga-5g",
+   "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+   "nhId": 221,
+   "imageId": 300,
+   "err": 68.39
+  },
+  "sameProductImages": [
+   300
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-buds-kowa-bunga-5g",
+    "imageId": 300
+   }
+  ],
+  "nextOther": {
+   "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+   "err": 69.58
+  },
+  "ratio": 1.02,
+  "match": false,
+  "coverage": null,
+  "verdict": "alfa ej godkänd"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/nano11-buds.png",
+  "size": [
+   784,
+   1045
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "nano-hash-zkittlez-mousse-ersatt-thca-hash",
+   "name": "7% Nano11 – Zkittlez Mousse – 5g",
+   "nhId": 200,
+   "imageId": 271,
+   "err": 7.95
+  },
+  "sameProductImages": [
+   271
+  ],
+  "samePhoto": [
+   {
+    "slug": "nano-hash-zkittlez-mousse-ersatt-thca-hash",
+    "imageId": 271
+   }
+  ],
+  "nextOther": {
+   "slug": "nano11-buds-godzilla-5g",
+   "err": 46.32
+  },
+  "ratio": 5.83,
+  "match": true,
+  "coverage": {
+   "t30": 0.962,
+   "t30d": 0.9998,
+   "t14": 0.946,
+   "t14d": 0.9898
+  },
+  "verdict": "godkänd kandidat"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/nano11-preroll.png",
+  "size": [
+   566,
+   852
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "7-nano11-prerolled-1-gram",
+   "name": "7% Nano11 – Prerolled – 1 gram",
+   "nhId": 165,
+   "imageId": 236,
+   "err": 14.12
+  },
+  "sameProductImages": [
+   236
+  ],
+  "samePhoto": [
+   {
+    "slug": "7-nano11-prerolled-1-gram",
+    "imageId": 236
+   },
+   {
+    "slug": "nano-11-pre-rolls-1g-5-pack",
+    "imageId": 234
+   }
+  ],
+  "nextOther": {
+   "slug": "cbd-buds-10-gram-russian-roulette",
+   "err": 72.33
+  },
+  "ratio": 5.12,
+  "match": false,
+  "coverage": null,
+  "verdict": "ingen säker matchning"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/thcab-cart.png",
+  "size": [
+   499,
+   499
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+   "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+   "nhId": 168,
+   "imageId": 240,
+   "err": 67.89
+  },
+  "sameProductImages": [
+   240
+  ],
+  "samePhoto": [
+   {
+    "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+    "imageId": 240
+   }
+  ],
+  "nextOther": {
+   "slug": "high-life-hash-malaga-magic-5g",
+   "err": 68.95
+  },
+  "ratio": 1.02,
+  "match": false,
+  "coverage": null,
+  "verdict": "ingen säker matchning"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/thcab-vape.png",
+  "size": [
+   163,
+   550
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "thc-b-vape-faraoh-1ml",
+   "name": "Vape - THC-B 35% - Faraoh - 1ml",
+   "nhId": 251,
+   "imageId": 336,
+   "err": 54.3
+  },
+  "sameProductImages": [
+   336
+  ],
+  "samePhoto": [
+   {
+    "slug": "thc-b-vape-faraoh-1ml",
+    "imageId": 336
+   }
+  ],
+  "nextOther": {
+   "slug": "7-nano11-prerolled-1-gram",
+   "err": 999
+  },
+  "ratio": 18.4,
+  "match": false,
+  "coverage": null,
+  "verdict": "ingen säker matchning"
+ },
+ {
+  "file": "../../../../hazey-storefront/theme8/review/storefront-task-system/needs-prep/task-04c-category-template-rollout/series-hub-rollout/assets/products/thcba-vape.png",
+  "size": [
+   207,
+   768
+  ],
+  "alpha": {
+   "has": true,
+   "ringClear": 1,
+   "touchesEdge": 0,
+   "ok": true
+  },
+  "best": {
+   "slug": "thc-b-vape-faraoh-1ml",
+   "name": "Vape - THC-B 35% - Faraoh - 1ml",
+   "nhId": 251,
+   "imageId": 336,
+   "err": 63.42
+  },
+  "sameProductImages": [
+   336
+  ],
+  "samePhoto": [
+   {
+    "slug": "thc-b-vape-faraoh-1ml",
+    "imageId": 336
+   }
+  ],
+  "nextOther": {
+   "slug": "7-nano11-prerolled-1-gram",
+   "err": 999
+  },
+  "ratio": 15.75,
+  "match": false,
+  "coverage": null,
+  "verdict": "ingen säker matchning"
+ }
+]

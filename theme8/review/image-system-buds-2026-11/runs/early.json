@@ -1,0 +1,95 @@
+[
+ {
+  "which": "runtime",
+  "w": 393,
+  "key": "home",
+  "painted": 1,
+  "untreated": 1,
+  "t": 5087
+ },
+ {
+  "which": "runtime",
+  "w": 393,
+  "key": "buds",
+  "painted": 2,
+  "untreated": 2,
+  "t": 1954
+ },
+ {
+  "which": "runtime",
+  "w": 393,
+  "key": "pdp-yoda",
+  "painted": 1,
+  "untreated": 1,
+  "t": 2728
+ },
+ {
+  "which": "runtime",
+  "w": 1440,
+  "key": "home",
+  "painted": 1,
+  "untreated": 1,
+  "t": 4941
+ },
+ {
+  "which": "runtime",
+  "w": 1440,
+  "key": "buds",
+  "painted": 4,
+  "untreated": 4,
+  "t": 1433
+ },
+ {
+  "which": "runtime",
+  "w": 1440,
+  "key": "pdp-yoda",
+  "painted": 1,
+  "untreated": 1,
+  "t": 1390
+ },
+ {
+  "which": "after",
+  "w": 393,
+  "key": "home",
+  "painted": 1,
+  "untreated": 0,
+  "t": 3094
+ },
+ {
+  "which": "after",
+  "w": 393,
+  "key": "buds"
+ },
+ {
+  "which": "after",
+  "w": 393,
+  "key": "pdp-yoda",
+  "painted": 1,
+  "untreated": 0,
+  "t": 2305
+ },
+ {
+  "which": "after",
+  "w": 1440,
+  "key": "home",
+  "painted": 2,
+  "untreated": 0,
+  "t": 4923
+ },
+ {
+  "which": "after",
+  "w": 1440,
+  "key": "buds",
+  "painted": 4,
+  "untreated": 0,
+  "t": 2401
+ },
+ {
+  "which": "after",
+  "w": 1440,
+  "key": "pdp-yoda",
+  "painted": 1,
+  "untreated": 0,
+  "t": 1787
+ }
+]

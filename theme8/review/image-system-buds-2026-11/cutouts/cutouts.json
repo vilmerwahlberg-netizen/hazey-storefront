@@ -1,0 +1,74 @@
+{
+ "cdcbd2c4": {
+  "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+  "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "nhId": 132,
+  "imageId": 194,
+  "matchedImageId": 194,
+  "identicalTo": "byte-identisk med bild 194",
+  "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-cdcbd2c4.jpeg",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+  "webpKB": 103,
+  "masterKB": 938,
+  "entry": "t",
+  "match": {
+   "err": 13.23,
+   "ratio": 3.24,
+   "coverage": {
+    "t30": 0.968,
+    "t30d": 0.9998,
+    "t14": 0.953,
+    "t14d": 0.9949
+   }
+  }
+ },
+ "5d2f7e15": {
+  "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+  "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "nhId": 132,
+  "imageId": 204,
+  "matchedImageId": 194,
+  "identicalTo": "byte-identisk med bild 194",
+  "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-5d2f7e15.jpeg",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+  "webpKB": 103,
+  "masterKB": 938,
+  "entry": "t",
+  "match": {
+   "err": 13.23,
+   "ratio": 3.24,
+   "coverage": {
+    "t30": 0.968,
+    "t30d": 0.9998,
+    "t14": 0.953,
+    "t14d": 0.9949
+   }
+  }
+ },
+ "80eacb15": {
+  "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+  "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+  "nhId": 132,
+  "imageId": 205,
+  "matchedImageId": 194,
+  "identicalTo": "byte-identisk med bild 194",
+  "cdn": "https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/magic-sauce-buds-thca-buds-yoda-ice-cream-magic-farmers-thc-buds-i-sverige-80eacb15.jpeg",
+  "master": "cutouts/masters/yoda-ice-cream-canva-768.png",
+  "webp": "cutouts/magic-sauce-buds-yoda-ice-cream-5-gram-194.webp",
+  "webpKB": 103,
+  "masterKB": 938,
+  "entry": "t",
+  "match": {
+   "err": 13.23,
+   "ratio": 3.24,
+   "coverage": {
+    "t30": 0.968,
+    "t30d": 0.9998,
+    "t14": 0.953,
+    "t14d": 0.9949
+   }
+  }
+ }
+}

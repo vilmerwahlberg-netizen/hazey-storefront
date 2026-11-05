@@ -1,32 +1,27 @@
-/* Produktbildernas bildtyp (TASK 17B, 2026-11-03). Ett gemensamt,
-   datadrivet bildsystem för kort, rälsar och PDP: varje produktbild
-   klassas ur sina egna pixlar (Nyehandels CDN skickar
-   Access-Control-Allow-Origin: *) och bildytan behandlas efter typen --
-   aldrig en universell overlay.
+/* Produktbildernas bildtyp (TASK 17B, 2026-11-03; statiskt manifest
+   TASK 17C, 2026-11-05). Ett gemensamt, datadrivet bildsystem för kort,
+   rälsar och PDP: bildytan behandlas efter bildens typ -- aldrig en
+   universell overlay.
 
-     transparent  verkligt frilagt packshot (minst halva kanten genomskinlig)
+     transparent  verkligt frilagt packshot
      white        jämn vit studiobakgrund
      embedded     jämn inbakad bakgrund i annan ton (t.ex. Magic Sauce-beige)
-     environment  riktig miljöbild (ojämn kant) -- visas hel, utan mask
-     unverified   bilden kunde inte läsas -- originalet visas orört
+     environment  riktig miljöbild -- visas hel, utan mask
+     unverified   bilden finns inte i manifestet -- originalet visas orört
 
-   För white/embedded mäts produktens marginal mot varje kant (pixlar som
-   avviker från kanttonen). Kanten tonas ut i bildytan BARA inom den
-   marginalen, med säkerhetsavstånd -- produktens pixlar ändras aldrig och
-   inget frilägges eller ritas om. Saknas marginal på en sida tonas den
-   sidan inte. Resultatet sätts som data-hz8-media + CSS-variabler på
-   bildytan (96-product-media.css). Cache per bild-URL i sessionStorage. */
+   Typen, kanttonen och tonzonen per sida mäts EN gång ur bildens pixlar
+   av theme8/tools/media-manifest.mjs och ligger i HZ8.mediaManifest
+   (03b-media-manifest.js), nycklad på bildfilens hash -- samma nyckel för
+   alla storlekar Nyehandels CDN levererar. Ingen bild hämtas eller läses
+   i besökarens webbläsare, och typen sätts innan bilden laddats (inget
+   synligt stilbyte). Resultatet sätts som data-hz8-media + CSS-variabler
+   på bildytan (96-product-media.css). */
 (function () {
   "use strict";
 
   var HZ8 = window.HZ8;
-  var SIZE = 128;             // analysupplösning (kanten = 2 px-ring = 1,6 %)
-  var UNIFORM = 16;           // p90 avvikelse i kantringen (0-255)
-  var FG = 30;                // pixel = produkt när den avviker mer än så
-  var SAFE = 0.012;           // säkerhetsavstånd mellan tonzon och produkt
-  var MAX_FADE = 0.12;        // tonzonen är högst 12 % av bildsidan
-  var KEY = "hz8-media-v2:";
-  var memo = {};
+  var KINDS = { t: "transparent", w: "white", e: "embedded", v: "environment" };
+  var HASH = /-([0-9a-f]{8})\.(?:jpe?g|png|webp|gif)(?:$|[?#])/i;
   var CONTAINERS = [
     ".product-card__image",           // Nyehandels kort (grid, rälsar, PDP-relaterade)
     ".hz8-bs-card__media",            // startsidans bästsäljarkort
@@ -34,103 +29,113 @@
     ".hz8-pcard__media",              // startsidans produkthylla
     "#product-thumbnails .thumb"      // PDP-miniatyrer
   ].join(",");
+  var parsed = {};
 
-  function pct(x) { return Math.round(x * 1000) / 10 + "%"; }
-  function analyse(img) {
-    var c = document.createElement("canvas");
-    c.width = SIZE; c.height = SIZE;
-    var x = c.getContext("2d", { willReadFrequently: true });
-    x.drawImage(img, 0, 0, SIZE, SIZE);
-    var d = x.getImageData(0, 0, SIZE, SIZE).data;
-    var ring = [], clear = 0;
-    for (var j = 0; j < SIZE; j += 1) for (var i = 0; i < SIZE; i += 1) {
-      if (i > 1 && j > 1 && i < SIZE - 2 && j < SIZE - 2) continue;
-      var k = (j * SIZE + i) * 4;
-      if (d[k + 3] < 16) clear += 1; else ring.push([d[k], d[k + 1], d[k + 2]]);
-    }
-    var ringN = clear + ring.length;
-    if (clear / ringN >= 0.5) return { kind: "transparent" };
-    var mean = [0, 1, 2].map(function (ch) { return ring.reduce(function (a, p) { return a + p[ch]; }, 0) / ring.length; });
-    var dev = function (r, g, b) { return Math.max(Math.abs(r - mean[0]), Math.abs(g - mean[1]), Math.abs(b - mean[2])); };
-    var devs = ring.map(function (p) { return dev(p[0], p[1], p[2]); }).sort(function (a, b) { return a - b; });
-    if (devs[Math.floor(devs.length * 0.9)] > UNIFORM) return { kind: "environment" };
-    var minX = SIZE, minY = SIZE, maxX = -1, maxY = -1;
-    for (var y = 0; y < SIZE; y += 1) for (var xx = 0; xx < SIZE; xx += 1) {
-      var q = (y * SIZE + xx) * 4;
-      if (d[q + 3] >= 16 && dev(d[q], d[q + 1], d[q + 2]) > FG) {
-        if (xx < minX) minX = xx; if (xx > maxX) maxX = xx; if (y < minY) minY = y; if (y > maxY) maxY = y;
-      }
-    }
-    var white = mean.every(function (v) { return v > 236; });
-    var out = { kind: white ? "white" : "embedded", edge: mean.map(Math.round) };
-    if (maxX < 0) return out; // ingen mätbar produkt: ingen tonzon
-    var side = function (m) { return Math.max(0, Math.min(m - SAFE, MAX_FADE)); };
-    out.fade = { t: side(minY / SIZE), r: side((SIZE - 1 - maxX) / SIZE), b: side((SIZE - 1 - maxY) / SIZE), l: side(minX / SIZE) };
-    return out;
+  /* Bildfilens hash ur både original-URL:en och CDN:ens storleks-URL:er
+     (base64-kodad JSON med "key" som första sökvägssegment). */
+  function keyOf(src) {
+    var m = HASH.exec(src);
+    if (m) return m[1];
+    try {
+      var seg = new URL(src, location.href).pathname.split("/")[1] || "";
+      if (seg.indexOf("eyJ") !== 0) return null;
+      m = HASH.exec(JSON.parse(atob(seg.replace(/-/g, "+").replace(/_/g, "/"))).key || "");
+      return m ? m[1] : null;
+    } catch (e) { return null; }
   }
-  function classify(src) {
-    if (memo[src]) return memo[src];
-    var hit = null;
-    try { hit = JSON.parse(sessionStorage.getItem(KEY + src) || "null"); } catch (e) { hit = null; }
-    if (hit) return (memo[src] = Promise.resolve(hit));
-    return (memo[src] = new Promise(function (resolve) {
-      var probe = new Image();
-      probe.crossOrigin = "anonymous";
-      probe.decoding = "async";
-      probe.onload = function () {
-        var res;
-        try { res = analyse(probe); } catch (e) { res = { kind: "unverified" }; }
-        try { sessionStorage.setItem(KEY + src, JSON.stringify(res)); } catch (e) { /* full eller blockerad */ }
-        resolve(res);
-      };
-      probe.onerror = function () { resolve({ kind: "unverified" }); };
-      probe.src = src;
-    }));
+  function lookup(src) {
+    var key = keyOf(src);
+    if (!key) return { kind: "unverified" };
+    if (parsed[key]) return parsed[key];
+    var raw = ((HZ8.mediaManifest || {}).images || {})[key];
+    var p = raw ? raw.split(" ") : [];
+    var res = { kind: KINDS[p[0]] || "unverified" };
+    if (p[1]) res.edge = "#" + p[1];
+    if (p.length > 5) res.fade = { t: +p[2], r: +p[3], b: +p[4], l: +p[5] };
+    return (parsed[key] = res);
   }
   function apply(box, res) {
     box.setAttribute("data-hz8-media", res.kind);
     var f = res.fade;
     if (f && (f.t || f.r || f.b || f.l)) {
-      box.style.setProperty("--hz8-mf-t", pct(f.t));
-      box.style.setProperty("--hz8-mf-r", pct(f.r));
-      box.style.setProperty("--hz8-mf-b", pct(f.b));
-      box.style.setProperty("--hz8-mf-l", pct(f.l));
+      box.style.setProperty("--hz8-mf-t", f.t + "%");
+      box.style.setProperty("--hz8-mf-r", f.r + "%");
+      box.style.setProperty("--hz8-mf-b", f.b + "%");
+      box.style.setProperty("--hz8-mf-l", f.l + "%");
       box.setAttribute("data-hz8-media-fade", "");
     } else {
-      ["--hz8-mf-t", "--hz8-mf-r", "--hz8-mf-b", "--hz8-mf-l"].forEach(function (p) { box.style.removeProperty(p); });
+      ["--hz8-mf-t", "--hz8-mf-r", "--hz8-mf-b", "--hz8-mf-l"].forEach(function (v) { box.style.removeProperty(v); });
       box.removeAttribute("data-hz8-media-fade");
     }
-    if (res.edge) box.style.setProperty("--hz8-media-edge", "rgb(" + res.edge.join(",") + ")");
+    if (res.edge) box.style.setProperty("--hz8-media-edge", res.edge);
     else box.style.removeProperty("--hz8-media-edge");
   }
-  /* En bildyta: klassa dess aktuella bild (ny klassning när src byts). */
+  /* Lata bilder: vilken URL som helst till samma bildfil räcker för
+     nyckeln, så data-src/srcset läses innan bilden laddats. */
+  function srcOf(img) {
+    var s = img.currentSrc || img.getAttribute("src") || img.getAttribute("data-src") || img.getAttribute("srcset") || img.getAttribute("data-srcset") || "";
+    s = s.trim().split(/\s+/)[0];
+    return /^data:/.test(s) ? "" : s;
+  }
+  /* En bildyta: sätt typen för dess aktuella bild (bara när bilden byts). */
   function sync(box, img) {
     img = img || box.querySelector("img");
     if (!img) return;
-    var src = img.currentSrc || img.src;
-    if (!src || /^data:/.test(src)) return;
-    if (box.getAttribute("data-hz8-media-src") === src) return;
+    var src = srcOf(img);
+    if (!src || box.getAttribute("data-hz8-media-src") === src) return;
     box.setAttribute("data-hz8-media-src", src);
-    if (!box.hasAttribute("data-hz8-media")) box.setAttribute("data-hz8-media", "pending");
-    classify(src).then(function (res) { if (box.getAttribute("data-hz8-media-src") === src) apply(box, res); });
+    apply(box, lookup(src));
   }
-  HZ8.productMedia = { classify: classify, sync: sync, apply: apply };
+  HZ8.productMedia = { lookup: lookup, sync: sync, apply: apply, keyOf: keyOf };
 
-  function scan() {
-    document.querySelectorAll(CONTAINERS).forEach(function (box) { sync(box); });
-    /* PDP: den aktiva bilden styr scenen (strainbyte = annan slide). */
+  /* PDP: den aktiva bilden styr scenen (strainbyte/miniatyr = annan slide). */
+  function syncStage() {
     var media = document.querySelector(".product-detail__media");
-    if (media) {
-      var img = media.querySelector("#product-slides .slide.is-active img, #product-slides .slide.active img") || media.querySelector("#product-slides .slide img");
-      if (img) sync(media, img);
-    }
+    if (!media) return;
+    var img = media.querySelector("#product-slides .slide.is-active img, #product-slides .slide.active img") || media.querySelector("#product-slides .slide img");
+    if (img) sync(media, img);
+  }
+  function syncIn(node) {
+    if (node.matches(CONTAINERS)) sync(node);
+    node.querySelectorAll(CONTAINERS).forEach(function (box) { sync(box); });
+  }
+
+  /* Endast det som ändrats: tillagda noder, bytt bildkälla och bytt aktiv
+     slide. Klick, rullning och övriga DOM-ändringar startar ingen
+     omskanning av sidan. */
+  var queued = [], stage = false, raf = 0;
+  function flush() {
+    raf = 0;
+    var nodes = queued; queued = [];
+    nodes.forEach(function (n) {
+      if (!n.isConnected) return;
+      if (n.tagName === "IMG") { var box = n.closest(CONTAINERS); if (box) sync(box, n); }
+      else syncIn(n);
+    });
+    if (stage) { stage = false; syncStage(); }
+  }
+  function queue(n) {
+    queued.push(n);
+    if (!raf) raf = window.requestAnimationFrame(flush);
   }
   HZ8.register("product-media", function () {
-    HZ8.watch(scan);
-    /* Lata bilder (loading=lazy) får sin src/currentSrc först vid laddning,
-       och sliderns bildbyte ändrar bara klasser -- fånga båda. */
-    document.addEventListener("load", function (e) { if (e.target && e.target.tagName === "IMG") scan(); }, true);
-    document.addEventListener("click", function () { window.requestAnimationFrame(scan); }, true);
-    document.addEventListener("transitionend", function (e) { if (e.target.closest && e.target.closest(".product-detail__media")) scan(); }, true);
+    var root = document.getElementById("store-instance") || document.body;
+    syncIn(root);
+    syncStage();
+    new MutationObserver(function (ms) {
+      for (var i = 0; i < ms.length; i += 1) {
+        var m = ms[i], t = m.target;
+        if (m.type === "childList") {
+          for (var j = 0; j < m.addedNodes.length; j += 1) if (m.addedNodes[j].nodeType === 1) queue(m.addedNodes[j]);
+          if (t.closest && t.closest("#product-slides")) stage = true;
+        } else if (t.tagName === "IMG") {
+          queue(t);
+          if (t.closest("#product-slides")) stage = true;
+        } else if (t.classList && t.classList.contains("slide") && t.closest("#product-slides")) {
+          stage = true;
+        }
+      }
+      if (stage && !raf) raf = window.requestAnimationFrame(flush);
+    }).observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["src", "srcset", "data-src", "class"] });
   });
 })();

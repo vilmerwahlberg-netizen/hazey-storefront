@@ -1,0 +1,61 @@
+{
+ "which": "runtime",
+ "rows": [
+  {
+   "wall": 24706,
+   "cls": 0,
+   "lcp": 0,
+   "longtasks": 6,
+   "tbt": 1851,
+   "classify": 12,
+   "scans": 25,
+   "flips": 12,
+   "visibleFlips": 2,
+   "seenUntreated": 2,
+   "scriptMs": 1476,
+   "taskMs": 3790,
+   "imgRequests": 27,
+   "imgNetwork": 16,
+   "imgCached": 11,
+   "imgKB": 302,
+   "dupNetwork": 1,
+   "corsProbes": 12,
+   "clicks": {
+    "classify": 0,
+    "scans": 10
+   },
+   "pdp": null,
+   "key": "bestsellers",
+   "w": 393,
+   "mode": "fast3g"
+  },
+  {
+   "wall": 23482,
+   "cls": 0,
+   "lcp": 0,
+   "longtasks": 5,
+   "tbt": 1103,
+   "classify": 12,
+   "scans": 30,
+   "flips": 12,
+   "visibleFlips": 4,
+   "seenUntreated": 4,
+   "scriptMs": 1068,
+   "taskMs": 2836,
+   "imgRequests": 27,
+   "imgNetwork": 15,
+   "imgCached": 12,
+   "imgKB": 302,
+   "dupNetwork": 0,
+   "corsProbes": 12,
+   "clicks": {
+    "classify": 0,
+    "scans": 10
+   },
+   "pdp": null,
+   "key": "bestsellers",
+   "w": 1440,
+   "mode": "fast3g"
+  }
+ ]
+}

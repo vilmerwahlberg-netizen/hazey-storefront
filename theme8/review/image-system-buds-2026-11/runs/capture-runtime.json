@@ -1,0 +1,182 @@
+{
+ "393-home": {
+  "boxes": [
+   {
+    "x": 19,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   },
+   {
+    "x": 160.390625,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   },
+   {
+    "x": 301.78125,
+    "y": 746,
+    "w": 121.390625,
+    "h": 97.109375,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-buds": {
+  "boxes": [
+   {
+    "x": 16,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": "embedded"
+   },
+   {
+    "x": 202.5,
+    "y": 772.6875,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": "environment"
+   },
+   {
+    "x": 16,
+    "y": 1131.390625,
+    "w": 174.5,
+    "h": 174.5,
+    "cls": "product-card__image",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "393-pdp-yoda": {
+  "boxes": [
+   {
+    "x": 12,
+    "y": 112.890625,
+    "w": 369,
+    "h": 376.0625,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "embedded"
+   },
+   {
+    "x": 42,
+    "y": 1482.4375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": "embedded"
+   },
+   {
+    "x": 318,
+    "y": 1482.4375,
+    "w": 238,
+    "h": 238,
+    "cls": "product-card__image ",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-home": {
+  "boxes": [
+   {
+    "x": 72,
+    "y": 755.796875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   },
+   {
+    "x": 403,
+    "y": 755.796875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   },
+   {
+    "x": 72,
+    "y": 1123.1875,
+    "w": 301,
+    "h": 225.75,
+    "cls": "hz8-bs-card__media",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-buds": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": "embedded"
+   },
+   {
+    "x": 398,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": "environment"
+   },
+   {
+    "x": 732,
+    "y": 570.65625,
+    "w": 310,
+    "h": 310,
+    "cls": "product-card__image",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ },
+ "1440-pdp-yoda": {
+  "boxes": [
+   {
+    "x": 64,
+    "y": 138.890625,
+    "w": 647.6875,
+    "h": 540,
+    "cls": "product-detail__media hz8-pp-theatre has",
+    "media": "embedded"
+   },
+   {
+    "x": 80,
+    "y": 1752.21875,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": "embedded"
+   },
+   {
+    "x": 411,
+    "y": 1752.21875,
+    "w": 287,
+    "h": 244.796875,
+    "cls": "product-card__image ",
+    "media": "embedded"
+   }
+  ],
+  "errors": 0,
+  "overflow": 0
+ }
+}
