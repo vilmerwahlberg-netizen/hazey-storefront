@@ -1,0 +1,216 @@
+{
+ "label": "P1-S1-tre-olika",
+ "at": "2026-11-06T13:07:25.072Z",
+ "adds": [
+  {
+   "payload": {
+    "product_variant_id": 467,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 425,
+        "pivot_id": 1
+       },
+       {
+        "id": 431,
+        "pivot_id": 2
+       },
+       {
+        "id": 438,
+        "pivot_id": 3
+       }
+      ]
+     }
+    }
+   },
+   "status": 200,
+   "error": null
+  }
+ ],
+ "cart": {
+  "total": "1 920 kr",
+  "decimal_total": 1920,
+  "quantity_count": 1,
+  "coupon": null,
+  "items": [
+   {
+    "id": 1895,
+    "name": "PILOT T19 – Hero's Core 2ml – 3-pack",
+    "product_id": 263,
+    "variant_id": 467,
+    "sku": "HZ-T19-CORE-3PK",
+    "quantity": "1.00",
+    "price": "1 920 kr",
+    "total": "1 920 kr",
+    "discount": 0,
+    "discount_type": null,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 425,
+        "pivot_id": 1,
+        "quantity": 1
+       },
+       {
+        "id": 431,
+        "pivot_id": 2,
+        "quantity": 1
+       },
+       {
+        "id": 438,
+        "pivot_id": 3,
+        "quantity": 1
+       }
+      ]
+     }
+    },
+    "package_items": [
+     {
+      "quantity": 1,
+      "name": "Hero's Core - 2ml",
+      "slug": "thc-x-vape-hero-core-2ml",
+      "unit": {
+       "suffix": "st",
+       "title": "Styck",
+       "factor": 1,
+       "allows_decimal_quantity": false,
+       "default_allows_decimal_quantity": false
+      },
+      "has_variants": true,
+      "image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY29yZS12YXBlLWdlbGF0by1oZXJvLXZhcGVzLWhpZ2gtbGlmZS0xYTNlM2M4YS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+      "option_values": [
+       {
+        "id": 236,
+        "product_option_id": 66,
+        "name": "Gelato - Indica",
+        "option_type_value": null,
+        "sort_order": 0,
+        "created_at": "2026-11-03T09:12:24.000000Z",
+        "updated_at": "2026-11-03T09:12:24.000000Z",
+        "laravel_through_key": 425,
+        "option": {
+         "id": 66,
+         "product_id": 255,
+         "option_type_id": 0,
+         "splits_listing": false,
+         "name": "Strain",
+         "sort_order": 0,
+         "created_at": "2026-11-03T09:12:24.000000Z",
+         "updated_at": "2026-11-03T09:12:24.000000Z",
+         "option_type": {
+          "id": 0,
+          "name": "Dropdown",
+          "is_color": false,
+          "is_button": false,
+          "is_radio": false,
+          "is_dropdown": false
+         }
+        }
+       }
+      ]
+     },
+     {
+      "quantity": 1,
+      "name": "Hero's Core - 2ml",
+      "slug": "thc-x-vape-hero-core-2ml",
+      "unit": {
+       "suffix": "st",
+       "title": "Styck",
+       "factor": 1,
+       "allows_decimal_quantity": false,
+       "default_allows_decimal_quantity": false
+      },
+      "has_variants": true,
+      "image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY29yZS12YXBlLW1lbG9uLWhhemUtaGVyby12YXBlcy1oaWdoLWxpZmUtZDllOWI1YjkuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+      "option_values": [
+       {
+        "id": 242,
+        "product_option_id": 66,
+        "name": "Melon Haze",
+        "option_type_value": null,
+        "sort_order": 0,
+        "created_at": "2026-11-03T09:12:24.000000Z",
+        "updated_at": "2026-11-03T09:12:24.000000Z",
+        "laravel_through_key": 431,
+        "option": {
+         "id": 66,
+         "product_id": 255,
+         "option_type_id": 0,
+         "splits_listing": false,
+         "name": "Strain",
+         "sort_order": 0,
+         "created_at": "2026-11-03T09:12:24.000000Z",
+         "updated_at": "2026-11-03T09:12:24.000000Z",
+         "option_type": {
+          "id": 0,
+          "name": "Dropdown",
+          "is_color": false,
+          "is_button": false,
+          "is_radio": false,
+          "is_dropdown": false
+         }
+        }
+       }
+      ]
+     },
+     {
+      "quantity": 1,
+      "name": "Hero's Core - 2ml",
+      "slug": "thc-x-vape-hero-core-2ml",
+      "unit": {
+       "suffix": "st",
+       "title": "Styck",
+       "factor": 1,
+       "allows_decimal_quantity": false,
+       "default_allows_decimal_quantity": false
+      },
+      "has_variants": true,
+      "image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvY29yZS12YXBlLWNvY29udXQtY2FrZS1oZXJvLXZhcGVzLWhpZ2gtbGlmZS0zYWU0YmQxNS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+      "option_values": [
+       {
+        "id": 249,
+        "product_option_id": 66,
+        "name": "Coconut Cake - Indica",
+        "option_type_value": null,
+        "sort_order": 0,
+        "created_at": "2026-11-03T09:12:25.000000Z",
+        "updated_at": "2026-11-03T09:12:25.000000Z",
+        "laravel_through_key": 438,
+        "option": {
+         "id": 66,
+         "product_id": 255,
+         "option_type_id": 0,
+         "splits_listing": false,
+         "name": "Strain",
+         "sort_order": 0,
+         "created_at": "2026-11-03T09:12:24.000000Z",
+         "updated_at": "2026-11-03T09:12:24.000000Z",
+         "option_type": {
+          "id": 0,
+          "name": "Dropdown",
+          "is_color": false,
+          "is_button": false,
+          "is_radio": false,
+          "is_dropdown": false
+         }
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "checkoutUrl": "https://hazeyse.nyehandel.se/sv/checkout?preview=v9kzdmqz4w60l5n",
+ "checkoutText": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n1 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n1 Styck x\nHero's Core - 2ml\nStrain: Melon Haze\n1 Styck x\nHero's Core - 2ml\nStrain: Coconut Cake - Indica\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+ "kustomFrames": [
+  "https://js.playground.kustom.co/kcoc/261104-85179f3/checkout-template.html",
+  "https://js.playground.kustom.co/kcoc/261104-85179f3/checkout-fullscreen.html"
+ ],
+ "kustomTestdrive": true,
+ "kustomText": "",
+ "cleaned": true
+}

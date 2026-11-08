@@ -1,0 +1,60 @@
+{
+ "posts": [
+  {
+   "product_variant_id": 467,
+   "quantity": 1,
+   "meta": {
+    "data": {
+     "packageProductVariants": [
+      {
+       "id": 425,
+       "pivot_id": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2
+      },
+      {
+       "id": 433,
+       "pivot_id": 3
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "deletes": [
+  "1943",
+  "1944"
+ ],
+ "before": [
+  {
+   "id": 1943,
+   "variant": 467,
+   "total": "1 920 kr",
+   "parts": [
+    425,
+    431,
+    438
+   ]
+  }
+ ],
+ "summaryBefore": "3 strains · Gelato - Indica, Melon Haze +1",
+ "after": [
+  {
+   "id": 1944,
+   "variant": 467,
+   "total": "1 920 kr",
+   "parts": [
+    425,
+    431,
+    433
+   ]
+  }
+ ],
+ "total": "1 920 kr",
+ "summaryAfter": "3 strains · Gelato - Indica, Melon Haze +1",
+ "live": "Paketet är uppdaterat.",
+ "cleaned": true,
+ "pass": true
+}

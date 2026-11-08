@@ -1,0 +1,21 @@
+{
+ "utan-flagga": {
+  "packsHidden": true,
+  "packKeys": [],
+  "cta": "Lägg i varukorgen",
+  "registry": "{}",
+  "requests": [],
+  "errors": []
+ },
+ "flagga-pilot-404": {
+  "packsHidden": true,
+  "packKeys": [],
+  "cta": "Lägg i varukorgen",
+  "registry": "{\"255\":[{\"kind\":\"strain\",\"qty\":3,\"packageId\":263,\"route\":\"/sv/products/pilot-t19-heros-core-2ml-3-pack\",\"verified\":true}]}",
+  "requests": [
+   "GET https://hazeyse.nyehandel.se/sv/products/pilot-t19-heros-core-2ml-3-pack"
+  ],
+  "errors": []
+ },
+ "pass": true
+}

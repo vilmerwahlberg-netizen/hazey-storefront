@@ -1,0 +1,12 @@
+{
+ "at": "2026-11-08T15:52:57.067Z",
+ "pageStatus": "301 -> /sv",
+ "add": {
+  "status": 406,
+  "error": {
+   "cart_item_not_available": true
+  }
+ },
+ "cart": [],
+ "cleaned": true
+}

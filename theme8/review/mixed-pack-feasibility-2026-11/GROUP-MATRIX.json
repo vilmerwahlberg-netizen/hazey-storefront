@@ -1,0 +1,1696 @@
+{
+ "generated": "2026-11-06T10:09:38.154Z",
+ "liveFrom": "2026-11-06T10:06:22.326Z",
+ "rules": "Prisgrupp = ägargrupp × styckpris inkl. moms (format delar inte). Valbar = active && buyable && (lager > 0 || always_orderable).",
+ "groups": [
+  {
+   "key": "ms-bh",
+   "name": "Magic Sauce buds + hasch",
+   "members": [
+    132,
+    134,
+    146,
+    152,
+    155,
+    168,
+    172,
+    175,
+    188,
+    196,
+    198,
+    201,
+    203,
+    221,
+    226,
+    228,
+    231
+   ],
+   "source": "WooCommerce-familj ms50 (HZY_EXTRA.familj) = tillåtna produkter i Woo-paketen ms50-5g-3/5/10-pack; korskontroll: NH-kategorierna ms-buds/ms-hash",
+   "mix": "separata produkter",
+   "unitPrices": [
+    495
+   ],
+   "priceGroups": [
+    {
+     "id": "ms-bh:buds+hasch:495",
+     "format": "buds+hasch",
+     "unit": 495,
+     "products": [
+      132,
+      134,
+      146,
+      152,
+      155,
+      168,
+      172,
+      175,
+      188,
+      196,
+      198,
+      201,
+      203,
+      221,
+      226,
+      228,
+      231
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 132,
+       "product": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+       "variantId": 243,
+       "sku": "HZY-WC-344340",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 237,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 134,
+       "product": "Magic Sauce 50% – Gorilla Cookies – 5g",
+       "variantId": 245,
+       "sku": "HZY-WC-344347",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 122,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 146,
+       "product": "Magic Sauce 50% – Tinky Winky – 5g",
+       "variantId": 257,
+       "sku": "HZY-WC-347282",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 152,
+       "product": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+       "variantId": 263,
+       "sku": "HZY-WC-347471",
+       "strain": null,
+       "format": "hasch",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 155,
+       "product": "Magic Sauce 50% – Samurai Jack – 5g",
+       "variantId": 266,
+       "sku": "HZY-WC-348916",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 15,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 168,
+       "product": "Magic Sauce 50% – Khalifa Kush – 5g",
+       "variantId": 279,
+       "sku": "HZY-WC-351589",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 2,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 172,
+       "product": "Magic Sauce 50% – Donny Burger – 5g",
+       "variantId": 283,
+       "sku": "HZY-WC-357297",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 141,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 175,
+       "product": "Magic Sauce 50% – Crazy Dog – 5g",
+       "variantId": 287,
+       "sku": "HZY-WC-359731",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 3,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 188,
+       "product": "Magic Sauce 50% – KitKat – 5g",
+       "variantId": 303,
+       "sku": "HZY-WC-384695",
+       "strain": null,
+       "format": "hasch",
+       "unit": 495,
+       "stock": 132,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-hash"
+       ]
+      },
+      {
+       "productId": 196,
+       "product": "Magic Sauce 50% – Charas – 5g",
+       "variantId": 314,
+       "sku": "HZY-WC-369801",
+       "strain": null,
+       "format": "hasch",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 198,
+       "product": "Magic Sauce 50% – La Chupacabra – 5g",
+       "variantId": 318,
+       "sku": "HZY-WC-369804",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 65,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 201,
+       "product": "Magic Sauce 50% – Titty Sprinkles – 5g",
+       "variantId": 322,
+       "sku": "HZY-WC-373209",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 103,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 203,
+       "product": "Magic Sauce 50% – John Lemon – 5g",
+       "variantId": 324,
+       "sku": "HZY-WC-385730",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 197,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 221,
+       "product": "Magic Sauce 50% – Kowa Bunga – 5g",
+       "variantId": 350,
+       "sku": "HZY-WC-389252",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 77,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 226,
+       "product": "Magic Sauce 50% – London Lobster – 5g",
+       "variantId": 358,
+       "sku": "HZY-WC-389894",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 33,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      },
+      {
+       "productId": 228,
+       "product": "Magic Sauce 50% – Dubai Chocolate – 5g",
+       "variantId": 361,
+       "sku": "HZY-WC-389897",
+       "strain": null,
+       "format": "hasch",
+       "unit": 495,
+       "stock": 46,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-hash"
+       ]
+      },
+      {
+       "productId": 231,
+       "product": "Magic Sauce 50% – Grape Gasoline – 5g",
+       "variantId": 365,
+       "sku": "HZY-WC-389900",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 73,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-buds"
+       ]
+      }
+     ],
+     "selectableCount": 14,
+     "selectableProducts": 14,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 167,
+       "nhIsPackage": false,
+       "sku": "HZ-MS50-3PK",
+       "packageVariantId": 278,
+       "wooPrice": 1380,
+       "regular": 1485,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 170,
+       "nhIsPackage": false,
+       "sku": "HZ-MS50-5PK",
+       "packageVariantId": 281,
+       "wooPrice": 2200,
+       "regular": 2475,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  },
+  {
+   "key": "d10-bh",
+   "name": "D10 buds + hasch",
+   "members": [
+    211,
+    223,
+    209,
+    214,
+    235,
+    216,
+    234,
+    218
+   ],
+   "source": "ENDAST Nyehandels kategorier d10-buds + d10-hash (live). Ingen Woo-familj och inget Woo-paket finns",
+   "mix": "separata produkter",
+   "unitPrices": [
+    495,
+    445,
+    435,
+    395
+   ],
+   "priceGroups": [
+    {
+     "id": "d10-bh:hasch:395",
+     "format": "hasch",
+     "unit": 395,
+     "products": [
+      216,
+      218
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 216,
+       "product": "D10 60% – Rosinella – 5g",
+       "variantId": 344,
+       "sku": "HZY-WC-387722",
+       "strain": null,
+       "format": "hasch",
+       "unit": 395,
+       "stock": 16,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-hash"
+       ]
+      },
+      {
+       "productId": 218,
+       "product": "D10 60% – Silk Road – 5g",
+       "variantId": 348,
+       "sku": "HZY-WC-387724",
+       "strain": null,
+       "format": "hasch",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-hash"
+       ]
+      }
+     ],
+     "selectableCount": 1,
+     "selectableProducts": 1,
+     "packs": [],
+     "missingPacks": [
+      3,
+      5
+     ]
+    },
+    {
+     "id": "d10-bh:hasch:435",
+     "format": "hasch",
+     "unit": 435,
+     "products": [
+      235,
+      234
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 235,
+       "product": "D10 60% – Purple Storm – 5g",
+       "variantId": 371,
+       "sku": "HZY-WC-391497",
+       "strain": null,
+       "format": "hasch",
+       "unit": 435,
+       "stock": 31,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-hash"
+       ]
+      },
+      {
+       "productId": 234,
+       "product": "D10 60% – Blue Diamond – 5g",
+       "variantId": 369,
+       "sku": "HZY-WC-391495",
+       "strain": null,
+       "format": "hasch",
+       "unit": 435,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-hash"
+       ]
+      }
+     ],
+     "selectableCount": 1,
+     "selectableProducts": 1,
+     "packs": [],
+     "missingPacks": [
+      3,
+      5
+     ]
+    },
+    {
+     "id": "d10-bh:buds:445",
+     "format": "buds",
+     "unit": 445,
+     "products": [
+      209,
+      214
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 209,
+       "product": "D10 50% – Cosmic Trip – 5g",
+       "variantId": 333,
+       "sku": "HZY-WC-387709",
+       "strain": null,
+       "format": "buds",
+       "unit": 445,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-buds"
+       ]
+      },
+      {
+       "productId": 214,
+       "product": "D10 50% – Skywalker OG – 5g",
+       "variantId": 340,
+       "sku": "HZY-WC-387717",
+       "strain": null,
+       "format": "buds",
+       "unit": 445,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-buds"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [],
+     "missingPacks": [
+      3,
+      5
+     ]
+    },
+    {
+     "id": "d10-bh:buds:495",
+     "format": "buds",
+     "unit": 495,
+     "products": [
+      211,
+      223
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 211,
+       "product": "D10 50% – Porn Star OG – 5g",
+       "variantId": 337,
+       "sku": "HZY-WC-387714",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 66,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-buds"
+       ]
+      },
+      {
+       "productId": 223,
+       "product": "D10 50% – White Widow – 5g",
+       "variantId": 355,
+       "sku": "HZY-WC-389267",
+       "strain": null,
+       "format": "buds",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "d10-buds"
+       ]
+      }
+     ],
+     "selectableCount": 1,
+     "selectableProducts": 1,
+     "packs": [],
+     "missingPacks": [
+      3,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "key": "core-bh",
+   "name": "Core buds + hasch",
+   "members": [
+    135,
+    137,
+    139,
+    148,
+    204
+   ],
+   "source": "WooCommerce-familj highlife (\"High Life / El Gringo 5g\") = tillåtna produkter i Woo-paketen high-life-5g-3/5-pack; korskontroll: NH-kategorierna high-life-buds/high-life-hash (under hero-vapes)",
+   "mix": "separata produkter",
+   "unitPrices": [
+    675,
+    590
+   ],
+   "priceGroups": [
+    {
+     "id": "core-bh:hasch:590",
+     "format": "hasch",
+     "unit": 590,
+     "products": [
+      137,
+      139,
+      148
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 137,
+       "product": "High Life – Malaga Magic – 5g",
+       "variantId": 248,
+       "sku": "HZY-WC-346753",
+       "strain": null,
+       "format": "hasch",
+       "unit": 590,
+       "stock": 22,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "high-life-hash",
+        "hero-vapes"
+       ]
+      },
+      {
+       "productId": 139,
+       "product": "High Life – Northern Lights – 5g",
+       "variantId": 250,
+       "sku": "HZY-WC-346756",
+       "strain": null,
+       "format": "hasch",
+       "unit": 590,
+       "stock": 31,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "high-life-hash",
+        "hero-vapes"
+       ]
+      },
+      {
+       "productId": 148,
+       "product": "EL Gringo – Strawberry Shortcake – 5g",
+       "variantId": 259,
+       "sku": "HZY-WC-347450",
+       "strain": null,
+       "format": "hasch",
+       "unit": 590,
+       "stock": 52,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "high-life-hash",
+        "hero-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 3,
+     "selectableProducts": 3,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 174,
+       "nhIsPackage": false,
+       "sku": "HZ-HL-3PK",
+       "packageVariantId": 286,
+       "wooPrice": 1657,
+       "regular": 1770,
+       "orphan": null,
+       "priceStatus": "EJ GILTIGT: Woo-paketet blandade styckpris 675 / 590 kr – nytt fast pris kräver ägarbeslut"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 176,
+       "nhIsPackage": false,
+       "sku": "HZ-HL-5PK",
+       "packageVariantId": 289,
+       "wooPrice": 2673,
+       "regular": 2950,
+       "orphan": null,
+       "priceStatus": "EJ GILTIGT: Woo-paketet blandade styckpris 675 / 590 kr – nytt fast pris kräver ägarbeslut"
+      }
+     ],
+     "missingPacks": []
+    },
+    {
+     "id": "core-bh:buds:675",
+     "format": "buds",
+     "unit": 675,
+     "products": [
+      135,
+      204
+     ],
+     "mixes": "separata produkter",
+     "items": [
+      {
+       "productId": 135,
+       "product": "High Life – White Widow – 5g",
+       "variantId": 246,
+       "sku": "HZY-WC-346747",
+       "strain": null,
+       "format": "buds",
+       "unit": 675,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "high-life-buds",
+        "hero-vapes"
+       ]
+      },
+      {
+       "productId": 204,
+       "product": "High Life – Gelato – 5g",
+       "variantId": 325,
+       "sku": "HZY-WC-381673",
+       "strain": null,
+       "format": "buds",
+       "unit": 675,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "high-life-buds",
+        "hero-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 174,
+       "nhIsPackage": false,
+       "sku": "HZ-HL-3PK",
+       "packageVariantId": 286,
+       "wooPrice": 1657,
+       "regular": 2025,
+       "orphan": null,
+       "priceStatus": "EJ GILTIGT: Woo-paketet blandade styckpris 675 / 590 kr – nytt fast pris kräver ägarbeslut"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 176,
+       "nhIsPackage": false,
+       "sku": "HZ-HL-5PK",
+       "packageVariantId": 289,
+       "wooPrice": 2673,
+       "regular": 3375,
+       "orphan": null,
+       "priceStatus": "EJ GILTIGT: Woo-paketet blandade styckpris 675 / 590 kr – nytt fast pris kräver ägarbeslut"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  },
+  {
+   "key": "faraoh-vapes",
+   "name": "Faraoh vapes",
+   "members": [
+    236,
+    242,
+    256,
+    251
+   ],
+   "source": "NH-kategori faraoh (236, 251) + Woo-paketens basprodukter 236/242/256 i registret. 242/256 ligger i thca-b, inte i faraoh: att de hör till \"Faraoh vapes\" bygger på Woo-paketet och produktnamnet → ägaren bekräftar",
+   "mix": "varianter av en produkt",
+   "unitPrices": [
+    745,
+    795,
+    395,
+    495
+   ],
+   "priceGroups": [
+    {
+     "id": "faraoh-vapes:cart:395",
+     "format": "cart",
+     "unit": 395,
+     "products": [
+      256
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 256,
+       "product": "THCA-B 50% - Faraoh - 1ml",
+       "variantId": 430,
+       "sku": "HZY-WC-392215",
+       "strain": "Cranberry Frost Cream",
+       "format": "cart",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 256,
+       "product": "THCA-B 50% - Faraoh - 1ml",
+       "variantId": 432,
+       "sku": "HZY-WC-392216",
+       "strain": "Super Lemon Haze",
+       "format": "cart",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 256,
+       "product": "THCA-B 50% - Faraoh - 1ml",
+       "variantId": 434,
+       "sku": "HZY-WC-392217",
+       "strain": "Sour Candy Strawberry",
+       "format": "cart",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 256,
+       "product": "THCA-B 50% - Faraoh - 1ml",
+       "variantId": 436,
+       "sku": "HZY-WC-392218",
+       "strain": "Florida Kush",
+       "format": "cart",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 256,
+       "product": "THCA-B 50% - Faraoh - 1ml",
+       "variantId": 437,
+       "sku": "HZY-WC-395516",
+       "strain": "Juicy Blueberry",
+       "format": "cart",
+       "unit": 395,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 240,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB50-1ML-3PK",
+       "packageVariantId": 384,
+       "wooPrice": 1101,
+       "regular": 1185,
+       "orphan": "hidden",
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet (fristående Woo-paket, synlighet hidden)"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 241,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB50-1ML-5PK",
+       "packageVariantId": 386,
+       "wooPrice": 1835,
+       "regular": 1975,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    },
+    {
+     "id": "faraoh-vapes:vape:495",
+     "format": "vape",
+     "unit": 495,
+     "products": [
+      251
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 251,
+       "product": "Vape - THC-B 35% - Faraoh - 1ml",
+       "variantId": 409,
+       "sku": "HZY-WC-338935",
+       "strain": "Tangie Melody",
+       "format": "vape",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "faraoh"
+       ]
+      },
+      {
+       "productId": 251,
+       "product": "Vape - THC-B 35% - Faraoh - 1ml",
+       "variantId": 411,
+       "sku": "HZY-WC-338936",
+       "strain": "Exotic Mango",
+       "format": "vape",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "faraoh"
+       ]
+      },
+      {
+       "productId": 251,
+       "product": "Vape - THC-B 35% - Faraoh - 1ml",
+       "variantId": 413,
+       "sku": "HZY-WC-338937",
+       "strain": "Blueberry Dream",
+       "format": "vape",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "faraoh"
+       ]
+      },
+      {
+       "productId": 251,
+       "product": "Vape - THC-B 35% - Faraoh - 1ml",
+       "variantId": 414,
+       "sku": "HZY-WC-338938",
+       "strain": "Pineapple Express",
+       "format": "vape",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "faraoh"
+       ]
+      },
+      {
+       "productId": 251,
+       "product": "Vape - THC-B 35% - Faraoh - 1ml",
+       "variantId": 415,
+       "sku": "HZY-WC-338941",
+       "strain": "Bubba Kush",
+       "format": "vape",
+       "unit": 495,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "faraoh"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [],
+     "missingPacks": [
+      3,
+      5
+     ]
+    },
+    {
+     "id": "faraoh-vapes:vape:745",
+     "format": "vape",
+     "unit": 745,
+     "products": [
+      236
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 373,
+       "sku": "HZY-WC-383694",
+       "strain": "Cranberry Frost Cream",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 377,
+       "sku": "HZY-WC-383695",
+       "strain": "M.A.C.",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 380,
+       "sku": "HZY-WC-383696",
+       "strain": "Super Lemon Haze",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 382,
+       "sku": "HZY-WC-383697",
+       "strain": "Sour Candy Strawberry",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 383,
+       "sku": "HZY-WC-383698",
+       "strain": "Peach Pizzazz",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 385,
+       "sku": "HZY-WC-383699",
+       "strain": "Lemon Skunk",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 387,
+       "sku": "HZY-WC-383700",
+       "strain": "Juicy Blueberry",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      },
+      {
+       "productId": 236,
+       "product": "THCbA 47% - Faraoh - 2ml",
+       "variantId": 389,
+       "sku": "HZY-WC-383701",
+       "strain": "Florida Kush",
+       "format": "vape",
+       "unit": 745,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "faraoh",
+        "thcba-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 140,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB-3PK",
+       "packageVariantId": 251,
+       "wooPrice": 2076,
+       "regular": 2235,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 142,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB-5PK",
+       "packageVariantId": 253,
+       "wooPrice": 3319,
+       "regular": 3725,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    },
+    {
+     "id": "faraoh-vapes:vape:795",
+     "format": "vape",
+     "unit": 795,
+     "products": [
+      242
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 242,
+       "product": "THCA-B 50% - Faraoh - 2ml",
+       "variantId": 388,
+       "sku": "HZY-WC-388208",
+       "strain": "Cranberry Frost Cream",
+       "format": "vape",
+       "unit": 795,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 242,
+       "product": "THCA-B 50% - Faraoh - 2ml",
+       "variantId": 391,
+       "sku": "HZY-WC-388209",
+       "strain": "Super Lemon Haze",
+       "format": "vape",
+       "unit": 795,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 242,
+       "product": "THCA-B 50% - Faraoh - 2ml",
+       "variantId": 394,
+       "sku": "HZY-WC-388210",
+       "strain": "Sour Candy Strawberry",
+       "format": "vape",
+       "unit": 795,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      },
+      {
+       "productId": 242,
+       "product": "THCA-B 50% - Faraoh - 2ml",
+       "variantId": 396,
+       "sku": "HZY-WC-388211",
+       "strain": "Florida Kush",
+       "format": "vape",
+       "unit": 795,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC BUT DIRECT-ONLY",
+       "nhCategories": [
+        "thcab-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 0,
+     "selectableProducts": 0,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 238,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB50-2ML-3PK",
+       "packageVariantId": 375,
+       "wooPrice": 2216,
+       "regular": 2385,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 239,
+       "nhIsPackage": false,
+       "sku": "HZ-THCAB50-2ML-5PK",
+       "packageVariantId": 379,
+       "wooPrice": 3542,
+       "regular": 3975,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  },
+  {
+   "key": "core-vapes",
+   "name": "Core vapes",
+   "members": [
+    255
+   ],
+   "source": "NH-kategori core-vapes (live) + registrets basprodukt 255",
+   "mix": "varianter av en produkt",
+   "unitPrices": [
+    675
+   ],
+   "priceGroups": [
+    {
+     "id": "core-vapes:vape:675",
+     "format": "vape",
+     "unit": 675,
+     "products": [
+      255
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 425,
+       "sku": "HZY-WC-347476",
+       "strain": "Gelato - Indica",
+       "format": "vape",
+       "unit": 675,
+       "stock": 69,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      },
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 429,
+       "sku": "HZY-WC-347478",
+       "strain": "Strawberry Kush - Sativa",
+       "format": "vape",
+       "unit": 675,
+       "stock": 34,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      },
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 431,
+       "sku": "HZY-WC-381941",
+       "strain": "Melon Haze",
+       "format": "vape",
+       "unit": 675,
+       "stock": 31,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      },
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 433,
+       "sku": "HZY-WC-381942",
+       "strain": "Pineapple Express -Sativa",
+       "format": "vape",
+       "unit": 675,
+       "stock": 80,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      },
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 435,
+       "sku": "HZY-WC-381943",
+       "strain": "Super Lemon Haze",
+       "format": "vape",
+       "unit": 675,
+       "stock": 71,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      },
+      {
+       "productId": 255,
+       "product": "Hero's Core - 2ml",
+       "variantId": 438,
+       "sku": "HZY-WC-381962",
+       "strain": "Coconut Cake - Indica",
+       "format": "vape",
+       "unit": 675,
+       "stock": 65,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "hero-vapes",
+        "core-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 6,
+     "selectableProducts": 1,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 159,
+       "nhIsPackage": false,
+       "sku": "HZ-CORE-3PK",
+       "packageVariantId": 270,
+       "wooPrice": 1920,
+       "regular": 2025,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 162,
+       "nhIsPackage": false,
+       "sku": "HZ-CORE-5PK",
+       "packageVariantId": 273,
+       "wooPrice": 3135,
+       "regular": 3375,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  },
+  {
+   "key": "ms-2ml",
+   "name": "Magic Sauce 2 ml",
+   "members": [
+    261
+   ],
+   "source": "Registrets basprodukt 261 (Woo-paket ms-30-2ml-*)",
+   "mix": "varianter av en produkt",
+   "unitPrices": [
+    575
+   ],
+   "priceGroups": [
+    {
+     "id": "ms-2ml:vape:575",
+     "format": "vape",
+     "unit": 575,
+     "products": [
+      261
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 454,
+       "sku": "HZY-WC-351565",
+       "strain": "Gorilla Cookies",
+       "format": "vape",
+       "unit": 575,
+       "stock": 39,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 457,
+       "sku": "HZY-WC-351566",
+       "strain": "Crazy Dog",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 458,
+       "sku": "HZY-WC-351567",
+       "strain": "High Pepito",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 459,
+       "sku": "HZY-WC-351568",
+       "strain": "Samurai Jack",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 460,
+       "sku": "HZY-WC-351572",
+       "strain": "Yoda Ice Cream",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 461,
+       "sku": "HZY-WC-383172",
+       "strain": "London Lobster",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 462,
+       "sku": "HZY-WC-383444",
+       "strain": "Kowa Bunga",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 463,
+       "sku": "HZY-WC-383445",
+       "strain": "Bruce Banner OG",
+       "format": "vape",
+       "unit": 575,
+       "stock": 0,
+       "selectable": false,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 261,
+       "product": "Magic Sauce 3.0 - 2ml",
+       "variantId": 464,
+       "sku": "HZY-WC-383446",
+       "strain": "Tinky Winky",
+       "format": "vape",
+       "unit": 575,
+       "stock": 3,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 2,
+     "selectableProducts": 1,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 145,
+       "nhIsPackage": false,
+       "sku": "HZ-MS2ML-3PK",
+       "packageVariantId": 256,
+       "wooPrice": 1599,
+       "regular": 1725,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 147,
+       "nhIsPackage": false,
+       "sku": "HZ-MS2ML-5PK",
+       "packageVariantId": 258,
+       "wooPrice": 2530,
+       "regular": 2875,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  },
+  {
+   "key": "ms-5ml",
+   "name": "Magic Sauce 5 ml",
+   "members": [
+    260
+   ],
+   "source": "Registrets basprodukt 260 (Woo-paket ms-3-0-5ml-*)",
+   "mix": "varianter av en produkt",
+   "unitPrices": [
+    1195
+   ],
+   "priceGroups": [
+    {
+     "id": "ms-5ml:vape:1195",
+     "format": "vape",
+     "unit": 1195,
+     "products": [
+      260
+     ],
+     "mixes": "varianter av en produkt",
+     "items": [
+      {
+       "productId": 260,
+       "product": "Magic Sauce 3.0 - 5ml",
+       "variantId": 449,
+       "sku": "HZY-WC-396672",
+       "strain": "This is Sparta",
+       "format": "vape",
+       "unit": 1195,
+       "stock": 99,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 260,
+       "product": "Magic Sauce 3.0 - 5ml",
+       "variantId": 451,
+       "sku": "HZY-WC-396673",
+       "strain": "Kowa Bunga",
+       "format": "vape",
+       "unit": 1195,
+       "stock": 20,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 260,
+       "product": "Magic Sauce 3.0 - 5ml",
+       "variantId": 453,
+       "sku": "HZY-WC-396674",
+       "strain": "La Chupacabra",
+       "format": "vape",
+       "unit": 1195,
+       "stock": 52,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 260,
+       "product": "Magic Sauce 3.0 - 5ml",
+       "variantId": 455,
+       "sku": "HZY-WC-396675",
+       "strain": "Yoda Ice Cream",
+       "format": "vape",
+       "unit": 1195,
+       "stock": 4,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      },
+      {
+       "productId": 260,
+       "product": "Magic Sauce 3.0 - 5ml",
+       "variantId": 456,
+       "sku": "HZY-WC-396676",
+       "strain": "Bruce Banner OG",
+       "format": "vape",
+       "unit": 1195,
+       "stock": 77,
+       "selectable": true,
+       "visibility": "PUBLIC + LISTED",
+       "nhCategories": [
+        "ms-vapes"
+       ]
+      }
+     ],
+     "selectableCount": 5,
+     "selectableProducts": 1,
+     "packs": [
+      {
+       "qty": 3,
+       "nhProductId": 166,
+       "nhIsPackage": false,
+       "sku": "HZ-MS5ML-3PK",
+       "packageVariantId": 277,
+       "wooPrice": 2950,
+       "regular": 3585,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      },
+      {
+       "qty": 5,
+       "nhProductId": 169,
+       "nhIsPackage": false,
+       "sku": "HZ-MS5ML-5PK",
+       "packageVariantId": 280,
+       "wooPrice": 4450,
+       "regular": 5975,
+       "orphan": null,
+       "priceStatus": "Woo-facit, samma styckpris i hela paketet"
+      }
+     ],
+     "missingPacks": []
+    }
+   ]
+  }
+ ]
+}
