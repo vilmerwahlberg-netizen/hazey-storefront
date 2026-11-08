@@ -1,0 +1,73 @@
+{
+ "nyStart": [
+  {
+   "type": "checkbox",
+   "checked": true,
+   "label": "Prenumerera på nyhetsbrev",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  }
+ ],
+ "kustomStart": [],
+ "nyAfterUncheck": [
+  {
+   "type": "checkbox",
+   "checked": false,
+   "label": "Prenumerera på nyhetsbrev",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  }
+ ],
+ "errorsAfterUncheck": {
+  "sys": null,
+  "help": []
+ },
+ "totalAfterUncheck": "624 kr",
+ "kustomForm": [],
+ "kustomPayment": [],
+ "kustomReachedPayment": true,
+ "kustomConsentText": "Genom att klicka på \"Betala köp\" godkänner jag Kustoms villkor och dataskyddsinformation samt godkänner Test Shops allmänna villkor.",
+ "kustomTail": "Betalsätt | Direkt | Kort, Swish och bank | Betala säkert med Klarnas köparskydd. | Faktura | 30 dagar, månadsfaktura, 0 kr | Betala säkert med Klarnas köparskydd. | Delbetalning | På 3–36 månader | Betala säkert med Klarnas köparskydd. | Att låna kostar pengar! | Om du inte kan betala tillbaka skulden i tid riskerar du en betalningsanmärkning. Det kan leda till svårigheter att få hyra bostad, teckna abonnemang och få nya lån. För stöd, vänd dig till budget- och skuldrådgivningen i din kommun. Kontaktuppgifter finns på konsumentverket.se. | Betala med kort | Fyll i kortuppgifter | Swish | Snabbt och säkert | Totalbelopp | 624 kr | Visa detaljer | Inkl. frakt & moms | Betala köp | Villkor | Genom att klicka på \"Betala köp\" godkänner jag Kustoms villkor och dataskyddsinformation samt godkänner Test Shops allmänna villkor.",
+ "nyEnd": [
+  {
+   "type": "checkbox",
+   "checked": false,
+   "label": "Prenumerera på nyhetsbrev",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  },
+  {
+   "type": "radio",
+   "checked": true,
+   "label": "",
+   "required": false
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>Task 18 kassa före/efter</title>
+<style>
+body{margin:0;padding:24px;background:#fff;color:#1d1d1b;font:15px/1.45 -apple-system,BlinkMacSystemFont,sans-serif}
+h1{font-size:22px;margin:0 0 6px}h2{font-size:18px;margin:40px 0 10px}p{max-width:900px;margin:0 0 8px}
+.row{display:flex;gap:32px;align-items:flex-start;width:max-content;padding:12px;background:#fff}
+figure{margin:0}figcaption{font:600 15px/1.3 -apple-system,sans-serif;margin:0 0 8px;height:20px}
+.m img{width:393px;display:block;outline:1px solid #ccc}.d img{width:1440px;display:block;outline:1px solid #ccc}
+</style>
+<h1>Task 18 – kassa före/efter, verklig storlek (CSS-pixlar)</h1>
+<p>Riktig Theme 8-förhandsvisningskassa med en vara (Magic Sauce 3.0 - 2ml, Gorilla Cookies). Ingen order. Kustom kör Test Mode.
+<b>Före (nativ)</b> = så kassan ser ut idag: kassans CSS ligger inte i Theme 8:s CSS-fält. <b>Före (origin/dev)</b> = 86-checkout.css från origin/dev injicerad. <b>Efter</b> = Task 18-grenen injicerad lokalt.</p>
+<h2>Mobil 393 × 852 – första vyn</h2>
+<div class="row m" id="m-fold"><figure><figcaption>Före – nativ (idag)</figcaption><img src="before/393-checkout-native-fold.png"></figure><figure><figcaption>Före – origin/dev</figcaption><img src="before/393-checkout-base-fold.png"></figure><figure><figcaption>Efter – Task 18</figcaption><img src="after/393-checkout-after-fold.png"></figure></div>
+<h2>Mobil 393 – hela sidan</h2>
+<div class="row m" id="m-full"><figure><figcaption>Före – nativ (idag)</figcaption><img src="before/393-checkout-native-full.png"></figure><figure><figcaption>Före – origin/dev</figcaption><img src="before/393-checkout-base-full.png"></figure><figure><figcaption>Efter – Task 18</figcaption><img src="after/393-checkout-after-full.png"></figure></div>
+<h2>Desktop 1440 × 900 – första vyn</h2>
+<div class="row d" id="d-fold"><figure><figcaption>Före – nativ (idag)</figcaption><img src="before/1440-checkout-native-fold.png"></figure><figure><figcaption>Efter – Task 18</figcaption><img src="after/1440-checkout-after-fold.png"></figure></div>
+<h2>Desktop 1440 – hela sidan</h2>
+<div class="row d" id="d-full"><figure><figcaption>Före – nativ (idag)</figcaption><img src="before/1440-checkout-native-full.png"></figure><figure><figcaption>Efter – Task 18</figcaption><img src="after/1440-checkout-after-full.png"></figure></div>
+<h2>Desktop 1440 – origin/dev mot efter</h2>
+<div class="row d" id="d-dev"><figure><figcaption>Före – origin/dev, första vyn</figcaption><img src="before/1440-checkout-base-fold.png"></figure><figure><figcaption>Efter – Task 18, första vyn</figcaption><img src="after/1440-checkout-after-fold.png"></figure></div>

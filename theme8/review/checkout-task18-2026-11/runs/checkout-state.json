@@ -1,0 +1,1506 @@
+{
+ "keys": [
+  "cart",
+  "channel",
+  "checkout",
+  "customer",
+  "favorites",
+  "infinityProducts",
+  "loaderOverlay",
+  "product",
+  "vehicleFitment",
+  "vies",
+  "i18n"
+ ],
+ "checkoutKeys": [
+  "checkout",
+  "calculations",
+  "checkoutError",
+  "checkoutErrorMessage",
+  "checkoutFormErrors",
+  "force_reload",
+  "payment_locked",
+  "saved_shipping_selection",
+  "shipping_selection_save_failed",
+  "shipping_selection_save_seq",
+  "age_verified",
+  "identity_verified",
+  "identity_approved",
+  "dynamic_shipping_prices",
+  "calculateAbortController",
+  "v2_enrichment_loading",
+  "v2_enrichment_postcode",
+  "v2_enrichment_settled_postcode",
+  "v2_enrichment_key",
+  "v2_enrichment_data"
+ ],
+ "checkout": {
+  "checkout": {
+   "shipping_methods": [
+    {
+     "id": 1,
+     "name": "Fraktkostnad",
+     "description": null,
+     "sort_order": 0,
+     "vat_group_id": 1,
+     "active": true,
+     "dynamic_vat": false,
+     "person": true,
+     "organization": true,
+     "min_weight": 0,
+     "max_weight": 0,
+     "min_volume": 0,
+     "max_volume": 0,
+     "limited_to_weight": false,
+     "limited_to_volume": false,
+     "free_freight_active": 0,
+     "free_freight_over": 0,
+     "limited_to_total": false,
+     "limited_to_zip": null,
+     "lower_cart_total": 0,
+     "upper_cart_total": 0,
+     "identifier": null,
+     "delivery_type": null,
+     "logo_url": null,
+     "allow_delivery_date": false,
+     "require_delivery_date": false,
+     "delivery_days": null,
+     "delivery_date_min_days": 1,
+     "delivery_date_cutoff": null,
+     "delivery_date_blocked_dates": [],
+     "first_delivery_date": null,
+     "pickup_location_active": false,
+     "shipping_cost_active": false,
+     "image": null,
+     "country_limited": false,
+     "countries": [],
+     "customer_group_id": null,
+     "price": {
+      "value": 3920,
+      "value_in_mills": 392000,
+      "currency_value": 3920,
+      "currency_value_in_mills": 392000,
+      "decimal": 49,
+      "formatted": "49 kr",
+      "currency": null
+     },
+     "prices": [
+      {
+       "id": 1,
+       "price": 39.2,
+       "compare_price": 0,
+       "fixed_price": 0,
+       "auto_pricing_min_price": 0,
+       "currency": {
+        "id": 1,
+        "name": "Svenska kronor",
+        "currency_iso": "SEK",
+        "has_fixed_rate": true,
+        "exchange_rate": "1.00000000000",
+        "format": "{value} kr",
+        "decimal_separator": ",",
+        "thousand_separator": " ",
+        "active": true,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-04-28T12:12:21.000000Z",
+        "deleted_at": null,
+        "iso": "SEK"
+       },
+       "currency_id": 1,
+       "customer_group_id": null,
+       "priceable_type": "App\\Models\\ShippingMethod",
+       "priceable_id": 1,
+       "fixed_price_input": 39.2,
+       "has_fixed_price": false,
+       "tier": 1,
+       "valid_from": null,
+       "valid_to": null,
+       "deleted": false
+      }
+     ],
+     "limited_to_isos": [],
+     "is_licenced": false,
+     "shipping_classes": [],
+     "has_shipping_classes": false,
+     "fee_pending": false,
+     "nylogistik_v2": null,
+     "nylogistik_delivery_options": [],
+     "requires_pickup_selection": false,
+     "updated_at": "2026-04-28T12:12:21.000000Z",
+     "created_at": "2026-04-28T12:12:21.000000Z",
+     "deleted_at": null
+    }
+   ],
+   "payment_methods": [
+    {
+     "id": 1,
+     "active": true,
+     "has_form": true,
+     "organization": true,
+     "person": true,
+     "require_ssn": false,
+     "renders_own_vat_number_field": false,
+     "require_invoice": false,
+     "fee_per_item": false,
+     "vat_group_id": 1,
+     "name": "Kustom",
+     "description": null,
+     "erp_reference": null,
+     "countries": [],
+     "country_limited": false,
+     "limited_to_isos": [],
+     "meta": null,
+     "gateway": "Modules\\Payment\\Gateways\\KustomGateway",
+     "gateway_logo": "/admin-dist/assets/img/partners/kustom.png",
+     "gateway_name": "kustom",
+     "gateway_features": [
+      "createOrder",
+      "updateOrder",
+      "captureOrder",
+      "cancelOrder",
+      "reservesPayment",
+      "discount",
+      "giftcard",
+      "refundOrder",
+      "proportionalShippingVat",
+      "syncSettlements"
+     ],
+     "price": {
+      "value": 0,
+      "value_in_mills": 0,
+      "currency_value": 0,
+      "currency_value_in_mills": 0,
+      "decimal": 0,
+      "formatted": "0 kr",
+      "currency": null
+     },
+     "prices": [
+      {
+       "id": 2,
+       "price": 0,
+       "compare_price": 0,
+       "fixed_price": 0,
+       "auto_pricing_min_price": 0,
+       "currency": {
+        "id": 1,
+        "name": "Svenska kronor",
+        "currency_iso": "SEK",
+        "has_fixed_rate": true,
+        "exchange_rate": "1.00000000000",
+        "format": "{value} kr",
+        "decimal_separator": ",",
+        "thousand_separator": " ",
+        "active": true,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-04-28T12:12:21.000000Z",
+        "deleted_at": null,
+        "iso": "SEK"
+       },
+       "currency_id": 1,
+       "customer_group_id": null,
+       "priceable_type": "App\\Models\\PaymentMethod",
+       "priceable_id": 1,
+       "fixed_price_input": 0,
+       "has_fixed_price": false,
+       "tier": 1,
+       "valid_from": null,
+       "valid_to": null,
+       "deleted": false
+      }
+     ],
+     "customer_group_id": null,
+     "image": null,
+     "sort_order": 0,
+     "updated_at": "2026-04-28T12:12:21.000000Z",
+     "created_at": "2026-04-28T12:12:21.000000Z",
+     "deleted_at": null
+    }
+   ],
+   "selected_shipping_method": {
+    "id": 1,
+    "name": "Fraktkostnad",
+    "description": null,
+    "sort_order": 0,
+    "vat_group_id": 1,
+    "active": true,
+    "dynamic_vat": false,
+    "person": true,
+    "organization": true,
+    "min_weight": 0,
+    "max_weight": 0,
+    "min_volume": 0,
+    "max_volume": 0,
+    "limited_to_weight": false,
+    "limited_to_volume": false,
+    "free_freight_active": 0,
+    "free_freight_over": 0,
+    "limited_to_total": false,
+    "limited_to_zip": null,
+    "lower_cart_total": 0,
+    "upper_cart_total": 0,
+    "identifier": null,
+    "delivery_type": null,
+    "logo_url": null,
+    "allow_delivery_date": false,
+    "require_delivery_date": false,
+    "delivery_days": null,
+    "delivery_date_min_days": 1,
+    "delivery_date_cutoff": null,
+    "delivery_date_blocked_dates": [],
+    "first_delivery_date": null,
+    "pickup_location_active": false,
+    "shipping_cost_active": false,
+    "image": null,
+    "country_limited": false,
+    "countries": [],
+    "customer_group_id": null,
+    "price": {
+     "value": 3920,
+     "value_in_mills": 392000,
+     "currency_value": 3920,
+     "currency_value_in_mills": 392000,
+     "decimal": 49,
+     "formatted": "49 kr",
+     "currency": null
+    },
+    "prices": [
+     {
+      "id": 1,
+      "price": 39.2,
+      "compare_price": 0,
+      "fixed_price": 0,
+      "auto_pricing_min_price": 0,
+      "currency": {
+       "id": 1,
+       "name": "Svenska kronor",
+       "currency_iso": "SEK",
+       "has_fixed_rate": true,
+       "exchange_rate": "1.00000000000",
+       "format": "{value} kr",
+       "decimal_separator": ",",
+       "thousand_separator": " ",
+       "active": true,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "deleted_at": null,
+       "iso": "SEK"
+      },
+      "currency_id": 1,
+      "customer_group_id": null,
+      "priceable_type": "App\\Models\\ShippingMethod",
+      "priceable_id": 1,
+      "fixed_price_input": 39.2,
+      "has_fixed_price": false,
+      "tier": 1,
+      "valid_from": null,
+      "valid_to": null,
+      "deleted": false
+     }
+    ],
+    "limited_to_isos": [],
+    "is_licenced": false,
+    "shipping_classes": [],
+    "has_shipping_classes": false,
+    "fee_pending": false,
+    "nylogistik_v2": null,
+    "nylogistik_delivery_options": [],
+    "requires_pickup_selection": false,
+    "updated_at": "2026-04-28T12:12:21.000000Z",
+    "created_at": "2026-04-28T12:12:21.000000Z",
+    "deleted_at": null
+   },
+   "selected_payment_method": {
+    "id": 1,
+    "active": true,
+    "has_form": true,
+    "organization": true,
+    "person": true,
+    "require_ssn": false,
+    "renders_own_vat_number_field": false,
+    "require_invoice": false,
+    "fee_per_item": false,
+    "vat_group_id": 1,
+    "name": "Kustom",
+    "description": null,
+    "erp_reference": null,
+    "countries": [],
+    "country_limited": false,
+    "limited_to_isos": [],
+    "meta": null,
+    "gateway": "Modules\\Payment\\Gateways\\KustomGateway",
+    "gateway_logo": "/admin-dist/assets/img/partners/kustom.png",
+    "gateway_name": "kustom",
+    "gateway_features": [
+     "createOrder",
+     "updateOrder",
+     "captureOrder",
+     "cancelOrder",
+     "reservesPayment",
+     "discount",
+     "giftcard",
+     "refundOrder",
+     "proportionalShippingVat",
+     "syncSettlements"
+    ],
+    "price": {
+     "value": 0,
+     "value_in_mills": 0,
+     "currency_value": 0,
+     "currency_value_in_mills": 0,
+     "decimal": 0,
+     "formatted": "0 kr",
+     "currency": null
+    },
+    "prices": [
+     {
+      "id": 2,
+      "price": 0,
+      "compare_price": 0,
+      "fixed_price": 0,
+      "auto_pricing_min_price": 0,
+      "currency": {
+       "id": 1,
+       "name": "Svenska kronor",
+       "currency_iso": "SEK",
+       "has_fixed_rate": true,
+       "exchange_rate": "1.00000000000",
+       "format": "{value} kr",
+       "decimal_separator": ",",
+       "thousand_separator": " ",
+       "active": true,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "deleted_at": null,
+       "iso": "SEK"
+      },
+      "currency_id": 1,
+      "customer_group_id": null,
+      "priceable_type": "App\\Models\\PaymentMethod",
+      "priceable_id": 1,
+      "fixed_price_input": 0,
+      "has_fixed_price": false,
+      "tier": 1,
+      "valid_from": null,
+      "valid_to": null,
+      "deleted": false
+     }
+    ],
+    "customer_group_id": null,
+    "image": null,
+    "sort_order": 0,
+    "updated_at": "2026-04-28T12:12:21.000000Z",
+    "created_at": "2026-04-28T12:12:21.000000Z",
+    "deleted_at": null
+   },
+   "customer_types": [
+    {
+     "id": "person",
+     "name": "Privatperson",
+     "is_organization": false
+    },
+    {
+     "id": "organization",
+     "name": "Företag",
+     "is_organization": true
+    }
+   ],
+   "selected_customer_type": {
+    "id": "person",
+    "name": "Privatperson",
+    "is_organization": false
+   },
+   "countries": [
+    {
+     "id": 1,
+     "country_iso": "SE",
+     "created_at": "2026-04-28T12:12:21.000000Z",
+     "updated_at": "2026-04-28T12:12:21.000000Z",
+     "deleted_at": null,
+     "name": "Sverige",
+     "country_vats": [
+      {
+       "id": 1,
+       "vat_group_id": 1,
+       "country_id": 1,
+       "vat": 25,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "vat_group": {
+        "id": 1,
+        "name": "Moms",
+        "default_vat": 25,
+        "deleted_at": null,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-05-18T11:20:14.000000Z"
+       }
+      },
+      {
+       "id": 2,
+       "vat_group_id": 2,
+       "country_id": 1,
+       "vat": 12,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "vat_group": {
+        "id": 2,
+        "name": "Moms",
+        "default_vat": 12,
+        "deleted_at": null,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-05-18T11:20:14.000000Z"
+       }
+      },
+      {
+       "id": 3,
+       "vat_group_id": 3,
+       "country_id": 1,
+       "vat": 6,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "vat_group": {
+        "id": 3,
+        "name": "Moms",
+        "default_vat": 6,
+        "deleted_at": null,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-05-18T11:20:14.000000Z"
+       }
+      },
+      {
+       "id": 4,
+       "vat_group_id": 4,
+       "country_id": 1,
+       "vat": 0,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "vat_group": {
+        "id": 4,
+        "name": "Moms",
+        "default_vat": 0,
+        "deleted_at": null,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-05-18T11:20:14.000000Z"
+       }
+      }
+     ]
+    }
+   ],
+   "selected_country": "SE",
+   "subdivisions": {
+    "US": [
+     {
+      "code": "AL",
+      "name": "Alabama"
+     },
+     {
+      "code": "AK",
+      "name": "Alaska"
+     },
+     {
+      "code": "AZ",
+      "name": "Arizona"
+     },
+     {
+      "code": "AR",
+      "name": "Arkansas"
+     },
+     {
+      "code": "CA",
+      "name": "California"
+     },
+     {
+      "code": "CO",
+      "name": "Colorado"
+     },
+     {
+      "code": "CT",
+      "name": "Connecticut"
+     },
+     {
+      "code": "DE",
+      "name": "Delaware"
+     },
+     {
+      "code": "DC",
+      "name": "District of Columbia"
+     },
+     {
+      "code": "FL",
+      "name": "Florida"
+     },
+     {
+      "code": "GA",
+      "name": "Georgia"
+     },
+     {
+      "code": "HI",
+      "name": "Hawaii"
+     },
+     {
+      "code": "ID",
+      "name": "Idaho"
+     },
+     {
+      "code": "IL",
+      "name": "Illinois"
+     },
+     {
+      "code": "IN",
+      "name": "Indiana"
+     },
+     {
+      "code": "IA",
+      "name": "Iowa"
+     },
+     {
+      "code": "KS",
+      "name": "Kansas"
+     },
+     {
+      "code": "KY",
+      "name": "Kentucky"
+     },
+     {
+      "code": "LA",
+      "name": "Louisiana"
+     },
+     {
+      "code": "ME",
+      "name": "Maine"
+     },
+     {
+      "code": "MD",
+      "name": "Maryland"
+     },
+     {
+      "code": "MA",
+      "name": "Massachusetts"
+     },
+     {
+      "code": "MI",
+      "name": "Michigan"
+     },
+     {
+      "code": "MN",
+      "name": "Minnesota"
+     },
+     {
+      "code": "MS",
+      "name": "Mississippi"
+     },
+     {
+      "code": "MO",
+      "name": "Missouri"
+     },
+     {
+      "code": "MT",
+      "name": "Montana"
+     },
+     {
+      "code": "NE",
+      "name": "Nebraska"
+     },
+     {
+      "code": "NV",
+      "name": "Nevada"
+     },
+     {
+      "code": "NH",
+      "name": "New Hampshire"
+     },
+     {
+      "code": "NJ",
+      "name": "New Jersey"
+     },
+     {
+      "code": "NM",
+      "name": "New Mexico"
+     },
+     {
+      "code": "NY",
+      "name": "New York"
+     },
+     {
+      "code": "NC",
+      "name": "North Carolina"
+     },
+     {
+      "code": "ND",
+      "name": "North Dakota"
+     },
+     {
+      "code": "OH",
+      "name": "Ohio"
+     },
+     {
+      "code": "OK",
+      "name": "Oklahoma"
+     },
+     {
+      "code": "OR",
+      "name": "Oregon"
+     },
+     {
+      "code": "PA",
+      "name": "Pennsylvania"
+     },
+     {
+      "code": "RI",
+      "name": "Rhode Island"
+     },
+     {
+      "code": "SC",
+      "name": "South Carolina"
+     },
+     {
+      "code": "SD",
+      "name": "South Dakota"
+     },
+     {
+      "code": "TN",
+      "name": "Tennessee"
+     },
+     {
+      "code": "TX",
+      "name": "Texas"
+     },
+     {
+      "code": "UT",
+      "name": "Utah"
+     },
+     {
+      "code": "VT",
+      "name": "Vermont"
+     },
+     {
+      "code": "VA",
+      "name": "Virginia"
+     },
+     {
+      "code": "WA",
+      "name": "Washington"
+     },
+     {
+      "code": "WV",
+      "name": "West Virginia"
+     },
+     {
+      "code": "WI",
+      "name": "Wisconsin"
+     },
+     {
+      "code": "WY",
+      "name": "Wyoming"
+     }
+    ],
+    "CA": [
+     {
+      "code": "AB",
+      "name": "Alberta"
+     },
+     {
+      "code": "BC",
+      "name": "British Columbia"
+     },
+     {
+      "code": "MB",
+      "name": "Manitoba"
+     },
+     {
+      "code": "NB",
+      "name": "New Brunswick"
+     },
+     {
+      "code": "NL",
+      "name": "Newfoundland and Labrador"
+     },
+     {
+      "code": "NT",
+      "name": "Northwest Territories"
+     },
+     {
+      "code": "NS",
+      "name": "Nova Scotia"
+     },
+     {
+      "code": "NU",
+      "name": "Nunavut"
+     },
+     {
+      "code": "ON",
+      "name": "Ontario"
+     },
+     {
+      "code": "PE",
+      "name": "Prince Edward Island"
+     },
+     {
+      "code": "QC",
+      "name": "Quebec"
+     },
+     {
+      "code": "SK",
+      "name": "Saskatchewan"
+     },
+     {
+      "code": "YT",
+      "name": "Yukon"
+     }
+    ],
+    "VN": [
+     {
+      "code": "VN-44",
+      "name": "An Giang"
+     },
+     {
+      "code": "VN-43",
+      "name": "Bà Rịa - Vũng Tàu"
+     },
+     {
+      "code": "VN-54",
+      "name": "Bắc Giang"
+     },
+     {
+      "code": "VN-53",
+      "name": "Bắc Kạn"
+     },
+     {
+      "code": "VN-55",
+      "name": "Bạc Liêu"
+     },
+     {
+      "code": "VN-56",
+      "name": "Bắc Ninh"
+     },
+     {
+      "code": "VN-50",
+      "name": "Bến Tre"
+     },
+     {
+      "code": "VN-31",
+      "name": "Bình Định"
+     },
+     {
+      "code": "VN-57",
+      "name": "Bình Dương"
+     },
+     {
+      "code": "VN-58",
+      "name": "Bình Phước"
+     },
+     {
+      "code": "VN-40",
+      "name": "Bình Thuận"
+     },
+     {
+      "code": "VN-59",
+      "name": "Cà Mau"
+     },
+     {
+      "code": "VN-CT",
+      "name": "Cần Thơ"
+     },
+     {
+      "code": "VN-04",
+      "name": "Cao Bằng"
+     },
+     {
+      "code": "VN-DN",
+      "name": "Đà Nẵng"
+     },
+     {
+      "code": "VN-33",
+      "name": "Đắk Lắk"
+     },
+     {
+      "code": "VN-72",
+      "name": "Đắk Nông"
+     },
+     {
+      "code": "VN-71",
+      "name": "Điện Biên"
+     },
+     {
+      "code": "VN-39",
+      "name": "Đồng Nai"
+     },
+     {
+      "code": "VN-45",
+      "name": "Đồng Tháp"
+     },
+     {
+      "code": "VN-30",
+      "name": "Gia Lai"
+     },
+     {
+      "code": "VN-03",
+      "name": "Hà Giang"
+     },
+     {
+      "code": "VN-63",
+      "name": "Hà Nam"
+     },
+     {
+      "code": "VN-HN",
+      "name": "Hà Nội"
+     },
+     {
+      "code": "VN-23",
+      "name": "Hà Tĩnh"
+     },
+     {
+      "code": "VN-61",
+      "name": "Hải Dương"
+     },
+     {
+      "code": "VN-HP",
+      "name": "Hải Phòng"
+     },
+     {
+      "code": "VN-73",
+      "name": "Hậu Giang"
+     },
+     {
+      "code": "VN-SG",
+      "name": "Hồ Chí Minh"
+     },
+     {
+      "code": "VN-14",
+      "name": "Hòa Bình"
+     },
+     {
+      "code": "VN-66",
+      "name": "Hưng Yên"
+     },
+     {
+      "code": "VN-34",
+      "name": "Khánh Hòa"
+     },
+     {
+      "code": "VN-47",
+      "name": "Kiên Giang"
+     },
+     {
+      "code": "VN-28",
+      "name": "Kon Tum"
+     },
+     {
+      "code": "VN-01",
+      "name": "Lai Châu"
+     },
+     {
+      "code": "VN-35",
+      "name": "Lâm Đồng"
+     },
+     {
+      "code": "VN-09",
+      "name": "Lạng Sơn"
+     },
+     {
+      "code": "VN-02",
+      "name": "Lào Cai"
+     },
+     {
+      "code": "VN-41",
+      "name": "Long An"
+     },
+     {
+      "code": "VN-67",
+      "name": "Nam Định"
+     },
+     {
+      "code": "VN-22",
+      "name": "Nghệ An"
+     },
+     {
+      "code": "VN-18",
+      "name": "Ninh Bình"
+     },
+     {
+      "code": "VN-36",
+      "name": "Ninh Thuận"
+     },
+     {
+      "code": "VN-68",
+      "name": "Phú Thọ"
+     },
+     {
+      "code": "VN-32",
+      "name": "Phú Yên"
+     },
+     {
+      "code": "VN-24",
+      "name": "Quảng Bình"
+     },
+     {
+      "code": "VN-27",
+      "name": "Quảng Nam"
+     },
+     {
+      "code": "VN-29",
+      "name": "Quảng Ngãi"
+     },
+     {
+      "code": "VN-13",
+      "name": "Quảng Ninh"
+     },
+     {
+      "code": "VN-25",
+      "name": "Quảng Trị"
+     },
+     {
+      "code": "VN-52",
+      "name": "Sóc Trăng"
+     },
+     {
+      "code": "VN-05",
+      "name": "Sơn La"
+     },
+     {
+      "code": "VN-37",
+      "name": "Tây Ninh"
+     },
+     {
+      "code": "VN-20",
+      "name": "Thái Bình"
+     },
+     {
+      "code": "VN-69",
+      "name": "Thái Nguyên"
+     },
+     {
+      "code": "VN-21",
+      "name": "Thanh Hóa"
+     },
+     {
+      "code": "VN-26",
+      "name": "Thừa Thiên-Huế"
+     },
+     {
+      "code": "VN-46",
+      "name": "Tiền Giang"
+     },
+     {
+      "code": "VN-51",
+      "name": "Trà Vinh"
+     },
+     {
+      "code": "VN-07",
+      "name": "Tuyên Quang"
+     },
+     {
+      "code": "VN-49",
+      "name": "Vĩnh Long"
+     },
+     {
+      "code": "VN-70",
+      "name": "Vĩnh Phúc"
+     },
+     {
+      "code": "VN-06",
+      "name": "Yên Bái"
+     }
+    ]
+   },
+   "checkout_message": false,
+   "postcode": null,
+   "pickup_location": null,
+   "require_postalcode": false,
+   "b2b_allow_customer_information_update": true,
+   "newsletter_subscription": true,
+   "newsletter_subscription_default_checked": true,
+   "has_feature_vies": false,
+   "has_feature_customer_address": false,
+   "b2b_marking_enabled": false,
+   "b2b_reference_enabled": false,
+   "b2b_gln_enabled": false,
+   "b2b_vat_number_enabled": false,
+   "verify_age": false,
+   "verify_identity": false,
+   "verification_reference": null,
+   "dynamic_shipping_prices": false,
+   "minimum_order_value": 0,
+   "selected_delivery_option_id": null,
+   "shipping_selection_booking_data": null,
+   "shipping_selection_location": null
+  },
+  "calculations": {
+   "sub_total": 49920,
+   "vat": 12480,
+   "total": 6240000,
+   "to_pay": {
+    "value": 0,
+    "value_in_mills": 0,
+    "currency_value": 0,
+    "currency_value_in_mills": 0,
+    "decimal": 0,
+    "formatted": "0 kr",
+    "currency": null
+   },
+   "total_formatted": "624 kr",
+   "vat_formatted": "124,8 kr",
+   "cart": {
+    "sub_total": {
+     "money": {
+      "value": 4600000,
+      "currency": "SEK"
+     },
+     "value": 4600000,
+     "vat": 0,
+     "currency": null,
+     "currency_rate": null,
+     "model": null,
+     "key": null,
+     "fixed": false
+    },
+    "sub_total_decimal": 460,
+    "vat": {
+     "money": {
+      "value": 1150000,
+      "currency": "SEK"
+     },
+     "value": 1150000,
+     "vat": 0,
+     "currency": null,
+     "currency_rate": null,
+     "model": null,
+     "key": null,
+     "fixed": false
+    },
+    "total_formatted": "575 kr",
+    "total_ex_vat_formatted": "460 kr"
+   },
+   "ga4": {
+    "currency": "SEK",
+    "value": 575,
+    "items": [
+     {
+      "item_id": "HZY-WC-351565",
+      "index": 0,
+      "item_name": "Magic Sauce 3.0 - 2ml",
+      "quantity": 1,
+      "price": 575,
+      "product_id": 261,
+      "variant_id": 454,
+      "category_names": [
+       "Alla Vapes",
+       "Alla produkter",
+       "Magic Farmers",
+       "Magic Sauce",
+       "MS Vapes"
+      ],
+      "item_url": "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml",
+      "item_image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtdmFwZXMtZXJzYXR0LXRoY2EtMm1sLW1hZ2ljLWZhcm1lcnMtY2Y1YjA3ZmUuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+      "price_inc_vat": 575,
+      "row_total_inc_vat": 575,
+      "item_category1": "Alla Vapes",
+      "item_category2": "Alla produkter",
+      "item_category3": "Magic Farmers",
+      "item_category4": "Magic Sauce",
+      "item_category5": "MS Vapes",
+      "variant": "Magic Sauce 3.0 - 2ml (Gorilla Cookies)",
+      "item_brand": "Magic Farmers"
+     }
+    ],
+    "checkout_url": "https://hazeyse.nyehandel.se/sv/checkout",
+    "cart_event_id": "26778_84d2af26"
+   },
+   "shipping": {
+    "sub_total": 3920,
+    "vat": 980,
+    "total_formatted": "49 kr",
+    "free_freight_activated": false
+   },
+   "service": {
+    "sub_total": 0,
+    "vat": 0,
+    "total_formatted": "0 kr"
+   },
+   "pet": null,
+   "shipping_methods": [
+    {
+     "id": 1,
+     "name": "Fraktkostnad",
+     "description": null,
+     "sort_order": 0,
+     "vat_group_id": 1,
+     "active": true,
+     "dynamic_vat": false,
+     "person": true,
+     "organization": true,
+     "min_weight": 0,
+     "max_weight": 0,
+     "min_volume": 0,
+     "max_volume": 0,
+     "limited_to_weight": false,
+     "limited_to_volume": false,
+     "free_freight_active": 0,
+     "free_freight_over": 0,
+     "limited_to_total": false,
+     "limited_to_zip": null,
+     "lower_cart_total": 0,
+     "upper_cart_total": 0,
+     "identifier": null,
+     "delivery_type": null,
+     "logo_url": null,
+     "allow_delivery_date": false,
+     "require_delivery_date": false,
+     "delivery_days": null,
+     "delivery_date_min_days": 1,
+     "delivery_date_cutoff": null,
+     "delivery_date_blocked_dates": [],
+     "first_delivery_date": null,
+     "pickup_location_active": false,
+     "shipping_cost_active": false,
+     "image": null,
+     "country_limited": false,
+     "countries": [],
+     "customer_group_id": null,
+     "price": {
+      "value": 3920,
+      "value_in_mills": 392000,
+      "currency_value": 3920,
+      "currency_value_in_mills": 392000,
+      "decimal": 49,
+      "formatted": "49 kr",
+      "currency": null
+     },
+     "prices": [
+      {
+       "id": 1,
+       "price": 39.2,
+       "compare_price": 0,
+       "fixed_price": 0,
+       "auto_pricing_min_price": 0,
+       "currency": {
+        "id": 1,
+        "name": "Svenska kronor",
+        "currency_iso": "SEK",
+        "has_fixed_rate": true,
+        "exchange_rate": "1.00000000000",
+        "format": "{value} kr",
+        "decimal_separator": ",",
+        "thousand_separator": " ",
+        "active": true,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-04-28T12:12:21.000000Z",
+        "deleted_at": null,
+        "iso": "SEK"
+       },
+       "currency_id": 1,
+       "customer_group_id": null,
+       "priceable_type": "App\\Models\\ShippingMethod",
+       "priceable_id": 1,
+       "fixed_price_input": 39.2,
+       "has_fixed_price": false,
+       "tier": 1,
+       "valid_from": null,
+       "valid_to": null,
+       "deleted": false
+      }
+     ],
+     "limited_to_isos": [],
+     "is_licenced": false,
+     "shipping_classes": [],
+     "has_shipping_classes": false,
+     "fee_pending": false,
+     "nylogistik_v2": null,
+     "nylogistik_delivery_options": [],
+     "requires_pickup_selection": false,
+     "updated_at": "2026-04-28T12:12:21.000000Z",
+     "created_at": "2026-04-28T12:12:21.000000Z",
+     "deleted_at": null
+    }
+   ],
+   "selected_shipping_method": {
+    "id": 1,
+    "name": "Fraktkostnad",
+    "description": null,
+    "sort_order": 0,
+    "vat_group_id": 1,
+    "active": true,
+    "dynamic_vat": false,
+    "person": true,
+    "organization": true,
+    "min_weight": 0,
+    "max_weight": 0,
+    "min_volume": 0,
+    "max_volume": 0,
+    "limited_to_weight": false,
+    "limited_to_volume": false,
+    "free_freight_active": 0,
+    "free_freight_over": 0,
+    "limited_to_total": false,
+    "limited_to_zip": null,
+    "lower_cart_total": 0,
+    "upper_cart_total": 0,
+    "identifier": null,
+    "delivery_type": null,
+    "logo_url": null,
+    "allow_delivery_date": false,
+    "require_delivery_date": false,
+    "delivery_days": null,
+    "delivery_date_min_days": 1,
+    "delivery_date_cutoff": null,
+    "delivery_date_blocked_dates": [],
+    "first_delivery_date": null,
+    "pickup_location_active": false,
+    "shipping_cost_active": false,
+    "image": null,
+    "country_limited": false,
+    "countries": [],
+    "customer_group_id": null,
+    "price": {
+     "value": 3920,
+     "value_in_mills": 392000,
+     "currency_value": 3920,
+     "currency_value_in_mills": 392000,
+     "decimal": 49,
+     "formatted": "49 kr",
+     "currency": null
+    },
+    "prices": [
+     {
+      "id": 1,
+      "price": 39.2,
+      "compare_price": 0,
+      "fixed_price": 0,
+      "auto_pricing_min_price": 0,
+      "currency": {
+       "id": 1,
+       "name": "Svenska kronor",
+       "currency_iso": "SEK",
+       "has_fixed_rate": true,
+       "exchange_rate": "1.00000000000",
+       "format": "{value} kr",
+       "decimal_separator": ",",
+       "thousand_separator": " ",
+       "active": true,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "deleted_at": null,
+       "iso": "SEK"
+      },
+      "currency_id": 1,
+      "customer_group_id": null,
+      "priceable_type": "App\\Models\\ShippingMethod",
+      "priceable_id": 1,
+      "fixed_price_input": 39.2,
+      "has_fixed_price": false,
+      "tier": 1,
+      "valid_from": null,
+      "valid_to": null,
+      "deleted": false
+     }
+    ],
+    "limited_to_isos": [],
+    "is_licenced": false,
+    "shipping_classes": [],
+    "has_shipping_classes": false,
+    "fee_pending": false,
+    "nylogistik_v2": null,
+    "nylogistik_delivery_options": [],
+    "requires_pickup_selection": false,
+    "updated_at": "2026-04-28T12:12:21.000000Z",
+    "created_at": "2026-04-28T12:12:21.000000Z",
+    "deleted_at": null
+   },
+   "payment_methods": [
+    {
+     "id": 1,
+     "active": true,
+     "has_form": true,
+     "organization": true,
+     "person": true,
+     "require_ssn": false,
+     "renders_own_vat_number_field": false,
+     "require_invoice": false,
+     "fee_per_item": false,
+     "vat_group_id": 1,
+     "name": "Kustom",
+     "description": null,
+     "erp_reference": null,
+     "countries": [],
+     "country_limited": false,
+     "limited_to_isos": [],
+     "meta": null,
+     "gateway": "Modules\\Payment\\Gateways\\KustomGateway",
+     "gateway_logo": "/admin-dist/assets/img/partners/kustom.png",
+     "gateway_name": "kustom",
+     "gateway_features": [
+      "createOrder",
+      "updateOrder",
+      "captureOrder",
+      "cancelOrder",
+      "reservesPayment",
+      "discount",
+      "giftcard",
+      "refundOrder",
+      "proportionalShippingVat",
+      "syncSettlements"
+     ],
+     "price": {
+      "value": 0,
+      "value_in_mills": 0,
+      "currency_value": 0,
+      "currency_value_in_mills": 0,
+      "decimal": 0,
+      "formatted": "0 kr",
+      "currency": null
+     },
+     "prices": [
+      {
+       "id": 2,
+       "price": 0,
+       "compare_price": 0,
+       "fixed_price": 0,
+       "auto_pricing_min_price": 0,
+       "currency": {
+        "id": 1,
+        "name": "Svenska kronor",
+        "currency_iso": "SEK",
+        "has_fixed_rate": true,
+        "exchange_rate": "1.00000000000",
+        "format": "{value} kr",
+        "decimal_separator": ",",
+        "thousand_separator": " ",
+        "active": true,
+        "created_at": "2026-04-28T12:12:21.000000Z",
+        "updated_at": "2026-04-28T12:12:21.000000Z",
+        "deleted_at": null,
+        "iso": "SEK"
+       },
+       "currency_id": 1,
+       "customer_group_id": null,
+       "priceable_type": "App\\Models\\PaymentMethod",
+       "priceable_id": 1,
+       "fixed_price_input": 0,
+       "has_fixed_price": false,
+       "tier": 1,
+       "valid_from": null,
+       "valid_to": null,
+       "deleted": false
+      }
+     ],
+     "customer_group_id": null,
+     "image": null,
+     "sort_order": 0,
+     "updated_at": "2026-04-28T12:12:21.000000Z",
+     "created_at": "2026-04-28T12:12:21.000000Z",
+     "deleted_at": null
+    }
+   ],
+   "selected_payment_method": {
+    "id": 1,
+    "active": true,
+    "has_form": true,
+    "organization": true,
+    "person": true,
+    "require_ssn": false,
+    "renders_own_vat_number_field": false,
+    "require_invoice": false,
+    "fee_per_item": false,
+    "vat_group_id": 1,
+    "name": "Kustom",
+    "description": null,
+    "erp_reference": null,
+    "countries": [],
+    "country_limited": false,
+    "limited_to_isos": [],
+    "meta": null,
+    "gateway": "Modules\\Payment\\Gateways\\KustomGateway",
+    "gateway_logo": "/admin-dist/assets/img/partners/kustom.png",
+    "gateway_name": "kustom",
+    "gateway_features": [
+     "createOrder",
+     "updateOrder",
+     "captureOrder",
+     "cancelOrder",
+     "reservesPayment",
+     "discount",
+     "giftcard",
+     "refundOrder",
+     "proportionalShippingVat",
+     "syncSettlements"
+    ],
+    "price": {
+     "value": 0,
+     "value_in_mills": 0,
+     "currency_value": 0,
+     "currency_value_in_mills": 0,
+     "decimal": 0,
+     "formatted": "0 kr",
+     "currency": null
+    },
+    "prices": [
+     {
+      "id": 2,
+      "price": 0,
+      "compare_price": 0,
+      "fixed_price": 0,
+      "auto_pricing_min_price": 0,
+      "currency": {
+       "id": 1,
+       "name": "Svenska kronor",
+       "currency_iso": "SEK",
+       "has_fixed_rate": true,
+       "exchange_rate": "1.00000000000",
+       "format": "{value} kr",
+       "decimal_separator": ",",
+       "thousand_separator": " ",
+       "active": true,
+       "created_at": "2026-04-28T12:12:21.000000Z",
+       "updated_at": "2026-04-28T12:12:21.000000Z",
+       "deleted_at": null,
+       "iso": "SEK"
+      },
+      "currency_id": 1,
+      "customer_group_id": null,
+      "priceable_type": "App\\Models\\PaymentMethod",
+      "priceable_id": 1,
+      "fixed_price_input": 0,
+      "has_fixed_price": false,
+      "tier": 1,
+      "valid_from": null,
+      "valid_to": null,
+      "deleted": false
+     }
+    ],
+    "customer_group_id": null,
+    "image": null,
+    "sort_order": 0,
+    "updated_at": "2026-04-28T12:12:21.000000Z",
+    "created_at": "2026-04-28T12:12:21.000000Z",
+    "deleted_at": null
+   },
+   "cart_coupon": null,
+   "giftcards": [],
+   "giftcard": null,
+   "free_shipping": {
+    "has_alternative": false,
+    "remaining": 0,
+    "free_shipping_progress_percentage": 0
+   },
+   "reverse_charge": false,
+   "vat_number_valid": true
+  },
+  "checkoutError": null,
+  "checkoutErrorMessage": "",
+  "checkoutFormErrors": null,
+  "force_reload": false,
+  "payment_locked": false,
+  "saved_shipping_selection": null,
+  "shipping_selection_save_failed": false,
+  "shipping_selection_save_seq": 0,
+  "age_verified": true,
+  "identity_verified": true,
+  "identity_approved": true,
+  "dynamic_shipping_prices": false,
+  "calculateAbortController": {},
+  "v2_enrichment_loading": false,
+  "v2_enrichment_postcode": null,
+  "v2_enrichment_settled_postcode": null,
+  "v2_enrichment_key": null,
+  "v2_enrichment_data": null
+ }
+}

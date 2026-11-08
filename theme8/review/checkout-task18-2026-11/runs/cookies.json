@@ -1,0 +1,208 @@
+{
+ "393-sv": {
+  "banner": {
+   "btns": [
+    {
+     "text": "Godkänn alla",
+     "w": 333,
+     "h": 46,
+     "x": 30,
+     "y": 723,
+     "bg": "rgb(7, 7, 7)",
+     "color": "rgb(255, 255, 255)",
+     "border": "1px rgb(7, 7, 7)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Inställningar",
+     "w": 333,
+     "h": 46,
+     "x": 30,
+     "y": 777,
+     "bg": "rgb(255, 255, 255)",
+     "color": "rgb(23, 23, 23)",
+     "border": "1px rgb(223, 223, 223)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Godkänn alla",
+     "w": 351,
+     "h": 46,
+     "x": 414,
+     "y": 739,
+     "bg": "rgb(7, 7, 7)",
+     "color": "rgb(255, 255, 255)",
+     "border": "1px rgb(7, 7, 7)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Spara",
+     "w": 351,
+     "h": 46,
+     "x": 414,
+     "y": 793,
+     "bg": "rgb(255, 255, 255)",
+     "color": "rgb(23, 23, 23)",
+     "border": "1px rgb(223, 223, 223)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    }
+   ],
+   "text": "Hoppa till innehåll Sveriges #1 för lagliga cannabinoider Noggrant testade och lagliga i Sverige – vi följer lagstiftningen löpande. Din trygghet först. Handla THCA-B Upptäck Magic Sauce Svenskt lager Skickas från Sverige Diskret paket Diskret förpackning Spårbart Spårningsnummer via e-post POPULÄRA JUST NU B ä s t s ä l j a r e Visa alla bästsäljare CBD 30% – Cereal Milk – 3,5g Cookies 395 kr Lägg till Magic Sauce 50% – Yoda Ice Cream – 5g Magic Farmers 495 kr Lägg till High Life – Malaga Magic – 5g Hero 695 kr 590 kr Lägg till CBD 57% - Adios M.F. + Miami Mint - 1+1ml Cookies 495 kr Lägg til"
+  },
+  "preReqs": [
+   "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+   "https://www.google.com/recaptcha/api.js",
+   "https://www.gstatic.com/recaptcha/releases/kxxK8h62TERPFgxXTKenDcjR/recaptcha__sv.js",
+   "https://widget.trustpilot.com/trustboxes/53aa8807dec7e10d38f59f32/index.html",
+   "https://widget.trustpilot.com/trustboxes/53aa8807dec7e10d38f59f32/main.js",
+   "https://widget.trustpilot.com/trustboxes/5419b637fa0340045cd0c936/index.html",
+   "https://widget.trustpilot.com/trustboxes/5419b637fa0340045cd0c936/main.js",
+   "https://widget.trustpilot.com/trustbox-data/53aa8807dec7e10d38f59f32",
+   "https://widget.trustpilot.com/stats/TrustboxImpression",
+   "https://widget.trustpilot.com/stats/TrustboxView",
+   "https://widget.trustpilot.com/trustbox-data/5419b637fa0340045cd0c936"
+  ],
+  "preCookies": [
+   "usr_locale@hazeyse.nyehandel.se",
+   "locale@hazeyse.nyehandel.se",
+   "XSRF-TOKEN@hazeyse.nyehandel.se",
+   "nyehandelse_session@hazeyse.nyehandel.se"
+  ],
+  "afterNeka": null,
+  "consentState": [
+   "[\"consent\",\"default\",{\"functionality_storage\":\"granted\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\"}]"
+  ]
+ },
+ "393-sv-checkout": {
+  "banner": {
+   "btns": [],
+   "text": null
+  },
+  "preReqs": [
+   "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+   "https://www.google.com/recaptcha/api.js",
+   "https://www.gstatic.com/recaptcha/releases/kxxK8h62TERPFgxXTKenDcjR/recaptcha__sv.js"
+  ],
+  "preCookies": [
+   "usr_locale@hazeyse.nyehandel.se",
+   "locale@hazeyse.nyehandel.se",
+   "XSRF-TOKEN@hazeyse.nyehandel.se",
+   "nyehandelse_session@hazeyse.nyehandel.se"
+  ],
+  "afterNeka": null,
+  "consentState": [
+   "[\"consent\",\"default\",{\"functionality_storage\":\"granted\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\"}]"
+  ]
+ },
+ "1440-sv": {
+  "banner": {
+   "btns": [
+    {
+     "text": "Godkänn alla",
+     "w": 160,
+     "h": 46,
+     "x": 1055,
+     "y": 781,
+     "bg": "rgb(7, 7, 7)",
+     "color": "rgb(255, 255, 255)",
+     "border": "1px rgb(7, 7, 7)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Inställningar",
+     "w": 160,
+     "h": 46,
+     "x": 1225,
+     "y": 781,
+     "bg": "rgb(255, 255, 255)",
+     "color": "rgb(23, 23, 23)",
+     "border": "1px rgb(223, 223, 223)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Godkänn alla",
+     "w": 131,
+     "h": 46,
+     "x": 1472,
+     "y": 838,
+     "bg": "rgb(7, 7, 7)",
+     "color": "rgb(255, 255, 255)",
+     "border": "1px rgb(7, 7, 7)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    },
+    {
+     "text": "Spara",
+     "w": 83,
+     "h": 46,
+     "x": 1837,
+     "y": 838,
+     "bg": "rgb(255, 255, 255)",
+     "color": "rgb(23, 23, 23)",
+     "border": "1px rgb(223, 223, 223)",
+     "weight": "700",
+     "size": "13.6px",
+     "root": "hz8 show--consent"
+    }
+   ],
+   "text": "Hoppa till innehåll Alla produkter Bästsäljare Vapes Buds Hasch CBD Kampanjer Sök... Sveriges #1 för lagliga cannabinoider Noggrant testade och lagliga i Sverige – vi följer lagstiftningen löpande. Din trygghet först. Handla THCA-B Upptäck Magic Sauce Fri frakt från 499 kr Diskret förpackning Spårbar leverans POPULÄRA JUST NU B ä s t s ä l j a r e Visa alla bästsäljare CBD 30% – Cereal Milk – 3,5g Cookies 395 kr Lägg till Magic Sauce 50% – Yoda Ice Cream – 5g Magic Farmers 495 kr Lägg till High Life – Malaga Magic – 5g Hero 695 kr 590 kr Lägg till CBD 57% - Adios M.F. + Miami Mint - 1+1ml Cook"
+  },
+  "preReqs": [
+   "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+   "https://www.google.com/recaptcha/api.js",
+   "https://www.gstatic.com/recaptcha/releases/kxxK8h62TERPFgxXTKenDcjR/recaptcha__sv.js",
+   "https://widget.trustpilot.com/trustboxes/53aa8807dec7e10d38f59f32/index.html",
+   "https://widget.trustpilot.com/trustboxes/5419b637fa0340045cd0c936/index.html",
+   "https://widget.trustpilot.com/trustboxes/53aa8807dec7e10d38f59f32/main.js",
+   "https://widget.trustpilot.com/trustboxes/5419b637fa0340045cd0c936/main.js",
+   "https://widget.trustpilot.com/trustbox-data/53aa8807dec7e10d38f59f32",
+   "https://widget.trustpilot.com/stats/TrustboxImpression",
+   "https://widget.trustpilot.com/stats/TrustboxView",
+   "https://widget.trustpilot.com/trustbox-data/5419b637fa0340045cd0c936"
+  ],
+  "preCookies": [
+   "usr_locale@hazeyse.nyehandel.se",
+   "locale@hazeyse.nyehandel.se",
+   "XSRF-TOKEN@hazeyse.nyehandel.se",
+   "nyehandelse_session@hazeyse.nyehandel.se"
+  ],
+  "afterNeka": null,
+  "consentState": [
+   "[\"consent\",\"default\",{\"functionality_storage\":\"granted\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\"}]"
+  ]
+ },
+ "1440-sv-checkout": {
+  "banner": {
+   "btns": [],
+   "text": null
+  },
+  "preReqs": [
+   "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+   "https://www.google.com/recaptcha/api.js",
+   "https://www.gstatic.com/recaptcha/releases/kxxK8h62TERPFgxXTKenDcjR/recaptcha__sv.js"
+  ],
+  "preCookies": [
+   "usr_locale@hazeyse.nyehandel.se",
+   "locale@hazeyse.nyehandel.se",
+   "XSRF-TOKEN@hazeyse.nyehandel.se",
+   "nyehandelse_session@hazeyse.nyehandel.se"
+  ],
+  "afterNeka": null,
+  "consentState": [
+   "[\"consent\",\"default\",{\"functionality_storage\":\"granted\",\"ad_storage\":\"denied\",\"ad_user_data\":\"denied\",\"ad_personalization\":\"denied\",\"analytics_storage\":\"denied\"}]"
+  ]
+ }
+}
