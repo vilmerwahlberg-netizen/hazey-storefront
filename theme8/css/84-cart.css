@@ -180,6 +180,9 @@ html.hz8 #cartAside article.item .option {
 }
 html.hz8 #cartAside article.item .option span { color: inherit; font-weight: 400; text-transform: capitalize; }
 html.hz8 #cartAside article.item.hz8-pack-active :is(.price, .option) { display: none !important; }
+/* TASK 19: i en riktig paketrad är Nyehandels egna delrader (.item__package)
+   kundens val per plats -- strain ska synas, inte döljas med radens .option. */
+html.hz8 #cartAside article.item.hz8-pack-active .item__package .option { display: block !important; margin-top: 2px; }
 html.hz8 #cartAside article.item > .total {
   grid-area: total;
   color: var(--hz8-ink);

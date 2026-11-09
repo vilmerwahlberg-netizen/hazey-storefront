@@ -308,11 +308,14 @@
         });
         optionsReady = Promise.resolve();
       }
+      /* TASK 19: verkliga pivot_id ur paketsidan (samma läsning som PDP:n,
+         HZ8.packagePivots i 85-pdp-pilot.js). Utan giltiga rader: inget steg. */
       var real = Promise.all(listed.map(function (e) {
-        return stateById(e.packageId).then(function (d2) {
-          var P2 = d2.product, v = P2 && (P2.variants || [])[0];
+        var pivots = HZ8.packagePivots ? HZ8.packagePivots(e, pid) : Promise.reject(new Error("pivots"));
+        return Promise.all([stateById(e.packageId), pivots]).then(function (res) {
+          var d2 = res[0], P2 = d2.product, v = P2 && (P2.variants || [])[0];
           if (!P2 || P2.is_package !== true || !v || !HZ8.variantOrderable(v) || !v.price) return null;
-          return { qty: +e.qty, kind: e.kind, packageId: e.packageId, variantId: v.id, price: parseKr(v.price.formatted_price), review: false };
+          return { qty: +e.qty, kind: e.kind, packageId: e.packageId, variantId: v.id, pivots: res[1], price: parseKr(v.price.formatted_price), review: false };
         }, function () { return null; });
       }));
       return Promise.all([optionsReady, real]).then(function (r) {
@@ -333,7 +336,14 @@
   var reviewSel = {};
   function metaSlots(it) {
     var m = it.meta && it.meta.data && it.meta.data.packageProductVariants;
-    return Array.isArray(m) ? m.map(function (x) { return x.product_variant_id || x.id; }) : [];
+    if (!Array.isArray(m)) return [];
+    /* Servern slår ihop samma variant: {id, pivot_id, quantity: 3} -> tre
+       platser. Ordning efter pivot_id = paketets platsordning. */
+    var out = [];
+    m.slice().sort(function (a, b) { return (a.pivot_id || 0) - (b.pivot_id || 0); }).forEach(function (x) {
+      for (var n = 0; n < Math.max(1, Math.round(+x.quantity || 1)); n++) out.push(x.id || x.product_variant_id);
+    });
+    return out;
   }
   function rowState(it) {
     var parent = packageParents()[it.product_id];
@@ -381,8 +391,11 @@
       var active = !step.one;
       row.classList.add("hz8-has-pack");
       row.classList.toggle("hz8-pack-active", active);
-      /* Paketnamn efter produktnamnet ("· 3-pack") när ett paket är valt. */
-      if (active) {
+      /* Paketnamn efter produktnamnet ("· 3-pack") när ett paket är valt --
+         men inte när radens eget namn redan säger det (en riktig paket-
+         produkt heter t.ex. "… – 3-pack"; TASK 19). */
+      var named = active && decode(it.name).toLowerCase().replace(/\s+/g, " ").indexOf(packLabel(step).toLowerCase()) !== -1;
+      if (active && !named) {
         var link = row.querySelector(".content a");
         if (!tag && link) { tag = document.createElement("span"); tag.className = "hz8-pack-tag"; link.parentNode.insertBefore(tag, link.nextSibling); }
         if (tag && tag.textContent !== " · " + packLabel(step)) tag.textContent = " · " + packLabel(step);
@@ -444,15 +457,30 @@
      platser enligt Nyehandels paketformat, sedan tas den gamla raden bort
      och korgen läses om. */
   function replaceRow(it, step, slots) {
+    /* TASK 19: Nyehandels verifierade format {id, pivot_id} med paketets
+       verkliga pivot_id (step.pivots). Saknas de skickas inget. */
     var body = step.one
       ? { product_variant_id: +slots[0], quantity: 1, meta: null }
-      : { product_variant_id: step.variantId, quantity: 1, meta: { data: { packageProductVariants: slots.map(function (vid, i) { return { slot: i, product_variant_id: +vid }; }) } } };
+      : (step.pivots && step.pivots.length === slots.length && slots.every(Boolean)
+        ? { product_variant_id: step.variantId, quantity: 1, meta: { data: { packageProductVariants: slots.map(function (vid, i) { return { id: +vid, pivot_id: step.pivots[i] }; }) } } }
+        : null);
     delete W.msgs[it.id];
+    if (!body) {
+      W.msgs[it.id] = { role: "alert", text: "Paketet kunde inte ändras. Varukorgen visar det som är sparat." };
+      return reload().then(schedule, schedule);
+    }
+    var before = cartObj() ? +(cartObj().quantity_count || 0) : null;
     return api("POST", "/frontend-api/cart/item", body)
-      .then(function () { return api("DELETE", "/frontend-api/cart/item/" + it.id); })
+      .then(function (d) {
+        /* Servern kapar till lagret: ökade korgen inte, behålls den gamla
+           raden (annars försvinner kundens paket). */
+        var after = d && d.data ? +(d.data.quantity_count || 0) : null;
+        if (before !== null && after !== null && !(after > before)) { var e = new Error("capped"); e.capped = true; throw e; }
+        return api("DELETE", "/frontend-api/cart/item/" + it.id);
+      })
       .then(reload)
-      .catch(function () {
-        W.msgs[it.id] = { role: "alert", text: "Paketet kunde inte ändras. Varukorgen visar det som är sparat." };
+      .catch(function (e) {
+        W.msgs[it.id] = { role: "alert", text: e && e.capped ? "Lagret räcker inte för de valen. Paketet är oförändrat." : e && e.data && e.data.cart_item_data_is_invalid ? "Paketvalet godkändes inte av butiken. Paketet är oförändrat." : "Paketet kunde inte ändras. Varukorgen visar det som är sparat." };
         return reload();
       }).then(schedule, schedule);
   }

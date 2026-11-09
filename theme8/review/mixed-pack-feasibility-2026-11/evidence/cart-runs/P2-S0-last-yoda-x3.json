@@ -1,0 +1,89 @@
+{
+ "label": "P2-S0-last-yoda-x3",
+ "at": "2026-11-08T13:24:40.282Z",
+ "adds": [
+  {
+   "payload": {
+    "product_variant_id": 468,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 243,
+        "pivot_id": 4
+       },
+       {
+        "id": 243,
+        "pivot_id": 5
+       },
+       {
+        "id": 243,
+        "pivot_id": 6
+       }
+      ]
+     }
+    }
+   },
+   "status": 200,
+   "error": null
+  }
+ ],
+ "cart": {
+  "total": "1 380 kr",
+  "decimal_total": 1380,
+  "quantity_count": 1,
+  "coupon": null,
+  "items": [
+   {
+    "id": 1913,
+    "name": "PILOT T19 – Magic Sauce 50% 5g – 3-pack",
+    "product_id": 264,
+    "variant_id": 468,
+    "sku": "HZ-T19-MS50-3PK",
+    "quantity": "1.00",
+    "price": "1 380 kr",
+    "total": "1 380 kr",
+    "discount": 0,
+    "discount_type": null,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 243,
+        "pivot_id": 4,
+        "quantity": 3
+       }
+      ]
+     }
+    },
+    "package_items": [
+     {
+      "quantity": 3,
+      "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+      "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+      "unit": {
+       "suffix": "st",
+       "title": "Styck",
+       "factor": 1,
+       "allows_decimal_quantity": false,
+       "default_allows_decimal_quantity": false
+      },
+      "has_variants": false,
+      "image_url": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3NS15b2RhLXBhc2UtYnVkcy0yNDAwYWVkMy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+      "option_values": []
+     }
+    ]
+   }
+  ]
+ },
+ "checkoutUrl": "https://hazeyse.nyehandel.se/sv/checkout?preview=v9kzdmqz4w60l5n",
+ "checkoutText": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Magic Sauce 50% 5g – 3-pack\n1 380 kr / Styck\nPaketet innehåller\n3 Styck x\nMagic Sauce 50% – Yoda Ice Cream – 5g\n-\n+\n1 380 kr\nDelsumma\n1 380 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 285,8 kr\n1 429 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+ "kustomFrames": [
+  "https://js.playground.kustom.co/kcoc/261104-85179f3/checkout-template.html",
+  "https://js.playground.kustom.co/kcoc/261104-85179f3/checkout-fullscreen.html"
+ ],
+ "kustomTestdrive": true,
+ "kustomText": "",
+ "cleaned": true
+}

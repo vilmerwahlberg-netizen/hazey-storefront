@@ -1,5 +1,166 @@
 # Theme 8 — kassan: vad som är gjort och vad som kräver admin
 
+## Task 18 (2026-11-06): snabbhet och förtroende — lokalt, inte aktiverat
+
+Kontrollerad mot den riktiga fyllda Theme 8-kassan (PDP → riktig köpknapp →
+minicart → "Till Kassan", Magic Sauce 3.0 - 2ml / Gorilla Cookies). Ingen
+order. R4 (`checkout-task16-concepts-r2-2026-10/concept-e-*`) är visuell
+referens; dess formulär, paketboxväljare och Swish-flikar finns inte i den
+riktiga kassan och är inte byggda. Bilder, skript och mätdata:
+`theme8/review/checkout-task18-2026-11/` (`compare.html`, verklig storlek).
+
+**Leverans (lokal, 2026-11-08).** Källa: `theme8/css/86-checkout.css`
+(Task 18-blocket sist i filen; äldre regler kvar). Byggfil:
+`dist/theme8/hazey-theme8-checkout.css` (genereras, checkas inte in).
+Kontroll: `node theme8/review/checkout-task18-2026-11/tests.mjs` (ingen
+order; lägger en vara i en sessionskorg). Skärmbilderna i granskningsmappen
+checkas inte in — de genereras om med `shoot.mjs`/`final-shot.mjs`.
+
+*Förhandsvisning i Nyehandel (manuellt, inte gjort):*
+1. `node build-theme8.js` (kör även bildmanifestets generator; kontrollera
+   `git status` efteråt).
+2. Admin → **Theme 8** → CSS-fältet: klistra in hela
+   `dist/theme8/hazey-theme8-checkout.css` **sist**. Finns ett tidigare
+   inklistrat kassablock (ADMIN-TODO 9b), ersätt det i stället för att
+   lägga till ett andra.
+3. Spara — **Publicera inte**.
+4. Kontrollera `/sv/checkout?preview=v9kzdmqz4w60l5n` med en vara i korgen
+   på 393 och 1440 px. Ångra = ta bort blocket och spara.
+
+*Kvarvarande lanseringshinder (admin/leverantör, inte CSS):*
+- **Fri frakt:** fraktsättet "Fraktkostnad" (id 1) har
+  `free_freight_active: 0` → 49 kr vid alla belopp, medan produktsidan i
+  previewn lovar fri frakt från 499 kr. ADMIN-TODO 1–3 (där beslutet
+  också anger 79 kr under 499 kr — fastställ beloppet).
+- **Nyhetsbrevsförval:** `newsletter_subscription_default_checked: true`
+  → stäng av; ny etikett via översättning. ADMIN-TODO 8.
+- **Kustom Test Mode:** ramen kör testläge med handlarnamn "Test Shop".
+  Produktionsnycklar, handlarnamn, villkorslänk och aktiva betalsätt måste
+  sättas i Kustom/Nyehandel före lansering. ADMIN-TODO 9c.
+
+**Nuläge i previewn:** kassans CSS är *inte* inklistrad i Theme 8:s CSS-fält.
+Kassan visas nativ. Nyehandel lägger sammanfattningen först på mobil med
+`column-reverse` (visuellt först, sist i fokusordning).
+
+**Kassans egna data (Vuex `checkout.checkout`, bara läst):**
+`countries` = endast Sverige (landvalet är redan i praktiken låst);
+`customer_types` = Privatperson + Företag (båda aktiva, ingen dokumenterad
+inställning för att stänga av Företag hittad på support.nyehandel.se);
+`newsletter_subscription_default_checked: true`; fraktsättets
+`description: null`; `checkout_message: false`; `pickup_location: null`.
+
+**Fungerar i Theme 8 (bara `86-checkout.css`, kräver inklistring i CSS-fältet):**
+- Header 64/56 px: "← Tillbaka" (Nyehandels länk, 44 px, synlig fokusram),
+  logga i mitten, "Säker betalning"/lås höger. "Kassa" kvar för skärmläsare.
+- Stockholmsremsan 88 px på desktop, borta på mobil.
+- Trygghetsrad som lugn textrad: Skickas från Sverige · Diskret paket ·
+  Spårning via e-post (produktsidans USP-rad och leverans-/retursidan).
+- Mobil/surfplatta: Nyehandels totaler (Delsumma, Frakt 49 kr, Totalsumma
+  624 kr, moms) i ett kort direkt under trygghetsraden (totalsumman på
+  y≈190 px vid 393 efter friktionspasset; se nedan). Inga fokuserbara element flyttas; varor och rabattkod
+  ligger kvar efter betalningen. Kustom-ramen börjar inom första vyn.
+- Ett sammanhängande formulärkort: land + kundtyp sida vid sida (kompakta,
+  landet utan pil eftersom det är enda alternativet), nyhetsbrev som liten
+  rad, "1 Fraktsätt", "2 Betalning".
+- Ett enda fraktsätt visas som bekräftad rad (bock) i stället för radioval;
+  radioknappen finns kvar för tangentbord/skärmläsare. Fler fraktsätt ger
+  vanliga radioknappar. Tom beskrivning → "Skickas från Sverige i diskret
+  paket" tills admin fyller i en egen.
+- Ovanför (utanför) Kustom-ramen: "Fyll i dina uppgifter och välj betalsätt
+  i rutan nedan. Köpet slutförs först när du trycker på Betala köp."
+  (under 768 px kortare: "Fyll i uppgifter och välj betalsätt nedan.
+  Köpet slutförs med Betala köp.")
+- Rabattkoden: liten etikett + fält. På mobil öppen, eftersom Nyehandels
+  växlare inte kan nås med tangentbord.
+- Äldre tema-CSS (inset-skugga, vit bakgrund med `!important`) skrivs över.
+- Testat 393/768/1440: variant, totalsumma = Kustoms Totalbelopp (624 kr,
+  1 199 kr vid 2 st), ogiltig rabattkod via tangentbord, tabbordning
+  uppifrån och ned, inget sidledsöverflöd.
+
+**Kräver Nyehandel-inställning:**
+- Fraktsättets namn ("Fraktkostnad") och beskrivning: Kassan → Hantera
+  fraktsätt (fälten "namn och beskrivning").
+- Fri frakt ("Fraktfritt över") — se lanseringshindret nedan.
+- Nyhetsbrev förkryssat: `newsletter_subscription_default_checked` ska vara
+  av (förvald ruta är inte giltigt samtycke enligt GDPR).
+- Kundtyp: om Företag inte behövs, fråga Nyehandel om den kan stängas av.
+  Valet visas tills dess.
+- Produktnamn/bild högt upp på mobil utan fokushopp kräver att Nyehandel
+  lägger sammanfattningen före informationen i DOM.
+- Rubrik/`aria-label` för sammanfattningen och en H1 (sedan tidigare).
+
+**Kräver Kustom/fraktintegration:**
+- Ombud/paketbox-val (R4 steg 2): finns inte — Kustoms leveransval
+  (shipping assistant / PostNord) eller ett Nyehandel-fraktsätt med
+  utlämningsställen.
+- Kontaktfält, adress, "Hämta adress", Swish-nummer/QR, villkor och "Betala
+  köp": Kustoms ram. I Test Mode visas Klarna Direkt (kort, Swish, bank),
+  Faktura, Delbetalning, Kort, Swish; handlarnamn "Test Shop". Produktions-
+  kontot och aktiva betalsätt måste kontrolleras — vi visar inga egna
+  betalsättsloggor.
+
+**Friktionsgranskning (slutpass, 2026-11-08).** Slutbild:
+`theme8/review/checkout-task18-2026-11/FINAL-mobile-393-fore-efter.png`.
+
+*Samtycken som faktiskt finns* (uppmätt, `runs/consent.json`):
+- Nyehandel: exakt en kryssruta, "Prenumerera på nyhetsbrev",
+  förkryssad, inte `required`. Övriga inmatningar är två förvalda
+  radioknappar (fraktsätt, betalsätt Kustom).
+- Kustom (Test Mode, alla steg fram till betalsätt): inga kryssrutor.
+  Villkoren godkänns med text vid knappen: "Genom att klicka på 'Betala
+  köp' godkänner jag Kustoms villkor och dataskyddsinformation samt
+  godkänner Test Shops allmänna villkor." Ingen extra villkorsruta har
+  lagts till.
+- Avmarkerat nyhetsbrev blockerar inte: inga fel, totalen oförändrad
+  (624 kr), Kustom går vidare till betalsätt. "Betala köp" är inte testat
+  (ingen order).
+
+*Admin: nyhetsbrevet avmarkerat från start.* Kassans data har
+`newsletter_subscription_default_checked: true` (inställningen finns i
+Nyehandel, sannolikt under Kassan → Inställningar). Sätt den till av. Ny
+etikett, föreslagen (Nyehandels översättning av "Prenumerera på
+nyhetsbrev", inte CSS — ett samtyckes text ska inte bytas visuellt):
+*"Ja, mejla mig nyheter och erbjudanden från Hazey.se. Jag kan avsluta
+när som helst."* Tills dess lägger CSS bara till "(valfritt)", vilket
+stämmer (rutan är inte obligatorisk).
+
+*Placering av nyhetsbrevet:* ligger i DOM mellan kundtyp och Fraktsätt och
+står kvar där (liten, dämpad rad). Att visa det efter betalningen bara
+visuellt ger fel tabbordning; det kräver att Nyehandel flyttar fältet.
+
+*Mobilens första vy (393 × 852):* totalsumma 190 px (nativ 374), Kustoms
+första fält 704–742 px (nativ 1 091, förra Task 18-versionen 837).
+Delsumma och Frakt delar rad; den enda fraktraden är en rad med namn + 49 kr
+(fallbacktexten visas bara på desktop; admins egen beskrivning visas alltid).
+
+*Rabattkod:* oförändrad placering (efter totalen på desktop, sist på
+mobil), liten dämpad etikett, ljus knapp i stället för fylld. Fältet nås
+med tangentbord; ogiltig kod ger Nyehandels "Kod är ogiltigt."
+
+*Cookies (bara läst, ingen ändring; `runs/cookies.json`):*
+- Första lagret: "Godkänn alla" (svart, fylld) och "Inställningar" (vit,
+  kantad), lika stora. Ingen "Neka"-knapp — att neka kräver Inställningar
+  → Spara (två klick). Acceptera och neka är alltså **inte** lika lätta.
+- I inställningarna är Analys, Personalisering och Marknadsföring
+  avmarkerade från start; Nödvändiga låst.
+- Före samtycke: Google Consent Mode `default` med `ad_storage`,
+  `analytics_storage`, `ad_user_data`, `ad_personalization` = denied;
+  inga analys-/annonsanrop och bara Nyehandels egna cookies (session,
+  XSRF, locale). Trustpilot-widgetar (inkl. `stats/TrustboxImpression`)
+  och Google reCAPTCHA laddas före samtycke.
+- Kassan visar ingen cookiebanner för en ny besökare.
+- Åtgärd (utanför Task 18): en "Neka alla"/"Endast nödvändiga"-knapp på
+  första lagret med samma vikt som "Godkänn alla"; bedöm Trustpilot och
+  reCAPTCHA före samtycke.
+
+**Lanseringshinder (separat, inte designfråga): fri frakt.** I Theme 8-
+previewn säger produktsidan "Fri frakt från 499 kr" (`HZ8.commerce`,
+`goalsEnabled()` = preview), men kassan tar 49 kr för en order på 575 kr
+(fraktsätt utan "Fraktfritt över"). Minicarten säger "Frakt: Beräknas i
+kassan". Kassans design döljer inte detta: frakten 49 kr visas i både
+toppkortet och sammanfattningen. Åtgärd: ADMIN-TODO.md punkt 1–3, och
+`backendVerified` ska vara `false` tills kassan räknar fri frakt.
+
 ## Redesign 2026-09-30 (facit: `checkout-hybrid-approved-mobile-393x852-v1.png`, `…-desktop-1920x1080-v2.png`)
 
 Endast `css/86-checkout.css` (ren CSS på Nyehandels befintliga DOM,

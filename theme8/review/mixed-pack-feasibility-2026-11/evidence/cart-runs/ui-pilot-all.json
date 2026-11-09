@@ -1,0 +1,697 @@
+{
+ "UI-S1-tre-olika": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato - Indica",
+    "Melon Haze",
+    "Coconut Cake - Indica"
+   ],
+   "cta": "Lägg i varukorgen"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "msg": "3-pack har lagts i varukorgen.",
+   "cta": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1935,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2,
+       "quantity": 1
+      },
+      {
+       "id": 438,
+       "pivot_id": 3,
+       "quantity": 1
+      }
+     ],
+     "parts": [
+      {
+       "q": 1,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      },
+      {
+       "q": 1,
+       "variant": 431,
+       "strain": "Melon Haze"
+      },
+      {
+       "q": 1,
+       "variant": 438,
+       "strain": "Coconut Cake - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 1 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 Styck x Hero's Core - 2ml Strain: Melon Haze 1 Styck x Hero's Core - 2ml Strain: Coconut Cake - Indica 1 920 kr 3 strains · Gelato - Indica, Melon Haze +1 Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "packTag": [],
+   "strains": [
+    "3 strains · Gelato - Indica, Melon Haze +1"
+   ],
+   "alerts": [
+    ""
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n1 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n1 Styck x\nHero's Core - 2ml\nStrain: Melon Haze\n1 Styck x\nHero's Core - 2ml\nStrain: Coconut Cake - Indica\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "UI-S2-samma-x3": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 425,
+         "pivot_id": 2
+        },
+        {
+         "id": 425,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato - Indica",
+    "Gelato - Indica",
+    "Gelato - Indica"
+   ],
+   "cta": "Lägg i varukorgen"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "msg": "3-pack har lagts i varukorgen.",
+   "cta": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1936,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 3
+      }
+     ],
+     "parts": [
+      {
+       "q": 3,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 3 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 920 kr 3 st · Gelato - Indica Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "packTag": [],
+   "strains": [
+    "3 st · Gelato - Indica"
+   ],
+   "alerts": [
+    ""
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n3 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "UI-S3-2plus1": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 429,
+         "pivot_id": 1
+        },
+        {
+         "id": 429,
+         "pivot_id": 2
+        },
+        {
+         "id": 433,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Strawberry Kush - Sativa",
+    "Strawberry Kush - Sativa",
+    "Pineapple Express -Sativa"
+   ],
+   "cta": "Lägg i varukorgen"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "msg": "3-pack har lagts i varukorgen.",
+   "cta": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1937,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 429,
+       "pivot_id": 1,
+       "quantity": 2
+      },
+      {
+       "id": 433,
+       "pivot_id": 3,
+       "quantity": 1
+      }
+     ],
+     "parts": [
+      {
+       "q": 2,
+       "variant": 429,
+       "strain": "Strawberry Kush - Sativa"
+      },
+      {
+       "q": 1,
+       "variant": 433,
+       "strain": "Pineapple Express -Sativa"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 2 Styck x Hero's Core - 2ml Strain: Strawberry Kush - Sativa 1 Styck x Hero's Core - 2ml Strain: Pineapple Express -Sativa 1 920 kr 2 strains · Strawberry Kush - Sativa, Pineapple Express -Sativa Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "packTag": [],
+   "strains": [
+    "2 strains · Strawberry Kush - Sativa, Pineapple Express -Sativa"
+   ],
+   "alerts": [
+    ""
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n2 Styck x\nHero's Core - 2ml\nStrain: Strawberry Kush - Sativa\n1 Styck x\nHero's Core - 2ml\nStrain: Pineapple Express -Sativa\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "UI-F1-tom-plats": {
+  "posts": [],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "2 av 3 valda",
+   "slots": [
+    "Gelato - Indica",
+    "Melon Haze",
+    "Välj strain"
+   ],
+   "cta": "Välj alternativ"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "pdpAfter": {
+   "msg": "Välj strain för plats 3.",
+   "cta": "Välj alternativ",
+   "state": "missing"
+  },
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "minicart": {
+   "open": true,
+   "rows": [],
+   "packTag": [],
+   "strains": [],
+   "alerts": []
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "UI-F2-server-nekar": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato - Indica",
+    "Melon Haze",
+    "Coconut Cake - Indica"
+   ],
+   "cta": "Lägg i varukorgen"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "tampered": {
+   "product_variant_id": 467,
+   "quantity": 1,
+   "meta": {
+    "data": {
+     "packageProductVariants": [
+      {
+       "id": 425,
+       "pivot_id": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2
+      },
+      {
+       "id": 243,
+       "pivot_id": 3
+      }
+     ]
+    }
+   }
+  },
+  "postResponse": {
+   "status": 406,
+   "error": {
+    "cart_item_data_is_invalid": true
+   }
+  },
+  "pdpAfter": {
+   "msg": "Paketvalet godkändes inte av butiken. Välj strains igen.",
+   "cta": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "minicart": {
+   "open": true,
+   "rows": [],
+   "packTag": [],
+   "strains": [],
+   "alerts": []
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "UI-F3-lager-slut": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 425,
+         "pivot_id": 2
+        },
+        {
+         "id": 425,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "preload": {
+   "status": 200,
+   "cart": {
+    "total": "44 160 kr",
+    "quantity_count": 23,
+    "items": [
+     {
+      "id": 1938,
+      "variant_id": 467,
+      "sku": "HZ-T19-CORE-3PK",
+      "qty": "23.00",
+      "total": "44 160 kr",
+      "meta": [
+       {
+        "id": 425,
+        "pivot_id": 1,
+        "quantity": 3
+       }
+      ],
+      "parts": [
+       {
+        "q": 3,
+        "variant": 425,
+        "strain": "Gelato - Indica"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "packVisible": true,
+  "packCard": "3 st 1 920 kr 640 kr/st Spara 105 kr",
+  "pdp": {
+   "price": "1 920 kr",
+   "unit": "(640 kr/st)",
+   "save": "Spara 105 kr",
+   "title": "Ditt 3-pack",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato - Indica",
+    "Gelato - Indica",
+    "Gelato - Indica"
+   ],
+   "cta": "Lägg i varukorgen"
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 406,
+   "error": {
+    "available": 0
+   }
+  },
+  "pdpAfter": {
+   "msg": "Det finns inte tillräckligt i lager för det här paketet.",
+   "cta": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "44 160 kr",
+   "quantity_count": 23,
+   "items": [
+    {
+     "id": 1938,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "23.00",
+     "total": "44 160 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 3
+      }
+     ],
+     "parts": [
+      {
+       "q": 3,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 69 Styck x Hero's Core - 2ml Strain: Gelato - Indica 44 160 kr 3 st · Gelato - Indica Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "packTag": [],
+   "strains": [
+    "3 st · Gelato - Indica"
+   ],
+   "alerts": [
+    ""
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n69 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n-\n+\n44 160 kr\nDelsumma\n44 160 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 8 841,8 kr\n44 209 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ }
+}

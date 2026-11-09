@@ -1,0 +1,70 @@
+{
+ "id": 263,
+ "slug": "pilot-t19-heros-core-2ml-3-pack",
+ "is_package": true,
+ "parts_buyable": true,
+ "product_type_id": 3,
+ "stateKeys": [
+  "id",
+  "product_type_id",
+  "name",
+  "has_variants",
+  "has_form",
+  "ncs_color",
+  "unit",
+  "is_package",
+  "parts_buyable",
+  "primary_variant",
+  "variants",
+  "options",
+  "images",
+  "properties"
+ ],
+ "packageLikeKeys": {
+  "is_package": true,
+  "parts_buyable": true
+ },
+ "variant": [
+  {
+   "id": 467,
+   "sku": "HZ-T19-CORE-3PK",
+   "price": "1 920 kr",
+   "buyable": true,
+   "track": 0,
+   "stock": 0
+  }
+ ],
+ "pivots": [
+  {
+   "tag": "package-product-variants",
+   "key": "0",
+   "product-id": "255",
+   "pivot-id": "1",
+   "selected-variant-id": "425",
+   "locked-variant": "false",
+   "quantity": "1",
+   "index": "0"
+  },
+  {
+   "tag": "package-product-variants",
+   "key": "1",
+   "product-id": "255",
+   "pivot-id": "2",
+   "selected-variant-id": "425",
+   "locked-variant": "false",
+   "quantity": "1",
+   "index": "1"
+  },
+  {
+   "tag": "package-product-variants",
+   "key": "2",
+   "product-id": "255",
+   "pivot-id": "3",
+   "selected-variant-id": "425",
+   "locked-variant": "false",
+   "quantity": "1",
+   "index": "2"
+  }
+ ],
+ "pivotsFoundInHtml": 3
+}

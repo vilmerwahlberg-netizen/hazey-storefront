@@ -210,7 +210,45 @@
      spärrad: "Paketprodukt saknas", byggaren med en plats per enhet,
      slutsålda synliga men inte valbara, köpknappen avstängd. */
   var PKG_REVIEW = /[?&]hz8-pkg-review=1/.test(location.search);
-  var PACKAGE_PRODUCTS = {};
+  /* TASK 19 (lokalt prov, ej publicerat): pilotpaketet 263 "PILOT T19 –
+     Hero's Core 2ml – 3-pack" (tre olåsta rader av produkt 255) visas BARA
+     med ?hz8-pkg-pilot=1 (sparas för fliken i sessionStorage så att
+     minicarten på andra sidor känner igen raden). Utan flaggan är
+     registret tomt som tidigare. `route` = paketproduktens sida, där
+     Nyehandel serverrenderar paketraderna med verkliga pivot_id. */
+  var PKG_PILOT = (function () {
+    var on = /[?&]hz8-pkg-pilot=1/.test(location.search);
+    try { if (on) sessionStorage.setItem("hz8-pkg-pilot", "1"); else on = sessionStorage.getItem("hz8-pkg-pilot") === "1"; } catch (e) { }
+    return on;
+  })();
+  var PACKAGE_PRODUCTS = PKG_PILOT ? {
+    255: [{ kind: "strain", qty: 3, packageId: 263, route: "/sv/products/pilot-t19-heros-core-2ml-3-pack", verified: true }]
+  } : {};
+  /* Paketets verkliga rader ur Nyehandels serverrenderade paketsida:
+     <package-product-variants product-id pivot-id locked-variant quantity>.
+     Godkänns bara om raderna är exakt `qty` st, alla olåsta, antal 1 och
+     samma produkt som basprodukten -- annars visas inget paketsteg.
+     Delas med minicarten (84-cart.js). Resultat: [pivot_id, ...] i ordning. */
+  var pivotCache = {};
+  function attr(el, n) { return el.getAttribute(n) != null ? el.getAttribute(n) : el.getAttribute(":" + n); }
+  function loadPivots(entry, baseId) {
+    var key = entry.packageId + "@" + baseId;
+    if (pivotCache[key]) return pivotCache[key];
+    pivotCache[key] = (entry.route ? fetch(entry.route, { credentials: "same-origin", headers: { Accept: "text/html" } }) : Promise.reject(new Error("route")))
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var rows = Array.prototype.map.call(doc.querySelectorAll("package-product-variants, package-product"), function (el) {
+          return { tag: el.tagName.toLowerCase(), product: +attr(el, "product-id"), pivot: +attr(el, "pivot-id"), locked: String(attr(el, "locked-variant")) === "true", qty: +(attr(el, "quantity") || 1) };
+        });
+        var ok = rows.length === +entry.qty && rows.every(function (x) { return x.tag === "package-product-variants" && x.product === +baseId && x.pivot > 0 && !x.locked && x.qty === 1; });
+        if (!ok) throw new Error("pivots");
+        return rows.map(function (x) { return x.pivot; });
+      })
+      .catch(function (e) { delete pivotCache[key]; throw e; });
+    return pivotCache[key];
+  }
+  HZ8.packagePivots = loadPivots;
   /* Familjer (WooCommerce "familjebyggare": blandade strains över separata
      produkter). TASK 17: ur WooCommerce HZY_EXTRA.familj 2026-11-03 med
      Nyehandels nya produkt-id efter migreringen (Woo-id -> samma slug och
@@ -353,10 +391,10 @@
     var pid = readProductId();
     var list = PACKAGE_PRODUCTS[pid] || [];
     return Promise.all(list.map(function (e) {
-      return fetchState(e.packageId).then(function (d) {
-        var P2 = d && d.product, v = P2 && (P2.variants || [])[0];
+      return Promise.all([fetchState(e.packageId), loadPivots(e, pid)]).then(function (res) {
+        var d = res[0], P2 = d && d.product, v = P2 && (P2.variants || [])[0];
         if (!P2 || P2.is_package !== true || !v || !HZ8.variantOrderable(v) || !v.price) return null;
-        return { qty: +e.qty, kind: e.kind, packageId: e.packageId, variantId: v.id, price: parseKr(v.price.formatted_price), formatted: v.price.formatted_price, verified: e.verified === true, review: false };
+        return { qty: +e.qty, kind: e.kind, packageId: e.packageId, variantId: v.id, pivots: res[1], price: parseKr(v.price.formatted_price), formatted: v.price.formatted_price, verified: e.verified === true, review: false };
       }, function () { return null; });
     })).then(function (rows) {
       var steps = rows.filter(function (x) { return x && x.verified; }).sort(function (a, b) { return a.qty - b.qty; });
@@ -822,28 +860,55 @@
      paketpriset och drar lagret. Bara för steg som verifierats i varukorg
      och kassa (PACKAGE_PRODUCTS verified: true). "Tillagd" först när
      varukorgens antal faktiskt ökat. */
+  /* Nyehandels verifierade format (TASK 19, pilot 263): en post per plats
+     {id: vald variant, pivot_id: paketradens verkliga pivot_id}. Servern
+     slår själv ihop samma variant till en post med antal. Servern svarar
+     406 {cart_item_data_is_invalid} på fel produkt/pivot/antal platser och
+     kapar antalet till barnvarianternas lager (då ökar korgen inte). */
+  function packagePayload(step, variantIds) {
+    if (!step.pivots || step.pivots.length !== variantIds.length) return null;
+    return { product_variant_id: step.variantId, quantity: 1, meta: { data: { packageProductVariants: variantIds.map(function (vid, i) { return { id: +vid, pivot_id: step.pivots[i] }; }) } } };
+  }
+  HZ8.packagePayload = packagePayload;
   function buyPackage(step) {
     if (B.busy || !step || step.review || !step.verified) return;
     var all = builderOptions();
     var rows = B.slots.map(function (id) { var o = all.filter(function (x) { return x.id === id; })[0]; return o && o.ok ? o.variant.id : null; });
     if (rows.some(function (x) { return !x; })) { B.tried = true; syncStation(); return; }
+    var body = packagePayload(step, rows);
+    if (!body) { B.msg = "Paketet kan inte köpas just nu – paketets platser kunde inte läsas."; syncStation(); return; }
     var store = HZ8.store && HZ8.store();
     var count = function () { var c = store && store.state && store.state.cart && store.state.cart.cart; return c ? +(c.quantity_count || 0) : null; };
     var before = count();
+    var packName = (step.kind === "collection" ? "Hela kollektionen" : step.qty + "-pack");
     B.busy = true; B.added = false; B.msg = ""; syncStation();
-    fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(),
-      body: JSON.stringify({ product_variant_id: step.variantId, quantity: 1, meta: { data: { packageProductVariants: rows.map(function (vid, i) { return { slot: i, product_variant_id: vid }; }) } } }) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return store && store.dispatch ? store.dispatch("cart/reload") : null; })
+    fetch("/frontend-api/cart/item", { method: "POST", credentials: "same-origin", headers: HZ8.apiHeaders(), body: JSON.stringify(body) })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) {
+          if (!r.ok) { var e = new Error(r.status); e.status = r.status; e.data = d || {}; throw e; }
+          return store && store.dispatch ? store.dispatch("cart/reload") : null;
+        });
+      })
       .then(function () { return wait(300); })
       .then(function () {
         B.busy = false;
-        if (before !== null && !(count() > before)) throw new Error("not-added");
-        B.added = true; B.tried = false; B.msg = (step.kind === "collection" ? "Hela kollektionen" : step.qty + "-pack") + " har lagts i varukorgen.";
+        if (before !== null && !(count() > before)) { var e = new Error("capped"); e.capped = true; throw e; }
+        B.added = true; B.tried = false; B.msg = packName + " har lagts i varukorgen.";
         window.clearTimeout(B.addedT); B.addedT = window.setTimeout(function () { B.added = false; syncStation(); }, 2600);
         syncStation();
         if (store && store.dispatch) store.dispatch("cart/open");
       })
-      .catch(function () { B.busy = false; B.msg = "Det gick inte att lägga paketet i varukorgen. Försök igen."; syncStation(); });
+      .catch(function (e) {
+        B.busy = false;
+        var d = (e && e.data) || {};
+        B.msg = e && e.capped ? "Lagret räcker inte till ett " + packName + " till med de här valen. Varukorgen är oförändrad."
+          : d.cart_item_data_is_invalid ? "Paketvalet godkändes inte av butiken. Välj strains igen."
+          : d.available != null ? "Det finns inte tillräckligt i lager för det här paketet."
+          : "Det gick inte att lägga paketet i varukorgen. Försök igen.";
+        syncStation();
+        /* Läs om lagret så att byggarens spärrar följer serverns besked. */
+        loadState().then(syncStation, function () { });
+      });
   }
 
   /* ---- Strainkarusell ---- */

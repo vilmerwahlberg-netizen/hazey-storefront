@@ -1,0 +1,64 @@
+{
+ "id": 264,
+ "slug": "pilot-t19-magic-sauce-50-5g-3-pack",
+ "is_package": true,
+ "parts_buyable": true,
+ "product_type_id": 3,
+ "stateKeys": [
+  "id",
+  "product_type_id",
+  "name",
+  "has_variants",
+  "has_form",
+  "ncs_color",
+  "unit",
+  "is_package",
+  "parts_buyable",
+  "primary_variant",
+  "variants",
+  "options",
+  "images",
+  "properties"
+ ],
+ "packageLikeKeys": {
+  "is_package": true,
+  "parts_buyable": true
+ },
+ "variant": [
+  {
+   "id": 468,
+   "sku": "HZ-T19-MS50-3PK",
+   "price": "1 380 kr",
+   "buyable": true,
+   "track": 0,
+   "stock": 0
+  }
+ ],
+ "pivots": [
+  {
+   "tag": "package-product",
+   "key": "0",
+   "product-id": "132",
+   "pivot-id": "4",
+   "variant-id": "243",
+   "quantity": "1"
+  },
+  {
+   "tag": "package-product",
+   "key": "1",
+   "product-id": "132",
+   "pivot-id": "5",
+   "variant-id": "243",
+   "quantity": "1"
+  },
+  {
+   "tag": "package-product",
+   "key": "2",
+   "product-id": "132",
+   "pivot-id": "6",
+   "variant-id": "243",
+   "quantity": "1"
+  }
+ ],
+ "pivotsFoundInHtml": 3
+}

@@ -90,6 +90,11 @@ Kassans ruta "Prenumerera på nyhetsbrev" är **ikryssad från start**
 (kontrollerat 2026-09-29). Samtycke ska vara aktivt. **Var:**
 Kassainställningar/Nyhetsbrev i Nyehandel-admin. **Verifiera:** öppna
 kassan med en vara och kontrollera att rutan är tom.
+Kassans data (2026-11-08): `newsletter_subscription_default_checked: true`,
+rutan är inte obligatorisk och en tom ruta blockerar inte köpet. Föreslagen
+etikett (Nyehandels översättning av "Prenumerera på nyhetsbrev"): "Ja,
+mejla mig nyheter och erbjudanden från Hazey.se. Jag kan avsluta när som
+helst."
 
 ## 9. Kassan kör inte Theme 8-JS
 
@@ -102,6 +107,15 @@ via Theme 8:s Head-fält. Ta bort den när Theme 8 aktiveras.
 `dist/theme8/hazey-theme8-checkout.css` sist i **Theme 8:s** CSS-fält,
 spara, publicera inte. Därefter: kassatext med hjälplänk till kontakt,
 fraktsättets beskrivning, loggans alt-text. Se `CHECKOUT.md`.
+Task 18 (2026-11-08) ersätter det blocket: klistra in den nya byggfilen i
+stället för det gamla kassablocket, inte bredvid.
+
+## 9c. Kustom Test Mode (lanseringshinder)
+Kassans Kustom-ram kör **Test Mode** (handlarnamn "Test Shop", villkorstext
+"godkänner Test Shops allmänna villkor"). Före lansering: produktionskonto
+och nycklar i Nyehandels Kustom-koppling, rätt handlarnamn och villkorslänk,
+och kontroll av vilka betalsätt som faktiskt är aktiva. **Verifiera:** öppna
+kassan och se att testraden och "Test Shop" är borta.
 
 ## 10. Informationssidor, formulär, 404 och juridik
 

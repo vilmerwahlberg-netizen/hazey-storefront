@@ -1,0 +1,42 @@
+{
+ "label": "P2-V2-slutsald-ms50",
+ "at": "2026-11-08T13:25:01.075Z",
+ "adds": [
+  {
+   "payload": {
+    "product_variant_id": 468,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 243,
+        "pivot_id": 4
+       },
+       {
+        "id": 324,
+        "pivot_id": 5
+       },
+       {
+        "id": 257,
+        "pivot_id": 6
+       }
+      ]
+     }
+    }
+   },
+   "status": 406,
+   "error": {
+    "cart_item_data_is_invalid": true
+   }
+  }
+ ],
+ "cart": {
+  "total": "0 kr",
+  "decimal_total": 0,
+  "quantity_count": 0,
+  "coupon": null,
+  "items": []
+ },
+ "cleaned": true
+}

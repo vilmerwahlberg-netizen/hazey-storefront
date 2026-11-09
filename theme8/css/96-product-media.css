@@ -117,3 +117,154 @@ html.hz8-pdp-pilot .product-detail__media[data-hz8-media="environment"]:not(#hz8
     background: radial-gradient(72% 66% at 50% 46%, var(--hz8-media-edge) 0%, color-mix(in srgb, var(--hz8-media-edge) 70%, var(--pp-well)) 70%, var(--pp-well) 100%);
   }
 }
+
+/* ---------- 5. Kategorikort: varm karamellglasscen (TASK 17D, 2026-11-05) ----------
+   Prototyp: varm sand/karamell i stället för fas 1:s elfenben; samma form.
+   Bara breda kategorisidor och seriehubbar (data-hz8-page="category";
+   Bästsäljare-sidan körs också som kategori, .hz8-bs-page, och undantas).
+   Startsida, Bästsäljare, relaterat och Butik behåller 9b296e1 tills
+   kategorikorten är godkända. Formen efter bildbrunnen före d2cf40e och
+   målskissen (hazey-task-briefs/17d-glass-correction): ett grunt, varmt
+   glasobjekt med rundade hörn, ljust toppljus, en upplyft nedre volym
+   som tonar uppåt, låg kontaktskugga under produkten och en mjuk skugga
+   mot kortet. Allt ligger i scenens egna bakgrundslager och skuggor --
+   under bilden; inget lager, filter eller blandning ovanpå
+   produktpixlarna (utom siluettskuggan på frilagda bilder). Bilden står
+   något över mitten (större nedre luft) så att nederkanten alltid syns. */
+html.hz8:not(.hz8-bs-page)[data-hz8-page="category"] #store-main .product-card__image:not(#hz8-media):not(#hz8-media) {
+  --hz8-glass-r: 16px;
+  --hz8-glass-t: 5%;
+  --hz8-glass-x: 7%;
+  --hz8-glass-b: 12%;
+  border: 1px solid var(--hz8-caramel-rim) !important;
+  border-radius: var(--hz8-glass-r) !important;
+  background:
+    /* kontaktskugga: låg, mjuk karamellellips under produkten */
+    radial-gradient(closest-side, rgba(128, 74, 26, .22), rgba(128, 74, 26, .08) 55%, rgba(128, 74, 26, 0)) 50% calc(100% - var(--hz8-glass-b) * .62) / 74% 13% no-repeat,
+    /* nedre volym: djupare karamell mot kanten, sedan en ljus upplyft
+       läpp längst ned där den rundade kanten fångar ljuset */
+    radial-gradient(ellipse 84% 100% at 50% 100%, rgba(150, 88, 32, .2), rgba(150, 88, 32, 0) 72%) 50% 100% / 100% 32% no-repeat,
+    linear-gradient(180deg, rgba(255, 238, 214, 0) 0%, rgba(255, 236, 210, .42) 54%, rgba(255, 240, 220, .85) 82%, rgba(196, 136, 78, .3) 100%) 50% 100% / 100% 24% no-repeat,
+    var(--hz8-stage-grain, none) 0 0 / 240px 240px repeat,
+    radial-gradient(110% 84% at 50% 10%, var(--hz8-caramel-hi) 0%, var(--hz8-caramel-mid) 46%, var(--hz8-caramel-lo) 84%, var(--hz8-caramel-deep) 100%) !important;
+  box-shadow:
+    inset 0 2px 2px rgba(255, 246, 232, .95),
+    inset 0 0 0 1px rgba(255, 240, 220, .5),
+    inset 0 0 18px 2px rgba(255, 236, 210, .45),
+    inset 0 -3px 2px -1px rgba(255, 242, 224, .8),
+    inset 0 -20px 22px -14px rgba(140, 82, 30, .26),
+    0 20px 26px -18px rgba(96, 54, 18, .42),
+    0 4px 6px -4px rgba(96, 54, 18, .24) !important;
+  overflow: hidden;
+  isolation: isolate;
+}
+:root {
+  /* Varm sand-/karamellglas (TASK 17D, delas av kategorikort och PDP). */
+  --hz8-caramel-hi: #f9e8d2;
+  --hz8-caramel-mid: #f1d5b2;
+  --hz8-caramel-lo: #e8c39a;
+  --hz8-caramel-deep: #dfb385;
+  --hz8-caramel-rim: rgba(255, 236, 210, .95);
+  --hz8-stage-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E %3Cfilter id='b' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='1' seed='6' stitchTiles='stitch'/%3E %3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .24 0 0 0 2 -1.28'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23b)' opacity='.16'/%3E%3C/svg%3E");
+}
+html.hz8:not(.hz8-bs-page)[data-hz8-page="category"] #store-main .product-card__image:not(#hz8-media):not(#hz8-media) img {
+  inset: var(--hz8-glass-t) var(--hz8-glass-x) var(--hz8-glass-b) !important;
+  max-width: calc(100% - 2 * var(--hz8-glass-x)) !important;
+  max-height: calc(100% - var(--hz8-glass-t) - var(--hz8-glass-b)) !important;
+}
+/* Frilagd: naturlig skugga från produktens egen siluett. */
+html.hz8:not(.hz8-bs-page)[data-hz8-page="category"] #store-main .product-card__image[data-hz8-media="transparent"]:not(#hz8-media):not(#hz8-media) img {
+  filter: drop-shadow(0 8px 6px rgba(62, 42, 20, .2)) drop-shadow(0 2px 2px rgba(62, 42, 20, .1)) !important;
+}
+/* Miljöbild: hela fotot, mjuk radie i samma familj som scenen. */
+html.hz8:not(.hz8-bs-page)[data-hz8-page="category"] #store-main .product-card__image[data-hz8-media="environment"]:not(#hz8-media):not(#hz8-media) img { border-radius: 10px; }
+/* Inbakad/vit: kanttoningen inom uppmätt marginal är oförändrad. Bakom
+   bilden (z-index 0 mot bildens 1) ligger en kraftigt fjädrad glöd i
+   bildens egen kantton, med samma mått som bilden (alla inbakade/vita
+   primärbilder är 1:1). Den löser upp fotots kanter där marginalen är
+   0 % i stället för att teckna en inre fyrkant. */
+html.hz8:not(.hz8-bs-page)[data-hz8-page="category"] #store-main .product-card__image:is([data-hz8-media="white"], [data-hz8-media="embedded"]):not(.hz8-img-broken):not(#hz8-media):not(#hz8-media)::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: var(--hz8-glass-t) var(--hz8-glass-x) var(--hz8-glass-b);
+  max-width: calc(100% - 2 * var(--hz8-glass-x));
+  max-height: calc(100% - var(--hz8-glass-t) - var(--hz8-glass-b));
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 22%;
+  background: var(--hz8-media-edge, transparent);
+  opacity: .9;
+  transform: scale(1.02);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+/* ---------- 6. PDP: varm karamellglasscen (TASK 17D-prototyp, 2026-11-05) ----------
+   Samma material och formspråk som kategorikorten, i större och lugnare
+   skala: varm sand/karamell, tunn ljus glaskant, diskret toppljus, djupare
+   ton och upplyft läpp i nederkanten, mjuk kontaktskugga under produkten
+   och låg skugga mot sidan. Quiet-layouten, köpdelen, galleriet och
+   produktbildens mått är oförändrade (bara stagens material). Det
+   botaniska ljus-/skuggrastret (::before, 85-pdp-pilot.css) ligger kvar på
+   desktop och används nu även på mobil (uppe till vänster). Allt ligger
+   under den skarpa produktbilden; inget lager ovanpå produktpixlarna. */
+html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail > .product-detail__media:not(#hz8-media):not(#hz8-media) {
+  --hz8-pdp-b: 16%;
+  border: 1px solid var(--hz8-caramel-rim) !important;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(closest-side, rgba(128, 74, 26, .2), rgba(128, 74, 26, .07) 55%, rgba(128, 74, 26, 0)) 50% 92% / 58% 9% no-repeat,
+    radial-gradient(ellipse 84% 100% at 50% 100%, rgba(150, 88, 32, .17), rgba(150, 88, 32, 0) 72%) 50% 100% / 100% 26% no-repeat,
+    linear-gradient(180deg, rgba(255, 238, 214, 0) 0%, rgba(255, 236, 210, .38) 56%, rgba(255, 240, 220, .8) 86%, rgba(196, 136, 78, .28) 100%) 50% 100% / 100% 16% no-repeat,
+    radial-gradient(70% 60% at 50% 44%, rgba(255, 242, 224, .55) 0%, rgba(255, 242, 224, 0) 72%),
+    var(--hz8-stage-grain, none) 0 0 / 240px 240px repeat,
+    radial-gradient(120% 90% at 50% 8%, var(--hz8-caramel-hi) 0%, var(--hz8-caramel-mid) 44%, var(--hz8-caramel-lo) 84%, var(--hz8-caramel-deep) 100%) !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255, 246, 232, .95),
+    inset 0 0 0 1px rgba(255, 240, 220, .5),
+    inset 0 0 28px 3px rgba(255, 236, 210, .45),
+    inset 0 -4px 3px -1px rgba(255, 242, 224, .8),
+    inset 0 -30px 32px -20px rgba(140, 82, 30, .26),
+    0 30px 40px -28px rgba(96, 54, 18, .42),
+    0 6px 10px -6px rgba(96, 54, 18, .22) !important;
+}
+/* Bildrutan har ingen egen yta i scenen: 82-product.css ger den en beige
+   gradient som 85 bara nollställer på desktop -- på mobil syntes den som
+   en ljus fyrkant bakom frilagda produkter. */
+html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail__media .product-image-slider__main:not(#hz8-media) { background: transparent !important; }
+/* Desktop: krämslöjan bakom kvadraten blir en varmare, svagare glöd så att
+   karamellen bär scenen; det botaniska rastret något svagare mot den
+   mörkare tonen. R2A-tonen för inbakade bilder (avsnitt 4) är orörd. */
+@media (min-width: 1024px) {
+  html.hz8-pdp-pilot .product-detail__media:not(.hz8-pp-immersive):not([data-hz8-media="white"]):not([data-hz8-media="embedded"]):not(#hz8-media)::after {
+    background: radial-gradient(calc(var(--pp-top-h) * .6) calc(var(--pp-top-h) * .56) at 50% 48%, rgba(255, 242, 224, .42) 0%, rgba(255, 242, 224, .16) 62%, rgba(255, 242, 224, 0) 100%);
+  }
+  html.hz8-pdp-pilot .product-detail__media:not(.hz8-pp-immersive):not(#hz8-media)::before { opacity: .55; }
+}
+/* Mobil: samma botaniska ljus/skugga uppe till vänster (samma raster som
+   desktop, ingen ny asset). Förankrat uppe till vänster och beskuret av
+   stagens rundade kant; bakom bilden och miniatyrerna. */
+@media (max-width: 1023px) {
+  html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail > .product-detail__media:not(.hz8-pp-immersive):not(#hz8-media)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: url("assets/pdp-botanical-composites-2026-10/pdp-media-light-shadow-runtime-v1.webp") 0 0 / auto 118% no-repeat;
+    opacity: .5;
+  }
+  html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail__media .product-image-slider__main { position: relative; z-index: 3; }
+  html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail__media :is(#product-thumbnails, .hz8-pp-zoom, .ribbons) { z-index: 4; }
+  /* Inbakad/vit bild på mobil: bildens kantton närmast bilden, som
+     klingar av i karamellen (ersätter avsnitt 4:s sandbrunn). */
+  html.hz8-pdp-pilot[data-hz8-page="product"] .product-detail > .product-detail__media:is([data-hz8-media="white"], [data-hz8-media="embedded"]):not(#hz8-media):not(#hz8-media) {
+    background:
+      radial-gradient(closest-side, rgba(128, 74, 26, .2), rgba(128, 74, 26, .07) 55%, rgba(128, 74, 26, 0)) 50% 92% / 58% 9% no-repeat,
+      linear-gradient(180deg, rgba(255, 238, 214, 0) 0%, rgba(255, 236, 210, .38) 56%, rgba(255, 240, 220, .8) 86%, rgba(196, 136, 78, .28) 100%) 50% 100% / 100% 16% no-repeat,
+      radial-gradient(56% 52% at 50% 46%, var(--hz8-media-edge) 0%, color-mix(in srgb, var(--hz8-media-edge) 55%, transparent) 70%, transparent 100%),
+      var(--hz8-stage-grain, none) 0 0 / 240px 240px repeat,
+      radial-gradient(120% 90% at 50% 8%, var(--hz8-caramel-hi) 0%, var(--hz8-caramel-mid) 44%, var(--hz8-caramel-lo) 84%, var(--hz8-caramel-deep) 100%) !important;
+  }
+}
