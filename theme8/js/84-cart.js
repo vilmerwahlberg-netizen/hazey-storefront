@@ -364,7 +364,7 @@
       else groups.push({ id: id, name: o.name, count: 1 });
     });
     return groups.reduce(function (n, g) { return n + g.count; }, 0) === filled
-      ? groups.map(function (g) { return g.count + " × " + g.name; }).join(" · ")
+      ? groups.map(function (g) { return g.count + "\u00a0×\u00a0" + g.name; }).join(" · ")
       : filled + " av " + size + " strains identifierade";
   }
   /* Förval: kollektion = en av varje köpbar strain (slutsålda platser
@@ -404,7 +404,7 @@
       /* Paketnamn efter produktnamnet ("· 3-pack") när ett paket är valt --
          men inte när radens eget namn redan säger det (en riktig paket-
          produkt heter t.ex. "… – 3-pack"; TASK 19). */
-      var named = active && decode(it.name).toLowerCase().replace(/\s+/g, " ").indexOf(packLabel(step).toLowerCase()) !== -1;
+      var named = active && (!!(HZ8.packageIdentity && HZ8.packageIdentity(it.product_id)) || decode(it.name).toLowerCase().replace(/\s+/g, " ").indexOf(packLabel(step).toLowerCase()) !== -1);
       if (active && !named) {
         var link = row.querySelector(".content a");
         if (!tag && link) { tag = document.createElement("span"); tag.className = "hz8-pack-tag"; link.parentNode.insertBefore(tag, link.nextSibling); }
@@ -1050,6 +1050,71 @@
     }
   }
 
+  /* ================= Paketradens identitet (TASK 21) =================
+     Nyehandel visar paketartikelns adminnamn ("PILOT T19 – …",
+     "… (blandbart)") och /images/no-image.png (paketet saknar egen bild).
+     Theme 8 ändrar ingenting i Nyehandel -- bara hur raden visas:
+       - namn:  "<label> · N-pack" ur HZ8.packageTable (03c),
+       - bild:  basproduktens riktiga bild, BARA när paketet saknar egen
+                (image null / no-image). URL:en finns redan i basens
+                product/state (stateById, cachad -- samma anrop som
+                paketstegen använder), inga nya bildstorlekar,
+       - länk:  basens PDP med paketstorleken förvald (?hz8-pack=N).
+     Pris, antal, strains (PR #4:s sammanfattning) och Nyehandels egna
+     paketrader lämnas orörda. Vue skriver om raden vid varje uppdatering
+     -- då läggs identiteten på igen (samma mönster som paketsteget).
+     Gäller oavsett pilotflagga: en paketrad ska alltid se rätt ut. */
+  var identityImg = {};
+  function baseImage(pid) {
+    if (pid in identityImg) return identityImg[pid];
+    identityImg[pid] = null;
+    stateById(pid).then(function (d) {
+      var P = d.product || {}, v = P.primary_variant || (P.variants || [])[0];
+      var img = v && v.image_id ? (P.images || []).filter(function (i) { return i.id === v.image_id; })[0] : null;
+      img = img || (P.images || [])[0];
+      identityImg[pid] = img ? img.thumb_url || img.image_url || "" : "";
+      schedule();
+    }, function () { identityImg[pid] = ""; });
+    return null;
+  }
+  function hasOwnImage(it) { return !!(it.image && (it.image.thumb_url || it.image.image_url)) && !/\/no-image\.png$/.test(it.image_url || ""); }
+  function syncPackageIdentity(a) {
+    if (!HZ8.packageIdentity) return;
+    var rows = a.querySelectorAll("article.item");
+    cartItems().forEach(function (it, idx) {
+      var row = rows[idx];
+      if (!row) return;
+      var id = HZ8.packageIdentity(it.product_id);
+      if (!id) { row.classList.remove("hz8-pack-named", "hz8-pack-imaged"); return; }
+      /* Icke-brytande: "· 3‑pack" bryts aldrig isär (mobil). */
+      var name = id.label + "\u00a0·\u00a0" + id.qty + "\u2011pack";
+      var raw = decode(it.name);
+      row.classList.add("hz8-pack-named");
+      row.setAttribute("data-hz8-pack-name", name);
+      var link = row.querySelector(".content a");
+      if (link) {
+        var label = link.querySelector(".hz8-pack-name");
+        if (!label) { label = document.createElement("span"); label.className = "hz8-pack-name"; link.appendChild(label); }
+        if (label.textContent !== name) label.textContent = name;
+        var href = id.home + "?hz8-pack=" + id.qty;
+        if (link.getAttribute("href") !== href) link.setAttribute("href", href);
+      }
+      /* Skärmläsare och bild-alt: samma kundnamn i stället för adminnamnet. */
+      row.querySelectorAll("[aria-label]").forEach(function (el) {
+        var l = el.getAttribute("aria-label");
+        if (l && l.indexOf(raw) !== -1) el.setAttribute("aria-label", l.split(raw).join(name));
+      });
+      var fig = row.querySelector("figure.media");
+      if (!fig || hasOwnImage(it)) { row.classList.remove("hz8-pack-imaged"); return; }
+      var src = baseImage(id.pid);
+      if (!src) return;
+      var img = fig.querySelector("img.hz8-pack-thumb");
+      if (!img) { img = document.createElement("img"); img.className = "hz8-pack-thumb"; img.alt = ""; img.width = 80; img.height = 80; img.decoding = "async"; fig.appendChild(img); }
+      if (img.getAttribute("src") !== src) img.setAttribute("src", src);
+      row.classList.add("hz8-pack-imaged");
+    });
+  }
+
   var queued = 0;
   function schedule() {
     if (queued) return;
@@ -1066,6 +1131,7 @@
     syncRows(a);
     markNew(a);
     syncPackages(a);
+    syncPackageIdentity(a);
     if (wrap.classList.contains("is-active") || a.querySelector(".hz8-addon")) syncAddon(a);
     syncLedger(a);
     syncCheckout(a);

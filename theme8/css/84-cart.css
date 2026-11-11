@@ -606,3 +606,17 @@ html.hz8 #cartAside .hz8-strains__cancel { justify-self: center; min-height: 44p
   .hz8-goal__fill { transition: none !important; }
   html.hz8 #cartAside article.item.hz8-row-new { background: transparent !important; }
 }
+
+/* TASK 21: paketradens identitet (84-cart.js syncPackageIdentity). Kort
+   kundnamn i stället för paketartikelns adminnamn, och basproduktens bild
+   när paketet saknar egen. Nyehandels <strong> och no-image-bilden finns
+   kvar i DOM:en (Vue äger dem) men visas inte. */
+html.hz8 #cartAside article.item.hz8-pack-named .content a > strong { display: none !important; }
+html.hz8 #cartAside article.item .hz8-pack-name { color: var(--hz8-ink) !important; font: 400 16.5px/1.3 var(--hz8-font-display) !important; }
+html.hz8 #cartAside article.item .content a:hover .hz8-pack-name { text-decoration: underline; text-underline-offset: 3px; }
+html.hz8 #cartAside article.item.hz8-pack-imaged .media > img:not(.hz8-pack-thumb) { display: none !important; }
+html.hz8 #cartAside article.item .media > img.hz8-pack-thumb { display: block; width: 100%; height: 100%; object-fit: contain; }
+html.hz8 #cartAside article.item:not(.hz8-pack-imaged) .media > img.hz8-pack-thumb { display: none; }
+@media (max-width: 767px) {
+  html.hz8 #cartAside article.item .hz8-pack-name { font-size: 15.5px !important; }
+}

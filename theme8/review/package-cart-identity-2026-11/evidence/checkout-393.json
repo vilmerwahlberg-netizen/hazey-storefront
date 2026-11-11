@@ -1,0 +1,74 @@
+{
+ "core": {
+  "before": 0,
+  "toggle": null,
+  "after": 0,
+  "rows": [
+   {
+    "h": 316,
+    "after": "\"Hero's Core 2 ml · 3‑pack\"",
+    "tile": "\"3×\" / \"\""
+   },
+   {
+    "h": 208,
+    "after": "\"Hero's Core 2 ml · 5‑pack\"",
+    "tile": "\"5×\" / \"\""
+   },
+   {
+    "h": 117,
+    "after": "none",
+    "tile": "none"
+   }
+  ],
+  "overflow": false,
+  "cleaned": true
+ },
+ "ms2": {
+  "before": 0,
+  "toggle": null,
+  "after": 0,
+  "rows": [
+   {
+    "h": 243,
+    "after": "\"Magic Sauce 3.0 2 ml · 3‑pack\"",
+    "tile": "\"3×\" / \"\""
+   },
+   {
+    "h": 190,
+    "after": "\"Magic Sauce 3.0 2 ml · 5‑pack\"",
+    "tile": "\"5×\" / \"\""
+   },
+   {
+    "h": 138,
+    "after": "none",
+    "tile": "none"
+   }
+  ],
+  "overflow": false,
+  "cleaned": true
+ },
+ "ms5": {
+  "before": 0,
+  "toggle": null,
+  "after": 0,
+  "rows": [
+   {
+    "h": 297,
+    "after": "\"Magic Sauce 3.0 5 ml · 3‑pack\"",
+    "tile": "\"3×\" / \"\""
+   },
+   {
+    "h": 190,
+    "after": "\"Magic Sauce 3.0 5 ml · 5‑pack\"",
+    "tile": "\"5×\" / \"\""
+   },
+   {
+    "h": 138,
+    "after": "none",
+    "tile": "none"
+   }
+  ],
+  "overflow": false,
+  "cleaned": true
+ }
+}

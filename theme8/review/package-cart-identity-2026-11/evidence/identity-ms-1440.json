@@ -1,0 +1,530 @@
+{
+ "ms2-A": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2113,
+    "product": 266,
+    "variant": 470,
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "total": "1 599 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Tinky Winky"
+    ]
+   },
+   {
+    "id": 2114,
+    "product": 267,
+    "variant": 471,
+    "name": "Magic Sauce 3.0 2ml – 5-pack (blandbart)",
+    "total": "2 530 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Gorilla Cookies"
+    ]
+   },
+   {
+    "id": 2115,
+    "product": 261,
+    "variant": 454,
+    "name": "Magic Sauce 3.0 - 2ml",
+    "total": "575 kr",
+    "image": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWdvcmlsbGEtMDQ4YTY0MzIud2VicCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "parts": []
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Magic Sauce 3.0 2 ml · 3-pack 1 599 kr 2 × Gorilla Cookies · 1 × Tinky Winky Ändra 1 st 575 kr/st 3 st 533 kr/st −126 kr 5 st 506 kr/st −345 kr",
+    "name": "Magic Sauce 3.0 2 ml · 3-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWd",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml?hz8-pack=3",
+    "aria": "Minska antalet: Magic Sauce 3.0 2 ml · 3-pack | Valt antal | Öka antalet: Magic Sauce 3.0 2 ml · 3-pack | Ta bort varan: Magic Sauce 3.0 2 ml · 3-pack | Ändra strains: Magic Sauce 3.0 - 2ml, 3-pack | Paketstorlek: Magic Sauce 3.0 - 2ml",
+    "strains": "2 × Gorilla Cookies · 1 × Tinky Winky",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Magic Sauce 3.0 2 ml · 5-pack 2 530 kr 5 × Gorilla Cookies Ändra 1 st 575 kr/st 3 st 533 kr/st −126 kr 5 st 506 kr/st −345 kr",
+    "name": "Magic Sauce 3.0 2 ml · 5-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWd",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml?hz8-pack=5",
+    "aria": "Minska antalet: Magic Sauce 3.0 2 ml · 5-pack | Valt antal | Öka antalet: Magic Sauce 3.0 2 ml · 5-pack | Ta bort varan: Magic Sauce 3.0 2 ml · 5-pack | Ändra strains: Magic Sauce 3.0 - 2ml, 5-pack | Paketstorlek: Magic Sauce 3.0 - 2ml",
+    "strains": "5 × Gorilla Cookies",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack",
+    "text": "Magic Sauce 3.0 - 2ml 575 kr / Styck Strain: Gorilla Cookies - + 575 kr 1 st 575 kr/st 3 st 533 kr/st −126 kr 5 st 506 kr/st −345 kr",
+    "name": null,
+    "strongVisible": true,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWd",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "aria": "Minska antalet: Magic Sauce 3.0 - 2ml | Valt antal | Öka antalet: Magic Sauce 3.0 - 2ml | Ta bort varan: Magic Sauce 3.0 - 2ml | Paketstorlek: Magic Sauce 3.0 - 2ml",
+    "strains": null,
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr / Styck Paketet innehåller 2 Styck x Magic Sauce 3.0 - 2ml Strain: Gorilla Cookies 1 Styck x Magic Sauce 3.0 - 2ml Strain: Tinky Winky - + 1 599 kr Magic Sauce 3.0 2ml – 5-pack (blandbart) 2 530 kr / Styck Paketet innehåller 5 Styck x Magic Sauce 3.0",
+  "checkout": [
+   {
+    "href": "/sv/products/magic-sauce-30-2ml-3-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 2 ml · 3-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        1 599 kr\n         ",
+    "parts": [
+     "Strain: Gorilla Cookies",
+     "Strain: Tinky Winky"
+    ]
+   },
+   {
+    "href": "/sv/products/magic-sauce-30-2ml-5-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 2 ml · 5-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        2 530 kr\n         ",
+    "parts": [
+     "Strain: Gorilla Cookies"
+    ]
+   },
+   {
+    "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "after": "none",
+    "strongVis": "visible",
+    "imgVis": "visible",
+    "imgSrc": "QwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "tile": "none",
+    "total": "\n        575 kr\n         ",
+    "parts": []
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ },
+ "ms2-B": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2116,
+    "product": 266,
+    "variant": 470,
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "total": "1 599 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Gorilla Cookies"
+    ]
+   },
+   {
+    "id": 2117,
+    "product": 267,
+    "variant": 471,
+    "name": "Magic Sauce 3.0 2ml – 5-pack (blandbart)",
+    "total": "2 530 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Gorilla Cookies",
+     "Tinky Winky",
+     "Tinky Winky"
+    ]
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Magic Sauce 3.0 2 ml · 3-pack 1 599 kr 3 × Gorilla Cookies Ändra 1 st 575 kr/st 3 st 533 kr/st −126 kr 5 st 506 kr/st −345 kr",
+    "name": "Magic Sauce 3.0 2 ml · 3-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWd",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml?hz8-pack=3",
+    "aria": "Minska antalet: Magic Sauce 3.0 2 ml · 3-pack | Valt antal | Öka antalet: Magic Sauce 3.0 2 ml · 3-pack | Ta bort varan: Magic Sauce 3.0 2 ml · 3-pack | Ändra strains: Magic Sauce 3.0 - 2ml, 3-pack | Paketstorlek: Magic Sauce 3.0 - 2ml",
+    "strains": "3 × Gorilla Cookies",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Magic Sauce 3.0 2 ml · 5-pack 2 530 kr 3 × Gorilla Cookies · 2 × Tinky Winky Ändra 1 st 575 kr/st 3 st 533 kr/st −126 kr 5 st 506 kr/st −345 kr",
+    "name": "Magic Sauce 3.0 2 ml · 5-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWd",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml?hz8-pack=5",
+    "aria": "Minska antalet: Magic Sauce 3.0 2 ml · 5-pack | Valt antal | Öka antalet: Magic Sauce 3.0 2 ml · 5-pack | Ta bort varan: Magic Sauce 3.0 2 ml · 5-pack | Ändra strains: Magic Sauce 3.0 - 2ml, 5-pack | Paketstorlek: Magic Sauce 3.0 - 2ml",
+    "strains": "3 × Gorilla Cookies · 2 × Tinky Winky",
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr / Styck Paketet innehåller 3 Styck x Magic Sauce 3.0 - 2ml Strain: Gorilla Cookies - + 1 599 kr Magic Sauce 3.0 2ml – 5-pack (blandbart) 2 530 kr / Styck Paketet innehåller 3 Styck x Magic Sauce 3.0 - 2ml Strain: Gorilla Cookies 2 Styck x Magic Sauce",
+  "checkout": [
+   {
+    "href": "/sv/products/magic-sauce-30-2ml-3-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 2 ml · 3-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        1 599 kr\n         ",
+    "parts": [
+     "Strain: Gorilla Cookies"
+    ]
+   },
+   {
+    "href": "/sv/products/magic-sauce-30-2ml-5-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 2 ml · 5-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        2 530 kr\n         ",
+    "parts": [
+     "Strain: Gorilla Cookies",
+     "Strain: Tinky Winky"
+    ]
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ },
+ "ms5-A": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2118,
+    "product": 268,
+    "variant": 472,
+    "name": "Magic Sauce 3.0 5ml – 3-pack (blandbart)",
+    "total": "2 950 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra"
+    ]
+   },
+   {
+    "id": 2119,
+    "product": 269,
+    "variant": 473,
+    "name": "Magic Sauce 3.0 5ml – 5-pack (blandbart)",
+    "total": "4 450 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Bruce Banner OG",
+     "Bruce Banner OG",
+     "Bruce Banner OG",
+     "Bruce Banner OG",
+     "Bruce Banner OG"
+    ]
+   },
+   {
+    "id": 2120,
+    "product": 260,
+    "variant": 449,
+    "name": "Magic Sauce 3.0 - 5ml",
+    "total": "1 195 kr",
+    "image": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWNlLXZhcGUta2FydG9uZy04ZTI2NmE0YS53ZWJwIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "parts": []
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Magic Sauce 3.0 5 ml · 3-pack 2 950 kr 1 × This is Sparta · 1 × Kowa Bunga · 1 × La Chupacabra Ändra 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr",
+    "name": "Magic Sauce 3.0 5 ml · 3-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWN",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/magic-sauce-vape-5ml?hz8-pack=3",
+    "aria": "Minska antalet: Magic Sauce 3.0 5 ml · 3-pack | Valt antal | Öka antalet: Magic Sauce 3.0 5 ml · 3-pack | Ta bort varan: Magic Sauce 3.0 5 ml · 3-pack | Ändra strains: Magic Sauce 3.0 - 5ml, 3-pack | Paketstorlek: Magic Sauce 3.0 - 5ml",
+    "strains": "1 × This is Sparta · 1 × Kowa Bunga · 1 × La Chupacabra",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Magic Sauce 3.0 5 ml · 5-pack 4 450 kr 5 × Bruce Banner OG Ändra 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr",
+    "name": "Magic Sauce 3.0 5 ml · 5-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWN",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/magic-sauce-vape-5ml?hz8-pack=5",
+    "aria": "Minska antalet: Magic Sauce 3.0 5 ml · 5-pack | Valt antal | Öka antalet: Magic Sauce 3.0 5 ml · 5-pack | Ta bort varan: Magic Sauce 3.0 5 ml · 5-pack | Ändra strains: Magic Sauce 3.0 - 5ml, 5-pack | Paketstorlek: Magic Sauce 3.0 - 5ml",
+    "strains": "5 × Bruce Banner OG",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack",
+    "text": "Magic Sauce 3.0 - 5ml 1 195 kr / Styck Strain: This is Sparta - + 1 195 kr 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr",
+    "name": null,
+    "strongVisible": true,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWN",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "https://hazeyse.nyehandel.se/sv/products/magic-sauce-vape-5ml",
+    "aria": "Minska antalet: Magic Sauce 3.0 - 5ml | Valt antal | Öka antalet: Magic Sauce 3.0 - 5ml | Ta bort varan: Magic Sauce 3.0 - 5ml | Paketstorlek: Magic Sauce 3.0 - 5ml",
+    "strains": null,
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "Magic Sauce 3.0 5ml – 3-pack (blandbart) 2 950 kr / Styck Paketet innehåller 1 Styck x Magic Sauce 3.0 - 5ml Strain: This is Sparta 1 Styck x Magic Sauce 3.0 - 5ml Strain: Kowa Bunga 1 Styck x Magic Sauce 3.0 - 5ml Strain: La Chupacabra - + 2 950 kr Magic Sauce 3.0 5ml – 5-pack (blandbart) 4 450 kr ",
+  "checkout": [
+   {
+    "href": "/sv/products/magic-sauce-30-5ml-3-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 5 ml · 3-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        2 950 kr\n         ",
+    "parts": [
+     "Strain: This is Sparta",
+     "Strain: Kowa Bunga",
+     "Strain: La Chupacabra"
+    ]
+   },
+   {
+    "href": "/sv/products/magic-sauce-30-5ml-5-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 5 ml · 5-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        4 450 kr\n         ",
+    "parts": [
+     "Strain: Bruce Banner OG"
+    ]
+   },
+   {
+    "href": "/sv/products/magic-sauce-vape-5ml",
+    "after": "none",
+    "strongVis": "visible",
+    "imgVis": "visible",
+    "imgSrc": "I6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "tile": "none",
+    "total": "\n        1 195 kr\n         ",
+    "parts": []
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ },
+ "ms5-B": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2121,
+    "product": 268,
+    "variant": 472,
+    "name": "Magic Sauce 3.0 5ml – 3-pack (blandbart)",
+    "total": "2 950 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "This is Sparta",
+     "This is Sparta",
+     "This is Sparta"
+    ]
+   },
+   {
+    "id": 2122,
+    "product": 269,
+    "variant": 473,
+    "name": "Magic Sauce 3.0 5ml – 5-pack (blandbart)",
+    "total": "4 450 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Bruce Banner OG",
+     "Yoda Ice Cream"
+    ]
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Magic Sauce 3.0 5 ml · 3-pack 2 950 kr 3 × This is Sparta Ändra 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr",
+    "name": "Magic Sauce 3.0 5 ml · 3-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWN",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/magic-sauce-vape-5ml?hz8-pack=3",
+    "aria": "Minska antalet: Magic Sauce 3.0 5 ml · 3-pack | Valt antal | Öka antalet: Magic Sauce 3.0 5 ml · 3-pack | Ta bort varan: Magic Sauce 3.0 5 ml · 3-pack | Ändra strains: Magic Sauce 3.0 - 5ml, 3-pack | Paketstorlek: Magic Sauce 3.0 - 5ml",
+    "strains": "3 × This is Sparta",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Magic Sauce 3.0 5 ml · 5-pack 4 450 kr 1 × This is Sparta · 1 × Kowa Bunga · 1 × La Chupacabra · 1 × Bruce Banner OG · 1 × Yoda Ice Cream Ändra 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr",
+    "name": "Magic Sauce 3.0 5 ml · 5-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWN",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/magic-sauce-vape-5ml?hz8-pack=5",
+    "aria": "Minska antalet: Magic Sauce 3.0 5 ml · 5-pack | Valt antal | Öka antalet: Magic Sauce 3.0 5 ml · 5-pack | Ta bort varan: Magic Sauce 3.0 5 ml · 5-pack | Ändra strains: Magic Sauce 3.0 - 5ml, 5-pack | Paketstorlek: Magic Sauce 3.0 - 5ml",
+    "strains": "1 × This is Sparta · 1 × Kowa Bunga · 1 × La Chupacabra · 1 × Bruce Banner OG · 1 × Yoda Ice Cream",
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "Magic Sauce 3.0 5ml – 3-pack (blandbart) 2 950 kr / Styck Paketet innehåller 3 Styck x Magic Sauce 3.0 - 5ml Strain: This is Sparta - + 2 950 kr Magic Sauce 3.0 5ml – 5-pack (blandbart) 4 450 kr / Styck Paketet innehåller 1 Styck x Magic Sauce 3.0 - 5ml Strain: This is Sparta 1 Styck x Magic Sauce 3",
+  "checkout": [
+   {
+    "href": "/sv/products/magic-sauce-30-5ml-3-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 5 ml · 3-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        2 950 kr\n         ",
+    "parts": [
+     "Strain: This is Sparta"
+    ]
+   },
+   {
+    "href": "/sv/products/magic-sauce-30-5ml-5-pack-blandbart",
+    "after": "\"Magic Sauce 3.0 5 ml · 5-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        4 450 kr\n         ",
+    "parts": [
+     "Strain: This is Sparta",
+     "Strain: Kowa Bunga",
+     "Strain: La Chupacabra",
+     "Strain: Bruce Banner OG",
+     "Strain: Yoda Ice Cream"
+    ]
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ }
+}

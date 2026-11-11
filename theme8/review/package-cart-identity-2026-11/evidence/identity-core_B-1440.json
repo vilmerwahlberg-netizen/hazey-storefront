@@ -1,0 +1,117 @@
+{
+ "core-B": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2173,
+    "product": 263,
+    "variant": 467,
+    "name": "PILOT T19 – Hero's Core 2ml – 3-pack",
+    "total": "1 920 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Pineapple Express -Sativa",
+     "Pineapple Express -Sativa",
+     "Pineapple Express -Sativa"
+    ]
+   },
+   {
+    "id": 2174,
+    "product": 265,
+    "variant": 469,
+    "name": "Hero's Core 2ml – 5-pack (blandbart)",
+    "total": "3 135 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gelato - Indica",
+     "Gelato - Indica",
+     "Melon Haze",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Hero's Core 2 ml · 3‑pack 1 920 kr 3 × Pineapple Express -Sativa Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr 5 st 627 kr/st −240 kr",
+    "name": "Hero's Core 2 ml · 3‑pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=3",
+    "aria": "Minska antalet: Hero's Core 2 ml · 3‑pack | Valt antal | Öka antalet: Hero's Core 2 ml · 3‑pack | Ta bort varan: Hero's Core 2 ml · 3‑pack | Ändra strains: Hero's Core - 2ml, 3-pack | Paketstorlek: Hero's Core - 2ml",
+    "strains": "3 × Pineapple Express -Sativa",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Hero's Core 2 ml · 5‑pack 3 135 kr 2 × Gelato - Indica · 1 × Melon Haze · 1 × Super Lemon Haze · 1 × Coconut Cake - Indica Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr 5 st 627 kr/st −240 kr",
+    "name": "Hero's Core 2 ml · 5‑pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=5",
+    "aria": "Minska antalet: Hero's Core 2 ml · 5‑pack | Valt antal | Öka antalet: Hero's Core 2 ml · 5‑pack | Ta bort varan: Hero's Core 2 ml · 5‑pack | Ändra strains: Hero's Core - 2ml, 5-pack | Paketstorlek: Hero's Core - 2ml",
+    "strains": "2 × Gelato - Indica · 1 × Melon Haze · 1 × Super Lemon Haze · 1 × Coconut Cake - Indica",
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "PILOT T19 – Hero's Core 2ml – 3-pack 1 920 kr / Styck Paketet innehåller 3 Styck x Hero's Core - 2ml Strain: Pineapple Express -Sativa - + 1 920 kr Hero's Core 2ml – 5-pack (blandbart) 3 135 kr / Styck Paketet innehåller 2 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 Styck x Hero's Core - 2ml",
+  "checkout": [
+   {
+    "href": "/sv/products/pilot-t19-heros-core-2ml-3-pack",
+    "after": "\"Hero's Core 2 ml · 3‑pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        1 920 kr\n         ",
+    "parts": [
+     "Strain: Pineapple Express -Sativa"
+    ]
+   },
+   {
+    "href": "/sv/products/heros-core-2ml-5-pack-blandbart",
+    "after": "\"Hero's Core 2 ml · 5‑pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        3 135 kr\n         ",
+    "parts": [
+     "Strain: Gelato - Indica",
+     "Strain: Melon Haze",
+     "Strain: Super Lemon Haze",
+     "Strain: Coconut Cake - Indica"
+    ]
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ }
+}

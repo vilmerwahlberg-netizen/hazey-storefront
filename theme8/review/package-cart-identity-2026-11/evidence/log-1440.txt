@@ -1,0 +1,22 @@
+
+### core-A-1440: PASS
+{"fails":[],"minicart":[["Hero's Core 2 ml · 3-pack","vcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ","/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=3","1 × Gelato - Indica · 1 × Melon Haze · 1 × Coconut Cake - Indica"],["Hero's Core 2 ml · 5-pack","vcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ","/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=5","5 × Strawberry Kush - Sativa"],["(vanlig)","vcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ","/sv/products/thc-x-vape-hero-core-2ml",null]],"imgRequests":[],"checkout":[["\"Hero's Core 2 ml · 3-pack\"","\"3×\" / \"\"","hidden","\n        1 920 kr\n         "],["\"Hero's Core 2 ml · 5-pack\"","\"5×\" / \"\"","hidden","\n        3 135 kr\n         "],["none","none","visible","\n        675 kr\n         "]]}
+
+### core-B-1440: PASS
+{"fails":[],"minicart":[["Hero's Core 2 ml · 3-pack","vcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ","/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=3","3 × Pineapple Express -Sativa"],["Hero's Core 2 ml · 5-pack","vcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ","/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=5","2 × Gelato - Indica · 1 × Melon Haze · 1 × Super Lemon Haze · 1 × Coconut Cake - Indica"]],"imgRequests":[],"checkout":[["\"Hero's Core 2 ml · 3-pack\"","\"3×\" / \"\"","hidden","\n        1 920 kr\n         "],["\"Hero's Core 2 ml · 5-pack\"","\"5×\" / \"\"","hidden","\n        3 135 kr\n         "]]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml?preview=v9kzdmqz4w60l5n", waiting until "domcontentloaded"[22m
+
+    at /Users/wahlberg/HZY/hemsidor/hazey-storefront-task21/theme8/review/package-cart-identity-2026-11/evidence/ui-identity.mjs:81:11 {
+  log: [
+    '  - navigating to "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml?preview=v9kzdmqz4w60l5n", waiting until "domcontentloaded"'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.3.0
