@@ -1,0 +1,2227 @@
+{
+ "S1-tre-olika": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 1,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "3-pack har lagts i varukorgen.",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1973,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2,
+       "quantity": 1
+      },
+      {
+       "id": 438,
+       "pivot_id": 3,
+       "quantity": 1
+      }
+     ],
+     "parts": [
+      {
+       "q": 1,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      },
+      {
+       "q": 1,
+       "variant": 431,
+       "strain": "Melon Haze"
+      },
+      {
+       "q": 1,
+       "variant": 438,
+       "strain": "Coconut Cake - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 1 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 Styck x Hero's Core - 2ml Strain: Melon Haze 1 Styck x Hero's Core - 2ml Strain: Coconut Cake - Indica 1 920 kr 3 strains · Gelato - Indica, Melon Haze +1 Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "strains": [
+    "3 strains · Gelato - Indica, Melon Haze +1"
+   ],
+   "edit": 1
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n1 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n1 Styck x\nHero's Core - 2ml\nStrain: Melon Haze\n1 Styck x\nHero's Core - 2ml\nStrain: Coconut Cake - Indica\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "has1920": true,
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "S2-samma-x3": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 425,
+         "pivot_id": 2
+        },
+        {
+         "id": 425,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 1,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "3-pack har lagts i varukorgen.",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1974,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 3
+      }
+     ],
+     "parts": [
+      {
+       "q": 3,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 3 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 920 kr 3 st · Gelato - Indica Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "strains": [
+    "3 st · Gelato - Indica"
+   ],
+   "edit": 1
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n3 Styck x\nHero's Core - 2ml\nStrain: Gelato - Indica\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "has1920": true,
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "S3-2plus1": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 429,
+         "pivot_id": 1
+        },
+        {
+         "id": 429,
+         "pivot_id": 2
+        },
+        {
+         "id": 433,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 1,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Strawberry Kush Sativa",
+    "Strawberry Kush Sativa",
+    "Pineapple Express Sativa"
+   ],
+   "sum": "I paketet: 2 × Strawberry Kush, 1 × Pineapple Express.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p157-core-vape-strawberry-kush-ab6c8032.png",
+    "p157-core-vape-strawberry-kush-ab6c8032.png",
+    "p158-core-vape-pineapple-express-7a5b9b42.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Strawberry Kush Sativa",
+    "Strawberry Kush Sativa",
+    "Pineapple Express Sativa"
+   ],
+   "sum": "I paketet: 2 × Strawberry Kush, 1 × Pineapple Express.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "3-pack har lagts i varukorgen.",
+   "imgs": [
+    "p157-core-vape-strawberry-kush-ab6c8032.png",
+    "p157-core-vape-strawberry-kush-ab6c8032.png",
+    "p158-core-vape-pineapple-express-7a5b9b42.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1975,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 429,
+       "pivot_id": 1,
+       "quantity": 2
+      },
+      {
+       "id": 433,
+       "pivot_id": 3,
+       "quantity": 1
+      }
+     ],
+     "parts": [
+      {
+       "q": 2,
+       "variant": 429,
+       "strain": "Strawberry Kush - Sativa"
+      },
+      {
+       "q": 1,
+       "variant": 433,
+       "strain": "Pineapple Express -Sativa"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 2 Styck x Hero's Core - 2ml Strain: Strawberry Kush - Sativa 1 Styck x Hero's Core - 2ml Strain: Pineapple Express -Sativa 1 920 kr 2 strains · Strawberry Kush - Sativa, Pineapple Express -Sativa Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "strains": [
+    "2 strains · Strawberry Kush - Sativa, Pineapple Express -Sativa"
+   ],
+   "edit": 1
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "checkout": {
+   "summary": "Kassa\nSverige\nJag önskar leverans till\nPrivatperson\nFöretag\nJag handlar som\nPrenumerera på nyhetsbrev\nFraktsätt\nFraktkostnad\n49 kr\nBetalning\nPILOT T19 – Hero's Core 2ml – 3-pack\n1 920 kr / Styck\nPaketet innehåller\n2 Styck x\nHero's Core - 2ml\nStrain: Strawberry Kush - Sativa\n1 Styck x\nHero's Core - 2ml\nStrain: Pineapple Express -Sativa\n-\n+\n1 920 kr\nDelsumma\n1 920 kr\nFrakt\n49 kr\nTotalsumma\nInkl.moms: 393,8 kr\n1 969 kr\nLägg till Rabattkod/presentkort\ncoupon_code\nAnge kod\nLägg till",
+   "has1920": true,
+   "kustom": true
+  },
+  "layoutCheckout": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "F1-tom-plats": {
+  "posts": [],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "2 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Välj strain"
+   ],
+   "sum": "Välj strain för plats 3.",
+   "cta": "Välj strains för alla platser",
+   "ctaState": "missing",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "2 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Välj strain"
+   ],
+   "sum": "Välj strain för plats 3.",
+   "cta": "Välj strains för alla platser",
+   "ctaState": "missing",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "F2-otillatet-val": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "tampered": {
+   "product_variant_id": 467,
+   "quantity": 1,
+   "meta": {
+    "data": {
+     "packageProductVariants": [
+      {
+       "id": 425,
+       "pivot_id": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2
+      },
+      {
+       "id": 243,
+       "pivot_id": 3
+      }
+     ]
+    }
+   }
+  },
+  "postResponse": {
+   "status": 406,
+   "error": {
+    "cart_item_data_is_invalid": true
+   }
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "Paketvalet godkändes inte av butiken. Välj strains igen.",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "F3-lager-slut-server": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 23,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 425,
+         "pivot_id": 2
+        },
+        {
+         "id": 425,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   },
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 425,
+         "pivot_id": 2
+        },
+        {
+         "id": 425,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 1,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "preload": {
+   "status": 200,
+   "cart": {
+    "total": "44 160 kr",
+    "quantity_count": 23,
+    "items": [
+     {
+      "id": 1976,
+      "variant_id": 467,
+      "sku": "HZ-T19-CORE-3PK",
+      "qty": "23.00",
+      "total": "44 160 kr",
+      "meta": [
+       {
+        "id": 425,
+        "pivot_id": 1,
+        "quantity": 3
+       }
+      ],
+      "parts": [
+       {
+        "q": 3,
+        "variant": 425,
+        "strain": "Gelato - Indica"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "postResponse": {
+   "status": 406,
+   "error": {
+    "available": 0
+   }
+  },
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "Det finns inte tillräckligt i lager för det här paketet.",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "44 160 kr",
+   "quantity_count": 23,
+   "items": [
+    {
+     "id": 1976,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "23.00",
+     "total": "44 160 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 3
+      }
+     ],
+     "parts": [
+      {
+       "q": 3,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "F4-slutsalt-i-kortet": {
+  "posts": [],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "simOptions": [
+   "Gelato - Indica",
+   "Strawberry Kush - Sativa",
+   "×Melon Haze (slut i lager)",
+   "Pineapple Express -Sativa",
+   "Super Lemon Haze",
+   "Coconut Cake - Indica"
+  ],
+  "simAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Coconut Cake Indica",
+    "Coconut Cake Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 2 × Coconut Cake, 1 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p155-core-vape-coconut-cake-c91a1125.png",
+    "p155-core-vape-coconut-cake-c91a1125.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "×Coconut Cake - Indica (inga fler i lager)"
+    ]
+   ]
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Coconut Cake Indica",
+    "Coconut Cake Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 2 × Coconut Cake, 1 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p155-core-vape-coconut-cake-c91a1125.png",
+    "p155-core-vape-coconut-cake-c91a1125.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "×Melon Haze (slut i lager)",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "×Coconut Cake - Indica (inga fler i lager)"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "R1-singel": {
+  "posts": [],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "nativePosts": 1,
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "675 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1977,
+     "variant_id": 425,
+     "sku": "HZY-WC-347476",
+     "qty": "1.00",
+     "total": "675 kr",
+     "parts": []
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "Hero's Core - 2ml 675 kr / Styck Strain: Gelato - Indica - + 675 kr 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "strains": [],
+   "edit": 0
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "R0-utan-flagga": {
+  "posts": [],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": false,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "registry": "{}",
+  "pass": true,
+  "cart": {
+   "total": "0 kr",
+   "quantity_count": 0,
+   "items": []
+  },
+  "cleaned": true,
+  "mainUntouched": true,
+  "errors": []
+ },
+ "E1-minicart-andra": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   },
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 433,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "pilotFetches": 0,
+  "viewport": 1440,
+  "ua": "desktop Chrome (harness)",
+  "cardVisible": true,
+  "oldStepVisible": false,
+  "mainCta": {
+   "text": "Lägg i varukorgen",
+   "state": "ready",
+   "hidden": false
+  },
+  "initial": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Gelato Indica",
+    "Gelato Indica"
+   ],
+   "sum": "I paketet: 3 × Gelato.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png",
+    "p156-core-vape-gelato-49e30842.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "pdp": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "pdpAfter": {
+   "hidden": false,
+   "collapsed": false,
+   "title": "Bygg ditt 3‑pack",
+   "now": "1 920 kr",
+   "was": "2 025 kr",
+   "save": "Spara 105 kr",
+   "count": "3 av 3 valda",
+   "slots": [
+    "Gelato Indica",
+    "Melon Haze",
+    "Coconut Cake Indica"
+   ],
+   "sum": "I paketet: 1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake.",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "msg": "3-pack har lagts i varukorgen.",
+   "imgs": [
+    "p156-core-vape-gelato-49e30842.png",
+    "p159-core-vape-melon-haze-8bdc0a70.png",
+    "p155-core-vape-coconut-cake-c91a1125.png"
+   ],
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "mainCtaAfter": {
+   "text": "Lägg i varukorgen",
+   "state": "ready"
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "quantity_count": 1,
+   "items": [
+    {
+     "id": 1979,
+     "variant_id": 467,
+     "sku": "HZ-T19-CORE-3PK",
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "meta": [
+      {
+       "id": 425,
+       "pivot_id": 1,
+       "quantity": 1
+      },
+      {
+       "id": 431,
+       "pivot_id": 2,
+       "quantity": 1
+      },
+      {
+       "id": 433,
+       "pivot_id": 3,
+       "quantity": 1
+      }
+     ],
+     "parts": [
+      {
+       "q": 1,
+       "variant": 425,
+       "strain": "Gelato - Indica"
+      },
+      {
+       "q": 1,
+       "variant": 431,
+       "strain": "Melon Haze"
+      },
+      {
+       "q": 1,
+       "variant": 433,
+       "strain": "Pineapple Express -Sativa"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "open": true,
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 1 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 Styck x Hero's Core - 2ml Strain: Melon Haze 1 Styck x Hero's Core - 2ml Strain: Coconut Cake - Indica 1 920 kr 3 strains · Gelato - Indica, Melon Haze +1 Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ],
+   "strains": [
+    "3 strains · Gelato - Indica, Melon Haze +1"
+   ],
+   "edit": 1
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "edit": {
+   "posts": [
+    {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 425,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 433,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "deletes": [
+    "1978",
+    "1979"
+   ],
+   "cart": {
+    "total": "1 920 kr",
+    "quantity_count": 1,
+    "items": [
+     {
+      "id": 1979,
+      "variant_id": 467,
+      "sku": "HZ-T19-CORE-3PK",
+      "qty": "1.00",
+      "total": "1 920 kr",
+      "meta": [
+       {
+        "id": 425,
+        "pivot_id": 1,
+        "quantity": 1
+       },
+       {
+        "id": 431,
+        "pivot_id": 2,
+        "quantity": 1
+       },
+       {
+        "id": 433,
+        "pivot_id": 3,
+        "quantity": 1
+       }
+      ],
+      "parts": [
+       {
+        "q": 1,
+        "variant": 425,
+        "strain": "Gelato - Indica"
+       },
+       {
+        "q": 1,
+        "variant": 431,
+        "strain": "Melon Haze"
+       },
+       {
+        "q": 1,
+        "variant": 433,
+        "strain": "Pineapple Express -Sativa"
+       }
+      ]
+     }
+    ]
+   },
+   "deletesAtSave": [
+    "1978"
+   ],
+   "oldRow": "1978",
+   "strains": "3 strains · Gelato - Indica, Melon Haze +1",
+   "live": "Paketet är uppdaterat."
+  },
+  "cleaned": true,
+  "pass": true,
+  "mainUntouched": true,
+  "errors": []
+ }
+}
