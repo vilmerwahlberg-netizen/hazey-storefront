@@ -210,14 +210,15 @@
      spärrad: "Paketprodukt saknas", byggaren med en plats per enhet,
      slutsålda synliga men inte valbara, köpknappen avstängd. */
   var PKG_REVIEW = /[?&]hz8-pkg-review=1/.test(location.search);
-  /* TASK 19 (lokalt prov, ej publicerat): pilotpaketet 263 "PILOT T19 –
-     Hero's Core 2ml – 3-pack" (tre olåsta rader av produkt 255) visas BARA
-     med ?hz8-pkg-pilot=1 (sparas för fliken i sessionStorage så att
-     minicarten på andra sidor känner igen raden). Utan flaggan är
-     registret tomt som tidigare. `route` = paketproduktens sida, där
+  /* TASK 19/20: paketvalet visas i Theme 8-preview eller med
+     ?hz8-pkg-pilot=1 (sparas för fliken i sessionStorage så att
+     minicarten på andra sidor känner igen raden). Utan preview eller
+     pilotflagga är registret tomt. `route` = paketproduktens sida, där
      Nyehandel serverrenderar paketraderna med verkliga pivot_id. */
   var PKG_PILOT = (function () {
-    var on = /[?&]hz8-pkg-pilot=1/.test(location.search);
+    /* Visa de verifierade paketen direkt i Nyehandels Theme 8-preview.
+       Vanliga produktsidor behåller pilotflaggan tills lanseringen beslutas. */
+    var on = /[?&]hz8-pkg-pilot=1/.test(location.search) || /[?&]preview=[^&]+/.test(location.search);
     /* ?hz8-pkg-pilot=0 stänger av förhandsvisningen för fliken igen. */
     var off = /[?&]hz8-pkg-pilot=0/.test(location.search);
     try {
@@ -238,12 +239,12 @@
      probe-pivots.json): is_package, pris, paketvariant och serverrenderade
      rader (rätt basprodukt, olåsta, antal 1). pivot_id läses ändå alltid
      live ur `route` (loadPivots) -- registret anger bara var. Fortfarande
-     BARA bakom ?hz8-pkg-pilot=1: ingen publik synlighet utan separat
+     Bara i Theme 8-preview eller med ?hz8-pkg-pilot=1: ingen normal synlighet utan separat
      klartecken på lagerfrågan (se lagerspärren nedan). */
   /* TASK 20 v5: EN tabell, alltid laddad: basprodukt -> dess PDP (`home`)
      och dess verifierade paket (`route` = paketets egen produktsida).
-     - Paketvalet (PACKAGE_PRODUCTS) byggs ur tabellen BARA med
-       ?hz8-pkg-pilot=1 (ingen publik synlighet).
+     - Paketvalet (PACKAGE_PRODUCTS) byggs ur tabellen i preview eller med
+       ?hz8-pkg-pilot=1 (ingen normal synlighet).
      - Paketsidornas omdirigering (packagePageRedirect nedan) använder den
        alltid, så att kunden bara möter paketen via 1/3/5-valet. */
   var PACKAGE_TABLE = {

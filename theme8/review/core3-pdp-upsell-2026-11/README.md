@@ -34,14 +34,16 @@ Kontrollerat live 2026-11-11:
 
 ## Granskning
 
-**Flaggor:**
+**Aktuellt paketval för Core 2 ml och Magic Sauce 2/5 ml:**
 
 | Läge | Parameter |
 |---|---|
-| Fungerande köp: 1 st och 3‑pack | `?hz8-pkg-pilot=1` |
-| Plus 5‑pack som designförhandsvisning | `?hz8-pkg-pilot=1&hz8-pkg-review=1` |
+| Theme 8-förhandsvisning: köpbara 1 st, 3-pack och 5-pack | `?preview=v9kzdmqz4w60l5n` |
+| Manuell granskning utanför förhandsvisningen | `?hz8-pkg-pilot=1` |
 
-Utan flagga syns ingenting nytt. `?hz8-pkg-pilot=0` stänger av flaggan igen.
+Utan förhandsvisning eller pilotflagga syns inget paketval. `?hz8-pkg-pilot=0`
+stänger av det för fliken, även i förhandsvisningen. Alla sex paket behöver
+fortfarande slutliga namn, bilder och ett beslut om lagerhantering före lansering.
 
 **Theme 8-previewn hämtar koden från `dev` via GitHub Pages**, så den här grenen syns där först efter en merge. Granska lokalt så länge:
 
