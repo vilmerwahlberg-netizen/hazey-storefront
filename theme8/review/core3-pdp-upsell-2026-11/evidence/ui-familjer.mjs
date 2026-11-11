@@ -18,6 +18,7 @@ const SC = {
   "C5-blandat-upprepat": { fam: "core", pack: 5, picks: ["GEL", "GEL", "MEL", "PIN", "COC"], buy: true, checkout: true },
   "M2-3-blandat": { fam: "ms2", pack: 3, picks: ["GOR", "GOR", "TIN"], buy: true, checkout: true },
   "M2-5-grans-tinky3": { fam: "ms2", pack: 5, picks: ["TIN", "TIN", "TIN", "GOR", "GOR"], buy: true, checkout: true },
+  "M2-5-kompakt-minicart": { fam: "ms2", pack: 5, picks: ["GOR", "GOR", "GOR", "TIN", "TIN"], buy: true, summary: "3 × Gorilla Cookies · 2 × Tinky Winky" },
   "M2-5-tinky5-sparr": { fam: "ms2", pack: 5, picks: ["TIN", "TIN", "TIN"], force: { 3: "TIN", 4: "TIN" }, blocked: /Tinky Winky: bara 3 kvar i lager – du har valt 5/ },
   "M2-3-tinky4-sparr": { fam: "ms2", pack: 3, picks: ["TIN", "TIN"], force: { 2: "TIN" }, preTinkyInCart: 1, cartLabel: "×Tinky Winky (inga fler – 1 i varukorgen)", blocked: /Tinky Winky: 3 kvar i lager och 1 ligger redan i din varukorg/ },
   "M2-lager-andras-fore-kop": { fam: "ms2", pack: 3, picks: ["TIN", "TIN", "GOR"], stockTo: { 464: 1 }, blocked: /Tinky Winky: bara 1 kvar i lager – du har valt 2/ },
@@ -76,13 +77,13 @@ for (const [name, s] of Object.entries(SC)) {
   } else if (s.switching) {
     await choose(p, 3); await pick(p, ["KOW", "CHU", "BRU"]); R.at3 = await zone(p);
     await choose(p, 5); R.at5 = await zone(p); await shot(p, name + "-5pack");
-    await p.locator(".hz8-pp__cta").click({ force: true }); await p.waitForTimeout(800); R.at5try = await zone(p);
     await choose(p, 3); R.back3 = await zone(p); await choose(p, 0); R.at1 = await zone(p); await choose(p, 5); R.again5 = await zone(p);
   } else {
     await choose(p, s.pack); await pick(p, s.picks);
     R.preOpts = (await zone(p)).options[s.picks.length] || [];
     if (s.force) for (const [i, k] of Object.entries(s.force)) { await force(p, +i, k); await p.waitForTimeout(250); }
     R.pdp = await zone(p);
+    if (s.listOnly) R.tileOrder = await p.locator(".hz8-pp__tile").evaluateAll(tiles => tiles.map(t => ({ name: t.querySelector(".hz8-pp__tile-name").textContent.trim(), out: t.classList.contains("is-out") })));
     if (s.stockTo) await ctx.route(/\/frontend-api\/product\/state$/, async r => {
       const body = JSON.parse(r.request().postData() || "{}"); if (+body.product_id !== F.pid) return r.continue();
       const res = await r.fetch(); const j = await res.json();
@@ -99,6 +100,7 @@ for (const [name, s] of Object.entries(SC)) {
     await p.evaluate(() => { const st = window.HZ8.store && window.HZ8.store(); if (st) return st.dispatch("cart/reload").then(() => st.dispatch("cart/open")); });
     await p.waitForTimeout(3500);
     R.minicart = await p.evaluate(() => { const a = document.getElementById("cartAside"); return a ? Array.from(a.querySelectorAll(".hz8-pack__strains")).map(e => e.textContent) : null; });
+    if (s.summary) R.nativePackageHidden = await p.locator("#cartAside article.item.hz8-pack-compact .item__package").first().evaluate(e => getComputedStyle(e).display === "none");
     R.minicartLayout = await layout(p);
     await p.screenshot({ path: path.join(DIR, "shots", "v4-" + name + SUF + "-minicart.png") });
     if (s.edit) {
@@ -132,9 +134,11 @@ for (const [name, s] of Object.entries(SC)) {
   const pivOk = (post, q) => post && post.meta.data.packageProductVariants.length === q && post.product_variant_id === F.pkg[q][0];
   if (s.noFlag) R.pass = !R.choice && R.registry === "{}" && !R.pkgFetches;
   else if (s.single) R.pass = !R.back.builder && R.back.strains && R.cart.length === 1 && !R.cart[0].parts.length && R.cart[0].qty === 1 && R.posts.length === 0;
-  else if (s.switching) R.pass = JSON.stringify(R.at5.slots) === JSON.stringify(["Kowa Bunga", "La Chupacabra", "Bruce Banner OG", "Välj strain", "Välj strain"]) && R.at5try.state === "missing" && R.posts.length === 0
-    && JSON.stringify(R.back3.slots) === JSON.stringify(["Kowa Bunga", "La Chupacabra", "Bruce Banner OG"]) && R.at1.strains && !R.at1.builder && JSON.stringify(R.again5.slots.slice(0, 3)) === JSON.stringify(R.back3.slots) && R.at5.buttons === 1;
-  else if (s.listOnly) R.pass = R.pdp.options[0].includes("×Crazy Dog (slut i lager)") && R.pdp.options[0].includes("×Samurai Jack (slut i lager)") && R.pdp.options[0].includes("Gorilla Cookies") && R.posts.length === 0;
+  else if (s.switching) R.pass = JSON.stringify(R.at5.slots) === JSON.stringify(["Kowa Bunga", "La Chupacabra", "Bruce Banner OG", "This is Sparta", "This is Sparta"]) && R.posts.length === 0
+    && JSON.stringify(R.back3.slots) === JSON.stringify(["Kowa Bunga", "La Chupacabra", "Bruce Banner OG"]) && R.at1.strains && !R.at1.builder && JSON.stringify(R.again5.slots) === JSON.stringify(R.at5.slots) && R.at5.buttons === 1;
+  else if (s.listOnly) R.pass = R.pdp.options[0].includes("×Crazy Dog (slut i lager)") && R.pdp.options[0].includes("×Samurai Jack (slut i lager)") && R.posts.length === 0
+    && R.tileOrder[0].name === "Gorilla Cookies" && R.tileOrder[1].name === "Tinky Winky" && R.tileOrder.slice(2).every(x => x.out);
+  else if (s.summary) R.pass = R.minicart.includes(s.summary) && R.nativePackageHidden && R.cart.length === 1 && R.cart[0].total === F.pkg[s.pack][1];
   else if (s.blocked) R.pass = R.posts.length === 0 && !R.cart.some(x => x.parts.length) && s.blocked.test(sp(R.after.msg || R.after.sum || "")) && /Ändra valen|Välj/.test(R.after.cta) && (s.preTinkyInCart ? R.cart.length === 1 : R.cart.length === 0) && (!s.force && !s.preTinkyInCart || R.pdp.over.some(Boolean)) && (!s.cartLabel || R.preOpts.includes(s.cartLabel));
   else if (s.empty) R.pass = R.posts.length === 0 && !R.cart.length && /plats 5/.test(R.after.msg || "") && R.after.state === "missing";
   else if (s.edit) R.pass = R.posts.length === 2 && R.edit.posts.length === 1 && R.posts[0].product_variant_id === F.pkg[5][0] && R.edit.tinkySlot4Disabled === "true" && R.edit.cart.length === 1 && R.edit.cart[0].total === "2 530 kr" && sorted(R.edit.cart[0].parts) === sorted([464, 464, 464, 454, 454]) && R.edit.deletesAtSave.length === 1 && R.edit.deletesAtSave[0] === R.oldRow;
@@ -142,7 +146,7 @@ for (const [name, s] of Object.entries(SC)) {
   R.errors = p.errors.filter(e => !/trustpilot|gtm|google|Failed to load resource/i.test(e)).slice(0, 5);
   if (R.errors.length || !R.cleaned || (R.layout && R.layout.overflow)) R.pass = false;
   console.log(`\n### ${name}${SUF}: ${R.pass ? "PASS" : "FAIL"}`);
-  console.log(JSON.stringify({ cards: R.initial && R.initial.cards, pdp: R.pdp && { slots: R.pdp.slots, over: R.pdp.over, price: R.pdp.price, cta: R.pdp.cta, buttons: R.pdp.buttons, opt0: R.pdp.options[0] }, after: R.after && { msg: R.after.msg, sum: R.after.sum, cta: R.after.cta, state: R.after.state }, at5: R.at5 && R.at5.slots, back3: R.back3 && R.back3.slots, again5: R.again5 && R.again5.slots, posts: R.posts.map(x => [x.product_variant_id, x.meta.data.packageProductVariants.map(y => y.id + "@" + y.pivot_id).join(" ")]), native: R.native, postResponse: R.postResponse, cart: R.cart.map(x => [x.variant, x.qty, x.total, x.parts.join("/")]), minicart: R.minicart, edit: R.edit && { tinky4: R.edit.tinkySlot4Disabled, cart: R.edit.cart.map(x => [x.total, x.parts.join("/")]), posts: R.edit.posts.length, deletes: R.edit.deletesAtSave }, checkout: R.checkout, stockMocked: R.stockMocked, cleaned: R.cleaned, errors: R.errors }));
+  console.log(JSON.stringify({ cards: R.initial && R.initial.cards, pdp: R.pdp && { slots: R.pdp.slots, over: R.pdp.over, price: R.pdp.price, cta: R.pdp.cta, buttons: R.pdp.buttons, opt0: R.pdp.options[0] }, tileOrder: R.tileOrder, after: R.after && { msg: R.after.msg, sum: R.after.sum, cta: R.after.cta, state: R.after.state }, at5: R.at5 && R.at5.slots, back3: R.back3 && R.back3.slots, again5: R.again5 && R.again5.slots, posts: R.posts.map(x => [x.product_variant_id, x.meta.data.packageProductVariants.map(y => y.id + "@" + y.pivot_id).join(" ")]), native: R.native, postResponse: R.postResponse, cart: R.cart.map(x => [x.variant, x.qty, x.total, x.parts.join("/")]), minicart: R.minicart, edit: R.edit && { tinky4: R.edit.tinkySlot4Disabled, cart: R.edit.cart.map(x => [x.total, x.parts.join("/")]), posts: R.edit.posts.length, deletes: R.edit.deletesAtSave }, checkout: R.checkout, stockMocked: R.stockMocked, cleaned: R.cleaned, errors: R.errors }));
   await ctx.close();
 }
 fs.writeFileSync(path.join(DIR, "runs", "v4-" + (process.argv[2] || "all").replace(/\W+/g, "_") + SUF + ".json"), JSON.stringify(all, null, 1));

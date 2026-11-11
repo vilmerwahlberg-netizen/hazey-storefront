@@ -79,7 +79,11 @@
       /* Ett variantval (t.ex. "strain") med minst två värden = valbar dimension. */
       var opt = (P.options || []).length === 1 ? P.options[0] : null;
       if (opt) S.optionName = String(opt.name || "").trim();
-      if (opt) S.values = (opt.values || []).map(function (val) { return { id: String(val.id), name: val.name, variant: S.byOption[String(val.id)] }; }).filter(function (x) { return x.variant; });
+      if (opt) {
+        var values = (opt.values || []).map(function (val) { return { id: String(val.id), name: val.name, variant: S.byOption[String(val.id)] }; }).filter(function (x) { return x.variant; });
+        /* Behåll katalogordningen inom varje grupp, men visa köpbara val först. */
+        S.values = values.filter(function (x) { return isBuyable(x.variant); }).concat(values.filter(function (x) { return !isBuyable(x.variant); }));
+      }
       return S;
     });
   }
@@ -1157,19 +1161,20 @@
     var units = upOptions().map(function (o) { return tierUnit(o.variant, 1); });
     return units.length && units.every(function (u) { return u != null && u === units[0]; }) ? units[0] : null;
   }
-  /* Byte av paket: platserna behålls i ordning, nya platser är tomma.
-     Första gången ett paket väljs: vald strain på alla platser (lagret). */
+  /* Byte av paket: behåll valda platser och fyll nya platser med tillgängliga
+     strains. Börja med den valda, sedan övriga köpbara i visningsordning. */
   function setPack(q) {
     UPS.msg = ""; UPS.added = false; UPS.tried = false;
     UPS.qty = q;
     if (!q) return;
-    if (!UPS.slots.some(Boolean)) {
-      var cur = currentValue(), o0 = upOpt(cur);
-      UPS.slots = [];
-      for (var i = 0; i < q; i++) UPS.slots.push(o0 && o0.ok && i < o0.avail ? cur : "");
-    } else {
-      UPS.slots = UPS.slots.slice(0, q);
-      while (UPS.slots.length < q) UPS.slots.push("");
+    UPS.slots = UPS.slots.slice(0, q);
+    var opts = upOptions(), cur = currentValue();
+    var ordered = opts.filter(function (o) { return o.id === cur; }).concat(opts.filter(function (o) { return o.id !== cur; }));
+    while (UPS.slots.length < q) {
+      var next = ordered.filter(function (o) {
+        return o.ok && UPS.slots.filter(function (id) { return id === o.id; }).length < o.avail;
+      })[0];
+      UPS.slots.push(next ? next.id : "");
     }
   }
   /* Okända val töms. Slutsålda val och val över lagret töms INTE tyst --
