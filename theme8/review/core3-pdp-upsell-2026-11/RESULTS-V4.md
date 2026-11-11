@@ -53,7 +53,7 @@ Detaljer för de längre scenarierna:
   - alternativet visas som "(inga fler – 1 i varukorgen)";
   - när plats 3 tvingas spärras köpet med "… 1 ligger redan i din varukorg …";
   - korgen har fortfarande bara den ursprungliga raden.
-- **Växling:** plats 1–3 behålls (Kowa, Chupacabra, Bruce). Plats 4–5 är tomma och spärrar köpet. Vid 1 st visas strainvalet igen.
+- **Växling i v4-testet:** plats 1–3 behölls (Kowa, Chupacabra, Bruce). Plats 4–5 var då tomma och spärrade köpet. Vid 1 st visades strainvalet igen. Detta ändrades i uppföljningen nedan.
 - **Minicart "Ändra":** plats 1–3 sätts till Tinky, och Tinky är spärrad på plats 4. Sparandet ger 3 × Tinky + 2 × Gorilla för 2 530 kr, och den gamla raden tas bort.
 
 **45/45 PASS på slutbygget.** I varje körning: exakt en synlig köpknapp, inga konsolfel och inget horisontellt överflöd.
@@ -77,3 +77,18 @@ Ingen produktkod ändrades efter matrisen.
   - Paketen saknar egen bild i minicart och kassa.
   - "(blandbart)" står i namnen som syns i korg och kassa.
 - **Ingen spärr mot korgen för 1 st:** singelköpets antalsväljare tar inte hänsyn till det som redan ligger i varukorgen. Det är befintligt beteende och inte ändrat här.
+
+## Uppföljning 11 november: snabbare val och kortare minicart
+
+Paketvalet visas numera direkt i Theme 8-förhandsvisningen. Vid byte från 3 till 5
+behålls de tre gjorda valen, och de två nya platserna fylls med köpbara strains
+upp till lagersaldot. Köpbara strains visas före slutsålda i både PDP-raden och
+byggarens väljare, med katalogordningen bevarad inom grupperna.
+
+Minicarten ersätter Nyehandels upprepade paketrader med en fullständig rad som
+`3 × Gorilla Cookies · 2 × Tinky Winky`. Om variantdata saknas visas de
+ursprungliga paketraderna som reserv.
+
+Riktade kontroller på slutbygget: MS 2 ml:s lagerordning vid 393 och 1440 px,
+MS 5 ml:s växling 3 → 5 → 3 → 1 → 5 vid båda bredderna, samt ett riktigt MS 2 ml
+5-pack i testkorgen vid 393 och 1440 px. **6/6 PASS.** Testkorgen tömdes, ingen order lades.

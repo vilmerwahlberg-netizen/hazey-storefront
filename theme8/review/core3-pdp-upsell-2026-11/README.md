@@ -1,6 +1,6 @@
 # Task 20: paketval på produktsidan
 
-> **v4 (senast):** 1/3/5-paketval för 255 (Core), 261 (MS 2 ml) och 260 (MS 5 ml) med sex verifierade paketartiklar och en gemensam lagerspärr. Se `RESULTS-V4.md` och `LAGERSPARR.md`. Texten nedan beskriver v3-designen, som är oförändrad. Under v3 var 5‑pack bara en förhandsvisning; i v4 är det köpbart i förhandsvisningen.
+> **Aktuellt:** 1/3/5-paketval för 255 (Core), 261 (MS 2 ml) och 260 (MS 5 ml) med sex verifierade paketartiklar och en gemensam lagerspärr. Köpbara strains visas först. Nya platser vid byte till 5-pack fylls automatiskt så långt lagret räcker. Minicarten visar en kort sammanfattning per strain. Se `RESULTS-V4.md` och `LAGERSPARR.md`; äldre v3-beskrivningar nedan är historik.
 
 2026-11-11 · worktree `../hazey-storefront-task20`, gren `feat/task-20-core3-pdp-upsell`, bas `origin/dev` = 276efa2.
 Lokal kodändring. Ingen push, ingen merge, ingen publicering. Nyehandel-admin, bilder, bildmanifest, kassan och andra worktrees är inte rörda. Inga order och inga betalningar. Alla testkorgar är tömda.
@@ -19,7 +19,7 @@ Lokal kodändring. Ingen push, ingen merge, ingen publicering. Nyehandel-admin, 
   - Desktop och surfplatta: kompakta rader i ett tråg, 3 i bredd, och 5 visas som 3 + 2.
   - Mobil: en lista med en rad per plats (ca 50 px).
   - Varje plats visar nummer, Nyehandels egen variantbild, strain, typ och "Byt".
-- **Växling:** gjorda val i plats 1–3 ligger kvar när man byter 3 ↔ 5. Nya platser är tomma och kräver aktiva val.
+- **Växling:** gjorda val i plats 1–3 ligger kvar när man byter 3 ↔ 5. Nya platser fylls med köpbara strains upp till det tillgängliga lagret; om lagret inte räcker visas de som tomma.
 - **Tydligt vad som köps:** modulen visar "Läggs i varukorgen: 3‑pack, 3 st" och innehållet. Under den visas totalpris, överstruket ordinarie pris och besparing en gång, och sedan knappen.
 - **Datastyrt:**
   - `PACKAGE_PRODUCTS` (verifierade, `display: "upsell"`) är köpbara. Riktiga `pivot_id` läses ur paketsidan.

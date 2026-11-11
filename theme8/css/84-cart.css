@@ -183,6 +183,9 @@ html.hz8 #cartAside article.item.hz8-pack-active :is(.price, .option) { display:
 /* TASK 19: i en riktig paketrad är Nyehandels egna delrader (.item__package)
    kundens val per plats -- strain ska synas, inte döljas med radens .option. */
 html.hz8 #cartAside article.item.hz8-pack-active .item__package .option { display: block !important; margin-top: 2px; }
+/* Den fullständiga sammanfattningen nedan ersätter de upprepade native
+   paketraderna i minicarten. Originalet behålls när metadata saknas. */
+html.hz8 #cartAside article.item.hz8-pack-compact .item__package { display: none !important; }
 html.hz8 #cartAside article.item > .total {
   grid-area: total;
   color: var(--hz8-ink);

@@ -353,12 +353,19 @@
   }
   function optionById(info, id) { return info.options.filter(function (o) { return String(o.id) === String(id); })[0]; }
   function strainSummary(info, slots, size) {
-    var names = [];
-    slots.forEach(function (id) { var o = optionById(info, id); if (o && names.indexOf(o.name) === -1) names.push(o.name); });
     var filled = slots.filter(Boolean).length;
     if (filled < size) return filled + " av " + size + " strains valda";
-    if (names.length === 1) return size + " st · " + names[0];
-    return names.length + " strains · " + names.slice(0, 2).join(", ") + (names.length > 2 ? " +" + (names.length - 2) : "");
+    var groups = [];
+    slots.forEach(function (id) {
+      var o = optionById(info, id);
+      if (!o) return;
+      var group = groups.filter(function (g) { return g.id === id; })[0];
+      if (group) group.count++;
+      else groups.push({ id: id, name: o.name, count: 1 });
+    });
+    return groups.reduce(function (n, g) { return n + g.count; }, 0) === filled
+      ? groups.map(function (g) { return g.count + " × " + g.name; }).join(" · ")
+      : filled + " av " + size + " strains identifierade";
   }
   /* Förval: kollektion = en av varje köpbar strain (slutsålda platser
      lämnas tomma); annars fyller radens strain alla platser om lagret
@@ -384,13 +391,16 @@
       if (!info.loaded || !info.steps.length) {
         if (host) host.remove();
         if (tag) tag.remove();
-        row.classList.remove("hz8-has-pack", "hz8-pack-active");
+        row.classList.remove("hz8-has-pack", "hz8-pack-active", "hz8-pack-compact");
         return;
       }
       var step = info.steps.filter(function (s) { return stepKey(s) === rs.key; })[0] || info.steps[0];
       var active = !step.one;
       row.classList.add("hz8-has-pack");
       row.classList.toggle("hz8-pack-active", active);
+      /* Visa en kort, fullständig innehållsrad i stället för Nyehandels
+         upprepade paketrader. Vid osäker metadata behålls originalet. */
+      row.classList.toggle("hz8-pack-compact", active && rs.real && rs.slots.length === step.qty && rs.slots.every(function (id) { return !!optionById(info, id); }));
       /* Paketnamn efter produktnamnet ("· 3-pack") när ett paket är valt --
          men inte när radens eget namn redan säger det (en riktig paket-
          produkt heter t.ex. "… – 3-pack"; TASK 19). */
