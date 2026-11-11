@@ -1,0 +1,780 @@
+{
+ "X1-vaxling-kvarhallna-val": {
+  "posts": [
+   {
+    "body": {
+     "product_variant_id": 467,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 429,
+         "pivot_id": 1
+        },
+        {
+         "id": 431,
+         "pivot_id": 2
+        },
+        {
+         "id": 438,
+         "pivot_id": 3
+        }
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "nativePosts": 0,
+  "choiceVisible": true,
+  "initial": {
+   "cards": [
+    "*1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": false,
+   "strainsVisible": true,
+   "title": "",
+   "slots": [],
+   "sum": "",
+   "note": null,
+   "price": "675 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "Lägg i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": []
+  },
+  "at3": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n1 × Strawberry Kush, 1 × Melon Haze, 1 × Coconut Cake",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Lägg 3‑pack i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "at5": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "*5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 5‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake",
+    "Välj strain",
+    "Välj strain"
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nVälj strain för plats 4 och 5.",
+   "note": "Designförhandsvisning: 5‑pack finns inte som fungerande paketartikel i Nyehandel och kan inte köpas. Priset 3 135 kr kommer från den importerade produkten HZ-CORE-5PK och är inte verifierat.",
+   "price": "3 135 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "5‑pack kan inte köpas än",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "5‑pack kan inte köpas än",
+   "ctaState": "blocked",
+   "ctaDisabled": true,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "at5click": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "*5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 5‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake",
+    "Välj strain",
+    "Välj strain"
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nVälj strain för plats 4 och 5.",
+   "note": "Designförhandsvisning: 5‑pack finns inte som fungerande paketartikel i Nyehandel och kan inte köpas. Priset 3 135 kr kommer från den importerade produkten HZ-CORE-5PK och är inte verifierat.",
+   "price": "3 135 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "5‑pack kan inte köpas än",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "5‑pack kan inte köpas än",
+   "ctaState": "blocked",
+   "ctaDisabled": true,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "back3": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n1 × Strawberry Kush, 1 × Melon Haze, 1 × Coconut Cake",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Lägg 3‑pack i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "at1": {
+   "cards": [
+    "*1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": false,
+   "strainsVisible": true,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st1 × Strawberry Kush, 1 × Melon Haze, 1 × Coconut Cake",
+   "note": null,
+   "price": "675 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "Lägg i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "again3": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr",
+    "5‑pack 3 135 kr 627 kr/st Förhandsvisning"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Strawberry Kush",
+    "Melon Haze",
+    "Coconut Cake"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n1 × Strawberry Kush, 1 × Melon Haze, 1 × Coconut Cake",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Lägg 3‑pack i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "cart": {
+   "total": "1 920 kr",
+   "items": [
+    {
+     "id": 1990,
+     "variant_id": 467,
+     "qty": "1.00",
+     "total": "1 920 kr",
+     "parts": [
+      {
+       "q": 1,
+       "variant": 429,
+       "strain": "Strawberry Kush - Sativa"
+      },
+      {
+       "q": 1,
+       "variant": 431,
+       "strain": "Melon Haze"
+      },
+      {
+       "q": 1,
+       "variant": 438,
+       "strain": "Coconut Cake - Indica"
+      }
+     ]
+    }
+   ]
+  },
+  "minicart": {
+   "strains": [
+    "3 strains · Strawberry Kush - Sativa, Melon Haze +1"
+   ],
+   "rows": [
+    "PILOT T19 – Hero's Core 2ml – 3-pack Paketet innehåller 1 Styck x Hero's Core - 2ml Strain: Strawberry Kush - Sativa 1 Styck x Hero's Core - 2ml Strain: Melon Haze 1 Styck x Hero's Core - 2ml Strain: "
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": false,
+  "errors": []
+ },
+ "F1-tom-plats": {
+  "posts": [],
+  "nativePosts": 0,
+  "choiceVisible": true,
+  "initial": {
+   "cards": [
+    "*1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": false,
+   "strainsVisible": true,
+   "title": "",
+   "slots": [],
+   "sum": "",
+   "note": null,
+   "price": "675 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "Lägg i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": []
+  },
+  "pdp": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Gelato",
+    "Melon Haze",
+    "Välj strain"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\nVälj strain för plats 3.",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Välj strains för alla platser",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Välj strains för alla platser",
+   "ctaState": "missing",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "layoutPdp": {
+   "innerWidth": 1440,
+   "scrollWidth": 1440,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "pdpAfter": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Gelato",
+    "Melon Haze",
+    "Välj strain"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\nVälj strain för plats 3.",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Välj strains för alla platser",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Välj strains för alla platser",
+   "ctaState": "missing",
+   "ctaDisabled": false,
+   "msg": "Välj strain för plats 3.",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "cart": {
+   "total": "0 kr",
+   "items": []
+  },
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "R1-singel-efter-paket": {
+  "posts": [],
+  "nativePosts": 1,
+  "choiceVisible": true,
+  "initial": {
+   "cards": [
+    "*1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": false,
+   "strainsVisible": true,
+   "title": "",
+   "slots": [],
+   "sum": "",
+   "note": null,
+   "price": "675 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "Lägg i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": []
+  },
+  "inPack": {
+   "cards": [
+    "1 st 675 kr Valfri strain",
+    "*3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": true,
+   "strainsVisible": false,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Gelato",
+    "Gelato",
+    "Gelato"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n3 × Gelato",
+   "note": null,
+   "price": "1 920 kr",
+   "cmp": "2 025 kr",
+   "save": "Spara 105 kr",
+   "ctas": [
+    "Lägg 3‑pack i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg 3‑pack i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "back": {
+   "cards": [
+    "*1 st 675 kr Valfri strain",
+    "3‑pack 1 920 kr 640 kr/st Spara 105 kr"
+   ],
+   "builderVisible": false,
+   "strainsVisible": true,
+   "title": "Bygg ditt 3‑pack",
+   "slots": [
+    "Gelato",
+    "Gelato",
+    "Gelato"
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st3 × Gelato",
+   "note": null,
+   "price": "675 kr",
+   "cmp": null,
+   "save": "",
+   "ctas": [
+    "Lägg i varukorgen",
+    "\n                    Till varukorg\n                "
+   ],
+   "cta": "Lägg i varukorgen",
+   "ctaState": "ready",
+   "ctaDisabled": false,
+   "msg": "",
+   "options": [
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ],
+    [
+     "Gelato - Indica",
+     "Strawberry Kush - Sativa",
+     "Melon Haze",
+     "Pineapple Express -Sativa",
+     "Super Lemon Haze",
+     "Coconut Cake - Indica"
+    ]
+   ]
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "cart": {
+   "total": "675 kr",
+   "items": [
+    {
+     "id": 1991,
+     "variant_id": 425,
+     "qty": "1.00",
+     "total": "675 kr",
+     "parts": []
+    }
+   ]
+  },
+  "minicart": {
+   "strains": [],
+   "rows": [
+    "Hero's Core - 2ml 675 kr / Styck Strain: Gelato - Indica - + 675 kr 1 st 675 kr/st 3 st 640 kr/st −105 kr"
+   ]
+  },
+  "layoutMinicart": {
+   "innerWidth": 1440,
+   "scrollWidth": 1425,
+   "pageOverflow": false,
+   "offscreen": []
+  },
+  "cleaned": true,
+  "pass": false,
+  "errors": []
+ }
+}

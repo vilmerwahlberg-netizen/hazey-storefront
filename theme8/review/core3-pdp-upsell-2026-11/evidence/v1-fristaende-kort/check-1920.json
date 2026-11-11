@@ -1,0 +1,187 @@
+{
+ "first": {
+  "viewport": [
+   1920,
+   1080
+  ],
+  "scrollWidth": 1920,
+  "overflow": false,
+  "gallery": {
+   "x": 264,
+   "y": 139,
+   "w": 685,
+   "h": 566
+  },
+  "station": {
+   "x": 997,
+   "y": 207,
+   "w": 659,
+   "h": 613
+  },
+  "h1": {
+   "x": 997,
+   "y": 162,
+   "w": 659,
+   "h": 42
+  },
+  "mainCta": {
+   "x": 1119,
+   "y": 421,
+   "w": 537,
+   "h": 56
+  },
+  "card": {
+   "x": 997,
+   "y": 495,
+   "w": 659,
+   "h": 289
+  },
+  "cardBottomInFirstView": true,
+  "slot": {
+   "x": 1017,
+   "y": 589,
+   "w": 206,
+   "h": 84
+  },
+  "slotImg": {
+   "x": 1047,
+   "y": 599,
+   "w": 52,
+   "h": 64
+  },
+  "artImg": {
+   "x": 1014,
+   "y": 522,
+   "w": 42,
+   "h": 42
+  },
+  "titleLines": 1,
+  "ledeLines": 1,
+  "slotNameLines": [
+   1,
+   1,
+   1
+  ],
+  "ctaText": "Lägg 3‑pack i varukorgen",
+  "stickyOn": false,
+  "fixed": [
+   {
+    "el": "#skip-to.skip__main-content",
+    "pos": "fixed",
+    "x": -263,
+    "y": 16,
+    "w": 186,
+    "h": 56
+   },
+   {
+    "el": "#store-header.",
+    "pos": "fixed",
+    "x": 0,
+    "y": 0,
+    "w": 1920,
+    "h": 80
+   },
+   {
+    "el": "#upsellingSidebar.upselling-sidebar__container",
+    "pos": "fixed",
+    "x": 1920,
+    "y": 0,
+    "w": 450,
+    "h": 1080
+   }
+  ]
+ },
+ "scrolled": {
+  "viewport": [
+   1920,
+   1080
+  ],
+  "scrollWidth": 1920,
+  "overflow": false,
+  "gallery": {
+   "x": 264,
+   "y": 139,
+   "w": 685,
+   "h": 566
+  },
+  "station": {
+   "x": 997,
+   "y": 207,
+   "w": 659,
+   "h": 613
+  },
+  "h1": {
+   "x": 997,
+   "y": 162,
+   "w": 659,
+   "h": 42
+  },
+  "mainCta": {
+   "x": 1119,
+   "y": 421,
+   "w": 537,
+   "h": 56
+  },
+  "card": {
+   "x": 997,
+   "y": 495,
+   "w": 659,
+   "h": 289
+  },
+  "cardBottomInFirstView": true,
+  "slot": {
+   "x": 1017,
+   "y": 589,
+   "w": 206,
+   "h": 84
+  },
+  "slotImg": {
+   "x": 1047,
+   "y": 599,
+   "w": 52,
+   "h": 64
+  },
+  "artImg": {
+   "x": 1014,
+   "y": 522,
+   "w": 42,
+   "h": 42
+  },
+  "titleLines": 1,
+  "ledeLines": 1,
+  "slotNameLines": [
+   1,
+   1,
+   1
+  ],
+  "ctaText": "Lägg 3‑pack i varukorgen",
+  "stickyOn": false,
+  "fixed": [
+   {
+    "el": "#skip-to.skip__main-content",
+    "pos": "fixed",
+    "x": -263,
+    "y": 16,
+    "w": 186,
+    "h": 56
+   },
+   {
+    "el": "#store-header.",
+    "pos": "fixed",
+    "x": 0,
+    "y": 0,
+    "w": 1920,
+    "h": 80
+   },
+   {
+    "el": "#upsellingSidebar.upselling-sidebar__container",
+    "pos": "fixed",
+    "x": 1920,
+    "y": 0,
+    "w": 450,
+    "h": 1080
+   }
+  ]
+ },
+ "errors": []
+}

@@ -1,0 +1,352 @@
+{
+ "M2-minicart-andra": {
+  "posts": [
+   {
+    "product_variant_id": 471,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 454,
+        "pivot_id": 15
+       },
+       {
+        "id": 454,
+        "pivot_id": 16
+       },
+       {
+        "id": 454,
+        "pivot_id": 17
+       },
+       {
+        "id": 454,
+        "pivot_id": 18
+       },
+       {
+        "id": 454,
+        "pivot_id": 19
+       }
+      ]
+     }
+    }
+   },
+   {
+    "product_variant_id": 471,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 464,
+        "pivot_id": 15
+       },
+       {
+        "id": 464,
+        "pivot_id": 16
+       },
+       {
+        "id": 464,
+        "pivot_id": 17
+       },
+       {
+        "id": 454,
+        "pivot_id": 18
+       },
+       {
+        "id": 454,
+        "pivot_id": 19
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "native": 0,
+  "choice": true,
+  "initial": {
+   "cards": [
+    "*1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [],
+   "over": [],
+   "sum": "",
+   "price": "575 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": []
+  },
+  "preOpts": [],
+  "pdp": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "*5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\n5 × Gorilla Cookies",
+   "price": "2 530 kr",
+   "cta": "Lägg 5‑pack i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "after": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "*5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Gorilla Cookies"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\n5 × Gorilla Cookies",
+   "price": "2 530 kr",
+   "cta": "Lägg 5‑pack i varukorgen",
+   "state": "ready",
+   "msg": "5-pack har lagts i varukorgen.",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "layout": {
+   "w": 1440,
+   "sw": 1425,
+   "overflow": false
+  },
+  "cart": [
+   {
+    "id": 2068,
+    "variant": 471,
+    "qty": 1,
+    "total": "2 530 kr",
+    "parts": [
+     454,
+     454,
+     454,
+     454,
+     454
+    ]
+   }
+  ],
+  "minicart": [
+   "5 st · Gorilla Cookies"
+  ],
+  "minicartLayout": {
+   "w": 1440,
+   "sw": 1425,
+   "overflow": false
+  },
+  "edit": {
+   "posts": [
+    {
+     "product_variant_id": 471,
+     "quantity": 1,
+     "meta": {
+      "data": {
+       "packageProductVariants": [
+        {
+         "id": 464,
+         "pivot_id": 15
+        },
+        {
+         "id": 464,
+         "pivot_id": 16
+        },
+        {
+         "id": 464,
+         "pivot_id": 17
+        },
+        {
+         "id": 454,
+         "pivot_id": 18
+        },
+        {
+         "id": 454,
+         "pivot_id": 19
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "deletes": [
+    "2068",
+    "2069"
+   ],
+   "tinkySlot4Disabled": "true",
+   "cart": [
+    {
+     "id": 2069,
+     "variant": 471,
+     "qty": 1,
+     "total": "2 530 kr",
+     "parts": [
+      464,
+      464,
+      464,
+      454,
+      454
+     ]
+    }
+   ],
+   "deletesAtSave": [
+    "2068"
+   ]
+  },
+  "oldRow": "2068",
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ }
+}

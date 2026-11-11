@@ -1,0 +1,937 @@
+{
+ "M2-3-blandat": {
+  "posts": [
+   {
+    "product_variant_id": 470,
+    "quantity": 1,
+    "meta": {
+     "data": {
+      "packageProductVariants": [
+       {
+        "id": 454,
+        "pivot_id": 12
+       },
+       {
+        "id": 454,
+        "pivot_id": 13
+       },
+       {
+        "id": 464,
+        "pivot_id": 14
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "native": 0,
+  "choice": true,
+  "initial": {
+   "cards": [
+    "*1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [],
+   "over": [],
+   "sum": "",
+   "price": "575 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": []
+  },
+  "pdp": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "*3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Tinky Winky"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n2 × Gorilla Cookies, 1 × Tinky Winky",
+   "price": "1 599 kr",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "postResponse": {
+   "status": 200,
+   "error": null
+  },
+  "after": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "*3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Gorilla Cookies",
+    "Gorilla Cookies",
+    "Tinky Winky"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n2 × Gorilla Cookies, 1 × Tinky Winky",
+   "price": "1 599 kr",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "state": "ready",
+   "msg": "3-pack har lagts i varukorgen.",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "layout": {
+   "w": 1440,
+   "sw": 1425,
+   "overflow": false
+  },
+  "cart": [
+   {
+    "id": 2039,
+    "variant": 470,
+    "qty": 1,
+    "total": "1 599 kr",
+    "parts": [
+     454,
+     454,
+     464
+    ]
+   }
+  ],
+  "minicart": [
+   "2 strains · Gorilla Cookies, Tinky Winky"
+  ],
+  "minicartLayout": {
+   "w": 1440,
+   "sw": 1425,
+   "overflow": false
+  },
+  "checkout": {
+   "price": true,
+   "strains": true
+  },
+  "checkoutLayout": {
+   "w": 1440,
+   "sw": 1440,
+   "overflow": false
+  },
+  "pkgFetches": 2,
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "M2-5-tinky5-sparr": {
+  "posts": [],
+  "native": 0,
+  "choice": true,
+  "initial": {
+   "cards": [
+    "*1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [],
+   "over": [],
+   "sum": "",
+   "price": "575 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": []
+  },
+  "pdp": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "*5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    true,
+    true
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nTinky Winky: bara 3 kvar i lager – du har valt 5.",
+   "price": "2 530 kr",
+   "cta": "Ändra valen – lagret räcker inte",
+   "state": "missing",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "after": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "*5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky",
+    "Tinky Winky"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    true,
+    true
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nTinky Winky: bara 3 kvar i lager – du har valt 5.",
+   "price": "2 530 kr",
+   "cta": "Ändra valen – lagret räcker inte",
+   "state": "missing",
+   "msg": "Tinky Winky: bara 3 kvar i lager – du har valt 5.",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "layout": {
+   "w": 1440,
+   "sw": 1440,
+   "overflow": false
+  },
+  "cart": [],
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "M2-lager-andras-fore-kop": {
+  "posts": [],
+  "native": 0,
+  "choice": true,
+  "initial": {
+   "cards": [
+    "*1 st 575 kr Valfri strain",
+    "3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [],
+   "over": [],
+   "sum": "",
+   "price": "575 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": []
+  },
+  "pdp": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "*3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Tinky Winky",
+    "Tinky Winky",
+    "Gorilla Cookies"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n2 × Tinky Winky, 1 × Gorilla Cookies",
+   "price": "1 599 kr",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ]
+   ]
+  },
+  "stockMocked": true,
+  "after": {
+   "cards": [
+    "1 st 575 kr Valfri strain",
+    "*3‑pack 1 599 kr 533 kr/st Spara 126 kr",
+    "5‑pack 2 530 kr 506 kr/st Spara 345 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Tinky Winky",
+    "Tinky Winky",
+    "Gorilla Cookies"
+   ],
+   "over": [
+    false,
+    true,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\nTinky Winky: bara 1 kvar i lager – du har valt 2.",
+   "price": "1 599 kr",
+   "cta": "Ändra valen – lagret räcker inte",
+   "state": "missing",
+   "msg": "Tinky Winky: bara 1 kvar i lager – du har valt 2. Varukorgen är oförändrad.",
+   "buttons": 1,
+   "options": [
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "Tinky Winky"
+    ],
+    [
+     "Gorilla Cookies",
+     "×Crazy Dog (slut i lager)",
+     "×High Pepito (slut i lager)",
+     "×Samurai Jack (slut i lager)",
+     "×Yoda Ice Cream (slut i lager)",
+     "×London Lobster (slut i lager)",
+     "×Kowa Bunga (slut i lager)",
+     "×Bruce Banner OG (slut i lager)",
+     "×Tinky Winky (inga fler i lager)"
+    ]
+   ]
+  },
+  "layout": {
+   "w": 1440,
+   "sw": 1440,
+   "overflow": false
+  },
+  "cart": [],
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ },
+ "M5-vaxling": {
+  "posts": [],
+  "native": 0,
+  "choice": true,
+  "initial": {
+   "cards": [
+    "*1 st 1 195 kr Valfri strain",
+    "3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [],
+   "over": [],
+   "sum": "",
+   "price": "1 195 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": []
+  },
+  "at3": {
+   "cards": [
+    "1 st 1 195 kr Valfri strain",
+    "*3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n1 × Kowa Bunga, 1 × La Chupacabra, 1 × Bruce Banner OG",
+   "price": "2 950 kr",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "at5": {
+   "cards": [
+    "1 st 1 195 kr Valfri strain",
+    "3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "*5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG",
+    "Välj strain",
+    "Välj strain"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nVälj strain för plats 4 och 5.",
+   "price": "4 450 kr",
+   "cta": "Välj strains för alla platser",
+   "state": "missing",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "at5try": {
+   "cards": [
+    "1 st 1 195 kr Valfri strain",
+    "3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "*5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG",
+    "Välj strain",
+    "Välj strain"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nVälj strain för plats 4 och 5.",
+   "price": "4 450 kr",
+   "cta": "Välj strains för alla platser",
+   "state": "missing",
+   "msg": "Välj strain för plats 4 och 5.",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "back3": {
+   "cards": [
+    "1 st 1 195 kr Valfri strain",
+    "*3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st\n1 × Kowa Bunga, 1 × La Chupacabra, 1 × Bruce Banner OG",
+   "price": "2 950 kr",
+   "cta": "Lägg 3‑pack i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "at1": {
+   "cards": [
+    "*1 st 1 195 kr Valfri strain",
+    "3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": false,
+   "strains": true,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG"
+   ],
+   "over": [
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 3‑pack, 3 st1 × Kowa Bunga, 1 × La Chupacabra, 1 × Bruce Banner OG",
+   "price": "1 195 kr",
+   "cta": "Lägg i varukorgen",
+   "state": "ready",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "again5": {
+   "cards": [
+    "1 st 1 195 kr Valfri strain",
+    "3‑pack 2 950 kr 983 kr/st Spara 635 kr",
+    "*5‑pack 4 450 kr 890 kr/st Spara 1 525 kr"
+   ],
+   "builder": true,
+   "strains": false,
+   "slots": [
+    "Kowa Bunga",
+    "La Chupacabra",
+    "Bruce Banner OG",
+    "Välj strain",
+    "Välj strain"
+   ],
+   "over": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "sum": "Läggs i varukorgen: 5‑pack, 5 st\nVälj strain för plats 4 och 5.",
+   "price": "4 450 kr",
+   "cta": "Välj strains för alla platser",
+   "state": "missing",
+   "msg": "",
+   "buttons": 1,
+   "options": [
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ],
+    [
+     "This is Sparta",
+     "Kowa Bunga",
+     "La Chupacabra",
+     "Yoda Ice Cream",
+     "Bruce Banner OG"
+    ]
+   ]
+  },
+  "cart": [],
+  "cleaned": true,
+  "pass": true,
+  "errors": []
+ }
+}

@@ -1,0 +1,317 @@
+{
+  "145": {
+    "name": "MS 3.0 – 2ml – 3-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 256,
+        "sku": "HZ-MS2ML-3PK",
+        "opt": "",
+        "price": "1 599 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "147": {
+    "name": "MS 3.0 – 2ml – 5-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 258,
+        "sku": "HZ-MS2ML-5PK",
+        "opt": "",
+        "price": "2 530 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "159": {
+    "name": "Hero's Core 2ml – 3-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 270,
+        "sku": "HZ-CORE-3PK",
+        "opt": "",
+        "price": "1 920 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "162": {
+    "name": "Hero's Core 2ml – 5-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 273,
+        "sku": "HZ-CORE-5PK",
+        "opt": "",
+        "price": "3 135 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "166": {
+    "name": "MS 3.0 – 5ml – 3-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 277,
+        "sku": "HZ-MS5ML-3PK",
+        "opt": "",
+        "price": "2 950 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "169": {
+    "name": "MS 3.0 – 5ml – 5-pack",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 280,
+        "sku": "HZ-MS5ML-5PK",
+        "opt": "",
+        "price": "4 450 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      }
+    ]
+  },
+  "255": {
+    "name": "Hero's Core - 2ml",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 425,
+        "sku": "HZY-WC-347476",
+        "opt": "Gelato - Indica",
+        "price": "675 kr",
+        "stock": 69,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 429,
+        "sku": "HZY-WC-347478",
+        "opt": "Strawberry Kush - Sativa",
+        "price": "675 kr",
+        "stock": 34,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 431,
+        "sku": "HZY-WC-381941",
+        "opt": "Melon Haze",
+        "price": "675 kr",
+        "stock": 31,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 433,
+        "sku": "HZY-WC-381942",
+        "opt": "Pineapple Express -Sativa",
+        "price": "675 kr",
+        "stock": 80,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 435,
+        "sku": "HZY-WC-381943",
+        "opt": "Super Lemon Haze",
+        "price": "675 kr",
+        "stock": 71,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 438,
+        "sku": "HZY-WC-381962",
+        "opt": "Coconut Cake - Indica",
+        "price": "675 kr",
+        "stock": 65,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      }
+    ]
+  },
+  "260": {
+    "name": "Magic Sauce 3.0 - 5ml",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 449,
+        "sku": "HZY-WC-396672",
+        "opt": "This is Sparta",
+        "price": "1 195 kr",
+        "stock": 99,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 451,
+        "sku": "HZY-WC-396673",
+        "opt": "Kowa Bunga",
+        "price": "1 195 kr",
+        "stock": 20,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 453,
+        "sku": "HZY-WC-396674",
+        "opt": "La Chupacabra",
+        "price": "1 195 kr",
+        "stock": 52,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 455,
+        "sku": "HZY-WC-396675",
+        "opt": "Yoda Ice Cream",
+        "price": "1 195 kr",
+        "stock": 4,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 456,
+        "sku": "HZY-WC-396676",
+        "opt": "Bruce Banner OG",
+        "price": "1 195 kr",
+        "stock": 77,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      }
+    ]
+  },
+  "261": {
+    "name": "Magic Sauce 3.0 - 2ml",
+    "is_package": false,
+    "variants": [
+      {
+        "id": 454,
+        "sku": "HZY-WC-351565",
+        "opt": "Gorilla Cookies",
+        "price": "575 kr",
+        "stock": 39,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      },
+      {
+        "id": 457,
+        "sku": "HZY-WC-351566",
+        "opt": "Crazy Dog",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 458,
+        "sku": "HZY-WC-351567",
+        "opt": "High Pepito",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 459,
+        "sku": "HZY-WC-351568",
+        "opt": "Samurai Jack",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 460,
+        "sku": "HZY-WC-351572",
+        "opt": "Yoda Ice Cream",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 461,
+        "sku": "HZY-WC-383172",
+        "opt": "London Lobster",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 462,
+        "sku": "HZY-WC-383444",
+        "opt": "Kowa Bunga",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 463,
+        "sku": "HZY-WC-383445",
+        "opt": "Bruce Banner OG",
+        "price": "575 kr",
+        "stock": 0,
+        "track": 1,
+        "buyable": false,
+        "active": true
+      },
+      {
+        "id": 464,
+        "sku": "HZY-WC-383446",
+        "opt": "Tinky Winky",
+        "price": "575 kr",
+        "stock": 3,
+        "track": 1,
+        "buyable": true,
+        "active": true
+      }
+    ]
+  },
+  "checkedAt": "2026-11-11T11:48:31.964Z"
+}

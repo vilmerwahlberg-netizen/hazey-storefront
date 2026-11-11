@@ -1,0 +1,9 @@
+
+### S1-tre-olika-1920: PASS
+{"initial":["*1 st 675 kr Valfri strain","3‑pack 1 920 kr 640 kr/st Spara 105 kr"],"pdp":{"slots":["Gelato","Melon Haze","Coconut Cake"],"sum":"Läggs i varukorgen: 3‑pack, 3 st\n1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake","price":"1 920 kr","cta":"Lägg 3‑pack i varukorgen","ctas":["Lägg 3‑pack i varukorgen"]},"posts":[[{"id":425,"pivot_id":1},{"id":431,"pivot_id":2},{"id":438,"pivot_id":3}]],"native":0,"postResponse":{"status":200,"error":null},"pdpAfter":{"msg":"3-pack har lagts i varukorgen.","cta":"Lägg 3‑pack i varukorgen"},"cart":[[467,"1.00","1 920 kr","425/431/438"]],"minicart":["3 strains · Gelato - Indica, Melon Haze +1"],"checkout":{"has1920":true,"strains":true},"layout":{"innerWidth":1920,"scrollWidth":1920,"pageOverflow":false,"offscreen":[]},"cleaned":true,"errors":[]}
+
+### X1-vaxling-kvarhallna-val-1920: PASS
+{"initial":["*1 st 675 kr Valfri strain","3‑pack 1 920 kr 640 kr/st Spara 105 kr","5‑pack 3 135 kr 627 kr/st Förhandsvisning"],"at3":["Strawberry Kush","Melon Haze","Coconut Cake"],"at5":{"slots":["Strawberry Kush","Melon Haze","Coconut Cake","Välj strain","Välj strain"],"cta":"5‑pack kan inte köpas än","state":"blocked","ctas":["5‑pack kan inte köpas än"]},"back3":["Strawberry Kush","Melon Haze","Coconut Cake"],"again3":["Strawberry Kush","Melon Haze","Coconut Cake"],"posts":[[{"id":429,"pivot_id":1},{"id":431,"pivot_id":2},{"id":438,"pivot_id":3}]],"native":0,"postResponse":{"status":200,"error":null},"cart":[[467,"1.00","1 920 kr","429/431/438"]],"minicart":["3 strains · Strawberry Kush - Sativa, Melon Haze +1"],"cleaned":true,"errors":[]}
+
+### R1-singel-efter-paket-1920: PASS
+{"initial":["*1 st 675 kr Valfri strain","3‑pack 1 920 kr 640 kr/st Spara 105 kr"],"posts":[],"native":1,"postResponse":{"status":200,"error":null},"cart":[[425,"1.00","675 kr",""]],"minicart":[],"cleaned":true,"errors":[]}

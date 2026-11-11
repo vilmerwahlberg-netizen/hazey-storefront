@@ -470,7 +470,13 @@
       return reload().then(schedule, schedule);
     }
     var before = cartObj() ? +(cartObj().quantity_count || 0) : null;
-    return api("POST", "/frontend-api/cart/item", body)
+    /* TASK 20 v4: färsk lagerkontroll före anropet (klientspärr, ersätter
+       inte servervalidering). Vid problem skickas inget; paketet är kvar. */
+    var guard = HZ8.packageStock ? HZ8.packageStock.check(rowState(it).pid, slots, 1, it.id) : Promise.resolve({ problems: [] });
+    return guard.then(function (chk) {
+      if (chk.problems.length) { var e0 = new Error("stock"); e0.stockMsg = HZ8.packageStock.message(chk.problems) + " Paketet är oförändrat."; throw e0; }
+      return api("POST", "/frontend-api/cart/item", body);
+    })
       .then(function (d) {
         /* Servern kapar till lagret: ökade korgen inte, behålls den gamla
            raden (annars försvinner kundens paket). */
@@ -480,7 +486,7 @@
       })
       .then(reload)
       .catch(function (e) {
-        W.msgs[it.id] = { role: "alert", text: e && e.capped ? "Lagret räcker inte för de valen. Paketet är oförändrat." : e && e.data && e.data.cart_item_data_is_invalid ? "Paketvalet godkändes inte av butiken. Paketet är oförändrat." : "Paketet kunde inte ändras. Varukorgen visar det som är sparat." };
+        W.msgs[it.id] = { role: "alert", text: e && e.stockMsg ? e.stockMsg : e && e.capped ? "Lagret räcker inte för de valen. Paketet är oförändrat." : e && e.data && e.data.cart_item_data_is_invalid ? "Paketvalet godkändes inte av butiken. Paketet är oförändrat." : "Paketet kunde inte ändras. Varukorgen visar det som är sparat." };
         return reload();
       }).then(schedule, schedule);
   }
@@ -527,6 +533,9 @@
     ed.classList.toggle("is-imageless", !info.options.some(function (o) { return o.image; }));
     var filled = E.slots.filter(Boolean).length, size = E.slots.length, missing = size - filled;
     var price = step.review ? "paketpris saknas" : kr(step.price);
+    /* TASK 20 v4: lagerspärren (85-pdp-pilot.js HZ8.packageStock) -- det
+       som redan ligger i korgen (utom raden som redigeras) räknas in. */
+    var res = HZ8.packageStock ? HZ8.packageStock.reserved(E.itemId) : {};
     var slotHtml = E.slots.map(function (id, i) {
       var o = id ? optionById(info, id) : null, open = E.openSlot === i;
       var row = '<li class="hz8-slot' + (open ? " is-open" : "") + (o ? " is-filled" : "") + '">' +
@@ -539,7 +548,7 @@
       if (open) {
         row += '<div class="hz8-slot__list" id="hz8-slot-list-' + i + '" role="radiogroup" aria-label="Strain för plats ' + (i + 1) + '">' + info.options.map(function (op) {
           var used = E.slots.filter(function (x, j) { return j !== i && String(x) === String(op.id); }).length;
-          var can = op.ok && op.stock > used;
+          var can = op.ok && (op.stock === Infinity || op.stock - (res[String(op.id)] || 0) > used);
           var sel = String(op.id) === String(id);
           return '<button type="button" role="radio" class="hz8-opt' + (can ? "" : " is-out") + '" aria-checked="' + sel + '"' + (can ? "" : ' aria-disabled="true"') + ' data-hz8-opt="' + esc(op.id) + '" data-slot="' + i + '">' +
             '<span class="hz8-slot__img">' + (op.image ? '<img src="' + esc(op.image) + '" alt="" width="48" height="48" loading="lazy">' : "") + "</span>" +
@@ -599,7 +608,8 @@
     if (t.classList.contains("hz8-strains__random")) {
       /* Bara köpbara strains, aldrig fler av en strain än lagret. */
       var pool = [];
-      info.options.forEach(function (o) { if (o.ok) for (var k = 0; k < Math.min(o.stock, E.slots.length); k++) pool.push(o.id); });
+      var res2 = HZ8.packageStock ? HZ8.packageStock.reserved(E.itemId) : {};
+      info.options.forEach(function (o) { var av = o.stock === Infinity ? E.slots.length : Math.max(0, o.stock - (res2[String(o.id)] || 0)); if (o.ok) for (var k = 0; k < Math.min(av, E.slots.length); k++) pool.push(o.id); });
       for (var j = pool.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var tmp = pool[j]; pool[j] = pool[r]; pool[r] = tmp; }
       E.slots = E.slots.map(function (x, i2) { return pool[i2] != null ? pool[i2] : null; });
       E.openSlot = -1;
