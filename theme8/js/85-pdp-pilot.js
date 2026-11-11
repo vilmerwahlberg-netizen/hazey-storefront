@@ -233,8 +233,26 @@
      stickybaren lämnas orörda. Samma post-form fungerar för andra
      verifierade flerpack (kind "strain", olåsta rader av basprodukten);
      inga andra produkter är aktiverade. */
+  /* TASK 20 v4: alla sex paketartiklar lästa och kontrollerade live
+     2026-11-11 (core3-pdp-upsell-2026-11/evidence/probe-packages.json,
+     probe-pivots.json): is_package, pris, paketvariant och serverrenderade
+     rader (rätt basprodukt, olåsta, antal 1). pivot_id läses ändå alltid
+     live ur `route` (loadPivots) -- registret anger bara var. Fortfarande
+     BARA bakom ?hz8-pkg-pilot=1: ingen publik synlighet utan separat
+     klartecken på lagerfrågan (se lagerspärren nedan). */
   var PACKAGE_PRODUCTS = PKG_PILOT ? {
-    255: [{ kind: "strain", qty: 3, packageId: 263, route: "/sv/products/pilot-t19-heros-core-2ml-3-pack", verified: true, display: "upsell" }]
+    255: [
+      { kind: "strain", qty: 3, packageId: 263, route: "/sv/products/pilot-t19-heros-core-2ml-3-pack", verified: true, display: "upsell" },
+      { kind: "strain", qty: 5, packageId: 265, route: "/sv/products/heros-core-2ml-5-pack-blandbart", verified: true, display: "upsell" }
+    ],
+    261: [
+      { kind: "strain", qty: 3, packageId: 266, route: "/sv/products/magic-sauce-30-2ml-3-pack-blandbart", verified: true, display: "upsell" },
+      { kind: "strain", qty: 5, packageId: 267, route: "/sv/products/magic-sauce-30-2ml-5-pack-blandbart", verified: true, display: "upsell" }
+    ],
+    260: [
+      { kind: "strain", qty: 3, packageId: 268, route: "/sv/products/magic-sauce-30-5ml-3-pack-blandbart", verified: true, display: "upsell" },
+      { kind: "strain", qty: 5, packageId: 269, route: "/sv/products/magic-sauce-30-5ml-5-pack-blandbart", verified: true, display: "upsell" }
+    ]
   } : {};
   /* TASK 20: paketstorlekar som INTE är verifierade som Nyehandel-paket
      visas i paketkortet bara i granskningsläget (?hz8-pkg-review=1),
@@ -245,11 +263,11 @@
      buds-/haschprodukter kan inte blandas med paketartikeln (Task 19).
      Källa: mixed-pack-feasibility-2026-11/GROUP-MATRIX.json (2026-11-06),
      kontrollerad live 2026-11-11 (core3-pdp-upsell-2026-11/probe-refs). */
-  var PACKAGE_PREVIEW = PKG_REVIEW ? {
-    255: [{ kind: "strain", qty: 3, ref: 159 }, { kind: "strain", qty: 5, ref: 162 }],
-    260: [{ kind: "strain", qty: 3, ref: 166 }, { kind: "strain", qty: 5, ref: 169 }],
-    261: [{ kind: "strain", qty: 3, ref: 145 }, { kind: "strain", qty: 5, ref: 147 }]
-  } : {};
+  /* Inga förhandsvisade storlekar just nu: alla 3-/5-pack för 255, 260
+     och 261 är verifierade paketartiklar (se PACKAGE_PRODUCTS). Formatet
+     finns kvar för kommande familjer: { kind, qty, ref } (ref = befintlig
+     produkt som bär priset; knappen alltid avstängd). */
+  var PACKAGE_PREVIEW = PKG_REVIEW ? {} : {};
   /* Paketets verkliga rader ur Nyehandels serverrenderade paketsida:
      <package-product-variants product-id pivot-id locked-variant quantity>.
      Godkänns bara om raderna är exakt `qty` st, alla olåsta, antal 1 och
@@ -775,6 +793,7 @@
       if (UPS.busy) return "Lägger till…";
       if (UPS.added) return "Tillagd ✓";
       if (upMissing().length) return "Välj " + labelPlural() + " för alla platser";
+      if (upProblems().length) return "Ändra valen – lagret räcker inte";
       return "Lägg " + packWord(ps1.qty) + " i varukorgen";
     }
     if (B.busy) return "Lägger till…";
@@ -985,6 +1004,68 @@
     });
   }
 
+  /* ================= Lagerspärr för paket (TASK 20 v4) =================
+     KLIENTSPÄRR -- ersätter INTE servervalidering. Bakgrund: Nyehandels
+     server godtog Tinky Winky × 5 i paket 267 trots lager 3 (2026-11-11),
+     så servern kan inte ensam hindra överförsäljning via paket. Spärren:
+       - räknar antal per vald variant över alla platser × paketantal,
+       - lägger till det som redan ligger i varukorgen (vanliga rader och
+         paketdelar ur meta.data.packageProductVariants),
+       - jämför med variantens lager (bara spårat lager; always_orderable
+         och ospårat räknas som obegränsat),
+       - körs live i väljarna OCH färskt (ny product/state + omläst korg)
+         direkt före varje varukorgsanrop, på PDP:n och i minicartens
+         "Ändra" (84-cart.js via HZ8.packageStock).
+     Den kan inte se andra kunders samtidiga köp och skyddar inte mot
+     direkta API-anrop -- lagret måste också valideras i Nyehandel/ordern. */
+  function cartItemsNow() { var st = HZ8.store && HZ8.store(); var c = st && st.state && st.state.cart && st.state.cart.cart; return (c && c.items) || []; }
+  function reservedInCart(items, excludeItemId) {
+    var m = {};
+    (items || []).forEach(function (it) {
+      if (excludeItemId != null && String(it.id) === String(excludeItemId)) return;
+      var q = +it.quantity || 0;
+      var parts = it.meta && it.meta.data && it.meta.data.packageProductVariants;
+      if (Array.isArray(parts) && parts.length) parts.forEach(function (x) { var id = String(x.id || x.product_variant_id); m[id] = (m[id] || 0) + (+x.quantity || 1) * q; });
+      else if (it.variant_id != null) { var k = String(it.variant_id); m[k] = (m[k] || 0) + q; }
+    });
+    return m;
+  }
+  function variantLabel(v) { return v ? (v.option_values || []).map(function (o) { return o.name; }).join(" · ") : ""; }
+  /* Problem för ett paketval: [{id, name, want, stock, inCart, soldOut}]. */
+  function stockProblems(variants, slotVariantIds, packQty, reserved) {
+    var want = {}, order = [];
+    (slotVariantIds || []).forEach(function (id) { if (!id) return; id = String(id); if (!(id in want)) { want[id] = 0; order.push(id); } want[id] += packQty || 1; });
+    var out = [];
+    order.forEach(function (id) {
+      var v = (variants || []).filter(function (x) { return String(x.id) === id; })[0];
+      var inCart = reserved[id] || 0;
+      if (!v || !HZ8.variantOrderable(v)) { out.push({ id: id, name: variantLabel(v), want: want[id], stock: 0, inCart: inCart, soldOut: true }); return; }
+      if (!v.track_inventory || v.always_orderable) return;
+      var stock = Math.max(0, v.available_stock || 0);
+      if (want[id] + inCart > stock) out.push({ id: id, name: variantLabel(v), want: want[id], stock: stock, inCart: inCart, soldOut: stock === 0 });
+    });
+    return out;
+  }
+  function stockMessage(problems, short) {
+    return problems.map(function (p) {
+      var n = short ? short(p.name) : p.name;
+      if (p.soldOut) return n + " är slut i lager.";
+      var left = Math.max(0, p.stock - p.inCart);
+      if (p.inCart) return n + ": " + p.stock + " kvar i lager och " + p.inCart + " ligger redan i din varukorg – du kan välja högst " + left + " till.";
+      return n + ": bara " + p.stock + " kvar i lager – du har valt " + p.want + ".";
+    }).join(" ");
+  }
+  /* Färsk kontroll direkt före varukorgsanropet: nytt lager + omläst korg. */
+  function freshStockCheck(baseId, slotVariantIds, packQty, excludeItemId) {
+    var st = HZ8.store && HZ8.store();
+    var cartReady = st && st.dispatch ? Promise.resolve(st.dispatch("cart/reload")).catch(function () { return null; }) : Promise.resolve();
+    return Promise.all([fetchState(baseId), cartReady]).then(function (r) {
+      var vs = (r[0] && r[0].product && r[0].product.variants) || [];
+      return { variants: vs, problems: stockProblems(vs, slotVariantIds, packQty, reservedInCart(cartItemsNow(), excludeItemId)) };
+    });
+  }
+  HZ8.packageStock = { reserved: function (ex) { return reservedInCart(cartItemsNow(), ex); }, problems: stockProblems, check: freshStockCheck, message: stockMessage };
+
   /* ================= Paketval (TASK 20) =================
      EN köpmodul: "Välj paket" (1 st | 3-pack | 5-pack ...) och under den
      antingen produktens vanliga strainval (1 st) eller byggaren för valt
@@ -1004,14 +1085,26 @@
   var UPS = { qty: 0, slots: [], busy: false, added: false, tried: false, msg: "" };
   function upSizes() { return PK.upsells || []; }
   function packWord(q) { return q + NBH + "pack"; }
-  function upOptions() { return S.values.map(function (x) { return { id: x.id, name: x.name, ok: isBuyable(x.variant), stock: stockOf(x.variant), variant: x.variant }; }); }
+  /* avail = lager minus det som redan ligger i varukorgen (lagerspärren). */
+  function upOptions() {
+    var res = reservedInCart(cartItemsNow());
+    return S.values.map(function (x) {
+      var stock = stockOf(x.variant), inCart = x.variant ? res[String(x.variant.id)] || 0 : 0;
+      return { id: x.id, name: x.name, ok: isBuyable(x.variant), stock: stock, inCart: inCart, avail: stock === Infinity ? Infinity : Math.max(0, stock - inCart), variant: x.variant };
+    });
+  }
   function upOpt(id) { return upOptions().filter(function (o) { return o.id === id; })[0] || null; }
-  /* En storlek kan bara väljas när platserna faktiskt kan fyllas ur lagret. */
+  /* En storlek kan bara väljas när platserna faktiskt kan fyllas. */
   function upFillable(qty) {
     var n = 0;
-    upOptions().forEach(function (o) { if (o.ok) n += Math.min(o.stock, qty); });
+    upOptions().forEach(function (o) { if (o.ok) n += Math.min(o.avail, qty); });
     return !!S.product && S.values.length > 0 && n >= qty;
   }
+  function slotVariantIds() { return UPS.slots.map(function (id) { var o = id && upOpt(id); return o && o.variant ? o.variant.id : (id ? "?" + id : ""); }); }
+  function upProblems() {
+    return S.product ? stockProblems(S.product.variants || [], slotVariantIds(), 1, reservedInCart(cartItemsNow())) : [];
+  }
+  function shortName(n) { return strainParts(n)[0]; }
   function upSize() { return UPS.qty ? upSizes().filter(function (s) { return s.qty === UPS.qty && upFillable(s.qty); })[0] || null : null; }
   function packMode() { return !!upSize(); }
   /* "Gelato - Indica" -> ["Gelato", "Indica"]; övriga namn oförändrade. */
@@ -1038,22 +1131,18 @@
     if (!UPS.slots.some(Boolean)) {
       var cur = currentValue(), o0 = upOpt(cur);
       UPS.slots = [];
-      for (var i = 0; i < q; i++) UPS.slots.push(o0 && o0.ok && i < o0.stock ? cur : "");
+      for (var i = 0; i < q; i++) UPS.slots.push(o0 && o0.ok && i < o0.avail ? cur : "");
     } else {
       UPS.slots = UPS.slots.slice(0, q);
       while (UPS.slots.length < q) UPS.slots.push("");
     }
   }
-  /* Ogiltiga val töms: slutsålt, okänt, eller fler än lagret. */
+  /* Okända val töms. Slutsålda val och val över lagret töms INTE tyst --
+     de markeras och spärrar köpet med ett begripligt fel (lagerspärren). */
   function upNormalize(q) {
-    var opts = upOptions(), used = {};
+    var opts = upOptions();
     while (UPS.slots.length < q) UPS.slots.push("");
-    UPS.slots = UPS.slots.slice(0, q).map(function (id) {
-      var o = id && opts.filter(function (x) { return x.id === id; })[0];
-      if (!o || !o.ok) return "";
-      used[id] = (used[id] || 0) + 1;
-      return used[id] > o.stock ? "" : id;
-    });
+    UPS.slots = UPS.slots.slice(0, q).map(function (id) { return id && opts.some(function (x) { return x.id === id; }) ? id : ""; });
   }
   function upPrices(size) {
     var same = commonUnit(), sum = 0, ok = true;
@@ -1064,7 +1153,18 @@
   function upMissing() { var m = []; UPS.slots.forEach(function (v, i) { if (!v) m.push(i + 1); }); return m; }
   function upReason() {
     var m = upMissing();
-    return m.length ? "Välj " + label() + " för plats " + m.join(", ").replace(/, (\d+)$/, " och $1") + "." : "";
+    if (m.length) return "Välj " + label() + " för plats " + m.join(", ").replace(/, (\d+)$/, " och $1") + ".";
+    var pr = upProblems();
+    return pr.length ? stockMessage(pr, shortName) : "";
+  }
+  /* Platser över lagret: de sista platserna med en variant som inte räcker. */
+  function overSlots() {
+    var over = {}, pr = upProblems();
+    pr.forEach(function (p) {
+      var allowed = p.soldOut ? 0 : Math.max(0, p.stock - p.inCart), seen = 0;
+      UPS.slots.forEach(function (id, i) { var o = id && upOpt(id); if (o && o.variant && String(o.variant.id) === p.id) { seen++; if (seen > allowed) over[i] = true; } });
+    });
+    return over;
   }
   function upSet(el, prop, v) { if (el[prop] !== v) el[prop] = v; }
   function renderUpsells(st, anyBuyable) {
@@ -1149,24 +1249,27 @@
     upSet(mod.querySelector(".hz8-up__title"), "textContent", "Bygg ditt " + packWord(q));
     upSet(mod.querySelector(".hz8-up__lede"), "textContent", "Välj " + (NUMWORD[q] || q) + " " + lbls + " – samma eller olika.");
     var cur = currentValue(), curOpt = upOpt(cur), fill = mod.querySelector(".hz8-up__fill");
-    var canFill = !!(curOpt && curOpt.ok && curOpt.stock >= q) && !UPS.slots.every(function (x) { return x === cur; });
+    var canFill = !!(curOpt && curOpt.ok && curOpt.avail >= q) && !UPS.slots.every(function (x) { return x === cur; });
     upSet(fill, "textContent", "Alla " + (NUMWORD[q] || q) + ": " + (curOpt ? strainParts(curOpt.name)[0] : ""));
     fill.hidden = !canFill;
     /* Platser: synlig rad + osynlig native <select> över hela raden. */
     var ol = mod.querySelector(".hz8-up__slots");
     ol.setAttribute("data-n", String(q));
+    var over = overSlots();
     var html = UPS.slots.map(function (val, idx) {
       var o = val && upOpt(val), parts = o ? strainParts(o.name) : ["Välj " + lbl, ""], src = o ? variantThumb(o.variant) : "";
-      return '<li class="hz8-up__slot' + (val ? " is-set" : " is-empty") + (UPS.tried && !val ? " is-warn" : "") + '">' +
+      return '<li class="hz8-up__slot' + (val ? " is-set" : " is-empty") + ((UPS.tried && !val) || over[idx] ? " is-warn" : "") + (over[idx] ? " is-over" : "") + '">' +
         '<span class="hz8-up__num" aria-hidden="true">' + (idx + 1) + "</span>" +
         '<span class="hz8-up__img" aria-hidden="true">' + (src ? '<img src="' + esc(src) + '" alt="" width="48" height="48" loading="lazy" decoding="async">' : '<span class="hz8-up__plus"></span>') + "</span>" +
         '<span class="hz8-up__name" aria-hidden="true"><span>' + esc(parts[0]) + "</span>" + (parts[1] ? "<small>" + esc(parts[1]) + "</small>" : "") + "</span>" +
         '<span class="hz8-up__edit" aria-hidden="true">' + (val ? "Byt" : "Välj") + ICON.chev + "</span>" +
         '<select data-upslot="' + idx + '" aria-label="Plats ' + (idx + 1) + " av " + q + ", " + esc(lbl) + '"><option value="">Välj ' + esc(lbl) + "</option>" +
         opts.map(function (x) {
+          /* Lagerspärr i väljaren: andra platser + varukorgen räknas in. */
           var used = UPS.slots.filter(function (y, j) { return y === x.id && j !== idx; }).length;
-          var full = x.ok && x.id !== val && used >= x.stock;
-          return '<option value="' + esc(x.id) + '"' + (x.id === val ? " selected" : "") + (!x.ok || full ? " disabled" : "") + ">" + esc(x.name) + (!x.ok ? " (slut i lager)" : full ? " (inga fler i lager)" : "") + "</option>";
+          var full = x.ok && x.id !== val && used >= x.avail;
+          var why = !x.ok ? " (slut i lager)" : full ? (x.inCart ? " (inga fler – " + x.inCart + " i varukorgen)" : " (inga fler i lager)") : "";
+          return '<option value="' + esc(x.id) + '"' + (x.id === val ? " selected" : "") + ((!x.ok || full) && x.id !== val ? " disabled" : "") + ">" + esc(x.name) + why + "</option>";
         }).join("") + "</select></li>";
     }).join("");
     if (ol.__html !== html) {
@@ -1179,10 +1282,11 @@
     var groups = [], seen = {};
     UPS.slots.forEach(function (id) { if (!id) return; if (!(id in seen)) { seen[id] = groups.length; groups.push([id, 0]); } groups[seen[id]][1]++; });
     var head = "Läggs i varukorgen: " + packWord(q) + ", " + q + " st";
-    var tail = missing.length ? upReason() : groups.map(function (g) { return g[1] + " × " + strainParts((upOpt(g[0]) || {}).name)[0]; }).join(", ");
+    var stockTxt = !missing.length ? upReason() : "";
+    var tail = missing.length || stockTxt ? upReason() : groups.map(function (g) { return g[1] + " × " + strainParts((upOpt(g[0]) || {}).name)[0]; }).join(", ");
     var sum = mod.querySelector(".hz8-up__sum"), sh = "<strong>" + esc(head) + "</strong><span>" + esc(tail) + "</span>";
     if (sum.__html !== sh) { sum.innerHTML = sh; sum.__html = sh; }
-    sum.classList.toggle("is-warn", !!(missing.length && UPS.tried));
+    sum.classList.toggle("is-warn", !!((missing.length && UPS.tried) || stockTxt));
     var note = mod.querySelector(".hz8-up__note");
     var nt = size.verified ? "" : "Designförhandsvisning: " + packWord(q) + " finns inte som fungerande paketartikel i Nyehandel och kan inte köpas. Priset " + (size.formatted || "") + " kommer från den importerade produkten " + (size.refSku || "") + " och är inte verifierat.";
     upSet(note, "textContent", nt); note.hidden = !nt;
@@ -1197,11 +1301,19 @@
     if (UPS.busy || !size || !size.verified) return;
     UPS.added = false;
     if (upMissing().length) { UPS.tried = true; UPS.msg = ""; syncStation(); focusFirstUpMissing(); return; }
-    var rows = UPS.slots.map(function (id) { var o = upOpt(id); return o && o.ok ? o.variant.id : null; });
+    if (upProblems().length) { UPS.tried = true; UPS.msg = ""; syncStation(); return; }
+    var rows = UPS.slots.map(function (id) { var o = upOpt(id); return o && o.variant ? o.variant.id : null; });
     if (rows.some(function (x) { return !x; })) { UPS.tried = true; syncStation(); return; }
     var packName = size.qty + "-pack";
     UPS.busy = true; UPS.msg = ""; syncStation();
-    postPackage(size, rows, packName).then(function () {
+    /* Färsk lagerkontroll (lagret kan ha ändrats sedan sidan laddades):
+       vid problem skickas INGET till varukorgen. */
+    freshStockCheck(readProductId(), rows, 1).then(function (chk) {
+      if (chk.problems.length) {
+        var e0 = new Error("stock"); e0.userMsg = stockMessage(chk.problems, shortName) + " Varukorgen är oförändrad."; e0.stock = true; throw e0;
+      }
+      return postPackage(size, rows, packName);
+    }).then(function () {
       UPS.busy = false; UPS.added = true; UPS.tried = false; UPS.msg = packName + " har lagts i varukorgen.";
       window.clearTimeout(UPS.addedT); UPS.addedT = window.setTimeout(function () { UPS.added = false; syncStation(); }, 2600);
       window.clearTimeout(UPS.msgT); UPS.msgT = window.setTimeout(function () { if (!UPS.busy && !UPS.added) { UPS.msg = ""; syncStation(); } }, 5000);

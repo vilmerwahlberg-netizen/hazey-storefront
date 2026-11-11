@@ -1,0 +1,267 @@
+{
+  "packages": {
+    "263": {
+      "name": "PILOT T19 – Hero's Core 2ml – 3-pack",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 467,
+      "sku": "HZ-T19-CORE-3PK",
+      "price": "1 920 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    },
+    "265": {
+      "name": "Hero's Core 2ml – 5-pack (blandbart)",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 469,
+      "sku": "HZ-MIX-CORE-5PK",
+      "price": "3 135 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    },
+    "266": {
+      "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 470,
+      "sku": "HZ-MIX-MS2ML-3PK",
+      "price": "1 599 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    },
+    "267": {
+      "name": "Magic Sauce 3.0 2ml – 5-pack (blandbart)",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 471,
+      "sku": "HZ-MIX-MS2ML-5PK",
+      "price": "2 530 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    },
+    "268": {
+      "name": "Magic Sauce 3.0 5ml – 3-pack (blandbart)",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 472,
+      "sku": "HZ-MIX-MS5ML-3PK",
+      "price": "2 950 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    },
+    "269": {
+      "name": "Magic Sauce 3.0 5ml – 5-pack (blandbart)",
+      "is_package": true,
+      "parts_buyable": true,
+      "variant": 473,
+      "sku": "HZ-MIX-MS5ML-5PK",
+      "price": "4 450 kr",
+      "buyable": true,
+      "track": 0,
+      "routeTry": null
+    }
+  },
+  "bases": {
+    "255": {
+      "name": "Hero's Core - 2ml",
+      "variants": [
+        {
+          "id": 425,
+          "opt": "Gelato - Indica",
+          "price": "675 kr",
+          "stock": 69,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 429,
+          "opt": "Strawberry Kush - Sativa",
+          "price": "675 kr",
+          "stock": 34,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 431,
+          "opt": "Melon Haze",
+          "price": "675 kr",
+          "stock": 31,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 433,
+          "opt": "Pineapple Express -Sativa",
+          "price": "675 kr",
+          "stock": 80,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 435,
+          "opt": "Super Lemon Haze",
+          "price": "675 kr",
+          "stock": 71,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 438,
+          "opt": "Coconut Cake - Indica",
+          "price": "675 kr",
+          "stock": 65,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        }
+      ]
+    },
+    "260": {
+      "name": "Magic Sauce 3.0 - 5ml",
+      "variants": [
+        {
+          "id": 449,
+          "opt": "This is Sparta",
+          "price": "1 195 kr",
+          "stock": 99,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 451,
+          "opt": "Kowa Bunga",
+          "price": "1 195 kr",
+          "stock": 20,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 453,
+          "opt": "La Chupacabra",
+          "price": "1 195 kr",
+          "stock": 52,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 455,
+          "opt": "Yoda Ice Cream",
+          "price": "1 195 kr",
+          "stock": 4,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 456,
+          "opt": "Bruce Banner OG",
+          "price": "1 195 kr",
+          "stock": 77,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        }
+      ]
+    },
+    "261": {
+      "name": "Magic Sauce 3.0 - 2ml",
+      "variants": [
+        {
+          "id": 454,
+          "opt": "Gorilla Cookies",
+          "price": "575 kr",
+          "stock": 39,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        },
+        {
+          "id": 457,
+          "opt": "Crazy Dog",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 458,
+          "opt": "High Pepito",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 459,
+          "opt": "Samurai Jack",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 460,
+          "opt": "Yoda Ice Cream",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 461,
+          "opt": "London Lobster",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 462,
+          "opt": "Kowa Bunga",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 463,
+          "opt": "Bruce Banner OG",
+          "price": "575 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "always": false
+        },
+        {
+          "id": 464,
+          "opt": "Tinky Winky",
+          "price": "575 kr",
+          "stock": 3,
+          "track": 1,
+          "buyable": true,
+          "always": false
+        }
+      ]
+    }
+  }
+}

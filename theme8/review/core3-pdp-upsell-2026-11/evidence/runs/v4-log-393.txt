@@ -1,0 +1,60 @@
+
+### C3-blandat-393: PASS
+{"cards":["*1 st 675 kr Valfri strain","3‑pack 1 920 kr 640 kr/st Spara 105 kr","5‑pack 3 135 kr 627 kr/st Spara 240 kr"],"pdp":{"slots":["Gelato","Melon Haze","Coconut Cake"],"over":[false,false,false],"price":"1 920 kr","cta":"Lägg 3‑pack i varukorgen","buttons":1,"opt0":["Gelato - Indica","Strawberry Kush - Sativa","Melon Haze","Pineapple Express -Sativa","Super Lemon Haze","Coconut Cake - Indica"]},"after":{"msg":"3-pack har lagts i varukorgen.","sum":"Läggs i varukorgen: 3‑pack, 3 st\n1 × Gelato, 1 × Melon Haze, 1 × Coconut Cake","cta":"Lägg 3‑pack i varukorgen","state":"ready"},"posts":[[467,"425@1 431@2 438@3"]],"native":0,"postResponse":{"status":200,"error":null},"cart":[[467,1,"1 920 kr","425/431/438"]],"minicart":["3 strains · Gelato - Indica, Melon Haze +1"],"checkout":{"price":true,"strains":true},"cleaned":true,"errors":[]}
+
+### C5-blandat-upprepat-393: PASS
+{"cards":["*1 st 675 kr Valfri strain","3‑pack 1 920 kr 640 kr/st Spara 105 kr","5‑pack 3 135 kr 627 kr/st Spara 240 kr"],"pdp":{"slots":["Gelato","Gelato","Melon Haze","Pineapple Express","Coconut Cake"],"over":[false,false,false,false,false],"price":"3 135 kr","cta":"Lägg 5‑pack i varukorgen","buttons":1,"opt0":["Gelato - Indica","Strawberry Kush - Sativa","Melon Haze","Pineapple Express -Sativa","Super Lemon Haze","Coconut Cake - Indica"]},"after":{"msg":"5-pack har lagts i varukorgen.","sum":"Läggs i varukorgen: 5‑pack, 5 st\n2 × Gelato, 1 × Melon Haze, 1 × Pineapple Express, 1 × Coconut Cake","cta":"Lägg 5‑pack i varukorgen","state":"ready"},"posts":[[469,"425@7 425@8 431@9 433@10 438@11"]],"native":0,"postResponse":{"status":200,"error":null},"cart":[[469,1,"3 135 kr","425/425/431/433/438"]],"minicart":["4 strains · Gelato - Indica, Melon Haze +2"],"checkout":{"price":true,"strains":true},"cleaned":true,"errors":[]}
+
+### M2-3-blandat-393: PASS
+{"cards":["*1 st 575 kr Valfri strain","3‑pack 1 599 kr 533 kr/st Spara 126 kr","5‑pack 2 530 kr 506 kr/st Spara 345 kr"],"pdp":{"slots":["Gorilla Cookies","Gorilla Cookies","Tinky Winky"],"over":[false,false,false],"price":"1 599 kr","cta":"Lägg 3‑pack i varukorgen","buttons":1,"opt0":["Gorilla Cookies","×Crazy Dog (slut i lager)","×High Pepito (slut i lager)","×Samurai Jack (slut i lager)","×Yoda Ice Cream (slut i lager)","×London Lobster (slut i lager)","×Kowa Bunga (slut i lager)","×Bruce Banner OG (slut i lager)","Tinky Winky"]},"after":{"msg":"3-pack har lagts i varukorgen.","sum":"Läggs i varukorgen: 3‑pack, 3 st\n2 × Gorilla Cookies, 1 × Tinky Winky","cta":"Lägg 3‑pack i varukorgen","state":"ready"},"posts":[[470,"454@12 454@13 464@14"]],"native":0,"postResponse":{"status":200,"error":null},"cart":[[470,1,"1 599 kr","454/454/464"]],"minicart":["2 strains · Gorilla Cookies, Tinky Winky"],"checkout":{"price":true,"strains":true},"cleaned":true,"errors":[]}
+
+### M2-5-grans-tinky3-393: PASS
+{"cards":["*1 st 575 kr Valfri strain","3‑pack 1 599 kr 533 kr/st Spara 126 kr","5‑pack 2 530 kr 506 kr/st Spara 345 kr"],"pdp":{"slots":["Tinky Winky","Tinky Winky","Tinky Winky","Gorilla Cookies","Gorilla Cookies"],"over":[false,false,false,false,false],"price":"2 530 kr","cta":"Lägg 5‑pack i varukorgen","buttons":1,"opt0":["Gorilla Cookies","×Crazy Dog (slut i lager)","×High Pepito (slut i lager)","×Samurai Jack (slut i lager)","×Yoda Ice Cream (slut i lager)","×London Lobster (slut i lager)","×Kowa Bunga (slut i lager)","×Bruce Banner OG (slut i lager)","Tinky Winky"]},"after":{"msg":"5-pack har lagts i varukorgen.","sum":"Läggs i varukorgen: 5‑pack, 5 st\nTinky Winky: 3 kvar i lager och 3 ligger redan i din varukorg – du kan välja högst 0 till.","cta":"Ändra valen – lagret räcker inte","state":"missing"},"posts":[[471,"464@15 464@16 464@17 454@18 454@19"]],"native":0,"postResponse":{"status":200,"error":null},"cart":[[471,1,"2 530 kr","464/464/464/454/454"]],"minicart":["2 strains · Tinky Winky, Gorilla Cookies"],"checkout":{"price":true,"strains":true},"cleaned":true,"errors":[]}
+
+### M2-5-tinky5-sparr-393: PASS
+{"cards":["*1 st 575 kr Valfri strain","3‑pack 1 599 kr 533 kr/st Spara 126 kr","5‑pack 2 530 kr 506 kr/st Spara 345 kr"],"pdp":{"slots":["Tinky Winky","Tinky Winky","Tinky Winky","Tinky Winky","Tinky Winky"],"over":[false,false,false,true,true],"price":"2 530 kr","cta":"Ändra valen – lagret räcker inte","buttons":1,"opt0":["Gorilla Cookies","×Crazy Dog (slut i lager)","×High Pepito (slut i lager)","×Samurai Jack (slut i lager)","×Yoda Ice Cream (slut i lager)","×London Lobster (slut i lager)","×Kowa Bunga (slut i lager)","×Bruce Banner OG (slut i lager)","Tinky Winky"]},"after":{"msg":"Tinky Winky: bara 3 kvar i lager – du har valt 5.","sum":"Läggs i varukorgen: 5‑pack, 5 st\nTinky Winky: bara 3 kvar i lager – du har valt 5.","cta":"Ändra valen – lagret räcker inte","state":"missing"},"posts":[],"native":0,"cart":[],"cleaned":true,"errors":[]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.selectOption: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.hz8-up select[data-upslot="2"]')[22m
+[2m    - locator resolved to <select data-upslot="2" aria-label="Plats 3 av 3, strain">…</select>[22m
+[2m  - attempting select option action[22m
+[2m    2 × waiting for element to be visible and enabled[22m
+[2m      - did not find some options[22m
+[2m    - retrying select option action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible and enabled[22m
+[2m      - did not find some options[22m
+[2m    - retrying select option action[22m
+[2m      - waiting 100ms[22m
+[2m    60 × waiting for element to be visible and enabled[22m
+[2m       - did not find some options[22m
+[2m     - retrying select option action[22m
+[2m       - waiting 500ms[22m
+
+    at pick (/Users/wahlberg/HZY/hemsidor/hazey-storefront-task20/theme8/review/core3-pdp-upsell-2026-11/evidence/ui-familjer.mjs:56:131)
+    at async file:///Users/wahlberg/HZY/hemsidor/hazey-storefront-task20/theme8/review/core3-pdp-upsell-2026-11/evidence/ui-familjer.mjs:82:30 {
+  log: [
+    `  - waiting for locator('.hz8-up select[data-upslot="2"]')`,
+    '    - locator resolved to <select data-upslot="2" aria-label="Plats 3 av 3, strain">…</select>',
+    '  - attempting select option action',
+    '    2 × waiting for element to be visible and enabled',
+    '      - did not find some options',
+    '    - retrying select option action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible and enabled',
+    '      - did not find some options',
+    '    - retrying select option action',
+    '      - waiting 100ms',
+    '    60 × waiting for element to be visible and enabled',
+    '       - did not find some options',
+    '     - retrying select option action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.3.0

@@ -1,4 +1,6 @@
-# Task 20: paketval på produktsidan (Core 3-pack som pilot)
+# Task 20: paketval på produktsidan
+
+> **v4 (senast):** 1/3/5-paketval för 255 (Core), 261 (MS 2 ml) och 260 (MS 5 ml) med sex verifierade paketartiklar och en gemensam lagerspärr. Se `RESULTS-V4.md` och `LAGERSPARR.md`. Texten nedan beskriver v3-designen, som är oförändrad. Under v3 var 5‑pack bara en förhandsvisning; i v4 är det köpbart i förhandsvisningen.
 
 2026-11-11 · worktree `../hazey-storefront-task20`, gren `feat/task-20-core3-pdp-upsell`, bas `origin/dev` = 276efa2.
 Lokal kodändring. Ingen push, ingen merge, ingen publicering. Nyehandel-admin, bilder, bildmanifest, kassan och andra worktrees är inte rörda. Inga order och inga betalningar. Alla testkorgar är tömda.

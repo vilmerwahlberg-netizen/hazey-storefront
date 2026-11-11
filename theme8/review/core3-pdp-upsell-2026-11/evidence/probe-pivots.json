@@ -1,0 +1,236 @@
+{
+  "263": {
+    "route": "/sv/products/pilot-t19-heros-core-2ml-3-pack",
+    "status": 200,
+    "viewProductId": "263",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 1,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 2,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 3,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      }
+    ]
+  },
+  "265": {
+    "route": "/sv/products/heros-core-2ml-5-pack-blandbart",
+    "status": 200,
+    "viewProductId": "265",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 7,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 8,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 9,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 10,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 255,
+        "pivot": 11,
+        "locked": "false",
+        "qty": 1,
+        "selected": 425
+      }
+    ]
+  },
+  "266": {
+    "route": "/sv/products/magic-sauce-30-2ml-3-pack-blandbart",
+    "status": 200,
+    "viewProductId": "266",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 12,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 13,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 14,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      }
+    ]
+  },
+  "267": {
+    "route": "/sv/products/magic-sauce-30-2ml-5-pack-blandbart",
+    "status": 200,
+    "viewProductId": "267",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 15,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 16,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 17,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 18,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 261,
+        "pivot": 19,
+        "locked": "false",
+        "qty": 1,
+        "selected": 454
+      }
+    ]
+  },
+  "268": {
+    "route": "/sv/products/magic-sauce-30-5ml-3-pack-blandbart",
+    "status": 200,
+    "viewProductId": "268",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 20,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 21,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 22,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      }
+    ]
+  },
+  "269": {
+    "route": "/sv/products/magic-sauce-30-5ml-5-pack-blandbart",
+    "status": 200,
+    "viewProductId": "269",
+    "rows": [
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 23,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 24,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 25,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 26,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      },
+      {
+        "tag": "package-product-variants",
+        "product": 260,
+        "pivot": 27,
+        "locked": "false",
+        "qty": 1,
+        "selected": 449
+      }
+    ]
+  }
+}
