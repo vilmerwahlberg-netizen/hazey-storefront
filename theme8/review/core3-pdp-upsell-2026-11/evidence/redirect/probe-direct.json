@@ -1,0 +1,44 @@
+{
+  "external": {
+    "url": "https://hazeyse.nyehandel.se/sv/products/heros-core-2ml-5-pack-blandbart?preview=v9kzdmqz4w60l5n",
+    "hz8": true,
+    "loader": true,
+    "hz8Obj": true,
+    "page": "product",
+    "viewProduct": "265",
+    "baseLinks": [
+      "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml",
+      "https://hazeyse.nyehandel.se/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+      "https://hazeyse.nyehandel.se/sv/products/magic-sauce-hash-kitkat-5g",
+      "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+      "https://hazeyse.nyehandel.se/sv/products/thc-x-vape-hero-core-2ml"
+    ]
+  },
+  "after": {
+    "url": "https://hazeyse.nyehandel.se/sv/products/heros-core-2ml-5-pack-blandbart?preview=v9kzdmqz4w60l5n",
+    "hz8": true,
+    "loader": true,
+    "hz8Obj": true,
+    "page": "product",
+    "viewProduct": "265",
+    "baseLinks": [
+      "https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml",
+      "https://hazeyse.nyehandel.se/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+      "https://hazeyse.nyehandel.se/sv/products/magic-sauce-hash-kitkat-5g",
+      "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+      "https://hazeyse.nyehandel.se/sv/products/thc-x-vape-hero-core-2ml"
+    ]
+  },
+  "liveRaw": {
+    "status": 200,
+    "hasLoaderTheme8": false,
+    "scripts": [
+      "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+      "https://www.google.com/recaptcha/api.js?hl=sv",
+      "/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2"
+    ],
+    "hazeyRefs": [
+      "hazey-storefront@v1.0.3/hazey.min.js"
+    ]
+  }
+}

@@ -240,20 +240,54 @@
      live ur `route` (loadPivots) -- registret anger bara var. Fortfarande
      BARA bakom ?hz8-pkg-pilot=1: ingen publik synlighet utan separat
      klartecken på lagerfrågan (se lagerspärren nedan). */
-  var PACKAGE_PRODUCTS = PKG_PILOT ? {
-    255: [
+  /* TASK 20 v5: EN tabell, alltid laddad: basprodukt -> dess PDP (`home`)
+     och dess verifierade paket (`route` = paketets egen produktsida).
+     - Paketvalet (PACKAGE_PRODUCTS) byggs ur tabellen BARA med
+       ?hz8-pkg-pilot=1 (ingen publik synlighet).
+     - Paketsidornas omdirigering (packagePageRedirect nedan) använder den
+       alltid, så att kunden bara möter paketen via 1/3/5-valet. */
+  var PACKAGE_TABLE = {
+    255: { home: "/sv/products/thc-x-vape-hero-core-2ml", packs: [
       { kind: "strain", qty: 3, packageId: 263, route: "/sv/products/pilot-t19-heros-core-2ml-3-pack", verified: true, display: "upsell" },
       { kind: "strain", qty: 5, packageId: 265, route: "/sv/products/heros-core-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ],
-    261: [
+    ] },
+    261: { home: "/sv/products/vape-magic-sauce-magic-farmers-2ml", packs: [
       { kind: "strain", qty: 3, packageId: 266, route: "/sv/products/magic-sauce-30-2ml-3-pack-blandbart", verified: true, display: "upsell" },
       { kind: "strain", qty: 5, packageId: 267, route: "/sv/products/magic-sauce-30-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ],
-    260: [
+    ] },
+    260: { home: "/sv/products/magic-sauce-vape-5ml", packs: [
       { kind: "strain", qty: 3, packageId: 268, route: "/sv/products/magic-sauce-30-5ml-3-pack-blandbart", verified: true, display: "upsell" },
       { kind: "strain", qty: 5, packageId: 269, route: "/sv/products/magic-sauce-30-5ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ]
-  } : {};
+    ] }
+  };
+  var PACKAGE_PRODUCTS = {};
+  if (PKG_PILOT) Object.keys(PACKAGE_TABLE).forEach(function (pid) { PACKAGE_PRODUCTS[pid] = PACKAGE_TABLE[pid].packs; });
+  /* Paketsidornas omdirigering (TASK 20 v5): vanlig webbläsarnavigering
+     till ett pakets egen produktsida skickas direkt vidare till
+     basproduktens PDP (location.replace -- ingen historikpost, bakåt
+     fungerar). Med pilotflaggan förväljs paketstorleken (?hz8-pack=N).
+     Påverkar INTE loadPivots()/minicarten: de hämtar paketsidans HTML med
+     fetch(), där inget JavaScript körs. Ingen serveromdirigering behövs
+     (en 301 i Nyehandel skulle bryta pivot-läsningen och därmed köpen).
+     ?hz8-pkg-direct=1 visar paketsidan ändå (felsökning). Gäller bara där
+     Theme 8 körs -- den skarpa sajten (tema 3) kör inte Theme 8. */
+  (function packagePageRedirect() {
+    if (/[?&]hz8-pkg-direct=1/.test(location.search)) return;
+    var path = location.pathname.replace(/\/+$/, ""), hit = null;
+    Object.keys(PACKAGE_TABLE).forEach(function (pid) {
+      PACKAGE_TABLE[pid].packs.forEach(function (e) { if (path === e.route || path.indexOf(e.route + "/") === 0) hit = { home: PACKAGE_TABLE[pid].home, qty: e.qty }; });
+    });
+    if (!hit) return;
+    var q = location.search.replace(/^\?/, "").split("&").filter(function (kv) { return kv && !/^hz8-pack=/.test(kv); });
+    if (PKG_PILOT) q.push("hz8-pack=" + hit.qty);
+    /* Paketsidan målas aldrig (bootmasken släpps annars av 00-bootstrap). */
+    document.documentElement.classList.add("hz8-redirecting");
+    var css = document.createElement("style");
+    css.textContent = "html.hz8-redirecting body{visibility:hidden!important;opacity:0!important}";
+    (document.head || document.documentElement).appendChild(css);
+    HZ8.redirecting = hit.home;
+    location.replace(hit.home + (q.length ? "?" + q.join("&") : "") + location.hash);
+  })();
   /* TASK 20: paketstorlekar som INTE är verifierade som Nyehandel-paket
      visas i paketkortet bara i granskningsläget (?hz8-pkg-review=1),
      spärrade (knappen avstängd, inget varukorgsanrop). `ref` = den
@@ -1206,6 +1240,12 @@
         if (!s) return;
         UPS.slots[+s.getAttribute("data-upslot")] = s.value; UPS.msg = ""; UPS.added = false; syncStation();
       });
+    }
+    /* ?hz8-pack=N (från paketsidans omdirigering): förvälj storleken en gång. */
+    if (!UPS.paramDone && S.values.length) {
+      UPS.paramDone = true;
+      var want = +(location.search.match(/[?&]hz8-pack=(\d+)/) || [])[1] || 0;
+      if (want && upSizes().some(function (x) { return x.qty === want; }) && upFillable(want)) setPack(want);
     }
     if (UPS.qty && !packMode()) UPS.qty = 0; /* storleken gick inte längre att fylla */
     choice.hidden = !anyBuyable;
