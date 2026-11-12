@@ -281,7 +281,11 @@
       /* Syskonserie hos samma tillverkare, direkt efter formatets hylla.
          Medlemskap = plattformens Serie-attribut (verifierad relation),
          inte namn/varumärke/cannabinoidkategori. Tomt -> ingen rad. */
-      siblings: [{ series: "D10", format: "vapes" }],
+      siblings: [{ series: "D10", format: "vapes" },
+        /* TASK 25b: motsvarande ruta på Magic Sauce buds- och hasch-PDP:er
+           (HZ8.pdpSiblingShelves, anropas av 85-pdp-pilot.js). */
+        { series: "D10", format: "buds", on: ["pdp"] },
+        { series: "D10", format: "hasch", on: ["pdp"] }],
       guide: { title: "Hitta ditt format", text: "Samma serie – olika sätt att hitta rätt.", cta: "Utforska formaten" },
       seal: "MAGIC SAUCE · HAZEY.SE · MAGIC SAUCE ·",
       script: ["Sunsets &", "Higher Horizons"]
@@ -448,16 +452,59 @@
         var p = productPath(c.html);
         if (!validCard(c) || inSeries[p] || seen[p]) return false;
         seen[p] = true;
-        return cardBrand(c.html) === brand && (typeOf(cardName(c.html)) || sib.format) === sib.format;
+        var name = cardName(c.html);
+        /* TASK 25b: inga flerpack/paketartiklar i raden, oavsett enhet
+           (paketartiklarna nås via köpmodulen, inte som egna kort). */
+        if (SIB_MULTI.test(decode(name))) return false;
+        return cardBrand(c.html) === brand && (typeOf(name) || sib.format) === sib.format;
       });
       if (!cards.length) return null;
       /* Samma variantkort som i seriens egna hyllor: en D10-produkt med
          flera strains ska inte krympa till ett enda tillverkarkort. */
-      return HZ8.variantCards.expand(cards).then(function (expanded) {
-        return expanded.length ? { brand: brand, format: format, cards: HZ8.variantCards.settle(expanded, ""), series: [sib.series] } : null;
+      return Promise.all([HZ8.variantCards.expand(cards), allPages(withParam(route, "filters=" + SH_STOCK))]).then(function (r) {
+        var expanded = r[0];
+        if (!expanded.length) return null;
+        /* Lager för raden ur syskonseriens egen I lager-lista (samma källa
+           som seriehubbens lager). Okänd källa -> ingen lagerrad (aldrig
+           en gissning); variantkort har sitt eget lager. */
+        var stock = null;
+        if (r[1]) {
+          stock = { known: {}, in: {} };
+          cards.forEach(function (c) { stock.known[productPath(c.html)] = true; });
+          r[1].forEach(function (c) { stock.in[productPath(c.html)] = true; });
+        }
+        return { brand: brand, format: format, cards: HZ8.variantCards.settle(expanded, ""), series: [sib.series], stock: stock };
       });
     });
   }
+  var SIB_MULTI = /[-–]\s*\d+\s*-?\s*pack\b|\bkollektion(en)?\b/i;
+  function siblingOn(sb, where) { return (sb.on || ["hub"]).indexOf(where) !== -1; }
+
+  /* TASK 25b: tillverkarens syskonserie på en produktsida (Magic Sauce
+     buds -> D10 buds, hasch -> D10 hasch). Samma relation och samma ruta
+     (shMore) som seriehubbens D10-rad efter Vapes. ctx: { series (katalog-
+     serien), format (formatnyckel, ur produktens typ/kategori), exclude
+     (produktens egen sökväg) }. Resultat: [section] (tomt = ingen ruta). */
+  HZ8.pdpSiblingShelves = function (ctx) {
+    var series = ctx && ctx.series, key = ctx && ctx.format;
+    var cfg = series && SERIES_PILOTS[series.name];
+    var sibs = cfg ? (cfg.siblings || []).filter(function (sb) { return sb.format === key && siblingOn(sb, "pdp"); }) : [];
+    var route = series && series.routes[key];
+    if (!sibs.length || !route) return Promise.resolve([]);
+    return allPages(route).then(function (list) {
+      if (!list) return [];
+      var inSeries = {};
+      list.forEach(function (c) { inSeries[productPath(c.html)] = true; });
+      var own = list.filter(function (c) { return (typeOf(cardName(c.html)) || key) === key; });
+      return Promise.all(sibs.map(function (sb) {
+        return siblingSeries(sb, own, inSeries).then(function (extra) {
+          if (!extra) return null;
+          if (ctx.exclude) extra.cards = extra.cards.filter(function (c) { return productPath(c.html) !== ctx.exclude; });
+          return extra.cards.length ? shMore(extra, series, function () { return null; }, { railClass: "hz8-pp-similar hz8-pp-sibling__rail" }) : null;
+        }, function () { return null; });
+      }));
+    }).then(function (secs) { return (secs || []).filter(Boolean); });
+  };
 
   function assetUrl(file) { return (window.HZ8_ASSET_BASE || "") + file; }
 
@@ -594,7 +641,8 @@
   }
 
   var shUid = 0;
-  function shMore(extra, series, stock) {
+  function shMore(extra, series, stock, opts) {
+    opts = opts || {};
     shUid += 1;
     var base = "hz8-sh-more-" + shUid;
     var fmt = extra.format.label.toLowerCase();
@@ -622,10 +670,11 @@
       sec.classList.toggle("is-open", open);
       if (open && !built) {
         built = true;
-        var rail = HZ8.productRail({ id: base + "-rail", className: "hz8-sh-shelf hz8-sh-shelf--sub", title: extra.brand + " " + extra.format.label, bare: true, hideCount: true, cards: extra.cards, eager: true });
+        var rail = HZ8.productRail({ id: base + "-rail", className: opts.railClass || "hz8-sh-shelf hz8-sh-shelf--sub", title: extra.brand + " " + extra.format.label, bare: true, hideCount: true, cards: extra.cards, eager: true });
         retitle(rail, "h4");
         region.appendChild(rail);
-        decorateCards(region, stock());
+        /* Radens egen lagerkälla (syskonserien) går före hubbens. */
+        decorateCards(region, extra.stock || stock());
       }
       region.hidden = !open;
     });
@@ -797,7 +846,7 @@
         var t = rail.querySelector(".hz8-prail__title");
         if (t && f.sub) t.insertAdjacentHTML("afterend", '<p class="hz8-sh-shelf__sub">' + HZ8.esc(f.sub.replace("{s}", series.name)) + "</p>");
         shelves.appendChild(rail);
-        (cfg.siblings || []).filter(function (sb) { return sb.format === k; }).forEach(function (sb) {
+        (cfg.siblings || []).filter(function (sb) { return sb.format === k && siblingOn(sb, "hub"); }).forEach(function (sb) {
           var slot = document.createElement("div");
           slot.className = "hz8-sh-more-slot";
           shelves.appendChild(slot);

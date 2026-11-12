@@ -1,0 +1,462 @@
+{
+ "B1-buds-pdp": {
+  "route": "/sv/products/magic-sauce-buds-grape-gasoline",
+  "title": "Fler buds från Magic Farmers",
+  "tags": [
+   "D10"
+  ],
+  "support": "Upptäck D10-serien från Magic Farmers. 4 produkter.",
+  "order": [
+   "hz8-ppsum#hz8-ppsum",
+   "hz8-ppnav#hz8-ppnav",
+   "hz8-acc-list",
+   "hz8-prail#liknande",
+   "hz8-pp-sibling",
+   "hz8-ppbest#hz8-ppbest",
+   "related-categories",
+   "hz8-pdp-help#hz8-pdp-help"
+  ],
+  "closed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "open": {
+   "expanded": "true",
+   "hidden": false
+  },
+  "reclosed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "cards": [
+   {
+    "name": "D10 50% – Porn Star OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNi1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1lZTBjZDJiZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – White Widow – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "path": "/sv/products/d10-buds-white-widow-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNC1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNGJiYTZjYy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – Cosmic Trip – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "path": "/sv/products/d10-buds-cosmic-trip-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNS1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy0zOWYyNDg4OC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – Skywalker OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "path": "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNy1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNWYxYjQ0MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   }
+  ],
+  "expected": [
+   "/sv/products/d10-buds-cosmic-trip-5g",
+   "/sv/products/d10-buds-porn-star-og-magic-farmers",
+   "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+   "/sv/products/d10-buds-white-widow-5g"
+  ],
+  "scroll": {
+   "after": 0,
+   "sw": 1282,
+   "cw": 1282,
+   "before": 0
+  },
+  "landed": {
+   "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+   "h1": "D10 50% – Porn Star OG – 5g"
+  },
+  "overflow": false,
+  "checks": {
+   "title": true,
+   "closedFirst": true,
+   "open": true,
+   "reclosed": true,
+   "products": true,
+   "names": true,
+   "prices": true,
+   "images": true,
+   "stock": true,
+   "noForeign": true,
+   "scroll": true,
+   "scrollable": false,
+   "link": true,
+   "noOverflow": true,
+   "afterSimilar": true
+  },
+  "pass": true
+ },
+ "B2-buds-pdp-2": {
+  "route": "/sv/products/blommor-magic-sauce-buds-tinky-winki-5-gram",
+  "title": "Fler buds från Magic Farmers",
+  "tags": [
+   "D10"
+  ],
+  "support": "Upptäck D10-serien från Magic Farmers. 4 produkter.",
+  "order": [
+   "hz8-ppsum#hz8-ppsum",
+   "hz8-ppnav#hz8-ppnav",
+   "hz8-acc-list",
+   "hz8-prail#liknande",
+   "hz8-pp-sibling",
+   "hz8-ppbest#hz8-ppbest",
+   "related-categories",
+   "hz8-pdp-help#hz8-pdp-help"
+  ],
+  "closed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "open": {
+   "expanded": "true",
+   "hidden": false
+  },
+  "reclosed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "cards": [
+   {
+    "name": "D10 50% – Porn Star OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNi1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1lZTBjZDJiZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – White Widow – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "path": "/sv/products/d10-buds-white-widow-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNC1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNGJiYTZjYy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – Cosmic Trip – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "path": "/sv/products/d10-buds-cosmic-trip-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNS1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy0zOWYyNDg4OC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 50% – Skywalker OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "path": "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNy1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNWYxYjQ0MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   }
+  ],
+  "expected": [
+   "/sv/products/d10-buds-cosmic-trip-5g",
+   "/sv/products/d10-buds-porn-star-og-magic-farmers",
+   "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+   "/sv/products/d10-buds-white-widow-5g"
+  ],
+  "scroll": {
+   "after": 0,
+   "sw": 1282,
+   "cw": 1282,
+   "before": 0
+  },
+  "landed": {
+   "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+   "h1": "D10 50% – Porn Star OG – 5g"
+  },
+  "overflow": false,
+  "checks": {
+   "title": true,
+   "closedFirst": true,
+   "open": true,
+   "reclosed": true,
+   "products": true,
+   "names": true,
+   "prices": true,
+   "images": true,
+   "stock": true,
+   "noForeign": true,
+   "scroll": true,
+   "scrollable": false,
+   "link": true,
+   "noOverflow": true,
+   "afterSimilar": true
+  },
+  "pass": true
+ },
+ "H1-hasch-pdp": {
+  "route": "/sv/products/magic-sauce-hash-kitkat-5g",
+  "title": "Fler hasch från Magic Farmers",
+  "tags": [
+   "D10"
+  ],
+  "support": "Upptäck D10-serien från Magic Farmers. 4 produkter.",
+  "order": [
+   "hz8-ppsum#hz8-ppsum",
+   "hz8-ppnav#hz8-ppnav",
+   "hz8-acc-list",
+   "hz8-prail#liknande",
+   "hz8-pp-sibling",
+   "hz8-ppbest#hz8-ppbest",
+   "related-categories",
+   "hz8-pdp-help#hz8-pdp-help"
+  ],
+  "closed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "open": {
+   "expanded": "true",
+   "hidden": false
+  },
+  "reclosed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "cards": [
+   {
+    "name": "D10 60% – Purple Storm – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "path": "/sv/products/d10-hash-purple-storm-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOS1tYWdpYy1mYXJtZXJzLXBhc2UtbGlsYS1oYXNjaC01OTY4NzcyMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Rosinella – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "path": "/sv/products/d10-hash-rosinella-magic-farmers",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMC1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtNDJhYTQzNGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Blue Diamond – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "path": "/sv/products/d10-hash-blue-diamond-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOC1tYWdpYy1mYXJtZXJzLXBhc2UtYmxhLWhhc2NoLWNkMDE5NTAzLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Silk Road – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "path": "/sv/products/d10-hash-silk-road-magic-farmers-thcx",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMS1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtOGQ4NzU5NjgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   }
+  ],
+  "expected": [
+   "/sv/products/d10-hash-blue-diamond-5g",
+   "/sv/products/d10-hash-purple-storm-5g",
+   "/sv/products/d10-hash-rosinella-magic-farmers",
+   "/sv/products/d10-hash-silk-road-magic-farmers-thcx"
+  ],
+  "scroll": {
+   "after": 0,
+   "sw": 1282,
+   "cw": 1282,
+   "before": 0
+  },
+  "landed": {
+   "path": "/sv/products/d10-hash-purple-storm-5g",
+   "h1": "D10 60% – Purple Storm – 5g"
+  },
+  "overflow": false,
+  "checks": {
+   "title": true,
+   "closedFirst": true,
+   "open": true,
+   "reclosed": true,
+   "products": true,
+   "names": true,
+   "prices": true,
+   "images": true,
+   "stock": true,
+   "noForeign": true,
+   "scroll": true,
+   "scrollable": false,
+   "link": true,
+   "noOverflow": true,
+   "afterSimilar": true
+  },
+  "pass": true
+ },
+ "H2-hasch-pdp-2": {
+  "route": "/sv/products/magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+  "title": "Fler hasch från Magic Farmers",
+  "tags": [
+   "D10"
+  ],
+  "support": "Upptäck D10-serien från Magic Farmers. 4 produkter.",
+  "order": [
+   "hz8-ppsum#hz8-ppsum",
+   "hz8-ppnav#hz8-ppnav",
+   "hz8-acc-list",
+   "hz8-prail#liknande",
+   "hz8-pp-sibling",
+   "hz8-ppbest#hz8-ppbest",
+   "related-categories",
+   "hz8-pdp-help#hz8-pdp-help"
+  ],
+  "closed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "open": {
+   "expanded": "true",
+   "hidden": false
+  },
+  "reclosed": {
+   "expanded": "false",
+   "hidden": true
+  },
+  "cards": [
+   {
+    "name": "D10 60% – Purple Storm – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "path": "/sv/products/d10-hash-purple-storm-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOS1tYWdpYy1mYXJtZXJzLXBhc2UtbGlsYS1oYXNjaC01OTY4NzcyMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Rosinella – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "path": "/sv/products/d10-hash-rosinella-magic-farmers",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMC1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtNDJhYTQzNGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "imgOk": true,
+    "stock": "I lager",
+    "sold": false,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Blue Diamond – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "path": "/sv/products/d10-hash-blue-diamond-5g",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOC1tYWdpYy1mYXJtZXJzLXBhc2UtYmxhLWhhc2NoLWNkMDE5NTAzLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   },
+   {
+    "name": "D10 60% – Silk Road – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "path": "/sv/products/d10-hash-silk-road-magic-farmers-thcx",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMS1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtOGQ4NzU5NjgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "imgOk": true,
+    "stock": "Slutsåld",
+    "sold": true,
+    "pill": true,
+    "w": 298
+   }
+  ],
+  "expected": [
+   "/sv/products/d10-hash-blue-diamond-5g",
+   "/sv/products/d10-hash-purple-storm-5g",
+   "/sv/products/d10-hash-rosinella-magic-farmers",
+   "/sv/products/d10-hash-silk-road-magic-farmers-thcx"
+  ],
+  "scroll": {
+   "after": 0,
+   "sw": 1282,
+   "cw": 1282,
+   "before": 0
+  },
+  "landed": {
+   "path": "/sv/products/d10-hash-purple-storm-5g",
+   "h1": "D10 60% – Purple Storm – 5g"
+  },
+  "overflow": false,
+  "checks": {
+   "title": true,
+   "closedFirst": true,
+   "open": true,
+   "reclosed": true,
+   "products": true,
+   "names": true,
+   "prices": true,
+   "images": true,
+   "stock": true,
+   "noForeign": true,
+   "scroll": true,
+   "scrollable": false,
+   "link": true,
+   "noOverflow": true,
+   "afterSimilar": true
+  },
+  "pass": true
+ }
+}
