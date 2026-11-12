@@ -544,12 +544,13 @@
      alla HTTP 200 med egna produkter. Ingen "kommer snart" i headern.
      - THCaB = THCA-B-hubben (thca-b). Sortimentet är KVAR synligt; inget
        beslut om att dölja det (2026-11-12).
-     - THCbA (thcba), D10 (d10-1, Magic Farmers egen formula, aldrig
-       10-OH-THC), Nano-11 (nano-11).
+     - THCbA (thcba).
+     - Serier och blandningar: Magic Sauce (magic-sauce), D10 (d10-1,
+       Magic Farmers egen formula, aldrig 10-OH-THC), Nano-11 (nano-11).
      - CBD-familjen: CBD (cbd), H4CBD (h4cbd), CBN (cbn). CBG saknar
        kategori (404) och produkter -> visas inte.
      - Utelämnade: THCV (pausad, legacy i 06-catalog-map), HHCPM/THCNM
-       (tomma), Magic Sauce/Core (serier/varumärken, inte cannabinoider).
+       (tomma), Core (varumärke).
      - Ingen "Utforska alla"-sida finns -> CTA = Alla produkter.
      Formatlänkarna och produktkortet återanvänds ur DROPDOWN_CONTENT.cbd. */
   var HEADER_PANELS = {
@@ -557,7 +558,13 @@
       groups: [
         { heading: "Cannabinoider", links: [
           { label: "THCaB", href: "/sv/categories/thca-b" },
-          { label: "THCbA", href: "/sv/categories/thcba" },
+          { label: "THCbA", href: "/sv/categories/thcba" }
+        ] },
+        /* Serier/blandningar, inte enskilda cannabinoider (2026-11-12).
+           Magic Sauce = seriens kategori magic-sauce (HTTP 200, 22
+           produkter, samma hubb som 06-catalog-map), inte ms-vapes. */
+        { heading: "Serier och blandningar", links: [
+          { label: "Magic Sauce", href: "/sv/categories/magic-sauce" },
           { label: "D10", href: "/sv/categories/d10-1" },
           { label: "Nano-11", href: "/sv/categories/nano-11" }
         ] },
@@ -578,8 +585,9 @@
   }
   function catKeyOf(cat) { return cat.key || cat.label.toLowerCase(); }
   function navLabelOf(cat) { return cat.navLabel || cat.label; }
-  /* Sökytornas genvägar (05a-mobile-nav.js): cannabinoidlänkarna. */
-  window.HZ8.headerCannabinoids = HEADER_PANELS.cbd.groups.slice(0, 2);
+  /* Sökytornas genvägar (05a-mobile-nav.js): Cannabinoider, Serier och
+     blandningar, CBD-familjen -- med gruppernas egna rubriker. */
+  window.HZ8.headerCannabinoids = HEADER_PANELS.cbd.groups.slice(0, 3);
 
   /* Butikens egna absoluta URL:er (https://hazeyse.nyehandel.se/...) ->
      sökväg, så att samma meny fungerar på den slutliga domänen. Preview-
