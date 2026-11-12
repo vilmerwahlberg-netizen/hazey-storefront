@@ -1,0 +1,102 @@
+{
+ "320": {
+  "h1": {
+   "size": "32px",
+   "lineHeight": "31.36px",
+   "lines": 2
+  },
+  "gaps": {
+   "heroTopToEyebrow": 20,
+   "h1ToLede": 8,
+   "ledeToHeroBottom": 22,
+   "heroH": 196,
+   "heroToTopics": 0,
+   "topicsToSearch": 18,
+   "searchToHead": 0,
+   "headToFirst": 0
+  },
+  "firstItemTop": 550,
+  "firstItemTitleVisible": false,
+  "overflowX": 0
+ },
+ "393": {
+  "h1": {
+   "size": "36.942px",
+   "lineHeight": "36.2032px",
+   "lines": 2
+  },
+  "gaps": {
+   "heroTopToEyebrow": 20,
+   "h1ToLede": 8,
+   "ledeToHeroBottom": 22,
+   "heroH": 185,
+   "heroToTopics": 0,
+   "topicsToSearch": 18,
+   "searchToHead": 0,
+   "headToFirst": 0
+  },
+  "firstItemTop": 511,
+  "firstItemTitleVisible": true,
+  "overflowX": 0
+ },
+ "430": {
+  "h1": {
+   "size": "40.42px",
+   "lineHeight": "39.6116px",
+   "lines": 2
+  },
+  "gaps": {
+   "heroTopToEyebrow": 20,
+   "h1ToLede": 8,
+   "ledeToHeroBottom": 22,
+   "heroH": 192,
+   "heroToTopics": 0,
+   "topicsToSearch": 18,
+   "searchToHead": 0,
+   "headToFirst": 0
+  },
+  "firstItemTop": 518,
+  "firstItemTitleVisible": true,
+  "overflowX": 0
+ },
+ "1440": {
+  "h1": {
+   "size": "66.24px",
+   "lineHeight": "64.9152px",
+   "lines": 2
+  },
+  "gaps": {
+   "heroTopToEyebrow": 36,
+   "h1ToLede": 12,
+   "ledeToHeroBottom": 36,
+   "heroH": 291,
+   "heroToTopics": 40,
+   "topicsToSearch": -371,
+   "searchToHead": 0,
+   "headToFirst": 0
+  },
+  "firstItemTop": 606,
+  "firstItemTitleVisible": true,
+  "overflowX": 0
+ },
+ "1920": {
+  "h1": {
+   "size": "68px",
+   "lineHeight": "66.64px",
+   "lines": 2
+  },
+  "gaps": {
+   "heroTopToEyebrow": 36,
+   "h1ToLede": 12,
+   "ledeToHeroBottom": 36,
+   "heroH": 295,
+   "heroToTopics": 40,
+   "topicsToSearch": -371,
+   "searchToHead": 0,
+   "headToFirst": 0
+  },
+  "firstItemTop": 610,
+  "firstItemTitleVisible": true,
+  "overflowX": 0
+ }
+}

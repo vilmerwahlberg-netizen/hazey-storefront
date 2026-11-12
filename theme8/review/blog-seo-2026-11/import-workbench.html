@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bloggimport – arbetsyta</title>
+<!-- Lokal arbetsyta för att klistra in de 75 WP-inläggen i Nyehandel-admin.
+     Kör: cd theme8/review/blog-seo-2026-11 && python3 -m http.server 8787
+     Öppna: http://127.0.0.1:8787/import-workbench.html
+     Bocka av = sparas bara i den här webbläsaren (localStorage). -->
+<style>
+body{margin:0;font:15px/1.5 -apple-system,Arial,sans-serif;background:#f4efe6;color:#23231d}
+.top{position:sticky;top:0;background:#323d25;color:#fff;padding:12px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;z-index:2}
+.top input{padding:8px 10px;border-radius:6px;border:0;min-width:240px}.top select{padding:7px;border-radius:6px}
+main{max-width:1100px;margin:0 auto;padding:20px}
+details{background:#fffdf8;border:1px solid #e3d8c6;border-radius:8px;margin:0 0 10px}
+summary{padding:12px 16px;cursor:pointer;display:grid;grid-template-columns:24px 92px 1fr auto;gap:12px;align-items:center}
+summary .s{font-size:12px;padding:2px 8px;border-radius:4px;background:#e4d1bf}summary .s.ok{background:#cdfc9f}
+.f{display:grid;grid-template-columns:150px 1fr auto;gap:10px;padding:8px 16px;border-top:1px solid #efe6d8;align-items:start}
+.f b{font-size:13px}.f code{white-space:pre-wrap;word-break:break-word;font-size:13px;max-height:120px;overflow:auto;display:block}
+button{border:1px solid #323d25;background:#fff;border-radius:6px;padding:6px 10px;cursor:pointer}button.done{background:#323d25;color:#fff}
+.flags{padding:8px 16px 14px;font-size:13px;color:#7a3a14}
+</style></head><body>
+<div class="top"><strong>Bloggimport</strong><span id="n"></span><input id="q" type="search" placeholder="Filtrera på titel…"><select id="st"><option value="">Alla statusar</option></select></div>
+<main id="list"></main>
+<script>
+var KEY="hz8-blog-import-done";function done(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}}}
+function save(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+fetch("data/ARTICLE-MAPPING.json").then(function(r){return r.json()}).then(function(rows){
+ rows.sort(function(a,b){return a.date<b.date?-1:1});
+ var st=document.getElementById("st");[...new Set(rows.map(function(r){return r.status}))].forEach(function(s){st.insertAdjacentHTML("beforeend",'<option>'+esc(s)+'</option>')});
+ var list=document.getElementById("list"),D=done();
+ list.innerHTML=rows.map(function(r,i){
+  var slug=r.new_url.split("/").pop();
+  var f=[["Titel",r.title],["Slug",slug],["Publiceringsdatum",r.date.replace("T"," ")],["SEO-titel",r.seo_title],["Metabeskrivning",r.meta_description||"(saknas i WP – lämna tomt eller skriv ny)"],["Utvald bild (ladda ner + upp)",r.featured_image||"(ingen i WP)"],["Bildens alt-text",r.featured_alt||(r.featured_image?"(saknas i WP)":"")],["Innehåll (HTML-läge)","__BODY__"]];
+  return '<details data-i="'+i+'" data-t="'+esc(r.title.toLowerCase())+'" data-s="'+esc(r.status)+'"><summary><input type="checkbox" '+(D[slug]?"checked":"")+' data-slug="'+slug+'" aria-label="Klar"><span>'+r.date.slice(0,10)+'</span><span>'+esc(r.title)+'</span><span class="s'+(r.status.indexOf("KLAR")===0?" ok":"")+'">'+esc(r.status)+'</span></summary>'+
+   f.map(function(x){return '<div class="f"><b>'+x[0]+'</b><code data-slug="'+slug+'">'+(x[1]==="__BODY__"?"(laddas vid kopiering) data/import/"+slug+".html":esc(x[1]))+'</code><button data-copy="'+(x[1]==="__BODY__"?"body":"text")+'">Kopiera</button></div>'}).join("")+
+   (r.flags.length?'<div class="flags">⚑ '+r.flags.map(esc).join(" · ")+'</div>':"")+'</details>';
+ }).join("");
+ function count(){var c=list.querySelectorAll("summary input:checked").length;document.getElementById("n").textContent=c+" / "+rows.length+" inlagda"}count();
+ list.addEventListener("change",function(e){if(e.target.matches("summary input")){var d=done();if(e.target.checked)d[e.target.dataset.slug]=1;else delete d[e.target.dataset.slug];save(d);count()}});
+ list.addEventListener("click",function(e){var b=e.target.closest("button[data-copy]");if(!b)return;var code=b.previousElementSibling;
+  var p=b.dataset.copy==="body"?fetch("data/import/"+code.dataset.slug+".html").then(function(r){return r.text()}).then(function(t){return t.replace(/^<!--[^]*?-->\s*/,"")}):Promise.resolve(code.textContent);
+  p.then(function(t){return navigator.clipboard.writeText(t)}).then(function(){b.classList.add("done");b.textContent="Kopierat"})});
+ function filt(){var q=document.getElementById("q").value.toLowerCase(),s=st.value;list.querySelectorAll("details").forEach(function(d){d.hidden=(q&&d.dataset.t.indexOf(q)<0)||(s&&d.dataset.s!==s)})}
+ document.getElementById("q").addEventListener("input",filt);st.addEventListener("change",filt);
+});
+</script></body></html>
