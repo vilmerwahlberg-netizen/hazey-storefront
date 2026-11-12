@@ -5,13 +5,24 @@ const terser = require("terser");
 const ROOT = path.join(__dirname, "theme8");
 const OUT = path.join(__dirname, "dist", "theme8");
 
-function concatDir(name, ext) {
+function concatDir(name, ext, transform) {
   const dir = path.join(ROOT, name);
   return fs.readdirSync(dir)
     .filter((file) => file.endsWith(ext))
     .sort()
-    .map((file) => fs.readFileSync(path.join(dir, file), "utf8"))
+    .map((file) => { const t = fs.readFileSync(path.join(dir, file), "utf8"); return transform ? transform(file, t) : t; })
     .join("\n");
+}
+
+/* TASK 25c: hubbens kortregler får en PDP-gren för tillverkarrutan på
+   Magic Sauce-PDP:erna (samma komponent och kort som på hubben). Se
+   theme8/tools/scope-sibling-cards.js. */
+function siblingCardScope(file, text) {
+  const S = require(path.join(ROOT, "tools", "scope-sibling-cards.js"));
+  if (S.FILES.indexOf(file) === -1) return text;
+  const r = S.scopeCss(text);
+  if (!r.count) throw new Error("scope-sibling-cards: inga kortselektorer i " + file);
+  return r.css;
 }
 
 /* TASK 17C: bildmanifestet (theme8/js/03b-media-manifest.js) uppdateras
@@ -70,7 +81,7 @@ async function build() {
   fs.mkdirSync(OUT, { recursive: true });
   mediaManifest();
 
-  const css = concatDir("css", ".css");
+  const css = concatDir("css", ".css", siblingCardScope);
   const js = concatDir("js", ".js");
   const minified = await terser.minify(js, {
     compress: false,

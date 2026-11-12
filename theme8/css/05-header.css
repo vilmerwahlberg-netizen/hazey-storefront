@@ -842,3 +842,81 @@ html.hz8:not([data-hz8-page="home"]) .hz8-msearch__field input:focus-visible{
    desktop har headerns eget sökfält. */
 @media (min-width:1180px){ .hz8-msearch{ display:none !important; } }
 @media (min-width:768px){ .hz8-msearch__panel{ left:50%; right:auto; width:min(640px, calc(100% - 48px)); top:16px; max-height:calc(100% - 32px); transform:translate(-50%, -12px); border-radius:20px; } .hz8-msearch.is-open .hz8-msearch__panel{ transform:translate(-50%, 0); } }
+
+/* ============ TASK 02 (2026-11-12): Cannabinoider + desktop-sök ============ */
+
+/* Knapptriggern (Cannabinoider) ser ut och beter sig som länktriggrarna. */
+html.hz8 .hz8-header-nav button.hz8-cat{
+  display:flex; align-items:center; gap:5px; margin:0; padding:0; border:0; border-radius:8px; background:none;
+  font:600 13px/1 Arial, sans-serif; color:var(--hz8-header-fg); white-space:nowrap; cursor:pointer;
+  -webkit-appearance:none; appearance:none;
+}
+html.hz8 .hz8-header-nav button.hz8-cat:hover,
+html.hz8 .hz8-header-nav button.hz8-cat:focus-visible{ opacity:.65; }
+html.hz8 .hz8-header-nav .hz8-cat-item.is-open > .hz8-cat svg{ transform:rotate(180deg); }
+html.hz8 .hz8-header-nav .hz8-cat svg{ transition:transform 180ms var(--hz8-ease); }
+html.hz8 #store-header[data-hz8-tone="dark"] .hz8-header-nav button.hz8-cat{ color:#fffaf0 !important; }
+@media (min-width:768px){ html.hz8 .hz8-header-nav button.hz8-cat{ min-height:44px; min-width:44px; justify-content:center; } }
+
+/* Bred panel: fyra korta grupper i två kolumner (Cannabinoider | Serier
+   och blandningar, CBD-familjen | CBD efter format) + produktkortet. Höger-ankrad
+   som tidigare CBD-panel (sitter näst längst till höger). */
+html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown{ width:min(calc(100vw - 48px), 720px); }
+html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__col--links{
+  display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px 28px; align-items:start;
+}
+html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__cta{ grid-column:1 / -1; justify-self:start; }
+html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__col--product{ flex-basis:190px; }
+
+/* Desktop: Nyehandels breda förslagspanel ersätts av popovern nedan. */
+@media (min-width:1180px){
+  html.hz8 #store-header .store-search__dropdown{ display:none !important; }
+}
+
+/* Desktop-popover (05a-mobile-nav.js initDesktopSearch) -- förankrad under
+   sökfältet, varm papperyta, samma resultatmarkup som mobilens sökyta. */
+.hz8-dsearch{ position:fixed; z-index:205; top:var(--hz8-ds-top, 80px); left:var(--hz8-ds-left, 50%); width:var(--hz8-ds-width, 440px); }
+.hz8-dsearch[hidden]{ display:none; }
+@media (max-width:1179px){ .hz8-dsearch{ display:none !important; } }
+.hz8-dsearch__panel{
+  max-height:min(560px, calc(100vh - var(--hz8-ds-top, 80px) - 24px)); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin;
+  padding:14px 18px 16px; color:var(--hz8-ink);
+  background:color-mix(in srgb, var(--hz8-surface) 96%, transparent);
+  -webkit-backdrop-filter:blur(22px) saturate(160%); backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid color-mix(in srgb, var(--hz8-ink) 9%, transparent); border-radius:18px;
+  box-shadow:0 20px 48px color-mix(in srgb, var(--hz8-ink) 16%, transparent);
+  opacity:0; transform:translateY(6px); transition:opacity 180ms var(--hz8-ease), transform 180ms var(--hz8-ease);
+}
+.hz8-dsearch.is-open .hz8-dsearch__panel{ opacity:1; transform:none; }
+.hz8-dsearch .hz8-msearch__results{ margin:0; }
+.hz8-dsearch .hz8-msearch__hint{ margin-bottom:6px; }
+.hz8-dsearch .hz8-msearch__label:first-child{ margin-top:2px; }
+.hz8-dsearch .hz8-msearch__cats{ gap:6px; }
+.hz8-dsearch .hz8-msearch__cats a{ min-height:36px; padding:0 14px; font-size:13px; }
+.hz8-dsearch .hz8-msearch__hit{ min-height:56px; border-radius:10px; }
+.hz8-dsearch .hz8-msearch__hits li:last-child .hz8-msearch__hit{ border-bottom:0; }
+.hz8-dsearch .hz8-msearch__all{ min-height:44px; margin-top:10px; }
+.hz8-dsearch a:hover .hz8-msearch__name, .hz8-dsearch .hz8-msearch__cats a:hover{ color:var(--hz8-olive); }
+.hz8-dsearch .hz8-msearch__all:hover{ background:color-mix(in srgb, var(--hz8-beige) 60%, var(--hz8-surface)); }
+/* Synlig fokusram för pilnavigering i förslagen (båda sökytorna). */
+.hz8-msearch__results a:focus-visible{ outline:2px solid var(--hz8-olive); outline-offset:2px; }
+.hz8-msearch__results[aria-busy="true"] .hz8-msearch__loading{ opacity:1; }
+.hz8-msearch__loading{ margin:6px 0 4px; color:var(--hz8-text-muted); font:500 14px/1.4 Arial, sans-serif; }
+@media (prefers-reduced-motion:reduce){
+  .hz8-dsearch__panel, html.hz8 .hz8-header-nav .hz8-cat svg{ transition:none; transform:none; }
+}
+/* Bred panel förankras mot navets högerkant i stället för triggern: vid
+   1180 px låg triggern för långt till vänster för 720 px (uppmätt -30 px). */
+@media (min-width:1180px){
+  html.hz8 .hz8-header-nav{ position:relative; }
+  html.hz8 .hz8-header-nav .hz8-cat-item--wide{ position:static; }
+  html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown{ top:calc(100% + 14px); right:-24px; left:auto; }
+}
+/* Sökfältets fokusring (2026-11-12): Nyehandels input var 57 px bredare än
+   pillen (uppmätt 930-1282 mot 929-1225 vid 1440) och ritade sin ring in
+   över kontoikonen. Inputen fyller nu pillen (plats för sökikonen till
+   höger) och ringen ritas runt pillen. */
+html.hz8 #store-header .search-field input{ width:100% !important; max-width:100% !important; box-sizing:border-box !important; padding-right:48px !important; }
+html.hz8 #store-header .search-field input:is(:focus, :focus-visible){ outline:0 !important; box-shadow:none !important; }
+html.hz8 #store-header .search-field:focus-within{ outline:2px solid color-mix(in srgb, var(--hz8-ink) 55%, transparent); outline-offset:2px; }
+html.hz8 #store-header[data-hz8-tone="dark"] .search-field:focus-within{ outline-color:#fffaf0; }
