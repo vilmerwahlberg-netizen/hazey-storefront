@@ -76,3 +76,21 @@ Lokal build injiceras i preview-instansen (samma harness som TASK 01). Kontrolle
 | Regression: startsida, Alla Vapes, FAQ | 1 H1 var, canonical oförändrad, 0 px, inga fel |
 
 **Begränsning:** Nyehandels kort- och detaljmarkup för inlägg kunde inte mätas, eftersom det inte finns några inlägg. Fixturen använder antagen markup och tolkningen är markup-agnostisk, med fail-safe där native lämnas orörd. **Efter första riktiga inlägget i admin ska `verify-blog.mjs` köras utan fixtur.**
+
+## 6. Teknisk SEO-runda
+
+Se `TECH-SEO.md`. I Theme 8 (`91-seo-hygiene.js`):
+- `%%sep%%`, `%%sitename%%` och `%%title%%` rättas vid körning exakt som WordPress renderade dem (97 titlar, 27 beskrivningar)
+- produktbeskrivningarnas H1 blir H2, så sidan har en H1
+- canonical läggs till på bloggen.
+
+Verifierat på `product-sep` och i regressionen ovan. Admindatan för metarättningen finns i `data/META-FIXES.csv`.
+
+Blockerare utanför koden, alla dokumenterade i `TECH-SEO.md`:
+- global `noindex, nofollow`
+- primär domän / canonical-host
+- butikstiteln "Måbroberg AB (NDA)"
+- legacy- och testkategorier i sitemapen
+- 28 dolda paket i sitemapen (de 8 pausade 5 g-paketen rörs inte)
+- 137 saknade metabeskrivningar
+- WP-bilder som måste flyttas före domänbytet.
