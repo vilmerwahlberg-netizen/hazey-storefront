@@ -1722,13 +1722,31 @@
   }
   /* Kort om produkten: de första meningarna ur den verifierade ingressen
      (hela stycket står överst i Produktfakta) -- aldrig klippt mitt i en
-     mening, ingen fade. */
+     mening, ingen fade.
+     Meningarna delas från textens början och bara vid . ! ? följt av
+     blanksteg och versal (eller textslut). Punkt inne i ett ord/tal
+     ("Magic Sauce 3.0", "1.5 g") och vanliga förkortningar ("t.ex.",
+     "ca.") är aldrig en meningsgräns. Inget tecken hoppas över: utdraget
+     är alltid ett exakt prefix av texten. */
+  var ABBR = /(?:^|[\s(])(?:t\.ex|bl\.a|m\.m|m\.fl|o\.s\.v|d\.v\.s|osv|dvs|ca|inkl|exkl|resp|ev|st|kl|nr|tex|ex|obs|jfr)\.$/i;
+  function sentences(text) {
+    var t = String(text || "").replace(/\s+/g, " ").trim();
+    var out = [], start = 0, re = /[.!?]+(?=\s+["'”»(]?[A-ZÅÄÖÉ0-9]|\s*$)/g, m;
+    while ((m = re.exec(t))) {
+      var end = m.index + m[0].length;
+      if (m[0] === "." && ABBR.test(t.slice(start, end))) continue;
+      out.push(t.slice(start, end).trim());
+      start = end;
+    }
+    if (start < t.length && t.slice(start).trim()) out.push(t.slice(start).trim());
+    return out;
+  }
   function excerpt(text) {
-    var parts = String(text || "").replace(/\s+/g, " ").trim().match(/[^.!?]+[.!?]+(?=\s|$)/g);
-    if (!parts) return String(text || "").trim();
-    var out = "";
-    for (var i = 0; i < parts.length; i++) { if (out && (out + parts[i]).length > 200) break; out += parts[i]; }
-    return out.trim();
+    var parts = sentences(text);
+    if (!parts.length) return "";
+    var out = parts[0];
+    for (var i = 1; i < parts.length; i++) { if ((out + " " + parts[i]).length > 200) break; out += " " + parts[i]; }
+    return out;
   }
   /* Högst tre faktacues, bara ur produktens egna data (namn, produkttyp). */
   function cueRows() {
