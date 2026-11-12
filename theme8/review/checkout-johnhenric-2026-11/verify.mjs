@@ -8,12 +8,15 @@ const DIR = path.dirname(new URL(import.meta.url).pathname);
 const CSS = fs.readFileSync(path.join(ROOT, "dist/theme8/hazey-theme8-checkout.css"), "utf8");
 const H = { 393: 852, 768: 1024, 1440: 900, 1920: 1080 };
 const WIDTHS = (process.env.WIDTHS || "393,768,1440,1920").split(",").map(Number);
+const TAG = process.env.LIVE ? "live" : "new";
 const b = await chromium.launch(); const out = {};
 for (const w of WIDTHS) {
   const { ctx, p, cart } = await filledCheckout(b, w); const h = H[w]; await p.setViewportSize({ width: w, height: h });
   const R = out[w] = { cart };
   try {
-    R.stripped = await stripThemeCheckout(p); await css(p, CSS); await p.waitForTimeout(1500);
+    // LIVE=1: kontrollera det som faktiskt ligger i Theme 8:s CSS-fält (efter inklistring), utan injektion.
+    if (process.env.LIVE) { R.field = await p.evaluate(() => { const t = document.getElementById("nyts")?.textContent || ""; return { nyBlock: t.includes("John Henrics öppna struktur"), gammaltBlock: t.includes("Trygg kassa"), hzHeader: t.includes(".hz-header__search"), paket: t.includes("GENERERAD av build-theme8.js") }; }); }
+    else { R.stripped = await stripThemeCheckout(p); await css(p, CSS); } await p.waitForTimeout(1500);
     R.page = await p.evaluate(() => {
       const vis = e => !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== "hidden";
       const y = s => { const e = document.querySelector(s); if (!vis(e)) return null; return Math.round(e.getBoundingClientRect().top + scrollY); };
@@ -36,9 +39,9 @@ for (const w of WIDTHS) {
     R.totalMatches = R.kustomTotal.some(t => t.replace(/\D/g, "") === (R.page.total || "").replace(/\D/g, ""));
 
     await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(500);
-    await p.screenshot({ path: path.join(DIR, `shots/new-${w}-fold.png`) });
+    await p.screenshot({ path: path.join(DIR, `shots/${TAG}-${w}-fold.png`) });
     await p.setViewportSize({ width: w, height: Math.min(R.page.docH, 4000) }); await p.waitForTimeout(2500);
-    await p.screenshot({ path: path.join(DIR, `shots/new-${w}-full.png`) });
+    await p.screenshot({ path: path.join(DIR, `shots/${TAG}-${w}-full.png`) });
     await p.setViewportSize({ width: w, height: h }); await p.waitForTimeout(800);
 
     // Fokus: Tab från toppen. Kustoms ram hoppas över (dess innehåll äger Kustom).
@@ -59,14 +62,14 @@ for (const w of WIDTHS) {
     R.coupon = await p.evaluate(() => document.querySelector(".coupon-code")?.innerText.replace(/\s+/g, " ").trim());
     R.couponTotalAfter = await p.evaluate(() => document.querySelector(".checkout-total")?.innerText.trim());
     const box = await p.locator(".checkout-items-summary").boundingBox();
-    await p.screenshot({ path: path.join(DIR, `shots/new-${w}-coupon.png`), fullPage: true, clip: { x: box.x, y: box.y, width: box.width, height: Math.min(1000, box.height + 8) } });
+    await p.screenshot({ path: path.join(DIR, `shots/${TAG}-${w}-coupon.png`), fullPage: true, clip: { x: box.x, y: box.y, width: box.width, height: Math.min(1000, box.height + 8) } });
     await p.fill("#coupon_code", ""); await p.waitForTimeout(500);
   } catch (e) { R.error = String(e); console.error(w, e); }
   R.cleaned = await emptyCart(p); await ctx.close();
 }
-fs.writeFileSync(path.join(DIR, `runs/verify-${WIDTHS.join("-")}.json`), JSON.stringify(out, null, 1));
+fs.writeFileSync(path.join(DIR, `runs/${TAG === "live" ? "live" : "verify"}-${WIDTHS.join("-")}.json`), JSON.stringify(out, null, 1));
 for (const [w, R] of Object.entries(out)) {
-  console.log(`\n== ${w}  korg:`, R.cart, " strippade:", R.stripped, " tömd:", R.cleaned, R.error || "");
+  console.log(`\n== ${w}  korg:`, R.cart, " strippade:", R.stripped, " fält:", JSON.stringify(R.field || null), " tömd:", R.cleaned, R.error || "");
   if (!R.page) continue;
   for (const it of R.page.items) console.log("  vara:", it.name, "|", it.parts.join(" / ") || it.option, "| antal", it.qty, it.qtyVisible, "|", it.total);
   console.log("  rader:", R.page.rows.join(" · "));
