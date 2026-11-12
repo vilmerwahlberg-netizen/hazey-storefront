@@ -1,0 +1,567 @@
+{
+ "m-s-buds": {
+  "status": 200,
+  "h1": "M.S Buds",
+  "cards": []
+ },
+ "ms-buds": {
+  "status": 200,
+  "h1": "MS Buds",
+  "cards": [
+   {
+    "path": "/sv/products/magic-sauce-pre-rolls-1g",
+    "name": "Magic Sauce 50% – Pre Rolls – 1g",
+    "brand": "Magic Farmers",
+    "price": "175 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDAwMi1tYWdpYy1mYXJtZXJzLXByZS1yb2xscy01LXN0LWFmYzJkZjRiLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-grape-gasoline",
+    "name": "Magic Sauce 50% – Grape Gasoline – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2Ni1ncmFwZS1nYXNvbGluZS1wYXNlLWJ1ZHMtMTQwMC0wOGRmNWI0YS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-london-lobster-ersatt-thc-a",
+    "name": "Magic Sauce 50% – London Lobster – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2Ny1sb25kb24tbG9ic3Rlci1wYXNlLWJ1ZHMtNGE1OTA1MmIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-kowa-bunga-5g",
+    "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2OC1rb3dhLWJ1bmdhLXBhc2UtYnVkcy1jOTRlYmJjYi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-titty-sprinkles-5-gram",
+    "name": "Magic Sauce 50% – Titty Sprinkles – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3MS1qdWljeS1zdW5zaGluZS1wYXNlLWJ1ZHMtYjE1MWE3ZTIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-thca-ersatt-john-lemon-5g",
+    "name": "Magic Sauce 50% – John Lemon – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Ny1qb2huLWxlbW9uLXBhc2UtYnVkcy1lNTkyZTgxNy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-la-chupacabra-5-gram",
+    "name": "Magic Sauce 50% – La Chupacabra – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3MC1sYS1jaHVwYWNhYnJhLXBhc2UtYnVkcy04Mjk2YjRlZC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+    "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Mi1taWdodHkta3VzaC1wYXNlLWJ1ZHMtODc2NjI2NTAucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-donny-burger-5g",
+    "name": "Magic Sauce 50% – Donny Burger – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2OS1kb25ueS1idXJnZXItcGFzZS1idWRzLTM0ZTdiMDhiLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+    "name": "Magic Sauce 50% – Crazy Dog – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3My1jcmF6eS1kb2ctcGFzZS1idWRzLWM5NDU2YmJlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-samurai-jack-magic-farmers-weed",
+    "name": "Magic Sauce 50% – Samurai Jack – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3OC1zYW11cmFpLXBhc2UtYnVkcy1kNzQyOWU3MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+    "name": "Magic Sauce 50% – Gorilla Cookies – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3NC1nb3JpbGxhLWNvb2tpZXMtcGFzZS1idWRzLWZmMWRhMDg0LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+    "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3NS15b2RhLXBhc2UtYnVkcy0yNDAwYWVkMy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-charas-5-gram",
+    "name": "Magic Sauce 50% – Charas – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2My1jaGFyYXMtaGFzY2gtcGFzZS1hNzM2MGJkYS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-marrakesh-dream-5-gram",
+    "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtaGFzaC1tcy1tYXJyYWtlc2gtZHJlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1zdmVyaWdlLTUwLTIyMTEzMzEwLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/blommor-magic-sauce-buds-tinky-winki-5-gram",
+    "name": "Magic Sauce 50% – Tinky Winky – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Ni10aW5reS13aW5reS1wYXNlLWJ1ZHMtZmRmOTE2NWYucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   }
+  ]
+ },
+ "m-s-hash": {
+  "status": 404
+ },
+ "ms-hash": {
+  "status": 200,
+  "h1": "MS Hash",
+  "cards": [
+   {
+    "path": "/sv/products/magic-sauce-pre-rolls-1g",
+    "name": "Magic Sauce 50% – Pre Rolls – 1g",
+    "brand": "Magic Farmers",
+    "price": "175 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDAwMi1tYWdpYy1mYXJtZXJzLXByZS1yb2xscy01LXN0LWFmYzJkZjRiLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+    "name": "Magic Sauce 50% – Dubai Chocolate – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2NS1kdWJhaS1jaG9jb2xhdGUtaGFzY2gtcGFzZS05ZmY1YzhmMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-kitkat-5g",
+    "name": "Magic Sauce 50% – KitKat – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2NC1raXQta2FyLWhhc2NoLXBhc2UtYWZlYTEzNWMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   }
+  ]
+ },
+ "d10-buds": {
+  "status": 200,
+  "h1": "D10 Buds",
+  "cards": [
+   {
+    "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+    "name": "D10 50% – Porn Star OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNi1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1lZTBjZDJiZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-white-widow-5g",
+    "name": "D10 50% – White Widow – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNC1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNGJiYTZjYy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-cosmic-trip-5g",
+    "name": "D10 50% – Cosmic Trip – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNS1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy0zOWYyNDg4OC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+    "name": "D10 50% – Skywalker OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNy1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNWYxYjQ0MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   }
+  ]
+ },
+ "d10-hash": {
+  "status": 200,
+  "h1": "D10 Hash",
+  "cards": [
+   {
+    "path": "/sv/products/d10-hash-purple-storm-5g",
+    "name": "D10 60% – Purple Storm – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOS1tYWdpYy1mYXJtZXJzLXBhc2UtbGlsYS1oYXNjaC01OTY4NzcyMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-hash-rosinella-magic-farmers",
+    "name": "D10 60% – Rosinella – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMC1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtNDJhYTQzNGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-hash-blue-diamond-5g",
+    "name": "D10 60% – Blue Diamond – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOC1tYWdpYy1mYXJtZXJzLXBhc2UtYmxhLWhhc2NoLWNkMDE5NTAzLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-hash-silk-road-magic-farmers-thcx",
+    "name": "D10 60% – Silk Road – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMS1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtOGQ4NzU5NjgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   }
+  ]
+ },
+ "d10-1": {
+  "status": 200,
+  "h1": "D10",
+  "cards": [
+   {
+    "path": "/sv/products/d10-hash-purple-storm-5g",
+    "name": "D10 60% – Purple Storm – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOS1tYWdpYy1mYXJtZXJzLXBhc2UtbGlsYS1oYXNjaC01OTY4NzcyMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-hash-rosinella-magic-farmers",
+    "name": "D10 60% – Rosinella – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMC1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtNDJhYTQzNGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+    "name": "D10 50% – Porn Star OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNi1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1lZTBjZDJiZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-vape-magic-farmers",
+    "name": "D10 - 2ml",
+    "brand": "Magic Farmers",
+    "price": "595 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExNC1tYWdpYy1mYXJtZXJzLWRlbHRhMTAtdmFwZS1wZW4tY2hlcnJ5LWE2NGFlYmQ5LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/d10-hash-blue-diamond-5g",
+    "name": "D10 60% – Blue Diamond – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 435 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwOC1tYWdpYy1mYXJtZXJzLXBhc2UtYmxhLWhhc2NoLWNkMDE5NTAzLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-white-widow-5g",
+    "name": "D10 50% – White Widow – 5g",
+    "brand": "Magic Farmers",
+    "price": "645 kr 495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNC1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNGJiYTZjYy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-hash-silk-road-magic-farmers-thcx",
+    "name": "D10 60% – Silk Road – 5g",
+    "brand": "Magic Farmers",
+    "price": "545 kr 395 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExMS1tYWdpYy1mYXJtZXJzLXBhc2UtaGFzY2gtOGQ4NzU5NjgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-cosmic-trip-5g",
+    "name": "D10 50% – Cosmic Trip – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNS1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy0zOWYyNDg4OC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+    "name": "D10 50% – Skywalker OG – 5g",
+    "brand": "Magic Farmers",
+    "price": "595 kr 445 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEwNy1tYWdpYy1mYXJtZXJzLXBhc2UtYnVkcy1iNWYxYjQ0MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   }
+  ]
+ },
+ "d10-vapes": {
+  "status": 200,
+  "h1": "D10 Vapes",
+  "cards": [
+   {
+    "path": "/sv/products/d10-vape-magic-farmers",
+    "name": "D10 - 2ml",
+    "brand": "Magic Farmers",
+    "price": "595 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDExNC1tYWdpYy1mYXJtZXJzLWRlbHRhMTAtdmFwZS1wZW4tY2hlcnJ5LWE2NGFlYmQ5LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   }
+  ]
+ },
+ "ms-vapes": {
+  "status": 200,
+  "h1": "MS Vapes",
+  "cards": [
+   {
+    "path": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "name": "Magic Sauce 3.0 - 2ml",
+    "brand": "Magic Farmers",
+    "price": "575 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWdvcmlsbGEtMDQ4YTY0MzIud2VicCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-vape-5ml",
+    "name": "Magic Sauce 3.0 - 5ml",
+    "brand": "Magic Farmers",
+    "price": "1 195 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWNlLXZhcGUta2FydG9uZy04ZTI2NmE0YS53ZWJwIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": true
+   }
+  ]
+ },
+ "magic-sauce": {
+  "status": 200,
+  "h1": "Magic Sauce",
+  "cards": [
+   {
+    "path": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "name": "Magic Sauce 3.0 - 2ml",
+    "brand": "Magic Farmers",
+    "price": "575 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEzNC1tYWdpYy1mYXJtZXJzLXZhcGUtcGVuLWdvcmlsbGEtMDQ4YTY0MzIud2VicCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-vape-5ml",
+    "name": "Magic Sauce 3.0 - 5ml",
+    "brand": "Magic Farmers",
+    "price": "1 195 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDEyMi1tYWdpYy1mYXJtZXJzLW1hZ2ljLXNhdWNlLXZhcGUta2FydG9uZy04ZTI2NmE0YS53ZWJwIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-pre-rolls-1g",
+    "name": "Magic Sauce 50% – Pre Rolls – 1g",
+    "brand": "Magic Farmers",
+    "price": "175 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDAwMi1tYWdpYy1mYXJtZXJzLXByZS1yb2xscy01LXN0LWFmYzJkZjRiLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+    "name": "Magic Sauce 50% – Dubai Chocolate – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2NS1kdWJhaS1jaG9jb2xhdGUtaGFzY2gtcGFzZS05ZmY1YzhmMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-grape-gasoline",
+    "name": "Magic Sauce 50% – Grape Gasoline – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2Ni1ncmFwZS1nYXNvbGluZS1wYXNlLWJ1ZHMtMTQwMC0wOGRmNWI0YS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-london-lobster-ersatt-thc-a",
+    "name": "Magic Sauce 50% – London Lobster – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2Ny1sb25kb24tbG9ic3Rlci1wYXNlLWJ1ZHMtNGE1OTA1MmIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-kowa-bunga-5g",
+    "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2OC1rb3dhLWJ1bmdhLXBhc2UtYnVkcy1jOTRlYmJjYi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-titty-sprinkles-5-gram",
+    "name": "Magic Sauce 50% – Titty Sprinkles – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3MS1qdWljeS1zdW5zaGluZS1wYXNlLWJ1ZHMtYjE1MWE3ZTIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-thca-ersatt-john-lemon-5g",
+    "name": "Magic Sauce 50% – John Lemon – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Ny1qb2huLWxlbW9uLXBhc2UtYnVkcy1lNTkyZTgxNy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-la-chupacabra-5-gram",
+    "name": "Magic Sauce 50% – La Chupacabra – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3MC1sYS1jaHVwYWNhYnJhLXBhc2UtYnVkcy04Mjk2YjRlZC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-kitkat-5g",
+    "name": "Magic Sauce 50% – KitKat – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2NC1raXQta2FyLWhhc2NoLXBhc2UtYWZlYTEzNWMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+    "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Mi1taWdodHkta3VzaC1wYXNlLWJ1ZHMtODc2NjI2NTAucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-donny-burger-5g",
+    "name": "Magic Sauce 50% – Donny Burger – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2OS1kb25ueS1idXJnZXItcGFzZS1idWRzLTM0ZTdiMDhiLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/buds-magic-sauce-50-crazy-dog-5-gram",
+    "name": "Magic Sauce 50% – Crazy Dog – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3My1jcmF6eS1kb2ctcGFzZS1idWRzLWM5NDU2YmJlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-samurai-jack-magic-farmers-weed",
+    "name": "Magic Sauce 50% – Samurai Jack – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3OC1zYW11cmFpLXBhc2UtYnVkcy1kNzQyOWU3MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+    "name": "Magic Sauce 50% – Gorilla Cookies – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3NC1nb3JpbGxhLWNvb2tpZXMtcGFzZS1idWRzLWZmMWRhMDg0LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-buds-yoda-ice-cream-5-gram",
+    "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3NS15b2RhLXBhc2UtYnVkcy0yNDAwYWVkMy5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/cart-magic-sauce-magic-farmers-1ml",
+    "name": "Magic Sauce 3.0 - 1ml",
+    "brand": "Magic Farmers",
+    "price": "325 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE0Ni1tYWdpYy1mYXJtZXJzLXZwZW4tY2FydHJpZGdlLWdvcmlsbGEtODE3NzljMmUucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-10ml",
+    "name": "Magic Sauce 3.0 - 10ml",
+    "brand": "Magic Farmers",
+    "price": "1 195 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3OS1tYWdpYy1mYXJtZXJzLWUtbGlxdWlkLTMtc3QtMTQwMC03ODZiYWEwOS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": true
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-charas-5-gram",
+    "name": "Magic Sauce 50% – Charas – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA2My1jaGFyYXMtaGFzY2gtcGFzZS1hNzM2MGJkYS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMCwiaGVpZ2h0Ijo0MDAsImZpdCI6Imluc2lkZSJ9fX0=",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/magic-sauce-hash-marrakesh-dream-5-gram",
+    "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvbWFnaWMtc2F1Y2UtaGFzaC1tcy1tYXJyYWtlc2gtZHJlYW0tbWFnaWMtZmFybWVycy10aGMtYnVkcy1zdmVyaWdlLTUwLTIyMTEzMzEwLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "variants": false
+   },
+   {
+    "path": "/sv/products/blommor-magic-sauce-buds-tinky-winki-5-gram",
+    "name": "Magic Sauce 50% – Tinky Winky – 5g",
+    "brand": "Magic Farmers",
+    "price": "495 kr",
+    "img": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDA3Ni10aW5reS13aW5reS1wYXNlLWJ1ZHMtZmRmOTE2NWYucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo0MDAsImhlaWdodCI6NDAwLCJmaXQiOiJpbnNpZGUifX19",
+    "variants": false
+   }
+  ]
+ },
+ "catalog": [
+  {
+   "name": "Magic Sauce",
+   "hub": "https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+   "routes": {
+    "vapes": "/sv/categories/ms-vapes",
+    "buds": "/sv/categories/ms-buds",
+    "hasch": "/sv/categories/ms-hash",
+    "carts": "https://hazeyse.nyehandel.se/sv/categories/ms-carts"
+   }
+  },
+  {
+   "name": "D10",
+   "hub": "https://hazeyse.nyehandel.se/sv/categories/d10-1",
+   "routes": {
+    "vapes": "/sv/categories/d10-vapes",
+    "buds": "/sv/categories/d10-buds",
+    "hasch": "/sv/categories/d10-hash"
+   }
+  }
+ ]
+}

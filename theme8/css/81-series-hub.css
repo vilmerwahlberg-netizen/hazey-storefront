@@ -234,7 +234,10 @@ html.hz8 #store-main .hz8-more .hz8-more__shelf .hz8-prail__title { font-family:
    (kortreglerna i 80-category.css gäller båda piloterna). Egen logik:
    formatrad + formathyllor + mobil formatdocka.
    ====================================================================== */
-html.hz8-sh-pilot {
+/* TASK 25c: samma tokens i tillverkarrutan på Magic Sauce-PDP:erna (hubbens
+   kort i rutan, se theme8/tools/scope-sibling-cards.js). */
+html.hz8-sh-pilot,
+html.hz8-pdp-pilot .hz8-pp-sibling {
   /* Materialförlopp (v2, ljusare): kalkputs -> formatband i papper ->
      varm sandfärgad butiksyta -> elfenbensbrunnar. Globala tokens rörs
      inte; detta är seriehubbens egen materialhierarki. */
@@ -710,8 +713,8 @@ html.hz8.hz8-sh-pilot[data-hz8-page="category"] #store-main .hz8-sh .product-car
 }
 
 /* ---------- Tillverkarens övriga (Magic Farmers): integrerad remsa ---------- */
-html.hz8-sh-pilot .hz8-sh-more-slot { margin-top: -20px; }
-html.hz8-sh-pilot .hz8-sh-more {
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more-slot { margin-top: -20px; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more {
   border: 1px solid color-mix(in srgb, #8a6a3c 14%, transparent);
   border-radius: 12px;
   background:
@@ -719,25 +722,25 @@ html.hz8-sh-pilot .hz8-sh-more {
     linear-gradient(180deg, #faf2e5, #f6ecdc);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
 }
-html.hz8-sh-pilot .hz8-sh-more__h { margin: 0 !important; font: inherit !important; }
-html.hz8-sh-pilot .hz8-sh-more__btn { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; min-height: 66px; padding: 10px 14px 10px 14px; border: 0; border-radius: 12px; background: none; color: var(--hz8-pilot-green) !important; text-align: left; cursor: pointer; }
-html.hz8-sh-pilot .hz8-sh-more__btn:not(:has(.hz8-sh-more__peek)) { grid-template-columns: minmax(0, 1fr) auto; padding-left: 18px; }
-html.hz8-sh-pilot .hz8-sh-more__peek { display: flex; }
-html.hz8-sh-pilot .hz8-sh-more__peek-i { display: block; width: 42px; height: 42px; margin-left: -12px; overflow: hidden; border: 1.5px solid #fffaf1; border-radius: 9px; background: var(--hz8-pilot-well); box-shadow: 0 4px 8px -6px rgba(74, 44, 8, .4); }
-html.hz8-sh-pilot .hz8-sh-more__peek-i:first-child { margin-left: 0; }
-html.hz8-sh-pilot .hz8-sh-more__peek-i img { width: 100%; height: 100%; object-fit: contain; }
-html.hz8-sh-pilot .hz8-sh-more__txt { display: grid; gap: 3px; min-width: 0; }
-html.hz8-sh-pilot .hz8-sh-more__row { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; min-width: 0; }
-html.hz8-sh-pilot .hz8-sh-more__t { min-width: 0; color: var(--hz8-pilot-green) !important; font: 700 14.5px/1.25 var(--hz8-font-ui) !important; }
-html.hz8-sh-pilot .hz8-sh-more__tag { flex: none; padding: 1px 6px; border: 1px solid color-mix(in srgb, var(--hz8-cta) 55%, transparent); border-radius: 6px; color: var(--hz8-cta-hover); font: 700 10px/1.4 var(--hz8-font-ui) !important; letter-spacing: .04em; }
-html.hz8-sh-pilot .hz8-sh-more__s { margin: 0 !important; color: color-mix(in srgb, var(--hz8-ink) 64%, transparent) !important; font: 400 11.5px/1.4 var(--hz8-font-ui) !important; }
-html.hz8-sh-pilot .hz8-sh-more__chev { display: grid; place-items: center; width: 32px; height: 32px; color: color-mix(in srgb, var(--hz8-pilot-green) 80%, transparent); }
-html.hz8-sh-pilot .hz8-sh-more__chev .hz8-icon { width: 17px; height: 17px; transition: transform .2s var(--hz8-ease); }
-html.hz8-sh-pilot .hz8-sh-more.is-open .hz8-sh-more__chev .hz8-icon { transform: rotate(180deg); }
-html.hz8.hz8-sh-pilot .hz8-sh-more__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px !important; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__h { margin: 0 !important; font: inherit !important; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__btn { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; min-height: 66px; padding: 10px 14px 10px 14px; border: 0; border-radius: 12px; background: none; color: var(--hz8-pilot-green) !important; text-align: left; cursor: pointer; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__btn:not(:has(.hz8-sh-more__peek)) { grid-template-columns: minmax(0, 1fr) auto; padding-left: 18px; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek { display: flex; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek-i { display: block; width: 42px; height: 42px; margin-left: -12px; overflow: hidden; border: 1.5px solid #fffaf1; border-radius: 9px; background: var(--hz8-pilot-well); box-shadow: 0 4px 8px -6px rgba(74, 44, 8, .4); }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek-i:first-child { margin-left: 0; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek-i img { width: 100%; height: 100%; object-fit: contain; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__txt { display: grid; gap: 3px; min-width: 0; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__row { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; min-width: 0; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__t { min-width: 0; color: var(--hz8-pilot-green) !important; font: 700 14.5px/1.25 var(--hz8-font-ui) !important; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__tag { flex: none; padding: 1px 6px; border: 1px solid color-mix(in srgb, var(--hz8-cta) 55%, transparent); border-radius: 6px; color: var(--hz8-cta-hover); font: 700 10px/1.4 var(--hz8-font-ui) !important; letter-spacing: .04em; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__s { margin: 0 !important; color: color-mix(in srgb, var(--hz8-ink) 64%, transparent) !important; font: 400 11.5px/1.4 var(--hz8-font-ui) !important; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__chev { display: grid; place-items: center; width: 32px; height: 32px; color: color-mix(in srgb, var(--hz8-pilot-green) 80%, transparent); }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__chev .hz8-icon { width: 17px; height: 17px; transition: transform .2s var(--hz8-ease); }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more.is-open .hz8-sh-more__chev .hz8-icon { transform: rotate(180deg); }
+html.hz8:is(.hz8-sh-pilot, .hz8-pdp-pilot) .hz8-sh-more__btn:focus-visible { outline: 2px solid var(--hz8-olive) !important; outline-offset: -2px !important; }
 /* Öppet: samma varma remsa som växer -- ingen vit panel, ingen ram. */
-html.hz8-sh-pilot .hz8-sh-more__region { padding: 2px 14px 16px; border-top: 1px solid color-mix(in srgb, #8a6a3c 11%, transparent); animation: hz8-sh-fade .22s var(--hz8-ease); }
-html.hz8-sh-pilot .hz8-sh-more__region .hz8-prail__list { padding-top: 12px !important; }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__region { padding: 2px 14px 16px; border-top: 1px solid color-mix(in srgb, #8a6a3c 11%, transparent); animation: hz8-sh-fade .22s var(--hz8-ease); }
+:is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__region .hz8-prail__list { padding-top: 12px !important; }
 @keyframes hz8-sh-fade { from { opacity: 0; } to { opacity: 1; } }
 html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf--sub .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 16px) / 5); gap: 16px !important; }
 html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf--sub.is-single .hz8-prail__list { grid-auto-columns: calc((100% - 4 * 16px) / 5); }
@@ -863,8 +866,8 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   html.hz8.hz8-sh-pilot { scroll-behavior: auto !important; }
   html.hz8-sh-pilot .hz8-sh-dock, html.hz8-sh-pilot .hz8-sh-dock.is-on { transition: none; }
   html.hz8-sh-pilot .hz8-sh-nav--dock :is(.hz8-sh-chip, .hz8-sh-chip::before, .hz8-sh-chip::after, li::before) { transition: none; }
-  html.hz8-sh-pilot .hz8-sh-more__region { animation: none; }
-  html.hz8-sh-pilot .hz8-sh-more__chev .hz8-icon { transition: none; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__region { animation: none; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__chev .hz8-icon { transition: none; }
 }
 
 /* ---------- Mobil: fotot direkt, ingen puts ---------- */
@@ -949,13 +952,13 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf .hz8-prail__count { font-size: 11.5px !important; }
   html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf .hz8-prail__all { font-size: 13px !important; }
   html.hz8-sh-pilot .hz8-sh-shelf__sub { margin-top: 3px !important; font-size: 12.5px !important; }
-  html.hz8-sh-pilot .hz8-sh-more-slot { margin-top: -16px; }
-  html.hz8-sh-pilot .hz8-sh-more__btn { gap: 12px; min-height: 74px; padding: 12px 10px 12px 12px; }
-  html.hz8-sh-pilot .hz8-sh-more__peek-i { width: 38px; height: 38px; }
-  html.hz8-sh-pilot .hz8-sh-more__peek-i:nth-child(n+2) { display: none; }
-  html.hz8-sh-pilot .hz8-sh-more__t { font-size: 14px !important; }
-  html.hz8-sh-pilot .hz8-sh-more__s { font-size: 11px !important; }
-  html.hz8-sh-pilot .hz8-sh-more__region { padding: 0 14px 14px; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more-slot { margin-top: -16px; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__btn { gap: 12px; min-height: 74px; padding: 12px 10px 12px 12px; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek-i { width: 38px; height: 38px; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek-i:nth-child(n+2) { display: none; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__t { font-size: 14px !important; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__s { font-size: 11px !important; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__region { padding: 0 14px 14px; }
   html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__item { min-height: 48px; }
   html.hz8.hz8-sh-pilot .hz8-sh-after .hz8-rail--series .hz8-rail__label { font-size: 16px !important; }
 }
@@ -969,7 +972,7 @@ html.hz8-sh-pilot .hz8-sh-end { height: 0; }
   /* Smal telefon: ~1,85 kort per vy så att pris + köpknapp får plats. */
   html.hz8.hz8-sh-pilot #store-main :is(.hz8-sh-shelf, .hz8-sh-shelf.is-single):not(.hz8-sh-shelf--sub) .hz8-prail__list { grid-auto-columns: calc((100% - 12px) / 1.85); }
   html.hz8.hz8-sh-pilot #store-main .hz8-sh-shelf .hz8-prail__title { font-size: 21px !important; }
-  html.hz8-sh-pilot .hz8-sh-more__peek { display: none; }
+  :is(html.hz8-sh-pilot, html.hz8-pdp-pilot) .hz8-sh-more__peek { display: none; }
 }
 /* Platta och smal desktop: kortet under texten i stället för bredvid. */
 @media (min-width: 768px) and (max-width: 1179px) {
