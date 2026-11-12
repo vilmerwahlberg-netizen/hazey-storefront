@@ -1,0 +1,834 @@
+{
+ "fetched": "2026-11-12T11:57:10.481Z",
+ "source": "hazeyse.nyehandel.se (live, JS av), 92 PUBLIC-produkter ur CURRENT-CATALOG-MATRIX.json",
+ "rows": [
+  {
+   "nhId": 123,
+   "name": "Hazey.se Merch - Nyckelring",
+   "slug": "merch-nyckelring-hazey",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1183,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 124,
+   "name": "Buds – H4CBD 30% – Kusher Kush – 5 gram",
+   "slug": "h4cbd-buds-30-kusher-kush-magic-farmers-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3304,
+   "specAtPct": 68,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 125,
+   "name": "Hash – H4CBD 20% + CBN 20% – H-Bomb - 5 gram",
+   "slug": "hash-h4cbd-20-cbn-20-h-bomb-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3826,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 127,
+   "name": "CBD ≈15% - Russian Roulette - 10g",
+   "slug": "cbd-buds-10-gram-russian-roulette",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3207,
+   "specAtPct": 88,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 128,
+   "name": "CBD 30% – Triple Scoop – 3,5g",
+   "slug": "cbd-buds-triple-scoop-cookies-cannabis",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3062,
+   "specAtPct": 72,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 129,
+   "name": "Buds – CBN+ 30% – Malibu Skittelz - 5 gram",
+   "slug": "cbn-buds-malibu-skittelz",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3051,
+   "specAtPct": 65,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 130,
+   "name": "CBD 30% – Cereal Milk – 3,5g",
+   "slug": "cookies-cannabis-buds-cbd-cereal-milk-35-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3237,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 132,
+   "name": "Magic Sauce 50% – Yoda Ice Cream – 5g",
+   "slug": "magic-sauce-buds-yoda-ice-cream-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2549,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 133,
+   "name": "CBD 30% – Adios M.F. – 3,5g",
+   "slug": "cbd-cookies-adios-m-f",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2869,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 134,
+   "name": "Magic Sauce 50% – Gorilla Cookies – 5g",
+   "slug": "magic-sauce-buds-magic-farmers-gorilla-cookies-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2551,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 135,
+   "name": "High Life – White Widow – 5g",
+   "slug": "high-life-white-widow-sativa-buds-5-gram-hero-vapes",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2225,
+   "specAtPct": 66,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 136,
+   "name": "CBD 30% – Long Island – 3,5g",
+   "slug": "cbd-30-long-island-35g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2882,
+   "specAtPct": 75,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 137,
+   "name": "High Life – Malaga Magic – 5g",
+   "slug": "high-life-hash-malaga-magic-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2425,
+   "specAtPct": 74,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 138,
+   "name": "CBD 30% – Hawaiian Rain – 3,5g",
+   "slug": "cookies-buds-cbd-hawaiian-rain",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2828,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 139,
+   "name": "High Life – Northern Lights – 5g",
+   "slug": "high-life-hash-northern-lights-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2176,
+   "specAtPct": 71,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 141,
+   "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+   "slug": "cookies-cbd-vape-adios-mother-f-miami-mint",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2048,
+   "specAtPct": 71,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 144,
+   "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+   "slug": "cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2055,
+   "specAtPct": 72,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 146,
+   "name": "Magic Sauce 50% – Tinky Winky – 5g",
+   "slug": "blommor-magic-sauce-buds-tinky-winki-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2543,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 148,
+   "name": "EL Gringo – Strawberry Shortcake – 5g",
+   "slug": "el-gringo-hash-strawberry-shortcake-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1702,
+   "specAtPct": 62,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 152,
+   "name": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+   "slug": "magic-sauce-hash-marrakesh-dream-5-gram",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2840,
+   "specAtPct": 64,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 155,
+   "name": "Magic Sauce 50% – Samurai Jack – 5g",
+   "slug": "magic-sauce-buds-samurai-jack-magic-farmers-weed",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2667,
+   "specAtPct": 68,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 158,
+   "name": "Hash – CBN+ 40% – Yellowstone - 5 gram",
+   "slug": "hash-cbn-yellowstone-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3013,
+   "specAtPct": 65,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 161,
+   "name": "CBD 30% – Tequila Sunrise – 3,5g",
+   "slug": "cbd-buds-cookies-tequila-sunrise-35-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3235,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 165,
+   "name": "7% Nano11 – Prerolled – 1 gram",
+   "slug": "7-nano11-prerolled-1-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2202,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 168,
+   "name": "Magic Sauce 50% – Khalifa Kush – 5g",
+   "slug": "magic-sauce-buds-magic-farmers-sverige-khalifa-kush-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2797,
+   "specAtPct": 65,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 171,
+   "name": "CCELL M4 – Vape Batteri – 510",
+   "slug": "ccell-m4-penna",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2083,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 172,
+   "name": "Magic Sauce 50% – Donny Burger – 5g",
+   "slug": "magic-sauce-buds-donny-burger-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2545,
+   "specAtPct": 71,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 175,
+   "name": "Magic Sauce 50% – Crazy Dog – 5g",
+   "slug": "buds-magic-sauce-50-crazy-dog-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2529,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 178,
+   "name": "CCELL M3 Plus – Vape Batteri – 510",
+   "slug": "ccell-m3-plus-vape-batteri-510",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2492,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 182,
+   "name": "H4CBD 97% - 2ml",
+   "slug": "h4cbd-vape-cbd-group-2ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3035,
+   "specAtPct": 24,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 185,
+   "name": "Isolat – CBD 99% – Isolate – 15 gram",
+   "slug": "isolat-cbd-isolate-15-gram",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 1481,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 188,
+   "name": "Magic Sauce 50% – KitKat – 5g",
+   "slug": "magic-sauce-hash-kitkat-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2231,
+   "specAtPct": 67,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 189,
+   "name": "Vape - H4CBD 96% - Canapuff - 1ml",
+   "slug": "h4cbd-vape-canapuff-1ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 3568,
+   "specAtPct": 75,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 191,
+   "name": "7% Nano11 – Bubba Kush – 5g",
+   "slug": "nano-buds-ersatt-thca-bubba-kush-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1921,
+   "specAtPct": 66,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 194,
+   "name": "7% Nano11 – Royal OG – 5g",
+   "slug": "nano-11-buds-thca-substitut-royal-og",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1913,
+   "specAtPct": 66,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 195,
+   "name": "Vape - CBN 89% - Canapuff - 1ml",
+   "slug": "cbn-vape-canapuff-1ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3358,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 196,
+   "name": "Magic Sauce 50% – Charas – 5g",
+   "slug": "magic-sauce-hash-charas-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2803,
+   "specAtPct": 64,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 197,
+   "name": "7% Nano11 – Critical Berries – 5g",
+   "slug": "buds-nanno-11-critical-berries",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1945,
+   "specAtPct": 66,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 198,
+   "name": "Magic Sauce 50% – La Chupacabra – 5g",
+   "slug": "magic-sauce-buds-la-chupacabra-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2541,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 199,
+   "name": "Vape - THC-V 79% - Canapuff - 1ml",
+   "slug": "thcv-vape-canapuff-1ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2759,
+   "specAtPct": 65,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 200,
+   "name": "7% Nano11 – Zkittlez Mousse – 5g",
+   "slug": "nano-hash-zkittlez-mousse-ersatt-thca-hash",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2475,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 201,
+   "name": "Magic Sauce 50% – Titty Sprinkles – 5g",
+   "slug": "magic-sauce-buds-titty-sprinkles-5-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2547,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 202,
+   "name": "THCV 20% + CBG + CBN - 1ml",
+   "slug": "thcv-vape-canntropy-1ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2140,
+   "specAtPct": 65,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 203,
+   "name": "Magic Sauce 50% – John Lemon – 5g",
+   "slug": "magic-sauce-buds-thca-ersatt-john-lemon-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2541,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 204,
+   "name": "High Life – Gelato – 5g",
+   "slug": "high-life-gelato-hero-vapes-core-5g",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2200,
+   "specAtPct": 66,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 207,
+   "name": "Vape - H4CBD 95% - Canntropy - 1ml",
+   "slug": "h4cbd-vape-canntropy-1ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3387,
+   "specAtPct": 31,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 208,
+   "name": "7% Nano11 – Orange Zkittlez – 5g",
+   "slug": "nano-11-buds-orange-zkittlez-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1941,
+   "specAtPct": 66,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 209,
+   "name": "D10 50% – Cosmic Trip – 5g",
+   "slug": "d10-buds-cosmic-trip-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2861,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 211,
+   "name": "D10 50% – Porn Star OG – 5g",
+   "slug": "d10-buds-porn-star-og-magic-farmers",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2862,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 212,
+   "name": "CCELL Palm Pro – Vape Batteri – 510",
+   "slug": "ccell-palm-pro-vape-batteri-510-ganga",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2555,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 214,
+   "name": "D10 50% – Skywalker OG – 5g",
+   "slug": "d10-buds-skywalker-og-magic-farmers-thcx",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2862,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 215,
+   "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+   "slug": "cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2052,
+   "specAtPct": 71,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 216,
+   "name": "D10 60% – Rosinella – 5g",
+   "slug": "d10-hash-rosinella-magic-farmers",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2743,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 217,
+   "name": "Cookies C-Bite - Buds Tray",
+   "slug": "cookies-c-bite-buds-tray",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1121,
+   "specAtPct": 83,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 218,
+   "name": "D10 60% – Silk Road – 5g",
+   "slug": "d10-hash-silk-road-magic-farmers-thcx",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2743,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 219,
+   "name": "Cookies Original Beanie",
+   "slug": "cookies-original-beanie",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1513,
+   "specAtPct": 85,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 220,
+   "name": "Vape - THC-V 20% - CBD Group - 2ml",
+   "slug": "thcv-vape-cbd-group-2ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3796,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 221,
+   "name": "Magic Sauce 50% – Kowa Bunga – 5g",
+   "slug": "magic-sauce-buds-kowa-bunga-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2541,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 222,
+   "name": "Cookies Original Snapback",
+   "slug": "cookies-original-snapback",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1455,
+   "specAtPct": 84,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 223,
+   "name": "D10 50% – White Widow – 5g",
+   "slug": "d10-buds-white-widow-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2861,
+   "specAtPct": 73,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 224,
+   "name": "Cookies - V2 Large Stackables",
+   "slug": "cookies-v2-large-stackables",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1472,
+   "specAtPct": 83,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 225,
+   "name": "Vape - CBD 46% - Hazey - 1ml",
+   "slug": "cbd-vape-1ml-46-hazey",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2358,
+   "specAtPct": 60,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 226,
+   "name": "Magic Sauce 50% – London Lobster – 5g",
+   "slug": "magic-sauce-buds-london-lobster-ersatt-thc-a",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2549,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 227,
+   "name": "CBD Hash – London Pound Cake – 100g",
+   "slug": "cbd-hash-london-pound-cake-100g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2191,
+   "specAtPct": 67,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 228,
+   "name": "Magic Sauce 50% – Dubai Chocolate – 5g",
+   "slug": "magic-sauce-dubai-chocolate-istallet-for-thc-a-hash",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2258,
+   "specAtPct": 67,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 229,
+   "name": "Blommor – CBN 10% – Great White Shark",
+   "slug": "cbn-buds-magic-farmers-great-white-shark-1-25-gram",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3398,
+   "specAtPct": 65,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 230,
+   "name": "CBD 30% – Blue Raz – 3,5g",
+   "slug": "cookies-cbd-buds-blue-raz",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2734,
+   "specAtPct": 73,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 231,
+   "name": "Magic Sauce 50% – Grape Gasoline – 5g",
+   "slug": "magic-sauce-buds-grape-gasoline",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2549,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 232,
+   "name": "CBD 30% – Hollywood – 3,5g",
+   "slug": "cbd-buds-cookies-hollywood",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2745,
+   "specAtPct": 74,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 233,
+   "name": "Vape - THCV - Euphoria - 2ml",
+   "slug": "thcv-vape-euphoria-2ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2291,
+   "specAtPct": 58,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 234,
+   "name": "D10 60% – Blue Diamond – 5g",
+   "slug": "d10-hash-blue-diamond-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2746,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 235,
+   "name": "D10 60% – Purple Storm – 5g",
+   "slug": "d10-hash-purple-storm-5g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2746,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 236,
+   "name": "THCbA 47% - Faraoh - 2ml",
+   "slug": "thcba-vape-faraoh-2ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3538,
+   "specAtPct": 78,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 237,
+   "name": "CCELL M3b Pro – Vape Batteri – 510",
+   "slug": "ccell-m3b-vape-batteri-510",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1369,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 242,
+   "name": "THCA-B 50% - Faraoh - 2ml",
+   "slug": "thca-b-vape-faraoh-2ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 3823,
+   "specAtPct": 79,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 244,
+   "name": "CCELL Fino – Vape Batteri – 510",
+   "slug": "ccell-fino-vape-batteri-510",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2660,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 247,
+   "name": "CCELL Sandwave – Vape Batteri – 510",
+   "slug": "ccell-sandwave-vape-batteri-510",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2198,
+   "specAtPct": null,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 248,
+   "name": "Cookies Medium Metal Tray",
+   "slug": "cookies-medium-metal-tray",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1149,
+   "specAtPct": 82,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 249,
+   "name": "Buds – CBG9 60% – Snow Ice",
+   "slug": "blommor-cbg9-60-snow-ice",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 3202,
+   "specAtPct": 68,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 250,
+   "name": "CCELL Stylo – Vape Batteri – 510",
+   "slug": "ccell-stylo-vape-batteri-510",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 1672,
+   "specAtPct": 74,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 251,
+   "name": "Vape - THC-B 35% - Faraoh - 1ml",
+   "slug": "thc-b-vape-faraoh-1ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 2511,
+   "specAtPct": 57,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 252,
+   "name": "Magic Sauce 3.0 - 10ml",
+   "slug": "magic-sauce-10ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2414,
+   "specAtPct": 71,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 253,
+   "name": "CBD 60% - Cookies - 1ml",
+   "slug": "cbd-510-cart-cookies-1ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3101,
+   "specAtPct": 60,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 254,
+   "name": "D10 - 2ml",
+   "slug": "d10-vape-magic-farmers",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2746,
+   "specAtPct": 69,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 255,
+   "name": "Hero's Core - 2ml",
+   "slug": "thc-x-vape-hero-core-2ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2110,
+   "specAtPct": 59,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 256,
+   "name": "THCA-B 50% - Faraoh - 1ml",
+   "slug": "thca-b-faraoh-carts-1ml",
+   "visibility": "PUBLIC BUT DIRECT-ONLY",
+   "chars": 3499,
+   "specAtPct": 77,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 257,
+   "name": "Magic Sauce 50% – Pre Rolls – 1g",
+   "slug": "magic-sauce-pre-rolls-1g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3007,
+   "specAtPct": 68,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 258,
+   "name": "CBD – Cookies – 1g",
+   "slug": "cbd-prerolled-cookies-1g",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2287,
+   "specAtPct": 68,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 259,
+   "name": "CBD 25% + CBN 35% - 2ml",
+   "slug": "cbd-vape-cbn-vape-magic-farmers",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 3298,
+   "specAtPct": 74,
+   "aiMarkup": false
+  },
+  {
+   "nhId": 260,
+   "name": "Magic Sauce 3.0 - 5ml",
+   "slug": "magic-sauce-vape-5ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2328,
+   "specAtPct": 74,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 261,
+   "name": "Magic Sauce 3.0 - 2ml",
+   "slug": "vape-magic-sauce-magic-farmers-2ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2443,
+   "specAtPct": 70,
+   "aiMarkup": true
+  },
+  {
+   "nhId": 262,
+   "name": "Magic Sauce 3.0 - 1ml",
+   "slug": "cart-magic-sauce-magic-farmers-1ml",
+   "visibility": "PUBLIC + LISTED",
+   "chars": 2791,
+   "specAtPct": 62,
+   "aiMarkup": true
+  }
+ ]
+}
