@@ -1,6 +1,6 @@
 # TASK 02: Header — Cannabinoider och sök (2026-11-12)
 
-Worktree `../hazey-storefront-checkout-header`, gren `feat/theme8-checkout-header`.
+Worktree `../hazey-storefront-header`, gren `feat/theme8-header-cannabinoider` (ren headergren från origin/dev 2d5e9d3, utan kassans CSS; samma ändringar som 5367b1e + af9c825 på `feat/theme8-checkout-header`).
 Uppgift: `storefront-task-system/needs-prep/task-02-header-cannabinoider-search/TASK.md`
 och briefen `launch-task-queue-2026-10/01c-header-cannabinoids-search/BRIEF.md`
 (båda finns bara som ospårade filer i huvudworktreen, inte i origin/dev).
