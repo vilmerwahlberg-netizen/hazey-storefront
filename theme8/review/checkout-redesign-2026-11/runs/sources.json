@@ -1,0 +1,113 @@
+{
+ "sheets": [
+  {
+   "src": "https://hazeyse.nyehandel.se/themes/foundation/css/foundation.css?id=e7614b5f03dfc2d53b95907e7d000fac",
+   "n": 5735,
+   "checkoutRules": 67,
+   "trygg": false,
+   "svensk": false,
+   "sample": [
+    ":root { --body-background: #fff; --body-font-family: BlinkMacSystemFont,-apple-system,\"Segoe UI\",\"Roboto\",\"Oxygen\",\"Ubuntu\",\"Cantarell\",\"Fir",
+    ".button.checkout-order { background: rgb(0, 26, 56); border-color: rgb(0, 26, 56); color: rgb(255, 255, 255); font-weight: 700; }",
+    ".button.checkout-order { border-color: var(--checkout-button-border-color); color: var(--checkout-button-color); }"
+   ]
+  },
+  {
+   "src": "<style#nyts> 56386 tecken",
+   "n": 233,
+   "checkoutRules": 117,
+   "trygg": true,
+   "svensk": true,
+   "sample": [
+    ":root { --primary-color: #070707; --body-background: #e4d1bf; --text-color: #171717; --title-color: #171717; --body-font-family: 'Roboto',sa",
+    "body.checkout-page { font-size: 0px !important; line-height: 0; }",
+    "body.checkout-page > * { font-size: 16px; line-height: 1.5; }"
+   ]
+  },
+  {
+   "src": "<style> 345 tecken",
+   "n": 4,
+   "checkoutRules": 4,
+   "trygg": false,
+   "svensk": false,
+   "sample": [
+    ".checkout-address[data-v-9d27b74e] { margin-bottom: 1rem; }",
+    ".checkout-address__card[data-v-9d27b74e] { align-items: flex-start; border: 1px solid rgb(219, 219, 219); border-radius: 4px; display: flex;",
+    ".checkout-address__details[data-v-9d27b74e] { flex: 1 1 0%; min-width: 0px; overflow-wrap: anywhere; }"
+   ]
+  },
+  {
+   "src": "<style> 284 tecken",
+   "n": 3,
+   "checkoutRules": 2,
+   "trygg": false,
+   "svensk": false,
+   "sample": [
+    ".nets-checkout-container[data-v-3f7ca41d] { min-height: 400px; position: relative; }",
+    ".nets-checkout-overlay[data-v-3f7ca41d] { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid transparent; height: 100%; position"
+   ]
+  }
+ ],
+ "allSheets": [
+  "https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap (0)",
+  "https://hazeyse.nyehandel.se/themes/foundation/css/foundation.css?id=e7614b5f03dfc2d53b95907e7d000fac (5735)",
+  "https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css (0)",
+  "<style#nyts> 56386 tecken (233)",
+  "<style> 4613 tecken (37)",
+  "<style> 1786 tecken (16)",
+  "<style> 5483 tecken (53)",
+  "<style> 1252 tecken (10)",
+  "<style> 68 tecken (1)",
+  "<style> 73 tecken (1)",
+  "<style> 20 tecken (1)",
+  "<style> 20 tecken (1)",
+  "<style> 1959 tecken (15)",
+  "<style> 345 tecken (4)",
+  "<style> 73 tecken (1)",
+  "<style> 298 tecken (3)",
+  "<style> 279 tecken (3)",
+  "<style> 284 tecken (3)",
+  "<style> 282 tecken (3)",
+  "<style> 56 tecken (1)",
+  "<style> 243 tecken (3)",
+  "<style> 4938 tecken (60)",
+  "<style> 2112 tecken (13)",
+  "<style> 273 tecken (3)",
+  "<style> 67 tecken (1)",
+  "<style> 0 tecken (0)",
+  "<style> 100 tecken (2)",
+  "<style> 98 tecken (2)",
+  "<style> 2325 tecken (15)",
+  "<style> 863 tecken (12)",
+  "<style> 697 tecken (5)",
+  "<style> 1612 tecken (16)",
+  "<style> 499 tecken (4)",
+  "<style> 499 tecken (4)",
+  "<style> 498 tecken (4)",
+  "<style> 240 tecken (1)",
+  "<style> 608 tecken (6)",
+  "<style> 267 tecken (3)",
+  "<style> 970 tecken (13)",
+  "<style> 1050 tecken (10)",
+  "<style> 0 tecken (0)"
+ ],
+ "scripts": [
+  "https://www.gstatic.com/recaptcha/releases/0lEGiwO4Qwx5R9ArxUy0mBpf/recaptcha__sv.js",
+  "inline // Consent Mode prep window.dataLayer = window.dataLayer || []; function",
+  "inline (function() { var trackerScriptUrl = \"/js/pulse-tracker.js\"; ",
+  "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js",
+  "inline {\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"WebSite\",\"name\":\"Måbroberg AB (NDA)\"",
+  "inline {\"@context\":\"https:\\/\\/schema.org\",\"@type\":\"OnlineStore\",\"name\":\"Måbroberg AB (N",
+  "https://www.google.com/recaptcha/api.js?hl=sv",
+  "https://hazeyse.nyehandel.se/js/pulse-tracker.js",
+  "inline /* <![CDATA[ */ var reloadCheckoutHandler; (function(w,k,i,d,n,c,l){ w[k",
+  "https://js.playground.kustom.co/kcoc/261112-2d278db/checkout.bootstrap.js",
+  "inline window.config = {\"locale\":\"sv\",\"channel_country\":\"SE\",\"channel_language\":null,\"c",
+  "https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=bbd6a0f68d5b968fd649e36b60adc034",
+  "inline window.visitor.pageView('2cffbdf8-7612-438b-bb07-d427fbdfa8c8')",
+  "inline window.visitor.initiateCheckout('efac3f21-26d3-4f56-b060-f8c0352a7bd7',{\"currenc"
+ ],
+ "html": "",
+ "body": "checkout-page",
+ "HZ8": "undefined"
+}

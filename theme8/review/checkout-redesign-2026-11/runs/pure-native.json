@@ -1,0 +1,83 @@
+{
+ "393": {
+  "stripped": 148,
+  "html": "<header class=\"checkout\"><div class=\"container\"><div class=\"title\">Kassa</div></div> <div class=\"checkout-back\"><a href=\"javascript:void(0);\" onclick=\"history.back()\" role=\"button\" aria-label=\"Gå tillbaka\"><span aria-hidden=\"true\" class=\"icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M10 19l-7-7m0 0l7-7m-7 7h18\"></path></svg></span> <img src=\"https://d3dnwnveix5428.cloudfront.net/store_183a511a-0ded-44c9-829d-21099b0158f9/images/mini-header-hazey-49d6a763.webp\" alt=\"Måbroberg AB (NDA)\"></a></div></header>\n<main class=\"checkout\"><nav aria-label=\"breadcrumbs\" id=\"main-breadcrumb\" class=\"breadcrumb\"><div class=\"container\"><ul><li><a href=\"https://hazeyse.nyehandel.se/sv\">\n                            Hem\n                        </a></li> <li class=\"is-active\"><a href=\"https://hazeyse.nyehandel.se/sv/checkout\" aria-current=\"page\">\n                            Kassa\n                        </a></li></ul></div></nav> <section class=\"section\"><div class=\"container\"><div>  <div class=\"checkout-layout\"><div class=\"column checkout-information\">  <div class=\"columns\"><div class=\"column\"><div class=\"country-select\"><div class=\"field\"> <div class=\"control has-inline-placeholder\"><div class=\"select has-selected has-flag is-fullwidth\"><select aria-label=\"Jag önskar leverans till\"><option value=\"SE\">\n                Sverige\n            </option> </select> <span class=\"placeholder\">\n            Jag önskar leverans till\n        </span> <div class=\"flag\"><span class=\"is-large flag-icon fi fi-se\"></span></div></div></div> </div></div></div> <div class=\"column customer-type\"><div class=\"mb-4\"><div class=\"field\"> <div class=\"control has-inline-placeholder\"><div class=\"select has-selected is-fullwidth\"><select aria-label=\"Jag handlar som\"><option value=\"[object Object]\">\n                Privatperson\n            </option><option value=\"[object Object]\">\n                Företag\n            </option></select> <span class=\"placeholder\">\n            Jag handlar som\n        </span> </div></div> </div></div></div></div> <div class=\"newsletter-subscription\"><label class=\"checkbox\"><input type=\"checkbox\">\n        Prenumerera på nyhetsbrev\n    </label></div> <hr> <div class=\"shipping\"><h2>Fraktsätt</h2> <div class=\"options\"> <ul><li class=\"is-selected\" selected=\"selected\"><div><div class=\"control\"><label class=\"radio\"><input type=\"radio\" value=\"[object Object]\"></label></div> <div class=\"description\">  <div><h4>Fraktkostnad</h4> <p></p></div></div> <div class=\"price\">\n                49 kr\n            </div></div> </li></ul></div> </div> <div class=\"payment\"><div class=\"payment__payment-lock\"></div> <h2>Betalning</h2> <ul class=\"options single-payment-method\"><li class=\"is-selected\"><div><div class=\"control\"><label class=\"radio\"><input type=\"radio\" value=\"[object Object]\"></label></div> <div class=\"description\"><img src=\"/admin-dist/assets/img/partners/kustom.png\" alt=\"kustom\">  <div></div></div> </div></li></ul>  <div id=\"kustom-checkout\"><div id=\"klarna-checkout-container\" style=\"overflow: hidden; background-color: rgb(255, 255, 255);\">\n  \n  \n  <noscript>\nPlease <a href=\"http://enable-javascript.com\">enable JavaScript</a>.\n  </noscript>\n<iframe/></div></div></div> </div> <div class=\"column checkout-items-summary\"><div><section class=\"section items\"><article class=\"item\"><figure class=\"media\"> <img src=\"/images/no-image.png\" alt=\"Magic Sauce 3.0 2ml – 3-pack (blandbart)\" class=\"lazy\"></figure> <div class=\"content\"><div><a href=\"https://hazeyse.nyehandel.se/sv/products/magic-sauce-30-2ml-3-pack-blandbart\"><strong>Magic Sauce 3.0 2ml – 3-pack (blandbart)</strong></a> <br> <div class=\"price\">\n                1 599 kr / Styck\n\n            </div>       <div class=\"item__package\"><h5>Paketet innehåller</h5> <div class=\"item__package__items\"><div><a href=\"/sv/products/vape-magic-sauce-magic-farmers-2ml\">\n                            2\n                            Styck x\n                            <strong>Magic Sauce 3.0 - 2ml</strong></a> <div class=\"option\"><span>Strain:</span> Gorilla Cookies\n                            </div></div><div><a href=\"/sv/products/vape-magic-sauce-magic-farmers-2ml\">\n                            1\n                            Styck x\n                            <strong>Magic Sauce 3.0 - 2ml</strong></a> <div class=\"option\"><span>Strain:</span> Tinky Winky\n                            </div></div></div></div></div> <div class=\"item-amount\"><div class=\"field has-addons amount-input is-small\"><div class=\"control\"><button aria-label=\"Minska antalet\" tabindex=\"0\" class=\"button\">\n                        -\n                    </button></div> <div class=\"control\"><input autocomplete=\"off\" type=\"text\" debounce-events=\"blur\" name=\"quantity\" aria-label=\"Valt antal\" tabindex=\"-1\" class=\"input\"></div> <div class=\"control\"><button aria-label=\"Öka antalet\" tabindex=\"0\" class=\"button\">\n                        +\n                    </button></div> <div class=\"control\"><button aria-label=\"Ta bort varan\" class=\"button\"><span class=\"icon\"><i class=\"fas fa-trash-alt\"></i></span></button></div></div></div></div> <div class=\"total\">\n        1 599 kr\n         </div></article><article class=\"item\"><figure class=\"media\"> <img src=\"…\" alt=\"Magic Sauce 3.0 - 2ml\" class=\"lazy\"></figure> <div class=\"content\"><div><a href=\"https://hazeyse.nyehandel.se/sv/products/vape-magic-sauce-magic-farmers-2ml\"><strong>Magic Sauce 3.0 - 2ml</strong></a> <br> <div class=\"price\">\n                575 kr / Styck\n\n            </div>  <div class=\"option\"><span>Strain:</span> Gorilla Cookies\n                </div>     </div> <div class=\"item-amount\"><div class=\"field has-addons amount-input is-small\"><div class=\"control\"><button aria-label=\"Minska antalet\" tabindex=\"0\" class=\"button\">\n                        -\n                    </button></div> <div class=\"control\"><input autocomplete=\"off\" type=\"text\" debounce-events=\"blur\" name=\"quantity\" aria-label=\"Valt antal\" tabindex=\"-1\" class=\"input\"></div> <div class=\"control\"><button aria-label=\"Öka antalet\" tabindex=\"0\" class=\"button\">\n                        +\n                    </button></div> <div class=\"control\"><button aria-label=\"Ta bort varan\" class=\"button\"><span class=\"icon\"><i class=\"fas fa-trash-alt\"></i></span></button></div></div></div></div> <div class=\"total\">\n        575 kr\n         </div></article></section>  <hr>  <div class=\"summary\"><div class=\"totals\"><div class=\"row\"><span>Delsumma</span> \n                    2 174 kr\n                </div>  <div class=\"row\"><span>Frakt</span> \n                    49 kr\n                </div>    <div class=\"row\"><div class=\"total-sum\"><span>Totalsumma</span> <span class=\"inc-vat\">Inkl.moms: 444,6 kr</span></div> <span class=\"checkout-total\">\n                2 223 kr\n                </span></div>   </div></div></div> <hr> <div class=\"coupon-code\"><div class=\"coupon-code__toggle is-hidden-desktop\">\n        Lägg till Rabattkod/presentkort\n        <span><i class=\"fas fa-chevron-down\"></i></span></div> <div class=\"coupon-code__form\"><h4 class=\"is-hidden-touch\">Lägg till Rabattkod/presentkort</h4> <div class=\"coupon-code__row\"><div class=\"field\"> <div class=\"control has-inline-placeholder\"><label for=\"coupon_code\" class=\"sr-only\">coupon_code</label> <input tabindex=\"0\" placeholder=\" \" name=\"coupon_code\" aria-label=\"coupon_code\" aria-placeholder=\"Ange kod\" aria-labelledby=\"field-form-input-label-coupon_code\" id=\"coupon_code\" type=\"text\" class=\"input\"> <span id=\"field-form-input-label-coupon_code\" class=\"placeholder\">Ange kod</span>  </div> </div> <div><button disabled=\"disabled\" aria-label=\"Lägg till kod\" class=\"button is-primary\">\n                    Lägg till\n                </button></div></div></div> </div></div></div></div></div></section> <div id=\"checkout-overlay\"></div></main>",
+  "layout": {
+   "display": "flex",
+   "dir": "column-reverse",
+   "wrap": "nowrap"
+  },
+  "rects": {
+   "header": {
+    "y": 0,
+    "h": 60
+   },
+   "items": {
+    "y": 128,
+    "h": 382
+   },
+   "total": {
+    "y": 607,
+    "h": 45
+   },
+   "coupon": {
+    "y": 701,
+    "h": 18
+   },
+   "kustom": {
+    "y": 1168,
+    "h": 843
+   },
+   "columns": {
+    "y": 755,
+    "h": 176
+   },
+   "shipping": {
+    "y": 1004,
+    "h": 96
+   },
+   "docH": 2067
+  },
+  "tab": "Gå tillbaka@18 → Hem@68 → Kassa@68 → Jag önskar leverans till@767 → Jag handlar som@847 → INPUT@935 → INPUT@1049 → klarna-checkout-iframe@1168 → (förbi Kustom) → 2 Styck x Magic Sauce 3.@217 → 1 Styck x Magic Sauce 3.@287 → Minska antalet@354 → Öka antalet@354 → Ta bort varan@354 → Magic Sauce 3.0 - 2ml@418 → Minska antalet@480 → Öka antalet@480 → Ta bort varan@480 → klarna-fullscreen-iframe@0"
+ },
+ "1440": {
+  "stripped": 148,
+  "layout": {
+   "display": "flex",
+   "dir": "row",
+   "wrap": "nowrap"
+  },
+  "rects": {
+   "header": {
+    "y": 0,
+    "h": 70
+   },
+   "items": {
+    "y": 176,
+    "h": 325
+   },
+   "total": {
+    "y": 598,
+    "h": 45
+   },
+   "coupon": {
+    "y": 692,
+    "h": 74
+   },
+   "kustom": {
+    "y": 517,
+    "h": 808
+   },
+   "columns": {
+    "y": 184,
+    "h": 96
+   },
+   "shipping": {
+    "y": 353,
+    "h": 96
+   },
+   "docH": 1437
+  },
+  "tab": "Gå tillbaka@20 → Hem@78 → Kassa@78 → Jag önskar leverans till@196 → Jag handlar som@196 → INPUT@284 → INPUT@398 → klarna-checkout-iframe@517 → (förbi Kustom) → 2 Styck x Magic Sauce 3.@244 → 1 Styck x Magic Sauce 3.@296 → Minska antalet@345 → Öka antalet@345 → Ta bort varan@345 → Magic Sauce 3.0 - 2ml@409 → Minska antalet@471 → Öka antalet@471 → Ta bort varan@471 → coupon_code@718"
+ }
+}

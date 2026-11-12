@@ -1,0 +1,42 @@
+{
+ "1440": {
+  "cart": [
+   "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr",
+   "Magic Sauce 3.0 - 2ml 575 kr"
+  ],
+  "today": {
+   "firstItem": 292,
+   "secondItem": 726,
+   "total": 1009,
+   "coupon": 1156,
+   "kustom": 681,
+   "country": 305,
+   "docH": 1643,
+   "overflowX": 0,
+   "couponReachable": true,
+   "inFold": {
+    "items": true,
+    "total": false,
+    "coupon": false
+   }
+  },
+  "B": {
+   "firstItem": 125,
+   "secondItem": 276,
+   "total": 491,
+   "coupon": 576,
+   "kustom": 384,
+   "country": 167,
+   "docH": 1239,
+   "overflowX": 0,
+   "couponReachable": true,
+   "inFold": {
+    "items": true,
+    "total": true,
+    "coupon": true
+   },
+   "couponMsg": "Lägg till Rabattkod/presentkort coupon_code Ange kod Kod är ogiltigt. Lägg till"
+  },
+  "cleaned": true
+ }
+}

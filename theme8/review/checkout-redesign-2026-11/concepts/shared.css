@@ -1,0 +1,98 @@
+/* Gemensam bas för båda koncepten (inte produktion). Gäller ren nativ Nyehandel-kassa
+   (body.checkout-page) där Theme 8:s gamla kassablock är borttaget. Inget i Kustoms ram rörs. */
+body.checkout-page { background: var(--co-bg) !important; color: var(--hz8-ink); font-family: var(--hz8-font-ui) !important; }
+body.checkout-page main.checkout { background: transparent !important; padding: 0 !important; margin: 0 !important; }
+body.checkout-page #main-breadcrumb { display: none !important; }            /* Hem / Kassa: ingen funktion i kassan */
+body.checkout-page main.checkout > .section { padding: 0 0 48px !important; background: transparent !important; }
+body.checkout-page main.checkout .container { max-width: none !important; width: auto !important; padding: 0 !important; margin: 0 !important; }
+body.checkout-page .checkout-layout > .column { margin: 0 !important; flex: none; width: auto !important; max-width: none !important; background: transparent; box-shadow: none !important; border: 0 !important; }
+body.checkout-page .checkout-information { background: transparent !important; }
+body.checkout-page .checkout-layout hr, body.checkout-page .checkout-items-summary hr { display: none !important; }
+
+/* Header: tillbaka vänster, Hazey-loggan i mitten (temats wordmark, samma som headern), lås höger. */
+body.checkout-page header.checkout { position: relative; display: flex; align-items: center; justify-content: center; height: 56px; padding: 0 !important; box-shadow: none !important; }
+body.checkout-page header.checkout .container { position: static !important; width: auto !important; }
+body.checkout-page header.checkout .title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }   /* "Kassa" kvar för skärmläsare */
+body.checkout-page .checkout-back { position: absolute !important; inset: 0 auto 0 0; display: flex; align-items: center; }
+body.checkout-page .checkout-back a { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; color: inherit !important; font: 600 15px/1 var(--hz8-font-ui) !important; text-decoration: none; }
+body.checkout-page .checkout-back a .icon, body.checkout-page .checkout-back a svg { width: 20px !important; height: 20px !important; color: inherit; }
+@media (min-width: 768px) { body.checkout-page .checkout-back a::after { content: "Tillbaka"; content: "Tillbaka" / ""; } }   /* mobil: bara pilen (aria-label "Gå tillbaka" kvar) */
+body.checkout-page .checkout-back img { position: fixed; left: 50%; top: 0; height: 56px !important; width: 96px !important; max-height: none !important; transform: translateX(-50%); object-fit: contain; padding: 18px 0; box-sizing: border-box;
+  content: url("https://vilmerwahlberg-netizen.github.io/hazey-storefront/theme8/assets/hazey-logo.webp"); pointer-events: none; }
+body.checkout-page header.checkout::after { content: ""; position: absolute; right: 16px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%);
+  background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E") center/contain no-repeat; }
+
+/* Varurader: bild · namn/variant · radsumma; antal under namnet. Enhetspriset döljs inte (läses upp) men tonas. */
+body.checkout-page .checkout-items-summary .section.items { padding: 0 !important; margin: 0 !important; background: transparent !important; }
+body.checkout-page .checkout-items-summary article.item { display: grid !important; grid-template-columns: 56px minmax(0, 1fr) auto; column-gap: 12px; align-items: start; margin: 0 !important; padding: 12px 0 !important; border: 0 !important; }
+body.checkout-page .checkout-items-summary article.item .media { grid-row: 1 / span 2; width: 56px !important; height: 56px !important; margin: 0 !important; border-radius: 10px; overflow: hidden; background: #fff; }
+body.checkout-page .checkout-items-summary article.item .media img { width: 100% !important; height: 100% !important; object-fit: contain; padding: 3px; box-sizing: border-box; }
+body.checkout-page .checkout-items-summary article.item .content { display: contents !important; }
+body.checkout-page .checkout-items-summary article.item .content > div:first-child { grid-column: 2; min-width: 0; }
+body.checkout-page .checkout-items-summary article.item .content br { display: none; }
+body.checkout-page .checkout-items-summary article.item .content > div:first-child > a { display: block; font: 600 15.5px/1.25 var(--hz8-font-ui) !important; color: inherit; }
+body.checkout-page .checkout-items-summary article.item .content > div:first-child > a > strong { display: block; font-weight: 600; }   /* block: paketets ::after-namn får ingen tom rad ovanför */   /* storlek ärvs; Task 21 nollar paketets adminnamn */
+body.checkout-page .checkout-items-summary article.item .content > div:first-child > a > strong::after { font: 600 15.5px/1.25 var(--hz8-font-ui) !important; color: inherit !important; }
+body.checkout-page .checkout-items-summary article.item a { color: inherit !important; text-decoration: none; }
+body.checkout-page .checkout-items-summary article.item .price { margin-top: 2px; font: 400 13px/1.3 var(--hz8-font-ui) !important; opacity: .72; }
+body.checkout-page .checkout-items-summary article.item .content > div:first-child > .option { margin-top: 2px; font: 500 13.5px/1.3 var(--hz8-font-ui) !important; }
+body.checkout-page .checkout-items-summary article.item .option > span { opacity: .72; font-weight: 400; }
+body.checkout-page .checkout-items-summary article.item > .total { grid-column: 3; grid-row: 1; font: 700 15.5px/1.25 var(--hz8-font-ui) !important; white-space: nowrap; color: inherit; }
+body.checkout-page .checkout-items-summary .item-amount { grid-column: 2 / 4; margin-top: 8px; }
+/* Paketets delar: en rad "2 × Gorilla Cookies · 1 × Tinky Winky" (paketets kundnamn kommer ur Task 21-blocket). */
+body.checkout-page .checkout-items-summary .item__package { margin: 4px 0 0 !important; padding: 0 !important; border: 0 !important; background: none !important; }
+body.checkout-page .checkout-items-summary .item__package h5 { display: none !important; }
+body.checkout-page .checkout-items-summary .item__package__items { display: flex !important; flex-wrap: wrap; gap: 2px 10px; border: 0 !important; padding: 0 !important; margin: 0 !important; }
+body.checkout-page .checkout-items-summary .item__package__items > div { display: inline-flex !important; gap: 4px; padding: 0 !important; border: 0 !important; font: 500 13.5px/1.35 var(--hz8-font-ui) !important; }
+body.checkout-page .checkout-items-summary .item__package__items > div :is(a, .option) { margin: 0 !important; font: 500 13.5px/1.35 var(--hz8-font-ui) !important; color: inherit !important; }
+/* Antal: kompakt stegare, 44 px tryckyta på pekskärm. */
+body.checkout-page .checkout-items-summary .amount-input { display: inline-flex !important; align-items: center; margin: 0 !important; border-radius: 999px; overflow: hidden; }
+body.checkout-page .checkout-items-summary .amount-input .control { margin: 0 !important; }
+body.checkout-page .checkout-items-summary .amount-input :is(.button, .input) { height: 36px !important; min-height: 36px !important; width: 38px; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; color: inherit !important; box-shadow: none !important; font: 600 15px/1 var(--hz8-font-ui) !important; text-align: center; }
+@media (pointer: coarse) { body.checkout-page .checkout-items-summary .amount-input :is(.button, .input) { height: 40px !important; min-height: 40px !important; width: 40px; } }   /* 40 px: över 24 px-kravet (WCAG 2.5.8), lättare än 44 */
+body.checkout-page .checkout-items-summary .amount-input .control:last-child { margin-left: 2px !important; }
+
+/* Totaler. */
+body.checkout-page .checkout-items-summary .summary, body.checkout-page .checkout-items-summary .totals { padding: 0 !important; margin: 0 !important; background: transparent !important; }
+body.checkout-page .checkout-items-summary .totals .row { display: flex !important; justify-content: space-between; align-items: baseline; margin: 0 !important; padding: 3px 0 !important; font: 500 14px/1.4 var(--hz8-font-ui) !important; color: inherit; }
+body.checkout-page .checkout-items-summary .totals .row span { font-weight: 400 !important; color: inherit; }
+body.checkout-page .checkout-items-summary .totals .row:has(.total-sum) { margin-top: 8px !important; padding-top: 10px !important; }
+body.checkout-page .checkout-items-summary .totals .total-sum > span:first-child { font: 600 17px/1.2 var(--hz8-font-ui) !important; }
+body.checkout-page .checkout-items-summary .totals .total-sum .inc-vat { display: block; font: 400 12.5px/1.3 var(--hz8-font-ui) !important; opacity: .72; }
+body.checkout-page .checkout-items-summary .checkout-total { font: 600 26px/1.1 var(--hz8-font-display) !important; color: inherit !important; white-space: nowrap; }
+
+/* Rabattkod: alltid öppen (Nyehandels växlare under 1024 px är en div som inte nås med tangentbord). */
+body.checkout-page .coupon-code { margin: 0 !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+body.checkout-page .coupon-code__toggle { display: none !important; }
+body.checkout-page .coupon-code__form { display: block !important; }
+body.checkout-page .coupon-code__form h4 { display: block !important; margin: 0 0 6px !important; font: 500 12.5px/1.2 var(--hz8-font-ui) !important; letter-spacing: 0 !important; text-transform: none !important; color: inherit !important; opacity: .8; }
+body.checkout-page .coupon-code__row { display: flex !important; gap: 8px; align-items: stretch; }
+body.checkout-page .coupon-code__row .field { flex: 1 1 auto; margin: 0 !important; }
+body.checkout-page .coupon-code__row .input { height: 44px !important; padding: 0 14px !important; border-radius: 10px !important; box-shadow: none !important; font: 500 15px/1 var(--hz8-font-ui) !important; }
+body.checkout-page .coupon-code__row .placeholder { top: 50% !important; transform: translateY(-50%); font: 400 14px/1 var(--hz8-font-ui) !important; }
+body.checkout-page .coupon-code__row .button { height: 44px !important; padding: 0 16px !important; border-radius: 10px !important; font: 600 14px/1 var(--hz8-font-ui) !important; box-shadow: none !important; }
+
+/* Leverans: land + kundtyp i en rad, nyhetsbrev som liten rad, ett fraktsätt som bekräftad rad. */
+body.checkout-page .checkout-information > .columns { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 !important; }
+body.checkout-page .checkout-information > .columns > .column { padding: 0 !important; margin: 0 !important; }
+body.checkout-page .checkout-information > .columns .field, body.checkout-page .checkout-information > .columns .mb-4 { margin: 0 !important; }
+body.checkout-page .checkout-information > .columns select { height: 52px !important; padding-top: 18px !important; border-radius: 10px !important; box-shadow: none !important; font: 500 15px/1 var(--hz8-font-ui) !important; }
+body.checkout-page .checkout-information > .columns .placeholder { font: 400 11.5px/1 var(--hz8-font-ui) !important; }
+body.checkout-page .checkout-information > .columns .country-select .select::after { display: none !important; } /* bara Sverige */
+body.checkout-page .newsletter-subscription { margin: 10px 0 0 !important; }
+body.checkout-page .newsletter-subscription .checkbox { display: flex !important; align-items: center; gap: 8px; min-height: 32px; font: 400 13.5px/1.3 var(--hz8-font-ui) !important; color: inherit; opacity: .85; }
+body.checkout-page .newsletter-subscription .checkbox::after { content: "(valfritt)"; opacity: .8; }
+body.checkout-page .checkout-information h2 { margin: 0 0 8px !important; padding: 0 !important; font: 600 12px/1.2 var(--hz8-font-ui) !important; letter-spacing: .08em !important; text-transform: uppercase; color: inherit !important; opacity: .78; }
+body.checkout-page .shipping { margin: 18px 0 0 !important; padding: 0 !important; }
+body.checkout-page .shipping .options { margin: 0 !important; border: 0 !important; }
+body.checkout-page .shipping .options ul { margin: 0 !important; padding: 0 !important; }
+body.checkout-page .shipping .options li { margin: 0 !important; padding: 12px 14px !important; border: 1px solid var(--co-line) !important; border-radius: 10px !important; background: var(--co-field) !important; box-shadow: none !important; }
+body.checkout-page .shipping .options li > div { display: flex; align-items: center; gap: 10px; }
+body.checkout-page .shipping .options .description { flex: 1; }
+body.checkout-page .shipping .options .description h4 { margin: 0 !important; font: 600 15px/1.2 var(--hz8-font-ui) !important; color: inherit !important; }
+body.checkout-page .shipping .options .description p:empty { display: none; }
+body.checkout-page .shipping .options .price { font: 600 15px/1.2 var(--hz8-font-ui) !important; color: inherit !important; }
+body.checkout-page .payment { margin: 22px 0 0 !important; padding: 0 !important; }
+body.checkout-page .payment .single-payment-method { display: none !important; }      /* ett betalsätt (Kustom), radioknappen redan vald */
+body.checkout-page #kustom-checkout { margin: 0 !important; padding: 0 !important; background: #fff; border-radius: 14px; overflow: hidden; }
+body.checkout-page :is(a, button, input, select):focus-visible { outline: 2px solid var(--hz8-cta) !important; outline-offset: 2px !important; box-shadow: none !important; }

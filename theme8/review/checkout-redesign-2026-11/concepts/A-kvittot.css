@@ -1,0 +1,50 @@
+/* ===== Koncept A: "Kvittot" =====
+   Gest: ordern är ett kvittoblad med perforerad kant -- först på mobil (Nyehandels egen
+   column-reverse), smal sticky kolumn till höger på desktop. Allt annat ligger öppet på
+   sandytan med hårfina linjer: inga staplade kort. Trygghet = en dämpad rad under headern. */
+body.checkout-page { --co-bg: color-mix(in srgb, var(--hz8-beige) 30%, var(--hz8-neutral)); --co-paper: color-mix(in srgb, var(--hz8-neutral) 22%, #fff); --co-line: var(--hz8-line); --co-field: #fff; }
+body.checkout-page header.checkout { background: var(--co-bg) !important; color: var(--hz8-olive) !important; border-bottom: 1px solid var(--co-line); }
+body.checkout-page header.checkout .checkout-back img { filter: brightness(0) saturate(100%) invert(19%) sepia(14%) saturate(1200%) hue-rotate(43deg) brightness(92%); } /* olivgrön wordmark */
+/* Trygghetsrad: bara verifierade påståenden (leverans-/retursidan, produktsidornas USP). */
+body.checkout-page main.checkout > .section::before { content: "Skickas från Sverige · Diskret paket · Spårning via e-post"; content: "Skickas från Sverige · Diskret paket · Spårning via e-post" / "";
+  display: block; padding: 10px 16px; text-align: center; color: var(--hz8-text-muted); font: 500 12.5px/1.3 var(--hz8-font-ui); }
+
+body.checkout-page .checkout-layout { display: flex !important; flex-direction: column-reverse !important; gap: 0; padding: 0 12px !important; margin: 0 !important; }
+body.checkout-page .checkout-information { margin-top: 10px !important; }
+/* Kvittobladet */
+body.checkout-page .checkout-items-summary { position: relative; display: flex !important; flex-direction: column; padding: 18px 16px 20px !important; background: var(--co-paper) !important; border-radius: 4px;
+  box-shadow: 0 1px 0 var(--co-line), 0 10px 24px -18px color-mix(in srgb, var(--hz8-ink) 40%, transparent); }
+body.checkout-page .checkout-items-summary::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 8px;
+  background: radial-gradient(circle at 6px -2px, transparent 5px, var(--co-paper) 5.5px) -1px 0 / 12px 8px repeat-x; }
+body.checkout-page .checkout-items-summary::before { content: "Din order"; display: block; margin: 0 0 2px; color: var(--hz8-olive); font: 600 22px/1.15 var(--hz8-font-display); }
+body.checkout-page .checkout-items-summary > div:first-child { display: contents; }
+body.checkout-page .checkout-items-summary .section.items { order: 1; }
+body.checkout-page .checkout-items-summary article.item + article.item { border-top: 1px dashed var(--co-line) !important; }
+body.checkout-page .checkout-items-summary .amount-input { border: 1px solid var(--co-line); background: #fff; }
+body.checkout-page .checkout-items-summary .coupon-code { order: 2; margin-top: 6px !important; padding-top: 14px !important; border-top: 1px dashed var(--co-line) !important; }
+body.checkout-page .coupon-code__row .input { background: #fff !important; border: 1px solid var(--hz8-line-strong) !important; }
+body.checkout-page .coupon-code__row .button { background: transparent !important; border: 1px solid var(--hz8-olive) !important; color: var(--hz8-olive) !important; }
+body.checkout-page .checkout-items-summary .summary { order: 3; margin-top: 14px !important; padding-top: 10px !important; border-top: 1px solid var(--co-line); }
+body.checkout-page .checkout-items-summary .totals .row:has(.total-sum) { border-top: 1px dashed var(--co-line); }
+body.checkout-page .checkout-items-summary .checkout-total { color: var(--hz8-olive) !important; }
+
+/* Leverans och betalning: öppet på sandytan. */
+body.checkout-page .checkout-information { padding: 26px 4px 0 !important; }
+body.checkout-page .checkout-information > .columns select { background: #fff !important; border: 1px solid var(--hz8-line-strong) !important; }
+body.checkout-page .checkout-information h2 { color: var(--hz8-olive) !important; }
+body.checkout-page #kustom-checkout { margin: 0 -4px !important; box-shadow: 0 0 0 1px var(--co-line); }
+
+@media (min-width: 1024px) {
+  body.checkout-page header.checkout { height: 64px; }
+  body.checkout-page .checkout-back img { height: 64px !important; width: 110px !important; padding: 20px 0; }
+  body.checkout-page header.checkout::after { right: auto; left: calc(50% + 470px); }
+  body.checkout-page header.checkout::before { content: "Betalning via Kustom"; position: absolute; right: calc(50% - 470px); top: 50%; transform: translateY(-50%); padding-right: 0; font: 500 13.5px/1 var(--hz8-font-ui); color: var(--hz8-text-muted); }
+  body.checkout-page header.checkout::after { left: auto; right: calc(50% - 470px + 140px); }
+  body.checkout-page .checkout-back { left: calc(50% - 540px) !important; }
+  body.checkout-page main.checkout > .section::before { padding: 14px 0 6px; }
+  body.checkout-page .checkout-layout { display: grid !important; grid-template-columns: minmax(0, 1fr) 380px; gap: 56px; max-width: 1080px; margin: 0 auto !important; padding: 0 24px !important; align-items: start; }
+  body.checkout-page .checkout-items-summary { grid-column: 2; grid-row: 1; position: sticky; top: 20px; padding: 22px 24px 26px !important; }
+  body.checkout-page .checkout-information { grid-column: 1; grid-row: 1; padding: 6px 0 0 !important; }
+  body.checkout-page .checkout-information > .columns { max-width: 560px; }
+  body.checkout-page #kustom-checkout { margin: 0 !important; }
+}

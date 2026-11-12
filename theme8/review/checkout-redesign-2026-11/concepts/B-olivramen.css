@@ -1,0 +1,56 @@
+/* ===== Koncept B: "Olivramen" =====
+   Gest: ordern ligger i ett mörkt olivfält som går ihop med headern -- överst på mobil,
+   en helhög panel till höger på desktop (split screen). Leverans och betalning är två
+   numrerade steg på ljus yta. Varumärkesgrönt bär auktoriteten; orange bara för fokus. */
+body.checkout-page { --co-bg: var(--hz8-neutral); --co-dark: var(--hz8-olive); --co-on: #fffaf0; --co-on-muted: color-mix(in srgb, #fffaf0 74%, transparent); --co-line: var(--hz8-line); --co-line-dark: color-mix(in srgb, #fffaf0 16%, transparent); --co-field: #fff; }
+body.checkout-page header.checkout { background: var(--co-dark) !important; color: var(--co-on) !important; }
+body.checkout-page header.checkout .checkout-back img { filter: brightness(0) invert(96%) sepia(8%) saturate(300%); }   /* krämvit wordmark på oliv */
+body.checkout-page .coupon-code .help, body.checkout-page .coupon-code .is-danger, body.checkout-page .coupon-code [class*=error] { color: #ffc2b4 !important; }
+body.checkout-page .checkout-layout { display: flex !important; flex-direction: column-reverse !important; margin: 0 !important; padding: 0 !important; }   /* Nyehandels 25 px ovanför gav en ljus remsa */
+
+body.checkout-page .checkout-items-summary { display: flex !important; flex-direction: column; padding: 4px 16px 20px !important; background: var(--co-dark) !important; color: var(--co-on) !important; }
+body.checkout-page .checkout-items-summary::before { content: "Din order"; display: block; margin: 6px 0 0; color: var(--co-on-muted); font: 600 12px/1.2 var(--hz8-font-ui); letter-spacing: .08em; text-transform: uppercase; }
+body.checkout-page .checkout-items-summary > div:first-child { display: contents; }
+body.checkout-page .checkout-items-summary .section.items { order: 1; }
+body.checkout-page .checkout-items-summary article.item + article.item { border-top: 1px solid var(--co-line-dark) !important; }
+body.checkout-page .checkout-items-summary article.item .media { background: color-mix(in srgb, #fffaf0 92%, transparent) !important; }
+body.checkout-page .checkout-items-summary .amount-input { border: 1px solid var(--co-line-dark); background: transparent; }
+body.checkout-page .checkout-items-summary .amount-input :is(.button, .input) { color: var(--co-on) !important; }
+/* Task 21-paketrutan är beige -- behåll den, men namnet ska vara ljust här. */
+body.checkout-page .checkout-items-summary article.item a > strong::after { color: var(--co-on) !important; }
+body.checkout-page .checkout-items-summary .summary { order: 2; margin-top: 4px !important; padding-top: 10px !important; border-top: 1px solid var(--co-line-dark); }
+body.checkout-page .checkout-items-summary .totals .row { color: var(--co-on-muted) !important; }
+body.checkout-page .checkout-items-summary .totals .row:has(.total-sum) { color: var(--co-on) !important; }
+body.checkout-page .checkout-items-summary .checkout-total { color: var(--co-on) !important; font-size: 30px !important; }
+body.checkout-page .checkout-items-summary .coupon-code { order: 3; margin-top: 14px !important; }
+body.checkout-page .coupon-code__form h4 { color: var(--co-on-muted) !important; opacity: 1; }
+body.checkout-page .coupon-code__row .input { background: color-mix(in srgb, #fffaf0 10%, transparent) !important; border: 1px solid var(--co-line-dark) !important; color: var(--co-on) !important; }
+body.checkout-page .coupon-code__row .placeholder { color: var(--co-on-muted) !important; }
+body.checkout-page .coupon-code__row .button { background: var(--co-on) !important; border: 0 !important; color: var(--co-dark) !important; opacity: 1 !important; }
+body.checkout-page .coupon-code__row .button[disabled] { background: color-mix(in srgb, #fffaf0 70%, transparent) !important; }
+
+/* Steg på ljus yta */
+body.checkout-page .checkout-information { counter-reset: hz8step; padding: 20px 16px 0 !important; }
+body.checkout-page .checkout-information::before { content: "Skickas från Sverige · Diskret paket · Spårning via e-post"; content: "Skickas från Sverige · Diskret paket · Spårning via e-post" / "";
+  display: block; margin: 0 0 18px; color: var(--hz8-text-muted); font: 500 12.5px/1.3 var(--hz8-font-ui); }
+body.checkout-page .checkout-information > .columns::before { content: "1  Leverans"; content: "1  Leverans" / ""; grid-column: 1 / -1; margin-bottom: 2px; color: var(--hz8-olive); font: 600 19px/1.2 var(--hz8-font-display); white-space: pre; }
+body.checkout-page .checkout-information > .columns select { background: #fff !important; border: 1px solid var(--hz8-line-strong) !important; }
+body.checkout-page .shipping h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }    /* "Fraktsätt" kvar för skärmläsare; ingår i steg 1 */
+body.checkout-page .shipping { margin-top: 12px !important; }
+body.checkout-page .payment h2 { font: 600 19px/1.2 var(--hz8-font-display) !important; letter-spacing: 0 !important; text-transform: none; color: var(--hz8-olive) !important; opacity: 1; margin-bottom: 10px !important; }
+body.checkout-page .payment h2::before { content: "2  "; content: "2  " / ""; white-space: pre; }
+body.checkout-page #kustom-checkout { margin: 0 -16px !important; border-radius: 0; }
+
+@media (min-width: 1024px) {
+  body.checkout-page header.checkout { height: 64px; }
+  body.checkout-page .checkout-back img { height: 64px !important; width: 110px !important; padding: 20px 0; }
+  body.checkout-page main.checkout > .section { padding: 0 !important; }
+  body.checkout-page .checkout-layout { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(400px, 36%); min-height: calc(100vh - 64px); }
+  body.checkout-page header.checkout::after { right: 24px; }
+  /* Formuläret 560 px brett, högerställt mot olivpanelen (shared.css låser width:auto, därför padding). */
+  body.checkout-page .checkout-information { grid-column: 1; grid-row: 1; padding: 36px 56px 48px max(24px, calc(100% - 616px)) !important; box-sizing: border-box; }
+  body.checkout-page .checkout-items-summary { grid-column: 2; grid-row: 1; padding: 36px 48px 40px !important; }
+  body.checkout-page .checkout-items-summary > * { max-width: 400px; }
+  body.checkout-page .checkout-items-summary::before { font-size: 12.5px; margin-bottom: 4px; }
+  body.checkout-page #kustom-checkout { margin: 0 !important; border-radius: 14px; box-shadow: 0 0 0 1px var(--co-line); }
+}

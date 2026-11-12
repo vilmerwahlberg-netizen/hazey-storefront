@@ -1,0 +1,152 @@
+{
+ "393": {
+  "cart": [
+   "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr",
+   "Magic Sauce 3.0 - 2ml 575 kr"
+  ],
+  "readingFlow": true,
+  "ua": "Chrome/128.0.0.0",
+  "outline": "section.section [y120 h2261 x0 w393] block\n      div.checkout-layout [y120 h2221 x10 w373] grid\n        div.column.checkout-information [y0 h0 x0 w0] contents\n          div.columns [y172 h154 x10 w373] grid\n          div.newsletter-subscription [y330 h44 x10 w373] block\n          div.shipping [y386 h137 x10 w373] block\n          div.payment [y535 h927 x10 w373] block\n            div.payment__payment-lock [y0 h0 x0 w0] none\n            ul.options.single-payment-method [y0 h0 x0 w0] none\n            div#kustom-checkout [y594 h848 x25 w343] block\n              div#klarna-checkout-container [y600 h836 x31 w331] block\n                iframe#klarna-checkout-iframe.k-loading [y600 h836 x31 w331] block\n        div.column.checkout-items-summary [y1473 h867 x10 w373] block\n            section.section.items [y1535 h528 x27 w339] block\n              article.item [y1535 h365 x27 w339] grid\n              article.item [y1914 h149 x27 w339] grid\n            div.summary [y2096 h143 x27 w339] block\n              div.totals [y2096 h143 x27 w339] block\n          div.coupon-code [y2272 h44 x27 w339] block\n            div.coupon-code__toggle.is-hidden-desktop [y2272 h44 x27 w339] flex\n            div.coupon-code__form [y0 h0 x0 w0] none\n              div.coupon-code__row [y0 h0 x0 w0] flex\ndiv#checkout-overlay [y2381 h0 x0 w393] block",
+  "rects": {
+   "firstItem": {
+    "y": 1535,
+    "h": 365,
+    "x": 27,
+    "w": 339
+   },
+   "items": {
+    "y": 1535,
+    "h": 528,
+    "x": 27,
+    "w": 339
+   },
+   "total": {
+    "y": 2182,
+    "h": 31,
+    "x": 254,
+    "w": 112
+   },
+   "coupon": {
+    "y": 2272,
+    "h": 44,
+    "x": 27,
+    "w": 339
+   },
+   "couponInput": {
+    "y": 0,
+    "h": 0,
+    "x": 0,
+    "w": 0
+   },
+   "couponToggle": {
+    "y": 2272,
+    "h": 44,
+    "x": 27,
+    "w": 339
+   },
+   "kustom": {
+    "y": 594,
+    "h": 848,
+    "x": 25,
+    "w": 343
+   },
+   "shipping": {
+    "y": 386,
+    "h": 137,
+    "x": 10,
+    "w": 373
+   },
+   "columns": {
+    "y": 172,
+    "h": 154,
+    "x": 10,
+    "w": 373
+   },
+   "docH": 2413
+  },
+  "couponToggle": {
+   "tag": "DIV",
+   "tabindex": null,
+   "role": null,
+   "visible": true,
+   "text": "Lägg till Rabattkod/presentkort"
+  },
+  "tab": "Gå tillbaka@9 → Jag önskar leverans till@187 → Jag handlar som@255 → INPUT@342 → INPUT@465 → klarna-checkout-iframe@600 → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 @1630 → 1 Styck x Magic Sauce 3.0 @1751 → Minska antalet@1855 → Öka antalet@1855 → Ta bort varan@1855 → Magic Sauce 3.0 - 2ml@1914 → Minska antalet@2018 → Öka antalet@2018 → Ta bort varan@2018 → klarna-fullscreen-iframe@1451 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@1451 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@1451 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@1451 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@1451",
+  "cleaned": true
+ },
+ "1440": {
+  "cart": [
+   "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr",
+   "Magic Sauce 3.0 - 2ml 575 kr"
+  ],
+  "readingFlow": true,
+  "ua": "Chrome/128.0.0.0",
+  "outline": "section.section [y194 h1417 x0 w1440] block\n      div.checkout-layout [y214 h1333 x50 w1340] grid\n        div.column.checkout-information [y0 h0 x0 w0] contents\n          div.columns [y284 h94 x50 w914] grid\n          div.newsletter-subscription [y386 h44 x50 w914] block\n          div.shipping [y446 h151 x50 w914] block\n          div.payment [y613 h918 x50 w914] block\n            div.payment__payment-lock [y0 h0 x0 w0] none\n            ul.options.single-payment-method [y0 h0 x0 w0] none\n            div#kustom-checkout [y681 h825 x75 w864] block\n              div#klarna-checkout-container [y693 h801 x87 w840] block\n                iframe#klarna-checkout-iframe.k-loading [y693 h801 x87 w840] block\n        div.column.checkout-items-summary [y214 h1011 x988 w402] block\n            section.section.items [y292 h588 x1013 w352] block\n              article.item [y292 h420 x1013 w352] grid\n              article.item [y726 h154 x1013 w352] grid\n            div.summary [y913 h160 x1013 w352] block\n              div.totals [y913 h160 x1013 w352] block\n          div.coupon-code [y1106 h98 x1013 w352] block\n            div.coupon-code__toggle.is-hidden-desktop [y0 h0 x0 w0] none\n            div.coupon-code__form [y1106 h98 x1013 w352] block\n              div.coupon-code__row [y1156 h48 x1013 w352] flex\ndiv#checkout-overlay [y1611 h0 x0 w1440] block",
+  "rects": {
+   "firstItem": {
+    "y": 292,
+    "h": 420,
+    "x": 1013,
+    "w": 352
+   },
+   "items": {
+    "y": 292,
+    "h": 588,
+    "x": 1013,
+    "w": 352
+   },
+   "total": {
+    "y": 1009,
+    "h": 40,
+    "x": 1221,
+    "w": 144
+   },
+   "coupon": {
+    "y": 1106,
+    "h": 98,
+    "x": 1013,
+    "w": 352
+   },
+   "couponInput": {
+    "y": 1156,
+    "h": 48,
+    "x": 1013,
+    "w": 249
+   },
+   "couponToggle": {
+    "y": 0,
+    "h": 0,
+    "x": 0,
+    "w": 0
+   },
+   "kustom": {
+    "y": 681,
+    "h": 825,
+    "x": 75,
+    "w": 864
+   },
+   "shipping": {
+    "y": 446,
+    "h": 151,
+    "x": 50,
+    "w": 914
+   },
+   "columns": {
+    "y": 284,
+    "h": 94,
+    "x": 50,
+    "w": 914
+   },
+   "docH": 1643
+  },
+  "couponToggle": {
+   "tag": "DIV",
+   "tabindex": null,
+   "role": null,
+   "visible": false,
+   "text": "Lägg till Rabattkod/presentkort"
+  },
+  "tab": "Gå tillbaka@13 → Jag önskar leverans till@305 → Jag handlar som@305 → INPUT@398 → INPUT@533 → klarna-checkout-iframe@693 → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 @413 → 1 Styck x Magic Sauce 3.0 @538 → Minska antalet@667 → Öka antalet@667 → Ta bort varan@667 → Magic Sauce 3.0 - 2ml@726 → Minska antalet@835 → Öka antalet@835 → Ta bort varan@835 → coupon_code@1156 → klarna-fullscreen-iframe@734 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@734 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@734 → Kassa Hem Kassa Sverige Ja@0 → klarna-fullscreen-iframe@734 → Kassa Hem Kassa Sverige Ja@0",
+  "cleaned": true
+ }
+}
