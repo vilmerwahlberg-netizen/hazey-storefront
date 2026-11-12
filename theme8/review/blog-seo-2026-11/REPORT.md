@@ -1,5 +1,7 @@
 # TASK 17: blogginnehåll, Theme 8-blogg och teknisk SEO
 
+> **Uppdatering 2026-11-12 (TASK 17B):** alla 75 inlägg är publicerade i Nyehandels blogg via API v3 och verifierade på riktiga sidor, och arkivet har sökning. Se **`MIGRATION-REPORT.md`**. Den gör avsnitt 3 och 5 nedan historiska; fixturtesterna körs nu bara med `FIXTURE=1`. Inläggens URL är `/sv/post/{slug}`, inte `/sv/posts/{slug}`.
+
 2026-11-12 · gren `feat/task-17-blogg-seo` (från `origin/dev` 2d5e9d3) · **ingen livepublicering, inget skrivet till Nyehandel eller WordPress.**
 
 ## 1. Inventering

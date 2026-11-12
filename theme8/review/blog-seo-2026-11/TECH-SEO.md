@@ -15,7 +15,7 @@ Kategorisidornas beskrivnings-H1 är Theme 8:s avsiktliga sidrubrik och rörs in
 
 ## Kräver admin- eller ägarbeslut (inte ändrat)
 
-1. **Hela butiken är `noindex, nofollow`** (258/258). Det är troligen avsiktligt före lansering, men det är en **lanseringsblockerare**: det måste stängas av samtidigt som domänen pekas om. Annars försvinner hazey.se ur Google när de gamla URL:erna 301:as hit.
+1. **Hela butiken är `noindex, nofollow`** (gäller nu även de 75 blogginläggen, se domänbyteschecklistan i `MIGRATION-REPORT.md`) (258/258). Det är troligen avsiktligt före lansering, men det är en **lanseringsblockerare**: det måste stängas av samtidigt som domänen pekas om. Annars försvinner hazey.se ur Google när de gamla URL:erna 301:as hit.
 2. **Canonical och sitemap pekar på `hazeyse.nyehandel.se`.** Vid domänbyte måste butikens primära domän vara `www.hazey.se` (eller `hazey.se`), så att canonical, sitemap och robots.txt följer med. Verifiera i admin.
 3. **Butikstiteln "Måbroberg AB (NDA)"** är startsidans och bloggens `<title>`/og:title. Byt till varumärkesnamnet i butiksinställningarna.
 4. **137 sidor saknar metabeskrivning** (främst kategorier och varumärkessidor), se `TECH-SEO-URLS.csv`. Nya texter är ett innehållsbeslut, så inga har skrivits.
@@ -23,6 +23,6 @@ Kategorisidornas beskrivnings-H1 är Theme 8:s avsiktliga sidrubrik och rörs in
 6. **Dolda paket:** alla 36 dolda WooCommerce-paket ligger i produktsitemapen och är indexerbara när noindex lyfts. De är tunna sidor utan lager. Rekommendation för de 28 ej pausade: dölj i listningar och sitemap (`catalog-reconciliation-2026-11/NYEHANDEL-VISIBILITY-ACTIONS.md` A). **De 8 pausade 5 g-paketen (`ms50-5g-*`, `nano11-buds-*-pack`, `high-life-5g-*`) är inte ändrade och ska inte ändras.** De är bara listade.
 7. **Dubbla titlar:** CBD Buds, Core, Cookies, Merch, Kampanjer, Magic Farmers, Tatra Hemp, Faraoh och CBD Group finns två gånger var (kategori + varumärke eller kategoridubblett).
 8. **Interna länkar:** startsidans "Guider & aktuellt" pekar på `/sv/page/vad-ar-thcab` m.fl., som ger 404. De är redan dolda av `62-guides-newsletter.js` tills sidorna finns. När bloggen har inlägg bör `GUIDES_INDEX` sättas till `/sv/posts`.
-9. **Bilder vid domänbyte:** 51 brödtextbilder och de utvalda bilderna ligger på `www.hazey.se/wp-content`. De slutar fungera när domänen flyttas, om de inte laddas upp i Nyehandel först.
+9. **Bilder vid domänbyte:** löst 2026-11-12. Alla bloggbilder är uppladdade till Nyehandels CDN (91/91 laddar). 23 bilder saknades redan i WordPress, se `MIGRATION-REPORT.md`.
 
 robots.txt är korrekt (blockerar admin, API, filter- och sorteringsparametrar).

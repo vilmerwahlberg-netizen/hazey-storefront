@@ -27,7 +27,7 @@ for p in sorted(posts, key=lambda p: p["date"]):
     fm = med.get(p["featured_media"]) if p["featured_media"] else None
     shortcodes = sorted(set(re.findall(r"\[(/?[a-z_]+)[^\]]*\]", c)))
     rows.append({
-        "id": p["id"], "slug": p["slug"], "old_url": p["link"], "date": p["date"], "modified": p["modified"],
+        "id": p["id"], "slug": p["slug"], "old_url": p["link"], "date": p["date"], "date_gmt": p["date_gmt"], "author_id_wp": p["author"], "author": (p.get("yoast_head_json") or {}).get("author"), "modified": p["modified"],
         "status": p["status"], "title": text(p["title"]["rendered"]), "seo_title": y.get("title"),
         "meta_description": y.get("description"), "robots": " ".join(v for v in (y.get("robots") or {}).values()),
         "canonical": y.get("canonical"), "og_image": (y.get("og_image") or [{}])[0].get("url"),
