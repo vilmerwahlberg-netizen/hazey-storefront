@@ -1,0 +1,56 @@
+{
+ "S1-ms-vapes-storlek": {
+  "alla": {
+   "count": 14,
+   "n": 14,
+   "sizes": [
+    "*Alla:14",
+    "2 ml:9",
+    "5 ml:5"
+   ],
+   "foreign": []
+  },
+  "ml2": {
+   "count": 9,
+   "n": 9,
+   "url": "?preview=v9kzdmqz4w60l5n&volym=2ml",
+   "soldShownNotBuyable": true,
+   "sold": 7
+  },
+  "ml5": {
+   "count": 5,
+   "n": 5
+  },
+  "back": {
+   "count": 14,
+   "n": 14,
+   "url": "?preview=v9kzdmqz4w60l5n"
+  },
+  "overflow": false,
+  "pass": true
+ },
+ "S2-ms-vapes-i-lager": {
+  "alla": {
+   "count": 7,
+   "n": 7,
+   "sizes": [
+    "*Alla:7",
+    "2 ml:2",
+    "5 ml:5"
+   ]
+  },
+  "ml2": [
+   "Gorilla Cookies",
+   "Tinky Winky"
+  ],
+  "ml5": [
+   "This is Sparta",
+   "Kowa Bunga",
+   "La Chupacabra",
+   "Yoda Ice Cream",
+   "Bruce Banner OG"
+  ],
+  "notInStock": 0,
+  "pass": true
+ }
+}

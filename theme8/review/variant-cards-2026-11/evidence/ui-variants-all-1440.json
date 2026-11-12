@@ -1,7 +1,7 @@
 {
  "L1-alla-vapes": {
-  "count": "91 produkter",
-  "n": 91,
+  "count": "89 produkter",
+  "n": 89,
   "core": [
    "Gelato - Indica",
    "Strawberry Kush - Sativa",
@@ -43,17 +43,17 @@
   "pass": true
  },
  "L4-ms-vapes": {
-  "count": "19 produkter",
-  "n": 19,
+  "count": "14 produkter",
+  "n": 14,
   "pkg": [],
-  "variants": 19,
+  "variants": 14,
   "overflow": false,
   "pass": true
  },
  "L5-hubbar": {
   "/sv/categories/magic-sauce": {
-   "count": "43 produkter",
-   "n": 43,
+   "count": "41 produkter",
+   "n": 41,
    "variants": 24,
    "pkg": 0,
    "soldBuyable": 0,
@@ -76,8 +76,8 @@
    "overflow": false
   },
   "/sv/categories/thca-b": {
-   "count": "10 produkter",
-   "n": 10,
+   "count": "9 produkter",
+   "n": 9,
    "variants": 9,
    "pkg": 0,
    "soldBuyable": 0,
@@ -200,28 +200,22 @@
  },
  "L6-inga-flerpack": {
   "/sv/categories/alla-vapes": {
-   "count": "91 produkter",
-   "n": 91,
+   "count": "89 produkter",
+   "n": 89,
    "mlMulti": [],
    "any35": [],
    "gram10": [],
-   "startpaket": [
-    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
-    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
-   ],
+   "startpaket": [],
    "countOk": true,
    "overflow": false
   },
   "/sv/categories/alla-cartridges": {
-   "count": "13 produkter",
-   "n": 13,
+   "count": "11 produkter",
+   "n": 11,
    "mlMulti": [],
    "any35": [],
    "gram10": [],
-   "startpaket": [
-    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
-    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
-   ],
+   "startpaket": [],
    "countOk": true,
    "overflow": false
   },
@@ -236,8 +230,8 @@
    "overflow": false
   },
   "/sv/categories/ms-vapes": {
-   "count": "19 produkter",
-   "n": 19,
+   "count": "14 produkter",
+   "n": 14,
    "mlMulti": [],
    "any35": [],
    "gram10": [],
@@ -266,32 +260,22 @@
    "overflow": false
   },
   "/sv/categories/alla-produkter": {
-   "count": "180 produkter",
-   "n": 180,
+   "count": "176 produkter",
+   "n": 176,
    "mlMulti": [],
    "any35": [],
-   "gram10": [
-    "Nano 11 Buds 5g – 10-pack",
-    "Magic Sauce 50% 5g – 10-pack"
-   ],
-   "startpaket": [
-    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
-    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
-   ],
+   "gram10": [],
+   "startpaket": [],
    "countOk": true,
    "overflow": false
   },
   "/sv/categories/magic-sauce": {
-   "count": "43 produkter",
-   "n": 43,
+   "count": "41 produkter",
+   "n": 41,
    "mlMulti": [],
    "any35": [],
-   "gram10": [
-    "Magic Sauce 50% 5g – 10-pack"
-   ],
-   "startpaket": [
-    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
-   ],
+   "gram10": [],
+   "startpaket": [],
    "countOk": true,
    "overflow": false
   },

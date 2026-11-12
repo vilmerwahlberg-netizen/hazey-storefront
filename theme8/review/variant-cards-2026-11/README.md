@@ -88,3 +88,62 @@ Omkörningar:
 - **Den skarpa sajten (tema 3) kör inte Theme 8.** Där syns paketsidorna fortfarande på direktlänk, med serverns lagerluckor (se Task 20 `LAGERSPARR.md` / `OMDIRIGERING.md`).
 - **Fler kort per sida.** Slutsålda varianter av gamla vapes (THCV, CBN m.fl.) blir nu ett kort per variant. Det är korrekt, men listorna blir längre. Det kan avgöras senare om slutsålda varianter ska döljas eller samlas.
 - **Portalens sökförslag** (listrutan) föreslår produkter, inte varianter. Själva sökresultatet visar varianterna.
+
+---
+
+## Korrigering 23b (2026-11-12): THCA-B och flerpack
+
+- **Sortimentsbeslut:** THCaB/THCA-B-vapes marknadsförs inte just nu. **242 (THCA-B 50 % 2 ml) och 256 (1 ml) med paketen 274–277 är bortkopplade ur paketlistan.** Det betyder inget paketval, ingen omdirigering av direktlänken, inget kundnamn i minicarten och ingen kassaregel. THCbA 236 och D10 254 ligger kvar. Inget är ändrat i Nyehandel.
+- **Flerpack:**
+  - Alla kort av ml-produkter (vapes, carts, liquids) med "– N-pack" eller "Kollektion" i namnet hålls borta, oavsett N.
+  - 3-/5-pack hålls borta i alla enheter, som tidigare.
+  - **Undantag som visas:** gram-10-pack (buds, pre-rolls) och de två startpaketen med batteri och 2 carts (tidigare beslut: "eget produktfall under Carts"). Se adminlistan nedan.
+- **Test:** 44/44 (11 scenarier × 393/768/1440/1920), loggar `log23b-*.txt`.
+  - **D3:** 242/256 saknar paketval, och 274/277 skickas inte vidare.
+  - **L6:** inga ml-flerpack eller 3/5-pack i listorna för vapes, carts, liquids och portalen eller i hubbarna, och räknarna stämmer med antalet kort.
+
+## Tillägg 23c (2026-11-12): storleksval på MS Vapes och "Populärast"
+
+- **Formattillhörighet på serie × format-sidor:** en produkt hör till formatet när den finns på formatets egen kategorisida, samma regel som katalogen i övrigt. MS Vapes räknar därför inte 1 ml-carten (`cart-magic-sauce-…-1ml`) eller 10 ml-refillen. D10-paketen döljs av flerpacksregeln.
+- **Storleksval "Alla / 2 ml / 5 ml"** (`?volym=`):
+  - Byggs ur produkterna som återstår, bara för ml-format och bara med minst två storlekar. I dag visas det därför bara på MS Vapes.
+  - **Antal per val = kort:** varianter, där "I lager" gäller per variant.
+  - Fungerar ihop med "I lager" och sortering.
+- **"Populärast":** Nyehandel skickar `sort=popular` med etiketten "Mest populära" (`sort-options` i kategorisidan).
+  - Varken frontendkoden eller supportdokumentationen anger vilken data det bygger på.
+  - Admins **Prestanda → "Bästsäljare"** bygger på försäljning (topp 15 %, [Produktkategorisering baserat på försäljning](https://support.nyehandel.se/sv/articles/10165502-produktkategorisering-baserat-pa-forsaljning)). Den klassningen exponeras inte som sortering i butiken.
+  - **Etiketten är därför kvar som "Populärast".** Theme 8:s bästsäljarsida (88a) bygger också på `sort=popular` och har samma osäkerhet.
+  - **För en riktig bästsäljarsortering krävs** att Nyehandel bekräftar att `popular` = försäljning och vilken period, eller en exponerad försäljningsrankning (API, kategori eller "Bästsäljare"-urval).
+  - **Ordningen bevaras med variantkort:** produktordningen är exakt Nyehandels, och en produkts köpbara variantkort ligger i följd (S4). Slutsålda varianter av en delvis köpbar produkt hamnar sist, i linje med Nyehandels block "i lager först".
+- **Test** (`evidence/ui-sizes.mjs`, 393 och 1440: 8/8; variantsviten om vid 393/1440: 22/22):
+
+| # | Scenario | 393 | 1440 |
+|---|---|---|---|
+| S1 | MS Vapes: "Alla 14 / 2 ml 9 / 5 ml 5". 2 ml = 9 kort, varav 7 slutsålda som visas men inte går att köpa. 5 ml = 5. "Alla" tillbaka. Räknare = kort. Inga 1 ml-, 10 ml- eller flerpackskort | PASS | PASS |
+| S2 | MS Vapes med "I lager": 7 / 2 (Gorilla Cookies, Tinky Winky) / 5. Bara köpbara kort | PASS | PASS |
+| S3 | Namnsortering med 2 ml (9 kort i ordning). Pris högst först | PASS | PASS |
+| S4 | "Populärast" på Alla vapes och MS Vapes: produktordning = Nyehandels, variantkort i följd, räknare = kort | PASS | PASS |
+
+Bilder: `shots/S1-ms-vapes-*.jpg`, `shots/S2-ms-vapes-2ml-i-lager-*.jpg`.
+
+## Adminstädning som återstår (läsande kontroll 2026-11-12, `evidence/audit-*.json`)
+
+**Gamla flerpack:** under arbetet har Chrome-agenten redan tagit bort alla gamla 3/5/10-pack och kollektioner ur kategorierna. Ingen finns kvar i någon lista.
+
+Det som återstår:
+1. **THCA-B ligger fortfarande i Nyehandels listor** (sortimentsbeslutet):
+   - THCA-B 50 % – Faraoh – 2 ml (242): alla-produkter, alla-vapes, thca-b, thcab-vapes.
+   - THCA-B 50 % – Faraoh – 1 ml (256): alla-produkter, alla-cartridges, thca-b, thcab-vapes.
+   - Startpaket – M3b Pro Batteri + 2× THCA-B 50 % 1 ml: alla-produkter, alla-cartridges, pennor, thca-b, thcab-vapes.
+   - Seriens kategorier `thca-b` (hubb) och `thcab-vapes`.
+
+   Theme 8 visar dem eftersom de ligger i kategorierna, men utan paketval. Att dölja dem är ett adminbeslut, och koden döljer inte produkter med en hårdkodad lista.
+2. **Paketen 274–277 är aktiva** och nås på direktlänk (`noindex`, utan Theme 8-omdirigering nu). Inaktivera eller dölj dem i admin om THCA-B inte ska säljas. Ingen Theme 8-kod använder dem längre.
+3. **Felplaceringar** (produkt i serie × format-routen men inte på formatets egen sida; Theme 8 visar dem inte där längre):
+   - `ms-vapes`: MS 3.0 1 ml (cart) och MS 3.0 10 ml (refill). Flytta till `ms-carts` och refill.
+   - `ms-buds`: Charas och Marrakesh Dream (hasch). Kontrollera att de ligger i `ms-hash`.
+   - `thcab-vapes`: THCA-B 1 ml (cart) och THCA-B-startpaketet (se punkt 1).
+4. **"7 % Nano11 – Bubba Kush – 5 g"** träffar sökningen på THCA-B/THCaB, troligen via URL:en. Kontrollera om den är en THCaB-produkt.
+5. **Undantag att besluta om:**
+   - Startpaketet med Magic Sauce (batteri + 2 carts) ligger under Carts och Pennor, enligt tidigare beslut.
+   - Gram-10-pack syns om de återkommer i kategorierna. Just nu finns inga.

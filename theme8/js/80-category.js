@@ -3703,6 +3703,36 @@
         };
       } else if (more) more.remove();
     }
+    /* TASK 23c: formattillhörighet + storleksval. Serie x format-routen
+       kan innehålla produkter av andra format (MS Vapes: 1 ml-carten och
+       10 ml-refillen). Samma regel som katalogen i övrigt: produkten hör
+       till formatet när den finns på formatets egen kategorisida
+       (format.href). Storleksvalet (?volym=) byggs ur produkterna som är
+       kvar -- bara för ml-format och bara med minst två storlekar; antal
+       per val = kort (varianter, "I lager" per variant). */
+    var sfSizes = node("div", "hz8-sf-sizes");
+    sfSizes.setAttribute("role", "group");
+    sfSizes.setAttribute("aria-label", "Storlek");
+    sfSizes.hidden = true;
+    sfSizes.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-vol]");
+      if (!b) return;
+      var v = b.getAttribute("data-vol"), m = {};
+      m[VOLUME_PARAM] = v ? [v] : [];
+      writeLists(m);
+      syncSf();
+    });
+    var mlFormat = PORTAL_UNIT[format.key] === "ml";
+    function sfSizeUi(opts, counts, sel, total) {
+      if (!mlFormat || opts.length < 2) { sfSizes.hidden = true; return; }
+      var items = [{ key: "", label: "Alla", n: total }].concat(opts.map(function (o) { return { key: o.key, label: o.label, n: counts[o.key] || 0 }; }));
+      var h = '<span class="hz8-sf-sizes__label" aria-hidden="true">Storlek</span>' + items.map(function (it) {
+        var on = it.key === (sel || "");
+        return '<button type="button" class="hz8-sf-size" data-vol="' + HZ8.esc(it.key) + '" aria-pressed="' + on + '">' + HZ8.esc(it.label) + '<span class="hz8-sf-size__n" aria-hidden="true">' + it.n + '</span><span class="hz8-visually-hidden">, ' + plural(it.n) + "</span></button>";
+      }).join("");
+      if (sfSizes.__h !== h) { sfSizes.innerHTML = h; sfSizes.__h = h; }
+      sfSizes.hidden = false;
+    }
     function sfVariants() {
       if (location.search === sfKey) return;
       sfKey = location.search;
@@ -3711,17 +3741,36 @@
       if (f.length) params.set("filters", f.join("~"));
       if (so) params.set("sort", so);
       var qs = params.toString();
-      allCards(route + (qs ? (route.indexOf("?") === -1 ? "?" : "&") + qs : "")).then(function (list) {
-        var seen = {}, prods = [];
-        list.forEach(function (c) { var p = cardPath(c.html); if (p && !seen[p]) { seen[p] = true; prods.push(c); } });
-        var needs = prods.some(function (c) { return HZ8.variantCards.isPackageCard(c.html) || /class="has-variants"/.test(c.html); });
-        if (!needs) { if (mine === sfTok) sfOff(); return null; }
+      var fmtHref = format && format.href && HZ8.path(format.href).split("?")[0] !== HZ8.path(route).split("?")[0] ? format.href : null;
+      var members = fmtHref ? allCards(fmtHref).then(function (cards) { var m = {}; cards.forEach(function (c) { var p = cardPath(c.html); if (p) m[p] = true; }); return m; }, function () { return null; }) : Promise.resolve(null);
+      Promise.all([allCards(route + (qs ? (route.indexOf("?") === -1 ? "?" : "&") + qs : "")), members]).then(function (res) {
+        var list = res[0], inFmt = res[1];
+        var seen = {}, prods = [], foreign = 0;
+        list.forEach(function (c) {
+          var p = cardPath(c.html);
+          if (!p || seen[p]) return;
+          seen[p] = true;
+          if (inFmt && !inFmt[p]) { foreign += 1; return; }
+          prods.push(c);
+        });
+        var vols = {};
+        prods.forEach(function (c) { if (HZ8.variantCards.isPackageCard(c.html)) return; var v = cardVolume(cardName(c.html)); if (v) vols[v.key] = vols[v.key] || v; });
+        var volOpts = Object.keys(vols).map(function (k) { return vols[k]; }).sort(function (a, b) { return a.order - b.order; });
+        var sel = readList(VOLUME_PARAM).filter(function (k) { return !!vols[k]; })[0] || "";
+        var needs = foreign > 0 || (mlFormat && volOpts.length > 1) || prods.some(function (c) { return HZ8.variantCards.isPackageCard(c.html) || /class="has-variants"/.test(c.html); });
+        if (!needs) { if (mine === sfTok) { sfOff(); sfSizes.hidden = true; } return null; }
         return HZ8.variantCards.expand(prods, { inStockOnly: f.indexOf(STOCK_TOKEN) !== -1 }).then(function (exp) {
           if (mine !== sfTok) return;
-          var out = orderUnion(HZ8.variantCards.settle(exp, so), so);
+          var counts = {};
+          exp.forEach(function (c) { var v = cardVolume(cardName(c.html)); if (v) counts[v.key] = (counts[v.key] || 0) + 1; });
+          var picked = sel ? exp.filter(function (c) { var v = cardVolume(cardName(c.html)); return !!v && v.key === sel; }) : exp;
+          var out = orderUnion(HZ8.variantCards.settle(picked, so), so);
           if (!out) { sfOff(); return; }
+          sfSizeUi(volOpts, counts, sel, exp.length);
           var designer = root.querySelector(".designer-category");
           if (designer && sfResults.parentNode !== designer) designer.appendChild(sfResults);
+          /* Storleksraden direkt ovanför gridet (under mallens flikrad). */
+          if (sfResults.parentNode && sfSizes.nextSibling !== sfResults) sfResults.parentNode.insertBefore(sfSizes, sfResults);
           sfResults.innerHTML = "";
           if (!out.length) sfResults.innerHTML = '<div class="hz8-state hz8-cat-empty" role="status"><h2>Inga produkter matchar</h2><p>Inga produkter matchar de här filtren.</p></div>';
           else sfRender(out, SF_STEP);

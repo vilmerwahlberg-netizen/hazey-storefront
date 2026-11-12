@@ -1,0 +1,80 @@
+{
+ "checkedAt": "2026-11-12T11:33:39.346Z",
+ "misplaced": [
+  {
+   "route": "/sv/categories/ms-vapes",
+   "format": "vapes",
+   "product": "Magic Sauce 3.0 - 1ml",
+   "path": "/sv/products/cart-magic-sauce-magic-farmers-1ml"
+  },
+  {
+   "route": "/sv/categories/ms-vapes",
+   "format": "vapes",
+   "product": "Magic Sauce 3.0 - 10ml",
+   "path": "/sv/products/magic-sauce-10ml"
+  },
+  {
+   "route": "/sv/categories/ms-buds",
+   "format": "buds",
+   "product": "Magic Sauce 50% – Charas – 5g",
+   "path": "/sv/products/magic-sauce-hash-charas-5-gram"
+  },
+  {
+   "route": "/sv/categories/ms-buds",
+   "format": "buds",
+   "product": "Hash – Magic Sauce 50% – Marrakesh Dream – 5 gram",
+   "path": "/sv/products/magic-sauce-hash-marrakesh-dream-5-gram"
+  },
+  {
+   "route": "/sv/categories/thcab-vapes",
+   "format": "vapes",
+   "product": "THCA-B 50% - Faraoh - 1ml",
+   "path": "/sv/products/thca-b-faraoh-carts-1ml"
+  },
+  {
+   "route": "/sv/categories/thcab-vapes",
+   "format": "vapes",
+   "product": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+   "path": "/sv/products/startpaket-thca-b-batteri"
+  }
+ ],
+ "thcab": {
+  "/sv/products/nano-buds-ersatt-thca-bubba-kush-5g": {
+   "name": "7% Nano11 – Bubba Kush – 5g",
+   "lists": [
+    "alla-produkter",
+    "blommor-buds",
+    "nano-11",
+    "nano11-blommor"
+   ]
+  },
+  "/sv/products/thca-b-faraoh-carts-1ml": {
+   "name": "THCA-B 50% - Faraoh - 1ml",
+   "lists": [
+    "alla-produkter",
+    "alla-cartridges",
+    "thca-b",
+    "thcab-vapes"
+   ]
+  },
+  "/sv/products/thca-b-vape-faraoh-2ml": {
+   "name": "THCA-B 50% - Faraoh - 2ml",
+   "lists": [
+    "alla-produkter",
+    "alla-vapes",
+    "thca-b",
+    "thcab-vapes"
+   ]
+  },
+  "/sv/products/startpaket-thca-b-batteri": {
+   "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+   "lists": [
+    "alla-produkter",
+    "alla-cartridges",
+    "pennor",
+    "thca-b",
+    "thcab-vapes"
+   ]
+  }
+ }
+}
