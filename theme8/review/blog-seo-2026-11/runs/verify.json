@@ -1,0 +1,535 @@
+[
+ {
+  "case": "index-empty-live",
+  "w": 393,
+  "page": "blog",
+  "blog": "empty",
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Senaste inläggen"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "index-fixture",
+  "w": 393,
+  "page": "blog",
+  "blog": "index",
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Senaste inläggen"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts",
+  "overflowX": 0,
+  "rows": 13,
+  "lead": 1,
+  "chips": [
+   "Alla 14",
+   "Nano-11 2"
+  ],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "filterVisible": 2,
+  "errors": []
+ },
+ {
+  "case": "article-fixture",
+  "w": 393,
+  "page": "post",
+  "blog": "article",
+  "title": "Vad är Nano11? – Laglig Cannabis i Sverige - Hazey.se",
+  "h1": [
+   "Vad är Nano11? – Laglig Cannabis i Sverige"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts/vad-ar-nano11-laglig-cannabis-i-sverige",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 7,
+  "prevnext": [
+   "prev"
+  ],
+  "rail": 8,
+  "schema": [
+   "BlogPosting",
+   "BreadcrumbList"
+  ],
+  "bodyH1": 0,
+  "metaDesc": "Vad är Nano11? Upptäck Tatra Hemps senaste tillskott i Nano-serien – i nuläget l",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head d=grid ws=normal w=361px minw=0px maxw=860px pos=static ji=start ar=auto h=270.422px",
+   ".hz8-post__h1slot d=block ws=normal w=361px minw=auto maxw=100% pos=static ji=normal ar=auto h=105.047px",
+   ".hz8-post__title d=block ws=normal w=361px minw=0px maxw=none pos=static ji=normal ar=auto h=105.047px",
+   ".hz8-post__hero d=block ws=normal w=393px minw=0px maxw=1100px pos=static ji=normal ar=4 / 3 h=294.75px",
+   ".hz8-post__hero img d=block ws=normal w=393px minw=0px maxw=100% pos=static ji=normal ar=auto h=294.75px",
+   ".hz8-post__grid d=grid ws=normal w=361px minw=0px maxw=none pos=static ji=normal ar=auto h=2754.94px"
+  ],
+  "chain": [
+   "DIV.hz8-post block w361 x16",
+   "DIV.container block w361 x16",
+   "SECTION.section block w361 x16",
+   "DIV.store-posts block w361 x16",
+   "DIV. block w393 x0",
+   "MAIN.store-main block w393 x0",
+   "DIV.main-wrapper flex w393 x0"
+  ],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "product-sep",
+  "w": 393,
+  "page": "product",
+  "blog": null,
+  "title": "NANO 11 Buds 7% - Abacous | Tatra Hemp - Laglig Cannabis",
+  "h1": [
+   "Buds – 7% Nano11 – Abacous – 5 gram"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/products/buds-nano11-abacous-5-gram",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "NANO 11 Buds - uppgraderad Nano från Tatra Hemp. 7% Nano 11, Abacous strain, EU-",
+  "wide": [
+   "DIV.product-image-slider__slides:556",
+   "LI.hz8-prail__item:266",
+   "DIV.product-card:256",
+   "A.product-card__image:238",
+   "IMG.:192",
+   "DIV.details-wrapper:254"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-home",
+  "w": 393,
+  "page": "home",
+  "blog": null,
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Sveriges #1 för lagliga cannabinoider"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [
+   "ARTICLE.hz8-bs-card:131",
+   "A.hz8-bs-card__media:121",
+   "IMG.hz8-bs-card__img:75",
+   "DIV.hz8-bs-card__body:131",
+   "H3.hz8-bs-card__name:115",
+   "A.:115"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-category",
+  "w": 393,
+  "page": "category",
+  "blog": null,
+  "title": "Alla Vapes",
+  "h1": [
+   "Alla Vapes"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": " Utforska Mångfalden av Cannabis vapes: En Resa Genom Olika Alternativ  I dagens",
+  "wide": [
+   "BUTTON.hz8-pfam__tab:57",
+   "BUTTON.hz8-pfam__tab:52",
+   "BUTTON.hz8-pfam__tab:63",
+   "LI.:274",
+   "A.hz8-sf-serie:274",
+   "SPAN.hz8-sf-serie__media:74"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-faq",
+  "w": 393,
+  "page": "faq",
+  "blog": null,
+  "title": "Faq",
+  "h1": [
+   "Vanliga frågor"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/page/faq",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [
+   "UL.:683",
+   "LI.:113",
+   "A.:113",
+   "svg.hz8-svc-ic:18",
+   "rect.:14",
+   "path.:14"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "index-empty-live",
+  "w": 1440,
+  "page": "blog",
+  "blog": "empty",
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Senaste inläggen"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "index-fixture",
+  "w": 1440,
+  "page": "blog",
+  "blog": "index",
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Senaste inläggen"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts",
+  "overflowX": 0,
+  "rows": 13,
+  "lead": 1,
+  "chips": [
+   "Alla 14",
+   "Nano-11 2"
+  ],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "filterVisible": 2,
+  "errors": []
+ },
+ {
+  "case": "article-fixture",
+  "w": 1440,
+  "page": "post",
+  "blog": "article",
+  "title": "Vad är Nano11? – Laglig Cannabis i Sverige - Hazey.se",
+  "h1": [
+   "Vad är Nano11? – Laglig Cannabis i Sverige"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/posts/vad-ar-nano11-laglig-cannabis-i-sverige",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 7,
+  "prevnext": [
+   "prev"
+  ],
+  "rail": 8,
+  "schema": [
+   "BlogPosting",
+   "BreadcrumbList"
+  ],
+  "bodyH1": 0,
+  "metaDesc": "Vad är Nano11? Upptäck Tatra Hemps senaste tillskott i Nano-serien – i nuläget l",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head d=grid ws=normal w=860px minw=0px maxw=860px pos=static ji=center ar=auto h=315.312px",
+   ".hz8-post__h1slot d=block ws=normal w=860px minw=auto maxw=100% pos=static ji=normal ar=auto h=135.938px",
+   ".hz8-post__title d=block ws=normal w=860px minw=0px maxw=none pos=static ji=normal ar=auto h=135.938px",
+   ".hz8-post__hero d=block ws=normal w=1100px minw=0px maxw=1100px pos=static ji=normal ar=21 / 9 h=471.422px",
+   ".hz8-post__hero img d=block ws=normal w=1100px minw=0px maxw=100% pos=static ji=normal ar=auto h=471.422px",
+   ".hz8-post__grid d=grid ws=normal w=1240px minw=0px maxw=none pos=static ji=normal ar=auto h=1601.44px"
+  ],
+  "chain": [
+   "DIV.hz8-post block w1240 x100",
+   "DIV.container block w1240 x100",
+   "SECTION.section block w1240 x100",
+   "DIV.store-posts block w1240 x100",
+   "DIV. block w1440 x0",
+   "MAIN.store-main block w1440 x0",
+   "DIV.main-wrapper flex w1440 x0"
+  ],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "product-sep",
+  "w": 1440,
+  "page": "product",
+  "blog": null,
+  "title": "NANO 11 Buds 7% - Abacous | Tatra Hemp - Laglig Cannabis",
+  "h1": [
+   "Buds – 7% Nano11 – Abacous – 5 gram"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/products/buds-nano11-abacous-5-gram",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "NANO 11 Buds - uppgraderad Nano från Tatra Hemp. 7% Nano 11, Abacous strain, EU-",
+  "wide": [
+   "LI.hz8-prail__item:315",
+   "DIV.product-card:305",
+   "A.product-card__image:287",
+   "IMG.:124",
+   "DIV.details-wrapper:303",
+   "DIV.details:277"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-home",
+  "w": 1440,
+  "page": "home",
+  "blog": null,
+  "title": "Måbroberg AB (NDA)",
+  "h1": [
+   "Sveriges #1 för lagliga cannabinoider"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [
+   "SPAN.hz8-fb__fabric:700"
+  ],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-category",
+  "w": 1440,
+  "page": "category",
+  "blog": null,
+  "title": "Alla Vapes",
+  "h1": [
+   "Alla Vapes"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/categories/alla-vapes",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": " Utforska Mångfalden av Cannabis vapes: En Resa Genom Olika Alternativ  I dagens",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ },
+ {
+  "case": "reg-faq",
+  "w": 1440,
+  "page": "faq",
+  "blog": null,
+  "title": "Faq",
+  "h1": [
+   "Vanliga frågor"
+  ],
+  "canonical": "https://hazeyse.nyehandel.se/sv/page/faq",
+  "overflowX": 0,
+  "rows": 0,
+  "lead": 0,
+  "chips": [],
+  "toc": 0,
+  "prevnext": [],
+  "rail": 0,
+  "schema": [],
+  "bodyH1": 0,
+  "metaDesc": "",
+  "wide": [],
+  "cs": [
+   ".hz8-post__head:none",
+   ".hz8-post__h1slot:none",
+   ".hz8-post__title:none",
+   ".hz8-post__hero:none",
+   ".hz8-post__hero img:none",
+   ".hz8-post__grid:none"
+  ],
+  "chain": [],
+  "imgNoAlt": 0,
+  "errors": []
+ }
+]
