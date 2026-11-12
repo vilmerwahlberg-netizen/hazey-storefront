@@ -105,4 +105,32 @@ Att hämta alla 75 artikelsidor kostar ~6 MB. Förslaget är i stället ett **s�
    - `/sv/posts` och 3 artiklar har `index, follow` och canonical på www.hazey.se
    - sitemapen listar `/sv/post/`.
 6. **Skicka in** den nya sitemapen i Google Search Console och följ 404:or där i 2–4 veckor.
-7. **Behåll** WordPress-exporten och `data/migration-log.json` tills omdirigeringarna är verifierade i Search Console.
+7. **Footerns Swish-logga** (`60-social-footer.js`) hämtas från `www.hazey.se/wp-content/...` och slutar fungera när domänen flyttas. Ladda upp loggan till Theme 8:s assets före bytet.
+8. **Behåll** WordPress-exporten och `data/migration-log.json` tills omdirigeringarna är verifierade i Search Console.
+
+## Biblioteket, riktning B (2026-11-12)
+
+Arkivvyn är ombyggd efter `HZY/design/blog-library-2026-11-12/concept-b-*`:
+- grön hero, ca 290 px på 1440, lägre än skissen
+- ämnesspalt, som är en vågrät rad på mobil
+- sökfält med knapp
+- numrerad textlista med ämnen och pil
+- "Ur arkivet": äldsta artikeln med riktig omslagsbild och ett aktivt ämne.
+
+Riktiga data och samma sökning, ämnen och länkar som tidigare.
+
+**Avvikelser från skissen:**
+- **Datum:** skissens datumkolumn visar löpnummer och ämne, eftersom Nyehandels arkivkort saknar årtal.
+- **Typetiketter:** "Guide/Fakta" är platshållare och visas inte.
+- **Slogan:** skissens "Good products / Higher horizons" är ersatt av butikens egen "Good Plants. Brighter Days." ur footern.
+- **H1:** texten är "Kunskap som går att hitta." enligt riktning B, i Nyehandels eget H1-element.
+
+**Bilder:** före och efter, både viewport och helsida, i `runs/library-before-*` och `runs/library-after-*` för 393, 1440 och 1920 px.
+
+**Tester** (`verify-archive.mjs` → `runs/verify-archive.json`, 393/1440/1920):
+- **Laddning:** 75 resultat.
+- **Visa fler:** 25 → 49 rader, fokus på första nya raden.
+- **Sökning:** "terpener" och "apotek" hittar artikeln på sida 10 (titel respektive ingress). Enter med "eu-certifierad" i sökfältet ger 1 träff.
+- **Tom sökning och rensning:** tomläget visas, "Visa alla artiklar" fungerar och Escape rensar.
+- **Tangentbord:** Tab mellan ämnesknapparna, Enter aktiverar.
+- **Övrigt:** alla länkar är vanliga `/sv/post/…`, en H1, ingen horisontell scroll, inga fel. Artikelsidor och regressionssidor är oförändrade.

@@ -169,18 +169,28 @@
     });
   }
 
-  /* ---------------- Arkiv ---------------- */
+  /* ---------------- Arkiv: biblioteket (riktning B, vald 2026-11-12) ----------------
+     Skiss: HZY/design/blog-library-2026-11-12/concept-b-*.png. Grön hero (lägre
+     än skissen), ämnesspalt (mobil: vågrät rad), sökfält med knapp, lättskannad
+     textlista och en "Ur arkivet"-artikel med riktig omslagsbild. Nyehandels
+     arkivkort anger datum utan år, så datumkolumnen visar artikelns ämnen i
+     stället -- inga påhittade datum eller typer. */
   var BATCH = 24;
-  function rowHtml(x, n) {
-    return '<li><a class="hz8-blog__row" href="' + HZ8.esc(HZ8.link(x.href)) + '">' +
-      '<span class="hz8-blog__n" aria-hidden="true">' + (n < 10 ? "0" : "") + n + "</span>" +
-      '<span class="hz8-blog__row-body"><h3>' + HZ8.esc(x.title) + "</h3>" + (x.lead ? "<p>" + HZ8.esc(x.lead) + "</p>" : "") + meta(x) + "</span>" +
-      thumb(x, "hz8-blog__thumb") + "</a></li>";
+  var ARROW_UP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var SEARCH_SVG = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+  function itemHtml(x, n) {
+    return '<li class="hz8-lib__item"><a class="hz8-lib__link" href="' + HZ8.esc(HZ8.link(x.href)) + '">' +
+      '<span class="hz8-lib__meta"><span class="hz8-lib__n" aria-hidden="true">' + (n < 10 ? "0" : "") + n + "</span>" +
+      (x.topics.length ? '<span class="hz8-lib__tags">' + HZ8.esc(x.topics.slice(0, 2).join(" · ")) + "</span>" : "") + "</span>" +
+      '<span class="hz8-lib__body"><h3>' + HZ8.esc(x.title) + "</h3>" + (x.lead ? "<p>" + HZ8.esc(x.lead) + "</p>" : "") + "</span>" +
+      '<span class="hz8-lib__arrow">' + ARROW_UP + "</span></a></li>";
   }
-  function leadHtml(x) {
-    return '<a class="hz8-blog__lead" href="' + HZ8.esc(HZ8.link(x.href)) + '">' + thumb(x, "hz8-blog__lead-media") +
-      '<span class="hz8-blog__lead-body"><span class="hz8-blog__kicker">Senaste</span><h2>' + HZ8.esc(x.title) + "</h2>" +
-      (x.lead ? "<p>" + HZ8.esc(x.lead) + "</p>" : "") + meta(x) + '<span class="hz8-blog__read">Läs artikeln' + ARROW + "</span></span></a>";
+  function featureHtml(x) {
+    return '<li class="hz8-lib__feature' + (x.img ? "" : " hz8-lib__feature--text") + '"><a class="hz8-lib__link" href="' + HZ8.esc(HZ8.link(x.href)) + '">' +
+      '<span class="hz8-lib__fbody"><span class="hz8-lib__eyebrow">Ur arkivet' + (x.topics[0] ? " · " + HZ8.esc(x.topics[0]) : "") + "</span>" +
+      "<h3>" + HZ8.esc(x.title) + "</h3>" + (x.lead ? "<p>" + HZ8.esc(x.lead) + "</p>" : "") +
+      '<span class="hz8-lib__read">Läs artikeln' + ARROW + "</span></span>" +
+      (x.img ? '<span class="hz8-lib__fmedia"><img src="' + HZ8.esc(x.img) + '" alt="' + HZ8.esc(x.alt) + '" loading="lazy" decoding="async"></span>' : "") + "</a></li>";
   }
 
   function mountIndex(root) {
@@ -189,14 +199,13 @@
     var posts = readList(list);
     var h1 = root.querySelector("h1");
     var wrap = document.createElement("div");
-    wrap.className = "hz8-blog";
+    wrap.className = "hz8-blog hz8-lib";
     if (!posts.length) {
-      wrap.innerHTML = '<div class="hz8-blog__head"><p class="hz8-blog__kicker">Hazey Journal</p><div class="hz8-blog__h1slot"></div></div>' +
+      wrap.innerHTML = '<div class="hz8-lib__hero"><div class="hz8-lib__heroin"><p class="hz8-lib__eyebrow">Hazey Journal</p><div class="hz8-blog__h1slot"></div></div></div>' +
         '<div class="hz8-state hz8-blog__empty"><p>Här samlar vi guider och fördjupning om cannabinoider, format och lagstiftning. Inga artiklar är publicerade ännu.</p>' +
         '<a class="hz8-btn hz8-btn--secondary" href="' + HZ8.esc(HZ8.link("/sv/page/faq")) + '">Vanliga frågor</a></div>';
       list.parentNode.insertBefore(wrap, list);
-      if (h1) { wrap.querySelector(".hz8-blog__h1slot").appendChild(h1); h1.classList.add("hz8-blog__title"); }
-      else wrap.querySelector(".hz8-blog__h1slot").outerHTML = '<h1 class="hz8-blog__title">Guider &amp; fördjupning</h1>';
+      if (h1) { wrap.querySelector(".hz8-blog__h1slot").appendChild(h1); h1.classList.add("hz8-lib__title"); }
       root.setAttribute("data-hz8-blog", "empty");
       return;
     }
@@ -204,28 +213,37 @@
     var pageNo = Math.max(1, parseInt(params.get("page"), 10) || 1);
     var defs = topicDefs();
     var state = { all: posts, ready: false, q: params.get("q") || "", topic: "", shown: BATCH };
+    /* Butikens egen slogan ur footern (dekor i heron); saknas den visas ingen. */
+    var tagline = document.querySelector(".hz8-footer__brand em");
 
     wrap.innerHTML =
-      '<div class="hz8-blog__head"><p class="hz8-blog__kicker">Hazey Journal</p><div class="hz8-blog__h1slot"></div>' +
-      '<p class="hz8-blog__lede">Guider och fördjupning om cannabinoider, format och lagstiftning.</p></div>' +
-      '<div class="hz8-blog__tools" role="search">' +
-        '<label class="hz8-blog__search"><span class="hz8-visually-hidden">Sök bland artiklarna</span>' +
-        '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>' +
-        '<input type="search" name="q" autocomplete="off" enterkeyhint="search" placeholder="Sök på titel eller ingress" aria-controls="hz8-blog-results"></label>' +
-        '<div class="hz8-blog__chips" role="group" aria-label="Filtrera på ämne" hidden></div></div>' +
-      '<p class="hz8-blog__status" role="status" aria-live="polite"></p>' +
-      '<div id="hz8-blog-results" class="hz8-blog__results"></div>';
+      '<div class="hz8-lib__hero"><div class="hz8-lib__heroin">' +
+        '<p class="hz8-lib__eyebrow">Hazey Journal <span class="hz8-lib__total"></span></p><div class="hz8-blog__h1slot"></div>' +
+        '<p class="hz8-lib__lede">Ett samlat bibliotek för guider, produktförklaringar och fördjupning. Börja med en fråga eller välj ett ämne.</p>' +
+        (tagline && tagline.textContent.trim() ? '<p class="hz8-lib__seal" aria-hidden="true">' + HZ8.esc(tagline.textContent.trim()) + "</p>" : "") +
+      "</div></div>" +
+      '<div class="hz8-lib__work">' +
+        '<nav class="hz8-lib__topics" aria-labelledby="hz8-lib-topics-t"><h2 id="hz8-lib-topics-t">Bläddra efter ämne</h2><ul class="hz8-lib__tlist"></ul></nav>' +
+        '<section class="hz8-lib__results" aria-labelledby="hz8-lib-head">' +
+          '<form class="hz8-lib__search" role="search" action="' + HZ8.esc(location.pathname) + '">' +
+            '<label for="hz8-lib-q" class="hz8-visually-hidden">Sök i biblioteket</label>' + SEARCH_SVG +
+            '<input id="hz8-lib-q" type="search" name="q" autocomplete="off" enterkeyhint="search" placeholder="Sök i biblioteket" aria-controls="hz8-blog-results">' +
+            '<button type="submit">Sök</button></form>' +
+          '<div class="hz8-lib__head"><h2 id="hz8-lib-head">Alla artiklar</h2><p class="hz8-lib__count" role="status" aria-live="polite"></p></div>' +
+          '<div id="hz8-blog-results" class="hz8-lib__list"></div>' +
+        "</section></div>";
 
-    /* Sidans riktiga H1 (Nyehandels) flyttas in i huvudet -- en H1. */
-    if (h1) { wrap.querySelector(".hz8-blog__h1slot").appendChild(h1); h1.classList.add("hz8-blog__title"); }
-    else wrap.querySelector(".hz8-blog__h1slot").outerHTML = '<h1 class="hz8-blog__title">Guider &amp; fördjupning</h1>';
+    /* Sidans riktiga H1 (Nyehandels) flyttas in i heron -- en H1. Texten
+       följer vald riktning B. */
+    var slot = wrap.querySelector(".hz8-blog__h1slot");
+    if (h1) { slot.appendChild(h1); h1.classList.add("hz8-lib__title"); h1.textContent = "Kunskap som går att hitta."; }
+    else slot.outerHTML = '<h1 class="hz8-lib__title">Kunskap som går att hitta.</h1>';
     list.parentNode.insertBefore(wrap, list);
-    /* Native lista + paginering ligger kvar i DOM:en (crawlbara länkar). */
     list.classList.add("hz8-blog__native");
     var pager = root.querySelector(".pagination, nav[role='navigation']");
 
-    var input = wrap.querySelector("input"), status = wrap.querySelector(".hz8-blog__status");
-    var results = wrap.querySelector(".hz8-blog__results"), chipsEl = wrap.querySelector(".hz8-blog__chips");
+    var input = wrap.querySelector("input"), count = wrap.querySelector(".hz8-lib__count"), head = wrap.querySelector("#hz8-lib-head");
+    var results = wrap.querySelector(".hz8-lib__list"), tlist = wrap.querySelector(".hz8-lib__tlist"), total = wrap.querySelector(".hz8-lib__total");
     input.value = state.q;
 
     function prepare(all) {
@@ -235,13 +253,13 @@
         x.hayTitle = fold(x.title); x.hay = fold(x.title + " " + x.lead);
       });
     }
-    function renderChips() {
+    function renderTopics() {
       var counts = {};
       state.all.forEach(function (x) { x.topics.forEach(function (t) { counts[t] = (counts[t] || 0) + 1; }); });
-      var chips = defs.filter(function (d) { return counts[d.name]; });
-      chipsEl.hidden = !chips.length;
-      chipsEl.innerHTML = '<button type="button" data-topic="" aria-pressed="' + (!state.topic) + '">Alla <small>' + state.all.length + "</small></button>" +
-        chips.map(function (c) { return '<button type="button" data-topic="' + HZ8.esc(c.name) + '" aria-pressed="' + (state.topic === c.name) + '">' + HZ8.esc(c.name) + " <small>" + counts[c.name] + "</small></button>"; }).join("");
+      var chips = defs.filter(function (d) { return counts[d.name]; }).sort(function (a, b) { return counts[b.name] - counts[a.name]; });
+      tlist.innerHTML = '<li><button type="button" data-topic="" aria-pressed="' + (!state.topic) + '">Alla artiklar <small>' + state.all.length + "</small></button></li>" +
+        chips.map(function (c) { return '<li><button type="button" data-topic="' + HZ8.esc(c.name) + '" aria-pressed="' + (state.topic === c.name) + '">' + HZ8.esc(c.name) + " <small>" + counts[c.name] + "</small></button></li>"; }).join("");
+      total.textContent = state.ready ? "/ " + state.all.length + " artiklar" : "";
     }
     function matches() {
       var terms = fold(state.q).split(" ").filter(Boolean);
@@ -256,62 +274,71 @@
       return hits;
     }
     function render() {
-      var filtered = !!(state.q.trim() || state.topic);
-      var hits = matches();
-      var html = "";
+      var q = state.q.trim(), filtered = !!(q || state.topic);
+      var hits = matches(), html;
+      head.textContent = q ? "Sökresultat" : state.topic || "Alla artiklar";
       if (!hits.length) {
-        html = '<div class="hz8-state hz8-blog__nohits"><p>Inga artiklar matchar ' + (state.q.trim() ? "”" + HZ8.esc(state.q.trim()) + "”" : "ämnet") + (state.topic && state.q.trim() ? " inom " + HZ8.esc(state.topic) : "") + ".</p>" +
+        html = '<div class="hz8-state hz8-lib__nohits"><p>Inga artiklar matchar ' + (q ? "”" + HZ8.esc(q) + "”" : "ämnet") + (state.topic && q ? " inom " + HZ8.esc(state.topic) : "") + ".</p>" +
           '<button type="button" class="hz8-btn hz8-btn--secondary" data-clear>Visa alla artiklar</button></div>';
       } else {
-        var lead = !filtered && pageNo === 1 ? hits[0] : null;
-        var rest = lead ? hits.slice(1) : hits;
+        /* "Ur arkivet": äldsta artikeln med riktig omslagsbild OCH ett ämne
+           ur butikens aktiva sortiment (pausade/utgångna substanser lyfts
+           aldrig fram). Bara i ofiltrerad vy; tas då bort ur löplistan. */
+        var feature = null;
+        if (!filtered && pageNo === 1 && state.ready) {
+          for (var i = hits.length - 1; i >= 2; i -= 1) if (hits[i].img && hits[i].topics.length) { feature = hits[i]; break; }
+        }
+        var rest = feature ? hits.filter(function (x) { return x !== feature; }) : hits;
         var limit = filtered ? rest.length : Math.min(rest.length, state.shown);
-        html = (lead ? leadHtml(lead) : "") +
-          '<ol class="hz8-blog__list" start="' + (lead ? 2 : 1) + '">' + rest.slice(0, limit).map(function (x, i) { return rowHtml(x, i + (lead ? 2 : 1)); }).join("") + "</ol>" +
-          (limit < rest.length ? '<div class="hz8-blog__more"><button type="button" class="hz8-btn hz8-btn--secondary" data-more>Visa fler artiklar <small>(' + (rest.length - limit) + " kvar)</small></button></div>" : "");
+        var items = rest.slice(0, limit).map(function (x, k) { return itemHtml(x, k + 1); });
+        if (feature) items.splice(Math.min(2, items.length), 0, featureHtml(feature));
+        html = '<ol class="hz8-lib__ol" role="list">' + items.join("") + "</ol>" +
+          (limit < rest.length ? '<div class="hz8-lib__more"><button type="button" class="hz8-btn hz8-btn--secondary" data-more>Visa fler artiklar <small>(' + (rest.length - limit) + " kvar)</small></button></div>" : "");
       }
       results.innerHTML = html;
-      status.textContent = !state.ready ? "Hämtar alla artiklar …" :
-        filtered ? hits.length + (hits.length === 1 ? " artikel" : " artiklar") + (state.q.trim() ? " för ”" + state.q.trim() + "”" : "") + (state.topic ? " inom " + state.topic : "") :
-        state.all.length + " artiklar";
-      /* När alla artiklar är hämtade ersätter arkivet Nyehandels paginering
-         (som finns kvar i serverns HTML, crawlbar för sökmotorer). */
+      count.textContent = !state.ready ? "Hämtar alla artiklar …" :
+        hits.length + " resultat" + (q ? " för ”" + q + "”" : "") + (state.topic && q ? " inom " + state.topic : "") + (filtered && q ? "" : " · Senaste först");
       if (pager) pager.classList.toggle("hz8-blog__native", state.ready);
     }
 
-    prepare(state.all); renderChips(); render();
-    if (pager) wrap.appendChild(pager);
+    prepare(state.all); renderTopics(); render();
+    if (pager) wrap.querySelector(".hz8-lib__results").appendChild(pager);
 
     var t = null;
-    input.addEventListener("input", function () { clearTimeout(t); t = setTimeout(function () { state.q = input.value; render(); syncUrl(); }, 120); });
-    input.addEventListener("keydown", function (e) { if (e.key === "Escape" && input.value) { e.preventDefault(); input.value = ""; state.q = ""; render(); syncUrl(); } });
-    wrap.querySelector("form, .hz8-blog__tools").addEventListener("submit", function (e) { e.preventDefault(); });
-    chipsEl.addEventListener("click", function (e) {
+    function syncUrl() {
+      try { var u = new URL(location.href); if (state.q.trim()) u.searchParams.set("q", state.q.trim()); else u.searchParams.delete("q"); history.replaceState(history.state, "", u); } catch (e) {}
+    }
+    function apply() { state.q = input.value; state.shown = BATCH; render(); syncUrl(); }
+    input.addEventListener("input", function () { clearTimeout(t); t = setTimeout(apply, 140); });
+    input.addEventListener("keydown", function (e) { if (e.key === "Escape" && input.value) { e.preventDefault(); input.value = ""; apply(); } });
+    wrap.querySelector(".hz8-lib__search").addEventListener("submit", function (e) {
+      e.preventDefault(); clearTimeout(t); apply();
+      var first = results.querySelector(".hz8-lib__link");
+      if (window.matchMedia("(max-width: 899px)").matches && first) wrap.querySelector(".hz8-lib__head").scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+    tlist.addEventListener("click", function (e) {
       var b = e.target.closest("button[data-topic]"); if (!b) return;
-      state.topic = b.getAttribute("data-topic");
-      Array.prototype.forEach.call(chipsEl.querySelectorAll("button"), function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      state.topic = b.getAttribute("data-topic"); state.shown = BATCH;
+      Array.prototype.forEach.call(tlist.querySelectorAll("button"), function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
       render();
     });
     results.addEventListener("click", function (e) {
       if (e.target.closest("[data-more]")) {
-        var before = results.querySelectorAll(".hz8-blog__row").length;
+        var before = results.querySelectorAll(".hz8-lib__link").length;
         state.shown += BATCH; render();
-        var next = results.querySelectorAll(".hz8-blog__row")[before]; if (next) next.focus();
+        var next = results.querySelectorAll(".hz8-lib__link")[before]; if (next) next.focus();
       } else if (e.target.closest("[data-clear]")) {
-        input.value = ""; state.q = ""; state.topic = ""; renderChips(); render(); syncUrl(); input.focus();
+        input.value = ""; state.q = ""; state.topic = ""; state.shown = BATCH; renderTopics(); render(); syncUrl(); input.focus();
       }
     });
-    function syncUrl() {
-      try { var u = new URL(location.href); if (state.q.trim()) u.searchParams.set("q", state.q.trim()); else u.searchParams.delete("q"); history.replaceState(history.state, "", u); } catch (e) {}
-    }
 
     var current = { page: pageNo, posts: posts, last: lastPage(document) };
     results.setAttribute("aria-busy", "true");
     loadIndex(current).then(function (all) {
       results.removeAttribute("aria-busy");
       state.all = all.length ? all : posts; state.ready = true;
-      prepare(state.all); renderChips(); render();
-    }, function () { results.removeAttribute("aria-busy"); state.ready = true; render(); });
+      prepare(state.all); renderTopics(); render();
+    }, function () { results.removeAttribute("aria-busy"); state.ready = true; renderTopics(); render(); });
     root.setAttribute("data-hz8-blog", "index");
   }
 
