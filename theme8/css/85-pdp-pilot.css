@@ -1248,31 +1248,10 @@ html.hz8-pdp-pilot.hz8-pp-sticky-on { scroll-padding-bottom: calc(88px + env(saf
   html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta):is(:hover, :active) { transform: none !important; }
 }
 
-/* TASK 25b: tillverkarens syskonserie (D10) efter "Fler i serien" --
-   seriehubbens remsa (81-series-hub.css .hz8-sh-more), kort och scroll
-   från PDP:ns egen rail (.hz8-pp-similar). Inga egna kortregler här. */
-html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling {
-  --hz8-pilot-green: var(--pp-green, #2c3620);
-  --hz8-pilot-well: #fbf5ea;
-  margin: 18px 0 0;
-}
+/* TASK 25b/25c: tillverkarens syskonserie (D10) efter "Fler i serien".
+   Rutan, railen och korten är seriehubbens egna (81-series-hub.css +
+   hubbens kortregler i 80-category.css/96-product-media.css, som bygget
+   ger en PDP-gren, theme8/tools/scope-sibling-cards.js). Här bara
+   placeringen på PDP:n. */
+html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling { margin: 18px 0 0; }
 html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling .hz8-sh-more + .hz8-sh-more { margin-top: 12px; }
-html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling .hz8-pp-sibling__rail { padding-top: 0 !important; border-top: 0 !important; }
-html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling .hz8-pp-sibling__rail .hz8-prail__head { display: none; }
-/* Lagerrad och slutsålt läge (81-series-hub.js decorateCards): samma
-   prick + text som seriehubbens kort; slutsålda kort har ingen köpknapp
-   utan en inaktiv "Slutsåld"-yta i knappens mått. Storleks-chipet är
-   redundant med namnet ("– 5g") och visas inte här. */
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pcardchips { display: none !important; }
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock { display: inline-flex; align-items: center; gap: 6px; margin: 6px 0 0 !important; color: color-mix(in srgb, var(--pp-green, #2c3620) 82%, #6f7a52); font: 500 12px/1.2 var(--hz8-font-ui) !important; white-space: nowrap; }
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: #5d6b40; }
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock.is-pending, html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock[hidden] { display: none !important; }
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock.is-out { color: color-mix(in srgb, var(--hz8-cta) 62%, var(--hz8-ink)); }
-html.hz8-pdp-pilot .hz8-pp-sibling .hz8-pstock.is-out::before { background: currentColor; opacity: .85; }
-html.hz8.hz8-pdp-pilot .hz8-pp-sibling .product-card.hz8-is-soldout .hz8-card-pill { display: none !important; }
-html.hz8.hz8-pdp-pilot .hz8-pp-sibling .product-card .hz8-psold { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: auto; border: 1px solid rgba(137, 98, 58, .28); border-radius: 8px; background: rgba(255, 250, 241, .6); color: color-mix(in srgb, var(--hz8-ink) 62%, transparent); font: 600 13.5px/1 var(--hz8-font-ui) !important; cursor: not-allowed; }
-html.hz8.hz8-pdp-pilot .hz8-pp-sibling .product-card.hz8-is-soldout .product-card__image img { opacity: .74; }
-/* Kort med både Nyhet- och rabattetikett: båda ligger annars på samma
-   plats i bildens nederkant (03-product-card.css) -- rabatten staplas
-   ovanför Nyhet. */
-html.hz8.hz8-pdp-pilot #store-main .hz8-pp-sibling .product-card .ribbon.news ~ .ribbon.sale { top: calc(100cqw - 66px) !important; }

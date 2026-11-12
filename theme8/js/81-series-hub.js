@@ -477,6 +477,27 @@
       });
     });
   }
+  /* TASK 25c: samma kortuppställning som hubbens D10 vape-ruta (variant-
+     kort: produktlinjen som överrad, strain som titel). Katalogens namn
+     "D10 50% – Porn Star OG – 5g" (exakt tre delar) -> överrad "D10 50% ·
+     5g", titel "Porn Star OG". Annat namnmönster -> kortet orört. Hela
+     namnet finns kvar i bildens alt/title och i data-hz8-product. */
+  function lineCard(c) {
+    var parts = decode(cardName(c.html)).split(/\s+[–-]\s+/);
+    if (parts.length !== 3 || !parts.every(Boolean)) return c;
+    var box = document.createElement("div");
+    box.innerHTML = c.html;
+    var nameEl = box.querySelector(".name"), brand = box.querySelector(".brand");
+    if (!nameEl || !brand) return c;
+    nameEl.setAttribute("data-hz8-product", parts.join(" – "));
+    nameEl.textContent = parts[1];
+    brand.setAttribute("data-hz8-brand", decode(brand.textContent));
+    brand.textContent = parts[0] + " · " + parts[2];
+    var out = {};
+    Object.keys(c).forEach(function (k) { out[k] = c[k]; });
+    out.html = box.innerHTML.trim();
+    return out;
+  }
   var SIB_MULTI = /[-–]\s*\d+\s*-?\s*pack\b|\bkollektion(en)?\b/i;
   function siblingOn(sb, where) { return (sb.on || ["hub"]).indexOf(where) !== -1; }
 
@@ -500,7 +521,8 @@
         return siblingSeries(sb, own, inSeries).then(function (extra) {
           if (!extra) return null;
           if (ctx.exclude) extra.cards = extra.cards.filter(function (c) { return productPath(c.html) !== ctx.exclude; });
-          return extra.cards.length ? shMore(extra, series, function () { return null; }, { railClass: "hz8-pp-similar hz8-pp-sibling__rail" }) : null;
+          extra.cards = extra.cards.map(lineCard);
+          return extra.cards.length ? shMore(extra, series, function () { return null; }) : null;
         }, function () { return null; });
       }));
     }).then(function (secs) { return (secs || []).filter(Boolean); });

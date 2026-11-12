@@ -2,3 +2,7 @@ B1-buds-pdp PASS {"title":true,"closedFirst":true,"open":true,"reclosed":true,"p
 B2-buds-pdp-2 PASS {"title":true,"closedFirst":true,"open":true,"reclosed":true,"products":true,"names":true,"prices":true,"images":true,"stock":true,"noForeign":true,"scroll":true,"scrollable":false,"link":true,"noOverflow":true,"afterSimilar":true}
 H1-hasch-pdp PASS {"title":true,"closedFirst":true,"open":true,"reclosed":true,"products":true,"names":true,"prices":true,"images":true,"stock":true,"noForeign":true,"scroll":true,"scrollable":false,"link":true,"noOverflow":true,"afterSimilar":true}
 H2-hasch-pdp-2 PASS {"title":true,"closedFirst":true,"open":true,"reclosed":true,"products":true,"names":true,"prices":true,"images":true,"stock":true,"noForeign":true,"scroll":true,"scrollable":false,"link":true,"noOverflow":true,"afterSimilar":true}
+N1-vape-pdp PASS {"box":false,"title":null}
+N2-prerolls-pdp PASS {"box":false,"title":null}
+N3-charas-pdp PASS {"box":true,"title":"Fler hasch från Magic Farmers"}
+N4-d10-buds-pdp PASS {"box":false,"title":null}

@@ -234,7 +234,10 @@ html.hz8 #store-main .hz8-more .hz8-more__shelf .hz8-prail__title { font-family:
    (kortreglerna i 80-category.css gäller båda piloterna). Egen logik:
    formatrad + formathyllor + mobil formatdocka.
    ====================================================================== */
-html.hz8-sh-pilot {
+/* TASK 25c: samma tokens i tillverkarrutan på Magic Sauce-PDP:erna (hubbens
+   kort i rutan, se theme8/tools/scope-sibling-cards.js). */
+html.hz8-sh-pilot,
+html.hz8-pdp-pilot .hz8-pp-sibling {
   /* Materialförlopp (v2, ljusare): kalkputs -> formatband i papper ->
      varm sandfärgad butiksyta -> elfenbensbrunnar. Globala tokens rörs
      inte; detta är seriehubbens egen materialhierarki. */
