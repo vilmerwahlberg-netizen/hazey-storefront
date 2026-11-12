@@ -1,0 +1,20 @@
+// Läser Nyehandels desktop-sök (1440) före ändring: DOM, overlay, dropdown, API-svar. Inget skrivs.
+import fs from "node:fs"; import path from "node:path";
+import { chromium, ctxFor, open, ready } from "../catalog-reconciliation-2026-11/lib/harness.mjs";
+const DIR = path.dirname(new URL(import.meta.url).pathname);
+const b = await chromium.launch(); const ctx = await ctxFor(b, 1440, 900, { which: "after" });
+const reqs = []; ctx.on("request", r => { if (/search/.test(r.url()) && r.resourceType() !== "document") reqs.push(r.method() + " " + r.url().replace(/^https:\/\/[^/]+/, "")); });
+const p = await open(ctx, "/sv/categories/alla-produkter"); await ready(p, 2000);
+const before = await p.evaluate(() => document.querySelector("#search-container")?.outerHTML.replace(/ data-v-[a-z0-9]+=""/g, "").slice(0, 3000));
+await p.click("#search-input"); await p.waitForTimeout(1200);
+const focused = await p.evaluate(() => ({ drop: document.querySelector(".store-search__dropdown")?.outerHTML.replace(/ data-v-[a-z0-9]+=""/g, "").slice(0, 2500), overlay: [...document.querySelectorAll(".overlay, .search-overlay")].map(o => o.className + " " + getComputedStyle(o).display) }));
+await p.screenshot({ path: path.join(DIR, "evidence/native-1440-focus.png") });
+await p.keyboard.type("magic", { delay: 80 }); await p.waitForTimeout(2500);
+const typed = await p.evaluate(() => { const d = document.querySelector(".store-search__dropdown"); const r = d && d.getBoundingClientRect(); return { rect: r && { x: r.x, y: r.y, w: r.width, h: r.height }, text: d && d.innerText.replace(/\s+/g, " ").slice(0, 600), html: d && d.outerHTML.replace(/ data-v-[a-z0-9]+=""/g, "").slice(0, 3000) }; });
+await p.screenshot({ path: path.join(DIR, "evidence/native-1440-typed.png") });
+const api = await p.evaluate(async () => { const r = await fetch("/frontend-api/sv/search/product?query=magic", { headers: { Accept: "application/json" } }); const j = await r.json(); const d = j.data || j; return { keys: Object.keys(d), total: d.total_count, hit0: d.hits && d.hits[0], cat0: d.categories && d.categories[0], ncat: (d.categories || []).length, nhits: (d.hits || []).length }; });
+await p.keyboard.press("Enter"); await p.waitForTimeout(4000);
+const after = p.url();
+fs.writeFileSync(path.join(DIR, "evidence/native-search.json"), JSON.stringify({ before, focused, typed, api, reqs, enterUrl: after }, null, 1));
+console.log(JSON.stringify({ focused: focused.overlay, typedRect: typed.rect, typedText: typed.text, api, reqs: reqs.slice(0, 12), enterUrl: after }, null, 1));
+await b.close();

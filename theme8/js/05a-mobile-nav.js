@@ -218,6 +218,79 @@
     return root;
   }
 
+  /* ---------- Gemensam sökrendering (mobil dialog + desktop-popover) ----------
+     Samma datakälla som Nyehandels sökruta (/frontend-api/{locale}/search/
+     product?query=), samma markup och samma tillstånd: start, laddar,
+     träffar, inga träffar, nätverksfel. TASK 02 (2026-11-12). */
+  function startMarkup(categories) {
+    var groups = HZ8.headerCannabinoids || [];
+    function chips(list, label) {
+      list = (list || []).filter(function (c) { return c && c.href; });
+      return list.length ? '<p class="hz8-msearch__label">' + esc(label) + '</p><ul class="hz8-msearch__cats">' + list.map(function (c) {
+        return '<li><a href="' + esc(rel(c.href)) + '">' + esc(c.label) + "</a></li>";
+      }).join("") + "</ul>" : "";
+    }
+    /* Cannabinoidgenvägar som inte redan finns under Bläddra (CBD). */
+    var seen = (categories || []).map(function (c) { return c.href; });
+    var canna = [];
+    groups.forEach(function (g) { (g.links || []).forEach(function (l) { if (seen.indexOf(l.href) === -1) canna.push(l); }); });
+    return '<div class="hz8-msearch__start"><p class="hz8-msearch__hint">Sök bland produkter, serier och varumärken.</p>' +
+      chips(categories, "Bläddra") + chips(canna, "Cannabinoider") + "</div>";
+  }
+  function resultsMarkup(q, d, max) {
+    var hits = (d.hits || []).slice(0, max || 5);
+    var cats = (d.categories || []).slice(0, 3);
+    var total = d.total_count || hits.length;
+    if (!hits.length && !cats.length) {
+      return { empty: true, total: 0, html: '<div class="hz8-msearch__empty"><p>Inga träffar för ”' + esc(q) + '”.</p><p>Kontrollera stavningen eller bläddra i <a href="' + esc(HZ8.link("/" + locale() + "/categories/alla-produkter")) + '">alla produkter</a>.</p></div>' };
+    }
+    return { total: total, html:
+      (cats.length ? '<p class="hz8-msearch__label">Kategorier</p><ul class="hz8-msearch__cats">' + cats.map(function (c) {
+        return '<li><a href="' + esc(rel(c.url)) + '"><span>' + highlight(c.name) + "</span></a></li>";
+      }).join("") + "</ul>" : "") +
+      (hits.length ? '<p class="hz8-msearch__label">Produkter</p><ul class="hz8-msearch__hits">' + hits.map(function (h) {
+        var price = h.formatted_price ? (String(h.has_compare_price) === "true" || h.has_compare_price === true) && h.formatted_comparison_price
+          ? '<del>' + esc(h.formatted_comparison_price) + "</del> <ins>" + esc(h.formatted_price) + "</ins>" : esc(h.formatted_price) : "";
+        return '<li><a class="hz8-msearch__hit" href="' + esc(rel(h.url)) + '">' +
+          '<span class="hz8-msearch__thumb">' + (h.thumb_url ? '<img src="' + esc(h.thumb_url) + '" alt="" width="48" height="48" loading="lazy">' : "") + "</span>" +
+          '<span class="hz8-msearch__name">' + highlight(h.title) + "</span>" +
+          (price ? '<span class="hz8-msearch__price">' + price + "</span>" : "") + "</a></li>";
+      }).join("") + "</ul>" : "") +
+      '<a class="hz8-msearch__all" href="' + esc(searchUrl(q)) + '">Visa alla ' + total + (total === 1 ? " träff" : " träffar") + "</a>" };
+  }
+  /* En sökmotor per yta: debounce, avbryt gamla anrop, bara senaste svaret
+     ritas. results = behållaren, status = role=status-noden. */
+  function searchEngine(results, status, categories, max) {
+    var ctrl = null, seq = 0, startHtml = startMarkup(categories);
+    function start() { if (ctrl) { ctrl.abort(); ctrl = null; } seq++; results.removeAttribute("aria-busy"); results.innerHTML = startHtml; status.textContent = ""; }
+    function run(q) {
+      if (ctrl) { ctrl.abort(); ctrl = null; }
+      if (q.length < 2) { start(); return; }
+      var my = ++seq;
+      ctrl = window.AbortController ? new AbortController() : null;
+      results.setAttribute("aria-busy", "true");
+      /* Laddar: bara när inga tidigare träffar syns (annars dämpas de). */
+      if (!results.querySelector(".hz8-msearch__hits, .hz8-msearch__cats a span")) { results.innerHTML = '<p class="hz8-msearch__loading">Söker …</p>'; }
+      status.textContent = "Söker";
+      fetch("/frontend-api/" + locale() + "/search/product?query=" + encodeURIComponent(q), {
+        credentials: "same-origin", headers: { Accept: "application/json" }, signal: ctrl ? ctrl.signal : undefined
+      }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (d) {
+          if (my !== seq) return;
+          var m = resultsMarkup(q, d.data || d, max);
+          results.innerHTML = m.html;
+          status.textContent = m.empty ? "Inga träffar" : m.total + (m.total === 1 ? " träff" : " träffar");
+        })
+        .catch(function (e) {
+          if (e && e.name === "AbortError" || my !== seq) return;
+          results.innerHTML = '<div class="hz8-msearch__empty hz8-msearch__error"><p>Förslagen kunde inte laddas just nu.</p><p><a href="' + esc(searchUrl(q)) + '">Visa sökresultat för ”' + esc(q) + '”</a></p></div>';
+          status.textContent = "Förslagen kunde inte laddas";
+        })
+        .then(function () { if (my === seq) results.removeAttribute("aria-busy"); });
+    }
+    return { start: start, run: run };
+  }
+
   api.initSearch = function (trigger, categories) {
     if (document.getElementById("hz8MobileSearch")) return;
     var root = buildSearch();
@@ -225,57 +298,12 @@
     var clear = root.querySelector(".hz8-msearch__clear");
     var results = root.querySelector(".hz8-msearch__results");
     var status = root.querySelector("#hz8MsearchStatus");
-    var timer = 0, ctrl = null, seq = 0;
-
-    /* Tom startyta: bara riktiga huvudkategorier ur headerns lista. */
-    var startHtml = '<div class="hz8-msearch__start"><p class="hz8-msearch__hint">Sök bland produkter, serier och varumärken.</p>' +
-      (categories && categories.length ? '<p class="hz8-msearch__label">Bläddra</p><ul class="hz8-msearch__cats">' + categories.map(function (c) {
-        return '<li><a href="' + esc(rel(c.href)) + '">' + esc(c.label) + "</a></li>";
-      }).join("") + "</ul>" : "") + "</div>";
-    function renderStart() { results.innerHTML = startHtml; }
-
-    function render(q, d) {
-      var hits = (d.hits || []).slice(0, 5);
-      var cats = (d.categories || []).slice(0, 3);
-      var total = d.total_count || hits.length;
-      if (!hits.length && !cats.length) {
-        results.innerHTML = '<div class="hz8-msearch__empty"><p>Inga träffar för ”' + esc(q) + '”.</p><p>Kontrollera stavningen eller bläddra i <a href="' + esc(HZ8.link("/" + locale() + "/categories/alla-produkter")) + '">alla produkter</a>.</p></div>';
-        status.textContent = "Inga träffar";
-        return;
-      }
-      results.innerHTML =
-        (cats.length ? '<p class="hz8-msearch__label">Kategorier</p><ul class="hz8-msearch__cats">' + cats.map(function (c) {
-          return '<li><a href="' + esc(rel(c.url)) + '"><span>' + highlight(c.name) + "</span></a></li>";
-        }).join("") + "</ul>" : "") +
-        (hits.length ? '<p class="hz8-msearch__label">Produkter</p><ul class="hz8-msearch__hits">' + hits.map(function (h) {
-          var price = h.formatted_price ? (String(h.has_compare_price) === "true" || h.has_compare_price === true) && h.formatted_comparison_price
-            ? '<del>' + esc(h.formatted_comparison_price) + "</del> <ins>" + esc(h.formatted_price) + "</ins>" : esc(h.formatted_price) : "";
-          return '<li><a class="hz8-msearch__hit" href="' + esc(rel(h.url)) + '">' +
-            '<span class="hz8-msearch__thumb">' + (h.thumb_url ? '<img src="' + esc(h.thumb_url) + '" alt="" width="48" height="48" loading="lazy">' : "") + "</span>" +
-            '<span class="hz8-msearch__name">' + highlight(h.title) + "</span>" +
-            (price ? '<span class="hz8-msearch__price">' + price + "</span>" : "") + "</a></li>";
-        }).join("") + "</ul>" : "") +
-        '<a class="hz8-msearch__all" href="' + esc(searchUrl(q)) + '">Visa alla ' + total + (total === 1 ? " träff" : " träffar") + "</a>";
-      status.textContent = total + (total === 1 ? " träff" : " träffar");
-    }
-
+    var timer = 0;
+    var engine = searchEngine(results, status, categories, 5);
+    function renderStart() { engine.start(); }
     function lookup() {
-      var q = input.value.trim();
       clear.hidden = !input.value;
-      if (ctrl) { ctrl.abort(); ctrl = null; }
-      if (q.length < 2) { renderStart(); status.textContent = ""; return; }
-      var my = ++seq;
-      ctrl = window.AbortController ? new AbortController() : null;
-      results.setAttribute("aria-busy", "true");
-      fetch("/frontend-api/" + locale() + "/search/product?query=" + encodeURIComponent(q), {
-        credentials: "same-origin", headers: { Accept: "application/json" }, signal: ctrl ? ctrl.signal : undefined
-      }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (d) { if (my === seq) render(q, d.data || d); })
-        .catch(function (e) {
-          if (e && e.name === "AbortError" || my !== seq) return;
-          results.innerHTML = '<div class="hz8-msearch__empty"><p>Förslagen kunde inte laddas just nu.</p><p><a href="' + esc(searchUrl(q)) + '">Visa sökresultat för ”' + esc(q) + '”</a></p></div>';
-        })
-        .then(function () { if (my === seq) results.removeAttribute("aria-busy"); });
+      engine.run(input.value.trim());
     }
 
     input.addEventListener("input", function () {
@@ -322,6 +350,140 @@
       if (active === "search") api.close(); else api.open("search");
     }, true);
     watchCart();
+  };
+
+  /* ---------- Desktop-sök (≥1180 px, TASK 02) ----------
+     Nyehandels sökfält (#search-input) står kvar i headern med sitt
+     v-model; dess breda vita förslagspanel (.store-search__dropdown) döljs
+     i CSS. I stället öppnas en kompakt Theme 8-popover under fältet med
+     samma sökmotor som mobilen. Lyssnarna är delegerade (Vue kan rita om
+     fältet) och gäller bara när desktopfältet syns.
+     Tangentbord: Pil ned från fältet -> första förslaget, Pil upp/ned
+     mellan förslag, Escape stänger och lämnar fokus i fältet, Enter går
+     till Nyehandels resultatsida (/{locale}/search?query=), Tab ut ur
+     fält + popover stänger. Klick utanför stänger. */
+  api.initDesktopSearch = function (categories) {
+    if (document.getElementById("hz8DesktopSearch")) return;
+    var mq = window.matchMedia ? window.matchMedia("(min-width: 1180px)") : { matches: true };
+    var root = document.createElement("div");
+    root.id = "hz8DesktopSearch";
+    root.className = "hz8-dsearch";
+    root.hidden = true;
+    root.innerHTML = '<div class="hz8-dsearch__panel" role="region" aria-label="Sökförslag">' +
+      '<p class="hz8-visually-hidden" id="hz8DsearchStatus" role="status" aria-live="polite"></p>' +
+      '<div class="hz8-msearch__results hz8-dsearch__results" id="hz8DsearchResults"></div></div>';
+    document.body.appendChild(root);
+    var panel = root.firstChild, results = root.querySelector("#hz8DsearchResults"), status = root.querySelector("#hz8DsearchStatus");
+    var engine = searchEngine(results, status, categories, 6);
+    var timer = 0, isOpen = false, lastQ = null, restoring = false;
+
+    function field() { return document.getElementById("search-input"); }
+    function desktop(inp) { return mq.matches && inp && shown(inp); }
+    function place(inp) {
+      var pill = inp.closest(".search-field") || inp, r = pill.getBoundingClientRect();
+      var w = Math.min(Math.max(r.width + 120, 420), 480, window.innerWidth - 32);
+      var left = Math.max(16, Math.min(r.right - w, window.innerWidth - w - 16));
+      root.style.setProperty("--hz8-ds-top", Math.round(r.bottom + 10) + "px");
+      root.style.setProperty("--hz8-ds-left", Math.round(left) + "px");
+      root.style.setProperty("--hz8-ds-width", Math.round(w) + "px");
+    }
+    function sync(inp) {
+      var q = inp.value.trim();
+      if (q === lastQ) return;
+      lastQ = q;
+      if (q.length < 2) engine.start(); else engine.run(q);
+    }
+    function open(inp) {
+      inp.setAttribute("aria-controls", "hz8DsearchResults");
+      inp.setAttribute("aria-expanded", "true");
+      place(inp);
+      if (!isOpen) {
+        isOpen = true;
+        root.hidden = false;
+        window.requestAnimationFrame(function () { root.classList.add("is-open"); });
+      }
+      sync(inp);
+    }
+    function close(focusInput) {
+      if (!isOpen) return;
+      isOpen = false;
+      window.clearTimeout(timer);
+      root.classList.remove("is-open");
+      root.hidden = true;
+      var inp = field();
+      if (inp) {
+        inp.setAttribute("aria-expanded", "false");
+        /* Fokus tillbaka till fältet ska inte öppna popovern igen. */
+        if (focusInput) { restoring = true; inp.focus({ preventScroll: true }); restoring = false; }
+      }
+    }
+    function links() { return Array.prototype.slice.call(results.querySelectorAll("a[href]")); }
+    function move(from, step) {
+      var l = links(); if (!l.length) return;
+      var i = l.indexOf(from);
+      if (i === -1) { l[step > 0 ? 0 : l.length - 1].focus(); return; }
+      var n = i + step;
+      if (n < 0) { var inp = field(); if (inp) inp.focus(); return; }
+      if (n >= l.length) n = l.length - 1;
+      l[n].focus();
+    }
+
+    document.addEventListener("focusin", function (e) {
+      if (e.target && e.target.id === "search-input" && desktop(e.target) && !restoring) open(e.target);
+    });
+    document.addEventListener("input", function (e) {
+      if (!e.target || e.target.id !== "search-input" || !desktop(e.target)) return;
+      if (!isOpen) open(e.target);
+      window.clearTimeout(timer);
+      var inp = e.target;
+      timer = window.setTimeout(function () { sync(inp); }, 250);
+    }, true);
+    /* Nyehandels egna förslag hämtas på keyup -- stoppas på desktop så
+       att samma sökning inte körs två gånger (panelen syns ändå inte). */
+    document.addEventListener("keyup", function (e) {
+      if (e.target && e.target.id === "search-input" && desktop(e.target)) e.stopImmediatePropagation();
+    }, true);
+    document.addEventListener("keydown", function (e) {
+      var t = e.target;
+      if (t && t.id === "search-input" && desktop(t)) {
+        if (e.key === "Enter") {
+          e.preventDefault(); e.stopImmediatePropagation();
+          var q = t.value.trim(); if (q) { close(false); location.href = searchUrl(q); }
+        } else if (e.key === "ArrowDown") {
+          if (!isOpen) open(t);
+          e.preventDefault(); move(null, 1);
+        } else if (e.key === "Escape" && isOpen) {
+          e.preventDefault(); e.stopImmediatePropagation(); close(true);
+        }
+        return;
+      }
+      if (!isOpen || !root.contains(t)) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); move(t, e.key === "ArrowDown" ? 1 : -1); }
+      else if (e.key === "Escape") { e.preventDefault(); e.stopImmediatePropagation(); close(true); }
+    }, true);
+    document.addEventListener("focusout", function () {
+      window.setTimeout(function () {
+        var a = document.activeElement;
+        if (isOpen && !(a && (a.id === "search-input" || root.contains(a)))) close(false);
+      }, 0);
+    });
+    document.addEventListener("pointerdown", function (e) {
+      if (!isOpen) return;
+      var t = e.target;
+      if (root.contains(t) || (t.closest && t.closest("#search-container"))) return;
+      close(false);
+    }, true);
+    root.addEventListener("click", function (e) {
+      var a = e.target.closest("a[href]");
+      if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey) close(false);
+    });
+    var rraf = 0;
+    window.addEventListener("resize", function () {
+      if (rraf || !isOpen) return;
+      rraf = window.requestAnimationFrame(function () { rraf = 0; var inp = field(); if (!desktop(inp)) close(false); else place(inp); });
+    });
+    window.addEventListener("pagehide", function () { close(false); });
+    api.desktopSearchOpen = function () { return isOpen; };
   };
 
   /* Konto i förhandsvisningen: /sv/account svarar 302 till
