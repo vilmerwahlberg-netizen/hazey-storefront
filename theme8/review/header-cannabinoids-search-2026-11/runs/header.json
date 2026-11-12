@@ -1,0 +1,836 @@
+{
+ "fails": [],
+ "fit": {
+  "1180": {
+   "main": {
+    "l": 24,
+    "r": 1156,
+    "cy": 47
+   },
+   "nav": {
+    "l": 158,
+    "r": 751,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 783,
+    "r": 1021,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1035,
+    "r": 1079,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1091,
+    "r": 1135,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 48,
+    "r": 126,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 158,
+     "r": 246
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 264,
+     "r": 334
+    },
+    {
+     "t": "Vapes",
+     "l": 352,
+     "r": 404
+    },
+    {
+     "t": "Buds",
+     "l": 422,
+     "r": 470
+    },
+    {
+     "t": "Hasch",
+     "l": 488,
+     "r": 542
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 560,
+     "r": 666
+    },
+    {
+     "t": "Kampanjer",
+     "l": 684,
+     "r": 751
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 32,
+   "searchOffsetY": 0
+  },
+  "1280": {
+   "main": {
+    "l": 24,
+    "r": 1256,
+    "cy": 47
+   },
+   "nav": {
+    "l": 166,
+    "r": 804,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 836,
+    "r": 1121,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1135,
+    "r": 1179,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1191,
+    "r": 1235,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 48,
+    "r": 126,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 166,
+     "r": 254
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 280,
+     "r": 349
+    },
+    {
+     "t": "Vapes",
+     "l": 375,
+     "r": 427
+    },
+    {
+     "t": "Buds",
+     "l": 453,
+     "r": 500
+    },
+    {
+     "t": "Hasch",
+     "l": 526,
+     "r": 580
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 605,
+     "r": 711
+    },
+    {
+     "t": "Kampanjer",
+     "l": 737,
+     "r": 804
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 32,
+   "searchOffsetY": 0
+  },
+  "1328": {
+   "main": {
+    "l": 24,
+    "r": 1304,
+    "cy": 47
+   },
+   "nav": {
+    "l": 170,
+    "r": 829,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 873,
+    "r": 1169,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1183,
+    "r": 1227,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1239,
+    "r": 1283,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 48,
+    "r": 126,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 170,
+     "r": 258
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 287,
+     "r": 357
+    },
+    {
+     "t": "Vapes",
+     "l": 386,
+     "r": 438
+    },
+    {
+     "t": "Buds",
+     "l": 467,
+     "r": 515
+    },
+    {
+     "t": "Hasch",
+     "l": 544,
+     "r": 598
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 627,
+     "r": 733
+    },
+    {
+     "t": "Kampanjer",
+     "l": 762,
+     "r": 829
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 44,
+   "searchOffsetY": 0
+  },
+  "1440": {
+   "main": {
+    "l": 80,
+    "r": 1360,
+    "cy": 47
+   },
+   "nav": {
+    "l": 226,
+    "r": 885,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 929,
+    "r": 1225,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1239,
+    "r": 1283,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1295,
+    "r": 1339,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 104,
+    "r": 182,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 226,
+     "r": 314
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 343,
+     "r": 413
+    },
+    {
+     "t": "Vapes",
+     "l": 442,
+     "r": 494
+    },
+    {
+     "t": "Buds",
+     "l": 523,
+     "r": 571
+    },
+    {
+     "t": "Hasch",
+     "l": 600,
+     "r": 654
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 683,
+     "r": 789
+    },
+    {
+     "t": "Kampanjer",
+     "l": 818,
+     "r": 885
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 44,
+   "searchOffsetY": 0
+  },
+  "1512": {
+   "main": {
+    "l": 116,
+    "r": 1396,
+    "cy": 47
+   },
+   "nav": {
+    "l": 262,
+    "r": 921,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 965,
+    "r": 1261,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1275,
+    "r": 1319,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1331,
+    "r": 1375,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 140,
+    "r": 218,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 262,
+     "r": 350
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 379,
+     "r": 449
+    },
+    {
+     "t": "Vapes",
+     "l": 478,
+     "r": 530
+    },
+    {
+     "t": "Buds",
+     "l": 559,
+     "r": 607
+    },
+    {
+     "t": "Hasch",
+     "l": 636,
+     "r": 690
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 719,
+     "r": 825
+    },
+    {
+     "t": "Kampanjer",
+     "l": 854,
+     "r": 921
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 44,
+   "searchOffsetY": 0
+  },
+  "1920": {
+   "main": {
+    "l": 320,
+    "r": 1600,
+    "cy": 47
+   },
+   "nav": {
+    "l": 466,
+    "r": 1125,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 1169,
+    "r": 1465,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1479,
+    "r": 1523,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1535,
+    "r": 1579,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 344,
+    "r": 422,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 466,
+     "r": 554
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 583,
+     "r": 653
+    },
+    {
+     "t": "Vapes",
+     "l": 682,
+     "r": 734
+    },
+    {
+     "t": "Buds",
+     "l": 763,
+     "r": 811
+    },
+    {
+     "t": "Hasch",
+     "l": 840,
+     "r": 894
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 923,
+     "r": 1029
+    },
+    {
+     "t": "Kampanjer",
+     "l": 1058,
+     "r": 1125
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 44,
+   "searchOffsetY": 0
+  }
+ },
+ "panel1180": {
+  "open": true,
+  "exp": "true",
+  "panel": {
+   "l": 55,
+   "r": 775,
+   "b": 439,
+   "w": 720
+  },
+  "links": [
+   [
+    "THCaB",
+    "/sv/categories/thca-b"
+   ],
+   [
+    "THCbA",
+    "/sv/categories/thcba"
+   ],
+   [
+    "D10",
+    "/sv/categories/d10-1"
+   ],
+   [
+    "Nano-11",
+    "/sv/categories/nano-11"
+   ],
+   [
+    "CBD",
+    "/sv/categories/cbd"
+   ],
+   [
+    "H4CBD",
+    "/sv/categories/h4cbd"
+   ],
+   [
+    "CBN",
+    "/sv/categories/cbn"
+   ],
+   [
+    "Buds/Blommor",
+    "/sv/categories/cbd-buds-1"
+   ],
+   [
+    "Hasch",
+    "/sv/categories/h4cbd-hasch"
+   ],
+   [
+    "Vapes",
+    "/sv/categories/cbd-vapes"
+   ],
+   [
+    "Alla produkter",
+    "/sv/categories/alla-produkter"
+   ],
+   [
+    "UTVALD PRODUKTCBD 30% – Tequila Sunrise ",
+    "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram"
+   ]
+  ],
+  "headings": [
+   "Cannabinoider",
+   "CBD-familjen",
+   "CBD efter format"
+  ],
+  "missing": 0
+ },
+ "arrow1180": "THCaB",
+ "firstLink1180": "THCaB",
+ "panel1440": {
+  "open": true,
+  "exp": "true",
+  "panel": {
+   "l": 189,
+   "r": 909,
+   "b": 439,
+   "w": 720
+  },
+  "links": [
+   [
+    "THCaB",
+    "/sv/categories/thca-b"
+   ],
+   [
+    "THCbA",
+    "/sv/categories/thcba"
+   ],
+   [
+    "D10",
+    "/sv/categories/d10-1"
+   ],
+   [
+    "Nano-11",
+    "/sv/categories/nano-11"
+   ],
+   [
+    "CBD",
+    "/sv/categories/cbd"
+   ],
+   [
+    "H4CBD",
+    "/sv/categories/h4cbd"
+   ],
+   [
+    "CBN",
+    "/sv/categories/cbn"
+   ],
+   [
+    "Buds/Blommor",
+    "/sv/categories/cbd-buds-1"
+   ],
+   [
+    "Hasch",
+    "/sv/categories/h4cbd-hasch"
+   ],
+   [
+    "Vapes",
+    "/sv/categories/cbd-vapes"
+   ],
+   [
+    "Alla produkter",
+    "/sv/categories/alla-produkter"
+   ],
+   [
+    "UTVALD PRODUKTCBD 30% – Tequila Sunrise ",
+    "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram"
+   ]
+  ],
+  "headings": [
+   "Cannabinoider",
+   "CBD-familjen",
+   "CBD efter format"
+  ],
+  "missing": 0
+ },
+ "arrow1440": "THCaB",
+ "firstLink1440": "THCaB",
+ "linkStatus": {
+  "THCaB": {
+   "h": "/sv/categories/thca-b",
+   "status": 200,
+   "final": "/sv/categories/thca-b",
+   "count": "2 produkter"
+  },
+  "THCbA": {
+   "h": "/sv/categories/thcba",
+   "status": 200,
+   "final": "/sv/categories/thcba",
+   "count": "1 produkter"
+  },
+  "D10": {
+   "h": "/sv/categories/d10-1",
+   "status": 200,
+   "final": "/sv/categories/d10-1",
+   "count": "9 produkter"
+  },
+  "Nano-11": {
+   "h": "/sv/categories/nano-11",
+   "status": 200,
+   "final": "/sv/categories/nano-11",
+   "count": "17 produkter"
+  },
+  "CBD": {
+   "h": "/sv/categories/cbd",
+   "status": 200,
+   "final": "/sv/categories/cbd",
+   "count": "21 produkter"
+  },
+  "H4CBD": {
+   "h": "/sv/categories/h4cbd",
+   "status": 200,
+   "final": "/sv/categories/h4cbd",
+   "count": "5 produkter"
+  },
+  "CBN": {
+   "h": "/sv/categories/cbn",
+   "status": 200,
+   "final": "/sv/categories/cbn",
+   "count": "8 produkter"
+  },
+  "Buds/Blommor": {
+   "h": "/sv/categories/cbd-buds-1",
+   "status": 200,
+   "final": "/sv/categories/cbd-buds-1",
+   "count": "12 produkter"
+  },
+  "Hasch": {
+   "h": "/sv/categories/h4cbd-hasch",
+   "status": 200,
+   "final": "/sv/categories/h4cbd-hasch",
+   "count": "1 produkter"
+  },
+  "Vapes": {
+   "h": "/sv/categories/cbd-vapes",
+   "status": 200,
+   "final": "/sv/categories/cbd-vapes",
+   "count": "6 produkter"
+  },
+  "Alla produkter": {
+   "h": "/sv/categories/alla-produkter",
+   "status": 200,
+   "final": "/sv/categories/alla-produkter",
+   "count": "104 produkter"
+  },
+  "UTVALD PRODUKTCBD 30% – Tequila Sunrise ": {
+   "h": "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+   "status": 200,
+   "final": "/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+   "count": null
+  }
+ },
+ "vapesThcab": true,
+ "searchEmpty": {
+  "open": true,
+  "rect": {
+   "l": 805,
+   "r": 1225,
+   "t": 78,
+   "w": 420,
+   "h": 262
+  },
+  "fieldRight": 1225,
+  "fieldBottom": 68,
+  "nativeVisible": false,
+  "text": "Sök bland produkter, serier och varumärken. BLÄDDRA Alla produkter Bästsäljare Vapes Buds Hasch CBD CANNABINOIDER THCaB THCbA D10 Nano-11 H4CBD CBN",
+  "exp": "true"
+ },
+ "searchMagic": {
+  "hits": 6,
+  "imgs": 6,
+  "prices": 6,
+  "cats": 2,
+  "all": "Visa alla 50 träffar",
+  "status": "50 träffar",
+  "h": 531,
+  "scroll": false,
+  "nativeVisible": false
+ },
+ "searchReqsAfterTyping": [
+  "magic"
+ ],
+ "searchKeys": {
+  "f1": "Magic Farmers",
+  "f2": "Magic Sauce",
+  "f0": "search-input",
+  "esc": {
+   "open": false,
+   "focus": "search-input",
+   "hidden": false
+  }
+ },
+ "searchNone": {
+  "open": true,
+  "text": "Inga träffar för ”qqxzv”. Kontrollera stavningen eller bläddra i alla produkter."
+ },
+ "searchError": "Förslagen kunde inte laddas just nu. Visa sökresultat för ”core”",
+ "enterUrl": "https://hazeyse.nyehandel.se/sv/search?query=magic&preview=v9kzdmqz4w60l5n",
+ "resultPage": {
+  "h1": "Sökresultat för ”magic”",
+  "count": null,
+  "cards": 42,
+  "body": "50 produkter"
+ },
+ "drawer393": {
+  "exp": "true",
+  "links": [
+   "THCaB",
+   "THCbA",
+   "D10",
+   "Nano-11",
+   "CBD",
+   "H4CBD",
+   "CBN",
+   "Buds/Blommor",
+   "Hasch",
+   "Vapes",
+   "Alla produkter",
+   "UTVALD PRODUKTCBD 30% – Tequil"
+  ],
+  "missing": 0,
+  "overflow": false
+ },
+ "msearchClose393": {
+  "hidden": true,
+  "focus": "mobile-search-trigger"
+ },
+ "drawer768": {
+  "exp": "true",
+  "links": [
+   "THCaB",
+   "THCbA",
+   "D10",
+   "Nano-11",
+   "CBD",
+   "H4CBD",
+   "CBN",
+   "Buds/Blommor",
+   "Hasch",
+   "Vapes",
+   "Alla produkter",
+   "UTVALD PRODUKTCBD 30% – Tequil"
+  ],
+  "missing": 0,
+  "overflow": false
+ },
+ "msearchClose768": {
+  "hidden": true,
+  "focus": "mobile-search-trigger"
+ },
+ "pass": true
+}
