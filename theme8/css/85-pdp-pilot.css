@@ -1247,3 +1247,11 @@ html.hz8-pdp-pilot.hz8-pp-sticky-on { scroll-padding-bottom: calc(88px + env(saf
   html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta, .hz8-pp__tile, .hz8-pp__pack, .hz8-pp-zoom, #product-thumbnails .thumb) { transition: none !important; }
   html.hz8-pdp-pilot :is(.hz8-pp__cta, .hz8-pp-sticky__cta):is(:hover, :active) { transform: none !important; }
 }
+
+/* TASK 25b/25c: tillverkarens syskonserie (D10) efter "Fler i serien".
+   Rutan, railen och korten är seriehubbens egna (81-series-hub.css +
+   hubbens kortregler i 80-category.css/96-product-media.css, som bygget
+   ger en PDP-gren, theme8/tools/scope-sibling-cards.js). Här bara
+   placeringen på PDP:n. */
+html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling { margin: 18px 0 0; }
+html.hz8-pdp-pilot .hz8-ppc .hz8-pp-sibling .hz8-sh-more + .hz8-sh-more { margin-top: 12px; }

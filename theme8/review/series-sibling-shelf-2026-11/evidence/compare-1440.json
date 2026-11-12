@@ -1,0 +1,393 @@
+{
+ "vapes-hubb": {
+  "title": "Fler vapes från Magic Farmers",
+  "tag": "D10",
+  "railClass": "hz8-prail hz8-sh-shelf hz8-sh-shelf--sub is-bare",
+  "n": 5,
+  "fullyVisible": 5,
+  "list": {
+   "w": 1282,
+   "sw": 1282,
+   "cw": 1282,
+   "gap": "16px",
+   "ox": "auto",
+   "snap": "x mandatory"
+  },
+  "card": {
+   "w": 243,
+   "radius": "0px",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  "image": {
+   "w": 243,
+   "h": 147,
+   "radius": "16px",
+   "bg": "radial-gradient(closest-side, rgba(128, 74, 26, 0.22), rgba("
+  },
+  "brand": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "10px",
+   "fontWeight": "600",
+   "lineHeight": "13px",
+   "color": "color(srgb 0.312627 0.313098 0.223843)"
+  },
+  "name": {
+   "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+   "fontSize": "15.25px",
+   "fontWeight": "600",
+   "lineHeight": "18.3px",
+   "color": "rgb(44, 54, 32)"
+  },
+  "price": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "17.5px",
+   "fontWeight": "700"
+  },
+  "stock": {
+   "fontSize": "10.5px",
+   "fontWeight": "500",
+   "color": "color(srgb 0.499529 0.377961 0.262039)"
+  },
+  "button": {
+   "height": "37px",
+   "fontSize": "12.5px",
+   "fontWeight": "600",
+   "borderRadius": "8px",
+   "backgroundColor": "rgba(255, 251, 243, 0.35)",
+   "color": "color(srgb 0.137255 0.137255 0.113725 / 0.66)"
+  },
+  "pill": null,
+  "chips": false,
+  "clipped": [],
+  "overlaps": [],
+  "cut": [],
+  "cards": [
+   {
+    "name": "Cherry Sour",
+    "overline": "D10 - 2ml",
+    "full": "D10 - 2ml",
+    "price": "595 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-vape-magic-farmers/421",
+    "buy": null,
+    "sold": true
+   },
+   {
+    "name": "Lemon Cheese",
+    "overline": "D10 - 2ml",
+    "full": "D10 - 2ml",
+    "price": "595 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-vape-magic-farmers/424",
+    "buy": null,
+    "sold": true
+   },
+   {
+    "name": "Cotton Candy",
+    "overline": "D10 - 2ml",
+    "full": "D10 - 2ml",
+    "price": "595 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-vape-magic-farmers/426",
+    "buy": null,
+    "sold": true
+   },
+   {
+    "name": "Maui Mango",
+    "overline": "D10 - 2ml",
+    "full": "D10 - 2ml",
+    "price": "595 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-vape-magic-farmers/427",
+    "buy": null,
+    "sold": true
+   },
+   {
+    "name": "Kiwi Sorbet",
+    "overline": "D10 - 2ml",
+    "full": "D10 - 2ml",
+    "price": "595 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-vape-magic-farmers/428",
+    "buy": null,
+    "sold": true
+   }
+  ],
+  "boxFree": true,
+  "closedAgain": true
+ },
+ "buds-pdp": {
+  "title": "Fler buds från Magic Farmers",
+  "tag": "D10",
+  "railClass": "hz8-prail hz8-sh-shelf hz8-sh-shelf--sub is-bare",
+  "n": 4,
+  "fullyVisible": 4,
+  "list": {
+   "w": 1282,
+   "sw": 1282,
+   "cw": 1282,
+   "gap": "16px",
+   "ox": "auto",
+   "snap": "x mandatory"
+  },
+  "card": {
+   "w": 243,
+   "radius": "0px",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  "image": {
+   "w": 243,
+   "h": 147,
+   "radius": "16px",
+   "bg": "radial-gradient(closest-side, rgba(128, 74, 26, 0.22), rgba("
+  },
+  "brand": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "10px",
+   "fontWeight": "600",
+   "lineHeight": "13px",
+   "color": "color(srgb 0.312627 0.313098 0.223843)"
+  },
+  "name": {
+   "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+   "fontSize": "15.25px",
+   "fontWeight": "600",
+   "lineHeight": "18.3px",
+   "color": "rgb(44, 54, 32)"
+  },
+  "price": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "17.5px",
+   "fontWeight": "700"
+  },
+  "stock": {
+   "fontSize": "10.5px",
+   "fontWeight": "500",
+   "color": "color(srgb 0.499529 0.377961 0.262039)"
+  },
+  "button": {
+   "height": "37px",
+   "fontSize": "12.5px",
+   "fontWeight": "600",
+   "borderRadius": "8px",
+   "backgroundColor": "rgba(255, 251, 243, 0.35)",
+   "color": "color(srgb 0.137255 0.137255 0.113725 / 0.66)"
+  },
+  "pill": {
+   "height": "37px",
+   "fontSize": "12.5px",
+   "fontWeight": "600",
+   "borderRadius": "8px"
+  },
+  "chips": false,
+  "clipped": [],
+  "overlaps": [],
+  "cut": [],
+  "cards": [
+   {
+    "name": "Porn Star OG",
+    "overline": "D10 50% · 5g",
+    "full": "D10 50% – Porn Star OG – 5g",
+    "price": "645 kr 495 kr",
+    "stock": "I lager",
+    "href": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+    "buy": true,
+    "sold": null
+   },
+   {
+    "name": "White Widow",
+    "overline": "D10 50% · 5g",
+    "full": "D10 50% – White Widow – 5g",
+    "price": "645 kr 495 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-buds-white-widow-5g",
+    "buy": 0,
+    "sold": true
+   },
+   {
+    "name": "Cosmic Trip",
+    "overline": "D10 50% · 5g",
+    "full": "D10 50% – Cosmic Trip – 5g",
+    "price": "595 kr 445 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-buds-cosmic-trip-5g",
+    "buy": 0,
+    "sold": true
+   },
+   {
+    "name": "Skywalker OG",
+    "overline": "D10 50% · 5g",
+    "full": "D10 50% – Skywalker OG – 5g",
+    "price": "595 kr 445 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-buds-skywalker-og-magic-farmers-thcx",
+    "buy": 0,
+    "sold": true
+   }
+  ],
+  "boxFree": true,
+  "closedAgain": true,
+  "link": {
+   "want": "/sv/products/d10-buds-porn-star-og-magic-farmers",
+   "got": "/sv/products/d10-buds-porn-star-og-magic-farmers"
+  },
+  "checks": {
+   "rail": true,
+   "card": true,
+   "image": true,
+   "gap": true,
+   "typography": true,
+   "button": true,
+   "chipsHiddenLikeRef": true,
+   "fourOnDesktop": true,
+   "swipe": true,
+   "imagesWhole": true,
+   "noOverlap": true,
+   "namesWhole": true,
+   "products": true,
+   "prices": true,
+   "stock": true,
+   "open_close": true,
+   "boxFree": true,
+   "link": true
+  },
+  "pass": true
+ },
+ "hasch-pdp": {
+  "title": "Fler hasch från Magic Farmers",
+  "tag": "D10",
+  "railClass": "hz8-prail hz8-sh-shelf hz8-sh-shelf--sub is-bare",
+  "n": 4,
+  "fullyVisible": 4,
+  "list": {
+   "w": 1282,
+   "sw": 1282,
+   "cw": 1282,
+   "gap": "16px",
+   "ox": "auto",
+   "snap": "x mandatory"
+  },
+  "card": {
+   "w": 243,
+   "radius": "0px",
+   "bg": "rgba(0, 0, 0, 0)"
+  },
+  "image": {
+   "w": 243,
+   "h": 147,
+   "radius": "16px",
+   "bg": "radial-gradient(closest-side, rgba(128, 74, 26, 0.22), rgba("
+  },
+  "brand": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "10px",
+   "fontWeight": "600",
+   "lineHeight": "13px",
+   "color": "color(srgb 0.312627 0.313098 0.223843)"
+  },
+  "name": {
+   "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+   "fontSize": "15.25px",
+   "fontWeight": "600",
+   "lineHeight": "18.3px",
+   "color": "rgb(44, 54, 32)"
+  },
+  "price": {
+   "fontFamily": "\"Helvetica Neue\", Arial, -apple-system, \"Segoe UI\", sans-serif",
+   "fontSize": "17.5px",
+   "fontWeight": "700"
+  },
+  "stock": {
+   "fontSize": "10.5px",
+   "fontWeight": "500",
+   "color": "color(srgb 0.499529 0.377961 0.262039)"
+  },
+  "button": {
+   "height": "37px",
+   "fontSize": "12.5px",
+   "fontWeight": "600",
+   "borderRadius": "8px",
+   "backgroundColor": "rgba(255, 251, 243, 0.35)",
+   "color": "color(srgb 0.137255 0.137255 0.113725 / 0.66)"
+  },
+  "pill": {
+   "height": "37px",
+   "fontSize": "12.5px",
+   "fontWeight": "600",
+   "borderRadius": "8px"
+  },
+  "chips": false,
+  "clipped": [],
+  "overlaps": [],
+  "cut": [],
+  "cards": [
+   {
+    "name": "Purple Storm",
+    "overline": "D10 60% · 5g",
+    "full": "D10 60% – Purple Storm – 5g",
+    "price": "545 kr 435 kr",
+    "stock": "I lager",
+    "href": "/sv/products/d10-hash-purple-storm-5g",
+    "buy": true,
+    "sold": null
+   },
+   {
+    "name": "Rosinella",
+    "overline": "D10 60% · 5g",
+    "full": "D10 60% – Rosinella – 5g",
+    "price": "545 kr 395 kr",
+    "stock": "I lager",
+    "href": "/sv/products/d10-hash-rosinella-magic-farmers",
+    "buy": true,
+    "sold": null
+   },
+   {
+    "name": "Blue Diamond",
+    "overline": "D10 60% · 5g",
+    "full": "D10 60% – Blue Diamond – 5g",
+    "price": "545 kr 435 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-hash-blue-diamond-5g",
+    "buy": 0,
+    "sold": true
+   },
+   {
+    "name": "Silk Road",
+    "overline": "D10 60% · 5g",
+    "full": "D10 60% – Silk Road – 5g",
+    "price": "545 kr 395 kr",
+    "stock": "Slutsåld",
+    "href": "/sv/products/d10-hash-silk-road-magic-farmers-thcx",
+    "buy": 0,
+    "sold": true
+   }
+  ],
+  "boxFree": true,
+  "closedAgain": true,
+  "link": {
+   "want": "/sv/products/d10-hash-purple-storm-5g",
+   "got": "/sv/products/d10-hash-purple-storm-5g"
+  },
+  "checks": {
+   "rail": true,
+   "card": true,
+   "image": true,
+   "gap": true,
+   "typography": true,
+   "button": true,
+   "chipsHiddenLikeRef": true,
+   "fourOnDesktop": true,
+   "swipe": true,
+   "imagesWhole": true,
+   "noOverlap": true,
+   "namesWhole": true,
+   "products": true,
+   "prices": true,
+   "stock": true,
+   "open_close": true,
+   "boxFree": true,
+   "link": true
+  },
+  "pass": true
+ }
+}
