@@ -1,0 +1,326 @@
+{
+ "393": {
+  "cart": [
+   "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr",
+   "Magic Sauce 3.0 - 2ml 575 kr"
+  ],
+  "stripped": 148,
+  "page": {
+   "items": [
+    {
+     "name": "Magic Sauce 3.0 2 ml · 3‑pack",
+     "parts": [
+      "2 Styck x Gorilla Cookies",
+      "1 Styck x Tinky Winky"
+     ],
+     "option": null,
+     "qty": "1",
+     "total": "1 599 kr",
+     "qtyVisible": true,
+     "totalVisible": true
+    },
+    {
+     "name": "Magic Sauce 3.0 - 2ml",
+     "parts": [],
+     "option": "Strain: Gorilla Cookies",
+     "qty": "1",
+     "total": "575 kr",
+     "qtyVisible": true,
+     "totalVisible": true
+    }
+   ],
+   "rows": [
+    "Delsumma 2 174 kr",
+    "Frakt 49 kr",
+    "Totalsumma Inkl.moms: 444,6 kr 2 223 kr"
+   ],
+   "total": "2 223 kr",
+   "y": {
+    "firstItem": 119,
+    "secondItem": 271,
+    "total": 475,
+    "coupon": 540,
+    "country": 765,
+    "kustom": 1012
+   },
+   "couponVisible": true,
+   "docH": 1906,
+   "overflowX": 0,
+   "wideEls": [],
+   "inFold": {
+    "secondItem": true,
+    "total": true,
+    "coupon": true
+   }
+  },
+  "kustomText": "Test Mode Test Data Dina uppgifter Adressen ska vara i Sverige. Mejladress Postnummer Kustoms villkor gäller • Hantera autofyllningsinställningar Fortsätt Leverans Vänligen ange dina adressuppgifter först Totalbelopp 2 223 kr Visa detaljer Inkl. moms Betala köp Villkor Genom att klicka på \"Betala köp\" godkänner jag Kustoms villkor och dataskyddsinformation samt godkänner Test Shops allmänna villkor.",
+  "kustomTotal": [
+   "2 223 kr"
+  ],
+  "totalMatches": true,
+  "tab": [
+   {
+    "t": "Gå tillbaka",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Jag önskar leverans till",
+    "tag": "SELECT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Jag handlar som",
+    "tag": "SELECT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "INPUT",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "INPUT",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "klarna-checkout-iframe (Kustom, hoppas förbi)",
+    "tag": "IFRAME",
+    "inView": true,
+    "ring": false
+   },
+   {
+    "t": "2 Styck x",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "1 Styck x",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Minska antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Öka antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Ta bort varan",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Magic Sauce 3.0 - 2ml",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Minska antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Öka antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Ta bort varan",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "coupon_code",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   }
+  ],
+  "tabProblems": [],
+  "coupon": "LÄGG TILL RABATTKOD/PRESENTKORT coupon_code Ange kod Kod är ogiltigt. Lägg till",
+  "couponTotalAfter": "2 223 kr",
+  "cleaned": true
+ },
+ "1440": {
+  "cart": [
+   "Magic Sauce 3.0 2ml – 3-pack (blandbart) 1 599 kr",
+   "Magic Sauce 3.0 - 2ml 575 kr"
+  ],
+  "stripped": 148,
+  "page": {
+   "items": [
+    {
+     "name": "Magic Sauce 3.0 2 ml · 3‑pack",
+     "parts": [
+      "2 Styck x Gorilla Cookies",
+      "1 Styck x Tinky Winky"
+     ],
+     "option": null,
+     "qty": "1",
+     "total": "1 599 kr",
+     "qtyVisible": true,
+     "totalVisible": true
+    },
+    {
+     "name": "Magic Sauce 3.0 - 2ml",
+     "parts": [],
+     "option": "Strain: Gorilla Cookies",
+     "qty": "1",
+     "total": "575 kr",
+     "qtyVisible": true,
+     "totalVisible": true
+    }
+   ],
+   "rows": [
+    "Delsumma 2 174 kr",
+    "Frakt 49 kr",
+    "Totalsumma Inkl.moms: 444,6 kr 2 223 kr"
+   ],
+   "total": "2 223 kr",
+   "y": {
+    "firstItem": 133,
+    "secondItem": 283,
+    "total": 509,
+    "coupon": 583,
+    "country": 282,
+    "kustom": 556
+   },
+   "couponVisible": true,
+   "docH": 1459,
+   "overflowX": 0,
+   "wideEls": [],
+   "inFold": {
+    "secondItem": true,
+    "total": true,
+    "coupon": true
+   }
+  },
+  "kustomText": "Test Mode Test Data Dina uppgifter Adressen ska vara i Sverige. Mejladress Postnummer Kustoms villkor gäller • Hantera autofyllningsinställningar Fortsätt Leverans Vänligen ange dina adressuppgifter först Totalbelopp 2 223 kr Visa detaljer Inkl. moms Betala köp Villkor Genom att klicka på \"Betala köp\" godkänner jag Kustoms villkor och dataskyddsinformation samt godkänner Test Shops allmänna villkor.",
+  "kustomTotal": [
+   "2 223 kr"
+  ],
+  "totalMatches": true,
+  "tab": [
+   {
+    "t": "Gå tillbaka",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Jag önskar leverans till",
+    "tag": "SELECT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Jag handlar som",
+    "tag": "SELECT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "INPUT",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "INPUT",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "klarna-checkout-iframe (Kustom, hoppas förbi)",
+    "tag": "IFRAME",
+    "inView": true,
+    "ring": false
+   },
+   {
+    "t": "2 Styck x",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "1 Styck x",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Minska antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Öka antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Ta bort varan",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Magic Sauce 3.0 - 2ml",
+    "tag": "A",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Minska antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Öka antalet",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "Ta bort varan",
+    "tag": "BUTTON",
+    "inView": true,
+    "ring": true
+   },
+   {
+    "t": "coupon_code",
+    "tag": "INPUT",
+    "inView": true,
+    "ring": true
+   }
+  ],
+  "tabProblems": [],
+  "coupon": "LÄGG TILL RABATTKOD/PRESENTKORT coupon_code Ange kod Kod är ogiltigt. Lägg till",
+  "couponTotalAfter": "2 223 kr",
+  "cleaned": true
+ }
+}

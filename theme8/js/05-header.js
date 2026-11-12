@@ -23,7 +23,13 @@
     { label: "Vapes", href: "https://hazeyse.nyehandel.se/sv/categories/alla-vapes", dropdown: true },
     { label: "Buds", href: "https://hazeyse.nyehandel.se/sv/categories/blommor-buds", dropdown: true },
     { label: "Hasch", href: "https://hazeyse.nyehandel.se/sv/categories/hasch", dropdown: true },
-    { label: "CBD", href: "https://hazeyse.nyehandel.se/sv/categories/h4cbd", dropdown: true },
+    /* TASK 02 (2026-11-12): toppnivån heter "Cannabinoider" i headern och
+       mobilmenyn (navLabel) och är en knapp, eftersom ingen samlad
+       cannabinoidsida finns (/sv/categories/cannabinoider = 404). label/href
+       är oförändrade för övriga konsumenter (tom minicart, sökytans
+       genvägar, kategorisidornas grupprälsar): de visar fortfarande "CBD"
+       -> CBD-kategorin. Panelinnehållet = HEADER_PANELS.cbd nedan. */
+    { label: "CBD", navLabel: "Cannabinoider", key: "cbd", button: true, href: "https://hazeyse.nyehandel.se/sv/categories/cbd", dropdown: true },
     { label: "Kampanjer", href: "https://hazeyse.nyehandel.se/sv/page/kampanjer", dropdown: false, campaign: true }
   ];
 
@@ -81,7 +87,7 @@
       document.body.classList.contains("hz8-scroll-locked") ||
       header.querySelector(".hz8-header-nav .is-open") ||
       (drop && drop.getClientRects().length) ||
-      document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active, .hz8-pdock.is-open")
+      document.querySelector("#hz8MobileDrawer.is-open, .hz8-msearch.is-open, #hz8DesktopSearch.is-open, #cart-side-wrap.is-active, .upselling-sidebar__container.is-active, .hz8-pdock.is-open")
     );
   }
   function initHeaderScroll(header) {
@@ -528,6 +534,61 @@
   window.HZ8.navContent = DROPDOWN_CONTENT;
   window.HZ8.navCategories = CATEGORIES;
 
+  /* ============ Cannabinoider (TASK 02, 2026-11-12) ============
+     Header-bara panel för toppnivån "Cannabinoider" (desktop + mobilmeny).
+     Ligger MEDVETET utanför DROPDOWN_CONTENT: kategorisidornas rälsar,
+     relationskartan (06-catalog-map) och dess cannabinoidvokabulär läser
+     DROPDOWN_CONTENT och ska inte ändras av headerns etikett.
+     Destinationer verifierade live 2026-11-12 i Theme 8-previewn
+     (theme8/review/header-cannabinoids-search-2026-11/evidence/routes.json):
+     alla HTTP 200 med egna produkter. Ingen "kommer snart" i headern.
+     - THCaB = THCA-B-hubben (thca-b). Sortimentet är KVAR synligt; inget
+       beslut om att dölja det (2026-11-12).
+     - THCbA (thcba).
+     - Serier och blandningar: Magic Sauce (magic-sauce), D10 (d10-1,
+       Magic Farmers egen formula, aldrig 10-OH-THC), Nano-11 (nano-11).
+     - CBD-familjen: CBD (cbd), H4CBD (h4cbd), CBN (cbn). CBG saknar
+       kategori (404) och produkter -> visas inte.
+     - Utelämnade: THCV (pausad, legacy i 06-catalog-map), HHCPM/THCNM
+       (tomma), Core (varumärke).
+     - Ingen "Utforska alla"-sida finns -> CTA = Alla produkter.
+     Formatlänkarna och produktkortet återanvänds ur DROPDOWN_CONTENT.cbd. */
+  var HEADER_PANELS = {
+    cbd: {
+      groups: [
+        { heading: "Cannabinoider", links: [
+          { label: "THCaB", href: "/sv/categories/thca-b" },
+          { label: "THCbA", href: "/sv/categories/thcba" }
+        ] },
+        /* Serier/blandningar, inte enskilda cannabinoider (2026-11-12).
+           Magic Sauce = seriens kategori magic-sauce (HTTP 200, 22
+           produkter, samma hubb som 06-catalog-map), inte ms-vapes. */
+        { heading: "Serier och blandningar", links: [
+          { label: "Magic Sauce", href: "/sv/categories/magic-sauce" },
+          { label: "D10", href: "/sv/categories/d10-1" },
+          { label: "Nano-11", href: "/sv/categories/nano-11" }
+        ] },
+        { heading: "CBD-familjen", links: [
+          { label: "CBD", href: "/sv/categories/cbd" },
+          { label: "H4CBD", href: "/sv/categories/h4cbd" },
+          { label: "CBN", href: "/sv/categories/cbn" }
+        ] },
+        { heading: "CBD efter format", links: (DROPDOWN_CONTENT.cbd.groups[1] || { links: [] }).links.filter(function (l) { return !!l.href; }) }
+      ],
+      cta: { label: "Alla produkter", href: "/sv/categories/alla-produkter" },
+      product: DROPDOWN_CONTENT.cbd.product
+    }
+  };
+  function panelFor(cat) {
+    var key = cat.key || cat.label.toLowerCase();
+    return HEADER_PANELS[key] || DROPDOWN_CONTENT[key];
+  }
+  function catKeyOf(cat) { return cat.key || cat.label.toLowerCase(); }
+  function navLabelOf(cat) { return cat.navLabel || cat.label; }
+  /* Sökytornas genvägar (05a-mobile-nav.js): Cannabinoider, Serier och
+     blandningar, CBD-familjen -- med gruppernas egna rubriker. */
+  window.HZ8.headerCannabinoids = HEADER_PANELS.cbd.groups.slice(0, 3);
+
   /* Butikens egna absoluta URL:er (https://hazeyse.nyehandel.se/...) ->
      sökväg, så att samma meny fungerar på den slutliga domänen. Preview-
      parametern läggs på vid klick av 01-preview-links.js. */
@@ -613,8 +674,8 @@
     return groupsHtml + ctaHtml;
   }
 
-  function buildDesktopDropdownPanel(catKey) {
-    var content = DROPDOWN_CONTENT[catKey];
+  function buildDesktopDropdownPanel(cat) {
+    var content = panelFor(cat);
     if (!content) return "";
     var product = renderProductCard(content.product, "desktop");
     return '<div class="hz8-dropdown__grid">'
@@ -634,12 +695,18 @@
       if (!cat.dropdown) {
         return '<a href="' + cat.href + '" class="hz8-cat' + campaignClass + '">' + cat.label + '</a>';
       }
-      var catKey = cat.label.toLowerCase();
+      var catKey = catKeyOf(cat), label = navLabelOf(cat);
       var panelId = "hz8Dropdown-" + catKey;
-      return '<div class="hz8-cat-item" data-hz8-cat="' + catKey + '">'
-        + '<a href="' + cat.href + '" class="hz8-cat" aria-haspopup="true" aria-expanded="false" aria-controls="' + panelId + '">' + cat.label + chevronSvg() + '</a>'
-        + '<div class="hz8-dropdown" id="' + panelId + '" role="region" aria-label="' + cat.label + ' -- undersortiment">'
-        + buildDesktopDropdownPanel(catKey)
+      /* Utan egen sida (Cannabinoider) är triggern en knapp som bara
+         öppnar panelen -- aldrig en länk till en sida som inte motsvarar
+         etiketten. */
+      var trigger = cat.button
+        ? '<button type="button" class="hz8-cat hz8-cat--button" aria-expanded="false" aria-controls="' + panelId + '">' + label + chevronSvg() + '</button>'
+        : '<a href="' + cat.href + '" class="hz8-cat" aria-haspopup="true" aria-expanded="false" aria-controls="' + panelId + '">' + label + chevronSvg() + '</a>';
+      return '<div class="hz8-cat-item' + (cat.button ? ' hz8-cat-item--wide' : '') + '" data-hz8-cat="' + catKey + '">'
+        + trigger
+        + '<div class="hz8-dropdown" id="' + panelId + '" role="region" aria-label="' + label + ' -- undersortiment">'
+        + buildDesktopDropdownPanel(cat)
         + '</div>'
         + '</div>';
     }).join("");
@@ -650,8 +717,9 @@
      DROPDOWN_CONTENT/buildDropdownGroups/renderProductCard som desktop,
      bara annan yttre skal-markup (knapp + kollapsbar panel i stället
      för hover-panel). id:t kopplas till knappens aria-controls. */
-  function buildMobileAccordionItem(catKey, label) {
-    var content = DROPDOWN_CONTENT[catKey];
+  function buildMobileAccordionItem(cat) {
+    var catKey = catKeyOf(cat), label = navLabelOf(cat);
+    var content = panelFor(cat);
     var panelId = "hz8Accordion-" + catKey;
     var groupsHtml = content ? buildDropdownGroups(content, "mobile") : "";
     var productHtml = content ? renderProductCard(content.product, "mobile") : "";
@@ -693,8 +761,7 @@
       + '<nav class="hz8-mobile-drawer__list" aria-label="Sortiment">'
       + CATEGORIES.map(function (cat) {
           if (cat.dropdown) {
-            var catKey = cat.label.toLowerCase();
-            return buildMobileAccordionItem(catKey, cat.label);
+            return buildMobileAccordionItem(cat);
           }
           var campaignClass = cat.campaign ? " hz8-cat--campaign" : "";
           return '<a href="' + cat.href + '" class="' + campaignClass.trim() + '">' + cat.label + '</a>';
@@ -783,7 +850,20 @@
          trycket panelen (som har "Alla ..."-länken) -- annars vore panelen
          onåbar där. */
       var noHover = window.matchMedia && window.matchMedia("(hover: none)");
+      /* Knapptrigger (Cannabinoider): klick/Enter växlar panelen. Har
+         pekaren redan öppnat den (hover) stänger första klicket den inte. */
+      if (trigger.tagName === "BUTTON") {
+        item.addEventListener("mouseenter", function () { item.__hz8Hover = true; });
+        item.addEventListener("mouseleave", function () { item.__hz8Hover = false; });
+        trigger.addEventListener("click", function (e) {
+          /* Enter ger click med detail 0; Mellanslag hanteras i keydown. */
+          if (!item.classList.contains("is-open")) openItem(item, true);
+          else if (!item.__hz8Hover || e.detail === 0) closeItem(item, true);
+          else openItem(item, true);
+        });
+      }
       trigger.addEventListener("click", function (e) {
+        if (trigger.tagName === "BUTTON") return;
         if (noHover && noHover.matches && !item.classList.contains("is-open")) {
           e.preventDefault();
           openItem(item, true);
@@ -916,7 +996,11 @@
       initMobileAccordions(drawer);
     }
     var searchTrigger = document.getElementById("mobile-search-trigger");
-    if (searchTrigger) window.HZ8.mobileNav.initSearch(searchTrigger, CATEGORIES.filter(function (c) { return !c.campaign; }));
+    var browse = CATEGORIES.filter(function (c) { return !c.campaign; });
+    if (searchTrigger) window.HZ8.mobileNav.initSearch(searchTrigger, browse);
+    /* Desktop (≥1180 px): Theme 8-popover i stället för Nyehandels breda
+       förslagspanel, samma sökmotor som mobilen (05a-mobile-nav.js). */
+    window.HZ8.mobileNav.initDesktopSearch(browse);
 
     initHeaderScroll(header);
     initHeaderTone(header);

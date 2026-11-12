@@ -1,0 +1,775 @@
+{
+ "fails": [],
+ "fit": {
+  "1180": {
+   "main": {
+    "l": 24,
+    "r": 1156,
+    "cy": 47
+   },
+   "nav": {
+    "l": 158,
+    "r": 751,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 783,
+    "r": 1021,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1035,
+    "r": 1079,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1091,
+    "r": 1135,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 48,
+    "r": 126,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 158,
+     "r": 246
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 264,
+     "r": 334
+    },
+    {
+     "t": "Vapes",
+     "l": 352,
+     "r": 404
+    },
+    {
+     "t": "Buds",
+     "l": 422,
+     "r": 470
+    },
+    {
+     "t": "Hasch",
+     "l": 488,
+     "r": 542
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 560,
+     "r": 666
+    },
+    {
+     "t": "Kampanjer",
+     "l": 684,
+     "r": 751
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 32,
+   "searchOffsetY": 0
+  },
+  "1440": {
+   "main": {
+    "l": 80,
+    "r": 1360,
+    "cy": 47
+   },
+   "nav": {
+    "l": 226,
+    "r": 885,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "search": {
+    "l": 929,
+    "r": 1225,
+    "t": 26,
+    "b": 68,
+    "cy": 47
+   },
+   "account": {
+    "l": 1239,
+    "r": 1283,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "cart": {
+    "l": 1295,
+    "r": 1339,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "logo": {
+    "l": 104,
+    "r": 182,
+    "t": 25,
+    "b": 69,
+    "cy": 47
+   },
+   "trigger": {
+    "text": "Cannabinoider",
+    "tag": "BUTTON",
+    "clipped": false
+   },
+   "navItems": [
+    {
+     "t": "Alla produkter",
+     "l": 226,
+     "r": 314
+    },
+    {
+     "t": "Bästsäljare",
+     "l": 343,
+     "r": 413
+    },
+    {
+     "t": "Vapes",
+     "l": 442,
+     "r": 494
+    },
+    {
+     "t": "Buds",
+     "l": 523,
+     "r": 571
+    },
+    {
+     "t": "Hasch",
+     "l": 600,
+     "r": 654
+    },
+    {
+     "t": "Cannabinoider",
+     "l": 683,
+     "r": 789
+    },
+    {
+     "t": "Kampanjer",
+     "l": 818,
+     "r": 885
+    }
+   ],
+   "overflowX": 0,
+   "gapNavSearch": 44,
+   "searchOffsetY": 0
+  }
+ },
+ "panel1180": {
+  "open": true,
+  "exp": "true",
+  "panel": {
+   "l": 55,
+   "r": 775,
+   "b": 439,
+   "w": 720
+  },
+  "links": [
+   [
+    "THCaB",
+    "/sv/categories/thca-b"
+   ],
+   [
+    "THCbA",
+    "/sv/categories/thcba"
+   ],
+   [
+    "Magic Sauce",
+    "/sv/categories/magic-sauce"
+   ],
+   [
+    "D10",
+    "/sv/categories/d10-1"
+   ],
+   [
+    "Nano-11",
+    "/sv/categories/nano-11"
+   ],
+   [
+    "CBD",
+    "/sv/categories/cbd"
+   ],
+   [
+    "H4CBD",
+    "/sv/categories/h4cbd"
+   ],
+   [
+    "CBN",
+    "/sv/categories/cbn"
+   ],
+   [
+    "Buds/Blommor",
+    "/sv/categories/cbd-buds-1"
+   ],
+   [
+    "Hasch",
+    "/sv/categories/h4cbd-hasch"
+   ],
+   [
+    "Vapes",
+    "/sv/categories/cbd-vapes"
+   ],
+   [
+    "Alla produkter",
+    "/sv/categories/alla-produkter"
+   ],
+   [
+    "UTVALD PRODUKTCBD 30% – Tequila Sunrise ",
+    "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram"
+   ]
+  ],
+  "headings": [
+   "Cannabinoider",
+   "Serier och blandningar",
+   "CBD-familjen",
+   "CBD efter format"
+  ],
+  "missing": 0
+ },
+ "groups1180": {
+  "groups": [
+   {
+    "h": "Cannabinoider",
+    "links": [
+     [
+      "THCaB",
+      "/sv/categories/thca-b"
+     ],
+     [
+      "THCbA",
+      "/sv/categories/thcba"
+     ]
+    ]
+   },
+   {
+    "h": "Serier och blandningar",
+    "links": [
+     [
+      "Magic Sauce",
+      "/sv/categories/magic-sauce"
+     ],
+     [
+      "D10",
+      "/sv/categories/d10-1"
+     ],
+     [
+      "Nano-11",
+      "/sv/categories/nano-11"
+     ]
+    ]
+   },
+   {
+    "h": "CBD-familjen",
+    "links": [
+     [
+      "CBD",
+      "/sv/categories/cbd"
+     ],
+     [
+      "H4CBD",
+      "/sv/categories/h4cbd"
+     ],
+     [
+      "CBN",
+      "/sv/categories/cbn"
+     ]
+    ]
+   },
+   {
+    "h": "CBD efter format",
+    "links": [
+     [
+      "Buds/Blommor",
+      "/sv/categories/cbd-buds-1"
+     ],
+     [
+      "Hasch",
+      "/sv/categories/h4cbd-hasch"
+     ],
+     [
+      "Vapes",
+      "/sv/categories/cbd-vapes"
+     ]
+    ]
+   }
+  ],
+  "h": 356,
+  "bottom": 439,
+  "vh": 900,
+  "scrolls": false
+ },
+ "focusWalk1180": [
+  "THCaB",
+  "THCbA",
+  "Magic Sauce",
+  "D10",
+  "Nano-11",
+  "CBD",
+  "H4CBD",
+  "CBN",
+  "Buds/Blommor",
+  "Hasch",
+  "Vapes",
+  "Alla produkter",
+  "UTVALD PRODUKTCBD 30% – "
+ ],
+ "arrow1180": "THCaB",
+ "firstLink1180": "THCaB",
+ "panel1440": {
+  "open": true,
+  "exp": "true",
+  "panel": {
+   "l": 189,
+   "r": 909,
+   "b": 439,
+   "w": 720
+  },
+  "links": [
+   [
+    "THCaB",
+    "/sv/categories/thca-b"
+   ],
+   [
+    "THCbA",
+    "/sv/categories/thcba"
+   ],
+   [
+    "Magic Sauce",
+    "/sv/categories/magic-sauce"
+   ],
+   [
+    "D10",
+    "/sv/categories/d10-1"
+   ],
+   [
+    "Nano-11",
+    "/sv/categories/nano-11"
+   ],
+   [
+    "CBD",
+    "/sv/categories/cbd"
+   ],
+   [
+    "H4CBD",
+    "/sv/categories/h4cbd"
+   ],
+   [
+    "CBN",
+    "/sv/categories/cbn"
+   ],
+   [
+    "Buds/Blommor",
+    "/sv/categories/cbd-buds-1"
+   ],
+   [
+    "Hasch",
+    "/sv/categories/h4cbd-hasch"
+   ],
+   [
+    "Vapes",
+    "/sv/categories/cbd-vapes"
+   ],
+   [
+    "Alla produkter",
+    "/sv/categories/alla-produkter"
+   ],
+   [
+    "UTVALD PRODUKTCBD 30% – Tequila Sunrise ",
+    "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram"
+   ]
+  ],
+  "headings": [
+   "Cannabinoider",
+   "Serier och blandningar",
+   "CBD-familjen",
+   "CBD efter format"
+  ],
+  "missing": 0
+ },
+ "groups1440": {
+  "groups": [
+   {
+    "h": "Cannabinoider",
+    "links": [
+     [
+      "THCaB",
+      "/sv/categories/thca-b"
+     ],
+     [
+      "THCbA",
+      "/sv/categories/thcba"
+     ]
+    ]
+   },
+   {
+    "h": "Serier och blandningar",
+    "links": [
+     [
+      "Magic Sauce",
+      "/sv/categories/magic-sauce"
+     ],
+     [
+      "D10",
+      "/sv/categories/d10-1"
+     ],
+     [
+      "Nano-11",
+      "/sv/categories/nano-11"
+     ]
+    ]
+   },
+   {
+    "h": "CBD-familjen",
+    "links": [
+     [
+      "CBD",
+      "/sv/categories/cbd"
+     ],
+     [
+      "H4CBD",
+      "/sv/categories/h4cbd"
+     ],
+     [
+      "CBN",
+      "/sv/categories/cbn"
+     ]
+    ]
+   },
+   {
+    "h": "CBD efter format",
+    "links": [
+     [
+      "Buds/Blommor",
+      "/sv/categories/cbd-buds-1"
+     ],
+     [
+      "Hasch",
+      "/sv/categories/h4cbd-hasch"
+     ],
+     [
+      "Vapes",
+      "/sv/categories/cbd-vapes"
+     ]
+    ]
+   }
+  ],
+  "h": 356,
+  "bottom": 439,
+  "vh": 900,
+  "scrolls": false
+ },
+ "focusWalk1440": [
+  "THCaB",
+  "THCbA",
+  "Magic Sauce",
+  "D10",
+  "Nano-11",
+  "CBD",
+  "H4CBD",
+  "CBN",
+  "Buds/Blommor",
+  "Hasch",
+  "Vapes",
+  "Alla produkter",
+  "UTVALD PRODUKTCBD 30% – "
+ ],
+ "arrow1440": "THCaB",
+ "firstLink1440": "THCaB",
+ "linkStatus": {
+  "THCaB": {
+   "h": "/sv/categories/thca-b",
+   "status": 200,
+   "final": "/sv/categories/thca-b",
+   "count": "2 produkter"
+  },
+  "THCbA": {
+   "h": "/sv/categories/thcba",
+   "status": 200,
+   "final": "/sv/categories/thcba",
+   "count": "1 produkter"
+  },
+  "Magic Sauce": {
+   "h": "/sv/categories/magic-sauce",
+   "status": 200,
+   "final": "/sv/categories/magic-sauce",
+   "count": "22 produkter"
+  },
+  "D10": {
+   "h": "/sv/categories/d10-1",
+   "status": 200,
+   "final": "/sv/categories/d10-1",
+   "count": "9 produkter"
+  },
+  "Nano-11": {
+   "h": "/sv/categories/nano-11",
+   "status": 200,
+   "final": "/sv/categories/nano-11",
+   "count": "17 produkter"
+  },
+  "CBD": {
+   "h": "/sv/categories/cbd",
+   "status": 200,
+   "final": "/sv/categories/cbd",
+   "count": "21 produkter"
+  },
+  "H4CBD": {
+   "h": "/sv/categories/h4cbd",
+   "status": 200,
+   "final": "/sv/categories/h4cbd",
+   "count": "5 produkter"
+  },
+  "CBN": {
+   "h": "/sv/categories/cbn",
+   "status": 200,
+   "final": "/sv/categories/cbn",
+   "count": "8 produkter"
+  },
+  "Buds/Blommor": {
+   "h": "/sv/categories/cbd-buds-1",
+   "status": 200,
+   "final": "/sv/categories/cbd-buds-1",
+   "count": "12 produkter"
+  },
+  "Hasch": {
+   "h": "/sv/categories/h4cbd-hasch",
+   "status": 200,
+   "final": "/sv/categories/h4cbd-hasch",
+   "count": "1 produkter"
+  },
+  "Vapes": {
+   "h": "/sv/categories/cbd-vapes",
+   "status": 200,
+   "final": "/sv/categories/cbd-vapes",
+   "count": "6 produkter"
+  },
+  "Alla produkter": {
+   "h": "/sv/categories/alla-produkter",
+   "status": 200,
+   "final": "/sv/categories/alla-produkter",
+   "count": "104 produkter"
+  },
+  "UTVALD PRODUKTCBD 30% – Tequila Sunrise ": {
+   "h": "https://hazeyse.nyehandel.se/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+   "status": 200,
+   "final": "/sv/products/cbd-buds-cookies-tequila-sunrise-35-gram",
+   "count": null
+  }
+ },
+ "vapesThcab": true,
+ "searchEmpty": {
+  "open": true,
+  "rect": {
+   "l": 805,
+   "r": 1225,
+   "t": 78,
+   "w": 420,
+   "h": 346
+  },
+  "fieldRight": 1225,
+  "fieldBottom": 68,
+  "nativeVisible": false,
+  "text": "Sök bland produkter, serier och varumärken. BLÄDDRA Alla produkter Bästsäljare Vapes Buds Hasch CBD CANNABINOIDER THCaB THCbA SERIER OCH BLANDNINGAR Magic Sauce D10 Nano-11 CBD-FAMILJEN H4CBD CBN",
+  "exp": "true"
+ },
+ "searchMagic": {
+  "hits": 6,
+  "imgs": 6,
+  "prices": 6,
+  "cats": 2,
+  "all": "Visa alla 50 träffar",
+  "status": "50 träffar",
+  "h": 531,
+  "scroll": false,
+  "nativeVisible": false
+ },
+ "searchReqsAfterTyping": [
+  "magic"
+ ],
+ "searchKeys": {
+  "f1": "Magic Farmers",
+  "f2": "Magic Sauce",
+  "f0": "search-input",
+  "esc": {
+   "open": false,
+   "focus": "search-input",
+   "hidden": false
+  }
+ },
+ "searchNone": {
+  "open": true,
+  "text": "Inga träffar för ”qqxzv”. Kontrollera stavningen eller bläddra i alla produkter."
+ },
+ "searchError": "Förslagen kunde inte laddas just nu. Visa sökresultat för ”core”",
+ "enterUrl": "https://hazeyse.nyehandel.se/sv/search?query=magic&preview=v9kzdmqz4w60l5n",
+ "resultPage": {
+  "h1": "Sökresultat för ”magic”",
+  "count": null,
+  "cards": 42,
+  "body": "50 produkter"
+ },
+ "drawer393": {
+  "exp": "true",
+  "links": [
+   "THCaB",
+   "THCbA",
+   "Magic Sauce",
+   "D10",
+   "Nano-11",
+   "CBD",
+   "H4CBD",
+   "CBN",
+   "Buds/Blommor",
+   "Hasch",
+   "Vapes",
+   "Alla produkter",
+   "UTVALD PRODUKTCBD 30% – Tequil"
+  ],
+  "missing": 0,
+  "overflow": false
+ },
+ "drawerGroups393": {
+  "groups": [
+   {
+    "h": "Cannabinoider",
+    "links": [
+     [
+      "THCaB",
+      "/sv/categories/thca-b"
+     ],
+     [
+      "THCbA",
+      "/sv/categories/thcba"
+     ]
+    ]
+   },
+   {
+    "h": "Serier och blandningar",
+    "links": [
+     [
+      "Magic Sauce",
+      "/sv/categories/magic-sauce"
+     ],
+     [
+      "D10",
+      "/sv/categories/d10-1"
+     ],
+     [
+      "Nano-11",
+      "/sv/categories/nano-11"
+     ]
+    ]
+   },
+   {
+    "h": "CBD-familjen",
+    "links": [
+     [
+      "CBD",
+      "/sv/categories/cbd"
+     ],
+     [
+      "H4CBD",
+      "/sv/categories/h4cbd"
+     ],
+     [
+      "CBN",
+      "/sv/categories/cbn"
+     ]
+    ]
+   },
+   {
+    "h": "CBD efter format",
+    "links": [
+     [
+      "Buds/Blommor",
+      "/sv/categories/cbd-buds-1"
+     ],
+     [
+      "Hasch",
+      "/sv/categories/h4cbd-hasch"
+     ],
+     [
+      "Vapes",
+      "/sv/categories/cbd-vapes"
+     ]
+    ]
+   }
+  ],
+  "panelH": 795,
+  "tiny": []
+ },
+ "drawerFocus393": [
+  {
+   "t": "THCaB",
+   "vis": true
+  },
+  {
+   "t": "THCbA",
+   "vis": true
+  },
+  {
+   "t": "Magic Sauce",
+   "vis": true
+  },
+  {
+   "t": "D10",
+   "vis": true
+  },
+  {
+   "t": "Nano-11",
+   "vis": true
+  },
+  {
+   "t": "CBD",
+   "vis": true
+  }
+ ],
+ "msearchGroups393": {
+  "Bläddra": [
+   "Alla produkter",
+   "Bästsäljare",
+   "Vapes",
+   "Buds",
+   "Hasch",
+   "CBD"
+  ],
+  "Cannabinoider": [
+   "THCaB",
+   "THCbA"
+  ],
+  "Serier och blandningar": [
+   "Magic Sauce",
+   "D10",
+   "Nano-11"
+  ],
+  "CBD-familjen": [
+   "H4CBD",
+   "CBN"
+  ]
+ },
+ "msearchClose393": {
+  "hidden": true,
+  "focus": "mobile-search-trigger"
+ },
+ "pass": true
+}
