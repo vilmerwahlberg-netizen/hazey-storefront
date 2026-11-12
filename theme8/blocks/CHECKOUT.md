@@ -1,5 +1,24 @@
 # Theme 8 — kassan: vad som är gjort och vad som kräver admin
 
+## John Henric-struktur (2026-11-12): ny kassa — ersätter allt nedan
+
+Godkänd skiss: `/Users/wahlberg/HZY/checkout-johnhenric-hazey-2026-11-12/`.
+`theme8/css/86-checkout.css` är omskriven från grunden mot Nyehandels riktiga
+kassa-DOM. Task 18-blocket och redesignen 2026-09-30 (avsnitten nedan) är
+**ersatta** och finns bara kvar i historiken. Bevis och testskript:
+`theme8/review/checkout-johnhenric-2026-11/`.
+
+- Desktop (≥1024 px): sandfärgad köpyta 60 % (Tillbaka, ordbild, Kassa,
+  Leverans, frakt, nyhetsbrev, Betalning + Kustom), vit Ordersumma 40 %.
+- Mobil/surfplatta: Ordersumma (varor, total, rabattkod) först, köpytan efter.
+- Rabattkoden är alltid öppen (Nyehandels mobilväxlare kan inte fokuseras).
+- Inget i Kustoms ram stylas. Ingen merförsäljning (eget steg senare).
+
+**Rättelse:** Theme 8:s CSS-fält innehåller redan ett äldre kassablock
+(Task 18/2026-09-30, "Trygg kassa", "Svenskt lager"). Påståendet längre ned
+om att kassan "inte är inklistrad" stämmer inte. Vid aktivering ska det gamla
+blocket **ersättas**, inte kompletteras — se "Aktivera" nedan.
+
 ## Task 21 (2026-11-11): paketrader i kassan — följer med kassans CSS
 
 Kassan kör inte temats JavaScript. Paketartiklarnas rader (Core 3/5-pack,
@@ -288,8 +307,9 @@ scopad till `body.checkout-page`.
 2. Öppna `dist/theme8/hazey-theme8-checkout.css` (tokens + kassaregler,
    bild-URL:er absoluta mot GitHub Pages `theme8/assets/`).
 3. Nyehandel-admin → **Theme 8** (INTE Theme 3/5/6) → **CSS-fältet** →
-   klistra in filens innehåll **sist** i fältet. Befintligt innehåll i
-   fältet (ett äldre `.hz-header`-block) kan ligga kvar.
+   ta bort det gamla kassablocket (allt som gäller `body.checkout-page`,
+   inklusive "Trygg kassa"-reglerna) och klistra in filens innehåll **sist**
+   i fältet. Övrigt innehåll (ett äldre `.hz-header`-block) kan ligga kvar.
 4. Spara Theme 8 — klicka **inte** Publicera.
 5. Kontrollera `/sv/checkout?preview=v9kzdmqz4w60l5n` med en vara i korgen.
 

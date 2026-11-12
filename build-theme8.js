@@ -41,12 +41,16 @@ function packageCheckoutCss() {
     T[pid].packs.forEach((e) => {
       const a = `a[href$=${q(e.route)}]`;
       const name = `${T[pid].label}\u00a0·\u00a0${e.qty}\u2011pack`;
+      /* Bildrutans serienamn: etiketten utan volym ("Magic Sauce 3.0"). */
+      const series = T[pid].label.replace(/[\s\u00a0]+\d+[\s\u00a0]*ml$/i, "");
       out.push(
         `${S} ${a} > strong { visibility: hidden; font-size: 0 !important; line-height: 0 !important; }`,
-        `${S} ${a} > strong::after { content: ${q(name)}; visibility: visible; display: block; color: var(--hz8-ink); font: 600 18px/1.25 var(--hz8-font-display); }`,
+        `${S} ${a} > strong::after { content: ${q(name)}; visibility: visible; display: block; color: inherit; font: 700 13px/1.3 var(--hz8-font-ui); }`,
         `${S}:has(${a}) .media img[src$="/images/no-image.png"] { visibility: hidden; }`,
         `${S}:has(${a}) .media { position: relative; }`,
-        `${S}:has(${a}) .media::after { content: ${q(e.qty + "×")} / ""; position: absolute; inset: 0; display: grid; place-items: center; border-radius: inherit; background: color-mix(in srgb, var(--hz8-beige) 55%, var(--hz8-surface)); color: var(--hz8-olive); font: 600 24px/1 var(--hz8-font-display); }`
+        `${S}:has(${a}) .media::after { content: ${q(e.qty + "×")} / ""; position: absolute; inset: 0 0 30% 0; display: grid; place-items: center; background: transparent; color: var(--hz8-olive); font: 400 26px/1 var(--hz8-font-display); }`,
+        `${S}:has(${a}) .media::before { content: ${q(series)} / ""; position: absolute; inset: auto 3px 12% 3px; z-index: 1; text-align: center; color: var(--hz8-olive); font: 500 7.5px/1.25 var(--hz8-font-ui); letter-spacing: .07em; text-transform: uppercase; }`,
+        `${S}:has(${a}) .media { background: var(--co-pack, #e8ebdf) !important; }`
       );
     });
   });
@@ -57,8 +61,7 @@ function packageCheckoutCss() {
     `${S} .item__package__items > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; }`,
     `${S} .item__package__items a > strong { display: none !important; }`,
     `${S} .item__package__items .option { margin-top: 0 !important; }`,
-    `${S} .item__package__items .option > span { display: none; }`,
-    `@media (max-width: 767px) { ${S} a[href*="/products/"] > strong::after { font-size: 16.5px; } }`
+    `${S} .item__package__items .option > span { display: none; }`
   );
   return out.join("\n") + "\n";
 }
