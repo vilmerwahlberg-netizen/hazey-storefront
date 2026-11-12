@@ -2087,6 +2087,28 @@
     return tryNext(0);
   }
 
+  /* TASK 25b: tillverkarens syskonserie direkt efter "Fler i serien"
+     (Magic Sauce buds -> "Fler buds från Magic Farmers" med D10 buds,
+     hasch -> D10 hasch). Relation, ruta och lager ägs av 81-series-hub.js
+     (samma komponent som seriehubbens D10-rad). Format = produktens typ i
+     namnet, annars produktens formatkategori; en produkt vars namn säger
+     ett annat format (t.ex. pre-rolls i MS Buds) får ingen ruta. */
+  function buildSiblings(host) {
+    if (!HZ8.pdpSiblingShelves || !HZ8.cardTypeOf) return;
+    var ctxs = productContexts();
+    if (!ctxs.series) return;
+    var named = HZ8.cardTypeOf(productName());
+    var key = named || (ctxs.format && ctxs.format.key);
+    var listed = ctxs.formats.concat(ctxs.format ? [ctxs.format] : []).some(function (f) { return f.key === key; });
+    if (!key || !listed) return;
+    var slot = node("div", "hz8-pp-sibling"); host.appendChild(slot);
+    var here = HZ8.path(location.href).split("?")[0].replace(/\/\d+$/, "");
+    HZ8.pdpSiblingShelves({ series: ctxs.series, format: key, exclude: here }).then(function (secs) {
+      if (!secs.length) { slot.remove(); return; }
+      secs.forEach(function (sec) { slot.appendChild(sec); });
+    }, function () { slot.remove(); });
+  }
+
   function buildBelow(detail) {
     if (document.querySelector(".hz8-ppc")) return;
     var host = node("div", "hz8-ppc");
@@ -2158,6 +2180,7 @@
     var band = document.querySelector(".product-detail__information .brand a[href]");
     var brandName = band ? band.textContent.trim() : "";
     var simReady = buildSimilar(host, brandName, band);
+    buildSiblings(host);
     /* Bästsäljare just nu: butikens egna bästsäljarurval (/page/vara-
        bastsaljare, Nyehandels sortering "Mest populära" -- samma källa
        som startsidan). Bara kort med pris och varumärke, utan aktuell
