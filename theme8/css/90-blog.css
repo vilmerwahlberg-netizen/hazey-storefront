@@ -189,7 +189,7 @@ html.hz8[data-hz8-page="blog"] .store-posts { max-width: 1320px; }
 
 /* Hero: full bredd, lägre än skissen */
 html.hz8[data-hz8-page="blog"] .store-posts > .section { padding-top: 10px !important; }
-.hz8-lib__hero { position: relative; isolation: isolate; color: var(--hz8-lib-on); padding: clamp(24px, 2.6vw, 36px) 0 clamp(26px, 2.6vw, 36px); margin-top: 0; }
+.hz8-lib__hero { position: relative; isolation: isolate; color: var(--hz8-lib-on); padding: clamp(24px, 2.3vw, 32px) 0 clamp(26px, 2.3vw, 32px); margin-top: 0; }
 /* Bandet och ringarna ritas i samma full-bredds-pseudo så att dekoren
    aldrig kan sticka ut ur heron. */
 .hz8-lib__hero::before { content: ""; position: absolute; z-index: -1; inset: 0 auto 0 50%; width: 100vw; transform: translateX(-50%); pointer-events: none;
@@ -199,8 +199,8 @@ html.hz8[data-hz8-page="blog"] .store-posts > .section { padding-top: 10px !impo
     var(--hz8-lib-hero); }
 .hz8-lib__heroin { position: relative; max-width: 760px; }
 .hz8-lib__eyebrow { margin: 0 0 12px !important; color: var(--hz8-beige) !important; font: 700 11px/1.3 var(--hz8-bl-sans) !important; letter-spacing: .22em !important; text-transform: uppercase; }
-html.hz8 .hz8-lib .hz8-lib__title { margin: 0 0 12px !important; color: var(--hz8-lib-on) !important; font: 600 clamp(40px, 4.6vw, 68px)/.98 var(--hz8-font-display) !important; letter-spacing: -.035em !important; text-transform: none; text-wrap: balance; }
-.hz8-lib__lede { margin: 0 !important; max-width: 540px; color: color-mix(in srgb, var(--hz8-lib-on) 84%, transparent) !important; font: 400 17px/1.5 var(--hz8-bl-sans) !important; }
+html.hz8 .hz8-lib .hz8-lib__title { margin: 0 0 18px !important; color: var(--hz8-lib-on) !important; font: 600 clamp(40px, 4.6vw, 68px)/1.02 var(--hz8-font-display) !important; letter-spacing: -.035em !important; text-transform: none; text-wrap: balance; }
+.hz8-lib__lede { margin: 0 !important; max-width: 540px; color: color-mix(in srgb, var(--hz8-lib-on) 86%, transparent) !important; font: 400 17px/1.55 var(--hz8-bl-sans) !important; }
 .hz8-lib__seal { position: absolute; right: -340px; bottom: 4px; margin: 0 !important; transform: rotate(-9deg); color: var(--hz8-beige) !important; font: italic 400 23px/1.1 var(--hz8-font-display) !important; white-space: nowrap; }
 
 /* Arbetsyta: ämnen + resultat */
@@ -226,7 +226,7 @@ html.hz8 .hz8-lib .hz8-lib__title { margin: 0 0 12px !important; color: var(--hz
 .hz8-lib__search button:hover { background: var(--hz8-secondary-hover); }
 .hz8-lib__search :is(input, button):focus-visible { outline: 2px solid var(--hz8-focus); outline-offset: 3px; }
 
-.hz8-lib__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 24px 0 14px; border-bottom: 1px solid var(--hz8-lib-line); }
+.hz8-lib__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 26px 0 14px; border-bottom: 1px solid var(--hz8-lib-line); }
 .hz8-lib__head h2 { margin: 0 !important; color: var(--hz8-text-heading) !important; font: 600 29px/1.15 var(--hz8-font-display) !important; }
 .hz8-lib__count { margin: 0 !important; color: var(--hz8-text-muted) !important; font: 400 13px/1.3 var(--hz8-bl-sans) !important; text-align: right; }
 .hz8-lib__list[aria-busy="true"] { min-height: 50vh; }
@@ -268,14 +268,16 @@ html.hz8[data-hz8-page="blog"] .hz8-lib .pagination { margin-top: 30px; }
 }
 @media (max-width: 1100px) { .hz8-lib__seal { display: none; } }
 @media (max-width: 899px) {
-  .hz8-lib__hero { padding: 20px 0 22px; margin-top: 4px; }
-  .hz8-lib__hero .hz8-lib__eyebrow { margin-bottom: 8px !important; }
+  .hz8-lib__hero { padding: 22px 0 24px; margin-top: 4px; }
+  .hz8-lib__hero .hz8-lib__eyebrow { margin-bottom: 10px !important; }
   /* Ringarna ligger utanför texten på smala skärmar. */
   .hz8-lib__hero::before { background:
     radial-gradient(circle at calc(100% + 150px) -40px, transparent 189px, color-mix(in srgb, var(--hz8-beige) 38%, transparent) 190px, transparent 191px),
     var(--hz8-lib-hero); }
-  html.hz8 .hz8-lib .hz8-lib__title { margin-bottom: 8px !important; font-size: clamp(32px, 9.4vw, 44px) !important; }
-  .hz8-lib__lede { font-size: 14px !important; line-height: 1.45 !important; }
+  /* Rubrikens rader och avståndet till ingressen: radhöjd 1,08 så att
+     å/ä/g inte möter raden under, 14px till ingressen (2026-11-12 puts). */
+  html.hz8 .hz8-lib .hz8-lib__title { margin-bottom: 14px !important; font-size: clamp(30px, 9vw, 42px) !important; line-height: 1.08 !important; letter-spacing: -.025em !important; }
+  .hz8-lib__lede { font-size: 15px !important; line-height: 1.5 !important; }
   .hz8-lib__work { display: block; padding-top: 0; }
   .hz8-lib__topics { position: static; margin: 0 -16px; border-bottom: 1px solid var(--hz8-lib-line); }
   .hz8-lib__topics h2 { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -283,10 +285,14 @@ html.hz8[data-hz8-page="blog"] .hz8-lib .pagination { margin-top: 30px; }
   .hz8-lib__tlist::-webkit-scrollbar { display: none; }
   .hz8-lib__tlist li { flex: none; border: 0; }
   .hz8-lib__tlist button { width: auto; gap: 6px; min-height: 48px; white-space: nowrap; }
-  .hz8-lib__search { margin-top: 18px; }
-  .hz8-lib__search input { font-size: 16px !important; }
+  /* Rytm: ämnesrad -> 16 -> sök -> 18 -> "Alla artiklar" -> 12 -> lista. */
+  .hz8-lib__tlist button { min-height: 46px; }
+  .hz8-lib__search { margin-top: 16px; padding: 2px 0 10px; }
+  .hz8-lib__search input { min-height: 44px; font-size: 16px !important; }
+  .hz8-lib__head { padding: 18px 0 12px; }
   .hz8-lib__head h2 { font-size: 25px !important; }
-  .hz8-lib__item a.hz8-lib__link { grid-template-columns: minmax(0, 1fr) 26px; gap: 6px 12px; padding: 20px 0; }
+  .hz8-lib__count { font-size: 12px !important; }
+  .hz8-lib__item a.hz8-lib__link { grid-template-columns: minmax(0, 1fr) 26px; gap: 6px 12px; padding: 18px 0 20px; }
   .hz8-lib__meta { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; padding: 0; }
   .hz8-lib__n { font-size: 18px !important; }
   .hz8-lib__arrow svg { width: 24px; height: 24px; }
@@ -295,3 +301,9 @@ html.hz8[data-hz8-page="blog"] .hz8-lib .pagination { margin-top: 30px; }
   .hz8-lib__feature .hz8-lib__fmedia { align-self: start; }
 }
 @media (prefers-reduced-motion: reduce) { .hz8-lib__arrow svg { transition: none; } }
+/* Mycket smala skärmar: resultatraden under rubriken i stället för bredvid. */
+@media (max-width: 380px) {
+  .hz8-lib__head { display: grid; gap: 2px; }
+  .hz8-lib__head h2 { white-space: nowrap; }
+  .hz8-lib__count { text-align: left; }
+}
