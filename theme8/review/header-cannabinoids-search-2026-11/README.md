@@ -16,6 +16,8 @@ Läst live i Theme 8-previewn 2026-11-12. Alla valda = HTTP 200 med produkter.
 | **Cannabinoider** | | | |
 | THCaB | `/sv/categories/thca-b` (H1 THCA-B) | 2 | Kvar synligt (inget beslut att dölja) |
 | THCbA | `/sv/categories/thcba` | 1 | |
+| **Serier och blandningar** (2026-11-12, tillägg) | | | Inte enskilda cannabinoider |
+| Magic Sauce | `/sv/categories/magic-sauce` (H1 Magic Sauce) | 22 | Seriens hubb, samma som 06-catalog-map |
 | D10 | `/sv/categories/d10-1` | 9 | Magic Farmers formula, aldrig 10-OH-THC |
 | Nano-11 | `/sv/categories/nano-11` | 17 | |
 | **CBD-familjen** | | | |
@@ -109,3 +111,22 @@ efter start (befintligt beteende i 80-category), vilket avbröt testet.
    direkt på uppdrag, inom headerns befintliga glas-/panelspråk; ingen ny
    visuell riktning är införd.
 4. THCV (4 produkter) är utelämnad enligt beslutet att den är pausad.
+
+## 7. Tillägg 2026-11-12: Magic Sauce under "Serier och blandningar"
+
+På begäran: panelen har nu fyra grupper i två kolumner (desktop) och i
+samma ordning i mobilmenyn: Cannabinoider (THCaB, THCbA) · Serier och
+blandningar (Magic Sauce, D10, Nano-11) · CBD-familjen · CBD efter format.
+Sökytornas genvägar visar samma grupprubriker, så Magic Sauce står aldrig
+under "Cannabinoider". Punkt 6.1 ovan (D10/Nano-11) är därmed löst.
+
+Kontroll (`WIDTHS=393,1180,1440 node …/header.mjs` → ALL PASS):
+- **Höjd:** desktoppanelen 356 px (nederkant 439 px av 900), ingen intern
+  scroll, inom fönstret vid 1180 (x 55–775) och 1440 (189–909). Mobilens
+  öppna accordion 795 px i den scrollbara menyn; alla länkar ≥ 44 px höga.
+- **Fokus:** Tab genom hela panelen: THCaB → THCbA → Magic Sauce → D10 →
+  Nano-11 → CBD → H4CBD → CBN → Buds/Blommor → Hasch → Vapes → Alla
+  produkter → produktkortet, alla synliga i panelen; panelen stänger när
+  fokus lämnar den. Pil ned från triggern → THCaB, Escape → triggern.
+  Mobil: Tab från accordionknappen når Magic Sauce, synligt.
+- **Länkar:** alla panelens länkar HTTP 200; Magic Sauce 22 produkter.

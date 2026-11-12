@@ -230,12 +230,15 @@
         return '<li><a href="' + esc(rel(c.href)) + '">' + esc(c.label) + "</a></li>";
       }).join("") + "</ul>" : "";
     }
-    /* Cannabinoidgenvägar som inte redan finns under Bläddra (CBD). */
+    /* Headerns grupper med egna rubriker (Magic Sauce står under "Serier
+       och blandningar", aldrig under "Cannabinoider"). Länkar som redan
+       finns under Bläddra (CBD) visas inte två gånger. */
     var seen = (categories || []).map(function (c) { return c.href; });
-    var canna = [];
-    groups.forEach(function (g) { (g.links || []).forEach(function (l) { if (seen.indexOf(l.href) === -1) canna.push(l); }); });
+    var extra = groups.map(function (g) {
+      return chips((g.links || []).filter(function (l) { return seen.indexOf(l.href) === -1; }), g.heading);
+    }).join("");
     return '<div class="hz8-msearch__start"><p class="hz8-msearch__hint">Sök bland produkter, serier och varumärken.</p>' +
-      chips(categories, "Bläddra") + chips(canna, "Cannabinoider") + "</div>";
+      chips(categories, "Bläddra") + extra + "</div>";
   }
   function resultsMarkup(q, d, max) {
     var hits = (d.hits || []).slice(0, max || 5);

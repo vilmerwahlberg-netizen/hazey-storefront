@@ -858,11 +858,12 @@ html.hz8 .hz8-header-nav .hz8-cat svg{ transition:transform 180ms var(--hz8-ease
 html.hz8 #store-header[data-hz8-tone="dark"] .hz8-header-nav button.hz8-cat{ color:#fffaf0 !important; }
 @media (min-width:768px){ html.hz8 .hz8-header-nav button.hz8-cat{ min-height:44px; min-width:44px; justify-content:center; } }
 
-/* Bred panel: tre korta grupper i kolumner + produktkortet. Höger-ankrad
+/* Bred panel: fyra korta grupper i två kolumner (Cannabinoider | Serier
+   och blandningar, CBD-familjen | CBD efter format) + produktkortet. Höger-ankrad
    som tidigare CBD-panel (sitter näst längst till höger). */
 html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown{ width:min(calc(100vw - 48px), 720px); }
 html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__col--links{
-  display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px 24px; align-items:start;
+  display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px 28px; align-items:start;
 }
 html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__cta{ grid-column:1 / -1; justify-self:start; }
 html.hz8 .hz8-header-nav .hz8-cat-item--wide .hz8-dropdown__col--product{ flex-basis:190px; }

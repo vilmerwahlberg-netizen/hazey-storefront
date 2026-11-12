@@ -10,9 +10,12 @@ const b = await chromium.launch(); const R = { fails: [] }; const fail = m => { 
 const ctxW = (w, h) => ctxFor(w < 768 ? { newContext: o => b.newContext({ ...o, userAgent: MUA }) } : b, w, h, { which: "after" });
 const cleanErr = p => p.errors.filter(e => !/trustpilot|gtm|google|Failed to load resource|ERR_FAILED/i.test(e));
 
+// WIDTHS=393,1180,1440 begränsar körningen.
+const ONLY = process.env.WIDTHS ? process.env.WIDTHS.split(",").map(Number) : null;
+const want = w => !ONLY || ONLY.includes(w);
 // 1. Passform 1180-1920
 R.fit = {};
-for (const w of [1180, 1280, 1328, 1440, 1512, 1920]) {
+for (const w of [1180, 1280, 1328, 1440, 1512, 1920].filter(want)) {
   const ctx = await ctxW(w, 900); const p = await open(ctx, ROUTE); await ready(p, 1500);
   const m = await p.evaluate(() => {
     const main = document.querySelector("#store-header .main").getBoundingClientRect();
@@ -41,6 +44,28 @@ for (const w of [1180, 1280, 1328, 1440, 1512, 1920]) {
     if (k.panel.l < 0 || k.panel.r > w) fail(w + ": panel utanför fönstret " + JSON.stringify(k.panel));
     if (k.missing) fail(w + ": kommer snart i panelen");
     if (!k.links.some(l => l[0] === "THCaB")) fail("THCaB saknas");
+    // Magic Sauce under "Serier och blandningar", aldrig under "Cannabinoider"; höjd utan intern scroll
+    const ms = await p.evaluate(() => { const it = document.querySelector('[data-hz8-cat="cbd"]'); const d = it.querySelector(".hz8-dropdown");
+      const groups = [...it.querySelectorAll(".hz8-dropdown__group")].map(g => ({ h: g.querySelector(".hz8-dropdown__heading").textContent, links: [...g.querySelectorAll("a")].map(a => [a.textContent.trim(), a.getAttribute("href")]) }));
+      const r = d.getBoundingClientRect(); return { groups, h: Math.round(r.height), bottom: Math.round(r.bottom), vh: innerHeight, scrolls: d.scrollHeight > d.clientHeight + 1 }; });
+    R["groups" + w] = ms;
+    const ser = ms.groups.find(g => g.h === "Serier och blandningar"), can = ms.groups.find(g => g.h === "Cannabinoider");
+    if (!ser || !ser.links.some(l => l[0] === "Magic Sauce" && l[1] === "/sv/categories/magic-sauce")) fail(w + ": Magic Sauce saknas i Serier och blandningar " + JSON.stringify(ser));
+    if (can && can.links.some(l => /Magic Sauce|D10|Nano/.test(l[0]))) fail(w + ": serie under Cannabinoider");
+    if (ms.bottom > ms.vh - 8 || ms.scrolls) fail(w + ": panelhöjd " + JSON.stringify({ h: ms.h, bottom: ms.bottom, scrolls: ms.scrolls }));
+    // Fokus: Tab genom alla panellänkar, var och en synlig med fokusring inne i panelen
+    await p.evaluate(() => document.querySelector('[data-hz8-cat="cbd"] .hz8-dropdown a').focus());
+    const walk = [];
+    for (let i = 0; i < 14; i++) {
+      const f = await p.evaluate(() => { const a = document.activeElement, d = document.querySelector('[data-hz8-cat="cbd"] .hz8-dropdown'); const r = a.getBoundingClientRect(), pr = d.getBoundingClientRect(); const cs = getComputedStyle(a);
+        return { t: a.textContent.trim().slice(0, 24), inPanel: d.contains(a), visible: r.width > 0 && r.top >= pr.top - 1 && r.bottom <= pr.bottom + 1, ring: cs.outlineStyle !== "none" || cs.boxShadow !== "none" || cs.color !== "" }; });
+      if (!f.inPanel) break; walk.push(f); await p.keyboard.press("Tab"); await p.waitForTimeout(60);
+    }
+    R["focusWalk" + w] = walk.map(f => f.t);
+    if (walk.length < 13 || walk.some(f => !f.visible) || !R["focusWalk" + w].includes("Magic Sauce")) fail(w + ": fokusgång " + JSON.stringify(walk));
+    await p.waitForTimeout(400); // initDropdowns stänger med CLOSE_DELAY 220 ms
+    if (await p.evaluate(() => document.querySelector('[data-hz8-cat="cbd"]').classList.contains("is-open"))) fail(w + ": panelen stängs inte när fokus lämnar den");
+    await p.evaluate(() => document.querySelector('[data-hz8-cat="cbd"] > .hz8-cat').focus()); await p.keyboard.press("Enter"); await p.waitForTimeout(350);
     await shot(p, `d${w}-cannabinoider`, { clip: { x: 0, y: 0, width: w, height: Math.min(900, k.panel.b + 24) } });
     await p.keyboard.press("ArrowDown"); await p.waitForTimeout(200);
     R["arrow" + w] = await p.evaluate(() => document.activeElement.textContent.trim());
@@ -117,7 +142,7 @@ for (const w of [1180, 1280, 1328, 1440, 1512, 1920]) {
 }
 
 // 4. Mobil 393 + kompakt 768
-for (const w of [393, 768]) {
+for (const w of [393, 768].filter(want)) {
   const ctx = await ctxW(w, w < 768 ? 852 : 1024); const p = await open(ctx, ROUTE); await ready(p, 1500);
   await p.click("#mobile-nav-menu, #store-header .hamburger"); await p.waitForTimeout(600);
   const acc = p.locator('#hz8MobileDrawer .hz8-mobile-accordion[data-hz8-cat="cbd"] .hz8-mobile-accordion__trigger');
@@ -126,7 +151,23 @@ for (const w of [393, 768]) {
   await acc.click(); await p.waitForTimeout(600);
   const m = await p.evaluate(() => { const s = document.querySelector('#hz8MobileDrawer [data-hz8-cat="cbd"]'); return { exp: s.querySelector("button").getAttribute("aria-expanded"), links: [...s.querySelectorAll("a")].map(a => a.textContent.trim().slice(0, 30)), missing: s.querySelectorAll("[aria-disabled]").length, overflow: document.querySelector(".hz8-mobile-drawer__panel").scrollWidth > document.querySelector(".hz8-mobile-drawer__panel").clientWidth + 1 }; });
   R["drawer" + w] = m;
-  if (m.exp !== "true" || !m.links.includes("THCaB") || m.missing || m.overflow) fail(w + ": drawer " + JSON.stringify(m));
+  if (m.exp !== "true" || !m.links.includes("THCaB") || !m.links.includes("Magic Sauce") || m.missing || m.overflow) fail(w + ": drawer " + JSON.stringify(m));
+  const dm = await p.evaluate(() => { const s = document.querySelector('#hz8MobileDrawer [data-hz8-cat="cbd"]'); const pan = s.querySelector(".hz8-mobile-accordion__panel");
+    const g = [...s.querySelectorAll(".hz8-mobile-accordion__group")].map(x => ({ h: x.querySelector("h3").textContent, links: [...x.querySelectorAll("a")].map(a => [a.textContent.trim(), a.getAttribute("href")]) }));
+    const tiny = [...s.querySelectorAll("a")].filter(a => a.getBoundingClientRect().height < 44).map(a => a.textContent.trim().slice(0, 20));
+    return { groups: g, panelH: Math.round(pan.getBoundingClientRect().height), tiny }; });
+  R["drawerGroups" + w] = dm;
+  const ser = dm.groups.find(x => x.h === "Serier och blandningar");
+  if (!ser || !ser.links.some(l => l[0] === "Magic Sauce" && l[1] === "/sv/categories/magic-sauce")) fail(w + ": mobil Magic Sauce " + JSON.stringify(ser));
+  if (dm.tiny.length) fail(w + ": tryckytor < 44 px " + dm.tiny);
+  // Fokus: Tab från accordionknappen genom länkarna når Magic Sauce, synligt
+  await p.evaluate(() => document.querySelector('#hz8MobileDrawer [data-hz8-cat="cbd"] .hz8-mobile-accordion__trigger').focus());
+  const mw = [];
+  for (let i = 0; i < 6; i++) { await p.keyboard.press("Tab"); await p.waitForTimeout(250); mw.push(await p.evaluate(() => { const a = document.activeElement, r = a.getBoundingClientRect(); return { t: a.textContent.trim().slice(0, 20), vis: r.top >= 0 && r.bottom <= innerHeight }; })); }
+  R["drawerFocus" + w] = mw;
+  if (!mw.some(f => f.t === "Magic Sauce") || mw.some(f => !f.vis)) fail(w + ": mobil fokusgång " + JSON.stringify(mw));
+  const msStatus = await p.evaluate(async () => { const r = await fetch("/sv/categories/magic-sauce"); return r.status; });
+  if (msStatus !== 200) fail(w + ": magic-sauce status " + msStatus);
   await p.evaluate(() => { const s = document.querySelector('#hz8MobileDrawer [data-hz8-cat="cbd"]'); s.scrollIntoView({ block: "start" }); });
   await p.waitForTimeout(300); await shot(p, `m${w}-drawer-cannabinoider`);
   // tangentbord i drawern: Escape stänger och fokus tillbaka
@@ -135,6 +176,9 @@ for (const w of [393, 768]) {
   await p.click("#mobile-search-trigger"); await p.waitForTimeout(700);
   const st = await p.evaluate(() => document.getElementById("hz8MsearchResults").innerText.replace(/\s+/g, " "));
   if (!/cannabinoider/i.test(st) || !/THCaB/.test(st)) fail(w + ": mobilsök saknar cannabinoidgenvägar");
+  const sg = await p.evaluate(() => { const out = {}; let cur = null; document.querySelectorAll("#hz8MsearchResults .hz8-msearch__label, #hz8MsearchResults .hz8-msearch__cats a").forEach(n => { if (n.classList.contains("hz8-msearch__label")) { cur = n.textContent; out[cur] = []; } else if (cur) out[cur].push(n.textContent.trim()); }); return out; });
+  R["msearchGroups" + w] = sg;
+  if (!(sg["Serier och blandningar"] || []).includes("Magic Sauce") || (sg["Cannabinoider"] || []).includes("Magic Sauce")) fail(w + ": sökgenvägar " + JSON.stringify(sg));
   await shot(p, `m${w}-search-empty`);
   await p.keyboard.type("nano", { delay: 60 }); await p.waitForTimeout(1800);
   const hits = await p.evaluate(() => document.querySelectorAll("#hz8MobileSearch .hz8-msearch__hit").length);
