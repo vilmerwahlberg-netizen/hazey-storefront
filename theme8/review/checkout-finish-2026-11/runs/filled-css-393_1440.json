@@ -1,0 +1,248 @@
+{
+ "393": {
+  "fails": [],
+  "msg3": "3-pack har lagts i varukorgen.",
+  "msg1": "Gorilla Cookies har lagts i varukorgen.",
+  "cart": [
+   {
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "total": "1 599 kr",
+    "pkg": true
+   },
+   {
+    "name": "Magic Sauce 3.0 - 2ml",
+    "total": "575 kr",
+    "pkg": false
+   }
+  ],
+  "items": [
+   {
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "after": "\"Magic Sauce 3.0 2 ml · 3‑pack\"",
+    "tile": "\"3×\" / \"\"",
+    "img": {
+     "vis": "hidden",
+     "w": 70,
+     "loaded": true,
+     "noimg": true
+    },
+    "total": "1 599 kr",
+    "parts": [
+     "Strain: Gorilla Cookies",
+     "Strain: Tinky Winky"
+    ],
+    "box": {
+     "y": 1457,
+     "h": 243,
+     "w": 339,
+     "visible": true
+    }
+   },
+   {
+    "name": "Magic Sauce 3.0 - 2ml",
+    "after": "none",
+    "tile": "none",
+    "img": {
+     "vis": "visible",
+     "w": 70,
+     "loaded": true,
+     "noimg": false
+    },
+    "total": "575 kr",
+    "parts": [],
+    "box": {
+     "y": 1714,
+     "h": 138,
+     "w": 339,
+     "visible": true
+    }
+   }
+  ],
+  "totals": [
+   "Delsumma 2 174 kr",
+   "Frakt 49 kr",
+   "Totalsumma Inkl.moms: 444,6 kr 2 223 kr",
+   "2 223 kr"
+  ],
+  "total": "2 223 kr",
+  "kustomTotal": "2 223 kr",
+  "shipping": [
+   ""
+  ],
+  "layout": {
+   "overflowX": 0,
+   "header": {
+    "x": 0,
+    "y": 0,
+    "w": 393,
+    "h": 56
+   },
+   "summary": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "totalEl": {
+    "x": 264,
+    "y": 187,
+    "w": 104,
+    "h": 29
+   },
+   "kustom": {
+    "x": 19,
+    "y": 510,
+    "w": 355,
+    "h": 863
+   },
+   "coupon": {
+    "x": 27,
+    "y": 1924,
+    "w": 240,
+    "h": 40
+   },
+   "main": {
+    "x": 0,
+    "y": 56,
+    "w": 393,
+    "h": 1997
+   }
+  },
+  "tab": "Gå tillbaka@6 → Jag önskar leverans till@249 → Jag handlar som@249 → INPUT@318 → INPUT@413 → klarna-checkout-iframe@556(ingen ring) → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 - @1546 → 1 Styck x Magic Sauce 3.0 - @1600 → Minska antalet@1659 → Öka antalet@1659 → Ta bort varan@1659 → Magic Sauce 3.0 - 2ml@1714 → Minska antalet@1812 → Öka antalet@1812 → Ta bort varan@1812 → coupon_code@1924 → klarna-fullscreen-iframe@1129!(ingen ring) → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 - @1546 → 1 Styck x Magic Sauce 3.0 - @1600 → Minska antalet@1659 → Öka antalet@1659 → Ta bort varan@1659 → Magic Sauce 3.0 - 2ml@1714 → Minska antalet@1812 → Öka antalet@1812 → Ta bort varan@1812",
+  "hiddenFocus": [
+   "klarna-fullscreen-iframe"
+  ],
+  "couponVisible": true,
+  "couponBtn": "Lägg till kod",
+  "couponMsg": "Lägg till Rabattkod/presentkort coupon_code Ange kod Kod är ogiltigt. Lägg till",
+  "totalAfterCoupon": "2 223 kr",
+  "cleaned": true,
+  "errors": [
+   "Error: Request failed with status code 422\n    at t.exports (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:6222)\n    at t.exports (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:8646)\n    at XMLHttpRequest.w (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:852)"
+  ],
+  "pass": true
+ },
+ "1440": {
+  "fails": [],
+  "msg3": "3-pack har lagts i varukorgen.",
+  "msg1": "Gorilla Cookies har lagts i varukorgen.",
+  "cart": [
+   {
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "total": "1 599 kr",
+    "pkg": true
+   },
+   {
+    "name": "Magic Sauce 3.0 - 2ml",
+    "total": "575 kr",
+    "pkg": false
+   }
+  ],
+  "items": [
+   {
+    "name": "Magic Sauce 3.0 2ml – 3-pack (blandbart)",
+    "after": "\"Magic Sauce 3.0 2 ml · 3‑pack\"",
+    "tile": "\"3×\" / \"\"",
+    "img": {
+     "vis": "hidden",
+     "w": 70,
+     "loaded": true,
+     "noimg": true
+    },
+    "total": "1 599 kr",
+    "parts": [
+     "Strain: Gorilla Cookies",
+     "Strain: Tinky Winky"
+    ],
+    "box": {
+     "y": 240,
+     "h": 247,
+     "w": 334,
+     "visible": true
+    }
+   },
+   {
+    "name": "Magic Sauce 3.0 - 2ml",
+    "after": "none",
+    "tile": "none",
+    "img": {
+     "vis": "visible",
+     "w": 70,
+     "loaded": true,
+     "noimg": false
+    },
+    "total": "575 kr",
+    "parts": [],
+    "box": {
+     "y": 501,
+     "h": 138,
+     "w": 334,
+     "visible": true
+    }
+   }
+  ],
+  "totals": [
+   "Delsumma 2 174 kr",
+   "Frakt 49 kr",
+   "Totalsumma Inkl.moms: 444,6 kr 2 223 kr",
+   "2 223 kr"
+  ],
+  "total": "2 223 kr",
+  "kustomTotal": "2 223 kr",
+  "shipping": [
+   ""
+  ],
+  "layout": {
+   "overflowX": 0,
+   "header": {
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 64
+   },
+   "summary": {
+    "x": 930,
+    "y": 172,
+    "w": 380,
+    "h": 747
+   },
+   "totalEl": {
+    "x": 1167,
+    "y": 752,
+    "w": 120,
+    "h": 33
+   },
+   "kustom": {
+    "x": 155,
+    "y": 590,
+    "w": 722,
+    "h": 834
+   },
+   "coupon": {
+    "x": 953,
+    "y": 860,
+    "w": 235,
+    "h": 40
+   },
+   "main": {
+    "x": 0,
+    "y": 64,
+    "w": 1440,
+    "h": 1473
+   }
+  },
+  "tab": "Gå tillbaka@10 → Jag önskar leverans till@259 → Jag handlar som@259 → INPUT@332 → INPUT@460 → klarna-checkout-iframe@623(ingen ring) → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 - @333 → 1 Styck x Magic Sauce 3.0 - @387 → Minska antalet@446 → Öka antalet@446 → Ta bort varan@446 → Magic Sauce 3.0 - 2ml@501 → Minska antalet@598 → Öka antalet@598 → Ta bort varan@598 → coupon_code@860 → klarna-fullscreen-iframe@0!(ingen ring) → (förbi Kustom) → 2 Styck x Magic Sauce 3.0 - @333 → 1 Styck x Magic Sauce 3.0 - @387 → Minska antalet@446 → Öka antalet@446 → Ta bort varan@446 → Magic Sauce 3.0 - 2ml@501 → Minska antalet@598 → Öka antalet@598 → Ta bort varan@598",
+  "hiddenFocus": [
+   "klarna-fullscreen-iframe"
+  ],
+  "couponVisible": true,
+  "couponBtn": "Lägg till kod",
+  "couponMsg": "Lägg till Rabattkod/presentkort coupon_code Ange kod Kod är ogiltigt. Lägg till",
+  "totalAfterCoupon": "2 223 kr",
+  "cleaned": true,
+  "errors": [
+   "Error: Request failed with status code 422\n    at t.exports (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:6222)\n    at t.exports (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:8646)\n    at XMLHttpRequest.w (https://hazeyse.nyehandel.se/themes/foundation/js/foundation.js?id=379ca416f4a4a824f95a00d3afc1b8d2:2:852)"
+  ],
+  "pass": true
+ }
+}

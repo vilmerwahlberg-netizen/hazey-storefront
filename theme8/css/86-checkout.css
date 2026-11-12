@@ -541,3 +541,11 @@ body.checkout-page main.checkout .coupon-code__row div .button[disabled] { opaci
   body.checkout-page #kustom-checkout::before { content: "Fyll i uppgifter och välj betalsätt nedan. Köpet slutförs med Betala köp."; margin-bottom: 8px; font-size: 13px; }
   body.checkout-page .checkout-information > .columns { padding-top: 10px; }
 }
+
+/* ===== 7. Slutkontroll med fylld korg (2026-11-12) =====
+   Varubilden låg direkt på kortets bakgrund (samma ton) och såg liten och
+   lös ut bredvid paketets tonade "3×"-ruta. En vit ruta med tunn kant ger
+   båda radtyperna samma 88/72 px-ram. Paketrutan (genererad ::after)
+   täcker fortfarande hela rutan. */
+body.checkout-page .checkout-items-summary article.item .media { border: 1px solid var(--co-line); background: #fff !important; }
+body.checkout-page .checkout-items-summary article.item .media img { padding: 4px; box-sizing: border-box; }

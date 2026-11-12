@@ -1,5 +1,17 @@
 # Theme 8 — kassan: vad som är gjort och vad som kräver admin
 
+## Slutkontroll med fylld korg (2026-11-12)
+
+Task 18 + Task 21 testade tillsammans med vanlig vara + 3‑pack vid 393,
+768, 1440 och 1920 px i den riktiga previewkassan (CSS injicerad, ingen
+adminåtkomst, ingen order): 4/4 PASS — paketnamn och ruta, produktbild,
+totalsumma = Kustom, frakt, rabattkod via tangentbord, tabbordning, inget
+överflöd. Varubilden har nu en vit ruta med kant (`86-checkout.css` §7).
+Detaljer: `theme8/review/checkout-finish-2026-11/README.md`. Adminbeslut
+(fraktgräns 499 kr mot 49 kr i kassan, förvalt nyhetsbrev, Kustom Test
+Mode, inklistring): `theme8/review/checkout-finish-2026-11/ADMIN-DECISIONS.md`.
+Kassans CSS är fortfarande **inte** inklistrad i Theme 8.
+
 ## Task 21 (2026-11-11): paketrader i kassan — följer med kassans CSS
 
 Kassan kör inte temats JavaScript. Paketartiklarnas rader (Core 3/5-pack,
