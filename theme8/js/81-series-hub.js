@@ -450,7 +450,12 @@
         seen[p] = true;
         return cardBrand(c.html) === brand && (typeOf(cardName(c.html)) || sib.format) === sib.format;
       });
-      return cards.length ? { brand: brand, format: format, cards: cards, series: [sib.series] } : null;
+      if (!cards.length) return null;
+      /* Samma variantkort som i seriens egna hyllor: en D10-produkt med
+         flera strains ska inte krympa till ett enda tillverkarkort. */
+      return HZ8.variantCards.expand(cards).then(function (expanded) {
+        return expanded.length ? { brand: brand, format: format, cards: HZ8.variantCards.settle(expanded, ""), series: [sib.series] } : null;
+      });
     });
   }
 
