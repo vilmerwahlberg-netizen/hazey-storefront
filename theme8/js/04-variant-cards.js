@@ -8,7 +8,7 @@
       dess länk är en paketartikel i HZ8.packageTable (03c), eller när
       namnet slutar på "– N-pack" där N är en paketstorlek i samma tabell
       (Woo-importerade paketskal före/efter adminstädningen). 10-pack och
-      kollektioner ingår inte i paketvalet och visas som förut. Paket-
+      kollektioner av ml-produkter döljs också (TASK 23b). Paket-
       artiklarna inaktiveras inte -- köpmodulen hämtar dem som vanligt.
 
    2. Variantprodukter visas som ett kort per variant. Bara kort som
@@ -46,11 +46,18 @@
     });
     return { routes: routes, sizes: Object.keys(sizes) };
   }
+  /* TASK 23b: alla flerpack av ml-produkter (vapes, carts, liquids) --
+     "– N-pack" eller "Kollektion" i namnet -- hålls borta oavsett N.
+     3-/5-pack (tabellens storlekar) döljs i alla enheter som förut. Gram-
+     10-pack (buds/pre-rolls) och startpaket (batteri + carts) visas. */
+  var MULTI = /([-–]\s*\d+\s*-?\s*pack|[-–]\s*(hela\s+)?kollektion(en)?)\s*$/i;
+  var ML = /\d+(?:[.,]\d+)?\s*ml\b/i;
   function isPackageCard(html) {
     var P = packageRoutes(), path = cardPath(html);
     if (path && P.routes[path]) return true;
-    if (!P.sizes.length) return false;
     var name = cardName(html).replace(/\s*\(blandbart\)\s*$/i, "");
+    if (MULTI.test(name) && ML.test(name)) return true;
+    if (!P.sizes.length) return false;
     return new RegExp("[-–]\\s*(" + P.sizes.join("|") + ")\\s*-?\\s*pack\\s*$", "i").test(name);
   }
 

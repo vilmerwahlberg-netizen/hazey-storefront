@@ -110,7 +110,7 @@ const SC = {
   "D2-paketlank-och-pivots": async () => {
     const out = {};
     const { ctx, p } = await newPage("/sv/categories/alla-vapes");
-    for (const [route, home, n] of [["/sv/products/d10-2ml-3-pack-blandbart", "/sv/products/d10-vape-magic-farmers", 3], ["/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart", "/sv/products/thcba-vape-faraoh-2ml", 5], ["/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart", "/sv/products/thca-b-vape-faraoh-2ml", 3], ["/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart", "/sv/products/thca-b-faraoh-carts-1ml", 5]]) {
+    for (const [route, home, n] of [["/sv/products/d10-2ml-3-pack-blandbart", "/sv/products/d10-vape-magic-farmers", 3], ["/sv/products/d10-2ml-5-pack-blandbart", "/sv/products/d10-vape-magic-farmers", 5], ["/sv/products/faraoh-thcba-47-2ml-3-pack-blandbart", "/sv/products/thcba-vape-faraoh-2ml", 3], ["/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart", "/sv/products/thcba-vape-faraoh-2ml", 5]]) {
       await p.goto(url(route), { waitUntil: "domcontentloaded" }); await p.waitForURL(u => new URL(u).pathname.startsWith(home), { timeout: 30000 }).catch(() => { }); await p.waitForTimeout(1500);
       const f = await p.evaluate(async r => { const x = await fetch(r, { credentials: "same-origin" }); const h = await x.text(); return { status: x.status, redirected: x.redirected, rows: (h.match(/<package-product-variants/g) || []).length }; }, route);
       out[route] = { landed: new URL(p.url()).pathname, ...f, ok: new URL(p.url()).pathname.startsWith(home) && f.status === 200 && !f.redirected && f.rows === n };
@@ -118,6 +118,34 @@ const SC = {
     await ctx.close();
     return { ...out, pass: Object.values(out).every(x => x.ok) };
   }
+};
+/* TASK 23b: THCA-B (242/256, paket 274-277) inte kopplade; inga ml-flerpack i listorna. */
+SC["D3-thca-b-ej-kopplat"] = async () => {
+  const out = {};
+  const { ctx, p } = await newPage("/sv/products/thca-b-vape-faraoh-2ml");
+  await p.waitForTimeout(4000);
+  out.pdp242 = await p.evaluate(() => ({ sizes: window.HZ8.packageUpsells ? window.HZ8.packageUpsells().sizes.length : null, choice: !!document.querySelector(".hz8-pp__choice") }));
+  await p.goto(url("/sv/products/thca-b-faraoh-carts-1ml"), { waitUntil: "domcontentloaded" }); await ready(p, 4000);
+  out.pdp256 = await p.evaluate(() => ({ sizes: window.HZ8.packageUpsells ? window.HZ8.packageUpsells().sizes.length : null, choice: !!document.querySelector(".hz8-pp__choice") }));
+  out.links = {};
+  for (const r of ["/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart", "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart"]) {
+    await p.goto(url(r), { waitUntil: "domcontentloaded" }); await p.waitForTimeout(3500);
+    out.links[r] = new URL(p.url()).pathname;
+  }
+  await ctx.close();
+  return { ...out, pass: out.pdp242.sizes === 0 && !out.pdp242.choice && out.pdp256.sizes === 0 && !out.pdp256.choice && Object.entries(out.links).every(([r, l]) => l === r) };
+};
+SC["L6-inga-flerpack"] = async () => {
+  const ML_MULTI = c => /([-–]\s*\d+\s*-?\s*pack|kollektion(en)?)\s*$/i.test((c.name || "").replace(/\s*\(blandbart\)\s*$/i, "")) && /\d+(?:[.,]\d+)?\s*ml\b/i.test((c.brand || "") + " " + (c.name || ""));
+  const ANY35 = c => /[-–]\s*[35]\s*-?\s*pack\s*(\(blandbart\))?\s*$/i.test(c.name || "");
+  const GRAM10 = c => /[-–]\s*10\s*-?\s*pack\s*$/i.test(c.name || "") && !/ml\b/i.test(c.name || "");
+  const out = {};
+  for (const route of ["/sv/categories/alla-vapes", "/sv/categories/alla-cartridges", "/sv/categories/alla-liquids", "/sv/categories/ms-vapes", "/sv/categories/core-vapes", "/sv/categories/thcba-vapes", "/sv/categories/alla-produkter", "/sv/categories/magic-sauce", "/sv/categories/hero-vapes"]) {
+    const { ctx, p } = await newPage(route); await p.waitForTimeout(2000); await expandAll(p); const s = await listState(p);
+    out[route] = { count: s.count, n: s.n, mlMulti: s.cards.filter(ML_MULTI).map(c => c.name), any35: s.cards.filter(ANY35).map(c => c.name), gram10: s.cards.filter(GRAM10).map(c => c.name), startpaket: s.cards.filter(c => /startpaket/i.test(c.name || "")).map(c => c.name), countOk: s.countN == null || s.countN === s.n, overflow: s.overflow };
+    await ctx.close();
+  }
+  return { ...out, pass: Object.values(out).every(x => !x.mlMulti.length && !x.any35.length && x.countOk && !x.overflow) };
 };
 for (const [name, fn] of Object.entries(SC)) {
   if (only && !only.test(name)) continue;

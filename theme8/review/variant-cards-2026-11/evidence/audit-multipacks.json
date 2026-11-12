@@ -1,0 +1,925 @@
+{
+ "checkedAt": "2026-11-12T10:47:38.092Z",
+ "lists": {
+  "/sv/categories/alla-produkter": {
+   "total": 130,
+   "multi": [
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 3-pack",
+     "path": "/sv/products/d10-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 5-pack",
+     "path": "/sv/products/d10-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 10-pack",
+     "path": "/sv/products/nano11-buds-10-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 10ml – Kollektion",
+     "path": "/sv/products/ms-30-10ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "High Life 5g – 5-pack",
+     "path": "/sv/products/high-life-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 3-pack",
+     "path": "/sv/products/nano11-buds-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 5-pack",
+     "path": "/sv/products/nano11-buds-5-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 5-pack",
+     "path": "/sv/products/ms-3-0-5ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 5-pack",
+     "path": "/sv/products/ms50-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 10-pack",
+     "path": "/sv/products/ms50-5g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "High Life 5g – 3-pack",
+     "path": "/sv/products/high-life-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 3-pack",
+     "path": "/sv/products/heros-core-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 5-pack",
+     "path": "/sv/products/heros-core-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 5-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – Kollektion",
+     "path": "/sv/products/heros-core-2ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 3-pack",
+     "path": "/sv/products/ms-3-0-5ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 3-pack",
+     "path": "/sv/products/ms50-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 1ml – Kollektion",
+     "path": "/sv/products/ms-30-1ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/alla-vapes": {
+   "total": 31,
+   "multi": [
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 3-pack",
+     "path": "/sv/products/d10-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 5-pack",
+     "path": "/sv/products/d10-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 5-pack",
+     "path": "/sv/products/ms-3-0-5ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 3-pack",
+     "path": "/sv/products/heros-core-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 5-pack",
+     "path": "/sv/products/heros-core-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – Kollektion",
+     "path": "/sv/products/heros-core-2ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 3-pack",
+     "path": "/sv/products/ms-3-0-5ml-3-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/alla-cartridges": {
+   "total": 6,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 1ml – Kollektion",
+     "path": "/sv/products/ms-30-1ml-kollektion",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/alla-liquids": {
+   "total": 2,
+   "multi": [
+    {
+     "name": "MS 3.0 – 10ml – Kollektion",
+     "path": "/sv/products/ms-30-10ml-kollektion",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/blommor-buds": {
+   "total": 63,
+   "multi": [
+    {
+     "name": "Nano 11 Buds 5g – 10-pack",
+     "path": "/sv/products/nano11-buds-10-pack",
+     "stock": true
+    },
+    {
+     "name": "High Life 5g – 5-pack",
+     "path": "/sv/products/high-life-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 3-pack",
+     "path": "/sv/products/nano11-buds-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 5-pack",
+     "path": "/sv/products/nano11-buds-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 5-pack",
+     "path": "/sv/products/ms50-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 10-pack",
+     "path": "/sv/products/ms50-5g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "High Life 5g – 3-pack",
+     "path": "/sv/products/high-life-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 5-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 3-pack",
+     "path": "/sv/products/ms50-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/hasch": {
+   "total": 18,
+   "multi": [
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/pennor": {
+   "total": 9,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/magic-sauce": {
+   "total": 33,
+   "multi": [
+    {
+     "name": "D10 2ml – 3-pack",
+     "path": "/sv/products/d10-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 5-pack",
+     "path": "/sv/products/d10-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 10ml – Kollektion",
+     "path": "/sv/products/ms-30-10ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 5-pack",
+     "path": "/sv/products/ms-3-0-5ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 5-pack",
+     "path": "/sv/products/ms50-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 10-pack",
+     "path": "/sv/products/ms50-5g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 3-pack",
+     "path": "/sv/products/ms-3-0-5ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 3-pack",
+     "path": "/sv/products/ms50-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 1ml – Kollektion",
+     "path": "/sv/products/ms-30-1ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/ms-vapes": {
+   "total": 10,
+   "multi": [
+    {
+     "name": "D10 2ml – 3-pack",
+     "path": "/sv/products/d10-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "D10 2ml – 5-pack",
+     "path": "/sv/products/d10-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 10ml – Kollektion",
+     "path": "/sv/products/ms-30-10ml-kollektion",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 5-pack",
+     "path": "/sv/products/ms-3-0-5ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 5ml – 3-pack",
+     "path": "/sv/products/ms-3-0-5ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "MS 3.0 – 1ml – Kollektion",
+     "path": "/sv/products/ms-30-1ml-kollektion",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/ms-buds": {
+   "total": 20,
+   "multi": [
+    {
+     "name": "Magic Sauce 50% 5g – 5-pack",
+     "path": "/sv/products/ms50-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 10-pack",
+     "path": "/sv/products/ms50-5g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% 5g – 3-pack",
+     "path": "/sv/products/ms50-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/ms-hash": {
+   "total": 4,
+   "multi": [
+    {
+     "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/ms-carts": {
+   "total": 1,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thca-b": {
+   "total": 3,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcab-vapes": {
+   "total": 3,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcba": {
+   "total": 5,
+   "multi": [
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-3-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcba-vapes": {
+   "total": 5,
+   "multi": [
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+     "path": "/sv/products/thca-b-50-faraoh-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+     "path": "/sv/products/thca-b-50-faraoh-1ml-3-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/hero-vapes": {
+   "total": 11,
+   "multi": [
+    {
+     "name": "High Life 5g – 5-pack",
+     "path": "/sv/products/high-life-5g-5-pack",
+     "stock": true
+    },
+    {
+     "name": "High Life 5g – 3-pack",
+     "path": "/sv/products/high-life-5g-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 3-pack",
+     "path": "/sv/products/heros-core-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 5-pack",
+     "path": "/sv/products/heros-core-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – Kollektion",
+     "path": "/sv/products/heros-core-2ml-kollektion",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/core-vapes": {
+   "total": 4,
+   "multi": [
+    {
+     "name": "Hero's Core 2ml – 3-pack",
+     "path": "/sv/products/heros-core-2ml-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – 5-pack",
+     "path": "/sv/products/heros-core-2ml-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Hero's Core 2ml – Kollektion",
+     "path": "/sv/products/heros-core-2ml-kollektion",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/high-life-hash": {
+   "total": 3,
+   "multi": []
+  },
+  "/sv/categories/d10-1": {
+   "total": 9,
+   "multi": []
+  },
+  "/sv/categories/d10-vapes": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/d10-buds": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/d10-hash": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/nano-11": {
+   "total": 22,
+   "multi": [
+    {
+     "name": "Nano 11 Buds 5g – 10-pack",
+     "path": "/sv/products/nano11-buds-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 3-pack",
+     "path": "/sv/products/nano11-buds-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 5-pack",
+     "path": "/sv/products/nano11-buds-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 5-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-5-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/nano11-blommor": {
+   "total": 21,
+   "multi": [
+    {
+     "name": "Nano 11 Buds 5g – 10-pack",
+     "path": "/sv/products/nano11-buds-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 3-pack",
+     "path": "/sv/products/nano11-buds-3-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Buds 5g – 5-pack",
+     "path": "/sv/products/nano11-buds-5-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 10-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-10-pack",
+     "stock": true
+    },
+    {
+     "name": "Nano 11 Pre Rolls 1g – 5-pack",
+     "path": "/sv/products/nano-11-pre-rolls-1g-5-pack",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcv": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/thcv-vape": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/hhcpm": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/hhcpm-vapes": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/hhcpm-blommor": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm-blommor": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm-hash": {
+   "total": 0,
+   "multi": []
+  }
+ },
+ "byProduct": {
+  "/sv/products/thca-b-50-faraoh-1ml-5-pack": {
+   "name": "THCA-B 50% Faraoh 1ml – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/thcba",
+    "/sv/categories/thcba-vapes"
+   ]
+  },
+  "/sv/products/d10-2ml-3-pack": {
+   "name": "D10 2ml – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/d10-2ml-5-pack": {
+   "name": "D10 2ml – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/startpaket-thca-b-batteri": {
+   "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/pennor",
+    "/sv/categories/thca-b",
+    "/sv/categories/thcab-vapes"
+   ]
+  },
+  "/sv/products/thca-b-50-faraoh-2ml-3-pack": {
+   "name": "THCA-B 50% Faraoh 2ml – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/thcba",
+    "/sv/categories/thcba-vapes"
+   ]
+  },
+  "/sv/products/thca-b-50-faraoh-2ml-5-pack": {
+   "name": "THCA-B 50% Faraoh 2ml – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/thcba",
+    "/sv/categories/thcba-vapes"
+   ]
+  },
+  "/sv/products/thca-b-50-faraoh-1ml-3-pack": {
+   "name": "THCA-B 50% Faraoh 1ml – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/thcba",
+    "/sv/categories/thcba-vapes"
+   ]
+  },
+  "/sv/products/startpaket-magic-sauce-batteri": {
+   "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/pennor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-carts"
+   ]
+  },
+  "/sv/products/nano11-buds-10-pack": {
+   "name": "Nano 11 Buds 5g – 10-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano-11",
+    "/sv/categories/nano11-blommor"
+   ]
+  },
+  "/sv/products/ms-30-10ml-kollektion": {
+   "name": "MS 3.0 – 10ml – Kollektion",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-liquids",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/high-life-5g-5-pack": {
+   "name": "High Life 5g – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hero-vapes"
+   ]
+  },
+  "/sv/products/nano11-buds-3-pack": {
+   "name": "Nano 11 Buds 5g – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano-11",
+    "/sv/categories/nano11-blommor"
+   ]
+  },
+  "/sv/products/nano11-buds-5-pack": {
+   "name": "Nano 11 Buds 5g – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano-11",
+    "/sv/categories/nano11-blommor"
+   ]
+  },
+  "/sv/products/ms-3-0-5ml-5-pack": {
+   "name": "MS 3.0 – 5ml – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/ms50-5g-5-pack": {
+   "name": "Magic Sauce 50% 5g – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-buds"
+   ]
+  },
+  "/sv/products/ms50-5g-10-pack": {
+   "name": "Magic Sauce 50% 5g – 10-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-buds"
+   ]
+  },
+  "/sv/products/high-life-5g-3-pack": {
+   "name": "High Life 5g – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hero-vapes"
+   ]
+  },
+  "/sv/products/heros-core-2ml-3-pack": {
+   "name": "Hero's Core 2ml – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/core-vapes"
+   ]
+  },
+  "/sv/products/nano-11-pre-rolls-1g-10-pack": {
+   "name": "Nano 11 Pre Rolls 1g – 10-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano-11",
+    "/sv/categories/nano11-blommor"
+   ]
+  },
+  "/sv/products/heros-core-2ml-5-pack": {
+   "name": "Hero's Core 2ml – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/core-vapes"
+   ]
+  },
+  "/sv/products/nano-11-pre-rolls-1g-5-pack": {
+   "name": "Nano 11 Pre Rolls 1g – 5-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/nano-11",
+    "/sv/categories/nano11-blommor"
+   ]
+  },
+  "/sv/products/heros-core-2ml-kollektion": {
+   "name": "Hero's Core 2ml – Kollektion",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/core-vapes"
+   ]
+  },
+  "/sv/products/ms-3-0-5ml-3-pack": {
+   "name": "MS 3.0 – 5ml – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-vapes",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/ms50-5g-3-pack": {
+   "name": "Magic Sauce 50% 5g – 3-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-buds"
+   ]
+  },
+  "/sv/products/ms-30-1ml-kollektion": {
+   "name": "MS 3.0 – 1ml – Kollektion",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-vapes"
+   ]
+  },
+  "/sv/products/magic-sauce-50-pre-rolls-1g-10-pack": {
+   "name": "Magic Sauce 50% Pre Rolls 1g – 10-pack",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/blommor-buds",
+    "/sv/categories/hasch",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-buds",
+    "/sv/categories/ms-hash"
+   ]
+  }
+ }
+}

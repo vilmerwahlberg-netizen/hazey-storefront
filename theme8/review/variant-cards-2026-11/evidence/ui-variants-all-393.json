@@ -1,7 +1,7 @@
 {
  "L1-alla-vapes": {
-  "count": null,
-  "n": 97,
+  "count": "91 produkter",
+  "n": 91,
   "core": [
    "Gelato - Indica",
    "Strawberry Kush - Sativa",
@@ -18,10 +18,10 @@
   "soldBuyable": 0,
   "overflow": false,
   "dupHref": 0,
-  "pass": false
+  "pass": true
  },
  "L2-i-lager": {
-  "count": null,
+  "count": "22 produkter",
   "n": 22,
   "notInStock": [],
   "ms2": [
@@ -30,10 +30,10 @@
   ],
   "d10": 0,
   "overflow": false,
-  "pass": false
+  "pass": true
  },
  "L3-sok-gelato": {
-  "count": null,
+  "count": "3 produkter",
   "n": 3,
   "names": [
    "Hero's Core - 2ml | Gelato - Indica",
@@ -43,8 +43,8 @@
   "pass": true
  },
  "L4-ms-vapes": {
-  "count": "22 produkter",
-  "n": 22,
+  "count": "19 produkter",
+  "n": 19,
   "pkg": [],
   "variants": 19,
   "overflow": false,
@@ -52,16 +52,16 @@
  },
  "L5-hubbar": {
   "/sv/categories/magic-sauce": {
-   "count": "47 produkter",
-   "n": 47,
+   "count": "43 produkter",
+   "n": 43,
    "variants": 24,
    "pkg": 0,
    "soldBuyable": 0,
    "overflow": false
   },
   "/sv/categories/hero-vapes": {
-   "count": "10 produkter",
-   "n": 10,
+   "count": "9 produkter",
+   "n": 9,
    "variants": 6,
    "pkg": 0,
    "soldBuyable": 0,
@@ -76,16 +76,16 @@
    "overflow": false
   },
   "/sv/categories/thca-b": {
-   "count": "11 produkter",
-   "n": 11,
+   "count": "10 produkter",
+   "n": 10,
    "variants": 9,
    "pkg": 0,
    "soldBuyable": 0,
    "overflow": false
   },
   "/sv/categories/thcba": {
-   "count": "9 produkter",
-   "n": 9,
+   "count": "8 produkter",
+   "n": 8,
    "variants": 8,
    "pkg": 0,
    "soldBuyable": 0,
@@ -160,6 +160,20 @@
    "rows": 3,
    "ok": true
   },
+  "/sv/products/d10-2ml-5-pack-blandbart": {
+   "landed": "/sv/products/d10-vape-magic-farmers/421",
+   "status": 200,
+   "redirected": false,
+   "rows": 5,
+   "ok": true
+  },
+  "/sv/products/faraoh-thcba-47-2ml-3-pack-blandbart": {
+   "landed": "/sv/products/thcba-vape-faraoh-2ml/373",
+   "status": 200,
+   "redirected": false,
+   "rows": 3,
+   "ok": true
+  },
   "/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart": {
    "landed": "/sv/products/thcba-vape-faraoh-2ml/373",
    "status": 200,
@@ -167,19 +181,126 @@
    "rows": 5,
    "ok": true
   },
-  "/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart": {
-   "landed": "/sv/products/thca-b-vape-faraoh-2ml/388",
-   "status": 200,
-   "redirected": false,
-   "rows": 3,
-   "ok": true
+  "pass": true
+ },
+ "D3-thca-b-ej-kopplat": {
+  "pdp242": {
+   "sizes": 0,
+   "choice": false
   },
-  "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart": {
-   "landed": "/sv/products/thca-b-faraoh-carts-1ml/430",
-   "status": 200,
-   "redirected": false,
-   "rows": 5,
-   "ok": true
+  "pdp256": {
+   "sizes": 0,
+   "choice": false
+  },
+  "links": {
+   "/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart": "/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart",
+   "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart": "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart"
+  },
+  "pass": true
+ },
+ "L6-inga-flerpack": {
+  "/sv/categories/alla-vapes": {
+   "count": "91 produkter",
+   "n": 91,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [
+    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
+   ],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/alla-cartridges": {
+   "count": "13 produkter",
+   "n": 13,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [
+    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
+   ],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/alla-liquids": {
+   "count": null,
+   "n": 1,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/ms-vapes": {
+   "count": "19 produkter",
+   "n": 19,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/core-vapes": {
+   "count": "6 produkter",
+   "n": 6,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/thcba-vapes": {
+   "count": "8 produkter",
+   "n": 8,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/alla-produkter": {
+   "count": "179 produkter",
+   "n": 179,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [
+    "Nano 11 Buds 5g – 10-pack"
+   ],
+   "startpaket": [
+    "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
+   ],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/magic-sauce": {
+   "count": "42 produkter",
+   "n": 42,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [
+    "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml"
+   ],
+   "countOk": true,
+   "overflow": false
+  },
+  "/sv/categories/hero-vapes": {
+   "count": "9 produkter",
+   "n": 9,
+   "mlMulti": [],
+   "any35": [],
+   "gram10": [],
+   "startpaket": [],
+   "countOk": true,
+   "overflow": false
   },
   "pass": true
  }

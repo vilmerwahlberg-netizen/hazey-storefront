@@ -31,7 +31,11 @@
        serverrenderade rader lästa live 2026-11-12
        (variant-cards-2026-11/evidence/probe-d10-faraoh.json). Alla delar
        har lager 0 just nu: paketvalet visas först när platserna kan fyllas
-       (upFillable) -- köp/Kustom är inte provade för dessa paket. */
+       (upFillable) -- köp/Kustom är inte provade för dessa paket.
+       TASK 23b (sortimentsbeslut 2026-11-12): THCaB/THCA-B marknadsförs
+       inte just nu -- 242 (THCA-B 50 % 2 ml) och 256 (1 ml) med paketen
+       274-277 är medvetet INTE kopplade (inget paketval, ingen omdirigering,
+       inget kundnamn). Produkterna i Nyehandel är orörda. */
     254: { home: "/sv/products/d10-vape-magic-farmers", label: "D10 2 ml", packs: [
       { kind: "strain", qty: 3, packageId: 270, route: "/sv/products/d10-2ml-3-pack-blandbart", verified: true, display: "upsell" },
       { kind: "strain", qty: 5, packageId: 271, route: "/sv/products/d10-2ml-5-pack-blandbart", verified: true, display: "upsell" }
@@ -39,14 +43,6 @@
     236: { home: "/sv/products/thcba-vape-faraoh-2ml", label: "Faraoh THCbA 47 % 2 ml", packs: [
       { kind: "strain", qty: 3, packageId: 272, route: "/sv/products/faraoh-thcba-47-2ml-3-pack-blandbart", verified: true, display: "upsell" },
       { kind: "strain", qty: 5, packageId: 273, route: "/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ] },
-    242: { home: "/sv/products/thca-b-vape-faraoh-2ml", label: "Faraoh THCA-B 50 % 2 ml", packs: [
-      { kind: "strain", qty: 3, packageId: 274, route: "/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart", verified: true, display: "upsell" },
-      { kind: "strain", qty: 5, packageId: 275, route: "/sv/products/faraoh-thca-b-50-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ] },
-    256: { home: "/sv/products/thca-b-faraoh-carts-1ml", label: "Faraoh THCA-B 50 % 1 ml", packs: [
-      { kind: "strain", qty: 3, packageId: 276, route: "/sv/products/faraoh-thca-b-50-1ml-3-pack-blandbart", verified: true, display: "upsell" },
-      { kind: "strain", qty: 5, packageId: 277, route: "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart", verified: true, display: "upsell" }
     ] }
   };
   /* Paketartikelns produkt-id -> { pid, home, label, qty, route }. */
