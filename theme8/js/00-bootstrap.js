@@ -100,9 +100,10 @@
     if (/\/search/.test(path)) return "search";
     if (/\/account/.test(path)) return "account";
     if (/\/page\/faq\/?$/.test(path)) return "faq";
-    /* Blogg (TASK 17): Nyehandels native /sv/posts och /sv/posts/{slug}. */
+    /* Blogg (TASK 17): arkivet /sv/posts; inlägg på Nyehandels standard-URL
+       /sv/post/{slug} (API v3) eller /sv/posts/{slug}. */
     if (/\/posts\/?$/.test(path)) return "blog";
-    if (/\/posts\/[^/]+\/?$/.test(path)) return "post";
+    if (/\/posts?\/[^/]+\/?$/.test(path)) return "post";
     if (document.querySelector(".store-page")) return "page";
     if (homepageRoot) return "home";
     return "other";

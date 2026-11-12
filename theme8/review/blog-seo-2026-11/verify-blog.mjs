@@ -31,7 +31,8 @@ const CASES = [
   { id: "article-fixture", route: "/sv/posts/" + ART.slug, fixture: true },
   { id: "product-sep", route: "/sv/products/buds-nano11-abacous-5-gram" },
   ...(process.env.REGRESSION ? [{ id: "reg-home", route: "/" }, { id: "reg-category", route: "/sv/categories/alla-vapes" }, { id: "reg-faq", route: "/sv/page/faq" }] : [])
-].filter(c => !process.env.ONLY || c.id.startsWith(process.env.ONLY));
+].filter(c => (!c.fixture && c.id !== "index-empty-live") || process.env.FIXTURE) /* bloggen har riktiga inlägg sedan 2026-11-12: fixturfallen körs bara med FIXTURE=1, se verify-live.mjs / verify-archive.mjs */
+ .filter(c => !process.env.ONLY || c.id.startsWith(process.env.ONLY));
 const b = await chromium.launch({ channel: "chrome" }); const results = [];
 for (const w of [393, 1440]) for (const c of CASES) {
   const ctx = await ctxFor(b, w, w < 768 ? 852 : 900);
