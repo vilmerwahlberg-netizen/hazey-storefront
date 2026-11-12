@@ -414,7 +414,15 @@
           (byFormat[key] = byFormat[key] || []).push(c);
         });
       });
-      return { byFormat: byFormat, paths: seen, hubSet: hubSet, failed: failed, total: Object.keys(seen).length, sources: sources.length };
+      /* TASK 23: paketkort bort, variantprodukter -> ett kort per variant
+         (04-variant-cards) -- radernas kort, antal per format och totalen
+         räknar kort. raw = produktlistorna (syskonseriernas märkesanalys). */
+      var keys = Object.keys(byFormat);
+      return Promise.all(keys.map(function (k) { return HZ8.variantCards.expand(byFormat[k]); })).then(function (lists) {
+        var cards = {}, total = 0;
+        keys.forEach(function (k, i) { if (lists[i].length) { cards[k] = HZ8.variantCards.settle(lists[i], ""); total += lists[i].length; } });
+        return { byFormat: cards, raw: byFormat, paths: seen, hubSet: hubSet, failed: failed, total: total, sources: sources.length };
+      });
     });
   }
 
@@ -543,13 +551,15 @@
       }
       var st = details.querySelector(".hz8-pstock");
       if (!st) { st = document.createElement("p"); st.className = "hz8-pstock is-pending"; st.setAttribute("aria-hidden", "true"); details.appendChild(st); }
-      if (!stock) return;
+      if (!stock && card.getAttribute("data-hz8-instock") === null) return;
       var a = card.querySelector("a.product-card__image[href], .details a[href]");
       var path = a ? HZ8.path(a.getAttribute("href")).split("?")[0].replace(/\/\d+$/, "") : "";
       /* Utanför seriehubbens lagerkälla (t.ex. tillverkarens övriga):
          ingen gissning -- raden tas bort i stället för att stå tom. */
-      if (!stock.known[path]) { st.hidden = true; return; }
-      var inStock = !!stock.in[path];
+      /* TASK 23: variantkortets eget lager går före produktens. */
+      var vAttr = card.getAttribute("data-hz8-instock");
+      if (vAttr === null && !stock.known[path]) { st.hidden = true; return; }
+      var inStock = vAttr !== null ? vAttr === "1" : !!stock.in[path];
       st.classList.remove("is-pending"); st.removeAttribute("aria-hidden");
       /* Bara vid ändring -- en ovillkorlig skrivning är en DOM-mutation
          som startar nästa HZ8.watch-omgång i en evig loop (TASK 01C). */
@@ -786,7 +796,7 @@
           var slot = document.createElement("div");
           slot.className = "hz8-sh-more-slot";
           shelves.appendChild(slot);
-          siblingSeries(sb, u.byFormat[k], u.paths).then(function (extra) {
+          siblingSeries(sb, u.raw[k] || [], u.paths).then(function (extra) {
             if (extra) slot.appendChild(shMore(extra, series, function () { return stock; }));
             else slot.remove();
           }).catch(function () { slot.remove(); });
@@ -919,13 +929,17 @@
         href: HZ8.link(f.href),
         allLabel: "Alla " + f.label.toLowerCase(),
         source: route,
+        variants: true,
         onEmpty: function () {
           var navItem = root.querySelector('[data-hz8-local="' + f.key + '"]');
           if (navItem) navItem.remove();
         },
         onRender: function () {
           HZ8.fetchPage(route, HZ8.categoryInfo).then(function (info) {
-            if (info.count != null) rail.querySelector(".hz8-prail__count").textContent = HZ8.countLabel(info.count);
+            /* TASK 23: hela källan på rälsens sida -> antal kort (varianter,
+               utan paket); annars Nyehandels produktantal. */
+            var n = rail.__cards != null && info.count != null && rail.__products >= info.count ? rail.__cards : info.count;
+            if (n != null) rail.querySelector(".hz8-prail__count").textContent = HZ8.countLabel(n);
           }).catch(function () {});
         }
       });

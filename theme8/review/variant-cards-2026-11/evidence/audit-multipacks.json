@@ -1,0 +1,216 @@
+{
+ "checkedAt": "2026-11-12T11:33:16.485Z",
+ "lists": {
+  "/sv/categories/alla-produkter": {
+   "total": 106,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/alla-vapes": {
+   "total": 20,
+   "multi": []
+  },
+  "/sv/categories/alla-cartridges": {
+   "total": 5,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/alla-liquids": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/blommor-buds": {
+   "total": 52,
+   "multi": []
+  },
+  "/sv/categories/hasch": {
+   "total": 17,
+   "multi": []
+  },
+  "/sv/categories/pennor": {
+   "total": 9,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    },
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/magic-sauce": {
+   "total": 23,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/ms-vapes": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/ms-buds": {
+   "total": 16,
+   "multi": []
+  },
+  "/sv/categories/ms-hash": {
+   "total": 3,
+   "multi": []
+  },
+  "/sv/categories/ms-carts": {
+   "total": 1,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+     "path": "/sv/products/startpaket-magic-sauce-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thca-b": {
+   "total": 3,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcab-vapes": {
+   "total": 3,
+   "multi": [
+    {
+     "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+     "path": "/sv/products/startpaket-thca-b-batteri",
+     "stock": true
+    }
+   ]
+  },
+  "/sv/categories/thcba": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/thcba-vapes": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/hero-vapes": {
+   "total": 6,
+   "multi": []
+  },
+  "/sv/categories/core-vapes": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/high-life-hash": {
+   "total": 3,
+   "multi": []
+  },
+  "/sv/categories/d10-1": {
+   "total": 9,
+   "multi": []
+  },
+  "/sv/categories/d10-vapes": {
+   "total": 1,
+   "multi": []
+  },
+  "/sv/categories/d10-buds": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/d10-hash": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/nano-11": {
+   "total": 17,
+   "multi": []
+  },
+  "/sv/categories/nano11-blommor": {
+   "total": 16,
+   "multi": []
+  },
+  "/sv/categories/thcv": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/thcv-vape": {
+   "total": 4,
+   "multi": []
+  },
+  "/sv/categories/hhcpm": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/hhcpm-vapes": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/hhcpm-blommor": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm-blommor": {
+   "total": 0,
+   "multi": []
+  },
+  "/sv/categories/thcnm-hash": {
+   "total": 0,
+   "multi": []
+  }
+ },
+ "byProduct": {
+  "/sv/products/startpaket-thca-b-batteri": {
+   "name": "Startpaket – M3b Pro Batteri + 2× THCA-B 50% 1ml",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/pennor",
+    "/sv/categories/thca-b",
+    "/sv/categories/thcab-vapes"
+   ]
+  },
+  "/sv/products/startpaket-magic-sauce-batteri": {
+   "name": "Startpaket – M3b Pro Batteri + 2× Magic Sauce 3.0 1ml",
+   "lists": [
+    "/sv/categories/alla-produkter",
+    "/sv/categories/alla-cartridges",
+    "/sv/categories/pennor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/ms-carts"
+   ]
+  }
+ }
+}

@@ -1,0 +1,12 @@
+
+### S1-ms-vapes-storlek-393: PASS
+{"alla":{"count":14,"n":14,"sizes":["*Alla:14","2 ml:9","5 ml:5"],"foreign":[]},"ml2":{"count":9,"n":9,"url":"?preview=v9kzdmqz4w60l5n&volym=2ml","soldShownNotBuyable":true,"sold":7},"ml5":{"count":5,"n":5},"back":{"count":14,"n":14,"url":"?preview=v9kzdmqz4w60l5n"},"overflow":false,"pass":true}
+
+### S2-ms-vapes-i-lager-393: PASS
+{"alla":{"count":7,"n":7,"sizes":["*Alla:7","2 ml:2","5 ml:5"]},"ml2":["Gorilla Cookies","Tinky Winky"],"ml5":["This is Sparta","Kowa Bunga","La Chupacabra","Yoda Ice Cream","Bruce Banner OG"],"notInStock":0,"pass":true}
+
+### S3-ms-vapes-sortering-393: PASS
+{"nameSort":{"count":9,"n":9,"sizes":["Alla:14","*2 ml:9","5 ml:5"],"names":["Magic Sauce 3.0 - 2ml – Bruce Banner OG","Magic Sauce 3.0 - 2ml – Crazy Dog","Magic Sauce 3.0 - 2ml – Gorilla Cookies","Magic Sauce 3.0 - 2ml – High Pepito","Magic Sauce 3.0 - 2ml – Kowa Bunga","Magic Sauce 3.0 - 2ml – London Lobster","Magic Sauce 3.0 - 2ml – Samurai Jack","Magic Sauce 3.0 - 2ml – Tinky Winky","Magic Sauce 3.0 - 2ml – Yoda Ice Cream"]},"priceHigh":[1195,1195,1195,1195,1195,575,575,575,575,575,575,575,575,575],"pass":true}
+
+### S4-populart-ordning-393: PASS
+{"/sv/categories/alla-vapes":{"n":91,"count":91,"sameOrder":true,"compared":20,"contiguous":true,"first":["cookies-cbd-vape-adios-mother-f-miami-mint","cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas","h4cbd-vape-cbd-group-2ml","cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake","thc-x-vape-hero-core-2ml","cbd-vape-cbn-vape-magic-farmers"]},"/sv/categories/ms-vapes":{"n":14,"count":14,"sameOrder":true,"compared":2,"contiguous":true,"first":["magic-sauce-vape-5ml","vape-magic-sauce-magic-farmers-2ml"]},"pass":true}

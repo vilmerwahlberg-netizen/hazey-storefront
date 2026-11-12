@@ -251,20 +251,9 @@
        ?hz8-pkg-pilot=1 (ingen normal synlighet).
      - Paketsidornas omdirigering (packagePageRedirect nedan) använder den
        alltid, så att kunden bara möter paketen via 1/3/5-valet. */
-  var PACKAGE_TABLE = {
-    255: { home: "/sv/products/thc-x-vape-hero-core-2ml", packs: [
-      { kind: "strain", qty: 3, packageId: 263, route: "/sv/products/pilot-t19-heros-core-2ml-3-pack", verified: true, display: "upsell" },
-      { kind: "strain", qty: 5, packageId: 265, route: "/sv/products/heros-core-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ] },
-    261: { home: "/sv/products/vape-magic-sauce-magic-farmers-2ml", packs: [
-      { kind: "strain", qty: 3, packageId: 266, route: "/sv/products/magic-sauce-30-2ml-3-pack-blandbart", verified: true, display: "upsell" },
-      { kind: "strain", qty: 5, packageId: 267, route: "/sv/products/magic-sauce-30-2ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ] },
-    260: { home: "/sv/products/magic-sauce-vape-5ml", packs: [
-      { kind: "strain", qty: 3, packageId: 268, route: "/sv/products/magic-sauce-30-5ml-3-pack-blandbart", verified: true, display: "upsell" },
-      { kind: "strain", qty: 5, packageId: 269, route: "/sv/products/magic-sauce-30-5ml-5-pack-blandbart", verified: true, display: "upsell" }
-    ] }
-  };
+  /* TASK 21: tabellen ligger i 03c-package-table.js (en källa för PDP,
+     minicart och kassans genererade CSS). */
+  var PACKAGE_TABLE = HZ8.packageTable || {};
   var PACKAGE_PRODUCTS = {};
   if (PKG_PILOT) Object.keys(PACKAGE_TABLE).forEach(function (pid) { PACKAGE_PRODUCTS[pid] = PACKAGE_TABLE[pid].packs; });
   /* Paketsidornas omdirigering (TASK 20 v5): vanlig webbläsarnavigering

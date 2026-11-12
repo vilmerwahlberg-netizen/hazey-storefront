@@ -1,5 +1,18 @@
 # Theme 8 — kassan: vad som är gjort och vad som kräver admin
 
+## Task 21 (2026-11-11): paketrader i kassan — följer med kassans CSS
+
+Kassan kör inte temats JavaScript. Paketartiklarnas rader (Core 3/5-pack,
+Magic Sauce 2 ml och 5 ml 3/5-pack) får därför kundnamn och bildruta via CSS:
+`build-theme8.js` genererar reglerna sist i
+`dist/theme8/hazey-theme8-checkout.css` ur `theme8/js/03c-package-table.js`
+(nyckel = paketets länk). Namnet blir "<label> · N-pack", den tomma
+bildrutan blir en tonad ruta "N×" och paketdelarna visar bara antal och
+strain. Inga produktbild-URL:er i CSS. Syns först när kassans CSS är
+inklistrad i Theme 8:s CSS-fält (steg 2 nedan / ADMIN-TODO 9b). En riktig
+produktbild i kassan kräver en egen bild på paketartikeln i admin.
+Granskning: `theme8/review/package-cart-identity-2026-11/`.
+
 ## Task 18 (2026-11-06): snabbhet och förtroende — lokalt, inte aktiverat
 
 Kontrollerad mot den riktiga fyllda Theme 8-kassan (PDP → riktig köpknapp →

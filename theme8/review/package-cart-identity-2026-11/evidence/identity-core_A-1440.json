@@ -1,0 +1,152 @@
+{
+ "core-A": {
+  "buys": [
+   {
+    "q": 3,
+    "msg": "3-pack har lagts i varukorgen."
+   },
+   {
+    "q": 5,
+    "msg": "5-pack har lagts i varukorgen."
+   }
+  ],
+  "cart": [
+   {
+    "id": 2102,
+    "product": 263,
+    "variant": 467,
+    "name": "PILOT T19 – Hero's Core 2ml – 3-pack",
+    "total": "1 920 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Gelato - Indica",
+     "Melon Haze",
+     "Coconut Cake - Indica"
+    ]
+   },
+   {
+    "id": 2103,
+    "product": 265,
+    "variant": 469,
+    "name": "Hero's Core 2ml – 5-pack (blandbart)",
+    "total": "3 135 kr",
+    "image": "/images/no-image.png",
+    "parts": [
+     "Strawberry Kush - Sativa",
+     "Strawberry Kush - Sativa",
+     "Strawberry Kush - Sativa",
+     "Strawberry Kush - Sativa",
+     "Strawberry Kush - Sativa"
+    ]
+   },
+   {
+    "id": 2104,
+    "product": 255,
+    "variant": 425,
+    "name": "Hero's Core - 2ml",
+    "total": "675 kr",
+    "image": "https://d3dnwnveix5428.cloudfront.net/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQyLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwLCJoZWlnaHQiOjQwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "parts": []
+   }
+  ],
+  "minicart": [
+   {
+    "cls": "item hz8-pack-named hz8-pack-imaged hz8-has-pack hz8-pack-active hz8-pack-compact",
+    "text": "Hero's Core 2 ml · 3-pack 1 920 kr 1 × Gelato - Indica · 1 × Melon Haze · 1 × Coconut Cake - Indica Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr 5 st 627 kr/st −240 kr",
+    "name": "Hero's Core 2 ml · 3-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=3",
+    "aria": "Minska antalet: Hero's Core 2 ml · 3-pack | Valt antal | Öka antalet: Hero's Core 2 ml · 3-pack | Ta bort varan: Hero's Core 2 ml · 3-pack | Ändra strains: Hero's Core - 2ml, 3-pack | Paketstorlek: Hero's Core - 2ml",
+    "strains": "1 × Gelato - Indica · 1 × Melon Haze · 1 × Coconut Cake - Indica",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack hz8-pack-active hz8-pack-compact hz8-pack-named hz8-pack-imaged",
+    "text": "Hero's Core 2 ml · 5-pack 3 135 kr 5 × Strawberry Kush - Sativa Ändra 1 st 675 kr/st 3 st 640 kr/st −105 kr 5 st 627 kr/st −240 kr",
+    "name": "Hero's Core 2 ml · 5-pack",
+    "strongVisible": false,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "/sv/products/thc-x-vape-hero-core-2ml?hz8-pack=5",
+    "aria": "Minska antalet: Hero's Core 2 ml · 5-pack | Valt antal | Öka antalet: Hero's Core 2 ml · 5-pack | Ta bort varan: Hero's Core 2 ml · 5-pack | Ändra strains: Hero's Core - 2ml, 5-pack | Paketstorlek: Hero's Core - 2ml",
+    "strains": "5 × Strawberry Kush - Sativa",
+    "nativeParts": false
+   },
+   {
+    "cls": "item hz8-has-pack",
+    "text": "Hero's Core - 2ml 675 kr / Styck Strain: Gelato - Indica - + 675 kr 1 st 675 kr/st 3 st 640 kr/st −105 kr 5 st 627 kr/st −240 kr",
+    "name": null,
+    "strongVisible": true,
+    "img": [
+     {
+      "src": "/eyJrZXkiOiJzdG9yZV8xODNhNTExYS0wZGVkLTQ0YzktODI5ZC0yMTA5OWIwMTU4ZjlcL2ltYWdlc1wvcDE1Ni1jb3JlLXZhcGUtZ2VsYXRvLTQ5ZTMwODQ",
+      "w": 60,
+      "loaded": true
+     }
+    ],
+    "href": "https://hazeyse.nyehandel.se/sv/products/thc-x-vape-hero-core-2ml",
+    "aria": "Minska antalet: Hero's Core - 2ml | Valt antal | Öka antalet: Hero's Core - 2ml | Ta bort varan: Hero's Core - 2ml | Paketstorlek: Hero's Core - 2ml",
+    "strains": null,
+    "nativeParts": false
+   }
+  ],
+  "minicartImageRequests": [],
+  "minicartOverflow": false,
+  "checkoutNative": "PILOT T19 – Hero's Core 2ml – 3-pack 1 920 kr / Styck Paketet innehåller 1 Styck x Hero's Core - 2ml Strain: Gelato - Indica 1 Styck x Hero's Core - 2ml Strain: Melon Haze 1 Styck x Hero's Core - 2ml Strain: Coconut Cake - Indica - + 1 920 kr Hero's Core 2ml – 5-pack (blandbart) 3 135 kr / Styck Pak",
+  "checkout": [
+   {
+    "href": "/sv/products/pilot-t19-heros-core-2ml-3-pack",
+    "after": "\"Hero's Core 2 ml · 3-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"3×\" / \"\"",
+    "total": "\n        1 920 kr\n         ",
+    "parts": [
+     "Strain: Gelato - Indica",
+     "Strain: Melon Haze",
+     "Strain: Coconut Cake - Indica"
+    ]
+   },
+   {
+    "href": "/sv/products/heros-core-2ml-5-pack-blandbart",
+    "after": "\"Hero's Core 2 ml · 5-pack\"",
+    "strongVis": "hidden",
+    "imgVis": "hidden",
+    "imgSrc": "/images/no-image.png",
+    "tile": "\"5×\" / \"\"",
+    "total": "\n        3 135 kr\n         ",
+    "parts": [
+     "Strain: Strawberry Kush - Sativa"
+    ]
+   },
+   {
+    "href": "/sv/products/thc-x-vape-hero-core-2ml",
+    "after": "none",
+    "strongVis": "visible",
+    "imgVis": "visible",
+    "imgSrc": "QwMCwiZml0IjoiaW5zaWRlIn19fQ==",
+    "tile": "none",
+    "total": "\n        675 kr\n         ",
+    "parts": []
+   }
+  ],
+  "checkoutOverflow": false,
+  "cleaned": true,
+  "errors": [],
+  "fails": [],
+  "pass": true
+ }
+}

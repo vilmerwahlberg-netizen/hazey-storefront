@@ -908,3 +908,40 @@ html.hz8-sf .hz8-sf-more__link .hz8-icon { color: var(--hz8-sf-more-arrow); }
    Ingen ny sticky kontroll; enradsläget från 1280 behåller sin relativa
    position i glashyllan (högre specificitet). */
 html.hz8-sf[data-hz8-page="category"] .category-sort { position: static; top: auto; }
+
+/* TASK 23: variantgridet (80-category sfVariants) tar Nyehandels grid-
+   plats när sidan har variant- eller paketkort -- samma kolumner, mellanrum
+   och "Visa fler"-plats som mallens grid. */
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 30px 24px !important;
+}
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid > div { min-width: 0; }
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__more { display: flex; margin: 28px auto 0; }
+@media (max-width: 1023px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 767px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 14px !important; }
+}
+@media (max-width: 359px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { gap: 22px 10px !important; }
+}
+
+/* TASK 23c: storleksval (ml-format med minst två storlekar, t.ex. MS
+   Vapes: Alla / 2 ml / 5 ml). Byggs ur produkterna i listan; antal = kort. */
+html.hz8-sf .hz8-sf-sizes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 20px; }
+html.hz8-sf .hz8-sf-sizes[hidden] { display: none; }
+html.hz8-sf .hz8-sf-sizes__label { margin-right: 4px; color: var(--hz8-text-muted); font: 600 12px/1 var(--hz8-font-ui) !important; letter-spacing: .06em; text-transform: uppercase; }
+html.hz8-sf .hz8-sf-size { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--hz8-line-strong); border-radius: 10px; background: color-mix(in srgb, #fff 55%, transparent); color: var(--hz8-ink) !important; font: 500 14px/1 var(--hz8-font-ui) !important; cursor: pointer; transition: background-color .15s var(--hz8-ease), border-color .15s var(--hz8-ease); }
+html.hz8-sf .hz8-sf-size:hover { border-color: var(--hz8-olive); }
+html.hz8-sf .hz8-sf-size[aria-pressed="true"] { border-color: var(--hz8-olive); background: var(--hz8-olive); color: #fff !important; }
+html.hz8-sf .hz8-sf-size__n { color: inherit; opacity: .7; font: 400 12.5px/1 var(--hz8-font-ui) !important; }
+html.hz8.hz8-sf[data-hz8-page="category"] .hz8-sf-size:focus-visible { outline: 3px solid var(--hz8-cta) !important; outline-offset: 2px !important; }
+@media (max-width: 767px) {
+  html.hz8-sf .hz8-sf-sizes { gap: 6px; margin-bottom: 16px; }
+  html.hz8-sf .hz8-sf-sizes__label { width: 100%; margin: 0 0 2px; }
+  html.hz8-sf .hz8-sf-size { min-height: 44px; padding: 0 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html.hz8-sf .hz8-sf-size { transition: none; } }

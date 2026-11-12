@@ -239,7 +239,7 @@
   var stateInflight = {};
   HZ8.productState = function (productUrl) {
     if (!productUrl) return Promise.reject(new Error("no product url"));
-    var key = "state6:" + HZ8.path(productUrl);
+    var key = "state7:" + HZ8.path(productUrl);
     var cached = cacheGet(key);
     if (cached) return Promise.resolve(cached);
     var priority = userInitiated();
@@ -273,7 +273,20 @@
         var name = product.name || "";
         var crumbs = page ? Array.prototype.map.call(page.querySelectorAll(".designer-breadcrumbs a"), function (a) { return a.textContent.replace(/\s+/g, " ").trim(); })
           .filter(function (t) { return t && t !== name && !/^hem$/i.test(t); }) : [];
+        /* TASK 23: varianterna (för variantkort i listor). Ett variantval
+           (P.options) med flera värden; bild = variantens egen (image_id),
+           annars ingen. Lager = samma definition som köpet (variantOrderable). */
+        var opt = (product.options || []).length === 1 ? product.options[0] : null;
+        var thumbOf = function (id) { var im = images.filter(function (i) { return i.id === id; })[0]; return im ? im.thumb_url || im.image_url || null : null; };
+        var variantList = variants.filter(function (v) { return v.active !== false; }).map(function (v) {
+          return { id: v.id, name: (v.option_values || []).map(function (o) { return o.name; }).join(" · "), image: v.image_id ? thumbOf(v.image_id) : null, orderable: HZ8.variantOrderable(v), price: v.price ? v.price.formatted_price : "" };
+        });
         var value = {
+          productId: product.id || null,
+          name: name,
+          isPackage: product.is_package === true,
+          option: opt ? String(opt.name || "").trim() : "",
+          variantList: variantList,
           variantId: sv.id || null,
           variants: variants.length,
           buyable: inStock,

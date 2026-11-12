@@ -1,0 +1,561 @@
+{
+  "bases": {
+    "236": {
+      "slug": "thcba-vape-faraoh-2ml",
+      "name": "THCbA 47% - Faraoh - 2ml",
+      "options": [
+        "Strain"
+      ],
+      "variants": [
+        {
+          "id": 373,
+          "opt": "Cranberry Frost Cream",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 528
+        },
+        {
+          "id": 377,
+          "opt": "M.A.C.",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 529
+        },
+        {
+          "id": 380,
+          "opt": "Super Lemon Haze",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 467
+        },
+        {
+          "id": 382,
+          "opt": "Sour Candy Strawberry",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 468
+        },
+        {
+          "id": 383,
+          "opt": "Peach Pizzazz",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 530
+        },
+        {
+          "id": 385,
+          "opt": "Lemon Skunk",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 469
+        },
+        {
+          "id": 387,
+          "opt": "Juicy Blueberry",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 531
+        },
+        {
+          "id": 389,
+          "opt": "Florida Kush",
+          "price": "745 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 470
+        }
+      ]
+    },
+    "242": {
+      "slug": "thca-b-vape-faraoh-2ml",
+      "name": "THCA-B 50% - Faraoh - 2ml",
+      "options": [
+        "Strain"
+      ],
+      "variants": [
+        {
+          "id": 388,
+          "opt": "Cranberry Frost Cream",
+          "price": "795 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 509
+        },
+        {
+          "id": 391,
+          "opt": "Super Lemon Haze",
+          "price": "795 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 510
+        },
+        {
+          "id": 394,
+          "opt": "Sour Candy Strawberry",
+          "price": "795 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 511
+        },
+        {
+          "id": 396,
+          "opt": "Florida Kush",
+          "price": "795 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 512
+        }
+      ]
+    },
+    "254": {
+      "slug": "d10-vape-magic-farmers",
+      "name": "D10 - 2ml",
+      "options": [
+        "Strain"
+      ],
+      "variants": [
+        {
+          "id": 421,
+          "opt": "Cherry Sour",
+          "price": "595 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 454
+        },
+        {
+          "id": 424,
+          "opt": "Lemon Cheese",
+          "price": "595 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 456
+        },
+        {
+          "id": 426,
+          "opt": "Cotton Candy",
+          "price": "595 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 535
+        },
+        {
+          "id": 427,
+          "opt": "Maui Mango",
+          "price": "595 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 457
+        },
+        {
+          "id": 428,
+          "opt": "Kiwi Sorbet",
+          "price": "595 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 536
+        }
+      ]
+    },
+    "256": {
+      "slug": "thca-b-faraoh-carts-1ml",
+      "name": "THCA-B 50% - Faraoh - 1ml",
+      "options": [
+        "Strain"
+      ],
+      "variants": [
+        {
+          "id": 430,
+          "opt": "Cranberry Frost Cream",
+          "price": "395 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 349
+        },
+        {
+          "id": 432,
+          "opt": "Super Lemon Haze",
+          "price": "395 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 349
+        },
+        {
+          "id": 434,
+          "opt": "Sour Candy Strawberry",
+          "price": "395 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 349
+        },
+        {
+          "id": 436,
+          "opt": "Florida Kush",
+          "price": "395 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 349
+        },
+        {
+          "id": 437,
+          "opt": "Juicy Blueberry",
+          "price": "395 kr",
+          "stock": 0,
+          "track": 1,
+          "buyable": false,
+          "img": 349
+        }
+      ]
+    }
+  },
+  "packages": {
+    "270": {
+      "name": "D10 2ml – 3-pack (blandbart)",
+      "is_package": true,
+      "variant": 474,
+      "sku": "HZ-MIX-D10-2ML-3PK",
+      "price": "1 655 kr",
+      "buyable": true,
+      "route": "/sv/products/d10-2ml-3-pack-blandbart",
+      "viewProduct": "270",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 28,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 29,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 30,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "271": {
+      "name": "D10 2ml – 5-pack (blandbart)",
+      "is_package": true,
+      "variant": 475,
+      "sku": "HZ-MIX-D10-2ML-5PK",
+      "price": "2 618 kr",
+      "buyable": true,
+      "route": "/sv/products/d10-2ml-5-pack-blandbart",
+      "viewProduct": "271",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 31,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 32,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 33,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 34,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 254,
+          "pivot": 35,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "272": {
+      "name": "Faraoh THCbA 47% 2ml – 3-pack (blandbart)",
+      "is_package": true,
+      "variant": 476,
+      "sku": "HZ-MIX-THCBA47-2ML-3PK",
+      "price": "2 076 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thcba-47-2ml-3-pack-blandbart",
+      "viewProduct": "272",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 36,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 37,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 38,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "273": {
+      "name": "Faraoh THCbA 47% 2ml – 5-pack (blandbart)",
+      "is_package": true,
+      "variant": 477,
+      "sku": "HZ-MIX-THCBA47-2ML-5PK",
+      "price": "3 319 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart",
+      "viewProduct": "273",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 39,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 40,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 41,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 42,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 236,
+          "pivot": 43,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "274": {
+      "name": "Faraoh THCA-B 50% 2ml – 3-pack (blandbart)",
+      "is_package": true,
+      "variant": 478,
+      "sku": "HZ-MIX-THCAB50-2ML-3PK",
+      "price": "2 216 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart",
+      "viewProduct": "274",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 44,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 45,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 46,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "275": {
+      "name": "Faraoh THCA-B 50% 2ml – 5-pack (blandbart)",
+      "is_package": true,
+      "variant": 479,
+      "sku": "HZ-MIX-THCAB50-2ML-5PK",
+      "price": "3 542 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thca-b-50-2ml-5-pack-blandbart",
+      "viewProduct": "275",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 47,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 48,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 49,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 50,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 242,
+          "pivot": 51,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "276": {
+      "name": "Faraoh THCA-B 50% 1ml – 3-pack (blandbart)",
+      "is_package": true,
+      "variant": 480,
+      "sku": "HZ-MIX-THCAB50-1ML-3PK",
+      "price": "1 101 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thca-b-50-1ml-3-pack-blandbart",
+      "viewProduct": "276",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 52,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 53,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 54,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    },
+    "277": {
+      "name": "Faraoh THCA-B 50% 1ml – 5-pack (blandbart)",
+      "is_package": true,
+      "variant": 481,
+      "sku": "HZ-MIX-THCAB50-1ML-5PK",
+      "price": "1 835 kr",
+      "buyable": true,
+      "route": "/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart",
+      "viewProduct": "277",
+      "rows": [
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 55,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 56,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 57,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 58,
+          "locked": "false",
+          "qty": 1
+        },
+        {
+          "tag": "package-product-variants",
+          "product": 256,
+          "pivot": 59,
+          "locked": "false",
+          "qty": 1
+        }
+      ]
+    }
+  },
+  "checkedAt": "2026-11-12T09:33:51.999Z"
+}

@@ -191,3 +191,6 @@ html.hz8:not([data-hz8-page="home"]) #store-main .product-card .offer { display:
 
 /* CTA-etikett: lång variant som standard, kort i kompakta karusellkort. */
 .hz8-card-pill .hz8-pill-short { display: none; }
+
+/* TASK 23: paketkort (3-/5-pack) hålls borta ur listor (03-product-card.js). */
+html.hz8 #store-main :is(.product-card.hz8-pack-card, .hz8-pack-cell) { display: none !important; }
