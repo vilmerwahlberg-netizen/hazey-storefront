@@ -1,0 +1,27 @@
+
+### L1-alla-vapes-393: FAIL
+{"count":null,"n":97,"core":["Gelato - Indica","Strawberry Kush - Sativa","Melon Haze","Pineapple Express -Sativa","Super Lemon Haze","Coconut Cake - Indica"],"ms2":9,"ms5":5,"d10":5,"faraoh2ml":12,"pkg":[],"soldBuyable":0,"overflow":false,"dupHref":0,"pass":false}
+
+### L2-i-lager-393: FAIL
+{"count":null,"n":22,"notInStock":[],"ms2":["Gorilla Cookies","Tinky Winky"],"d10":0,"overflow":false,"pass":false}
+
+### L3-sok-gelato-393: PASS
+{"count":null,"n":3,"names":["Hero's Core - 2ml | Gelato - Indica","Hero | High Life – Gelato – 5g","Vape - THC-V 79% - Canapuff - 1ml | Berry Gelato"],"pass":true}
+
+### L4-ms-vapes-393: PASS
+{"count":"22 produkter","n":22,"pkg":[],"variants":19,"overflow":false,"pass":true}
+
+### L5-hubbar-393: PASS
+{"/sv/categories/magic-sauce":{"count":"47 produkter","n":47,"variants":24,"pkg":0,"soldBuyable":0,"overflow":false},"/sv/categories/hero-vapes":{"count":"10 produkter","n":10,"variants":6,"pkg":0,"soldBuyable":0,"overflow":false},"/sv/categories/d10-1":{"count":null,"n":13,"variants":5,"pkg":0,"soldBuyable":0,"overflow":false},"/sv/categories/thca-b":{"count":"11 produkter","n":11,"variants":9,"pkg":0,"soldBuyable":0,"overflow":false},"/sv/categories/thcba":{"count":"9 produkter","n":9,"variants":8,"pkg":0,"soldBuyable":0,"overflow":false},"pass":true}
+
+### P1-kort-till-pdp-och-paket-393: PASS
+{"url":"/sv/products/thc-x-vape-hero-core-2ml/431","tile":"Melon Haze","select":"242","choice":true,"cta":"Lägg i varukorgen","pack":["Melon Haze","Melon Haze","Melon Haze"],"pass":true}
+
+### P2-vanligt-kop-fran-kort-393: PASS
+{"cart":[[451,"1.00","1 195 kr"]],"mini":["Magic Sauce 3.0 - 5ml 1 195 kr / Styck Strain: Kowa Bunga - + 1 195 kr 1 st 1 195 kr/st 3 st 983,33 kr/st −635 kr 5 st 890 kr/st −1 525 kr"],"cleaned":true,"pass":true}
+
+### D1-d10-slutsald-pdp-393: PASS
+{"listCount":"5 produkter","listN":5,"url":"/sv/products/d10-vape-magic-farmers/424","tile":"Lemon Cheese","stock":"Slutsåld","cta":null,"choice":false,"monitor":true,"pkg":{"sizes":[{"qty":3,"verified":true,"price":"1 655 kr","packageId":270,"ref":null},{"qty":5,"verified":true,"price":"2 618 kr","packageId":271,"ref":null}],"selected":1,"slots":[],"missing":[]},"pass":true}
+
+### D2-paketlank-och-pivots-393: PASS
+{"/sv/products/d10-2ml-3-pack-blandbart":{"landed":"/sv/products/d10-vape-magic-farmers/421","status":200,"redirected":false,"rows":3,"ok":true},"/sv/products/faraoh-thcba-47-2ml-5-pack-blandbart":{"landed":"/sv/products/thcba-vape-faraoh-2ml/373","status":200,"redirected":false,"rows":5,"ok":true},"/sv/products/faraoh-thca-b-50-2ml-3-pack-blandbart":{"landed":"/sv/products/thca-b-vape-faraoh-2ml/388","status":200,"redirected":false,"rows":3,"ok":true},"/sv/products/faraoh-thca-b-50-1ml-5-pack-blandbart":{"landed":"/sv/products/thca-b-faraoh-carts-1ml/430","status":200,"redirected":false,"rows":5,"ok":true},"pass":true}

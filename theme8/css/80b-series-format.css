@@ -908,3 +908,23 @@ html.hz8-sf .hz8-sf-more__link .hz8-icon { color: var(--hz8-sf-more-arrow); }
    Ingen ny sticky kontroll; enradsläget från 1280 behåller sin relativa
    position i glashyllan (högre specificitet). */
 html.hz8-sf[data-hz8-page="category"] .category-sort { position: static; top: auto; }
+
+/* TASK 23: variantgridet (80-category sfVariants) tar Nyehandels grid-
+   plats när sidan har variant- eller paketkort -- samma kolumner, mellanrum
+   och "Visa fler"-plats som mallens grid. */
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 30px 24px !important;
+}
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid > div { min-width: 0; }
+html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__more { display: flex; margin: 28px auto 0; }
+@media (max-width: 1023px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 767px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 14px !important; }
+}
+@media (max-width: 359px) {
+  html.hz8-sf[data-hz8-page="category"] #store-main .hz8-sf-variants .hz8-series-results__grid { gap: 22px 10px !important; }
+}

@@ -95,11 +95,24 @@
       if (opts.onRender) opts.onRender(items);
     }
 
+    /* TASK 23: variants -- paketkort bort och variantprodukter som ett kort
+       per variant (04-variant-cards). Bara där anroparen ber om det
+       (seriehubbar); startsidans och produktsidans rälsar visar produkter.
+       section.__products/__cards = antal produkter/kort i underlaget. */
+    function finish(cards) {
+      if (!opts.variants || !HZ8.variantCards) { render(cards); return; }
+      section.__products = cards.length;
+      HZ8.variantCards.expand(cards).then(function (x) {
+        x = HZ8.variantCards.settle(x, "");
+        section.__cards = x.length;
+        render(x);
+      }, function () { render(cards); });
+    }
     function load() {
-      if (opts.cards) { render(opts.cards); return; }
+      if (opts.cards) { finish(opts.cards); return; }
       HZ8.fetchPage(opts.source, HZ8.categoryCards).then(function (cards) {
         if (opts.exclude) cards = cards.filter(function (c) { return !opts.exclude(c); });
-        render(cards);
+        finish(cards);
       }).catch(function () {
         list.removeAttribute("aria-busy");
         list.innerHTML = '<li class="hz8-state hz8-state--error"><p>Produkterna kunde inte laddas.</p></li>';

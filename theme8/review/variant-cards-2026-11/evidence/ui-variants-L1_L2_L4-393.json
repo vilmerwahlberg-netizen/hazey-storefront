@@ -1,0 +1,43 @@
+{
+ "L1-alla-vapes": {
+  "count": "97 produkter",
+  "n": 97,
+  "core": [
+   "Gelato - Indica",
+   "Strawberry Kush - Sativa",
+   "Melon Haze",
+   "Pineapple Express -Sativa",
+   "Super Lemon Haze",
+   "Coconut Cake - Indica"
+  ],
+  "ms2": 9,
+  "ms5": 5,
+  "d10": 5,
+  "faraoh2ml": 12,
+  "pkg": [],
+  "soldBuyable": 0,
+  "overflow": false,
+  "dupHref": 0,
+  "pass": true
+ },
+ "L2-i-lager": {
+  "count": "22 produkter",
+  "n": 22,
+  "notInStock": [],
+  "ms2": [
+   "Gorilla Cookies",
+   "Tinky Winky"
+  ],
+  "d10": 0,
+  "overflow": false,
+  "pass": true
+ },
+ "L4-ms-vapes": {
+  "count": "22 produkter",
+  "n": 22,
+  "pkg": [],
+  "variants": 19,
+  "overflow": false,
+  "pass": true
+ }
+}

@@ -367,7 +367,12 @@
   }
   function cardName(html) {
     var m = html.match(/class="name"[^>]*>\s*([^<]+?)\s*</);
-    return m ? m[1].replace(/&amp;/g, "&").trim() : "";
+    var n = m ? m[1].replace(/&amp;/g, "&").trim() : "";
+    /* TASK 23: variantkort (04-variant-cards) bär produktens namn i
+       data-hz8-product -- volym, sortering och sökning läser "Produkt –
+       Strain", kortet visar strain. */
+    var p = html.match(/class="name"[^>]*data-hz8-product="([^"]*)"/);
+    return p ? p[1].replace(/&amp;/g, "&").trim() + " – " + n : n;
   }
   /* Returnerar sorterad lista, eller null om läget inte kan återskapas. */
   function orderUnion(out, sort) {
@@ -487,9 +492,12 @@
     function setStatus(sel, text) {
       var n = sel.length;
       var base = n ? n + (n === 1 ? " serie vald" : " serier valda") : opts.always ? "Alla produkter" : "Inga serier valda";
-      statusText.textContent = text ? base + " · " + text : base;
+      /* TASK 23: countOnly (formatsidor där unionen alltid tar över och
+         Nyehandels räknare därför döljs): utan valda serier visas bara
+         antalet kort. */
+      statusText.textContent = opts.countOnly && !n ? (text || "") : text ? base + " · " + text : base;
       clearBtn.hidden = !n;
-      status.hidden = !n && isNative(sel) && actionBtn.hidden;
+      status.hidden = opts.countOnly && !n ? !text : !n && isNative(sel) && actionBtn.hidden;
       status.classList.toggle("has-action", !actionBtn.hidden);
       if (opts.onUpdate) opts.onUpdate();
     }
@@ -600,15 +608,22 @@
           res[0].forEach(function (list) { list.forEach(function (c) { var path = cardPath(c.html); if (path) set[path] = true; }); });
         }
         var seen = {};
-        var out = [];
+        var prods = [];
         res[1].forEach(function (c) {
           var path = cardPath(c.html);
           if (!path || seen[path] || (set && !set[path])) return;
           if (opts.exclude && opts.exclude(path)) return;
-          if (extraOn() && !opts.extra.test(c)) return;
           seen[path] = true;
-          out.push(c);
+          prods.push(c);
         });
+        /* TASK 23: paketkort bort och variantprodukter -> ett kort per
+           variant (04-variant-cards) FÖRE typ-/volym-/sökfiltret, sortering,
+           antal och "Visa fler". Kundens "I lager" (native filter) gäller
+           per variant. */
+        var stockOnly = nativeFilterTokens().indexOf(STOCK_TOKEN) !== -1;
+        return HZ8.variantCards.expand(prods, { inStockOnly: stockOnly }).then(function (expanded) {
+        if (mine !== token) return;
+        var out = HZ8.variantCards.settle(expanded.filter(function (c) { return !(extraOn() && !opts.extra.test(c)); }), sort);
 
         var sorted = orderUnion(out, sort);
         if (!sorted) {
@@ -643,6 +658,7 @@
         if (designer) designer.classList.remove("hz8-series-pending");
         root.removeAttribute("aria-busy");
         setStatus(sel, out.length + (out.length === 1 ? " produkt" : " produkter"));
+        });
       }).catch(function (err) {
         if (mine !== token) return;
         deactivate();
@@ -723,13 +739,16 @@
         if (!s) return;
         Promise.all(memberRoutes(s).map(allCards)).then(function (lists2) {
           var list = [].concat.apply([], lists2);
-          var n = {};
-          list.forEach(function (c) { var path = cardPath(c.html); if (path && inType[path] && !(opts.exclude && opts.exclude(path))) n[path] = true; });
-          var count = Object.keys(n).length;
+          var n = {}, cards = [];
+          list.forEach(function (c) { var path = cardPath(c.html); if (path && !n[path] && inType[path] && !(opts.exclude && opts.exclude(path))) { n[path] = true; cards.push(c); } });
+          /* TASK 23: antal = kort (paket bort, varianter, "I lager" per variant). */
+          return HZ8.variantCards.expand(cards, { inStockOnly: nativeFilterTokens().indexOf(STOCK_TOKEN) !== -1 }).then(function (exp) {
+          var count = exp.length;
           if (!count && it.querySelector("button").getAttribute("aria-pressed") !== "true") { it.remove(); return; }
           var el = it.querySelector(".hz8-rail__count");
           if (el) el.textContent = opts.countText ? opts.countText(count) : count + (count === 1 ? " produkt" : " produkter");
           if (opts.onUpdate) opts.onUpdate();
+          });
         }).catch(function () {});
       });
     }).catch(function () {});
@@ -1259,7 +1278,9 @@
     return m ? m[1].replace(/&amp;/g, "&") : "";
   }
   function haystack(path, name, brand) {
-    var key = path + "|" + (portalSeries ? 1 : 0);
+    /* TASK 23: namnet ingår -- variantkort delar produktens sökväg men
+       har var sitt strainnamn. */
+    var key = path + "|" + name + "|" + (portalSeries ? 1 : 0);
     if (hayMemo[key]) return hayMemo[key];
     var parts = [name, brand];
     (portalTypes[path] || []).forEach(function (k) {
@@ -1982,7 +2003,9 @@
       /* Lagerstatus bara när produktens källa är känd och laddad (en enkel
          formatsida utan källor: sidans egen lista räcker). null = okänd. */
       var stock = null;
-      if (pilotStock) {
+      var vStock = card.getAttribute("data-hz8-instock");
+      if (vStock !== null) stock = vStock === "1";
+      else if (pilotStock) {
         var srcKey = portalOn ? "all" : pilotType[path];
         if (!(Object.keys(pilotStockKnown).length && (!srcKey || !pilotStockKnown[srcKey]))) stock = !!pilotStock[path];
       }
@@ -2027,7 +2050,8 @@
     /* Hela namnet är källan även när titeln visuellt kortats nedan. */
     var shortName = nameEl && nameEl.getAttribute("data-hz8-short");
     var fullName = nameEl ? (shortName && nameEl.textContent === shortName ? nameEl.getAttribute("data-hz8-full") : nameEl.textContent.trim()) : "";
-    var vol = cardUnit(fullName, data.weights);
+    /* Variantkort: volymen står i produktens namn (data-hz8-product). */
+    var vol = cardUnit((nameEl && nameEl.getAttribute("data-hz8-product")) || fullName, data.weights);
     var chips = [];
     if (data.type) chips.push([TYPE_ONE[data.type] || data.type, ""]);
     if (vol) chips.push([vol.label, ""]);
@@ -2558,15 +2582,22 @@
       var qt = portal ? searchTokens(readQuery()) : [];
       var out = {};
       pilotBase.forEach(function (it) {
-        if (excludePaused(it.p)) return;
+        if (excludePaused(it.p) || it.pkg) return;
         var types = portal ? portalTypes[it.p] || [] : [it.src];
-        if (qt.length && !searchHit(haystack(it.p, it.name, it.brand), qt)) return;
+        /* TASK 23: antal = kort (varianter), inte produkter. Sökning matchar
+           även variantens namn; "I lager" räknar bara köpbara varianter. */
+        var vs = HZ8.variantCards.variants(it.p);
+        var w = 1;
+        if (vs) {
+          w = vs.filter(function (x) { return (!stockOn || x.orderable) && (!qt.length || searchHit(haystack(it.p, it.name + " " + x.name, it.brand), qt)); }).length;
+          if (!w) return;
+        } else if (qt.length && !searchHit(haystack(it.p, it.name, it.brand), qt)) return;
         if (t.length && !types.some(function (k) { return t.indexOf(k) !== -1; })) return;
         if (v.length && (!it.vol || v.indexOf(it.vol) === -1)) return;
         if (!portal && sel.length && !(pilotSeries[it.p] || []).some(function (n) { return sel.indexOf(n) !== -1; })) return;
         if (stockOn && !pilotStock[it.p]) return;
-        if (d === "typ") types.forEach(function (k) { out[k] = (out[k] || 0) + 1; });
-        else if (it.vol) out[it.vol] = (out[it.vol] || 0) + 1;
+        if (d === "typ") types.forEach(function (k) { out[k] = (out[k] || 0) + w; });
+        else if (it.vol) out[it.vol] = (out[it.vol] || 0) + w;
       });
       dims[d].opts.forEach(function (o) { if (out[o.key] == null) out[o.key] = 0; });
       return out;
@@ -2574,7 +2605,7 @@
     var typeCount = {};
     function loadDims() {
       Promise.all(sources.map(function (src) { return allCards(src.href); })).then(function (lists) {
-        var seen = {}, vols = {}, base = [];
+        var seen = {}, vols = {}, base = [], warm = [];
         typeCount = {};
         lists.forEach(function (cards, i) {
           cards.forEach(function (c) {
@@ -2587,11 +2618,24 @@
             if (cv && !broad && !portal && !VAPES_VOLUMES[cv.key]) cv = null;
             /* Gram-sida: bara vikter (en ml-produkt bland buds klassas inte). */
             if (cv && gram && cv.unit !== "g") cv = null;
-            base.push({ p: p, src: sources[i].key, vol: cv ? cv.key : null, name: cardName(c.html), brand: cardBrand(c.html), href: cardLink(c.html) });
+            var pkg = HZ8.variantCards.isPackageCard(c.html);
+            base.push({ p: p, src: sources[i].key, vol: cv ? cv.key : null, name: cardName(c.html), brand: cardBrand(c.html), href: cardLink(c.html), pkg: pkg });
+            if (!pkg) warm.push(c);
             if (cv) vols[cv.key] = vols[cv.key] || cv;
           });
         });
         pilotBase = base;
+        /* TASK 23: variantdatan (vikter) laddas i bakgrunden; antalen ritas
+           om när den kommer (onChange nedan). */
+        HZ8.variantCards.expand(warm).then(function () {
+          typeCount = {};
+          pilotBase.forEach(function (it) {
+            if (it.pkg) return;
+            var w = HZ8.variantCards.weight(it.p);
+            (portal ? portalTypes[it.p] || [] : [it.src]).forEach(function (k) { typeCount[k] = (typeCount[k] || 0) + (w == null ? 1 : w); });
+          });
+          renderDims(); schedule();
+        });
         if (portal) window.HZ8.portalBase = function () { return pilotBase; };
         dims.typ.opts = (portal ? portalFormats() : sources).filter(function (s) { return typeCount[s.key] > 0; }).map(function (s) { return { key: s.key, label: s.label }; });
         dims.volym.opts = Object.keys(vols).map(function (k) { return vols[k]; }).sort(function (a, b) { return a.order - b.order; });
@@ -2644,7 +2688,9 @@
         extra: typeExtra,
         exclude: excludePaused,
         sources: sources,
-        always: sources.length > 1 || portal,
+        /* TASK 23: alltid union -- paketkort bort och variantkort kräver
+           den fullständiga listan även när sidan bara har en källa. */
+        always: true,
         quiet: true,
         /* Portal: 24 produkter först på mobil, 48 på desktop. */
         step: portal && window.matchMedia("(max-width: 767px)").matches ? 24 : 48,
@@ -3545,7 +3591,7 @@
     function layout() {
       var grid = document.getElementById("category-products");
       var n = grid ? grid.querySelectorAll(".product-card").length : 0;
-      var native = nativeCount();
+      var native = sfVar != null ? sfVar : nativeCount();
       /* Lågantalsläget avgörs av hela resultatet, inte bara sidan. */
       var total = native == null ? n : native;
       var low = total >= 1 && total <= SF_LOW && !!(siblings && siblings.length);
@@ -3618,9 +3664,78 @@
     }
     window.addEventListener("resize", function () { window.requestAnimationFrame(syncShelf); }, { passive: true });
 
+    /* TASK 23: variantkort och paketfilter. Nyehandels grid är per produkt
+       med serverns sidindelning -- när sidans källa innehåller variant-
+       produkter eller paketkort tar ett eget grid över (samma klass och
+       mekanism som unionen: .hz8-series-results, html.hz8-series-union),
+       byggt ur HELA källan med sidans aktuella filter och sortering, och
+       med antal = kort. Utan variant-/paketkort ligger Nyehandels grid
+       kvar orört. Byggs om när URL:en ändras (filter, I lager, sortering). */
+    var sfVar = null, sfKey = null, sfTok = 0, SF_STEP = 24;
+    var sfResults = node("section", "hz8-series-results hz8-sf-variants");
+    sfResults.setAttribute("aria-label", "Produkter");
+    sfResults.hidden = true;
+    function sfOff() {
+      if (sfVar === null && sfResults.hidden) return;
+      sfVar = null;
+      sfResults.hidden = true;
+      sfResults.innerHTML = "";
+      html.classList.remove("hz8-series-union");
+    }
+    function sfRender(out, limit) {
+      var grid = sfResults.querySelector(".hz8-series-results__grid");
+      if (!grid) { grid = node("div", "products hz8-series-results__grid"); sfResults.appendChild(grid); }
+      out.slice(grid.children.length, limit).forEach(function (c) {
+        var cell = document.createElement("div");
+        cell.innerHTML = c.html;
+        cell.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+        grid.appendChild(cell);
+      });
+      var more = sfResults.querySelector(".hz8-series-results__more"), left = out.length - Math.min(limit, out.length);
+      if (left > 0) {
+        if (!more) { more = node("button", "hz8-btn hz8-btn--secondary hz8-series-results__more"); more.type = "button"; sfResults.appendChild(more); }
+        more.textContent = "Visa fler (" + left + " kvar)";
+        more.onclick = function () {
+          var first = grid.children.length;
+          sfRender(out, limit + SF_STEP);
+          var a = grid.children[first] && grid.children[first].querySelector("a[href]");
+          if (a) a.focus({ preventScroll: true });
+        };
+      } else if (more) more.remove();
+    }
+    function sfVariants() {
+      if (location.search === sfKey) return;
+      sfKey = location.search;
+      var mine = ++sfTok;
+      var params = new URLSearchParams(), f = nativeFilterTokens(), so = new URLSearchParams(location.search).get("sort");
+      if (f.length) params.set("filters", f.join("~"));
+      if (so) params.set("sort", so);
+      var qs = params.toString();
+      allCards(route + (qs ? (route.indexOf("?") === -1 ? "?" : "&") + qs : "")).then(function (list) {
+        var seen = {}, prods = [];
+        list.forEach(function (c) { var p = cardPath(c.html); if (p && !seen[p]) { seen[p] = true; prods.push(c); } });
+        var needs = prods.some(function (c) { return HZ8.variantCards.isPackageCard(c.html) || /class="has-variants"/.test(c.html); });
+        if (!needs) { if (mine === sfTok) sfOff(); return null; }
+        return HZ8.variantCards.expand(prods, { inStockOnly: f.indexOf(STOCK_TOKEN) !== -1 }).then(function (exp) {
+          if (mine !== sfTok) return;
+          var out = orderUnion(HZ8.variantCards.settle(exp, so), so);
+          if (!out) { sfOff(); return; }
+          var designer = root.querySelector(".designer-category");
+          if (designer && sfResults.parentNode !== designer) designer.appendChild(sfResults);
+          sfResults.innerHTML = "";
+          if (!out.length) sfResults.innerHTML = '<div class="hz8-state hz8-cat-empty" role="status"><h2>Inga produkter matchar</h2><p>Inga produkter matchar de här filtren.</p></div>';
+          else sfRender(out, SF_STEP);
+          sfVar = out.length;
+          sfResults.hidden = false;
+          html.classList.add("hz8-series-union");
+          syncSf();
+        });
+      }).catch(function () { if (mine === sfTok) sfOff(); });
+    }
     function syncSf() {
       syncCrumbs();
-      var n = nativeCount();
+      sfVariants();
+      var n = sfVar != null ? sfVar : nativeCount();
       var t = n == null ? "" : plural(n);
       if (count.textContent !== t) count.textContent = t;
       /* Verktygsraden: antal | I lager | återstående filtergenvägar |
@@ -3716,7 +3831,8 @@
       root.appendChild(navWrap);
       root.setAttribute("data-hz8-nav", ctx.type);
       var seriesNav = navWrap.querySelector(".hz8-rail--series");
-      if (seriesNav && seriesNav.querySelector(".hz8-serie")) picker = seriesPicker(root, ctx, seriesNav);
+      /* TASK 23: alltid union (paketkort bort, variantkort, rätt antal). */
+      if (seriesNav && seriesNav.querySelector(".hz8-serie")) picker = seriesPicker(root, ctx, seriesNav, { always: true, countOnly: true });
       if (picker) { document.documentElement.classList.add("hz8-series-picker"); activePicker = picker; }
     } else {
       /* Sidor som relationskartan inte beskriver (CBD-familjen,
