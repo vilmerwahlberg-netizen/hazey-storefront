@@ -15,11 +15,15 @@
      hasch m.m.) och /thcb (även Tatra Hemp) visar fel urval. Magic Sauce
      och Nano11: seriernas egna kategorisidor (samma urval som Nyehandels
      Serie-attribut).
-   - "Läs om serien": framtida kanoniska informationssidor som inte finns
-     än (data-hz8-pending-info-route). I Theme 8-previewn visas knappen
-     för att demonstrera modulen; utanför previewn provas adressen och
-     knappen döljs automatiskt om sidan inte svarar med en riktig sida.
-     Theme 8 får inte publiceras skarpt innan sidorna finns.
+   - "Läs om serien": renderas bara när serien har en verifierad
+     informationssida (info). Kontroll 2026-11-13: /sv/page/thcab,
+     /thcba och /nano11 ger 404, /sv/page/magic-sauce 301-omdirigerar till
+     kategorin (samma mål som "Se produkter"), och ingen bloggpost
+     beskriver serierna neutralt. info är därför null för alla fyra och
+     kortet visar bara "Se produkter" (no-info) -- ingen död knapp, inte
+     heller i previewn. När en sida finns: sätt info till dess adress;
+     utanför previewn provas den ändå och knappen tas bort om den inte
+     svarar med en riktig sida (data-hz8-pending-info-route).
    - Formatraderna är fastställda av Vilmer 2026-10-08 (formats nedan).
      Sortimentskontroll samma dag: Magic Sauce-sidan har även två hasch-
      produkter och någon Nano11-pre-roll säljs inte i dag -- rapporterat,
@@ -32,13 +36,13 @@
   /* TASK 17: shop = seriens importerade kategori (thca-b, thcba);
      Varumärke-filtret finns inte längre i Nyehandel. */
   var SERIES = [
-    { key: "thcab", name: "THCaB", formats: "Vapes · carts", motif: "ankh", scene: "pyramids", info: "/sv/page/thcab", shop: "/sv/categories/thca-b", asset: "series-thcab-v1.webp", focus: "70% 50%",
+    { key: "thcab", name: "THCaB", formats: "Vapes · carts", motif: "ankh", scene: "pyramids", info: null, shop: "/sv/categories/thca-b", asset: "series-thcab-v1.webp", focus: "70% 50%",
       alt: "THCaB från Faraoh: vape och cart i en mörk egyptisk miljö" },
-    { key: "thcba", name: "THCbA", formats: "Vapes", motif: "eye", scene: "pyramids", info: "/sv/page/thcba", shop: "/sv/categories/thcba", asset: "series-thcba-v1.webp", focus: "62% 50%",
+    { key: "thcba", name: "THCbA", formats: "Vapes", motif: "eye", scene: "pyramids", info: null, shop: "/sv/categories/thcba", asset: "series-thcba-v1.webp", focus: "62% 50%",
       alt: "THCbA från Faraoh: vape i månljus på blek sand" },
-    { key: "magic", name: "Magic Sauce", formats: "Vapes · carts · buds", motif: "palm", scene: "palms", info: "/sv/page/magic-sauce", shop: "/sv/categories/magic-sauce", asset: "series-magic-sauce-v1.webp", focus: "100% 50%",
+    { key: "magic", name: "Magic Sauce", formats: "Vapes · carts · buds", motif: "palm", scene: "palms", info: null, shop: "/sv/categories/magic-sauce", asset: "series-magic-sauce-v1.webp", focus: "100% 50%",
       alt: "Magic Sauce från Magic Farmers: refillvätska, cart, vape och buds i solnedgång" },
-    { key: "nano", name: "Nano11", formats: "Buds · pre-rolls", motif: "mountain", scene: "mountains", info: "/sv/page/nano11", shop: "/sv/categories/nano-11", asset: "series-nano11-v1.webp", focus: "100% 50%",
+    { key: "nano", name: "Nano11", formats: "Buds · pre-rolls", motif: "mountain", scene: "mountains", info: null, shop: "/sv/categories/nano-11", asset: "series-nano11-v1.webp", focus: "100% 50%",
       alt: "Nano11 från Tatra Hemp: förpackningar vid havet i blå skymning" }
   ];
   var AUTOPLAY_MS = 5000;
@@ -78,8 +82,8 @@
       '<h3 class="hz8-sedu-card__name" id="' + id + '">' + HZ8.esc(s.name) + '</h3>' +
       '<p class="hz8-sedu-card__formats">' + HZ8.esc(s.formats) + '</p>' +
       svg(SCENES[s.scene], "0 0 120 60", "hz8-sedu-card__scene") +
-      '<div class="hz8-sedu-card__actions">' +
-      '<a class="hz8-sedu-card__read" href="' + HZ8.esc(HZ8.link(s.info)) + '" data-hz8-pending-info-route="' + HZ8.esc(s.info) + '" aria-label="Läs om serien ' + HZ8.esc(s.name) + '">Läs om serien' + ARROW + '</a>' +
+      '<div class="hz8-sedu-card__actions' + (s.info ? '' : ' no-info') + '">' +
+      (s.info ? '<a class="hz8-sedu-card__read" href="' + HZ8.esc(HZ8.link(s.info)) + '" data-hz8-pending-info-route="' + HZ8.esc(s.info) + '" aria-label="Läs om serien ' + HZ8.esc(s.name) + '">Läs om serien' + ARROW + '</a>' : '') +
       '<a class="hz8-sedu-card__shop" href="' + HZ8.esc(HZ8.link(s.shop)) + '" aria-label="Se produkter i serien ' + HZ8.esc(s.name) + '">Se produkter</a>' +
       '</div></div></article></li>';
   }

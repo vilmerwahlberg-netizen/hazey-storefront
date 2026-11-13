@@ -1,0 +1,566 @@
+{
+  "before-393": {
+    "cards": [
+      {
+        "name": "THCaB",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/thcab?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 149,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thca-b?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 77,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "THCbA",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 149,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 77,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Magic Sauce",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 149,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 77,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Nano11",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/nano11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 149,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 77,
+              "h": 44
+            }
+          }
+        ]
+      }
+    ],
+    "guides": [
+      {
+        "text": "Läs guiden: Vad är THCaB?",
+        "href": "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n"
+      },
+      {
+        "text": "Läs guiden: Vapes, carts eller buds?",
+        "href": "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n"
+      },
+      {
+        "text": "Läs guiden: Så arbetar vi med analyser",
+        "href": "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n"
+      }
+    ],
+    "gdPresent": true,
+    "nlPresent": true,
+    "order": [
+      "hz8-home__section",
+      "hz8-home__section",
+      "hz8-footer"
+    ],
+    "pageLinks": [
+      "/sv/page/vara-bastsaljare",
+      "/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/butik",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n",
+      "/sv/page/thcab?preview=v9kzdmqz4w60l5n",
+      "/sv/page/thcba?preview=v9kzdmqz4w60l5n",
+      "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "/sv/page/nano11?preview=v9kzdmqz4w60l5n",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n",
+      "/sv/page/kontakt",
+      "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n",
+      "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n",
+      "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss",
+      "/sv/page/faq",
+      "/sv/page/kop-och-leveransvillkor",
+      "/sv/page/integritetspolicy",
+      "/sv/page/kontakt#aterforsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/faq"
+    ],
+    "overflowX": 0,
+    "pageLinkStatus": {
+      "/sv/page/vara-bastsaljare": "200",
+      "/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/butik": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt": "200",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/thcab?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/thcba?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n": "301 -> https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+      "/sv/page/nano11?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/kontakt": "200",
+      "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n": "404",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss": "200",
+      "/sv/page/faq": "200",
+      "/sv/page/kop-och-leveransvillkor": "200",
+      "/sv/page/integritetspolicy": "200",
+      "/sv/page/kontakt#aterforsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/faq": "200"
+    },
+    "errors": []
+  },
+  "before-1440": {
+    "cards": [
+      {
+        "name": "THCaB",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/thcab?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 163,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thca-b?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 80,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "THCbA",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 163,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 80,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Magic Sauce",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 163,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 80,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Nano11",
+        "noInfo": false,
+        "links": [
+          {
+            "text": "Läs om serien",
+            "href": "/sv/page/nano11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 163,
+              "h": 44
+            }
+          },
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 80,
+              "h": 44
+            }
+          }
+        ]
+      }
+    ],
+    "guides": [
+      {
+        "text": "Läs guiden: Vad är THCaB?",
+        "href": "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n"
+      },
+      {
+        "text": "Läs guiden: Vapes, carts eller buds?",
+        "href": "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n"
+      },
+      {
+        "text": "Läs guiden: Så arbetar vi med analyser",
+        "href": "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n"
+      }
+    ],
+    "gdPresent": true,
+    "nlPresent": true,
+    "order": [
+      "hz8-home__section",
+      "hz8-home__section",
+      "hz8-footer"
+    ],
+    "pageLinks": [
+      "/sv/page/vara-bastsaljare",
+      "/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/butik",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n",
+      "/sv/page/thcab?preview=v9kzdmqz4w60l5n",
+      "/sv/page/thcba?preview=v9kzdmqz4w60l5n",
+      "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n",
+      "/sv/page/nano11?preview=v9kzdmqz4w60l5n",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n",
+      "/sv/page/kontakt",
+      "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n",
+      "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n",
+      "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss",
+      "/sv/page/faq",
+      "/sv/page/kop-och-leveransvillkor",
+      "/sv/page/integritetspolicy",
+      "/sv/page/kontakt#aterforsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/faq"
+    ],
+    "overflowX": 0,
+    "pageLinkStatus": {
+      "/sv/page/vara-bastsaljare": "200",
+      "/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/butik": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt": "200",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/thcab?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/thcba?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/magic-sauce?preview=v9kzdmqz4w60l5n": "301 -> https://hazeyse.nyehandel.se/sv/categories/magic-sauce",
+      "/sv/page/nano11?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/kontakt": "200",
+      "/sv/page/vad-ar-thcab?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/vapes-carts-eller-buds?preview=v9kzdmqz4w60l5n": "404",
+      "/sv/page/sa-arbetar-vi-med-analyser?preview=v9kzdmqz4w60l5n": "404",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss": "200",
+      "/sv/page/faq": "200",
+      "/sv/page/kop-och-leveransvillkor": "200",
+      "/sv/page/integritetspolicy": "200",
+      "/sv/page/kontakt#aterforsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/faq": "200"
+    },
+    "errors": []
+  },
+  "after-393": {
+    "cards": [
+      {
+        "name": "THCaB",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thca-b?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 119,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "THCbA",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 119,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Magic Sauce",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 119,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Nano11",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 119,
+              "h": 44
+            }
+          }
+        ]
+      }
+    ],
+    "guides": null,
+    "gdPresent": false,
+    "nlPresent": true,
+    "order": [
+      "hz8-home__section",
+      "hz8-footer"
+    ],
+    "pageLinks": [
+      "/sv/page/vara-bastsaljare",
+      "/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/butik",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n",
+      "/sv/page/kontakt",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss",
+      "/sv/page/faq",
+      "/sv/page/kop-och-leveransvillkor",
+      "/sv/page/integritetspolicy",
+      "/sv/page/kontakt#aterforsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/faq"
+    ],
+    "overflowX": 0,
+    "pageLinkStatus": {
+      "/sv/page/vara-bastsaljare": "200",
+      "/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/butik": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt": "200",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/kontakt": "200",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss": "200",
+      "/sv/page/faq": "200",
+      "/sv/page/kop-och-leveransvillkor": "200",
+      "/sv/page/integritetspolicy": "200",
+      "/sv/page/kontakt#aterforsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/faq": "200"
+    },
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  },
+  "after-1440": {
+    "cards": [
+      {
+        "name": "THCaB",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thca-b?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 122,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "THCbA",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/thcba?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 122,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Magic Sauce",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/magic-sauce?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 122,
+              "h": 44
+            }
+          }
+        ]
+      },
+      {
+        "name": "Nano11",
+        "noInfo": true,
+        "links": [
+          {
+            "text": "Se produkter",
+            "href": "/sv/categories/nano-11?preview=v9kzdmqz4w60l5n",
+            "size": {
+              "w": 122,
+              "h": 44
+            }
+          }
+        ]
+      }
+    ],
+    "guides": null,
+    "gdPresent": false,
+    "nlPresent": true,
+    "order": [
+      "hz8-home__section",
+      "hz8-footer"
+    ],
+    "pageLinks": [
+      "/sv/page/vara-bastsaljare",
+      "/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/butik",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n",
+      "/sv/page/kontakt",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss",
+      "/sv/page/faq",
+      "/sv/page/kop-och-leveransvillkor",
+      "/sv/page/integritetspolicy",
+      "/sv/page/kontakt#aterforsaljare",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor",
+      "https://hazeyse.nyehandel.se/sv/page/faq"
+    ],
+    "overflowX": 0,
+    "pageLinkStatus": {
+      "/sv/page/vara-bastsaljare": "200",
+      "/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/butik": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kampanjer": "200",
+      "https://hazeyse.nyehandel.se/sv/page/vara-bastsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kontakt": "200",
+      "/sv/page/vara-bastsaljare?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/integritetspolicy?preview=v9kzdmqz4w60l5n": "200",
+      "/sv/page/kontakt": "200",
+      "https://hazeyse.nyehandel.se/sv/page/om-oss": "200",
+      "/sv/page/faq": "200",
+      "/sv/page/kop-och-leveransvillkor": "200",
+      "/sv/page/integritetspolicy": "200",
+      "/sv/page/kontakt#aterforsaljare": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kopvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/integritetspolicy": "200",
+      "https://hazeyse.nyehandel.se/sv/page/kop-och-leveransvillkor": "200",
+      "https://hazeyse.nyehandel.se/sv/page/faq": "200"
+    },
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()",
+      "Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  }
+}

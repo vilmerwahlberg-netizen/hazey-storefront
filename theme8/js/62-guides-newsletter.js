@@ -5,9 +5,12 @@
    - Guidesidorna /sv/page/{vad-ar-thcab, vapes-carts-eller-buds,
      sa-arbetar-vi-med-analyser} ger 404, och ingen guideöversikt finns
      (/sv/posts är en tom blogg). Korten märks data-hz8-pending-info-route.
-     I Theme 8-previewn visas de som designfacit; utanför previewn visas
-     bara kort vars sida svarar som en riktig sida, och hela kapitlet
-     döljs om ingen gör det. "Visa alla guider" visas bara när GUIDES_INDEX
+     Bara kort vars sida svarar som en riktig sida visas, och hela
+     kapitlet döljs om ingen gör det -- sedan 2026-11-13 även i Theme 8-
+     previewn, så att previewn inte visar döda "Läs guiden"-knappar.
+     Kontroll 2026-11-13: alla tre ger fortfarande 404, och ingen av
+     bloggens 75 poster (/sv/posts) motsvarar guiderna -- kapitlet visas
+     alltså inte förrän sidorna skapats i admin. "Visa alla guider" visas bara när GUIDES_INDEX
      är satt till en verifierad översikt.
    - Nyhetsbrev: Nyehandels nyhetsbrevskomponent är inte aktiverad för
      Theme 8, samtycket är inte verifierat (kassans ruta är förkryssad,
@@ -268,11 +271,10 @@
     function mountGuides(list) {
       if (!list.length) return;
       var section = insert(guidesHtml(list, context.assetBase));
-      if (!preview) section.querySelectorAll("[data-hz8-pending-info-route]").forEach(function (a) { a.removeAttribute("data-hz8-pending-info-route"); });
+      section.querySelectorAll("[data-hz8-pending-info-route]").forEach(function (a) { a.removeAttribute("data-hz8-pending-info-route"); });
       wireRail(section);
     }
-    if (preview) mountGuides(GUIDES);
-    else verifiedGuides().then(function (list) { mountGuides(list); if (signupShown) { var nl = home.querySelector(".hz8-nl"); if (nl && footer) home.insertBefore(nl, footer); } });
+    verifiedGuides().then(function (list) { mountGuides(list); if (signupShown) { var nl = home.querySelector(".hz8-nl"); if (nl && footer) home.insertBefore(nl, footer); } });
 
     var signupShown = preview || newsletterLive();
     if (!signupShown) return;
