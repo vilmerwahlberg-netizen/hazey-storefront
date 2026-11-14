@@ -77,9 +77,18 @@ Källor är alltid kategorimedlemskap, aldrig fritextsökning. Nästa landning
    "Se hela THCX-sortimentet" (CTA-knappen). Kategorin fylls i katalog-
    arbetet (#28) – eller pekas länkarna om. Ingen katalogändring i den här
    uppgiften.
+   Agent A:s förslag (`AGENT-A-THCX-LANSERINGSPLAN.md` avsnitt 5, inte
+   utfört): lägg Hero's Core (id 255), Northern Lights (139) och Malaga
+   Magic (137) i `thcx`, och 139 + 137 i `thcx-hash`. Därefter kan blockets
+   `data-hz8-sources` förenklas till bara `/sv/categories/thcx` (dagens två
+   källor fungerar även då – dubbletter tas bort per produkt).
 2. **301 `/thcx`, `/thcx/`, `/sv/thcx`, `/sv/pages/thcx` → `/sv/categories/thcx`
    finns redan i Nyehandel** (Agent A fynd 1). Ska riktas till landningen
    när den är godkänd. Inte ändrat.
+   Agent A:s senare fynd: det är troligen ingen egen regel, utan Nyehandels
+   slug-uppslag på sista ledet (även `/zzz/thcx` omdirigeras). När sidan med
+   slug `thcx` skapas kan `/thcx` därför börja leda till sidan i stället för
+   kategorin – testas i lanseringsplanens steg L3.
 3. **noindex** på hela Nyehandel-miljön (Agent A fynd 6) – landningen måste
    vara indexerbar vid lansering.
 
