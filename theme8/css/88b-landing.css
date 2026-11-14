@@ -22,10 +22,15 @@ html.hz8.hz8-lp-page {
   /* Putsbildens medelton i solfläcken (provtagen ur plaster-leaf-900.webp).
      Allt annat härleds ur Theme 8-tokens. */
   --lp-sun: #f2d097;
-  --lp-canvas: color-mix(in srgb, var(--hz8-beige) 58%, var(--lp-sun));
+  --lp-canvas: color-mix(in srgb, var(--hz8-beige) 50%, color-mix(in srgb, var(--lp-sun) 45%, var(--lp-peach)));
   --lp-canvas-deep: color-mix(in srgb, var(--lp-canvas) 86%, var(--hz8-cta));
-  --lp-canvas-soft: color-mix(in srgb, var(--lp-canvas) 52%, var(--hz8-surface));
-  --lp-card: color-mix(in srgb, var(--lp-canvas) 28%, var(--hz8-surface));
+  --lp-canvas-soft: color-mix(in srgb, var(--lp-canvas) 55%, var(--lp-peach-light));
+  /* Persikoljuset i koncept B: Theme 8-yta + CTA-orange, i två styrkor. */
+  --lp-peach: color-mix(in srgb, var(--hz8-surface) 72%, var(--hz8-cta));
+  --lp-peach-light: color-mix(in srgb, var(--hz8-surface) 86%, var(--hz8-cta));
+  /* Kortens textyta: varm sand med persika, ingen nästan-vit yta. */
+  --lp-card: color-mix(in srgb, color-mix(in srgb, var(--lp-canvas) 60%, var(--lp-peach)) 62%, var(--hz8-surface));
+  --lp-card-edge: color-mix(in srgb, var(--hz8-beige) 70%, var(--hz8-ink));
   --lp-rule: color-mix(in srgb, var(--hz8-olive) 22%, transparent);
   --lp-shadow: color-mix(in srgb, var(--hz8-ink) 55%, var(--hz8-cta));
   --lp-gap: clamp(64px, 7.5vw, 120px);
@@ -36,8 +41,11 @@ html.hz8.hz8-lp-page body {
   overflow-x: clip;
   background:
     linear-gradient(180deg, transparent 0, transparent 52%, var(--lp-canvas) 100%) top center / 100% var(--lp-plaster-h) no-repeat,
-    linear-gradient(color-mix(in srgb, color-mix(in srgb, var(--hz8-surface) 70%, var(--hz8-cta)) 30%, transparent), color-mix(in srgb, color-mix(in srgb, var(--hz8-surface) 70%, var(--hz8-cta)) 30%, transparent)) top center / 100% var(--lp-plaster-h) no-repeat,
-    radial-gradient(60% 70% at 22% 46%, color-mix(in srgb, var(--lp-sun) 55%, transparent) 0, transparent 70%) top center / 100% var(--lp-plaster-h) no-repeat,
+    /* Lugn läsyta: ljuspöl bakom H1, ingress och kapitelrad som dämpar
+       lövskuggorna där texten står. Mjuk radial, ingen kant eller ruta. */
+    radial-gradient(46% 58% at 17% 32%, color-mix(in srgb, var(--lp-peach-light) 82%, transparent) 0, color-mix(in srgb, var(--lp-peach-light) 58%, transparent) 46%, transparent 78%) top center / 100% var(--lp-plaster-h) no-repeat,
+    /* Persikovarmt kvällsljus över hela putsen. */
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 54%, transparent), color-mix(in srgb, var(--lp-peach) 40%, transparent)) top center / 100% var(--lp-plaster-h) no-repeat,
     url("assets/landing-thcx/plaster-leaf-1672.webp") top center / 100% var(--lp-plaster-h) no-repeat,
     var(--lp-canvas) !important;
 }
@@ -119,10 +127,12 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__path {
   overflow: hidden;
   border-radius: var(--hz8-radius-l);
   background: var(--lp-card);
+  /* Varm kant (inte vit) + låg, bred skugga i ljusets riktning. */
   box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 60%, transparent) inset,
-    0 26px 44px -30px color-mix(in srgb, var(--lp-shadow) 70%, transparent),
-    0 4px 12px -8px color-mix(in srgb, var(--lp-shadow) 40%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 16%, transparent),
+    0 1px 0 color-mix(in srgb, var(--lp-peach-light) 70%, transparent) inset,
+    6px 24px 40px -26px color-mix(in srgb, var(--lp-shadow) 62%, transparent),
+    0 3px 10px -6px color-mix(in srgb, var(--lp-shadow) 30%, transparent);
   transition: transform .45s var(--hz8-ease), box-shadow .45s var(--hz8-ease);
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp__path::before { display: none !important; }
@@ -134,14 +144,28 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__scene {
   container-type: inline-size;
   aspect-ratio: 9 / 5;
   overflow: hidden;
-  background-blend-mode: soft-light, multiply, normal, normal;
+  background-blend-mode: soft-light, multiply, screen, normal, normal;
   /* Varmt kvällsljus från vänster (samma riktning som lövskuggorna) drar
      stagens olivgula ton mot konceptets persikoljus. Blandas med bilden. */
   background:
-    radial-gradient(130% 110% at 0% 0%, color-mix(in srgb, var(--hz8-cta) 30%, transparent) 0, transparent 62%) 0 0 / 100% 100% no-repeat,
-    linear-gradient(color-mix(in srgb, var(--hz8-cta) 12%, transparent), color-mix(in srgb, var(--hz8-cta) 12%, transparent)) 0 0 / 100% 100% no-repeat,
+    radial-gradient(130% 110% at 0% 0%, color-mix(in srgb, var(--hz8-cta) 42%, transparent) 0, transparent 62%) 0 0 / 100% 100% no-repeat,
+    linear-gradient(color-mix(in srgb, var(--hz8-cta) 10%, transparent), color-mix(in srgb, var(--hz8-cta) 10%, transparent)) 0 0 / 100% 100% no-repeat,
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 34%, transparent), color-mix(in srgb, var(--lp-peach-light) 34%, transparent)) 0 0 / 100% 100% no-repeat,
     url("assets/landing-thcx/product-stage-960.webp") 50% 100% / cover no-repeat,
     linear-gradient(180deg, color-mix(in srgb, var(--lp-sun) 62%, var(--hz8-beige)) 0, color-mix(in srgb, var(--lp-sun) 70%, var(--hz8-beige)) 76%, color-mix(in srgb, var(--hz8-beige) 72%, var(--hz8-surface)) 76.5%, color-mix(in srgb, var(--hz8-beige) 88%, var(--hz8-ink)) 100%);
+}
+/* Övergång sten -> textyta: stenens framkant tonar kort in i kortets
+   sandton, som ett ljust mjukt sken i stället för en hård bildkant. */
+html.hz8.hz8-lp-page #store-main .hz8-lp__scene::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 9%;
+  background: linear-gradient(180deg, transparent 0, color-mix(in srgb, var(--lp-card) 72%, transparent) 100%);
+  pointer-events: none;
 }
 /* Kontaktskugga: smal, mörk kärna direkt under förpackningen + bredare
    halvskugga åt höger (ljus från vänster). */
@@ -178,9 +202,13 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__pack {
    att proportionerna mot stenen stämmer. */
 html.hz8.hz8-lp-page #store-main .hz8-lp__path:not(:first-child) { --lp-pack-h: 33cqw; --lp-shadow-w: 30cqw; }
 @media (max-width: 767px) {
+  /* Mobil (jämfört med den ritade telefonen, i verkliga 393 px): kortet
+     ~74 % brett så att nästa kort tydligt syns, bilden 16:10 med en
+     förpackning som fyller ungefär halva höjden, och en kompakt textyta:
+     namn + pris på en rad, typ, sorter, knapp. */
   html.hz8.hz8-lp-page #store-main .hz8-lp__scene { aspect-ratio: 16 / 10; }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__path { --lp-pack-h: 44cqw; }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__path:not(:first-child) { --lp-pack-h: 38cqw; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path { --lp-pack-h: 40cqw; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path:not(:first-child) { --lp-pack-h: 35cqw; }
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp__path-body {
   display: grid;
@@ -217,7 +245,7 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__path-live {
   gap: 4px 12px;
   margin: 10px 0 0 !important;
   padding-top: 10px;
-  border-top: 1px solid var(--lp-rule);
+  border-top: 1px solid color-mix(in srgb, var(--lp-card-edge) 22%, transparent);
   color: var(--hz8-ink) !important;
   font: 400 14px/1.4 var(--hz8-font-ui) !important;
 }
@@ -308,9 +336,23 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__story {
   grid-auto-rows: min-content;
   align-content: center;
   column-gap: clamp(28px, 4vw, 64px);
-  min-height: clamp(440px, 38vw, 640px);
+  min-height: clamp(380px, 31vw, 540px);
   margin: 0 0 clamp(40px, 4vw, 64px);
   padding: clamp(40px, 4vw, 64px) 0;
+  isolation: isolate;
+}
+/* Kapitlets varma zon: canvasen glider över i kvällsljusets persika och
+   tillbaka, så sortiment -> uppslag inte blir en tom skarv. */
+html.hz8.hz8-lp-page #store-main .hz8-lp__story::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: clamp(-120px, -8vw, -60px);
+  bottom: -40px;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  background: linear-gradient(180deg, transparent 0, color-mix(in srgb, var(--lp-peach) 34%, transparent) 30%, color-mix(in srgb, var(--lp-peach) 34%, transparent) 70%, transparent 100%);
+  pointer-events: none;
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp__story > :not(.hz8-lp__photo) { position: relative; z-index: 1; grid-column: 1; }
 html.hz8.hz8-lp-page #store-main .hz8-lp__story h2 {
@@ -336,9 +378,9 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__photo {
   background:
     url("assets/landing-thcx/coast-editorial-1672.webp") 64% 46% / cover no-repeat,
     linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 14%, #000 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 7%, #000 80%, transparent 100%);
   -webkit-mask-composite: source-in;
-          mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 14%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 7%, #000 80%, transparent 100%);
           mask-composite: intersect;
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp :is(.hz8-lp__story, .hz8-lp__chapters) a { color: var(--hz8-olive) !important; text-decoration: underline; text-underline-offset: 3px; }
@@ -386,22 +428,9 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__faq::before {
   position: absolute;
   z-index: -1;
   inset: 0 calc(50% - 50vw);
-  background: linear-gradient(180deg, var(--lp-canvas) 0, var(--lp-canvas-soft) 120px, var(--lp-canvas-soft) 100%);
-}
-/* Olivgrenen: sparsamt, i FAQ-ytans nedre vänstra kant (bara där det
-   finns tom yta under rubriken). Ren dekor. */
-html.hz8.hz8-lp-page #store-main .hz8-lp__faq::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: calc(50% - 50vw - 40px);
-  bottom: -10px;
-  width: clamp(220px, 20vw, 340px);
-  aspect-ratio: 3 / 2;
-  background: url("assets/landing-thcx/olive-branch-768.webp") 0 100% / contain no-repeat;
-  transform: scaleY(-1) rotate(8deg);
-  opacity: .9;
-  pointer-events: none;
+  background:
+    radial-gradient(55% 60% at 82% 52%, color-mix(in srgb, var(--lp-peach-light) 55%, transparent) 0, transparent 72%),
+    linear-gradient(180deg, var(--lp-canvas) 0, var(--lp-canvas-soft) 140px, var(--lp-canvas-soft) 100%);
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp__faq h2 {
   margin: 0 !important;
@@ -410,13 +439,20 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__faq h2 {
   letter-spacing: -.02em !important;
 }
 html.hz8.hz8-lp-page #store-main .hz8-lp__qa { display: grid; gap: 8px; }
+/* Frågorna: samma varma material som produktkortens textyta, varm kant,
+   ljust överljus i överkanten. Öppen fråga ljusnar, ingen vit låda. */
 html.hz8.hz8-lp-page #store-main .hz8-lp__qa details {
   margin: 0;
   border-radius: var(--hz8-radius-m);
-  background: color-mix(in srgb, var(--lp-canvas) 40%, transparent);
+  background: color-mix(in srgb, var(--lp-card) 78%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 13%, transparent),
+    0 1px 0 color-mix(in srgb, var(--lp-peach-light) 80%, transparent) inset,
+    0 10px 22px -18px color-mix(in srgb, var(--lp-shadow) 45%, transparent);
   transition: background-color .2s var(--hz8-ease);
 }
-html.hz8.hz8-lp-page #store-main .hz8-lp__qa details[open] { background: color-mix(in srgb, var(--hz8-surface) 70%, transparent); }
+html.hz8.hz8-lp-page #store-main .hz8-lp__qa details:hover { background: color-mix(in srgb, var(--lp-card) 92%, var(--lp-peach-light)); }
+html.hz8.hz8-lp-page #store-main .hz8-lp__qa details[open] { background: color-mix(in srgb, var(--lp-card) 70%, var(--lp-peach-light)); }
 html.hz8.hz8-lp-page #store-main .hz8-lp__qa summary {
   display: flex;
   align-items: center;
@@ -482,14 +518,18 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__more { margin: 14px 0 0 !important; co
     inset: auto;
     width: auto;
     aspect-ratio: 16 / 10;
-    margin: 6px -16px 22px;
+    margin: 4px -16px -14px;
     background-image: url("assets/landing-thcx/coast-editorial-900.webp"), linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
     background-position: 70% 50%, 0 0;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%);
-            mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 86%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 74%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 74%, transparent 100%);
   }
+  /* Andra faktastycket börjar i bildens uttonade nederkant: text, bild och
+     text läses som ett kapitel. */
+  html.hz8.hz8-lp-page #store-main .hz8-lp__photo + p { position: relative; z-index: 1; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__story { padding-block: 24px 8px; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__story::before { top: -48px; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__faq { grid-template-columns: minmax(0, 1fr); }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__faq::after { display: none; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__cta { padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--lp-rule); }
   html.hz8.hz8-lp-page #store-main .hz8-lp__cta .hz8-btn { width: auto; padding-inline: 28px; }
 }
@@ -502,8 +542,8 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__more { margin: 14px 0 0 !important; co
   html.hz8.hz8-lp-page body {
     background:
       linear-gradient(180deg, transparent 0, transparent 50%, var(--lp-canvas) 100%) top center / 100% var(--lp-plaster-h) no-repeat,
-      linear-gradient(color-mix(in srgb, color-mix(in srgb, var(--hz8-surface) 70%, var(--hz8-cta)) 30%, transparent), color-mix(in srgb, color-mix(in srgb, var(--hz8-surface) 70%, var(--hz8-cta)) 30%, transparent)) top center / 100% var(--lp-plaster-h) no-repeat,
-      radial-gradient(80% 50% at 30% 34%, color-mix(in srgb, var(--lp-sun) 60%, transparent) 0, transparent 70%) top center / 100% var(--lp-plaster-h) no-repeat,
+      radial-gradient(95% 44% at 34% 40%, color-mix(in srgb, var(--lp-peach-light) 80%, transparent) 0, color-mix(in srgb, var(--lp-peach-light) 55%, transparent) 50%, transparent 82%) top center / 100% var(--lp-plaster-h) no-repeat,
+      linear-gradient(color-mix(in srgb, var(--lp-peach-light) 54%, transparent), color-mix(in srgb, var(--lp-peach) 40%, transparent)) top center / 100% var(--lp-plaster-h) no-repeat,
       url("assets/landing-thcx/plaster-leaf-900.webp") 8% 0 / auto var(--lp-plaster-h) no-repeat,
       var(--lp-canvas) !important;
   }
@@ -515,10 +555,20 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__more { margin: 14px 0 0 !important; co
   html.hz8.hz8-lp-page #store-main .hz8-lp__nav::-webkit-scrollbar { display: none; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__nav a { flex: 0 0 auto; font-size: 15.5px !important; white-space: nowrap; }
   /* En tydlig huvudruta, nästa syns i kanten. */
-  html.hz8.hz8-lp-page #store-main .hz8-lp__paths { grid-auto-columns: 82%; gap: 12px; }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__path-body { grid-template-areas: "title" "kind" "live" "btn"; grid-template-columns: minmax(0, 1fr); }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__path-btn { justify-content: center; min-height: 46px; margin-top: 12px; }
-  html.hz8.hz8-lp-page #store-main .hz8-lp__path-live { margin-top: 8px !important; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__paths { grid-auto-columns: 74%; gap: 12px; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-body {
+    grid-template-areas: "title price" "kind kind" "names names" "btn btn";
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 10px;
+    padding: 12px 14px 14px;
+  }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path h3 { font-size: 22px !important; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-live { display: contents; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-names { grid-area: names; margin-top: 4px; font-size: 13.5px; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-live .price { grid-area: price; align-self: baseline; flex-direction: column; align-items: flex-end; gap: 0; font-size: 15px !important; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-live .price del { font-size: 11.5px !important; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-kind { font-size: 13.5px !important; }
+  html.hz8.hz8-lp-page #store-main .hz8-lp__path-btn { justify-content: center; min-height: 44px; margin-top: 12px; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__all { font-size: 14px !important; margin-left: 0; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__rail .hz8-prail__head { display: none; }
   html.hz8.hz8-lp-page #store-main .hz8-lp__range:has(.hz8-prail__controls:not([hidden])) .hz8-lp__all { margin-right: 0; }

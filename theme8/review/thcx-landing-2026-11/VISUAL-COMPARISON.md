@@ -9,8 +9,11 @@ Bilderna är incheckade som WebP q85 (PNG gav 40 MB). Ny körning:
 `node verify.mjs && node compare.mjs`, därefter
 `for f in shots/*.png; do cwebp -quiet -q 85 "$f" -o "${f%.png}.webp" && rm "$f"; done`.
 
-**Jämförelseblad (koncept B | avvisat nuläge | ombyggnad):**
-`shots/compare-1440-fold.webp`, `shots/compare-393-fold.webp`.
+**Jämförelseblad (koncept B | före | efter), runda 2:**
+`shots/compare-1440-hero.webp`, `shots/compare-393-hero.webp` (hero + produktkort),
+`shots/compare-1440-faq.webp`, `shots/compare-393-faq.webp` (uppslag + FAQ).
+Före = `2235591` renderad med samma harness (`before-2235591/`); första
+versionen `eb477bb` finns kvar i `before-eb477bb/`.
 Före-bilder: `before-eb477bb/`. Efter: `shots/thcx-{320,393,430,768,1440,1920}-{fold,full}.webp`,
 `shots/thcx-{393,1440,1920}-{stage,uppslag}.webp`, felfall `shots/thcx-{393,1440}-noatmo-*`,
 `thcx-1440-noprod-*`, `thcx-393-zero-*`.
@@ -65,6 +68,16 @@ Bildvikt i repo (`theme8/assets/landing-thcx/`):
 | stenplan | 44 kB, ingår men används inte |
 
 Produktbilderna hämtas som 720 px WebP, ca 45 kB styck.
+
+## Runda 2 (efter Vilmers granskning av 2235591)
+
+| Punkt | Ändring | Kvar mot koncept B |
+|---|---|---|
+| 1. Hero ljusare, persikovarm, lugnare bakom text | Canvasen och putsens ljuslager drar nu mot persika (Theme 8-yta + CTA-orange). En mjuk radial ljuspöl utan kant dämpar lövskuggorna bakom H1, ingress och kapitelrad. Kontrast mätt mot bakgrunden bakom varje textrad, i värsta 5 %-percentilen: H1 ≥ 6,6:1, ingress ≥ 11:1, kapitelrad ≥ 11:1 (393 och 1440). | Konceptet är ännu något ljusare i övre vänstra hörnet och har skarpare lövskuggor till höger. |
+| 2. Varmare, integrerade kort | Textytan är varm sand-persika (ingen nästan-vit). Kanten är varm i stället för vit, och skuggan ligger lägre och bredare i ljusets riktning. Stenens framkant tonar kort in i textytan. Stagen har ljusats och värmts med skikt som bara ligger på bakgrunden. | Konceptets stagebild har en orange solfläck; vår stagebild är jämnare. |
+| 3. Mobilkort | 74 % bredd (nästa kort syns ca 70 px), bild 16:10, förpackningen ca 40 % av kortbredden. Kompakt text: namn + pris på en rad, typ, sorter, knapp. | Inga prickar under raden. |
+| 4. Sortiment → uppslag | En kapitelzon i persikoton glider in under sortimentet och ut efter uppslaget. Desktop: uppslaget är lägre och fotots övre toning kortare, så himlen inte bleks. Mobil: fotot fyller bredden och andra faktastycket börjar i bildens uttonade nederkant. | Konceptets citat finns fortfarande inte (påhittat effektpåstående). |
+| 5. FAQ och olivgren | Grenen är borttagen. Frågorna har samma material som korttexten: varm kant, ljust överljus och mjuk skugga; öppen fråga ljusnar. Ytans ljuspöl klipps inte längre i överkanten. | Konceptet visar tre frågor, vi har sex (innehållet är låst). |
 
 ## Ärlig sammanfattning
 

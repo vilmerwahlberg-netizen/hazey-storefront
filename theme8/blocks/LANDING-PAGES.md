@@ -19,7 +19,7 @@ förpackningar, effekttext och citat används inte. Copy: Agent A
 | `theme8/blocks/thcx.html` | Hela sidans innehåll som ett HTML-block: H1, ingress, ankarlänkar, H2-kapitel, FAQ (`<details>`), alla länkar. Allt i initial HTML. |
 | `theme8/js/88b-landing.js` | Ur blockets `data-hz8-sources` (I lager-filter): ställer varje produktvägs (`data-hz8-match`) verkliga frilagda Nyehandel-bild på stenstagen med pris och sortnamn, och fyller sortimentsledet (Nyehandels egna kort, varianter som egna kort). Ingen ny text skapas i JS. |
 | `theme8/css/88b-landing.css` | Mallens lager: varm canvas, solbelyst puts, stenstage, kontaktskugga, kustuppslag, FAQ-yta. Färger ur `00-foundation.css` + en provtagen putston (`--lp-sun`). |
-| `theme8/assets/landing-thcx/` | Produktfria atmosfärsbilder (optimerade kopior ur `visual-redesign/assets/atmosphere/`): puts 1672/900, stage 960, kust 1672/900, olivgren 768, stenplan 900 (ingår, används inte). Aldrig produktbild eller `og:image`. |
+| `theme8/assets/landing-thcx/` | Produktfria atmosfärsbilder (optimerade kopior ur `visual-redesign/assets/atmosphere/`): puts 1672/900, stage 960, kust 1672/900, olivgren 768 och stenplan 900 (ingår, används inte – grenen togs bort ur FAQ 2026-11-14 eftersom den såg påklistrad ut). Aldrig produktbild eller `og:image`. |
 | `theme8/js/88-pages.js` | Lämnar sidor med `.hz8-lp` åt 88b (ingen injicerad H1, ingen dokumentmall). |
 | `theme8/review/thcx-landing-2026-11/` | `verify.mjs` (320–1920 + felfall utan atmosfär, utan produktbild, utan produkter), `compare.mjs` (koncept/före/efter), `verify.json`, `VISUAL-COMPARISON.md`, `shots/`, `before-eb477bb/`. |
 

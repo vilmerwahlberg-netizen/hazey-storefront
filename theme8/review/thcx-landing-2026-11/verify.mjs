@@ -14,7 +14,7 @@
 import fs from "node:fs"; import path from "node:path";
 import { chromium, ctxFor, open, ready, url } from "../launch-task-queue-2026-10/01-global-boot-footer/review/lib.mjs";
 const DIR = path.dirname(new URL(import.meta.url).pathname);
-const OUT = path.join(DIR, "shots"); fs.mkdirSync(OUT, { recursive: true });
+const OUT = process.env.OUT || path.join(DIR, "shots"); // OUT/WHICH=before: före-bilder ur en annan build (T01_BASE) fs.mkdirSync(OUT, { recursive: true });
 const BLOCK = fs.readFileSync(path.join(DIR, "../../blocks/thcx.html"), "utf8");
 const LOADER = fs.readFileSync(path.join(DIR, "../../blocks/loader-theme8-dev.html"), "utf8").trim();
 const TITLE = "THCX i Sverige – vapes, hasch och fakta | Hazey";
@@ -43,12 +43,34 @@ async function fixture(ctx, mode) {
   });
 }
 
+async function contrast(p, sels) {
+  const boxes = await p.evaluate(sels => sels.map(s => { const e = document.querySelector(s); if (!e) return null; const q = e.getBoundingClientRect(); if (q.bottom < 0 || q.top > innerHeight) return null; const c = getComputedStyle(e).color; return { s, r: [q.left, q.top, q.width, q.height], c }; }), sels);
+  await p.addStyleTag({ content: "#store-main#store-main .hz8-lp *{color:transparent!important;text-decoration-color:transparent!important;border-color:transparent!important;caret-color:transparent!important} #store-main#store-main :is(.hz8-lp__path-btn,.hz8-lp__pack,.hz8-lp__kicker,.hz8-lp__eyebrow)::after{visibility:hidden!important} #store-main#store-main :is(.hz8-lp__path-btn,.hz8-lp__pack){visibility:hidden!important}" }).then(h => p.__ctag = h);
+  await p.waitForTimeout(150);
+  const shot = (await p.screenshot()).toString("base64");
+  await p.evaluate(() => document.querySelectorAll("style").forEach(s => { if (s.textContent.startsWith("#store-main#store-main .hz8-lp *{color:transparent")) s.remove(); }));
+  return p.evaluate(async ({ shot, boxes }) => {
+    const i = new Image(); i.src = "data:image/png;base64," + shot; await i.decode();
+    const k = i.width / innerWidth; const c = document.createElement("canvas"); c.width = i.width; c.height = i.height; const x = c.getContext("2d"); x.drawImage(i, 0, 0);
+    const lin = v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; };
+    const L = (r, g, b) => .2126 * lin(r) + .7152 * lin(g) + .0722 * lin(b);
+    return boxes.filter(Boolean).map(({ s, r, c: col }) => {
+      const cc = document.createElement("canvas").getContext("2d"); cc.fillStyle = col; cc.fillRect(0, 0, 1, 1); const [tr, tg, tb] = cc.getImageData(0, 0, 1, 1).data; const lt = L(tr, tg, tb);
+      const d = x.getImageData(Math.max(0, r[0] * k), Math.max(0, r[1] * k), Math.max(1, r[2] * k), Math.max(1, r[3] * k)).data; const ls = [];
+      for (let j = 0; j < d.length; j += 16) ls.push(L(d[j], d[j + 1], d[j + 2]));
+      ls.sort((a, b) => a - b); const worst = ls[Math.floor(ls.length * .05)], med = ls[Math.floor(ls.length / 2)];
+      const cr = lb => ((Math.max(lb, lt) + .05) / (Math.min(lb, lt) + .05)).toFixed(2);
+      return { s, worst: +cr(worst), median: +cr(med) };
+    });
+  }, { shot, boxes });
+}
+
 const b = await chromium.launch({ channel: "chrome" }); const results = [];
 const ALL = [["320", 320, 700], ["393", 393, 852], ["430", 430, 932], ["768", 768, 1024], ["1440", 1440, 900], ["1920", 1920, 1080],
   ["393-noatmo", 393, 852, "noatmo"], ["1440-noatmo", 1440, 900, "noatmo"], ["1440-noprod", 1440, 900, "noprod"], ["393-zero", 393, 852, "zero"]];
 const RUNS = ALL.filter(([t]) => !process.env.ONLY || process.env.ONLY.split(",").includes(t));
 for (const [tag, w, h, mode] of RUNS) {
-  const ctx = await ctxFor(b, w, h); await fixture(ctx, mode);
+  const ctx = await ctxFor(b, w, h, { which: process.env.WHICH || "after" }); await fixture(ctx, mode);
   const p = await open(ctx, "/sv/page/thcx"); await ready(p, 4500);
   await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 110)); } window.scrollTo(0, 0); });
   await p.mouse.move(2, h - 2); await p.waitForTimeout(1500);
@@ -75,6 +97,10 @@ for (const [tag, w, h, mode] of RUNS) {
       oldContentPagesRan: !!document.querySelector(".hz8-page-head, .hz8-page-empty, .hz8-doc")
     };
   });
+  // Kontrast: texten görs genomskinlig, bakgrunden bakom varje textrad
+  // läses ur en skärmbild och kontrasten mot textens egen färg räknas på
+  // den mörkaste 5 %-percentilen (värsta fallet, inte medel).
+  m.contrast = await contrast(p, [".hz8-lp h1", ".hz8-lp__lead", ".hz8-lp__nav a", ".hz8-lp__kicker", ".hz8-lp__path h3", ".hz8-lp__path-kind", ".hz8-lp__path-live .price"]);
   // Tangentbord: Tab genom första produktvägen -> fokusram synlig; ankare -> rubrik får fokus.
   await p.locator('.hz8-lp__nav a[href="#fragor"]').focus(); await p.keyboard.press("Tab");
   m.leadFocus = await p.evaluate(() => { const l = document.activeElement.closest(".hz8-lp__path"); return l ? getComputedStyle(l).outlineStyle + " " + document.activeElement.textContent.trim() : "fokus på " + document.activeElement.tagName; });
@@ -87,6 +113,9 @@ for (const [tag, w, h, mode] of RUNS) {
   await p.screenshot({ path: path.join(OUT, `thcx-${tag}-full.png`), fullPage: true });
   if (!mode) {
     const lp = await p.$(".hz8-lp__paths"); if (lp) await lp.screenshot({ path: path.join(OUT, `thcx-${tag}-stage.png`) });
+    // Uppslag + FAQ i ett: från uppslagets överkant till FAQ:ns nederkant.
+    const uf = await p.evaluate(() => { const a = document.querySelector(".hz8-lp__story").getBoundingClientRect(), z = document.querySelector(".hz8-lp__faq").getBoundingClientRect(); return { x: 0, y: Math.max(0, a.top + scrollY - 60), width: innerWidth, height: z.bottom - a.top + 60 }; });
+    await p.screenshot({ path: path.join(OUT, `thcx-${tag}-uppslag-faq.png`), clip: uf, fullPage: true });
     const st = await p.$(".hz8-lp__story"); if (st) { await st.scrollIntoViewIfNeeded(); await p.waitForTimeout(300); await p.screenshot({ path: path.join(OUT, `thcx-${tag}-uppslag.png`), clip: await p.evaluate(() => { const q = document.querySelector(".hz8-lp__story").getBoundingClientRect(); return { x: 0, y: Math.max(0, q.top + scrollY - 40), width: innerWidth, height: Math.min(q.height + 80, 1400) }; }), fullPage: true }); }
   }
   m.errors = p.errors.filter(e => !/favicon|trustpilot|Failed to load resource|recaptcha/i.test(e));
@@ -104,5 +133,5 @@ for (const [tag, w, h, mode] of RUNS) {
 }
 const noJs = { h1: (BLOCK.match(/<h1/g) || []).length, h2: (BLOCK.match(/<h2/g) || []).length, h3: (BLOCK.match(/<h3/g) || []).length, links: (BLOCK.match(/<a /g) || []).length, faq: (BLOCK.match(/<details/g) || []).length };
 console.log("initial-html", JSON.stringify(noJs));
-if (!FOLD) fs.writeFileSync(path.join(DIR, "verify.json"), JSON.stringify({ noJs, results }, null, 1));
+if (!FOLD && !process.env.OUT) fs.writeFileSync(path.join(DIR, "verify.json"), JSON.stringify({ noJs, results }, null, 1));
 await b.close();
