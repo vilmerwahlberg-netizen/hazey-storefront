@@ -2,228 +2,19 @@
  "noJs": {
   "h1": 1,
   "h2": 5,
-  "links": 15,
+  "h3": 4,
+  "links": 18,
   "faq": 6
  },
  "results": [
   {
-   "w": 393,
+   "tag": "320",
+   "w": 320,
    "mode": "",
-   "page": "page",
    "lpClass": true,
    "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
    "h1": [
-    "THCX – vapes, hasch och fakta"
-   ],
-   "h2": [
-    "THCX-produkter i lager",
-    "Vad är THCX?",
-    "Hero’s Core i THCX-familjen",
-    "Analysintyg",
-    "Vanliga frågor om THCX"
-   ],
-   "overflowX": 0,
-   "wide": [
-    "A."
-   ],
-   "cards": [
-    {
-     "name": "Gelato",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Gelato"
-    },
-    {
-     "name": "Strawberry Kush",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Strawberry Kush"
-    },
-    {
-     "name": "Melon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Melon Haze"
-    },
-    {
-     "name": "Pineapple Express",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Pineapple Express"
-    },
-    {
-     "name": "Super Lemon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Super Lemon Haze"
-    },
-    {
-     "name": "Coconut Cake",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Coconut Cake"
-    },
-    {
-     "name": "EL Gringo – Strawberry Shortcake – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "EL Gringo – Strawberry Shortcake – 5g"
-    },
-    {
-     "name": "High Life – Malaga Magic – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Malaga Magic – 5g"
-    },
-    {
-     "name": "High Life – Northern Lights – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Northern Lights – 5g"
-    }
-   ],
-   "indicaSativa": 0,
-   "lineup": [
-    {
-     "alt": "Hero's Core - 2ml",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml",
-     "w": 94,
-     "h": 157,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "EL Gringo – Strawberry Shortcake – 5g",
-     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "w": 96,
-     "h": 130,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Malaga Magic – 5g",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "w": 102,
-     "h": 130,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Northern Lights – 5g",
-     "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "w": 99,
-     "h": 130,
-     "loaded": true,
-     "inside": true
-    }
-   ],
-   "storyCols": "361px",
-   "textCols": "none",
-   "themeAsset": false,
-   "text": {
-    "banned": []
-   },
-   "railGeom": {
-    "list": [
-     0,
-     393
-    ],
-    "li": [
-     16,
-     224
-    ],
-    "card": [
-     21,
-     214
-    ],
-    "pad": "2px 16px 8px",
-    "nav": [
-     0,
-     393
-    ],
-    "navH": 44
-   },
-   "firstCardTop": 607,
-   "links": [
-    "#produkter",
-    "#vad-ar-thcx",
-    "#analysintyg",
-    "#fragor",
-    "/sv/categories/thcx",
-    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
-    "/sv/products/thc-x-vape-hero-core-2ml",
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n",
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/page/kop-och-leveransvillkor",
-    "/sv/page/faq",
-    "/sv/categories/hasch",
-    "/sv/categories/alla-vapes"
-   ],
-   "railLabel": "hz8-lp-products-title",
-   "oldContentPagesRan": false,
-   "anchor": {
-    "focused": "Analysintyg",
-    "top": 127,
-    "header": -48,
-    "hash": "#analysintyg"
-   },
-   "faqOpen": true,
-   "errors": [],
-   "linkStatus": {
-    "/sv/categories/thcx": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g": 200,
-    "/sv/products/high-life-hash-northern-lights-5g": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/page/kop-och-leveransvillkor": 200,
-    "/sv/page/faq": 200,
-    "/sv/categories/hasch": 200,
-    "/sv/categories/alla-vapes": 200
-   }
-  },
-  {
-   "w": 1440,
-   "mode": "",
-   "page": "page",
-   "lpClass": true,
-   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
-   "h1": [
-    "THCX – vapes, hasch och fakta"
+    "THCX"
    ],
    "h2": [
     "THCX-produkter i lager",
@@ -234,553 +25,207 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "cards": [
+   "leads": [
     {
-     "name": "Gelato",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Gelato"
-    },
-    {
-     "name": "Strawberry Kush",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Strawberry Kush"
-    },
-    {
-     "name": "Melon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Melon Haze"
-    },
-    {
-     "name": "Pineapple Express",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Pineapple Express"
-    },
-    {
-     "name": "Super Lemon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Super Lemon Haze"
-    },
-    {
-     "name": "Coconut Cake",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Coconut Cake"
-    },
-    {
-     "name": "EL Gringo – Strawberry Shortcake – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "EL Gringo – Strawberry Shortcake – 5g"
-    },
-    {
-     "name": "High Life – Malaga Magic – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Malaga Magic – 5g"
-    },
-    {
-     "name": "High Life – Northern Lights – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Northern Lights – 5g"
-    }
-   ],
-   "indicaSativa": 0,
-   "lineup": [
-    {
-     "alt": "Hero's Core - 2ml",
+     "title": "Hero’s Core",
+     "hidden": false,
      "href": "/sv/products/thc-x-vape-hero-core-2ml",
-     "w": 178,
-     "h": 331,
-     "loaded": true,
-     "inside": true
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       101,
+       503,
+       66,
+       104
+      ],
+      "webp": true
+     },
+     "box": [
+      16,
+      487,
+      236,
+      347
+     ]
     },
     {
-     "alt": "EL Gringo – Strawberry Shortcake – 5g",
-     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "w": 182,
-     "h": 274,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Malaga Magic – 5g",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "w": 194,
-     "h": 274,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Northern Lights – 5g",
+     "title": "High Life",
+     "hidden": false,
      "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "w": 189,
-     "h": 274,
-     "loaded": true,
-     "inside": true
-    }
-   ],
-   "storyCols": "526px 736.406px",
-   "textCols": "none",
-   "themeAsset": false,
-   "text": {
-    "banned": []
-   },
-   "railGeom": {
-    "list": [
-     60,
-     1320
-    ],
-    "li": [
-     62,
-     274
-    ],
-    "card": [
-     67,
-     264
-    ],
-    "pad": "2px 2px 8px",
-    "nav": [
-     60,
-     760
-    ],
-    "navH": 44
-   },
-   "firstCardTop": 568,
-   "links": [
-    "#produkter",
-    "#vad-ar-thcx",
-    "#analysintyg",
-    "#fragor",
-    "/sv/categories/thcx",
-    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
-    "/sv/products/thc-x-vape-hero-core-2ml",
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n",
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/page/kop-och-leveransvillkor",
-    "/sv/page/faq",
-    "/sv/categories/hasch",
-    "/sv/categories/alla-vapes"
-   ],
-   "railLabel": "hz8-lp-products-title",
-   "oldContentPagesRan": false,
-   "anchor": {
-    "focused": "Analysintyg",
-    "top": 143,
-    "header": -48,
-    "hash": "#analysintyg"
-   },
-   "faqOpen": true,
-   "errors": [],
-   "linkStatus": {
-    "/sv/categories/thcx": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g": 200,
-    "/sv/products/high-life-hash-northern-lights-5g": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/page/kop-och-leveransvillkor": 200,
-    "/sv/page/faq": 200,
-    "/sv/categories/hasch": 200,
-    "/sv/categories/alla-vapes": 200
-   }
-  },
-  {
-   "w": 1920,
-   "mode": "",
-   "page": "page",
-   "lpClass": true,
-   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
-   "h1": [
-    "THCX – vapes, hasch och fakta"
-   ],
-   "h2": [
-    "THCX-produkter i lager",
-    "Vad är THCX?",
-    "Hero’s Core i THCX-familjen",
-    "Analysintyg",
-    "Vanliga frågor om THCX"
-   ],
-   "overflowX": 0,
-   "wide": [],
-   "cards": [
-    {
-     "name": "Gelato",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Gelato"
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       346,
+       518,
+       73,
+       90
+      ],
+      "webp": true
+     },
+     "box": [
+      264,
+      487,
+      236,
+      347
+     ]
     },
     {
-     "name": "Strawberry Kush",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Strawberry Kush"
-    },
-    {
-     "name": "Melon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Melon Haze"
-    },
-    {
-     "name": "Pineapple Express",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Pineapple Express"
-    },
-    {
-     "name": "Super Lemon Haze",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Super Lemon Haze"
-    },
-    {
-     "name": "Coconut Cake",
-     "brand": "Hero's Core - 2ml",
-     "price": "675 kr",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Coconut Cake"
-    },
-    {
-     "name": "EL Gringo – Strawberry Shortcake – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
+     "title": "El Gringo",
+     "hidden": false,
      "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "EL Gringo – Strawberry Shortcake – 5g"
-    },
-    {
-     "name": "High Life – Malaga Magic – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Malaga Magic – 5g"
-    },
-    {
-     "name": "High Life – Northern Lights – 5g",
-     "brand": "Hero",
-     "price": "695 kr 590 kr",
-     "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Northern Lights – 5g"
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       595,
+       518,
+       70,
+       90
+      ],
+      "webp": true
+     },
+     "box": [
+      512,
+      487,
+      236,
+      347
+     ]
     }
-   ],
-   "indicaSativa": 0,
-   "lineup": [
-    {
-     "alt": "Hero's Core - 2ml",
-     "href": "/sv/products/thc-x-vape-hero-core-2ml",
-     "w": 224,
-     "h": 360,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "EL Gringo – Strawberry Shortcake – 5g",
-     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "w": 231,
-     "h": 300,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Malaga Magic – 5g",
-     "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "w": 247,
-     "h": 300,
-     "loaded": true,
-     "inside": true
-    },
-    {
-     "alt": "High Life – Northern Lights – 5g",
-     "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "w": 239,
-     "h": 300,
-     "loaded": true,
-     "inside": true
-    }
-   ],
-   "storyCols": "656.656px 919.328px",
-   "textCols": "none",
-   "themeAsset": false,
-   "text": {
-    "banned": []
-   },
-   "railGeom": {
-    "list": [
-     140,
-     1640
-    ],
-    "li": [
-     142,
-     278
-    ],
-    "card": [
-     147,
-     268
-    ],
-    "pad": "2px 2px 8px",
-    "nav": [
-     140,
-     760
-    ],
-    "navH": 44
-   },
-   "firstCardTop": 667,
-   "links": [
-    "#produkter",
-    "#vad-ar-thcx",
-    "#analysintyg",
-    "#fragor",
-    "/sv/categories/thcx",
-    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
-    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
-    "/sv/products/thc-x-vape-hero-core-2ml",
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n",
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n",
-    "/sv/page/kop-och-leveransvillkor",
-    "/sv/page/faq",
-    "/sv/categories/hasch",
-    "/sv/categories/alla-vapes"
-   ],
-   "railLabel": "hz8-lp-products-title",
-   "oldContentPagesRan": false,
-   "anchor": {
-    "focused": "Analysintyg",
-    "top": 143,
-    "header": -48,
-    "hash": "#analysintyg"
-   },
-   "faqOpen": true,
-   "errors": [],
-   "linkStatus": {
-    "/sv/categories/thcx": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g": 200,
-    "/sv/products/high-life-hash-northern-lights-5g": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml": 200,
-    "/sv/products/thc-x-vape-hero-core-2ml?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/el-gringo-hash-strawberry-shortcake-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-malaga-magic-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/products/high-life-hash-northern-lights-5g?preview=v9kzdmqz4w60l5n": 200,
-    "/sv/page/kop-och-leveransvillkor": 200,
-    "/sv/page/faq": 200,
-    "/sv/categories/hasch": 200,
-    "/sv/categories/alla-vapes": 200
-   }
-  },
-  {
-   "w": 393,
-   "mode": "noimg",
-   "page": "page",
-   "lpClass": true,
-   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
-   "h1": [
-    "THCX – vapes, hasch och fakta"
-   ],
-   "h2": [
-    "THCX-produkter i lager",
-    "Vad är THCX?",
-    "Hero’s Core i THCX-familjen",
-    "Analysintyg",
-    "Vanliga frågor om THCX"
-   ],
-   "overflowX": 0,
-   "wide": [
-    "A."
    ],
    "cards": [
     {
      "name": "Gelato",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Gelato"
+     "fit": "contain"
     },
     {
      "name": "Strawberry Kush",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Strawberry Kush"
+     "fit": "contain"
     },
     {
      "name": "Melon Haze",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Melon Haze"
+     "fit": "contain"
     },
     {
      "name": "Pineapple Express",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Pineapple Express"
+     "fit": "contain"
     },
     {
      "name": "Super Lemon Haze",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Super Lemon Haze"
+     "fit": "contain"
     },
     {
      "name": "Coconut Cake",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Coconut Cake"
+     "fit": "contain"
     },
     {
      "name": "EL Gringo – Strawberry Shortcake – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "EL Gringo – Strawberry Shortcake – 5g"
+     "fit": "contain"
     },
     {
      "name": "High Life – Malaga Magic – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Malaga Magic – 5g"
+     "fit": "contain"
     },
     {
      "name": "High Life – Northern Lights – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Northern Lights – 5g"
+     "fit": "contain"
     }
    ],
    "indicaSativa": 0,
-   "lineup": [],
-   "storyCols": "361px",
-   "textCols": "minmax(0px, 5fr) minmax(0px, 7fr)",
-   "themeAsset": false,
-   "text": {
-    "banned": []
-   },
-   "railGeom": {
-    "list": [
-     0,
-     393
-    ],
-    "li": [
+   "boxes": {
+    "h1": [
      16,
-     224
+     121,
+     288,
+     50
     ],
-    "card": [
-     21,
-     214
-    ],
-    "pad": "2px 16px 8px",
-    "nav": [
+    "leads": [
      0,
-     393
+     483,
+     320,
+     369
     ],
-    "navH": 44
+    "range": [
+     16,
+     887,
+     288,
+     412
+    ],
+    "story": [
+     16,
+     1323,
+     288,
+     717
+    ],
+    "photo": [
+     0,
+     1589,
+     320,
+     200
+    ],
+    "faq": [
+     16,
+     2639,
+     288,
+     891
+    ]
    },
-   "firstCardTop": 607,
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 50%, ",
+   "text": {
+    "banned": []
+   },
    "links": [
     "#produkter",
     "#vad-ar-thcx",
     "#analysintyg",
     "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
     "/sv/categories/thcx",
     "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
     "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
     "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
-    "/sv/products/thc-x-vape-hero-core-2ml",
     "/sv/page/kop-och-leveransvillkor",
     "/sv/page/faq",
     "/sv/categories/hasch",
     "/sv/categories/alla-vapes"
    ],
-   "railLabel": "hz8-lp-products-title",
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
    "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
    "anchor": {
     "focused": "Analysintyg",
     "top": 127,
@@ -791,13 +236,13 @@
    "errors": []
   },
   {
-   "w": 1440,
-   "mode": "noimg",
-   "page": "page",
+   "tag": "393",
+   "w": 393,
+   "mode": "",
    "lpClass": true,
    "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
    "h1": [
-    "THCX – vapes, hasch och fakta"
+    "THCX"
    ],
    "h2": [
     "THCX-produkter i lager",
@@ -808,138 +253,1917 @@
    ],
    "overflowX": 0,
    "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       123,
+       469,
+       83,
+       130
+      ],
+      "webp": true
+     },
+     "box": [
+      16,
+      448,
+      296,
+      384
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       426,
+       487,
+       91,
+       112
+      ],
+      "webp": true
+     },
+     "box": [
+      324,
+      448,
+      296,
+      384
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       736,
+       487,
+       88,
+       112
+      ],
+      "webp": true
+     },
+     "box": [
+      632,
+      448,
+      296,
+      384
+     ]
+    }
+   ],
    "cards": [
     {
      "name": "Gelato",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Gelato"
+     "fit": "contain"
     },
     {
      "name": "Strawberry Kush",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Strawberry Kush"
+     "fit": "contain"
     },
     {
      "name": "Melon Haze",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Melon Haze"
+     "fit": "contain"
     },
     {
      "name": "Pineapple Express",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Pineapple Express"
+     "fit": "contain"
     },
     {
      "name": "Super Lemon Haze",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Super Lemon Haze"
+     "fit": "contain"
     },
     {
      "name": "Coconut Cake",
-     "brand": "Hero's Core - 2ml",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "Hero's Core - 2ml – Coconut Cake"
+     "fit": "contain"
     },
     {
      "name": "EL Gringo – Strawberry Shortcake – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "EL Gringo – Strawberry Shortcake – 5g"
+     "fit": "contain"
     },
     {
      "name": "High Life – Malaga Magic – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/high-life-hash-malaga-magic-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Malaga Magic – 5g"
+     "fit": "contain"
     },
     {
      "name": "High Life – Northern Lights – 5g",
-     "brand": "Hero",
      "price": "695 kr 590 kr",
      "href": "/sv/products/high-life-hash-northern-lights-5g",
-     "soldout": false,
-     "fit": "contain",
-     "alt": "High Life – Northern Lights – 5g"
+     "fit": "contain"
     }
    ],
    "indicaSativa": 0,
-   "lineup": [],
-   "storyCols": "1320px",
-   "textCols": "526px 736.406px",
-   "themeAsset": false,
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     60
+    ],
+    "leads": [
+     0,
+     444,
+     393,
+     406
+    ],
+    "range": [
+     16,
+     886,
+     361,
+     394
+    ],
+    "story": [
+     16,
+     1304,
+     361,
+     682
+    ],
+    "photo": [
+     0,
+     1543,
+     393,
+     246
+    ],
+    "faq": [
+     16,
+     2481,
+     361,
+     858
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 50%, ",
    "text": {
     "banned": []
    },
-   "railGeom": {
-    "list": [
-     60,
-     1320
-    ],
-    "li": [
-     62,
-     274
-    ],
-    "card": [
-     67,
-     264
-    ],
-    "pad": "2px 2px 8px",
-    "nav": [
-     60,
-     760
-    ],
-    "navH": 44
-   },
-   "firstCardTop": 568,
    "links": [
     "#produkter",
     "#vad-ar-thcx",
     "#analysintyg",
     "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
     "/sv/categories/thcx",
     "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
     "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
     "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
-    "/sv/products/thc-x-vape-hero-core-2ml",
     "/sv/page/kop-och-leveransvillkor",
     "/sv/page/faq",
     "/sv/categories/hasch",
     "/sv/categories/alla-vapes"
    ],
-   "railLabel": "hz8-lp-products-title",
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
    "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 127,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "430",
+   "w": 430,
+   "mode": "",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       134,
+       476,
+       91,
+       144
+      ],
+      "webp": true
+     },
+     "box": [
+      16,
+      453,
+      326,
+      403
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       467,
+       496,
+       101,
+       124
+      ],
+      "webp": true
+     },
+     "box": [
+      354,
+      453,
+      326,
+      403
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       807,
+       496,
+       97,
+       124
+      ],
+      "webp": true
+     },
+     "box": [
+      693,
+      453,
+      326,
+      403
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     398,
+     65
+    ],
+    "leads": [
+     0,
+     449,
+     430,
+     425
+    ],
+    "range": [
+     16,
+     910,
+     398,
+     410
+    ],
+    "story": [
+     16,
+     1344,
+     398,
+     678
+    ],
+    "photo": [
+     0,
+     1556,
+     430,
+     269
+    ],
+    "faq": [
+     16,
+     2517,
+     398,
+     858
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 50%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 127,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "768",
+   "w": 768,
+   "mode": "",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       144,
+       444,
+       76,
+       120
+      ],
+      "webp": true
+     },
+     "box": [
+      24,
+      424,
+      317,
+      317
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       473,
+       459,
+       85,
+       105
+      ],
+      "webp": true
+     },
+     "box": [
+      357,
+      424,
+      317,
+      317
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       807,
+       459,
+       82,
+       105
+      ],
+      "webp": true
+     },
+     "box": [
+      690,
+      424,
+      317,
+      317
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     24,
+     137,
+     720,
+     58
+    ],
+    "leads": [
+     8,
+     420,
+     752,
+     339
+    ],
+    "range": [
+     24,
+     795,
+     720,
+     384
+    ],
+    "story": [
+     24,
+     1203,
+     720,
+     852
+    ],
+    "photo": [
+     8,
+     1415,
+     752,
+     470
+    ],
+    "faq": [
+     24,
+     2368,
+     720,
+     836
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 52%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
    "anchor": {
     "focused": "Analysintyg",
     "top": 143,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "1440",
+   "w": 1440,
+   "mode": "",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       221,
+       519,
+       102,
+       161
+      ],
+      "webp": true
+     },
+     "box": [
+      60,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       663,
+       541,
+       114,
+       140
+      ],
+      "webp": true
+     },
+     "box": [
+      508,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       1113,
+       541,
+       110,
+       140
+      ],
+      "webp": true
+     },
+     "box": [
+      955,
+      493,
+      425,
+      368
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     60,
+     137,
+     760,
+     96
+    ],
+    "leads": [
+     60,
+     493,
+     1320,
+     368
+    ],
+    "range": [
+     60,
+     913,
+     1320,
+     384
+    ],
+    "story": [
+     60,
+     1340,
+     1320,
+     547
+    ],
+    "photo": [
+     614,
+     1340,
+     826,
+     547
+    ],
+    "faq": [
+     60,
+     2187,
+     1320,
+     654
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 52%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 143,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": [],
+   "linkStatus": {
+    "/sv/products/thc-x-vape-hero-core-2ml": 200,
+    "/sv/products/high-life-hash-northern-lights-5g": 200,
+    "/sv/products/high-life-hash-malaga-magic-5g": 200,
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g": 200,
+    "/sv/categories/thcx": 200,
+    "/sv/page/kop-och-leveransvillkor": 200,
+    "/sv/page/faq": 200,
+    "/sv/categories/hasch": 200,
+    "/sv/categories/alla-vapes": 200
+   },
+   "assetBytes": {
+    "coast-editorial-1672.webp": 111348,
+    "coast-editorial-900.webp": 35766,
+    "olive-branch-768.webp": 70672,
+    "plaster-leaf-1672.webp": 194000,
+    "plaster-leaf-900.webp": 21456,
+    "product-stage-960.webp": 63958,
+    "sandstone-plinth-900.webp": 43978
+   }
+  },
+  {
+   "tag": "1920",
+   "w": 1920,
+   "mode": "",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       341,
+       541,
+       128,
+       201
+      ],
+      "webp": true
+     },
+     "box": [
+      140,
+      508,
+      529,
+      429
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       889,
+       567,
+       142,
+       175
+      ],
+      "webp": true
+     },
+     "box": [
+      695,
+      508,
+      529,
+      429
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       1447,
+       567,
+       137,
+       175
+      ],
+      "webp": true
+     },
+     "box": [
+      1251,
+      508,
+      529,
+      429
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     140,
+     137,
+     760,
+     104
+    ],
+    "leads": [
+     140,
+     508,
+     1640,
+     429
+    ],
+    "range": [
+     140,
+     993,
+     1640,
+     394
+    ],
+    "story": [
+     140,
+     1435,
+     1640,
+     640
+    ],
+    "photo": [
+     829,
+     1435,
+     1091,
+     640
+    ],
+    "faq": [
+     140,
+     2387,
+     1640,
+     672
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 52%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 143,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "393-noatmo",
+   "w": 393,
+   "mode": "noatmo",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       123,
+       469,
+       83,
+       130
+      ],
+      "webp": true
+     },
+     "box": [
+      16,
+      448,
+      296,
+      384
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       426,
+       487,
+       91,
+       112
+      ],
+      "webp": true
+     },
+     "box": [
+      324,
+      448,
+      296,
+      384
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       736,
+       487,
+       88,
+       112
+      ],
+      "webp": true
+     },
+     "box": [
+      632,
+      448,
+      296,
+      384
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     60
+    ],
+    "leads": [
+     0,
+     444,
+     393,
+     406
+    ],
+    "range": [
+     16,
+     886,
+     361,
+     394
+    ],
+    "story": [
+     16,
+     1304,
+     361,
+     682
+    ],
+    "photo": [
+     0,
+     1543,
+     393,
+     246
+    ],
+    "faq": [
+     16,
+     2481,
+     361,
+     858
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 50%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 127,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "1440-noatmo",
+   "w": 1440,
+   "mode": "noatmo",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       457,
+       720
+      ],
+      "box": [
+       221,
+       519,
+       102,
+       161
+      ],
+      "webp": true
+     },
+     "box": [
+      60,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       584,
+       720
+      ],
+      "box": [
+       663,
+       541,
+       114,
+       140
+      ],
+      "webp": true
+     },
+     "box": [
+      508,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": {
+      "loaded": true,
+      "nat": [
+       565,
+       720
+      ],
+      "box": [
+       1113,
+       541,
+       110,
+       140
+      ],
+      "webp": true
+     },
+     "box": [
+      955,
+      493,
+      425,
+      368
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     60,
+     137,
+     760,
+     96
+    ],
+    "leads": [
+     60,
+     493,
+     1320,
+     368
+    ],
+    "range": [
+     60,
+     913,
+     1320,
+     384
+    ],
+    "story": [
+     60,
+     1340,
+     1320,
+     547
+    ],
+    "photo": [
+     614,
+     1340,
+     826,
+     547
+    ],
+    "faq": [
+     60,
+     2187,
+     1320,
+     654
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 52%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 143,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "1440-noprod",
+   "w": 1440,
+   "mode": "noprod",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "675 kr",
+     "img": null,
+     "box": [
+      60,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "Northern Lights · Malaga Magic 695 kr 590 kr",
+     "img": null,
+     "box": [
+      508,
+      493,
+      425,
+      368
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "Strawberry Shortcake 695 kr 590 kr",
+     "img": null,
+     "box": [
+      955,
+      493,
+      425,
+      368
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "fit": "contain"
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "fit": "contain"
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "fit": "contain"
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "fit": "contain"
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "fit": "contain"
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "fit": "contain"
+    },
+    {
+     "name": "EL Gringo – Strawberry Shortcake – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Malaga Magic – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-malaga-magic-5g",
+     "fit": "contain"
+    },
+    {
+     "name": "High Life – Northern Lights – 5g",
+     "price": "695 kr 590 kr",
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "fit": "contain"
+    }
+   ],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     60,
+     137,
+     760,
+     96
+    ],
+    "leads": [
+     60,
+     493,
+     1320,
+     368
+    ],
+    "range": [
+     60,
+     913,
+     1320,
+     384
+    ],
+    "story": [
+     60,
+     1340,
+     1320,
+     547
+    ],
+    "photo": [
+     614,
+     1340,
+     826,
+     547
+    ],
+    "faq": [
+     60,
+     2187,
+     1320,
+     654
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 52%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/high-life-hash-malaga-magic-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "https://hazeyse.nyehandel.se/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-malaga-magic-5g",
+    "https://hazeyse.nyehandel.se/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "railLabel": "hz8-lp-range-title",
+   "fallbackShown": false,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 143,
+    "header": -48,
+    "hash": "#analysintyg"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "393-zero",
+   "w": 393,
+   "mode": "zero",
+   "lpClass": true,
+   "title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+   "h1": [
+    "THCX"
+   ],
+   "h2": [
+    "THCX-produkter i lager",
+    "Vad är THCX?",
+    "Hero’s Core i THCX-familjen",
+    "Analysintyg",
+    "Vanliga frågor om THCX"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "leads": [
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "live": "",
+     "img": null,
+     "box": [
+      16,
+      448,
+      296,
+      323
+     ]
+    },
+    {
+     "title": "High Life",
+     "hidden": false,
+     "href": "/sv/products/high-life-hash-northern-lights-5g",
+     "live": "",
+     "img": null,
+     "box": [
+      324,
+      448,
+      296,
+      323
+     ]
+    },
+    {
+     "title": "El Gringo",
+     "hidden": false,
+     "href": "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+     "live": "",
+     "img": null,
+     "box": [
+      632,
+      448,
+      296,
+      323
+     ]
+    }
+   ],
+   "cards": [],
+   "indicaSativa": 0,
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     60
+    ],
+    "leads": [
+     0,
+     444,
+     393,
+     345
+    ],
+    "range": [
+     16,
+     825,
+     361,
+     131
+    ],
+    "story": [
+     16,
+     980,
+     361,
+     682
+    ],
+    "photo": [
+     0,
+     1218,
+     393,
+     246
+    ],
+    "faq": [
+     16,
+     2156,
+     361,
+     858
+    ]
+   },
+   "bodyBg": "linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 50%, ",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#vad-ar-thcx",
+    "#analysintyg",
+    "#fragor",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/high-life-hash-northern-lights-5g",
+    "/sv/products/el-gringo-hash-strawberry-shortcake-5g",
+    "/sv/categories/thcx",
+    "/sv/categories/hero-vapes",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/categories/hasch",
+    "/sv/categories/alla-vapes"
+   ],
+   "fallbackShown": true,
+   "oldContentPagesRan": false,
+   "leadFocus": "solid Hero’s Core",
+   "anchor": {
+    "focused": "Analysintyg",
+    "top": 127,
     "header": -48,
     "hash": "#analysintyg"
    },

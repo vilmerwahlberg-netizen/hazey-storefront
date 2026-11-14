@@ -5,7 +5,10 @@ mergad). **Inget är gjort i Nyehandel-admin, inget publicerat, ingen
 omdirigering eller katalogändring.**
 
 Visuell riktning: koncept B "produktnära magasin" (Vilmers val 14 november,
-`HZY/design/thcx-mall-2026-11-13/koncept-b-produktnara.png`). Skissens
+`HZY/design/thcx-mall-2026-11-13/koncept-b-produktnara.png`). Första kodade
+versionen (`eb477bb`) underkändes visuellt; ombyggd samma dag enligt
+`TASK-THCX-VISUAL-REDESIGN.md` – se
+`theme8/review/thcx-landing-2026-11/VISUAL-COMPARISON.md`. Skissens
 förpackningar, effekttext och citat används inte. Copy: Agent A
 (`AGENT-A-THCX-SEO-INNEHALL.md`), korrigerad efter `FAKTAKOLL-2026-11-14.md`.
 
@@ -14,29 +17,35 @@ förpackningar, effekttext och citat används inte. Copy: Agent A
 | Fil | Ansvar |
 |---|---|
 | `theme8/blocks/thcx.html` | Hela sidans innehåll som ett HTML-block: H1, ingress, ankarlänkar, H2-kapitel, FAQ (`<details>`), alla länkar. Allt i initial HTML. |
-| `theme8/js/88b-landing.js` | Fyller produktraden ur blockets `data-hz8-sources` (Nyehandels egna kort, I lager-filter, varianter som egna kort) och bygger uppslagets uppställning av samma produkters egna bilder. Ingen text skapas i JS. |
-| `theme8/css/88b-landing.css` | Mallens layout, inklusive uppslaget utan bild. Bara tokens från `00-foundation.css`. |
+| `theme8/js/88b-landing.js` | Ur blockets `data-hz8-sources` (I lager-filter): ställer varje produktvägs (`data-hz8-match`) verkliga frilagda Nyehandel-bild på stenstagen med pris och sortnamn, och fyller sortimentsledet (Nyehandels egna kort, varianter som egna kort). Ingen ny text skapas i JS. |
+| `theme8/css/88b-landing.css` | Mallens lager: varm canvas, solbelyst puts, stenstage, kontaktskugga, kustuppslag, FAQ-yta. Färger ur `00-foundation.css` + en provtagen putston (`--lp-sun`). |
+| `theme8/assets/landing-thcx/` | Produktfria atmosfärsbilder (optimerade kopior ur `visual-redesign/assets/atmosphere/`): puts 1672/900, stage 960, kust 1672/900, olivgren 768, stenplan 900 (ingår, används inte). Aldrig produktbild eller `og:image`. |
 | `theme8/js/88-pages.js` | Lämnar sidor med `.hz8-lp` åt 88b (ingen injicerad H1, ingen dokumentmall). |
-| `theme8/review/thcx-landing-2026-11/` | `verify.mjs`, `verify.json` och skärmbilder (393/1440/1920 + uppslaget utan bild 393/1440). |
+| `theme8/review/thcx-landing-2026-11/` | `verify.mjs` (320–1920 + felfall utan atmosfär, utan produktbild, utan produkter), `compare.mjs` (koncept/före/efter), `verify.json`, `VISUAL-COMPARISON.md`, `shots/`, `before-eb477bb/`. |
 
-Ordning (B): kompakt H1 + ingress + ankarlänkar → riktiga produktkort →
-öppet uppslag "Vad är THCX?" → två faktaspalter → FAQ med väg till
-katalogen. Header, footer och produktkort är de globala Theme 8-komponenterna.
+Ordning (B): H1 `THCX` + ingress + ankarlänkar på solbelyst puts → tre
+redaktionella produktvägar på stenstage → sekundärt sortimentsled "Alla
+sorter i lager" → öppet uppslag "Vad är THCX?" med kustbild → två
+faktaspalter → FAQ med väg till katalogen. Header, footer och
+sortimentsledets produktkort är de globala Theme 8-komponenterna.
 
-### Uppslagets bild
+### Bilder
 
-Uppslaget visar en **uppställning av produkternas egna frilagda
-produktbilder ur Nyehandel** (en per produkt i lager, högst fyra, varje
-förpackning länkar till sin produkt). Ingen fotomiljö, inga genererade
-förpackningar. Core-hubbens hero (`series-core-family-hero-2026-10`)
-används **inte** – dess Core-askar matchar inte de verkliga förpackningarna
-(F13). Finns färre än två produktbilder visas uppslaget utan bild: rubriken
-till vänster, texten till höger (desktop), staplat på mobil. Inga tema-assets
-krävs.
+- **Produktvägarnas förpackningar** hämtas live: produktkortets bild ur
+  Nyehandel, begärd som 720 px WebP ur samma bildtjänst (samma original).
+  Förpackningen ändras aldrig; bara stagen bakom tonas varmare.
+- **Atmosfären** (puts, stage, kust, olivgren) är produktfri och ligger i
+  `theme8/assets/landing-thcx/`. Saknas den står canvasens toning kvar.
+- Core-hubbens hero (`series-core-family-hero-2026-10`) används **inte**
+  (F13).
 
 ### Blockets parametrar
 
 ```html
+<li class="hz8-lp__path" data-hz8-match="/sv/products/a /sv/products/b">  <!-- första i lager visas; ingen i lager -> vägen döljs -->
+  <div class="hz8-lp__scene" aria-hidden="true"></div>                 <!-- stenstage + bild från JS -->
+  <div class="hz8-lp__path-body"><h3><a class="hz8-lp__path-link" href="/sv/products/a">Namn</a></h3> … <p data-hz8-live></p> …</div>
+</li>
 <div data-hz8-lp-products
      data-hz8-sources="/sv/categories/hero-vapes /sv/categories/thcx"
      data-hz8-instock="only"      <!-- bara i lager -->
@@ -44,11 +53,12 @@ krävs.
      data-hz8-limit="12">
   <p class="hz8-lp__fallback">…reservlänkar om inget kan hämtas…</p>
 </div>
-<figure class="hz8-lp__lineup" data-hz8-lp-lineup data-hz8-limit="4">…</figure>
+<div class="hz8-lp__photo hz8-lp__photo--coast" role="presentation"></div>  <!-- uppslagets stämningsbild -->
 ```
 
 Källor är alltid kategorimedlemskap, aldrig fritextsökning. Nästa landning
-(`/engangsvape/`) = nytt block med egna källor och egen text, ingen ny kod.
+(`/engangsvape/`) = nytt block med egna källor, vägar och text; nya
+atmosfärsbilder = en ny `hz8-lp__photo--…`-modifierare och stagebild i CSS.
 
 ## Adminsteg (först efter Vilmers godkännande – Theme 8, klicka inte Publicera)
 
@@ -65,9 +75,9 @@ Källor är alltid kategorimedlemskap, aldrig fritextsökning. Nästa landning
      (faktakollen). Lägg inte till "Fri frakt" förrän kassaregeln är rättad
      och kontrollerad.
    - Canonical: sidans egen URL, inte `/sv/categories/thcx`. Robots: `index, follow` vid lansering.
-5. Verifiera `/sv/page/thcx?preview=…`: en H1, produkter i lager (idag
-   6 Hero's Core-strains + 3 hasch), inga Indica/Sativa i korttitlar,
-   uppställningen med fyra riktiga förpackningar.
+5. Verifiera `/sv/page/thcx?preview=…`: en H1 (`THCX`), tre produktvägar
+   med riktiga förpackningar och priser, sortimentsledet (idag 6 Hero's
+   Core-strains + 3 hasch), inga Indica/Sativa i korttitlar, kustuppslaget.
 
 ## Lanseringshinder (måste lösas före publicering)
 
@@ -127,9 +137,9 @@ Källor är alltid kategorimedlemskap, aldrig fritextsökning. Nästa landning
 
 Fullständig paragraf-för-paragraf-mappning: Agent A,
 `HZY/design/thcx-mall-2026-11-13/AGENT-A-THCX-SEO-INNEHALL.md` avsnitt 3.
-Kort: H1/titel/meta utan laglighets-, effekt- och fraktlöften; "Vad är
+Kort: H1 `THCX` (sidtiteln i SEO-fältet bär "vapes, hasch och fakta"); titel/meta utan laglighets-, effekt- och fraktlöften; "Vad är
 THCX?" omskrivet (handelsnamn + ett daterat, testat batch); laglighet
-blockerad; produkter behållna som riktiga kort (inte H2); "Därför köper
+blockerad; produkter som tre redaktionella vägar + riktiga kort (inte H2); "Därför köper
 du"-sektionen och USP-bandet ersatta av den globala trygghetsraden och
 sidfoten; FAQ 1, 3, 4 förbättrade, "Skiljer sig mellan tillverkare?"
 ersatt av "Är THCX och Core samma sak?" (med svaret att de inte beskrivs

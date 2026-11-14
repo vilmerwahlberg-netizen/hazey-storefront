@@ -1,25 +1,23 @@
 /* Landningsmall (.hz8-lp) för informations- och shoppinglandningar som
    ligger som Content -> Sidor i Nyehandel, t.ex. /sv/page/thcx (koncept B,
-   "produktnära magasin"). Blocket i admin (theme8/blocks/thcx.html) äger
-   ALL text, alla rubriker och länkar -- de finns i initial HTML. Modulen
-   lägger bara till det som kräver riktig data:
+   "produktnära magasin", visuell ombyggnad 2026-11-14). Blocket i admin
+   (theme8/blocks/thcx.html) äger ALL text, alla rubriker och länkar -- de
+   finns i initial HTML. Modulen lägger bara till det som kräver riktig data:
 
-   1. Produktraden: [data-hz8-lp-products] deklarerar sina källor
-      (data-hz8-sources, mellanslagsseparerade kategori-routes) och tak
-      (data-hz8-limit). Korten är Nyehandels egna .product-card via
-      HZ8.productRail; källorna slås ihop, samma produkt visas en gång och
-      varianter blir egna kort (samma regel som seriehubbarna).
-      data-hz8-instock="only": bara det som finns i lager (Nyehandels
-      I lager-filter + köpbara varianter). Inga produkter -> blockets egen
-      reservlänk står kvar. Aldrig fritextsökning som källa.
-   2. Uppslagets uppställning: [data-hz8-lp-lineup] visar samma produkters
-      EGNA frilagda produktbilder ur Nyehandel (en per produkt, i lager,
-      högst data-hz8-limit), som länkar till produkten. Inga tema-assets,
-      inga genererade förpackningar. Ingen data -> figuren förblir dold och
-      texten tar hela bredden (88b-landing.css).
+   1. Redaktionella produktvägar (.hz8-lp__path[data-hz8-match]): varje väg
+      anger en eller flera riktiga produktsökvägar. Ur samma lagerfiltrerade
+      källor som sortimentsledet väljs den första som finns i lager; dess
+      EGEN frilagda Nyehandel-bild ställs på stenstagen och dess pris och
+      namn visas. Ingen i lager -> vägen döljs. Bilden hämtas i större
+      upplösning ur Nyehandels egen bildtjänst (samma original).
+   2. Sortimentsledet ([data-hz8-lp-products]): källor (data-hz8-sources,
+      kategori-routes) och tak (data-hz8-limit). Nyehandels egna
+      .product-card via HZ8.productRail; samma produkt en gång, varianter
+      som egna kort. data-hz8-instock="only": bara det som finns i lager.
+      Inga produkter -> blockets reservlänk står kvar. Aldrig fritextsökning.
 
    Samma mall är tänkt för nästa landning (/engangsvape/): nytt adminblock
-   med andra källor och annan text, ingen ny kod. */
+   med andra källor, vägar och text, ingen ny kod. */
 (function () {
   "use strict";
 
@@ -91,7 +89,8 @@
     var inStockOnly = src.inStockOnly;
     var strain = slot.hasAttribute("data-hz8-strain-only");
     var section = slot.closest("section");
-    var heading = section && section.querySelector("h2[id]");
+    var scope = slot.closest(".hz8-lp__range") || section;
+    var heading = scope && scope.querySelector(":is(h2, h3)[id]");
     var limit = parseInt(slot.getAttribute("data-hz8-limit"), 10) || 12;
     src.cards.then(function (cards) {
       return expandVariants(cards, inStockOnly);
@@ -117,35 +116,90 @@
     });
   }
 
-  /* Uppställning av riktiga produktbilder (en per produkt). Bilden är
-     produktkortets egen bild ur Nyehandel; alt = produktens namn. */
-  function initLineup(root, src) {
-    var fig = root.querySelector("[data-hz8-lp-lineup]");
-    if (!fig || fig.querySelector(".hz8-lp__stage")) return;
-    var limit = parseInt(fig.getAttribute("data-hz8-limit"), 10) || 4;
-    if (!src) return;
+  /* Nyehandels bildtjänst: base64-JSON {key, edits}. Samma original i
+     större storlek och WebP för stagen; okänt format -> oförändrad URL. */
+  function stageSrc(src, w) {
+    var m = /^(https:\/\/[^/]+\/)([A-Za-z0-9+/=]+)$/.exec(src || "");
+    if (!m) return src;
+    try {
+      var o = JSON.parse(atob(m[2]));
+      if (!o || !o.key) return src;
+      o.edits = { resize: { width: w, height: w, fit: "inside" }, toFormat: "webp" };
+      return m[1] + btoa(JSON.stringify(o));
+    } catch (e) { return src; }
+  }
+
+  function cardInfo(html) {
+    var box = document.createElement("div");
+    box.innerHTML = html;
+    var img = box.querySelector(".product-card__image img");
+    var price = box.querySelector(".price");
+    var name = box.querySelector(".name");
+    var src = img && img.getAttribute("src");
+    return {
+      key: productKey(html),
+      src: src && !/no-image/.test(src) ? src : "",
+      price: price ? price.innerHTML : "",
+      sale: !!(price && price.classList.contains("has-comparison")),
+      name: name ? name.textContent.replace(/\s+/g, " ").trim() : ""
+    };
+  }
+
+  /* "High Life – Northern Lights – 5g" -> "Northern Lights" när vägens
+     rubrik är "High Life". Ingen ny text -- bara katalognamnet kortat. */
+  function shortName(name, title) {
+    var t = title.replace(/[’']/g, "'").toLowerCase();
+    var parts = name.split(/\s+[-–—]\s*|\s*[-–—]\s+/).map(function (x) { return x.trim(); }).filter(function (x) {
+      return x && x.replace(/[’']/g, "'").toLowerCase() !== t && !/^\d+\s*(g|ml)$/i.test(x) && !/^(indica|sativa|hybrid)$/i.test(x);
+    });
+    return parts.join(" ");
+  }
+
+  function initLeads(root, src) {
+    var leads = root.querySelectorAll(".hz8-lp__path[data-hz8-match]");
+    if (!leads.length || !src) return;
     src.cards.then(function (cards) {
-      var items = [];
-      cards.forEach(function (c) {
-        if (items.length >= limit) return;
-        var box = document.createElement("div");
-        box.innerHTML = c.html;
-        var img = box.querySelector(".product-card__image img");
-        var a = box.querySelector('a[href*="/products/"]');
-        var name = box.querySelector(".name");
-        if (!img || !a || !img.getAttribute("src") || /no-image/.test(img.getAttribute("src"))) return;
-        items.push({ href: a.getAttribute("href"), src: img.getAttribute("src"), name: (name ? name.textContent : img.getAttribute("alt") || "").replace(/\s+/g, " ").trim() });
+      var byKey = {};
+      cards.forEach(function (c) { var info = cardInfo(c.html); if (!byKey[info.key]) byKey[info.key] = info; });
+      /* Ingen data alls (hämtningen misslyckades eller källorna är tomma):
+         vägarna står kvar som i initial HTML -- text och riktiga länkar på
+         stagen -- i stället för en tom produktsektion. */
+      if (!cards.length) { root.classList.add("hz8-lp--no-data"); return; }
+      Array.prototype.forEach.call(leads, function (lead, i) {
+        if (lead.getAttribute("data-hz8-filled")) return;
+        lead.setAttribute("data-hz8-filled", "1");
+        var title = (lead.querySelector("h3") || {}).textContent || "";
+        var hits = lead.getAttribute("data-hz8-match").split(/\s+/).filter(Boolean)
+          .map(function (p) { return byKey[HZ8.path(p).replace(/\/\d+$/, "")]; }).filter(Boolean);
+        if (!hits.length) { lead.hidden = true; return; } // inget i lager
+        var first = hits[0];
+        var link = lead.querySelector(".hz8-lp__path-link");
+        if (link) link.setAttribute("href", HZ8.link(first.key));
+        var live = lead.querySelector("[data-hz8-live]");
+        if (live) {
+          var names = hits.map(function (h) { return { key: h.key, n: shortName(h.name, title.trim()) }; }).filter(function (h) { return h.n; });
+          live.innerHTML =
+            (names.length ? '<span class="hz8-lp__path-names">' + names.map(function (h) {
+              return '<a href="' + HZ8.esc(HZ8.link(h.key)) + '">' + HZ8.esc(h.n) + "</a>";
+            }).join('<span aria-hidden="true"> · </span>') + "</span>" : "") +
+            (first.price ? '<span class="price' + (first.sale ? " has-comparison" : "") + '">' + first.price + "</span>" : "");
+        }
+        var scene = lead.querySelector(".hz8-lp__scene");
+        if (scene && first.src) {
+          var img = document.createElement("img");
+          img.className = "hz8-lp__pack";
+          img.alt = "";
+          img.decoding = "async";
+          img.width = 720;
+          img.height = 720;
+          if (i === 0) img.setAttribute("fetchpriority", "high"); // tre små WebP, alla i första vyn eller nästa svep
+          img.addEventListener("error", function () { if (img.src !== first.src) img.src = first.src; else img.remove(); }, { once: false });
+          img.addEventListener("load", function () { scene.classList.add("has-pack"); });
+          img.src = stageSrc(first.src, 720);
+          scene.appendChild(img);
+        }
       });
-      if (items.length < 2) return; // en ensam bild är ingen uppställning
-      var stage = document.createElement("div");
-      stage.className = "hz8-lp__stage";
-      stage.setAttribute("data-count", String(items.length));
-      stage.innerHTML = items.map(function (it, i) {
-        return '<a class="hz8-lp__piece" style="--i:' + i + '" href="' + HZ8.esc(HZ8.link(it.href)) + '">' +
-          '<img src="' + HZ8.esc(it.src) + '" alt="' + HZ8.esc(it.name) + '" loading="lazy" decoding="async" width="400" height="400"></a>';
-      }).join("");
-      fig.insertBefore(stage, fig.firstChild);
-      fig.classList.add("has-img");
+      root.classList.toggle("hz8-lp--no-leads", !root.querySelector(".hz8-lp__path:not([hidden])"));
     });
   }
 
@@ -179,6 +233,6 @@
     initNav(root);
     var src = sourceOf(root);
     if (src) initProducts(root, src);
-    initLineup(root, src);
+    initLeads(root, src);
   });
 })();

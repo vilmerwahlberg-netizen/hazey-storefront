@@ -7,10 +7,12 @@
 
      Mall: .hz8-lp, stylas av theme8/css/88b-landing.css och fylls av
      theme8/js/88b-landing.js. All text, alla rubriker och länkar står här
-     i initial HTML. JS hämtar bara produktkorten (riktiga Nyehandel-kort,
-     i lager, ur data-hz8-sources) och uppslagets produktuppställning
-     (samma produkters egna frilagda bilder ur Nyehandel -- inga
-     genererade förpackningar).
+     i initial HTML. JS hämtar bara riktig butiksdata ur data-hz8-sources
+     (i lager): de tre redaktionella produktvägarnas frilagda bild och pris
+     och det sekundära sortimentsledet (Nyehandels egna kort). Atmosfären
+     (puts, stenstage, kustfoto) är produktfria tema-assets som väljs med
+     data-hz8-scene / hz8-lp__photo--coast (theme8/assets/landing-thcx/).
+     Visuell ombyggnad 2026-11-14: VISUAL-COMPARISON.md.
 
      COPY: Agent A, design/thcx-mall-2026-11-13/AGENT-A-THCX-SEO-INNEHALL.md
      avsnitt 4–6. Text som där står inom ⟦…⟧ är INTE med på sidan; den
@@ -20,50 +22,80 @@
      Korrigerat efter FAKTAKOLL-2026-11-14.md: Core och THCX beskrivs inte
      som kemiskt samma ämne; analysvärden gäller ett daterat, testat batch;
      inget fraktlöfte; ingen laglighetsslutsats. -->
-<article class="hz8-lp">
+<article class="hz8-lp" data-hz8-scene="thcx">
   <div class="hz8-lp__intro">
-    <h1>THCX – vapes, hasch och fakta</h1>
-    <p class="hz8-lp__lead">THCX, ibland skrivet THC-X, är ett handelsnamn för en cannabinoid. Hos Hazey samlar vi Hero’s Core-vapes och hasch från High Life och El Gringo under namnet THCX. Här ser du vad som finns i lager just nu, vad ett analysintyg visar och svaren på de vanligaste frågorna.</p>
+    <h1>THCX</h1>
+    <p class="hz8-lp__lead">THCX, ibland skrivet THC-X, är ett handelsnamn för en cannabinoid. Hos Hazey samlar vi Hero’s Core-vapes och hasch från High Life och El Gringo under namnet THCX. Här ser du vad som finns i lager just nu, fakta om vad ett analysintyg visar och svaren på de vanligaste frågorna.</p>
     <!-- F3: inget påstående om att haschen innehåller THCX (ingen THCX-rad i Northern Lights-intyget, inget El Gringo-intyg). Familjetillhörigheten bygger bara på ägarbeslutet 13 nov 2026. -->
     <nav class="hz8-lp__nav" aria-label="På denna sida">
       <a href="#produkter">Produkter</a>
-      <a href="#vad-ar-thcx">Vad är THCX?</a>
+      <a href="#vad-ar-thcx">Om THCX</a>
       <a href="#analysintyg">Analysintyg</a>
-      <a href="#fragor">Vanliga frågor</a>
+      <a href="#fragor">Frågor</a>
     </nav>
   </div>
 
   <section class="hz8-lp__products" id="produkter" aria-labelledby="hz8-lp-products-title">
-    <div class="hz8-lp__head">
-      <h2 id="hz8-lp-products-title">THCX-produkter i lager</h2>
-      <!-- LANSERINGSHINDER: /sv/categories/thcx har 1 produkt (El Gringo). Fyll kategorin eller peka om; se LANDING-PAGES.md. -->
-      <a class="hz8-lp__all" href="/sv/categories/thcx">Se hela THCX-sortimentet</a>
-    </div>
-    <p class="hz8-lp__sub">Hero’s Core i flera strains och 5 g hasch. Lager och pris uppdateras direkt från butiken.</p>
-    <!-- Källor = kategorimedlemskap, aldrig fritextsökning ("thcx" ger 104
-         träffar, bl.a. D10 Silk Road). hero-vapes är den faktiska THCX-
-         familjen tills /sv/categories/thcx är påfylld. -->
-    <div data-hz8-lp-products data-hz8-sources="/sv/categories/hero-vapes /sv/categories/thcx" data-hz8-instock="only" data-hz8-strain-only data-hz8-limit="12">
-      <p class="hz8-lp__fallback">Se <a href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core 2 ml</a> och <a href="/sv/categories/hero-vapes">hela familjen</a>.</p>
+    <h2 class="hz8-lp__kicker" id="hz8-lp-products-title">THCX-produkter i lager</h2>
+    <!-- Tre redaktionella produktvägar. data-hz8-match = produktens riktiga
+         sökväg (eller flera, mellanslagsseparerade). JS hämtar bild och pris
+         för den första som finns i lager ur data-hz8-sources nedan; finns
+         ingen i lager döljs vägen. Länkarna här fungerar utan JS. -->
+    <ul class="hz8-lp__paths" role="list">
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/thc-x-vape-hero-core-2ml">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core</a></h3>
+          <p class="hz8-lp__path-kind">Vape 2 ml i flera strains</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/high-life-hash-northern-lights-5g /sv/products/high-life-hash-malaga-magic-5g">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/high-life-hash-northern-lights-5g">High Life</a></h3>
+          <p class="hz8-lp__path-kind">Hasch 5 g</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/el-gringo-hash-strawberry-shortcake-5g">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/el-gringo-hash-strawberry-shortcake-5g">El Gringo</a></h3>
+          <p class="hz8-lp__path-kind">Hasch 5 g</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="hz8-lp__range">
+      <div class="hz8-lp__head">
+        <h3 id="hz8-lp-range-title">Alla sorter i lager</h3>
+        <!-- LANSERINGSHINDER: /sv/categories/thcx har 1 produkt (El Gringo). Fyll kategorin eller peka om; se LANDING-PAGES.md. -->
+        <a class="hz8-lp__all" href="/sv/categories/thcx">Se hela THCX-sortimentet</a>
+      </div>
+      <p class="hz8-lp__sub">Hero’s Core i flera strains och 5 g hasch. Lager och pris uppdateras direkt från butiken.</p>
+      <!-- Källor = kategorimedlemskap, aldrig fritextsökning ("thcx" ger 104
+           träffar, bl.a. D10 Silk Road). hero-vapes är den faktiska THCX-
+           familjen tills /sv/categories/thcx är påfylld. -->
+      <div data-hz8-lp-products data-hz8-sources="/sv/categories/hero-vapes /sv/categories/thcx" data-hz8-instock="only" data-hz8-strain-only data-hz8-limit="12">
+        <p class="hz8-lp__fallback">Se <a href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core 2 ml</a> och <a href="/sv/categories/hero-vapes">hela familjen</a>.</p>
+      </div>
     </div>
   </section>
 
   <section class="hz8-lp__story" id="vad-ar-thcx" aria-labelledby="hz8-lp-story-title">
-    <div class="hz8-lp__text">
-      <p class="hz8-lp__eyebrow">Om THCX</p>
-      <h2 id="hz8-lp-story-title">Vad är THCX?</h2>
-      <p>THCX är ett handelsnamn som leverantören och laboratoriet använder. Det är inte en vedertagen kemisk beteckning som till exempel CBD eller CBN, och därför kan du se både THCX och THC-X.</p>
-      <!-- F2: "som framställs från industrihampa" (Agent A 5.3) väntar på leverantörens specifikation. -->
-      <p>Ett analysintyg från CBM-Labs Europe, utfärdat 17 oktober 2025, gäller ett testat batch av destillatet till <a href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core 2 ml</a>. För det batchet redovisas 19,34 % THCX, och Δ9-THC påvisades inte. Värdena beskriver det testade batchet, inte innehållet i varje förpackning som säljs i dag.</p>
-      <!-- Punkt 4: kopplingen mellan batch PA 45570394 och nuvarande lager är inte verifierad -> texten är förkortad (övriga cannabinoidvärden borttagna). ÖPPET: batchspecifika intyg från leverantören. -->
-    </div>
-    <!-- Uppställning: produkternas egna frilagda bilder ur Nyehandel (samma
-         lagerfiltrerade källor som produktraden). Core-hubbens hero används
-         INTE här -- dess Core-askar matchar inte de verkliga förpackningarna
-         (F13). Ingen data -> figuren döljs och texten tar hela bredden. -->
-    <figure class="hz8-lp__lineup" data-hz8-lp-lineup data-hz8-limit="4">
-      <figcaption>Produkterna i THCX-familjen som finns i lager just nu.</figcaption>
-    </figure>
+    <p class="hz8-lp__eyebrow">Om THCX</p>
+    <h2 id="hz8-lp-story-title">Vad är THCX?</h2>
+    <p>THCX är ett handelsnamn som leverantören och laboratoriet använder. Det är inte en vedertagen kemisk beteckning som till exempel CBD eller CBN, och därför kan du se både THCX och THC-X.</p>
+    <!-- F2: "som framställs från industrihampa" (Agent A 5.3) väntar på leverantörens specifikation. -->
+    <!-- Stämningsbild utan produkt, citat eller påstående (theme8/assets/landing-thcx/coast-editorial-*.webp). -->
+    <div class="hz8-lp__photo hz8-lp__photo--coast" role="presentation"></div>
+    <p>Ett analysintyg från CBM-Labs Europe, utfärdat 17 oktober 2025, gäller ett testat batch av destillatet till <a href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core 2 ml</a>. För det batchet redovisas 19,34 % THCX, och Δ9-THC påvisades inte. Värdena beskriver det testade batchet, inte innehållet i varje förpackning som säljs i dag.</p>
+    <!-- Punkt 4: kopplingen mellan batch PA 45570394 och nuvarande lager är inte verifierad -> texten är förkortad (övriga cannabinoidvärden borttagna). ÖPPET: batchspecifika intyg från leverantören. -->
   </section>
 
   <div class="hz8-lp__chapters">
