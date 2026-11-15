@@ -22,7 +22,7 @@ fixtur: en riktig tom Nyehandel-innehållssida fylls med blocket
 
 ## Sidordning som byggd (TASK-tabellen 1–9)
 
-1. **Hero:** brödsmula, H1 `Engångsvapes`, ingressen ordagrant ur utkastet, levande lagerrad ("8 produkter i lager · 1+1, 2 och 5 ml", räknad ur livekatalogen, dold utan data), kapitelrad Produkter · Storlek · Om formatet · Frågor. Kustljus uppe till höger som tonar in i putsen.
+1. **Hero:** brödsmula, H1 `Engångsvapes`, ingressen ordagrant ur utkastet, levande lagerrad ("8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml", räknad ur livekatalogen, dold utan data), kapitelrad Produkter · Storlek · Om formatet · Frågor. Kustljus uppe till höger som tonar in i putsen.
 2. **Tre serievägar:** Magic Sauce 3.0, Hero’s Core, Cookies CBD med riktig frilagd Nyehandel-bild på stenstagen, livepris, storlekar/smaker som länkar till riktiga produktsidor. Väg utan lager döljs. Mobil: ett kort + nästa syns.
 3. **Välj storlek:** 1+1 ml, 2 ml, 5 ml med antal och frånpris ur livekatalogen; 1 ml dold (0 i lager). 2 och 5 ml öppnar katalogens volymfilter; 1+1 ml (inget filter än) öppnar en riktig 1+1 ml-produkt i lager.
 4. **Alla engångsvapes i lager:** varje köpbar smak som Theme 8:s eget kort (bild, namn, pris, Lägg till) på varm stage. Källa `alla-vapes` i lager; carts, refill, batterier och paket räknas bort. Länk "Filtrera alla vapes".
@@ -69,9 +69,8 @@ Mätfel som hittades och rättades under arbetet: kontrastmätningen läste för
 
 ## Kvarvarande visuella avvikelser mot referenserna
 
-- Nedre halvan är en slät varm yta; referensen har lövskuggor och mer ljus även där.
 - Sortimentskorten är Theme 8:s egna, kompakta kort med seriens etikett och "Nyhet"-märke; referensens kort är luftigare och visar storlek under namnet.
-- Serievägarnas förpackningar står mindre på stagen än i referensen (samma mått som den godkända THCX-mallen).
+- Förpackningarna på stagen är fortfarande något mindre än AI-bildens (riktiga förpackningar, ingen beskärning).
 - En halv enhetspixel ljus kant längst till höger på mobil finns redan i THCX-mallen (globalt, inte nytt).
 
 ## Faktakontroll mot produktsidorna (2026-11-15, Nyehandels produkttexter)
@@ -110,3 +109,42 @@ Mätfel som hittades och rättades under arbetet: kontrastmätningen läste för
 6. Herobild: delad med Alla Vapes. Uppslagsbilden är en befintlig, tidigare oanvänd bild ur Theme 8-repot (`theme8/assets/hero-beach-desktop-v2.png`, incheckad i e861f3b); ursprung och rättigheter bekräftas som för övriga Theme 8-bilder.
 7. "Nyhet"-märket på sortimentskorten är Nyehandels eget kortmärke (`.ribbon.news`), inte satt av landningen.
 8. 301 `/engangsvape/` → `/sv/page/engangsvape`, canonical, `index`, sitemap: lanseringssekvens, inte gjort.
+
+## Korrigering före merge (2026-11-15, efter granskning)
+
+Avgränsad visuell korrigering. Innehåll, produkter, länkar och köplogik är oförändrade.
+
+| Del | Före | Nu |
+|---|---|---|
+| Nedre halvans ljus | Slät yta, ljusare platta bakom FAQ | Ett sammanhängande persikoljus genom sortiment, uppslag, serier/analysintyg och FAQ. Varje del har en kantlös zon som tonar över i nästa, inga block. Lövskuggor över sortimentet och i FAQ:s nedre vänstra hörn, aldrig bakom brödtexten. Skuggorna är tagna ur den godkända putsbilden (`leaf-shadow-*`, 237 + 80 kB). |
+| Förpackningar på stagen | Scen 9:5, förpackning 38cqw | Scen 3:2, förpackning 46cqw (+21 % på 1440). Stenen står kvar på samma ställe, och ingen förpackning klipps (`packs.clipped = false` i alla körningar). |
+| Mobilens seriekort | 74 % brett, scen 16:10, förpackning 40cqw | 82 % brett, scen 4:3, förpackning 54cqw (107 → 160 px hög vid 393). Kortets fallskugga klipps inte längre av rullraden. |
+| Storleksval, mobil | Två knappar plus en fullbreddsknapp | En sammanhållen rad med tre fack (1+1, 2, 5 ml), antal och frånpris staplade. 4 storlekar ger 2×2 och 1 eller 2 storlekar ger 1 eller 2 fack, styrt av `data-hz8-n`. |
+| Lagerrad | "8 produkter i lager · 1+1, 2 och 5 ml" | "**8 produkter** i lager med **21 smakvarianter** · 1+1, 2 och 5 ml". Sortimentsledet säger "21 smakvarianter från 8 produkter." |
+| Hjälptexter | Grå (4,95) | Bläck över det varmare ljuset (≥ 6,4) |
+
+**Lagernivåerna verifierade:** båda talen räknas live och hårdkodas inte. Testet räknar dem också oberoende ur de renderade korten.
+
+- **Produkter (8):** produktsidor i lager efter att carts, refill, batterier och paket räknats bort.
+- **Smakvarianter (21):** köpbara varianter, ett kort var i ledet. Alla 21 är beställningsbara (`notOrderable = 0`).
+
+Fördelning 2026-11-15:
+
+| Produkt | Smakvarianter |
+|---|---|
+| Magic Sauce 3.0 2 ml | 2 |
+| CBD 25 % + CBN 35 % (Magic Farmers) | 3 |
+| Magic Sauce 3.0 5 ml | 5 |
+| Hero's Core 2 ml | 6 |
+| H4CBD 2 ml | 2 |
+| Cookies Dual Chamber (tre produkter) | 1 var |
+
+Ett Cookies-kort innehåller två smaker i två kammare men räknas som en köpbar variant. Därför står det "smakvarianter" och inte "smaker". Om varianttalet saknas eller är lika med produkttalet visas bara produktantalet.
+
+**Kontroller:**
+- **Körningar:** 393, 1440, 1920, 320 och 768, plus felfallen utan atmosfärsbilder, utan produktbilder, med noll produkter och med reducerad rörelse.
+- **Sidan:** en H1, ingen sidledsscroll och inga konsolfel. Faktatexten är synlig och finns i initial HTML (7 av 7).
+- **Innehåll och länkar:** 21 kort, varav 0 är fel format. Alla 19 länkar svarar 200, och tangentbord, ankare och FAQ fungerar.
+- **Kontrast:** lägsta värdet är 4,77 (H1 vid 768, oförändrat). Sortimentets underrad gick från 3,44 till 6,99.
+- **THCX:** 10 av 10 bilder är pixelidentiska mot `d6a72d1`.
+- **Befintliga sidor:** startsidan, Alla Vapes, THCX-kategorin, Hasch, Core-PDP och Köpvillkor är identiska. Bästsäljare vid 393 skiljer på 0,003 %, ungefär 10 px live-innehåll, med samma DOM och höjd.

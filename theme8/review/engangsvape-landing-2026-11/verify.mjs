@@ -108,6 +108,16 @@ for (const [tag, w, h, mode] of RUNS) {
       wide: [...document.querySelectorAll("#store-main *")].filter(e => { const q = e.getBoundingClientRect(); return q.width && q.right > innerWidth + 1 && !e.closest(".hz8-prail__list, .hz8-lp__paths, .hz8-lp__nav") && !e.matches(".hz8-lp__photo"); }).slice(0, 5).map(e => e.tagName + "." + [...e.classList].join(".")),
       h1Fits: (() => { const h = document.querySelector(".hz8-lp h1"); return h.scrollWidth <= h.clientWidth + 1 && h.getBoundingClientRect().right <= innerWidth; })(),
       summary: (() => { const e = document.querySelector("[data-hz8-format-summary]"); return e && !e.hidden ? txt(e) : null; })(),
+      rangeCount: (() => { const e = document.querySelector("[data-hz8-range-count]"); return e && !e.hidden ? txt(e) : null; })(),
+      // Lagernivåerna räknade oberoende ur de renderade korten: produkter =
+      // distinkta produktsidor, smaker = kort (varianter); alla köpbara?
+      stock: (() => {
+        const base = h => h.replace(/^https?:\/\/[^/]+/, "").replace(/\?.*/, "").replace(/\/\d+$/, "");
+        const by = {}; rail.forEach(c => { const k = base(c.querySelector("a")?.getAttribute("href") || ""); (by[k] = by[k] || []).push(txt(c.querySelector(".name") || c)); });
+        return { products: Object.keys(by).length, flavours: rail.length, notOrderable: rail.filter(c => c.getAttribute("data-hz8-instock") === "0").length, byProduct: by };
+      })(),
+      sizeRow: (() => { const t = [...document.querySelectorAll(".hz8-lp__sizes li:not([hidden])")].map(l => Math.round(l.getBoundingClientRect().top)); return { n: t.length, rows: new Set(t).size }; })(),
+      packs: [...document.querySelectorAll(".hz8-lp__path:not([hidden])")].map(l => { const sc = l.querySelector(".hz8-lp__scene").getBoundingClientRect(), i = l.querySelector(".hz8-lp__pack"); if (!i) return null; const q = i.getBoundingClientRect(); return { packH: Math.round(q.height), sceneH: Math.round(sc.height), share: +(q.height / sc.height).toFixed(2), clipped: q.top < sc.top || q.bottom > sc.bottom || q.left < sc.left || q.right > sc.right, sceneW: Math.round(sc.width) }; }),
       leads: [...document.querySelectorAll(".hz8-lp__path")].map(l => { const i = l.querySelector(".hz8-lp__pack"); return { title: txt(l.querySelector("h3")), hidden: l.hidden, href: l.querySelector(".hz8-lp__path-link").getAttribute("href").replace(/\?.*/, ""), kind: txt(l.querySelector(".hz8-lp__path-kind")), live: txt(l.querySelector("[data-hz8-live]")), img: i ? { loaded: i.complete && i.naturalWidth > 0, webp: /eyJ/.test(i.currentSrc) } : null, box: r(l) }; }),
       sizes: [...document.querySelectorAll("[data-hz8-size]")].map(l => ({ size: l.dataset.hz8Size, hidden: l.hidden, live: txt(l), href: l.querySelector("a").getAttribute("href").replace(/\?preview=.*/, "") })),
       series: [...document.querySelectorAll("[data-hz8-series]")].map(l => ({ name: txt(l.querySelector("a")), status: txt(l.querySelector("[data-hz8-series-live]")) || "–", href: l.querySelector("a").getAttribute("href") })),
@@ -125,7 +135,7 @@ for (const [tag, w, h, mode] of RUNS) {
       reduced: matchMedia("(prefers-reduced-motion: reduce)").matches
     };
   });
-  m.contrast = await contrast(p, [".hz8-lp h1", ".hz8-lp__lead", ".hz8-lp__live-line", ".hz8-lp__nav a", ".hz8-lp__path h3", ".hz8-lp__path-kind", ".hz8-lp__sizes-head p", ".hz8-lp__sizes [data-hz8-size-live]", ".hz8-lp__sub", ".hz8-lp__story > p:not(.hz8-lp__eyebrow)", ".hz8-lp__story > p:last-of-type", ".hz8-lp__chapters p", ".hz8-lp__series [data-hz8-series-live]", ".hz8-lp__qa summary", ".hz8-lp__more"], w, h);
+  m.contrast = await contrast(p, [".hz8-lp h1", ".hz8-lp__lead", ".hz8-lp__live-line", ".hz8-lp__nav a", ".hz8-lp__path h3", ".hz8-lp__path-kind", ".hz8-lp__sizes-head p", ".hz8-lp__sizes [data-hz8-size-live]", ".hz8-lp__range h3", ".hz8-lp__sub", "[data-hz8-range-count]", ".hz8-lp__story > p:not(.hz8-lp__eyebrow)", ".hz8-lp__story > p:last-of-type", ".hz8-lp__chapters p", ".hz8-lp__series [data-hz8-series-live]", ".hz8-lp__chapters h2", ".hz8-lp__faq h2", ".hz8-lp__qa summary", ".hz8-lp__more"], w, h);
   // Tangentbord: Tab från kapitelraden -> första serievägen; ankare -> rubrik; FAQ med Enter.
   await p.locator('.hz8-lp__nav a[href="#fragor"]').focus(); await p.keyboard.press("Tab");
   m.leadFocus = await p.evaluate(() => { const l = document.activeElement.closest(".hz8-lp__path"); return l ? getComputedStyle(l).outlineStyle + " " + document.activeElement.textContent.trim() : "fokus på " + document.activeElement.tagName; });

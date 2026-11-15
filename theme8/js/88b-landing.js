@@ -89,12 +89,17 @@
     var excluded = exclude.length ? mergedCards(exclude, false).then(function (cards) {
       var set = {}; cards.forEach(function (c) { set[productKey(c.html)] = true; }); return set;
     }) : Promise.resolve({});
-    return { slot: slot, inStockOnly: inStockOnly, cards: Promise.all([mergedCards(sources, inStockOnly), excluded]).then(function (r) {
+    var src = { slot: slot, inStockOnly: inStockOnly, cards: Promise.all([mergedCards(sources, inStockOnly), excluded]).then(function (r) {
       return r[0].filter(function (c) {
         if (r[1][productKey(c.html)]) return false;
         return !(HZ8.variantCards && HZ8.variantCards.isPackageCard(c.html));
       });
     }) };
+    /* Variantnivå (en post per köpbar smak/strain): samma lista som ledet
+       visar och som lagerraden räknar. Hämtas en gång. */
+    var variants = null;
+    src.variants = function () { return variants || (variants = src.cards.then(function (cards) { return expandVariants(cards, inStockOnly); })); };
+    return src;
   }
 
   function initProducts(root, src) {
@@ -107,9 +112,7 @@
     var scope = slot.closest(".hz8-lp__range") || section;
     var heading = scope && scope.querySelector(":is(h2, h3)[id]");
     var limit = parseInt(slot.getAttribute("data-hz8-limit"), 10) || 12;
-    src.cards.then(function (cards) {
-      return expandVariants(cards, inStockOnly);
-    }).then(function (cards) {
+    src.variants().then(function (cards) {
       if (!cards.length) return; // reservlänken i blocket står kvar
       if (strain) cards = cards.map(function (c) { var o = {}; Object.keys(c).forEach(function (k) { o[k] = c[k]; }); o.html = strainOnly(c.html); return o; });
       var rail = HZ8.productRail({
@@ -252,12 +255,14 @@
   }
   function kr(n) { return n.toLocaleString("sv-SE").replace(/ /g, " ") + " kr"; }
   function joinSv(list) { return list.length > 1 ? list.slice(0, -1).join(", ") + " och " + list[list.length - 1] : list.join(""); }
+  function part(cls, text) { var s = document.createElement("span"); s.className = cls; s.textContent = text; return s; }
   function sizeSort(a, b) { return parseFloat(a) - parseFloat(b) || a.length - b.length; }
 
   function initFormat(root, src) {
     var sizes = root.querySelector("[data-hz8-sizes]");
     var summary = root.querySelector("[data-hz8-format-summary]");
-    if ((!sizes && !summary) || !src) return;
+    var rangeCount = root.querySelector("[data-hz8-range-count]");
+    if ((!sizes && !summary && !rangeCount) || !src) return;
     src.cards.then(function (cards) {
       var by = sizeGroups(cards), total = 0, shown = [];
       if (sizes) {
@@ -269,19 +274,38 @@
              lager i den storleken (den första). */
           if (a && a.hasAttribute("data-hz8-size-product")) a.setAttribute("href", HZ8.link(g.first));
           var live = li.querySelector("[data-hz8-size-live]");
-          if (live) live.textContent = g.n + (g.n === 1 ? " produkt" : " produkter") + (g.min ? " · från " + kr(g.min) : "");
+          if (live) {
+            /* Två delar (antal, frånpris) så att mobilens storleksrad kan
+               stapla dem; separatorn ritas av CSS. */
+            live.textContent = "";
+            live.appendChild(part("hz8-lp__size-n", g.n + (g.n === 1 ? " produkt" : " produkter")));
+            if (g.min) { live.appendChild(document.createTextNode(" ")); live.appendChild(part("hz8-lp__size-from", "från " + kr(g.min))); }
+          }
         });
         var visible = sizes.querySelectorAll("[data-hz8-size]:not([hidden])").length;
         sizes.setAttribute("data-hz8-n", String(visible));
         var block = sizes.closest(".hz8-lp__sizes");
         if (block && !visible) block.hidden = true;
       }
-      Object.keys(by).forEach(function (k) { total += by[k].n; });
-      if (summary && total) {
-        shown = Object.keys(by).sort(sizeSort).map(function (k) { return by[k].label.replace(/\s*ml$/, ""); });
-        summary.textContent = total + (total === 1 ? " produkt" : " produkter") + " i lager · " + joinSv(shown) + " ml";
-        summary.hidden = false;
-      }
+      total = cards.length;
+      if (!total || !(summary || rangeCount)) return;
+      shown = Object.keys(by).sort(sizeSort).map(function (k) { return by[k].label.replace(/\s*ml$/, ""); });
+      /* Två nivåer ur samma livedata: produkter (en per produktsida, t.ex.
+         "Magic Sauce 3.0 – 2ml") och smakvarianter (köpbara varianter, ett kort
+         var i ledet). Antalet smakvarianter skrivs bara när variantdatan kom fram. */
+      src.variants().then(function (vs) { return vs.length; }, function () { return 0; }).then(function (flavours) {
+        var prod = total + (total === 1 ? " produkt" : " produkter");
+        var fl = flavours && flavours !== total ? flavours + (flavours === 1 ? " smakvariant" : " smakvarianter") : "";
+        if (summary) {
+          summary.textContent = "";
+          summary.appendChild(part("hz8-lp__live-n", prod));
+          summary.appendChild(document.createTextNode(" i lager"));
+          if (fl) { summary.appendChild(document.createTextNode(" med ")); summary.appendChild(part("hz8-lp__live-n", fl)); }
+          if (shown.length) { summary.appendChild(part("hz8-lp__live-sep", " · ")); summary.appendChild(part("hz8-lp__live-n hz8-lp__live-sizes", joinSv(shown) + " ml")); }
+          summary.hidden = false;
+        }
+        if (rangeCount && fl) { rangeCount.textContent = fl + " från " + prod + ". "; rangeCount.hidden = false; }
+      });
     });
   }
 

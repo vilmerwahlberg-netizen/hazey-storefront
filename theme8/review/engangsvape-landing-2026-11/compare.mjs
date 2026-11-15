@@ -7,9 +7,9 @@ const file = f => { const w = f.replace(/\.png$/, ".webp"); const g = fs.existsS
 const shot = n => file(path.join(DIR, "shots", n + ".png"));
 // [nyckel, rubrik, referensbild, byggd bild, beskärning av byggd bild (null = hel)]
 const SHEETS = [
-  ["1440-topp", "Övre halvan 1440: hero, serievägar, storlek", "engangsvape-desktop-koncept.png", "eng-1440-full", [0, 0, 1440, 1080]],
+  ["1440-topp", "Övre halvan 1440: hero, serievägar, storlek", "engangsvape-desktop-koncept.png", "eng-1440-full", [0, 0, 1440, 1240]],
   ["1440-nedre", "Nedre halvan 1440: sortiment, uppslag, serier, analysintyg, FAQ, sidfot", "engangsvape-desktop-nedre-halva.png", "eng-1440-nedre", null],
-  ["393-topp", "Övre halvan 393: hero, serievägar, storlek", "engangsvape-mobil-koncept.png", "eng-393-full", [0, 0, 786, 1704]],
+  ["393-topp", "Övre halvan 393: hero, serievägar, storlek", "engangsvape-mobil-koncept.png", "eng-393-full", [0, 0, 786, 2240]],
   ["393-nedre", "Nedre halvan 393: sortiment till sidfot", "engangsvape-mobil-nedre-halva.png", "eng-393-nedre", null]
 ];
 const b = await chromium.launch({ channel: "chrome" }); const p = await b.newPage({ viewport: { width: 2000, height: 900 } });
