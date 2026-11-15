@@ -1,0 +1,383 @@
+/* Formatlandning (.hz8-lp--format), första scen: Engångsvapes
+   (data-hz8-scene="engangsvape" -> html[data-hz8-lp-scene]). Bygger på den
+   godkända THCX-mallen i 88b-landing.css och ändrar bara det som skiljer
+   sidtypen: kustljus i heron, rubrik efter ordets längd, lagerrad,
+   storleksval, varm stage bakom sortimentsledets kort, eget kustfoto i
+   uppslaget och seriestatus. Visuellt facit: design/engangsvape-seo-
+   2026-11-15/referenser/ (AI-bilder: ljus, material och rytm -- aldrig
+   produktdata).
+
+   Bilder (alla produktfria):
+   - hero: category-vapes-hero-2026-10/category-vapes-sunset-v4-* (Theme 8:s
+     kustsolnedgång, samma som Alla Vapes-heron),
+   - uppslag: landing-engangsvape/coast-boardwalk-* (egen, optimerad),
+   - stage: landing-thcx/product-stage-960.webp (den godkända stenstagen).
+   Saknas en bild står canvasens toning kvar. THCX påverkas inte: allt här
+   kräver scenattributet. */
+
+/* ---------- 1. Hero: kustljus som tonar in i putsen ---------- */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format { isolation: isolate; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(-1 * var(--hz8-top-clear, 120px) - 60px);
+  right: calc(50% - 50vw);
+  width: 56vw;
+  height: calc(var(--hz8-top-clear, 120px) + 60px + clamp(380px, 29vw, 540px));
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 30%, transparent), color-mix(in srgb, var(--lp-peach) 18%, transparent)),
+    url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-1920.webp") 66% 38% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .35) 26%, rgba(0, 0, 0, .9) 58%, #000 72%), linear-gradient(180deg, #000 0, #000 52%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .35) 26%, rgba(0, 0, 0, .9) 58%, #000 72%), linear-gradient(180deg, #000 0, #000 52%, transparent 100%);
+          mask-composite: intersect;
+  pointer-events: none;
+}
+/* Lugn läsyta: en kantlös ljuspöl bakom rubrik, ingress och kapitelrad,
+   ovanpå kustljuset och lövskuggorna men under texten (ingen ruta). */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format .hz8-lp__intro { position: relative; z-index: 0; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format .hz8-lp__intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -40px -14% -24px -60px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--lp-peach-light) 78%, transparent) 0, color-mix(in srgb, var(--lp-peach-light) 55%, transparent) 55%, transparent 100%);
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format .hz8-lp__intro::before { inset: -30px -16px 0 -16px; }
+}
+/* "Engångsvapes" är tre gånger så långt som "THCX": rubriken skalas mot
+   bredden så den aldrig klipps. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__intro h1 { font-size: min(clamp(64px, 7.4vw, 116px), 12.6vw) !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__intro { max-width: 720px; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 0 !important;
+  color: var(--hz8-ink) !important;
+  font: 600 14.5px/1.3 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-line::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hz8-leaf, #4d7042);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--hz8-leaf, #4d7042) 18%, transparent);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-line[hidden] { display: none !important; }
+/* Två nivåer: antalen i fet stil, resten i normal vikt. */
+/* Löptext (inte flex: mellanslagen mellan delarna ska stå kvar). */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-line { display: block; font-weight: 400 !important; line-height: 1.45 !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-line::before { display: inline-block; margin: 0 10px 0 2px; vertical-align: .05em; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-n { font-weight: 700 !important; white-space: nowrap; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__live-sizes { font-weight: 400 !important; }
+/* Nyehandels span-nollställning (!important) får inte vinna över raden. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main :is(.hz8-lp__live-line, [data-hz8-size-live], .hz8-lp__sub) > span { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; letter-spacing: inherit !important; color: inherit !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main [data-hz8-range-count] { color: var(--hz8-ink) !important; font-weight: 600; }
+/* Nedre halvans varmare ljus: de små hjälptexterna i bläck i stället för
+   dämpad grå, så att de håller >= 4,5:1 även över lövskuggorna. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main :is(.hz8-lp__sub, .hz8-lp__more) { color: var(--hz8-ink) !important; }
+
+/* ---------- 2. Serievägar: högre scen, större förpackning ----------
+   Stagebilden (960x720) täcker bredden och står i nederkant så länge scenen
+   är högst 4:3; stenens ovansida (--lp-foot) ligger då kvar på samma ställe
+   och förpackningen kan växa utan att klippas. Toppmarginal >= 5cqw. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__scene { aspect-ratio: 3 / 2; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__path,
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__path:not(:first-child) { --lp-pack-h: 46cqw; --lp-shadow-w: 34cqw; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__pack { max-width: 62cqw; }
+@media (max-width: 767px) {
+  /* Mobil: kortet 82 % brett och scenen 4:3, så att förpackningen bär
+     kortet (ungefär 2/3 av bildens höjd). */
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__paths { grid-auto-columns: 82%; }
+  /* Rullraden klipper kortens fallskugga i sin nederkant: mer luft nedtill
+     (samma läge för innehållet efter) så att skuggan tonar ut helt. */
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__paths { padding-bottom: 44px !important; margin-bottom: -26px !important; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__scene { aspect-ratio: 4 / 3; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__path,
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__path:not(:first-child) { --lp-pack-h: 54cqw; --lp-shadow-w: 38cqw; }
+}
+
+/* ---------- 3. Välj storlek: varma, lågmälda val i samma bakgrund ---------- */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes {
+  display: grid;
+  grid-template-columns: minmax(220px, 4fr) minmax(0, 8fr);
+  align-items: center;
+  gap: 16px clamp(28px, 3.4vw, 56px);
+  margin: clamp(44px, 4.4vw, 72px) 0 0;
+  scroll-margin-top: calc(var(--hz8-top-clear) + 16px);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes-head { padding-right: clamp(20px, 2.6vw, 44px); border-right: 1px solid var(--lp-rule); }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes h3 {
+  margin: 0 0 8px !important;
+  color: var(--hz8-text-heading) !important;
+  font: 400 clamp(34px, 3.1vw, 52px)/1 var(--hz8-font-display) !important;
+  letter-spacing: -.025em !important;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes-head p { margin: 0 !important; color: var(--hz8-ink) !important; font: 400 15.5px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes ul {
+  display: grid;
+  /* Kort i referensens bredd (inte utdragna över hela spalten). */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 290px));
+  gap: clamp(12px, 1.4vw, 22px);
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes li { margin: 0 !important; padding: 0 !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes li::before { display: none !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "icon size arrow" "icon live arrow";
+  align-items: center;
+  gap: 0 16px;
+  min-height: 92px;
+  padding: 16px 20px;
+  border-radius: var(--hz8-radius-l);
+  /* Varmt, halvtransparent glas (som referensen): persikoljus uppifrån
+     vänster, ljus kant upptill, mjukt skuggdjup åt höger/nedåt. Glaset
+     suddar lövskuggorna bakom; texten står på en tät nog yta (>= 4,5:1). */
+  background:
+    radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--lp-peach-light) 70%, transparent) 0, transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--lp-card) 72%, transparent) 0, color-mix(in srgb, var(--lp-card) 52%, transparent) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+          backdrop-filter: blur(14px) saturate(1.15);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lp-peach-light) 70%, transparent) inset,
+    0 1.5px 0 color-mix(in srgb, #fff 55%, transparent) inset,
+    0 -10px 18px -14px color-mix(in srgb, var(--hz8-cta) 22%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 12%, transparent),
+    6px 18px 32px -20px color-mix(in srgb, var(--lp-shadow) 58%, transparent),
+    0 3px 8px -5px color-mix(in srgb, var(--lp-shadow) 30%, transparent);
+  color: var(--hz8-ink) !important;
+  text-decoration: none !important;
+  transition: background-color .2s var(--hz8-ease), transform .3s var(--hz8-ease);
+}
+/* Vape-siluett (linje, ingen produktbild) och pil. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a::before {
+  content: "";
+  grid-area: icon;
+  width: 20px;
+  height: 46px;
+  background: var(--hz8-ink);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 46'%3E%3Cpath d='M7 1.5h6v5H7zM4.5 6.5h11a2 2 0 0 1 2 2v34a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-34a2 2 0 0 1 2-2z' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 46'%3E%3Cpath d='M7 1.5h6v5H7zM4.5 6.5h11a2 2 0 0 1 2 2v34a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-34a2 2 0 0 1 2-2z' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a::after {
+  content: "";
+  grid-area: arrow;
+  width: 18px;
+  height: 12px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath d='M0 5h12M8.5 1 12.5 5 8.5 9' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath d='M0 5h12M8.5 1 12.5 5 8.5 9' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .25s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes strong {
+  grid-area: size;
+  align-self: end;
+  font: 400 clamp(28px, 2.3vw, 36px)/1 var(--hz8-font-display) !important;
+  letter-spacing: -.01em !important;
+  white-space: nowrap;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes [data-hz8-size-live] {
+  grid-area: live;
+  align-self: start;
+  margin-top: 6px;
+  color: var(--hz8-ink) !important;
+  font: 400 14.5px/1.35 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes [data-hz8-size-live]:empty { display: none; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__size-from::before { content: "· "; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a:hover { background-color: color-mix(in srgb, var(--lp-peach-light) 40%, transparent); }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a:hover::after { transform: translateX(3px); }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a:focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 3px !important; }
+
+/* ---------- 4. Sortimentsledet: samma varma stage bakom varje kort ----------
+   Bara bilder som mediesystemet (96-product-media) klassat som frilagda får
+   stagen; vita och inbakade bilder behåller sin neutrala yta. Samma
+   :not(#hz8-media)-specificitet som mediesystemets nollställning. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range { margin-top: clamp(48px, 4.6vw, 76px); }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range .hz8-lp__head h3 { font-size: clamp(28px, 2.4vw, 40px) !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__rail .product-card__image[data-hz8-media="transparent"]:not(#hz8-media):not(#hz8-media) {
+  background:
+    radial-gradient(130% 110% at 0% 0%, color-mix(in srgb, var(--hz8-cta) 30%, transparent) 0, transparent 62%),
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 30%, transparent), color-mix(in srgb, var(--lp-peach-light) 30%, transparent)),
+    url("assets/landing-thcx/product-stage-960.webp") 50% 100% / cover no-repeat,
+    color-mix(in srgb, var(--lp-sun) 62%, var(--hz8-beige)) !important;
+  background-blend-mode: soft-light, screen, normal, normal;
+  border-radius: var(--hz8-radius-m) var(--hz8-radius-m) 0 0;
+}
+
+/* ---------- 4b. Nedre halvans ljus: ett sammanhängande kvällsljus ----------
+   Sortiment -> uppslag -> serier/analysintyg -> FAQ delar samma persikoljus.
+   Varje del bär en kant-till-kant-zon som tonar in och ut över nästa del
+   (inga block, inga kanter). Lövskuggorna är härledda ur den godkända
+   putsbilden (landing-engangsvape/leaf-shadow-*, bara skuggan som alfa) och
+   ligger i sidorna och ovanför rubrikerna, aldrig bakom brödtexten. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] {
+  --lp-glow: color-mix(in srgb, var(--lp-peach) 38%, transparent);
+  --lp-glow-sun: color-mix(in srgb, var(--hz8-cta) 16%, transparent);
+  --lp-zone-mask: linear-gradient(180deg, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range::before,
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__chapters::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  pointer-events: none;
+  -webkit-mask-image: var(--lp-zone-mask);
+          mask-image: var(--lp-zone-mask);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range::before {
+  top: -200px;
+  bottom: -220px;
+  background:
+    radial-gradient(42% 46% at 14% 36%, var(--lp-glow-sun) 0, transparent 100%),
+    linear-gradient(var(--lp-glow), var(--lp-glow));
+}
+/* Lövskuggor över sortimentet: vänster hörn ovanför rubriken och höger
+   kant, som i referensen. Svagt -- de ska läsas som ljus, inte mönster. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -150px;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  height: min(46vw, 760px);
+  background: url("assets/landing-engangsvape/leaf-shadow-1600.webp") 50% 0 / max(100%, 1200px) auto no-repeat;
+  opacity: .3;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 55%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 55%, transparent 100%);
+  pointer-events: none;
+}
+/* Uppslaget: zonen fortsätter, med solen åt fotots håll. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__story::before {
+  top: -60px;
+  bottom: -200px;
+  background:
+    radial-gradient(48% 60% at 74% 44%, var(--lp-glow-sun) 0, transparent 100%),
+    linear-gradient(var(--lp-glow), var(--lp-glow));
+  -webkit-mask-image: var(--lp-zone-mask);
+          mask-image: var(--lp-zone-mask);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__chapters { position: relative; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__chapters::before {
+  top: -200px;
+  bottom: -240px;
+  background:
+    radial-gradient(40% 50% at 20% 60%, var(--lp-glow-sun) 0, transparent 100%),
+    linear-gradient(var(--lp-glow), var(--lp-glow));
+}
+/* FAQ: samma persikoljus i stället för en ljusare platta; lövskuggor i
+   nedre vänstra hörnet (spegelvända) tonar mot sidfoten. */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__faq::before {
+  background:
+    radial-gradient(50% 60% at 84% 50%, color-mix(in srgb, var(--lp-peach-light) 50%, transparent) 0, transparent 72%),
+    linear-gradient(180deg, transparent 0, var(--lp-glow) 200px, var(--lp-glow) 100%);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__faq::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: calc(50% - 50vw);
+  bottom: 0;
+  width: min(62vw, 1100px);
+  height: min(32vw, 520px);
+  background: url("assets/landing-engangsvape/leaf-shadow-1600.webp") 0 0 / 100% auto no-repeat;
+  transform: scale(-1, -1);
+  opacity: .26;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(0deg, transparent 0, #000 45%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(0deg, transparent 0, #000 45%);
+          mask-composite: intersect;
+  pointer-events: none;
+}
+
+/* ---------- 5. Uppslaget: eget kustfoto ---------- */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__photo--boardwalk {
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 10%, transparent), color-mix(in srgb, var(--lp-peach-light) 10%, transparent)),
+    url("assets/landing-engangsvape/coast-boardwalk-1672.webp") 38% 58% / cover no-repeat,
+    linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
+  /* Ljus himmel: längre toning upptill så fotot inte får en kant. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 24%, #000 78%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 34%), linear-gradient(180deg, transparent 0, #000 24%, #000 78%, transparent 100%);
+}
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__story { margin-top: clamp(24px, 3vw, 56px); }
+
+/* ---------- 6. Serier: länk + lagerstatus på samma rad ---------- */
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__series li { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__series a { font: 600 16px/1.4 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__series [data-hz8-series-live] { color: var(--hz8-olive) !important; font: 500 14px/1.4 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__series li:not(.is-in-stock)::before { background: color-mix(in srgb, var(--hz8-olive) 40%, transparent); }
+
+/* ---------- Surfplatta ---------- */
+@media (max-width: 1023px) {
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes { grid-template-columns: minmax(0, 1fr); }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes-head { padding-right: 0; border-right: 0; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__photo--boardwalk {
+    background-image: linear-gradient(transparent, transparent), url("assets/landing-engangsvape/coast-boardwalk-900.webp"), linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
+    background-position: 0 0, 46% 62%, 0 0;
+    background-size: auto, cover, auto;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 74%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 74%, transparent 100%);
+  }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 767px) {
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp--format::before {
+    top: calc(-1 * var(--hz8-top-clear, 96px) - 24px);
+    width: 78vw;
+    height: calc(var(--hz8-top-clear, 96px) + 24px + 190px);
+    background:
+      linear-gradient(color-mix(in srgb, var(--lp-peach-light) 42%, transparent), color-mix(in srgb, var(--lp-peach-light) 42%, transparent)),
+      url("assets/category-vapes-hero-2026-10/category-vapes-sunset-v4-1512.webp") 70% 40% / cover no-repeat;
+    /* Rubriken sträcker sig över hela bredden på mobil: bilden blir aldrig
+       helt täckande bakom den (kontrast H1 >= 4,5:1). */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .3) 34%, rgba(0, 0, 0, .7) 100%), linear-gradient(180deg, #000 0, #000 34%, rgba(0, 0, 0, .45) 60%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .3) 34%, rgba(0, 0, 0, .7) 100%), linear-gradient(180deg, #000 0, #000 34%, rgba(0, 0, 0, .45) 60%, transparent 100%);
+  }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__intro h1 { font-size: min(13.6vw, 72px) !important; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes { gap: 12px; margin-top: 36px; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes h3 { font-size: 34px !important; }
+  /* Två (eller fler) separata glaskort med mellanrum, ett per storlek i
+     lager. Antal och frånpris staplas under storleken. */
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes ul[data-hz8-n="1"] { grid-template-columns: minmax(0, 1fr); }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "icon size arrow" "icon live arrow";
+    gap: 0 10px;
+    min-height: 96px;
+    padding: 14px 14px 14px 16px;
+  }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a::before { width: 16px; height: 38px; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a::after { width: 14px; height: 10px; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes strong { font-size: 28px !important; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes [data-hz8-size-live] { display: grid; margin-top: 6px; font-size: 13px !important; line-height: 1.35 !important; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__size-from::before { content: none; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range .hz8-lp__head h3 { font-size: 28px !important; }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] { --lp-zone-mask: linear-gradient(180deg, transparent 0, #000 100px, #000 calc(100% - 100px), transparent 100%); }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__range::after {
+    top: -110px;
+    height: 420px;
+    background-image: url("assets/landing-engangsvape/leaf-shadow-800.webp");
+    background-size: 210% auto;
+    background-position: 0 0;
+  }
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__faq::after { width: 100vw; height: 300px; background-image: url("assets/landing-engangsvape/leaf-shadow-800.webp"); background-size: 190% auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a,
+  html.hz8.hz8-lp-page[data-hz8-lp-scene="engangsvape"] #store-main .hz8-lp__sizes a::after { transition: none !important; }
+}

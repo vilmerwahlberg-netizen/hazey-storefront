@@ -1,0 +1,179 @@
+<!-- Engångsvapes -- innehållsblock för Theme 8 (EJ publicerat, EJ inlagt i admin).
+     Användning (först efter Vilmers granskning och beslut): Content -> Sidor
+     -> Ny sida, slug "engangsvape" (/sv/page/engangsvape, 404 = ledig vid
+     kontroll 2026-11-15 i preview). Ett (1) HTML-block med hela denna fil.
+     Titel, metabeskrivning, canonical och robots sätts i sidans egna SEO-
+     fält (öppet beslut, se theme8/review/engangsvape-landing-2026-11/).
+
+     Mall: .hz8-lp (88b-landing.css/js) + formatlandningens komposition
+     (88c-landing-format.css), vald med data-hz8-scene="engangsvape". All
+     text, alla rubriker och länkar står här i initial HTML. JS hämtar bara
+     riktig butiksdata: serievägarnas frilagda bild, pris och storlekar,
+     storleksradens antal och frånpris, lagerraden, seriernas lagerstatus
+     och sortimentsledet (Nyehandels egna kort). Allt räknas ur kategorin
+     alla-vapes med I lager-filter; carts, refill, batterier och paket
+     räknas bort (data-hz8-exclude + paketfiltret).
+
+     TEXT: TASK-ENGANGSVAPE-HELSIDA.md (utkast 2026-11-15), mappad mot
+     gamla /engangsvape/ i KARTLAGGNING.md. Inga laglighets-, effekt- eller
+     medicinska påståenden. Disclaimern (18 år m.m.) visas av den globala
+     sidfoten. Gammalt innehåll som väntar på beslut står som kommentarer. -->
+<article class="hz8-lp hz8-lp--format" data-hz8-scene="engangsvape">
+  <div class="hz8-lp__intro">
+    <h1>Engångsvapes</h1>
+    <p class="hz8-lp__lead">Utforska färdigfyllda vapes efter serie, smak och storlek. Här ser du vad som finns i lager just nu och hittar vidare till varje produkts egna uppgifter.</p>
+    <!-- Lagerraden skrivs av JS ur livekatalogen; ingen data -> raden visas inte. -->
+    <p class="hz8-lp__live-line" data-hz8-format-summary hidden></p>
+    <nav class="hz8-lp__nav" aria-label="På denna sida">
+      <a href="#produkter">Produkter</a>
+      <a href="#storlek">Storlek</a>
+      <a href="#vad-ar-en-engangsvape">Om formatet</a>
+      <a href="#fragor">Frågor</a>
+    </nav>
+    <!-- BESLUT (gamla sidan): underrubriken "Lagliga Cannabis Vapes i Sverige" och ingressens
+         "bekväm och effektiv dosering", "fördelar som cannabinoider har att erbjuda", "Sveriges
+         bredaste utbud", "Alltid 100 % lagligt". Används inte förrän beslutat (KARTLAGGNING.md rad 2–7, 13). -->
+  </div>
+
+  <section class="hz8-lp__products" id="produkter" aria-labelledby="hz8-lp-products-title">
+    <h2 class="hz8-lp__kicker" id="hz8-lp-products-title">Engångsvapes i lager</h2>
+    <!-- Tre serievägar. data-hz8-match = produktens riktiga sökväg(ar); den
+         första i lager visas, med pris och övriga i lager som länkar. Ingen i
+         lager -> vägen döljs. Länkarna fungerar utan JS. -->
+    <ul class="hz8-lp__paths" role="list">
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/vape-magic-sauce-magic-farmers-2ml /sv/products/magic-sauce-vape-5ml">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/vape-magic-sauce-magic-farmers-2ml">Magic Sauce 3.0</a></h3>
+          <p class="hz8-lp__path-kind">Magic Farmers, flera smaker</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/thc-x-vape-hero-core-2ml">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/thc-x-vape-hero-core-2ml">Hero’s Core</a></h3>
+          <p class="hz8-lp__path-kind">2 ml i flera strains</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+      <li class="hz8-lp__path" data-hz8-match="/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake /sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas /sv/products/cookies-cbd-vape-adios-mother-f-miami-mint">
+        <div class="hz8-lp__scene" aria-hidden="true"></div>
+        <div class="hz8-lp__path-body">
+          <h3><a class="hz8-lp__path-link" href="/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake">Cookies CBD</a></h3>
+          <!-- Två kammare à 1 ml: enligt produktsidornas produktinformation (kontrollerat 2026-11-15). -->
+          <p class="hz8-lp__path-kind">Dubbelkammare 1+1 ml, två smaker</p>
+          <p class="hz8-lp__path-live" data-hz8-live></p>
+          <span class="hz8-lp__path-btn" aria-hidden="true">Visa produkt</span>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Storlekar: antal och frånpris räknas ur samma lagerkort; storlek med
+         0 i lager döljs. En dubbelkammare "1+1 ml" räknas på sin totala volym
+         (2 ml), samma klassning som katalogens volymfilter (TASK 01E): den har
+         ingen egen storlek. Produktens egen märkning "1+1 ml" ändras inte. -->
+    <div class="hz8-lp__sizes" id="storlek" aria-labelledby="hz8-lp-sizes-title">
+      <div class="hz8-lp__sizes-head">
+        <h3 id="hz8-lp-sizes-title">Välj storlek</h3>
+        <p>Hitta engångsvapes i den storlek som passar dig.</p>
+      </div>
+      <ul role="list" data-hz8-sizes>
+        <li data-hz8-size="1ml"><a href="/sv/categories/alla-vapes?typ=vapes&amp;volym=1ml"><strong>1 ml</strong><span data-hz8-size-live></span></a></li>
+        <li data-hz8-size="2ml"><a href="/sv/categories/alla-vapes?typ=vapes&amp;volym=2ml"><strong>2 ml</strong><span data-hz8-size-live></span></a></li>
+        <li data-hz8-size="5ml"><a href="/sv/categories/alla-vapes?typ=vapes&amp;volym=5ml"><strong>5 ml</strong><span data-hz8-size-live></span></a></li>
+      </ul>
+    </div>
+
+    <div class="hz8-lp__range">
+      <div class="hz8-lp__head">
+        <h3 id="hz8-lp-range-title">Alla engångsvapes i lager</h3>
+        <a class="hz8-lp__all" href="/sv/categories/alla-vapes?typ=vapes">Filtrera alla vapes</a>
+      </div>
+      <p class="hz8-lp__sub"><span data-hz8-range-count hidden></span>Varje smak som eget kort. Lager och pris uppdateras direkt från butiken.</p>
+      <!-- Källa = Theme 8:s vape-format (alla-vapes). Det som också finns
+           under carts, refill eller batterier räknas bort. Paket filtreras av
+           variantkorten. Aldrig fritextsökning. -->
+      <div data-hz8-lp-products data-hz8-sources="/sv/categories/alla-vapes" data-hz8-exclude="/sv/categories/alla-cartridges /sv/categories/alla-liquids /sv/categories/pennor" data-hz8-instock="only" data-hz8-strain-only data-hz8-limit="40">
+        <p class="hz8-lp__fallback">Se <a href="/sv/categories/alla-vapes?typ=vapes">alla vapes</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hz8-lp__story" id="vad-ar-en-engangsvape" aria-labelledby="hz8-lp-story-title">
+    <p class="hz8-lp__eyebrow">Om formatet</p>
+    <h2 id="hz8-lp-story-title">Vad är en engångsvape?</h2>
+    <p>En engångsvape är en färdigfylld vape som säljs som en färdig enhet. Modellerna skiljer sig åt i volym, konstruktion och innehåll. På varje produktsida står vilken variant du väljer och vilka uppgifter som gäller för just den produkten.</p>
+    <!-- Produktfri stämningsbild (theme8/assets/landing-engangsvape/coast-boardwalk-*.webp). -->
+    <div class="hz8-lp__photo hz8-lp__photo--boardwalk" role="presentation"></div>
+    <!-- 1+1 ml: produktsidorna för Cookies Dual Chamber anger "två separata 1ml kammare" (kontrollerat 2026-11-15). -->
+    <p>Storlekarna på den här sidan anges i milliliter: 2 ml och 5 ml. En modell märkt 1+1 ml rymmer 2 ml totalt, fördelat på två separata kammare, och räknas därför som 2 ml. Jämför alltid modellen och variantens uppgifter på produktsidan innan du väljer.</p>
+    <!-- FAKTAKONTROLL (gamla sidan): "De innehåller cannabinoider från lagliga växter",
+         "THC-fria enligt svensk lagstiftning", "varje batch analyseras noggrant". Används inte. -->
+  </section>
+
+  <div class="hz8-lp__chapters">
+    <section id="serier" aria-labelledby="hz8-lp-series-title">
+      <h2 id="hz8-lp-series-title">Serier i sortimentet</h2>
+      <p>Samma serie kan finnas i flera smaker och storlekar. Börja med Magic Sauce, Hero’s Core eller CBD-produkterna och öppna seriens sida för att se aktuella varianter. Vissa andra serier är tillfälligt slutsålda; deras produktsidor visar aktuell status.</p>
+      <!-- Lagerstatus per serie räknas ur seriens kategori (bara engångsvapes
+           i lager). Slut -> ingen status, aldrig "i lager". Hero's Core länkar
+           till serien, inte till THCX-landningen (ej publicerad); Core och
+           THCX beskrivs inte som samma ämne. -->
+      <ul class="hz8-lp__facts hz8-lp__series" role="list">
+        <li data-hz8-series="/sv/categories/ms-vapes"><a href="/sv/categories/ms-vapes"><strong>Magic Sauce</strong></a><span data-hz8-series-live></span></li>
+        <li data-hz8-series="/sv/categories/hero-vapes"><a href="/sv/categories/hero-vapes"><strong>Hero’s Core</strong></a><span data-hz8-series-live></span></li>
+        <li data-hz8-series="/sv/categories/cbd-vapes"><a href="/sv/categories/cbd-vapes"><strong>CBD</strong></a><span data-hz8-series-live></span></li>
+        <li data-hz8-series="/sv/categories/thcba-vapes"><a href="/sv/categories/thcba-vapes"><strong>THCbA</strong></a><span data-hz8-series-live></span></li>
+        <li data-hz8-series="/sv/categories/d10-vapes"><a href="/sv/categories/d10-vapes"><strong>D10</strong></a><span data-hz8-series-live></span></li>
+        <li data-hz8-series="/sv/categories/thcv-vape"><a href="/sv/categories/thcv-vape"><strong>THCV</strong></a><span data-hz8-series-live></span></li>
+      </ul>
+      <!-- BESLUT (gamla sidan): "Populära cannabinoider i våra vapes nu och genom tiderna"
+           (THCB, THCA, H4CBD, Nano 11, Magic Sauce "syntetisk") -- ämnen utan engångsvape i lager
+           och obeslutad terminologi. Används inte. -->
+    </section>
+    <section id="analysintyg" aria-labelledby="hz8-lp-coa-title">
+      <h2 id="hz8-lp-coa-title">Analysintyg och produktfakta</h2>
+      <p>Varje produktsida visar den information vi har om dess innehåll och varianter. När ett analysintyg finns länkar vi till det från produkten. Ett sådant intyg beskriver det prov och den batch som laboratoriet analyserade; det ska inte läsas som ett generellt värde för varje förpackning i dagens lager.</p>
+      <!-- KONTROLLERAT 2026-11-15: intygslänkar finns på Magic Sauce 3.0 2 ml (per strain) och
+           Hero's Core 2 ml; inte på Magic Sauce 5 ml, Cookies, CBD + CBN eller H4CBD.
+           Intygens PDF:er ligger på www.hazey.se/wp-content (måste flyttas före domänbytet). -->
+    </section>
+    <!-- BLOCKERAT: kapitel om laglighet (gamla "Alltid lagligt", "Vi sköter juridiken"). -->
+  </div>
+
+  <section class="hz8-lp__faq" id="fragor" aria-labelledby="hz8-lp-faq-title">
+    <h2 id="hz8-lp-faq-title">Vanliga frågor om engångsvapes</h2>
+    <div class="hz8-lp__qa">
+      <details>
+        <summary>Behöver jag ladda eller fylla på en engångsvape?</summary>
+        <p>Det beror på modellen. Läs anvisningarna på den aktuella produktsidan och förpackningen. En färdigfylld modell är inte avsedd att fyllas med annat innehåll om tillverkaren inte anger det.</p>
+      </details>
+      <details>
+        <summary>Vilka cannabinoider finns i era vapes?</summary>
+        <p>Det varierar mellan serier och produkter. Öppna produktens sida för dess aktuella uppgifter om innehåll och halt.</p>
+      </details>
+      <details>
+        <summary>Finns analysintyg för produkterna?</summary>
+        <p>När vi har ett intyg för en produkt länkar vi till det på produktsidan. Kontrollera vilken batch intyget gäller.</p>
+      </details>
+      <details>
+        <summary>Vad skiljer 2 och 5 ml?</summary>
+        <p>Siffrorna beskriver volymen som anges för modellen. En vape märkt 1+1 ml är också 2 ml, fördelat på två separata kammare om 1 ml. Se produktens specifikation för konstruktion och innehåll.</p>
+      </details>
+      <details>
+        <summary>Hur snabbt skickas min beställning?</summary>
+        <p>Aktuella leveranssätt och villkor finns på sidan <a href="/sv/page/kop-och-leveransvillkor">Köp- och leveransvillkor</a>.</p>
+      </details>
+      <!-- BLOCKERAD: "Är engångsvapes från Hazey lagliga i Sverige?" (gammalt svar "Ja! ...").
+           Publiceras inte med det gamla jakande svaret; se beslutslistan. -->
+    </div>
+    <aside class="hz8-lp__cta" aria-labelledby="hz8-lp-cta-title">
+      <p class="hz8-lp__cta-title" id="hz8-lp-cta-title">Hitta rätt vape</p>
+      <a class="hz8-btn hz8-btn--primary" href="/sv/categories/alla-vapes?typ=vapes">Filtrera alla vapes</a>
+      <p class="hz8-lp__more">Fler svar under <a href="/sv/page/faq">Vanliga frågor</a>. Läs mer om cannabinoider i <a href="/sv/posts">våra artiklar</a>.</p>
+    </aside>
+  </section>
+</article>
