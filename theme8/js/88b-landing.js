@@ -242,10 +242,19 @@
     var own = p.cloneNode(true); own.querySelectorAll("del").forEach(function (d) { d.remove(); });
     return parseInt(own.textContent.replace(/[^\d]/g, ""), 10) || 0;
   }
+  /* Storleksgrupp = total volym, samma klassning som katalogens volym-
+     filter (80-category, TASK 01E): "1+1 ml" -> "2 ml". Bara grupperingen;
+     produktens namn och märkning ändras inte. */
+  function totalSize(label) {
+    var m = /^(\d+(?:\s*\+\s*\d+)+)\s*(g|ml)$/i.exec(label);
+    if (!m) return label;
+    var sum = m[1].split("+").reduce(function (a, x) { return a + parseFloat(x); }, 0);
+    return String(sum) + " " + m[2].toLowerCase();
+  }
   function sizeGroups(cards) {
     var by = {};
     cards.forEach(function (c) {
-      var info = cardInfo(c.html), label = sizeLabel(decode(info.name));
+      var info = cardInfo(c.html), label = totalSize(sizeLabel(decode(info.name)));
       if (!label) return;
       var key = label.replace(/\s/g, ""), g = by[key] || (by[key] = { label: label, n: 0, min: 0, first: info.key });
       var pr = priceOf(c.html);

@@ -22,7 +22,7 @@ fixtur: en riktig tom Nyehandel-innehållssida fylls med blocket
 
 ## Sidordning som byggd (TASK-tabellen 1–9)
 
-1. **Hero:** brödsmula, H1 `Engångsvapes`, ingressen ordagrant ur utkastet, levande lagerrad ("8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml", räknad ur livekatalogen, dold utan data), kapitelrad Produkter · Storlek · Om formatet · Frågor. Kustljus uppe till höger som tonar in i putsen.
+1. **Hero:** brödsmula, H1 `Engångsvapes`, ingressen ordagrant ur utkastet, levande lagerrad ("8 produkter i lager med 21 smakvarianter · 2 och 5 ml", räknad ur livekatalogen, dold utan data), kapitelrad Produkter · Storlek · Om formatet · Frågor. Kustljus uppe till höger som tonar in i putsen.
 2. **Tre serievägar:** Magic Sauce 3.0, Hero’s Core, Cookies CBD med riktig frilagd Nyehandel-bild på stenstagen, livepris, storlekar/smaker som länkar till riktiga produktsidor. Väg utan lager döljs. Mobil: ett kort + nästa syns.
 3. **Välj storlek:** 1+1 ml, 2 ml, 5 ml med antal och frånpris ur livekatalogen; 1 ml dold (0 i lager). 2 och 5 ml öppnar katalogens volymfilter; 1+1 ml (inget filter än) öppnar en riktig 1+1 ml-produkt i lager.
 4. **Alla engångsvapes i lager:** varje köpbar smak som Theme 8:s eget kort (bild, namn, pris, Lägg till) på varm stage. Källa `alla-vapes` i lager; carts, refill, batterier och paket räknas bort. Länk "Filtrera alla vapes".
@@ -148,3 +148,36 @@ Ett Cookies-kort innehåller två smaker i två kammare men räknas som en köpb
 - **Kontrast:** lägsta värdet är 4,77 (H1 vid 768, oförändrat). Sortimentets underrad gick från 3,44 till 6,99.
 - **THCX:** 10 av 10 bilder är pixelidentiska mot `d6a72d1`.
 - **Befintliga sidor:** startsidan, Alla Vapes, THCX-kategorin, Hasch, Core-PDP och Köpvillkor är identiska. Bästsäljare vid 393 skiljer på 0,003 %, ungefär 10 px live-innehåll, med samma DOM och höjd.
+
+## Storleksrättelse (2026-11-15, Vilmers beslut: 1+1 ml = 2 ml)
+
+En dubbelkammare märkt 1+1 ml räknas nu som 2 ml och har ingen egen storlek. Sidan visar bara 2 ml och 5 ml.
+
+**Före/efter:** `shots/fore-efter-storlek-393.webp` och `shots/fore-efter-storlek-1440.webp`. Jämförelsebladen mot referenserna är omgjorda.
+
+| Del | Före (`7b0e1f9`) | Nu |
+|---|---|---|
+| Storleksval | 1+1 ml (3 produkter, från 495 kr), 2 ml (4 produkter, från 395 kr), 5 ml (1 produkt, från 1 195 kr) | 2 ml (7 produkter, från 395 kr) och 5 ml (1 produkt, från 1 195 kr). Antalen räknas live. 1+1 grupperas på total volym, samma regel som katalogens volymfilter. |
+| Mobil | Fack i en gemensam rad | Två separata glaskort med 12 px mellanrum. Varmt halvtransparent glas med ljus kant, persikoljus uppifrån vänster och mjukt skuggdjup. Glaset suddar lövskuggorna bakom. Samma glas på desktop, där korten är högst 290 px breda. |
+| Lagerrad | "… · 1+1, 2 och 5 ml" | "… · 2 och 5 ml" |
+| Serien CBD | "I lager: 1+1 och 2 ml" | "I lager: 2 ml" |
+| Uppslaget, andra stycket | "En modell märkt 1+1 ml har två separata behållare, och 2 ml och 5 ml är andra volymval." | "Storlekarna på den här sidan anges i milliliter: 2 ml och 5 ml. En modell märkt 1+1 ml rymmer 2 ml totalt, fördelat på två separata kammare, och räknas därför som 2 ml." |
+| FAQ | "Vad skiljer 1+1, 2 och 5 ml?" | "Vad skiljer 2 och 5 ml?" Svaret förklarar att 1+1 ml är 2 ml i två kammare om 1 ml. |
+
+**Det här är oförändrat:**
+- Cookies-vägens text "Dubbelkammare 1+1 ml, två smaker".
+- Sortimentskorten med "… - 1+1ml".
+- Produktsidans H1 "CBD 56% - Cereal Milk + London P.C. - 1+1ml", med 11 omnämnanden av 1+1 ml både före och efter.
+- 1 ml-platsen finns kvar och döljs vid 0 i lager, som förut. Katalogen har ett godkänt 1 ml-filter.
+
+**Länkar, kontrollerade i preview:**
+- `alla-vapes?typ=vapes&volym=2ml` visar 47 kort, varav 16 i lager och först. Där finns alla tre Cookies 1+1 ml (i lager) bredvid Magic Sauce 2 ml, CBD + CBN, Hero's Core och H4CBD.
+- `volym=5ml` visar de fem Magic Sauce 5 ml.
+- I katalogen visar Cookies-korten volymchipet "2 ml" och namnet utan storlek. Det är katalogens befintliga beteende (TASK 01E), och jag har inte ändrat det.
+
+**Tester:** `verify.json`.
+- **Storlekarna:** de räknas också oberoende ur sortimentets kort. Total volym ger 2 ml = 7 produkter från 395 kr och 5 ml = 1 produkt från 1 195 kr. Det stämmer med korten på sidan.
+- **Mobilen:** två kort på samma rad, 175 + 175 px breda vid 393 och 138 + 138 px vid 320. Varje kort har egen skugga och backdrop-blur, och listan har ingen gemensam bakgrund.
+- **Sidan:** ingen sidledsscroll, inga konsolfel och 7 av 7 faktatexter synliga. Alla länkar svarar 200. Lägsta kontrasten är 4,77 (H1 vid 768, oförändrat), och storlekskortens text ligger på 5,6 eller mer.
+- **Inget annat har ändrats:** innehållsdiffen mot `7b0e1f9` visar bara storlekarna, lagerraden, CBD-seriens status, faktameningen och FAQ:n. Rubriker, länkar (−1, den borttagna 1+1-länken), sortimentskort, vägar och övriga texter är identiska.
+- **THCX och befintliga sidor:** THCX är pixelidentisk (10 av 10). Startsidan, Alla Vapes, THCX-kategorin, Hasch, Core-PDP och Köpvillkor är identiska. Bästsäljare vid 393 skiljer på 0,001 % live-innehåll.

@@ -3,7 +3,7 @@
   "h1": 1,
   "h2": 5,
   "h3": 5,
-  "links": 23,
+  "links": 22,
   "faq": 5
  },
  "results": [
@@ -34,7 +34,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -80,8 +80,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     175,
+     175
+    ],
+    "gap": 12,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -168,15 +200,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -199,7 +225,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -265,28 +291,28 @@
      "name": "Kowa Bunga",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/451",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "La Chupacabra",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/453",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Yoda Ice Cream",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/455",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Bruce Banner OG",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/456",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
@@ -300,35 +326,35 @@
      "name": "Strawberry Kush",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Melon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Pineapple Express",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Super Lemon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Coconut Cake",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
@@ -383,7 +409,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -427,8 +453,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -452,35 +478,35 @@
      16,
      869,
      361,
-     173
+     174
     ],
     "range": [
      16,
-     1091,
+     1092,
      361,
      450
     ],
     "story": [
      16,
-     1565,
+     1566,
      361,
-     687
+     714
     ],
     "chapters": [
      16,
-     2292,
+     2320,
      361,
      787
     ],
     "faq": [
      16,
-     3095,
+     3123,
      361,
      807
     ],
     "footer": [
      0,
-     3933,
+     3961,
      393,
      743
     ]
@@ -528,7 +554,7 @@
     },
     {
      "s": ".hz8-lp__lead",
-     "worst": 10.84,
+     "worst": 10.83,
      "median": 12.2
     },
     {
@@ -578,12 +604,12 @@
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
-     "worst": 9.54,
-     "median": 10.02
+     "worst": 9.58,
+     "median": 10.04
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
-     "worst": 9.25,
+     "worst": 9.46,
      "median": 10.13
     },
     {
@@ -594,7 +620,7 @@
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
      "worst": 7.72,
-     "median": 7.72
+     "median": 7.78
     },
     {
      "s": ".hz8-lp__chapters h2",
@@ -618,7 +644,7 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 156,
@@ -655,7 +681,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -701,8 +727,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     290,
+     290
+    ],
+    "gap": 20,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -789,15 +847,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -820,7 +872,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -921,35 +973,35 @@
      "name": "Strawberry Kush",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Melon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Pineapple Express",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Super Lemon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Coconut Cake",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
@@ -1004,7 +1056,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -1048,8 +1100,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -1085,23 +1137,23 @@
      60,
      1602,
      1320,
-     458
+     485
     ],
     "chapters": [
      60,
-     2117,
+     2144,
      1320,
      476
     ],
     "faq": [
      60,
-     2622,
+     2649,
      1320,
      570
     ],
     "footer": [
      0,
-     3225,
+     3251,
      1440,
      382
     ]
@@ -1184,17 +1236,17 @@
     },
     {
      "s": ".hz8-lp__range h3",
-     "worst": 6.55,
-     "median": 9.54
+     "worst": 6.56,
+     "median": 9.6
     },
     {
      "s": ".hz8-lp__sub",
      "worst": 7.43,
-     "median": 9.51
+     "median": 9.53
     },
     {
      "s": "[data-hz8-range-count]",
-     "worst": 6.99,
+     "worst": 7,
      "median": 8.86
     },
     {
@@ -1210,7 +1262,7 @@
     {
      "s": ".hz8-lp__chapters p",
      "worst": 9.84,
-     "median": 10.08
+     "median": 10.1
     },
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
@@ -1225,7 +1277,7 @@
     {
      "s": ".hz8-lp__faq h2",
      "worst": 7.4,
-     "median": 7.64
+     "median": 7.61
     },
     {
      "s": ".hz8-lp__qa summary",
@@ -1234,12 +1286,12 @@
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 11.27,
+     "worst": 11.29,
      "median": 11.4
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 206,
@@ -1279,7 +1331,7 @@
      "inHtml": true
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "inHtml": true
     },
     {
@@ -1333,7 +1385,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -1379,8 +1431,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     290,
+     290
+    ],
+    "gap": 22,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -1467,15 +1551,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -1498,7 +1576,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -1682,7 +1760,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -1726,8 +1804,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -1862,18 +1940,18 @@
     },
     {
      "s": ".hz8-lp__range h3",
-     "worst": 6.62,
-     "median": 9.53
+     "worst": 6.63,
+     "median": 9.56
     },
     {
      "s": ".hz8-lp__sub",
-     "worst": 6.8,
-     "median": 9.5
+     "worst": 6.79,
+     "median": 9.49
     },
     {
      "s": "[data-hz8-range-count]",
-     "worst": 6.47,
-     "median": 9.31
+     "worst": 6.49,
+     "median": 9.29
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
@@ -1917,10 +1995,10 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
-    "top": 244,
+    "top": 231,
     "header": -48,
     "hash": "#vad-ar-en-engangsvape"
    },
@@ -1954,7 +2032,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -2000,8 +2078,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     138,
+     138
+    ],
+    "gap": 12,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -2088,15 +2198,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -2119,7 +2223,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -2164,14 +2268,14 @@
      "name": "Tart Apricot",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Blue Razz",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
@@ -2303,7 +2407,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -2347,8 +2451,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -2372,35 +2476,35 @@
      16,
      877,
      288,
-     232
+     233
     ],
     "range": [
      16,
-     1157,
+     1158,
      288,
      449
     ],
     "story": [
      16,
-     1630,
+     1631,
      288,
-     722
+     749
     ],
     "chapters": [
      16,
-     2392,
+     2420,
      288,
      869
     ],
     "faq": [
      16,
-     3277,
+     3305,
      288,
      807
     ],
     "footer": [
      0,
-     4116,
+     4143,
      320,
      763
     ]
@@ -2443,7 +2547,7 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 6.16,
+     "worst": 6.15,
      "median": 8.28
     },
     {
@@ -2473,7 +2577,7 @@
     },
     {
      "s": ".hz8-lp__sizes-head p",
-     "worst": 10.64,
+     "worst": 10.65,
      "median": 10.67
     },
     {
@@ -2503,13 +2607,13 @@
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
-     "worst": 9.2,
-     "median": 10.13
+     "worst": 9.47,
+     "median": 10.15
     },
     {
      "s": ".hz8-lp__chapters p",
      "worst": 10.07,
-     "median": 10.53
+     "median": 10.52
     },
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
@@ -2523,8 +2627,8 @@
     },
     {
      "s": ".hz8-lp__faq h2",
-     "worst": 7.3,
-     "median": 7.66
+     "worst": 7.29,
+     "median": 7.65
     },
     {
      "s": ".hz8-lp__qa summary",
@@ -2538,7 +2642,7 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 157,
@@ -2575,7 +2679,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -2621,8 +2725,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     290,
+     290
+    ],
+    "gap": 12,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -2709,15 +2845,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -2740,7 +2870,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -2792,7 +2922,7 @@
      "name": "Blue Razz",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
@@ -2806,28 +2936,28 @@
      "name": "Kowa Bunga",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/451",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "La Chupacabra",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/453",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Yoda Ice Cream",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/455",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Bruce Banner OG",
      "price": "1 195 kr",
      "href": "/sv/products/magic-sauce-vape-5ml/456",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
@@ -2841,35 +2971,35 @@
      "name": "Strawberry Kush",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Melon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Pineapple Express",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Super Lemon Haze",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Coconut Cake",
      "price": "675 kr",
      "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
@@ -2924,7 +3054,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -2968,8 +3098,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -2993,35 +3123,35 @@
      24,
      862,
      720,
-     186
+     173
     ],
     "range": [
      24,
-     1097,
+     1083,
      720,
      384
     ],
     "story": [
      24,
-     1504,
+     1491,
      720,
-     819
+     846
     ],
     "chapters": [
      24,
-     2364,
+     2378,
      720,
      524
     ],
     "faq": [
      24,
-     2903,
+     2917,
      720,
      752
     ],
     "footer": [
      0,
-     3687,
+     3701,
      768,
      758
     ]
@@ -3104,18 +3234,18 @@
     },
     {
      "s": ".hz8-lp__range h3",
-     "worst": 8.41,
-     "median": 9.69
+     "worst": 8.4,
+     "median": 9.71
     },
     {
      "s": ".hz8-lp__sub",
-     "worst": 9.35,
-     "median": 9.97
+     "worst": 9.36,
+     "median": 9.98
     },
     {
      "s": "[data-hz8-range-count]",
      "worst": 9.29,
-     "median": 9.6
+     "median": 9.56
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
@@ -3124,28 +3254,28 @@
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
-     "worst": 9.88,
+     "worst": 9.94,
      "median": 10.56
     },
     {
      "s": ".hz8-lp__chapters p",
      "worst": 9.76,
-     "median": 10.1
+     "median": 10.11
     },
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
-     "worst": 7.16,
-     "median": 7.34
+     "worst": 7.15,
+     "median": 7.32
     },
     {
      "s": ".hz8-lp__chapters h2",
-     "worst": 7.44,
-     "median": 7.58
+     "worst": 7.49,
+     "median": 7.59
     },
     {
      "s": ".hz8-lp__faq h2",
      "worst": 7.22,
-     "median": 7.62
+     "median": 7.61
     },
     {
      "s": ".hz8-lp__qa summary",
@@ -3159,7 +3289,7 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 173,
@@ -3196,7 +3326,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -3242,8 +3372,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     175,
+     175
+    ],
+    "gap": 12,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -3330,15 +3492,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -3361,7 +3517,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -3406,14 +3562,14 @@
      "name": "Tart Apricot",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
      "name": "Blue Razz",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
-     "img": true,
+     "img": false,
      "btn": true
     },
     {
@@ -3545,7 +3701,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -3589,8 +3745,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -3614,35 +3770,35 @@
      16,
      869,
      361,
-     173
+     174
     ],
     "range": [
      16,
-     1091,
+     1092,
      361,
      450
     ],
     "story": [
      16,
-     1565,
+     1566,
      361,
-     687
+     714
     ],
     "chapters": [
      16,
-     2292,
+     2320,
      361,
      787
     ],
     "faq": [
      16,
-     3095,
+     3123,
      361,
      807
     ],
     "footer": [
      0,
-     3933,
+     3961,
      393,
      743
     ]
@@ -3720,8 +3876,8 @@
     },
     {
      "s": ".hz8-lp__sizes [data-hz8-size-live]",
-     "worst": 10.88,
-     "median": 10.88
+     "worst": 10.8,
+     "median": 10.8
     },
     {
      "s": ".hz8-lp__range h3",
@@ -3740,8 +3896,8 @@
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
-     "worst": 9.54,
-     "median": 10.02
+     "worst": 9.58,
+     "median": 10.04
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
@@ -3756,7 +3912,7 @@
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
      "worst": 7.72,
-     "median": 7.72
+     "median": 7.78
     },
     {
      "s": ".hz8-lp__chapters h2",
@@ -3780,7 +3936,7 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 156,
@@ -3817,7 +3973,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -3863,8 +4019,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     290,
+     290
+    ],
+    "gap": 20,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -3924,15 +4112,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -3955,7 +4137,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -4139,7 +4321,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -4183,8 +4365,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -4220,23 +4402,23 @@
      60,
      1602,
      1320,
-     458
+     485
     ],
     "chapters": [
      60,
-     2117,
+     2144,
      1320,
      476
     ],
     "faq": [
      60,
-     2622,
+     2649,
      1320,
      570
     ],
     "footer": [
      0,
-     3225,
+     3251,
      1440,
      382
     ]
@@ -4319,17 +4501,17 @@
     },
     {
      "s": ".hz8-lp__range h3",
-     "worst": 6.55,
-     "median": 9.54
+     "worst": 6.56,
+     "median": 9.6
     },
     {
      "s": ".hz8-lp__sub",
      "worst": 7.43,
-     "median": 9.51
+     "median": 9.53
     },
     {
      "s": "[data-hz8-range-count]",
-     "worst": 6.99,
+     "worst": 7,
      "median": 8.86
     },
     {
@@ -4345,7 +4527,7 @@
     {
      "s": ".hz8-lp__chapters p",
      "worst": 9.84,
-     "median": 10.08
+     "median": 10.1
     },
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
@@ -4360,7 +4542,7 @@
     {
      "s": ".hz8-lp__faq h2",
      "worst": 7.4,
-     "median": 7.64
+     "median": 7.61
     },
     {
      "s": ".hz8-lp__qa summary",
@@ -4369,12 +4551,12 @@
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 11.27,
+     "worst": 11.29,
      "median": 11.4
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 206,
@@ -4417,6 +4599,19 @@
     "flavours": 0,
     "notOrderable": 0,
     "byProduct": {}
+   },
+   "sizeCheck": {
+    "groups": {},
+    "dualLabels": []
+   },
+   "sizeCards": {
+    "labels": [],
+    "widths": [],
+    "gap": null,
+    "sameRow": false,
+    "ownShadow": true,
+    "backdrop": "none",
+    "ulBg": "rgba(0, 0, 0, 0)"
    },
    "sizeRow": {
     "n": 0,
@@ -4477,12 +4672,6 @@
      "hidden": true,
      "live": "1 ml",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
-    },
-    {
-     "size": "1+1ml",
-     "hidden": true,
-     "live": "1+1 ml",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
     },
     {
      "size": "2ml",
@@ -4546,7 +4735,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -4590,8 +4779,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -4627,23 +4816,23 @@
      16,
      973,
      361,
-     687
+     714
     ],
     "chapters": [
      16,
-     1700,
+     1726,
      361,
      787
     ],
     "faq": [
      16,
-     2502,
+     2529,
      361,
      807
     ],
     "footer": [
      0,
-     3341,
+     3368,
      393,
      743
     ]
@@ -4730,23 +4919,23 @@
     },
     {
      "s": "[data-hz8-range-count]",
-     "worst": 9.53,
-     "median": 9.53
+     "worst": 9.56,
+     "median": 9.56
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
-     "worst": 9.54,
-     "median": 10.02
+     "worst": 9.53,
+     "median": 10.04
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
-     "worst": 9.26,
+     "worst": 9.46,
      "median": 10.13
     },
     {
      "s": ".hz8-lp__chapters p",
-     "worst": 10.03,
-     "median": 10.48
+     "worst": 10.02,
+     "median": 10.49
     },
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
@@ -4755,7 +4944,7 @@
     },
     {
      "s": ".hz8-lp__chapters h2",
-     "worst": 7.42,
+     "worst": 7.37,
      "median": 7.56
     },
     {
@@ -4770,7 +4959,7 @@
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 8.81,
+     "worst": 8.83,
      "median": 10.63
     }
    ],
@@ -4811,7 +5000,7 @@
    "overflowX": 0,
    "wide": [],
    "h1Fits": true,
-   "summary": "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml",
+   "summary": "8 produkter i lager med 21 smakvarianter · 2 och 5 ml",
    "rangeCount": "21 smakvarianter från 8 produkter.",
    "stock": {
     "products": 8,
@@ -4857,8 +5046,40 @@
      ]
     }
    },
+   "sizeCheck": {
+    "groups": {
+     "2ml": {
+      "products": 7,
+      "min": 395
+     },
+     "5ml": {
+      "products": 1,
+      "min": 1195
+     }
+    },
+    "dualLabels": [
+     "Cookies CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "Cookies CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "Cookies CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml"
+    ]
+   },
+   "sizeCards": {
+    "labels": [
+     "2 ml",
+     "5 ml"
+    ],
+    "widths": [
+     175,
+     175
+    ],
+    "gap": 12,
+    "sameRow": true,
+    "ownShadow": true,
+    "backdrop": "blur(14px) saturate(1.15)",
+    "ulBg": "rgba(0, 0, 0, 0)"
+   },
    "sizeRow": {
-    "n": 3,
+    "n": 2,
     "rows": 1
    },
    "packs": [
@@ -4945,15 +5166,9 @@
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
     },
     {
-     "size": "1+1ml",
-     "hidden": false,
-     "live": "1+1 ml3 produkter från 495 kr",
-     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
-    },
-    {
      "size": "2ml",
      "hidden": false,
-     "live": "2 ml4 produkter från 395 kr",
+     "live": "2 ml7 produkter från 395 kr",
      "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
     },
     {
@@ -4976,7 +5191,7 @@
     },
     {
      "name": "CBD",
-     "status": "I lager: 1+1 och 2 ml",
+     "status": "I lager: 2 ml",
      "href": "/sv/categories/cbd-vapes"
     },
     {
@@ -5021,14 +5236,14 @@
      "name": "Tart Apricot",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
      "name": "Blue Razz",
      "price": "475 kr",
      "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
-     "img": false,
+     "img": true,
      "btn": true
     },
     {
@@ -5160,7 +5375,7 @@
      "color": "rgb(35, 35, 29)"
     },
     {
-     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "t": "Storlekarna på den här sidan anges i milliliter:",
      "visible": true,
      "px": 16,
      "color": "rgb(35, 35, 29)"
@@ -5204,8 +5419,8 @@
      "answerInDom": 112
     },
     {
-     "q": "Vad skiljer 1+1, 2 och 5 ml?",
-     "answerInDom": 163
+     "q": "Vad skiljer 2 och 5 ml?",
+     "answerInDom": 188
     },
     {
      "q": "Hur snabbt skickas min beställning?",
@@ -5229,35 +5444,35 @@
      16,
      869,
      361,
-     173
+     174
     ],
     "range": [
      16,
-     1091,
+     1092,
      361,
      450
     ],
     "story": [
      16,
-     1565,
+     1566,
      361,
-     687
+     714
     ],
     "chapters": [
      16,
-     2292,
+     2320,
      361,
      787
     ],
     "faq": [
      16,
-     3095,
+     3123,
      361,
      807
     ],
     "footer": [
      0,
-     3933,
+     3961,
      393,
      743
     ]
@@ -5355,12 +5570,12 @@
     },
     {
      "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
-     "worst": 9.54,
-     "median": 10.02
+     "worst": 9.58,
+     "median": 10.04
     },
     {
      "s": ".hz8-lp__story > p:last-of-type",
-     "worst": 9.25,
+     "worst": 9.46,
      "median": 10.13
     },
     {
@@ -5371,7 +5586,7 @@
     {
      "s": ".hz8-lp__series [data-hz8-series-live]",
      "worst": 7.72,
-     "median": 7.72
+     "median": 7.78
     },
     {
      "s": ".hz8-lp__chapters h2",
@@ -5395,7 +5610,7 @@
     }
    ],
    "leadFocus": "solid Magic Sauce 3.0",
-   "sizeFocus": "solid 1+1 ml3 produkter från 495 kr",
+   "sizeFocus": "solid 2 ml7 produkter från 395 kr",
    "anchor": {
     "focused": "Vad är en engångsvape?",
     "top": 156,

@@ -20,7 +20,7 @@ const BLOCK = fs.readFileSync(path.join(DIR, "../../blocks/engangsvape.html"), "
 const LOADER = fs.readFileSync(path.join(DIR, "../../blocks/loader-theme8-dev.html"), "utf8").trim();
 // FÖRSLAG, inte beslutat (KARTLAGGNING.md avsnitt 2).
 const TITLE = "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey";
-const META = "Engångsvapes hos Hazey: Magic Sauce 3.0, Hero's Core och CBD i 1+1, 2 och 5 ml. Se vad som finns i lager och pris, med analysintyg på produktsidorna.";
+const META = "Engångsvapes hos Hazey: Magic Sauce 3.0, Hero's Core och CBD i 2 och 5 ml. Se vad som finns i lager och pris, med analysintyg på produktsidorna.";
 const FOLD = !!process.env.FOLD;
 let fixtureHtml = "";
 
@@ -116,6 +116,22 @@ for (const [tag, w, h, mode] of RUNS) {
         const by = {}; rail.forEach(c => { const k = base(c.querySelector("a")?.getAttribute("href") || ""); (by[k] = by[k] || []).push(txt(c.querySelector(".name") || c)); });
         return { products: Object.keys(by).length, flavours: rail.length, notOrderable: rail.filter(c => c.getAttribute("data-hz8-instock") === "0").length, byProduct: by };
       })(),
+      // Storlekarna räknade oberoende ur ledets kort: total volym per
+      // produkt ("1+1ml" = 2 ml), distinkta produkter och lägsta pris.
+      sizeCheck: (() => {
+        const base = h => h.replace(/^https?:\/\/[^/]+/, "").replace(/\?.*/, "").replace(/\/\d+$/, "");
+        const g = {}; const dual = [];
+        rail.forEach(c => {
+          const label = (c.querySelector(".brand")?.textContent || "") + " " + (c.querySelector(".name")?.textContent || "");
+          const m = label.match(/(\d+(?:\s*\+\s*\d+)*)\s*ml\b/i); if (!m) return;
+          const tot = m[1].split("+").reduce((a, x) => a + +x, 0) + "ml";
+          if (/\+/.test(m[1])) dual.push(label.replace(/\s+/g, " ").trim());
+          const k = base(c.querySelector("a").getAttribute("href")); const pr = +txt(c.querySelector(".price ins") || c.querySelector(".price")).replace(/[^\d]/g, "");
+          const e = g[tot] = g[tot] || { products: new Set(), min: Infinity }; e.products.add(k); if (pr) e.min = Math.min(e.min, pr);
+        });
+        return { groups: Object.fromEntries(Object.entries(g).map(([k, v]) => [k, { products: v.products.size, min: v.min }])), dualLabels: dual };
+      })(),
+      sizeCards: (() => { const li = [...document.querySelectorAll(".hz8-lp__sizes li:not([hidden])")]; const r = li.map(l => l.querySelector("a").getBoundingClientRect()); const ul = document.querySelector(".hz8-lp__sizes ul"); return { labels: li.map(l => txt(l.querySelector("strong"))), widths: r.map(q => Math.round(q.width)), gap: r.length > 1 ? Math.round(r[1].left - r[0].right) : null, sameRow: new Set(r.map(q => Math.round(q.top))).size === 1, ownShadow: li.every(l => getComputedStyle(l.querySelector("a")).boxShadow !== "none"), backdrop: getComputedStyle(li[0]?.querySelector("a") || document.body).backdropFilter, ulBg: ul ? getComputedStyle(ul).backgroundColor : null }; })(),
       sizeRow: (() => { const t = [...document.querySelectorAll(".hz8-lp__sizes li:not([hidden])")].map(l => Math.round(l.getBoundingClientRect().top)); return { n: t.length, rows: new Set(t).size }; })(),
       packs: [...document.querySelectorAll(".hz8-lp__path:not([hidden])")].map(l => { const sc = l.querySelector(".hz8-lp__scene").getBoundingClientRect(), i = l.querySelector(".hz8-lp__pack"); if (!i) return null; const q = i.getBoundingClientRect(); return { packH: Math.round(q.height), sceneH: Math.round(sc.height), share: +(q.height / sc.height).toFixed(2), clipped: q.top < sc.top || q.bottom > sc.bottom || q.left < sc.left || q.right > sc.right, sceneW: Math.round(sc.width) }; }),
       leads: [...document.querySelectorAll(".hz8-lp__path")].map(l => { const i = l.querySelector(".hz8-lp__pack"); return { title: txt(l.querySelector("h3")), hidden: l.hidden, href: l.querySelector(".hz8-lp__path-link").getAttribute("href").replace(/\?.*/, ""), kind: txt(l.querySelector(".hz8-lp__path-kind")), live: txt(l.querySelector("[data-hz8-live]")), img: i ? { loaded: i.complete && i.naturalWidth > 0, webp: /eyJ/.test(i.currentSrc) } : null, box: r(l) }; }),

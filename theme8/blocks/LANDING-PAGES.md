@@ -64,7 +64,7 @@ Formatlandningens tillägg (88b, generella, används bara om attributen finns):
 ```html
 <div data-hz8-lp-products data-hz8-sources="/sv/categories/alla-vapes"
      data-hz8-exclude="/sv/categories/alla-cartridges /sv/categories/alla-liquids /sv/categories/pennor"> <!-- produkter i dessa räknas bort -->
-<p data-hz8-format-summary hidden></p>                       <!-- "8 produkter i lager med 21 smakvarianter · 1+1, 2 och 5 ml" -->
+<p data-hz8-format-summary hidden></p>                       <!-- "8 produkter i lager med 21 smakvarianter · 2 och 5 ml" -->
 <span data-hz8-range-count hidden></span>                    <!-- "21 smakvarianter från 8 produkter. " (i ledets underrad) -->
                                                             <!-- produkter = produktsidor i lager; smakvarianter = köpbara varianter = korten i ledet -->
 <ul data-hz8-sizes><li data-hz8-size="2ml"><a href="…"><strong>2 ml</strong><span data-hz8-size-live></span></a></li>…</ul>
@@ -73,7 +73,7 @@ Formatlandningens tillägg (88b, generella, används bara om attributen finns):
                                                             <!-- "I lager: 2 och 5 ml" bara för produkter som också finns i sidans lagerlista; annars inget -->
 ```
 
-Storlek läses ur produktnamnet ("– 2ml", "– 1+1ml"). Vägarnas sortnamn kortas: halt-prefix ("CBD 56%") och storlek tas bort, entiteter avkodas; skiljer bara storleken produkterna åt blir storleken namnet.
+Storlek läses ur produktnamnet ("– 2ml", "– 1+1ml") och grupperas på total volym, samma klassning som katalogens volymfilter (TASK 01E): "1+1ml" räknas som 2 ml och får ingen egen storlek. Produktens namn ändras inte. Vägarnas sortnamn kortas: halt-prefix ("CBD 56%") och storlek tas bort, entiteter avkodas; skiljer bara storleken produkterna åt blir storleken namnet.
 
 Källor är alltid kategorimedlemskap, aldrig fritextsökning. Nästa landning
 (`/engangsvape/`) byggd 2026-11-15 som första formatlandning (se ovan);
