@@ -1,5 +1,7 @@
 # /engangsvape/: förslag på produktnära mall (design före kod)
 
+> **Ersatt 2026-11-15** av den byggda helsidan: `HELSIDA.md`, `theme8/blocks/engangsvape.html`. Skissen i `proposal/` och `forslag-*`-bilderna ligger kvar som historik.
+
 Gren `feat/theme8-engangsvape-landing`, 2026-11-15. **Ingen produktionskod
 ändrad.** Skissen renderas med den godkända THCX-mallen (`88b-landing`) i
 preview, med ett utkastblock och en prototypmodul som bara läggs på i

@@ -1,0 +1,112 @@
+# Engångsvapes – hela sidan byggd (för Vilmers granskning)
+
+Gren `feat/theme8-engangsvape-landing`, 2026-11-15, enligt
+`HZY/design/engangsvape-seo-2026-11-15/TASK-ENGANGSVAPE-HELSIDA.md`.
+**Inte mergad. Ingen sida i admin, ingen omdirigering, ingen kategoriändring,
+gamla WooCommerce-sidan orörd, inget publicerat.** Sidan visas med en
+fixtur: en riktig tom Nyehandel-innehållssida fylls med blocket
+(`verify.mjs`), med riktig livedata ur preview.
+
+## Bilder
+
+| Vad | Fil (`shots/`) |
+|---|---|
+| Hela sidan (WebP) | `eng-393-full`, `eng-1440-full`, `eng-1920-full` (+ `eng-320-full`, `eng-768-full`) |
+| Första vyn | `eng-{393,1440,1920}-fold` |
+| Närbild nedre halvan (sortiment → sidfot) | `eng-{393,1440,1920}-nedre` |
+| Närbild faktauppslag + serier + analysintyg | `eng-{393,1440,1920}-uppslag` |
+| Närbild FAQ | `eng-{393,1440,1920}-faq` |
+| Serievägar + storlek + sortiment | `eng-{393,1440,1920}-produkter` |
+| Jämförelse mot designreferenserna | `jamfor-1440-topp`, `jamfor-1440-nedre`, `jamfor-393-topp`, `jamfor-393-nedre` |
+| Felfall | `eng-393-noatmo-*` (atmosfärsbilder 404), `eng-1440-noprod-*` (produktbilder 404), `eng-393-zero-*` (inga produkter), `eng-393-reduced-*` |
+
+## Sidordning som byggd (TASK-tabellen 1–9)
+
+1. **Hero:** brödsmula, H1 `Engångsvapes`, ingressen ordagrant ur utkastet, levande lagerrad ("8 produkter i lager · 1+1, 2 och 5 ml", räknad ur livekatalogen, dold utan data), kapitelrad Produkter · Storlek · Om formatet · Frågor. Kustljus uppe till höger som tonar in i putsen.
+2. **Tre serievägar:** Magic Sauce 3.0, Hero’s Core, Cookies CBD med riktig frilagd Nyehandel-bild på stenstagen, livepris, storlekar/smaker som länkar till riktiga produktsidor. Väg utan lager döljs. Mobil: ett kort + nästa syns.
+3. **Välj storlek:** 1+1 ml, 2 ml, 5 ml med antal och frånpris ur livekatalogen; 1 ml dold (0 i lager). 2 och 5 ml öppnar katalogens volymfilter; 1+1 ml (inget filter än) öppnar en riktig 1+1 ml-produkt i lager.
+4. **Alla engångsvapes i lager:** varje köpbar smak som Theme 8:s eget kort (bild, namn, pris, Lägg till) på varm stage. Källa `alla-vapes` i lager; carts, refill, batterier och paket räknas bort. Länk "Filtrera alla vapes".
+5. **Vad är en engångsvape?** öppet uppslag, två stycken ur utkastet, eget produktfritt kustfoto.
+6. **Serier i sortimentet:** öppen text + länkar till Magic Sauce, Hero’s Core, CBD, THCbA, D10, THCV. Lagerstatus ("I lager: 2 och 5 ml") bara när seriens engångsvapes faktiskt finns i lager; slutsålda får ingen status.
+7. **Analysintyg och produktfakta:** öppen text ur utkastet.
+8. **FAQ:** fem frågor ur utkastet, `<details>` med svaren i DOM, tangentbord.
+9. **Avslut:** "Hitta rätt vape" → `alla-vapes?typ=vapes`, länkar till Vanliga frågor och artiklar; sedan Theme 8:s globala sidfot.
+
+## Faktatexten är riktig sidtext
+
+Alla rubriker (1 H1, 5 H2, 5 H3) och alla faktastycken står i blockets
+HTML och finns i sidans initiala HTML före JavaScript (kontrollerat mot
+den levererade HTML:en, `verify.json` → `initialHtml`). I renderingen är
+alla faktastycken synliga (inte i stängda dragspel, inte dolda, 16 px).
+FAQ-svaren ligger i DOM i `<details>`.
+
+## Testresultat (`verify.json`, körd 2026-11-15)
+
+Körningar: 393, 1440, 1920, 320, 768 samt atmosfärsbilder 404 (393), produktbilder 404 (1440), inga produkter (393) och reducerad rörelse (393).
+
+| Kontroll | Resultat |
+|---|---|
+| H1 | exakt en, `Engångsvapes`, får plats på en rad vid alla bredder |
+| Sidledsscroll | 0 px, inga breda element, alla körningar |
+| Konsolfel | 0 |
+| Serievägar | 3 av 3 med riktig frilagd bild, livepris, länkar till riktiga produktsidor |
+| Storlek | 1+1 ml (3 produkter, från 495 kr), 2 ml (4, från 395 kr), 5 ml (1, från 1 195 kr); 1 ml dold (0 i lager) |
+| Sortimentsled | 21 smakkort, alla engångsvapes i lager; 0 carts, batterier, refill eller paket; inga Indica/Sativa i namn |
+| Serier | Magic Sauce "I lager: 2 och 5 ml", Hero’s Core "I lager: 2 ml", CBD "I lager: 1+1 och 2 ml"; THCbA, D10, THCV utan status (slut) |
+| Faktatext | 7 av 7 rubriker/stycken i initial HTML och synliga; FAQ-svaren i DOM |
+| Länkar | 19 unika interna länkar, alla 200 |
+| Tangentbord | Tab från kapitelraden ger synlig fokusram på första vägen och på storleksvalen; ankarlänk fokuserar rätt H2; FAQ öppnas med Enter |
+| Kontrast (värsta 5 % av bakgrunden bakom varje textrad) | H1 6,0 (393), 6,2 (320), 4,8 (768), 7,2 (1440), 7,8 (1920); ingress 8,5–11,9; lägst totalt 4,78 (H1 vid 768) och 4,95 (sortimentets undertext) |
+| Atmosfär 404 | Varm canvas och stenfärgad avsats står kvar, inga grå ytor, inget layoutskifte |
+| Produktbilder 404 | Vägar och kort står kvar med namn, pris och länkar, inga trasiga bildikoner |
+| Inga produkter | Vägarna står kvar med text och länkar, storleksraden och lagerraden döljs, sortimentet visar blockets reservlänk |
+| Reducerad rörelse | Inga övergångar på vägar, storlek och FAQ |
+| THCX och befintliga sidor | THCX pixelidentisk före/efter (393 och 1440, 10 bilder). Startsida, Alla Vapes, THCX-kategori, Hasch, Hero’s Core-PDP, Köpvillkor och Bästsäljare identiska mot `dev`-bygget |
+
+Sortimentsledets bilder laddas lat när raden sveps; 16–21 av 21 hade laddats vid skärmbilden beroende på bredd.
+
+Mätfel som hittades och rättades under arbetet: kontrastmätningen läste först fel yta under sidans mjuka scrollning (gav falska 4,2–4,6 för ingressen) och räknade med lagerradens gröna punkt. Mätningen scrollar nu omedelbart och hoppar över element utanför vyn.
+
+## Kvarvarande visuella avvikelser mot referenserna
+
+- Nedre halvan är en slät varm yta; referensen har lövskuggor och mer ljus även där.
+- Sortimentskorten är Theme 8:s egna, kompakta kort med seriens etikett och "Nyhet"-märke; referensens kort är luftigare och visar storlek under namnet.
+- Serievägarnas förpackningar står mindre på stagen än i referensen (samma mått som den godkända THCX-mallen).
+- En halv enhetspixel ljus kant längst till höger på mobil finns redan i THCX-mallen (globalt, inte nytt).
+
+## Faktakontroll mot produktsidorna (2026-11-15, Nyehandels produkttexter)
+
+| Fråga | Vad produktsidorna säger | Följd på sidan |
+|---|---|---|
+| Laddning | Magic Sauce 3.0 2 ml och 5 ml: "utan behov av påfyllning eller uppladdning". Cookies Dual Chamber: "uppladdningsbar", "Laddning: USB-C". CBD 25 % + CBN 35 % (Magic Farmers): "den laddbara premiumvapen". Hero’s Core, H4CBD 97 %: inget om laddning. | Gamla sidans generella "Nej" stämmer inte. FAQ-svaret "Det beror på modellen …" (utkastet) står kvar oförändrat. |
+| 1+1 ml | Cookies Dual Chamber: "två separata 1ml kammare och varsin atomizer". | Uppslagets mening om två separata behållare används (villkoret i utkastet uppfyllt för de tre Cookies-produkterna). |
+| Analysintyg | Länk till intyg (PDF) finns på Magic Sauce 3.0 2 ml (per strain) och Hero’s Core 2 ml. Saknas på Magic Sauce 5 ml, Cookies (3), CBD + CBN, H4CBD 97 %. PDF:erna ligger på `www.hazey.se/wp-content`. | Texten lovar bara länk "när ett analysintyg finns". PDF:erna måste flyttas före domänbytet. |
+| Produkttexterna själva | Flera produktsidor innehåller egna påståenden ("Laglighet & Ansvar", "trygg, laglig", "Varje batch analyseras av oberoende laboratorium", "Fri frakt från 499 kr"). | Inte ändrat (utanför uppdraget). Landningen återger dem inte. |
+
+## Jämfört med designreferenserna
+
+| Referens | Byggt | Skillnad och skäl |
+|---|---|---|
+| Kustsolnedgång bakom headern, tonar in i putsen | Theme 8:s befintliga produktfria kustbild (samma som Alla Vapes-heron), maskad uppe till höger med persikoljus | Samma motiv som Alla Vapes; en egen herobild kan ersätta den (en CSS-rad). Lövskuggorna är svagare än i referensen för att ingressen ska vara läsbar. |
+| H1 avstavad "Engångs-/vapes" på mobil | En rad, skalad efter bredden | Ingen avstavning i H1 (utkastet: behövs inte). |
+| Kort ingress | Utkastets två meningar + lagerrad | Texten är låst till utkastet. |
+| Stenar på stage, AI-förpackningar | Godkänd stenstage från THCX, riktiga Nyehandel-bilder | Riktiga förpackningar är mindre och mer färgstarka än AI-bildens. |
+| Kort med bara namn + knapp | Namn, knapp, format-/storleksrad, smaker, pris | Utkastet kräver verifierbar format-/storleksrad; priset är live. |
+| Storlek: bara 2 ml och 5 ml, "8 produkter" | 1+1 ml, 2 ml, 5 ml med riktiga antal | AI-bildens siffror och storlekar är inte data; 1+1 ml får inte försvinna. |
+| Sortiment: 6 kort med AI-namn ("Cookies CBD 2 g") | 21 riktiga smakkort i en svepbar rad | Riktig data. |
+| Uppslag med person på klippa (THCX-bilden) | Eget produktfritt foto: strandpromenad i solnedgång | Uppdraget: egen formatbild, inte THCX-bilden. |
+| Serier som lista med beskrivningar / länkchips | Lista med länk + levande lagerstatus | Inga påhittade beskrivningar; status bara när data finns. |
+| Analysintyg med andra stycket om "vilken cannabinoid … halt" | Utkastets text | Utkastet gäller. |
+| FAQ-frågor "Är era produkter testade?" | "Finns analysintyg för produkterna?" | Utkastet gäller. |
+| Mobil: "Filtrera alla vapes" direkt under FAQ | CTA-rubrik + knapp + länkar | Samma komponent som desktop. |
+
+## Kvar att besluta före admin (oförändrat från uppdraget)
+
+1. Titel och meta. Verifieringen använder förslaget i `KARTLAGGNING.md` avsnitt 2 som platshållare. Hur, om alls, `THC`, `THCA` och `cannabis vape` får användas.
+2. Laglighetsfrågan och gamla juridiska påståenden: inte med på sidan (kommentarer i blocket).
+3. Produktspecifika fakta: laddning per modell (se tabellen ovan, Core och H4CBD saknar uppgift), vilka batcher intygen avser, intygs-PDF:erna på gamla domänen.
+4. Lageravvikelser WooCommerce/Nyehandel: THCbA 47 % 2 ml, Magic Sauce 5 ml, H4CBD 97 % 2 ml.
+5. 1+1 ml-filter i Alla Vapes (tills dess länkar 1+1 ml till en produkt).
+6. Herobild: delad med Alla Vapes. Uppslagsbilden är en befintlig, tidigare oanvänd bild ur Theme 8-repot (`theme8/assets/hero-beach-desktop-v2.png`, incheckad i e861f3b); ursprung och rättigheter bekräftas som för övriga Theme 8-bilder.
+7. "Nyhet"-märket på sortimentskorten är Nyehandels eget kortmärke (`.ribbon.news`), inte satt av landningen.
+8. 301 `/engangsvape/` → `/sv/page/engangsvape`, canonical, `index`, sitemap: lanseringssekvens, inte gjort.

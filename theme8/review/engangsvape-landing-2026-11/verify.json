@@ -1,0 +1,4653 @@
+{
+ "noJs": {
+  "h1": 1,
+  "h2": 5,
+  "h3": 5,
+  "links": 23,
+  "faq": 5
+ },
+ "results": [
+  {
+   "tag": "393",
+   "w": 393,
+   "mode": "",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      16,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      295,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      574,
+      398,
+      267,
+      359
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     48
+    ],
+    "paths": [
+     0,
+     394,
+     393,
+     381
+    ],
+    "sizes": [
+     16,
+     811,
+     361,
+     254
+    ],
+    "range": [
+     16,
+     1113,
+     361,
+     429
+    ],
+    "story": [
+     16,
+     1565,
+     361,
+     687
+    ],
+    "chapters": [
+     16,
+     2292,
+     361,
+     787
+    ],
+    "faq": [
+     16,
+     3095,
+     361,
+     807
+    ],
+    "footer": [
+     0,
+     3934,
+     393,
+     743
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846995 / 0.42), color(s",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 5.99,
+     "median": 8.45
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 10.84,
+     "median": 12.21
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.24,
+     "median": 12.3
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.24,
+     "median": 11.81
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 10.12,
+     "median": 10.12
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 9.62,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.98
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.36
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 157,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "1440",
+   "w": 1440,
+   "mode": "",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      60,
+      472,
+      425,
+      428
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      508,
+      472,
+      425,
+      428
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      955,
+      472,
+      425,
+      428
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 53.28,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 31.68,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 31.68,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     60,
+     137,
+     720,
+     96
+    ],
+    "paths": [
+     60,
+     472,
+     1320,
+     428
+    ],
+    "sizes": [
+     60,
+     963,
+     1320,
+     92
+    ],
+    "range": [
+     60,
+     1122,
+     1320,
+     366
+    ],
+    "story": [
+     60,
+     1531,
+     1320,
+     458
+    ],
+    "chapters": [
+     60,
+     2047,
+     1320,
+     476
+    ],
+    "faq": [
+     60,
+     2552,
+     1320,
+     570
+    ],
+    "footer": [
+     0,
+     3154,
+     1440,
+     382
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846994 / 0.3), color(sr",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 7.22,
+     "median": 8.86
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 11.87,
+     "median": 12.5
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.12,
+     "median": 12.09
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.16,
+     "median": 11.47
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 9.38,
+     "median": 9.38
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.6
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.86,
+     "median": 11.95
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.5,
+     "median": 5.55
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 206,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": [],
+   "linkStatus": {
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml": 200,
+    "/sv/products/magic-sauce-vape-5ml": 200,
+    "/sv/products/thc-x-vape-hero-core-2ml": 200,
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake": 200,
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas": 200,
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint": 200,
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml": 200,
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml": 200,
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml": 200,
+    "/sv/categories/alla-vapes?typ=vapes": 200,
+    "/sv/categories/ms-vapes": 200,
+    "/sv/categories/hero-vapes": 200,
+    "/sv/categories/cbd-vapes": 200,
+    "/sv/categories/thcba-vapes": 200,
+    "/sv/categories/d10-vapes": 200,
+    "/sv/categories/thcv-vape": 200,
+    "/sv/page/kop-och-leveransvillkor": 200,
+    "/sv/page/faq": 200,
+    "/sv/posts": 200
+   },
+   "initialHtml": [
+    {
+     "t": "Vad är en engångsvape?",
+     "inHtml": true
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "inHtml": true
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "inHtml": true
+    },
+    {
+     "t": "Serier i sortimentet",
+     "inHtml": true
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "inHtml": true
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "inHtml": true
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "inHtml": true
+    }
+   ],
+   "assetBytes": {
+    "coast-boardwalk-1672.webp": 158314,
+    "coast-boardwalk-900.webp": 55186
+   }
+  },
+  {
+   "tag": "1920",
+   "w": 1920,
+   "mode": "",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      140,
+      484,
+      529,
+      470
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      695,
+      484,
+      529,
+      470
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      1251,
+      484,
+      529,
+      470
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 60,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 34,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 34,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     140,
+     137,
+     720,
+     104
+    ],
+    "paths": [
+     140,
+     484,
+     1640,
+     470
+    ],
+    "sizes": [
+     140,
+     1026,
+     1640,
+     94
+    ],
+    "range": [
+     140,
+     1196,
+     1640,
+     382
+    ],
+    "story": [
+     140,
+     1633,
+     1640,
+     540
+    ],
+    "chapters": [
+     140,
+     2237,
+     1640,
+     479
+    ],
+    "faq": [
+     140,
+     2748,
+     1640,
+     588
+    ],
+    "footer": [
+     0,
+     3368,
+     1920,
+     447
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846994 / 0.3), color(sr",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 7.76,
+     "median": 8.92
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 11.79,
+     "median": 12.51
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.89,
+     "median": 12.3
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.2,
+     "median": 11.42
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 10.43,
+     "median": 10.43
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.86,
+     "median": 11.95
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.5,
+     "median": 5.55
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 244,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "320",
+   "w": 320,
+   "mode": "",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      16,
+      413,
+      213,
+      363
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      241,
+      413,
+      213,
+      363
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      466,
+      413,
+      213,
+      363
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     288,
+     39
+    ],
+    "paths": [
+     0,
+     409,
+     320,
+     385
+    ],
+    "sizes": [
+     16,
+     830,
+     288,
+     313
+    ],
+    "range": [
+     16,
+     1190,
+     288,
+     428
+    ],
+    "story": [
+     16,
+     1642,
+     288,
+     722
+    ],
+    "chapters": [
+     16,
+     2404,
+     288,
+     869
+    ],
+    "faq": [
+     16,
+     3288,
+     288,
+     807
+    ],
+    "footer": [
+     0,
+     4127,
+     320,
+     763
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846995 / 0.42), color(s",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 6.17,
+     "median": 8.32
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 10.96,
+     "median": 12.19
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.64,
+     "median": 12.22
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.38,
+     "median": 11.77
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 9.28,
+     "median": 9.28
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 9.74,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.98
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.35
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 156,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "768",
+   "w": 768,
+   "mode": "",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      24,
+      408,
+      317,
+      356
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      357,
+      408,
+      317,
+      356
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      690,
+      408,
+      317,
+      356
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     24,
+     137,
+     720,
+     58
+    ],
+    "paths": [
+     8,
+     404,
+     752,
+     378
+    ],
+    "sizes": [
+     24,
+     825,
+     720,
+     186
+    ],
+    "range": [
+     24,
+     1060,
+     720,
+     362
+    ],
+    "story": [
+     24,
+     1446,
+     720,
+     819
+    ],
+    "chapters": [
+     24,
+     2305,
+     720,
+     524
+    ],
+    "faq": [
+     24,
+     2845,
+     720,
+     752
+    ],
+    "footer": [
+     0,
+     3628,
+     768,
+     758
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846994 / 0.3), color(sr",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 4.78,
+     "median": 8.33
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 11.34,
+     "median": 12.15
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 10.03,
+     "median": 11.58
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 9.26,
+     "median": 9.55
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 9.63,
+     "median": 9.63
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.68
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 10.03,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.97
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.35
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 172,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "393-noatmo",
+   "w": 393,
+   "mode": "noatmo",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      16,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      295,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      574,
+      398,
+      267,
+      359
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     48
+    ],
+    "paths": [
+     0,
+     394,
+     393,
+     381
+    ],
+    "sizes": [
+     16,
+     811,
+     361,
+     254
+    ],
+    "range": [
+     16,
+     1113,
+     361,
+     429
+    ],
+    "story": [
+     16,
+     1565,
+     361,
+     687
+    ],
+    "chapters": [
+     16,
+     2292,
+     361,
+     787
+    ],
+    "faq": [
+     16,
+     3095,
+     361,
+     807
+    ],
+    "footer": [
+     0,
+     3934,
+     393,
+     743
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846995 / 0.42), color(s",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 8.56,
+     "median": 8.86
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 11.91,
+     "median": 12.41
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 12.12,
+     "median": 12.41
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.99,
+     "median": 12.12
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 11.36,
+     "median": 11.36
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 10.6,
+     "median": 10.68
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.98
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.36
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 157,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "1440-noprod",
+   "w": 1440,
+   "mode": "noprod",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": null,
+     "box": [
+      60,
+      472,
+      425,
+      428
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": null,
+     "box": [
+      508,
+      472,
+      425,
+      428
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": null,
+     "box": [
+      955,
+      472,
+      425,
+      428
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": false,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": false,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 53.28,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 31.68,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 31.68,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     60,
+     137,
+     720,
+     96
+    ],
+    "paths": [
+     60,
+     472,
+     1320,
+     428
+    ],
+    "sizes": [
+     60,
+     963,
+     1320,
+     92
+    ],
+    "range": [
+     60,
+     1122,
+     1320,
+     366
+    ],
+    "story": [
+     60,
+     1531,
+     1320,
+     458
+    ],
+    "chapters": [
+     60,
+     2047,
+     1320,
+     476
+    ],
+    "faq": [
+     60,
+     2552,
+     1320,
+     570
+    ],
+    "footer": [
+     0,
+     3154,
+     1440,
+     382
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846994 / 0.3), color(sr",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 7.22,
+     "median": 8.86
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 11.87,
+     "median": 12.5
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.12,
+     "median": 12.09
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.16,
+     "median": 11.47
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 9.38,
+     "median": 9.38
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.6
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.86,
+     "median": 11.95
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.5,
+     "median": 5.55
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 206,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "393-zero",
+   "w": 393,
+   "mode": "zero",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": null,
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "",
+     "img": null,
+     "box": [
+      16,
+      364,
+      267,
+      298
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "",
+     "img": null,
+     "box": [
+      295,
+      364,
+      267,
+      298
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "",
+     "img": null,
+     "box": [
+      574,
+      364,
+      267,
+      298
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": true,
+     "live": "1+1 ml",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": true,
+     "live": "2 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": true,
+     "live": "5 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "–",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "–",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "–",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     48
+    ],
+    "paths": [
+     0,
+     360,
+     393,
+     320
+    ],
+    "sizes": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "range": [
+     16,
+     728,
+     361,
+     165
+    ],
+    "story": [
+     16,
+     918,
+     361,
+     687
+    ],
+    "chapters": [
+     16,
+     1644,
+     361,
+     787
+    ],
+    "faq": [
+     16,
+     2447,
+     361,
+     807
+    ],
+    "footer": [
+     0,
+     3286,
+     393,
+     743
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846995 / 0.42), color(s",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": true,
+   "noData": true,
+   "reduced": false,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 6.07,
+     "median": 8.49
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 10.82,
+     "median": 12.2
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 12.39,
+     "median": 12.39
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.11,
+     "median": 11.57
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.62,
+     "median": 10.62
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 10.62,
+     "median": 10.62
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.63,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 9.69,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.61,
+     "median": 7.61
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.98
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.35
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 156,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "393-reduced",
+   "w": 393,
+   "mode": "reduced",
+   "lpClass": true,
+   "scene": "engangsvape",
+   "title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+   "h1": [
+    "Engångsvapes"
+   ],
+   "h2": [
+    "Engångsvapes i lager",
+    "Vad är en engångsvape?",
+    "Serier i sortimentet",
+    "Analysintyg och produktfakta",
+    "Vanliga frågor om engångsvapes"
+   ],
+   "h3": [
+    "Magic Sauce 3.0",
+    "Hero’s Core",
+    "Cookies CBD",
+    "Välj storlek",
+    "Alla engångsvapes i lager"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "h1Fits": true,
+   "summary": "8 produkter i lager · 1+1, 2 och 5 ml",
+   "leads": [
+    {
+     "title": "Magic Sauce 3.0",
+     "hidden": false,
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+     "kind": "Magic Farmers, flera smaker",
+     "live": "2 ml · 5 ml 575 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      16,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Hero’s Core",
+     "hidden": false,
+     "href": "/sv/products/thc-x-vape-hero-core-2ml",
+     "kind": "2 ml i flera strains",
+     "live": "675 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      295,
+      398,
+      267,
+      359
+     ]
+    },
+    {
+     "title": "Cookies CBD",
+     "hidden": false,
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "kind": "Dubbelkammare 1+1 ml, två smaker",
+     "live": "Cereal Milk + London P.C. · Triple Scoop + Apples & Bananas · Adios M.F. + Miami Mint 495 kr",
+     "img": {
+      "loaded": true,
+      "webp": true
+     },
+     "box": [
+      574,
+      398,
+      267,
+      359
+     ]
+    }
+   ],
+   "sizes": [
+    {
+     "size": "1ml",
+     "hidden": true,
+     "live": "1 ml",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=1ml"
+    },
+    {
+     "size": "1+1ml",
+     "hidden": false,
+     "live": "1+1 ml3 produkter · från 495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake"
+    },
+    {
+     "size": "2ml",
+     "hidden": false,
+     "live": "2 ml4 produkter · från 395 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=2ml"
+    },
+    {
+     "size": "5ml",
+     "hidden": false,
+     "live": "5 ml1 produkt · från 1 195 kr",
+     "href": "/sv/categories/alla-vapes?typ=vapes&volym=5ml"
+    }
+   ],
+   "series": [
+    {
+     "name": "Magic Sauce",
+     "status": "I lager: 2 och 5 ml",
+     "href": "/sv/categories/ms-vapes"
+    },
+    {
+     "name": "Hero’s Core",
+     "status": "I lager: 2 ml",
+     "href": "/sv/categories/hero-vapes"
+    },
+    {
+     "name": "CBD",
+     "status": "I lager: 1+1 och 2 ml",
+     "href": "/sv/categories/cbd-vapes"
+    },
+    {
+     "name": "THCbA",
+     "status": "–",
+     "href": "/sv/categories/thcba-vapes"
+    },
+    {
+     "name": "D10",
+     "status": "–",
+     "href": "/sv/categories/d10-vapes"
+    },
+    {
+     "name": "THCV",
+     "status": "–",
+     "href": "/sv/categories/thcv-vape"
+    }
+   ],
+   "cards": [
+    {
+     "name": "Gorilla Cookies",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/454",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tinky Winky",
+     "price": "575 kr",
+     "href": "/sv/products/vape-magic-sauce-magic-farmers-2ml/464",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Miracle Alien Cookies",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/448",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Tart Apricot",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/450",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Razz",
+     "price": "475 kr",
+     "href": "/sv/products/cbd-vape-cbn-vape-magic-farmers/452",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "This is Sparta",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/449",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Kowa Bunga",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/451",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "La Chupacabra",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/453",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Yoda Ice Cream",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/455",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Bruce Banner OG",
+     "price": "1 195 kr",
+     "href": "/sv/products/magic-sauce-vape-5ml/456",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Gelato",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/425",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Strawberry Kush",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/429",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Melon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/431",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Pineapple Express",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/433",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Super Lemon Haze",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/435",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Coconut Cake",
+     "price": "675 kr",
+     "href": "/sv/products/thc-x-vape-hero-core-2ml/438",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Cereal Milk + London P.C. - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Marrocan Hash",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/298",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "Blue Raspberry",
+     "price": "395 kr",
+     "href": "/sv/products/h4cbd-vape-cbd-group-2ml/301",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 57% - Adios M.F. + Miami Mint - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+     "img": true,
+     "btn": true
+    },
+    {
+     "name": "CBD 56% - Triple Scoop + Apples & Bananas - 1+1ml",
+     "price": "495 kr",
+     "href": "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+     "img": true,
+     "btn": true
+    }
+   ],
+   "railNotDisposable": [],
+   "indicaSativa": 0,
+   "facts": [
+    {
+     "t": "Vad är en engångsvape?",
+     "visible": true,
+     "px": 38,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "En engångsvape är en färdigfylld vape som säljs ",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Storlekarna på den här sidan anges i milliliter.",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Serier i sortimentet",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Samma serie kan finnas i flera smaker och storle",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    },
+    {
+     "t": "Analysintyg och produktfakta",
+     "visible": true,
+     "px": 26,
+     "color": "rgb(50, 61, 37)"
+    },
+    {
+     "t": "Varje produktsida visar den information vi har o",
+     "visible": true,
+     "px": 16,
+     "color": "rgb(35, 35, 29)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Behöver jag ladda eller fylla på en engångsvape?",
+     "answerInDom": 187
+    },
+    {
+     "q": "Vilka cannabinoider finns i era vapes?",
+     "answerInDom": 113
+    },
+    {
+     "q": "Finns analysintyg för produkterna?",
+     "answerInDom": 112
+    },
+    {
+     "q": "Vad skiljer 1+1, 2 och 5 ml?",
+     "answerInDom": 163
+    },
+    {
+     "q": "Hur snabbt skickas min beställning?",
+     "answerInDom": 74
+    }
+   ],
+   "boxes": {
+    "h1": [
+     16,
+     121,
+     361,
+     48
+    ],
+    "paths": [
+     0,
+     394,
+     393,
+     381
+    ],
+    "sizes": [
+     16,
+     811,
+     361,
+     254
+    ],
+    "range": [
+     16,
+     1113,
+     361,
+     429
+    ],
+    "story": [
+     16,
+     1565,
+     361,
+     687
+    ],
+    "chapters": [
+     16,
+     2292,
+     361,
+     787
+    ],
+    "faq": [
+     16,
+     3095,
+     361,
+     807
+    ],
+    "footer": [
+     0,
+     3934,
+     393,
+     743
+    ]
+   },
+   "heroBg": "linear-gradient(color(srgb 0.952226 0.889453 0.846995 / 0.42), color(s",
+   "text": {
+    "banned": []
+   },
+   "links": [
+    "#produkter",
+    "#storlek",
+    "#vad-ar-en-engangsvape",
+    "#fragor",
+    "/sv/products/vape-magic-sauce-magic-farmers-2ml",
+    "/sv/products/magic-sauce-vape-5ml",
+    "/sv/products/thc-x-vape-hero-core-2ml",
+    "/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "/sv/categories/alla-vapes?typ=vapes&volym=1ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=2ml",
+    "/sv/categories/alla-vapes?typ=vapes&volym=5ml",
+    "/sv/categories/alla-vapes?typ=vapes",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-dual-chamber-cbd-vape-cereal-milk-london-pound-cake",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-adios-mother-f-miami-mint",
+    "https://hazeyse.nyehandel.se/sv/products/cookies-cbd-vape-dual-chamber-triple-scoop-apples-bananas",
+    "/sv/categories/ms-vapes",
+    "/sv/categories/hero-vapes",
+    "/sv/categories/cbd-vapes",
+    "/sv/categories/thcba-vapes",
+    "/sv/categories/d10-vapes",
+    "/sv/categories/thcv-vape",
+    "/sv/page/kop-och-leveransvillkor",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "fallbackShown": false,
+   "noData": false,
+   "reduced": true,
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 5.99,
+     "median": 8.45
+    },
+    {
+     "s": ".hz8-lp__lead",
+     "worst": 10.84,
+     "median": 12.21
+    },
+    {
+     "s": ".hz8-lp__live-line",
+     "worst": 11.24,
+     "median": 12.3
+    },
+    {
+     "s": ".hz8-lp__nav a",
+     "worst": 11.24,
+     "median": 11.81
+    },
+    {
+     "s": ".hz8-lp__path h3",
+     "worst": 8.83,
+     "median": 8.83
+    },
+    {
+     "s": ".hz8-lp__path-kind",
+     "worst": 5.64,
+     "median": 5.64
+    },
+    {
+     "s": ".hz8-lp__sizes-head p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__sizes [data-hz8-size-live]",
+     "worst": 10.12,
+     "median": 10.12
+    },
+    {
+     "s": ".hz8-lp__sub",
+     "worst": 4.95,
+     "median": 4.95
+    },
+    {
+     "s": ".hz8-lp__story > p:not(.hz8-lp__eyebrow)",
+     "worst": 10.6,
+     "median": 10.63
+    },
+    {
+     "s": ".hz8-lp__story > p:last-of-type",
+     "worst": 9.62,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__chapters p",
+     "worst": 10.67,
+     "median": 10.67
+    },
+    {
+     "s": ".hz8-lp__series [data-hz8-series-live]",
+     "worst": 7.75,
+     "median": 7.75
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 11.95,
+     "median": 11.98
+    },
+    {
+     "s": ".hz8-lp__more",
+     "worst": 5.31,
+     "median": 5.36
+    }
+   ],
+   "leadFocus": "solid Magic Sauce 3.0",
+   "sizeFocus": "solid 1+1 ml3 produkter · från 495 kr",
+   "anchor": {
+    "focused": "Vad är en engångsvape?",
+    "top": 157,
+    "header": -48,
+    "hash": "#vad-ar-en-engangsvape"
+   },
+   "faqOpen": true,
+   "errors": []
+  }
+ ]
+}
