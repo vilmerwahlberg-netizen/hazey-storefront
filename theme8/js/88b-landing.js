@@ -32,12 +32,21 @@
   var STOCK_FILTER = "filters=smart-filter_in-stock"; // Nyehandels I lager-filter (samma som 81-series-hub.js)
   function withParam(href, kv) { return href + (href.indexOf("?") === -1 ? "?" : "&") + kv; }
 
-  function mergedCards(sources, inStockOnly) {
+  /* interleave: varva källorna (en produkt ur varje i tur och ordning) i
+     stället för att lägga dem efter varandra -- för led med flera serier
+     (data-hz8-interleave). Utan attributet: oförändrad ordning. */
+  function mergedCards(sources, inStockOnly, interleave) {
     return Promise.all(sources.map(function (src) {
       return HZ8.fetchPage(inStockOnly ? withParam(src, STOCK_FILTER) : src, HZ8.categoryCards).catch(function () { return []; });
     })).then(function (lists) {
-      var seen = {};
-      return [].concat.apply([], lists).filter(function (c) {
+      var seen = {}, flat = [];
+      if (interleave) {
+        for (var i = 0, more = true; more; i += 1) {
+          more = false;
+          lists.forEach(function (l) { if (i < l.length) { flat.push(l[i]); more = true; } });
+        }
+      } else flat = [].concat.apply([], lists);
+      return flat.filter(function (c) {
         var k = productKey(c.html);
         if (seen[k]) return false;
         seen[k] = true;
@@ -89,7 +98,7 @@
     var excluded = exclude.length ? mergedCards(exclude, false).then(function (cards) {
       var set = {}; cards.forEach(function (c) { set[productKey(c.html)] = true; }); return set;
     }) : Promise.resolve({});
-    var src = { slot: slot, inStockOnly: inStockOnly, cards: Promise.all([mergedCards(sources, inStockOnly), excluded]).then(function (r) {
+    var src = { slot: slot, inStockOnly: inStockOnly, cards: Promise.all([mergedCards(sources, inStockOnly, slot.hasAttribute("data-hz8-interleave")), excluded]).then(function (r) {
       return r[0].filter(function (c) {
         if (r[1][productKey(c.html)]) return false;
         return !(HZ8.variantCards && HZ8.variantCards.isPackageCard(c.html));
