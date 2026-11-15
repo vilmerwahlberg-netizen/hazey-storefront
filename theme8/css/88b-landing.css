@@ -581,3 +581,11 @@ html.hz8.hz8-lp-page #store-main .hz8-lp__more { margin: 14px 0 0 !important; co
   /* Etiketten kan radbrytas: linjen bredvid tas bort så den inte svävar. */
   html.hz8.hz8-lp-page #store-main :is(.hz8-lp__kicker, .hz8-lp__eyebrow)::after { display: none; }
 }
+
+/* ---------- Riktig Content-sida i Nyehandel ----------
+   Sidans HTML hamnar i .store-page > section.section > .container.page-
+   content.editor-content. Brödtextsidornas läsbredd (88-pages.css: 78ch)
+   och sektionens padding gäller inte landningar -- utan detta blir hela
+   landningen ~690 px bred på desktop och helbreddsbilderna klipps
+   (upptäckt 2026-11-15 vid första kontrollen av de riktiga sidorna). */
+html.hz8.hz8-lp-page[data-hz8-page="page"] .store-page > .section:has(.hz8-lp) { max-width: none; padding-top: 0 !important; padding-bottom: 0 !important; }
