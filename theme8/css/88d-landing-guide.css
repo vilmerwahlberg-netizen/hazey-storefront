@@ -1,0 +1,462 @@
+/* Kunskapslandning (.hz8-lp--guide), första sidan: THCA. Koncept C
+   (design/thca-knowledge-2026-11-15/koncept-c-hybrid-desktop.png och
+   koncept-c-iphone16-393x852.png): B:s läsbara faktastruktur med A:s varma
+   ljus. Bygger på landningsmallen 88b (canvas, puts med lövskuggor, FAQ,
+   sortimentsled) och ändrar bara det som skiljer sidtypen:
+
+   1. kort solbelyst hero: H1, tagline, rättslägesnotis med källa, två
+      vägar vidare och kustfotot (höger på desktop, ett band på mobil),
+   2. ledraden: kapitelrail, kort svar och rättsläget i korthet,
+   3. tre serievägar med seriens riktiga produkt på sten (88d-landing-guide.js),
+   4. rättslägeskapitlet med källor, faktakapitel, artiklar.
+
+   html.hz8-guide-page sätts av 88d-landing-guide.js. Bilderna är
+   produktfria tema-assets (landing-thcx/); saknas de står canvasen kvar. */
+
+html.hz8.hz8-lp-page.hz8-guide-page {
+  --gd-glass: color-mix(in srgb, var(--lp-peach-light) 64%, transparent);
+  --gd-glass-edge: color-mix(in srgb, var(--lp-peach-light) 80%, transparent);
+  --gd-rule: var(--lp-rule);
+  --gd-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath d='M0 5h12M8.5 1 12.5 5 8.5 9' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E");
+}
+
+/* ---------- 1. Hero ---------- */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero {
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 clamp(18px, 1.8vw, 28px);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero > :not(.hz8-guide__coast) { position: relative; z-index: 1; max-width: 780px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero .hz8-lp__eyebrow { margin: 4px 0 8px !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero .hz8-lp__eyebrow::after { display: none; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero h1 {
+  margin: 0 !important;
+  font-size: clamp(80px, 6.4vw, 116px) !important;
+  line-height: .84 !important;
+  letter-spacing: -.035em !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__tagline {
+  margin: 6px 0 0 !important;
+  color: var(--hz8-text-heading) !important;
+  font: italic 400 clamp(21px, 1.6vw, 25px)/1.2 var(--hz8-font-display) !important;
+}
+/* Rättslägesnotisen: varmt glas, bladikon, tunn avdelare. */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0 0;
+  padding: 11px 24px 11px 18px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, var(--gd-glass) 0, color-mix(in srgb, var(--lp-card) 50%, transparent) 100%);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+          backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow:
+    0 0 0 1px var(--gd-glass-edge) inset,
+    0 1.5px 0 color-mix(in srgb, #fff 50%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 12%, transparent),
+    6px 16px 30px -20px color-mix(in srgb, var(--lp-shadow) 55%, transparent);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__leaf { flex: none; width: 30px; height: 30px; color: var(--hz8-olive); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__notice p {
+  margin: 0 !important;
+  padding-left: 16px;
+  border-left: 1px solid color-mix(in srgb, var(--hz8-olive) 40%, transparent);
+  color: var(--hz8-ink) !important;
+  font: 600 clamp(16px, 1.3vw, 19px)/1.35 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__source { margin: 10px 0 0 !important; font: 500 14px/1.4 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__source a { color: var(--hz8-ink) !important; text-decoration: underline; text-underline-offset: 3px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 14px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 50px;
+  padding: 0 26px;
+  border: 1.5px solid var(--hz8-olive);
+  border-radius: 999px;
+  background: var(--hz8-olive);
+  color: var(--hz8-on-secondary) !important;
+  font: 600 16px/1 var(--hz8-font-ui) !important;
+  text-decoration: none !important;
+  box-shadow: 0 10px 22px -14px color-mix(in srgb, var(--hz8-olive) 70%, transparent);
+  transition: background-color .2s var(--hz8-ease), color .2s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn::after,
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__path-btn, .hz8-guide__law-more, .hz8-guide__all-articles)::after {
+  content: "";
+  flex: none;
+  width: 15px;
+  height: 11px;
+  background: currentColor;
+  -webkit-mask: var(--gd-arrow) center / contain no-repeat;
+          mask: var(--gd-arrow) center / contain no-repeat;
+  transition: transform .25s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn:hover { background: var(--hz8-secondary-hover); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn--quiet { background: color-mix(in srgb, var(--lp-peach-light) 40%, transparent); color: var(--hz8-olive) !important; box-shadow: none; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn--quiet:hover { background: color-mix(in srgb, var(--lp-peach-light) 75%, transparent); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn:hover::after { transform: translateX(3px); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn:focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 3px !important; }
+
+/* Kustfotot: höger halva upp under headern, tonar in åt vänster och nedåt. */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__coast {
+  position: absolute;
+  z-index: 0;
+  top: calc(-1 * var(--hz8-top-clear, 104px) - 40px);
+  bottom: 0;
+  right: calc(50% - 50vw);
+  width: 56vw;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 4%, transparent), color-mix(in srgb, var(--lp-peach) 6%, transparent)),
+    url("assets/landing-thcx/coast-editorial-1672.webp") 62% 44% / cover no-repeat,
+    linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .6) 14%, #000 30%), linear-gradient(180deg, #000 0, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .6) 14%, #000 30%), linear-gradient(180deg, #000 0, #000 80%, transparent 100%);
+          mask-composite: intersect;
+  pointer-events: none;
+}
+
+/* ---------- 2. Ledraden: kapitelrail, kort svar, rättsläget i korthet ---------- */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__lede {
+  display: grid;
+  grid-template-columns: minmax(170px, 210px) minmax(0, 1fr) minmax(340px, 500px);
+  align-items: start;
+  gap: clamp(28px, 3.4vw, 56px);
+  margin: clamp(10px, 1vw, 18px) 0 0;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc { display: grid; padding: 6px 24px 8px 0; border-right: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc-title { margin: 0 0 14px !important; padding-bottom: 12px; border-bottom: 1px solid var(--gd-rule); color: var(--hz8-olive) !important; font: 700 12px/1.2 var(--hz8-font-ui) !important; letter-spacing: .2em !important; text-transform: uppercase !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc a {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding-left: 16px;
+  border-left: 3px solid transparent;
+  color: var(--hz8-ink) !important;
+  font: 400 16.5px/1.25 var(--hz8-font-ui) !important;
+  text-decoration: none !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc a:first-of-type { border-left-color: var(--hz8-cta); font-weight: 600 !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc a:hover { color: var(--hz8-olive) !important; border-left-color: color-mix(in srgb, var(--hz8-cta) 55%, transparent); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__answer h2,
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts h2,
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law h2 {
+  margin: 0 0 14px !important;
+  color: var(--hz8-text-heading) !important;
+  font: 400 clamp(40px, 3.9vw, 62px)/1 var(--hz8-font-display) !important;
+  letter-spacing: -.025em !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__answer p,
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts-lead {
+  max-width: 54ch;
+  margin: 0 !important;
+  color: var(--hz8-ink) !important;
+  font: 400 clamp(17px, 1.3vw, 19px)/1.55 var(--hz8-font-ui) !important;
+}
+/* Rättsläget i korthet: varm panel (inte vit), datumet bär panelen. */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-card {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 24px 14px;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--hz8-cta) 16%, transparent) 0, transparent 60%),
+    linear-gradient(160deg, var(--gd-glass) 0, color-mix(in srgb, var(--lp-card) 66%, transparent) 100%);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 0 1px var(--gd-glass-edge) inset,
+    0 1.5px 0 color-mix(in srgb, #fff 45%, transparent) inset,
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 12%, transparent),
+    8px 22px 40px -26px color-mix(in srgb, var(--lp-shadow) 60%, transparent);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-kicker { margin: 0 0 6px !important; color: var(--hz8-olive) !important; font: 700 12px/1.2 var(--hz8-font-ui) !important; letter-spacing: .2em !important; text-transform: uppercase !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-date { margin: 0 0 14px !important; color: var(--hz8-text-heading) !important; font: 400 clamp(30px, 2.5vw, 38px)/1.05 var(--hz8-font-display) !important; letter-spacing: -.02em !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-date span { display: block; color: var(--hz8-ink) !important; font: italic 400 19px/1.3 var(--hz8-font-display) !important; letter-spacing: 0 !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts { margin: 0 !important; border-top: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts dt { color: var(--hz8-olive) !important; font: 700 13px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts dd { margin: 0 !important; color: var(--hz8-ink) !important; font: 400 14.5px/1.45 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts a,
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-text a { color: var(--hz8-olive) !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__law-more, .hz8-guide__all-articles) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 8px;
+  color: var(--hz8-olive) !important;
+  font: 700 15px/1 var(--hz8-font-ui) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--hz8-cta) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 5px;
+}
+
+/* ---------- 3. Alternativ: tre serievägar ---------- */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts { margin: clamp(48px, 5vw, 80px) 0 0; scroll-margin-top: calc(var(--hz8-top-clear) + 16px); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts-lead { margin-bottom: 22px !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__paths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 1.6vw, 24px);
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 46%);
+  min-height: clamp(200px, 15vw, 240px);
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 20px;
+  /* Solbelyst puts med lövskuggor (samma bild som sidans hero), varm
+     persika, och en läsyta till vänster bakom texten. */
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--lp-card) 94%, transparent) 0, color-mix(in srgb, var(--lp-card) 80%, transparent) 42%, transparent 72%),
+    linear-gradient(color-mix(in srgb, var(--lp-peach-light) 40%, transparent), color-mix(in srgb, var(--lp-peach) 30%, transparent)),
+    url("assets/landing-thcx/plaster-leaf-900.webp") 100% 0 / auto 150% no-repeat,
+    var(--lp-card);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--lp-card-edge) 16%, transparent),
+    0 1px 0 color-mix(in srgb, var(--lp-peach-light) 70%, transparent) inset,
+    6px 24px 40px -26px color-mix(in srgb, var(--lp-shadow) 62%, transparent),
+    0 3px 10px -6px color-mix(in srgb, var(--lp-shadow) 30%, transparent);
+  transition: transform .45s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path::before { display: none !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-text { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; padding: 22px 0 22px 24px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path h3 { margin: 0 0 8px !important; font: 400 clamp(30px, 2.5vw, 40px)/1 var(--hz8-font-display) !important; letter-spacing: -.02em !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-link { color: var(--hz8-text-heading) !important; font: inherit !important; letter-spacing: inherit !important; text-decoration: none !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-link::after { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-link:focus-visible { outline: none !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path:has(.hz8-guide__path-link:focus-visible) { outline: 2px solid var(--hz8-focus); outline-offset: 3px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-kind { max-width: 24ch; margin: 0 !important; color: var(--hz8-ink) !important; font: 400 15px/1.45 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0 !important;
+  color: var(--hz8-ink) !important;
+  font: 600 13.5px/1.3 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-live[hidden] { display: none !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-live::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--hz8-leaf, #4d7042); box-shadow: 0 0 0 3px color-mix(in srgb, var(--hz8-leaf, #4d7042) 18%, transparent); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path.is-out .hz8-guide__path-live::before { background: transparent; box-shadow: inset 0 0 0 1.5px var(--hz8-text-muted); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  margin-top: auto;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--hz8-olive);
+  color: var(--hz8-on-secondary) !important;
+  font: 600 14px/1 var(--hz8-font-ui) !important;
+  white-space: nowrap;
+  transition: background-color .2s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-text > p:last-of-type { margin-bottom: 16px !important; }
+/* Scenen: stenen (produktfri) och seriens riktiga produkt på den. Stenens
+   ovansida ligger på 30 % av stenbildens bredd över dess nederkant
+   (sandstone-plinth-900: 900x450, ytan på y ~ 160). */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-scene { position: relative; container-type: size; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-scene::before {
+  content: "";
+  position: absolute;
+  right: -12cqw;
+  bottom: -5cqw;
+  width: 100cqw;
+  aspect-ratio: 2 / 1;
+  background: url("assets/landing-thcx/sandstone-plinth-900.webp") 50% 100% / contain no-repeat;
+  filter: drop-shadow(4cqw 3cqw 4cqw color-mix(in srgb, var(--lp-shadow) 30%, transparent));
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__pack {
+  position: absolute;
+  z-index: 1;
+  left: 50cqw;
+  bottom: 24cqw;
+  width: auto;
+  max-width: 86cqw;
+  /* Aldrig högre än scenen ovanför stenen (ingen beskärning). */
+  height: min(68cqh, 92cqw, calc(100cqh - 24cqw - 10px));
+  object-fit: contain;
+  object-position: 50% 100%;
+  transform: translateX(-50%);
+  filter: drop-shadow(2cqw 1.5cqw 2cqw color-mix(in srgb, var(--lp-shadow) 34%, transparent)) drop-shadow(.4cqw .4cqw .5cqw color-mix(in srgb, var(--lp-shadow) 28%, transparent));
+  transition: transform .5s var(--hz8-ease);
+}
+@media (hover: hover) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path:hover { transform: translateY(-3px); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path:hover .hz8-guide__pack { transform: translateX(-50%) translateY(-2cqw); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path:hover .hz8-guide__path-btn { background: var(--hz8-secondary-hover); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path:hover .hz8-guide__path-btn::after { transform: translateX(3px); }
+}
+
+/* ---------- 4. Rättsläget, faktakapitel, sortiment, artiklar ---------- */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law { position: relative; isolation: isolate; margin: clamp(36px, 3.6vw, 60px) 0 clamp(24px, 2.4vw, 40px); padding: clamp(32px, 3.2vw, 48px) 0; }
+/* Varm zon kant till kant som tonar in och ut (ingen platta). */
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  background:
+    radial-gradient(46% 70% at 82% 40%, color-mix(in srgb, var(--hz8-cta) 14%, transparent) 0, transparent 100%),
+    linear-gradient(color-mix(in srgb, var(--lp-peach) 34%, transparent), color-mix(in srgb, var(--lp-peach) 34%, transparent));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+  pointer-events: none;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-text p { max-width: 62ch; margin: 0 0 14px !important; color: var(--hz8-ink) !important; font: 400 17px/1.68 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-text p:first-child { font-size: clamp(18px, 1.4vw, 20px) !important; line-height: 1.55 !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) { margin: 0 !important; padding: 0 !important; list-style: none; border-top: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) li { margin: 0 !important; padding: 0 !important; border-bottom: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) li::before { display: none !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) a {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 16px 40px 16px 0;
+  color: var(--hz8-ink) !important;
+  text-decoration: none !important;
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) a::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 15px;
+  height: 11px;
+  margin-top: -5px;
+  background: var(--hz8-olive);
+  -webkit-mask: var(--gd-arrow) center / contain no-repeat;
+          mask: var(--gd-arrow) center / contain no-repeat;
+  transition: transform .25s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) a:hover::after { transform: translateX(3px); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) strong { color: var(--hz8-text-heading) !important; font: 400 clamp(20px, 1.6vw, 24px)/1.2 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) span { color: var(--hz8-ink) !important; font: 400 14.5px/1.45 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__sources, .hz8-guide__articles) a:hover strong { text-decoration: underline; text-decoration-color: var(--hz8-cta); text-underline-offset: 4px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__chapters { margin-bottom: clamp(40px, 4vw, 64px); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__chapters a { color: var(--hz8-olive) !important; text-decoration: underline; text-underline-offset: 3px; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__stock .hz8-lp__head h2 { margin: 0 !important; color: var(--hz8-text-heading) !important; font: 400 clamp(30px, 2.6vw, 42px)/1.05 var(--hz8-font-display) !important; letter-spacing: -.015em !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__stock .hz8-lp__sub { color: var(--hz8-ink) !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__reading { margin: clamp(48px, 5vw, 80px) 0 clamp(8px, 1vw, 16px); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__reading h2 { margin: 0 0 16px !important; color: var(--hz8-text-heading) !important; font: 400 clamp(30px, 2.6vw, 42px)/1.05 var(--hz8-font-display) !important; letter-spacing: -.015em !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__articles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 48px); border-top: 0 !important; }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__articles li { border-top: 1px solid var(--gd-rule); }
+html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-lp :is(.hz8-guide__toc a, .hz8-guide__sources a, .hz8-guide__articles a):focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 2px !important; }
+
+/* Desktop (referensen): avsnittets H2 som etikettrad med linje, ingressen
+   under, korten direkt efter -- vägarna ryms i första skärmen. */
+@media (min-width: 1024px) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts { margin-top: clamp(24px, 2vw, 34px); }
+  /* Referensens desktophero saknar tagline; samma ord står i titeln och
+     på mobil. */
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__tagline { display: none; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts h2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 8px !important;
+    color: var(--hz8-olive) !important;
+    font: 700 13px/1.2 var(--hz8-font-ui) !important;
+    letter-spacing: .2em !important;
+    text-transform: uppercase !important;
+  }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts h2::after { content: ""; flex: 1; height: 1px; background: var(--hz8-olive); opacity: .3; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts-lead { max-width: none; margin-bottom: 16px !important; font-size: 16px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__answer h2 { font-size: clamp(40px, 3.3vw, 54px) !important; }
+  /* Rättsläget i korthet i två spalter: datumet till vänster, uppgifterna
+     till höger -- panelen blir lika låg som referensens bild. */
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-card { display: grid; grid-template-columns: minmax(130px, auto) minmax(0, 1fr); grid-template-areas: "kicker kicker" "date facts" "date more"; column-gap: 22px; align-items: start; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-kicker { grid-area: kicker; margin-bottom: 10px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-date { grid-area: date; margin: 0 !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts { grid-area: facts; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-facts > div { grid-template-columns: 80px minmax(0, 1fr); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-more { grid-area: more; justify-self: start; margin-top: 2px; }
+}
+
+/* ---------- Surfplatta ---------- */
+@media (max-width: 1023px) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__lede { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__toc { display: none; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-card { max-width: 560px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__paths { grid-template-columns: minmax(0, 1fr); max-width: 640px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-body { grid-template-columns: minmax(0, 1fr); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__articles { grid-template-columns: minmax(0, 1fr); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path { grid-template-columns: minmax(0, 1fr) minmax(0, 38%); }
+  /* Kustbandet i flödet, med en mjuk vågform nedtill. */
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__coast {
+    position: relative;
+    z-index: 0;
+    inset: auto;
+    width: auto;
+    height: clamp(96px, 16vw, 150px);
+    margin: -8px -16px 0;
+    background:
+      linear-gradient(color-mix(in srgb, var(--lp-peach-light) 10%, transparent), color-mix(in srgb, var(--lp-peach) 8%, transparent)),
+      url("assets/landing-thcx/coast-editorial-900.webp") 4% 46% / 170% auto no-repeat,
+      linear-gradient(200deg, color-mix(in srgb, var(--hz8-cta) 26%, var(--lp-canvas)) 0, var(--lp-canvas) 70%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .7) 28%, #000 50%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H400V70C330 92 270 96 200 86S70 70 0 86Z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%, 100% 100%;
+    -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .7) 28%, #000 50%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H400V70C330 92 270 96 200 86S70 70 0 86Z'/%3E%3C/svg%3E");
+            mask-size: 100% 100%, 100% 100%;
+            mask-composite: intersect;
+  }
+}
+
+/* ---------- Mobil (facit: koncept-c-iphone16-393x852.png) ----------
+   Första skärmen visar hero, rättslägesnotis, båda vägarna, kustbandet,
+   svaret på "Vad är THCA?" och början på alternativen. Brödsmulan (Hem /
+   THCA) står där referensens "Guide / THCA" står; etiketten döljs. */
+@media (max-width: 767px) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero { padding-bottom: 0; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero .hz8-lp__eyebrow { display: none; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__hero h1 { font-size: min(21vw, 84px) !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__tagline { margin-top: 6px !important; font-size: 21px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__notice { display: flex; gap: 12px; margin-top: 14px; padding: 11px 14px; border-radius: 14px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__leaf { width: 26px; height: 26px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__notice p { padding-left: 12px; font-size: 15.5px !important; line-height: 1.3 !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__source { margin-top: 8px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__actions { gap: 10px 22px; margin-top: 14px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn { min-height: 46px; padding: 0 22px; font-size: 15.5px !important; }
+  /* Mobil: den andra vägen som textlänk (referensen). */
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn--quiet { min-height: 44px; padding: 0; border: 0; background: none; text-decoration: underline !important; text-underline-offset: 5px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__btn--quiet:hover { background: none; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__lede { gap: 0; margin-top: 6px; padding-bottom: 16px; border-bottom: 1px solid color-mix(in srgb, var(--hz8-cta) 45%, transparent); }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law-card { display: none; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__answer, .hz8-guide__alts) h2 { margin-bottom: 8px !important; font-size: 34px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__answer p, .hz8-guide__alts-lead) { font-size: 16.5px !important; line-height: 1.45 !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts { margin-top: 16px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__alts-lead { margin-bottom: 14px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__paths { gap: 12px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path { grid-template-columns: minmax(0, 1fr) minmax(0, 44%); min-height: 176px; border-radius: 18px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-text { padding: 16px 0 16px 18px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path h3 { margin-bottom: 4px !important; font-size: 30px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-kind { font-size: 14px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-live { margin-top: 6px !important; font-size: 13px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-text > p:last-of-type { margin-bottom: 12px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path-btn { min-height: 38px; padding: 0 16px; font-size: 13.5px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law { margin-top: 48px; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__law h2 { font-size: 34px !important; }
+}
+@media (max-width: 360px) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__notice p { font-size: 14.5px !important; }
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main .hz8-guide__path { grid-template-columns: minmax(0, 1fr) minmax(0, 40%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8.hz8-lp-page.hz8-guide-page #store-main :is(.hz8-guide__path, .hz8-guide__pack, .hz8-guide__btn, .hz8-guide__btn::after) { transition: none !important; }
+}
