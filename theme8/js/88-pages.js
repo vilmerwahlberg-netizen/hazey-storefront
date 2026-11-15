@@ -157,6 +157,8 @@
     /* Bästsäljare ägs av 88a-bestsellers.js (TASK 11). Sidans native
        adminblock lämnas orörda (HZ8.bestsellerSource läser dem). */
     if (HZ8.isBestsellerPage && HZ8.isBestsellerPage()) return;
+    /* Landningar (.hz8-lp, t.ex. /sv/page/thcx) ägs av 88b-landing.js. */
+    if (HZ8.isLandingPage && HZ8.isLandingPage()) return;
     var page = document.querySelector("#skip-to-main-content .store-page") || document.querySelector(".store-page");
     if (!page) return;
     var S = HZ8.service;
