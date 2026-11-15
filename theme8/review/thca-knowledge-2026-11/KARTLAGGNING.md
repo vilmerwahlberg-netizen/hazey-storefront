@@ -73,7 +73,7 @@ Sidan påstår inte att Magic Sauce, THCbA eller Nano11 är lagliga.
 | "Hitta alternativ" → `/bastsaljare-vapes-laglig-cannabis-i-sverige/` | "Se bästsäljare" → `/sv/page/vara-bastsaljare` (200) |
 | Produktlänkar `/produkt/…` (28 st) | Se tabellen nedan |
 | Menylänkar i WooCommerce-headern | Theme 8:s globala header och sidfot |
-| — | Nya länkar: seriernas kategorier, `/sv/page/faq`, `/sv/posts` och tre artiklar |
+| — | Nya länkar: seriernas kategorier, `/sv/page/faq`, `/sv/posts` och två THCA-artiklar |
 
 ### "Alternativ till THCA": 28 dynamiska produktträffar
 
@@ -90,13 +90,13 @@ Gamla listan var en WooCommerce-fråga: 21 Magic Sauce, 6 Nano11 och 1 startpake
 
 ### Artikelutdrag: 27 artiklar
 
-Alla 27 slugs finns i Nyehandel under `/sv/post/{slug}` (kontrollerat 2026-11-15). Sidan visar tre artiklar plus "Alla artiklar" (`/sv/posts`):
+Alla 27 slugs finns i Nyehandel under `/sv/post/{slug}` (kontrollerat 2026-11-15). Sidan visar två THCA-artiklar plus "Alla artiklar" (`/sv/posts`):
 
 | Gammal artikel | På sidan? | Varför |
 |---|---|---|
 | THCA – Är det lagligt? (2026-06-21) | **Ja** | THCA-rättsläge, aktuell |
 | Vad är THCA? – Uppdaterad juridisk status i Sverige (2026-02-19) | **Ja** | THCA, aktuell |
-| Vad är Nano11? (2026-07-22) | **Ja** | Seriebakgrund. Länktexten är kortad: titelns "Laglig Cannabis i Sverige" används inte i länken. |
+| Vad är Nano11? (2026-07-22) | Nej (korrigerat 2026-11-15) | **Beslut (Vilmer).** Den importerade artikeln anger fel datum för THCA-klassningen och gör breda laglighetspåståenden, så den lyfts inte fram från THCA-sidan just nu. Artikeln är inte ändrad eller raderad i Nyehandel eller någon annanstans. Den nås fortfarande via "Alla artiklar". Nano11 som serieväg står kvar. |
 | Är Nano 11 lagligt? (2026-07-17) | Nej | **Beslut.** Laglighetspåstående om en alternativserie. |
 | Vad är Nano10? / Nano10 – Är det lagligt? / 7 anledningar … Nano9 och Nano10 / Är Nano9 lagligt? / Vad är Nano 9? | Nej | Äldre Nano-generationer, inte THCA. Laglighetspåståenden. |
 | Vad är THCNM? / THCNM – Allt du behöver veta | Nej | Annat ämne. Innehåller effektpåståenden ("psykoaktiva effekter"). |
@@ -127,5 +127,5 @@ Shoppingfrågorna för `/produkt-kategori/thca/` (thca sverige 293, thca vape sv
 4. "forskning, odling, samlarobjekt" och "studier, kvalitetsanalys" kräver källa eller stryks.
 5. "Varför handla från Hazey.se?": labbanalys, garanterad leverans, "100 % tryggt", "50000+ nöjda kunder", fri frakt från 499 kr. Varje värde behöver verifieras.
 6. THCbA har 0 produkter i lager just nu. Vägen visar det ärligt, men vill du ha THCbA som en av tre huvudvägar tills lagret är påfyllt?
-7. Artikeln "Är Nano 11 lagligt?" är inte länkad på grund av laglighetspåståendet. Vill du länka den?
+7. Nano11-artiklarna ("Vad är Nano11?" och "Är Nano 11 lagligt?") länkas inte från THCA-sidan. "Vad är Nano11?" har fel datum för THCA-klassningen och breda laglighetspåståenden. Artiklarna behöver redigeras innan de kan länkas härifrån (inte gjort).
 8. Kustbilden i heron är THCX-sidans produktfria bild (`landing-thcx/coast-editorial-*`). Den delas med THCX-uppslaget.

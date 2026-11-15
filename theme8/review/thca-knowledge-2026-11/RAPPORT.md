@@ -52,7 +52,7 @@ Designfacit: `koncept-c-iphone16-393x852.png` (mobilens första skärm) och `kon
 4. **Är THCA lagligt i Sverige?** Exakt ämne, förordning, SFS och datum, källor (SFS-PDF och Socialdepartementet) och inget om andra ämnen eller produkter.
 5. **Faktakapitel:** "THCA och THC" och "Hazey och THCA".
 6. **"I lager från serierna":** 32 riktiga kort, varvade per serie, bara i lager.
-7. **"Läs mer om THCA":** tre artiklar ur Nyehandels bibliotek och "Alla artiklar".
+7. **"Läs mer om THCA":** två THCA-artiklar ur Nyehandels bibliotek i två spalter och "Alla artiklar". Nano11-artikeln lyfts inte fram (korrigering 2026-11-15, se KARTLAGGNING.md).
 8. **FAQ:** sex frågor, de fyra gamla plus två nya, med "Hitta i sortimentet" (Bästsäljare). Sedan den globala sidfoten.
 
 ## Tester (`verify.json`, 2026-11-15)
@@ -66,7 +66,7 @@ Körningar: 320, 393 (852 hög), 768, 1440, 1920, plus utan temabilder, utan pro
 | Konsolfel | 0 |
 | Faktatext | 16 av 16 rubriker och faktastycken synliga, alla i initial HTML |
 | Initial HTML | 1 H1, 8 H2, 3 H3, 29 länkar och 6 FAQ |
-| Länkar | 35 unika, varav 33 svarar 200 (inklusive SFS-PDF:en och regeringen.se) och 2 är ankare som finns på sidan |
+| Länkar | 34 unika efter korrigeringen. Alla externa och interna svarar 200 (inklusive SFS-PDF:en och regeringen.se), och ankarna finns på sidan. |
 | Kontrast | Lägst 5,31 ("Fler svar under …", mobil) och 5,51 (H1 över kustfotot vid 1440). Knapparna ligger på 5,7 eller mer. |
 | Tangentbord | Fokusringen är solid på knappar, serievägar (hela kortet) och FAQ. FAQ öppnas med Enter. "Läs om THCA" hoppar till `#vad-ar-thca` under headern. |
 | Riktiga bilder | Tre av tre serievägar har Nyehandels egen frilagda produktbild, ingen beskuren (alla bredder) |
@@ -96,3 +96,11 @@ Körningar: 320, 393 (852 hög), 768, 1440, 1920, plus utan temabilder, utan pro
 ## Öppna beslut
 
 Se `KARTLAGGNING.md` avsnitt 7: titel och meta, slug och 301, psykoaktivitet, "forskning/samlarobjekt", trust-punkter och frakt, THCbA utan lager, Nano11-laglighetsartikeln och kustbilden.
+
+## Korrigering 2026-11-15: Nano11-artikeln
+
+"Läs mer om THCA" visar nu bara de två THCA-artiklarna, i två lika breda spalter på desktop (631 + 631 px vid 1440) och staplade på mobil.
+
+"Vad är Nano11?" lyfts inte fram, eftersom den importerade artikeln anger fel datum för THCA-klassningen och gör breda laglighetspåståenden. Artikeln är inte ändrad eller raderad. Nano11-serievägen och allt annat innehåll är oförändrat.
+
+Bilder: `shots/thca-{393,1440}-artiklar.webp` och `shots/fore-efter-artiklar-{393,1440}.webp`. Hela sviten (nio körningar) är omkörd: grön.

@@ -114,6 +114,7 @@ for (const [tag, w, h, mode] of RUNS) {
       rail: rail.map(c => ({ name: txt(c.querySelector(".name")), brand: txt(c.querySelector(".brand")), price: txt(c.querySelector(".price")), instock: c.getAttribute("data-hz8-instock") })),
       facts,
       legal: { notice: txt(document.querySelector(".hz8-guide__notice")), law: txt(document.querySelector(".hz8-guide__law-text")), sfsLinks: document.querySelectorAll('.hz8-lp a[href*="SFS2026-1109.pdf"]').length },
+      articles: [...document.querySelectorAll(".hz8-guide__articles a")].map(a => { const q = a.getBoundingClientRect(); return { href: a.getAttribute("href"), title: txt(a.querySelector("strong")), x: Math.round(q.left), y: Math.round(q.top + scrollY), w: Math.round(q.width), h: Math.round(q.height) }; }),
       faq: [...document.querySelectorAll(".hz8-lp__qa details")].map(d => ({ q: txt(d.querySelector("summary")), a: txt(d.querySelector("p")).length })),
       banned: (document.querySelector(".hz8-lp").textContent.match(/psykoaktiv|rus\b|medicin|effekt|lagliga alternativ|lagliga i sverige|100 ?%|garanter|50000|fri frakt|världsklass/gi) || []),
       links: [...document.querySelectorAll(".hz8-lp a[href]")].map(a => a.getAttribute("href").replace(/\?preview=.*/, "")).filter((v, i, a) => a.indexOf(v) === i && !/\/products\/.*\/\d+$/.test(v)),
@@ -139,6 +140,7 @@ for (const [tag, w, h, mode] of RUNS) {
     await p.screenshot({ path: path.join(OUT, `thca-${tag}-alternativ.png`), clip: await clip(".hz8-guide__alts", ".hz8-guide__alts"), fullPage: true });
     await p.screenshot({ path: path.join(OUT, `thca-${tag}-rattslage.png`), clip: await clip(".hz8-guide__law", ".hz8-guide__chapters"), fullPage: true });
     await p.screenshot({ path: path.join(OUT, `thca-${tag}-nedre.png`), clip: await clip(".hz8-guide__stock", "#store-footer, footer"), fullPage: true });
+    await p.screenshot({ path: path.join(OUT, `thca-${tag}-artiklar.png`), clip: await clip(".hz8-guide__reading", ".hz8-guide__reading", 40), fullPage: true });
   }
   m.errors = p.errors.filter(e => !/favicon|trustpilot|Failed to load resource|recaptcha/i.test(e));
   if (tag === "1440") {
