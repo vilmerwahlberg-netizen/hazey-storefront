@@ -1,0 +1,47 @@
+{
+ "thcx": {
+  "id": 12,
+  "antal_med_slug": 1,
+  "name": "THCX",
+  "slug": "thcx",
+  "active": true,
+  "url_mapping": null,
+  "meta_title_ok": true,
+  "meta_description_ok": true,
+  "html_tecken": 11668,
+  "html_identiskt": true,
+  "created_at": "2026-11-15T23:19:05+01:00",
+  "meta_title": "THCX i Sverige – vapes, hasch och fakta | Hazey",
+  "meta_description": "Vad är THCX (THC-X)? Se Hazeys THCX-vapes från Hero's Core och hasch från High Life och El Gringo, vad analysintyget visar och vanliga frågor."
+ },
+ "engangsvape": {
+  "id": 13,
+  "antal_med_slug": 1,
+  "name": "Engångsvapes",
+  "slug": "engangsvape",
+  "active": true,
+  "url_mapping": null,
+  "meta_title_ok": true,
+  "meta_description_ok": true,
+  "html_tecken": 12980,
+  "html_identiskt": true,
+  "created_at": "2026-11-15T23:19:40+01:00",
+  "meta_title": "Engångsvapes med cannabinoider – Magic Sauce, Core och CBD | Hazey",
+  "meta_description": "Engångsvapes hos Hazey: Magic Sauce 3.0, Hero's Core och CBD i 2 och 5 ml. Se vad som finns i lager och pris, med analysintyg på produktsidorna."
+ },
+ "thca": {
+  "id": 14,
+  "antal_med_slug": 1,
+  "name": "THCA",
+  "slug": "thca",
+  "active": true,
+  "url_mapping": null,
+  "meta_title_ok": true,
+  "meta_description_ok": true,
+  "html_tecken": 14781,
+  "html_identiskt": true,
+  "created_at": "2026-11-15T23:20:04+01:00",
+  "meta_title": "THCA i Sverige – vad det är, rättsläge och alternativ | Hazey",
+  "meta_description": "Vad är THCA? Fakta om tetrahydrocannabinolsyra och rättsläget: delta-9-THCA-A är narkotikaklassat i Sverige sedan 14 juli 2026 (SFS 2026:1109). Se serierna i vårt aktuella sortiment."
+ }
+}
