@@ -1,0 +1,2139 @@
+{
+ "initial": {
+  "h1": 1,
+  "h2": 7,
+  "rows": 20,
+  "links": 51,
+  "faq": 6,
+  "searchInHtml": false
+ },
+ "results": [
+  {
+   "tag": "hub-393",
+   "w": 393,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 150
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 249
+    },
+    "photo": {
+     "top": 347,
+     "bottom": 497
+    },
+    "indexH2": {
+     "top": 545,
+     "bottom": 584
+    },
+    "search": {
+     "top": 714,
+     "bottom": 796
+    },
+    "firstRow": {
+     "top": 815,
+     "bottom": 917
+    },
+    "vh": 852
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 10.56
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 10.46
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.63
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.84
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.97
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.34
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 104
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-1440",
+   "w": 1440,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": false,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-1100.webp",
+     "knowledge-hub/sea-1100.webp"
+    ],
+    "h": 490
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 24,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 174,
+     "bottom": 242
+    },
+    "photo": {
+     "top": -7,
+     "bottom": 482
+    },
+    "indexH2": {
+     "top": 552,
+     "bottom": 611
+    },
+    "search": {
+     "top": 709,
+     "bottom": 791
+    },
+    "firstRow": {
+     "top": 838,
+     "bottom": 935
+    },
+    "vh": 900
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 6.75
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 6.85
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 6.61
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 6.19
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "worst": 4.53
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "worst": 4.93
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.93
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 13.99
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.98
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 12.61
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#amnesindex",
+    "top": 120
+   },
+   "faqOpen": true,
+   "errors": [],
+   "linkStatus": {
+    "#amnesindex": "anchor-ok",
+    "#metod": "anchor-ok",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf": 200,
+    "/sv/page/thca": 200,
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf": 200,
+    "/sv/page/thcb": 200,
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf": 200,
+    "/sv/page/thch": 200,
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf": 200,
+    "/sv/page/hhc": 200,
+    "/sv/page/hhc#fragor": 200,
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf": 200,
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf": 200,
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf": 200,
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf": 200,
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/": 200,
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/": 200,
+    "#statusord": "anchor-ok",
+    "#oppna-fragor": "anchor-ok",
+    "#kallor": "anchor-ok",
+    "/sv/categories/magic-sauce": 200,
+    "/sv/categories/nano": 200,
+    "/sv/page/thca#alternativ": 200,
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/": 200,
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/": 200,
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/": 200,
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/": 200,
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/": 200,
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/": 200,
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/": 200,
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/": 200,
+    "/sv/page/faq": 200,
+    "/sv/posts": 200
+   }
+  },
+  {
+   "tag": "hub-768",
+   "w": 768,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": false,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 338
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 24,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 163,
+     "bottom": 216
+    },
+    "photo": {
+     "top": 405,
+     "bottom": 743
+    },
+    "indexH2": {
+     "top": 801,
+     "bottom": 844
+    },
+    "search": {
+     "top": 935,
+     "bottom": 1017
+    },
+    "firstRow": {
+     "top": 1064,
+     "bottom": 1159
+    },
+    "vh": 1024
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 10.64
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 10.54
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 12.93
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 13.02
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "worst": 4.63
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "worst": 4.93
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.64
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.84
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.33
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#amnesindex",
+    "top": 120
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-320",
+   "w": 320,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 150
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 229
+    },
+    "photo": {
+     "top": 374,
+     "bottom": 524
+    },
+    "indexH2": {
+     "top": 572,
+     "bottom": 611
+    },
+    "search": {
+     "top": 741,
+     "bottom": 822
+    },
+    "firstRow": {
+     "top": 841,
+     "bottom": 963
+    },
+    "vh": 700
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 10.56
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 10.46
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.63
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.75
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.98
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.34
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 104
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-1920",
+   "w": 1920,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": false,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-1100.webp",
+     "knowledge-hub/sea-1100.webp"
+    ],
+    "h": 524
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 24,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 181,
+     "bottom": 261
+    },
+    "photo": {
+     "top": -7,
+     "bottom": 517
+    },
+    "indexH2": {
+     "top": 591,
+     "bottom": 657
+    },
+    "search": {
+     "top": 756,
+     "bottom": 837
+    },
+    "firstRow": {
+     "top": 884,
+     "bottom": 983
+    },
+    "vh": 1080
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 7.46
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 7.25
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 7.73
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 7.36
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "worst": 4.56
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.08
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "worst": 4.93
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.93
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.99
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 12.63
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#amnesindex",
+    "top": 120
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-393-noatmo",
+   "w": 393,
+   "mode": "noatmo",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 150
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 249
+    },
+    "photo": {
+     "top": 347,
+     "bottom": 497
+    },
+    "indexH2": {
+     "top": 545,
+     "bottom": 584
+    },
+    "search": {
+     "top": 714,
+     "bottom": 796
+    },
+    "firstRow": {
+     "top": 815,
+     "bottom": 917
+    },
+    "vh": 852
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 10.56
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 10.47
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.63
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.84
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.97
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.34
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 104
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-393-reduced",
+   "w": 393,
+   "mode": "reduced",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 150
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 249
+    },
+    "photo": {
+     "top": 347,
+     "bottom": 497
+    },
+    "indexH2": {
+     "top": 545,
+     "bottom": 584
+    },
+    "search": {
+     "top": 714,
+     "bottom": 796
+    },
+    "firstRow": {
+     "top": 815,
+     "bottom": 917
+    },
+    "vh": 852
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 10.56
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 10.47
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 12.83
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 14.09
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.63
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.84
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.97
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.34
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 682
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-393-nojs",
+   "w": 393,
+   "mode": "nojs",
+   "classes": [],
+   "scene": null,
+   "enhanced": false,
+   "collapsible": false,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": null,
+    "h": 0
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 24,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 170,
+     "bottom": 212
+    },
+    "photo": {
+     "top": 330,
+     "bottom": 330
+    },
+    "indexH2": {
+     "top": 369,
+     "bottom": 402
+    },
+    "search": null,
+    "firstRow": {
+     "top": 480,
+     "bottom": 669
+    },
+    "vh": 852
+   },
+   "errors": [
+    "[Hazey Theme 8] JavaScript could not be loaded."
+   ]
+  },
+  {
+   "tag": "hub-1440-nojs",
+   "w": 1440,
+   "mode": "nojs",
+   "classes": [],
+   "scene": null,
+   "enhanced": false,
+   "collapsible": false,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": null,
+    "h": 0
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 24,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 257,
+     "bottom": 314
+    },
+    "photo": {
+     "top": 446,
+     "bottom": 446
+    },
+    "indexH2": {
+     "top": 490,
+     "bottom": 529
+    },
+    "search": null,
+    "firstRow": {
+     "top": 621,
+     "bottom": 669
+    },
+    "vh": 900
+   },
+   "errors": [
+    "[Hazey Theme 8] JavaScript could not be loaded."
+   ]
+  }
+ ]
+}
