@@ -1,0 +1,324 @@
+/* Kunskapssida "fältatlas" (.hz8-lp--atlas), första sidan: THCB. Koncept B
+   (design/kunskap-rattslage-2026-11-16/kunskapsmall-b.png, vald 2026-11-16):
+   kustnära fältatlas med öppen faktayta, stor men lugn fotoatmosfär och
+   numrerade kapitel. Bygger på landningsmallen 88b (tokens, FAQ, ankarfokus)
+   och ersätter dess puts med ett lugnt papper:
+
+   1. hero: etikett, H1, kursiv tagline, ingress och två pilvägar; fotot
+      till höger (desktop) eller som band under texten (mobil),
+   2. index: numrerade kapitel 01-04 + granskningsstatus och relaterat,
+   3. kapitel med kort text och en faktaspalt (definition, tidslinje),
+   4. källor med utgivare och datum, FAQ från 88b.
+
+   html.hz8-atlas-page sätts av 88e-landing-atlas.js. Fotot är en produktfri
+   tema-asset (knowledge-thcb/); saknas den står papperets ljus kvar. */
+
+html.hz8.hz8-lp-page.hz8-atlas-page {
+  --at-paper: color-mix(in srgb, var(--lp-peach-light) 52%, var(--hz8-beige));
+  --at-paper-light: color-mix(in srgb, var(--at-paper) 55%, var(--hz8-surface));
+  --at-sun: color-mix(in srgb, var(--hz8-cta) 20%, var(--at-paper));
+  --at-terra: color-mix(in srgb, var(--hz8-cta) 54%, var(--hz8-ink));
+  --at-rule: color-mix(in srgb, var(--hz8-olive) 20%, transparent);
+  --at-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 12'%3E%3Cpath d='M0 6h16M11 1l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
+  background: var(--at-paper) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page body {
+  background:
+    linear-gradient(180deg, var(--at-paper-light) 0, var(--at-paper) 900px) top center / 100% 900px no-repeat,
+    var(--at-paper) !important;
+}
+/* Solljus uppe till höger, bakom fotot (bara desktop: på smal skärm blir
+   ellipsens kant en rand längs högerkanten). */
+@media (min-width: 1024px) {
+  html.hz8.hz8-lp-page.hz8-atlas-page body {
+    background:
+      radial-gradient(70% 46% at 78% 0%, color-mix(in srgb, var(--at-sun) 70%, transparent) 0, transparent 100%) top center / 100% 1100px no-repeat,
+      linear-gradient(180deg, var(--at-paper-light) 0, var(--at-paper) 900px) top center / 100% 900px no-repeat,
+      var(--at-paper) !important;
+  }
+}
+
+/* Gemensamt: pilvägar (koncept B: rubrikfont, terrakotta, tunn linje). */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a) {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 4px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--at-terra) 70%, transparent);
+  color: var(--at-terra) !important;
+  font: 400 clamp(19px, 1.5vw, 23px)/1.2 var(--hz8-font-display) !important;
+  text-decoration: none !important;
+  transition: color .2s var(--hz8-ease), border-color .2s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a, .hz8-atlas__source-list a)::after {
+  content: "";
+  flex: none;
+  width: 19px;
+  height: 12px;
+  background: currentColor;
+  -webkit-mask: var(--at-arrow) center / contain no-repeat;
+          mask: var(--at-arrow) center / contain no-repeat;
+  transition: transform .25s var(--hz8-ease);
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a):hover { border-bottom-color: var(--at-terra); color: var(--hz8-olive) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a, .hz8-atlas__source-list a):hover::after { transform: translateX(4px); }
+
+/* ---------- 1. Hero ---------- */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  max-width: none;
+  min-height: clamp(440px, 37vw, 560px);
+  margin: 0;
+  padding: clamp(8px, 1vw, 20px) 0 clamp(28px, 3vw, 48px);
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero-text { position: relative; z-index: 1; max-width: min(560px, 46%); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero .hz8-lp__eyebrow { margin: 0 0 clamp(10px, 1.2vw, 18px) !important; color: var(--hz8-ink) !important; font-weight: 600 !important; letter-spacing: .24em !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero h1 {
+  margin: 0 !important;
+  color: var(--hz8-text-heading) !important;
+  font: 400 clamp(96px, 9.4vw, 152px)/.86 var(--hz8-font-display) !important;
+  letter-spacing: -.035em !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__tagline {
+  margin: clamp(12px, 1.2vw, 20px) 0 0 !important;
+  color: var(--hz8-ink) !important;
+  font: italic 400 clamp(25px, 2.3vw, 36px)/1.15 var(--hz8-font-display) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__lead {
+  max-width: 46ch;
+  margin: clamp(14px, 1.4vw, 22px) 0 0 !important;
+  color: var(--hz8-ink) !important;
+  font: 400 clamp(16px, 1.2vw, 18px)/1.6 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__jump { display: flex; flex-wrap: wrap; gap: 8px clamp(28px, 3.4vw, 52px); margin: clamp(16px, 1.8vw, 28px) 0 0 !important; }
+
+/* Fotot: höger del från viewportkanten och upp under glasheadern; tonar
+   in i papperet åt vänster och nedåt. Ingen ram, ingen kortyta. */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo {
+  position: absolute;
+  z-index: 0;
+  top: calc(-1 * var(--hz8-top-clear, 104px) - 40px);
+  bottom: 0;
+  right: calc(50% - 50vw);
+  width: 58vw;
+  background:
+    linear-gradient(color-mix(in srgb, var(--at-sun) 8%, transparent), color-mix(in srgb, var(--at-sun) 8%, transparent)),
+    url("assets/knowledge-thcb/umbel-stone-620.webp") 40% 50% / cover no-repeat,
+    linear-gradient(200deg, var(--at-sun) 0, var(--at-paper) 80%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .55) 16%, #000 34%), linear-gradient(180deg, #000 0, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .55) 16%, #000 34%), linear-gradient(180deg, #000 0, #000 78%, transparent 100%);
+          mask-composite: intersect;
+  pointer-events: none;
+}
+
+/* ---------- 2. Index: numrerade kapitel + status och relaterat ---------- */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 4.4vw, 76px);
+  align-items: start;
+  margin: 0 0 clamp(56px, 6vw, 96px);
+  padding-top: clamp(24px, 2.4vw, 36px);
+  border-top: 1px solid var(--at-rule);
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters { display: grid; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a {
+  display: grid;
+  grid-template-columns: clamp(64px, 6vw, 92px) minmax(0, 1fr);
+  grid-template-areas: "no title" "no desc";
+  column-gap: clamp(14px, 1.6vw, 24px);
+  row-gap: 4px;
+  padding: clamp(16px, 1.5vw, 22px) 0;
+  border-bottom: 1px solid var(--at-rule);
+  color: var(--hz8-ink) !important;
+  text-decoration: none !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a:first-child { padding-top: 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a:last-child { border-bottom: 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__no { grid-area: no; align-self: start; color: var(--hz8-text-heading) !important; font: 400 clamp(40px, 3.6vw, 56px)/.9 var(--hz8-font-display) !important; letter-spacing: -.02em; font-variant-numeric: lining-nums; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters strong { grid-area: title; color: var(--hz8-text-heading) !important; font: 400 clamp(24px, 2vw, 31px)/1.1 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a > span:last-child { grid-area: desc; color: var(--hz8-ink) !important; font: 400 15.5px/1.45 var(--hz8-font-ui) !important; }
+@media (hover: hover) { html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a:hover strong { text-decoration: underline; text-decoration-color: var(--at-terra); text-decoration-thickness: 1px; text-underline-offset: 5px; } }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__aside { padding-left: clamp(24px, 3vw, 52px); border-left: 1px solid var(--at-rule); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 0 0 22px !important;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--at-rule);
+  color: var(--hz8-ink) !important;
+  font: 400 15px/1.35 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--hz8-cta) 20%, var(--at-paper-light));
+  color: var(--at-terra) !important;
+  font: 600 14px/1 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chip + span::before { content: "·"; margin-right: 12px; color: var(--hz8-text-muted); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__aside-title { margin: 0 0 6px !important; color: var(--hz8-text-heading) !important; font: italic 400 clamp(26px, 2.1vw, 32px)/1.15 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related { display: grid; justify-items: start; gap: 4px; margin: 0 !important; padding: 0 !important; list-style: none; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related li { margin: 0 !important; padding: 0 !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related li::before { display: none !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related a { font-size: clamp(18px, 1.35vw, 21px) !important; }
+
+/* ---------- 3. Kapitel ---------- */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter { position: relative; isolation: isolate; margin: 0 0 clamp(56px, 6vw, 96px); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px !important;
+  color: var(--hz8-olive) !important;
+  font: 700 12px/1.2 var(--hz8-font-ui) !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__kicker span { color: var(--at-terra); letter-spacing: .08em; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__kicker::after { content: ""; width: 56px; height: 1px; background: var(--hz8-olive); opacity: .4; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter h2 {
+  margin: 0 0 clamp(18px, 1.8vw, 28px) !important;
+  color: var(--hz8-text-heading) !important;
+  font: 400 clamp(38px, 3.6vw, 58px)/1.02 var(--hz8-font-display) !important;
+  letter-spacing: -.025em !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 4.4vw, 76px); align-items: start; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__text p { max-width: 62ch; margin: 0 0 14px !important; color: var(--hz8-ink) !important; font: 400 17px/1.68 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__text p:first-child { font-size: clamp(18px, 1.4vw, 20px) !important; line-height: 1.55 !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__text, .hz8-atlas__also) a:not(.hz8-atlas__related a) { color: var(--hz8-olive) !important; font-weight: 700; text-decoration: underline; text-decoration-color: var(--at-terra); text-underline-offset: 4px; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--hz8-ink) !important;
+  font: 600 15px/1.4 var(--hz8-font-ui) !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__stock[hidden] { display: none !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__stock::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--hz8-leaf, #4d7042); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__stock.is-out::before { background: transparent; box-shadow: inset 0 0 0 1.5px var(--hz8-text-muted); }
+
+/* Faktaspalten (definition) och tidslinjen (rättsläge): linjer, ingen kortyta. */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__facts { margin: 6px 0 0 !important; border-top: 1px solid var(--at-rule); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__facts > div { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--at-rule); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__facts dt { color: var(--hz8-olive) !important; font: 700 13.5px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__facts dd { margin: 0 !important; min-width: 0; overflow-wrap: anywhere; color: var(--hz8-ink) !important; font: 400 15px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__ledger-title,
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__also h3 { margin: 0 0 10px !important; color: var(--hz8-text-heading) !important; font: italic 400 clamp(24px, 1.9vw, 29px)/1.15 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline { position: relative; margin: 0 !important; padding: 0 !important; list-style: none; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: color-mix(in srgb, var(--at-terra) 45%, transparent); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline li { position: relative; display: grid; gap: 2px; margin: 0 !important; padding: 0 0 18px 30px !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline li::before { content: ""; position: absolute; left: 0; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--at-paper); box-shadow: inset 0 0 0 1.5px var(--at-terra); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline li:last-child::before { background: var(--at-terra); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline time { color: var(--hz8-text-heading) !important; font: 400 20px/1.2 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__timeline span { color: var(--hz8-ink) !important; font: 400 15px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__also p { max-width: 44ch; margin: 0 0 8px !important; color: var(--hz8-ink) !important; font: 400 15px/1.55 var(--hz8-font-ui) !important; }
+
+/* Rättsläget: varm zon kant till kant som tonar in och ut (samma grepp som 88d). */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__law { padding: clamp(36px, 3.4vw, 52px) 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__law::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  background:
+    radial-gradient(42% 70% at 84% 42%, color-mix(in srgb, var(--hz8-cta) 13%, transparent) 0, transparent 100%),
+    linear-gradient(color-mix(in srgb, var(--at-paper-light) 70%, transparent), color-mix(in srgb, var(--at-paper-light) 70%, transparent));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
+  pointer-events: none;
+}
+
+/* ---------- 4. Källor ---------- */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 4vw, 64px);
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+  counter-reset: at-src;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list li { margin: 0 !important; padding: 0 !important; border-top: 1px solid var(--at-rule); counter-increment: at-src; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list li::before { display: none !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 4px;
+  min-height: 100%;
+  padding: 16px 4px 16px 0;
+  color: var(--hz8-ink) !important;
+  text-decoration: none !important;
+}
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a::before { content: counter(at-src, decimal-leading-zero); grid-row: 1 / span 2; align-self: start; padding-top: 3px; color: var(--at-terra); font: 400 18px/1 var(--hz8-font-display); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a::after { grid-column: 3; grid-row: 1 / span 2; color: var(--hz8-olive); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list strong { grid-column: 2; color: var(--hz8-text-heading) !important; font: 400 clamp(18px, 1.4vw, 21px)/1.25 var(--hz8-font-display) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a > span { grid-column: 2; color: var(--hz8-text-muted) !important; font: 400 14px/1.45 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a:hover strong { text-decoration: underline; text-decoration-color: var(--at-terra); text-underline-offset: 4px; }
+
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__nb { white-space: nowrap; }
+/* FAQ (88b) på papperet: ingen putsbild bakom. */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__faq { margin-top: 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp :is(.hz8-atlas__chapters a, .hz8-atlas__source-list a, .hz8-atlas__jump a, .hz8-atlas__related a):focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 3px !important; border-radius: 4px; }
+
+/* ---------- Surfplatta ---------- */
+@media (max-width: 1023px) {
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero { display: block; min-height: 0; padding-bottom: 0; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero-text { max-width: 620px; }
+  /* Fotot som band i flödet, kant till kant, tonar in uppåt och nedåt. */
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: clamp(170px, 34vw, 280px);
+    margin: clamp(18px, 3vw, 28px) -16px 0;
+    background-position: 0 0, 50% 46%, 0 0;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+  }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 8px; border-top: 0; padding-top: 8px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__aside { padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--at-rule); }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__body { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Mobil (facit: kunskapsmall-b.png, telefonen) ---------- */
+@media (max-width: 767px) {
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero { padding-top: 0; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero .hz8-lp__eyebrow { margin-bottom: 8px !important; font-size: 11.5px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__hero h1 { font-size: min(20vw, 80px) !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__tagline { margin-top: 8px !important; font-size: 23px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__lead { margin-top: 12px !important; font-size: 16px !important; line-height: 1.5 !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__jump { flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 10px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__jump a { font-size: 19px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo { height: 168px; margin-top: 14px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a { grid-template-columns: 46px minmax(0, 1fr); column-gap: 12px; padding: 14px 0; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a:first-child { padding-top: 6px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__no { font-size: 30px !important; padding-top: 2px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters strong { font-size: 22px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a > span:last-child { font-size: 14.5px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__status { margin-bottom: 16px !important; padding-bottom: 16px; font-size: 14px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chip + span::before { display: none; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter { margin-bottom: 52px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter h2 { font-size: 34px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__text p { font-size: 16px !important; line-height: 1.62 !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__text p:first-child { font-size: 17px !important; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__facts > div { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a { grid-template-columns: 28px minmax(0, 1fr) auto; padding: 14px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a, .hz8-atlas__jump a::after, .hz8-atlas__related a::after, .hz8-atlas__source-list a::after) { transition: none !important; }
+}
