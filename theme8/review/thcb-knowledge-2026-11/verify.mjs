@@ -87,7 +87,7 @@ for (const [tag, w, h, mode] of RUNS) {
   await p.screenshot({ path: path.join(OUT, `thcb-${tag}-fold.png`) });
   const fold = await p.evaluate(() => {
     const r = s => { const e = document.querySelector(s); if (!e) return null; const q = e.getBoundingClientRect(); return { top: Math.round(q.top), bottom: Math.round(q.bottom), left: Math.round(q.left), right: Math.round(q.right) }; };
-    return { header: r("#store-header"), h1: r(".hz8-lp h1"), tagline: r(".hz8-atlas__tagline"), lead: r(".hz8-atlas__lead"), jump: r(".hz8-atlas__jump"), photo: r(".hz8-atlas__photo"), index: r(".hz8-atlas__chapters"), ch1: r(".hz8-atlas__chapters a"), aside: r(".hz8-atlas__aside"), vh: innerHeight };
+    return { header: r("#store-header"), h1: r(".hz8-lp h1"), tagline: r(".hz8-atlas__tagline"), lead: r(".hz8-atlas__lead"), jump: r(".hz8-atlas__jump"), photo: r(".hz8-atlas__photo"), ch1Kicker: r("#vad-ar-thcb .hz8-atlas__kicker"), ch1H2: r("#hz8-atlas-what"), index: r(".hz8-atlas__chapters"), aside: r(".hz8-atlas__aside"), vh: innerHeight };
   });
   await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 450) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 100)); } window.scrollTo(0, 0); });
   await p.mouse.move(2, h - 2); await p.waitForTimeout(1500);

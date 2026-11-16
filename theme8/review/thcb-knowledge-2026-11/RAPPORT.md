@@ -148,3 +148,39 @@ Se `SEO-PARITET.md` och `seo-parity.json`.
 - Alla gamla påståenden som inte kan föras över utan faktakontroll står i `GAMLA-PASTAENDEN.md`, sorterade per källa: gamla sidan, två artiklar, produkten och den relaterade artikeln.
 - Alla beslut står i `BESLUT.md` (B1–B11).
 - Ingenting i gamla sidan, artiklarna, produkterna eller admin är ändrat.
+
+## R3 (16 november 2026): visuell korrigering, riktning A "Solbelyst uppslag"
+
+Facit: `thcb-redesign-r3/concept-desktop.png`, `concept-mobile.png` och bildmaterialet `hero-atmosphere.png`. Ingen text, inget datum och inga påståenden är hämtade från AI-bilderna.
+
+| Område | R2 | R3 |
+|---|---|---|
+| Hero | Ingress i heron, brunt strandrågsfoto | Kort hero: Ämnesguide, H1 (108–160 px), tagline och två kopparlänkar. Ljuszon bakom H1. Stämningsbilden med skarp flockblomma och sten fyller högra 60 %, med rak nederkant mot arket. |
+| Ingressen | I heron | Först i kapitel 01 ("Vad är THCB?") direkt under heron. Samma mening, kvar i ursprunglig HTML. Tre korta meningar är sammanslagna så att varje fakta står en gång (`text-diff-r2-r3.json`). |
+| Öppningsarket | Index och en tunn högerkolumn | Ljusare ark med mjuk skugga uppåt. Vänster: kapitel 01 och index 01–04 med kopparpilar. Höger: status, "I korthet" (faktaraderna, flyttade hit) och Relaterat. |
+| Papper och färg | Platt, grårosa | Provtagna referenstoner (#fbe8d8 / #fdf1e6 / #f6dcc6). Rubriker i mörk oliv (`--at-ink`). Koppar bara på länkar och nummer. |
+| Mobil 393 × 852 | Texttung första vy, mjukt band | Kort hero, skarpt bildband på 216 px med raka kanter, kapitel 01:s rubrik vid 661 px (inom första vyn) |
+| Kapitel, källor, FAQ | Olika ytor | Rättsläget på ljust ark med mjuka skuggor. Källor med kopparnummer och pilar. FAQ-kort på ljust papper som tonar mot en djupare ton före den mörka sidfoten. |
+| Bild | CC BY-SA-foto med kreditrad | Syntetisk stämningsbild. Raden "Bilden överst är en illustrativ stämningsbild, inte ett foto av THCB eller av någon produkt." under Källor (`BESLUT.md` B8). |
+
+**Kontroller** (`verify.json`, nio körningar):
+- en H1
+- 0 px sidledsscroll och inga element utanför sidan
+- inga konsolfel, utom laddarens väntade meddelande i körningen utan JS
+- 36 av 36 textelement i initial HTML, alla synliga
+- tangentbord: ankaret hamnar under headern, FAQ öppnas med Enter
+- reducerad rörelse utan övergångar
+- utan bild står papperet kvar
+- lägsta kontrast 4,6 (pilvägar). Statuschipet ligger på 4,5 eller mer (mörkare text än i R2).
+- alla 119 selektorer begränsade till `html.hz8-atlas-page`, inga andra filer ändrade
+
+**Text och SEO:**
+- `text-diff-r2-r3.json`: H1, H2, H3, FAQ, interna länkar och ankare är identiska.
+- Borta är bara R2-fotots kreditlänkar.
+- `seo-parity.json` är omkörd. Title och meta är oförändrade.
+
+**Bilder** (`shots/`):
+- Referens A, R2 och R3 sida vid sida: `jamfor-r3-393-fold.webp` och `jamfor-r3-1440-fold.webp`
+- R2 och R3 som hela sidor: `jamfor-r3-393-helsida.webp` och `jamfor-r3-1440-helsida.webp`
+- R3 som hela sidor: `thcb-393-full.webp` och `thcb-1440-full.webp`
+- R2-original: `r2/`

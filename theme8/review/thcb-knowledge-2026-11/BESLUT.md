@@ -11,7 +11,7 @@ Samlade 16 november 2026, efter andra granskningsrundan. **Ingenting här är ge
 | B5 | Slug och omdirigering | Skapa `/sv/page/thcb` och kontrollera att den blir 200. `/thcb` och `/sv/thcb` går i dag med 301 till kategorin och bör gå till kunskapssidan. Det kräver behörighet för omdirigeringar. | `KARTLAGGNING.md` avsnitt 1 |
 | B6 | Strukturerad data (FAQPage eller Article) | Testa om Nyehandel släpper igenom JSON-LD i ett innehållsblock. Lägg den bara till om svaren är identiska med de synliga. | — |
 | B7 | Artiklarna "Är THCB lagligt?" och "Vad är THCB?" | Uppdatera efter FHM:s yttrande, eller märk dem som historiska med datum. De lyfts inte fram från sidan. | `GAMLA-PASTAENDEN.md` B och C |
-| B8 | Herofotot | Licensierat foto (Dietmar Rabich, CC BY-SA 4.0) med kreditrad under Källor. Godkänn motivet (strandråg i stället för skissens flockblomma) och krediten. Alternativ: ett eget foto eller ett köpt med dokumenterad licens. | `theme8/assets/knowledge-thcb/README.md` |
+| B8 | Herobilden | R3 använder den syntetiska stämningsbilden ur designunderlaget (riktning A). Sidan säger under Källor att den är illustrativ. Godkänn att en AI-bild används som atmosfär på en faktasida, eller ersätt den med ett eget eller köpt foto av samma motiv. | `theme8/assets/knowledge-thcb/README.md` |
 | B9 | Historik: "Tatra Hemp och Faraoh" | Bekräfta i orderhistoriken att THCB-produkterna från Tatra Hemp såldes. | `GAMLA-PASTAENDEN.md` A10 |
 | B10 | Rättslägeshubben | Länka åt båda hållen när den byggs. | — |
 | B11 | Mallen för THCH och HHC | Starta när B1, B2 och B8 är godkända och mallen har klarat en ny visuell genomgång. Egen bild, egen text och egna källor per ämne. | denna rapport |

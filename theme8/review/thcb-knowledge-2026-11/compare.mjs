@@ -42,6 +42,21 @@ const SHEETS = [
     ["Gamla hazey.se/thcb/", shot("gammal-thcb-1440-full"), null],
     ["Ny Theme 8-sida", shot("thcb-1440-full"), null]]]
 ];
+// R3 (riktning A): referens A | R2 | R3, och R2 | R3 hela sidan.
+const R3REF = "/Users/wahlberg/HZY/design/kunskap-rattslage-2026-11-16/thcb-redesign-r3";
+const r2 = n => file(path.join(SHOTS, "r2", n + ".png"));
+SHEETS.push(
+  ["r3-393-fold", "393 × 852: referens A (mobil) | R2 | R3", 1500, [
+    ["Referens A (AI-bild, inte fakta)", file(path.join(R3REF, "concept-mobile.png")), null],
+    ["R2", r2("thcb-393-fold"), null],
+    ["R3 (riktig webbläsare)", shot("thcb-393-fold"), null]]],
+  ["r3-1440-fold", "1440 × 900: referens A (desktop) | R2 | R3", 2400, [
+    ["Referens A (AI-bild, inte fakta)", file(path.join(R3REF, "concept-desktop.png")), [0, 0, 1487, 930]],
+    ["R2", r2("thcb-1440-fold"), null],
+    ["R3 (riktig webbläsare)", shot("thcb-1440-fold"), null]]],
+  ["r3-393-helsida", "Hela sidan 393: R2 | R3", 1300, [["R2", r2("thcb-393-full"), null], ["R3", shot("thcb-393-full"), null]]],
+  ["r3-1440-helsida", "Hela sidan 1440: R2 | R3", 2400, [["R2", r2("thcb-1440-full"), null], ["R3", shot("thcb-1440-full"), null]]]
+);
 const p = await b.newPage({ viewport: { width: 2000, height: 900 } });
 for (const [key, title, W, cols] of SHEETS) {
   await p.setViewportSize({ width: W, height: 900 });

@@ -1,28 +1,19 @@
-# knowledge-thcb: bilder för THCB-kunskapssidan
+# knowledge-thcb: bilder för THCB-kunskapssidan (R3)
 
 | Fil | Användning |
 |---|---|
-| `dune-grass-2000.webp` | Herofoto desktop, 2x (2000 × 1709) |
-| `dune-grass-1100.webp` | Herofoto desktop, 1x (1100 × 940) |
-| `dune-grass-band-1400.webp` | Fotobandet på mobil och surfplatta (1400 × 593) |
+| `umbel-coast-1774.webp` | Herobild desktop, 2x (hela bilden, 1774 × 887) |
+| `umbel-coast-1100.webp` | Herobild desktop, 1x (1100 × 550) |
+| `umbel-coast-band-1014.webp` | Mobil- och surfplattebandet: art directed utsnitt med blomma och sten (x 760–1774, y 120–674, 1014 × 554) |
 
-## Ursprung och rättigheter
+## Ursprung
 
-- **Original:** „Nes (NL), Strand -- 2026 -- 1838“. Strandråg i solnedgång på Nes strand, Ameland, Nederländerna. Taget 31 juli 2026.
-- **Fotograf:** Dietmar Rabich. Eget verk enligt Wikimedia Commons.
-- **Källa:** https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg
-- **Licens:** Creative Commons Erkännande-DelaLika 4.0 (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/. Kommersiell användning och bearbetning är tillåten. Licensen kräver att:
-  - fotografen, licensen och källan anges,
-  - det framgår att bilden är bearbetad,
-  - den bearbetade bilden delas under samma licens.
-- **Originalfil:** 7728 × 5152, 16 503 199 byte. SHA-256 `adab26b19612e4d740201decfe18d18bcd0f0bef7997620399495274d4eac8dc`. Hämtad 16 november 2026 från upload.wikimedia.org.
-- **Bearbetning av Hazey:**
-  - beskuren: desktop x 1700–7728 på hela höjden, bandet x 2300–7728 och y 900–3200
-  - ljusare (brightness 1,12) och lätt sepiatonad (0,18)
-  - skuggorna lyfta mot papperets ton (screen, rgb 214/170/120 med 24 %)
-  - varm soft-light-toning av himlen
-  - skalad och sparad som WebP q80
-- **De bearbetade filerna licensieras under CC BY-SA 4.0.**
-- **Kredit på sidan:** står i `theme8/blocks/thcb.html` under Källor (`.hz8-atlas__credit`). Kreditraden och länkarna ska följa med när bilden används.
+- **Källa:** `design/kunskap-rattslage-2026-11-16/thcb-redesign-r3/hero-atmosphere.png` (1774 × 887). SHA-256 `372b139cfd69e99bd039125c6fce5a3adcc002604386c9fab8c27e116bbaae85`.
+- **Typ:** syntetisk (AI-genererad) atmosfärsbild ur Hazeys eget designunderlag, levererad till R3 som separat bildmaterial (`BUILD-BRIEF.md`). Den visar en torkad flockblomma på en solvarm kustklippa, utan text, produkt eller person.
+- **Användning:** bara som illustrativ stämningsbild. Den är **inte** ett dokumentärt foto och **inte** ett belägg för något på sidan. Sidan säger det i en rad under Källor (`.hz8-atlas__credit`).
+- **Bearbetning:** ingen retusch. Bara utsnitt och omkodning till WebP (q 84–86). Övergången mot papperet görs i CSS (mask och toning), inte i bildfilen.
 
-Den tidigare bilden `umbel-stone-620.webp` var beskuren ur AI-skissen `kunskapsmall-b.png`. Den hade låg upplösning (619 px) och oklara rättigheter och är borttagen 16 november 2026.
+## Historik
+
+- **R1:** `umbel-stone-620.webp`, beskuren ur AI-skissen `kunskapsmall-b.png`. Låg upplösning. Borttagen.
+- **R2:** `dune-grass-*.webp`, strandråg av Dietmar Rabich (Wikimedia Commons, CC BY-SA 4.0). Borttagen i R3 efter visuell granskning: motivet var för mörkt och brunt. Kreditraden togs bort samtidigt, eftersom bilden inte längre används.

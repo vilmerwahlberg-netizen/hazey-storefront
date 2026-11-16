@@ -125,7 +125,7 @@ Alla kontrollerade 16 november 2026.
 2. Slug, och 301 för `/thcb` och `/sv/thcb`.
 3. Länk till kategorin (6.3).
 4. De två gamla THCB-artiklarna (avsnitt 5).
-5. Stämningsbilden: ersatt i runda 2 av ett licensierat foto (Dietmar Rabich, Wikimedia Commons, CC BY-SA 4.0, 7728 px original) med kreditrad. Se `theme8/assets/knowledge-thcb/README.md` och `BESLUT.md` B8.
+5. Stämningsbilden: R3 använder den syntetiska atmosfärsbilden ur `thcb-redesign-r3/` som illustrativ bild, med en rad om det under Källor. R2:s licensierade strandrågsfoto är borttaget. Se `theme8/assets/knowledge-thcb/README.md` och `BESLUT.md` B8.
 
 Alla beslut är samlade i `BESLUT.md`, och gamla påståenden som kräver faktakontroll i `GAMLA-PASTAENDEN.md`.
 6. Rättslägeshubben: länkar i båda riktningar när den byggs.

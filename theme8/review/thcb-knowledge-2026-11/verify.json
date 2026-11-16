@@ -3,7 +3,7 @@
   "h1": 1,
   "h2": 5,
   "h3": 1,
-  "links": 26,
+  "links": 24,
   "faq": 6
  },
  "results": [
@@ -43,29 +43,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 16
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 17
+     "px": 18
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 16.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -90,27 +90,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -140,52 +140,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -267,8 +267,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -283,49 +281,55 @@
     },
     "h1": {
      "top": 143,
-     "bottom": 210,
+     "bottom": 226,
      "left": 16,
      "right": 377
     },
     "tagline": {
-     "top": 218,
-     "bottom": 245,
+     "top": 236,
+     "bottom": 265,
      "left": 16,
      "right": 377
     },
     "lead": {
-     "top": 257,
-     "bottom": 377,
+     "top": 718,
+     "bottom": 853,
      "left": 16,
      "right": 377
     },
     "jump": {
-     "top": 387,
-     "bottom": 477,
+     "top": 281,
+     "bottom": 373,
      "left": 16,
      "right": 377
     },
     "photo": {
-     "top": 491,
-     "bottom": 681,
+     "top": 393,
+     "bottom": 609,
      "left": 0,
      "right": 393
     },
-    "index": {
-     "top": 699,
-     "bottom": 1045,
+    "ch1Kicker": {
+     "top": 635,
+     "bottom": 649,
      "left": 16,
      "right": 377
     },
-    "ch1": {
-     "top": 699,
-     "bottom": 790,
+    "ch1H2": {
+     "top": 661,
+     "bottom": 700,
+     "left": 16,
+     "right": 377
+    },
+    "index": {
+     "top": 1220,
+     "bottom": 1609,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1073,
-     "bottom": 1317,
+     "top": 1637,
+     "bottom": 2230,
      "left": 16,
      "right": 377
     },
@@ -334,118 +338,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 9.19,
-     "median": 9.19
+     "worst": 10.55,
+     "median": 11.16
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.75,
-     "median": 12.75
+     "worst": 10.46,
+     "median": 10.97
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.53,
-     "median": 12.65
+     "worst": 12.83,
+     "median": 13.47
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.35,
-     "median": 12.44
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.65,
-     "median": 5.65
+     "worst": 4.67,
+     "median": 4.71
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.95,
-     "median": 9.12
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.96,
-     "median": 9.1
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.86,
-     "median": 12.96
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 4.97,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.44,
-     "median": 12.44
+     "worst": 13.89,
+     "median": 13.98
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.64
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 11.59,
-     "median": 12.36
+     "worst": 12.84,
+     "median": 14.09
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.79,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.41,
-     "median": 8.92
+     "worst": 11.32,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.74,
-     "median": 12.34
+     "worst": 13.66,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 5.74,
+     "median": 5.85
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -493,29 +497,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 17.28
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 20
+     "px": 20.88
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 17.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -540,27 +544,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 20
+     "px": 20.88
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -590,52 +594,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 20
+     "px": 20.88
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -717,8 +721,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -732,51 +734,57 @@
      "right": 1440
     },
     "h1": {
-     "top": 219,
-     "bottom": 335,
+     "top": 201,
+     "bottom": 320,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "tagline": {
-     "top": 352,
-     "bottom": 390,
+     "top": 340,
+     "bottom": 381,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "lead": {
-     "top": 410,
-     "bottom": 521,
+     "top": 691,
+     "bottom": 821,
      "left": 60,
-     "right": 502
+     "right": 687
     },
     "jump": {
-     "top": 547,
-     "bottom": 591,
+     "top": 413,
+     "bottom": 457,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "photo": {
      "top": -7,
-     "bottom": 670,
-     "left": 605,
+     "bottom": 526,
+     "left": 576,
      "right": 1440
     },
-    "index": {
-     "top": 710,
-     "bottom": 1097,
+    "ch1Kicker": {
+     "top": 580,
+     "bottom": 595,
      "left": 60,
-     "right": 793
+     "right": 791
     },
-    "ch1": {
-     "top": 710,
-     "bottom": 791,
+    "ch1H2": {
+     "top": 607,
+     "bottom": 666,
      "left": 60,
-     "right": 793
+     "right": 791
+    },
+    "index": {
+     "top": 1154,
+     "bottom": 1570,
+     "left": 60,
+     "right": 791
     },
     "aside": {
-     "top": 710,
-     "bottom": 920,
-     "left": 856,
+     "top": 580,
+     "bottom": 1084,
+     "left": 858,
      "right": 1380
     },
     "vh": 900
@@ -784,118 +792,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 8.82,
-     "median": 9.06
+     "worst": 11.24,
+     "median": 11.51
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.04,
-     "median": 12.53
+     "worst": 10.95,
+     "median": 11.24
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.32,
-     "median": 12.43
+     "worst": 13.49,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.14,
-     "median": 12.25
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.6,
+     "median": 4.67
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 9.29,
-     "median": 9.35
+     "worst": 11.59,
+     "median": 11.62
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 9.29,
-     "median": 9.36
+     "worst": 11.59,
+     "median": 11.7
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.75,
-     "median": 12.86
+     "worst": 13.98,
+     "median": 14.01
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 5.01,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.84,
-     "median": 12.9
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.78,
-     "median": 5.79
+     "worst": 4.93,
+     "median": 4.93
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.32,
-     "median": 12.56
+     "worst": 13.99,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.21,
-     "median": 8.29
+     "worst": 10.46,
+     "median": 10.64
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.14,
-     "median": 11.38
+     "worst": 12.72,
+     "median": 12.93
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 6.14,
+     "median": 6.18
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -923,22 +931,20 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/": 200,
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/": 200,
     "https://doi.org/10.1021/acs.jnatprod.9b00876": 302,
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg": 200,
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv": 200,
     "/sv/page/faq": 200,
     "/sv/posts": 200
    },
    "initialHtml": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "inHtml": true
-    },
-    {
      "t": "Vad är THCB?",
      "inHtml": true
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
+     "inHtml": true
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
      "inHtml": true
     },
     {
@@ -1111,29 +1117,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 18
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 58
+     "px": 64
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 20
+     "px": 21
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 17.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -1158,27 +1164,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 58
+     "px": 64
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 20
+     "px": 21
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -1208,52 +1214,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 58
+     "px": 64
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 20
+     "px": 21
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 58
+     "px": 64
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 21
+     "px": 22
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -1335,8 +1341,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -1350,51 +1354,57 @@
      "right": 1920
     },
     "h1": {
-     "top": 218,
-     "bottom": 349,
+     "top": 210,
+     "bottom": 344,
      "left": 140,
-     "right": 600
+     "right": 561
     },
     "tagline": {
-     "top": 369,
+     "top": 366,
      "bottom": 410,
      "left": 140,
-     "right": 600
+     "right": 561
     },
     "lead": {
-     "top": 432,
-     "bottom": 547,
+     "top": 747,
+     "bottom": 877,
      "left": 140,
-     "right": 600
+     "right": 771
     },
     "jump": {
-     "top": 575,
-     "bottom": 619,
+     "top": 444,
+     "bottom": 488,
      "left": 140,
-     "right": 600
+     "right": 561
     },
     "photo": {
      "top": -7,
-     "bottom": 697,
-     "left": 806,
+     "bottom": 567,
+     "left": 768,
      "right": 1920
     },
-    "index": {
-     "top": 741,
-     "bottom": 1140,
+    "ch1Kicker": {
+     "top": 627,
+     "bottom": 641,
      "left": 140,
-     "right": 1052
+     "right": 1050
     },
-    "ch1": {
-     "top": 741,
-     "bottom": 824,
+    "ch1H2": {
+     "top": 653,
+     "bottom": 719,
      "left": 140,
-     "right": 1052
+     "right": 1050
+    },
+    "index": {
+     "top": 1217,
+     "bottom": 1645,
+     "left": 140,
+     "right": 1050
     },
     "aside": {
-     "top": 741,
-     "bottom": 953,
-     "left": 1128,
+     "top": 627,
+     "bottom": 1136,
+     "left": 1130,
      "right": 1780
     },
     "vh": 1080
@@ -1402,118 +1412,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 8.89,
-     "median": 9.04
+     "worst": 11.24,
+     "median": 11.52
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.13,
-     "median": 12.44
+     "worst": 11.07,
+     "median": 11.24
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.32,
-     "median": 12.35
+     "worst": 13.56,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.13,
-     "median": 12.22
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.67
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 9.27,
-     "median": 9.35
+     "worst": 11.59,
+     "median": 11.62
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 9.29,
-     "median": 9.35
+     "worst": 11.59,
+     "median": 11.7
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.75,
-     "median": 12.84
+     "worst": 13.99,
+     "median": 14.01
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 5.83,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.78,
-     "median": 12.9
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.75,
-     "median": 5.8
+     "worst": 4.93,
+     "median": 4.93
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.65,
-     "median": 12.65
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.21,
-     "median": 8.29
+     "worst": 10.46,
+     "median": 10.64
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.21,
-     "median": 11.38
+     "worst": 12.63,
+     "median": 12.93
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 6.14,
+     "median": 6.15
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -1561,29 +1571,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 16
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 17
+     "px": 18
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 16.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -1608,27 +1618,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -1658,52 +1668,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -1785,8 +1795,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -1801,49 +1809,55 @@
     },
     "h1": {
      "top": 143,
-     "bottom": 198,
+     "bottom": 210,
      "left": 16,
      "right": 304
     },
     "tagline": {
-     "top": 206,
-     "bottom": 232,
+     "top": 220,
+     "bottom": 249,
      "left": 16,
      "right": 304
     },
     "lead": {
-     "top": 244,
-     "bottom": 388,
+     "top": 702,
+     "bottom": 891,
      "left": 16,
      "right": 304
     },
     "jump": {
-     "top": 398,
-     "bottom": 488,
+     "top": 265,
+     "bottom": 357,
      "left": 16,
      "right": 304
     },
     "photo": {
-     "top": 502,
-     "bottom": 692,
+     "top": 377,
+     "bottom": 593,
      "left": 0,
      "right": 320
     },
-    "index": {
-     "top": 710,
-     "bottom": 1098,
+    "ch1Kicker": {
+     "top": 619,
+     "bottom": 634,
      "left": 16,
      "right": 304
     },
-    "ch1": {
-     "top": 710,
-     "bottom": 801,
+    "ch1H2": {
+     "top": 646,
+     "bottom": 684,
+     "left": 16,
+     "right": 304
+    },
+    "index": {
+     "top": 1365,
+     "bottom": 1797,
      "left": 16,
      "right": 304
     },
     "aside": {
-     "top": 1126,
-     "bottom": 1379,
+     "top": 1825,
+     "bottom": 2451,
      "left": 16,
      "right": 304
     },
@@ -1852,118 +1866,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 9.19,
-     "median": 9.19
+     "worst": 10.55,
+     "median": 11.16
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.75,
-     "median": 12.75
+     "worst": 10.46,
+     "median": 10.98
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.54,
-     "median": 12.65
+     "worst": 12.83,
+     "median": 13.47
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.35,
-     "median": 12.44
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.6,
-     "median": 5.65
+     "worst": 4.66,
+     "median": 4.71
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.94,
-     "median": 9.12
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.89,
-     "median": 9.1
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.86,
-     "median": 12.96
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 5.41,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.43,
-     "median": 12.44
+     "worst": 13.89,
+     "median": 13.89
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.64
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 11.6,
-     "median": 12.46
+     "worst": 12.84,
+     "median": 14.09
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.69,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.43,
-     "median": 8.9
+     "worst": 11.26,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.74,
-     "median": 12.34
+     "worst": 13.67,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 5.72,
+     "median": 5.85
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -2011,29 +2025,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 16
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 38
+     "px": 42
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 18
+     "px": 18.5
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 17.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -2058,27 +2072,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 38
+     "px": 42
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -2108,52 +2122,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 38
+     "px": 42
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 38
+     "px": 42
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -2235,8 +2249,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -2250,50 +2262,56 @@
      "right": 768
     },
     "h1": {
-     "top": 169,
-     "bottom": 252,
+     "top": 163,
+     "bottom": 254,
      "left": 24,
      "right": 644
     },
     "tagline": {
-     "top": 264,
-     "bottom": 293,
+     "top": 268,
+     "bottom": 299,
      "left": 24,
      "right": 644
     },
     "lead": {
-     "top": 307,
-     "bottom": 409,
+     "top": 843,
+     "bottom": 958,
      "left": 24,
-     "right": 433
+     "right": 579
     },
     "jump": {
-     "top": 425,
-     "bottom": 469,
+     "top": 321,
+     "bottom": 365,
      "left": 24,
      "right": 644
     },
     "photo": {
-     "top": 492,
-     "bottom": 753,
-     "left": 8,
-     "right": 760
+     "top": 388,
+     "bottom": 726,
+     "left": 0,
+     "right": 768
     },
-    "index": {
-     "top": 771,
-     "bottom": 1098,
+    "ch1Kicker": {
+     "top": 756,
+     "bottom": 770,
      "left": 24,
      "right": 744
     },
-    "ch1": {
-     "top": 771,
-     "bottom": 841,
+    "ch1H2": {
+     "top": 782,
+     "bottom": 825,
+     "left": 24,
+     "right": 744
+    },
+    "index": {
+     "top": 1266,
+     "bottom": 1615,
      "left": 24,
      "right": 744
     },
     "aside": {
-     "top": 1126,
-     "bottom": 1353,
+     "top": 1647,
+     "bottom": 2144,
      "left": 24,
      "right": 744
     },
@@ -2302,118 +2320,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 9.1,
-     "median": 9.19
+     "worst": 10.72,
+     "median": 11.16
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.65,
-     "median": 12.75
+     "worst": 10.62,
+     "median": 10.98
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.53,
-     "median": 12.56
+     "worst": 13.04,
+     "median": 13.56
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.32,
-     "median": 12.43
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.6,
-     "median": 5.64
+     "worst": 4.67,
+     "median": 4.71
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.88,
-     "median": 9.04
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.88,
-     "median": 9.03
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.75,
-     "median": 12.87
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 5.1,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.44,
-     "median": 12.44
+     "worst": 13.89,
+     "median": 14.01
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.64
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 11.6,
-     "median": 12.54
+     "worst": 12.93,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.78,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.41,
-     "median": 8.96
+     "worst": 11.26,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.68,
-     "median": 12.34
+     "worst": 13.66,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 5.71,
+     "median": 5.84
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -2461,29 +2479,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 16
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 17
+     "px": 18
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 16.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -2508,27 +2526,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -2558,52 +2576,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -2685,8 +2703,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -2701,49 +2717,55 @@
     },
     "h1": {
      "top": 143,
-     "bottom": 210,
+     "bottom": 226,
      "left": 16,
      "right": 377
     },
     "tagline": {
-     "top": 218,
-     "bottom": 245,
+     "top": 236,
+     "bottom": 265,
      "left": 16,
      "right": 377
     },
     "lead": {
-     "top": 257,
-     "bottom": 377,
+     "top": 718,
+     "bottom": 853,
      "left": 16,
      "right": 377
     },
     "jump": {
-     "top": 387,
-     "bottom": 477,
+     "top": 281,
+     "bottom": 373,
      "left": 16,
      "right": 377
     },
     "photo": {
-     "top": 491,
-     "bottom": 681,
+     "top": 393,
+     "bottom": 609,
      "left": 0,
      "right": 393
     },
-    "index": {
-     "top": 699,
-     "bottom": 1045,
+    "ch1Kicker": {
+     "top": 635,
+     "bottom": 649,
      "left": 16,
      "right": 377
     },
-    "ch1": {
-     "top": 699,
-     "bottom": 790,
+    "ch1H2": {
+     "top": 661,
+     "bottom": 700,
+     "left": 16,
+     "right": 377
+    },
+    "index": {
+     "top": 1220,
+     "bottom": 1609,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1073,
-     "bottom": 1317,
+     "top": 1637,
+     "bottom": 2253,
      "left": 16,
      "right": 377
     },
@@ -2752,118 +2774,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 9.19,
-     "median": 9.19
+     "worst": 10.55,
+     "median": 11.16
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.75,
-     "median": 12.75
+     "worst": 10.46,
+     "median": 10.97
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.53,
-     "median": 12.65
+     "worst": 12.83,
+     "median": 13.47
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.35,
-     "median": 12.44
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.65,
-     "median": 5.65
+     "worst": 4.67,
+     "median": 4.71
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.95,
-     "median": 9.12
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.96,
-     "median": 9.1
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.86,
-     "median": 12.96
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 4.97,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.44,
-     "median": 12.44
+     "worst": 13.89,
+     "median": 13.98
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.64
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 11.59,
-     "median": 12.36
+     "worst": 12.84,
+     "median": 14.09
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.78,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.41,
-     "median": 8.92
+     "worst": 11.32,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.74,
-     "median": 12.34
+     "worst": 13.66,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 5.74,
+     "median": 5.85
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -2911,29 +2933,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 17.28
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 20
+     "px": 20.88
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 17.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -2958,27 +2980,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 20
+     "px": 20.88
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -3008,52 +3030,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 20
+     "px": 20.88
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 17
+     "px": 17.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 51.84
+     "px": 57.6
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 20.16
+     "px": 20.88
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -3135,8 +3157,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -3150,51 +3170,57 @@
      "right": 1440
     },
     "h1": {
-     "top": 219,
-     "bottom": 335,
+     "top": 201,
+     "bottom": 320,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "tagline": {
-     "top": 352,
-     "bottom": 390,
+     "top": 340,
+     "bottom": 381,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "lead": {
-     "top": 410,
-     "bottom": 521,
+     "top": 691,
+     "bottom": 821,
      "left": 60,
-     "right": 502
+     "right": 687
     },
     "jump": {
-     "top": 547,
-     "bottom": 591,
+     "top": 413,
+     "bottom": 457,
      "left": 60,
-     "right": 502
+     "right": 432
     },
     "photo": {
      "top": -7,
-     "bottom": 670,
-     "left": 605,
+     "bottom": 526,
+     "left": 576,
      "right": 1440
     },
-    "index": {
-     "top": 710,
-     "bottom": 1097,
+    "ch1Kicker": {
+     "top": 580,
+     "bottom": 595,
      "left": 60,
-     "right": 793
+     "right": 791
     },
-    "ch1": {
-     "top": 710,
-     "bottom": 791,
+    "ch1H2": {
+     "top": 607,
+     "bottom": 666,
      "left": 60,
-     "right": 793
+     "right": 791
+    },
+    "index": {
+     "top": 1154,
+     "bottom": 1570,
+     "left": 60,
+     "right": 791
     },
     "aside": {
-     "top": 710,
-     "bottom": 920,
-     "left": 856,
+     "top": 580,
+     "bottom": 1084,
+     "left": 858,
      "right": 1380
     },
     "vh": 900
@@ -3202,83 +3228,83 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 8.82,
-     "median": 9.06
+     "worst": 11.24,
+     "median": 11.51
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.04,
-     "median": 12.53
+     "worst": 10.95,
+     "median": 11.24
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.32,
-     "median": 12.43
+     "worst": 13.49,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.14,
-     "median": 12.25
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.6,
+     "median": 4.67
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 9.29,
-     "median": 9.35
+     "worst": 11.59,
+     "median": 11.62
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 9.29,
-     "median": 9.36
+     "worst": 11.59,
+     "median": 11.7
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.75,
-     "median": 12.86
+     "worst": 13.98,
+     "median": 14.01
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 5.01,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.84,
-     "median": 12.9
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.78,
-     "median": 5.79
+     "worst": 4.93,
+     "median": 4.93
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.32,
-     "median": 12.56
+     "worst": 13.99,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.21,
-     "median": 8.29
+     "worst": 10.46,
+     "median": 10.64
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.14,
-     "median": 11.38
+     "worst": 12.72,
+     "median": 12.93
     },
     {
      "s": ".hz8-atlas__stock",
@@ -3286,33 +3312,33 @@
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 6.14,
+     "median": 6.18
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -3360,29 +3386,29 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 16
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
-     "px": 17
+     "px": 18
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
+     "visible": true,
+     "px": 16.5
     },
     {
      "t": "Skillnaden sitter i sidokedjan. THCB har en kedja med fyra k",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "THCB hör till de cannabinoider som har beskrivits i cannabis",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Tetrahydrocannabutol",
@@ -3407,27 +3433,27 @@
     {
      "t": "Är THCB lagligt i Sverige?",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Den 5 mars 2024 skrev Folkhälsomyndigheten i ett yttrande ti",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndighetens senare förslag till regeringen, den 13",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Det är ingen bedömning av om THCB eller en enskild produkt ä",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Folkhälsomyndigheten inleder en klassificeringsutredning av ",
@@ -3457,52 +3483,52 @@
     {
      "t": "THCB hos Hazey",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Hazey har sålt THCB i vapes och patroner, bland annat från T",
      "visible": true,
-     "px": 17
+     "px": 18
     },
     {
      "t": "Aktuellt lager står i butikens THCB-kategori.",
      "visible": true,
-     "px": 16
+     "px": 16.5
     },
     {
      "t": "Källor",
      "visible": true,
-     "px": 34
+     "px": 38
     },
     {
      "t": "Yttrande om delta-9-THCB, ärende 00862-2024",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag att 20 substanser klassificeras som narkotika eller ",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förslag om att klassificera tio substanser som narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1992:1554) om kontroll av narkotika",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Förordning (1999:58) om förbud mot vissa hälsofarliga varor",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Δ9-Tetrahydrocannabutol, the butyl homologue of Δ9-tetrahydr",
      "visible": true,
-     "px": 18
+     "px": 18.5
     },
     {
      "t": "Vanliga frågor om THCB",
@@ -3584,8 +3610,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -3600,49 +3624,55 @@
     },
     "h1": {
      "top": 143,
-     "bottom": 210,
+     "bottom": 226,
      "left": 16,
      "right": 377
     },
     "tagline": {
-     "top": 218,
-     "bottom": 245,
+     "top": 236,
+     "bottom": 265,
      "left": 16,
      "right": 377
     },
     "lead": {
-     "top": 257,
-     "bottom": 377,
+     "top": 718,
+     "bottom": 853,
      "left": 16,
      "right": 377
     },
     "jump": {
-     "top": 387,
-     "bottom": 477,
+     "top": 281,
+     "bottom": 373,
      "left": 16,
      "right": 377
     },
     "photo": {
-     "top": 491,
-     "bottom": 681,
+     "top": 393,
+     "bottom": 609,
      "left": 0,
      "right": 393
     },
-    "index": {
-     "top": 699,
-     "bottom": 1045,
+    "ch1Kicker": {
+     "top": 635,
+     "bottom": 649,
      "left": 16,
      "right": 377
     },
-    "ch1": {
-     "top": 699,
-     "bottom": 790,
+    "ch1H2": {
+     "top": 661,
+     "bottom": 700,
+     "left": 16,
+     "right": 377
+    },
+    "index": {
+     "top": 1220,
+     "bottom": 1609,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1073,
-     "bottom": 1317,
+     "top": 1637,
+     "bottom": 2253,
      "left": 16,
      "right": 377
     },
@@ -3651,118 +3681,118 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 9.19,
-     "median": 9.19
+     "worst": 10.55,
+     "median": 11.16
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 12.75,
-     "median": 12.77
+     "worst": 10.46,
+     "median": 10.97
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.53,
-     "median": 12.65
+     "worst": 12.83,
+     "median": 13.47
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 12.35,
-     "median": 12.44
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__jump a",
-     "worst": 5.65,
-     "median": 5.65
+     "worst": 4.67,
+     "median": 4.71
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.95,
-     "median": 9.12
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.96,
-     "median": 9.1
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 12.86,
-     "median": 12.96
+     "worst": 14.22,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__chip",
-     "worst": 4.84,
-     "median": 4.84
+     "worst": 4.97,
+     "median": 5.83
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 12.44,
-     "median": 12.44
+     "worst": 13.89,
+     "median": 13.98
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.5,
-     "median": 5.55
+     "worst": 4.63,
+     "median": 4.64
     },
     {
      "s": ".hz8-atlas__kicker",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11.79,
+     "median": 11.79
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 11.59,
-     "median": 12.36
+     "worst": 12.84,
+     "median": 14.09
     },
     {
      "s": ".hz8-atlas__facts dd",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.78,
+     "median": 13.79
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.41,
-     "median": 8.92
+     "worst": 11.32,
+     "median": 11.79
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.74,
-     "median": 12.34
+     "worst": 13.66,
+     "median": 14.22
     },
     {
      "s": ".hz8-atlas__stock",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__also p",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 13.26,
+     "median": 13.26
     },
     {
      "s": ".hz8-atlas__source-list strong",
-     "worst": 8.45,
-     "median": 8.45
+     "worst": 11,
+     "median": 11
     },
     {
      "s": ".hz8-atlas__source-list a > span",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 13.73,
-     "median": 13.73
+     "worst": 15.1,
+     "median": 15.1
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 6.01,
-     "median": 6.01
+     "worst": 5.74,
+     "median": 5.85
     },
     {
      "s": ".hz8-atlas__credit",
-     "worst": 5.39,
-     "median": 5.39
+     "worst": 6.15,
+     "median": 6.15
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -3807,17 +3837,17 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
-     "visible": true,
-     "px": 12.8
-    },
-    {
      "t": "Vad är THCB?",
      "visible": true,
      "px": 22
     },
     {
-     "t": "THCB är en förkortning av tetrahydrocannabutol. Ämnet skrivs",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
+     "visible": true,
+     "px": 12.8
+    },
+    {
+     "t": "I källor står ämnet också som delta-9-THCB. Det har samma gr",
      "visible": true,
      "px": 12.8
     },
@@ -4031,8 +4061,6 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
-    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
-    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -4058,38 +4086,44 @@
      "right": 393
     },
     "lead": {
-     "top": 251,
-     "bottom": 328,
+     "top": 363,
+     "bottom": 440,
      "left": 0,
      "right": 393
     },
     "jump": {
-     "top": 348,
-     "bottom": 367,
+     "top": 251,
+     "bottom": 271,
      "left": 0,
      "right": 393
     },
     "photo": {
-     "top": 387,
-     "bottom": 387,
+     "top": 291,
+     "bottom": 291,
+     "left": 0,
+     "right": 393
+    },
+    "ch1Kicker": {
+     "top": 291,
+     "bottom": 310,
+     "left": 0,
+     "right": 393
+    },
+    "ch1H2": {
+     "top": 330,
+     "bottom": 363,
      "left": 0,
      "right": 393
     },
     "index": {
-     "top": 387,
-     "bottom": 507,
+     "top": 692,
+     "bottom": 812,
      "left": 0,
      "right": 393
     },
-    "ch1": {
-     "top": 390,
-     "bottom": 432,
-     "left": 0,
-     "right": 387
-    },
     "aside": {
-     "top": 507,
-     "bottom": 634,
+     "top": 812,
+     "bottom": 1194,
      "left": 0,
      "right": 393
     },

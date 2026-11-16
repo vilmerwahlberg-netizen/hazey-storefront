@@ -1,5 +1,5 @@
 {
- "fetched": "2026-11-16T12:17:50.021Z",
+ "fetched": "2026-11-16T13:09:17.326Z",
  "oldStatus": 200,
  "identity": {
   "old": {
@@ -46,9 +46,9 @@
     "Säljer Hazey THCB-vapes eller THCB-hasch?",
     "Är THCB säkert?"
    ],
-   "words": 778,
+   "words": 752,
    "internalLinks": 8,
-   "externalSources": 8
+   "externalSources": 6
   }
  },
  "queries": [
@@ -56,19 +56,19 @@
    "q": "thcb",
    "gsc": "480 / 3 585",
    "old": "title, H1, H2×2, H3×1, stycken×5, länktext×1",
-   "new": "title, meta, H1, H2×4, FAQ×6, stycken×21, länktext×6"
+   "new": "title, meta, H1, H2×4, FAQ×6, stycken×22, länktext×6"
   },
   {
    "q": "thc b",
    "gsc": "119 / 396",
    "old": "–",
-   "new": "stycken×4"
+   "new": "stycken×3"
   },
   {
    "q": "thc-b",
    "gsc": "59 / 302",
    "old": "stycken×4, länktext×1",
-   "new": "title, meta, FAQ×1, stycken×4"
+   "new": "title, meta, FAQ×1, stycken×3"
   },
   {
    "q": "thcb vape",
