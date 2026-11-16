@@ -38,5 +38,65 @@
    "active": "ok",
    "description": "ok (14781 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
   }
+ },
+ "thcb": {
+  "id": 15,
+  "action": "created",
+  "at": "2026-11-16T15:27:53.390Z",
+  "slug": "thcb",
+  "name": "THCB",
+  "active": true,
+  "meta_title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+  "meta_description": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
+  "html_length": 16701,
+  "html_identical": true,
+  "verify": {
+   "name": "ok",
+   "slug": "ok",
+   "meta_title": "ok",
+   "meta_description": "ok",
+   "active": "ok",
+   "description": "ok (16701 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+  }
+ },
+ "thch": {
+  "id": 16,
+  "action": "created",
+  "at": "2026-11-16T15:28:00.088Z",
+  "slug": "thch",
+  "name": "THCH",
+  "active": true,
+  "meta_title": "THCH (THC-H) – vad det är och rättsläget i Sverige | Hazey",
+  "meta_description": "Vad är THCH, eller THC-H? Fakta om tetrahydrocannabihexol och rättsläget: delta-8- och delta-9-THCH är narkotikaklassade sedan 10 december 2024 (SFS 2024:985).",
+  "html_length": 13941,
+  "html_identical": true,
+  "verify": {
+   "name": "ok",
+   "slug": "ok",
+   "meta_title": "ok",
+   "meta_description": "ok",
+   "active": "ok",
+   "description": "ok (13941 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+  }
+ },
+ "hhc": {
+  "id": 17,
+  "action": "created",
+  "at": "2026-11-16T15:28:00.814Z",
+  "slug": "hhc",
+  "name": "HHC",
+  "active": true,
+  "meta_title": "HHC – vad det är och rättsläget i Sverige | Hazey",
+  "meta_description": "Vad är HHC? Fakta om hexahydrocannabinol och rättsläget: HHC är narkotikaklassat i Sverige sedan 11 juli 2023 (SFS 2023:379). Källor, historik och vanliga frågor.",
+  "html_length": 13140,
+  "html_identical": true,
+  "verify": {
+   "name": "ok",
+   "slug": "ok",
+   "meta_title": "ok",
+   "meta_description": "ok",
+   "active": "ok",
+   "description": "ok (13140 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+  }
  }
 }

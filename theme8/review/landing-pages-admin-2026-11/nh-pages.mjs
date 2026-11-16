@@ -57,7 +57,20 @@ export const PAGES = {
     meta_description: "Engångsvapes hos Hazey: Magic Sauce 3.0, Hero's Core och CBD i 2 och 5 ml. Se vad som finns i lager och pris, med analysintyg på produktsidorna." },
   thca: { name: "THCA", file: "theme8/blocks/thca.html",
     meta_title: "THCA i Sverige – vad det är, rättsläge och alternativ | Hazey",
-    meta_description: "Vad är THCA? Fakta om tetrahydrocannabinolsyra och rättsläget: delta-9-THCA-A är narkotikaklassat i Sverige sedan 14 juli 2026 (SFS 2026:1109). Se serierna i vårt aktuella sortiment." }
+    meta_description: "Vad är THCA? Fakta om tetrahydrocannabinolsyra och rättsläget: delta-9-THCA-A är narkotikaklassat i Sverige sedan 14 juli 2026 (SFS 2026:1109). Se serierna i vårt aktuella sortiment." },
+  /* Ämnesguiderna (fältatlas), 2026-11-16. SEO-fälten:
+     THCB: theme8/review/thcb-knowledge-2026-11/KARTLAGGNING.md (runda 2) och SEO-PARITET.md
+     THCH: theme8/review/thch-hhc-knowledge-2026-11/KARTLAGGNING-THCH.md avsnitt 5
+     HHC:  theme8/review/thch-hhc-knowledge-2026-11/KARTLAGGNING-HHC.md avsnitt 5 */
+  thcb: { name: "THCB", file: "theme8/blocks/thcb.html",
+    meta_title: "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+    meta_description: "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor." },
+  thch: { name: "THCH", file: "theme8/blocks/thch.html",
+    meta_title: "THCH (THC-H) – vad det är och rättsläget i Sverige | Hazey",
+    meta_description: "Vad är THCH, eller THC-H? Fakta om tetrahydrocannabihexol och rättsläget: delta-8- och delta-9-THCH är narkotikaklassade sedan 10 december 2024 (SFS 2024:985)." },
+  hhc: { name: "HHC", file: "theme8/blocks/hhc.html",
+    meta_title: "HHC – vad det är och rättsläget i Sverige | Hazey",
+    meta_description: "Vad är HHC? Fakta om hexahydrocannabinol och rättsläget: HHC är narkotikaklassat i Sverige sedan 11 juli 2023 (SFS 2023:379). Källor, historik och vanliga frågor." }
 };
 async function readPage(id) {
   for (let i = 0; i < 5; i++) { const r = await api("GET", `/pages/${id}`); const d = r.json?.data || (r.json?.id ? r.json : null); if (d) return d; await new Promise(res => setTimeout(res, 1500)); }
