@@ -21,14 +21,14 @@
  },
  "thca": {
   "id": 14,
-  "action": "created",
-  "at": "2026-11-15T22:20:04.705Z",
+  "action": "updated",
+  "at": "2026-11-16T20:16:15.626Z",
   "slug": "thca",
   "name": "THCA",
   "active": true,
   "meta_title": "THCA i Sverige – vad det är, rättsläge och alternativ | Hazey",
   "meta_description": "Vad är THCA? Fakta om tetrahydrocannabinolsyra och rättsläget: delta-9-THCA-A är narkotikaklassat i Sverige sedan 14 juli 2026 (SFS 2026:1109). Se serierna i vårt aktuella sortiment.",
-  "html_length": 14781,
+  "html_length": 15041,
   "html_identical": true,
   "verify": {
    "name": "ok",
@@ -36,19 +36,19 @@
    "meta_title": "ok",
    "meta_description": "ok",
    "active": "ok",
-   "description": "ok (14781 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+   "description": "ok (15041 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
   }
  },
  "thcb": {
   "id": 15,
-  "action": "created",
-  "at": "2026-11-16T15:27:53.390Z",
+  "action": "updated",
+  "at": "2026-11-16T20:16:14.798Z",
   "slug": "thcb",
   "name": "THCB",
   "active": true,
   "meta_title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
   "meta_description": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
-  "html_length": 16701,
+  "html_length": 17054,
   "html_identical": true,
   "verify": {
    "name": "ok",
@@ -56,19 +56,19 @@
    "meta_title": "ok",
    "meta_description": "ok",
    "active": "ok",
-   "description": "ok (16701 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+   "description": "ok (17054 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
   }
  },
  "thch": {
   "id": 16,
-  "action": "created",
-  "at": "2026-11-16T15:28:00.088Z",
+  "action": "updated",
+  "at": "2026-11-16T20:16:13.154Z",
   "slug": "thch",
   "name": "THCH",
   "active": true,
   "meta_title": "THCH (THC-H) – vad det är och rättsläget i Sverige | Hazey",
   "meta_description": "Vad är THCH, eller THC-H? Fakta om tetrahydrocannabihexol och rättsläget: delta-8- och delta-9-THCH är narkotikaklassade sedan 10 december 2024 (SFS 2024:985).",
-  "html_length": 13941,
+  "html_length": 14045,
   "html_identical": true,
   "verify": {
    "name": "ok",
@@ -76,19 +76,19 @@
    "meta_title": "ok",
    "meta_description": "ok",
    "active": "ok",
-   "description": "ok (13941 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+   "description": "ok (14045 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
   }
  },
  "hhc": {
   "id": 17,
-  "action": "created",
-  "at": "2026-11-16T15:28:00.814Z",
+  "action": "updated",
+  "at": "2026-11-16T20:16:14.025Z",
   "slug": "hhc",
   "name": "HHC",
   "active": true,
   "meta_title": "HHC – vad det är och rättsläget i Sverige | Hazey",
   "meta_description": "Vad är HHC? Fakta om hexahydrocannabinol och rättsläget: HHC är narkotikaklassat i Sverige sedan 11 juli 2023 (SFS 2023:379). Källor, historik och vanliga frågor.",
-  "html_length": 13140,
+  "html_length": 13244,
   "html_identical": true,
   "verify": {
    "name": "ok",
@@ -96,7 +96,27 @@
    "meta_title": "ok",
    "meta_description": "ok",
    "active": "ok",
-   "description": "ok (13140 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+   "description": "ok (13244 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
+  }
+ },
+ "lagliga-cannabinoider-sverige": {
+  "id": 18,
+  "action": "updated",
+  "at": "2026-11-16T20:15:13.874Z",
+  "slug": "lagliga-cannabinoider-sverige",
+  "name": "Rättsläge",
+  "active": true,
+  "meta_title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+  "meta_description": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera.",
+  "html_length": 32574,
+  "html_identical": true,
+  "verify": {
+   "name": "ok",
+   "slug": "ok",
+   "meta_title": "ok",
+   "meta_description": "ok",
+   "active": "ok",
+   "description": "ok (32574 tecken, identiskt utom avslutande radbrytning som Nyehandel tar bort)"
   }
  }
 }

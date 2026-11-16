@@ -83,7 +83,7 @@ Markeringar som för THCB, THCH och HHC:
 | Namn (brödsmula) | `Rättsläge` |
 | Slug | **`lagliga-cannabinoider-sverige`** (rekommenderas). Alternativ: `cannabinoider-sverige`. |
 | Title | `Cannabinoider i Sverige – rättsläge ämne för ämne, med källor \| Hazey` (67 tecken) |
-| Meta | `Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.` (186 tecken; kan kortas till ca 155 i admin) |
+| Meta | `Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera.` (155 tecken). Använd i Nyehandel 16 november 2026. Det första förslaget (186 tecken, slutade med "kontrollerat 16 november 2026.") lagrades korrekt, men Nyehandel kortar meta vid ordgräns efter cirka 170 tecken och visade "kontrollerat 16...". Datumet står på sidan. |
 
 **Varför den gamla slugen?**
 - Samma sökväg som gamla sidan, så adressen kan mappas 1:1 vid domänbytet.

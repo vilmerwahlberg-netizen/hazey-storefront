@@ -70,7 +70,11 @@ export const PAGES = {
     meta_description: "Vad är THCH, eller THC-H? Fakta om tetrahydrocannabihexol och rättsläget: delta-8- och delta-9-THCH är narkotikaklassade sedan 10 december 2024 (SFS 2024:985)." },
   hhc: { name: "HHC", file: "theme8/blocks/hhc.html",
     meta_title: "HHC – vad det är och rättsläget i Sverige | Hazey",
-    meta_description: "Vad är HHC? Fakta om hexahydrocannabinol och rättsläget: HHC är narkotikaklassat i Sverige sedan 11 juli 2023 (SFS 2023:379). Källor, historik och vanliga frågor." }
+    meta_description: "Vad är HHC? Fakta om hexahydrocannabinol och rättsläget: HHC är narkotikaklassat i Sverige sedan 11 juli 2023 (SFS 2023:379). Källor, historik och vanliga frågor." },
+  /* Rättslägeshubben: theme8/review/rattslage-hub-2026-11/KARTLAGGNING.md avsnitt 5 (namn = brödsmula) */
+  "lagliga-cannabinoider-sverige": { name: "Rättsläge", file: "theme8/blocks/rattslage.html",
+    meta_title: "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+    meta_description: "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera." }
 };
 async function readPage(id) {
   for (let i = 0; i < 5; i++) { const r = await api("GET", `/pages/${id}`); const d = r.json?.data || (r.json?.id ? r.json : null); if (d) return d; await new Promise(res => setTimeout(res, 1500)); }

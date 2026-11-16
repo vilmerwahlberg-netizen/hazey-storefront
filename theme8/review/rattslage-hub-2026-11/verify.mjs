@@ -4,15 +4,18 @@
 // brödsmula (KARTLAGGNING.md avsnitt 5). Inget skrivs till Nyehandel.
 //
 // Kör: node theme8/review/rattslage-hub-2026-11/verify.mjs   (ONLY=hub-393,hub-1440)
+// LIVE=1: den riktiga Content-sidan (id 18) i Nyehandel, utan fixtur och utan lokal build;
+// sidans egen dev-loader hämtar Theme 8 från GitHub Pages. Skriver verify-live.json och shots-live/.
 // Lägen: noatmo (bilden 404), reduced (reducerad rörelse), nojs (Theme 8-JS 404).
 import fs from "node:fs"; import path from "node:path";
 import { chromium, ctxFor, open, ready, url } from "../launch-task-queue-2026-10/01-global-boot-footer/review/lib.mjs";
 const DIR = path.dirname(new URL(import.meta.url).pathname);
-const OUT = process.env.OUT || path.join(DIR, "shots"); fs.mkdirSync(OUT, { recursive: true });
+const LIVE = !!process.env.LIVE;
+const OUT = process.env.OUT || path.join(DIR, LIVE ? "shots-live" : "shots"); fs.mkdirSync(OUT, { recursive: true });
 const LOADER = fs.readFileSync(path.join(DIR, "../../blocks/loader-theme8-dev.html"), "utf8").trim();
 export const SLUG = "lagliga-cannabinoider-sverige";
 export const TITLE = "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey";
-export const META = "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.";
+export const META = "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera.";
 const BLOCK = () => fs.readFileSync(path.join(DIR, "../../blocks/rattslage.html"), "utf8");
 let fixtureHtml = "";
 
@@ -94,7 +97,9 @@ const ALL = [["hub-393", 393, 852], ["hub-1440", 1440, 900], ["hub-768", 768, 10
   ["hub-393-noatmo", 393, 852, "noatmo"], ["hub-393-reduced", 393, 852, "reduced"], ["hub-393-nojs", 393, 852, "nojs"], ["hub-1440-nojs", 1440, 900, "nojs"]];
 const RUNS = ALL.filter(([t]) => !process.env.ONLY || process.env.ONLY.split(",").includes(t));
 for (const [tag, w, h, mode] of RUNS) {
-  const ctx = await ctxFor(b, w, h, { which: "after" }); await fixture(ctx, mode);
+  const ctx = LIVE ? await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: w < 768 ? 2 : 1, isMobile: w < 768, hasTouch: w < 768, userAgent: w < 768 ? undefined : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" })
+    : await ctxFor(b, w, h, { which: "after" });
+  if (!LIVE) await fixture(ctx, mode);
   const p = await open(ctx, `/sv/page/${SLUG}`, { before: mode === "reduced" ? pg => pg.emulateMedia({ reducedMotion: "reduce" }) : null });
   if (mode === "nojs") await p.waitForTimeout(4000); else await ready(p, 4500);
   await p.waitForTimeout(1500);
@@ -128,7 +133,9 @@ for (const [tag, w, h, mode] of RUNS) {
       banned: (document.querySelector(".hz8-lp").textContent.match(/psykoaktiv|\brus\b|berus|medicin|effekt|upplevelse|lagliga alternativ|100 ?%|garanter|fri frakt|\bdos|inom 24 timmar|granskad av|laglig att köpa/gi) || []),
       buyButtons: [...document.querySelectorAll(".hz8-lp a, .hz8-lp button")].filter(a => /köp|lägg i varukorg|handla/i.test(a.textContent)).map(txt),
       links: [...document.querySelectorAll(".hz8-lp a[href]")].map(a => a.getAttribute("href").replace(/\?preview=.*/, "")).filter((v, i, a) => a.indexOf(v) === i),
-      footer: vis(document.querySelector("#store-footer, footer"))
+      footer: vis(document.querySelector("#store-footer, footer")), canonical: document.querySelector('link[rel="canonical"]')?.href,
+      breadcrumb: txt(document.querySelector(".breadcrumb")), methodScoped: /Indexet kontrollerar varje ämne mot två förordningar/.test(document.body.textContent),
+      loader: [...document.scripts].map(s => s.src).filter(s => /theme8/.test(s)).map(s => s.replace(/\?.*/, ""))
     };
   });
   m.fold = fold;
@@ -164,7 +171,7 @@ for (const [tag, w, h, mode] of RUNS) {
   await p.evaluate(() => { document.activeElement?.blur(); history.replaceState(null, "", location.pathname + location.search); window.scrollTo({ top: 0, behavior: "instant" }); }); await p.waitForTimeout(700);
   await fullShot(p, path.join(OUT, `${tag}-full.png`));
   m.errors = p.errors.filter(e => !/favicon|trustpilot|Failed to load resource|recaptcha/i.test(e));
-  if (w === 1440 && !mode) {
+  if ((w === 1440 || (LIVE && w === 1920)) && !mode) {
     m.linkStatus = {};
     for (const href of m.links) {
       if (href.startsWith("#")) { m.linkStatus[href] = (await p.evaluate(id => !!document.getElementById(id), href.slice(1))) ? "anchor-ok" : "anchor-missing"; continue; }
@@ -179,7 +186,7 @@ for (const [tag, w, h, mode] of RUNS) {
 const B = BLOCK(); const noComments = B.replace(/<!--[\s\S]*?-->/g, "");
 const initial = { h1: (B.match(/<h1/g) || []).length, h2: (B.match(/<h2/g) || []).length, rows: (B.match(/<tr data-hz8-terms/g) || []).length, links: (noComments.match(/<a /g) || []).length, faq: (B.match(/<details/g) || []).length, searchInHtml: /<input/.test(B) };
 if (!process.env.OUT) {
-  const f = path.join(DIR, "verify.json");
+  const f = path.join(DIR, LIVE ? "verify-live.json" : "verify.json");
   const prev = process.env.ONLY && fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")).results : [];
   const merged = ALL.map(([t]) => results.find(r => r.tag === t) || prev.find(r => r.tag === t)).filter(Boolean);
   fs.writeFileSync(f, JSON.stringify({ initial, results: merged }, null, 1));

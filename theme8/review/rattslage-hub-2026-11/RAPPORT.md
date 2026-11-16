@@ -178,3 +178,25 @@ Helsidan vid 393 är cirka 10 600 px hög. Bilden är ihopsatt av delar i 1× up
 | `avvisad/` | Bilder av den avvisade versionen |
 
 **Status:** väntar på Vilmers visuella godkännande. Inte mergad.
+
+## Publicering i Nyehandel, 16 november 2026
+
+Gren `feat/theme8-rattslage-hub` mergad till `dev` (snabbspolning, inga konflikter); GitHub Pages-bygget grönt innan sidan skapades.
+
+**Metodtexten** (`#metod` och "Källor och metod") säger nu att indexet kontrollerar de två namngivna förordningarna och att andra regler som kan gälla en produkt inte ingår. Definitionen av "Inte i förteckningarna" säger att det inte är något besked om att en produkt är laglig. Ämnesrader och FAQ-svar är oförändrade.
+
+**Ändrat i Nyehandel-admin (Content-sidor via API, `nh-pages.mjs`)**
+
+| Sida | Id | Åtgärd | Återläst |
+|---|---|---|---|
+| `lagliga-cannabinoider-sverige` | 18 | Skapad: namn "Rättsläge", aktiv, hela `rattslage.html`, titel och meta enligt `KARTLAGGNING.md`. Meta kortad till 155 tecken i en andra skrivning (Nyehandel kapar vid ca 170 och visade "kontrollerat 16..."). | HTML identisk, titel, meta, slug, aktiv ok |
+| `thch` | 16 | Länk tillbaka i "Relaterat" | identisk |
+| `hhc` | 17 | Länk tillbaka i "Relaterat" | identisk |
+| `thcb` | 15 | Länk tillbaka i "Relaterat" + källrättelserna från `195da8d` (bevis först, nyheter och forskning märkta som bakgrund) | identisk |
+| `thca` | 14 | Länk tillbaka i "Läs mer om THCA" + källrättelsen från `195da8d` (regeringens beslut om 18 substanser i stället för departementets startsida) | identisk |
+
+Före skrivningen jämfördes varje guide rad för rad mellan Nyehandel och repot (`diff-guider.mjs`); efteråt är alla fyra identiska. Inga omdirigeringar, kategorier, produkter, teman eller global noindex rörda.
+
+**Adresser:** `/sv/page/lagliga-cannabinoider-sverige` 200. Gamla `/lagliga-cannabinoider-sverige/` och utan snedstreck: 301 till sidan, av Nyehandels egen kortadress, ingen ny regel (före skapandet: 404).
+
+**Riktig preview** (`LIVE=1 verify.mjs` → `verify-live.json`, `shots-live/`): 393 och 1920 utan sidledsscroll och fel, en H1, 20/20 rader, sök (hhc 7, THC-H 1, cbd 2, xyz 0, Escape återställer), öppningsbar rad med tangentbord, ankare, FAQ, lägsta kontrast 4,56, title/meta/canonical rätt, brödsmula "Hem / Rättsläge", Theme 8 laddas från GitHub Pages. `check-links.mjs`: alla hubbens interna mål rätt H1, ankare och serie. `check-tillbaka.mjs`: guide → hubb och hubb → guide för alla fyra vid 393 och 1440, med tangentbord.
