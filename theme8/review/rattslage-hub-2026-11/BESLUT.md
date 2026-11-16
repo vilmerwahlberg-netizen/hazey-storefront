@@ -10,7 +10,7 @@
 | R4 | Titel och meta | Enligt `KARTLAGGNING.md` avsnitt 5. Metan kan kortas i admin. |
 | R5 | Länk tillbaka från ämnesguiderna | THCB, THCH och HHC (finns i Nyehandel) och THCA får en länk till hubben under "Relaterat". Det kräver en uppdatering av fyra befintliga sidor via API:t, så det görs efter att hubben är skapad. |
 | R6 | Gamla adressen | Se `KARTLAGGNING.md` avsnitt 5: med samma slug behövs troligen ingen regel, men det måste kontrolleras efter att sidan skapats. |
-| R7 | Stämningsbilden | Utsnitt ur befintliga `landing-thcx/coast-editorial-1672.webp`, utan personen. Samma ursprungsfråga som F6. |
+| R7 | Stämningsbilden | `kustljus.png` från `hub-hero-r2` (syntetisk, levererad av Vilmer 2026-11-16). Se `theme8/assets/knowledge-hub/README.md`. Mobilheron R2 väntar på godkännande. |
 | R8 | THCNM | Den gamla artikeln `/sv/post/vad-ar-thcnm` och kategorin `/sv/categories/thcnm` säger att THCNM är lagligt och beskriver kemi som inte stämmer. De är orörda. Beslut behövs om de ska uppdateras eller märkas. |
 | R9 | Handelsnamn | Magic Sauce, Nano11 och Nano 9/10 tas inte upp som rader. Ska sidan ha en sektion om vad som säljs, krävs analysintyg per produkt och en egen faktagranskning. |
 | R10 | Strukturerad data | FAQPage för de sex synliga frågorna kan läggas till efter faktagranskningen (gamla sidan har FAQPage). Inte gjort, inte testat. |

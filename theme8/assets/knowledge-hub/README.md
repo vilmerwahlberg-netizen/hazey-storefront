@@ -2,11 +2,18 @@
 
 | Fil | Mått | Används |
 |---|---|---|
-| `sea-1100.webp` | 1100 × 941 | Desktop, högra bildfältet i heron (88f) |
-| `sea-band-1100.webp` | 1100 × 560 | Bandet under heron vid ≤ 1023 px |
+| `kustljus-1100.webp` | 1100 × 619 | Desktop 1x, högra bildfältet i heron (88f) |
+| `kustljus-1672.webp` | 1672 × 941 | Desktop 2x |
+| `kustljus-band-932.webp` | 932 × 611 | Bildbandet under rubriken vid ≤ 1023 px (mobil och surfplatta) |
 
-**Ursprung:** utsnitt ur den befintliga tema-asseten `theme8/assets/landing-thcx/coast-editorial-1672.webp` (1672 × 941), som redan används på THCX-sidan (88d). Utsnittet tar bara den vänstra delen, x 0–1100. Där syns hav, sol, udde och strandgräs. Personen i originalets högra del är inte med. Bandet är samma utsnitt, y 230–790.
+**Ursprung:** `design/kunskap-rattslage-2026-11-16/hub-hero-r2/kustljus.png` (1672 × 941, SHA-256 `a794957d5fb5a587…`). Vilmer levererade den 2026-11-16 som en syntetisk stämningsbild utan inbakad text. Den visar en solbelyst kust med hav, öar, klippor och sol.
 
-Gjort 2026-11-16 med canvas i Chrome och `cwebp -q 84`. Ingen tonkorrigering.
+**Bearbetning 2026-11-16:**
+- Konverterad till WebP med `cwebp`: q 84 för desktop och q 86 för bandet.
+- `kustljus-1100` är nedskalad. Ingen bild är uppskalad.
+- Bandet är ett utsnitt ur originalet, x 740–1672 och y 330–941, där sol, solglitter, öar och klippor ryms vid 393 px.
+- Ingen tonkorrigering och ingen färgslöja.
 
-**Rättigheter och äkthet:** samma som originalet. Originalet ser ut att vara syntetiskt (AI-genererat) och dess ursprung är inte dokumenterat i repot; se beslut F6 i `theme8/review/thch-hhc-knowledge-2026-11/BESLUT.md`. Bilden är illustrativ, inte dokumentär. Den visar ingen produkt, ingen plats som påstås vara verklig och inget ämne. Sidan säger det i källavsnittet.
+**Äkthet:** bilden är illustrativ, inte dokumentär. Den visar ingen produkt, ingen plats som påstås vara verklig och inget ämne. Sidan säger det i källavsnittet.
+
+Den tidigare bilden (`sea-*.webp`, utsnitt ur `landing-thcx/coast-editorial-1672.webp`) är borttagen. Den användes bara i den avvisade versionen och publicerades aldrig.

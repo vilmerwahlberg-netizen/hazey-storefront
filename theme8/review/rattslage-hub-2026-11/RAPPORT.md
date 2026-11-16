@@ -131,3 +131,50 @@ Helsidan vid 393 är cirka 10 600 px hög. Bilden är ihopsatt av delar i 1× up
 | `fore-mobil/` | Före-bilderna (`7913ef1`) |
 
 **Fel i testbilderna (inte i sidan):** Före-helsidan vid 393 visar headern mitt på sidan. Det var testskriptet, som tog helsidesbilden medan en mjuk rullning tillbaka till toppen pågick. `verify.mjs` rullar nu direkt till toppen och döljer fasta element i bildens senare delar.
+
+## Mobilhero R2 (16 november 2026): papper + skarpt bildband
+
+**Bakgrund:** versionen `87577a3` hade kustbilden bakom rubriken med en fade som gav en brungrå och turkos slöja. Den är **avvisad**. Facit är `rattslageshubb.png`. Bildmaterialet är `hub-hero-r2/kustljus.png`, en syntetisk stämningsbild utan text.
+
+**Ny lösning** (bara CSS vid ≤ 767 px, plus bildfilerna):
+1. **Rubriken** (eyebrow, H1, tagline, kopparstreck och "Kontrollerad mot förordningarna 16 november 2026") står på ljust, varmt papper med mörk text. Ingen bild, panel eller ljuszon ligger bakom. Ljuszonen togs bort på mobil, eftersom den lade sig över brödsmulan och bleknade den.
+2. **Ett skarpt bildband** går kant till kant under texten, utan färgslöja.
+   - Utsnittet `kustljus-band-932.webp` (x 740–1672, y 330–941 ur originalet) visar sol, solglitter, öar, klippor och ljung.
+   - Bandet är 228 px högt vid 393, 249 px vid 430 och 200 px vid 320.
+   - Bilden är 932 px bred, så den skalas ned och blir skarp även på 2x-skärmar: 786 enhetspixlar vid 393, 860 vid 430.
+3. **Övergången till indexet** är bandets raka nederkant mot ämnesindexets ljusa ark, med en tunn ljus kantlinje. Därefter följer kicker, H2, sökfältet och raderna.
+4. **Ingressen** visas fortfarande efter tabellen på mobil. Den står kvar på samma plats i HTML och på desktop.
+
+**Desktop:** strukturen är oförändrad; bara motivet är nytt. Det nya motivet fungerar i desktopens bildfält: solen, öarna och klipporna hamnar till höger och tonar in i papperet mot rubriken. Filerna är `kustljus-1100.webp` (1x) och `kustljus-1672.webp` (2x).
+
+**Första vyn:**
+
+| Vy | Sökfältet slutar | Hela ämnesrader i vyn |
+|---|---|---|
+| 393 × 852 | 760 px | 0. THCA börjar strax under sökfältet. Avsiktligt: designen prioriteras före två rader. |
+| 430 × 932 | 788 px | 1 |
+| 320 × 700 | 758 px, under vikningen | 0 |
+| 1440 × 900 | 791 px | 0, som tidigare. Tabellhuvudet och THCA-raden syns. |
+| 1920 × 1080 | 837 px | 1 |
+
+**Kontroller** (`verify.json`, 11 körningar):
+- Ingen sidledsscroll och inga konsolfel utom laddmeddelandet utan JS.
+- Kontrast: lägst 4,53 på desktop och 4,64 på mobil. Brödsmulan har 5,79 på mobil; den mäts nu med texten dold i bakgrundsbilden.
+- Sök, Escape, öppningsbar rad med Enter, ankare och FAQ med tangentbordet fungerar.
+
+**Oförändrat** (`seo-regression.json`):
+- Blockets HTML är identisk med `7913ef1`.
+- 20 rader, 51 länkar och 9 772 tecken text.
+- Alla fyra sökfrågorna har synliga svar, och H1, titel och meta är desamma.
+
+**Bilder** (`shots/`):
+
+| Fil | Innehåll |
+|---|---|
+| `r2-393-fold.webp` | Skiss, avvisad och ny vid 393 |
+| `r2-430-fold.webp` | Avvisad och ny vid 430 |
+| `r2-1440-fold.webp` | Avvisad och ny vid 1440 |
+| `r2-393-helsida.webp` | Avvisad och ny, hela sidan |
+| `avvisad/` | Bilder av den avvisade versionen |
+
+**Status:** väntar på Vilmers visuella godkännande. Inte mergad.
