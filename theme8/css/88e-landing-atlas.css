@@ -372,3 +372,29 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp :is(.hz8-atlas__chapters
 @media (prefers-reduced-motion: reduce) {
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main :is(.hz8-atlas__jump a, .hz8-atlas__related a, .hz8-atlas__jump a::after, .hz8-atlas__related a::after, .hz8-atlas__source-list a::after, .hz8-atlas__chapters a::after) { transition: none !important; }
 }
+
+/* ---------- Ämnesfamiljen: egen stämningsbild per ämne ----------
+   Samma komposition, typografi, papper och kapitelstruktur som THCB; bara
+   bilden och dess utsnitt skiljer (data-hz8-scene på blocket -> 88b sätter
+   data-hz8-lp-scene på <html>). Saknas bilden står papperets ljus kvar.
+   THCH: olivgren på solbelyst puts (knowledge-thch/README.md).
+   HHC: kustsluttning i kvällsljus (knowledge-hhc/README.md). */
+html.hz8.hz8-lp-page.hz8-atlas-page[data-hz8-lp-scene="thch"] #store-main .hz8-atlas__photo {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--at-paper) 30%, transparent) 0, transparent 50%),
+    url("assets/knowledge-thch/olive-plaster-960.webp") 100% 38% / cover no-repeat,
+    linear-gradient(200deg, var(--at-paper-deep) 0, var(--at-paper) 80%);
+}
+html.hz8.hz8-lp-page.hz8-atlas-page[data-hz8-lp-scene="hhc"] #store-main .hz8-atlas__photo {
+  background:
+    url("assets/knowledge-hhc/coast-slope-932.webp") 62% 42% / cover no-repeat,
+    linear-gradient(200deg, var(--at-paper-deep) 0, var(--at-paper) 80%);
+}
+@media (max-width: 1023px) {
+  html.hz8.hz8-lp-page.hz8-atlas-page[data-hz8-lp-scene="thch"] #store-main .hz8-atlas__photo {
+    background: url("assets/knowledge-thch/olive-plaster-band-960.webp") 100% 40% / cover no-repeat, var(--at-paper-deep);
+  }
+  html.hz8.hz8-lp-page.hz8-atlas-page[data-hz8-lp-scene="hhc"] #store-main .hz8-atlas__photo {
+    background: url("assets/knowledge-hhc/coast-slope-band-1072.webp") 58% 50% / cover no-repeat, var(--at-paper-deep);
+  }
+}
