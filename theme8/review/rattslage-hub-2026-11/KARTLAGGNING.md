@@ -71,7 +71,7 @@ Markeringar som för THCB, THCH och HHC:
 |---|---|
 | `/sv/page/thca`, `/sv/page/thcb`, `/sv/page/thch`, `/sv/page/hhc` | 200 (finns i Nyehandel), vanliga `<a href>` i tabellen och i "Ämnesguider" |
 | `/sv/page/hhc#fragor` (HHCP), `/sv/page/thca#alternativ` | 200 + ankare finns |
-| `/sv/categories/magic-sauce`, `/sv/categories/nano` | 200 |
+| `/sv/categories/magic-sauce`, `/sv/categories/nano-11` | 200, med produkter ur respektive serie (`check-links.json`). Tidigare pekade Nano11 på `/sv/categories/nano`, som saknar produktkort; rättat 2026-11-16. |
 | `/sv/page/faq`, `/sv/posts` | 200 |
 
 **Tillbaka till hubben:** THCB, THCH och HHC säger i en kommentar att hubben länkas när den finns. Att lägga till länken ändrar de tre sidor som redan finns i Nyehandel, så det är ett eget steg (beslut R5).

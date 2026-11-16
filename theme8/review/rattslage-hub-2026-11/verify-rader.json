@@ -1,0 +1,342 @@
+{
+ "checkedAt": "2026-11-16T18:55:38.627Z",
+ "consolidated": {
+  "1992:1554": "Ändrad: t.o.m. SFS 2026:1109",
+  "1999:58": "Ändrad: t.o.m. SFS 2026:1803"
+ },
+ "chain": {
+  "1992:1554": [
+   {
+    "sfs": "2023:5",
+    "amends": "1992:1554",
+    "inForce": "2023-02-14"
+   },
+   {
+    "sfs": "2023:379",
+    "amends": "1992:1554",
+    "inForce": "2023-07-11"
+   },
+   {
+    "sfs": "2023:901",
+    "amends": "1992:1554",
+    "inForce": "2024-01-16"
+   },
+   {
+    "sfs": "2024:288",
+    "amends": "1992:1554",
+    "inForce": "2024-06-18"
+   },
+   {
+    "sfs": "2024:481",
+    "amends": "1992:1554",
+    "inForce": "2024-07-23"
+   },
+   {
+    "sfs": "2024:985",
+    "amends": "1992:1554",
+    "inForce": "2024-12-10"
+   },
+   {
+    "sfs": "2025:77",
+    "amends": "1992:1554",
+    "inForce": "2025-03-11"
+   },
+   {
+    "sfs": "2025:264",
+    "amends": "1992:1554",
+    "inForce": "2025-05-06"
+   },
+   {
+    "sfs": "2025:662",
+    "amends": "1992:1554",
+    "inForce": "2025-07-15"
+   },
+   {
+    "sfs": "2025:1314",
+    "amends": "1992:1554",
+    "inForce": "2025-12-30"
+   },
+   {
+    "sfs": "2026:340",
+    "amends": "1992:1554",
+    "inForce": "2026-05-12"
+   },
+   {
+    "sfs": "2026:1109",
+    "amends": "1992:1554",
+    "inForce": "2026-07-14"
+   }
+  ],
+  "1999:58": [
+   {
+    "sfs": "2023:6",
+    "amends": "1999:58",
+    "inForce": "2023-02-14"
+   },
+   {
+    "sfs": "2023:380",
+    "amends": "1999:58",
+    "inForce": "2023-07-11"
+   },
+   {
+    "sfs": "2023:902",
+    "amends": "1999:58",
+    "inForce": "2024-01-16"
+   },
+   {
+    "sfs": "2024:289",
+    "amends": "1999:58",
+    "inForce": "2024-06-18"
+   },
+   {
+    "sfs": "2024:959",
+    "amends": "1999:58",
+    "inForce": "2024-12-03"
+   },
+   {
+    "sfs": "2024:986",
+    "amends": "1999:58",
+    "inForce": "2024-12-10"
+   },
+   {
+    "sfs": "2025:265",
+    "amends": "1999:58",
+    "inForce": "2025-05-06"
+   },
+   {
+    "sfs": "2025:663",
+    "amends": "1999:58",
+    "inForce": "2025-07-15"
+   },
+   {
+    "sfs": "2026:341",
+    "amends": "1999:58",
+    "inForce": "2026-05-12"
+   },
+   {
+    "sfs": "2026:1110",
+    "amends": "1999:58",
+    "inForce": "2026-07-14"
+   },
+   {
+    "sfs": "2026:1803",
+    "amends": "1999:58",
+    "inForce": "2026-11-25"
+   }
+  ]
+ },
+ "rows": [
+  {
+   "rad": "THCA",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "forstaSFS": "2026:1109",
+   "iKraft": "2026-07-14",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf"
+  },
+  {
+   "rad": "THCB",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmUtredning": true
+  },
+  {
+   "rad": "THCH",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "forstaSFS": "2024:985",
+   "iKraft": "2024-12-10",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf"
+  },
+  {
+   "rad": "HHC",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "forstaSFS": "2023:379",
+   "iKraft": "2023-07-11",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf"
+  },
+  {
+   "rad": "HHCP",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "forstaSFS": "2023:379",
+   "iKraft": "2023-07-11",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf"
+  },
+  {
+   "rad": "THCP",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "forstaSFS": "2023:901",
+   "iKraft": "2024-01-16",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf"
+  },
+  {
+   "rad": "THC-acetat",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "forstaSFS": "2023:901",
+   "iKraft": "2024-01-16",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf"
+  },
+  {
+   "rad": "HHC-acetat",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "forstaSFS": "2023:901",
+   "iKraft": "2024-01-16",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf"
+  },
+  {
+   "rad": "HHCPO",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "forstaSFS": "2024:985",
+   "iKraft": "2024-12-10",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf"
+  },
+  {
+   "rad": "THCJD",
+   "status": "Narkotika",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "forstaSFS": "2024:985",
+   "iKraft": "2024-12-10",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf"
+  },
+  {
+   "rad": "THCPO",
+   "status": "Hälsofarlig vara",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "efter25nov": [
+    true
+   ],
+   "forstaSFS": "2024:986",
+   "iKraft": "2024-12-10",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf"
+  },
+  {
+   "rad": "HHCH",
+   "status": "Hälsofarlig vara",
+   "problem": [],
+   "konsoliderad": [
+    true
+   ],
+   "efter25nov": [
+    true
+   ],
+   "forstaSFS": "2024:986",
+   "iKraft": "2024-12-10",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf"
+  },
+  {
+   "rad": "10-OH-HHC",
+   "status": "Hälsofarlig vara",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "efter25nov": [
+    true,
+    true
+   ],
+   "forstaSFS": "2025:663",
+   "iKraft": "2025-07-15",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf"
+  },
+  {
+   "rad": "HHC-C8 och HHC-C9",
+   "status": "Hälsofarlig vara",
+   "problem": [],
+   "konsoliderad": [
+    true,
+    true
+   ],
+   "efter25nov": [
+    true,
+    true
+   ],
+   "forstaSFS": "2025:663",
+   "iKraft": "2025-07-15",
+   "pdf": "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf"
+  },
+  {
+   "rad": "H4-CBD",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmUtredning": true
+  },
+  {
+   "rad": "CBD",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmLista": false
+  },
+  {
+   "rad": "CBG",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmLista": false
+  },
+  {
+   "rad": "CBN",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmLista": false
+  },
+  {
+   "rad": "THCV",
+   "status": "Inte i förteckningarna",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmLista": false
+  },
+  {
+   "rad": "THCNM",
+   "status": "Öppen fråga",
+   "problem": [],
+   "iNagonForordning": false,
+   "fhmLista": false
+  }
+ ]
+}
