@@ -1,0 +1,120 @@
+{
+ "fetched": "2026-11-16T13:09:17.326Z",
+ "oldStatus": 200,
+ "identity": {
+  "old": {
+   "title": "THCB - Hazey.se",
+   "meta": "(saknas)",
+   "h1": [
+    "THCB",
+    "Inga resultat hittades",
+    "Inga resultat hittades"
+   ],
+   "h2": [
+    "Vad är THCB?",
+    "THCB"
+   ],
+   "h3": [
+    "Andra Kategorier:",
+    "Är THCB säkert?"
+   ],
+   "words": 394,
+   "wordsInclExcerpts": 1650,
+   "internalLinks": 14
+  },
+  "new": {
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
+   "h1": [
+    "THCB"
+   ],
+   "h2": [
+    "Vad är THCB?",
+    "Är THCB lagligt i Sverige?",
+    "THCB hos Hazey",
+    "Källor",
+    "Vanliga frågor om THCB"
+   ],
+   "h3": [
+    "I sortimentet nu"
+   ],
+   "faq": [
+    "Vad är THCB?",
+    "Är THC-B och THCB samma sak?",
+    "Är THCB lagligt i Sverige?",
+    "Vad är skillnaden mellan THCB och THC?",
+    "Säljer Hazey THCB-vapes eller THCB-hasch?",
+    "Är THCB säkert?"
+   ],
+   "words": 752,
+   "internalLinks": 8,
+   "externalSources": 6
+  }
+ },
+ "queries": [
+  {
+   "q": "thcb",
+   "gsc": "480 / 3 585",
+   "old": "title, H1, H2×2, H3×1, stycken×5, länktext×1",
+   "new": "title, meta, H1, H2×4, FAQ×6, stycken×22, länktext×6"
+  },
+  {
+   "q": "thc b",
+   "gsc": "119 / 396",
+   "old": "–",
+   "new": "stycken×3"
+  },
+  {
+   "q": "thc-b",
+   "gsc": "59 / 302",
+   "old": "stycken×4, länktext×1",
+   "new": "title, meta, FAQ×1, stycken×3"
+  },
+  {
+   "q": "thcb vape",
+   "gsc": "58 / 586",
+   "old": "–",
+   "new": "FAQ×1, stycken×2"
+  },
+  {
+   "q": "thcb hash",
+   "gsc": "28 / 155",
+   "old": "–",
+   "new": "FAQ×1, stycken×2"
+  },
+  {
+   "q": "thcb sverige",
+   "gsc": "18 / 499",
+   "old": "stycken×3",
+   "new": "title, meta, H2×1, FAQ×1"
+  }
+ ],
+ "links": {
+  "old": [
+   "/produkt-kategori/alla-produkter/thcb/",
+   "/bastsaljare-vapes-laglig-cannabis-i-sverige/",
+   "/produkt-kategori/alla-produkter/thch/",
+   "/produkt-kategori/alla-produkter/thcv/",
+   "/produkt-kategori/alla-produkter/thc-jd/",
+   "/produkt-kategori/alla-produkter/thcpo/",
+   "/produkt-kategori/alla-produkter/muscimol/",
+   "/produkt-kategori/alla-produkter/h4cbd/",
+   "/produkt-kategori/alla-produkter/cbd/",
+   "/produkt-kategori/alla-produkter/blommor-buds/",
+   "/produkt-kategori/alla-produkter/gummies/",
+   "/carts-cartridges/",
+   "/engangsvape/",
+   "/kampanjer/"
+  ],
+  "new": [
+   "/sv/page/thca",
+   "/sv/post/folkhalsomyndigheten-begar-nya-regler-for-flera-cannabinoider",
+   "/sv/categories/thcb",
+   "/sv/page/engangsvape",
+   "/sv/page/thcx",
+   "/sv/categories/hasch",
+   "/sv/page/faq",
+   "/sv/posts"
+  ]
+ }
+}
