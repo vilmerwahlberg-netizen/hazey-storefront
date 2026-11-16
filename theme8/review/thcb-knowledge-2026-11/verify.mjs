@@ -16,8 +16,8 @@ const OUT = process.env.OUT || path.join(DIR, "shots"); fs.mkdirSync(OUT, { recu
 const BLOCK = fs.readFileSync(path.join(DIR, "../../blocks/thcb.html"), "utf8");
 const LOADER = fs.readFileSync(path.join(DIR, "../../blocks/loader-theme8-dev.html"), "utf8").trim();
 // FÖRSLAG, inte beslutat (KARTLAGGNING.md avsnitt 1).
-export const TITLE = "THCB (THC-B) – vad det är, rättsläge och källor | Hazey";
-export const META = "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.";
+export const TITLE = "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey";
+export const META = "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.";
 let fixtureHtml = "";
 
 export async function fixture(ctx, mode) {
@@ -121,7 +121,7 @@ for (const [tag, w, h, mode] of RUNS) {
   });
   m.fold = fold;
   if (mode !== "nojs") {
-    m.contrast = await contrast(p, [".hz8-lp h1", ".hz8-lp__eyebrow", ".hz8-atlas__tagline", ".hz8-atlas__lead", ".hz8-atlas__jump a", ".hz8-atlas__no", ".hz8-atlas__chapters strong", ".hz8-atlas__chapters a > span:last-child", ".hz8-atlas__chip", ".hz8-atlas__status > span:last-child", ".hz8-atlas__related a", ".hz8-atlas__kicker", "#rattslage .hz8-atlas__text p", ".hz8-atlas__facts dd", ".hz8-atlas__timeline time", ".hz8-atlas__timeline span", ".hz8-atlas__stock", ".hz8-atlas__also p", ".hz8-atlas__source-list strong", ".hz8-atlas__source-list a > span", ".hz8-lp__qa summary", ".hz8-lp__more"], w, h);
+    m.contrast = await contrast(p, [".hz8-lp h1", ".hz8-lp__eyebrow", ".hz8-atlas__tagline", ".hz8-atlas__lead", ".hz8-atlas__jump a", ".hz8-atlas__no", ".hz8-atlas__chapters strong", ".hz8-atlas__chapters a > span:last-child", ".hz8-atlas__chip", ".hz8-atlas__status > span:last-child", ".hz8-atlas__related a", ".hz8-atlas__kicker", "#rattslage .hz8-atlas__text p", ".hz8-atlas__facts dd", ".hz8-atlas__timeline time", ".hz8-atlas__timeline span", ".hz8-atlas__stock", ".hz8-atlas__also p", ".hz8-atlas__source-list strong", ".hz8-atlas__source-list a > span", ".hz8-lp__qa summary", ".hz8-lp__more", ".hz8-atlas__credit"], w, h);
     // Tangentbord: tabba från ingressens sista länk bakåt -> fokusring; ankare -> rubrik under headern; FAQ med Enter.
     await p.locator(".hz8-atlas__jump a").first().focus();
     m.jumpFocus = await p.evaluate(() => getComputedStyle(document.activeElement).outlineStyle + " " + document.activeElement.textContent.trim());

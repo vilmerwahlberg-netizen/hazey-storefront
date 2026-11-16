@@ -114,3 +114,37 @@ Se `KARTLAGGNING.md` avsnitt 7:
 - länkar till och från rättslägeshubben
 
 Före publicering krävs också en separat faktagranskning av kapitel 01–02.
+
+## Runda 2 (16 november 2026): andra granskningen
+
+Utrullningen till THCH och HHC är **pausad** tills THCB-mallen är godkänd (`BESLUT.md` B11).
+
+### Visuella korrigeringar mot skiss B och gamla sidan (393 × 852 och 1440 × 900, hero till footer)
+
+| Område | Före | Efter |
+|---|---|---|
+| Herofoto | Mjuk beskärning av AI-skissen (619 px, oklara rättigheter) | Licensierat foto: strandråg i kvällsljus, Nes (Ameland). Dietmar Rabich, Wikimedia Commons, CC BY-SA 4.0. Originalet är 7728 px. Beskuret och tonat mot papperet i 1100, 2000 och mobilband 1400 px. Kreditrad under Källor. Ursprung, kontrollsumma och bearbetning i `theme8/assets/knowledge-thcb/README.md`. |
+| Mobilbandet | Mjukt och grått | Eget utsnitt med vipporna, ljusare toning, 190 px högt och mjukare toning upptill och nedtill |
+| Ljus | Solgradienten gav en rand längs mobilens högerkant | Gradienten bara på desktop |
+| Index | Bara en tunn linje under heron | Skissens ljusa nedre ark: ljusare papper kant till kant som tonar ut, utan kortyta. På mobil utan kant. |
+| FAQ | 88b:s persikozon, som blev rosa mot papperet | Samma ljusa papper som indexet |
+| Rytm | 96 px mellan kapitlen | 80 px. Lugnare utan att kapitlen flyter ihop. |
+| Läsbarhet | "delta-9-THCB" kunde brytas vid bindestrecket och fick sans-serif i seriffrubriker | Bryts aldrig och ärver rubrikens typsnitt |
+| Header och footer | Riktiga Theme 8 | Oförändrade |
+
+Bilder:
+- `shots/jamfor-393-fold.webp` och `jamfor-1440-fold.webp`: skissen, gamla sidan och nya sidan
+- `jamfor-393-helsida.webp` och `jamfor-1440-helsida.webp`: gamla och nya sidan i sin helhet
+
+### SEO-paritet
+
+Se `SEO-PARITET.md` och `seo-parity.json`.
+- Title och meta är justerade, med "i Sverige" och skrivsättet THC-B.
+- "THC B" står i ingressen.
+- Upprepningen av "THCB" är minskad från 47 till 41 på cirka 790 ord.
+
+### Gamla påståenden och beslut
+
+- Alla gamla påståenden som inte kan föras över utan faktakontroll står i `GAMLA-PASTAENDEN.md`, sorterade per källa: gamla sidan, två artiklar, produkten och den relaterade artikeln.
+- Alla beslut står i `BESLUT.md` (B1–B11).
+- Ingenting i gamla sidan, artiklarna, produkterna eller admin är ändrat.

@@ -21,8 +21,8 @@ Markering per rad, enligt underlaget:
 
 | Fält | Gammal | Ny |
 |---|---|---|
-| Title | `THCB - Hazey.se` | `THCB (THC-B) – vad det är, rättsläge och källor \| Hazey` (55 tecken) |
-| Meta description | saknas | `Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.` (133 tecken) |
+| Title | `THCB - Hazey.se` | `THCB (THC-B) i Sverige – fakta, rättsläge och källor \| Hazey` (60 tecken; runda 2) |
+| Meta description | saknas | `Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.` (139 tecken; runda 2) |
 | H1 | två: `THCB` och `Inga resultat hittades` (dessutom ett andra `Inga resultat hittades` längre ned) | en: `THCB` |
 | H2/H3 | `Vad är THCB?`, 22 artikelrubriker, `THCB`, `Meny` m.m. | H2: `Vad är THCB?`, `Är THCB lagligt i Sverige?`, `THCB hos Hazey`, `Källor`, `Vanliga frågor om THCB`. H3: `I sortimentet nu` |
 | Canonical | `https://www.hazey.se/thcb/` | sidans egen adress efter beslut om slug (testfixturen använder `/sv/page/thcb`) |
@@ -36,9 +36,13 @@ GSC, organisk sökning, 11 augusti–11 november 2026, gamla `/thcb/`. Frågorna
 | Fråga | Klick/visningar | Besvaras i |
 |---|---|---|
 | `thcb` | 480 / 3 585 | H1, ingress, kapitel 01, FAQ "Vad är THCB?" |
-| `thc b` | 119 / 396 | ingressen ("även skrivet THC-B"), faktaraden "Skrivs också", FAQ "Är THC-B och THCB samma sak?" |
+| `thc b` | 119 / 396 | ingressen ("även skrivet THC-B eller THC B"), faktaraden "Skrivs också", FAQ "Är THC-B och THCB samma sak?" |
+| `thc-b` | 59 / 302 | title, meta, ingressen, FAQ "Är THC-B och THCB samma sak?" |
 | `thcb vape` | 58 / 586 | kapitel 03 (vad Hazey har sålt och aktuellt lager via kategorin), FAQ "Säljer Hazey THCB-vapes eller THCB-hasch?". Ingen köpväg till THCB. Engångsvapes länkas som annan produkt, inte som ersättare (underlaget: konkurrera inte med `/engangsvape/`). |
 | `thcb hash` | 28 / 155 | samma FAQ: "Någon THCB-hasch har vi inte." Hasch-kategorin länkas som annan produkt. |
+| `thcb sverige` | 18 / 499 | title ("THCB (THC-B) i Sverige"), meta, H2 "Är THCB lagligt i Sverige?", FAQ |
+
+Mätt per fält i `SEO-PARITET.md` / `seo-parity.json` (runda 2).
 
 ## 3. Rad för rad
 
@@ -121,5 +125,7 @@ Alla kontrollerade 16 november 2026.
 2. Slug, och 301 för `/thcb` och `/sv/thcb`.
 3. Länk till kategorin (6.3).
 4. De två gamla THCB-artiklarna (avsnitt 5).
-5. Stämningsbilden: beskuren ur skiss B (AI-bild, produktfri, 619 × 432 px). Den räcker för preview men är mjuk på stora skärmar. Ett riktigt foto i minst 1600 px bör ersätta den före publicering.
+5. Stämningsbilden: ersatt i runda 2 av ett licensierat foto (Dietmar Rabich, Wikimedia Commons, CC BY-SA 4.0, 7728 px original) med kreditrad. Se `theme8/assets/knowledge-thcb/README.md` och `BESLUT.md` B8.
+
+Alla beslut är samlade i `BESLUT.md`, och gamla påståenden som kräver faktakontroll i `GAMLA-PASTAENDEN.md`.
 6. Rättslägeshubben: länkar i båda riktningar när den byggs.

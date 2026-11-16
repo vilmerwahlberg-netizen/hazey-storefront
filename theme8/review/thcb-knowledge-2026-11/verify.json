@@ -3,7 +3,7 @@
   "h1": 1,
   "h2": 5,
   "h3": 1,
-  "links": 24,
+  "links": 26,
   "faq": 6
  },
  "results": [
@@ -15,8 +15,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -33,7 +33,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -43,7 +43,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 16
     },
@@ -93,7 +93,7 @@
      "px": 34
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 17
     },
@@ -123,17 +123,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -203,7 +203,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -218,7 +218,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -234,7 +234,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -246,7 +246,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -267,6 +267,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -305,25 +307,25 @@
     },
     "photo": {
      "top": 491,
-     "bottom": 659,
+     "bottom": 681,
      "left": 0,
      "right": 393
     },
     "index": {
-     "top": 675,
-     "bottom": 1021,
+     "top": 699,
+     "bottom": 1045,
      "left": 16,
      "right": 377
     },
     "ch1": {
-     "top": 675,
-     "bottom": 766,
+     "top": 699,
+     "bottom": 790,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1049,
-     "bottom": 1293,
+     "top": 1073,
+     "bottom": 1317,
      "left": 16,
      "right": 377
     },
@@ -357,18 +359,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.65,
-     "median": 8.66
+     "worst": 8.95,
+     "median": 9.12
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.66,
-     "median": 8.66
+     "worst": 8.96,
+     "median": 9.1
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.92
+     "worst": 12.86,
+     "median": 12.96
     },
     {
      "s": ".hz8-atlas__chip",
@@ -377,13 +379,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 12.44,
+     "median": 12.44
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.32,
-     "median": 5.32
+     "worst": 5.5,
+     "median": 5.55
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -432,13 +434,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.95,
-     "median": 11.97
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.31,
-     "median": 5.32
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -458,8 +465,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -476,7 +483,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -486,7 +493,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 17.28
     },
@@ -536,7 +543,7 @@
      "px": 51.84
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 20
     },
@@ -566,17 +573,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -646,7 +653,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -661,7 +668,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -677,7 +684,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -689,7 +696,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -710,6 +717,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -753,20 +762,20 @@
      "right": 1440
     },
     "index": {
-     "top": 705,
-     "bottom": 1092,
+     "top": 710,
+     "bottom": 1097,
      "left": 60,
      "right": 793
     },
     "ch1": {
-     "top": 705,
-     "bottom": 786,
+     "top": 710,
+     "bottom": 791,
      "left": 60,
      "right": 793
     },
     "aside": {
-     "top": 705,
-     "bottom": 915,
+     "top": 710,
+     "bottom": 920,
      "left": 856,
      "right": 1380
     },
@@ -800,18 +809,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.58,
-     "median": 8.66
+     "worst": 9.29,
+     "median": 9.35
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.58,
-     "median": 8.66
+     "worst": 9.29,
+     "median": 9.36
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.84
+     "worst": 12.75,
+     "median": 12.86
     },
     {
      "s": ".hz8-atlas__chip",
@@ -820,13 +829,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.92,
-     "median": 11.92
+     "worst": 12.84,
+     "median": 12.9
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.36,
-     "median": 5.36
+     "worst": 5.78,
+     "median": 5.79
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -835,8 +844,8 @@
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.34,
-     "median": 12.65
+     "worst": 12.32,
+     "median": 12.56
     },
     {
      "s": ".hz8-atlas__facts dd",
@@ -846,11 +855,11 @@
     {
      "s": ".hz8-atlas__timeline time",
      "worst": 8.21,
-     "median": 8.33
+     "median": 8.29
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.19,
+     "worst": 11.14,
      "median": 11.38
     },
     {
@@ -875,13 +884,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.86,
-     "median": 11.95
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.51,
-     "median": 5.56
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -909,12 +923,14 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/": 200,
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/": 200,
     "https://doi.org/10.1021/acs.jnatprod.9b00876": 302,
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg": 200,
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv": 200,
     "/sv/page/faq": 200,
     "/sv/posts": 200
    },
    "initialHtml": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "inHtml": true
     },
     {
@@ -954,7 +970,7 @@
      "inHtml": true
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "inHtml": true
     },
     {
@@ -978,15 +994,15 @@
      "inHtml": true
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "inHtml": true
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "inHtml": true
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "inHtml": true
     },
     {
@@ -1042,7 +1058,7 @@
      "inHtml": true
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "inHtml": true
     },
     {
@@ -1054,7 +1070,7 @@
      "inHtml": true
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "inHtml": true
     }
    ]
@@ -1067,8 +1083,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -1085,7 +1101,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -1095,7 +1111,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 18
     },
@@ -1145,7 +1161,7 @@
      "px": 58
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 20
     },
@@ -1175,17 +1191,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -1255,7 +1271,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -1270,7 +1286,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -1286,7 +1302,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -1298,7 +1314,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -1319,6 +1335,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -1362,20 +1380,20 @@
      "right": 1920
     },
     "index": {
-     "top": 734,
-     "bottom": 1133,
+     "top": 741,
+     "bottom": 1140,
      "left": 140,
      "right": 1052
     },
     "ch1": {
-     "top": 734,
-     "bottom": 817,
+     "top": 741,
+     "bottom": 824,
      "left": 140,
      "right": 1052
     },
     "aside": {
-     "top": 734,
-     "bottom": 946,
+     "top": 741,
+     "bottom": 953,
      "left": 1128,
      "right": 1780
     },
@@ -1409,18 +1427,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.58,
-     "median": 8.58
+     "worst": 9.27,
+     "median": 9.35
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.58,
-     "median": 8.6
+     "worst": 9.29,
+     "median": 9.35
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.73,
-     "median": 11.8
+     "worst": 12.75,
+     "median": 12.84
     },
     {
      "s": ".hz8-atlas__chip",
@@ -1429,13 +1447,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.81,
-     "median": 11.92
+     "worst": 12.78,
+     "median": 12.9
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.31,
-     "median": 5.36
+     "worst": 5.75,
+     "median": 5.8
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -1444,7 +1462,7 @@
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.56,
+     "worst": 12.65,
      "median": 12.65
     },
     {
@@ -1454,12 +1472,12 @@
     },
     {
      "s": ".hz8-atlas__timeline time",
-     "worst": 8.19,
+     "worst": 8.21,
      "median": 8.29
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.19,
+     "worst": 11.21,
      "median": 11.38
     },
     {
@@ -1484,13 +1502,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.86,
-     "median": 11.95
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.51,
-     "median": 5.55
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -1510,8 +1533,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -1528,7 +1551,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -1538,7 +1561,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 16
     },
@@ -1588,7 +1611,7 @@
      "px": 34
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 17
     },
@@ -1618,17 +1641,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -1698,7 +1721,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -1713,7 +1736,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -1729,7 +1752,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -1741,7 +1764,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -1762,6 +1785,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -1800,25 +1825,25 @@
     },
     "photo": {
      "top": 502,
-     "bottom": 670,
+     "bottom": 692,
      "left": 0,
      "right": 320
     },
     "index": {
-     "top": 686,
-     "bottom": 1074,
+     "top": 710,
+     "bottom": 1098,
      "left": 16,
      "right": 304
     },
     "ch1": {
-     "top": 686,
-     "bottom": 777,
+     "top": 710,
+     "bottom": 801,
      "left": 16,
      "right": 304
     },
     "aside": {
-     "top": 1102,
-     "bottom": 1355,
+     "top": 1126,
+     "bottom": 1379,
      "left": 16,
      "right": 304
     },
@@ -1852,18 +1877,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.58,
-     "median": 8.66
+     "worst": 8.94,
+     "median": 9.12
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.59,
-     "median": 8.66
+     "worst": 8.89,
+     "median": 9.1
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.81
+     "worst": 12.86,
+     "median": 12.96
     },
     {
      "s": ".hz8-atlas__chip",
@@ -1872,13 +1897,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 12.43,
+     "median": 12.44
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.32,
-     "median": 5.32
+     "worst": 5.5,
+     "median": 5.55
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -1888,7 +1913,7 @@
     {
      "s": "#rattslage .hz8-atlas__text p",
      "worst": 11.6,
-     "median": 12.45
+     "median": 12.46
     },
     {
      "s": ".hz8-atlas__facts dd",
@@ -1903,7 +1928,7 @@
     {
      "s": ".hz8-atlas__timeline span",
      "worst": 11.74,
-     "median": 12.33
+     "median": 12.34
     },
     {
      "s": ".hz8-atlas__stock",
@@ -1927,13 +1952,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.95,
-     "median": 11.98
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.31,
-     "median": 5.32
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -1953,8 +1983,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -1971,7 +2001,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -1981,7 +2011,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 16
     },
@@ -2031,7 +2061,7 @@
      "px": 38
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 18
     },
@@ -2061,17 +2091,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -2141,7 +2171,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -2156,7 +2186,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -2172,7 +2202,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -2184,7 +2214,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -2205,6 +2235,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -2248,20 +2280,20 @@
      "right": 760
     },
     "index": {
-     "top": 769,
-     "bottom": 1096,
+     "top": 771,
+     "bottom": 1098,
      "left": 24,
      "right": 744
     },
     "ch1": {
-     "top": 769,
-     "bottom": 839,
+     "top": 771,
+     "bottom": 841,
      "left": 24,
      "right": 744
     },
     "aside": {
-     "top": 1124,
-     "bottom": 1351,
+     "top": 1126,
+     "bottom": 1353,
      "left": 24,
      "right": 744
     },
@@ -2295,18 +2327,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.52,
-     "median": 8.58
+     "worst": 8.88,
+     "median": 9.04
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.52,
-     "median": 8.58
+     "worst": 8.88,
+     "median": 9.03
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.72,
-     "median": 11.8
+     "worst": 12.75,
+     "median": 12.87
     },
     {
      "s": ".hz8-atlas__chip",
@@ -2315,13 +2347,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 12.44,
+     "median": 12.44
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.32,
-     "median": 5.32
+     "worst": 5.5,
+     "median": 5.55
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -2370,13 +2402,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.95,
-     "median": 11.95
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.3,
-     "median": 5.35
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -2396,8 +2433,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -2414,7 +2451,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -2424,7 +2461,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 16
     },
@@ -2474,7 +2511,7 @@
      "px": 34
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 17
     },
@@ -2504,17 +2541,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -2584,7 +2621,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -2599,7 +2636,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -2615,7 +2652,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -2627,7 +2664,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -2648,6 +2685,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -2686,25 +2725,25 @@
     },
     "photo": {
      "top": 491,
-     "bottom": 659,
+     "bottom": 681,
      "left": 0,
      "right": 393
     },
     "index": {
-     "top": 675,
-     "bottom": 1021,
+     "top": 699,
+     "bottom": 1045,
      "left": 16,
      "right": 377
     },
     "ch1": {
-     "top": 675,
-     "bottom": 766,
+     "top": 699,
+     "bottom": 790,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1049,
-     "bottom": 1293,
+     "top": 1073,
+     "bottom": 1317,
      "left": 16,
      "right": 377
     },
@@ -2738,18 +2777,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.65,
-     "median": 8.66
+     "worst": 8.95,
+     "median": 9.12
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.66,
-     "median": 8.66
+     "worst": 8.96,
+     "median": 9.1
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.92
+     "worst": 12.86,
+     "median": 12.96
     },
     {
      "s": ".hz8-atlas__chip",
@@ -2758,13 +2797,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 12.44,
+     "median": 12.44
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.32,
-     "median": 5.32
+     "worst": 5.5,
+     "median": 5.55
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -2813,13 +2852,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.95,
-     "median": 11.97
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.31,
-     "median": 5.32
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -2839,8 +2883,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -2857,7 +2901,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": true,
@@ -2867,7 +2911,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 17.28
     },
@@ -2917,7 +2961,7 @@
      "px": 51.84
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 20
     },
@@ -2947,17 +2991,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -3027,7 +3071,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -3042,7 +3086,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -3058,7 +3102,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -3070,7 +3114,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -3091,6 +3135,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -3134,20 +3180,20 @@
      "right": 1440
     },
     "index": {
-     "top": 705,
-     "bottom": 1092,
+     "top": 710,
+     "bottom": 1097,
      "left": 60,
      "right": 793
     },
     "ch1": {
-     "top": 705,
-     "bottom": 786,
+     "top": 710,
+     "bottom": 791,
      "left": 60,
      "right": 793
     },
     "aside": {
-     "top": 705,
-     "bottom": 915,
+     "top": 710,
+     "bottom": 920,
      "left": 856,
      "right": 1380
     },
@@ -3181,18 +3227,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.58,
-     "median": 8.66
+     "worst": 9.29,
+     "median": 9.35
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.58,
-     "median": 8.66
+     "worst": 9.29,
+     "median": 9.36
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.84
+     "worst": 12.75,
+     "median": 12.86
     },
     {
      "s": ".hz8-atlas__chip",
@@ -3201,13 +3247,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.92,
-     "median": 11.92
+     "worst": 12.84,
+     "median": 12.9
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.36,
-     "median": 5.36
+     "worst": 5.78,
+     "median": 5.79
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -3216,8 +3262,8 @@
     },
     {
      "s": "#rattslage .hz8-atlas__text p",
-     "worst": 12.34,
-     "median": 12.65
+     "worst": 12.32,
+     "median": 12.56
     },
     {
      "s": ".hz8-atlas__facts dd",
@@ -3227,11 +3273,11 @@
     {
      "s": ".hz8-atlas__timeline time",
      "worst": 8.21,
-     "median": 8.33
+     "median": 8.29
     },
     {
      "s": ".hz8-atlas__timeline span",
-     "worst": 11.19,
+     "worst": 11.14,
      "median": 11.38
     },
     {
@@ -3255,13 +3301,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.86,
-     "median": 11.95
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.51,
-     "median": 5.56
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -3281,8 +3332,8 @@
     "hz8-lp-page",
     "hz8-atlas-page"
    ],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -3299,7 +3350,7 @@
    ],
    "overflowX": 0,
    "wide": [],
-   "photoBg": true,
+   "photoBg": false,
    "photoImg": [],
    "stock": {
     "hidden": false,
@@ -3309,7 +3360,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 16
     },
@@ -3359,7 +3410,7 @@
      "px": 34
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 17
     },
@@ -3389,17 +3440,17 @@
      "px": 15
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 15
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 15
     },
@@ -3469,7 +3520,7 @@
      "px": 15.5
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 15.5
     },
@@ -3484,7 +3535,7 @@
      "px": 15.5
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 15.5
     }
@@ -3500,7 +3551,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -3512,7 +3563,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -3533,6 +3584,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -3571,25 +3624,25 @@
     },
     "photo": {
      "top": 491,
-     "bottom": 659,
+     "bottom": 681,
      "left": 0,
      "right": 393
     },
     "index": {
-     "top": 675,
-     "bottom": 1021,
+     "top": 699,
+     "bottom": 1045,
      "left": 16,
      "right": 377
     },
     "ch1": {
-     "top": 675,
-     "bottom": 766,
+     "top": 699,
+     "bottom": 790,
      "left": 16,
      "right": 377
     },
     "aside": {
-     "top": 1049,
-     "bottom": 1293,
+     "top": 1073,
+     "bottom": 1317,
      "left": 16,
      "right": 377
     },
@@ -3604,7 +3657,7 @@
     {
      "s": ".hz8-lp__eyebrow",
      "worst": 12.75,
-     "median": 12.75
+     "median": 12.77
     },
     {
      "s": ".hz8-atlas__tagline",
@@ -3623,18 +3676,18 @@
     },
     {
      "s": ".hz8-atlas__no",
-     "worst": 8.65,
-     "median": 8.66
+     "worst": 8.95,
+     "median": 9.12
     },
     {
      "s": ".hz8-atlas__chapters strong",
-     "worst": 8.66,
-     "median": 8.66
+     "worst": 8.96,
+     "median": 9.1
     },
     {
      "s": ".hz8-atlas__chapters a > span:last-child",
-     "worst": 11.81,
-     "median": 11.92
+     "worst": 12.86,
+     "median": 12.96
     },
     {
      "s": ".hz8-atlas__chip",
@@ -3643,13 +3696,13 @@
     },
     {
      "s": ".hz8-atlas__status > span:last-child",
-     "worst": 11.63,
-     "median": 11.63
+     "worst": 12.44,
+     "median": 12.44
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 5.32,
-     "median": 5.32
+     "worst": 5.5,
+     "median": 5.55
     },
     {
      "s": ".hz8-atlas__kicker",
@@ -3698,13 +3751,18 @@
     },
     {
      "s": ".hz8-lp__qa summary",
-     "worst": 11.95,
-     "median": 11.97
+     "worst": 13.73,
+     "median": 13.73
     },
     {
      "s": ".hz8-lp__more",
-     "worst": 5.31,
-     "median": 5.32
+     "worst": 6.01,
+     "median": 6.01
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 5.39,
+     "median": 5.39
     }
    ],
    "jumpFocus": "none Vad är THCB?",
@@ -3721,8 +3779,8 @@
    "w": 393,
    "mode": "nojs",
    "classes": [],
-   "title": "THCB (THC-B) – vad det är, rättsläge och källor | Hazey",
-   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, ett daterat rättsläge med primärkällor, THCB hos Hazey och vanliga frågor.",
+   "title": "THCB (THC-B) i Sverige – fakta, rättsläge och källor | Hazey",
+   "meta": "Vad är THCB, eller THC-B? Fakta om tetrahydrocannabutol, rättsläget i Sverige med daterade primärkällor, THCB hos Hazey och vanliga frågor.",
    "canonical": "https://hazeyse.nyehandel.se/sv/page/thcb",
    "h1": [
     "THCB"
@@ -3749,7 +3807,7 @@
    "buyButtons": [],
    "facts": [
     {
-     "t": "THCB, även skrivet THC-B, är kortnamnet för tetrahydrocannab",
+     "t": "THCB, även skrivet THC-B eller THC B, är kortnamnet för tetr",
      "visible": true,
      "px": 12.8
     },
@@ -3799,7 +3857,7 @@
      "px": 22
     },
     {
-     "t": "Vi anger rättsläget för THCB som under granskning. Det här k",
+     "t": "Vi anger rättsläget som under granskning. Det här kan vi bel",
      "visible": true,
      "px": 12.8
     },
@@ -3829,17 +3887,17 @@
      "px": 16
     },
     {
-     "t": "Förslag om tio substanser. THCB finns inte med.",
+     "t": "Förslag om tio substanser, utan THCB.",
      "visible": true,
      "px": 16
     },
     {
-     "t": "Förslag om 20 substanser. THCB finns inte med.",
+     "t": "Förslag om 20 substanser, utan THCB.",
      "visible": true,
      "px": 16
     },
     {
-     "t": "Senaste kontroll: THCB står inte i förordningarnas förteckni",
+     "t": "Senaste kontroll: ämnet står inte i förordningarnas förteckn",
      "visible": true,
      "px": 16
     },
@@ -3909,7 +3967,7 @@
      "px": 12.8
     },
     {
-     "t": "Vi anger rättsläget som under granskning. Folkhälsomyndighet",
+     "t": "Vi anger det som under granskning. Folkhälsomyndigheten inle",
      "visible": true,
      "px": 12.8
     },
@@ -3924,7 +3982,7 @@
      "px": 12.8
     },
     {
-     "t": "Det finns lite forskning om THCB, och Hazey ger inga råd om ",
+     "t": "Det finns lite forskning om ämnet, och Hazey ger inga råd om",
      "visible": true,
      "px": 12.8
     }
@@ -3940,7 +3998,7 @@
     },
     {
      "q": "Är THCB lagligt i Sverige?",
-     "a": 263
+     "a": 256
     },
     {
      "q": "Vad är skillnaden mellan THCB och THC?",
@@ -3952,7 +4010,7 @@
     },
     {
      "q": "Är THCB säkert?",
-     "a": 144
+     "a": 145
     }
    ],
    "banned": [],
@@ -3973,6 +4031,8 @@
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
     "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
     "https://doi.org/10.1021/acs.jnatprod.9b00876",
+    "https://commons.wikimedia.org/wiki/File:Nes_(NL),_Strand_--_2026_--_1838.jpg",
+    "https://creativecommons.org/licenses/by-sa/4.0/deed.sv",
     "/sv/page/faq",
     "/sv/posts"
    ],
@@ -3999,37 +4059,37 @@
     },
     "lead": {
      "top": 251,
-     "bottom": 309,
+     "bottom": 328,
      "left": 0,
      "right": 393
     },
     "jump": {
-     "top": 329,
-     "bottom": 348,
+     "top": 348,
+     "bottom": 367,
      "left": 0,
      "right": 393
     },
     "photo": {
-     "top": 368,
-     "bottom": 368,
+     "top": 387,
+     "bottom": 387,
      "left": 0,
      "right": 393
     },
     "index": {
-     "top": 368,
-     "bottom": 488,
+     "top": 387,
+     "bottom": 507,
      "left": 0,
      "right": 393
     },
     "ch1": {
-     "top": 371,
-     "bottom": 413,
+     "top": 390,
+     "bottom": 432,
      "left": 0,
-     "right": 386
+     "right": 387
     },
     "aside": {
-     "top": 488,
-     "bottom": 615,
+     "top": 507,
+     "bottom": 634,
      "left": 0,
      "right": 393
     },

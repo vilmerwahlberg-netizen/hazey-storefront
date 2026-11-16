@@ -107,7 +107,7 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo {
   width: 58vw;
   background:
     linear-gradient(color-mix(in srgb, var(--at-sun) 8%, transparent), color-mix(in srgb, var(--at-sun) 8%, transparent)),
-    url("assets/knowledge-thcb/umbel-stone-620.webp") 40% 50% / cover no-repeat,
+    image-set(url("assets/knowledge-thcb/dune-grass-1100.webp") 1x, url("assets/knowledge-thcb/dune-grass-2000.webp") 2x) 30% 42% / cover no-repeat,
     linear-gradient(200deg, var(--at-sun) 0, var(--at-paper) 80%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .55) 16%, #000 34%), linear-gradient(180deg, #000 0, #000 78%, transparent 100%);
   -webkit-mask-composite: source-in;
@@ -122,9 +122,22 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: clamp(32px, 4.4vw, 76px);
   align-items: start;
-  margin: 0 0 clamp(56px, 6vw, 96px);
-  padding-top: clamp(24px, 2.4vw, 36px);
-  border-top: 1px solid var(--at-rule);
+  position: relative;
+  isolation: isolate;
+  margin: 0 0 clamp(48px, 5vw, 80px);
+  padding: clamp(28px, 2.8vw, 44px) 0 clamp(30px, 3vw, 48px);
+}
+/* Skissens ljusa nedre ark: ljusare papper kant till kant med en tunn
+   överkant, tonar ut nedåt in i sidans papper. Ingen kortyta. */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(50% - 50vw);
+  border-top: 1px solid color-mix(in srgb, var(--hz8-surface) 70%, transparent);
+  background: linear-gradient(180deg, var(--at-paper-light) 0, color-mix(in srgb, var(--at-paper-light) 60%, transparent) 70%, transparent 100%);
+  box-shadow: 0 -18px 40px -30px color-mix(in srgb, var(--lp-shadow) 40%, transparent);
+  pointer-events: none;
 }
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters { display: grid; }
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a {
@@ -174,7 +187,7 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related li::before {
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__related a { font-size: clamp(18px, 1.35vw, 21px) !important; }
 
 /* ---------- 3. Kapitel ---------- */
-html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter { position: relative; isolation: isolate; margin: 0 0 clamp(56px, 6vw, 96px); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapter { position: relative; isolation: isolate; margin: 0 0 clamp(48px, 5vw, 80px); }
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__kicker {
   display: flex;
   align-items: center;
@@ -269,9 +282,16 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list strong {
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a > span { grid-column: 2; color: var(--hz8-text-muted) !important; font: 400 14px/1.45 var(--hz8-font-ui) !important; }
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list a:hover strong { text-decoration: underline; text-decoration-color: var(--at-terra); text-underline-offset: 4px; }
 
-html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__nb { white-space: nowrap; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__nb { white-space: nowrap; font: inherit !important; letter-spacing: inherit !important; color: inherit !important; }
 /* FAQ (88b) på papperet: ingen putsbild bakom. */
-html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__faq { margin-top: 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__faq { margin-top: 0; padding-top: clamp(40px, 4vw, 64px); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__faq::before { background: linear-gradient(180deg, transparent 0, var(--at-paper-light) 120px, var(--at-paper-light) 100%); border-top: 0; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__qa details { background: color-mix(in srgb, var(--hz8-surface) 45%, var(--at-paper-light)); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__qa details:hover { background: color-mix(in srgb, var(--hz8-surface) 65%, var(--at-paper-light)); }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp__qa details[open] { background: color-mix(in srgb, var(--hz8-surface) 70%, var(--at-paper-light)); }
+/* Bildkredit (CC BY-SA 4.0 kräver erkännande). */
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__credit { max-width: 90ch; margin: 18px 0 0 !important; color: var(--hz8-text-muted) !important; font: 400 13px/1.5 var(--hz8-font-ui) !important; }
+html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__credit a { color: inherit !important; text-decoration: underline; text-underline-offset: 3px; }
 html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp :is(.hz8-atlas__chapters a, .hz8-atlas__source-list a, .hz8-atlas__jump a, .hz8-atlas__related a):focus-visible { outline: 2px solid var(--hz8-focus) !important; outline-offset: 3px !important; border-radius: 4px; }
 
 /* ---------- Surfplatta ---------- */
@@ -285,11 +305,16 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp :is(.hz8-atlas__chapters
     width: auto;
     height: clamp(170px, 34vw, 280px);
     margin: clamp(18px, 3vw, 28px) -16px 0;
-    background-position: 0 0, 50% 46%, 0 0;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%);
-            mask-image: linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent 100%);
+    background:
+      linear-gradient(color-mix(in srgb, var(--at-sun) 8%, transparent), color-mix(in srgb, var(--at-sun) 8%, transparent)),
+      url("assets/knowledge-thcb/dune-grass-band-1400.webp") 50% 40% / cover no-repeat,
+      linear-gradient(200deg, var(--at-sun) 0, var(--at-paper) 80%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .75) 10%, #000 22%, #000 86%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .75) 10%, #000 22%, #000 86%, transparent 100%);
   }
-  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 8px; border-top: 0; padding-top: 8px; }
+  /* Arket utan kant och skugga i en kolumn (bandet tonar redan ut ovanför). */
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index::before { border-top: 0; box-shadow: none; background: linear-gradient(180deg, transparent 0, var(--at-paper-light) 60px, color-mix(in srgb, var(--at-paper-light) 60%, transparent) 75%, transparent 100%); }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__index { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 0; padding-top: 18px; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__aside { padding: 22px 0 0; border-left: 0; border-top: 1px solid var(--at-rule); }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__body { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__source-list { grid-template-columns: minmax(0, 1fr); }
@@ -304,7 +329,7 @@ html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-lp :is(.hz8-atlas__chapters
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__lead { margin-top: 12px !important; font-size: 16px !important; line-height: 1.5 !important; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__jump { flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 10px !important; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__jump a { font-size: 19px !important; }
-  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo { height: 168px; margin-top: 14px; }
+  html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__photo { height: 190px; margin-top: 14px; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a { grid-template-columns: 46px minmax(0, 1fr); column-gap: 12px; padding: 14px 0; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__chapters a:first-child { padding-top: 6px; }
   html.hz8.hz8-lp-page.hz8-atlas-page #store-main .hz8-atlas__no { font-size: 30px !important; padding-top: 2px; }
