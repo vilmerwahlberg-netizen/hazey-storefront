@@ -75,10 +75,10 @@ async function fullShot(p, file) {
   let hide = null;
   for (let y = 0; y < H; y += step) {
     // Den fasta headern hör bara hemma överst; i senare delar skulle den ritas mitt i sidan.
-    if (y > 0 && !hide) hide = await p.addStyleTag({ content: "#store-header{visibility:hidden!important}" });
+    if (y > 0 && !hide) { hide = true; await p.evaluate(() => { for (const e of document.querySelectorAll("body *")) { const s = getComputedStyle(e); if ((s.position === "fixed" || s.position === "sticky") && s.visibility !== "hidden") { e.dataset.hz8ShotHidden = "1"; e.style.setProperty("visibility", "hidden", "important"); } } }); }
     parts.push((await p.screenshot({ fullPage: true, clip: { x: 0, y, width: W, height: Math.min(step, H - y) } })).toString("base64"));
   }
-  if (hide) await p.evaluate(t => t.remove(), hide);
+  if (hide) await p.evaluate(() => { for (const e of document.querySelectorAll("[data-hz8-shot-hidden]")) { e.style.removeProperty("visibility"); delete e.dataset.hz8ShotHidden; } });
   const page2 = await p.context().newPage();
   const png = await page2.evaluate(async ({ parts, W, H, step }) => {
     const c = document.createElement("canvas"); c.width = W; c.height = H; const g = c.getContext("2d");
@@ -90,7 +90,7 @@ async function fullShot(p, file) {
 
 if (process.argv[1] === new URL(import.meta.url).pathname) {
 const b = await chromium.launch({ channel: "chrome" }); const results = [];
-const ALL = [["hub-393", 393, 852], ["hub-1440", 1440, 900], ["hub-768", 768, 1024], ["hub-320", 320, 700], ["hub-1920", 1920, 1080],
+const ALL = [["hub-393", 393, 852], ["hub-1440", 1440, 900], ["hub-768", 768, 1024], ["hub-320", 320, 700], ["hub-430", 430, 932], ["hub-320-568", 320, 568], ["hub-1920", 1920, 1080],
   ["hub-393-noatmo", 393, 852, "noatmo"], ["hub-393-reduced", 393, 852, "reduced"], ["hub-393-nojs", 393, 852, "nojs"], ["hub-1440-nojs", 1440, 900, "nojs"]];
 const RUNS = ALL.filter(([t]) => !process.env.ONLY || process.env.ONLY.split(",").includes(t));
 for (const [tag, w, h, mode] of RUNS) {
@@ -101,7 +101,9 @@ for (const [tag, w, h, mode] of RUNS) {
   await p.screenshot({ path: path.join(OUT, `${tag}-fold.png`) });
   const fold = await p.evaluate(() => {
     const r = s => { const e = document.querySelector(s); if (!e) return null; const q = e.getBoundingClientRect(); return { top: Math.round(q.top), bottom: Math.round(q.bottom) }; };
-    return { h1: r(".hz8-lp h1"), photo: r(".hz8-atlas__photo"), indexH2: r("#hz8-hub-index"), search: r(".hz8-hub__search"), firstRow: r(".hz8-hub__table tbody tr"), vh: innerHeight };
+    return { h1: r(".hz8-lp h1"), photo: r(".hz8-atlas__photo"), indexH2: r("#hz8-hub-index"), search: r(".hz8-hub__search"), firstRow: r(".hz8-hub__table tbody tr"), vh: innerHeight,
+      rowsInFold: [...document.querySelectorAll(".hz8-hub__table tbody tr")].filter(t => { const q = t.getBoundingClientRect(); return q.height && q.bottom <= innerHeight; }).length,
+      searchInFold: (() => { const e = document.querySelector(".hz8-hub__search input"); return !!e && e.getBoundingClientRect().bottom <= innerHeight; })() };
   });
   await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 450) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 90)); } window.scrollTo(0, 0); });
   await p.waitForTimeout(800);
@@ -118,6 +120,7 @@ for (const [tag, w, h, mode] of RUNS) {
       overflowX: document.documentElement.scrollWidth - innerWidth,
       wide: [...document.querySelectorAll("#store-main *")].filter(e => { const q = e.getBoundingClientRect(); return q.width && q.right > innerWidth + 1 && !e.matches(".hz8-atlas__photo, .hz8-atlas__law, .hz8-atlas__opening, .hz8-hub__toggle"); }).slice(0, 5).map(e => e.tagName + "." + [...e.classList].join(".")),
       photo: photo ? { bg: getComputedStyle(photo).backgroundImage.match(/knowledge-[a-z]+\/[a-z0-9-]+\.webp/g), h: Math.round(photo.getBoundingClientRect().height) } : null,
+      lead: (() => { const l = document.querySelector("#amnesindex .hz8-atlas__lead"), t = document.querySelector(".hz8-hub__table"); if (!l) return null; const a = l.getBoundingClientRect(), z = t.getBoundingClientRect(); return { visible: vis(l), belowTable: a.top >= z.bottom - 1 }; })(),
       rows: rows.length, rowsVisible: rows.filter(vis).length,
       rowLinksVisible: rows.map(r => [...r.querySelectorAll("a")].filter(vis).length).reduce((a, b) => a + b, 0),
       rowLinksInDom: rows.map(r => r.querySelectorAll("a").length).reduce((a, b) => a + b, 0),
@@ -158,7 +161,7 @@ for (const [tag, w, h, mode] of RUNS) {
     m.faqOpen = await p.evaluate(() => document.querySelector(".hz8-lp__qa details").open);
     await p.keyboard.press("Enter");
   }
-  await p.evaluate(() => { document.activeElement?.blur(); history.replaceState(null, "", location.pathname + location.search); window.scrollTo(0, 0); }); await p.waitForTimeout(700);
+  await p.evaluate(() => { document.activeElement?.blur(); history.replaceState(null, "", location.pathname + location.search); window.scrollTo({ top: 0, behavior: "instant" }); }); await p.waitForTimeout(700);
   await fullShot(p, path.join(OUT, `${tag}-full.png`));
   m.errors = p.errors.filter(e => !/favicon|trustpilot|Failed to load resource|recaptcha/i.test(e));
   if (w === 1440 && !mode) {

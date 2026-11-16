@@ -39,7 +39,11 @@
     "bg": [
      "knowledge-hub/sea-band-1100.webp"
     ],
-    "h": 150
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
    },
    "rows": 20,
    "rowsVisible": 20,
@@ -97,22 +101,24 @@
      "bottom": 249
     },
     "photo": {
-     "top": 347,
-     "bottom": 497
+     "top": 121,
+     "bottom": 421
     },
     "indexH2": {
-     "top": 545,
-     "bottom": 584
+     "top": 457,
+     "bottom": 496
     },
     "search": {
-     "top": 714,
-     "bottom": 796
+     "top": 512,
+     "bottom": 592
     },
     "firstRow": {
-     "top": 815,
-     "bottom": 917
+     "top": 609,
+     "bottom": 705
     },
-    "vh": 852
+    "vh": 852,
+    "rowsInFold": 2,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -162,19 +168,19 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 10.56
+     "worst": 9.58
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 10.46
+     "worst": 8.91
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.83
+     "worst": 10.66
     },
     {
      "s": ".hz8-hub__checked",
-     "worst": 12.83
+     "worst": 8.77
     },
     {
      "s": ".hz8-atlas__jump a",
@@ -182,7 +188,7 @@
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 14.22
+     "worst": 13.56
     },
     {
      "s": ".hz8-hub__search input",
@@ -190,7 +196,7 @@
     },
     {
      "s": ".hz8-hub__count",
-     "worst": 14.09
+     "worst": 13.99
     },
     {
      "s": ".hz8-hub__table thead th",
@@ -230,7 +236,7 @@
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 4.63
+     "worst": 4.64
     },
     {
      "s": "#metod .hz8-atlas__text p",
@@ -314,6 +320,10 @@
     ],
     "h": 490
    },
+   "lead": {
+    "visible": true,
+    "belowTable": false
+   },
    "rows": 20,
    "rowsVisible": 20,
    "rowLinksVisible": 24,
@@ -385,7 +395,9 @@
      "top": 838,
      "bottom": 935
     },
-    "vh": 900
+    "vh": 900,
+    "rowsInFold": 0,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -615,6 +627,10 @@
     ],
     "h": 338
    },
+   "lead": {
+    "visible": true,
+    "belowTable": false
+   },
    "rows": 20,
    "rowsVisible": 20,
    "rowLinksVisible": 24,
@@ -686,7 +702,9 @@
      "top": 1064,
      "bottom": 1159
     },
-    "vh": 1024
+    "vh": 1024,
+    "rowsInFold": 0,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -879,7 +897,11 @@
     "bg": [
      "knowledge-hub/sea-band-1100.webp"
     ],
-    "h": 150
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
    },
    "rows": 20,
    "rowsVisible": 20,
@@ -937,22 +959,24 @@
      "bottom": 229
     },
     "photo": {
-     "top": 374,
-     "bottom": 524
+     "top": 121,
+     "bottom": 421
     },
     "indexH2": {
-     "top": 572,
-     "bottom": 611
+     "top": 457,
+     "bottom": 496
     },
     "search": {
-     "top": 741,
-     "bottom": 822
+     "top": 512,
+     "bottom": 592
     },
     "firstRow": {
-     "top": 841,
-     "bottom": 963
+     "top": 609,
+     "bottom": 724
     },
-    "vh": 700
+    "vh": 700,
+    "rowsInFold": 0,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -1002,19 +1026,19 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 10.56
+     "worst": 9.58
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 10.46
+     "worst": 8.98
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.83
+     "worst": 10.49
     },
     {
      "s": ".hz8-hub__checked",
-     "worst": 12.83
+     "worst": 7.59
     },
     {
      "s": ".hz8-atlas__jump a",
@@ -1022,7 +1046,7 @@
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 14.22
+     "worst": 13.56
     },
     {
      "s": ".hz8-hub__search input",
@@ -1030,7 +1054,7 @@
     },
     {
      "s": ".hz8-hub__count",
-     "worst": 14.09
+     "worst": 13.99
     },
     {
      "s": ".hz8-hub__table thead th",
@@ -1074,7 +1098,563 @@
     },
     {
      "s": "#metod .hz8-atlas__text p",
-     "worst": 12.75
+     "worst": 12.84
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.98
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.34
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 104
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-430",
+   "w": 430,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 255
+    },
+    "photo": {
+     "top": 121,
+     "bottom": 421
+    },
+    "indexH2": {
+     "top": 457,
+     "bottom": 496
+    },
+    "search": {
+     "top": 512,
+     "bottom": 592
+    },
+    "firstRow": {
+     "top": 609,
+     "bottom": 705
+    },
+    "vh": 932,
+    "rowsInFold": 2,
+    "searchInFold": true
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 9.55
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 8.89
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 10.27
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 8.32
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 13.56
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 13.99
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.46
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.64
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.8
+    },
+    {
+     "s": ".hz8-hub__terms dt",
+     "worst": 10.9
+    },
+    {
+     "s": ".hz8-hub__terms dd",
+     "worst": 13.33
+    },
+    {
+     "s": ".hz8-atlas__timeline time",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__timeline span",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-hub__open li",
+     "worst": 13.26
+    },
+    {
+     "s": ".hz8-atlas__source-list strong",
+     "worst": 11
+    },
+    {
+     "s": ".hz8-atlas__source-list a > span",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-atlas__credit",
+     "worst": 6.15
+    },
+    {
+     "s": ".hz8-lp__qa summary",
+     "worst": 15.1
+    }
+   ],
+   "anchor": {
+    "hash": "#metod",
+    "top": 722
+   },
+   "faqOpen": true,
+   "errors": []
+  },
+  {
+   "tag": "hub-320-568",
+   "w": 320,
+   "mode": "",
+   "classes": [
+    "hz8-lp-page",
+    "hz8-atlas-page"
+   ],
+   "scene": "hub",
+   "enhanced": true,
+   "collapsible": true,
+   "title": "Cannabinoider i Sverige – rättsläge ämne för ämne, med källor | Hazey",
+   "meta": "Vilka cannabinoider är narkotika eller hälsofarliga varor i Sverige? Ämnesindex med status, datum och primärkälla för THCA, THCB, THCH, HHC, CBD med flera, kontrollerat 16 november 2026.",
+   "h1": [
+    "Cannabinoider i Sverige"
+   ],
+   "h2": [
+    "Ämnesindex",
+    "Så kontrollerar vi",
+    "Klassningarna sedan 2023",
+    "Ämnen, blandningar och handelsnamn",
+    "Öppna frågor",
+    "Källor",
+    "Vanliga frågor om rättsläget"
+   ],
+   "overflowX": 0,
+   "wide": [],
+   "photo": {
+    "bg": [
+     "knowledge-hub/sea-band-1100.webp"
+    ],
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
+   },
+   "rows": 20,
+   "rowsVisible": 20,
+   "rowLinksVisible": 0,
+   "rowLinksInDom": 24,
+   "faq": [
+    "Vilka cannabinoider är lagliga i Sverige?",
+    "Är THCA lagligt i Sverige?",
+    "Är CBD lagligt i Sverige?",
+    "Finns det laglig cannabis i Sverige?",
+    "Vad är skillnaden mellan narkotika och hälsofarlig vara?",
+    "Vad betyder det att ett ämne utreds?"
+   ],
+   "banned": [],
+   "buyButtons": [],
+   "links": [
+    "#amnesindex",
+    "#metod",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2026-06/SFS2026-1109.pdf",
+    "/sv/page/thca",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/delta-9-thcb_00862-2024.pdf",
+    "/sv/page/thcb",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-985.pdf",
+    "/sv/page/thch",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-06/SFS2023-379.pdf",
+    "/sv/page/hhc",
+    "/sv/page/hhc#fragor",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2023-12/SFS2023-901.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2024-11/SFS2024-986.pdf",
+    "https://svenskforfattningssamling.se/sites/default/files/sfs/2025-06/SFS2025-663.pdf",
+    "https://www.folkhalsomyndigheten.se/contentassets/23593f19f3e84792bc4a823f8240894c/00726-2023-h4-cbd.pdf",
+    "https://www.domstol.se/hogsta-domstolen/avgoranden2/2019/21081/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-19921554-om-kontroll-av-narkotika_sfs-1992-1554/",
+    "#statusord",
+    "#oppna-fragor",
+    "#kallor",
+    "/sv/categories/magic-sauce",
+    "/sv/categories/nano",
+    "/sv/page/thca#alternativ",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/forordning-199958-om-forbud-mot-vissa_sfs-1999-58/",
+    "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/lag-199942-om-forbud-mot-vissa-halsofarliga_sfs-1999-42/",
+    "https://www.folkhalsomyndigheten.se/regler-och-tillsyn/yttanden-enligt-forstorandelagen/",
+    "https://www.regeringen.se/pressmeddelanden/2026/06/regeringen-narkotikaklassar-18-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2025/06/regeringen-narkotikaklassar-nya-substanser/",
+    "https://www.regeringen.se/pressmeddelanden/2024/11/regeringen-narkotikaklassar-nitazener/",
+    "https://www.regeringen.se/pressmeddelanden/2023/12/beslut-om-narkotikaklassning-och-forbud-mot-flera-nya-substanser/",
+    "https://www.livsmedelsverket.se/foretagande-regler-kontroll/regler-for-livsmedelsforetag/hampa-cannabis-sativa/",
+    "/sv/page/faq",
+    "/sv/posts"
+   ],
+   "footer": true,
+   "fold": {
+    "h1": {
+     "top": 143,
+     "bottom": 229
+    },
+    "photo": {
+     "top": 121,
+     "bottom": 421
+    },
+    "indexH2": {
+     "top": 457,
+     "bottom": 496
+    },
+    "search": {
+     "top": 512,
+     "bottom": 592
+    },
+    "firstRow": {
+     "top": 609,
+     "bottom": 724
+    },
+    "vh": 568,
+    "rowsInFold": 0,
+    "searchInFold": true
+   },
+   "search": {
+    "hhc": {
+     "shown": [
+      "HHC",
+      "HHCP",
+      "HHC-acetat",
+      "HHCPO",
+      "HHCH",
+      "10-OH-HHC",
+      "HHC-C8 och HHC-C9"
+     ],
+     "count": "Visar 7 av 20 ämnen.",
+     "empty": false
+    },
+    "THC-H": {
+     "shown": [
+      "THCH"
+     ],
+     "count": "Visar 1 av 20 ämnen.",
+     "empty": false
+    },
+    "cbd": {
+     "shown": [
+      "H4-CBD",
+      "CBD"
+     ],
+     "count": "Visar 2 av 20 ämnen.",
+     "empty": false
+    },
+    "xyz": {
+     "shown": [],
+     "count": "Visar 0 av 20 ämnen.",
+     "empty": true
+    },
+    "afterEscape": {
+     "value": "",
+     "shown": 20
+    }
+   },
+   "rowToggle": {
+    "expanded": "true",
+    "linksVisible": 2,
+    "label": "Visa datum och källa för THCA",
+    "tabTo": "SFS 2026:1109 (PDF, öppnas i ny flik)"
+   },
+   "contrast": [
+    {
+     "s": ".hz8-lp h1",
+     "worst": 9.58
+    },
+    {
+     "s": ".hz8-lp__eyebrow",
+     "worst": 8.98
+    },
+    {
+     "s": ".hz8-atlas__tagline",
+     "worst": 10.49
+    },
+    {
+     "s": ".hz8-hub__checked",
+     "worst": 7.59
+    },
+    {
+     "s": ".hz8-atlas__jump a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-atlas__lead",
+     "worst": 13.56
+    },
+    {
+     "s": ".hz8-hub__search input",
+     "worst": 15.21
+    },
+    {
+     "s": ".hz8-hub__count",
+     "worst": 13.99
+    },
+    {
+     "s": ".hz8-hub__table thead th",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__name",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__alias",
+     "worst": 6.59
+    },
+    {
+     "s": ".hz8-hub__status",
+     "worst": 11.79
+    },
+    {
+     "s": ".hz8-hub__note",
+     "worst": 14.22
+    },
+    {
+     "s": ".hz8-hub__table td.hz8-hub__more",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__table td a",
+     "skipped": "saknas/dold"
+    },
+    {
+     "s": ".hz8-hub__method-title",
+     "worst": 11.16
+    },
+    {
+     "s": ".hz8-atlas__aside > p:not([class])",
+     "worst": 13.36
+    },
+    {
+     "s": ".hz8-atlas__related a",
+     "worst": 4.63
+    },
+    {
+     "s": "#metod .hz8-atlas__text p",
+     "worst": 12.84
     },
     {
      "s": ".hz8-hub__terms dt",
@@ -1154,6 +1734,10 @@
     ],
     "h": 524
    },
+   "lead": {
+    "visible": true,
+    "belowTable": false
+   },
    "rows": 20,
    "rowsVisible": 20,
    "rowLinksVisible": 24,
@@ -1225,7 +1809,9 @@
      "top": 884,
      "bottom": 983
     },
-    "vh": 1080
+    "vh": 1080,
+    "rowsInFold": 1,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -1418,7 +2004,11 @@
     "bg": [
      "knowledge-hub/sea-band-1100.webp"
     ],
-    "h": 150
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
    },
    "rows": 20,
    "rowsVisible": 20,
@@ -1476,22 +2066,24 @@
      "bottom": 249
     },
     "photo": {
-     "top": 347,
-     "bottom": 497
+     "top": 121,
+     "bottom": 421
     },
     "indexH2": {
-     "top": 545,
-     "bottom": 584
+     "top": 457,
+     "bottom": 496
     },
     "search": {
-     "top": 714,
-     "bottom": 796
+     "top": 512,
+     "bottom": 592
     },
     "firstRow": {
-     "top": 815,
-     "bottom": 917
+     "top": 609,
+     "bottom": 705
     },
-    "vh": 852
+    "vh": 852,
+    "rowsInFold": 2,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -1541,19 +2133,19 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 10.56
+     "worst": 11.41
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 10.47
+     "worst": 11.25
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.83
+     "worst": 13.77
     },
     {
      "s": ".hz8-hub__checked",
-     "worst": 12.83
+     "worst": 13.44
     },
     {
      "s": ".hz8-atlas__jump a",
@@ -1561,7 +2153,7 @@
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 14.22
+     "worst": 13.56
     },
     {
      "s": ".hz8-hub__search input",
@@ -1569,7 +2161,7 @@
     },
     {
      "s": ".hz8-hub__count",
-     "worst": 14.09
+     "worst": 13.99
     },
     {
      "s": ".hz8-hub__table thead th",
@@ -1609,7 +2201,7 @@
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 4.63
+     "worst": 4.64
     },
     {
      "s": "#metod .hz8-atlas__text p",
@@ -1690,7 +2282,11 @@
     "bg": [
      "knowledge-hub/sea-band-1100.webp"
     ],
-    "h": 150
+    "h": 300
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": true
    },
    "rows": 20,
    "rowsVisible": 20,
@@ -1748,22 +2344,24 @@
      "bottom": 249
     },
     "photo": {
-     "top": 347,
-     "bottom": 497
+     "top": 121,
+     "bottom": 421
     },
     "indexH2": {
-     "top": 545,
-     "bottom": 584
+     "top": 457,
+     "bottom": 496
     },
     "search": {
-     "top": 714,
-     "bottom": 796
+     "top": 512,
+     "bottom": 592
     },
     "firstRow": {
-     "top": 815,
-     "bottom": 917
+     "top": 609,
+     "bottom": 705
     },
-    "vh": 852
+    "vh": 852,
+    "rowsInFold": 2,
+    "searchInFold": true
    },
    "search": {
     "hhc": {
@@ -1813,19 +2411,19 @@
    "contrast": [
     {
      "s": ".hz8-lp h1",
-     "worst": 10.56
+     "worst": 9.58
     },
     {
      "s": ".hz8-lp__eyebrow",
-     "worst": 10.47
+     "worst": 8.91
     },
     {
      "s": ".hz8-atlas__tagline",
-     "worst": 12.83
+     "worst": 10.66
     },
     {
      "s": ".hz8-hub__checked",
-     "worst": 12.83
+     "worst": 8.77
     },
     {
      "s": ".hz8-atlas__jump a",
@@ -1833,7 +2431,7 @@
     },
     {
      "s": ".hz8-atlas__lead",
-     "worst": 14.22
+     "worst": 13.56
     },
     {
      "s": ".hz8-hub__search input",
@@ -1841,7 +2439,7 @@
     },
     {
      "s": ".hz8-hub__count",
-     "worst": 14.09
+     "worst": 13.99
     },
     {
      "s": ".hz8-hub__table thead th",
@@ -1881,7 +2479,7 @@
     },
     {
      "s": ".hz8-atlas__related a",
-     "worst": 4.63
+     "worst": 4.64
     },
     {
      "s": "#metod .hz8-atlas__text p",
@@ -1926,7 +2524,7 @@
    ],
    "anchor": {
     "hash": "#metod",
-    "top": 682
+    "top": 104
    },
    "faqOpen": true,
    "errors": []
@@ -1958,6 +2556,10 @@
    "photo": {
     "bg": null,
     "h": 0
+   },
+   "lead": {
+    "visible": true,
+    "belowTable": false
    },
    "rows": 20,
    "rowsVisible": 20,
@@ -2027,7 +2629,9 @@
      "top": 480,
      "bottom": 669
     },
-    "vh": 852
+    "vh": 852,
+    "rowsInFold": 1,
+    "searchInFold": false
    },
    "errors": [
     "[Hazey Theme 8] JavaScript could not be loaded."
@@ -2129,7 +2733,9 @@
      "top": 621,
      "bottom": 669
     },
-    "vh": 900
+    "vh": 900,
+    "rowsInFold": 6,
+    "searchInFold": false
    },
    "errors": [
     "[Hazey Theme 8] JavaScript could not be loaded."

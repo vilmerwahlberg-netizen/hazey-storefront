@@ -87,3 +87,47 @@ Helsidan vid 393 är cirka 10 600 px hög. Bilden är ihopsatt av delar i 1× up
    - R5: länkar tillbaka från guiderna.
    - R8: den gamla THCNM-artikeln.
 3. **Publicering:** merge till `dev`, Pages-bygge och skapande via `nh-pages.mjs`. Görs först efter godkännande.
+
+## Mobilkorrigering (16 november 2026, före merge)
+
+**Uppdraget:** vid 393 × 852 ska sökfältet och minst två ämnesrader synas i första vyn. Desktop är godkänd och ska inte ändras.
+
+**Ändrat, bara CSS vid ≤ 767 px** (`88f-landing-hub.css`):
+1. **Kustbilden ligger bakom rubriken** i stället för som eget band under den, som i skissens telefon. Papperet tonar ned över bildens överdel, så rubriken står på ljus botten, och havet syns nedtill. Bandets höjd (cirka 170 px) sparas. Bilden börjar under brödsmulan.
+2. **Ingressen** ("Vilka cannabinoider är narkotika eller hälsofarliga varor …") visas efter tabellen på mobil. Den står kvar på samma plats i HTML och på desktop; bara den visuella ordningen ändras (flex-`order`). Ingressen är ren text, så tabbordningen påverkas inte.
+3. Tätare radavstånd i tabellen på mobil (11 px i stället för 13 px).
+
+**Oförändrat:**
+- Blockets HTML är byte för byte identisk med `7913ef1`.
+- Alla 20 rader, statusar, datum, källor, länkar och FAQ-svar är kvar.
+- JS är oförändrad.
+
+| Vy | Före | Efter |
+|---|---|---|
+| 393 × 852 | Sökfältet slutar vid 1063 px. Första raden börjar vid 1082 px, alltså under vikningen. | Sökfältet slutar vid 592 px. THCA och THCB syns hela (2 rader). |
+| 430 × 932 | – | Sökfältet och 2 hela rader syns, och tredje raden börjar |
+| 320 × 700 | – | Sökfältet syns (slutar vid 592 px). Första raden börjar vid 609 px men slutar vid 724 px, alltså under vikningen. |
+| 320 × 568 | – | Sökfältet syns, raderna under vikningen |
+| 1440 × 900 och 1920 × 1080 | – | **Pixelidentiska** med före (0 % ändrade pixlar vid samma WebP-kodning, `pixeldiff.mjs`) |
+
+**Kontroller efter korrigeringen** (`verify.json`, alla 11 körningar):
+- Ingen sidledsscroll i någon körning och inga konsolfel utom laddmeddelandet utan JS.
+- Lägsta kontrast 4,53 (desktop, oförändrad) och 4,64 på mobil. Kontrollraden ovanpå bilden har minst 7,59.
+- Sök ("hhc" ger 7 träffar), Escape, öppningsbar rad med Enter, ankare och FAQ med tangentbordet fungerar i alla JS-körningar.
+
+**SEO-regression** (`seo-regression.mjs` → `seo-regression.json`, mot `KARTLAGGNING.md`):
+- Samma H1 "Cannabinoider i Sverige". Titel- och metaförslaget står kvar i kartläggningen.
+- Synliga svar på `laglig cannabis`, `lagliga droger 2026`, `cannabinoider sverige` och `lagliga cannabinoider` finns kvar.
+- 20 rader och 51 länkar, samma som före. Guidelänkar: THCA 3, THCB, THCH och HHC 2 vardera.
+- Textlängden är 9 772 tecken, samma som före.
+
+**Bilder** (`shots/`):
+
+| Fil | Innehåll |
+|---|---|
+| `korr-393-fold.webp` | Före, efter, efter med öppnad rad, 430 och 320 |
+| `korr-1920-fold.webp` | Före och efter, pixelidentiska |
+| `korr-393-helsida.webp` | Före och efter, hela sidan |
+| `fore-mobil/` | Före-bilderna (`7913ef1`) |
+
+**Fel i testbilderna (inte i sidan):** Före-helsidan vid 393 visar headern mitt på sidan. Det var testskriptet, som tog helsidesbilden medan en mjuk rullning tillbaka till toppen pågick. `verify.mjs` rullar nu direkt till toppen och döljer fasta element i bildens senare delar.
