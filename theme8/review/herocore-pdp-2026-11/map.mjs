@@ -4,7 +4,7 @@
 import { chromium, ctxFor, open, URL_ } from "../pdp-pilot-2026-10/lib.mjs";
 import fs from "node:fs"; import path from "node:path";
 const DIR = path.dirname(new URL(import.meta.url).pathname);
-const ROUTE = "/sv/products/thc-x-vape-hero-core-2ml";
+const ROUTE = process.env.ROUTE || "/sv/products/thc-x-vape-hero-core-2ml";
 const raw = await (await fetch("https://hazeyse.nyehandel.se" + ROUTE)).text();
 const rawInfo = {
   bytes: raw.length,
@@ -51,7 +51,7 @@ const d = await p.evaluate(async () => {
   };
 });
 const out = { route: ROUTE, raw: rawInfo, live: d, at: new Date().toISOString() };
-fs.writeFileSync(path.join(DIR, "map.json"), JSON.stringify(out, null, 1));
-await p.screenshot({ path: path.join(DIR, "fore-1440-topp.jpg"), type: "jpeg", quality: 75 });
+fs.writeFileSync(path.join(process.env.OUTDIR || DIR, "map.json"), JSON.stringify(out, null, 1));
+await p.screenshot({ path: path.join(process.env.OUTDIR || DIR, "fore-1440-topp.jpg"), type: "jpeg", quality: 75 });
 console.log(JSON.stringify({ ...out, live: { ...d, articleHtml: undefined, shortDescHtml: undefined } }, null, 1).slice(0, 14000));
 await b.close();
