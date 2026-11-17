@@ -99,6 +99,8 @@
         instock: !known ? "" : inStock.length ? esc("Just nu i lager: " + list(inStock) + ".") : "Just nu är alla strains slutsålda.",
         compare: C.compare ? '<a href="' + esc(HZ8.link(C.compare.href)) + '">' + esc(C.compare.label) + "</a>" : "",
         allvapes: '<a href="' + esc(HZ8.link("/sv/categories/alla-vapes")) + '">alla vapes</a>',
+        /* Produkttextens egna specifikationsrader, ordagrant. */
+        typelabel: esc(spec(/produkttyp/i)), storage: esc(spec(/förvaring/i)),
         /* Varumärkessidan ur Nyehandels serverrenderade köpdel. */
         brandlink: (function () { var a = document.querySelector(".product-detail__information .brand a"); return a && brand ? '<a href="' + esc(a.getAttribute("href")) + '">alla produkter från ' + esc(brand) + "</a>" : ""; })(),
         analysis: analysisHtml(), packs: packsHtml(), delivery: deliveryHtml(),

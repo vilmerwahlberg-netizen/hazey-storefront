@@ -280,6 +280,83 @@
         limit: 10
       },
       reviews: { h: "Kundomdömen" }
+    },
+
+    /* THCbA 47 % – Faraoh – 2 ml (2026-11-17). Egen copy; inget från MS-,
+       Hero- eller D10-posten. Underlag: theme8/review/thcba-pdp-2026-11/
+       KARTLAGGNING.md. Ny copy säger inget om THCbA, halter, rättsläge
+       eller THCA; produkttyp och förvaring läses ordagrant ur
+       produktinformationen ({typelabel}, {storage}). Ingen labbrapport
+       finns i produkttexten (den skickas på begäran). Hela produkten var
+       slutsåld 2026-11-17. */
+    236: {
+      trust: "terms",
+      summary: {
+        h: "Kort om Faraohs THCbA-vape",
+        text: "En vape från {brand} med {size} innehåll, i {count} strains – bland andra {some}. {instock}"
+      },
+      cues: ["type", "size", "brand", "strains"],
+      strains: {
+        h: "Strains och lagerläge",
+        lead: "Alla strains i THCbA-vapen från Faraoh. Finns en strain i lager väljer du den här, så följer valet med till köpdelen."
+      },
+      analysis: { h: "Labbrapport", text: "" },
+      chapter: {
+        h: "Om THCbA-vapen från Faraoh",
+        specsH: "Specifikationer",
+        fullH: "Full produktinformation",
+        fullNote: "Formula, CCELL-enhet, laglighet, produktinformation och ansvar",
+        image: { desktop: "knowledge-hub/kustljus-1100.webp", mobile: "knowledge-hub/kustljus-band-932.webp", w: 1100, h: 619 },
+        sections: [
+          { col: "a", match: [/^faraoh thcba vape 2ml/i] },
+          { col: "a", match: [/^vad är thcba/i] },
+          { col: "b", match: [/^vad är full spectrum live resin/i] },
+          { col: "b", match: [/^viktig förvaringsinformation/i] }
+        ]
+      },
+      factcheck: [
+        { re: /THCA klassades som narkotika i Sverige den 14 juli 2026/i, why: "rättsläge" },
+        { re: /helt ny generation naturliga cannabinoidvapes/i, why: "naturlig/jämförande" },
+        { re: /47% THCbA är grunden i formulan/i, why: "halt (ingen labbrapport i texten)" },
+        { re: /resterande 53%, som utgör Faraoh Signature Live Resin Blend™/i, why: "sammansättning" },
+        { re: /med inspiration från cannabisplantans naturliga cannabinoidprofil/i, why: "ordet cannabis" },
+        { re: /naturligt förekommande cannabinoid i Cannabis sativa/i, why: "ursprung/ordet cannabis" },
+        { re: /ett eget rättsläge/i, why: "rättsläge" },
+        { re: /vid försäljningstillfället laglig i Sverige/i, why: "laglighet" },
+        { re: /skiljer Faraoh från traditionella vapes/i, why: "jämförande påstående" },
+        { re: /Live Resin framställs av färskt eller fryst växtmaterial/i, why: "process" },
+        { re: /känd för jämn uppvärmning, hög tillförlitlighet och premiumkänsla/i, why: "hårdvara" },
+        { re: /THCbA är känsligt för värme/i, why: "stabilitet" },
+        { re: /En laglig cannabis/i, why: "laglighet + ordet cannabis" },
+        { re: /THCbA är lagligt i Sverige vid försäljningstillfället/i, why: "laglighet" },
+        { re: /efterlever kontinuerligt svensk lagstiftning/i, why: "laglighet" },
+        { re: /framställd av EU-certifierad industrihampa/i, why: "ursprung" },
+        { re: /Tillverkad av industrihampa enligt EU-regelverk \(<0,3 % THC\)\./i, why: "THC-halt/ursprung" },
+        { re: /Uppfyller gällande svensk lag vid försäljningstillfället\./i, why: "laglighet" },
+        { re: /Ej för konsumtion\./i, why: "juridisk formulering" }
+      ],
+      specs: ["Produkttyp", "Innehåll", "Förvaring"],
+      faq: {
+        h: "Frågor om THCbA-vapen från Faraoh",
+        items: [
+          { q: "Vilka strains finns?", a: "Vapen finns i {count} strains: {all}. {instock}" },
+          { q: "Är det en engångsvape?", a: "Nej. I produktinformationen står produkttypen som {typelabel}." },
+          { q: "Hur ska vapen förvaras?", a: "Produktinformationen anger: {storage}." },
+          { q: "Finns det en labbrapport?", a: "{analysis}" },
+          { q: "Vad kostar 3-pack och 5-pack?", a: "{packs}", needs: "packs" },
+          { q: "Hur skickas beställningen och hur returnerar jag?", a: "{delivery}" }
+        ]
+      },
+      more: {
+        h: "Fler vapes",
+        /* THCbA Vapes innehåller bara den här produkten (2026-11-17). */
+        sources: ["/sv/categories/alla-vapes"],
+        preferBrand: true,
+        exclude: /\bTHCA-?B\b|\bTHCaB\b/i,
+        all: { href: "/sv/categories/alla-vapes", label: "Alla vapes" },
+        limit: 10
+      },
+      reviews: { h: "Kundomdömen" }
     }
   };
 })();

@@ -55,3 +55,21 @@ Underlag: `d10-pdp-2026-11/KARTLAGGNING.md`.
    - "En laglig cannabis", "<0,3 % THC"
    - jämförelser med Magic Sauce
 6. **Webbhotellet** svarade 429 (för många anrop) på snabba PDF-hämtningar i följd. Det bör kontrolleras inför flytten av PDF:erna.
+
+## THCbA 47 % – Faraoh – 2 ml (236)
+
+Underlag: `thcba-pdp-2026-11/KARTLAGGNING.md`.
+
+1. **Hela produkten är slutsåld.** Samma fråga som för D10.
+2. **Varumärkesröst i SEO-titel och meta.**
+   - Titeln innehåller `%%sep%%` och "Lagligt alternativ till THCA".
+   - Metan har "det lagliga alternativet efter THCA-förbudet" och **"Samma aura"**, som antyder effekt (hård gräns).
+3. **Inledningen i den öppna texten:** "THCA klassades som narkotika … Faraoh är tillbaka". Den står ordagrant men framträdande. Ska den ligga öppet, i Full produktinformation eller skrivas om?
+4. **Ingen labbrapport** (texten säger "skickas på begäran"), medan namnet anger 47 %.
+5. **Obelagda påståenden** (19 markeras):
+   - rättsläge, "laglig i Sverige", "En laglig cannabis"
+   - "Cannabis sativa", "naturliga"
+   - 47 % / 53 %
+   - jämförelse med "traditionella vapes"
+   - CCELL
+6. **Karusellen:** samma fråga som för MS. Ska THC-B/THCbA synas i andras karuseller?
