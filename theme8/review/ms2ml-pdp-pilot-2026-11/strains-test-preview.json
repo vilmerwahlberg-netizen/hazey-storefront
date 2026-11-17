@@ -1,0 +1,235 @@
+{
+ "393": {
+  "groups": [
+   {
+    "visible": [
+     "Gorilla Cookies*",
+     "Tinky Winky",
+     "Crazy Dog(slut)"
+    ],
+    "pos": "1–3 av 9 strains",
+    "prevDisabled": true,
+    "nextDisabled": false,
+    "scrollY": 1058,
+    "docW": 393,
+    "native": "Gorilla Cookies"
+   },
+   {
+    "visible": [
+     "High Pepito(slut)",
+     "Samurai Jack(slut)",
+     "Yoda Ice Cream(slut)"
+    ],
+    "pos": "4–6 av 9 strains",
+    "prevDisabled": false,
+    "nextDisabled": false,
+    "scrollY": 1093,
+    "docW": 393,
+    "native": "Gorilla Cookies"
+   },
+   {
+    "visible": [
+     "London Lobster(slut)",
+     "Kowa Bunga(slut)",
+     "Bruce Banner OG(slut)"
+    ],
+    "pos": "7–9 av 9 strains",
+    "prevDisabled": false,
+    "nextDisabled": true,
+    "scrollY": 1093,
+    "docW": 393,
+    "native": "Gorilla Cookies"
+   }
+  ],
+  "selectTinky": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky",
+   "jump": 0
+  },
+  "clickSoldOut": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky"
+  },
+  "afterPaging": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky"
+  },
+  "keyboard": {
+   "visible": [
+    "High Pepito(slut)",
+    "Samurai Jack(slut)",
+    "Yoda Ice Cream(slut)"
+   ],
+   "pos": "4–6 av 9 strains",
+   "prevDisabled": false,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky",
+   "focused": "High PepitoSlut"
+  },
+  "keyboardArrow": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky"
+  },
+  "swipe": {
+   "visible": [
+    "High Pepito(slut)",
+    "Samurai Jack(slut)",
+    "Yoda Ice Cream(slut)"
+   ],
+   "pos": "4–6 av 9 strains",
+   "prevDisabled": false,
+   "nextDisabled": false,
+   "scrollY": 1093,
+   "docW": 393,
+   "native": "Tinky Winky"
+  }
+ },
+ "1440": {
+  "groups": [
+   {
+    "visible": [
+     "Gorilla Cookies*",
+     "Tinky Winky",
+     "Crazy Dog(slut)"
+    ],
+    "pos": "1–3 av 9 strains",
+    "prevDisabled": true,
+    "nextDisabled": false,
+    "scrollY": 821,
+    "docW": 1440,
+    "native": "Gorilla Cookies"
+   },
+   {
+    "visible": [
+     "High Pepito(slut)",
+     "Samurai Jack(slut)",
+     "Yoda Ice Cream(slut)"
+    ],
+    "pos": "4–6 av 9 strains",
+    "prevDisabled": false,
+    "nextDisabled": false,
+    "scrollY": 821,
+    "docW": 1440,
+    "native": "Gorilla Cookies"
+   },
+   {
+    "visible": [
+     "London Lobster(slut)",
+     "Kowa Bunga(slut)",
+     "Bruce Banner OG(slut)"
+    ],
+    "pos": "7–9 av 9 strains",
+    "prevDisabled": false,
+    "nextDisabled": true,
+    "scrollY": 821,
+    "docW": 1440,
+    "native": "Gorilla Cookies"
+   }
+  ],
+  "selectTinky": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 821,
+   "docW": 1440,
+   "native": "Tinky Winky",
+   "jump": 0
+  },
+  "clickSoldOut": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 821,
+   "docW": 1440,
+   "native": "Tinky Winky"
+  },
+  "afterPaging": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 821,
+   "docW": 1440,
+   "native": "Tinky Winky"
+  },
+  "keyboard": {
+   "visible": [
+    "High Pepito(slut)",
+    "Samurai Jack(slut)",
+    "Yoda Ice Cream(slut)"
+   ],
+   "pos": "4–6 av 9 strains",
+   "prevDisabled": false,
+   "nextDisabled": false,
+   "scrollY": 821,
+   "docW": 1440,
+   "native": "Tinky Winky",
+   "focused": "High PepitoSlut"
+  },
+  "keyboardArrow": {
+   "visible": [
+    "Gorilla Cookies",
+    "Tinky Winky*",
+    "Crazy Dog(slut)"
+   ],
+   "pos": "1–3 av 9 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 821,
+   "docW": 1440,
+   "native": "Tinky Winky"
+  }
+ }
+}

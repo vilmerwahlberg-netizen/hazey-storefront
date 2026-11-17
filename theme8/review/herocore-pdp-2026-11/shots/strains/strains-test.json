@@ -1,0 +1,209 @@
+{
+ "393": {
+  "groups": [
+   {
+    "visible": [
+     "Gelato*",
+     "Strawberry Kush",
+     "Melon Haze"
+    ],
+    "pos": "1–3 av 6 strains",
+    "prevDisabled": true,
+    "nextDisabled": false,
+    "scrollY": 928,
+    "docW": 393,
+    "native": "Gelato - Indica"
+   },
+   {
+    "visible": [
+     "Pineapple Express",
+     "Super Lemon Haze",
+     "Coconut Cake"
+    ],
+    "pos": "4–6 av 6 strains",
+    "prevDisabled": false,
+    "nextDisabled": true,
+    "scrollY": 928,
+    "docW": 393,
+    "native": "Gelato - Indica"
+   }
+  ],
+  "selectTinky": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze",
+   "jump": 0
+  },
+  "clickSoldOut": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze"
+  },
+  "afterPaging": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze"
+  },
+  "keyboard": {
+   "visible": [
+    "Pineapple Express",
+    "Super Lemon Haze",
+    "Coconut Cake"
+   ],
+   "pos": "4–6 av 6 strains",
+   "prevDisabled": false,
+   "nextDisabled": true,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze",
+   "focused": "Pineapple ExpressI lager"
+  },
+  "keyboardArrow": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze"
+  },
+  "swipe": {
+   "visible": [
+    "Pineapple Express",
+    "Super Lemon Haze",
+    "Coconut Cake"
+   ],
+   "pos": "4–6 av 6 strains",
+   "prevDisabled": false,
+   "nextDisabled": true,
+   "scrollY": 928,
+   "docW": 393,
+   "native": "Melon Haze"
+  }
+ },
+ "1440": {
+  "groups": [
+   {
+    "visible": [
+     "Gelato*",
+     "Strawberry Kush",
+     "Melon Haze"
+    ],
+    "pos": "1–3 av 6 strains",
+    "prevDisabled": true,
+    "nextDisabled": false,
+    "scrollY": 813,
+    "docW": 1440,
+    "native": "Gelato - Indica"
+   },
+   {
+    "visible": [
+     "Pineapple Express",
+     "Super Lemon Haze",
+     "Coconut Cake"
+    ],
+    "pos": "4–6 av 6 strains",
+    "prevDisabled": false,
+    "nextDisabled": true,
+    "scrollY": 813,
+    "docW": 1440,
+    "native": "Gelato - Indica"
+   }
+  ],
+  "selectTinky": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 813,
+   "docW": 1440,
+   "native": "Melon Haze",
+   "jump": 0
+  },
+  "clickSoldOut": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 813,
+   "docW": 1440,
+   "native": "Melon Haze"
+  },
+  "afterPaging": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 813,
+   "docW": 1440,
+   "native": "Melon Haze"
+  },
+  "keyboard": {
+   "visible": [
+    "Pineapple Express",
+    "Super Lemon Haze",
+    "Coconut Cake"
+   ],
+   "pos": "4–6 av 6 strains",
+   "prevDisabled": false,
+   "nextDisabled": true,
+   "scrollY": 813,
+   "docW": 1440,
+   "native": "Melon Haze",
+   "focused": "Pineapple ExpressI lager"
+  },
+  "keyboardArrow": {
+   "visible": [
+    "Gelato",
+    "Strawberry Kush",
+    "Melon Haze*"
+   ],
+   "pos": "1–3 av 6 strains",
+   "prevDisabled": true,
+   "nextDisabled": false,
+   "scrollY": 813,
+   "docW": 1440,
+   "native": "Melon Haze"
+  }
+ }
+}

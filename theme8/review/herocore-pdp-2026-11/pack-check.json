@@ -1,0 +1,66 @@
+{
+ "packs": {
+  "393": {
+   "cards": [
+    "1 st675 krValfri strain [vald]",
+    "3‑pack1 920 kr640 kr/stSpara 105 kr",
+    "5‑pack3 135 kr627 kr/stSpara 240 kr"
+   ],
+   "module": {
+    "title": "Bygg ditt 3‑pack",
+    "slots": [
+     "Gelato - Indica",
+     "Gelato - Indica",
+     "Gelato - Indica"
+    ],
+    "sum": "Läggs i varukorgen: 3‑pack, 3 st3 × Gelato",
+    "cta": "Lägg 3‑pack i varukorgen",
+    "overflow": 0
+   }
+  },
+  "1440": {
+   "cards": [
+    "1 st675 krValfri strain [vald]",
+    "3‑pack1 920 kr640 kr/stSpara 105 kr",
+    "5‑pack3 135 kr627 kr/stSpara 240 kr"
+   ],
+   "module": {
+    "title": "Bygg ditt 3‑pack",
+    "slots": [
+     "Gelato - Indica",
+     "Gelato - Indica",
+     "Gelato - Indica"
+    ],
+    "sum": "Läggs i varukorgen: 3‑pack, 3 st3 × Gelato",
+    "cta": "Lägg 3‑pack i varukorgen",
+    "overflow": 0
+   },
+   "buy": {
+    "added": [
+     {
+      "id": 2327,
+      "variant": 467,
+      "qty": "1.00",
+      "name": "PILOT T19 – Hero's Core 2ml – 3-pack",
+      "price": "1 920 kr"
+     }
+    ],
+    "cleaned": true
+   },
+   "labs": [
+    [
+     "LABBTESTPDF (öppnas i ny flik)",
+     "https://www.hazey.se/wp-content/uploads/2025/07/CoA-THCX.pdf"
+    ]
+   ]
+  }
+ },
+ "labs": [
+  [
+   "LABBTESTPDF (öppnas i ny flik)",
+   "https://www.hazey.se/wp-content/uploads/2025/07/CoA-THCX.pdf",
+   "200 application/pdf"
+  ]
+ ],
+ "others": {}
+}

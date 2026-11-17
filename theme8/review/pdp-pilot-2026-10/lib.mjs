@@ -9,7 +9,7 @@ const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (
    mobilprofil) behåller Nyehandel inte varukorgen mellan anrop --
    verifierat 2026-10-15, gällde även 506a5de utan pilot. */
 const UA_MOBILE = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1";
-export async function ctxFor(browser, w, h, { local = true, build = path.join(ROOT, "dist/theme8"), reduced = false, scale } = {}) {
+export async function ctxFor(browser, w, h, { local = process.env.LOCAL !== "0", build = path.join(ROOT, "dist/theme8"), reduced = false, scale } = {}) {
   const m = w < 768;
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: scale || (m ? 2 : 1), isMobile: m, hasTouch: m, userAgent: m ? UA_MOBILE : UA, reducedMotion: reduced ? "reduce" : "no-preference" });
   if (local) {

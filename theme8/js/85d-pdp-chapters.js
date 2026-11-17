@@ -58,7 +58,13 @@
     }
     function analysisHtml() {
       if (!docs.length) return 'Labbrapporter finns inte i produktbeskrivningen just nu – <a href="' + esc(contactHref()) + '">kontakta kundservice</a> om du vill ha underlag.';
-      return "I produktbeskrivningen finns " + docs.length + " labbrapporter (PDF) som är namngivna efter strain: " + esc(list(docs.map(function (d) { return d.name; }))) + '. De listas under <a href="#hz8-pcx-strains">Strains och analys</a>.' +
+      var where = ' under <a href="#hz8-pcx-strains">' + esc(C.strains.h) + "</a>.";
+      /* "Namngivna efter strain" bara när minst ett dokumentnamn faktiskt
+         är en strain; annars beskrivs dokumenten med sina egna länktexter,
+         utan påstående om vad de gäller. */
+      var named = strains().some(function (s) { return docs.some(function (d) { return d.name.toLowerCase() === s.name.toLowerCase(); }); });
+      if (!named) return "Produktbeskrivningen länkar till " + (docs.length === 1 ? "ett analysdokument (PDF): " : docs.length + " analysdokument (PDF): ") + esc(list(docs.map(function (d) { return d.text; }))) + ". " + (docs.length === 1 ? "Det" : "De") + " finns" + where;
+      return "I produktbeskrivningen finns " + docs.length + " labbrapporter (PDF) som är namngivna efter strain: " + esc(list(docs.map(function (d) { return d.name; }))) + ". De listas" + where +
         (docsMissing().length ? ' För övriga strains finns ingen egen rapport här – <a href="' + esc(contactHref()) + '">kontakta kundservice</a> om du vill ha underlag.' : "");
     }
     function packsHtml() {
@@ -93,6 +99,8 @@
         instock: !known ? "" : inStock.length ? esc("Just nu i lager: " + list(inStock) + ".") : "Just nu är alla strains slutsålda.",
         compare: C.compare ? '<a href="' + esc(HZ8.link(C.compare.href)) + '">' + esc(C.compare.label) + "</a>" : "",
         allvapes: '<a href="' + esc(HZ8.link("/sv/categories/alla-vapes")) + '">alla vapes</a>',
+        /* Varumärkessidan ur Nyehandels serverrenderade köpdel. */
+        brandlink: (function () { var a = document.querySelector(".product-detail__information .brand a"); return a && brand ? '<a href="' + esc(a.getAttribute("href")) + '">alla produkter från ' + esc(brand) + "</a>" : ""; })(),
         analysis: analysisHtml(), packs: packsHtml(), delivery: deliveryHtml(),
         docs: docs.length ? String(docs.length) : ""
       };
@@ -265,6 +273,15 @@
     var headText = function (n) { return n.textContent.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "").replace(/\s+/g, " ").trim(); };
     if (article) {
       k.adoptDescription(article, null);
+      /* Sidans enda H1 är produktnamnet i köpdelen. En H1 i adminens
+         produkttext blir H2 i den renderade sidan (text och attribut
+         oförändrade; serverns HTML ändras inte -- se admin-listan). */
+      article.querySelectorAll("h1").forEach(function (h) {
+        var h2 = document.createElement("h2");
+        Array.prototype.forEach.call(h.attributes, function (a) { h2.setAttribute(a.name, a.value); });
+        while (h.firstChild) h2.appendChild(h.firstChild);
+        h.parentNode.replaceChild(h2, h);
+      });
       var root = article.querySelector(":scope > .content") || article;
       /* Tomma stycken och radbrytningar ur adminens editor döljs (ingen
          text). Dolda rubriker (t.ex. "Beskrivning av …") följer med till
