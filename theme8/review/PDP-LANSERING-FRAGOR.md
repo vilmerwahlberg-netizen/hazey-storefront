@@ -41,3 +41,17 @@ Underlag: `herocore-pdp-2026-11/KARTLAGGNING.md`.
 7. 7 Woo-omdömen ska importeras.
 8. Katalog: kategorin Hero Vapes innehåller buds och hasch.
 9. Egen Om-bild saknas (kustbilden är delad med MS).
+
+## D10 2 ml (254)
+
+Underlag: `d10-pdp-2026-11/KARTLAGGNING.md`.
+
+1. **Hela produkten är slutsåld.** Ska sidan lanseras som slutsåld med "Bevaka", eller vänta på lager?
+2. **SEO-titeln** innehåller `%%sep%%`. Metan har "Laglig i sverige" och "ett steg upp från Magic Sauce".
+3. **D10 eller delta-10?** Texten säger att D10 "inte ska förväxlas med delta-10-THC", men förpackningsbilden säger "99% DELTA10" och rapporten "99% D10".
+4. **Labbrapporterna:** labbets adress är densamma som kundens (GB Czech s.r.o., Ostrava), medan texten säger "oberoende laboratorier". Läst för Cherry Sour; de fyra andra svarar men är inte lästa i detalj.
+5. **Obelagda påståenden** (18 markeras med `?hz8-factcheck=1`):
+   - "Samma specifikation i varje sats", "spårbar från produktion till leverans"
+   - "En laglig cannabis", "<0,3 % THC"
+   - jämförelser med Magic Sauce
+6. **Webbhotellet** svarade 429 (för många anrop) på snabba PDF-hämtningar i följd. Det bör kontrolleras inför flytten av PDF:erna.
