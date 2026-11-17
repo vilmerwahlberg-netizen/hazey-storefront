@@ -1,0 +1,168 @@
+/* R6 (2026-11-17): sista visuella runda mot hela referenssidan
+   (ms-2ml-seo-first-{desktop,mobile}-v2). Bara html.hz8-pdp-authored.
+   Ligger efter 85c/85e/85f och skriver över dem.
+
+   Ljussystem: varm persika som bas, mörkare aprikos mot kanterna, ljusa
+   solfält uppe till vänster i varje kapitel. Ljusa cream-ytor (ark,
+   strainplattor, FAQ, produktkort) lyfts med varm kontakt- och
+   omgivningsskugga mot den mörkare basen -- kontrast i stället för beige
+   mot beige. Inga påhittade data, ingen textändring. */
+
+html.hz8-pdp-authored {
+  --r6-base: #f4d9bc;
+  --r6-edge: #e9c39b;
+  --r6-sun: #fff2df;
+  --r6-cream: linear-gradient(180deg, #fffbf5 0%, #fbf1e3 100%);
+  --r6-cream-edge: rgba(201, 160, 114, .42);
+  --r6-lift: inset 0 1px 0 #fff, 0 1px 2px rgba(120, 78, 34, .12), 0 14px 26px -18px rgba(110, 66, 24, .55);
+  --r6-lift-hover: inset 0 1px 0 #fff, 0 2px 4px rgba(120, 78, 34, .14), 0 20px 34px -20px rgba(110, 66, 24, .62);
+}
+
+/* ---------- Bas och ljus genom hela sidan ---------- */
+html.hz8.hz8-pdp-authored #store-main { background: var(--r6-base) !important; }
+html.hz8-pdp-authored .hz8-pcx-light {
+  height: 1300px !important;
+  background:
+    radial-gradient(32% 36% at 20% 28%, rgba(255, 244, 226, .95) 0%, rgba(255, 238, 214, .45) 48%, rgba(255, 238, 214, 0) 76%),
+    radial-gradient(30% 30% at 74% 22%, rgba(255, 240, 220, .55) 0%, rgba(255, 240, 220, 0) 72%),
+    radial-gradient(22% 60% at -4% 50%, rgba(214, 150, 86, .34) 0%, rgba(214, 150, 86, 0) 72%),
+    radial-gradient(22% 60% at 104% 46%, rgba(214, 150, 86, .3) 0%, rgba(214, 150, 86, 0) 72%),
+    linear-gradient(180deg, #f8e4cb 0%, #f5dcc0 60%, var(--r6-base) 100%) !important;
+}
+html.hz8-pdp-authored .hz8-ppc--authored::before {
+  background:
+    radial-gradient(40% 6% at 16% 16%, rgba(255, 243, 224, .85) 0%, rgba(255, 243, 224, 0) 72%),
+    radial-gradient(40% 6% at 14% 38%, rgba(255, 243, 224, .8) 0%, rgba(255, 243, 224, 0) 72%),
+    radial-gradient(40% 6% at 16% 60%, rgba(255, 243, 224, .75) 0%, rgba(255, 243, 224, 0) 72%),
+    radial-gradient(40% 6% at 18% 82%, rgba(255, 243, 224, .7) 0%, rgba(255, 243, 224, 0) 72%),
+    radial-gradient(16% 50% at -2% 50%, rgba(210, 146, 84, .3) 0%, rgba(210, 146, 84, 0) 72%),
+    radial-gradient(16% 50% at 102% 55%, rgba(210, 146, 84, .3) 0%, rgba(210, 146, 84, 0) 72%),
+    linear-gradient(180deg, rgba(244, 217, 188, 0) 0%, var(--r6-base) 4%, #f3d6b7 60%, #efcda9 100%) !important;
+}
+/* Kapitelfälten från R5: varmare sol, djupare skugga. */
+html.hz8-pdp-authored :is(#hz8-pcx-om, #hz8-pcx-faq, #liknande)::before {
+  background:
+    radial-gradient(44% 70% at 16% 10%, rgba(255, 244, 226, .7) 0%, rgba(255, 244, 226, 0) 70%),
+    radial-gradient(40% 70% at 96% 94%, rgba(196, 124, 62, .16) 0%, rgba(196, 124, 62, 0) 70%) !important;
+}
+
+/* ---------- Faktabladet: tunt, ljust, taktilt ark ---------- */
+html.hz8-pdp-authored .hz8-pcx-sum__paper { background: linear-gradient(180deg, #fffdf8, #fdf6ea) !important; }
+html.hz8-pdp-authored .hz8-pcx-sum__paper::after {
+  background:
+    var(--pp-fiber) 0 0 / 280px 280px repeat,
+    radial-gradient(60% 90% at 30% 35%, #fffaf2 0%, rgba(255, 250, 242, 0) 100%),
+    radial-gradient(30% 90% at 0% 60%, rgba(238, 214, 178, .32) 0%, rgba(238, 214, 178, 0) 70%),
+    radial-gradient(30% 90% at 100% 70%, rgba(238, 214, 178, .36) 0%, rgba(238, 214, 178, 0) 70%),
+    linear-gradient(180deg, #fcf3e5 0%, #f8ecd8 100%) !important;
+}
+/* Två skuggor under arket: kontakt (nära, tätare) + omgivning (mjuk). */
+html.hz8-pdp-authored .hz8-pcx-sum::before { opacity: .42 !important; filter: blur(14px) !important; top: 16px !important; bottom: -10px !important; }
+html.hz8-pdp-authored .hz8-pcx-sum::after {
+  content: "" !important; position: absolute; z-index: -3; pointer-events: none; display: block;
+  left: calc((100% - 100vw) / 2 + clamp(10px, 3.6vw, 56px) + 1%); right: calc((100% - 100vw) / 2 + clamp(10px, 3.6vw, 56px) + 1%); top: auto; bottom: -5px; height: 18px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(110, 66, 24, .3), rgba(110, 66, 24, 0)) !important; filter: blur(4px); opacity: 1;
+  -webkit-mask: none !important; mask: none !important; clip-path: none !important; transform: none !important;
+}
+/* Tredje bladet: uppe till vänster, bara palmbladens spetsar i marginalen
+   (aldrig över text eller miniatyrer). Desktop. */
+html.hz8-pdp-authored .hz8-pcx-sum__leaf--c { display: none; }
+@media (min-width: 1024px) {
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--c {
+    display: block; width: clamp(150px, 11vw, 200px) !important; left: calc((100% - 100vw) / 2) !important; top: -70px !important; bottom: auto !important; right: auto !important;
+    -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 30%); mask-image: linear-gradient(0deg, transparent 0%, #000 30%);
+  }
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--c::before { background-image: url("assets/pdp-ms2ml-2026-11/ms2ml-tropical-leaf-shadow-l-600.webp") !important; }
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--c::after { background-image: url("assets/pdp-ms2ml-2026-11/ms2ml-tropical-leaf-l-600.webp") !important; }
+  /* Större hörnblad på desktop (fortfarande inom fönstret, utanför texten). */
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--a { width: clamp(220px, 16vw, 290px) !important; }
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--b { width: clamp(210px, 15vw, 270px) !important; }
+}
+
+/* ---------- Strains: ljusa plattor i scenljus ---------- */
+html.hz8-pdp-authored .hz8-pcx-sa__item {
+  background: radial-gradient(90% 70% at 40% 18%, rgba(255, 252, 246, .95) 0%, rgba(255, 247, 236, .72) 60%, rgba(252, 240, 224, .55) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, .85) !important;
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(120, 78, 34, .1), 0 16px 26px -20px rgba(110, 66, 24, .55) !important;
+}
+html.hz8-pdp-authored .hz8-pcx-sa__item:not(.is-out):hover { background: radial-gradient(90% 70% at 40% 18%, #fffdf9 0%, rgba(255, 249, 240, .85) 100%) !important; box-shadow: var(--r6-lift-hover) !important; }
+html.hz8-pdp-authored .hz8-pcx-sa__item[aria-pressed="true"] { border: 1.5px solid #d9782f !important; box-shadow: inset 0 1px 0 #fff, 0 0 0 3px rgba(217, 120, 47, .12), 0 18px 30px -20px rgba(150, 76, 26, .6) !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-sa__item[aria-pressed="true"] .hz8-pcx-sa__name { color: #a8521a !important; }
+html.hz8-pdp-authored .hz8-pcx-sa__item.is-out { background: radial-gradient(90% 70% at 40% 18%, rgba(250, 244, 236, .8) 0%, rgba(240, 228, 212, .5) 100%) !important; }
+html.hz8-pdp-authored .hz8-pcx-sa__img::after { background: radial-gradient(closest-side, rgba(92, 58, 24, .38), rgba(92, 58, 24, 0)) !important; }
+/* Analysen infälld i samma komposition: samma höjd som kortraden,
+   varmt sidoljus och en svag lövskugga i ytan. */
+html.hz8-pdp-authored .hz8-pcx-sa__grid { align-items: stretch !important; }
+html.hz8-pdp-authored .hz8-pcx-ana {
+  align-self: center; isolation: isolate;
+  background:
+    radial-gradient(70% 60% at 100% 0%, rgba(232, 178, 104, .3) 0%, rgba(232, 178, 104, 0) 65%),
+    radial-gradient(80% 70% at 0% 100%, rgba(18, 24, 12, .35) 0%, rgba(18, 24, 12, 0) 70%),
+    linear-gradient(160deg, #47562f 0%, #34421f 55%, #2b361b 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 244, 220, .14), 0 2px 4px rgba(40, 30, 10, .18), 0 26px 40px -26px rgba(60, 40, 14, .7) !important;
+}
+html.hz8-pdp-authored .hz8-pcx-ana::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+  background: url("assets/pdp-botanical-composites-2026-10/pdp-media-light-shadow-runtime-v1.webp") 100% 0 / 120% auto no-repeat; mix-blend-mode: soft-light; opacity: .35;
+}
+
+/* ---------- Om-uppslaget: balanserade spalter ---------- */
+html.hz8-pdp-authored #hz8-pcx-om { padding-top: 34px !important; border-top: 1px solid rgba(150, 106, 60, .22); }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored #hz8-pcx-om > h2 { font-size: clamp(22px, 1.6vw, 26px) !important; color: #8a5a32 !important; font-family: var(--hz8-font-ui) !important; font-weight: 600 !important; letter-spacing: .02em !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-ch .hz8-pcx-ch__sec :is(h1, h2, h3, h4, h5):not([hidden]) { font-size: clamp(26px, 2.2vw, 34px) !important; line-height: 1.12 !important; margin-bottom: 14px !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-ch .hz8-pcx-ch__sec p { font-size: 15.5px !important; line-height: 1.68 !important; color: #2e2b22 !important; }
+html.hz8-pdp-authored .hz8-pcx-ch__col--b { border-left-color: rgba(150, 106, 60, .3) !important; }
+html.hz8-pdp-authored .hz8-pcx-ch__fig { box-shadow: 0 2px 4px rgba(90, 54, 20, .18), 0 26px 40px -26px rgba(90, 54, 20, .7) !important; }
+html.hz8-pdp-authored .hz8-pcx-ch__specs { padding: 14px 16px 6px; border: 1px solid var(--r6-cream-edge); border-radius: 12px; background: var(--r6-cream); box-shadow: var(--r6-lift); }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-ch__dl { border-top: 0 !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-ch__dl > div:last-child { border-bottom: 0 !important; }
+html.hz8-pdp-authored .hz8-pcx-full { background: var(--r6-cream) !important; border-color: var(--r6-cream-edge) !important; box-shadow: var(--r6-lift) !important; }
+
+/* ---------- FAQ: ljusa cream-rader, inte beige mot beige ---------- */
+html.hz8-pdp-authored .hz8-pcx-faq__list { gap: 8px !important; border-top: 0 !important; }
+html.hz8-pdp-authored .hz8-pcx-faq__item {
+  border: 1px solid var(--r6-cream-edge) !important; border-radius: 12px !important;
+  background: var(--r6-cream) !important; box-shadow: var(--r6-lift) !important;
+  transition: box-shadow .2s var(--hz8-ease), border-color .2s var(--hz8-ease), transform .2s var(--hz8-ease);
+}
+html.hz8-pdp-authored .hz8-pcx-faq__item:hover { border-color: rgba(176, 124, 70, .6) !important; box-shadow: var(--r6-lift-hover) !important; }
+html.hz8-pdp-authored .hz8-pcx-faq__item[open] { background: linear-gradient(180deg, #fffdf9, #fcf4e8) !important; border-color: rgba(176, 124, 70, .6) !important; }
+html.hz8-pdp-authored .hz8-pcx-faq__item > summary { padding: 9px 18px !important; border-radius: 12px; }
+html.hz8-pdp-authored .hz8-pcx-faq__item > summary:focus-visible { outline: 2px solid #d9782f !important; outline-offset: 2px; }
+html.hz8-pdp-authored .hz8-pcx-faq__a { padding: 0 18px 16px !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-faq__item h3 { color: #23231d !important; }
+html.hz8-pdp-authored .hz8-pcx-faq__mark::before, html.hz8-pdp-authored .hz8-pcx-faq__mark::after { background: #a8521a !important; }
+
+/* ---------- Karusell: ljusare kort, tydligare lyft ---------- */
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx.hz8-pcx-more a.hz8-pcx-more__card { background: var(--r6-cream) !important; border-color: var(--r6-cream-edge) !important; box-shadow: var(--r6-lift) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx.hz8-pcx-more a.hz8-pcx-more__card:hover { box-shadow: var(--r6-lift-hover) !important; transform: translateY(-2px); }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx.hz8-pcx-more a.hz8-pcx-more__card:focus-visible { outline: 2px solid #d9782f !important; outline-offset: 3px; }
+html.hz8-pdp-authored .hz8-pcx-more__img { border-radius: 10px; background: radial-gradient(70% 60% at 50% 40%, #fffdf8 0%, #f9eedd 70%, #f3e2c8 100%); }
+html.hz8-pdp-authored .hz8-pcx-more__img img { inset: 6% !important; width: 88% !important; height: 88% !important; }
+
+/* ---------- Avslut: varm atmosfär ned till footern ---------- */
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] #store-main .hz8-ppc--authored > .hz8-pdp-help {
+  background: radial-gradient(60% 140% at 10% 0%, #fffdf8 0%, rgba(255, 253, 248, 0) 64%), var(--r6-cream) !important;
+  border-color: var(--r6-cream-edge) !important; box-shadow: var(--r6-lift) !important;
+}
+html.hz8-pdp-authored .hz8-ppc--authored::after { background: radial-gradient(60% 90% at 22% 100%, rgba(232, 176, 112, .32), rgba(232, 176, 112, 0) 70%), linear-gradient(180deg, rgba(239, 205, 169, 0), #e8c49c) !important; height: 340px !important; }
+/* Ett skarpt blad vid footerskarven, nere till höger (under kundservice,
+   aldrig över knappar eller text). */
+html.hz8-pdp-authored .hz8-ppc--authored > .hz8-pdp-help::after {
+  content: ""; position: absolute; z-index: 3; pointer-events: none; right: calc((100% - 100vw) / 2 + 0px); bottom: calc(-1 * clamp(40px, 4vw, 64px) - 40px); width: clamp(150px, 13vw, 230px); aspect-ratio: 1536 / 1024;
+  background: url("assets/pdp-ms2ml-2026-11/ms2ml-tropical-leaf-r-600.webp") 100% 100% / contain no-repeat;
+  -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 26%); mask-image: linear-gradient(0deg, transparent 0%, #000 26%);
+}
+@media (max-width: 767px) {
+  html.hz8-pdp-authored .hz8-ppc--authored > .hz8-pdp-help::after { width: 120px; bottom: -66px; }
+  html.hz8-pdp-authored #hz8-pcx-om { padding-top: 26px !important; }
+  html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored .hz8-pcx-ch .hz8-pcx-ch__sec :is(h1, h2, h3, h4, h5):not([hidden]) { font-size: 24px !important; }
+  html.hz8-pdp-authored .hz8-pcx-faq__item > summary { padding: 9px 14px !important; }
+  html.hz8-pdp-authored .hz8-pcx-faq__a { padding: 0 14px 14px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.hz8-pdp-authored .hz8-pcx-faq__item, html.hz8-pdp-authored .hz8-pcx-more__card { transition: none !important; transform: none !important; }
+}
+/* Kontrast mot den mörkare persikabasen (WCAG AA även vid kanterna). */
+html.hz8-pdp-authored { --pp-muted: #514a3b; }
+html.hz8.hz8-pdp-authored[data-hz8-page="product"] .hz8-ppc--authored #hz8-pcx-om > h2 { color: #774a26 !important; }

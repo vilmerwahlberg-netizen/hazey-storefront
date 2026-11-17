@@ -1,0 +1,53 @@
+/* Sista puts (2026-11-17), BARA modulen "Vad är …?" (#hz8-pcx-sum) på
+   författade PDP:er. Mot referensens tunna, naturliga pappersark:
+   - något mindre padding/höjd,
+   - lätt sliten kant runt om (ms2ml-paper-*-v2.svg, tools/paper-gen-v2.mjs),
+   - varmare skiftningar i papperet, åldrad varm ton mot kanterna,
+   - riktat ljus uppe till vänster, skugga ned/höger.
+   Ingen text, inget annat kapitel och inga kontroller påverkas. */
+
+html.hz8-pdp-authored .hz8-pcx-sum__paper {
+  --pcx-sheet: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-desktop-v2.svg") !important;
+  --pcx-sheet-rim: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-desktop-v2-rim.svg") !important;
+  background: linear-gradient(135deg, #fffdf8 0%, #fdf5e8 100%) !important;
+}
+/* Papperets yta: ljus från övre vänster, varmare och lätt fläckigt mot
+   nedre höger, åldrad varm ton längs kanten (översta lagret). */
+html.hz8-pdp-authored .hz8-pcx-sum__paper::after {
+  background:
+    radial-gradient(120% 140% at 50% 50%, rgba(214, 166, 104, 0) 62%, rgba(214, 166, 104, .26) 90%, rgba(190, 138, 78, .4) 100%),
+    var(--pp-fiber) 0 0 / 300px 300px repeat,
+    radial-gradient(42% 70% at 16% 18%, rgba(255, 253, 247, .95) 0%, rgba(255, 253, 247, 0) 72%),
+    radial-gradient(18% 40% at 58% 30%, rgba(238, 206, 160, .2) 0%, rgba(238, 206, 160, 0) 72%),
+    radial-gradient(14% 36% at 34% 78%, rgba(240, 212, 172, .18) 0%, rgba(240, 212, 172, 0) 72%),
+    radial-gradient(22% 50% at 74% 62%, rgba(236, 200, 152, .22) 0%, rgba(236, 200, 152, 0) 72%),
+    radial-gradient(40% 80% at 96% 92%, rgba(222, 178, 122, .3) 0%, rgba(222, 178, 122, 0) 70%),
+    linear-gradient(135deg, #fdf6ea 0%, #f9eedc 55%, #f5e4c9 100%) !important;
+  background-blend-mode: normal, soft-light, normal, multiply, multiply, multiply, normal, normal !important;
+}
+/* Skuggan faller ned och åt höger (ljuset uppe till vänster). */
+html.hz8-pdp-authored .hz8-pcx-sum::before {
+  background-image: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-desktop-v2-shadow.svg") !important;
+  transform: translate(10px, 0) !important; opacity: .4 !important; filter: blur(15px) !important;
+}
+html.hz8-pdp-authored .hz8-pcx-sum::after { transform: translateX(6px) !important; }
+
+/* Något mindre luft (desktop). */
+@media (min-width: 1024px) {
+  html.hz8-pdp-authored .hz8-pcx-sum { padding-top: clamp(36px, 3vw, 48px) !important; padding-bottom: clamp(40px, 3.3vw, 52px) !important; }
+}
+/* Mobil: eget, lägre ark (växterna i nederhörnen får fortfarande plats). */
+@media (max-width: 767px) {
+  html.hz8-pdp-authored .hz8-pcx-sum { padding-top: 22px !important; padding-bottom: 36px !important; }
+  html.hz8-pdp-authored .hz8-pcx-sum__paper {
+    --pcx-sheet: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-mobile-v2.svg") !important;
+    --pcx-sheet-rim: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-mobile-v2-rim.svg") !important;
+  }
+  html.hz8-pdp-authored .hz8-pcx-sum::before { background-image: url("assets/pdp-ms2ml-2026-11/ms2ml-paper-mobile-v2-shadow.svg") !important; transform: translate(5px, 0) !important; filter: blur(10px) !important; }
+}
+/* Lägre ark -> hörnbladen 10 px längre ned så bladmassan håller avstånd
+   till ingressens sista rad (desktop). */
+@media (min-width: 1024px) {
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--a { bottom: -56px !important; }
+  html.hz8-pdp-authored .hz8-pcx-sum__leaf--b { bottom: -54px !important; }
+}

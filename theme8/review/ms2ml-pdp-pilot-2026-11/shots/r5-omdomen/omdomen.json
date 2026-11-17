@@ -1,0 +1,79 @@
+{
+ "avg": 4.7,
+ "utan-393": {
+  "meta": "",
+  "metaHidden": true,
+  "link": null,
+  "section": null,
+  "carousel": [
+   4008,
+   4335
+  ],
+  "related": [
+   4367,
+   4526
+  ],
+  "ld": false
+ },
+ "utan-1440": {
+  "meta": "",
+  "metaHidden": true,
+  "link": null,
+  "section": null,
+  "carousel": [
+   3054,
+   3461
+  ],
+  "related": [
+   3527,
+   3590
+  ],
+  "ld": false
+ },
+ "testdata-393": {
+  "meta": "Betyg 4,7 av 5, 40 omdömen4,7 (40)Visa 40 omdömen",
+  "metaHidden": false,
+  "link": "#omdomen",
+  "section": [
+   4425,
+   5087
+  ],
+  "carousel": [
+   4066,
+   4393
+  ],
+  "related": [
+   5119,
+   5278
+  ],
+  "ld": false,
+  "afterClick": {
+   "hash": "#omdomen",
+   "sectionTop": 88,
+   "headerBottom": -48
+  }
+ },
+ "testdata-1440": {
+  "meta": "Betyg 4,7 av 5, 40 omdömen4,7 (40)Visa 40 omdömen",
+  "metaHidden": false,
+  "link": "#omdomen",
+  "section": [
+   3535,
+   3831
+  ],
+  "carousel": [
+   3054,
+   3461
+  ],
+  "related": [
+   3897,
+   3960
+  ],
+  "ld": false,
+  "afterClick": {
+   "hash": "#omdomen",
+   "sectionTop": 96,
+   "headerBottom": -48
+  }
+ }
+}
